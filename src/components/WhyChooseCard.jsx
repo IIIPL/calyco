@@ -1,7 +1,7 @@
 import { FaPaintRoller } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-export const WhyChooseCard = ({ textHeading = "Text Heading", index = 0 }) => {
+export const WhyChooseCard = ({ textHeading = "High-Performance Coatings", index = 0 }) => {
   return (
     <div className="bg-[#F0C85A] m-1 rounded-xl flex flex-col hover:shadow-2xl px-2">
       {/* Static Icon */}
@@ -21,12 +21,12 @@ export const WhyChooseCard = ({ textHeading = "Text Heading", index = 0 }) => {
         </div>
 
         <div className="mx-3 text-gray-700 text-sm">
-          DocPlus leverages cutting-edge AI technology to offer personalized health assessments.
+          Calyco Paints offers durable, eco-friendly solutions for residential, commercial, and industrial surfaces.
         </div>
 
         <div className="flex flex-row justify-between mx-3 font-bold text-xs my-4">
           <div>LEARN MORE</div>
-          <a href="https://your-link-here.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://calycopaints.com" target="_blank" rel="noopener noreferrer">
             <img
               src="vectorMore.png"
               className="w-4 h-4 transition-transform duration-300 hover:scale-125"

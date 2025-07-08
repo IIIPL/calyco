@@ -36,7 +36,7 @@ export const Navbar = () => {
                         About Us
                     </a>
 
-                    <a href="/products" className="text-gray-700 hover:text-black">
+                    <a href="/product" className="text-gray-700 hover:text-black">
                         Products
                     </a>                    
                 </nav>
