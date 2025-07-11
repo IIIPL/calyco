@@ -192,7 +192,7 @@ export const HomePage = () => {
                 </motion.div>
 
                 <motion.div 
-                    className="flex flex-col lg:flex-row gap-6 justify-center mt-8 px-6"
+                    className="flex flex-col md:flex-row lg:flex-row gap-6 justify-center mt-8 px-6 mx-10"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}

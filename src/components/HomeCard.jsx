@@ -4,25 +4,28 @@ import {Link} from 'react-router-dom'
 
 const paintData = {
   "Interior": {
-    img: "/Assets/nova.png",
+    img: "/Assets/novaa.png",
     desc: "Bright white finish with durable indoor protection.",
-    link: "interior"
+    link: "interior",
+    bgCol: "[#b38312]"
   },
   "Stain & Sealer": {
-    img: "/Assets/defense.png",
+    img: "/Assets/defence.png",
     desc: "Elegant blue tones perfect for modern interiors.",
     link: "stain-sealer",
+    bgCol: "[#493657]"
   },
   default: {
     img: "paintBucket.jpg",
     desc: "This paint provides rich color and premium quality for your interior walls.",
+    bgCol: ""
   },
 };
 
 export const HomeCard = ({ index = 0, paintName = "paintname" }) => {
   const curtainRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  const { img, desc, link } = paintData[paintName] || paintData.default;
+  const { img, desc, link, bgCol } = paintData[paintName] || paintData.default;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,7 +47,7 @@ export const HomeCard = ({ index = 0, paintName = "paintname" }) => {
     <div className="bg-white w-[22rem] min-h-[440px] rounded-xl flex flex-col items-center relative p-4 border border-black transition duration-300">
       {/* Image with fixed height */}
       <div
-        className="relative w-full h-[200px] overflow-hidden rounded-xl border border-[#B5B5B5] bg-[#F0F4FF]"
+        className="relative w-full h-[200px] overflow-hidden rounded-xl border border-[#B5B5B5]"
         ref={curtainRef}
       >
         <img
@@ -53,9 +56,9 @@ export const HomeCard = ({ index = 0, paintName = "paintname" }) => {
           className="w-full h-full object-contain hover:scale-125 transition duration-300"
         />
         <div
-          className={`absolute inset-0 bg-[#574D68] transition-transform duration-1000 ease-in-out z-10 transform-gpu ${
+          className={`absolute inset-0 transition-transform duration-1000 ease-in-out z-10 transform-gpu ${
             visible ? "translate-y-full" : "translate-y-0"
-          }`}
+          } bg-${bgCol}`}
         ></div>
       </div>
 

@@ -29,7 +29,7 @@ function App() {
         <Route path='/product/nova' element={<Nova/>}/>
         <Route path='/product/defense' element={<Defense/>}/>
         <Route path='/about' element={<AboutUs/>}/>
-        <Route path='/temp' element={<Temp/>}/>
+        <Route path='/temp' element={<ProductPage/>}/>
         <Route path='/faq' element={<FAQs/>}/>
         <Route path='/contact' element={<ContactUs/>}/>
         <Route path='/interior' element={<Interior/>}/>
