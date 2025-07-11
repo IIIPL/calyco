@@ -75,7 +75,7 @@ export const ProductPage = ({ productName = "Benjamin Moore Aura" }) => {
                             <div className="absolute inset-0 bg-gradient-to-r from-[#F0C85A]/20 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
                                 <img
-                                    src="https://assets.benjaminmoore.com/transform/5fc4f693-ecee-4a42-bbf4-96ae27f7ef0e/image_N524_1080x1080_en_US"
+                                    src="/paintBucket.jpg"
                                     alt="Paint can"
                                     className="w-full max-w-sm mx-auto hover:scale-105 transition-transform duration-500"
                                 />

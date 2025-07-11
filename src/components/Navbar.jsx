@@ -38,7 +38,14 @@ export const Navbar = () => {
 
                     <a href="/product" className="text-gray-700 hover:text-black">
                         Products
-                    </a>                    
+                    </a>        
+                    <a href="/product/nova" className="text-gray-700 hover:text-black">
+                        Nova
+                    </a>
+                    <a href="/product/defense" className="text-gray-700 hover:text-black">
+                        Defense
+                    </a>        
+                    
                 </nav>
             </div>
         </header>

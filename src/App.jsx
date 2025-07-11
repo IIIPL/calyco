@@ -12,6 +12,8 @@ import ScrollToTop from './components/ScrollToTop'
 import { ContactUs } from './pages/ContactUs'
 import { Interior } from './pages/Interior'
 import { StainSealer } from './pages/StainSealer'
+import { Nova } from './pages/Nova'
+import { Defense } from './pages/Defense'
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/product' element={<ProductPage/>}/>
+        <Route path='/product/nova' element={<Nova/>}/>
+        <Route path='/product/defense' element={<Defense/>}/>
         <Route path='/about' element={<AboutUs/>}/>
         <Route path='/temp' element={<Temp/>}/>
         <Route path='/faq' element={<FAQs/>}/>
