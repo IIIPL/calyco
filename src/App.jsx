@@ -14,11 +14,10 @@ import { Interior } from './pages/Interior'
 import { StainSealer } from './pages/StainSealer'
 import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
+import { Products } from './pages/Products'
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className='font-poppins'>
       {/* This is your app. */}
@@ -26,7 +25,7 @@ function App() {
       {/* <ScrollToTop/> */}
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/product' element={<ProductPage/>}/>
+        <Route path='/product' element={<Products/>}/>
         <Route path='/product/nova' element={<Nova/>}/>
         <Route path='/product/defense' element={<Defense/>}/>
         <Route path='/about' element={<AboutUs/>}/>

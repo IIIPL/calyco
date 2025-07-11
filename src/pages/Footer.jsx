@@ -44,7 +44,7 @@ export const Footer = () => {
                             Homepage
                         </Link>
                         <Link
-                            to="/explore"
+                            to="/product"
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             className={`transform hover:scale-125 transition duration-200 ${
                             path === "/explore" ? "font-bold underline" : ""
