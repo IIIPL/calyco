@@ -26,18 +26,21 @@ export const Navbar = () => {
                     <Link 
                         to="/product" 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     >
                         Products
                     </Link>
                     <Link 
                         to="/about" 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     >
                         About Us
                     </Link>
                     <Link 
                         to="/contact" 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     >
                         Contact Us
                     </Link>
@@ -70,22 +73,22 @@ export const Navbar = () => {
             {menuOpen && (
                 <nav className="flex flex-col gap-4 p-4 md:hidden bg-[#f9f6f2] border-t border-[#e5e0d8] shadow-md">
                     <Link 
-                        to="/products" 
-                        onClick={() => setMenuOpen(false)} 
+                        to="/product" 
+                        onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
                     >
                         Products
                     </Link>
                     <Link 
                         to="/about" 
-                        onClick={() => setMenuOpen(false)} 
+                        onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
                     >
                         About Us
                     </Link>
                     <Link 
                         to="/contact" 
-                        onClick={() => setMenuOpen(false)} 
+                        onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }} 
                         className="text-[#493657] hover:text-[#F0C85A] transition-colors"
                     >
                         Contact Us

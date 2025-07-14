@@ -25,7 +25,6 @@ function App() {
       <div className='font-poppins'>
         {/* This is your app. */}
         <Navbar/>
-        {/* <ScrollToTop/> */}
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/product' element={<Products/>}/>

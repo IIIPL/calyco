@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { getProductById } from "../data/products";
+import { getProductById, getProductsByCategory } from "../data/products";
 import { useCart } from "../context/CartContext";
 
 export const DynamicProductPage = () => {
@@ -73,8 +73,30 @@ export const DynamicProductPage = () => {
         }
     };
 
+    // Always show these sizes for every product
+    const displaySizes = ["1L", "4L", "10L", "20L"];
+
+    // Price multipliers for each size
+    const sizePriceMultipliers = {
+        "1L": 1,
+        "4L": 3.5,
+        "10L": 8,
+        "20L": 14
+    };
+    // Calculate price for selected size
+    const getSizePrice = (basePrice, size) => {
+        const multiplier = sizePriceMultipliers[size] || 1;
+        return Math.round(basePrice * multiplier);
+    };
+
+    // Responsive: Only sticky on xl and above
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
+
+    // Get similar products (same category, excluding current)
+    const similarProducts = product ? getProductsByCategory(product.category).filter(p => p.id !== product.id) : [];
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5">
+        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-4 md:px-12 xl:px-32">
             <motion.section 
                 className="w-full max-w-7xl mx-auto px-4 py-10 pt-32"
                 variants={containerVariants}
@@ -86,11 +108,11 @@ export const DynamicProductPage = () => {
                     className="flex items-center gap-2 text-sm text-[#493657]/60 mb-8"
                     variants={itemVariants}
                 >
-                    <Link to="/" className="hover:text-[#493657] transition-colors">
+                    <Link to="/" className="hover:text-[#493657] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                         Home
                     </Link>
                     <span>/</span>
-                    <Link to="/product" className="hover:text-[#493657] transition-colors">
+                    <Link to="/product" className="hover:text-[#493657] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                         Products
                     </Link>
                     <span>/</span>
@@ -105,6 +127,7 @@ export const DynamicProductPage = () => {
                     <Link 
                         to="/product"
                         className="inline-flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors"
+                        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
                     >
                         <FaArrowLeft className="w-4 h-4" />
                         Back to Products
@@ -114,11 +137,11 @@ export const DynamicProductPage = () => {
                 <div className="flex flex-col xl:flex-row gap-12">
                     {/* Product Image */}
                     <motion.div 
-                        className="xl:w-1/2 sticky top-24 self-start"
+                        className="xl:w-1/2 xl:sticky xl:top-24 xl:self-start"
                         variants={itemVariants}
                     >
                         <div className="relative group">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#F0C85A]/20 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#F0C85A]/20 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
                                 <img
                                     src={product.image}
@@ -137,15 +160,12 @@ export const DynamicProductPage = () => {
                         {/* Product Header */}
                         <div className="space-y-4">
                             <div className="flex items-center gap-3">
-                                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getTierColor(product.tier)}`}>
-                                    {product.tier}
-                                </span>
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
                             <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
                             <p className="text-lg text-[#493657]/70">{product.shortDescription}</p>
                             <div className="flex items-center gap-4">
-                                <p className="text-3xl font-bold text-[#F0C85A]">₹{product.price}</p>
+                                <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
                                 <span className="text-sm text-[#493657]/60">per {selectedSize}</span>
                             </div>
                         </div>
@@ -176,7 +196,7 @@ export const DynamicProductPage = () => {
                             <div>
                                 <h3 className="font-semibold text-[#493657] mb-3">Available Sizes</h3>
                                 <div className="flex flex-wrap gap-2">
-                                    {product.sizes.map((size) => (
+                                    {displaySizes.map((size) => (
                                         <button
                                             key={size}
                                             onClick={() => setSelectedSize(size)}
@@ -243,7 +263,7 @@ export const DynamicProductPage = () => {
                             whileTap={{ scale: 0.98 }}
                         >
                             <FaShoppingCart className="w-5 h-5" />
-                            Add to Cart - ₹{product.price * quantity}
+                            Add to Cart - ₹{getSizePrice(product.price, selectedSize) * quantity}
                         </motion.button>
 
                         {/* Success Message */}
@@ -267,72 +287,132 @@ export const DynamicProductPage = () => {
                     className="mt-24 border-t border-[#493657]/20 pt-16 space-y-16"
                     variants={itemVariants}
                 >
+                    {/* Product Details */}
                     <div className="space-y-8">
                         <div>
-                            <h3 className="text-2xl font-bold text-[#493657] mb-6">Product Details</h3>
+                            <h2 className="text-3xl font-bold text-[#493657] mb-6">Product Details</h2>
                             <p className="text-[#493657]/80 text-lg mb-6 max-w-4xl leading-relaxed">
                                 {product.description}
                             </p>
+                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
+                                {product.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                ))}
+                            </ul>
                         </div>
-
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
-                                <h4 className="font-semibold text-[#493657] text-lg">Applications</h4>
-                                <ul className="space-y-3 text-[#493657]/80">
-                                    {product.applications.map((app, index) => (
-                                        <li key={index} className="flex items-start gap-2">
-                                            <FaCheck className="text-[#F0C85A] mt-1 flex-shrink-0" />
-                                            {app}
-                                        </li>
-                                    ))}
+                    </div>
+                    {/* Specifications */}
+                    <div className="space-y-8">
+                        <h2 className="text-3xl font-bold text-[#493657] mb-6">Specifications</h2>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Recommended For Use On</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">
+                                    {product.applications.join(", ")}
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Key Feature(s)</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">{product.features[0]}</p>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Substrate</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Regulatory</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">VOC compliant in all areas</p>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Interior/Exterior</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">{product.category}</p>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">VOC Range</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">{product.technicalSpecs.vocLevel}</p>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Specifications</h4>
+                                <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Documentation */}
+                    <div className="space-y-8 bg-gray-100 rounded-xl p-8">
+                        <h2 className="text-3xl font-bold text-[#493657] mb-6">Documentation</h2>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Data Sheets</h4>
+                                <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
+                                    <li><a href="#" className="underline">SDS 1 (Placeholder)</a></li>
+                                    <li><a href="#" className="underline">SDS 2 (Placeholder)</a></li>
                                 </ul>
                             </div>
-                            <div className="space-y-4">
-                                <h4 className="font-semibold text-[#493657] text-lg">Warranty</h4>
-                                <div className="bg-[#F0C85A]/10 p-4 rounded-lg">
-                                    <p className="text-[#493657] font-semibold">{product.warranty} Warranty</p>
-                                    <p className="text-[#493657]/70 text-sm mt-1">
-                                        Comprehensive coverage for peace of mind
-                                    </p>
-                                </div>
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
+                                <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
+                                    <li><a href="#" className="underline">TDS (Placeholder)</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-[#493657] text-lg mb-2">For California Residents</h4>
+                                <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
+                                    <li><a href="#" className="underline">See Proposition 65 Information (Placeholder)</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-
-                    {/* Technical Specifications */}
-                    <div className="space-y-8">
-                        <h3 className="text-2xl font-bold text-[#493657] mb-6">Technical Specifications</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">Coverage</span>
-                                    <span className="text-[#493657]/70">{product.technicalSpecs.coverage}</span>
-                                </div>
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">Dry Time</span>
-                                    <span className="text-[#493657]/70">{product.technicalSpecs.dryTime}</span>
-                                </div>
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">Cleanup</span>
-                                    <span className="text-[#493657]/70">{product.technicalSpecs.cleanup}</span>
-                                </div>
+                </motion.div>
+                {/* Similar Products Section */}
+                <motion.div className="mt-24" variants={itemVariants}>
+                    <h2 className="text-3xl font-bold text-[#493657] mb-6">Compare Similar Products</h2>
+                    <p className="text-[#493657]/80 mb-8">Compare this product with others in the {product.category} category.</p>
+                    {(() => {
+                        // Pick up to 2 other products from the same category
+                        const comparisonProducts = [product, ...similarProducts.slice(0, 2)];
+                        return (
+                            <div className="overflow-x-auto">
+                                <table className="min-w-full bg-white rounded-xl shadow-md border-separate border-spacing-0">
+                                    <thead>
+                                        <tr className="border-b-2 border-[#E5E7EB]">
+                                            <th className="p-6 text-left text-[#493657] text-lg font-semibold bg-gray-50">Feature</th>
+                                            {comparisonProducts.map((p) => (
+                                                <th key={p.id} className="p-6 text-center text-[#493657] text-lg font-semibold bg-gray-50 border-l-2 border-[#E5E7EB]">{p.name}</th>
+                                            ))}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="border-b border-[#E5E7EB]">
+                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Image</td>
+                                            {comparisonProducts.map((p) => (
+                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB] align-middle"><img src={p.image} alt={p.name} className="w-36 h-36 object-contain mx-auto rounded-lg shadow" /></td>
+                                            ))}
+                                        </tr>
+                                        <tr className="border-b border-[#E5E7EB]">
+                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Price</td>
+                                            {comparisonProducts.map((p) => (
+                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">₹{getSizePrice(p.price, p.sizes[0])}</td>
+                                            ))}
+                                        </tr>
+                                        <tr className="border-b border-[#E5E7EB]">
+                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Sheens</td>
+                                            {comparisonProducts.map((p) => (
+                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">{p.sheens.join(", ")}</td>
+                                            ))}
+                                        </tr>
+                                        <tr className="border-b border-[#E5E7EB]">
+                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Warranty</td>
+                                            {comparisonProducts.map((p) => (
+                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">{p.warranty}</td>
+                                            ))}
+                                        </tr>
+                                        <tr className="border-b border-[#E5E7EB]">
+                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Key Features</td>
+                                            {comparisonProducts.map((p) => (
+                                                <td key={p.id} className="p-6 text-left border-l-2 border-[#E5E7EB]">
+                                                    <ul className="list-disc pl-4 space-y-1">
+                                                        {p.features.slice(0, 3).map((f, i) => <li key={i}>{f}</li>)}
+                                                    </ul>
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">VOC Level</span>
-                                    <span className="text-[#493657]/70">{product.technicalSpecs.vocLevel}</span>
-                                </div>
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">Base</span>
-                                    <span className="text-[#493657]/70">{product.technicalSpecs.base}</span>
-                                </div>
-                                <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
-                                    <span className="font-medium text-[#493657]">Finish Options</span>
-                                    <span className="text-[#493657]/70">{product.sheens.join(", ")}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        );
+                    })()}
                 </motion.div>
             </motion.section>
         </div>

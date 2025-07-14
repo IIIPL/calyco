@@ -14,7 +14,7 @@ const ProductCard = ({ id, name, shortDescription, image, sizes, sheens, tier, p
 
   return (
     <div className="bg-white shadow-md rounded-lg p-5 w-64 text-left hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <Link to={`/product/${id}`}>
+      <Link to={`/product/${id}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
         <img src={image} alt={name} className="scale-75 hover:scale-100 transition duration-300" />
       </Link>
       
@@ -38,6 +38,7 @@ const ProductCard = ({ id, name, shortDescription, image, sizes, sheens, tier, p
         <Link 
           to={`/product/${id}`}
           className="mt-2 px-4 py-2 bg-[#493657] text-white text-sm rounded hover:bg-[#5a4067] transition duration-300"
+          onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
         >
           View Details
         </Link>

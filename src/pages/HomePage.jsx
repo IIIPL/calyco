@@ -5,6 +5,7 @@ import { HomeCard } from "../components/HomeCard";
 import { WhyChooseCard } from "../components/WhyChooseCard";
 import { FaArrowRight } from "react-icons/fa6";
 import Slider from "../components/Slider";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
     const ref = useRef(null);
@@ -50,7 +51,7 @@ export const HomePage = () => {
                             Engineered coatings for interiors, exteriors, wood, metal, and more — crafted for durability, beauty, and sustainability.
                         </p>
                         <button className="mt-4 bg-[#301A44] text-white px-6 py-2 rounded-full hover:bg-[#40265d] transition">
-                            Explore Products
+                            <Link to="/product" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Explore Products</Link>
                         </button>
                     </div>
 
