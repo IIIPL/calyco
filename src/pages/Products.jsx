@@ -1,115 +1,33 @@
 import React, { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getAllProducts, getProductCategories, getProductsByCategory } from '../data/products';
 
 const productCategories = [
-    {
+  {
     title: "Interior Paints",
     icon: "🎨",
-    products: [
-      {
-        name: "Calyco Nova",
-        description: "One-coat premium emulsion",
-        sizes: ["1L", "10L"],
-        finish: "Smooth Matte",
-        src: "/Assets/novaa.png"
-      },
-      {
-        name: "Calyco Lumen",
-        description: "Mid-range interior emulsion",
-        sizes: ["5L", "15L"],
-        finish: "Soft Sheen",
-        src: "/Assets/lumen.png"
-      },
-      {
-        name: "Calyco Silka",
-        description: "Economy matte finish",
-        sizes: ["1L", "10L"],
-        finish: "Simple Matte",
-        src: "/Assets/silka.png"
-      },
-      {
-        name: "Calyco Velvet Touch",
-        description: "Soft luxury interior finish",
-        sizes: ["1L", "5L"],
-        finish: "Silky Smooth",
-        src: "/Assets/velvettouch.png"
-      }
-    ]
+    products: getProductsByCategory("Interior")
   },
   {
-    title: "Exterior Paints",
+    title: "Exterior Paints", 
     icon: "☀️",
-    products: [
-      {
-        name: "Calyco ClimaGuard",
-        description: "UV + waterproof emulsion",
-        sizes: ["10L", "20L"],
-        finish: "WeatherShield",
-        src: "/Assets/climaguard.png"
-      },
-      {
-        name: "Calyco Surfa",
-        description: "Standard exterior paint",
-        sizes: ["10L", "20L"],
-        finish: "Durable Matte",
-        src: "/Assets/surfa.png"
-      },
-      {
-        name: "Calyco Weathra",
-        description: "Mid-range outdoor finish",
-        sizes: ["10L", "20L"],
-        finish: "Rough & Tough",
-        src: "/Assets/weathra.png"
-      }
-    ]
+    products: getProductsByCategory("Exterior")
   },
   {
     title: "Enamel & Wood Finishes",
-    icon: "🪵",
-    products: [
-      {
-        name: "Calywood® Natural",
-        description: "Translucent wood stain + sealer",
-        sizes: ["1L", "5L"],
-        finish: "Dead Flat",
-        src: "/Assets/calywood.png"
-      },
-      {
-        name: "Calyco PU Enamel",
-        description: "Gloss enamel for wood & metal",
-        sizes: ["1L"],
-        finish: "High Gloss",
-        src: "/Assets/novaa.png"
-      },
-      {
-        name: "Calyco FastDry Enamel",
-        description: "Quick dry enamel",
-        sizes: ["500ml", "1L"],
-        finish: "Tough Gloss",
-        src: "/Assets/fastdry.png"
-      }
-    ]
+    icon: "🪵", 
+    products: getProductsByCategory("Enamel & Wood Finishes")
   },
   {
     title: "Industrial Coatings",
     icon: "⚙️",
-    products: [
-      {
-        name: "Calyco SteelSeal™",
-        description: "Metal anti-corrosive enamel",
-        sizes: ["10L", "20L"],
-        finish: "Industrial Shield",
-        src: "/Assets/novaa.png"
-      },
-      {
-        name: "Calyco Fortify™",
-        description: "Concrete & asphalt protector",
-        sizes: ["5L", "15L"],
-        finish: "Flat Heavy Duty",
-        src: "/Assets/fortity.png"
-      }
-    ]
+    products: getProductsByCategory("Industrial Coatings")
+  },
+  {
+    title: "Specialty Products",
+    icon: "🔬",
+    products: getProductsByCategory("Specialty")
   }
 ];
 
@@ -158,17 +76,20 @@ export const Products = () => {
         >
           {activeProducts.map((product, index) => (
             <motion.div
-              key={product.name}
+              key={product.id}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.05 }}
             >
               <ProductCard
-                src={product.src}
+                id={product.id}
                 name={product.name}
-                description={product.description}
+                shortDescription={product.shortDescription}
+                image={product.image}
                 sizes={product.sizes}
-                finish={product.finish}
+                sheens={product.sheens}
+                tier={product.tier}
+                price={product.price}
               />
             </motion.div>
           ))}

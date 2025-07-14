@@ -6,13 +6,13 @@ const paintData = {
   "Interior": {
     img: "/Assets/novaa.png",
     desc: "Bright white finish with durable indoor protection.",
-    link: "interior",
+    link: "product",
     bgCol: "[#b38312]"
   },
   "Stain & Sealer": {
     img: "/Assets/defence.png",
     desc: "Elegant blue tones perfect for modern interiors.",
-    link: "stain-sealer",
+    link: "product",
     bgCol: "[#493657]"
   },
   default: {

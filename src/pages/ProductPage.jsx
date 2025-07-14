@@ -56,6 +56,7 @@ export const ProductPage = ({ productName = "Calyco Nova – Interior Latex Pain
                 </motion.div>
 
                 <div className="flex flex-col xl:flex-row gap-12">
+                    the outer div
                     <motion.div 
                         className="xl:w-1/2 sticky top-24 self-start"
                         variants={itemVariants}

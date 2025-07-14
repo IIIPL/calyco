@@ -15,29 +15,32 @@ import { StainSealer } from './pages/StainSealer'
 import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
+import { DynamicProductPage } from './pages/DynamicProductPage'
+import { CartProvider } from './context/CartContext'
 
 
 function App() {
   return (
-    <div className='font-poppins'>
-      {/* This is your app. */}
-      <Navbar/>
-      {/* <ScrollToTop/> */}
-      <Routes>
-        <Route path='/' element={<HomePage/>}/>
-        <Route path='/product' element={<Products/>}/>
-        <Route path='/product/nova' element={<Nova/>}/>
-        <Route path='/product/defense' element={<Defense/>}/>
-        <Route path='/about' element={<AboutUs/>}/>
-        <Route path='/temp' element={<ProductPage/>}/>
-        <Route path='/faq' element={<FAQs/>}/>
-        <Route path='/contact' element={<ContactUs/>}/>
-        <Route path='/interior' element={<Interior/>}/>
-        <Route path='/stain-sealer' element={<StainSealer/>}/>
-      </Routes>
-      <Footer/>
-      
-    </div>
+    <CartProvider>
+      <div className='font-poppins'>
+        {/* This is your app. */}
+        <Navbar/>
+        {/* <ScrollToTop/> */}
+        <Routes>
+          <Route path='/' element={<HomePage/>}/>
+          <Route path='/product' element={<Products/>}/>
+          <Route path='/product/:productId' element={<DynamicProductPage/>}/>
+          <Route path='/about' element={<AboutUs/>}/>
+          <Route path='/temp' element={<ProductPage/>}/>
+          <Route path='/faq' element={<FAQs/>}/>
+          <Route path='/contact' element={<ContactUs/>}/>
+          <Route path='/interior' element={<Interior/>}/>
+          <Route path='/stain-sealer' element={<StainSealer/>}/>
+        </Routes>
+        <Footer/>
+        
+      </div>
+    </CartProvider>
   )
 }
 
