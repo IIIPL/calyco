@@ -8,14 +8,14 @@ export const products = {
     price: 899,
     description: "Ultra-premium interior paint with Color Lock™ technology for exceptional hide and washability. Inspired by Benjamin Moore Regal Select.",
     shortDescription: "Ultra-premium interior paint with Color Lock™ technology",
-    image: "/Assets/regal.png",
+    image: "/Assets/novaa.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte", "Eggshell", "Satin", "Semi-Gloss"],
     features: [
       "Color Lock™ Technology",
       "One-Coat Coverage Guarantee",
       "Advanced Stain Resistance",
-      "25-Year Warranty",
+      "2-Year Warranty",
       "Zero-VOC Formula"
     ],
     technicalSpecs: {
@@ -26,7 +26,7 @@ export const products = {
       base: "Water-based"
     },
     applications: ["Living rooms", "Bedrooms", "Dining areas", "High-traffic areas"],
-    warranty: "25 years"
+    warranty: "2 years"
   },
   
   "emerald-exterior": {
@@ -44,7 +44,7 @@ export const products = {
       "Climate Guard™ Technology",
       "UV Fade Resistance",
       "Mold & Mildew Resistance",
-      "25-Year Warranty",
+      "2-Year Warranty",
       "All-Weather Protection"
     ],
     technicalSpecs: {
@@ -55,7 +55,7 @@ export const products = {
       base: "Water-based"
     },
     applications: ["Exterior walls", "Siding", "Trim", "High-exposure areas"],
-    warranty: "25 years"
+    warranty: "2 years"
   },
 
   "advance": {
@@ -66,7 +66,7 @@ export const products = {
     price: 999,
     description: "Alkyd-like interior paint with PermaLast™ technology for superior durability and smooth application.",
     shortDescription: "Alkyd-like interior with PermaLast™ durability",
-    image: "/Assets/advance.png",
+    image: "/Assets/lumen.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Satin", "Semi-Gloss", "Gloss"],
     features: [
@@ -241,7 +241,7 @@ export const products = {
     price: 449,
     description: "Designer-inspired interior paint with rich colors and smooth application.",
     shortDescription: "Designer-inspired interior with rich colors",
-    image: "/Assets/infinity.png",
+    image: "/Assets/velvettouch.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte", "Eggshell", "Satin"],
     features: [
@@ -270,7 +270,7 @@ export const products = {
     price: 549,
     description: "One-coat guarantee interior paint with Stain Shield™ technology.",
     shortDescription: "One-coat guarantee with Stain Shield™ technology",
-    image: "/Assets/marquee.png",
+    image: "/Assets/weathra.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte", "Eggshell", "Satin"],
     features: [
@@ -299,7 +299,7 @@ export const products = {
     price: 399,
     description: "Designer paint line with curated color palette and premium finish.",
     shortDescription: "Designer paint line with curated colors",
-    image: "/Assets/signature.png",
+    image: "/Assets/weathra.png",
     sizes: ["1L", "5L"],
     sheens: ["Matte", "Eggshell", "Satin"],
     features: [

@@ -337,19 +337,12 @@ export const DynamicProductPage = () => {
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Data Sheets</h4>
                                 <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
                                     <li><a href="#" className="underline">SDS 1 (Placeholder)</a></li>
-                                    <li><a href="#" className="underline">SDS 2 (Placeholder)</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
                                 <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
                                     <li><a href="#" className="underline">TDS (Placeholder)</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">For California Residents</h4>
-                                <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                    <li><a href="#" className="underline">See Proposition 65 Information (Placeholder)</a></li>
                                 </ul>
                             </div>
                         </div>
