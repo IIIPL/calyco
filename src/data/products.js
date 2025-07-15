@@ -8,7 +8,7 @@ export const products = {
     price: 899,
     description: "Ultra-premium interior paint with Color Lock™ technology for exceptional hide and washability. Inspired by Benjamin Moore Regal Select.",
     shortDescription: "Ultra-premium interior paint with Color Lock™ technology",
-    image: "/Assets/novaa.png",
+    image: "/Assets/silka.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte", "Eggshell", "Satin", "Semi-Gloss"],
     features: [
@@ -37,7 +37,7 @@ export const products = {
     price: 1299,
     description: "Ultra-premium exterior paint with Climate Guard™ technology for maximum weather protection and fade resistance.",
     shortDescription: "Ultra-premium exterior with Climate Guard™ protection",
-    image: "/Assets/emerald-exterior.png",
+    image: "/Assets/lumen.png",
     sizes: ["5L", "10L", "20L"],
     sheens: ["Flat", "Low-Lustre", "Satin"],
     features: [
@@ -66,7 +66,7 @@ export const products = {
     price: 999,
     description: "Alkyd-like interior paint with PermaLast™ technology for superior durability and smooth application.",
     shortDescription: "Alkyd-like interior with PermaLast™ durability",
-    image: "/Assets/lumen.png",
+    image: "/Assets/novaa.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Satin", "Semi-Gloss", "Gloss"],
     features: [
@@ -95,7 +95,7 @@ export const products = {
     price: 799,
     description: "Zero-VOC interior paint with Micro-Seal™ technology for health-conscious environments.",
     shortDescription: "Zero-VOC interior with Micro-Seal™ protection",
-    image: "/Assets/natura.png",
+    image: "/Assets/silka.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte", "Eggshell", "Satin"],
     features: [
@@ -124,7 +124,7 @@ export const products = {
     price: 1499,
     description: "Premium wood stain and sealer with advanced UV protection and water repellency.",
     shortDescription: "Premium wood stain with UV protection",
-    image: "/Assets/arborcoat.png",
+    image: "/Assets/silka.png",
     sizes: ["1L", "5L"],
     sheens: ["Semi-Transparent", "Solid Color"],
     features: [
@@ -212,7 +212,7 @@ export const products = {
     price: 899,
     description: "Premium exterior paint with advanced weather protection and extended durability.",
     shortDescription: "Premium exterior with advanced weather protection",
-    image: "/Assets/duration.png",
+    image: "/Assets/novaa.png",
     sizes: ["5L", "10L", "20L"],
     sheens: ["Flat", "Low-Lustre", "Satin"],
     features: [
@@ -503,7 +503,7 @@ export const products = {
     price: 449,
     description: "Gloss enamel for wood and metal with high durability.",
     shortDescription: "Gloss enamel for wood and metal",
-    image: "/Assets/pu-enamel.png",
+    image: "/Assets/novaa.png",
     sizes: ["1L"],
     sheens: ["High Gloss"],
     features: [
@@ -561,7 +561,7 @@ export const products = {
     price: 699,
     description: "All-weather protection exterior paint with advanced durability.",
     shortDescription: "All-weather protection exterior paint",
-    image: "/Assets/ultra-premium.png",
+    image: "/Assets/silka.png",
     sizes: ["5L", "10L", "20L"],
     sheens: ["Flat", "Low-Lustre", "Satin"],
     features: [
@@ -590,7 +590,7 @@ export const products = {
     price: 899,
     description: "Deck restoration coating with textured finish and slip resistance.",
     shortDescription: "Deck restoration with textured finish",
-    image: "/Assets/deckover.png",
+    image: "/Assets/lumen.png",
     sizes: ["1L", "5L"],
     sheens: ["Textured"],
     features: [
@@ -619,7 +619,7 @@ export const products = {
     price: 799,
     description: "Metal anti-corrosive enamel with industrial-grade protection.",
     shortDescription: "Metal anti-corrosive enamel",
-    image: "/Assets/steelseal.png",
+    image: "/Assets/fortity.png",
     sizes: ["10L", "20L"],
     sheens: ["Industrial Shield"],
     features: [
@@ -678,7 +678,7 @@ export const products = {
     price: 199,
     description: "Budget-friendly interior paint with basic coverage and finish.",
     shortDescription: "Budget-friendly interior paint",
-    image: "/Assets/value-interior.png",
+    image: "/Assets/fastdry.png",
     sizes: ["1L", "5L", "10L"],
     sheens: ["Matte"],
     features: [
@@ -707,7 +707,7 @@ export const products = {
     price: 299,
     description: "Budget-friendly exterior paint with basic weather protection.",
     shortDescription: "Budget-friendly exterior paint",
-    image: "/Assets/value-exterior.png",
+    image: "/Assets/lumen.png",
     sizes: ["5L", "10L"],
     sheens: ["Flat"],
     features: [
@@ -736,7 +736,7 @@ export const products = {
     price: 249,
     description: "Basic enamel for simple wood and metal projects.",
     shortDescription: "Basic enamel for simple projects",
-    image: "/Assets/basic-enamel.png",
+    image: "/Assets/lumen.png",
     sizes: ["500ml", "1L"],
     sheens: ["Gloss"],
     features: [
@@ -765,7 +765,7 @@ export const products = {
     price: 399,
     description: "Basic industrial coating for utility applications.",
     shortDescription: "Basic industrial coating",
-    image: "/Assets/utility-coating.png",
+    image: "/Assets/novaa.png",
     sizes: ["5L", "10L"],
     sheens: ["Flat"],
     features: [
@@ -795,7 +795,7 @@ export const products = {
     price: 1299,
     description: "Fire retardant coating for commercial and industrial applications.",
     shortDescription: "Fire retardant coating for commercial use",
-    image: "/Assets/fire-retardant.png",
+    image: "/Assets/novaa.png",
     sizes: ["5L", "10L"],
     sheens: ["Flat"],
     features: [
@@ -824,7 +824,7 @@ export const products = {
     price: 899,
     description: "Anti-bacterial coating for healthcare and food service environments.",
     shortDescription: "Anti-bacterial coating for healthcare",
-    image: "/Assets/anti-bacterial.png",
+    image: "/Assets/lumen.png",
     sizes: ["1L", "5L"],
     sheens: ["Matte", "Satin"],
     features: [
@@ -853,7 +853,7 @@ export const products = {
     price: 999,
     description: "Sound absorbing coating for acoustic applications.",
     shortDescription: "Sound absorbing coating for acoustics",
-    image: "/Assets/sound-absorbing.png",
+    image: "/Assets/silka.png",
     sizes: ["1L", "5L"],
     sheens: ["Textured"],
     features: [
@@ -874,6 +874,32 @@ export const products = {
     warranty: "8 years"
   }
 };
+
+// Add filterable fields to each product
+Object.values(products).forEach(product => {
+  // Add isWashable
+  if (product.isWashable === undefined) {
+    product.isWashable = product.features?.some(f => f.toLowerCase().includes('washable')) || false;
+  }
+  // Add colorFamily (default to 'Neutral')
+  if (!product.colorFamily) {
+    product.colorFamily = 'Neutral';
+  }
+  // Add substrate (default based on category)
+  if (!product.substrate) {
+    if (product.category === 'Wood Finishes') product.substrate = ['Wood'];
+    else if (product.category === 'Enamel & Wood Finishes') product.substrate = ['Wood', 'Steel'];
+    else if (product.category === 'Industrial Coatings') product.substrate = ['Steel', 'Concrete'];
+    else product.substrate = ['Wall'];
+  }
+  // Add applicationType (use category or tier)
+  if (!product.applicationType) {
+    if (product.category === 'Interior') product.applicationType = 'Interior';
+    else if (product.category === 'Exterior') product.applicationType = 'Exterior';
+    else if (product.category === 'Industrial Coatings' || product.tier === 'Specialty') product.applicationType = 'Industrial';
+    else product.applicationType = product.category;
+  }
+});
 
 // Helper functions
 export const getProductById = (id) => {

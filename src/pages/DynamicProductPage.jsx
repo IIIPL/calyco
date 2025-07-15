@@ -95,6 +95,15 @@ export const DynamicProductPage = () => {
     // Get similar products (same category, excluding current)
     const similarProducts = product ? getProductsByCategory(product.category).filter(p => p.id !== product.id) : [];
 
+    // Get 2 random similar products (same category, excluding current)
+    let randomSimilar = [];
+    if (similarProducts.length > 2) {
+        const shuffled = [...similarProducts].sort(() => 0.5 - Math.random());
+        randomSimilar = shuffled.slice(0, 2);
+    } else {
+        randomSimilar = similarProducts.slice(0, 2);
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-4 md:px-12 xl:px-32">
             <motion.section 
@@ -134,7 +143,7 @@ export const DynamicProductPage = () => {
                     </Link>
                 </motion.div>
 
-                <div className="flex flex-col xl:flex-row gap-12">
+                <div className="flex flex-col md:flex-row gap-12">
                     {/* Product Image */}
                     <motion.div 
                         className="xl:w-1/2 xl:sticky xl:top-24 xl:self-start"
@@ -348,65 +357,122 @@ export const DynamicProductPage = () => {
                         </div>
                     </div>
                 </motion.div>
-                {/* Similar Products Section */}
-                <motion.div className="mt-24" variants={itemVariants}>
-                    <h2 className="text-3xl font-bold text-[#493657] mb-6">Compare Similar Products</h2>
-                    <p className="text-[#493657]/80 mb-8">Compare this product with others in the {product.category} category.</p>
-                    {(() => {
-                        // Pick up to 2 other products from the same category
-                        const comparisonProducts = [product, ...similarProducts.slice(0, 2)];
-                        return (
-                            <div className="overflow-x-auto">
-                                <table className="min-w-full bg-white rounded-xl shadow-md border-separate border-spacing-0">
-                                    <thead>
-                                        <tr className="border-b-2 border-[#E5E7EB]">
-                                            <th className="p-6 text-left text-[#493657] text-lg font-semibold bg-gray-50">Feature</th>
-                                            {comparisonProducts.map((p) => (
-                                                <th key={p.id} className="p-6 text-center text-[#493657] text-lg font-semibold bg-gray-50 border-l-2 border-[#E5E7EB]">{p.name}</th>
+                {/* Similar Products Section - Comparison Table */}
+                <div className="mt-24 overflow-x-auto">
+                    <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657]">
+                        <thead>
+                            <tr>
+                                <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">Product</th>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <th
+                                        key={p.id}
+                                        className={`text-center font-bold px-8 py-5 border-b-2 border-[#e5e0d8] align-middle ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
+                                    >
+                                        <div className="flex flex-col items-center">
+                                            <Link to={`/product/${p.id}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                                                <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" />
+                                            </Link>
+                                            <div className="text-xl font-bold mb-2 text-center">{p.name}</div>
+                                            <div className="text-[#493657]/80 text-base mb-2 text-center">{p.shortDescription}</div>
+                                            <Link to={`/product/${p.id}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
+                                        </div>
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* Each row: alternating bg, thick borders, compact spacing */}
+                            {/* Finish/Sheen(s) */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Finish/Sheen(s)</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="flex flex-col items-center gap-2">
+                                            {p.sheens && p.sheens.map(sheen => (
+                                                <div key={sheen} className="flex items-center gap-2">
+                                                    <span className="inline-block w-5 h-5 border-2 border-[#493657] rounded-full"></span>
+                                                    <span className="text-[#493657] text-base">{sheen}</span>
+                                                </div>
                                             ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr className="border-b border-[#E5E7EB]">
-                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Image</td>
-                                            {comparisonProducts.map((p) => (
-                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB] align-middle"><img src={p.image} alt={p.name} className="w-36 h-36 object-contain mx-auto rounded-lg shadow" /></td>
-                                            ))}
-                                        </tr>
-                                        <tr className="border-b border-[#E5E7EB]">
-                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Price</td>
-                                            {comparisonProducts.map((p) => (
-                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">₹{getSizePrice(p.price, p.sizes[0])}</td>
-                                            ))}
-                                        </tr>
-                                        <tr className="border-b border-[#E5E7EB]">
-                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Sheens</td>
-                                            {comparisonProducts.map((p) => (
-                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">{p.sheens.join(", ")}</td>
-                                            ))}
-                                        </tr>
-                                        <tr className="border-b border-[#E5E7EB]">
-                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Warranty</td>
-                                            {comparisonProducts.map((p) => (
-                                                <td key={p.id} className="p-6 text-center border-l-2 border-[#E5E7EB]">{p.warranty}</td>
-                                            ))}
-                                        </tr>
-                                        <tr className="border-b border-[#E5E7EB]">
-                                            <td className="p-6 font-medium text-[#493657] bg-gray-50">Key Features</td>
-                                            {comparisonProducts.map((p) => (
-                                                <td key={p.id} className="p-6 text-left border-l-2 border-[#E5E7EB]">
-                                                    <ul className="list-disc pl-4 space-y-1">
-                                                        {p.features.slice(0, 3).map((f, i) => <li key={i}>{f}</li>)}
-                                                    </ul>
-                                                </td>
-                                            ))}
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        );
-                    })()}
-                </motion.div>
+                                        </div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Recommended For Use On */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Recommended For Use On</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base text-center whitespace-pre-line">{p.applications && p.applications.join(", ")}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* VOC Range */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">VOC Range</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.vocLevel || '-'}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Coverage */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Coverage (Sq. Ft./L)</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.coverage || '-'}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Dry Time */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Dry Time</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.dryTime || '-'}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Recoat Time */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Recoat Time</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.recoatTime || '-'}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Application Spray Pressure (PSI) */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Application Spray Pressure (PSI)</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.sprayPressure || '-'}</div>
+                                    </td>
+                                ))}
+                            </tr>
+                            {/* Clean Up */}
+                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
+                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Clean Up</td>
+                                {[product, ...randomSimilar].map((p, idx) => (
+                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
+                                        <div className="flex flex-col items-center gap-2">
+                                            {p.technicalSpecs?.cleanup ? (
+                                                <>
+                                                    <span className="inline-block text-2xl text-[#493657]">&#10003;</span>
+                                                    <span className="text-[#493657]/80 text-base">{p.technicalSpecs.cleanup}</span>
+                                                </>
+                                            ) : (
+                                                <span className="text-[#493657]/40 text-base">-</span>
+                                            )}
+                                        </div>
+                                    </td>
+                                ))}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </motion.section>
         </div>
     );

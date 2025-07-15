@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 import { CartIcon } from "./CartIcon";
 import { ProductsDropdown } from "./ProductsDropdown";
+import React from "react"; // Added for useEffect
 
 const NavDropdown = ({ children }) => (
   <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
@@ -17,18 +18,28 @@ export const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(null); // null or menu key
     const dropdownTimeout = useRef(null);
 
-    // Handlers for dropdowns (desktop)
-    const handleDropdownEnter = (key) => {
-        if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
-        setDropdownOpen(key);
+    // Dropdown open/close handlers (click only)
+    const handleDropdownClick = (key) => {
+        setDropdownOpen(prev => (prev === key ? null : key));
     };
-    const handleDropdownLeave = () => {
-        dropdownTimeout.current = setTimeout(() => setDropdownOpen(null), 400);
-    };
+    // Close dropdown on outside click
+    React.useEffect(() => {
+        const handleClick = (e) => {
+            if (!e.target.closest('.navbar-dropdown-trigger') && !e.target.closest('.navbar-dropdown-content')) {
+                setDropdownOpen(null);
+            }
+        };
+        if (dropdownOpen) {
+            document.addEventListener('mousedown', handleClick);
+        } else {
+            document.removeEventListener('mousedown', handleClick);
+        }
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, [dropdownOpen]);
 
     // Dropdown content for each menu
     const dropdowns = {
-        products: <ProductsDropdown onSelect={() => setDropdownOpen(null)} />,
+        products: <ProductsDropdown onSelect={() => setDropdownOpen(null)} />, 
         samples: (
           <NavDropdown>
             <div className="text-[#493657] text-lg font-semibold">Samples Dropdown Content</div>
@@ -68,91 +79,73 @@ export const Navbar = () => {
             <div className="hidden md:flex w-full justify-center items-center h-12 relative">
                 <nav className="flex gap-8 text-base font-medium items-center">
                     {/* Products */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('products')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">Products</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('products')}
+                        >Products</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('products')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'products' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'products' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.products}
                         </div>
                     </div>
                     {/* Samples */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('samples')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">Samples</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('samples')}
+                        >Samples</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('samples')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'samples' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'samples' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.samples}
                         </div>
                     </div>
                     {/* Tools */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('tools')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">Tools</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('tools')}
+                        >Tools</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('tools')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'tools' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'tools' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.tools}
                         </div>
                     </div>
                     {/* Consultations */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('consultations')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">Consultations</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('consultations')}
+                        >Consultations</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('consultations')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'consultations' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'consultations' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.consultations}
                         </div>
                     </div>
                     {/* About */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('about')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">About</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('about')}
+                        >About</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('about')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'about' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'about' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.about}
                         </div>
                     </div>
                     {/* Trade */}
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => handleDropdownEnter('trade')}
-                        onMouseLeave={handleDropdownLeave}
-                    >
-                        <button className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none">Trade</button>
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('trade')}
+                        >Trade</button>
                         <div
-                            onMouseEnter={() => handleDropdownEnter('trade')}
-                            onMouseLeave={handleDropdownLeave}
-                            className={`pointer-events-none opacity-0 ${dropdownOpen === 'trade' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'trade' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.trade}
                         </div>

@@ -1,43 +1,48 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const ProductCard = ({ id, name, shortDescription, image, sizes, sheens, tier, price }) => {
-  const getTierColor = (tier) => {
-    switch (tier) {
-      case "Ultra-Premium": return "text-purple-600 bg-purple-100";
-      case "Premium": return "text-blue-600 bg-blue-100";
-      case "Standard": return "text-green-600 bg-green-100";
-      case "Value": return "text-orange-600 bg-orange-100";
-      case "Specialty": return "text-red-600 bg-red-100";
-      default: return "text-gray-600 bg-gray-100";
-    }
-  };
+// Placeholder SVG icons for features
+const CoatsIcon = () => (
+  <svg className="w-5 h-5 text-[#493657] inline-block mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12h8M12 8v8" /></svg>
+);
+const CoverageIcon = () => (
+  <svg className="w-5 h-5 text-[#493657] inline-block mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M4 9h16M9 4v16" /></svg>
+);
+const PriceIcon = () => (
+  <svg className="w-5 h-5 text-[#493657] inline-block mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6" /></svg>
+);
+
+const ProductCard = ({
+  id,
+  name,
+  image,
+  coats,
+  coverage,
+  price,
+  sizes,
+}) => {
+  // Find the smallest size and its price (assuming price is for 1L if available)
+  let displaySize = sizes && sizes.length > 0 ? sizes[0] : null;
+  let displayPrice = price;
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-5 w-64 text-left hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <Link to={`/product/${id}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-        <img src={image} alt={name} className="scale-75 hover:scale-100 transition duration-300" />
+    <div className="p-0 w-full max-w-xs mx-auto flex flex-col items-start bg-transparent border-none shadow-none">
+      <Link to={`/product/${id}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2">
+        <img src={image} alt={name} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
       </Link>
-      
-      <div className="flex items-center gap-2 mb-2">
-        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getTierColor(tier)}`}>
-          {tier}
-        </span>
+      <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{wordBreak: 'break-word'}}>{name}</div>
+      {/* Features */}
+      <div className="flex flex-col gap-1 mb-2 w-full">
+        {coats && <div className="flex items-center text-[#493657] text-base font-medium"><CoatsIcon />{coats}</div>}
+        {coverage && <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{coverage}</div>}
+        {displaySize && displayPrice && (
+          <div className="flex items-center text-[#493657] text-base font-medium"><PriceIcon />{displaySize} for ₹{displayPrice}</div>
+        )}
       </div>
-      
-      <div className="text-xl font-semibold text-black text-center mb-1">{name}</div>
-      <div className="text-sm text-gray-600 text-center mb-2">{shortDescription}</div>
-      
-      <div className="text-lg font-bold text-[#F0C85A] text-center mb-3">₹{price}</div>
-      
-      <div className="text-xs text-gray-700 mb-3">
-        <div><strong>Sizes:</strong> {sizes.join(", ")}</div>
-        <div><strong>Finishes:</strong> {sheens.slice(0, 2).join(", ")}{sheens.length > 2 ? "..." : ""}</div>
-      </div>
-
-      <div className="flex justify-center">
+      <div className="border-b border-[#e5e0d8] w-full my-2" />
+      <div className="w-full flex justify-start">
         <Link 
           to={`/product/${id}`}
-          className="mt-2 px-4 py-2 bg-[#493657] text-white text-sm rounded hover:bg-[#5a4067] transition duration-300"
+          className="mt-1 px-4 py-2 bg-[#493657] text-white text-sm rounded hover:bg-[#5a4067] transition duration-300 font-semibold"
           onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
         >
           View Details
