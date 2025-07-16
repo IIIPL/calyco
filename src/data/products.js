@@ -377,7 +377,7 @@ export const products = [
   },
   {
     name: "Infinity",
-    image: "/Assets/infinity.png",
+    image: "/Assets/lumen.png",
     description: "Designer-inspired interior paint with rich colors and smooth application.",
     "short-description": "Designer-inspired interior with rich colors",
     details: "",
@@ -424,7 +424,7 @@ export const products = [
   },
   {
     name: "Marquee",
-    image: "/Assets/marquee.png",
+    image: "/Assets/novaa.png",
     description: "One-coat guarantee interior paint with Stain Shield™ technology.",
     "short-description": "One-coat guarantee with Stain Shield™ technology",
     details: "",
@@ -471,7 +471,7 @@ export const products = [
   },
   {
     name: "Signature",
-    image: "/Assets/signature.png",
+    image: "/Assets/velvettouch.png",
     description: "Designer paint line with curated color palette and premium finish.",
     "short-description": "Designer paint line with curated colors",
     details: "",
@@ -800,7 +800,7 @@ export const products = [
   },
   {
     name: "PU Enamel",
-    image: "/Assets/pu.png",
+    image: "/Assets/fastdry.png",
     description: "Gloss enamel for wood and metal with high durability.",
     "short-description": "Gloss enamel for wood and metal",
     details: "",
@@ -894,7 +894,7 @@ export const products = [
   },
   {
     name: "Ultra Premium",
-    image: "/Assets/ultra.png",
+    image: "/Assets/silka.png",
     description: "All-weather protection exterior paint with advanced durability.",
     "short-description": "All-weather protection exterior paint",
     details: "",
@@ -1176,7 +1176,7 @@ export const products = [
   },
   {
     name: "Basic Enamel",
-    image: "/Assets/basicenamel.png",
+    image: "/Assets/fastdry.png",
     description: "Basic enamel for simple wood and metal projects.",
     "short-description": "Basic enamel for simple projects",
     details: "",
@@ -1223,7 +1223,7 @@ export const products = [
   },
   {
     name: "Utility Coating",
-    image: "/Assets/utility.png",
+    image: "/Assets/foritity.png",
     description: "Basic industrial coating for utility applications.",
     "short-description": "Basic industrial coating",
     details: "",
@@ -1270,7 +1270,7 @@ export const products = [
   },
   {
     name: "Fire Retardant",
-    image: "/Assets/fire.png",
+    image: "/Assets/silka.png",
     description: "Fire retardant coating for commercial and industrial applications.",
     "short-description": "Fire retardant coating for commercial use",
     details: "",
@@ -1317,7 +1317,7 @@ export const products = [
   },
   {
     name: "Anti-Bacterial",
-    image: "/Assets/antibacterial.png",
+    image: "/Assets/lumen.png",
     description: "Anti-bacterial coating for healthcare and food service environments.",
     "short-description": "Anti-bacterial coating for healthcare",
     details: "",
@@ -1364,7 +1364,7 @@ export const products = [
   },
   {
     name: "Sound Absorbing",
-    image: "/Assets/sound.png",
+    image: "/Assets/foritity.png",
     description: "Sound absorbing coating for acoustic applications.",
     "short-description": "Sound absorbing coating for acoustics",
     details: "",
