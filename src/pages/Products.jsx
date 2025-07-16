@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
-// Only use 'Category' as the filter group
-const FILTER_GROUPS = ['Category'];
+// Use both 'Category' and 'Substrate' as filter groups
+const FILTER_GROUPS = ['Category', 'Substrate'];
 
 export const Products = () => {
   const [search, setSearch] = useState('');
   const [checked, setChecked] = useState({});
-  const [expanded, setExpanded] = useState([true]); // Only one group
+  const [expanded, setExpanded] = useState([true, true]); // One for each filter group
   const [sortOrder, setSortOrder] = useState('');
   const [showFilter, setShowFilter] = useState(true);
 
@@ -39,6 +39,10 @@ export const Products = () => {
     // Category filter
     if (selected['Category'].length) {
       if (!selected['Category'].includes(product.category)) return false;
+    }
+    // Substrate filter
+    if (selected['Substrate'] && selected['Substrate'].length) {
+      if (!product.substrate || !product.substrate.some(s => selected['Substrate'].includes(s))) return false;
     }
     return true;
   });

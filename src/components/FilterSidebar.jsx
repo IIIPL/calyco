@@ -3,12 +3,19 @@ import { products } from '../data/products';
 
 // Dynamically extract unique categories from products
 const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
+// Dynamically extract unique substrates from products
+const uniqueSubstrates = Array.from(new Set(products.flatMap(p => Array.isArray(p.substrate) ? p.substrate : []).filter(Boolean)));
 
 const FILTERS = [
   {
     label: 'Category',
     field: 'category',
     options: uniqueCategories,
+  },
+  {
+    label: 'Substrate',
+    field: 'substrate',
+    options: uniqueSubstrates,
   },
 ];
 
