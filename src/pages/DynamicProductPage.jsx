@@ -19,9 +19,10 @@ export const DynamicProductPage = () => {
         const foundProduct = getProductById(productId);
         if (foundProduct) {
             setProduct(foundProduct);
-            setSelectedSheen(foundProduct.sheens[0]);
-            setSelectedSize(foundProduct.sizes[0]);
-            document.title = foundProduct.name;
+            // TODO: Handle sheens and sizes gracefully if present
+            // setSelectedSheen(Array.isArray(foundProduct.sheens) && foundProduct.sheens.length > 0 ? foundProduct.sheens[0] : "");
+            // setSelectedSize(Array.isArray(foundProduct.sizes) && foundProduct.sizes.length > 0 ? foundProduct.sizes[0] : "");
+            document.title = foundProduct.display_name || foundProduct.name;
         }
         setLoading(false);
     }, [productId]);
@@ -171,7 +172,7 @@ export const DynamicProductPage = () => {
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
-                            <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
+                            <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
                             <p className="text-lg text-[#493657]/70">{product.shortDescription}</p>
                             <div className="flex items-center gap-4">
                                 <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
@@ -185,7 +186,7 @@ export const DynamicProductPage = () => {
                             <div>
                                 <h3 className="font-semibold text-[#493657] mb-3">Finish Options</h3>
                                 <div className="flex flex-wrap gap-2">
-                                    {product.sheens.map((sheen) => (
+                                    {(product.sheens || []).map((sheen) => (
                                         <button
                                             key={sheen}
                                             onClick={() => setSelectedSheen(sheen)}
@@ -251,7 +252,7 @@ export const DynamicProductPage = () => {
                                 Key Features
                             </h3>
                             <ul className="space-y-2 text-[#493657]/80">
-                                {product.features.map((feature, index) => (
+                                {(product.features || []).map((feature, index) => (
                                     <li key={index} className="flex items-start gap-2">
                                         <FaCheck className="text-[#F0C85A] mt-1 flex-shrink-0" />
                                         {feature}
@@ -304,7 +305,7 @@ export const DynamicProductPage = () => {
                                 {product.description}
                             </p>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                {product.features.map((feature, idx) => (
+                                {(product.features || []).map((feature, idx) => (
                                     <li key={idx}>{feature}</li>
                                 ))}
                             </ul>
@@ -317,12 +318,12 @@ export const DynamicProductPage = () => {
                             <div>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Recommended For Use On</h4>
                                 <p className="text-[#493657]/80 text-base mb-4">
-                                    {product.applications.join(", ")}
+                                    {(product.applications || []).join(", ")}
                                 </p>
                             </div>
                             <div>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Key Feature(s)</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">{product.features[0]}</p>
+                                <p className="text-[#493657]/80 text-base mb-4">{(product.features && product.features[0]) || ''}</p>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Substrate</h4>
                                 <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Regulatory</h4>
@@ -332,7 +333,7 @@ export const DynamicProductPage = () => {
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Interior/Exterior</h4>
                                 <p className="text-[#493657]/80 text-base mb-4">{product.category}</p>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">VOC Range</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">{product.technicalSpecs.vocLevel}</p>
+                                <p className="text-[#493657]/80 text-base mb-4">{(product.technicalSpecs && product.technicalSpecs.vocLevel) || ''}</p>
                                 <h4 className="font-semibold text-[#493657] text-lg mb-2">Specifications</h4>
                                 <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
                             </div>
@@ -358,121 +359,92 @@ export const DynamicProductPage = () => {
                     </div>
                 </motion.div>
                 {/* Similar Products Section - Comparison Table */}
-                <div className="mt-24 overflow-x-auto">
-                    <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657]">
+                {(() => {
+                  const similar = getProductsByCategory(product.category).filter(p => p.name !== product.name);
+                  if (similar.length === 0) return null;
+                  let toShow = similar;
+                  if (similar.length > 1) {
+                    // Pick 2 random products
+                    const shuffled = [...similar].sort(() => 0.5 - Math.random());
+                    toShow = shuffled.slice(0, 2);
+                  }
+                  const compareProducts = [product, ...toShow];
+                  return (
+                    <div className="mt-24 overflow-x-auto">
+                      <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657]">
                         <thead>
-                            <tr>
-                                <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">Product</th>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <th
-                                        key={p.id}
-                                        className={`text-center font-bold px-8 py-5 border-b-2 border-[#e5e0d8] align-middle ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
-                                    >
-                                        <div className="flex flex-col items-center">
-                                            <Link to={`/product/${p.id}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                                                <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" />
-                                            </Link>
-                                            <div className="text-xl font-bold mb-2 text-center">{p.name}</div>
-                                            <div className="text-[#493657]/80 text-base mb-2 text-center">{p.shortDescription}</div>
-                                            <Link to={`/product/${p.id}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
-                                        </div>
-                                    </th>
-                                ))}
-                            </tr>
+                          <tr>
+                            <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">Product</th>
+                            {compareProducts.map((p, idx) => (
+                              <th
+                                key={p.name}
+                                className={`text-center font-bold px-8 py-5 border-b-2 border-[#e5e0d8] align-middle ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
+                              >
+                                <div className="flex flex-col items-center">
+                                  <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                                    <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" />
+                                  </Link>
+                                  <div className="text-xl font-bold mb-2 text-center">{p.display_name || p.name}</div>
+                                  <Link to={`/product/${p.name}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
+                                </div>
+                              </th>
+                            ))}
+                          </tr>
                         </thead>
                         <tbody>
-                            {/* Each row: alternating bg, thick borders, compact spacing */}
-                            {/* Finish/Sheen(s) */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Finish/Sheen(s)</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="flex flex-col items-center gap-2">
-                                            {p.sheens && p.sheens.map(sheen => (
-                                                <div key={sheen} className="flex items-center gap-2">
-                                                    <span className="inline-block w-5 h-5 border-2 border-[#493657] rounded-full"></span>
-                                                    <span className="text-[#493657] text-base">{sheen}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Recommended For Use On */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Recommended For Use On</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base text-center whitespace-pre-line">{p.applications && p.applications.join(", ")}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* VOC Range */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">VOC Range</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.vocLevel || '-'}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Coverage */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Coverage (Sq. Ft./L)</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.coverage || '-'}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Dry Time */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Dry Time</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.dryTime || '-'}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Recoat Time */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Recoat Time</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.recoatTime || '-'}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Application Spray Pressure (PSI) */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Application Spray Pressure (PSI)</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="text-[#493657]/80 text-base">{p.technicalSpecs?.sprayPressure || '-'}</div>
-                                    </td>
-                                ))}
-                            </tr>
-                            {/* Clean Up */}
-                            <tr className="even:bg-[#faf9f7] border-b-2 border-[#e5e0d8]">
-                                <td className="font-semibold px-8 py-5 bg-white border-r-2 border-[#e5e0d8] align-top">Clean Up</td>
-                                {[product, ...randomSimilar].map((p, idx) => (
-                                    <td key={p.id} className={`text-center px-8 py-5 align-top ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} border-r-2 border-[#e5e0d8]`}>
-                                        <div className="flex flex-col items-center gap-2">
-                                            {p.technicalSpecs?.cleanup ? (
-                                                <>
-                                                    <span className="inline-block text-2xl text-[#493657]">&#10003;</span>
-                                                    <span className="text-[#493657]/80 text-base">{p.technicalSpecs.cleanup}</span>
-                                                </>
-                                            ) : (
-                                                <span className="text-[#493657]/40 text-base">-</span>
-                                            )}
-                                        </div>
-                                    </td>
-                                ))}
-                            </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Finish/Sheen(s)</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-sheen'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.finish_type_sheen || []).join(', ') || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Recommended For Use On</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-useon'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.recommended_uses || []).join(', ') || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">VOC Range</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-voc'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.voc_content) || p.voc_content || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Coverage (Sq. Ft./L)</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-coverage'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.coverage) || p.coverage || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Dry Time</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-drytime'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.drying_time) || p.drying_time || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Recoat Time</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-recoattime'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.recoat_time) || p.recoat_time || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Application Spray Pressure (PSI)</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-psi'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{p.application_spray_pressure || '-'}</td>
+                            ))}
+                          </tr>
+                          <tr className="bg-white">
+                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Clean Up</td>
+                            {compareProducts.map((p, idx) => (
+                              <td key={p.name + '-cleanup'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.cleanup) || p.cleanup || '-'}</td>
+                            ))}
+                          </tr>
                         </tbody>
-                    </table>
-                </div>
+                      </table>
+                    </div>
+                  );
+                })()}
             </motion.section>
         </div>
     );

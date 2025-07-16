@@ -11,11 +11,11 @@ const leftMenu = [
 ];
 
 const grouped = {
-  Interior: Object.values(allProducts).filter(p => p.category === "Interior"),
-  Exterior: Object.values(allProducts).filter(p => p.category === "Exterior"),
+  Interior: allProducts.filter(p => p.category === "Interior"),
+  Exterior: allProducts.filter(p => p.category === "Exterior"),
   Industrial: [], // No products yet
   Enamel: [], // No products yet
-  All: Object.values(allProducts),
+  All: allProducts,
 };
 
 export const ProductsDropdown = ({ onSelect }) => {
@@ -67,11 +67,11 @@ export const ProductsDropdown = ({ onSelect }) => {
                 )}
                 {grouped[selectedMenu].map(product => (
                   <li
-                    key={product.id}
-                    className={`cursor-pointer hover:text-[#F0C85A] transition-colors${hovered && hovered.id === product.id ? " font-bold" : ""}`}
+                    key={product.name}
+                    className={`cursor-pointer hover:text-[#F0C85A] transition-colors${hovered && hovered.name === product.name ? " font-bold" : ""}`}
                     onMouseEnter={() => setHovered(product)}
                   >
-                    <Link to={`/product/${product.id}`} onClick={onSelect}>{product.name}</Link>
+                    <Link to={`/product/${product.name}`} onClick={onSelect}>{product.display_name || product.name}</Link>
                   </li>
                 ))}
               </ul>

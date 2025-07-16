@@ -1,73 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FILTERS = [
   {
-    label: 'Interior / Exterior',
+    label: 'Area',
+    field: 'area_of_use',
     options: [
-      'Interior',
-      'Exterior',
-      'Interior / Exterior',
+      'Interior', 'Exterior', 'Both'
     ],
   },
   {
-    label: 'Product Type',
+    label: 'Type',
+    field: 'product_type',
     options: [
-      'Paint',
-      'Primer',
-      'Stain',
-      'Spray Paint & Decorative Finishes',
-      'Finishes',
-      'Show More', // For UI only
+      'Paint', 'Primer', 'Stain', 'Spray', 'Wood', 'Sealant', 'Cleaner', 'Clear', 'Concrete', 'Waterproof', 'Tool'
     ],
   },
   {
-    label: 'Substrate',
+    label: 'Material',
+    field: 'material_base',
     options: [
-      'Drywall',
-      'Wood',
-      'Concrete',
-      'Composite',
-      'Show More', // For UI only
+      'Gypsum', 'Wood', 'Concrete', 'Composite', 'Masonry', 'Metal', 'Paver', 'Stone', 'Stucco', 'Tile', 'Vinyl', 'Brick', 'Precast', 'Glass'
     ],
   },
   {
-    label: 'Project Area',
+    label: 'Application',
+    field: 'application_area',
     options: [
-      'House Interior',
-      'House Exterior',
-      'Wood Decks',
-      'Basement',
-      'Show More', // For UI only
+      'Walls', 'Decks', 'Basements', 'Driveways', 'Fences', 'Verandas', 'Patios', 'Flooring', 'Roofs', 'Cladding', 'Walkways', 'Furniture', 'Garage'
     ],
   },
-  // Add more groups as needed
+  {
+    label: 'Finish',
+    field: 'finish_base_type',
+    options: [
+      'Opaque', 'Semi-Transparent', 'Transparent', 'Natural', 'Acrylic', 'Oil', 'Water', 'Polyurethane'
+    ],
+  },
 ];
 
-export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
+const DEFAULT_VISIBLE = 6;
+
+export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreState, setShowMoreState }) => {
+  // Local state for Show More/Less per group
+  const [showMore, setShowMore] = useState(Array(FILTERS.length).fill(false));
+
+  const handleShowMore = idx => {
+    setShowMore(sm => sm.map((v, i) => (i === idx ? !v : v)));
+  };
+
   return (
     <aside className="w-72 min-w-[260px] bg-white rounded-xl shadow p-6 border border-[#e5e0d8] mr-8">
       <h2 className="text-xl font-bold text-[#493657] mb-6">Filters</h2>
-      {FILTERS.map((group, idx) => (
-        <div key={group.label} className="mb-6">
-          <button
-            className="flex items-center justify-between w-full font-semibold text-[#493657] text-base mb-2 focus:outline-none"
-            onClick={() => onToggle(idx)}
-            aria-expanded={expanded[idx]}
-          >
-            <span>{group.label}</span>
-            <span className={`transition-transform ${expanded[idx] ? 'rotate-180' : ''}`}>▼</span>
-          </button>
-          {expanded[idx] && (
-            <div className="pl-1 flex flex-col gap-2">
-              {group.options.map(option => (
-                option === 'Show More' ? (
-                  <button
-                    key={option}
-                    className="text-[#493657] text-sm font-medium mt-1 flex items-center gap-1 hover:underline focus:outline-none"
-                  >
-                    <span className="text-lg">+</span> Show More
-                  </button>
-                ) : (
+      {FILTERS.map((group, idx) => {
+        // For 'Finish', always show all options and never show 'Show More'
+        const isFinish = group.label === 'Finish';
+        const visibleOptions = isFinish ? group.options : (showMore[idx] ? group.options : group.options.slice(0, DEFAULT_VISIBLE));
+        const hasShowMore = !isFinish && group.options.length > DEFAULT_VISIBLE;
+        return (
+          <div key={group.label} className="mb-6">
+            <button
+              className="flex items-center justify-between w-full font-semibold text-[#493657] text-base mb-2 focus:outline-none"
+              onClick={() => onToggle(idx)}
+              aria-expanded={expanded[idx]}
+            >
+              <span>{group.label}</span>
+              <span className={`transition-transform ${expanded[idx] ? 'rotate-180' : ''}`}>▼</span>
+            </button>
+            {expanded[idx] && (
+              <div className="pl-1 flex flex-col gap-2">
+                {visibleOptions.map(option => (
                   <label key={option} className="flex items-center gap-2 text-[#493657] text-base cursor-pointer">
                     <input
                       type="checkbox"
@@ -77,13 +78,21 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
                     />
                     <span>{option}</span>
                   </label>
-                )
-              ))}
-            </div>
-          )}
-          <div className="border-b border-[#e5e0d8] mt-4" />
-        </div>
-      ))}
+                ))}
+                {hasShowMore && (
+                  <button
+                    className="text-[#493657] text-sm font-medium mt-1 flex items-center gap-1 hover:underline focus:outline-none"
+                    onClick={() => handleShowMore(idx)}
+                  >
+                    <span className="text-lg">{showMore[idx] ? '−' : '+'}</span> {showMore[idx] ? 'Show Less' : 'Show More'}
+                  </button>
+                )}
+              </div>
+            )}
+            <div className="border-b border-[#e5e0d8] mt-4" />
+          </div>
+        );
+      })}
     </aside>
   );
 };

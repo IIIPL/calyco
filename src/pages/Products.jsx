@@ -5,17 +5,19 @@ import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
 const FILTER_GROUPS = [
-  'Interior / Exterior',
-  'Product Type',
-  'Substrate',
-  'Project Area',
+  'Category',
+  'Finish / Sheen',
+  'Material Base',
+  'Recommended Uses',
+  'Brand',
 ];
 
-const FILTER_OPTIONS = {
-  'Interior / Exterior': ['Interior', 'Exterior', 'Interior / Exterior'],
-  'Product Type': ['Paint', 'Primer', 'Stain', 'Spray Paint & Decorative Finishes', 'Finishes'],
-  'Substrate': ['Drywall', 'Wood', 'Concrete', 'Composite'],
-  'Project Area': ['House Interior', 'House Exterior', 'Wood Decks', 'Basement'],
+const FILTER_FIELDS = {
+  'Category': 'category',
+  'Finish / Sheen': 'finish_type_sheen',
+  'Material Base': 'substrate',
+  'Recommended Uses': 'recommended_uses',
+  'Brand': 'brand',
 };
 
 export const Products = () => {
@@ -38,27 +40,33 @@ export const Products = () => {
   // Filtering logic
   const selected = {};
   for (const group of FILTER_GROUPS) {
-    selected[group] = FILTER_OPTIONS[group].filter(opt => checked[`${group}-${opt}`]);
+    selected[group] = Object.keys(checked)
+      .filter(key => key.startsWith(`${group}-`) && checked[key])
+      .map(key => key.replace(`${group}-`, ''));
   }
 
-  let filteredProducts = Object.values(allProducts).filter(product => {
+  let filteredProducts = allProducts.filter(product => {
     // Search by name
     if (search && !product.name.toLowerCase().includes(search.toLowerCase())) return false;
-    // Interior / Exterior
-    if (selected['Interior / Exterior'].length) {
-      if (!selected['Interior / Exterior'].includes(product.category)) return false;
+    // Category
+    if (selected['Category'].length) {
+      if (!selected['Category'].includes(product.category)) return false;
     }
-    // Product Type (applicationType)
-    if (selected['Product Type'].length) {
-      if (!selected['Product Type'].includes(product.applicationType)) return false;
+    // Finish / Sheen
+    if (selected['Finish / Sheen'].length) {
+      if (!product.finish_type_sheen || !product.finish_type_sheen.some(s => selected['Finish / Sheen'].includes(s))) return false;
     }
-    // Substrate
-    if (selected['Substrate'].length) {
-      if (!product.substrate || !product.substrate.some(s => selected['Substrate'].includes(s))) return false;
+    // Material Base
+    if (selected['Material Base'].length) {
+      if (!product.substrate || !product.substrate.some(s => selected['Material Base'].includes(s))) return false;
     }
-    // Project Area (applications)
-    if (selected['Project Area'].length) {
-      if (!product.applications || !product.applications.some(a => selected['Project Area'].includes(a))) return false;
+    // Recommended Uses
+    if (selected['Recommended Uses'].length) {
+      if (!product.recommended_uses || !product.recommended_uses.some(a => selected['Recommended Uses'].includes(a))) return false;
+    }
+    // Brand
+    if (selected['Brand'].length) {
+      if (!selected['Brand'].includes(product.brand)) return false;
     }
     return true;
   });
@@ -106,16 +114,16 @@ export const Products = () => {
               {filteredProducts.length === 0 && (
                 <div className="col-span-full text-center text-[#493657] text-lg">No products found.</div>
               )}
-              {filteredProducts.map(product => (
+              {filteredProducts.map((product, idx) => (
                 <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
+                  key={product.name + idx}
+                  id={product.name}
+                  name={product.display_name}
                   image={product.image}
-                  coats={product.coats}
-                  coverage={product.technicalSpecs?.coverage}
                   price={product.price}
-                  sizes={product.sizes}
+                  finishTypeSheen={product.finish_type_sheen}
+                  packaging={product.packaging}
+                  // Add more props as needed for your new product structure
                 />
               ))}
             </div>
