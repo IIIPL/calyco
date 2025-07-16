@@ -313,6 +313,30 @@ export const DynamicProductPage = () => {
                               ? product.recommended_uses.join(' ')
                               : '—'}
                           </p>
+                          {/* Application */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Application</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{(product.application || []).join(', ') || '—'}</p>
+                          {/* Advantages */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Advantages</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{(product.advantages || []).join(', ') || '—'}</p>
+                          {/* Tools Required */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Tools Required</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{(product.tools_required || []).join(', ') || '—'}</p>
+                          {/* Color Options */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Color Options</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{(product.color_options || []).join(', ') || '—'}</p>
+                          {/* Spread Rate */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Spread Rate</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{product.spread_rate || '—'}</p>
+                          {/* Preparation Instructions */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Preparation Instructions</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{product.preparation_instructions || '—'}</p>
+                          {/* Safety Precautions */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Precautions</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{product.safety_precautions || '—'}</p>
+                          {/* Storage Instructions */}
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Storage Instructions</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{product.storage_instructions || '—'}</p>
                         </div>
                         {/* Right: Labeled grid (40% on xl) */}
                         <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
@@ -340,6 +364,93 @@ export const DynamicProductPage = () => {
                             <span className="block font-semibold text-[#493657] text-base mb-1">Specifications</span>
                             <span className="text-[#493657]/80 text-base">{product.details || product.description || '—'}</span>
                           </div>
+                          {/* Technical Specs */}
+                          {product.technical_specs && (
+                            <>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Base Type (Tech Spec)</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.base_type || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Coverage (Tech Spec)</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.coverage || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Suitable Surfaces</span>
+                                <span className="text-[#493657]/80 text-base">{(product.technical_specs.suitable_surfaces || []).join(', ') || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Application Instructions</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.application_instructions || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Drying Time (Tech Spec)</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.drying_time || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Recoat Time (Tech Spec)</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.recoat_time || '—'}</span>
+                              </div>
+                              <div>
+                                <span className="block font-semibold text-[#493657] text-base mb-1">Cleanup (Tech Spec)</span>
+                                <span className="text-[#493657]/80 text-base">{product.technical_specs.cleanup || '—'}</span>
+                              </div>
+                            </>
+                          )}
+                          {/* Other product keys */}
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Base Type</span>
+                            <span className="text-[#493657]/80 text-base">{product.base_type || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Coverage</span>
+                            <span className="text-[#493657]/80 text-base">{product.coverage || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Application Instructions</span>
+                            <span className="text-[#493657]/80 text-base">{product.application_instructions || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Drying Time</span>
+                            <span className="text-[#493657]/80 text-base">{product.drying_time || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Recoat Time</span>
+                            <span className="text-[#493657]/80 text-base">{product.recoat_time || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Cleanup</span>
+                            <span className="text-[#493657]/80 text-base">{product.cleanup || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Packaging</span>
+                            <span className="text-[#493657]/80 text-base">{(product.packaging || []).join(', ') || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Warranty</span>
+                            <span className="text-[#493657]/80 text-base">{product.warranty || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Brand</span>
+                            <span className="text-[#493657]/80 text-base">{product.brand || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Product Number</span>
+                            <span className="text-[#493657]/80 text-base">{product.product_number || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Coats Required</span>
+                            <span className="text-[#493657]/80 text-base">{product.coats_required || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Temperature Range</span>
+                            <span className="text-[#493657]/80 text-base">{product.temperature_range || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Humidity Range</span>
+                            <span className="text-[#493657]/80 text-base">{product.humidity_range || '—'}</span>
+                          </div>
+                          
                         </div>
                       </div>
                     </div>
