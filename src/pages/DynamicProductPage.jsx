@@ -2,8 +2,25 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { getProductById, getProductsByCategory } from "../data/products";
+import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
+
+// --- Utility functions for scalable product lookup ---
+// Consider moving these to a shared util if used elsewhere
+const getProductBySlugOrName = (productId) => {
+  if (!productId) return null;
+  const lowerId = productId.toLowerCase();
+  return products.find(p =>
+    (p.name && p.name.toLowerCase() === lowerId) ||
+    (p.url && p.url.split("/").pop().toLowerCase() === lowerId)
+  );
+};
+const getProductsByCategory = (category) => {
+  if (!category) return [];
+  const lowerCat = category.toLowerCase();
+  return products.filter(p => p.category && p.category.toLowerCase() === lowerCat);
+};
+// --- End utility functions ---
 
 export const DynamicProductPage = () => {
     const { productId } = useParams();
@@ -16,7 +33,7 @@ export const DynamicProductPage = () => {
     const { addToCart } = useCart();
 
     useEffect(() => {
-        const foundProduct = getProductById(productId);
+        const foundProduct = getProductBySlugOrName(productId);
         if (foundProduct) {
             setProduct(foundProduct);
             // TODO: Handle sheens and sizes gracefully if present
@@ -94,7 +111,9 @@ export const DynamicProductPage = () => {
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
 
     // Get similar products (same category, excluding current)
-    const similarProducts = product ? getProductsByCategory(product.category).filter(p => p.id !== product.id) : [];
+    const similarProducts = product
+      ? getProductsByCategory(product.category).filter(p => p.name !== product.name)
+      : [];
 
     // Get 2 random similar products (same category, excluding current)
     let randomSimilar = [];
