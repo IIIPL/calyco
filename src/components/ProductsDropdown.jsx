@@ -10,11 +10,17 @@ const leftMenu = [
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
 
+// Case-insensitive filter for category
+const filteredInteriorProducts = allProducts.filter(
+  p => p.category && p.category.toLowerCase() === "interior"
+);
+console.log("filteredInteriorProducts", filteredInteriorProducts, filteredInteriorProducts.length);
+
 const grouped = {
-  Interior: allProducts.filter(p => p.category === "Interior"),
-  Exterior: allProducts.filter(p => p.category === "Exterior"),
-  Industrial: [], // No products yet
-  Enamel: [], // No products yet
+  Interior: filteredInteriorProducts,
+  Exterior: allProducts.filter(p => p.category && p.category.toLowerCase() === "exterior"),
+  Industrial: allProducts.filter(p => p.category && p.category.toLowerCase().includes("industrial")),
+  Enamel: allProducts.filter(p => p.category && p.category.toLowerCase().includes("enamel")),
   All: allProducts,
 };
 
@@ -57,7 +63,7 @@ export const ProductsDropdown = ({ onSelect }) => {
         {selectedMenu !== "All" && (
           <>
             {/* Middle: product/category list */}
-            <div className="flex-1 px-12">
+            <div className="flex-1 px-12 max-h-[400px] overflow-y-auto">
               <h4 className="font-semibold mb-4 text-[#493657] text-base uppercase tracking-wide">
                 {selectedMenu === "All" ? "ALL PRODUCTS" : `ALL ${selectedMenu.toUpperCase()} PAINTS`}
               </h4>

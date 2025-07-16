@@ -102,54 +102,14 @@ export const Navbar = () => {
                             {dropdowns.samples}
                         </div>
                     </div>
-                    {/* Tools */}
-                    <div className="relative navbar-dropdown-trigger">
-                        <button
-                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
-                            onClick={() => handleDropdownClick('tools')}
-                        >Tools</button>
-                        <div
-                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'tools' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
-                        >
-                            {dropdowns.tools}
-                        </div>
-                    </div>
-                    {/* Consultations */}
-                    <div className="relative navbar-dropdown-trigger">
-                        <button
-                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
-                            onClick={() => handleDropdownClick('consultations')}
-                        >Consultations</button>
-                        <div
-                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'consultations' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
-                        >
-                            {dropdowns.consultations}
-                        </div>
-                    </div>
-                    {/* About */}
-                    <div className="relative navbar-dropdown-trigger">
-                        <button
-                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
-                            onClick={() => handleDropdownClick('about')}
-                        >About</button>
-                        <div
-                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'about' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
-                        >
-                            {dropdowns.about}
-                        </div>
-                    </div>
-                    {/* Trade */}
-                    <div className="relative navbar-dropdown-trigger">
-                        <button
-                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
-                            onClick={() => handleDropdownClick('trade')}
-                        >Trade</button>
-                        <div
-                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'trade' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
-                        >
-                            {dropdowns.trade}
-                        </div>
-                    </div>
+                    {/* About (as a simple link) */}
+                    <Link
+                        to="/about"
+                        className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                        onClick={() => setDropdownOpen(null)}
+                    >
+                        About
+                    </Link>
                 </nav>
                 <div className="absolute right-8">
                     <CartIcon />
@@ -202,10 +162,7 @@ export const Navbar = () => {
                             )}
                         </div>
                         <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>Samples</Link>
-                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>Tools</Link>
-                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>Consultations</Link>
                         <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>About</Link>
-                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>Trade</Link>
                     </nav>
                     {/* Cart Icon at the bottom */}
                     <div className="flex justify-center items-center mb-8 mt-auto">

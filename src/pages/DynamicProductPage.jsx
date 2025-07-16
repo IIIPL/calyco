@@ -369,15 +369,26 @@ export const DynamicProductPage = () => {
                   const similar = getProductsByCategory(product.category).filter(p => p.name !== product.name);
                   if (similar.length === 0) return null;
                   let toShow = similar;
-                  if (similar.length > 1) {
-                    // Pick 2 random products
+                  if (similar.length > 2) {
+                    // Pick 2–3 random products
                     const shuffled = [...similar].sort(() => 0.5 - Math.random());
-                    toShow = shuffled.slice(0, 2);
+                    toShow = shuffled.slice(0, 3);
                   }
                   const compareProducts = [product, ...toShow];
+                  // Define the fields to compare
+                  const fields = [
+                    { label: 'Short Description', key: 'short-description' },
+                    { label: 'Finish/Sheen(s)', key: 'finish_type_sheen', isArray: true },
+                    { label: 'Recommended Use', key: 'recommended_uses', isArray: true },
+                    { label: 'VOC Range', key: 'voc_content' },
+                    { label: 'Dry Time', key: 'drying_time' },
+                    { label: 'Recoat Time', key: 'recoat_time' },
+                    { label: 'Clean Up', key: 'cleanup' },
+                  ];
                   return (
                     <div className="mt-24 overflow-x-auto">
-                      <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657]">
+                      <h2 className="text-3xl font-bold text-[#493657] mb-8">Compare Similar Products</h2>
+                      <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white">
                         <thead>
                           <tr>
                             <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">Product</th>
@@ -388,7 +399,7 @@ export const DynamicProductPage = () => {
                               >
                                 <div className="flex flex-col items-center">
                                   <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                                    <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" />
+                                    <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
                                   </Link>
                                   <div className="text-xl font-bold mb-2 text-center">{p.display_name || p.name}</div>
                                   <Link to={`/product/${p.name}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
@@ -398,54 +409,19 @@ export const DynamicProductPage = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Finish/Sheen(s)</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-sheen'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.finish_type_sheen || []).join(', ') || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Recommended For Use On</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-useon'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.recommended_uses || []).join(', ') || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">VOC Range</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-voc'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.voc_content) || p.voc_content || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Coverage (Sq. Ft./L)</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-coverage'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.coverage) || p.coverage || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Dry Time</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-drytime'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.drying_time) || p.drying_time || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Recoat Time</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-recoattime'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.recoat_time) || p.recoat_time || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Application Spray Pressure (PSI)</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-psi'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{p.application_spray_pressure || '-'}</td>
-                            ))}
-                          </tr>
-                          <tr className="bg-white">
-                            <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">Clean Up</td>
-                            {compareProducts.map((p, idx) => (
-                              <td key={p.name + '-cleanup'} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{(p.technical_specs && p.technical_specs.cleanup) || p.cleanup || '-'}</td>
-                            ))}
-                          </tr>
+                          {fields.map(field => (
+                            <tr className="bg-white" key={field.label}>
+                              <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">{field.label}</td>
+                              {compareProducts.map((p, idx) => {
+                                let value = p[field.key];
+                                if (field.isArray && Array.isArray(value)) value = value.join(', ');
+                                if (!value || (Array.isArray(value) && value.length === 0)) value = '-';
+                                return (
+                                  <td key={p.name + '-' + field.key} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{value}</td>
+                                );
+                              })}
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
