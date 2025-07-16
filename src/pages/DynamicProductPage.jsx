@@ -125,9 +125,9 @@ export const DynamicProductPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-4 md:px-12 xl:px-32">
+        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-2 md:px-6 xl:px-10">
             <motion.section 
-                className="w-full max-w-7xl mx-auto px-4 py-10 pt-32"
+                className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -191,178 +191,157 @@ export const DynamicProductPage = () => {
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
+                            {/* 1. Product Name & Short Description */}
                             <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
-                            <p className="text-lg text-[#493657]/70">{product.shortDescription}</p>
-                            <div className="flex items-center gap-4">
-                                <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
-                                <span className="text-sm text-[#493657]/60">per {selectedSize}</span>
+                            <p className="text-lg text-[#493657]/70 mb-4">{product["short-description"] || product.shortDescription}</p>
+                            {/* 2. Quick Pointers (Key Features/Advantages) */}
+                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-1 mb-4">
+                              {(product.advantages || product.features || []).map((item, idx) => (
+                                <li key={idx}>{item}</li>
+                              ))}
+                            </ul>
+                            {/* 3. Price */}
+                            <div className="flex items-center gap-4 mb-4">
+                              <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
+                              <span className="text-sm text-[#493657]/60">per {selectedSize}</span>
                             </div>
                         </div>
 
                         {/* Product Options */}
                         <div className="space-y-6">
-                            {/* Sheen Selection */}
-                            <div>
-                                <h3 className="font-semibold text-[#493657] mb-3">Finish Options</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {(product.sheens || []).map((sheen) => (
-                                        <button
-                                            key={sheen}
-                                            onClick={() => setSelectedSheen(sheen)}
-                                            className={`px-4 py-2 rounded-lg border transition-all ${
-                                                selectedSheen === sheen
-                                                    ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                                    : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                            }`}
-                                        >
-                                            {sheen}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Size Selection */}
-                            <div>
-                                <h3 className="font-semibold text-[#493657] mb-3">Available Sizes</h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {displaySizes.map((size) => (
-                                        <button
-                                            key={size}
-                                            onClick={() => setSelectedSize(size)}
-                                            className={`px-4 py-2 rounded-lg border transition-all ${
-                                                selectedSize === size
-                                                    ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                                    : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                            }`}
-                                        >
-                                            {size}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Quantity */}
-                            <div>
-                                <h3 className="font-semibold text-[#493657] mb-3">Quantity</h3>
-                                <div className="flex items-center gap-4">
-                                    <button
-                                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                        className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
-                                    >
-                                        -
-                                    </button>
-                                    <span className="text-xl font-semibold text-[#493657] min-w-[3rem] text-center">
-                                        {quantity}
-                                    </span>
-                                    <button
-                                        onClick={() => setQuantity(quantity + 1)}
-                                        className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Key Features */}
-                        <div className="bg-gradient-to-r from-[#F0C85A]/10 to-[#493657]/10 rounded-2xl p-6">
-                            <h3 className="font-semibold text-[#493657] mb-4 flex items-center gap-2">
-                                <FaInfoCircle className="text-[#F0C85A]" />
-                                Key Features
-                            </h3>
-                            <ul className="space-y-2 text-[#493657]/80">
-                                {(product.features || []).map((feature, index) => (
-                                    <li key={index} className="flex items-start gap-2">
-                                        <FaCheck className="text-[#F0C85A] mt-1 flex-shrink-0" />
-                                        {feature}
-                                    </li>
+                            {/* 4. Finish Type/Sheen */}
+                            <div className="mb-4">
+                              <h3 className="font-semibold text-[#493657] mb-2">Sheen</h3>
+                              <div className="flex flex-wrap gap-2">
+                                {(product.finish_type_sheen || []).map((sheen) => (
+                                  <button
+                                    key={sheen}
+                                    onClick={() => setSelectedSheen(sheen)}
+                                    className={`px-4 py-2 rounded-lg border transition-all ${selectedSheen === sheen ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
+                                  >
+                                    {sheen}
+                                  </button>
                                 ))}
-                            </ul>
-                        </div>
+                              </div>
+                            </div>
 
-                        {/* Add to Cart Button */}
-                        <motion.button 
-                            onClick={() => {
-                                addToCart(
+                            {/* 5. Size Selection */}
+                            <div className="mb-4">
+                              <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
+                              <div className="flex flex-wrap gap-2">
+                                {displaySizes.map((size) => (
+                                  <button
+                                    key={size}
+                                    onClick={() => setSelectedSize(size)}
+                                    className={`px-4 py-2 rounded-lg border transition-all ${selectedSize === size ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
+                                  >
+                                    {size}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* 6. Quantity & Add to Cart */}
+                            <div className="mb-6">
+                              <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
+                              <div className="flex items-center gap-4">
+                                <button
+                                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                  className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
+                                >
+                                  -
+                                </button>
+                                <span className="text-xl font-semibold text-[#493657] min-w-[3rem] text-center">{quantity}</span>
+                                <button
+                                  onClick={() => setQuantity(quantity + 1)}
+                                  className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <motion.button
+                                onClick={() => {
+                                  addToCart(
                                     product,
                                     selectedSheen,
                                     selectedSize,
                                     quantity,
                                     getSizePrice(product.price, selectedSize)
-                                );
-                                setShowAddedMessage(true);
-                                setTimeout(() => setShowAddedMessage(false), 3000);
-                            }}
-                            className="w-full bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#F0C85A]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            <FaShoppingCart className="w-5 h-5" />
-                            Add to Cart - ₹{getSizePrice(product.price, selectedSize) * quantity}
-                        </motion.button>
+                                  );
+                                  setShowAddedMessage(true);
+                                  setTimeout(() => setShowAddedMessage(false), 3000);
+                                }}
+                                className="w-full bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#F0C85A]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <FaShoppingCart className="w-5 h-5" />
+                                Add to Cart - ₹{getSizePrice(product.price, selectedSize) * quantity}
+                              </motion.button>
+                            </div>
+                        </div>
 
-                        {/* Success Message */}
-                        <AnimatePresence>
-                            {showAddedMessage && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg text-center"
-                                >
-                                    ✅ Added to cart successfully!
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        {/* Add to Cart Button */}
+                        {/* This block is now handled above */}
                     </motion.div>
                 </div>
 
                 {/* Product Details Section */}
                 <motion.div 
-                    className="mt-24 border-t border-[#493657]/20 pt-16 space-y-16"
+                    className="mt-16"
                     variants={itemVariants}
                 >
-                    {/* Product Details */}
-                    <div className="space-y-8">
-                        <div>
-                            <h2 className="text-3xl font-bold text-[#493657] mb-6">Product Details</h2>
-                            <p className="text-[#493657]/80 text-lg mb-6 max-w-4xl leading-relaxed">
-                                {product.description}
-                            </p>
-                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                {(product.features || []).map((feature, idx) => (
-                                    <li key={idx}>{feature}</li>
-                                ))}
-                            </ul>
-                        </div>
+                    {/* 7. Product Details Section */}
+                    <div className="mt-16">
+                      <h2 className="text-3xl font-bold text-[#493657] mb-6">Product Details</h2>
+                      <p className="text-[#493657]/80 text-lg mb-6 max-w-4xl leading-relaxed">{product.description || product.details}</p>
+                      <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
+                        {(product.features || []).map((feature, idx) => (
+                          <li key={idx}>{feature}</li>
+                        ))}
+                      </ul>
                     </div>
-                    {/* Specifications */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl font-bold text-[#493657] mb-6">Specifications</h2>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Recommended For Use On</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">
-                                    {(product.applications || []).join(", ")}
-                                </p>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Key Feature(s)</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">{(product.features && product.features[0]) || ''}</p>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Substrate</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Regulatory</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">VOC compliant in all areas</p>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Interior/Exterior</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">{product.category}</p>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">VOC Range</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">{(product.technicalSpecs && product.technicalSpecs.vocLevel) || ''}</p>
-                                <h4 className="font-semibold text-[#493657] text-lg mb-2">Specifications</h4>
-                                <p className="text-[#493657]/80 text-base mb-4">(Placeholder)</p>
-                            </div>
+                    {/* Specifications Section */}
+                    <div className="mt-16 mr-20 mb-20">
+                      <h2 className="text-3xl font-bold text-[#493657] mb-8">Specifications</h2>
+                      <div className="w-full grid grid-cols-1 xl:grid-cols-5 gap-7 xl:gap-10">
+                        {/* Left: Recommended For Use On (60% on xl) */}
+                        <div className="xl:col-span-3 xl:pr-8">
+                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Recommended For Use On</h4>
+                          <p className="text-[#493657]/80 text-base mb-4 leading-relaxed">
+                            {Array.isArray(product.recommended_uses) && product.recommended_uses.length
+                              ? product.recommended_uses.join(' ')
+                              : '—'}
+                          </p>
                         </div>
+                        {/* Right: Labeled grid (40% on xl) */}
+                        <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Key Feature(s)</span>
+                            <span className="text-[#493657]/80 text-base">{(product.features || []).join(', ') || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Interior/Exterior</span>
+                            <span className="text-[#493657]/80 text-base">{product.category || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Substrate</span>
+                            <span className="text-[#493657]/80 text-base">{(product.substrate || []).join(', ') || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">VOC Range</span>
+                            <span className="text-[#493657]/80 text-base">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || '—'}</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Regulatory</span>
+                            <span className="text-[#493657]/80 text-base">VOC compliant in all areas</span>
+                          </div>
+                          <div>
+                            <span className="block font-semibold text-[#493657] text-base mb-1">Specifications</span>
+                            <span className="text-[#493657]/80 text-base">{product.details || product.description || '—'}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     {/* Documentation */}
                     <div className="space-y-8 bg-gray-100 rounded-xl p-8">
