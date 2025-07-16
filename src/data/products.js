@@ -1223,7 +1223,7 @@ export const products = [
   },
   {
     name: "Utility Coating",
-    image: "/Assets/foritity.png",
+    image: "/Assets/fortity.png",
     description: "Basic industrial coating for utility applications.",
     "short-description": "Basic industrial coating",
     details: "",
@@ -1364,7 +1364,7 @@ export const products = [
   },
   {
     name: "Sound Absorbing",
-    image: "/Assets/foritity.png",
+    image: "/Assets/fortity.png",
     description: "Sound absorbing coating for acoustic applications.",
     "short-description": "Sound absorbing coating for acoustics",
     details: "",
