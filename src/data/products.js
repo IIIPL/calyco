@@ -46,7 +46,7 @@ export const products = [
     coats_required: "2 coats",
     temperature_range: "10°C–35°C",
     humidity_range: "Under 80% RH",
-    display_name: "Calyco NOVA"
+    display_name: "Calyco Nova"
   },
   // 2. Regal
   {

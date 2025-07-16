@@ -389,14 +389,13 @@ export const DynamicProductPage = () => {
                   if (similar.length === 0) return null;
                   let toShow = similar;
                   if (similar.length > 2) {
-                    // Pick 2–3 random products
+                    // Pick 2 random products
                     const shuffled = [...similar].sort(() => 0.5 - Math.random());
-                    toShow = shuffled.slice(0, 3);
+                    toShow = shuffled.slice(0, 2);
                   }
                   const compareProducts = [product, ...toShow];
-                  // Define the fields to compare
+                  // Define the fields to compare (remove Short Description)
                   const fields = [
-                    { label: 'Short Description', key: 'short-description' },
                     { label: 'Finish/Sheen(s)', key: 'finish_type_sheen', isArray: true },
                     { label: 'Recommended Use', key: 'recommended_uses', isArray: true },
                     { label: 'VOC Range', key: 'voc_content' },
@@ -405,7 +404,7 @@ export const DynamicProductPage = () => {
                     { label: 'Clean Up', key: 'cleanup' },
                   ];
                   return (
-                    <div className="mt-24 overflow-x-auto">
+                    <div className="mt-24 overflow-x-auto max-w-7xl px-8 mx-auto">
                       <h2 className="text-3xl font-bold text-[#493657] mb-8">Compare Similar Products</h2>
                       <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white">
                         <thead>
@@ -418,9 +417,11 @@ export const DynamicProductPage = () => {
                               >
                                 <div className="flex flex-col items-center">
                                   <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                                    <img src={p.image} alt={p.name} className="w-32 h-32 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
+                                    <img src={p.image} alt={p.name} className="w-40 h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
                                   </Link>
                                   <div className="text-xl font-bold mb-2 text-center">{p.display_name || p.name}</div>
+                                  {/* Product description below bucket */}
+                                  <div className="text-[#493657]/80 font-semibold text-sm mb-2 text-center max-w-xs">{p.description}</div>
                                   <Link to={`/product/${p.name}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
                                 </div>
                               </th>
