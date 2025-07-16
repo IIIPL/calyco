@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
-// Use only Category and Substrate as filter groups
-const FILTER_GROUPS = ['Category', 'Substrate'];
+// Use only Category and Application Surface as filter groups
+const FILTER_GROUPS = ['Category', 'Application Surface'];
 
 export const Products = () => {
   const [search, setSearch] = useState('');
@@ -40,9 +40,9 @@ export const Products = () => {
     if (selected['Category'].length) {
       if (!selected['Category'].includes(product.category)) return false;
     }
-    // Substrate filter
-    if (selected['Substrate'] && selected['Substrate'].length) {
-      if (!product.substrate || !product.substrate.some(s => selected['Substrate'].includes(s))) return false;
+    // Application Surface filter
+    if (selected['Application Surface'] && selected['Application Surface'].length) {
+      if (!product.substrate || !product.substrate.some(s => selected['Application Surface'].includes(s))) return false;
     }
     return true;
   });
