@@ -1,40 +1,14 @@
 import React, { useState } from 'react';
+import { products } from '../data/products';
+
+// Dynamically extract unique categories from products
+const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
 
 const FILTERS = [
   {
-    label: 'Area',
-    field: 'area_of_use',
-    options: [
-      'Interior', 'Exterior', 'Both'
-    ],
-  },
-  {
-    label: 'Type',
-    field: 'product_type',
-    options: [
-      'Interior', 'Exterior', 'Wood Finishes', 'Enamel & Wood Finishes', 'Industrial Coatings', 'Specialty'
-    ],
-  },
-  {
-    label: 'Material',
-    field: 'material_base',
-    options: [
-      'Gypsum', 'Wood', 'Concrete', 'Composite', 'Masonry', 'Metal', 'Paver', 'Stone', 'Stucco', 'Tile', 'Vinyl', 'Brick', 'Precast', 'Glass'
-    ],
-  },
-  {
-    label: 'Application',
-    field: 'application_area',
-    options: [
-      'Walls', 'Decks', 'Basements', 'Driveways', 'Fences', 'Verandas', 'Patios', 'Flooring', 'Roofs', 'Cladding', 'Walkways', 'Furniture', 'Garage'
-    ],
-  },
-  {
-    label: 'Finish',
-    field: 'finish_base_type',
-    options: [
-      'Opaque', 'Semi-Transparent', 'Transparent', 'Natural', 'Acrylic', 'Oil', 'Water', 'Polyurethane'
-    ],
+    label: 'Category',
+    field: 'category',
+    options: uniqueCategories,
   },
 ];
 
@@ -52,10 +26,8 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreSt
     <aside className="w-72 min-w-[260px] bg-white rounded-xl shadow p-6 border border-[#e5e0d8] mr-8">
       <h2 className="text-xl font-bold text-[#493657] mb-6">Filters</h2>
       {FILTERS.map((group, idx) => {
-        // For 'Finish', always show all options and never show 'Show More'
-        const isFinish = group.label === 'Finish';
-        const visibleOptions = isFinish ? group.options : (showMore[idx] ? group.options : group.options.slice(0, DEFAULT_VISIBLE));
-        const hasShowMore = !isFinish && group.options.length > DEFAULT_VISIBLE;
+        const visibleOptions = showMore[idx] ? group.options : group.options.slice(0, DEFAULT_VISIBLE);
+        const hasShowMore = group.options.length > DEFAULT_VISIBLE;
         return (
           <div key={group.label} className="mb-6">
             <button

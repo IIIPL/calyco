@@ -1,31 +1,18 @@
 import React, { useState } from 'react';
-import { products as allProducts } from '../data/products';
+import { products as allProducts, getProductById, getProductsByCategory } from '../data/products';
 import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
-const FILTER_GROUPS = [
-  'Area',
-  'Type',
-  'Material',
-  'Application',
-  'Finish',
-];
-
-const FILTER_FIELDS = {
-  'Area': 'area_of_use',
-  'Type': 'product_type',
-  'Material': 'material_base',
-  'Application': 'application_area',
-  'Finish': 'finish_base_type',
-};
+// Only use 'Category' as the filter group
+const FILTER_GROUPS = ['Category'];
 
 export const Products = () => {
   const [search, setSearch] = useState('');
   const [checked, setChecked] = useState({});
-  const [expanded, setExpanded] = useState(FILTER_GROUPS.map(() => true));
-  const [sortOrder, setSortOrder] = useState(''); // '' | 'asc' | 'desc'
-  const [showFilter, setShowFilter] = useState(true); // NEW STATE
+  const [expanded, setExpanded] = useState([true]); // Only one group
+  const [sortOrder, setSortOrder] = useState('');
+  const [showFilter, setShowFilter] = useState(true);
 
   // Handlers for sidebar
   const handleCheck = (group, option) => {
@@ -49,25 +36,9 @@ export const Products = () => {
   let filteredProducts = allProducts.filter(product => {
     // Search by name
     if (search && !product.name.toLowerCase().includes(search.toLowerCase())) return false;
-    // Area (category)
-    if (selected['Area'].length) {
-      if (!selected['Area'].includes(product.category)) return false;
-    }
-    // Type (category, for now)
-    if (selected['Type'].length) {
-      if (!selected['Type'].includes(product.category)) return false;
-    }
-    // Material (substrate)
-    if (selected['Material'].length) {
-      if (!product.substrate || !product.substrate.some(s => selected['Material'].includes(s))) return false;
-    }
-    // Application (application)
-    if (selected['Application'].length) {
-      if (!product.application || !product.application.some(a => selected['Application'].includes(a))) return false;
-    }
-    // Finish (finish_type_sheen)
-    if (selected['Finish'].length) {
-      if (!product.finish_type_sheen || !product.finish_type_sheen.some(f => selected['Finish'].includes(f))) return false;
+    // Category filter
+    if (selected['Category'].length) {
+      if (!selected['Category'].includes(product.category)) return false;
     }
     return true;
   });

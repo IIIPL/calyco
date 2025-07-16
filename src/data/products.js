@@ -1225,3 +1225,11 @@ export const products = [
     display_name: "Calyco HydroClear Shield"
   }
 ];
+
+export function getProductById(id) {
+  return products.find(p => p.product_number === id || p.name.toLowerCase() === id.toLowerCase());
+}
+
+export function getProductsByCategory(category) {
+  return products.filter(p => p.category && p.category.toLowerCase() === category.toLowerCase());
+}
