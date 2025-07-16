@@ -17,8 +17,8 @@ const FILTERS = [
     options: uniqueCategories,
   },
   {
-    label: 'Substrate',
-    field: 'substrate',
+    label: 'Application Surface', // UI label changed from 'Substrate'
+    field: 'substrate', // backend field remains unchanged
     options: uniqueSubstrates,
   },
   // {
