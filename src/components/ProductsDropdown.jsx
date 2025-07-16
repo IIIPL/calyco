@@ -77,7 +77,15 @@ export const ProductsDropdown = ({ onSelect }) => {
                     className={`cursor-pointer hover:text-[#F0C85A] transition-colors${hovered && hovered.name === product.name ? " font-bold" : ""}`}
                     onMouseEnter={() => setHovered(product)}
                   >
-                    <Link to={`/product/${product.name}`} onClick={onSelect}>{product.display_name || product.name}</Link>
+                    <Link
+                      to={`/product/${product.name}`}
+                      onClick={e => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        if (onSelect) onSelect();
+                      }}
+                    >
+                      {product.display_name || product.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
