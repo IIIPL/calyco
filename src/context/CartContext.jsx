@@ -83,13 +83,13 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('calycoCart', JSON.stringify(state));
   }, [state]);
 
-  const addToCart = (product, selectedSheen, selectedSize, quantity) => {
+  const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride) => {
     dispatch({
       type: 'ADD_TO_CART',
       payload: {
         id: product.id,
-        name: product.name,
-        price: product.price,
+        name: product.display_name || product.name,
+        price: priceOverride !== undefined ? priceOverride : product.price,
         selectedSheen,
         selectedSize,
         quantity,

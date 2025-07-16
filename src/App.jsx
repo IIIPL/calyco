@@ -17,6 +17,7 @@ import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
 import { CartProvider } from './context/CartContext'
+import Checkout from "./pages/Checkout";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path='/contact' element={<ContactUs/>}/>
           <Route path='/interior' element={<Interior/>}/>
           <Route path='/stain-sealer' element={<StainSealer/>}/>
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
         <Footer/>
         

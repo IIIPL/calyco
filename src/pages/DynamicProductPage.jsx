@@ -264,7 +264,13 @@ export const DynamicProductPage = () => {
                         {/* Add to Cart Button */}
                         <motion.button 
                             onClick={() => {
-                                addToCart(product, selectedSheen, selectedSize, quantity);
+                                addToCart(
+                                    product,
+                                    selectedSheen,
+                                    selectedSize,
+                                    quantity,
+                                    getSizePrice(product.price, selectedSize)
+                                );
                                 setShowAddedMessage(true);
                                 setTimeout(() => setShowAddedMessage(false), 3000);
                             }}

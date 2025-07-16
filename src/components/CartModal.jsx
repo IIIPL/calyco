@@ -2,9 +2,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { InvoiceGenerator } from './InvoiceGenerator';
+import { useNavigate } from 'react-router-dom';
 
 export const CartModal = ({ isOpen, onClose }) => {
   const { items, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
+  const navigate = useNavigate();
 
   const handleQuantityChange = (item, newQuantity) => {
     if (newQuantity <= 0) {
@@ -129,7 +131,6 @@ export const CartModal = ({ isOpen, onClose }) => {
                     {formatPrice(getCartTotal())}
                   </span>
                 </div>
-
                 <div className="flex gap-3">
                   <button
                     onClick={clearCart}
@@ -137,7 +138,12 @@ export const CartModal = ({ isOpen, onClose }) => {
                   >
                     Clear Cart
                   </button>
-                  <InvoiceGenerator items={items} total={getCartTotal()} onClose={onClose} />
+                  <button
+                    onClick={() => { onClose(); navigate('/checkout'); }}
+                    className="flex-1 px-4 py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors font-semibold"
+                  >
+                    Proceed to Checkout
+                  </button>
                 </div>
               </div>
             )}
