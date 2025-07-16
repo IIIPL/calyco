@@ -39,7 +39,7 @@ const ProductCard = ({
       <div className="flex flex-col gap-1 mb-2 w-full">
         {/* Area Coverage */}
         {areaCoverage && (
-          <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{areaCoverage} per L</div>
+          <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{areaCoverage}</div>
         )}
       </div>
       <div className="border-b border-[#e5e0d8] w-full my-2" />

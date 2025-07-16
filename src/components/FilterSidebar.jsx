@@ -5,6 +5,10 @@ import { products } from '../data/products';
 const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
 // Dynamically extract unique substrates from products
 const uniqueSubstrates = Array.from(new Set(products.flatMap(p => Array.isArray(p.substrate) ? p.substrate : []).filter(Boolean)));
+// Dynamically extract unique application areas from products
+const uniqueApplicationAreas = Array.from(new Set(products.flatMap(p => Array.isArray(p.application) ? p.application : []).filter(Boolean)));
+// Dynamically extract unique recommended uses from products
+const uniqueRecommendedUses = Array.from(new Set(products.flatMap(p => Array.isArray(p.recommended_uses) ? p.recommended_uses : []).filter(Boolean)));
 
 const FILTERS = [
   {
@@ -17,6 +21,16 @@ const FILTERS = [
     field: 'substrate',
     options: uniqueSubstrates,
   },
+  // {
+  //   label: 'Application Area',
+  //   field: 'application',
+  //   options: uniqueApplicationAreas,
+  // },
+  // {
+  //   label: 'Recommended Use',
+  //   field: 'recommended_uses',
+  //   options: uniqueRecommendedUses,
+  // },
 ];
 
 const DEFAULT_VISIBLE = 6;

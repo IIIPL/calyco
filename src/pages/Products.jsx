@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
-// Use both 'Category' and 'Substrate' as filter groups
+// Use only Category and Substrate as filter groups
 const FILTER_GROUPS = ['Category', 'Substrate'];
 
 export const Products = () => {

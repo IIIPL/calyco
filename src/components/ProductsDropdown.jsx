@@ -14,7 +14,7 @@ const leftMenu = [
 const filteredInteriorProducts = allProducts.filter(
   p => p.category && p.category.toLowerCase() === "interior"
 );
-console.log("filteredInteriorProducts", filteredInteriorProducts, filteredInteriorProducts.length);
+
 
 const grouped = {
   Interior: filteredInteriorProducts,
