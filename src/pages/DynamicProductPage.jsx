@@ -404,7 +404,7 @@ export const DynamicProductPage = () => {
                     { label: 'Clean Up', key: 'cleanup' },
                   ];
                   return (
-                    <div className="mt-24 overflow-x-auto max-w-7xl px-8 mx-auto">
+                    <div className="mt-24 overflow-x-auto max-w-7xl px-0 mx-auto">
                       <h2 className="text-3xl font-bold text-[#493657] mb-8">Compare Similar Products</h2>
                       <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white">
                         <thead>
