@@ -19,6 +19,7 @@ const ProductCard = ({
   coverage,
   price,
   sizes,
+  areaCoverage,
 }) => {
   // Find the smallest size and its price (assuming price is for 1L if available)
   let displaySize = sizes && sizes.length > 0 ? sizes[0] : null;
@@ -30,12 +31,15 @@ const ProductCard = ({
         <img src={image} alt={name} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
       </Link>
       <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{wordBreak: 'break-word'}}>{name}</div>
+      {/* Price prominently displayed */}
+      {displayPrice && (
+        <div className="text-[#493657] text-xl font-bold mb-1 w-full">₹{displayPrice} <span className="text-xs text-[#493657] font-medium">/ {displaySize || '1L'}</span></div>
+      )}
       {/* Features */}
       <div className="flex flex-col gap-1 mb-2 w-full">
-        {coats && <div className="flex items-center text-[#493657] text-base font-medium"><CoatsIcon />{coats}</div>}
-        {coverage && <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{coverage}</div>}
-        {displaySize && displayPrice && (
-          <div className="flex items-center text-[#493657] text-base font-medium"><PriceIcon />{displaySize} for ₹{displayPrice}</div>
+        {/* Area Coverage */}
+        {areaCoverage && (
+          <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{areaCoverage} per L</div>
         )}
       </div>
       <div className="border-b border-[#e5e0d8] w-full my-2" />

@@ -5,19 +5,19 @@ import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
 const FILTER_GROUPS = [
-  'Category',
-  'Finish / Sheen',
-  'Material Base',
-  'Recommended Uses',
-  'Brand',
+  'Area',
+  'Type',
+  'Material',
+  'Application',
+  'Finish',
 ];
 
 const FILTER_FIELDS = {
-  'Category': 'category',
-  'Finish / Sheen': 'finish_type_sheen',
-  'Material Base': 'substrate',
-  'Recommended Uses': 'recommended_uses',
-  'Brand': 'brand',
+  'Area': 'area_of_use',
+  'Type': 'product_type',
+  'Material': 'material_base',
+  'Application': 'application_area',
+  'Finish': 'finish_base_type',
 };
 
 export const Products = () => {
@@ -25,6 +25,7 @@ export const Products = () => {
   const [checked, setChecked] = useState({});
   const [expanded, setExpanded] = useState(FILTER_GROUPS.map(() => true));
   const [sortOrder, setSortOrder] = useState(''); // '' | 'asc' | 'desc'
+  const [showFilter, setShowFilter] = useState(true); // NEW STATE
 
   // Handlers for sidebar
   const handleCheck = (group, option) => {
@@ -48,25 +49,25 @@ export const Products = () => {
   let filteredProducts = allProducts.filter(product => {
     // Search by name
     if (search && !product.name.toLowerCase().includes(search.toLowerCase())) return false;
-    // Category
-    if (selected['Category'].length) {
-      if (!selected['Category'].includes(product.category)) return false;
+    // Area (category)
+    if (selected['Area'].length) {
+      if (!selected['Area'].includes(product.category)) return false;
     }
-    // Finish / Sheen
-    if (selected['Finish / Sheen'].length) {
-      if (!product.finish_type_sheen || !product.finish_type_sheen.some(s => selected['Finish / Sheen'].includes(s))) return false;
+    // Type (category, for now)
+    if (selected['Type'].length) {
+      if (!selected['Type'].includes(product.category)) return false;
     }
-    // Material Base
-    if (selected['Material Base'].length) {
-      if (!product.substrate || !product.substrate.some(s => selected['Material Base'].includes(s))) return false;
+    // Material (substrate)
+    if (selected['Material'].length) {
+      if (!product.substrate || !product.substrate.some(s => selected['Material'].includes(s))) return false;
     }
-    // Recommended Uses
-    if (selected['Recommended Uses'].length) {
-      if (!product.recommended_uses || !product.recommended_uses.some(a => selected['Recommended Uses'].includes(a))) return false;
+    // Application (application)
+    if (selected['Application'].length) {
+      if (!product.application || !product.application.some(a => selected['Application'].includes(a))) return false;
     }
-    // Brand
-    if (selected['Brand'].length) {
-      if (!selected['Brand'].includes(product.brand)) return false;
+    // Finish (finish_type_sheen)
+    if (selected['Finish'].length) {
+      if (!product.finish_type_sheen || !product.finish_type_sheen.some(f => selected['Finish'].includes(f))) return false;
     }
     return true;
   });
@@ -103,11 +104,21 @@ export const Products = () => {
               <option value="asc">Low to High</option>
               <option value="desc">High to Low</option>
             </select>
+            {/* Show/Hide Filter Button moved here */}
+            <button
+              className="px-6 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] font-semibold shadow hover:bg-[#F0C85A]/10 transition"
+              onClick={() => setShowFilter(f => !f)}
+            >
+              {showFilter ? 'Hide Filter' : 'Show Filter'}
+            </button>
           </div>
         </div>
+        {/* Show/Hide Filter Button */}
         <div className="flex flex-row items-start gap-4">
           {/* Filter Sidebar */}
-          <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
+          {showFilter && (
+            <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
+          )}
           {/* Product Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -123,6 +134,7 @@ export const Products = () => {
                   price={product.price}
                   finishTypeSheen={product.finish_type_sheen}
                   packaging={product.packaging}
+                  areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
                   // Add more props as needed for your new product structure
                 />
               ))}

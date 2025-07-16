@@ -95,7 +95,7 @@ export const products = [
   },
   {
     name: "Advance",
-    image: "/Assets/advance.png",
+    image: "/Assets/novaa.png",
     description: "Alkyd-like interior paint with PermaLast™ technology for superior durability and smooth application.",
     "short-description": "Alkyd-like interior with PermaLast™ durability",
     details: "",
@@ -142,7 +142,7 @@ export const products = [
   },
   {
     name: "Natura",
-    image: "/Assets/natura.png",
+    image: "/Assets/silka.png",
     description: "Zero-VOC interior paint with Micro-Seal™ technology for health-conscious environments.",
     "short-description": "Zero-VOC interior with Micro-Seal™ protection",
     details: "",
@@ -189,7 +189,7 @@ export const products = [
   },
   {
     name: "Arborcoat",
-    image: "/Assets/arborcoat.png",
+    image: "/Assets/lumen.png",
     description: "Premium wood stain and sealer with advanced UV protection and water repellency.",
     "short-description": "Premium wood stain with UV protection",
     details: "",
@@ -330,7 +330,7 @@ export const products = [
   },
   {
     name: "Duration",
-    image: "/Assets/duration.png",
+    image: "/Assets/velvettouch.png",
     description: "Premium exterior paint with advanced weather protection and extended durability.",
     "short-description": "Premium exterior with advanced weather protection",
     details: "",
@@ -518,7 +518,7 @@ export const products = [
   },
   {
     name: "Velvet Touch",
-    image: "/Assets/velvet.png",
+    image: "/Assets/velvettouch.png",
     description: "Soft luxury interior finish with silky smooth application.",
     "short-description": "Soft luxury interior with silky finish",
     details: "",
@@ -941,7 +941,7 @@ export const products = [
   },
   {
     name: "DeckOver",
-    image: "/Assets/deckover.png",
+    image: "/Assets/novaa.png",
     description: "Deck restoration coating with textured finish and slip resistance.",
     "short-description": "Deck restoration with textured finish",
     details: "",
@@ -988,7 +988,7 @@ export const products = [
   },
   {
     name: "SteelSeal™",
-    image: "/Assets/steelseal.png",
+    image: "/Assets/lumen.png",
     description: "Metal anti-corrosive enamel with industrial-grade protection.",
     "short-description": "Metal anti-corrosive enamel",
     details: "",
@@ -1082,7 +1082,7 @@ export const products = [
   },
   {
     name: "Value Interior",
-    image: "/Assets/valueinterior.png",
+    image: "/Assets/fortity.png",
     description: "Budget-friendly interior paint with basic coverage and finish.",
     "short-description": "Budget-friendly interior paint",
     details: "",
@@ -1129,7 +1129,7 @@ export const products = [
   },
   {
     name: "Value Exterior",
-    image: "/Assets/valueexterior.png",
+    image: "/Assets/velvettouch.png",
     description: "Budget-friendly exterior paint with basic weather protection.",
     "short-description": "Budget-friendly exterior paint",
     details: "",

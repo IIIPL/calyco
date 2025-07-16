@@ -12,7 +12,7 @@ const FILTERS = [
     label: 'Type',
     field: 'product_type',
     options: [
-      'Paint', 'Primer', 'Stain', 'Spray', 'Wood', 'Sealant', 'Cleaner', 'Clear', 'Concrete', 'Waterproof', 'Tool'
+      'Interior', 'Exterior', 'Wood Finishes', 'Enamel & Wood Finishes', 'Industrial Coatings', 'Specialty'
     ],
   },
   {
