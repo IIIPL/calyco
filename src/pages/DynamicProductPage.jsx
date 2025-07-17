@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash } from 'react-icons/fi';
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
@@ -204,7 +205,7 @@ export const DynamicProductPage = () => {
                             {/* 5. Features as bullet points */}
                             {Array.isArray(product.features) && product.features.length > 0 && (
                               <div className="mb-4">
-                                <h3 className="font-semibold text-[#493657] text-lg mb-2">Key Features</h3>
+                                
                                 <ul className="list-disc pl-6 space-y-2 text-lg text-[#301A44] font-semibold">
                                   {product.features.map((feature, idx) => (
                                     <li key={idx}>{feature}</li>
@@ -327,120 +328,94 @@ export const DynamicProductPage = () => {
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
                 </motion.div>
                 {/* Specifications Section */}
-                <div className="mt-16 mr-20 mb-20">
+                <div className="mt-16 mb-12">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Specifications</h2>
-                  <div className="w-full grid grid-cols-1 xl:grid-cols-5 gap-7 xl:gap-10">
-                    {/* Left: Recommended For Use On (60% on xl) */}
-                    <div className="xl:col-span-3 xl:pr-8">
-                      <h4 className="font-semibold text-[#493657] text-lg mb-2">Recommended For Use On</h4>
-                      <p className="text-[#493657]/80 text-base mb-4 leading-relaxed">
-                        {Array.isArray(product.recommended_uses) && product.recommended_uses.length
-                          ? product.recommended_uses.join(' ')
-                          : '—'}
-                      </p>
-                      {/* Application */}
-                      <h4 className="font-semibold text-[#493657] text-lg mb-2">Application</h4>
-                      <p className="text-[#493657]/80 text-base mb-4">{(product.application || []).join(', ') || '—'}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
+                      <span className="text-[#493657]/80 text-lg">{product.category || 'N/A'}</span>
                     </div>
-                    {/* Right: Labeled grid (40% on xl) */}
-                    <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Key Feature(s)</span>
-                        <span className="text-[#493657]/80 text-base">{(product.features || []).join(', ') || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Interior/Exterior</span>
-                        <span className="text-[#493657]/80 text-base">{product.category || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Substrate</span>
-                        <span className="text-[#493657]/80 text-base">{(product.substrate || []).join(', ') || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">VOC Range</span>
-                        <span className="text-[#493657]/80 text-base">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Why Choose {product.name}?</span>
-                        <span className="text-[#493657]/80 text-base">{product.details || product.description || '—'}</span>
-                      </div>
-                      {/* Technical Specs */}
-                      {product.technical_specs && (
-                        <>
-                          <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Base Type  </span>
-                            <span className="text-[#493657]/80 text-base">{product.technical_specs.base_type || '—'}</span>
-                          </div>
-                          <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Coverage  </span>
-                            <span className="text-[#493657]/80 text-base">{product.technical_specs.coverage || '—'}</span>
-                          </div>
-                          <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Suitable Surfaces</span>
-                            <span className="text-[#493657]/80 text-base">{(product.technical_specs.suitable_surfaces || []).join(', ') || '—'}</span>
-                          </div>
-                          {/* <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Application Instructions</span>
-                            <span className="text-[#493657]/80 text-base">{product.technical_specs.application_instructions || '—'}</span>
-                          </div> */}
-                          
-                          <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Recoat Time  </span>
-                            <span className="text-[#493657]/80 text-base">{product.technical_specs.recoat_time || '—'}</span>
-                          </div>
-                          <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Cleanup  </span>
-                            <span className="text-[#493657]/80 text-base">{product.technical_specs.cleanup || '—'}</span>
-                          </div>
-                        </>
-                      )}
-                      {/* Other product keys */}
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Base Type</span>
-                        <span className="text-[#493657]/80 text-base">{product.base_type || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Coverage</span>
-                        <span className="text-[#493657]/80 text-base">{product.coverage || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Drying Time</span>
-                        <span className="text-[#493657]/80 text-base">{product.drying_time || '—'}</span>
-                      </div>
-                      <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Recoat Time</span>
-                        <span className="text-[#493657]/80 text-base">{product.recoat_time || '—'}</span>
-                      </div>
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Packaging</span>
-                        <span className="text-[#493657]/80 text-base">{(product.packaging || []).join(', ') || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Warranty</span>
-                        <span className="text-[#493657]/80 text-base">{product.warranty || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Brand</span>
-                        <span className="text-[#493657]/80 text-base">{product.brand || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Product Number</span>
-                        <span className="text-[#493657]/80 text-base">{product.product_number || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Coats Required</span>
-                        <span className="text-[#493657]/80 text-base">{product.coats_required || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Temperature Range</span>
-                        <span className="text-[#493657]/80 text-base">{product.temperature_range || '—'}</span>
-                      </div> */}
-                      {/* <div>
-                        <span className="block font-semibold text-[#493657] text-base mb-1">Humidity Range</span>
-                        <span className="text-[#493657]/80 text-base">{product.humidity_range || '—'}</span>
-                      </div> */}
-                      
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
+                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A')}</span>
                     </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
+                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A')}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
+                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A')}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
+                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A')}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
+                      <span className="text-[#493657]/80 text-lg">{product.coats_required || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiBox className="w-5 h-5 text-[#493657]" />Coverage</span>
+                      <span className="text-[#493657]/80 text-lg">{product.coverage || 'N/A'}</span>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+                {/* Technical Specifications Section */}
+                <div className="mb-20">
+                  <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
+                      <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technical_specs && product.technical_specs.base_type) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
+                      <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
+                      <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technical_specs && product.technical_specs.application_instructions) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClock className="w-5 h-5 text-[#493657]" />Drying Time</span>
+                      <span className="text-[#493657]/80 text-lg">{product.drying_time || (product.technical_specs && product.technical_specs.drying_time) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
+                      <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technical_specs && product.technical_specs.recoat_time) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
+                      <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technical_specs && product.technical_specs.cleanup) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Temperature Range</span>
+                      <span className="text-[#493657]/80 text-lg">{product.temperature_range || (product.technical_specs && product.technical_specs.temperature_range) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Humidity Range</span>
+                      <span className="text-[#493657]/80 text-lg">{product.humidity_range || (product.technical_specs && product.technical_specs.humidity_range) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiInfo className="w-5 h-5 text-[#493657]" />Surface Preparation</span>
+                      <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technical_specs && product.technical_specs.preparation_instructions) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiAlertCircle className="w-5 h-5 text-[#493657]" />Safety Precautions</span>
+                      <span className="text-[#493657]/80 text-lg">{product.safety_precautions || (product.technical_specs && product.technical_specs.safety_precautions) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
+                      <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technical_specs && product.technical_specs.storage_instructions) || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="block font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
+                      <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technical_specs && product.technical_specs.warranty) || 'N/A'}</span>
+                    </div>
+                    
                   </div>
                 </div>
                 {/* Documentation */}
