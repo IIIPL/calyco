@@ -60,7 +60,7 @@ const FILTERS = [
   },
 ];
 
-const DEFAULT_VISIBLE = 6;
+const DEFAULT_VISIBLE = 4;
 
 export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
   const [showMore, setShowMore] = useState(Array(FILTERS.length).fill(false));

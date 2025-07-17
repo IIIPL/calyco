@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { products as allProducts, getProductById, getProductsByCategory } from '../data/products';
 import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
@@ -44,6 +44,10 @@ export const Products = () => {
   const [expanded, setExpanded] = useState([true, true]); // One for each filter group
   const [sortOrder, setSortOrder] = useState('');
   const [showFilter, setShowFilter] = useState(true);
+
+  useEffect(() => {
+    document.title = 'Products';
+  }, []);
 
   // Handlers for sidebar
   const handleCheck = (group, option) => {
