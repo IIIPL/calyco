@@ -192,14 +192,9 @@ export const DynamicProductPage = () => {
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
                             {/* 1. Product Name & Short Description */}
-                            <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
+                            <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
                             <p className="text-lg text-[#493657]/70 mb-4">{product["short-description"] || product.shortDescription}</p>
-                            {/* 2. Quick Pointers (Key Features/Advantages) */}
-                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-1 mb-4">
-                              {(product.advantages || product.features || []).map((item, idx) => (
-                                <li key={idx}>{item}</li>
-                              ))}
-                            </ul>
+                            
                             {/* 3. Price */}
                             <div className="flex items-center gap-4 mb-4">
                               <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
@@ -295,11 +290,6 @@ export const DynamicProductPage = () => {
                     <div className="mt-16">
                       <h2 className="text-3xl font-bold text-[#493657] mb-6">Product Details</h2>
                       <p className="text-[#493657]/80 text-lg mb-6 max-w-4xl leading-relaxed">{product.description || product.details}</p>
-                      <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                        {(product.features || []).map((feature, idx) => (
-                          <li key={idx}>{feature}</li>
-                        ))}
-                      </ul>
                     </div>
                     {/* Specifications Section */}
                     <div className="mt-16 mr-20 mb-20">
@@ -319,24 +309,9 @@ export const DynamicProductPage = () => {
                           {/* Advantages */}
                           <h4 className="font-semibold text-[#493657] text-lg mb-2">Advantages</h4>
                           <p className="text-[#493657]/80 text-base mb-4">{(product.advantages || []).join(', ') || '—'}</p>
-                          {/* Tools Required */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Tools Required</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{(product.tools_required || []).join(', ') || '—'}</p>
                           {/* Color Options */}
                           <h4 className="font-semibold text-[#493657] text-lg mb-2">Color Options</h4>
                           <p className="text-[#493657]/80 text-base mb-4">{(product.color_options || []).join(', ') || '—'}</p>
-                          {/* Spread Rate */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Spread Rate</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{product.spread_rate || '—'}</p>
-                          {/* Preparation Instructions */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Preparation Instructions</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{product.preparation_instructions || '—'}</p>
-                          {/* Safety Precautions */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Precautions</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{product.safety_precautions || '—'}</p>
-                          {/* Storage Instructions */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Storage Instructions</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{product.storage_instructions || '—'}</p>
                         </div>
                         {/* Right: Labeled grid (40% on xl) */}
                         <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
@@ -379,10 +354,10 @@ export const DynamicProductPage = () => {
                                 <span className="block font-semibold text-[#493657] text-base mb-1">Suitable Surfaces</span>
                                 <span className="text-[#493657]/80 text-base">{(product.technical_specs.suitable_surfaces || []).join(', ') || '—'}</span>
                               </div>
-                              <div>
+                              {/* <div>
                                 <span className="block font-semibold text-[#493657] text-base mb-1">Application Instructions</span>
                                 <span className="text-[#493657]/80 text-base">{product.technical_specs.application_instructions || '—'}</span>
-                              </div>
+                              </div> */}
                               <div>
                                 <span className="block font-semibold text-[#493657] text-base mb-1">Drying Time (Tech Spec)</span>
                                 <span className="text-[#493657]/80 text-base">{product.technical_specs.drying_time || '—'}</span>
@@ -407,10 +382,6 @@ export const DynamicProductPage = () => {
                             <span className="text-[#493657]/80 text-base">{product.coverage || '—'}</span>
                           </div>
                           <div>
-                            <span className="block font-semibold text-[#493657] text-base mb-1">Application Instructions</span>
-                            <span className="text-[#493657]/80 text-base">{product.application_instructions || '—'}</span>
-                          </div>
-                          <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Drying Time</span>
                             <span className="text-[#493657]/80 text-base">{product.drying_time || '—'}</span>
                           </div>
@@ -422,26 +393,26 @@ export const DynamicProductPage = () => {
                             <span className="block font-semibold text-[#493657] text-base mb-1">Cleanup</span>
                             <span className="text-[#493657]/80 text-base">{product.cleanup || '—'}</span>
                           </div>
-                          <div>
+                          {/* <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Packaging</span>
                             <span className="text-[#493657]/80 text-base">{(product.packaging || []).join(', ') || '—'}</span>
-                          </div>
-                          <div>
+                          </div> */}
+                          {/* <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Warranty</span>
                             <span className="text-[#493657]/80 text-base">{product.warranty || '—'}</span>
-                          </div>
-                          <div>
+                          </div> */}
+                          {/* <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Brand</span>
                             <span className="text-[#493657]/80 text-base">{product.brand || '—'}</span>
-                          </div>
-                          <div>
+                          </div> */}
+                          {/* <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Product Number</span>
                             <span className="text-[#493657]/80 text-base">{product.product_number || '—'}</span>
-                          </div>
-                          <div>
+                          </div> */}
+                          {/* <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Coats Required</span>
                             <span className="text-[#493657]/80 text-base">{product.coats_required || '—'}</span>
-                          </div>
+                          </div> */}
                           <div>
                             <span className="block font-semibold text-[#493657] text-base mb-1">Temperature Range</span>
                             <span className="text-[#493657]/80 text-base">{product.temperature_range || '—'}</span>
@@ -509,7 +480,7 @@ export const DynamicProductPage = () => {
                                   <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                                     <img src={p.image} alt={p.name} className="w-40 h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
                                   </Link>
-                                  <div className="text-xl font-bold mb-2 text-center">{p.display_name || p.name}</div>
+                                  <div className="text-xl font-bold mb-2 text-center">{p.name}</div>
                                   {/* Product description below bucket */}
                                   <div className="text-[#493657]/80 font-semibold text-sm mb-2 text-center max-w-xs">{p.description}</div>
                                   <Link to={`/product/${p.name}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
