@@ -3,7 +3,6 @@ import Slider from './components/Slider'
 import { Navbar } from './components/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
-import { ProductPage } from './pages/ProductPage'
 import { Temp } from './pages/Temp'
 import { AboutUs } from './pages/AboutUs'
 import { Footer } from './pages/Footer'
@@ -31,7 +30,7 @@ function App() {
           <Route path='/product' element={<Products/>}/>
           <Route path='/product/:productId' element={<DynamicProductPage/>}/>
           <Route path='/about' element={<AboutUs/>}/>
-          <Route path='/temp' element={<ProductPage/>}/>
+          <Route path='/temp' element={<Temp/>}/>
           <Route path='/faq' element={<FAQs/>}/>
           <Route path='/contact' element={<ContactUs/>}/>
           <Route path='/interior' element={<Interior/>}/>

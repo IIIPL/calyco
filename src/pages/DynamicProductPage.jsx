@@ -163,27 +163,26 @@ export const DynamicProductPage = () => {
                     </Link>
                 </motion.div>
 
-                <div className="flex flex-col md:flex-row gap-12">
+                <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
                     <motion.div 
-                        className="xl:w-1/2 xl:sticky xl:top-24 xl:self-start"
+                        className="xl:w-1/2 md:w-1/2 w-full xl:sticky xl:top-24 xl:self-start flex items-center md:items-start justify-center"
                         variants={itemVariants}
                     >
-                        <div className="relative group">
-                            <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#F0C85A]/20 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
+                        <div className="relative group w-full flex items-center md:items-start justify-center">
+                            <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#301A44]/10 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center">
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full max-w-sm mx-auto hover:scale-105 transition-transform duration-500"
+                                    className="w-full max-w-[420px] md:max-w-[440px] xl:max-w-[480px] h-auto mx-auto hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
                         </div>
                     </motion.div>
-
                     {/* Product Details */}
                     <motion.div 
-                        className="xl:w-1/2 flex flex-col gap-8"
+                        className="xl:w-1/2 md:w-1/2 w-full flex flex-col gap-8"
                         variants={itemVariants}
                     >
                         {/* Product Header */}
@@ -191,13 +190,28 @@ export const DynamicProductPage = () => {
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
-                            {/* 1. Product Name & Short Description */}
+                            {/* 1. Product Name */}
                             <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
-                            <p className="text-lg text-[#493657]/70 mb-4">{product["short-description"] || product.shortDescription}</p>
-                            
+                            {/* 2. Short Description (distinguishable) */}
+                            <p className="text-lg text-[#301A44] font-semibold mb-2">{product["short-description"] || product.shortDescription}</p>
+                            {/* 3. Gap */}
+                            <div className="my-4" />
+                            {/* 4. Main Description (distinguishable) */}
+                            <p className="text-xl text-[#493657]/90 mb-4 font-medium leading-relaxed">{product.description || product.details}</p>
+                            {/* 5. Features as bullet points */}
+                            {Array.isArray(product.features) && product.features.length > 0 && (
+                              <div className="mb-4">
+                                <h3 className="font-semibold text-[#493657] text-lg mb-2">Key Features</h3>
+                                <ul className="list-disc pl-6 space-y-2 text-lg text-[#301A44] font-semibold">
+                                  {product.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                             {/* 3. Price */}
                             <div className="flex items-center gap-4 mb-4">
-                              <p className="text-3xl font-bold text-[#F0C85A]">₹{getSizePrice(product.price, selectedSize)}</p>
+                              <p className="text-3xl font-bold text-[#301A44]">₹{getSizePrice(product.price, selectedSize)}</p>
                               <span className="text-sm text-[#493657]/60">per {selectedSize}</span>
                             </div>
                         </div>
@@ -266,7 +280,7 @@ export const DynamicProductPage = () => {
                                   setShowAddedMessage(true);
                                   setTimeout(() => setShowAddedMessage(false), 3000);
                                 }}
-                                className="w-full bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#F0C85A]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
+                                className="w-full bg-gradient-to-r from-[#301A44] to-[#493657]/80 text-white font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#301A44]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >

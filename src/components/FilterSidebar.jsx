@@ -1,14 +1,51 @@
 import React, { useState } from 'react';
 import { products } from '../data/products';
 
-// Dynamically extract unique categories from products
+// --- Substrate Mapping Logic ---
+const substrateMapping = {
+  "plaster": "Plaster & POP",
+  "pop": "Plaster & POP",
+  "drywall": "Drywall & Cement Board",
+  "cement board": "Drywall & Cement Board",
+  "cement sheet": "Drywall & Cement Board",
+  "masonry": "Concrete & Masonry",
+  "concrete": "Concrete & Masonry",
+  "brick": "Concrete & Masonry",
+  "aac": "Concrete & Masonry",
+  "wood": "Wood & Ply",
+  "ply": "Wood & Ply",
+  "metal": "Metal & Steel",
+  "steel": "Metal & Steel",
+  "tile": "Tile & Ceramic",
+  "ceramic": "Tile & Ceramic",
+  "junction": "Multi-surface / Junctions",
+  "multi-surface": "Multi-surface / Junctions"
+};
+
+function mapToStandardSubstrates(substrates) {
+  const matched = new Set();
+  substrates.forEach(s => {
+    const sub = s.toLowerCase();
+    for (const [key, group] of Object.entries(substrateMapping)) {
+      if (sub.includes(key)) matched.add(group);
+    }
+  });
+  return [...matched];
+}
+
+// --- Build Filter Options ---
 const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
-// Dynamically extract unique substrates from products
-const uniqueSubstrates = Array.from(new Set(products.flatMap(p => Array.isArray(p.substrate) ? p.substrate : []).filter(Boolean)));
-// Dynamically extract unique application areas from products
-const uniqueApplicationAreas = Array.from(new Set(products.flatMap(p => Array.isArray(p.application) ? p.application : []).filter(Boolean)));
-// Dynamically extract unique recommended uses from products
-const uniqueRecommendedUses = Array.from(new Set(products.flatMap(p => Array.isArray(p.recommended_uses) ? p.recommended_uses : []).filter(Boolean)));
+
+// Hardcoded, ordered substrate groups
+const orderedSubstrateGroups = [
+  "Plaster & POP",
+  "Drywall & Cement Board",
+  "Concrete & Masonry",
+  "Wood & Ply",
+  "Metal & Steel",
+  "Tile & Ceramic",
+  "Multi-surface / Junctions"
+];
 
 const FILTERS = [
   {
@@ -17,30 +54,19 @@ const FILTERS = [
     options: uniqueCategories,
   },
   {
-    label: 'Application Surface', // UI label changed from 'Substrate'
-    field: 'substrate', // backend field remains unchanged
-    options: uniqueSubstrates,
+    label: 'Application Surface',
+    field: 'substrate',
+    options: orderedSubstrateGroups,
   },
-  // {
-  //   label: 'Application Area',
-  //   field: 'application',
-  //   options: uniqueApplicationAreas,
-  // },
-  // {
-  //   label: 'Recommended Use',
-  //   field: 'recommended_uses',
-  //   options: uniqueRecommendedUses,
-  // },
 ];
 
 const DEFAULT_VISIBLE = 6;
 
-export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreState, setShowMoreState }) => {
-  // Local state for Show More/Less per group
+export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
   const [showMore, setShowMore] = useState(Array(FILTERS.length).fill(false));
 
   const handleShowMore = idx => {
-    setShowMore(sm => sm.map((v, i) => (i === idx ? !v : v)));
+    setShowMore(prev => prev.map((val, i) => (i === idx ? !val : val)));
   };
 
   return (
@@ -49,6 +75,7 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreSt
       {FILTERS.map((group, idx) => {
         const visibleOptions = showMore[idx] ? group.options : group.options.slice(0, DEFAULT_VISIBLE);
         const hasShowMore = group.options.length > DEFAULT_VISIBLE;
+
         return (
           <div key={group.label} className="mb-6">
             <button
@@ -59,6 +86,7 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreSt
               <span>{group.label}</span>
               <span className={`transition-transform ${expanded[idx] ? 'rotate-180' : ''}`}>▼</span>
             </button>
+
             {expanded[idx] && (
               <div className="pl-1 flex flex-col gap-2">
                 {visibleOptions.map(option => (
@@ -90,4 +118,4 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, showMoreSt
   );
 };
 
-export default FilterSidebar; 
+export default FilterSidebar;

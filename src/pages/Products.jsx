@@ -7,6 +7,37 @@ import ProductCard from '../components/ProductCard';
 // Use only Category and Application Surface as filter groups
 const FILTER_GROUPS = ['Category', 'Application Surface'];
 
+// --- Substrate Mapping Logic (copied from FilterSidebar) ---
+const substrateMapping = {
+  "plaster": "Plaster & POP",
+  "pop": "Plaster & POP",
+  "drywall": "Drywall & Cement Board",
+  "cement board": "Drywall & Cement Board",
+  "cement sheet": "Drywall & Cement Board",
+  "masonry": "Concrete & Masonry",
+  "concrete": "Concrete & Masonry",
+  "brick": "Concrete & Masonry",
+  "aac": "Concrete & Masonry",
+  "wood": "Wood & Ply",
+  "ply": "Wood & Ply",
+  "metal": "Metal & Steel",
+  "steel": "Metal & Steel",
+  "tile": "Tile & Ceramic",
+  "ceramic": "Tile & Ceramic",
+  "junction": "Multi-surface / Junctions",
+  "multi-surface": "Multi-surface / Junctions"
+};
+function mapToStandardSubstrates(substrates) {
+  const matched = new Set();
+  substrates.forEach(s => {
+    const sub = s.toLowerCase();
+    for (const [key, group] of Object.entries(substrateMapping)) {
+      if (sub.includes(key)) matched.add(group);
+    }
+  });
+  return [...matched];
+}
+
 export const Products = () => {
   const [search, setSearch] = useState('');
   const [checked, setChecked] = useState({});
@@ -42,7 +73,9 @@ export const Products = () => {
     }
     // Application Surface filter
     if (selected['Application Surface'] && selected['Application Surface'].length) {
-      if (!product.substrate || !product.substrate.some(s => selected['Application Surface'].includes(s))) return false;
+      // Map product.substrate to standard groups
+      const mappedGroups = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
+      if (!mappedGroups.some(g => selected['Application Surface'].includes(g))) return false;
     }
     return true;
   });
