@@ -488,46 +488,48 @@ export const DynamicProductPage = () => {
                     { label: 'Clean Up', key: 'cleanup' },
                   ];
                   return (
-                    <div className="mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20">
-                      <h2 className="text-3xl font-bold text-[#493657] mb-8">Compare Similar Products</h2>
-                      <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white">
-                        <thead>
-                          <tr>
-                            <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">Product</th>
-                            {compareProducts.map((p, idx) => (
-                              <th
-                                key={p.name}
-                                className={`text-center font-bold px-8 py-5 border-b-2 border-[#e5e0d8] align-middle ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
-                              >
-                                <div className="flex flex-col items-center">
-                                  <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                                    <img src={p.image} alt={p.name} className="w-40 h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
-                                  </Link>
-                                  <div className="text-xl font-bold mb-2 text-center">{p.name}</div>
-                                  {/* Product description below bucket */}
-                                  <div className="text-[#493657]/80 font-semibold text-sm mb-2 text-center max-w-xs">{p.description}</div>
-                                  <Link to={`/product/${p.name}`} className="text-[#493657] underline text-sm" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
-                                </div>
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {fields.map(field => (
-                            <tr className="bg-white" key={field.label}>
-                              <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">{field.label}</td>
-                              {compareProducts.map((p, idx) => {
-                                let value = p[field.key];
-                                if (field.isArray && Array.isArray(value)) value = value.join(', ');
-                                if (!value || (Array.isArray(value) && value.length === 0)) value = '-';
-                                return (
-                                  <td key={p.name + '-' + field.key} className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{value}</td>
-                                );
-                              })}
+                    <div className="mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20 hide-scrollbar">
+                      <h2 className="text-lg md:text-2xl font-bold text-[#493657] mb-6 md:mb-8">Compare Similar Products</h2>
+                      <div className="w-full min-w-[600px]">
+                        <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white text-sm md:text-lg">
+                          <thead>
+                            <tr>
+                              <th className="text-left font-bold px-4 md:px-8 py-3 md:py-5 bg-white border-b-2 border-[#e5e0d8] w-32 md:w-64 align-middle text-sm md:text-lg">Product</th>
+                              {compareProducts.map((p, idx) => (
+                                <th
+                                  key={p.name}
+                                  className={`text-center font-bold px-4 md:px-8 py-3 md:py-5 border-b-2 border-[#e5e0d8] align-middle text-sm md:text-lg ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                                      <img src={p.image} alt={p.name} className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
+                                    </Link>
+                                    <div className="text-base md:text-xl font-bold mb-1 md:mb-2 text-center">{p.name}</div>
+                                    {/* Product description below bucket */}
+                                    <div className="text-[#493657]/80 font-semibold text-xs md:text-base mb-1 md:mb-2 text-center max-w-[7rem] md:max-w-xs">{p.description}</div>
+                                    <Link to={`/product/${p.name}`} className="text-[#493657] underline text-xs md:text-base" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
+                                  </div>
+                                </th>
+                              ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {fields.map(field => (
+                              <tr className="bg-white" key={field.label}>
+                                <td className="font-bold px-4 md:px-8 py-3 md:py-5 border-b border-[#e5e0d8] text-sm md:text-lg">{field.label}</td>
+                                {compareProducts.map((p, idx) => {
+                                  let value = p[field.key];
+                                  if (field.isArray && Array.isArray(value)) value = value.join(', ');
+                                  if (!value || (Array.isArray(value) && value.length === 0)) value = '-';
+                                  return (
+                                    <td key={p.name + '-' + field.key} className={`text-center px-4 md:px-8 py-3 md:py-5 border-b border-[#e5e0d8] text-sm md:text-lg ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{value}</td>
+                                  );
+                                })}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   );
                 })()}
