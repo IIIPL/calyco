@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
-// Use only Category and Application Surface as filter groups
-const FILTER_GROUPS = ['Category', 'Application Surface', 'Application Area'];
+// Use only Category and Substrate as filter groups
+const FILTER_GROUPS = ['Category', 'Substrate', 'Application Area'];
 
 // --- Substrate Mapping Logic (copied from FilterSidebar) ---
 const substrateMapping = {
@@ -145,11 +145,11 @@ export const Products = () => {
     if (selected['Category'].length) {
       if (!selected['Category'].includes(product.category)) return false;
     }
-    // Application Surface filter
-    if (selected['Application Surface'] && selected['Application Surface'].length) {
+    // Substrate filter
+    if (selected['Substrate'] && selected['Substrate'].length) {
       // Map product.substrate to standard groups
       const mappedGroups = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
-      if (!mappedGroups.some(g => selected['Application Surface'].includes(g))) return false;
+      if (!mappedGroups.some(g => selected['Substrate'].includes(g))) return false;
     }
     // Application Area filter
     if (selected['Application Area'] && selected['Application Area'].length) {
