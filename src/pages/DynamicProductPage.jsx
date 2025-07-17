@@ -311,8 +311,8 @@ export const DynamicProductPage = () => {
                           <h4 className="font-semibold text-[#493657] text-lg mb-2">Advantages</h4>
                           <p className="text-[#493657]/80 text-base mb-4">{(product.advantages || []).join(', ') || '—'}</p>
                           {/* Color Options */}
-                          <h4 className="font-semibold text-[#493657] text-lg mb-2">Color Options</h4>
-                          <p className="text-[#493657]/80 text-base mb-4">{(product.color_options || []).join(', ') || '—'}</p>
+                          {/* <h4 className="font-semibold text-[#493657] text-lg mb-2">Color Options</h4>
+                          <p className="text-[#493657]/80 text-base mb-4">{(product.color_options || []).join(', ') || '—'}</p> */}
                         </div>
                         {/* Right: Labeled grid (40% on xl) */}
                         <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
