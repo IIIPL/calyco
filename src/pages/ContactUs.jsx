@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaUsers, FaHeadset, FaGlobe } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaUsers, FaHeadset, FaGlobe, FaCheckCircle } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -21,12 +22,53 @@ const imageVariants = {
 };
 
 export const ContactUs = () => {
+    const form = useRef();
+    const [toast, setToast] = useState(null);
+    const [sending, setSending] = useState(false);
+
     useEffect(() => {
         document.title = "Contact Calyco";
+        emailjs.init('o3nHktLCZY2hMn6EE');
     }, [])
-    
+
+    // Toaster auto-hide
+    useEffect(() => {
+        if (toast) {
+            const timer = setTimeout(() => setToast(null), 3500);
+            return () => clearTimeout(timer);
+        }
+    }, [toast]);
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setSending(true);
+        emailjs.sendForm('service_nztkw4l', 'template_qaobwqf', form.current, 'o3nHktLCZY2hMn6EE')
+            .then((result) => {
+                setToast({ type: 'success', message: 'Message sent!' });
+                form.current.reset();
+                setSending(false);
+            }, (error) => {
+                setToast({ type: 'error', message: 'Failed to send. Please try again.' });
+                setSending(false);
+            });
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+            {/* Toaster at the top with motion and icon */}
+            {toast && (
+                <motion.div
+                    initial={{ y: -40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -40, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                    className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-xl font-semibold shadow-2xl flex items-center gap-3 transition-all duration-300 ${toast.type === 'success' ? 'bg-[#d1fae5] text-[#059669]' : 'bg-red-100 text-red-700'}`}
+                    style={{ minWidth: '320px', maxWidth: '90vw' }}
+                >
+                    {toast.type === 'success' && <FaCheckCircle className="text-2xl text-[#059669]" />}
+                    <span>{toast.type === 'success' ? "Message sent, we'll get back to you soon." : toast.message}</span>
+                </motion.div>
+            )}
             {/* Hero Section with Background Image */}
             <div className="relative h-96 bg-gradient-to-r from-[#493657] to-[#F0C85A] overflow-hidden">
                 <div className="absolute inset-0 bg-black/20"></div>
@@ -160,51 +202,54 @@ export const ContactUs = () => {
                     <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
                         Have a question or want to discuss a project? Fill out the form below and we'll get back to you within 24 hours.
                     </p>
-                    
-                    <div className="max-w-2xl mx-auto">
+                    <form ref={form} onSubmit={sendEmail} className="max-w-2xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label className="block text-gray-700 font-semibold mb-2">Full Name</label>
                                 <input 
                                     type="text" 
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    name="user_name"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
                                     placeholder="Your full name"
+                                    required
                                 />
                             </div>
                             <div>
                                 <label className="block text-gray-700 font-semibold mb-2">Email Address</label>
                                 <input 
                                     type="email" 
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    name="user_email"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
                                     placeholder="your@email.com"
+                                    required
                                 />
                             </div>
                         </div>
-                        
                         <div className="mb-6">
                             <label className="block text-gray-700 font-semibold mb-2">Subject</label>
                             <input 
                                 type="text" 
+                                name="subject"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
                                 placeholder="How can we help you?"
                             />
                         </div>
-                        
                         <div className="mb-8">
                             <label className="block text-gray-700 font-semibold mb-2">Message</label>
                             <textarea 
                                 rows="5" 
+                                name="message"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent resize-none"
                                 placeholder="Tell us more about your project or inquiry..."
+                                required
                             ></textarea>
                         </div>
-                        
                         <div className="text-center">
-                            <button className="bg-gradient-to-r from-[#493657] to-[#F0C85A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-[#5a4067] hover:to-[#f5d470] transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                Send Message
+                            <button type="submit" disabled={sending} className={`bg-gradient-to-r from-[#493657] to-[#F0C85A] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-[#5a4067] hover:to-[#f5d470] transition-all duration-300 transform hover:scale-105 shadow-lg ${sending ? 'opacity-60 cursor-not-allowed' : ''}`}>
+                                {sending ? 'Sending...' : 'Send Message'}
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </motion.div>
 
                 {/* Map Section */}
