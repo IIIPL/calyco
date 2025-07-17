@@ -5,7 +5,7 @@ import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 
 // Use only Category and Application Surface as filter groups
-const FILTER_GROUPS = ['Category', 'Application Surface'];
+const FILTER_GROUPS = ['Category', 'Application Surface', 'Application Area'];
 
 // --- Substrate Mapping Logic (copied from FilterSidebar) ---
 const substrateMapping = {
@@ -38,10 +38,78 @@ function mapToStandardSubstrates(substrates) {
   return [...matched];
 }
 
+// --- Application Area Mapping Logic (synchronized with FilterSidebar) ---
+const applicationAreaMapping = {
+  "bathroom": "Bathroom",
+  "utility": "Bathroom",
+  "kitchen": "Kitchen",
+  "children": "Children's Room",
+  "child": "Children's Room",
+  "bedroom": "Bedroom",
+  "living": "Living",
+  "dining": "Living",
+  "lounge": "Living",
+  "personal": "Living",
+  "formal": "Living",
+  "hallway": "Living",
+  "office": "Office",
+  "exterior": "Exterior",
+  "villa": "Exterior",
+  "architectural": "Exterior",
+  "roof": "Roof/Deck",
+  "deck": "Roof/Deck",
+  "staircase": "Stairs/Lobby",
+  "lobby": "Stairs/Lobby",
+  "high-exposure": "Exterior",
+  "multi-purpose": "Special",
+  "multi": "Special",
+  "baked clay": "Special",
+  "bricks": "Special",
+  "tile": "Special",
+  "meditation": "Special",
+  "commercial": "Office",
+  "offices": "Office",
+  "hallways": "Living",
+  "staircases": "Stairs/Lobby",
+  "lobbies": "Stairs/Lobby",
+  "kitchens": "Kitchen",
+  "bedrooms": "Bedroom",
+  "children's": "Children's Room",
+  "kids": "Children's Room",
+};
+const APPLICATION_GROUPS_ORDER = [
+  "Bathroom",
+  "Kitchen",
+  "Bedroom",
+  "Living",
+  "Children's Room",
+  "Exterior",
+  "Roof/Deck",
+  "Office",
+  "Stairs/Lobby",
+  "Special",
+  "Other"
+];
+function mapToStandardApplicationAreas(applications) {
+  const matched = new Set();
+  applications.forEach(a => {
+    const app = a.toLowerCase();
+    let found = false;
+    for (const [key, group] of Object.entries(applicationAreaMapping)) {
+      if (app.includes(key)) {
+        matched.add(group);
+        found = true;
+      }
+    }
+    if (!found) matched.add("Other");
+  });
+  return [...matched];
+}
+
 export const Products = () => {
   const [search, setSearch] = useState('');
   const [checked, setChecked] = useState({});
-  const [expanded, setExpanded] = useState([true, true]); // One for each filter group
+  const [expanded, setExpanded] = useState([true, true, true]); // Updated for three filter groups
   const [sortOrder, setSortOrder] = useState('');
   const [showFilter, setShowFilter] = useState(true);
 
@@ -80,6 +148,12 @@ export const Products = () => {
       // Map product.substrate to standard groups
       const mappedGroups = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
       if (!mappedGroups.some(g => selected['Application Surface'].includes(g))) return false;
+    }
+    // Application Area filter
+    if (selected['Application Area'] && selected['Application Area'].length) {
+      const appList = Array.isArray(product.application) ? product.application : (product.application ? [product.application] : []);
+      const mappedAreas = mapToStandardApplicationAreas(appList);
+      if (!mappedAreas.some(area => selected['Application Area'].includes(area))) return false;
     }
     return true;
   });

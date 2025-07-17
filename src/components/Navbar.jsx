@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { CartIcon } from "./CartIcon";
 import { ProductsDropdown } from "./ProductsDropdown";
 import React from "react"; // Added for useEffect
+import { products as allProducts } from "../data/products";
 
 const NavDropdown = ({ children }) => (
   <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
@@ -17,6 +18,23 @@ export const Navbar = () => {
     const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(null); // null or menu key
     const dropdownTimeout = useRef(null);
+
+    // Add for mobile collapsible categories
+    const [mobileCategoryOpen, setMobileCategoryOpen] = useState({});
+
+    // Group products by category
+    const categories = [
+      { key: "Interior", label: "Interior Paints" },
+      { key: "Exterior", label: "Exterior Paints" },
+      { key: "Industrial", label: "Industrial" },
+      { key: "Enamel", label: "Enamel" },
+    ];
+    const grouped = {
+      Interior: allProducts.filter(p => p.category && p.category.toLowerCase() === "interior"),
+      Exterior: allProducts.filter(p => p.category && p.category.toLowerCase() === "exterior"),
+      Industrial: allProducts.filter(p => p.category && p.category.toLowerCase().includes("industrial")),
+      Enamel: allProducts.filter(p => p.category && p.category.toLowerCase().includes("enamel")),
+    };
 
     // Dropdown open/close handlers (click only)
     const handleDropdownClick = (key) => {
@@ -127,7 +145,7 @@ export const Navbar = () => {
             </div>
             {/* Mobile Menu Dropdown */}
             {menuOpen && (
-                <div className="fixed inset-0 bg-[#f9f6f2] z-50 flex flex-col">
+                <div className="fixed inset-0 bg-[#f9f6f2] z-50 flex flex-col overflow-y-auto">
                     {/* Close button */}
                     <button
                         className="absolute top-6 right-6 text-3xl text-[#493657]"
@@ -143,26 +161,60 @@ export const Navbar = () => {
                         </Link>
                     </div>
                     {/* Menu Items */}
-                    <nav className="flex flex-col gap-6 text-xl font-medium items-center flex-1">
-                        <div className="w-full flex flex-col items-center">
+                    <nav className="flex flex-col gap-6 text-xl font-medium items-center flex-1 w-full px-4">
+                        {/* Products collapsible */}
+                        <div className="w-full flex flex-col items-start">
                             <button
-                                className="text-[#493657] hover:text-[#F0C85A] transition-colors flex items-center gap-2"
+                                className="text-[#493657] hover:text-[#F0C85A] transition-colors flex items-center gap-2 w-full justify-between"
                                 onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
                             >
-                                Products
+                                <span>Products</span>
                                 <span className={`transform transition-transform ${mobileProductsOpen ? 'rotate-90' : ''}`}>▶</span>
                             </button>
                             {mobileProductsOpen && (
                                 <div className="w-full flex flex-col gap-2 mt-2 pl-4">
-                                    <span className="text-[#493657]">By design</span>
-                                    <span className="text-[#493657]">By colour</span>
-                                    <span className="text-[#493657]">By room</span>
-                                    <span className="text-[#493657]">By type</span>
+                                    <Link
+                                        to="/product"
+                                        className="text-[#493657] hover:text-[#F0C85A] py-1"
+                                        onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                    >
+                                        Explore All Products
+                                    </Link>
+                                    {categories.map(cat => (
+                                        <div key={cat.key} className="w-full">
+                                            <button
+                                                className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] w-full py-1"
+                                                onClick={() => setMobileCategoryOpen(prev => ({ ...prev, [cat.key]: !prev[cat.key] }))}
+                                            >
+                                                <span>{cat.label}</span>
+                                                <span className={`transform transition-transform ${mobileCategoryOpen[cat.key] ? 'rotate-90' : ''}`}>▶</span>
+                                            </button>
+                                            {mobileCategoryOpen[cat.key] && (
+                                                <div className="pl-4 flex flex-col gap-1">
+                                                    {grouped[cat.key].length === 0 && (
+                                                        <span className="text-[#493657]/60 italic text-base">No products</span>
+                                                    )}
+                                                    {grouped[cat.key].map(product => (
+                                                        <Link
+                                                            key={product.name}
+                                                            to={`/product/${product.name}`}
+                                                            className="text-[#493657] hover:text-[#F0C85A] text-base py-1"
+                                                            onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                                        >
+                                                            {product.display_name || product.name}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
                             )}
                         </div>
-                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>Samples</Link>
-                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors" onClick={() => setMenuOpen(false)}>About</Link>
+                        {/* Samples */}
+                        <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors w-full text-left" onClick={() => setMenuOpen(false)}>Samples</Link>
+                        {/* About Us */}
+                        <Link to="/about" className="text-[#493657] hover:text-[#F0C85A] transition-colors w-full text-left" onClick={() => setMenuOpen(false)}>About Us</Link>
                     </nav>
                     {/* Cart Icon at the bottom */}
                     <div className="flex justify-center items-center mb-8 mt-auto">

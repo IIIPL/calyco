@@ -33,6 +33,76 @@ function mapToStandardSubstrates(substrates) {
   return [...matched];
 }
 
+// --- Application Area Mapping Logic ---
+const applicationAreaMapping = {
+  "bathroom": "Bathroom",
+  "utility": "Bathroom",
+  "kitchen": "Kitchen",
+  "children": "Children's Room",
+  "child": "Children's Room",
+  "bedroom": "Bedroom",
+  "living": "Living",
+  "dining": "Living",
+  "lounge": "Living",
+  "personal": "Living",
+  "formal": "Living",
+  "hallway": "Living",
+  "office": "Office",
+  "exterior": "Exterior",
+  "villa": "Exterior",
+  "architectural": "Exterior",
+  "roof": "Roof/Deck",
+  "deck": "Roof/Deck",
+  "staircase": "Stairs/Lobby",
+  "lobby": "Stairs/Lobby",
+  "high-exposure": "Exterior",
+  "multi-purpose": "Special",
+  "multi": "Special",
+  "baked clay": "Special",
+  "bricks": "Special",
+  "tile": "Special",
+  "meditation": "Special",
+  "commercial": "Office",
+  "offices": "Office",
+  "hallways": "Living",
+  "staircases": "Stairs/Lobby",
+  "lobbies": "Stairs/Lobby",
+  "kitchens": "Kitchen",
+  "bedrooms": "Bedroom",
+  "children's": "Children's Room",
+  "kids": "Children's Room",
+};
+
+const APPLICATION_GROUPS_ORDER = [
+  "Bathroom",
+  "Kitchen",
+  "Bedroom",
+  "Living",
+  "Children's Room",
+  "Exterior",
+  "Roof/Deck",
+  "Office",
+  "Stairs/Lobby",
+  "Special",
+  "Other"
+];
+
+function mapToStandardApplicationAreas(applications) {
+  const matched = new Set();
+  applications.forEach(a => {
+    const app = a.toLowerCase();
+    let found = false;
+    for (const [key, group] of Object.entries(applicationAreaMapping)) {
+      if (app.includes(key)) {
+        matched.add(group);
+        found = true;
+      }
+    }
+    if (!found) matched.add("Other");
+  });
+  return [...matched];
+}
+
 // --- Build Filter Options ---
 const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
 
@@ -47,6 +117,29 @@ const orderedSubstrateGroups = [
   "Multi-surface / Junctions"
 ];
 
+// Get unique application areas from products
+const uniqueApplicationAreas = Array.from(
+  new Set(
+    products
+      .flatMap(p => Array.isArray(p.application) ? p.application : (p.application ? [p.application] : []))
+      .filter(Boolean)
+  )
+);
+
+// Build unique, grouped application area options (max 10 + Other)
+const allRawApplications = products
+  .flatMap(p => Array.isArray(p.application) ? p.application : (p.application ? [p.application] : []))
+  .filter(Boolean);
+let uniqueGroupedApplicationAreas = Array.from(
+  new Set(
+    allRawApplications
+      .flatMap(a => mapToStandardApplicationAreas([a]))
+      .filter(Boolean)
+  )
+);
+// Enforce order and max 10 + Other
+uniqueGroupedApplicationAreas = APPLICATION_GROUPS_ORDER.filter(g => uniqueGroupedApplicationAreas.includes(g));
+
 const FILTERS = [
   {
     label: 'Category',
@@ -54,9 +147,14 @@ const FILTERS = [
     options: uniqueCategories,
   },
   {
-    label: 'Application Surface',
+    label: 'Substrate', // Changed from 'Application Surface' to 'Substrate'
     field: 'substrate',
     options: orderedSubstrateGroups,
+  },
+  {
+    label: 'Application Area',
+    field: 'application',
+    options: uniqueGroupedApplicationAreas,
   },
 ];
 

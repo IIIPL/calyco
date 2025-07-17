@@ -311,15 +311,15 @@ export const DynamicProductPage = () => {
                           {product.details || product.description}
                         </p>
                       </div>
-                      {/* Right: Bulleted features */}
-                      <div className="md:w-1/2 w-full">
+                      {/* Right: Bulleted advantages (instead of features) */}
+                      <div className="md:w-1/2 w-full mt-20">
                         <ul className="list-disc pl-6 space-y-3 text-lg text-[#493657] font-medium">
-                          {Array.isArray(product.features) && product.features.length > 0 ? (
-                            product.features.map((feature, idx) => (
-                              <li key={idx}>{feature}</li>
+                          {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
+                            product.advantages.map((adv, idx) => (
+                              <li key={idx}>{adv}</li>
                             ))
                           ) : (
-                            <li>No key features listed.</li>
+                            <li>No key advantages listed.</li>
                           )}
                         </ul>
                       </div>
@@ -341,12 +341,6 @@ export const DynamicProductPage = () => {
                       {/* Application */}
                       <h4 className="font-semibold text-[#493657] text-lg mb-2">Application</h4>
                       <p className="text-[#493657]/80 text-base mb-4">{(product.application || []).join(', ') || '—'}</p>
-                      {/* Advantages */}
-                      <h4 className="font-semibold text-[#493657] text-lg mb-2">Advantages</h4>
-                      <p className="text-[#493657]/80 text-base mb-4">{(product.advantages || []).join(', ') || '—'}</p>
-                      {/* Color Options */}
-                      {/* <h4 className="font-semibold text-[#493657] text-lg mb-2">Color Options</h4>
-                      <p className="text-[#493657]/80 text-base mb-4">{(product.color_options || []).join(', ') || '—'}</p> */}
                     </div>
                     {/* Right: Labeled grid (40% on xl) */}
                     <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
