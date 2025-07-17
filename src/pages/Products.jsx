@@ -112,6 +112,8 @@ export const Products = () => {
   const [expanded, setExpanded] = useState([true, true, true]); // Updated for three filter groups
   const [sortOrder, setSortOrder] = useState('');
   const [showFilter, setShowFilter] = useState(true);
+  // State for mobile filter panel
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   useEffect(() => {
     document.title = 'Products';
@@ -178,33 +180,61 @@ export const Products = () => {
             onChange={e => setSearch(e.target.value)}
             className="w-full max-w-md px-4 py-2 rounded-lg border border-[#e5e0d8] focus:outline-none focus:ring-2 focus:ring-[#F0C85A]"
           />
-          <div className="ml-auto flex items-center gap-2">
-            <label htmlFor="sortPrice" className="text-[#493657] font-medium">Sort by Price:</label>
+          {/* Mobile: Show Filters Button and Sort by Price in same row */}
+          <div className="w-full flex md:hidden items-center gap-2 mb-4">
+            <button
+              className="px-3 py-2 bg-[#493657] text-white font-semibold rounded-md shadow hover:bg-[#301A44] transition text-sm"
+              onClick={() => setMobileFilterOpen(open => !open)}
+            >
+              {mobileFilterOpen ? 'Hide Filters' : 'Show Filters'}
+            </button>
+            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
             <select
               id="sortPrice"
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none"
+              className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-sm"
             >
               <option value="">None</option>
               <option value="asc">Low to High</option>
               <option value="desc">High to Low</option>
             </select>
-            {/* Show/Hide Filter Button moved here */}
+          </div>
+          {/* Desktop: Show/Hide Filters Button and Sort by Price */}
+          <div className="ml-auto hidden md:flex items-center gap-2 w-full md:w-auto">
             <button
-              className="px-6 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] font-semibold shadow hover:bg-[#F0C85A]/10 transition"
+              className="px-4 py-2 bg-[#493657] text-white font-semibold rounded-md shadow hover:bg-[#301A44] transition text-base mr-2"
               onClick={() => setShowFilter(f => !f)}
             >
-              {showFilter ? 'Hide Filter' : 'Show Filter'}
+              {showFilter ? 'Hide Filters' : 'Show Filters'}
             </button>
+            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
+            <select
+              id="sortPrice"
+              value={sortOrder}
+              onChange={e => setSortOrder(e.target.value)}
+              className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-base"
+            >
+              <option value="">None</option>
+              <option value="asc">Low to High</option>
+              <option value="desc">High to Low</option>
+            </select>
           </div>
         </div>
-        {/* Show/Hide Filter Button */}
-        <div className="flex flex-row items-start gap-4">
-          {/* Filter Sidebar */}
-          {showFilter && (
+        {/* Mobile: Collapsible Filter Panel */}
+        {mobileFilterOpen && (
+          <div className="md:hidden mb-6 animate-fade-in-down">
             <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
-          )}
+          </div>
+        )}
+        {/* Desktop: Sidebar and Product Grid */}
+        <div className="flex flex-row items-start gap-4">
+          {/* Desktop Sidebar */}
+          <div className="hidden md:block">
+            {showFilter && (
+              <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
+            )}
+          </div>
           {/* Product Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -231,3 +261,4 @@ export const Products = () => {
     </div>
   );
 };
+

@@ -363,8 +363,10 @@ export const DynamicProductPage = () => {
                     
                   </div>
                 </div>
+                {/* Add divider between Specifications and Technical Specifications */}
+                <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
                 {/* Technical Specifications Section */}
-                <div className="mb-20">
+                <div className="mb-20 mt-16">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div>
