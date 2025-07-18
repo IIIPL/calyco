@@ -25,7 +25,7 @@ export default function InspirationPage() {
           {ROOMS.map((room, idx) => (
             <div key={room.title} className="bg-white rounded-2xl shadow-md flex flex-col overflow-hidden border border-gray-100">
               <img
-                src={"/Assets/homehero.png"}
+                src={"/Assets/inspiration2.png"}
                 alt={room.title}
                 className="w-full h-48 object-cover"
                 draggable="false"
@@ -36,7 +36,7 @@ export default function InspirationPage() {
                   <div className="text-sm text-gray-500 mb-4">{room.designs} designs</div>
                 </div>
                 <button className="mt-auto w-full border-2 border-purple-500 text-purple-700 font-medium py-2 rounded-lg transition hover:bg-purple-50 text-sm">
-                  BOOK COLOUR CONSULTATION
+                  Explore More
                 </button>
               </div>
             </div>

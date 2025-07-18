@@ -1,7 +1,17 @@
 import React from "react";
 import RoomInspiration from "../../components/RoomInspiration";
+import { colorGroups } from "../../data/colorGroups";
 
 export default function BedroomInspiration() {
+  // Helper to find color by name in colorGroups
+  const findColor = (name) => {
+    for (const group of colorGroups) {
+      const found = group.colors.find((c) => c.name === name);
+      if (found) return found;
+    }
+    return null;
+  };
+
   return (
     <div className="font-poppins bg-white min-h-screen mt-20">
       {/* Wide Image at Top */}
@@ -14,7 +24,6 @@ export default function BedroomInspiration() {
         <p className="text-lg md:text-xl text-[#393939] mb-4 text-center">
           Choosing a bedroom paint color is about creating your personal sanctuary. Our bedroom inspiration gallery helps you explore colors by mood, style, and palette to spark ideas and bring your dream retreat to life.
         </p>
-        
       </div>
       {/* Example Room Inspiration Blocks */}
       <RoomInspiration
@@ -22,29 +31,30 @@ export default function BedroomInspiration() {
         description="A serene blue palette creates a peaceful retreat, perfect for unwinding after a long day."
         imageUrl="/Assets/inspiration.png"
         colors={[
-          { name: "Riverdale", code: "N410-3", hex: "#C3CBC3" },
-          { name: "Polar Bear", code: "75", hex: "#F5F6F1" },
-          { name: "Ocean Night", code: "S490-7", hex: "#2B3A42" },
-        ]}
+          findColor("Monsoon Cloud"),
+          findColor("Lotus Lake"),
+          findColor("Indigo Night"),
+        ].filter(Boolean)}
       />
       <RoomInspiration
         title="Modern Minimalist Bedroom"
         description="Clean lines and soft neutrals make this bedroom a modern sanctuary."
         imageUrl="/Assets/InteriorInspiratoin/6f230793e6001ad681b2e5b8f447e87e.jpg"
         colors={[
-          { name: "Soft Taupe", code: "PPG1024-2", hex: "#E6DED7" },
-          { name: "Cloud Linen", code: "PPG1024-1", hex: "#E9E7E1" },
-        ]}
+          findColor("Ivory Mist"),
+          findColor("Almond Silk"),
+          findColor("Cream Sandal"),
+        ].filter(Boolean)}
       />
       <RoomInspiration
         title="Warm Earthy Bedroom"
         description="Earth tones and natural textures create a cozy, inviting space for rest and relaxation."
         imageUrl="/Assets/InteriorInspiratoin/9e4b7d64c952697f8db4991ae2dea822.jpg"
         colors={[
-          { name: "Terracotta", code: "PPG1197-7", hex: "#D96C3B" },
-          { name: "Desert Sage", code: "PPG1121-3", hex: "#C1B398" },
-          { name: "Warm Oat", code: "PPG1101-2", hex: "#E2D8C3" },
-        ]}
+          findColor("Terracotta Tile"),
+          findColor("Amber Soil"),
+          findColor("Sienna Path"),
+        ].filter(Boolean)}
       />
       {/* Page Content Placeholder */}
       <div className="max-w-4xl w-full mx-auto py-12 px-4">
