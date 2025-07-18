@@ -17,6 +17,16 @@ import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
 import { CartProvider } from './context/CartContext'
 import Checkout from "./pages/Checkout";
+import { ColorsPage, InspirationPage } from './pages'
+import KitchenInspiration from './pages/inspiration/Kitchen';
+import BedroomInspiration from './pages/inspiration/Bedroom';
+import HallwayInspiration from './pages/inspiration/Hallway';
+import LivingInspiration from './pages/inspiration/Living';
+import BathroomInspiration from './pages/inspiration/Bathroom';
+import DiningInspiration from './pages/inspiration/Dining';
+import OfficeInspiration from './pages/inspiration/Office';
+import KidsInspiration from './pages/inspiration/Kids';
+import ExteriorInspiration from './pages/inspiration/Exterior';
 
 
 function App() {
@@ -33,9 +43,23 @@ function App() {
           <Route path='/temp' element={<Temp/>}/>
           <Route path='/faq' element={<FAQs/>}/>
           <Route path='/contact' element={<ContactUs/>}/>
-          <Route path='/interior' element={<Interior/>}/>
-          <Route path='/stain-sealer' element={<StainSealer/>}/>
+          {/* <Route path='/interior' element={<Interior/>}/> */}
+          {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
           <Route path='/checkout' element={<Checkout />} />
+
+          {/* Colors new routes */}
+          <Route path='/colors' element={<ColorsPage/>}/>
+          <Route path='/inspiration' element={<InspirationPage/>}/>
+          <Route path='/inspiration/kitchen' element={<KitchenInspiration/>}/>
+          <Route path='/inspiration/bedroom' element={<BedroomInspiration/>}/>
+          <Route path='/inspiration/hallway' element={<HallwayInspiration/>}/>
+          <Route path='/inspiration/living' element={<LivingInspiration/>}/>
+          <Route path='/inspiration/bathroom' element={<BathroomInspiration/>}/>
+          <Route path='/inspiration/dining' element={<DiningInspiration/>}/>
+          <Route path='/inspiration/office' element={<OfficeInspiration/>}/>
+          <Route path='/inspiration/kids' element={<KidsInspiration/>}/>
+          <Route path='/inspiration/exterior' element={<ExteriorInspiration/>}/>
+          
         </Routes>
         <Footer/>
         

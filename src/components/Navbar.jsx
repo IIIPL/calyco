@@ -4,6 +4,7 @@ import { CartIcon } from "./CartIcon";
 import { ProductsDropdown } from "./ProductsDropdown";
 import React from "react"; // Added for useEffect
 import { products as allProducts } from "../data/products";
+import InspirationsDropdown from './InspirationsDropdown';
 
 const NavDropdown = ({ children }) => (
   <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
@@ -83,6 +84,7 @@ export const Navbar = () => {
             <div className="text-[#493657] text-lg font-semibold">Trade Dropdown Content</div>
           </NavDropdown>
         ),
+        inspirations: <InspirationsDropdown onSelect={() => setDropdownOpen(null)} />,
     };
 
     return (
@@ -118,6 +120,18 @@ export const Navbar = () => {
                             className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'samples' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
                         >
                             {dropdowns.samples}
+                        </div>
+                    </div>
+                    {/* Inspirations */}
+                    <div className="relative navbar-dropdown-trigger">
+                        <button
+                            className="text-[#493657] hover:text-[#F0C85A] transition-colors focus:outline-none"
+                            onClick={() => handleDropdownClick('inspirations')}
+                        >Inspirations</button>
+                        <div
+                            className={`navbar-dropdown-content pointer-events-none opacity-0 ${dropdownOpen === 'inspirations' ? 'opacity-100 pointer-events-auto transition-opacity duration-150' : 'transition-opacity duration-500'}`}
+                        >
+                            {dropdowns.inspirations}
                         </div>
                     </div>
                     {/* About (as a simple link) */}
@@ -211,6 +225,8 @@ export const Navbar = () => {
                                 </div>
                             )}
                         </div>
+                        {/* Inspirations (mobile) */}
+                        <Link to="/inspiration" className="text-[#493657] hover:text-[#F0C85A] transition-colors w-full text-left" onClick={() => setMenuOpen(false)}>Inspirations</Link>
                         {/* Samples */}
                         <Link to="#" className="text-[#493657] hover:text-[#F0C85A] transition-colors w-full text-left" onClick={() => setMenuOpen(false)}>Samples</Link>
                         {/* About Us */}
