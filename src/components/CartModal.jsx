@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
-import { InvoiceGenerator } from './InvoiceGenerator';
 import { useNavigate } from 'react-router-dom';
 
 export const CartModal = ({ isOpen, onClose }) => {
@@ -27,7 +26,7 @@ export const CartModal = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-2 sm:px-4">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -45,8 +44,8 @@ export const CartModal = ({ isOpen, onClose }) => {
             className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-[#493657]">Shopping Cart</h2>
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#493657]">Shopping Cart</h2>
               <button
                 onClick={onClose}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -58,13 +57,13 @@ export const CartModal = ({ isOpen, onClose }) => {
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto max-h-[60vh]">
               {items.length === 0 ? (
-                <div className="p-8 text-center">
+                <div className="p-6 sm:p-8 text-center">
                   <div className="text-6xl mb-4">🛒</div>
-                  <h3 className="text-xl font-semibold text-gray-600 mb-2">Your cart is empty</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">Your cart is empty</h3>
                   <p className="text-gray-500">Add some products to get started!</p>
                 </div>
               ) : (
-                <div className="p-6 space-y-4">
+                <div className="p-4 sm:p-6 space-y-4">
                   {items.map((item, index) => (
                     <motion.div
                       key={`${item.id}-${item.selectedSheen}-${item.selectedSize}`}
@@ -72,22 +71,22 @@ export const CartModal = ({ isOpen, onClose }) => {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
                       transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg"
+                      className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg"
                     >
                       {/* Product Image */}
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-16 h-16 object-contain rounded"
+                        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded"
                       />
 
                       {/* Product Details */}
                       <div className="flex-1">
-                        <h3 className="font-semibold text-[#493657]">{item.name}</h3>
-                        <p className="text-sm text-gray-600">
+                        <h3 className="font-semibold text-[#493657] text-sm sm:text-base">{item.name}</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">
                           {item.selectedSheen} • {item.selectedSize}
                         </p>
-                        <p className="text-lg font-bold text-[#F0C85A]">
+                        <p className="text-base sm:text-lg font-bold text-[#F0C85A]">
                           {formatPrice(item.price)}
                         </p>
                       </div>
@@ -100,7 +99,7 @@ export const CartModal = ({ isOpen, onClose }) => {
                         >
                           <FaMinus className="w-3 h-3" />
                         </button>
-                        <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                        <span className="w-6 sm:w-8 text-center font-semibold text-sm sm:text-base">{item.quantity}</span>
                         <button
                           onClick={() => handleQuantityChange(item, item.quantity + 1)}
                           className="w-8 h-8 rounded-full bg-[#493657] text-white flex items-center justify-center hover:bg-[#5a4067] transition-colors"
@@ -124,23 +123,23 @@ export const CartModal = ({ isOpen, onClose }) => {
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="border-t border-gray-200 p-6">
+              <div className="border-t border-gray-200 p-4 sm:p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-lg font-semibold text-[#493657]">Total:</span>
-                  <span className="text-2xl font-bold text-[#F0C85A]">
+                  <span className="text-base sm:text-lg font-semibold text-[#493657]">Total:</span>
+                  <span className="text-xl sm:text-2xl font-bold text-[#F0C85A]">
                     {formatPrice(getCartTotal())}
                   </span>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-2 sm:gap-3">
                   <button
                     onClick={clearCart}
-                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex-1 px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
                   >
                     Clear Cart
                   </button>
                   <button
                     onClick={() => { onClose(); navigate('/checkout'); }}
-                    className="flex-1 px-4 py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors font-semibold"
+                    className="flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors font-semibold text-sm sm:text-base"
                   >
                     Proceed to Checkout
                   </button>
@@ -152,4 +151,4 @@ export const CartModal = ({ isOpen, onClose }) => {
       )}
     </AnimatePresence>
   );
-}; 
+};

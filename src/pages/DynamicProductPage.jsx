@@ -129,7 +129,7 @@ export const DynamicProductPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-2 md:px-6 xl:px-10">
+        <div className="pt-[120px] min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-2 md:px-6 xl:px-10">
             <motion.section 
                 className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
                 variants={containerVariants}

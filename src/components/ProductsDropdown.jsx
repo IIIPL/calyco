@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// ✅ Unified ProductsDropdown with mobile & desktop logic
+import React, { useState, useEffect } from "react";
 import { products as allProducts } from "../data/products";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,44 +11,96 @@ const leftMenu = [
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
 
-// Case-insensitive filter for category
-const filteredInteriorProducts = allProducts.filter(
-  p => p.category && p.category.toLowerCase() === "interior"
-);
-
-
 const grouped = {
-  Interior: filteredInteriorProducts,
-  Exterior: allProducts.filter(p => p.category && p.category.toLowerCase() === "exterior"),
-  Industrial: allProducts.filter(p => p.category && p.category.toLowerCase().includes("industrial")),
-  Enamel: allProducts.filter(p => p.category && p.category.toLowerCase().includes("enamel")),
+  Interior: allProducts.filter(p => p.category?.toLowerCase() === "interior"),
+  Exterior: allProducts.filter(p => p.category?.toLowerCase() === "exterior"),
+  Industrial: allProducts.filter(p => p.category?.toLowerCase().includes("industrial")),
+  Enamel: allProducts.filter(p => p.category?.toLowerCase().includes("enamel")),
   All: allProducts,
 };
 
-export const ProductsDropdown = ({ onSelect }) => {
+export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [selectedMenu, setSelectedMenu] = useState("Interior");
-  const [hovered, setHovered] = useState(grouped["Interior"][0]);
+  const [hovered, setHovered] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(null);
   const navigate = useNavigate();
 
-  // Update hovered when menu changes
-  React.useEffect(() => {
-    setHovered(grouped[selectedMenu][0] || null);
+  useEffect(() => {
+    if (selectedMenu && grouped[selectedMenu]?.[0]) {
+      setHovered(grouped[selectedMenu][0]);
+    } else {
+      setHovered(null);
+    }
   }, [selectedMenu]);
 
   const handleMenuClick = (item) => {
     if (item.key === "All") {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       navigate("/product");
       if (onSelect) onSelect();
     } else {
+      setSubmenuOpen(submenuOpen === item.key ? null : item.key);
       setSelectedMenu(item.key);
     }
   };
 
+  const handleHover = (product) => {
+    setHovered(product);
+  };
+
+  if (isMobile) {
+    return (
+      <div className="w-full flex flex-col items-start">
+        <button
+          onClick={() => setOpen(!open)}
+          className="text-[#493657] hover:text-[#F0C85A] flex justify-between w-full"
+        >
+          <span>Products</span>
+          <span className={`transform transition-transform ${open ? 'rotate-90' : ''}`}>▶</span>
+        </button>
+        <div
+          className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'} w-full`}
+        >
+          <div className="pl-4 py-2 flex flex-col gap-2">
+            {leftMenu.map(item => (
+              <div key={item.key} className="w-full">
+                <button
+                  onClick={() => handleMenuClick(item)}
+                  className="text-left text-[#493657] hover:text-[#F0C85A] py-1 w-full flex justify-between items-center"
+                >
+                  {item.label}
+                  <span className={`transform transition-transform ${submenuOpen === item.key ? 'rotate-90' : ''}`}>▶</span>
+                </button>
+                <div
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${submenuOpen === item.key ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'} pl-4`}
+                >
+                  {grouped[item.key]?.map(product => (
+                    <Link
+                      key={product.name}
+                      to={`/product/${product.name}`}
+                      onClick={() => {
+                        window.scrollTo({ top: 0 });
+                        if (onSelect) onSelect();
+                        setOpen(false);
+                        setSubmenuOpen(null);
+                      }}
+                      className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
+                    >
+                      {product.display_name || product.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50 transition-opacity duration-300">
-      <div className="max-w-screen-xl mx-auto px-24 py-14 flex gap-0 justify-between items-start">
-        {/* Left menu */}
+    <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
+      <div className="max-w-screen-xl mx-auto px-24 py-14 flex justify-between">
         <div className="flex flex-col min-w-[200px] max-w-[220px] border-r border-[#e5e0d8] pr-10">
           {leftMenu.map(item => (
             <button
@@ -59,50 +112,38 @@ export const ProductsDropdown = ({ onSelect }) => {
             </button>
           ))}
         </div>
-        {/* Middle and Right: only show if not 'All' */}
-        {selectedMenu !== "All" && (
-          <>
-            {/* Middle: product/category list */}
-            <div className="flex-1 px-12 max-h-[400px] overflow-y-auto">
-              <h4 className="font-semibold mb-4 text-[#493657] text-base uppercase tracking-wide">
-                {selectedMenu === "All" ? "ALL PRODUCTS" : `ALL ${selectedMenu.toUpperCase()} PAINTS`}
-              </h4>
-              <ul className="space-y-2 text-[#493657]">
-                {grouped[selectedMenu].length === 0 && (
-                  <li className="text-[#493657]/60 italic">No products available.</li>
-                )}
-                {grouped[selectedMenu].map(product => (
-                  <li
-                    key={product.name}
-                    className={`cursor-pointer hover:text-[#F0C85A] transition-colors${hovered && hovered.name === product.name ? " font-bold" : ""}`}
-                    onMouseEnter={() => setHovered(product)}
+
+        <>
+          <div className="flex-1 px-12 max-h-[400px] overflow-y-auto">
+            <h4 className="font-semibold mb-4 text-[#493657] text-base uppercase tracking-wide">
+              {`ALL ${selectedMenu.toUpperCase()} PAINTS`}
+            </h4>
+            <ul className="space-y-2 text-[#493657]">
+              {grouped[selectedMenu].map(product => (
+                <li
+                  key={product.name}
+                  className={`font-medium cursor-pointer ${hovered?.name === product.name ? 'font-semibold' : ''}`}
+                >
+                  <Link
+                    to={`/product/${product.name}`}
+                    onClick={() => { window.scrollTo({ top: 0 }); if (onSelect) onSelect(); }}
+                    onMouseEnter={() => handleHover(product)}
+                    className="hover:text-[#F0C85A]"
                   >
-                    <Link
-                      to={`/product/${product.name}`}
-                      onClick={e => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        if (onSelect) onSelect();
-                      }}
-                    >
-                      {product.display_name || product.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Right: image preview */}
-            <div className="min-w-[260px] max-w-[280px] flex flex-col items-center justify-center">
-              {hovered && (
-                <img
-                  src={hovered.image}
-                  alt={hovered.name}
-                  className=""
-                />
-              )}
-            </div>
-          </>
-        )}
+                    {product.display_name || product.name}
+                  </Link>
+                </li>
+              
+              ))}
+            </ul>
+          </div>
+          <div className="min-w-[260px] max-w-[280px] flex items-center justify-center">
+            {hovered && (
+              <img src={hovered.image} alt={hovered.name} className="object-contain h-48" />
+            )}
+          </div>
+        </>
       </div>
     </div>
   );
-}; 
+};

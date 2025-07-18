@@ -54,7 +54,7 @@ export const ContactUs = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+        <div className="pt-20 min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
             {/* Toaster at the top with motion and icon */}
             {toast && (
                 <motion.div

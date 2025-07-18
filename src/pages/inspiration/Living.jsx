@@ -12,7 +12,7 @@ export default function LivingInspiration() {
           </p>
         </div>
         <div className="w-full flex justify-center">
-          <img src="/Assets/inspiration.png" alt="Living Room Inspiration" className="w-full max-w-5xl h-64 md:h-96 object-cover rounded-2xl shadow-md border border-gray-100" />
+          <img src="/Assets/inspiration.png" alt="Living Room Inspiration" className="w-full max-w-5xl h-64 md:h-96 object-cover rounded-2xl shadow-md border border-gray-100" loading="lazy" />
         </div>
       </div>
       {/* Page Content Placeholder */}

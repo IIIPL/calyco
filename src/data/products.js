@@ -92,7 +92,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/regal",
     "name": "Regal",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/lumen.png",
     "description": "Elite designer-grade interior paint with rich texture, regal finish, and long-term durability.",
     "short-description": "For luxury interiors needing depth, warmth, and washable beauty.",
     "details": "Regal is hand-picked by architects for its depth, elegance, and flawless finish in premium interiors.",
@@ -1329,7 +1329,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/ironshield",
     "name": "IronShield",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/lumen.png",
     "description": "Anti-corrosive coating for direct-to-metal applications.",
     "short-description": "Stops rust, seals steel, and resists harsh environments.",
     "details": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",

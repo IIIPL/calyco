@@ -43,7 +43,7 @@ export const Footer = () => {
                         <img src="/Logo.png" alt="Calyco Logo" className="w-12 h-12 object-contain" />
                         <span className="font-bold text-2xl tracking-wide">CALYCO</span>
                     </div>
-                    <div className="text-[#F0C85A] font-semibold text-lg">Calyco Paints</div>
+                    
                     <div className="text-sm text-[#e5e0d8] opacity-90 max-w-xs">Premium paints for beautiful, lasting spaces. Trusted by professionals and homeowners for quality, color, and durability.</div>
                     <div className="mt-2 text-xs text-[#e5e0d8] opacity-60">© 2024 Calyco Paints. All rights reserved.</div>
                 </div>

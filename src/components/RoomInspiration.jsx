@@ -23,6 +23,7 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
             alt={title}
             className="w-full max-w-full object-contain rounded-xl shadow-md border border-gray-100"
             style={{ height: 'auto', maxHeight: '32rem' }}
+            loading="lazy"
           />
         </div>
         {/* Color Swatches */}

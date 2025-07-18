@@ -54,7 +54,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 mt-12">
+    <div className="min-h-screen bg-gray-50 py-8 mt-20">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
         {/* LEFT: Checkout Form */}
         <div className="p-8 flex flex-col gap-8">
