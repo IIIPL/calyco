@@ -230,11 +230,12 @@ export const Products = () => {
         {/* Desktop: Sidebar and Product Grid */}
         <div className="flex flex-row items-start gap-4">
           {/* Desktop Sidebar */}
-          <div className="hidden md:block">
+          <div className="hidden md:block sticky top-28 self-start max-h-[calc(100vh-7rem)] overflow-y-auto">
             {showFilter && (
               <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
             )}
           </div>
+
           {/* Product Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">

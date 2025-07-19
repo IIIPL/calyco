@@ -87,7 +87,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Corals, Terracottas",
+    title: "Corals & Terracottas",
     colors: [
       { name: "Coral Blush", hex: "#F7B7A3" },
       { name: "Terracotta Tile", hex: "#E97451" },

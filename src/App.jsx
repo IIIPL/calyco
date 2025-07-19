@@ -27,6 +27,7 @@ import DiningInspiration from './pages/inspiration/Dining';
 import OfficeInspiration from './pages/inspiration/Office';
 import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
           <Route path='/inspiration/kids' element={<KidsInspiration/>}/>
           <Route path='/inspiration/exterior' element={<ExteriorInspiration/>}/>
           
+          {/* 404 Fallback Route */}
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
         <Footer/>
         
