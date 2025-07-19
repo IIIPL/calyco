@@ -304,25 +304,31 @@ export const DynamicProductPage = () => {
                     className="mt-32"
                     variants={itemVariants}
                 >
-                    <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-                      {/* Left: Heading and USP/summary */}
-                      <div className="md:w-1/2 w-full mb-8 md:mb-0">
-                        <h2 className="text-5xl font-bold text-[#493657] mb-8">Product Details</h2>
-                        <p className="text-2xl md:text-3xl font-semibold text-[#301A44] leading-snug max-w-xl">
-                          {product.details || product.description}
-                        </p>
+                    <div className="flex flex-col gap-8">
+                      {/* Heading */}
+                      <div className="w-full">
+                        <h2 className="text-5xl font-bold text-[#493657]">Product Details</h2>
                       </div>
-                      {/* Right: Bulleted advantages (instead of features) */}
-                      <div className="md:w-1/2 w-full mt-20">
-                        <ul className="list-disc pl-6 space-y-3 text-lg text-[#493657] font-medium">
-                          {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
-                            product.advantages.map((adv, idx) => (
-                              <li key={idx}>{adv}</li>
-                            ))
-                          ) : (
-                            <li>No key advantages listed.</li>
-                          )}
-                        </ul>
+                      {/* Content: Description and Advantages side by side */}
+                      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+                        {/* Left: Description */}
+                        <div className="lg:w-1/2 w-full">
+                          <p className="text-2xl md:text-3xl font-semibold text-[#301A44] leading-snug">
+                            {product.details || product.description}
+                          </p>
+                        </div>
+                        {/* Right: Bulleted advantages */}
+                        <div className="lg:w-1/2 w-full">
+                          <ul className="list-disc pl-6 space-y-3 text-lg text-[#493657] font-medium">
+                            {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
+                              product.advantages.map((adv, idx) => (
+                                <li key={idx}>{adv}</li>
+                              ))
+                            ) : (
+                              <li>No key advantages listed.</li>
+                            )}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
