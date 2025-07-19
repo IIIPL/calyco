@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ExteriorInspiration() {
   return (
-    <div className="font-poppins bg-white min-h-screen">
+    <div className="pt-20 font-poppins bg-white min-h-screen">
       {/* Header Section */}
       <div className="w-full bg-[#f7f7f5] pb-8">
         <div className="max-w-7xl mx-auto px-4 pt-8">

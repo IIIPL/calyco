@@ -16,7 +16,7 @@ export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) =
     }, [productName]);
 
     return (
-        <div className="pt-[120px] min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5">
+        <div className="pt-20 min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5">
             <section className="w-full max-w-7xl mx-auto px-4 py-10 pt-32">
                 <div className="flex items-center gap-2 text-sm text-[#493657]/60 mb-8">
                     <Link to={`/`}>

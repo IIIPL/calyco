@@ -1,6 +1,6 @@
 export const StainSealer = () => {
     return  (
-        <div className="pt-[120px] font-semibold">
+        <div className="pt-20 font-semibold">
             Stain & Sealer
         </div>
     )

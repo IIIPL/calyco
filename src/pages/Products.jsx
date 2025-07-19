@@ -168,7 +168,7 @@ export const Products = () => {
   }
 
   return (
-    <div className="pt-[120px] min-h-screen bg-[#f9f6f2] pb-20 px-4 sm:px-8">
+    <div className="pt-20 min-h-screen bg-[#f9f6f2] pb-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto mb-10">
         <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">All Products</h1>
         {/* Search Bar & Sort */}

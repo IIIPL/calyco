@@ -3,7 +3,7 @@ import Slider from "../components/Slider";
 
 export const Temp = () => {
   return (
-    <div className="pt-[120px] text-center mt-32 px-4">
+    <div className="pt-20 text-center mt-32 px-4">
       <h1 className="text-2xl font-bold mb-6">This is a temp page.</h1>
 
       <div
