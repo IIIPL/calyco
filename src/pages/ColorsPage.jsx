@@ -62,13 +62,12 @@ export default function ColorsPage() {
         </div>
 
         {/* Filter + Count Row */}
-        <div className="flex items-start justify-between w-full gap-4">
-          {/* Filters */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 whitespace-nowrap max-w-[80vw] hide-scrollbar scroll-smooth">
-
-            <span className="text-sm text-gray-700 font-medium shrink-0">
+        <div className="w-full flex items-center justify-between gap-4 mb-6">
+          <div className="flex items-center w-full overflow-x-auto hide-scrollbar scroll-smooth gap-2">
+            <span className="text-sm text-gray-700 font-medium shrink-0 pr-1">
               Filter by:
             </span>
+
             {filters.map((title) => (
               <button
                 key={title}
@@ -87,14 +86,13 @@ export default function ColorsPage() {
                 ></span>
                 {title.split(" ")[0]}
               </button>
-            
             ))}
           </div>
 
           {/* Total Count */}
-          <div className="flex flex-col items-start shrink-0">
-            <span className="text-sm text-gray-600 font-medium">
-            {filter.length === 0 ? "108" : totalColors} colours
+          <div className="flex items-center shrink-0 pl-3">
+            <span className="text-sm text-gray-700 font-medium border-l pl-3 border-gray-300">
+              {filter.length === 0 ? "108" : totalColors} colours
             </span>
           </div>
         </div>

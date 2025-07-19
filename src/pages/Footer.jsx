@@ -51,8 +51,8 @@ export const Footer = () => {
                 <div className="flex-1 flex flex-col gap-8 min-w-[220px]">
                     <div>
                         <div className="font-semibold mb-2">Contact</div>
-                        <div className="text-sm text-[#e5e0d8]">Phone: <a href="tel:+919958966881" className="hover:text-[#F0C85A]">+91-99589-66881</a>, <a href="tel:+918592938439" className="hover:text-[#F0C85A]">+91-85929-38439</a></div>
-                        <div className="text-sm text-[#e5e0d8]">Email: <a href="mailto:enquiries@calycopaints.com" className="hover:text-[#F0C85A]">enquiries@calycopaints.com</a></div>
+                        <div className="text-sm text-[#e5e0d8]">Phone: <a href="tel:+919958966881" className="hover:text-[#F0C85A]">+91-99589-66881</a> {/* , <a href="tel:+918592938439" className="hover:text-[#F0C85A]">+91-85929-38439</a>*/}</div> 
+                        <div className="text-sm text-[#e5e0d8]">Email: <a href="mailto:info@calycopaints.com" className="hover:text-[#F0C85A]">enquiries@calycopaints.com</a></div>
                         <div className="text-sm text-[#e5e0d8]">B37, Sector 1, Noida, NCR</div>
                     </div>
                     <div>
