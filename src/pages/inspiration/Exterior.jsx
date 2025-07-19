@@ -6,7 +6,7 @@ export default function ExteriorInspiration() {
       {/* Header Section */}
       <div className="w-full bg-[#f7f7f5] pb-8">
         <div className="max-w-7xl mx-auto px-4 pt-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight">HOUSE EXTERIOR INSPIRATION</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight text-center">HOUSE EXTERIOR INSPIRATION</h1>
           <p className="text-lg md:text-xl text-[#393939] mb-6 max-w-3xl">
             Enhance your home's curb appeal with exterior color inspiration. Explore our gallery for ideas to make your house stand out on the block.
           </p>

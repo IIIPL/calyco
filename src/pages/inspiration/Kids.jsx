@@ -6,7 +6,7 @@ export default function KidsInspiration() {
       {/* Header Section */}
       <div className="w-full bg-[#f7f7f5] pb-8">
         <div className="max-w-7xl mx-auto px-4 pt-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight">KIDS ROOM INSPIRATION</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight text-center">KIDS ROOM INSPIRATION</h1>
           <p className="text-lg md:text-xl text-[#393939] mb-6 max-w-3xl">
             Spark imagination and fun with kids room color inspiration. Browse ideas for playful palettes and creative styles to make their space special.
           </p>

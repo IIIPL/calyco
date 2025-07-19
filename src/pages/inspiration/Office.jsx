@@ -2,11 +2,11 @@ import React from "react";
 
 export default function OfficeInspiration() {
   return (
-    <div className="pt-20 font-poppins bg-white min-h-screen">
+    <div className="pt-20 md:pt-20 font-poppins bg-white min-h-screen">
       {/* Header Section */}
       <div className="w-full bg-[#f7f7f5] pb-8">
         <div className="max-w-7xl mx-auto px-4 pt-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight">OFFICE INSPIRATION</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#393939] mb-4 tracking-tight text-center">OFFICE INSPIRATION</h1>
           <p className="text-lg md:text-xl text-[#393939] mb-6 max-w-3xl">
             Boost productivity and creativity with office color inspiration. Explore our gallery for palettes and styles to design your ideal workspace.
           </p>
