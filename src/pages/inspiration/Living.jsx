@@ -19,7 +19,7 @@ export default function LivingInspiration() {
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
-      <div className="w-screen overflow-hidden">
+      <div className="w-full overflow-hidden">
         <img
           src="/Assets/inspiration.png"
           alt="Living Room Inspiration"

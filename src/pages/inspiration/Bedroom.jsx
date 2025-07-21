@@ -21,7 +21,7 @@ export default function BedroomInspiration() {
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
       {/* Top Image (full-width edge-to-edge) */}
-      <div className="w-screen overflow-hidden">
+      <div className="w-full overflow-hidden">
         <img
           src="/Assets/inspiration.png"
           alt="Bedroom Inspiration"
