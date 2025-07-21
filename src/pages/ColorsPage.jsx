@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { colorGroups } from "../data/colorGroups";
 
@@ -18,6 +18,8 @@ const fadeUp = {
 export default function ColorsPage() {
   const [filter, setFilter] = useState([]);
   const [activeColor, setActiveColor] = useState(null);
+  const filterRef = useRef(null); // 👈 Added ref
+
   useEffect(() => {
     document.title = "Calyco Sacred Palette";
   }, []);
@@ -30,9 +32,20 @@ export default function ColorsPage() {
   const filters = colorGroups.map((group) => group.title);
 
   const toggleFilter = (title) => {
-    setFilter((prev) =>
-      prev.includes(title) ? prev.filter((f) => f !== title) : [...prev, title]
-    );
+    setFilter((prev) => {
+      const updated = prev.includes(title)
+        ? prev.filter((f) => f !== title)
+        : [...prev, title];
+
+      // 👇 Scroll to filter bar after update
+      setTimeout(() => {
+        if (filterRef.current) {
+          filterRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 30);
+
+      return updated;
+    });
   };
 
   const filteredGroups =
@@ -69,8 +82,10 @@ export default function ColorsPage() {
         </div>
 
         {/* Filter Bar */}
-        <div className="sticky top-20 md:top-24 z-40 bg-white w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 px-4 sm:px-6 py-3 border-b border-gray-100">
-
+        <div
+          ref={filterRef}
+          className="sticky top-20 md:top-24 z-40 bg-white w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 px-4 sm:px-6 py-3 border-b border-gray-100"
+        >
           <span className="text-sm text-gray-700 font-medium shrink-0 pr-1">
             Filter by:
           </span>
@@ -161,39 +176,30 @@ export default function ColorsPage() {
                 ×
               </button>
               <div className="flex flex-col md:flex-row w-full">
-                {/* Color Preview */}
                 <div
                   className="w-full md:w-1/2 aspect-square"
                   style={{ backgroundColor: activeColor.hex }}
                 ></div>
-
-                {/* Info Section */}
                 <div className="p-4 sm:p-6 flex flex-col gap-2 md:w-1/2">
                   <h2 className="text-xl sm:text-2xl font-semibold text-[#2d2d2d]">
                     {activeColor.name}
                   </h2>
-
-                  {/* Optional Hex / Code Display */}
                   <p className="text-sm text-gray-500">
                     Code: {activeColor.code || "—"} <br />
                     Hex: {activeColor.hex}
                   </p>
-
-                  {/* Placeholder for Description */}
                   <p className="text-sm text-gray-600 mt-3">
                     A beautifully formulated colour from the Calyco Sacred Palette.
                     Designed for timeless walls and inspired by nature and culture.
                   </p>
-
-                  <button className="mt-6 bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-900 w-fit">
+                  {/* <button className="mt-6 bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-900 w-fit">
                     Add Sample to basket
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
