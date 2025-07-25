@@ -1,20 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 const ROOMS = [
-  { title: "Exterior", designs: 88 },
-  { title: "Living Room", designs: 118 },
-  { title: "Bedroom", designs: 111 },
-  { title: "Dining Area", designs: 40 },
-  { title: "Kids room", designs: 6 },
-  { title: "Kitchen", designs: 22 },
-  { title: "Puja Room", designs: 4 },
-  { title: "Office Space", designs: 48 },
-  { title: "Hallway", designs: 28 },
-  { title: "Bathroom", designs: 1 },
-  { title: "Studio Apartment", designs: 5 },
-  { title: "Outdoor Seating", designs: 6 },
+  { title: "Exterior", designs: 88, thumbnail: "/Assets/inspiration/exterior.jpg" },
+  { title: "Living Room", designs: 118, thumbnail: "/Assets/inspiration/living.jpg" },
+  { title: "Bedroom", designs: 111, thumbnail: "/Assets/inspiration/bedroom.jpg" },
+  { title: "Dining Area", designs: 40, thumbnail: "/Assets/inspiration/dining.jpg" },
+  { title: "Kids room", designs: 6, thumbnail: "/Assets/inspiration/kids.jpg" },
+  { title: "Kitchen", designs: 22, thumbnail: "/Assets/inspiration/kitchen.jpg" },
+  { title: "Puja Room", designs: 4, thumbnail: "/Assets/inspiration/puja.jpg" },
+  { title: "Office Space", designs: 48, thumbnail: "/Assets/inspiration/office.jpg" },
+  { title: "Hallway", designs: 28, thumbnail: "/Assets/inspiration/hallway.jpg" },
+  { title: "Bathroom", designs: 1, thumbnail: "/Assets/inspiration/bathroom.jpg" },
+  { title: "Studio Apartment", designs: 5, thumbnail: "/Assets/inspiration/studio.jpg" },
+  { title: "Outdoor Seating", designs: 6, thumbnail: "/Assets/inspiration/outdoor.jpg" },
 ];
+
 
 export default function InspirationPage() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function InspirationPage() {
             return (
               <div key={room.title} className="bg-white rounded-2xl shadow-md flex flex-col overflow-hidden border border-gray-100">
                 <img
-                  src={"/Assets/inspiration2.png"}
+                  src={room.thumbnail}
                   alt={room.title}
                   className="w-full h-48 object-cover"
                   draggable="false"

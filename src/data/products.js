@@ -92,7 +92,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/regal",
     "name": "Regal",
-    "image": "/Assets/lumen.png",
+    "image": "/Assets/regal.png",
     "description": "Elite designer-grade interior paint with rich texture, regal finish, and long-term durability.",
     "short-description": "For luxury interiors needing depth, warmth, and washable beauty.",
     "details": "Regal is hand-picked by architects for its depth, elegance, and flawless finish in premium interiors.",
@@ -177,7 +177,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/dampshield",
     "name": "DampShield",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/dampshield.png",
     "description": "Waterproof + anti-fungal interior wall coating for kitchens, baths, and high-humidity spaces.",
     "short-description": "Ultimate moisture protection for indoors.",
     "details": "SealDefense Interior blocks moisture, prevents fungal growth, and maintains a clean finish in humid interior spaces.",
@@ -259,7 +259,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/wallarmor",
     "name": "WallArmor",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/wallarmor.png",
     "description": "High-resistance exterior wall paint with waterproof and UV barrier.",
     "short-description": "Rain, sun, pollution - this is your wall’s shield.",
     "details": "WallArmor offers UV resistance and waterproofing, built to stand up to India’s toughest weather conditions.",
@@ -343,7 +343,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/regal-xterior",
     "name": "Regal Xterior",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/regalxterior.png",
     "description": "Premium fade-resistant paint for prestige building exteriors.",
     "short-description": "Long-lasting colour even under harsh sunlight.",
     "details": "Regal Xterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
@@ -424,7 +424,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/barriercoat",
     "name": "BarrierCoat",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/barriercoat.png",
     "description": "Anti-stain, microbial-resistant interior emulsion for kitchens and kid zones.",
     "short-description": "Interior paint with stain repellent and high washability.",
     "details": "BarrierCoat protects interiors from spills, microbes, and scuffs - perfect for kitchens, dining areas, and kid zones.",
@@ -510,7 +510,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/velveta",
     "name": "Velveta",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/velveta.png",
     "description": "Satin interior wall paint with rich glow and antimicrobial resistance.",
     "short-description": "Soft-shine finish ideal for bedrooms and lounges.",
     "details": "Velveta combines soft satin glow with anti-microbial defense for peaceful, premium-looking personal spaces.",
@@ -595,7 +595,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/lustrolite",
     "name": "LustroLite",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/lustrolite.png",
     "description": "Gloss-finish interior paint with high sheen and easy-clean properties.",
     "short-description": "Glossy luxury paint for statement walls and halls.",
     "details": "LustroLite delivers a polished, reflective finish with high durability and designer-grade clarity.",
@@ -680,7 +680,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/roofseal",
     "name": "RoofSeal",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/roofseal.png",
     "description": "Glossy waterproof roof tile and clay coating with UV protection.",
     "short-description": "Gloss exterior finish for tiles, baked clay, and bricks.",
     "details": "RoofSeal protects porous roofing with a glossy, UV-stable coat that bonds tight and stays bright.",
@@ -770,7 +770,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/calmmatte",
     "name": "CalmMatte",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/calmmatte.png",
     "description": "Ultra-calm interior paint for tranquil spaces.",
     "short-description": "A muted, minimal designer paint ideal for bedrooms and retreat zones.",
     "details": "CalmMatte softens visuals, reduces glare, and blends with serene, contemporary interiors.",
@@ -852,7 +852,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/puretone",
     "name": "PureTone",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/puretone.png",
     "description": "Crisp neutral interior paint with brilliant clarity and balance.",
     "short-description": "Great for clean, open interiors with architectural definition.",
     "details": "PureTone enhances clarity and light balance for elegant, minimal, and neutral-themed interiors.",
@@ -934,7 +934,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/woodguard",
     "name": "WoodGuard",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/woodguard.png",
     "description": "Rich color stain and sealer for all wood protection needs.",
     "short-description": "Protects and covers aged, stained, or mismatched wood.",
     "details": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
@@ -1016,7 +1016,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/decksure",
     "name": "DeckSure",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/decksure.png",
     "description": "Heavy-duty resurfacing coating for damaged wood decks.",
     "short-description": "Repairs cracks, seals splinters, and protects surfaces.",
     "details": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
@@ -1093,7 +1093,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/stoneshield",
     "name": "StoneShield",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/stoneshield.png",
     "description": "Multi-surface stain and sealer for concrete, pavers, and masonry.",
     "short-description": "Protects, colors, and waterproofs your surfaces.",
     "details": "StoneShield offers breathable protection and colour enhancement for concrete, pavers, and masonry.",
@@ -1175,7 +1175,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/floorpro",
     "name": "FloorPro",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/floorpro.png",
     "description": "Tough coating for industrial floors and commercial interiors.",
     "short-description": "Impact-resistant, easy-to-clean floor protection.",
     "details": "FloorPro is made for garages and industrial spaces that demand toughness, cleanability, and impact resistance.",
@@ -1251,7 +1251,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/quickshield",
     "name": "QuickShield",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/quickshield.png",
     "description": "Fast-drying floor enamel for time-sensitive projects.",
     "short-description": "Quick-cure coating for rapid re-use of spaces.",
     "details": "QuickShield dries in hours and cures hard, enabling faster project turnover for contractors.",
@@ -1329,7 +1329,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/ironshield",
     "name": "IronShield",
-    "image": "/Assets/lumen.png",
+    "image": "/Assets/ironshield.png",
     "description": "Anti-corrosive coating for direct-to-metal applications.",
     "short-description": "Stops rust, seals steel, and resists harsh environments.",
     "details": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
@@ -1408,7 +1408,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/flexcoat",
     "name": "FlexCoat",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/flexcoat.png",
     "description": "High-flexibility coating for concrete and metal junctions.",
     "short-description": "Ideal for waterproofing transitions and expansion zones.",
     "details": "FlexCoat bridges gaps with high elasticity, sealing joints and corners without cracking.",
@@ -1486,7 +1486,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/allguard",
     "name": "AllGuard",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/allguard.png",
     "description": "Multi-surface barrier coat.",
     "short-description": "Stain-blocking, waterproofing topcoat for every job.",
     "details": "AllGuard offers pro-level durability and adhesion for multi-surface sealing across site conditions.",
@@ -1565,7 +1565,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/thermacool",
     "name": "ThermaCool",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/thermacool.png",
     "description": "Heat-resistant coating for roofs, tanks, and pipes.",
     "short-description": "Reduces heat absorption and thermal degradation.",
     "details": "ThermaCool reflects heat and insulates surfaces like tanks, pipes, and exposed roofing.",
@@ -1645,7 +1645,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/defense",
     "name": "Defense",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/defense.png",
     "description": "Ultimate multi-surface coating for all environments.",
     "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
     "details": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
@@ -1732,7 +1732,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/silktouch",
     "name": "SilkTouch",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/silktouch.png",
     "description": "Smooth-sheen interior wall paint that delivers a soft, refined silk-like finish.",
     "short-description": "Soft mid-sheen elegance for interior walls with excellent washability.",
     "details": "SilkTouch balances refined shine with easy maintenance for elegant homes and corridors.",
@@ -1819,7 +1819,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/primedefense-primer",
     "name": "PrimeDefense Primer",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/primedefense.png",
     "description": "Heavy-duty water-based acrylic primer for multi-surface bonding and sealing.",
     "short-description": "Universal primer that seals pores and improves topcoat adhesion.",
     "details": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
@@ -1905,7 +1905,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
     "name": "HydroClear Shield",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/hydroclear.png",
     "description": "Transparent waterproofing coating for masonry, tile, and concrete without altering the surface look.",
     "short-description": "Invisible water-repellent that preserves natural surface aesthetics.",
     "details": "HydroClear Shield waterproofs tile, brick, and stone without changing how they look or feel.",
@@ -1988,7 +1988,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/fast-drying-enamel",
     "name": "Fast Drying Enamel",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/fastdrying.png",
     "description": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance.",
     "short-description": "Fast-drying, high-gloss black enamel for metal surfaces.",
     "details": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
@@ -2070,7 +2070,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
     "name": "Alkyd Enamel",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/alkyd.png",
     "description": "Oil-based alkyd enamel with a hard, glossy finish for long-term protection and performance.",
     "short-description": "Highly durable alkyd enamel ideal for trim, metal, and high-wear surfaces.",
     "details": "Alkyd Enamel offers smooth gloss, chemical resistance, and strong adhesion for long-term results.",
@@ -2156,7 +2156,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/fire-retardant-paint",
     "name": "Fire Retardant Paint",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/fireretardant.png",
     "description": "Solvent-based fire retardant topcoat for steel, wood, and concrete offering flame and UV resistance.",
     "short-description": "One-component, smooth matte fire-retardant paint for multi-surface application.",
     "details": "Fire Retardant Paint delays flame spread while resisting UV, moisture, and harsh exposure.",
@@ -2247,7 +2247,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/aluminium-paint",
     "name": "Aluminium Paint",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/aluminium.png",
     "description": "High-quality aluminium alkyd enamel for durable interior and exterior use on primed metal surfaces.",
     "short-description": "Decorative alkyd topcoat with excellent hide, durability, and washability.",
     "details": "Aluminium Paint offers long-lasting metallic shine with superior coverage and flow.",
@@ -2333,7 +2333,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/red-oxide-primer",
     "name": "Red Oxide Primer",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/redoxide.png",
     "description": "Economical alkyd-based red oxide primer with excellent corrosion resistance for steel surfaces.",
     "short-description": "Alkyd anti-corrosive primer with red iron oxide pigment for steel.",
     "details": "Red Oxide Primer protects steel with a tough, rust-resistant undercoat for industrial use.",
