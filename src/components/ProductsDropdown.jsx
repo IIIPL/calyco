@@ -139,7 +139,12 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           </div>
           <div className="min-w-[260px] max-w-[280px] flex items-center justify-center">
             {hovered && (
-              <img src={hovered.image} alt={hovered.name} className="object-contain h-48" />
+              <img
+                src={hovered.images?.[0] || hovered.image}
+                alt={hovered.name}
+                className="object-contain h-48"
+            />
+            
             )}
           </div>
         </>
