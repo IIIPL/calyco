@@ -88,7 +88,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Nova",
-    "images": ["/Assets/novaa.png"]
+    "images": ["Assets/Nova/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/puretone",
@@ -171,7 +171,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PureTone",
-    "images": ["/Assets/puretone.png"]
+    "images": ["Assets/PureTone/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/woodguard",
@@ -254,7 +254,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "WoodGuard",
-    "images": ["/Assets/woodguard.png"]
+    "images": ["Assets/WoodGuard/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/decksure",
@@ -332,7 +332,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "DeckSure",
-    "images": ["/Assets/decksure.png"]
+    "images": ["Assets/DeckSure/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/stoneshield",
@@ -415,12 +415,12 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "StoneShield",
-    "images": ["/Assets/stoneshield.png"]
+    "images": ["Assets/StoneShield/NoBg.png"]
   },
   {
-    "url": "https://calycopaints.com/product/regal-xterior",
+    "url": "https://calycopaints.com/product/calmxterior",
     "name": "CalmXterior",
-    "image": "/Assets/novaa.png",
+    "image": "/Assets/CalmXterior/NoBg.png",
     "description": "Premium fade-resistant paint for prestige building exteriors.",
     "short-description": "Long-lasting colour even under harsh sunlight.",
     "details": "CalmXterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
@@ -497,7 +497,7 @@ export const products = [
     "temperature_range": "12°C–40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "CalmXterior",
-    "images": ["/Assets/CalmXterior/NoBg.png"]
+    "images": ["Assets/CalmXterior/NoBg.png"]
   },  
   {
     "url": "https://calycopaints.com/product/lustrolite",
@@ -583,7 +583,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "LustroLite",
-    "images": ["/Assets/lustrolite.png"]
+    "images": ["Assets/LustroLite/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/silktouch",
@@ -671,7 +671,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "SilkTouch",
-    "images": ["/Assets/silktouch.png"]
+    "images": ["Assets/SilkTouch/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/floorpro",
@@ -748,7 +748,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "FloorPro",
-    "images": ["/Assets/floorpro.png"]
+    "images": ["Assets/FloorPro/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/ironshield",
@@ -828,7 +828,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "IronShield",
-    "images": ["/Assets/ironshield.png"]
+    "images": ["Assets/IronShield/NoBg.png"]
   },
   
   {
@@ -910,7 +910,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "ThermaCool",
-    "images": ["/Assets/thermacool.png"]
+    "images": ["Assets/ThermaCool/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/defense",
@@ -998,7 +998,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "Defense",
-    "images": ["/Assets/defense.png"]
+    "images": ["Assets/Defense/NoBg.png"]
   },
   
   {
@@ -1086,7 +1086,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PrimeDefense Primer",
-    "images": ["/Assets/primedefense.png"]
+    "images": ["Assets/PrimeDefense/NoBg.png"]
   },
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
@@ -1170,7 +1170,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "HydroClear Shield",
-    "images": ["/Assets/hydroclear.png"]
+    "images": ["Assets/HydroClear/NoBg.png"]
   },
   {
     "url": "https://www.calyco.com/products/fast-drying-enamel",
@@ -1253,7 +1253,7 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Fast Drying Enamel",
-    "images": ["/Assets/fastdrying.png"]
+    "images": ["Assets/FastDrying/NoBg.png"]
   },
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
@@ -1340,7 +1340,7 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Up to 80% RH",
     "display_name": "Alkyd Enamel",
-    "images": ["/Assets/alkyd.png"]
+    "images": ["Assets/Alkyd/NoBg.png"]
   },
   
   {
@@ -1428,7 +1428,7 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Aluminium Paint",
-    "images": ["/Assets/aluminium.png"]
+    "images": ["Assets/Aluminium/NoBg.png"]
   },
   {
     "url": "https://www.calyco.com/products/red-oxide-primer",
@@ -1517,7 +1517,7 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Red Oxide Primer",
-    "images": ["/Assets/redoxide.png"]
+    "images": ["Assets/RedOxide/NoBg.png"]
   }
   // FORBIDDEN PRODUCTS:
   // {

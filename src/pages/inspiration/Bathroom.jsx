@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RoomInspiration from "../../components/RoomInspiration";
 import { colorGroups } from "../../data/colorGroups";
 import { motion } from "framer-motion";
@@ -12,6 +12,10 @@ export default function BathroomInspiration() {
     }
     return null;
   };
+
+  useEffect(()=> {
+    document.title = "Bathroom"
+  }, [])
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },

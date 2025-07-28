@@ -142,9 +142,8 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
               <img
                 src={hovered.images?.[0] || hovered.image}
                 alt={hovered.name}
-                className="object-contain h-48"
-            />
-            
+                className="object-contain h-64 w-full"
+              />            
             )}
           </div>
         </>
