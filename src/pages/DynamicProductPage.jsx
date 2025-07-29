@@ -32,6 +32,7 @@ export const DynamicProductPage = () => {
     const [loading, setLoading] = useState(true);
     const [showAddedMessage, setShowAddedMessage] = useState(false);
     const { addToCart } = useCart();
+    const [selectedImage, setSelectedImage] = useState("");
     
     // Use the product's actual packaging sizes
     const displaySizes = product && product.packaging ? product.packaging : [];
@@ -45,6 +46,12 @@ export const DynamicProductPage = () => {
                 setSelectedSize(foundProduct.packaging[0]);
             } else {
                 setSelectedSize("");
+            }
+            // Set default image
+            if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
+                setSelectedImage(foundProduct.images[0]);
+            } else {
+                setSelectedImage(foundProduct.image);
             }
             document.title = foundProduct.display_name || foundProduct.name;
         }
@@ -170,19 +177,37 @@ export const DynamicProductPage = () => {
                 <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
                     <motion.div 
-                        className="xl:w-1/2 md:w-1/2 w-full xl:sticky xl:top-24 xl:self-start flex items-center md:items-start justify-center"
+                        className="xl:w-1/2 md:w-1/2 w-full xl:sticky xl:top-24 xl:self-start flex flex-col items-center md:items-start justify-center"
                         variants={itemVariants}
                     >
                         <div className="relative group w-full flex items-center md:items-start justify-center">
                             <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#301A44]/10 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <div className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center">
+                            <div
+                                className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center w-[90vw] max-w-[320px] h-[90vw] max-h-[320px] md:w-[440px] md:h-[440px] md:max-w-[440px] md:max-h-[440px] xl:w-[600px] xl:h-[600px] xl:max-w-[600px] xl:max-h-[600px]"
+                            >
                                 <img
-                                    src={product.image}
+                                    src={selectedImage || product.image}
                                     alt={product.name}
-                                    className="w-full max-w-[600px] md:max-w-[440px] xl:max-w-[480px] h-auto mx-auto hover:scale-105 transition-transform duration-500"
+                                    className="object-contain w-full h-full mx-auto hover:scale-105 transition-transform duration-500"
+                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                                 />
                             </div>
                         </div>
+                        {/* Image Gallery Thumbnails - now below the image */}
+                        {Array.isArray(product.images) && product.images.length > 0 && (
+                          <div className="flex gap-2 mt-4 flex-wrap justify-center md:justify-start">
+                            {product.images.map((img, idx) => (
+                              <button
+                                key={img + idx}
+                                onClick={() => setSelectedImage(img)}
+                                className={`border rounded-lg p-1 transition-all focus:outline-none ${selectedImage === img ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]' : 'border-[#493657]/20 hover:border-[#493657]/40'}`}
+                                style={{background: selectedImage === img ? '#F0C85A22' : 'white'}}
+                              >
+                                <img src={img} alt={`Thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
+                              </button>
+                            ))}
+                          </div>
+                        )}
                     </motion.div>
                     {/* Product Details */}
                     <motion.div 

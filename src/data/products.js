@@ -88,7 +88,9 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Nova",
-    "images": ["/Assets/Nova/NoBg.png"]
+    "images": ["/Assets/Nova/NoBg.png",
+      "/Assets/novaa.png",
+    ]
   },
   {
     "url": "https://calycopaints.com/product/puretone",
@@ -171,7 +173,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PureTone",
-    "images": ["/Assets/PureTone/NoBg.png"]
+    "images": ["/Assets/PureTone/OnTable.png"]
   },
   {
     "url": "https://calycopaints.com/product/woodguard",
@@ -254,7 +256,10 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "WoodGuard",
-    "images": ["/Assets/WoodGuard/NoBg.png"]
+    "images": ["/Assets/WoodGuard/NoBg.png",
+      "/Assets/WoodGuard/inuse.png",
+      "/Assets/WoodGuard/OnTable.png",
+    ]
   },
   {
     "url": "https://calycopaints.com/product/decksure",
@@ -332,7 +337,11 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "DeckSure",
-    "images": ["/Assets/DeckSure/NoBg.png"]
+    "images": ["/Assets/DeckSure/NoBg.png",
+      "/Assets/DeckSure/ontable.png",
+      "/Assets/DeckSure/inhouse.png",
+      "/Assets/DeckSure/inuse.png",
+    ]
   },
   {
     "url": "https://calycopaints.com/product/stoneshield",
@@ -497,7 +506,10 @@ export const products = [
     "temperature_range": "12°C–40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "CalmXterior",
-    "images": ["/Assets/CalmXterior/NoBg.png"]
+    "images": ["/Assets/CalmXterior/NoBg.png",
+      "/Assets/CalmXterior/inuse.png",
+
+    ]
   },  
   {
     "url": "https://calycopaints.com/product/lustrolite",
@@ -583,7 +595,10 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "LustroLite",
-    "images": ["/Assets/LustroLite/NoBg.png"]
+    "images": ["/Assets/LustroLite/ontable.png",
+      "/Assets/LustroLite/inhouse.png",
+      "/Assets/LustroLite/inuse.png",
+    ]
   },
   {
     "url": "https://calycopaints.com/product/silktouch",
@@ -671,7 +686,10 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "SilkTouch",
-    "images": ["/Assets/SilkTouch/NoBg.png"]
+    "images": ["/Assets/SilkTouch/ontable.png",
+      "/Assets/SilkTouch/inuse.png",
+      "/Assets/SilkTouch/inhouse.png",
+    ]
   },
   {
     "url": "https://calycopaints.com/product/floorpro",
@@ -1086,7 +1104,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PrimeDefense Primer",
-    "images": ["/Assets/PrimeDefense/NoBg.png"]
+    "images": ["/Assets/DefensePrimer/inuse.png"]
   },
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
@@ -1253,7 +1271,7 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Fast Drying Enamel",
-    "images": ["/Assets/FastDrying/NoBg.png"]
+    "images": ["/Assets/FastDryingEnamel/ontable.png"]
   },
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
@@ -1517,7 +1535,9 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Red Oxide Primer",
-    "images": ["/Assets/RedOxide/NoBg.png"]
+    "images": ["/Assets/RedOxide/NoBg.png",
+      "/Assets/redoxide.png",
+    ]
   }
   // FORBIDDEN PRODUCTS:
   // {
