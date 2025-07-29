@@ -771,7 +771,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/ironshield",
     "name": "IronShield",
-    "image": "/Assets/ironshield.png",
+    "image": "/Assets/IronShield/NoBg.png",
     "description": "Anti-corrosive coating for direct-to-metal applications.",
     "short-description": "Stops rust, seals steel, and resists harsh environments.",
     "details": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
@@ -846,7 +846,10 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "IronShield",
-    "images": ["/Assets/IronShield/NoBg.png"]
+    "images": ["/Assets/IronShield/NoBg.png",
+      "/Assets/IronShield/WithBg.png",
+      "/Assets/IronShield/WhiteBg.png",
+    ]
   },
   
   {
@@ -1022,7 +1025,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/primedefense-primer",
     "name": "PrimeDefense Primer",
-    "image": "/Assets/primedefense.png",
+    "image": "/Assets/DefensePrimer/inuse.png",
     "description": "Heavy-duty water-based acrylic primer for multi-surface bonding and sealing.",
     "short-description": "Universal primer that seals pores and improves topcoat adhesion.",
     "details": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
@@ -1109,7 +1112,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
     "name": "HydroClear Shield",
-    "image": "/Assets/hydroclear.png",
+    "image": "/Assets/HydroClear/WhiteBg.png",
     "description": "Transparent waterproofing coating for masonry, tile, and concrete without altering the surface look.",
     "short-description": "Invisible water-repellent that preserves natural surface aesthetics.",
     "details": "HydroClear Shield waterproofs tile, brick, and stone without changing how they look or feel.",
@@ -1188,12 +1191,15 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "HydroClear Shield",
-    "images": ["/Assets/HydroClear/NoBg.png"]
+    "images": ["/Assets/HydroClear/NoBg.png",
+      "/Assets/HydroClear/WhiteBg.png",
+      "/Assets/HydroClear/InUse.png",
+    ]
   },
   {
     "url": "https://www.calyco.com/products/fast-drying-enamel",
     "name": "Fast Drying Enamel",
-    "image": "/Assets/fastdrying.png",
+    "image": "/Assets/FastDryingEnamel/ontable.png",
     "description": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance.",
     "short-description": "Fast-drying, high-gloss black enamel for metal surfaces.",
     "details": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
@@ -1276,7 +1282,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
     "name": "Alkyd Enamel",
-    "image": "/Assets/alkyd.png",
+    "image": "/Assets/AlkydEnamel/NoBg.png",
     "description": "Oil-based alkyd enamel with a hard, glossy finish for long-term protection and performance.",
     "short-description": "Highly durable alkyd enamel ideal for trim, metal, and high-wear surfaces.",
     "details": "Alkyd Enamel offers smooth gloss, chemical resistance, and strong adhesion for long-term results.",
@@ -1358,7 +1364,9 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Up to 80% RH",
     "display_name": "Alkyd Enamel",
-    "images": ["/Assets/Alkyd/NoBg.png"]
+    "images": ["/Assets/AlkydEnamel/NoBg.png",
+    "/Assets/AlkydEnamel/InUse.png",
+    "/Assets/AlkydEnamel/WhiteBg.png",]
   },
   
   {
