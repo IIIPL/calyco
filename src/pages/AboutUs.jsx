@@ -96,13 +96,10 @@ export const AboutUs = () => {
           >
             <h2 className="text-4xl md:text-5xl font-semibold text-[#2C1A34] mb-6">Our Vision</h2>
             <p className="text-lg leading-relaxed text-gray-700 max-w-4xl mx-auto">
-              Calyco is a paint manufacturing company delivering high-performance, cost-effective paints and coatings that protect and enhance residential, commercial, and industrial surfaces.
+              Our vision is to transform how surfaces are protected and experienced — one lasting coat at a time. We strive to elevate living and working spaces through performance without compromise.
             </p>
-            {/* IMAGE SLOT */}
-            {/* <div className="mt-10 h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-400 text-sm">
-              Optional Image Area (Vision)
-            </div> */}
           </motion.div>
+
 
           {/* OUR COMMITMENT */}
           <motion.div

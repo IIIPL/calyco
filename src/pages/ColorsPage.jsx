@@ -81,6 +81,12 @@ export default function ColorsPage() {
           </div>
         </div>
 
+
+        {/* SEE BY COLOR */}
+        <div className="w-full h-96 p-10">
+          a flex menu by which you can scroll and see what the color options we have. 
+          
+        </div>
         {/* Filter Bar */}
         <div
           ref={filterRef}
