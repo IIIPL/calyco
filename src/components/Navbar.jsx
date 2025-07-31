@@ -73,6 +73,12 @@ export const Navbar = () => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >About</Link>
+
+          <Link
+            to="/contact"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(null)}
+          >Contact</Link>
         </nav>
         <div className="absolute right-8">
           <CartIcon />

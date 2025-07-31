@@ -25,13 +25,13 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
   const navigate = useNavigate();
 
   const handleAllClick = () => {
-    navigate('/inspiration');
+    navigate('/inspirations');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (onSelect) onSelect();
   };
 
   const handleRoomClick = (roomKey) => {
-    navigate(`/inspiration/${roomKey}`);
+    navigate(`/inspirations/${roomKey}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (onSelect) onSelect();
   };

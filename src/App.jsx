@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Slider from './components/Slider'
 import { Navbar } from './components/Navbar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { Temp } from './pages/Temp'
 import { AboutUs } from './pages/AboutUs'
@@ -28,7 +28,18 @@ import OfficeInspiration from './pages/inspiration/Office';
 import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
+import ColorPage from './pages/Colors/IndividualColorPage'
+import ColorGroup from './pages/Colors/ColorGroup'
 
+
+const ColorPageWrapper = () => {
+  const { colorName } = useParams();
+  return <ColorPage colorName={colorName} />;
+}
+const GroupWrapper = () => {
+  const { groupName } = useParams();
+  return <ColorGroup groupTitle = {decodeURIComponent(groupName)} />;
+}
 
 function App() {
   return (
@@ -50,16 +61,18 @@ function App() {
 
           {/* Colors new routes */}
           <Route path='/colors' element={<ColorsPage/>}/>
-          <Route path='/inspiration' element={<InspirationPage/>}/>
-          <Route path='/inspiration/kitchen' element={<KitchenInspiration/>}/>
-          <Route path='/inspiration/bedroom' element={<BedroomInspiration/>}/>
-          <Route path='/inspiration/hallway' element={<HallwayInspiration/>}/>
-          <Route path='/inspiration/living' element={<LivingInspiration/>}/>
-          <Route path='/inspiration/bathroom' element={<BathroomInspiration/>}/>
-          <Route path='/inspiration/dining' element={<DiningInspiration/>}/>
-          <Route path='/inspiration/office' element={<OfficeInspiration/>}/>
-          <Route path='/inspiration/kids' element={<KidsInspiration/>}/>
-          <Route path='/inspiration/exterior' element={<ExteriorInspiration/>}/>
+          <Route path="/paint-color/:colorName" element={<ColorPageWrapper />} />
+          <Route path="/paint-colors/group/:groupName" element={<GroupWrapper/>} />
+          <Route path='/inspirations' element={<InspirationPage/>}/>
+          <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
+          <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
+          <Route path='/inspirations/hallway' element={<HallwayInspiration/>}/>
+          <Route path='/inspirations/living' element={<LivingInspiration/>}/>
+          <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
+          <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
+          <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
+          <Route path='/inspirations/kids' element={<KidsInspiration/>}/>
+          <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
           
           {/* 404 Fallback Route */}
           <Route path="*" element={<NotFound/>}/>

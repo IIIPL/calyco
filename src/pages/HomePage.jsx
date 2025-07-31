@@ -6,6 +6,7 @@ import { WhyChooseCard } from "../components/WhyChooseCard";
 import { FaArrowRight } from "react-icons/fa6";
 import Slider from "../components/Slider";
 import { Link } from "react-router-dom";
+import { Button } from "../components/Button";
 
 export const HomePage = () => {
     const ref = useRef(null);
@@ -40,19 +41,16 @@ export const HomePage = () => {
 
     return (
         <div className="pt-20">
-            <section className="min-h-screen bg-[#F9F6F1] flex items-center justify-center">
-                <div className="max-w-screen-xl w-full px-4 flex flex-col md:flex-row items-center justify-between gap-8">
+            <section className="bg-[#F9F6F1] flex items-center justify-center">
+                <div className="max-w-screen-xl w-full px-4 flex flex-col md:mx-20 md:flex-row items-center justify-between gap-8">
                     
                     {/* Left Text Section */}
-                    <div className="text-center md:text-left md:w-1/2 space-y-4">
-                        <h1 className="text-4xl font-semibold text-[#301A44]">Calyco</h1>
-                        <h2 className="text-2xl text-[#301A44]">Premium Finishes for Every Surface</h2>
-                        <p className="text-gray-700">
-                            Engineered coatings for interiors, exteriors, wood, metal, and more — crafted for durability, beauty, and sustainability.
-                        </p>
-                        <button className="mt-4 bg-[#301A44] text-white px-6 py-2 rounded-full hover:bg-[#40265d] transition">
-                            <Link to="/product" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Explore Products</Link>
-                        </button>
+                    <div className="text-center text-[#493657] font-medium md:text-6xl md:text-left md:w-1/2 space-y-4">
+                        <p>ELEVATE</p> 
+                        <p>YOUR SPACES</p>
+                        <div className="flex-col flex gap-2">
+                            <Button children={"Explore Products"} to={'/product'}/>
+                        </div>
                     </div>
 
                     {/* Right Image Section */}
@@ -140,18 +138,11 @@ export const HomePage = () => {
                     </motion.div>
                 </motion.div>
 
-                <motion.button 
-                    className="flex justify-center mt-20"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <div className="group flex items-center justify-center gap-3 px-12 py-5 mt-3 mb-10 bg-gradient-to-r from-[#493657] to-[#493657]/80 text-white text-lg font-semibold rounded-2xl hover:shadow-2xl hover:shadow-[#493657]/25 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                        {/* Enhanced button background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#F0C85A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span className="relative">View All Products</span>
-                        <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" />
-                    </div>
-                </motion.button>
+                
+                <div className="flex justify-center mt-10 z-10 relative">
+
+                    <Button to={'/product'} children={"Explore All Products"}/>
+                </div>
 
                 <Slider />
             </section>
@@ -219,18 +210,8 @@ export const HomePage = () => {
                     ))}
                 </motion.div>
 
-                <motion.button 
-                    className="flex justify-center mt-16 z-10"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <div className="group flex items-center justify-center gap-3 px-10 py-4 mt-3 mb-10 bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] text-lg font-semibold rounded-2xl hover:shadow-2xl hover:shadow-[#F0C85A]/25 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
-                        {/* Enhanced button background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#493657]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span className="relative">View All Products</span>
-                        <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" />
-                    </div>
-                </motion.button>
+                
+                
             </section>
 
             {/* Enhanced Call to Action Section */}

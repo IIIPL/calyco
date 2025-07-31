@@ -1,9 +1,8 @@
-// Calyco Sacred Palette: 108 designer shades in 12 groups
-// Each group: 9 elegant, premium shades with tasteful hex codes
+// FIXED colorGroups.js — Replaced `&` with `and` in titles
 
 export const colorGroups = [
   {
-    title: "Fresh Whites & Creams",
+    title: "Fresh Whites and Creams",
     colors: [
       { name: "Ivory Mist", hex: "#FDFCF7" },
       { name: "Coconut Milk", hex: "#FAF8F2" },
@@ -17,7 +16,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Warm Neutrals & Beiges",
+    title: "Warm Neutrals and Beiges",
     colors: [
       { name: "Desert Beige", hex: "#E8D9C4" },
       { name: "Sandalwood", hex: "#E3CDB3" },
@@ -31,7 +30,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Earthen Browns & Tans",
+    title: "Earthen Browns and Tans",
     colors: [
       { name: "Cocoa Husk", hex: "#B89B7A" },
       { name: "Jute Basket", hex: "#A88B6A" },
@@ -59,7 +58,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Blues & Monsoon Skies",
+    title: "Blues and Monsoon Skies",
     colors: [
       { name: "Monsoon Cloud", hex: "#B7C7D6" },
       { name: "Lotus Lake", hex: "#A3B9C9" },
@@ -73,7 +72,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Yellows & Ochres",
+    title: "Yellows and Ochres",
     colors: [
       { name: "Marigold", hex: "#FFD966" },
       { name: "Haldi", hex: "#F6C244" },
@@ -87,7 +86,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Corals & Terracottas",
+    title: "Corals and Terracottas",
     colors: [
       { name: "Coral Blush", hex: "#F7B7A3" },
       { name: "Terracotta Tile", hex: "#E97451" },
@@ -101,7 +100,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Pinks & Blushes",
+    title: "Pinks and Blushes",
     colors: [
       { name: "Rose Silk", hex: "#F7C7C7" },
       { name: "Blush Petal", hex: "#F7B7B7" },
@@ -115,7 +114,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Purples & Lavenders",
+    title: "Purples and Lavenders",
     colors: [
       { name: "Lavender Mist", hex: "#D7C7F7" },
       { name: "Purple Lotus", hex: "#B7A3F7" },
@@ -157,7 +156,7 @@ export const colorGroups = [
     ],
   },
   {
-    title: "Minimal Greys & Steels",
+    title: "Minimal Greys and Steels",
     colors: [
       { name: "Silver Veil", hex: "#E7E7E7" },
       { name: "Dove Grey", hex: "#C7C7C7" },
@@ -170,4 +169,4 @@ export const colorGroups = [
       { name: "Graphite", hex: "#2A2A2A" },
     ],
   },
-]; 
+];

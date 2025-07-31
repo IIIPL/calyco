@@ -4,13 +4,13 @@ import {Link} from 'react-router-dom'
 
 const paintData = {
   "Interior": {
-    img: "/Assets/novaa.png",
+    img: "/Assets/Nova/NoBg.png",
     desc: "Bright white finish with durable indoor protection.",
     link: "product",
-    bgCol: "[#b38312]"
+    bgCol: "[#493657]"
   },
   "Stain & Sealer": {
-    img: "/Assets/defence.png",
+    img: "/Assets/Defense/NoBg.png",
     desc: "Elegant blue tones perfect for modern interiors.",
     link: "product",
     bgCol: "[#493657]"

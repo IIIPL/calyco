@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaUsers, FaHeadset, FaGlobe, FaCheckCircle } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaUsers, FaHeadset, FaGlobe, FaCheckCircle  } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
+import { Button } from "../components/Button";
 
 const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -173,18 +174,19 @@ export const ContactUs = () => {
                             </div>
                             
                             <div className="text-center pt-4">
-                                <button 
-                                    type="submit" 
-                                    disabled={sending} 
-                                    className={`bg-[#493657] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#5a4067]  transition-all duration-300 transform hover:scale-105 shadow-lg ${sending ? 'opacity-60 cursor-not-allowed' : ''}`}
+                                <Button
+                                    type="submit"
+                                    disabled={sending}
+                                    onClick={() => {/* optional custom logic */}}
                                 >
                                     {sending ? 'Sending...' : 'Send Message'}
-                                </button>
+                                </Button>
                             </div>
+
                         </form>
                     </motion.div>
                     <motion.div
-                        className="bg-white w-full md:h-[480px] md:w-2/5 max-w-3xl flex flex-col shadow-xl p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
+                        className="bg-white w-full md:w-2/5 max-w-3xl flex flex-col shadow-xl p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
                         custom={1}
                         initial="hidden"
                         animate="visible"
@@ -213,12 +215,12 @@ export const ContactUs = () => {
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold text-gray-800 mb-1">Email Us</h4>
-                                <p class="text-gray-700 text-lg"><a href="mailto:info@calycopaints.com">info@calycopaints.com</a></p>
+                                <p class="text-gray-700 text-lg"><a href="mailto:info@calycopaints.com">support@calycopaints.com</a></p>
                                 <p class="text-gray-500 text-sm">We reply within 24 hours</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start">
+                        <div class="mb-8 flex items-start">
                             <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
                                 <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -226,11 +228,26 @@ export const ContactUs = () => {
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-xl font-semibold text-gray-800 mb-1">Visit Us</h4>
-                                <p class="text-gray-700 text-lg">B37, Sector 1</p>
-                                <p class="text-gray-700 text-lg">Noida, NCR</p>
+                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Visit Us</h4>
+                                <p className="text-gray-700 text-lg">MEC Office, Civil Lines</p>
+                                <p className="text-gray-700 text-lg">Nagpur, Maharashtra 440001</p>
                             </div>
                         </div>
+                     
+                        <div class="mb-8 flex items-start">
+                            <div class="flex-shrink-0 mr-4 text-white bg-[#493657]  rounded-full p-2">
+                                <FaGlobe className="h-8 w-8" />
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-1">Global Presence</h4>
+                                <p class="text-gray-700 text-lg">PROLIFIC ENERGY FZE</p>
+                                <p class="text-gray-700 text-lg">Po Box: 42747 Hamriyah FZ,</p>
+                                <p class="text-gray-700 text-lg">Sharjah, U.A.E.</p>
+                                <p class="text-gray-500 text-sm"><a href="tel:+971588285925">+97-15882-85925</a></p>
+                            </div>
+                        </div>
+
+
                     </motion.div>
                     
                 </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { colorGroups } from "../data/colorGroups";
+import ColorExplorer from "../components/ColorExplore";
+import { useNavigate } from "react-router-dom";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -16,9 +18,10 @@ const fadeUp = {
 };
 
 export default function ColorsPage() {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState([]);
   const [activeColor, setActiveColor] = useState(null);
-  const filterRef = useRef(null); // 👈 Added ref
+  const filterRef = useRef(null);
 
   useEffect(() => {
     document.title = "Calyco Sacred Palette";
@@ -37,7 +40,6 @@ export default function ColorsPage() {
         ? prev.filter((f) => f !== title)
         : [...prev, title];
 
-      // 👇 Scroll to filter bar after update
       setTimeout(() => {
         if (filterRef.current) {
           filterRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -81,15 +83,18 @@ export default function ColorsPage() {
           </div>
         </div>
 
-
         {/* SEE BY COLOR */}
-        <div className="w-full h-96 p-10">
-          a flex menu by which you can scroll and see what the color options we have. 
-          
+        {/* Removed h-96 and mb-32 from this div as ColorExplorer now renders its own height */}
+        {/* Ensure ColorExplorer doesn't have a fixed height if you want it to flow naturally */}
+        <div className="w-full relative z-0"> {/* Added relative and z-0 */}
+          <ColorExplorer />
         </div>
+        
         {/* Filter Bar */}
         <div
           ref={filterRef}
+          // The `sticky` position and a higher `z-index` (like z-40) are important here.
+          // `top-20 md:top-24` keeps it visible at the top when scrolling.
           className="sticky top-20 md:top-24 z-40 bg-white w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 px-4 sm:px-6 py-3 border-b border-gray-100"
         >
           <span className="text-sm text-gray-700 font-medium shrink-0 pr-1">
@@ -144,7 +149,7 @@ export default function ColorsPage() {
               {group.colors.map((color, i) => (
                 <motion.div
                   key={color.name + color.hex}
-                  onClick={() => setActiveColor(color)}
+                  onClick={() => navigate(`/paint-color/${color.name.replace(/\s+/g, "")}`)}
                   className="cursor-pointer rounded-2xl bg-[#faf9f7] border border-gray-100 shadow-sm flex flex-col items-start p-3 sm:p-4 transition hover:shadow-md"
                   initial="hidden"
                   whileInView="show"
