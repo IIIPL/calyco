@@ -1,10 +1,21 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
+import ColorCombination from '../components/ColorComponents/ColorCombination';
+import SimilarColors from '../components/ColorComponents/SimilarColors';
 
 // Helper function to create URL-friendly slugs
 const slugify = (text) => {
   return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+};
+
+// Function to determine text color based on background brightness
+const getTextColor = (hexColor) => {
+  const r = parseInt(hexColor.substring(1, 3), 16);
+  const g = parseInt(hexColor.substring(3, 5), 16);
+  const b = parseInt(hexColor.substring(5, 7), 16);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? 'text-black' : 'text-white';
 };
 
 const ColorDetailPage = () => {
@@ -18,186 +29,142 @@ const ColorDetailPage = () => {
     return <div className="p-20 text-center text-black">Color not found.</div>;
   }
 
-  // Get similar colors - try multiple approaches to ensure we have colors to show
+  // Get similar colors
   let similarColors = flatColors.filter(
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
   
-  // If no colors from same family, get colors from same group or base
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(
       c => (c.group === currentColor.group || c.base === currentColor.base) && c.name !== currentColor.name
     );
   }
   
-  // If still no colors, just get any other colors
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(c => c.name !== currentColor.name).slice(0, 8);
   }
 
-  const goBack = () => navigate(`/colors/family/${familyName}`);
+  // Get coordinating colors for combinations
+  const coordinatingColors = flatColors.filter(
+    c => c.color_family !== currentColor.color_family && c.name !== currentColor.name
+  ).slice(0, 6);
+
+  // Get other families
+  const otherFamilies = [...new Set(flatColors.map(c => c.color_family))].filter(
+    family => family !== currentColor.color_family
+  ).slice(0, 6);
+
+  const textColorClass = getTextColor(currentColor.hex);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: currentColor.hex }}>
-
-
-      {/* Main Content Container */}
-      <div className="flex min-h-screen">
-        {/* Left Side - Color Display with Room Scene */}
-        <div className="w-1/2 relative overflow-hidden">
-          {/* Room scene background - you can replace this with an actual room image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(135deg, ${currentColor.hex} 0%, ${currentColor.hex}dd 100%)`,
-            }}
+    <div className="min-h-screen bg-white mt-20">
+      {/* Section 1: Hero Section */}
+      <section className="min-h-screen flex flex-col md:flex-row relative" style={{ backgroundColor: currentColor.hex }}>
+        
+        {/* Breadcrumb Navigation */}
+        <nav className={`absolute top-12 left-12 text-sm ${textColorClass}`}>
+          <span 
+            onClick={() => navigate('/colors')} 
+            className="cursor-pointer underline"
           >
-            {/* Optional: Add a subtle pattern or texture overlay */}
-            <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-white to-transparent"></div>
-          </div>
-          
-          {/* Decorative elements to simulate room items */}
-          <div className="absolute bottom-20 left-10">
-            <div className="w-16 h-24 bg-black bg-opacity-20 rounded-sm"></div>
-            <div className="w-12 h-16 bg-black bg-opacity-15 rounded-sm mt-2 ml-2"></div>
-          </div>
-        </div>
+            Paint Colors
+          </span>
+          <span className="mx-2">›</span>
+          <span 
+            onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
+            className="cursor-pointer underline"
+          >
+            {currentColor.color_family}
+          </span>
+          <span className="mx-2">›</span>
+          <span>{currentColor.name}</span>
+        </nav>
 
-        {/* Right Side - Color Information */}
-        <div className="w-1/2 bg-white p-12 overflow-y-auto">
-          {/* Breadcrumb Navigation */}
-          <nav className="text-sm mb-8 text-gray-600">
+        {/* Left Side - Image Panel */}
+        <div className='px-10 pt-20'>
+          <img src={`https://media.benjaminmoore.com/WebServices/prod/cdp/1920x2400/blue-paint-167-white-satin-2067-70-rgb.jpg`} alt="Contained" className='h-[500px] w-full object-cover' />
+        </div>
+        
+        {/* Right Side - Details Panel */}
+        <div className={`w-full md:w-1/2 p-12 ${textColorClass}`}>
+
+          {/* Color Name and Code */}
+          <div className="mb-8 pt-16">
+            <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
+              {currentColor.name}
+            </h1>
+            <p className="text-xl">
+              <span>Color Code :</span>
+              {currentColor.hex}
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="mb-8 text-lg leading-relaxed">
+            {currentColor.description || "A beautiful color from our curated collection."}
+          </p>
+
+          {/* Color Family */}
+          <div className="mb-8 text-lg leading-relaxed">
+            <h2 className="">Color Family :</h2>
             <span 
-              onClick={() => navigate('/colors')} 
-              className="cursor-pointer hover:text-blue-600 underline"
-            >
-              Paint Colors
-            </span>
-            <span className="mx-2">›</span>
-            <span 
-              onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
-              className="cursor-pointer hover:text-blue-600 underline"
+              onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)}
+              className="cursor-pointer underline transition-colors"
             >
               {currentColor.color_family}
             </span>
-            <span className="mx-2">›</span>
-            <span className="text-gray-800">{currentColor.name}</span>
-          </nav>
-
-          {/* Color Title and Code */}
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-2">
-              {currentColor.name}
-            </h1>
-            <p className="text-xl text-gray-600 font-light">
-              {currentColor.hex}
-            </p>
-            <p className="text-gray-600 mt-4 text-lg leading-relaxed">
-              {currentColor.description}
-            </p>
           </div>
+          
+        </div>
+      </section>
 
-          {/* Color Information Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-medium text-gray-800">Color Information</h2>
-              <button className="p-1">
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+      {/* Section 2: Color Combination */}
+      {similarColors.length > 0 && (
+        <div className="bg-white py-16 px-12">
+          <h2 className="text-2xl mb-8">Color Combination</h2>
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1">
+              <ColorCombination currentColor={currentColor} similarColors={similarColors} />
             </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <span className="text-gray-600 mr-2">LRV</span>
-                <div className="w-4 h-4 border border-gray-400 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-xs text-gray-600">i</span>
-                </div>
-                <span className="text-gray-800 font-medium">
-                  {currentColor.lrv || '76.5'}
-                </span>
-              </div>
+            <div className="flex-1">
+              <ColorCombination currentColor={currentColor} similarColors={similarColors.slice(2, 4)} />
             </div>
-          </div>
-
-          {/* Collection Section */}
-          <div className="mb-12">
-            <h3 className="text-lg font-medium text-gray-800 mb-2">Collection</h3>
-            <a href="#" className="text-blue-600 underline hover:text-blue-800">
-              {currentColor.collection || 'Color Preview®'}
-            </a>
-          </div>
-
-          {/* Project Section */}
-          <div className="mb-8">
-            <h2 className="text-xl font-medium text-gray-800 mb-6">
-              Why Choose Benjamin Moore for Your Project?
-            </h2>
-            
-            {/* Action Buttons */}
-            <div className="flex gap-4">
-              <button className="bg-gray-800 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-gray-700 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Get Sample
-              </button>
-              
-              <button className="border border-gray-800 text-gray-800 px-6 py-3 rounded flex items-center gap-2 hover:bg-gray-50 transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Specifications
-              </button>
-            </div>
-          </div>
-
-          {/* Additional Color Details */}
-          <div className="space-y-4 text-sm">
-            <div>
-              <span className="font-medium text-gray-800">Recommended Use: </span>
-              <span className="text-gray-600">{currentColor.recommended_use}</span>
-            </div>
-            
-            <div>
-              <span className="font-medium text-gray-800">Tone: </span>
-              <span className="text-gray-600">{currentColor.tonality} – {currentColor.tone}</span>
-            </div>
-            
-            {currentColor.styling && (
-              <div>
-                <span className="font-medium text-gray-800">Styling: </span>
-                <span className="text-gray-600">{currentColor.styling}</span>
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      )}
 
-      {/* More Colors Section - Full Width Bottom */}
-      {similarColors.length > 4 && (
+      {/* Section 3: Similar Colors */}
+      {similarColors.length > 0 && (
+        <div className="py-16 px-12">
+          <h2 className="text-2xl md:text-4xl mb-8">Similar Colors</h2>
+          <SimilarColors currentColor={currentColor} similarColors={similarColors} />
+        </div>
+      )}
+
+      {/* Section 4: See Other Families */}
+      {otherFamilies.length > 0 && (
         <div className="bg-white py-16 px-12">
-          <h2 className="text-2xl font-light text-gray-800 mb-8">
-            More from {currentColor.color_family}
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {similarColors.slice(4, 10).map((color) => (
-              <div
-                key={color.name}
-                className="cursor-pointer group"
-                onClick={() => navigate(`/colors/family/${familyName}/${encodeURIComponent(color.name)}`)}
-              >
+          <h2 className="text-2xl mb-8">See Other Families</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {otherFamilies.map((family) => {
+              const sampleColor = flatColors.find(c => c.color_family === family);
+              return (
                 <div
-                  className="h-24 rounded-t-lg shadow-sm group-hover:shadow-lg transition-shadow"
-                  style={{ backgroundColor: color.hex }}
-                />
-                <div className="bg-white border border-t-0 rounded-b-lg p-3 shadow-sm group-hover:shadow-lg transition-shadow">
-                  <div className="text-sm font-medium text-gray-800 mb-1">{color.name}</div>
-                  <div className="text-xs text-gray-500">{color.hex}</div>
+                  key={family}
+                  className="cursor-pointer group"
+                  onClick={() => navigate(`/colors/family/${slugify(family)}`)}
+                >
+                  <div
+                    className="h-24 rounded-t-lg shadow-sm group-hover:shadow-lg transition-shadow"
+                    style={{ backgroundColor: sampleColor?.hex || '#f0f0f0' }}
+                  />
+                  <div className="bg-white border border-t-0 rounded-b-lg p-3 shadow-sm group-hover:shadow-lg transition-shadow">
+                    <div className="text-sm font-medium mb-1">{family}</div>
+                    <div className="text-xs">Family</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}

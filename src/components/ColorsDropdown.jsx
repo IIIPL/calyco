@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { colorGroups } from "../data/colorGroups";
+import { flatColors } from "../data/flatColors";
 
-const groupThumbnails = colorGroups.reduce((acc, group) => {
-    acc[group.title] = group.colors?.[0]?.hex || "#ccc"; // fallback
+// Get unique color families from flatColors
+const colorFamilies = [...new Set(flatColors.map(color => color.color_family))];
+
+// Create thumbnails for each family using the first color from each family
+const familyThumbnails = colorFamilies.reduce((acc, family) => {
+    const firstColor = flatColors.find(color => color.color_family === family);
+    acc[family] = firstColor?.hex || "#ccc"; // fallback
     return acc;
 }, {});
 
 const ColorsDropdown = ({ onSelect, isMobile = false }) => {
-    const [hoveredGroup, setHoveredGroup] = useState(colorGroups[0].title);
+    const [hoveredFamily, setHoveredFamily] = useState(colorFamilies[0]);
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -18,8 +23,8 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
         if (onSelect) onSelect();
     };
 
-    const handleGroupClick = (groupTitle) => {    
-        navigate(`/paint-colors/group/${groupTitle.replace(/\s+/g, "-").toLowerCase()}`);
+    const handleFamilyClick = (familyName) => {    
+        navigate(`/colors/family/${familyName.replace(/\s+/g, "-").toLowerCase()}`);
         window.scrollTo({ top: 0, behavior: "smooth" });
         if (onSelect) onSelect();
     };
@@ -42,12 +47,12 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
                 onClick={handleAllClick}
                 className="text-[#493657] hover:text-[#F0C85A] uppercase font-bold text-left"
                 >SEE ALL COLORS</button>
-                {colorGroups.map(({ title }) => (
+                {colorFamilies.map((family) => (
                 <button
-                    key={title}
-                    onClick={() => handleGroupClick(title)}
+                    key={family}
+                    onClick={() => handleFamilyClick(family)}
                     className="text-left text-[#493657] hover:text-[#F0C85A] text-base"
-                >{title}</button>
+                >{family}</button>
                 ))}
             </div>
             </div>
@@ -66,16 +71,16 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
             >SEE ALL COLORS</button>
             </div>
 
-            {/* Middle Column: Group List */}
+            {/* Middle Column: Family List */}
             <div className="flex flex-col flex-1 px-12 max-h-[400px] overflow-y-auto">
             <ul className="space-y-2 text-[#493657]">
-                {colorGroups.map(group => (
+                {colorFamilies.map(family => (
                 <li
-                    key={group.title}
-                    className={`text-base cursor-pointer transition-colors py-1 px-0 ${hoveredGroup === group.title ? "font-bold" : "hover:text-[#F0C85A]"}`}
-                    onMouseEnter={() => setHoveredGroup(group.title)}
-                    onClick={() => handleGroupClick(group.title)}
-                >{group.title}</li>
+                    key={family}
+                    className={`text-base cursor-pointer transition-colors py-1 px-0 ${hoveredFamily === family ? "font-bold" : "hover:text-[#F0C85A]"}`}
+                    onMouseEnter={() => setHoveredFamily(family)}
+                    onClick={() => handleFamilyClick(family)}
+                >{family}</li>
                 ))}
             </ul>
             </div>
@@ -84,7 +89,7 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
             <div className="min-w-[260px] max-w-[420px] flex items-center justify-center">
             <div
                 className="w-full h-48 rounded-xl shadow-md border border-gray-100"
-                style={{ backgroundColor: groupThumbnails[hoveredGroup] }}
+                style={{ backgroundColor: familyThumbnails[hoveredFamily] }}
             ></div>
             </div>
         </div>

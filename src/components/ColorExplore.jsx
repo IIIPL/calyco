@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { flatColors } from "../data/flatColors";
+import ColorBox from "./ColorComponents/ColorBox";
 
 const ColorExplore = () => {
   const navigate = useNavigate();
@@ -82,29 +83,16 @@ const ColorExplore = () => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
                   {colors.map((color, i) => (
-                    <div
+                    <ColorBox
                       key={i}
-                      className="rounded border cursor-pointer group overflow-hidden relative"
-                      onClick={() =>
-                        navigate(`/paint-color/${encodeURIComponent(color.name)}`)
-                      }
-                    >
-                      <div
-                        className="h-24 rounded flex items-center justify-center text-center px-2 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl"
-                        style={{
-                          backgroundColor: color.hex,
-                          color: getTextColor(color.hex),
-                        }}
-                      >
-                        <div className="text-xs font-semibold truncate w-full">
-                          {color.name}
-                        </div>
-                      </div>
-                    </div>
+                      color={color}
+                      familyName={family}
+                    />
                   ))}
                 </div>
+
               </div>
             </div>
           ))}
