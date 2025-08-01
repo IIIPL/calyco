@@ -62,7 +62,7 @@ export default function ColorsPage() {
 
   return (
     <div className="font-poppins bg-white min-h-screen flex flex-col items-center mt-24 sm:mt-32">
-      <div className="w-full max-w-7xl px-4 sm:px-6">
+      <div className="w-full px-4 sm:px-6">
         {/* Hero */}
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 sm:gap-10 mb-10">
           <img
@@ -179,7 +179,7 @@ export default function ColorsPage() {
         {/* Modal */}
         {activeColor && (
           <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-2 sm:px-4">
-            <div className="bg-white rounded-xl w-full max-w-2xl shadow-lg relative overflow-y-auto max-h-[90vh]">
+            <div className="bg-white rounded-xl w-full shadow-lg relative overflow-y-auto max-h-[90vh]">
               <button
                 onClick={() => setActiveColor(null)}
                 className="absolute top-3 right-4 text-gray-600 hover:text-black text-xl z-10"

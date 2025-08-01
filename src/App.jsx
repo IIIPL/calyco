@@ -28,8 +28,9 @@ import OfficeInspiration from './pages/inspiration/Office';
 import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
-import ColorPage from './pages/Colors/IndividualColorPage'
-import ColorGroup from './pages/Colors/ColorGroup'
+
+import FamilyColorGroup from './pages/FamilyPage'
+import ColorDetailPage from './pages/ColorDetailPage'
 
 
 const ColorPageWrapper = () => {
@@ -61,8 +62,8 @@ function App() {
 
           {/* Colors new routes */}
           <Route path='/colors' element={<ColorsPage/>}/>
-          <Route path="/paint-color/:colorName" element={<ColorPageWrapper />} />
-          <Route path="/paint-colors/group/:groupName" element={<GroupWrapper/>} />
+          <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
+          <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
           <Route path='/inspirations' element={<InspirationPage/>}/>
           <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
           <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>

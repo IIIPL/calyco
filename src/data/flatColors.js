@@ -13,7 +13,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Ultra Flat Solid",
     "styling": "Modern, French Country",
     "rooms": "Ceilings, Living Room, Bedroom"
@@ -32,7 +32,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Cottage, Cozy Cabin",
     "rooms": "All Rooms, Living Room, Bedroom"
@@ -51,7 +51,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Solid",
     "styling": "Coastal, Modern",
     "rooms": "Living Room, Kitchen, Hallways"
@@ -70,7 +70,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Timeless",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Vintage, Farmhouse",
     "rooms": "Living Room, Bedroom, Study Room"
@@ -89,7 +89,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Cozy",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Living Room, Dining Room"
@@ -108,7 +108,7 @@ export const flatColors = [
     "color_temperature": "Neutral",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "All Rooms, Hallways, Prayer Room"
@@ -127,7 +127,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
     "rooms": "Ceilings, Bedroom"
@@ -146,7 +146,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Bedroom, Living Room, Prayer Room"
@@ -165,7 +165,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Bedroom, Kids Room"
@@ -184,7 +184,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Translucent",
     "styling": "Boho",
     "rooms": "Bedroom, Highlight Walls"
@@ -203,7 +203,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Vintage",
     "rooms": "Bedroom, Prayer Room"
@@ -222,7 +222,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Dining Room, Living Room"
@@ -241,7 +241,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Rich",
-    "project": "",
+    "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Bedroom, Kids Room"
@@ -260,7 +260,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Bright",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
     "rooms": "Living Room, Highlight Walls"
@@ -279,7 +279,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Cozy",
-    "project": "",
+    "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "Cottage",
     "rooms": "Bedroom, Hallways, Kids Room"
@@ -298,7 +298,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Vintage",
     "rooms": "Study Room, Bedroom"
@@ -317,7 +317,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Highlight Walls, Exterior Body"
@@ -336,7 +336,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Living Room, Dining Room"
@@ -355,7 +355,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Entertainment Room, Living Room"
@@ -374,7 +374,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Bold Vibrant",
-    "project": "",
+    "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Body, Highlight Walls"
@@ -393,7 +393,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Highlight Walls, Hallways"
@@ -412,7 +412,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Study Room, Exterior Trims and Accents"
@@ -431,7 +431,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Bright",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Dining Room, Kitchen"
@@ -450,7 +450,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Rich",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Living Room, Prayer Room"
@@ -469,7 +469,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Rich",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Highlight Walls, Hallways"
@@ -488,7 +488,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Boho",
     "rooms": "Bedroom, Study Room"
@@ -507,7 +507,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Living Room, Entertainment Room"
@@ -526,7 +526,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Study Room, Hallways"
@@ -545,7 +545,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Kitchen, Balcony"
@@ -564,7 +564,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Bathroom, Living Room"
@@ -583,7 +583,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
     "rooms": "Bedroom, Prayer Room"
@@ -602,7 +602,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Body, Exterior Trims and Accents"
@@ -621,7 +621,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Living Room, Dining Room"
@@ -640,7 +640,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Bright",
-    "project": "",
+    "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Bedroom, Prayer Room"
@@ -659,7 +659,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Translucent",
     "styling": "Boho",
     "rooms": "Bedroom, Highlight Walls"
@@ -678,7 +678,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Bathroom, Hallways"
@@ -697,7 +697,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
     "rooms": "All Rooms"
@@ -716,7 +716,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Study Room, Bedroom"
@@ -735,7 +735,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Living Room"
@@ -754,7 +754,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Dining Room, Kitchen"
@@ -773,7 +773,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Ultra Flat Solid",
     "styling": "Cottage",
     "rooms": "Ceilings, Hallways"
@@ -792,7 +792,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Ultra Flat Solid",
     "styling": "Modern",
     "rooms": "Bedroom, Prayer Room"
@@ -811,7 +811,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Bright",
-    "project": "",
+    "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "French Country",
     "rooms": "Dining Room"
@@ -830,7 +830,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Bedroom, Living Room"
@@ -849,7 +849,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Timeless",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Hallways, Study Room"
@@ -868,7 +868,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Bathroom, Hallways"
@@ -887,7 +887,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Living Room, Bedroom"
@@ -906,7 +906,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Kitchen, Study Room"
@@ -925,7 +925,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Dining Room, Hallways"
@@ -944,7 +944,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Living Room, Bedroom"
@@ -963,7 +963,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
     "rooms": "All Rooms"
@@ -982,7 +982,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Prayer Room, Hallways"
@@ -1001,7 +1001,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Exterior Trims and Accents, Highlight Walls"
@@ -1020,7 +1020,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Living Room, Hallways"
@@ -1039,7 +1039,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Kitchen, Bathroom"
@@ -1058,7 +1058,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Body, Hallways"
@@ -1077,7 +1077,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Living Room, Prayer Room"
@@ -1096,7 +1096,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Study Room, Bedroom"
@@ -1115,7 +1115,7 @@ export const flatColors = [
     "color_temperature": "Light",
     "tonality": "Dining Room, Balcony",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": ""
@@ -1134,7 +1134,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Bathroom, Bedroom"
@@ -1153,7 +1153,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "All Rooms"
@@ -1172,7 +1172,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Translucent",
     "styling": "Coastal",
     "rooms": "Kids Room, Hallways"
@@ -1191,7 +1191,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Bedroom, Kitchen"
@@ -1210,7 +1210,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
     "rooms": "Ceilings, Study Room"
@@ -1229,7 +1229,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Dining Room, Highlight Walls"
@@ -1248,7 +1248,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Living Room, Entertainment Room"
@@ -1267,7 +1267,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Study Room, Bedroom"
@@ -1286,7 +1286,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Kitchen, Living Room"
@@ -1305,7 +1305,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Prayer Room, Hallways"
@@ -1324,7 +1324,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Purple",
-    "project": "",
+    "Project": "Cool",
     "opacity": "Dark",
     "styling": "Solid",
     "rooms": "Dining Room, Highlight Walls"
@@ -1343,7 +1343,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Grey",
-    "project": "",
+    "Project": "Cool",
     "opacity": "Dark",
     "styling": "Semi-Solid",
     "rooms": "Living Room, Entertainment Room"
@@ -1362,7 +1362,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Grey",
-    "project": "",
+    "Project": "Cool",
     "opacity": "Medium",
     "styling": "Semi-Solid",
     "rooms": "Study Room, Bedroom"
@@ -1381,7 +1381,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Green",
-    "project": "",
+    "Project": "Cool",
     "opacity": "Medium",
     "styling": "Semi-Transparent",
     "rooms": "Kitchen, Living Room"
@@ -1400,7 +1400,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Grey",
-    "project": "",
+    "Project": "Cool",
     "opacity": "Dark",
     "styling": "Solid",
     "rooms": "Prayer Room, Hallways"
@@ -1419,7 +1419,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Rich",
-    "project": "",
+    "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Dining Room, Highlight Walls"
@@ -1438,7 +1438,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Bold Vibrant",
-    "project": "",
+    "Project": "Trim",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Doors & Windows, Exterior Trims and Accents"
@@ -1457,7 +1457,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Body, Living Room"
@@ -1476,7 +1476,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Entertainment Room, Bedroom"
@@ -1495,7 +1495,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Grounding",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
     "rooms": "Kitchen, Study Room"
@@ -1514,7 +1514,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Rich",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Boho",
     "rooms": "Bedroom, Prayer Room"
@@ -1533,7 +1533,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
     "rooms": "Living Room, Highlight Walls"
@@ -1552,7 +1552,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Doors & Windows, Entertainment Room"
@@ -1571,7 +1571,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Trims and Accents, Verandahs"
@@ -1590,7 +1590,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Study Room, Hallways"
@@ -1609,7 +1609,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Moody",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Bedroom, Kitchen"
@@ -1628,7 +1628,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Bold Vibrant",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Living Room, Dining Room"
@@ -1647,7 +1647,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Exterior Body, Balcony"
@@ -1666,7 +1666,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Highlight Walls, Living Room"
@@ -1685,7 +1685,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Bold Vibrant",
-    "project": "",
+    "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Dining Room, Prayer Room"
@@ -1704,7 +1704,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Dark",
     "tone": "Rich",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Vintage",
     "rooms": "Bedroom, Study Room"
@@ -1723,7 +1723,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "All Rooms, Living Room, Hallways"
@@ -1742,7 +1742,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Timeless",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Cottage",
     "rooms": "Bedroom, Hallways"
@@ -1761,7 +1761,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Rich",
-    "project": "",
+    "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
     "rooms": "Kitchen, Living Room"
@@ -1780,7 +1780,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Mid-Century Modern",
     "rooms": "Dining Room, Hallways"
@@ -1799,7 +1799,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Rich",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Balcony, Living Room"
@@ -1818,7 +1818,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Bold Vibrant",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Solid",
     "styling": "Boho",
     "rooms": "Kitchen, Prayer Room"
@@ -1837,7 +1837,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Bright",
-    "project": "",
+    "Project": "Dining Room",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
     "rooms": "Dining Room, Highlight Walls"
@@ -1856,7 +1856,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Bright",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Ceilings, Bedroom"
@@ -1875,7 +1875,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
     "rooms": "Bedroom, Kitchen"
@@ -1894,7 +1894,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "Cottage",
     "rooms": "All Rooms, Living Room, Dining Room"
@@ -1913,7 +1913,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Solid",
     "styling": "Modern",
     "rooms": "Bedroom, Living Room"
@@ -1932,7 +1932,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Medium",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "French Country",
     "rooms": "Hallways, Study Room"
@@ -1951,7 +1951,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "All Rooms"
@@ -1970,7 +1970,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Calming",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
     "rooms": "Bedroom, Kitchen"
@@ -1989,7 +1989,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Light",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
     "rooms": "Bathroom, Study Room"
@@ -2008,7 +2008,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Medium",
     "tone": "Soft",
-    "project": "",
+    "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
     "rooms": "Bedroom, Prayer Room"
@@ -2027,7 +2027,7 @@ export const flatColors = [
     "color_temperature": "Cool",
     "tonality": "Dark",
     "tone": "Moody",
-    "project": "",
+    "Project": "Trim",
     "opacity": "Solid",
     "styling": "Modern",
     "rooms": "Exterior Body, Exterior Trims and Accents"
@@ -2046,7 +2046,7 @@ export const flatColors = [
     "color_temperature": "Warm",
     "tonality": "Light",
     "tone": "Pale",
-    "project": "",
+    "Project": "Living Room",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
     "rooms": "Living Room, Hallways"
