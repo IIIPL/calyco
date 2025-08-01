@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaUsers, FaHeadset, FaGlobe, FaCheckCircle  } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
 import { Button } from "../components/Button";
+import { AddressCard } from "../components/AddressCard";
 
 const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -249,10 +250,82 @@ export const ContactUs = () => {
 
 
                     </motion.div>
-                    
                 </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="India"
+                            emailId="info@calycopaints.com"
+                            completeAddress="MEC Office, Civil Lines Nagpur, Maharashtra 440001"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Dubai"
+                            emailId="dubai@calycopaints.com"
+                            completeAddress="PROLIFIC ENERGY FZE Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E."
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Thailand"
+                            emailId="thailand@calycopaints.com"
+                            completeAddress="75 Ocean Tower - II, 18C Floor Sukhumvit Road, Bangkok, Thailand"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Korea"
+                            emailId="korea@calycopaints.com"
+                            completeAddress="Regus Gangnam Station 16F, Seocho-dong, Seoul, Korea"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Japan"
+                            emailId="japan@calycopaints.com"
+                            completeAddress="19F Parks Tower, Nanbanaka, Naniwa-ku, Osaka-shi, Japan"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Turkey"
+                            emailId="turkey@calycopaints.com"
+                            completeAddress="Karamehmet Mh. Avrupa Serbest Bolgesi, Ergene/Tekirdag, Turkey"
+                        />
+                    </div>
+                    {/* <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="USA"
+                            emailId="usa@calycopaints.com"
+                            completeAddress="762 Green St. Iselin, NJ 08830, USA"
+                        />
+                    </div> */}
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Singapore"
+                            emailId="singapore@calycopaints.com"
+                            completeAddress="Levels 21 Centennial Tower, 3 Temasek Avenue, Singapore"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Netherlands"
+                            emailId="netherlands@calycopaints.com"
+                            completeAddress="Zuidplein 126WTC, Toren H, 1077 XV Amsterdam, The Netherlands"
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <AddressCard
+                            CountrName="Indonesia"
+                            emailId="infonesia@calycopaints.com"
+                            completeAddress="Jl. Modern Industri XVIII, Desa Nambo Udik, Cikande, Serang - Banten, Indonesia"
+                        />
+                    </div>
+                    </div>
+                    <img src="/worldmap.png" alt="worldImpact" className="mb-10"/>
 
-                {/* Removed Why Choose Us, Office Hours, and Map sections as per the new design */}
+
             </div>
         </div>
     );

@@ -81,7 +81,7 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
             </div>
 
             {/* Right Column: Swatch Thumbnail */}
-            <div className="min-w-[260px] max-w-[280px] flex items-center justify-center">
+            <div className="min-w-[260px] max-w-[420px] flex items-center justify-center">
             <div
                 className="w-full h-48 rounded-xl shadow-md border border-gray-100"
                 style={{ backgroundColor: groupThumbnails[hoveredGroup] }}
