@@ -38,7 +38,7 @@ const ColorPage = ({ colorName }) => {
                     <span>›</span>
                     <span
                     className="text-[#1a1a1a] underline cursor-pointer hover:text-black"
-                    onClick={() => navigate(`/paint-colors#${currentColor.groupTitle.replace(/\s+/g, "-").toLowerCase()}`)}
+                    onClick={() => navigate(`/colors#${currentColor.groupTitle.replace(/\s+/g, "-").toLowerCase()}`)}
                     >
                     {currentColor.groupTitle}
                     </span>

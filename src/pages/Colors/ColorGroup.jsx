@@ -23,10 +23,10 @@ const ColorGroup = ({ groupTitle = "Fresh Whites & Creams" }) => {
       {/* Breadcrumb */}
       <div className="text-sm px-6 pt-6 max-w-7xl mx-auto">
         <div className="flex items-center space-x-2 text-gray-600">
-          <span
-            className="underline cursor-pointer hover:text-black"
-            onClick={() => navigate("/paint-colors")}
-          >
+            <span
+              className="underline cursor-pointer hover:text-black"
+              onClick={() => navigate("/colors")}
+            >
             Paint Colors
           </span>
           <span>›</span>
