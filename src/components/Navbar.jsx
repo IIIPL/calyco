@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { CartIcon } from "./CartIcon";
 import { ProductsDropdown } from "./ProductsDropdown";
 import InspirationsDropdown from './InspirationsDropdown';
+import ColorsDropdown from "./ColorsDropdown";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,6 +69,12 @@ export const Navbar = () => {
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
           >Inspirations</button>
 
+
+          <button
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
+          >Colors</button>
+
           <Link
             to="/about"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
@@ -88,6 +95,8 @@ export const Navbar = () => {
       {/* Dropdowns (desktop only) */}
       {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'inspirations' && <InspirationsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'colors' && <ColorsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+
 
       {/* Mobile Menu Icon */}
       <div className="md:hidden flex items-center gap-2 ml-2 absolute top-0 right-0 h-20">
@@ -120,6 +129,7 @@ export const Navbar = () => {
         <div className="flex flex-col gap-6 text-xl font-medium items-center flex-1 w-full px-4">
           <ProductsDropdown isMobile={true} />
           <InspirationsDropdown isMobile={true} />
+          <ColorsDropdown isMobile={true} />
 
           <Link
             to="/samples"
