@@ -24,6 +24,7 @@ const ColorDetailPage = () => {
 
   const decodedColorName = decodeURIComponent(colorName);
   const currentColor = flatColors.find(c => c.name.toLowerCase() === decodedColorName.toLowerCase());
+  const colorImage = currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000";
 
   if (!currentColor) {
     return <div className="p-20 text-center text-black">Color not found.</div>;
@@ -71,7 +72,9 @@ const ColorDetailPage = () => {
           </span>
           <span className="mx-2">›</span>
           <span 
-            onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
+            onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)} 
+            
+        
             className="cursor-pointer underline"
           >
             {currentColor.color_family}
@@ -82,7 +85,7 @@ const ColorDetailPage = () => {
 
         {/* Left Side - Image Panel */}
         <div className='px-10 pt-20'>
-          <img src={`https://media.benjaminmoore.com/WebServices/prod/cdp/1920x2400/blue-paint-167-white-satin-2067-70-rgb.jpg`} alt="Contained" className='h-[500px] w-full object-cover' />
+          <img src={colorImage} alt="Contained" className='h-[500px] w-full object-cover' />
         </div>
         
         {/* Right Side - Details Panel */}
@@ -121,7 +124,7 @@ const ColorDetailPage = () => {
       {/* Section 2: Color Combination */}
       {similarColors.length > 0 && (
         <div className="bg-white py-16 px-12">
-          <h2 className="text-2xl mb-8">Color Combination</h2>
+          <h2 className="text-2xl md:text-4xl mb-8">Color Combination</h2>
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
               <ColorCombination currentColor={currentColor} similarColors={similarColors} />
@@ -142,32 +145,8 @@ const ColorDetailPage = () => {
       )}
 
       {/* Section 4: See Other Families */}
-      {otherFamilies.length > 0 && (
-        <div className="bg-white py-16 px-12">
-          <h2 className="text-2xl mb-8">See Other Families</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {otherFamilies.map((family) => {
-              const sampleColor = flatColors.find(c => c.color_family === family);
-              return (
-                <div
-                  key={family}
-                  className="cursor-pointer group"
-                  onClick={() => navigate(`/colors/family/${slugify(family)}`)}
-                >
-                  <div
-                    className="h-24 rounded-t-lg shadow-sm group-hover:shadow-lg transition-shadow"
-                    style={{ backgroundColor: sampleColor?.hex || '#f0f0f0' }}
-                  />
-                  <div className="bg-white border border-t-0 rounded-b-lg p-3 shadow-sm group-hover:shadow-lg transition-shadow">
-                    <div className="text-sm font-medium mb-1">{family}</div>
-                    <div className="text-xs">Family</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      
+      
     </div>
   );
 };

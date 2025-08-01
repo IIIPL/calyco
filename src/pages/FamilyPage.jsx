@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
 import Filter from '../components/ColorComponents/Filter';
 import ColorBox from '../components/ColorComponents/ColorBox';
 import { InspirationCard } from '../components/ColorComponents/Inspiration';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 
 const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
 const unslugify = (text) => text.replace(/-/g, ' ').replace(/and/g, '&').toUpperCase();
@@ -12,38 +13,62 @@ const FamilyColorPage = () => {
   const { familyName } = useParams();
   const navigate = useNavigate();
   const family = unslugify(familyName);
+
   const [activeFilters, setActiveFilters] = useState({});
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const familyColors = flatColors.filter((c) => c.color_family === family);
 
-  // Apply filters to colors
-  const filteredColors = useMemo(() => {
-    if (Object.keys(activeFilters).length === 0) {
-      return familyColors;
+  // Reset filters and scroll when familyName changes
+  useEffect(() => {
+    setActiveFilters({});
+    if (inspirationRef.current) {
+      inspirationRef.current.scrollLeft = 0;
+      updateScrollButtons();
     }
+  }, [familyName]);
 
-    return familyColors.filter(color => {
-      return Object.entries(activeFilters).every(([filterKey, filterValues]) => {
+  const filteredColors = useMemo(() => {
+    if (Object.keys(activeFilters).length === 0) return familyColors;
+    return familyColors.filter(color =>
+      Object.entries(activeFilters).every(([filterKey, filterValues]) => {
         if (filterValues.length === 0) return true;
-        
         const colorValue = color[filterKey] || color[filterKey === 'project' ? 'Project' : filterKey];
         return filterValues.includes(colorValue);
-      });
-    });
+      })
+    );
   }, [familyColors, activeFilters]);
 
-  const handleFilterChange = (newFilters) => {
-    setActiveFilters(newFilters);
+  const handleFilterChange = (newFilters) => setActiveFilters(newFilters);
+  const getActiveFilterCount = () => Object.values(activeFilters).flat().length;
+  const clearAllFilters = () => setActiveFilters({});
+
+  // Inspiration scroll logic
+  const inspirationRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const scrollAmount = 300;
+
+  const scroll = (dir) => {
+    if (inspirationRef.current) {
+      inspirationRef.current.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+    }
   };
 
-  const getActiveFilterCount = () => {
-    return Object.values(activeFilters).flat().length;
+  const updateScrollButtons = () => {
+    const el = inspirationRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
   };
 
-  const clearAllFilters = () => {
-    setActiveFilters({});
-  };
+  useEffect(() => {
+    const el = inspirationRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', updateScrollButtons);
+    updateScrollButtons();
+    return () => el.removeEventListener('scroll', updateScrollButtons);
+  }, []);
 
   if (!familyColors.length) {
     return <div className="p-20 text-center text-black">No colors found.</div>;
@@ -54,34 +79,35 @@ const FamilyColorPage = () => {
       {/* Heading */}
       <div className="px-10 mx-auto mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-2">{family} Paint Colors</h1>
-        <p className="text-md text-gray-700 ">
-          Explore a range of {family.toLowerCase()} paint colors to find the perfect shade for your space.
-        </p>
-        <div className="mt-4 text-sm text-gray-600">
-          Showing {filteredColors.length} of {familyColors.length} colors
-        </div>
+        <p className="text-md text-gray-700">Explore a range of {family.toLowerCase()} paint colors to find the perfect shade for your space.</p>
       </div>
 
       {/* Inspiration Section */}
-      <section className="px-10 mx-auto mb-12">
-        <div className="overflow-x-auto">
-          <div className="flex flex-row gap-6 whitespace-nowrap">
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
-            <InspirationCard colorName="Terracotta Soul" />
+      <section className="relative px-10 mx-4 md:mx-8 mb-12">
+        {canScrollLeft && (
+          <button onClick={() => scroll(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2">
+            <ChevronLeftIcon className="w-5 h-5 text-gray-700" />
+          </button>
+        )}
+        {canScrollRight && (
+          <button onClick={() => scroll(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2">
+            <ChevronRightIcon className="w-5 h-5 text-gray-700" />
+          </button>
+        )}
+        <div className="overflow-x-auto no-scrollbar" ref={inspirationRef}>
+          <div className="flex flex-row gap-6 whitespace-nowrap px-6">
+            {familyColors.slice(0, 6).map((color, index) => (
+              <InspirationCard key={index} colorName={color.name} />
+            ))}
           </div>
         </div>
       </section>
 
-      
       {/* Filter Controls */}
-      <div className="px-10  mx-auto mb-8">
+      <div className="px-10 mx-auto mb-8">
+        <div className="mt-4 text-sm text-gray-600">
+          Showing {filteredColors.length} of {familyColors.length} colors
+        </div>
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">All Colors</h3>
           <div className="flex items-center gap-3">
@@ -112,7 +138,7 @@ const FamilyColorPage = () => {
       </div>
 
       {/* Filter Modal */}
-      <Filter 
+      <Filter
         colors={familyColors}
         onFilterChange={handleFilterChange}
         activeFilters={activeFilters}
@@ -120,14 +146,10 @@ const FamilyColorPage = () => {
         onClose={() => setIsFilterOpen(false)}
       />
 
-      {/* Color Boxes */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10  mx-auto">
+      {/* Color Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto">
         {filteredColors.map((color, idx) => (
-          <ColorBox 
-            key={idx}
-            color={color}
-            familyName={familyName}
-          />
+          <ColorBox key={idx} color={color} familyName={familyName} />
         ))}
       </div>
 
@@ -143,7 +165,6 @@ const FamilyColorPage = () => {
           </button>
         </div>
       )}
-
     </div>
   );
 };

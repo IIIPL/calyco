@@ -16,7 +16,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Ultra Flat Solid",
     "styling": "Modern, French Country",
-    "rooms": "Ceilings, Living Room, Bedroom"
+    "rooms": "Ceilings, Living Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Almond Cloud",
@@ -35,7 +36,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Cottage, Cozy Cabin",
-    "rooms": "All Rooms, Living Room, Bedroom"
+    "rooms": "All Rooms, Living Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Dust Mist",
@@ -54,7 +56,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Solid",
     "styling": "Coastal, Modern",
-    "rooms": "Living Room, Kitchen, Hallways"
+    "rooms": "Living Room, Kitchen, Hallways",
+    "image": "",
   },
   {
     "name": "Taupe Silk",
@@ -73,7 +76,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Vintage, Farmhouse",
-    "rooms": "Living Room, Bedroom, Study Room"
+    "rooms": "Living Room, Bedroom, Study Room",
+    "image": "",
   },
   {
     "name": "Warm Dusk",
@@ -92,7 +96,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Living Room, Dining Room"
+    "rooms": "Living Room, Dining Room",
+    "image": "",
   },
   {
     "name": "Greige Whisper",
@@ -111,7 +116,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "All Rooms, Hallways, Prayer Room"
+    "rooms": "All Rooms, Hallways, Prayer Room",
+    "image": "",
   },
   {
     "name": "Fog White",
@@ -130,7 +136,8 @@ export const flatColors = [
     "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
-    "rooms": "Ceilings, Bedroom"
+    "rooms": "Ceilings, Bedroom",
+    "image": "",
   },
   {
     "name": "Sage Dust",
@@ -149,7 +156,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Bedroom, Living Room, Prayer Room"
+    "rooms": "Bedroom, Living Room, Prayer Room",
+    "image": "",
   },
   {
     "name": "Blush Bloom",
@@ -168,7 +176,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Bedroom, Kids Room"
+    "rooms": "Bedroom, Kids Room",
+    "image": "",
   },
   {
     "name": "Lilac Silk",
@@ -187,7 +196,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Translucent",
     "styling": "Boho",
-    "rooms": "Bedroom, Highlight Walls"
+    "rooms": "Bedroom, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Rose Smoke",
@@ -206,7 +216,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Vintage",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Peach Drift",
@@ -225,7 +236,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Dining Room, Living Room"
+    "rooms": "Dining Room, Living Room",
+    "image": "",
   },
   {
     "name": "Clay Pink",
@@ -244,7 +256,8 @@ export const flatColors = [
     "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Bedroom, Kids Room"
+    "rooms": "Bedroom, Kids Room",
+    "image": "",
   },
   {
     "name": "Soft Coral",
@@ -263,7 +276,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
-    "rooms": "Living Room, Highlight Walls"
+    "rooms": "Living Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Warm Blossom",
@@ -282,7 +296,8 @@ export const flatColors = [
     "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "Cottage",
-    "rooms": "Bedroom, Hallways, Kids Room"
+    "rooms": "Bedroom, Hallways, Kids Room",
+    "image": "",
   },
   {
     "name": "Muted Rose",
@@ -301,7 +316,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Vintage",
-    "rooms": "Study Room, Bedroom"
+    "rooms": "Study Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Terracotta Soul",
@@ -320,7 +336,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Highlight Walls, Exterior Body"
+    "rooms": "Highlight Walls, Exterior Body",
+    "image": "",
   },
   {
     "name": "Desert Clay",
@@ -339,7 +356,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Living Room, Dining Room"
+    "rooms": "Living Room, Dining Room",
+    "image": "",
   },
   {
     "name": "Cocoa Dust",
@@ -358,7 +376,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Entertainment Room, Living Room"
+    "rooms": "Entertainment Room, Living Room",
+    "image": "",
   },
   {
     "name": "Brick Ember",
@@ -377,7 +396,8 @@ export const flatColors = [
     "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Body, Highlight Walls"
+    "rooms": "Exterior Body, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Rust Field",
@@ -396,7 +416,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Highlight Walls, Hallways"
+    "rooms": "Highlight Walls, Hallways",
+    "image": "",
   },
   {
     "name": "Olive Root",
@@ -415,7 +436,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Study Room, Exterior Trims and Accents"
+    "rooms": "Study Room, Exterior Trims and Accents",
+    "image": "",
   },
   {
     "name": "Harvest Ochre",
@@ -434,7 +456,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Dining Room, Kitchen"
+    "rooms": "Dining Room, Kitchen",
+    "image": "",
   },
   {
     "name": "Smoked Clay",
@@ -453,7 +476,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Living Room, Prayer Room"
+    "rooms": "Living Room, Prayer Room",
+    "image": "",
   },
   {
     "name": "Royal Indigo",
@@ -472,7 +496,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Highlight Walls, Hallways"
+    "rooms": "Highlight Walls, Hallways",
+    "image": "",
   },
   {
     "name": "Midnight Plum",
@@ -491,7 +516,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Boho",
-    "rooms": "Bedroom, Study Room"
+    "rooms": "Bedroom, Study Room",
+    "image": "",
   },
   {
     "name": "Twilight Blue",
@@ -510,7 +536,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Living Room, Entertainment Room"
+    "rooms": "Living Room, Entertainment Room",
+    "image": "",
   },
   {
     "name": "Olive Grove",
@@ -529,7 +556,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Study Room, Hallways"
+    "rooms": "Study Room, Hallways",
+    "image": "",
   },
   {
     "name": "Teal Lake",
@@ -548,7 +576,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Kitchen, Balcony"
+    "rooms": "Kitchen, Balcony",
+    "image": "",
   },
   {
     "name": "Jade Smoke",
@@ -567,7 +596,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Bathroom, Living Room"
+    "rooms": "Bathroom, Living Room",
+    "image": "",
   },
   {
     "name": "Mauve Eclipse",
@@ -586,7 +616,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Cinder Grey",
@@ -605,7 +636,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Body, Exterior Trims and Accents"
+    "rooms": "Exterior Body, Exterior Trims and Accents",
+    "image": "",
   },
   {
     "name": "Butter Blush",
@@ -624,7 +656,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Living Room, Dining Room"
+    "rooms": "Living Room, Dining Room",
+    "image": "",
   },
   {
     "name": "Sunset Pearl",
@@ -643,7 +676,8 @@ export const flatColors = [
     "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Lotus Haze",
@@ -662,7 +696,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Translucent",
     "styling": "Boho",
-    "rooms": "Bedroom, Highlight Walls"
+    "rooms": "Bedroom, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Muted Pearl",
@@ -681,7 +716,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Bathroom, Hallways"
+    "rooms": "Bathroom, Hallways",
+    "image": "",
   },
   {
     "name": "Chalk Flower",
@@ -700,7 +736,8 @@ export const flatColors = [
     "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
-    "rooms": "All Rooms"
+    "rooms": "All Rooms",
+    "image": "",
   },
   {
     "name": "Canvas Dust",
@@ -719,7 +756,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Study Room, Bedroom"
+    "rooms": "Study Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Desert Peach",
@@ -738,7 +776,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Living Room"
+    "rooms": "Living Room",
+    "image": "",
   },
   {
     "name": "Thar Clay",
@@ -757,7 +796,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Dining Room, Kitchen"
+    "rooms": "Dining Room, Kitchen",
+    "image": "",
   },
   {
     "name": "Beach Sand",
@@ -776,7 +816,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Ultra Flat Solid",
     "styling": "Cottage",
-    "rooms": "Ceilings, Hallways"
+    "rooms": "Ceilings, Hallways",
+    "image": "",
   },
   {
     "name": "Powder Beige",
@@ -795,7 +836,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Ultra Flat Solid",
     "styling": "Modern",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Candle Glow",
@@ -814,7 +856,8 @@ export const flatColors = [
     "Project": "Dining Room",
     "opacity": "Semi-Solid",
     "styling": "French Country",
-    "rooms": "Dining Room"
+    "rooms": "Dining Room",
+    "image": "",
   },
   {
     "name": "Linen Warm",
@@ -833,7 +876,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Bedroom, Living Room"
+    "rooms": "Bedroom, Living Room",
+    "image": "",
   },
   {
     "name": "Earthen Dune",
@@ -852,7 +896,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Hallways, Study Room"
+    "rooms": "Hallways, Study Room",
+    "image": "",
   },
   {
     "name": "Ash Haze",
@@ -871,7 +916,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Bathroom, Hallways"
+    "rooms": "Bathroom, Hallways",
+    "image": "",
   },
   {
     "name": "Musk Flint",
@@ -890,7 +936,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Living Room, Bedroom"
+    "rooms": "Living Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Weathered Silver",
@@ -909,7 +956,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Kitchen, Study Room"
+    "rooms": "Kitchen, Study Room",
+    "image": "",
   },
   {
     "name": "Copper Blend",
@@ -928,7 +976,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Dining Room, Hallways"
+    "rooms": "Dining Room, Hallways",
+    "image": "",
   },
   {
     "name": "Molten Taupe",
@@ -947,7 +996,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Living Room, Bedroom"
+    "rooms": "Living Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Biscuit Dust",
@@ -966,7 +1016,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
-    "rooms": "All Rooms"
+    "rooms": "All Rooms",
+    "image": "",
   },
   {
     "name": "Coconut Shell",
@@ -985,7 +1036,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Prayer Room, Hallways"
+    "rooms": "Prayer Room, Hallways",
+    "image": "",
   },
   {
     "name": "Mudstone",
@@ -1004,7 +1056,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Exterior Trims and Accents, Highlight Walls"
+    "rooms": "Exterior Trims and Accents, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Basalt Grey",
@@ -1023,7 +1076,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Living Room, Hallways"
+    "rooms": "Living Room, Hallways",
+    "image": "",
   },
   {
     "name": "Shadow Drift",
@@ -1042,7 +1096,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Kitchen, Bathroom"
+    "rooms": "Kitchen, Bathroom",
+    "image": "",
   },
   {
     "name": "Charcoal Smoke",
@@ -1061,7 +1116,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Body, Hallways"
+    "rooms": "Exterior Body, Hallways",
+    "image": "",
   },
   {
     "name": "Mystic Olive",
@@ -1080,7 +1136,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Living Room, Prayer Room"
+    "rooms": "Living Room, Prayer Room",
+    "image": "",
   },
   {
     "name": "Valley Sage",
@@ -1099,7 +1156,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Study Room, Bedroom"
+    "rooms": "Study Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Eucalyptus Tint",
@@ -1118,7 +1176,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": ""
+    "rooms": "",
+    "image": "",
   },
   {
     "name": "Celadon Hue",
@@ -1137,7 +1196,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Bathroom, Bedroom"
+    "rooms": "Bathroom, Bedroom",
+    "image": "",
   },
   {
     "name": "Mint Cloud",
@@ -1156,7 +1216,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "All Rooms"
+    "rooms": "All Rooms",
+    "image": "",
   },
   {
     "name": "Ice Sky",
@@ -1175,7 +1236,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Translucent",
     "styling": "Coastal",
-    "rooms": "Kids Room, Hallways"
+    "rooms": "Kids Room, Hallways",
+    "image": "",
   },
   {
     "name": "Glacier Grey",
@@ -1194,7 +1256,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Bedroom, Kitchen"
+    "rooms": "Bedroom, Kitchen",
+    "image": "",
   },
   {
     "name": "Slate White",
@@ -1213,7 +1276,8 @@ export const flatColors = [
     "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
-    "rooms": "Ceilings, Study Room"
+    "rooms": "Ceilings, Study Room",
+    "image": "",
   },
   {
     "name": "Twilight Indigo",
@@ -1232,7 +1296,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Dining Room, Highlight Walls"
+    "rooms": "Dining Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Storm Mist",
@@ -1251,7 +1316,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Living Room, Entertainment Room"
+    "rooms": "Living Room, Entertainment Room",
+    "image": "",
   },
   {
     "name": "Faded Navy",
@@ -1270,7 +1336,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Study Room, Bedroom"
+    "rooms": "Study Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Ocean Gaze",
@@ -1289,7 +1356,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Kitchen, Living Room"
+    "rooms": "Kitchen, Living Room",
+    "image": "",
   },
   {
     "name": "Deep Sea",
@@ -1308,7 +1376,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Prayer Room, Hallways"
+    "rooms": "Prayer Room, Hallways",
+    "image": "",
   },
   {
     "name": "Twilight Indigo",
@@ -1327,7 +1396,8 @@ export const flatColors = [
     "Project": "Cool",
     "opacity": "Dark",
     "styling": "Solid",
-    "rooms": "Dining Room, Highlight Walls"
+    "rooms": "Dining Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Storm Mist",
@@ -1346,7 +1416,8 @@ export const flatColors = [
     "Project": "Cool",
     "opacity": "Dark",
     "styling": "Semi-Solid",
-    "rooms": "Living Room, Entertainment Room"
+    "rooms": "Living Room, Entertainment Room",
+    "image": "",
   },
   {
     "name": "Faded Navy",
@@ -1365,7 +1436,8 @@ export const flatColors = [
     "Project": "Cool",
     "opacity": "Medium",
     "styling": "Semi-Solid",
-    "rooms": "Study Room, Bedroom"
+    "rooms": "Study Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Ocean Gaze",
@@ -1384,7 +1456,8 @@ export const flatColors = [
     "Project": "Cool",
     "opacity": "Medium",
     "styling": "Semi-Transparent",
-    "rooms": "Kitchen, Living Room"
+    "rooms": "Kitchen, Living Room",
+    "image": "",
   },
   {
     "name": "Deep Sea",
@@ -1403,7 +1476,8 @@ export const flatColors = [
     "Project": "Cool",
     "opacity": "Dark",
     "styling": "Solid",
-    "rooms": "Prayer Room, Hallways"
+    "rooms": "Prayer Room, Hallways",
+    "image": "",
   },
   {
     "name": "Oxblood Rich",
@@ -1422,7 +1496,8 @@ export const flatColors = [
     "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Dining Room, Highlight Walls"
+    "rooms": "Dining Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Ink Black",
@@ -1441,7 +1516,8 @@ export const flatColors = [
     "Project": "Trim",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Doors & Windows, Exterior Trims and Accents"
+    "rooms": "Doors & Windows, Exterior Trims and Accents",
+    "image": "",
   },
   {
     "name": "Graphite Shadow",
@@ -1460,7 +1536,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Body, Living Room"
+    "rooms": "Exterior Body, Living Room",
+    "image": "",
   },
   {
     "name": "Midnight Stone",
@@ -1479,7 +1556,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Entertainment Room, Bedroom"
+    "rooms": "Entertainment Room, Bedroom",
+    "image": "",
   },
   {
     "name": "Dense Olive",
@@ -1498,7 +1576,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Solid",
     "styling": "Coastal",
-    "rooms": "Kitchen, Study Room"
+    "rooms": "Kitchen, Study Room",
+    "image": "",
   },
   {
     "name": "Royal Plum",
@@ -1517,7 +1596,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Boho",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Dusty Grape",
@@ -1536,7 +1616,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
-    "rooms": "Living Room, Highlight Walls"
+    "rooms": "Living Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Charcoal Ash",
@@ -1555,7 +1636,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Doors & Windows, Entertainment Room"
+    "rooms": "Doors & Windows, Entertainment Room",
+    "image": "",
   },
   {
     "name": "Tarmac",
@@ -1574,7 +1656,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Trims and Accents, Verandahs"
+    "rooms": "Exterior Trims and Accents, Verandahs",
+    "image": "",
   },
   {
     "name": "Ironstone",
@@ -1593,7 +1676,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Study Room, Hallways"
+    "rooms": "Study Room, Hallways",
+    "image": "",
   },
   {
     "name": "Walnut Dust",
@@ -1612,7 +1696,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Bedroom, Kitchen"
+    "rooms": "Bedroom, Kitchen",
+    "image": "",
   },
   {
     "name": "Burnt Sienna",
@@ -1631,7 +1716,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Living Room, Dining Room"
+    "rooms": "Living Room, Dining Room",
+    "image": "",
   },
   {
     "name": "Spiced Terra",
@@ -1650,7 +1736,8 @@ export const flatColors = [
     "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Exterior Body, Balcony"
+    "rooms": "Exterior Body, Balcony",
+    "image": "",
   },
   {
     "name": "Sunburn Rust",
@@ -1669,7 +1756,8 @@ export const flatColors = [
     "Project": "Fence",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Highlight Walls, Living Room"
+    "rooms": "Highlight Walls, Living Room",
+    "image": "",
   },
   {
     "name": "Molten Red",
@@ -1688,7 +1776,8 @@ export const flatColors = [
     "Project": "Front Door",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Dining Room, Prayer Room"
+    "rooms": "Dining Room, Prayer Room",
+    "image": "",
   },
   {
     "name": "Marooned",
@@ -1707,7 +1796,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Solid",
     "styling": "Vintage",
-    "rooms": "Bedroom, Study Room"
+    "rooms": "Bedroom, Study Room",
+    "image": "",
   },
   {
     "name": "Smoky Taupe",
@@ -1726,7 +1816,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "All Rooms, Living Room, Hallways"
+    "rooms": "All Rooms, Living Room, Hallways",
+    "image": "",
   },
   {
     "name": "Almond Bark",
@@ -1745,7 +1836,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Cottage",
-    "rooms": "Bedroom, Hallways"
+    "rooms": "Bedroom, Hallways",
+    "image": "",
   },
   {
     "name": "Copper Ochre",
@@ -1764,7 +1856,8 @@ export const flatColors = [
     "Project": "Deck",
     "opacity": "Solid",
     "styling": "Farmhouse",
-    "rooms": "Kitchen, Living Room"
+    "rooms": "Kitchen, Living Room",
+    "image": "",
   },
   {
     "name": "Dusty Brass",
@@ -1783,7 +1876,8 @@ export const flatColors = [
     "Project": "Office",
     "opacity": "Semi-Solid",
     "styling": "Mid-Century Modern",
-    "rooms": "Dining Room, Hallways"
+    "rooms": "Dining Room, Hallways",
+    "image": "",
   },
   {
     "name": "Golden Clay",
@@ -1802,7 +1896,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Balcony, Living Room"
+    "rooms": "Balcony, Living Room",
+    "image": "",
   },
   {
     "name": "Curry Gold",
@@ -1821,7 +1916,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Solid",
     "styling": "Boho",
-    "rooms": "Kitchen, Prayer Room"
+    "rooms": "Kitchen, Prayer Room",
+    "image": "",
   },
   {
     "name": "Citrus Spice",
@@ -1840,7 +1936,8 @@ export const flatColors = [
     "Project": "Dining Room",
     "opacity": "Semi-Transparent",
     "styling": "Modern",
-    "rooms": "Dining Room, Highlight Walls"
+    "rooms": "Dining Room, Highlight Walls",
+    "image": "",
   },
   {
     "name": "Banana Cream",
@@ -1859,7 +1956,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Ceilings, Bedroom"
+    "rooms": "Ceilings, Bedroom",
+    "image": "",
   },
   {
     "name": "Vanilla Dust",
@@ -1878,7 +1976,8 @@ export const flatColors = [
     "Project": "Living Room",
     "opacity": "Ultra Flat Solid",
     "styling": "French Country",
-    "rooms": "Bedroom, Kitchen"
+    "rooms": "Bedroom, Kitchen",
+    "image": "",
   },
   {
     "name": "Chalk Beige",
@@ -1897,7 +1996,8 @@ export const flatColors = [
     "Project": "Ceiling",
     "opacity": "Ultra Flat Solid",
     "styling": "Cottage",
-    "rooms": "All Rooms, Living Room, Dining Room"
+    "rooms": "All Rooms, Living Room, Dining Room",
+    "image": "",
   },
   {
     "name": "Quiet Cloud",
@@ -1916,7 +2016,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Solid",
     "styling": "Modern",
-    "rooms": "Bedroom, Living Room"
+    "rooms": "Bedroom, Living Room",
+    "image": "",
   },
   {
     "name": "Dusk Linen",
@@ -1935,7 +2036,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Transparent",
     "styling": "French Country",
-    "rooms": "Hallways, Study Room"
+    "rooms": "Hallways, Study Room",
+    "image": "",
   },
   {
     "name": "Soft Pistachio",
@@ -1954,7 +2056,8 @@ export const flatColors = [
     "Project": "Kitchen",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "All Rooms"
+    "rooms": "All Rooms",
+    "image": "",
   },
   {
     "name": "Muted Mint",
@@ -1973,7 +2076,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Cottage",
-    "rooms": "Bedroom, Kitchen"
+    "rooms": "Bedroom, Kitchen",
+    "image": "",
   },
   {
     "name": "Pale Aqua",
@@ -1992,7 +2096,8 @@ export const flatColors = [
     "Project": "Bathroom",
     "opacity": "Semi-Transparent",
     "styling": "Coastal",
-    "rooms": "Bathroom, Study Room"
+    "rooms": "Bathroom, Study Room",
+    "image": "",
   },
   {
     "name": "Dusky Lilac",
@@ -2011,7 +2116,8 @@ export const flatColors = [
     "Project": "Bedroom",
     "opacity": "Semi-Solid",
     "styling": "Boho",
-    "rooms": "Bedroom, Prayer Room"
+    "rooms": "Bedroom, Prayer Room",
+    "image": "",
   },
   {
     "name": "Earth Black",
@@ -2030,7 +2136,8 @@ export const flatColors = [
     "Project": "Trim",
     "opacity": "Solid",
     "styling": "Modern",
-    "rooms": "Exterior Body, Exterior Trims and Accents"
+    "rooms": "Exterior Body, Exterior Trims and Accents",
+    "image": "",
   },
   {
     "name": "Classic Cream",
