@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Slider from './components/Slider'
 import { Navbar } from './components/Navbar'
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom'
+import { Route, Routes, useParams } from 'react-router-dom'
 import { HomePage } from './pages/HomePage'
 import { Temp } from './pages/Temp'
 import { AboutUs } from './pages/AboutUs'
@@ -28,13 +28,12 @@ import OfficeInspiration from './pages/inspiration/Office';
 import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
-import ColorPage from './pages/Colors/IndividualColorPage'
+import FullColorPage from './pages/Colors/FullColorPage'
 import ColorGroup from './pages/Colors/ColorGroup'
 
 
 const ColorPageWrapper = () => {
-  const { colorName } = useParams();
-  return <ColorPage colorName={colorName} />;
+  return <FullColorPage />;
 }
 const GroupWrapper = () => {
   const { groupName } = useParams();
