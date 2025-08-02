@@ -1,7 +1,11 @@
-// ✅ Unified ProductsDropdown with mobile & desktop logic
 import React, { useState, useEffect } from "react";
 import { products as allProducts } from "../data/products";
 import { Link, useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css'
+
+
+
 
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
@@ -139,9 +143,10 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           </div>
           <div className="min-w-[260px] max-w-[280px] flex items-center justify-center">
             {hovered && (
-              <img
+              <LazyLoadImage
                 src={hovered.images?.[0] || hovered.image}
                 alt={hovered.name}
+                effect="blue"
                 className="object-contain h-64 w-full"
               />            
             )}
