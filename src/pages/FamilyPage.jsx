@@ -8,11 +8,14 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 
 const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
 const unslugify = (text) => text.replace(/-/g, ' ').replace(/and/g, '&').toUpperCase();
+const formatCaps = (text) =>
+  text.replace(/\b\w+/g, word => word[0].toUpperCase() + word.slice(1).toLowerCase());
 
 const FamilyColorPage = () => {
   const { familyName } = useParams();
   const navigate = useNavigate();
   const family = unslugify(familyName);
+  const familyHeading = formatCaps(family);
 
   const colorGridRef = useRef(null);
 
@@ -77,11 +80,11 @@ const FamilyColorPage = () => {
   }
 
   return (
-    <div className="pt-24 md:32 pb-20 bg-white text-[#1a1a1a] min-h-screen">
+    <div className="pt-24 md:pt-32 pb-20 bg-white text-[#1a1a1a] min-h-screen">
       {/* Heading */}
       <div className="mb-12 px-6 md:px-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-2">{family} Paint Colors</h1>
-        <p className="text-md text-gray-700">Explore a range of {family.toLowerCase()} paint colors to find the perfect shade for your space.</p>
+        <h1 className="text-4xl md:text-5xl font-bold mb-2">{familyHeading} Paint Colors</h1>
+        <p className="text-md text-gray-700">Explore a range of {familyHeading} paint colors to find the perfect shade for your space.</p>
       </div>
 
       {/* Inspiration Section */}

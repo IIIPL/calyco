@@ -23,7 +23,7 @@ const Filter = ({ colors, onFilterChange, activeFilters, isOpen, onClose, scroll
   
   const filterOptions = {
     group: getUniqueValues('group'),
-    tone: getUniqueValues('tonality'),
+    tonality: getUniqueValues('tonality'),
     project: getUniqueValues('Project', true),
     opacity: getUniqueValues('opacity'),
     styling: getUniqueValues('styling'),

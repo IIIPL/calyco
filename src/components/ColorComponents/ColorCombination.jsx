@@ -22,7 +22,7 @@ const ColorCombination = ({ currentColor, similarColors }) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="flex h-64 rounded-lg overflow-hidden shadow-lg">
+      <div className="flex h-64 overflow-hidden shadow-lg">
         {/* Left Section - Main Color (58% width) */}
         <div 
           className="w-[58%] relative cursor-pointer transition-opacity"
