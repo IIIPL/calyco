@@ -146,7 +146,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
               <LazyLoadImage
                 src={hovered.images?.[0] || hovered.image}
                 alt={hovered.name}
-                effect="blue"
+                effect="blur"
                 className="object-contain h-64 w-full"
               />            
             )}
