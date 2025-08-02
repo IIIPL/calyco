@@ -14,6 +14,8 @@ const FamilyColorPage = () => {
   const navigate = useNavigate();
   const family = unslugify(familyName);
 
+  const colorGridRef = useRef(null);
+
   const [activeFilters, setActiveFilters] = useState({});
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -75,33 +77,24 @@ const FamilyColorPage = () => {
   }
 
   return (
-    <div className="pt-36 pb-20 bg-white text-[#1a1a1a] min-h-screen">
+    <div className="pt-24 md:32 pb-20 bg-white text-[#1a1a1a] min-h-screen">
       {/* Heading */}
-      <div className="px-10 mx-auto mb-10">
+      <div className="mb-12 px-6 md:px-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-2">{family} Paint Colors</h1>
         <p className="text-md text-gray-700">Explore a range of {family.toLowerCase()} paint colors to find the perfect shade for your space.</p>
       </div>
 
       {/* Inspiration Section */}
-      <section className="relative px-10 mx-4 md:mx-8 mb-12">
-        {canScrollLeft && (
-          <button onClick={() => scroll(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2">
-            <ChevronLeftIcon className="w-5 h-5 text-gray-700" />
-          </button>
-        )}
-        {canScrollRight && (
-          <button onClick={() => scroll(1)} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2">
-            <ChevronRightIcon className="w-5 h-5 text-gray-700" />
-          </button>
-        )}
-        <div className="overflow-x-auto no-scrollbar" ref={inspirationRef}>
-          <div className="flex flex-row gap-6 whitespace-nowrap px-6">
-            {familyColors.slice(0, 6).map((color, index) => (
-              <InspirationCard key={index} colorName={color.name} />
-            ))}
-          </div>
+     <section className="mb-12 px-6 md:px-12 mt-4">
+      <div className="overflow-x-auto">
+        <div className="flex space-x-6 pb-2">
+          {familyColors.slice(0, 6).map((color, index) => (
+            <InspirationCard key={index} colorName={color.name} />
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
+
 
       {/* Filter Controls */}
       <div className="px-10 mx-auto mb-8">
@@ -144,14 +137,15 @@ const FamilyColorPage = () => {
         activeFilters={activeFilters}
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
+        scrollToRef = {colorGridRef}
       />
 
       {/* Color Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto">
+      <section ref={colorGridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto">
         {filteredColors.map((color, idx) => (
           <ColorBox key={idx} color={color} familyName={familyName} />
         ))}
-      </div>
+      </section>
 
       {/* No Results Message */}
       {filteredColors.length === 0 && (
@@ -159,7 +153,7 @@ const FamilyColorPage = () => {
           <div className="text-gray-500 text-lg mb-4">No colors match your current filters</div>
           <button
             onClick={clearAllFilters}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-6 py-2 bg-gradient-to-r from-[#f3de79] to-[#a57f24] text-black rounded-lg transition-colors"
           >
             Clear All Filters
           </button>
