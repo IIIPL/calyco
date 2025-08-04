@@ -88,7 +88,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Nova",
-    "images": ["/Assets/Nova/NoBg.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
       "/Assets/novaa.png",
     ]
   },

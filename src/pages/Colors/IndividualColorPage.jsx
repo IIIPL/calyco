@@ -91,7 +91,7 @@ const ColorPage = ({ colorName }) => {
 
             {/* SIMILAR COLORS */}
             <div className="bg-[#eee9df] py-16">
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="mx-auto px-6">
                 <h2 className="text-3xl font-bold mb-8">Similar Colors</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     {similarColors.map((color, idx) => (

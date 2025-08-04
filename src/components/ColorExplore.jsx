@@ -1,55 +1,98 @@
-import React from 'react';
-import { flatColors } from '../data/flatColors'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { flatColors } from "../data/flatColors";
+import ColorBox from "./ColorComponents/ColorBox";
 
-const ColorExplorer = () => {
+const ColorExplore = () => {
   const navigate = useNavigate();
+  const [expandedFamily, setExpandedFamily] = useState(null);
 
-  const groupedColors = flatColors.reduce((acc, color) => {
-    if (!acc[color.group]) acc[color.group] = [];
-    acc[color.group].push(color);
+  const colorsByFamily = flatColors.reduce((acc, color) => {
+    const family = color.color_family || "Uncategorized";
+    if (!acc[family]) acc[family] = [];
+    acc[family].push(color);
     return acc;
   }, {});
 
-  const handleGroupClick = (group) => {
-    const slug = group.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "-and-");
-    navigate(`/paint-colors/group/${slug}`);
+  const familyColors = {
+    "REDS & ORANGES": "#FF1F1F",
+    "YELLOWS & GREENS": "#FFD600",
+    "GREENS": "#486C6C",
+    "BLUES": "#1F3D7A",
+    "PURPLES & PINKS": "#9C27B0",
+    "GREYS": "#757575",
+    "WHITES & OFF WHITES": "#F5F5F5",
+    "BROWNS": "#6D4C41",
   };
 
-  return (
-    <div className="w-full py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-10 text-center">
-          Explore Our <span className="text-[#F0C85A]">Sacred Palette</span>
-        </h2>
+  const getColor = (family) => familyColors[family] || "#E0E0E0";
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {Object.entries(groupedColors).map(([groupTitle, colors], index) => (
-            <div
-              key={index}
-              className="w-full max-w-sm bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105"
-              onClick={() => handleGroupClick(groupTitle)}
-            >
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3 truncate">
-                  {groupTitle}
-                </h3>
-                <div className="flex flex-col mb-4 overflow-hidden border border-gray-200">
-                  {colors.slice(0, 12).map((color, colorIndex) => (
-                    <div
-                      key={colorIndex}
-                      className="w-full h-8 shadow-sm"
-                      style={{ backgroundColor: color.hex || '#ccc' }}
-                      title={color.name}
-                    ></div>
+  const getTextColor = (hex) => {
+    if (!hex) return "#000";
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness < 128 ? "#fff" : "#000";
+  };
+
+  const slugify = (text) =>
+    text.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
+
+  return (
+    <div className="min-h-screen bg-white text-[#1a1a1a]">
+      <div className="w-full mx-auto px-6 py-12">
+        <h1 className="text-4xl font-bold mb-8">Color By Family</h1>
+
+        <div className="space-y-4">
+          {Object.entries(colorsByFamily).map(([family, colors]) => (
+            <div key={family} className="rounded overflow-hidden shadow">
+              <div
+                className={`flex justify-between items-center px-6 py-4 font-semibold text-lg cursor-pointer transition-all duration-300 transform hover:brightness-105 hover:shadow-md ${
+                  expandedFamily === family ? "brightness-105 shadow-lg" : ""
+                }`}
+                style={{ backgroundColor: getColor(family), color: '#000' }}
+                onClick={() =>
+                  setExpandedFamily(expandedFamily === family ? null : family)
+                }
+              >
+                <span className="flex items-center gap-2">
+                  <span
+                    className={`w-5 h-5 inline-flex items-center justify-center rounded-full border border-black text-sm font-bold transition-transform duration-300`}
+                    style={{ lineHeight: 1 }}
+                  >
+                    {expandedFamily === family ? '-' : '+'}
+                  </span>
+                  {family}
+                </span>
+                <span
+                  className="text-sm underline cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/colors/family/${slugify(family)}`);
+                  }}
+                >
+                  View All {colors.length} {family.split(" ")[0]}s
+                </span>
+              </div>
+
+              <div
+                className={`transition-all duration-500 ease-in-out bg-white overflow-hidden ${
+                  expandedFamily === family
+                    ? "max-h-[2000px] opacity-100 py-6 px-4"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
+                  {colors.map((color, i) => (
+                    <ColorBox
+                      key={i}
+                      color={color}
+                      familyName={family}
+                    />
                   ))}
                 </div>
-                <p className="text-sm text-gray-600">
-                  {colors.length} shades available
-                </p>
-              </div>
-              <div className="bg-[#493657] text-white text-center py-2 rounded-b-xl text-sm font-medium">
-                View Details
+
               </div>
             </div>
           ))}
@@ -59,4 +102,4 @@ const ColorExplorer = () => {
   );
 };
 
-export default ColorExplorer;
+export default ColorExplore;

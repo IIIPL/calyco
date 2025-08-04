@@ -31,6 +31,8 @@ import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
 import ColorGroup from './pages/Colors/ColorGroup'
 
+import FamilyColorGroup from './pages/FamilyPage'
+import ColorDetailPage from './pages/ColorDetailPage'
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
@@ -60,8 +62,8 @@ function App() {
 
           {/* Colors new routes */}
           <Route path='/colors' element={<ColorsPage/>}/>
-          <Route path="/paint-color/:colorName" element={<ColorPageWrapper />} />
-          <Route path="/paint-colors/group/:groupName" element={<GroupWrapper/>} />
+          <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
+          <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
           <Route path='/inspirations' element={<InspirationPage/>}/>
           <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
           <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>

@@ -1,0 +1,155 @@
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { flatColors } from '../data/flatColors';
+import ColorCombination from '../components/ColorComponents/ColorCombination';
+import SimilarColors from '../components/ColorComponents/SimilarColors';
+
+// Helper function to create URL-friendly slugs
+const slugify = (text) => {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+};
+
+// Function to determine text color based on background brightness
+const getTextColor = (hexColor) => {
+  const r = parseInt(hexColor.substring(1, 3), 16);
+  const g = parseInt(hexColor.substring(3, 5), 16);
+  const b = parseInt(hexColor.substring(5, 7), 16);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? 'text-black' : 'text-white';
+};
+
+const ColorDetailPage = () => {
+  const { familyName, colorName } = useParams();
+  const navigate = useNavigate();
+
+  const decodedColorName = decodeURIComponent(colorName);
+  const currentColor = flatColors.find(c => c.name.toLowerCase() === decodedColorName.toLowerCase());
+  const colorImage = currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000";
+
+  if (!currentColor) {
+    return <div className="p-20 text-center text-black">Color not found.</div>;
+  }
+
+  // Get similar colors
+  let similarColors = flatColors.filter(
+    c => c.color_family === currentColor.color_family && c.name !== currentColor.name
+  );
+  
+  if (similarColors.length === 0) {
+    similarColors = flatColors.filter(
+      c => (c.group === currentColor.group || c.base === currentColor.base) && c.name !== currentColor.name
+    );
+  }
+  
+  if (similarColors.length === 0) {
+    similarColors = flatColors.filter(c => c.name !== currentColor.name).slice(0, 8);
+  }
+
+  // Get coordinating colors for combinations
+  const coordinatingColors = flatColors.filter(
+    c => c.color_family !== currentColor.color_family && c.name !== currentColor.name
+  ).slice(0, 6);
+
+  // Get other families
+  const otherFamilies = [...new Set(flatColors.map(c => c.color_family))].filter(
+    family => family !== currentColor.color_family
+  ).slice(0, 6);
+
+  const textColorClass = getTextColor(currentColor.hex);
+
+  return (
+    <div className="min-h-screen bg-white mt-20">
+      {/* Section 1: Hero Section */}
+      <section className="min-h-screen flex flex-col md:flex-row relative" style={{ backgroundColor: currentColor.hex }}>
+        
+        {/* Breadcrumb Navigation */}
+        <nav className={`absolute top-12 left-12 text-sm ${textColorClass}`}>
+          <span 
+            onClick={() => navigate('/colors')} 
+            className="cursor-pointer underline"
+          >
+            Paint Colors
+          </span>
+          <span className="mx-2">›</span>
+          <span 
+            onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)} 
+            
+        
+            className="cursor-pointer underline"
+          >
+            {currentColor.color_family}
+          </span>
+          <span className="mx-2">›</span>
+          <span>{currentColor.name}</span>
+        </nav>
+
+        {/* Left Side - Image Panel */}
+        <div className='px-10 pt-20'>
+          <img src={colorImage} alt="Contained" className='h-[500px] w-full object-cover' />
+        </div>
+        
+        {/* Right Side - Details Panel */}
+        <div className={`w-full md:w-1/2 p-12 ${textColorClass}`}>
+
+          {/* Color Name and Code */}
+          <div className="mb-8 pt-16">
+            <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
+              {currentColor.name}
+            </h1>
+            <p className="text-xl">
+              <span>Color Code :</span>
+              {currentColor.hex}
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="mb-8 text-lg leading-relaxed">
+            {currentColor.description || "A beautiful color from our curated collection."}
+          </p>
+
+          {/* Color Family */}
+          <div className="mb-8 text-lg leading-relaxed">
+            <h2 className="">Color Family :</h2>
+            <span 
+              onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)}
+              className="cursor-pointer underline transition-colors"
+            >
+              {currentColor.color_family}
+            </span>
+          </div>
+          
+        </div>
+      </section>
+
+      {/* Section 2: Color Combination */}
+      {similarColors.length > 0 && (
+        <div className="bg-white py-16 px-4 md:px-8">
+          <h2 className="text-2xl md:text-4xl mb-8">Color Combination</h2>
+          
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1">
+              <ColorCombination currentColor={currentColor} similarColors={similarColors} />
+            </div>
+            <div className="flex-1">
+              <ColorCombination currentColor={currentColor} similarColors={similarColors.slice(2, 4)} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Section 3: Similar Colors */}
+      {similarColors.length > 0 && (
+        <div className="py-16 px-4 md:px-8">
+          <h2 className="text-2xl md:text-4xl mb-8">Similar Colors</h2>
+          <SimilarColors currentColor={currentColor} similarColors={similarColors} />
+        </div>
+      )}
+
+      {/* Section 4: See Other Families */}
+      
+      
+    </div>
+  );
+};
+
+export default ColorDetailPage;
