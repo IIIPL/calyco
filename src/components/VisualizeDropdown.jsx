@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VisualizeDropdown = ({ onSelect, isMobile }) => {
   const visualizationTools = [
-    { name: 'Color Visualization', path: '/visualization', description: 'Explore color harmonies and combinations' },
+    // { name: 'Color Visualization', path: '/visualization', description: 'Explore color harmonies and combinations' },
     { name: 'Room Visualizer', path: '/room-visualization', description: 'Visualize colors in your room with sample photos' }
   ];
 
