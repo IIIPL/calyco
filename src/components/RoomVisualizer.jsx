@@ -980,19 +980,20 @@ const handleAddPolygon = () => {
 
               {/* Question Icon */}
                 <div className="relative inline-block group">
-                  <FaQuestionCircle className="text-gray-400 cursor-pointer group-hover:text-indigo-600" />
+  <FaQuestionCircle className="text-gray-400 cursor-pointer group-hover:text-indigo-600" />
 
-                  {/* Tooltip */}
-                  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-white shadow-lg border border-gray-300 rounded-lg p-3 w-72 text-sm text-gray-700 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <strong className="block mb-1">How to use:</strong>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Click “Add Polygon” to draw a wall region</li>
-                      <li>Adjust corners or move shape</li>
-                      <li>Select a color and apply</li>
-                      <li>Right-click to add/remove corners</li>
-                    </ul>
-                  </div>
-                </div>
+  {/* Tooltip */}
+  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-white shadow-lg border border-gray-300 rounded-lg p-3 w-72 text-sm text-gray-700 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+    <strong className="block mb-1">How to use:</strong>
+    <ul className="list-disc list-inside space-y-1">
+      <li>Click “Add Polygon” to draw a wall region</li>
+      <li>Adjust corners or move shape</li>
+      <li>Select a color and apply</li>
+      <li>Right-click to add/remove corners</li>
+    </ul>
+  </div>
+</div>
+
 
 
 
