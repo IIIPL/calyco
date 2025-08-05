@@ -39,6 +39,7 @@ import { ColorVisualizationProvider } from './context/ColorVisualizationContext.
 import ColorVisualizationPage from './pages/ColorVisualizationPage';
 import { RoomVisualizerPage } from './pages/RoomVisualizer.jsx';
 import RoomVisualizer from './components/RoomVisualizer.jsx';
+import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
@@ -77,7 +78,7 @@ function App() {
               <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
               <Route path='/inspirations/kids' element={<KidsInspiration/>}/>
               <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
-              
+              <Route path="/room/:roomName" element={<IndividualRoomPage />} />
               {/* New Visualization Route */}
               <Route path='/visualization' element={<ColorVisualizationPage />} />
               {/* Room Visualizer Routes */}

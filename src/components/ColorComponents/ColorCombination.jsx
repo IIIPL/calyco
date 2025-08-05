@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+const slugify = (text) =>
+  text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and');
 
 const ColorCombination = ({ currentColor, similarColors }) => {
   const navigate = useNavigate();
@@ -17,7 +19,13 @@ const ColorCombination = ({ currentColor, similarColors }) => {
   };
 
   const handleColorClick = (color) => {
-    navigate(`/colors/family/${color.color_family.replace(/\s+/g, "-").toLowerCase()}/${encodeURIComponent(color.name)}`);
+    
+    const familySlug = slugify(color.color_family);
+    const colorSlug = slugify(color.name);
+    navigate(`/colors/family/${familySlug}/${colorSlug}`);
+  
+
+    // navigate(`/colors/family/${color.color_family.replace(/\s+/g, "-").toLowerCase()}/${encodeURIComponent(color.name)}`);
   };
 
   return (

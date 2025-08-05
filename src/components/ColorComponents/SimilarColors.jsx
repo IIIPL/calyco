@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and');
+
 
 const SimilarColors = ({ currentColor, similarColors }) => {
   const navigate = useNavigate();
@@ -17,11 +19,13 @@ const SimilarColors = ({ currentColor, similarColors }) => {
   };
 
   const handleColorClick = (color) => {
-    navigate(`/colors/family/${color.color_family.replace(/\s+/g, "-").toLowerCase()}/${encodeURIComponent(color.name)}`);
+    const familySlug = slugify(color.color_family);
+    const colorSlug = slugify(color.name);
+    navigate(`/colors/family/${familySlug}/${colorSlug}`);
   };
 
   return (
-    <div className="w-full mx-auto rounded rounded-lg">
+    <div className="w-full mx-auto rounded-lg">
       
       
       <div className="flex rounded-lg">

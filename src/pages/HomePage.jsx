@@ -8,8 +8,10 @@ import Slider from "../components/Slider";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { HeroSection } from "../components/HomeComponents/HeroSection";
-import { HeroProducts } from "../components/HomeComponents/HeroProducts";
+// import { HeroProducts } from "../components/HomeComponents/HeroProducts";
 import { flatColors } from "../data/flatColors";
+import { ColorTrends } from "../components/ColorComponents/ColorTrends";
+import {HeroSlider} from "../components/HomeComponents/HeroSlider";
 
 
 
@@ -53,10 +55,8 @@ export const HomePage = () => {
 
            {/* Section 2 */}
            <div className="px-10">
-           <HeroProducts productName={"Nova"} productImage={"https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png"} />
-           <HeroProducts productName={"Aluminium Paint"} productImage={"https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png"} />
-            
-            </div>
+            <HeroSlider/>
+           </div>
             {/* Enhanced Who We Serve Section */}
             <section className="min-h-screen bg-gradient-to-b from-white to-[#493657]/5 flex flex-col relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -251,8 +251,9 @@ export const HomePage = () => {
                     </motion.button>
                 </motion.div>
             </section>
-
-            {/* <Footer/> */}
+            <section>
+                <ColorTrends/>
+            </section>
         </div>
     );
 };

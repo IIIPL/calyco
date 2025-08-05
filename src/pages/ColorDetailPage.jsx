@@ -1,3 +1,4 @@
+// src/pages/ColorDetailPage.jsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
@@ -22,25 +23,28 @@ const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
 
+  // Decode the colorName from the URL
   const decodedColorName = decodeURIComponent(colorName);
-  const currentColor = flatColors.find(c => c.name.toLowerCase() === decodedColorName.toLowerCase());
-  const colorImage = currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000";
+  const currentColor = flatColors.find(
+    c => slugify(c.name) === decodedColorName && slugify(c.color_family) === familyName
+  );
 
+  // If the color is not found, show a "not found" message
   if (!currentColor) {
     return <div className="p-20 text-center text-black">Color not found.</div>;
   }
 
-  // Get similar colors
+  // Get similar colors and combinations
   let similarColors = flatColors.filter(
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
-  
+
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(
       c => (c.group === currentColor.group || c.base === currentColor.base) && c.name !== currentColor.name
     );
   }
-  
+
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(c => c.name !== currentColor.name).slice(0, 8);
   }
@@ -72,9 +76,7 @@ const ColorDetailPage = () => {
           </span>
           <span className="mx-2">›</span>
           <span 
-            onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)} 
-            
-        
+            onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
             className="cursor-pointer underline"
           >
             {currentColor.color_family}
@@ -85,7 +87,7 @@ const ColorDetailPage = () => {
 
         {/* Left Side - Image Panel */}
         <div className='px-10 pt-20'>
-          <img src={colorImage} alt="Contained" className='h-[500px] w-full object-cover' />
+          <img src={currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"} alt="Contained" className='h-[500px] w-full object-cover' />
         </div>
         
         {/* Right Side - Details Panel */}
@@ -111,7 +113,7 @@ const ColorDetailPage = () => {
           <div className="mb-8 text-lg leading-relaxed">
             <h2 className="">Color Family :</h2>
             <span 
-              onClick={() => navigate(`/colors/family/${currentColor.color_family.replace(/\s+/g, "-").toLowerCase()}`)}
+              onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)}
               className="cursor-pointer underline transition-colors"
             >
               {currentColor.color_family}
@@ -146,8 +148,7 @@ const ColorDetailPage = () => {
       )}
 
       {/* Section 4: See Other Families */}
-      
-      
+      {/* Other families section code here */}
     </div>
   );
 };

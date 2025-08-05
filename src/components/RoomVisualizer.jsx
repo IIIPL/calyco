@@ -4,6 +4,7 @@ import { useColors } from '../context/ColorContext.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaUpload, FaUndo, FaRedo, FaTrash, FaDownload, FaEye, FaPencilAlt, FaMagic, FaTimes, FaArrowLeft, FaArrowRight, FaInfoCircle, FaStar, FaQuestionCircle, FaPlus } from 'react-icons/fa';
 import { flatColors } from '../data/flatColors';
+
 const RoomVisualizer = () => {
   const { allColors } = useColors();
   const location = useLocation();
@@ -208,37 +209,41 @@ const RoomVisualizer = () => {
   };
   
   // Add a new polygon
-  const handleAddPolygon = () => {
-    if (!uploadedImage || !uploadedImage.width || !uploadedImage.height || 
-        polygonState[activeSurface].length >= 5) return;
+  // Add a new polygon
+const handleAddPolygon = () => {
+    const image = uploadedImage || originalImage || editedImage;
+    if (!image || !image.width || !image.height || polygonState[activeSurface].length >= 5) return;
     
-    const width = uploadedImage.width * 0.5;
-    const height = uploadedImage.height * 0.4;
-    const x = (uploadedImage.width - width) / 2;
-    const y = (uploadedImage.height - height) / 2;
+    const width = image.width * 0.5;
+    const height = image.height * 0.4;
+    const x = (image.width - width) / 2;
+    const y = (image.height - height) / 2;
     const defaultPoints = [
       { x, y },
       { x: x + width, y },
       { x: x + width, y: y + height },
-      { x, y: y + height }
+      { x, y: y + height },
     ];
     
     const newPolygon = {
       points: defaultPoints,
       history: [defaultPoints],
-      id: `polygon-${Date.now()}`
+      id: `polygon-${Date.now()}`,
     };
     
     setPolygonState(prev => {
       const updatedPolygons = [...prev[activeSurface], newPolygon];
-      setActivePolygonIndex(updatedPolygons.length - 1); // ✅ set index here after update
-      return {
+      const updatedState = {
         ...prev,
-        [activeSurface]: updatedPolygons
+        [activeSurface]: updatedPolygons,
       };
+      // ✅ Delay to ensure state update completes before setting index
+      setTimeout(() => {
+        setActivePolygonIndex(updatedPolygons.length - 1);
+      }, 0);
+      return updatedState;
     });
   };
-  
   // Delete a polygon
   const handleDeletePolygon = (index) => {
     if (polygonState[activeSurface].length <= 1) return;
@@ -534,68 +539,107 @@ const RoomVisualizer = () => {
   
   // Handle SVG mouse move
   const handleSvgMouseMove = (e) => {
-    if (!svgRef.current || !canvasRef.current || activePolygonIndex === null) return;
-    
-    // Check if the active polygon exists and has valid points
-    if (!polygonState[activeSurface] || 
-        !polygonState[activeSurface][activePolygonIndex] ||
-        !polygonState[activeSurface][activePolygonIndex].points) return;
-    
-    const canvas = canvasRef.current;
-    const rect = svgRef.current.getBoundingClientRect();
-    const displayWidth = canvas.clientWidth;
-    const displayHeight = canvas.clientHeight;
-    const image = originalImage || editedImage;
-    const scaleX = image.width / displayWidth;
-    const scaleY = image.height / displayHeight;
-    
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-    
-    // Get the active polygon
-    const activePolygon = polygonState[activeSurface][activePolygonIndex];
-    const points = [...activePolygon.points];
-    
-    // Dragging a vertex
-    if (activePointIndex !== null && points[activePointIndex]) {
-      points[activePointIndex] = { x, y };
-      
-      setPolygonState(prev => {
-        const newPolygons = [...prev[activeSurface]];
-        newPolygons[activePolygonIndex] = {
-          ...activePolygon,
-          points,
-          history: [...activePolygon.history, points]
-        };
-        
-        return {
-          ...prev,
-          [activeSurface]: newPolygons
-        };
-      });
+  if (!svgRef.current || !canvasRef.current) return;
+
+  const canvas = canvasRef.current;
+  const rect = svgRef.current.getBoundingClientRect();
+  const displayWidth = canvas.clientWidth;
+  const displayHeight = canvas.clientHeight;
+  const image = originalImage || editedImage;
+  const scaleX = image.width / displayWidth;
+  const scaleY = image.height / displayHeight;
+
+  const x = (e.clientX - rect.left) * scaleX;
+  const y = (e.clientY - rect.top) * scaleY;
+
+  let cursor = "default";
+
+  // Check all visible polygons in all surfaces
+  for (const [surfaceKey, surfacePolygons] of Object.entries(polygonState)) {
+    if (!surfacePolygons || surfacePolygons.length === 0 || !showPolygons[surfaceKey]) continue;
+
+    for (const polygon of surfacePolygons) {
+      if (!polygon || !polygon.points || polygon.points.length === 0) continue;
+
+      // 🔷 Check for corner (vertex)
+      for (const point of polygon.points) {
+        if (Math.hypot(point.x - x, point.y - y) < 10) {
+          cursor = "ew-resize";
+          break;
+        }
+      }
+      if (cursor === "ew-resize") break;
+
+      // 🔶 Check for edge (between points)
+      for (let i = 0; i < polygon.points.length; i++) {
+        const p1 = polygon.points[i];
+        const p2 = polygon.points[(i + 1) % polygon.points.length];
+        const distance = distanceToLineSegment({ x, y }, p1, p2);
+        if (distance < 10) {
+          cursor = "pointer";
+          break;
+        }
+      }
+      if (cursor === "pointer") break;
+
+      // 🔘 Check if inside polygon
+      if (isPointInPolygon({ x, y }, polygon.points)) {
+        cursor = "move";
+      }
     }
-    // Dragging the entire polygon
-    else if (isDraggingPolygon) {
-      const dx = x - dragStart.x;
-      const dy = y - dragStart.y;
-      const newPoints = startPoints.map(p => ({ x: p.x + dx, y: p.y + dy }));
-      
-      setPolygonState(prev => {
-        const newPolygons = [...prev[activeSurface]];
-        newPolygons[activePolygonIndex] = {
-          ...activePolygon,
-          points: newPoints,
-          history: [...activePolygon.history, newPoints]
-        };
-        
-        return {
-          ...prev,
-          [activeSurface]: newPolygons
-        };
-      });
-    }
-  };
-  
+
+    if (cursor !== "default") break;
+  }
+
+  svgRef.current.style.cursor = cursor;
+
+  // Early return if no active polygon
+  if (activePolygonIndex === null) return;
+
+  if (
+    !polygonState[activeSurface] ||
+    !polygonState[activeSurface][activePolygonIndex] ||
+    !polygonState[activeSurface][activePolygonIndex].points
+  ) return;
+
+  const activePolygon = polygonState[activeSurface][activePolygonIndex];
+  const points = [...activePolygon.points];
+
+  if (activePointIndex !== null && points[activePointIndex]) {
+    points[activePointIndex] = { x, y };
+
+    setPolygonState(prev => {
+      const newPolygons = [...prev[activeSurface]];
+      newPolygons[activePolygonIndex] = {
+        ...activePolygon,
+        points,
+        history: [...activePolygon.history, points]
+      };
+      return {
+        ...prev,
+        [activeSurface]: newPolygons
+      };
+    });
+  } else if (isDraggingPolygon) {
+    const dx = x - dragStart.x;
+    const dy = y - dragStart.y;
+    const newPoints = startPoints.map(p => ({ x: p.x + dx, y: p.y + dy }));
+
+    setPolygonState(prev => {
+      const newPolygons = [...prev[activeSurface]];
+      newPolygons[activePolygonIndex] = {
+        ...activePolygon,
+        points: newPoints,
+        history: [...activePolygon.history, newPoints]
+      };
+      return {
+        ...prev,
+        [activeSurface]: newPolygons
+      };
+    });
+  }
+};
+
   // Handle SVG mouse up
   const handleSvgMouseUp = () => {
     if (activePointIndex !== null || isDraggingPolygon) {
@@ -693,7 +737,7 @@ const RoomVisualizer = () => {
     }
   };
   
-  // Handle polygon undo
+  // Handle polygon undo (single step)
   const handlePolygonUndo = () => {
     if (activePolygonIndex === null) return;
     
@@ -725,6 +769,34 @@ const RoomVisualizer = () => {
         };
       });
     }
+  };
+  
+  // Handle polygon reset (undo all changes)
+  const handlePolygonReset = () => {
+    if (activePolygonIndex === null) return;
+    
+    // Check if the active polygon exists and has valid history
+    if (!polygonState[activeSurface] || 
+        !polygonState[activeSurface][activePolygonIndex] ||
+        !polygonState[activeSurface][activePolygonIndex].history ||
+        polygonState[activeSurface][activePolygonIndex].history.length === 0) return;
+    
+    const activePolygon = polygonState[activeSurface][activePolygonIndex];
+    const original = activePolygon.history[0];
+    
+    setPolygonState(prev => {
+      const newPolygons = [...prev[activeSurface]];
+      newPolygons[activePolygonIndex] = {
+        ...activePolygon,
+        points: original,
+        history: [original]
+      };
+      
+      return {
+        ...prev,
+        [activeSurface]: newPolygons
+      };
+    });
   };
   
   // Apply color to selected surface using masks
@@ -834,7 +906,34 @@ const RoomVisualizer = () => {
     canvas.height = image.height;
     ctx.drawImage(image, 0, 0);
   }, [originalImage, editedImage]);
-  
+  useEffect(() => {
+  const handleKeyDown = (e) => {
+    if (e.key === "Delete" && activeSurface && activePolygonIndex !== null) {
+      setPolygonState((prev) => {
+        const polygons = [...prev[activeSurface]];
+        if (polygons.length <= 1) return prev; // Don't delete if it's the only polygon
+
+        polygons.splice(activePolygonIndex, 1);
+
+        return {
+          ...prev,
+          [activeSurface]: polygons,
+        };
+      });
+
+      // Adjust selected polygon index
+      setActivePolygonIndex((prevIndex) => {
+        if (prevIndex === null) return null;
+        return Math.max(0, prevIndex - 1);
+      });
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, [activePolygonIndex, activeSurface]);
+
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Top Header */}
@@ -874,9 +973,31 @@ const RoomVisualizer = () => {
         {/* Center - Room Visualization */}
         <div className="flex-1 flex flex-col items-center bg-gray-100 p-6 mx-4 my-4 rounded-xl shadow-md max-w-3xl">
           <div className="flex justify-between items-center w-full mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">
-              {selectedRoom ? selectedRoom.name : 'Room Visualization'}
-            </h2>
+            <div className="flex items-center space-x-2 relative group">
+              <h2 className="text-xl font-semibold text-gray-800">
+                {selectedRoom ? selectedRoom.name : 'Room Visualization'}
+              </h2>
+
+              {/* Question Icon */}
+                <div>
+                  <FaQuestionCircle className="text-gray-400 cursor-pointer group-hover:text-indigo-600" />
+
+                {/* Tooltip */}
+                  <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-white shadow-lg border border-gray-300 rounded-lg p-3 w-72 text-sm text-gray-700 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <strong className="block mb-1">How to use:</strong>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>Click “Add Polygon” to draw a wall region</li>
+                      <li>Adjust corners or move shape</li>
+                      <li>Select a color and apply</li>
+                      <li>Right-click to add/remove corners</li>
+                    </ul>
+                  </div>
+                </div>
+
+
+              
+            </div>
+
             <div className="flex items-center space-x-3">
               {selectedColors.length > 0 && (
                 <button 
@@ -981,6 +1102,27 @@ const RoomVisualizer = () => {
                   }`}
                 >
                   <FaUndo className="mr-1" /> Undo
+                </button>
+              )}
+              
+              {showPolygons[activeSurface] && (
+                <button 
+                  onClick={handlePolygonReset}
+                  disabled={
+                    activePolygonIndex === null || 
+                    !polygonState[activeSurface][activePolygonIndex] ||
+                    !polygonState[activeSurface][activePolygonIndex].history ||
+                    polygonState[activeSurface][activePolygonIndex].history.length <= 1
+                  }
+                  className={`px-3 py-1 rounded flex items-center ${
+                    activePolygonIndex === null || 
+                    !polygonState[activeSurface][activePolygonIndex] ||
+                    !polygonState[activeSurface][activePolygonIndex].history ||
+                    polygonState[activeSurface][activePolygonIndex].history.length <= 1 
+                      ? 'bg-gray-100 text-gray-400' : 'bg-gray-200'
+                  }`}
+                >
+                  <FaRedo className="mr-1" /> Reset
                 </button>
               )}
             </div>

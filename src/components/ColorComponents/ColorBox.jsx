@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and'); // To slugify the name
+
 const ColorBox = ({ color, familyName }) => {
   const navigate = useNavigate();
 
@@ -13,7 +15,10 @@ const ColorBox = ({ color, familyName }) => {
   };
 
   const handleClick = () => {
-    navigate(`/colors/family/${familyName}/${encodeURIComponent(color.name)}`);
+    // Ensure the family name and color name are both slugified properly
+    const familySlug = slugify(familyName);
+    const colorSlug = slugify(color.name);
+    navigate(`/colors/family/${familySlug}/${colorSlug}`);
   };
 
   const textColor = getTextColor(color.hex);
