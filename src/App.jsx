@@ -29,10 +29,9 @@ import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
-import ColorGroup from './pages/Colors/ColorGroup'
 import FamilyColorGroup from './pages/FamilyPage'
 import ColorDetailPage from './pages/ColorDetailPage'
-import ColorPage from './pages/Colors/IndividualColorPage'
+
 
 // Import new providers and pages
 import { ColorProvider } from './context/ColorContext';
