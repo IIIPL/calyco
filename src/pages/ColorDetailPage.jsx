@@ -76,7 +76,7 @@ const ColorDetailPage = () => {
           </span>
           <span className="mx-2">›</span>
           <span 
-            onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
+            onClick={() => navigate(`/colors/family/${currentColor.color_family.toLowerCase()}`)} 
             className="cursor-pointer underline"
           >
             {currentColor.color_family}
@@ -113,7 +113,7 @@ const ColorDetailPage = () => {
           <div className="mb-8 text-lg leading-relaxed">
             <h2 className="">Color Family :</h2>
             <span 
-              onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)}
+              onClick={() => navigate(`/colors/family/${(currentColor.color_family)}`)}
               className="cursor-pointer underline transition-colors"
             >
               {currentColor.color_family}

@@ -16,7 +16,117 @@ export const roomData = [
   {
     roomFamily: "kitchen",
     name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400294/02580d0fd459c58d98f1fc0b97db6552_bezhmv.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Taupe Warmth", "Biscuit Beige", "Cocoa Brown"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
     image: "/Assets/kitchen.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "/Assets/kitchen.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400295/13d69ee84c80114b99defe499925c51e_tn1jwz.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400296/8a50bd7be16f85b3e2cf085de81a4999_f1p7by.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400296/8a50bd7be16f85b3e2cf085de81a4999_f1p7by.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400297/992d83075453ec30ae9b8d013577fac8_homsas.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400297/9c77738049facac0b4e97e5f3e9472a4_n0jhj2.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400298/a0584dc0341013027a4290206a86e035_uhnitx.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400299/b6e06640dce82b188fdf079c71d0f62c_kq7z6y.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400300/fc7800a59856fd15eac3e22772d3e5cf_fusmwl.jpg",
+    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
+    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
+    moreInfo: "/more/kitchen",  // Optional links to more content
+    recommendedUse: "Kitchen, Dining Room",
+    opacity: "Semi-Transparent",
+    styling: "Sleek"
+  },{
+    roomFamily: "kitchen",
+    name: "Modern Minimalist Kitchen",
+    image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400301/ff677e193402353bfc2074b2bef00a17_ndpyw6.jpg",
     description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
     colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
     moreInfo: "/more/kitchen",  // Optional links to more content
