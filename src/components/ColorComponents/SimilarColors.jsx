@@ -39,7 +39,7 @@ const SimilarColors = ({ currentColor, similarColors }) => {
 
         {/* Right Section - 4 Similar Colors (Stacked) */}
         <div className="w-1/2 flex flex-col ">
-          {displayColors.map((color, index) => (
+          {displayColors.map((color) => (
             <div
               key={color.name}
               className="flex-1 relative cursor-pointer hover:opacity-90 transition-opacity "

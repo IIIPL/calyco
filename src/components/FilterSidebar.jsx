@@ -22,16 +22,7 @@ const substrateMapping = {
   "multi-surface": "Multi-surface / Junctions"
 };
 
-function mapToStandardSubstrates(substrates) {
-  const matched = new Set();
-  substrates.forEach(s => {
-    const sub = s.toLowerCase();
-    for (const [key, group] of Object.entries(substrateMapping)) {
-      if (sub.includes(key)) matched.add(group);
-    }
-  });
-  return [...matched];
-}
+
 
 // --- Application Area Mapping Logic ---
 const applicationAreaMapping = {
@@ -117,14 +108,7 @@ const orderedSubstrateGroups = [
   "Multi-surface / Junctions"
 ];
 
-// Get unique application areas from products
-const uniqueApplicationAreas = Array.from(
-  new Set(
-    products
-      .flatMap(p => Array.isArray(p.application) ? p.application : (p.application ? [p.application] : []))
-      .filter(Boolean)
-  )
-);
+
 
 // Build unique, grouped application area options (max 10 + Other)
 const allRawApplications = products

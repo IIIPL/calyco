@@ -1,12 +1,17 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HomeCard } from "../components/HomeCard";
 import { WhyChooseCard } from "../components/WhyChooseCard";
 import { FaArrowRight } from "react-icons/fa6";
 import Slider from "../components/Slider";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
+import { HeroSection } from "../components/HomeComponents/HeroSection";
+import { HeroProducts } from "../components/HomeComponents/HeroProducts";
+import { flatColors } from "../data/flatColors";
+
+
 
 export const HomePage = () => {
     const ref = useRef(null);
@@ -39,34 +44,19 @@ export const HomePage = () => {
         }
     };
 
+    
+    
     return (
         <div className="pt-20">
-            <section className="bg-[#F9F6F1] flex items-center justify-center">
-                <div className="max-w-screen-xl w-full px-4 flex flex-col md:mx-20 md:flex-row items-center justify-between gap-8">
-                    
-                    {/* Left Text Section */}
-                    <div className="text-center text-[#493657] font-medium md:text-6xl md:text-left md:w-1/2 space-y-4">
-                        <p>ELEVATE</p> 
-                        <p>YOUR SPACES</p>
-                        <div className="flex-col flex gap-2">
-                            <Button children={"Explore Products"} to={'/product'}/>
-                        </div>
-                    </div>
+           {/* Section 1 */}
+           <HeroSection/>
 
-                    {/* Right Image Section */}
-                    <div className="">
-                    <img
-                        src="/Assets/home.png"
-                        alt="Calyco Hero"
-                        className="w-full max-w-lg mx-auto md:mx-0 object-contain"
-
-                    />
-                    </div>
-
-                </div>
-            </section>
-
-
+           {/* Section 2 */}
+           <div className="px-10">
+           <HeroProducts productName={"Nova"} productImage={"https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png"} />
+           <HeroProducts productName={"Aluminium Paint"} productImage={"https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png"} />
+            
+            </div>
             {/* Enhanced Who We Serve Section */}
             <section className="min-h-screen bg-gradient-to-b from-white to-[#493657]/5 flex flex-col relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>

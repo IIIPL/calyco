@@ -27,14 +27,7 @@ const ColorExplore = () => {
 
   const getColor = (family) => familyColors[family] || "#E0E0E0";
 
-  const getTextColor = (hex) => {
-    if (!hex) return "#000";
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness < 128 ? "#fff" : "#000";
-  };
+
 
   const slugify = (text) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
