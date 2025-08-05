@@ -169,7 +169,7 @@ export const Products = () => {
 
   return (
     <div className="pt-16 md:pt-20 min-h-screen bg-[#f9f6f2] pb-20 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto mb-10 pt-10">
+      <div className="mx-auto mb-10 pt-10">
         <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">All Products</h1>
         {/* Search Bar & Sort */}
         <div className="flex flex-wrap items-center gap-4 mb-6">
