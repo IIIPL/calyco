@@ -207,7 +207,7 @@ export default function IndividualRoomPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <Link 
-                            to={`/visualizer?room=${roomName}`}
+                            to={`/room-visualization`}
                             className="px-6 py-3 bg-[#393939] text-white rounded-lg hover:bg-[#222] transition-colors duration-300 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#393939]"
                         >
                             Try in Room Visualizer
