@@ -10,7 +10,6 @@ const inspirationMenu = [
   { key: "dining", label: "DINING ROOM" },
   { key: "hallway", label: "HALLWAY" },
   { key: "office", label: "OFFICE" },
-  { key: "kids", label: "KIDS ROOM" },
   { key: "exterior", label: "HOUSE EXTERIOR" },
 ];
 

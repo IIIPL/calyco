@@ -23,7 +23,7 @@ export default function Carousel() {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden min-h-[384px]"> {/* Ensure enough height for arrow buttons */}
       {/* Slide container */}
       <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {slides.map((slide, index) => (
@@ -50,8 +50,8 @@ export default function Carousel() {
         onClick={prevSlide}
         className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
-          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/60 hover:bg-white text-black">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 1 1 5l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
@@ -62,8 +62,8 @@ export default function Carousel() {
         onClick={nextSlide}
         className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
       >
-        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
-          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/60 hover:bg-white text-black">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
             <path d="m1 9 4-4-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>

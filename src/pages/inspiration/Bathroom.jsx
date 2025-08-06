@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
-import { colorGroups } from "../../data/colorGroups";
+import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 
 const findColor = (name) => {
-  for (const group of colorGroups) {
-    const found = group.colors.find((c) => c.name === name);
-    if (found) return found;
-  }
-  return null;
+  if (!name) return null;
+  return flatColors.find(
+    (c) => c.name && c.name.toLowerCase() === name.toLowerCase()
+  ) || null;
 };
 
 const fadeInUp = {

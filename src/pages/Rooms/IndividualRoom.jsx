@@ -199,7 +199,7 @@ export default function IndividualRoomPage() {
                 animate="visible"
                 variants={fadeIn}
             >
-                <div className="bg-gray-50 rounded-2xl p-8 shadow-md">
+                <div className="bg-gray-50 rounded-2xl p-8 shadow-md mt-20">
                     <h2 className="text-2xl font-bold text-[#393939] mb-4 text-center">Try This Room Yourself</h2>
                     <p className="text-center text-[#666] mb-6 max-w-2xl mx-auto">
                         Visualize these colors in your own space with our interactive room visualizer tool.

@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";  // Import Link for navigation
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";  // Importing room data
 import { filterRoomsByFamily } from "../../utils/filterRooms";  // Import the utility function
-import { colorGroups } from "../../data/colorGroups";
+import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 
-// Helper to find color by name in colorGroups
+// Helper to find color by name in flatColors (case-insensitive)
 const findColor = (name) => {
-  for (const group of colorGroups) {
-    const found = group.colors.find((c) => c.name === name);
-    if (found) return found;
-  }
-  return null;
+  if (!name) return null;
+  return flatColors.find(
+    (c) => c.name && c.name.toLowerCase() === name.toLowerCase()
+  ) || null;
 };
 
 const fadeInUp = {
