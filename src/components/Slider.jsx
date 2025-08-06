@@ -14,7 +14,7 @@ const Slider = () => {
 const cards = [
   { id: 1, title: "Wood Finishes", subtitle: "Warm & welcoming", color: "bg-gradient-to-br from-rose-700 to-amber-700" },
   { id: 2, title: "Primers", subtitle: "Focused & productive", color: "bg-gradient-to-br from-indigo-800 to-slate-700" },
-  { id: 3, title: "Distempers", subtitle: "Clean & calming", color: "bg-gradient-to-br from-emerald-700 to-teal-800" },
+  // { id: 3, title: "Distempers", subtitle: "Clean & calming", color: "bg-gradient-to-br from-emerald-700 to-teal-800" },
   { id: 4, title: "Metal Coating", subtitle: "Modern & elegant", color: "bg-gradient-to-br from-zinc-700 to-neutral-800" },
   { id: 5, title: "Concrete & Floor", subtitle: "Earthy & rustic", color: "bg-gradient-to-br from-amber-800 to-orange-900" },
   // { id: 6, title: "", subtitle: "Creative & bold", color: "bg-gradient-to-br from-fuchsia-800 to-purple-900" }

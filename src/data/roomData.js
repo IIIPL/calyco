@@ -26,26 +26,6 @@ export const roomData = [
   },{
     roomFamily: "kitchen",
     name: "Modern Minimalist Kitchen",
-    image: "/Assets/kitchen.jpg",
-    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
-    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
-    moreInfo: "/more/kitchen",  // Optional links to more content
-    recommendedUse: "Kitchen, Dining Room",
-    opacity: "Semi-Transparent",
-    styling: "Sleek"
-  },{
-    roomFamily: "kitchen",
-    name: "Modern Minimalist Kitchen",
-    image: "/Assets/kitchen.jpg",
-    description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
-    colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
-    moreInfo: "/more/kitchen",  // Optional links to more content
-    recommendedUse: "Kitchen, Dining Room",
-    opacity: "Semi-Transparent",
-    styling: "Sleek"
-  },{
-    roomFamily: "kitchen",
-    name: "Modern Minimalist Kitchen",
     image: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400295/13d69ee84c80114b99defe499925c51e_tn1jwz.jpg",
     description: "A sleek, functional kitchen with modern finishes and a minimalist color palette for a clean and open feel.",
     colors: ["Morning Dew", "Dusky Sand", "Misty Fog"],  // Colors from flatColors.js
@@ -137,7 +117,7 @@ export const roomData = [
   {
     roomFamily: "living-room",
     name: "Cozy Living Room",
-    image: "/Assets/living-room.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Transform your living space into a cozy haven with warm tones and soft textures that make you feel right at home.",
     colors: ["Greige Harmony", "Dusky Sand", "Sage Whisper"],  // Colors from flatColors.js
     moreInfo: "/more/living-room",  // Optional links to more content
@@ -148,7 +128,7 @@ export const roomData = [
   {
     roomFamily: "office",
     name: "Productive Home Office",
-    image: "/Assets/office.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Boost your productivity in a well-organized office space with energizing yet calming tones.",
     colors: ["Silk Taupe", "Sage Whisper", "Misty Fog"],  // Colors from flatColors.js
     moreInfo: "/more/office",  // Optional links to more content
@@ -159,7 +139,7 @@ export const roomData = [
   {
     roomFamily: "bathroom",
     name: "Serene Spa Bathroom",
-    image: "/Assets/bathroom.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Create a relaxing bathroom that feels like a spa with soothing cool tones and soft textures.",
     colors: ["Misty Fog", "Morning Dew", "Sage Whisper"],  // Colors from flatColors.js
     moreInfo: "/more/bathroom",  // Optional links to more content
@@ -170,7 +150,7 @@ export const roomData = [
   {
     roomFamily: "dining-room",
     name: "Elegant Dining Room",
-    image: "/Assets/dining-room.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Impress your guests with an elegant dining area featuring a balanced color palette that complements any occasion.",
     colors: ["Peach Glow", "Silk Taupe", "Greige Harmony"],  // Colors from flatColors.js
     moreInfo: "/more/dining-room",  // Optional links to more content
@@ -181,7 +161,7 @@ export const roomData = [
   {
     roomFamily: "nursery",
     name: "Playful Nursery",
-    image: "/Assets/nursery.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Brighten up your baby's nursery with playful, calming colors that stimulate joy and creativity.",
     colors: ["Blush Petal", "Sage Whisper", "Lilac Veil"],  // Colors from flatColors.js
     moreInfo: "/more/nursery",  // Optional links to more content
@@ -192,7 +172,7 @@ export const roomData = [
   {
     roomFamily: "hallway",
     name: "Welcoming Hallway",
-    image: "/Assets/hallway.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Your hallway is the first impression of your home. Use welcoming colors and statement lighting to make it shine.",
     colors: ["Serene Ivory", "Peach Glow", "Sage Whisper"],  // Colors from flatColors.js
     moreInfo: "/more/hallway",  // Optional links to more content
@@ -203,7 +183,7 @@ export const roomData = [
   {
     roomFamily: "entryway",
     name: "Charming Entryway",
-    image: "/Assets/entryway.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Make a lasting first impression with a stylish entryway that welcomes guests and adds character to your home.",
     colors: ["Almond Mist", "Morning Dew", "Silk Taupe"],  // Colors from flatColors.js
     moreInfo: "/more/entryway",  // Optional links to more content
@@ -214,7 +194,7 @@ export const roomData = [
   {
     roomFamily: "study",
     name: "Serene Study Room",
-    image: "/Assets/study-room.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Focus and relax in a serene study room where neutral colors enhance concentration and creativity.",
     colors: ["Greige Harmony", "Silk Taupe", "Dusky Sand"],  // Colors from flatColors.js
     moreInfo: "/more/study-room",  // Optional links to more content
@@ -225,7 +205,7 @@ export const roomData = [
   {
     roomFamily: "game-room",
     name: "Entertainment Game Room",
-    image: "/Assets/game-room.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "Bring the fun to your entertainment room with colors that inspire energy and creativity.",
     colors: ["Blush Petal", "Silk Taupe", "Peach Glow"],  // Colors from flatColors.js
     moreInfo: "/more/game-room",  // Optional links to more content
@@ -236,7 +216,7 @@ export const roomData = [
   {
     roomFamily: "library",
     name: "Cozy Library",
-    image: "/Assets/library.jpg",
+    image: "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
     description: "A cozy library perfect for reading, with rich and neutral tones that make the space feel inviting.",
     colors: ["Sage Whisper", "Misty Fog", "Greige Harmony"],  // Colors from flatColors.js
     moreInfo: "/more/library",  // Optional links to more content
