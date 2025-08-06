@@ -90,7 +90,7 @@ const RoomVisualizer = () => {
   ];
   
   // Color families
-  const colorFamilies = ['All', 'WHITES & OFF WHITES', 'GREYS', 'BROWNS', 'BLUES', 'GREENS', 'YELLOWS & GREENS', 'Corals and Terracottas'];
+  const colorFamilies = ['All', 'WHITES & OFF WHITES', 'GREYS', 'BROWNS', 'BLUES', 'GREENS', 'YELLOWS & GREENS'];
   
   // Helper function to determine text color based on background
   const getContrastColor = (hex) => {
@@ -124,7 +124,10 @@ const RoomVisualizer = () => {
                          color.name.toLowerCase().includes(searchTerm) ||
                          color.hex.toLowerCase().includes(searchTerm) ||
                          color.color_family.toLowerCase().includes(searchTerm);
+                         
     const matchesFamily = colorFamily === 'All' || color.color_family === colorFamily;
+
+
     return matchesSearch && matchesFamily;
   });
   
