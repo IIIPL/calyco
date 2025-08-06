@@ -323,7 +323,7 @@ export const ContactUs = () => {
                         />
                     </div>
                     </div>
-                    <img src="/worldmap.png" alt="worldImpact" className="mb-10"/>
+                    
 
 
             </div>
