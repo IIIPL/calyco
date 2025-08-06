@@ -1219,7 +1219,7 @@ export const flatColors = [
   },
   {
     "name": "Eucalyptus Breeze",
-    "color_family": "Dining Room, Balcony",
+    "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
     "base": "Sage Green",

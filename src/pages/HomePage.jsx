@@ -12,6 +12,7 @@ import { HeroSection } from "../components/HomeComponents/HeroSection";
 import { flatColors } from "../data/flatColors";
 import { ColorTrends } from "../components/ColorComponents/ColorTrends";
 import {HeroSlider} from "../components/HomeComponents/HeroSlider";
+import Carousel from "../components/HomeComponents/Carousel";
 
 
 
@@ -55,7 +56,7 @@ export const HomePage = () => {
 
            {/* Section 2 */}
            <div className="px-10">
-            <HeroSlider/>
+            <Carousel/>
            </div>
             {/* Enhanced Who We Serve Section */}
             <section className="min-h-screen bg-gradient-to-b from-white to-[#493657]/5 flex flex-col relative overflow-hidden">
@@ -190,6 +191,7 @@ export const HomePage = () => {
                             key={index}
                             variants={itemVariants}
                             whileHover={{ 
+
                                 scale: 1.05, 
                                 boxShadow: "0 20px 40px rgba(0,0,0,0.1)" 
                             }}

@@ -54,9 +54,26 @@ export const Navbar = () => {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+  const  navRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutsideDropdown = (event) => {
+      if (
+        dropdownOpen &&
+        navRef.current &&
+        !navRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(null);
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutsideDropdown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideDropdown);
+    };
+  }, [dropdownOpen]);
   
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm">
+    <header ref={navRef} className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm">
       {/* Logo Row */}
       <div className="w-full flex justify-center items-center h-20 md:h-14">
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
