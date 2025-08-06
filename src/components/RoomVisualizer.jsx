@@ -340,16 +340,19 @@ const RoomVisualizer = () => {
       
       for (const surface of surfaces) {
         if (!updated[surface] || updated[surface].length === 0) {
-          const width = image.width * 0.6;
-          const height = image.height * 0.5;
-          const x = (image.width - width) / 2;
-          const y = (image.height - height) / 2;
-          const defaultPoints = [
-            { x, y },
-            { x: x + width, y },
-            { x: x + width, y: y + height },
-            { x, y: y + height },
-          ];
+          // Centered regular pentagon
+          const width = image.width;
+          const height = image.height;
+          const cx = width / 2;
+          const cy = height / 2;
+          const radius = Math.min(width, height) * 0.28; // ~56% of min dimension
+          const defaultPoints = Array.from({ length: 5 }, (_, i) => {
+            const angle = (2 * Math.PI * i) / 5 - Math.PI / 2;
+            return {
+              x: cx + radius * Math.cos(angle),
+              y: cy + radius * Math.sin(angle),
+            };
+          });
           
           updated[surface] = [
             {
@@ -377,16 +380,19 @@ const RoomVisualizer = () => {
     
     // If the active surface has no polygons, create a default one
     if (polygonState[activeSurface].length === 0) {
-      const width = image.width * 0.6;
-      const height = image.height * 0.5;
-      const x = (image.width - width) / 2;
-      const y = (image.height - height) / 2;
-      const defaultPoints = [
-        { x, y },
-        { x: x + width, y },
-        { x: x + width, y: y + height },
-        { x, y: y + height },
-      ];
+      // Centered regular pentagon
+      const width = image.width;
+      const height = image.height;
+      const cx = width / 2;
+      const cy = height / 2;
+      const radius = Math.min(width, height) * 0.28;
+      const defaultPoints = Array.from({ length: 5 }, (_, i) => {
+        const angle = (2 * Math.PI * i) / 5 - Math.PI / 2;
+        return {
+          x: cx + radius * Math.cos(angle),
+          y: cy + radius * Math.sin(angle),
+        };
+      });
       
       setPolygonState(prev => ({
         ...prev,
