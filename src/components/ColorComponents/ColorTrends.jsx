@@ -68,18 +68,22 @@ export const ColorTrends = () => {
   </motion.div>
 
   {/* Duplicate Color Cards Block at Bottom */}
-  <motion.div
-    className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-    initial={{ opacity: 0, x: 80 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-  >
-    {displayedColors.map((color, index) => {
+<motion.div
+  className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+  initial={{ opacity: 0, x: 80 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  {[...flatColors]
+    .filter(color => !displayedColors.includes(color))
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 5)
+    .map((color, index) => {
       const textColor = getTextColor(color.hex);
       return (
         <div
-          key={`duplicate-${index}`}
+          key={`secondary-${index}`}
           onClick={() => handleClick(color)}
           className={`aspect-[4/5] p-4 flex flex-col justify-between shadow-md transition-all duration-300 cursor-pointer`}
           style={{ backgroundColor: color.hex }}
@@ -92,7 +96,7 @@ export const ColorTrends = () => {
         </div>
       );
     })}
-  </motion.div>
+</motion.div>
 
   {/* Final CTA Button (Always at Bottom) */}
   <motion.div
