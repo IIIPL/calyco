@@ -230,8 +230,8 @@ export const ContactUs = () => {
                             </div>
                             <div>
                                 <h4 className="text-xl font-semibold text-gray-800 mb-1">Visit Us</h4>
-                                <p className="text-gray-700 text-lg">MEC Office, Civil Lines</p>
-                                <p className="text-gray-700 text-lg">Nagpur, Maharashtra 440001</p>
+                                <p className="text-gray-700 text-lg">B-37, Sector - 1</p>
+                                <p className="text-gray-700 text-lg">Noida NCR, India</p>
                             </div>
                         </div>
                      
@@ -256,7 +256,7 @@ export const ContactUs = () => {
                         <AddressCard
                             CountrName="India"
                             emailId="info@calycopaints.com"
-                            completeAddress="MEC Office, Civil Lines Nagpur, Maharashtra 440001"
+                            completeAddress="B-37, Sector - 1, Noida NCR, India"
                         />
                     </div>
                     <div className="flex justify-center">

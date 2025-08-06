@@ -62,6 +62,8 @@ export const Footer = () => {
                             <Link to="/about" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>About</Link>
                             <Link to="/product" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Products</Link>
                             <Link to="/contact" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Contact</Link>
+                            <Link to="/colors" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Colors</Link>
+                            <Link to="/room-visualization" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Visualizer</Link>
                         </div>
                     </div>
                 </div>
