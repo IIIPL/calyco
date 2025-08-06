@@ -178,7 +178,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/woodguard",
     "name": "WoodGuard",
-    "image": "/Assets/woodguard.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
     "description": "Rich color stain and sealer for all wood protection needs.",
     "short-description": "Protects and covers aged, stained, or mismatched wood.",
     "details": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
@@ -256,9 +256,9 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "WoodGuard",
-    "images": ["/Assets/WoodGuard/NoBg.png",
-      "/Assets/WoodGuard/inuse.png",
-      "/Assets/WoodGuard/OnTable.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
+      // "/Assets/WoodGuard/inuse.png",
+      // "/Assets/WoodGuard/OnTable.png",
     ]
   },
   {
