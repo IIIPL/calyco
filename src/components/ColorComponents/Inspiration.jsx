@@ -11,7 +11,7 @@ export const InspirationCard = ({ colorName }) => {
   text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and');
 
   const handleClick = () => {
-    navigate(`/colors/family/${familyName}/${slugify(colorName)}`);
+    navigate(`/colors/family/${slugify(familyName)}/${slugify(colorName)}`);
   };
 
   // Calculate text color based on background brightness

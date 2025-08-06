@@ -86,36 +86,32 @@ export default function IndividualRoomPage() {
                 animate="visible"
                 variants={fadeIn}
             >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#393939] mb-6 tracking-tight text-center">
+                <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold text-[#393939]  tracking-tight text-center">
                     {room.name}
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed max-w-3xl mx-auto">
-                    {room.description}
-                </p>
             </motion.div>
 
             {/* Room Overview Section */}
             <motion.div 
-                className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-12"
+                className="w-full flex justify-center items-center mb-12"
                 initial="hidden"
                 animate="visible"
                 variants={zoomIn}
-            >
-                <div className="rounded-2xl overflow-hidden shadow-xl">
-                    {!imageLoaded && (
-                        <div className="w-full h-64 md:h-[28rem] bg-gray-200 animate-pulse"></div>
-                    )}
-                    <motion.img
-                        src={room.image}
-                        alt={room.name}
-                        className={`w-full h-64 md:h-[28rem] object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: imageLoaded ? 1 : 0 }}
-                        transition={{ duration: 0.5 }}
-                        onLoad={() => setImageLoaded(true)}
-                    />
-                </div>
-            </motion.div>
+                >
+                {!imageLoaded && (
+                    <div className="absolute w-full h-[28rem] bg-gray-200 animate-pulse pointer-events-none" />
+                )}
+                <motion.img
+                    src={room.image}
+                    alt={room.name}
+                    className={`w-auto max-h-[28rem] ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: imageLoaded ? 1 : 0 }}
+                    transition={{ duration: 0.5 }}
+                    onLoad={() => setImageLoaded(true)}
+                />
+                </motion.div>
+
 
             {/* Paint Colors Section */}
             <motion.div 
@@ -192,7 +188,10 @@ export default function IndividualRoomPage() {
                     })}
                 </div>
             </motion.div>
-
+            
+            <p className="text-base sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed max-w-3xl mx-auto">
+                {room.description}
+            </p>
             {/* Call to Action Section */}
             <motion.div 
                 className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 mb-16"
