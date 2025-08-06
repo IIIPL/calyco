@@ -25,7 +25,6 @@ import LivingInspiration from './pages/inspiration/Living';
 import BathroomInspiration from './pages/inspiration/Bathroom';
 import DiningInspiration from './pages/inspiration/Dining';
 import OfficeInspiration from './pages/inspiration/Office';
-import KidsInspiration from './pages/inspiration/Kids';
 import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
@@ -36,7 +35,7 @@ import ColorDetailPage from './pages/ColorDetailPage'
 // Import new providers and pages
 import { ColorProvider } from './context/ColorContext';
 import { ColorVisualizationProvider } from './context/ColorVisualizationContext.jsx';
-import ColorVisualizationPage from './pages/ColorVisualizationPage';
+
 import { RoomVisualizerPage } from './pages/RoomVisualizer.jsx';
 import RoomVisualizer from './components/RoomVisualizer.jsx';
 import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
@@ -76,12 +75,10 @@ function App() {
               <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
               <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
               <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
-              <Route path='/inspirations/kids' element={<KidsInspiration/>}/>
+              
               <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
               <Route path="/room/:roomName" element={<IndividualRoomPage />} />
-              {/* New Visualization Route */}
-              <Route path='/visualization' element={<ColorVisualizationPage />} />
-              {/* Room Visualizer Routes */}
+              {/* Visualization Routes */}
               <Route path='/room-visualization' element={<RoomVisualizerPage/>} />
               <Route path='/room-visualization/bedroom' element={<RoomVisualizer/>} />
               <Route path='/room-visualization/livingroom' element={<RoomVisualizer/>} />

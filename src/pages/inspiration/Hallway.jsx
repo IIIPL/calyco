@@ -1,21 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import RoomInspiration from "../../components/RoomInspiration";
+import { roomData } from "../../data/roomData";
+import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { colorGroups } from "../../data/colorGroups";
 import { motion } from "framer-motion";
 
-export default function HallwayInspiration() {
-  const findColor = (name) => {
-    for (const group of colorGroups) {
-      const found = group.colors.find((c) => c.name === name);
-      if (found) return found;
-    }
-    return null;
-  };
+const findColor = (name) => {
+  for (const group of colorGroups) {
+    const found = group.colors.find((c) => c.name === name);
+    if (found) return found;
+  }
+  return null;
+};
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+export default function HallwayInspiration() {
+  const filteredRooms = filterRoomsByFamily("hallway", roomData);
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
@@ -35,42 +40,32 @@ export default function HallwayInspiration() {
         </p>
       </div>
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
-        {[{
-          title: "Bright & Airy Hallway",
-          description: "Light colors open up the space and create a welcoming entry.",
-          imageUrl: "/Assets/InteriorInspiratoin/d265f31e90793c34ee61cbb88975d709.jpg",
-          colors: ["Ivory Mist", "Lotus Petal", "Rice Paper"]
-        }, {
-          title: "Colorful Accent Hallway",
-          description: "Bold accent walls add personality and vibrancy to your hallway.",
-          imageUrl: "/Assets/inspiration.png",
-          colors: ["Marigold", "Coral Blush", "Aqua Pop"]
-        }, {
-          title: "Modern Minimalist Hallway",
-          description: "Sleek greys and whites for a clean, modern look.",
-          imageUrl: "/Assets/InteriorInspiratoin/d88428f84d37e90e9913c30c8a97b258.jpg",
-          colors: ["Ash Mist", "Steel", "Silver Veil"]
-        }].map((block, i) => (
-          <motion.div
-            key={block.title}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInUp}
-          >
-            <RoomInspiration
-              title={block.title}
-              description={block.description}
-              imageUrl={block.imageUrl}
-              colors={block.colors.map(findColor).filter(Boolean)}
-            />
-          </motion.div>
-        ))}
-      </div>
-      <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
-        <p className="text-lg text-gray-700 text-center">
-          Beautiful hallway inspiration coming soon...
-        </p>
+        {filteredRooms.length > 0 ? (
+          filteredRooms.map((block, i) => (
+            <motion.div
+              key={block.name}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
+              <Link to={`/room/${block.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <RoomInspiration
+                  title={block.name}
+                  description={block.description}
+                  imageUrl={block.image}
+                  colors={block.colors.map(findColor).filter(Boolean)}
+                />
+              </Link>
+            </motion.div>
+          ))
+        ) : (
+          <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
+            <p className="text-lg text-gray-700 text-center">
+              Beautiful hallway inspiration coming soon...
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

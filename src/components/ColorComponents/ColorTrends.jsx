@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { flatColors } from "../../data/flatColors";
 import { useNavigate } from "react-router-dom";
+const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and'); // To slugify the name
 
 export const ColorTrends = () => {
     const displayedColors = [...flatColors]
@@ -19,9 +20,9 @@ export const ColorTrends = () => {
   };
 
   const handleClick = (color) => {
-    const family = encodeURIComponent(color.color_family);
-    const name = encodeURIComponent(color.name);
-    navigate(`/colors/family/${family}/${name}`);
+      const familySlug = slugify(color.color_family || "all");
+      const colorSlug = slugify(color.name);
+      navigate(`/colors/family/${familySlug}/${colorSlug}`);
   };
 
   return (
