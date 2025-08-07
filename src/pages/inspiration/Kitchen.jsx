@@ -7,13 +7,15 @@ import { colorGroups } from "../../data/colorGroups";
 import { motion } from "framer-motion";
 
 // Helper to find color by name
+import { flatColors } from "../../data/flatColors";
+
 const findColor = (name) => {
-  for (const group of colorGroups) {
-    const found = group.colors.find((c) => c.name === name);
-    if (found) return found;
-  }
-  return null;
+  if (!name) return null;
+  return flatColors.find(
+    (c) => c.name && c.name.toLowerCase() === name.toLowerCase()
+  ) || null;
 };
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },

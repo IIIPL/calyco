@@ -115,7 +115,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
     <label className="font-medium text-[#342347]">Quantity</label>
     <div className="flex items-center gap-4">
       <button
-        className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 ${
+        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${
           quantity <= 1 ? 'bg-gray-300 text-white' : 'bg-[#493657] text-white hover:bg-[#5a4067]'
         }`}
         onClick={() => setQuantity(q => Math.max(1, q - 1))}
@@ -126,7 +126,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
       </button>
       <span className="w-10 text-center text-lg font-medium text-[#342347]">{quantity}</span>
       <button
-        className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center hover:bg-[#5a4067] transition-colors duration-200"
+        className="w-10 h-10 rounded-xl bg-[#493657] text-white flex items-center justify-center hover:bg-[#5a4067] transition-colors duration-200"
         onClick={() => setQuantity(q => q + 1)}
         type="button"
       >
