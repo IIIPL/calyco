@@ -18,8 +18,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Ceilings, Living Room, Bedroom",
     "collection": "Modern, French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Almond Mist",
     "color_family": "WHITES & OFF WHITES",
@@ -39,8 +40,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "All Rooms, Living Room, Bedroom",
     "collection": "Cottage, Cozy Cabin",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Morning Dew",
     "color_family": "GREYS",
@@ -60,8 +62,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Living Room, Kitchen, Hallways",
     "collection": "Coastal, Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Silk Taupe",
     "color_family": "BROWNS",
@@ -81,8 +84,9 @@ export const flatColors = [
     "styling": "Timeless",
     "rooms": "Living Room, Bedroom, Study Room",
     "collection": "Vintage, Farmhouse",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Dusky Sand",
     "color_family": "BROWNS",
@@ -102,8 +106,9 @@ export const flatColors = [
     "styling": "Cozy",
     "rooms": "Living Room, Dining Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Greige Harmony",
     "color_family": "GREYS",
@@ -123,8 +128,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "All Rooms, Hallways, Prayer Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Misty Fog",
     "color_family": "WHITES & OFF WHITES",
@@ -144,8 +150,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Ceilings, Bedroom",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Sage Whisper",
     "color_family": "GREENS",
@@ -165,8 +172,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Bedroom, Living Room, Prayer Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Blush Petal",
     "color_family": "PURPLES & PINKS",
@@ -186,8 +194,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bedroom, Kids Room",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Lilac Veil",
     "color_family": "PURPLES & PINKS",
@@ -207,8 +216,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bedroom, Highlight Walls",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Rosewood Haze",
     "color_family": "PURPLES & PINKS",
@@ -228,8 +238,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Vintage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Peach Glow",
     "color_family": "REDS & ORANGES",
@@ -249,8 +260,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Dining Room, Living Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Terra Blush",
     "color_family": "REDS & ORANGES",
@@ -270,8 +282,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Bedroom, Kids Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Coral Charm",
     "color_family": "REDS & ORANGES",
@@ -291,8 +304,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Living Room, Highlight Walls",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Blossom Warmth",
     "color_family": "PURPLES & PINKS",
@@ -312,8 +326,9 @@ export const flatColors = [
     "styling": "Cozy",
     "rooms": "Bedroom, Hallways, Kids Room",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Vintage Rose",
     "color_family": "PURPLES & PINKS",
@@ -333,8 +348,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Study Room, Bedroom",
     "collection": "Vintage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Earthy Terracotta",
     "color_family": "REDS & ORANGES",
@@ -354,8 +370,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Highlight Walls, Exterior Body",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Clay Beige",
     "color_family": "BROWNS",
@@ -375,8 +392,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Living Room, Dining Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Cocoa Brown",
     "color_family": "BROWNS",
@@ -396,8 +414,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Entertainment Room, Living Room",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Brick Red",
     "color_family": "REDS & ORANGES",
@@ -417,8 +436,9 @@ export const flatColors = [
     "styling": "Bold Vibrant",
     "rooms": "Exterior Body, Highlight Walls",
     "collection": "Modern",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Rustic Rust",
     "color_family": "REDS & ORANGES",
@@ -438,8 +458,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Highlight Walls, Hallways",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Olive Earth",
     "color_family": "GREENS",
@@ -459,8 +480,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Study Room, Exterior Trims and Accents",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Golden Harvest",
     "color_family": "YELLOWS & GREENS",
@@ -480,8 +502,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Dining Room, Kitchen",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Mudstone Brown",
     "color_family": "BROWNS",
@@ -501,8 +524,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Living Room, Prayer Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Royal Indigo",
     "color_family": "BLUES",
@@ -522,8 +546,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Highlight Walls, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Plum Midnight",
     "color_family": "PURPLES & PINKS",
@@ -543,8 +568,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Bedroom, Study Room",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Indigo Twilight",
     "color_family": "BLUES",
@@ -564,8 +590,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Living Room, Entertainment Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Olive Grove",
     "color_family": "GREENS",
@@ -585,8 +612,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Study Room, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Teal Serenity",
     "color_family": "GREENS",
@@ -606,8 +634,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Kitchen, Balcony",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Jade Mist",
     "color_family": "GREENS",
@@ -627,8 +656,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Bathroom, Living Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Mauve Shadow",
     "color_family": "PURPLES & PINKS",
@@ -648,8 +678,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Charcoal Grey",
     "color_family": "GREYS",
@@ -669,8 +700,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Body, Exterior Trims and Accents",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Buttercream Blush",
     "color_family": "REDS & ORANGES",
@@ -690,8 +722,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Living Room, Dining Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Sunset Glow",
     "color_family": "REDS & ORANGES",
@@ -711,8 +744,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Lotus Bloom",
     "color_family": "PURPLES & PINKS",
@@ -732,8 +766,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Bedroom, Highlight Walls",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Pearl Blush",
     "color_family": "WHITES & OFF WHITES",
@@ -753,8 +788,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bathroom, Hallways",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Chalk Cream",
     "color_family": "WHITES & OFF WHITES",
@@ -774,8 +810,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "All Rooms",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Canvas Sand",
     "color_family": "BROWNS",
@@ -795,8 +832,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Study Room, Bedroom",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Desert Rose",
     "color_family": "REDS & ORANGES",
@@ -816,8 +854,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Living Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Thar Earth",
     "color_family": "BROWNS",
@@ -837,8 +876,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Dining Room, Kitchen",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Beach Sand",
     "color_family": "WHITES & OFF WHITES",
@@ -858,8 +898,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Ceilings, Hallways",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Powder Beige",
     "color_family": "BROWNS",
@@ -879,8 +920,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Candlelight Gold",
     "color_family": "YELLOWS & GREENS",
@@ -900,8 +942,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Dining Room",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Cozy Linen",
     "color_family": "WHITES & OFF WHITES",
@@ -921,8 +964,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Bedroom, Living Room",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Desert Dune",
     "color_family": "BROWNS",
@@ -942,8 +986,9 @@ export const flatColors = [
     "styling": "Timeless",
     "rooms": "Hallways, Study Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Ash Grey",
     "color_family": "GREYS",
@@ -963,8 +1008,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Bathroom, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Flint Musk",
     "color_family": "GREYS",
@@ -984,8 +1030,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Living Room, Bedroom",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Silver Mist",
     "color_family": "GREYS",
@@ -1005,8 +1052,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Kitchen, Study Room",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Copper Glow",
     "color_family": "BROWNS",
@@ -1026,8 +1074,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Dining Room, Hallways",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Taupe Warmth",
     "color_family": "BROWNS",
@@ -1047,8 +1096,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Living Room, Bedroom",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Biscuit Beige",
     "color_family": "BROWNS",
@@ -1068,8 +1118,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "All Rooms",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Coconut Brown",
     "color_family": "BROWNS",
@@ -1089,8 +1140,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Prayer Room, Hallways",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Mud Brown",
     "color_family": "BROWNS",
@@ -1110,8 +1162,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Trims and Accents, Highlight Walls",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Basalt Stone",
     "color_family": "GREYS",
@@ -1131,8 +1184,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Living Room, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Shadow Grey",
     "color_family": "GREYS",
@@ -1152,8 +1206,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Kitchen, Bathroom",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Charcoal Smoke",
     "color_family": "GREYS",
@@ -1173,8 +1228,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Body, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Forest Olive",
     "color_family": "GREENS",
@@ -1194,8 +1250,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Living Room, Prayer Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Sage Dust",
     "color_family": "GREENS",
@@ -1215,8 +1272,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Study Room, Bedroom",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Eucalyptus Breeze",
     "color_family": "GREENS",
@@ -1236,8 +1294,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Celadon Green",
     "color_family": "GREENS",
@@ -1257,8 +1316,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bathroom, Bedroom",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Mint Whisper",
     "color_family": "GREENS",
@@ -1278,8 +1338,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "All Rooms",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Sky Blue",
     "color_family": "BLUES",
@@ -1299,8 +1360,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Kids Room, Hallways",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Glacier Mist",
     "color_family": "GREYS",
@@ -1320,8 +1382,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bedroom, Kitchen",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Slate Stone",
     "color_family": "WHITES & OFF WHITES",
@@ -1341,8 +1404,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Ceilings, Study Room",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Indigo Night",
     "color_family": "BLUES",
@@ -1362,8 +1426,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Misty Storm",
     "color_family": "GREYS",
@@ -1383,8 +1448,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Living Room, Entertainment Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Navy Fade",
     "color_family": "BLUES",
@@ -1404,8 +1470,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Study Room, Bedroom",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Ocean Mist",
     "color_family": "BLUES",
@@ -1425,8 +1492,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Kitchen, Living Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior/C Exterior"
-  },
+    "interior_or_exterior": "Interior/C Exterior",
+    "image": "",
+    },
   {
     "name": "Deep Ocean",
     "color_family": "BLUES",
@@ -1446,8 +1514,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Prayer Room, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Oxblood Red",
     "color_family": "BLUES",
@@ -1467,8 +1536,9 @@ export const flatColors = [
     "styling": "Purple",
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Solid",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Jet Black",
     "color_family": "GREYS",
@@ -1488,8 +1558,9 @@ export const flatColors = [
     "styling": "Grey",
     "rooms": "Living Room, Entertainment Room",
     "collection": "Semi-Solid",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Graphite Grey",
     "color_family": "BLUES",
@@ -1509,8 +1580,9 @@ export const flatColors = [
     "styling": "Grey",
     "rooms": "Study Room, Bedroom",
     "collection": "Semi-Solid",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Twilight Stone",
     "color_family": "BLUES",
@@ -1530,8 +1602,9 @@ export const flatColors = [
     "styling": "Green",
     "rooms": "Kitchen, Living Room",
     "collection": "Semi-Transparent",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Olive Shade",
     "color_family": "BLUES",
@@ -1551,8 +1624,9 @@ export const flatColors = [
     "styling": "Grey",
     "rooms": "Prayer Room, Hallways",
     "collection": "Solid",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Royal Plum",
     "color_family": "REDS & ORANGES",
@@ -1572,8 +1646,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Interior/C Exterior"
-  },
+    "interior_or_exterior": "Interior/C Exterior",
+    "image": "",
+    },
   {
     "name": "Grape Mist",
     "color_family": "GREYS",
@@ -1593,8 +1668,9 @@ export const flatColors = [
     "styling": "Bold Vibrant",
     "rooms": "Doors & Windows, Exterior Trims and Accents",
     "collection": "Modern",
-    "interior_or_exterior": "Interior/C Exterior"
-  },
+    "interior_or_exterior": "Interior/C Exterior",
+    "image": "",
+    },
   {
     "name": "Ash Grey",
     "color_family": "GREYS",
@@ -1614,8 +1690,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Body, Living Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Asphalt Grey",
     "color_family": "PURPLES & PINKS",
@@ -1635,8 +1712,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Entertainment Room, Bedroom",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Steel Grey",
     "color_family": "GREENS",
@@ -1656,8 +1734,9 @@ export const flatColors = [
     "styling": "Grounding",
     "rooms": "Kitchen, Study Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Walnut Brown",
     "color_family": "PURPLES & PINKS",
@@ -1677,8 +1756,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Sienna Burnt",
     "color_family": "PURPLES & PINKS",
@@ -1698,8 +1778,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Living Room, Highlight Walls",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Terra Spice",
     "color_family": "GREYS",
@@ -1719,8 +1800,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Doors & Windows, Entertainment Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Rust Glow",
     "color_family": "GREYS",
@@ -1740,8 +1822,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Trims and Accents, Verandahs",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Molten Red",
     "color_family": "GREYS",
@@ -1761,8 +1844,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Study Room, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Maroon Glow",
     "color_family": "BROWNS",
@@ -1782,8 +1866,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Bedroom, Kitchen",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Taupe Smoke",
     "color_family": "REDS & ORANGES",
@@ -1803,8 +1888,9 @@ export const flatColors = [
     "styling": "Bold Vibrant",
     "rooms": "Living Room, Dining Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754573587/taupe_smoke_cg6hyd.png",
+    },
   {
     "name": "Almond Beige",
     "color_family": "REDS & ORANGES",
@@ -1824,8 +1910,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Exterior Body, Balcony",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Rust Glow",
     "color_family": "REDS & ORANGES",
@@ -1845,8 +1932,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Highlight Walls, Living Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Molten Ember",
     "color_family": "REDS & ORANGES",
@@ -1866,8 +1954,9 @@ export const flatColors = [
     "styling": "Bold Vibrant",
     "rooms": "Dining Room, Prayer Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Maroon Velvet",
     "color_family": "REDS & ORANGES",
@@ -1887,8 +1976,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Bedroom, Study Room",
     "collection": "Vintage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Taupe Mist",
     "color_family": "BROWNS",
@@ -1908,8 +1998,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "All Rooms, Living Room, Hallways",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Almond Sand",
     "color_family": "BROWNS",
@@ -1929,8 +2020,9 @@ export const flatColors = [
     "styling": "Timeless",
     "rooms": "Bedroom, Hallways",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Ochre Copper",
     "color_family": "YELLOWS & GREENS",
@@ -1950,8 +2042,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Kitchen, Living Room",
     "collection": "Farmhouse",
-    "interior_or_exterior": "Exterior"
-  },
+    "interior_or_exterior": "Exterior",
+    "image": "",
+    },
   {
     "name": "Brass Dust",
     "color_family": "YELLOWS & GREENS",
@@ -1971,8 +2064,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Dining Room, Hallways",
     "collection": "Mid-Century Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Golden Clay",
     "color_family": "YELLOWS & GREENS",
@@ -1992,8 +2086,9 @@ export const flatColors = [
     "styling": "Rich",
     "rooms": "Balcony, Living Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Curry Yellow",
     "color_family": "YELLOWS & GREENS",
@@ -2013,8 +2108,9 @@ export const flatColors = [
     "styling": "Bold Vibrant",
     "rooms": "Kitchen, Prayer Room",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Citrus Ochre",
     "color_family": "YELLOWS & GREENS",
@@ -2034,8 +2130,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Banana Cream",
     "color_family": "WHITES & OFF WHITES",
@@ -2055,8 +2152,9 @@ export const flatColors = [
     "styling": "Bright",
     "rooms": "Ceilings, Bedroom",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Vanilla Cream",
     "color_family": "WHITES & OFF WHITES",
@@ -2076,8 +2174,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Bedroom, Kitchen",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Chalk Beige",
     "color_family": "WHITES & OFF WHITES",
@@ -2097,8 +2196,9 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "All Rooms, Living Room, Dining Room",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Cloud Grey",
     "color_family": "GREYS",
@@ -2118,8 +2218,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bedroom, Living Room",
     "collection": "Modern",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Evening Linen",
     "color_family": "WHITES & OFF WHITES",
@@ -2139,8 +2240,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Hallways, Study Room",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Pistachio Soft",
     "color_family": "GREENS",
@@ -2160,8 +2262,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "All Rooms",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Mint Soft",
     "color_family": "GREENS",
@@ -2181,8 +2284,9 @@ export const flatColors = [
     "styling": "Calming",
     "rooms": "Bedroom, Kitchen",
     "collection": "Cottage",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Aqua Pale",
     "color_family": "BLUES",
@@ -2202,8 +2306,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bathroom, Study Room",
     "collection": "Coastal",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Lilac Dust",
     "color_family": "PURPLES & PINKS",
@@ -2223,8 +2328,9 @@ export const flatColors = [
     "styling": "Soft",
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
-    "interior_or_exterior": "Interior"
-  },
+    "interior_or_exterior": "Interior",
+    "image": "",
+    },
   {
     "name": "Earth Black",
     "color_family": "GREYS",
@@ -2244,8 +2350,9 @@ export const flatColors = [
     "styling": "Moody",
     "rooms": "Exterior Body, Exterior Trims and Accents",
     "collection": "Modern",
-    "interior_or_exterior": "Interior/C Exterior"
-  },
+    "interior_or_exterior": "Interior/C Exterior",
+    "image": "",
+    },
   {
     "name": "Classic Cream",
     "color_family": "WHITES & OFF WHITES",
