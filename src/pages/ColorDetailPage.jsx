@@ -6,9 +6,7 @@ import SimilarColors from '../components/ColorComponents/SimilarColors';
 import { BuyNowDrawer } from '../components/BuyNowDrawer';
 import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
 
-
 // Helper function to create URL-friendly slugs
-
 
 const slugify = (text) =>
   text
@@ -18,8 +16,6 @@ const slugify = (text) =>
     .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
     .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
-
-
 // Function to determine text color based on background brightness
 const getTextColor = (hexColor) => {
   const r = parseInt(hexColor.substring(1, 3), 16);
@@ -28,7 +24,6 @@ const getTextColor = (hexColor) => {
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   return brightness > 150 ? 'text-black' : 'text-white';
 };
-
 const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
@@ -113,16 +108,16 @@ const ColorDetailPage = () => {
         </nav>
         
         {/* Left Side - Image Panel */}
-        <div className='px-10 pt-20'>
+        <div className='px-10 pt-20 flex-1'>
           <img 
             src={currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"} 
             alt="Contained" 
-            className='h-[500px] w-full object-cover' 
+            className='h-[700px] w-full object-cover' 
           />
         </div>
         
         {/* Right Side - Details Panel */}
-        <div className={`w-full md:w-1/2 p-12 ${textColorClass}`}>
+        <div className={`w-full md:w-1/2 p-12 flex flex-col justify-start`}>
           {/* Color Name and Code */}
           <div className="mb-8 pt-16">
             <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
@@ -201,5 +196,4 @@ const ColorDetailPage = () => {
     </div>
   );
 };
-
 export default ColorDetailPage;
