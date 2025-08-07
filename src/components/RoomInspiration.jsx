@@ -14,6 +14,8 @@ const slugify = (text) =>
 export default function RoomInspiration({ title, description, imageUrl, colors = [] }) {
   return (
     <div className="relative w-full max-w-5xl mx-auto mb-20">
+
+
       <h2 className="text-2xl md:text-3xl font-bold text-[#393939] mb-2 tracking-tight uppercase">
         {title}
       </h2>
@@ -23,11 +25,11 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
 
       <div className="relative w-full">
         {/* Room Image */}
-        <div className="rounded-xl overflow-hidden border border-gray-100 shadow-lg w-full">
+        <div className="w-full">
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-auto max-h-[32rem] object-cover"
+            className="w-full h-auto max-h-[32rem] object-contain"
             loading="lazy"
           />
         </div>

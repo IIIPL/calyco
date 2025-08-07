@@ -1,9 +1,8 @@
-// src/pages/BedroomInspiration.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";  // Import Link for navigation
 import RoomInspiration from "../../components/RoomInspiration";
-import { roomData } from "../../data/roomData";  // Importing room data
-import { filterRoomsByFamily } from "../../utils/filterRooms";  // Import the utility function
+import { getRoomsByCategory } from "../../data/roomData";
 import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 
@@ -22,7 +21,7 @@ const fadeInUp = {
 
 export default function BedroomInspiration() {
   // Get filtered rooms based on 'bedroom' family
-  const filteredRooms = filterRoomsByFamily("bedroom", roomData);
+  const filteredRooms = getRoomsByCategory("bedroom");
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
