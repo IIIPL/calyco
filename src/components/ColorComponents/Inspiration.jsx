@@ -8,7 +8,14 @@ export const InspirationCard = ({ colorName }) => {
   const familyName = color?.color_family?.toLowerCase() || "unknown";
   const colorImage = color?.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"
   const slugify = (text) =>
-  text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and');
+    text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')        // Replace spaces with hyphens
+      .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+      .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+  
+  
 
   const handleClick = () => {
     navigate(`/colors/family/${slugify(familyName)}/${slugify(colorName)}`);
