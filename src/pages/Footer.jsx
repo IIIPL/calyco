@@ -36,7 +36,7 @@ export const Footer = () => {
     return (
         <footer className="relative bg-[#23182b] text-white pt-12 pb-6 border-t border-[#493657]/30 px-6 md:px-12 xl:px-32 overflow-hidden">
             <GoldenDots count={12} />
-            <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-12 md:gap-8 lg:gap-16">
+            <div className="relative z-10 mx-auto flex flex-col md:flex-row md:justify-between gap-12 md:gap-8 lg:gap-16">
                 {/* Left: Logo & Company Info */}
                 <div className="flex-1 flex flex-col gap-4 min-w-[220px]">
                     <div className="flex items-center gap-3 mb-2">

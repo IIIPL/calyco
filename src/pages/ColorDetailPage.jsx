@@ -135,13 +135,13 @@ const ColorDetailPage = () => {
           </div>
           
           {/* Description */}
-          <p className="mb-8 text-lg leading-relaxed">
+          <p className="mb-8 text-xl leading-relaxed">
             {currentColor.description || "A beautiful color from our curated collection."}
           </p>
           
           {/* Color Family */}
-          <div className="mb-8 text-lg leading-relaxed">
-            <h2 className="">Color Family :</h2>
+          <div className="mb-8 text-xl leading-relaxed">
+            <h2 className="">Color Family</h2>
             <span 
               onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)}
               className="cursor-pointer underline transition-colors"
