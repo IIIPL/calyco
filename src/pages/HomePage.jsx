@@ -135,7 +135,7 @@ export const HomePage = () => {
                     <Button to={'/product'} children={"Explore All Products"}/>
                 </div>
 
-                <Slider />
+                {/* <Slider /> */}
             </section>
 
             {/* Enhanced Why Choose Section */}

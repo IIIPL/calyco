@@ -89,7 +89,7 @@ const ColorDetailPage = () => {
       <section className="min-h-screen flex flex-col md:flex-row relative" style={{ backgroundColor: currentColor.hex }}>
         
         {/* Breadcrumb Navigation */}
-        <nav className={`absolute top-12 left-12 text-sm ${textColorClass}`}>
+        <nav className={`absolute top-12 pl-24 text-sm ${textColorClass}`}>
           <span 
             onClick={() => navigate('/colors')} 
             className="cursor-pointer underline"

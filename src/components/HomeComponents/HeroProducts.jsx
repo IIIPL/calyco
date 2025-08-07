@@ -1,5 +1,13 @@
 import { Button } from "../Button";
 
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+
 export const HeroProducts = ({ productName, productImage }) => {
   const features = [
     {
@@ -21,7 +29,7 @@ export const HeroProducts = ({ productName, productImage }) => {
   ];
 
   return (
-    <div className="flex flex-row items-center justify-between max-h-[240px] bg-white px-10 py-6 rounded-xl shadow-sm w-full">
+    <div className="flex flex-row items-center justify-center max-h-[240px] bg-white px-10 py-6 rounded-xl shadow-sm w-full gap-24">
   {/* Left: Product Image */}
   <div className="flex-shrink-0 ml-10 max-w-[200px] max-h-[240px]">
     <img
@@ -34,7 +42,7 @@ export const HeroProducts = ({ productName, productImage }) => {
   {/* Middle: Product Name + Description + Button */}
   <div className="flex flex-col px-6 w-[280px]">
     <h2 className="text-4xl font-semibold text-[#342347] mb-5">{productName}</h2>
-    <Button size="sm" className="w-max">
+    <Button size="sm" className="w-max" to={`/product/${slugify(productName)}`}>
       Explore
     </Button>
   </div>
