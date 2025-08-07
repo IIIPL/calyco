@@ -8,7 +8,8 @@ const cartReducer = (state, action) => {
       const existingItem = state.items.find(item => 
         item.id === action.payload.id && 
         item.selectedSheen === action.payload.selectedSheen && 
-        item.selectedSize === action.payload.selectedSize
+        item.selectedSize === action.payload.selectedSize &&
+        item.selectedColor?.name === action.payload.selectedColor?.name
       );
       
       if (existingItem) {
@@ -17,7 +18,8 @@ const cartReducer = (state, action) => {
           items: state.items.map(item =>
             item.id === action.payload.id && 
             item.selectedSheen === action.payload.selectedSheen && 
-            item.selectedSize === action.payload.selectedSize
+            item.selectedSize === action.payload.selectedSize &&
+            item.selectedColor?.name === action.payload.selectedColor?.name
               ? { ...item, quantity: item.quantity + action.payload.quantity }
               : item
           )
@@ -35,7 +37,8 @@ const cartReducer = (state, action) => {
         items: state.items.filter(item => 
           !(item.id === action.payload.id && 
             item.selectedSheen === action.payload.selectedSheen && 
-            item.selectedSize === action.payload.selectedSize)
+            item.selectedSize === action.payload.selectedSize &&
+            item.selectedColor?.name === action.payload.selectedColor?.name)
         )
       };
 
@@ -45,7 +48,8 @@ const cartReducer = (state, action) => {
         items: state.items.map(item =>
           item.id === action.payload.id && 
           item.selectedSheen === action.payload.selectedSheen && 
-          item.selectedSize === action.payload.selectedSize
+          item.selectedSize === action.payload.selectedSize &&
+          item.selectedColor?.name === action.payload.selectedColor?.name
             ? { ...item, quantity: action.payload.quantity }
             : item
         )
@@ -83,7 +87,12 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('calycoCart', JSON.stringify(state));
   }, [state]);
 
-  const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride) => {
+  const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride, selectedColor) => {
+    const defaultColor = {
+      name: "Serene Ivory",
+      hex: "#F8F4E3"
+    };
+
     dispatch({
       type: 'ADD_TO_CART',
       payload: {
@@ -93,10 +102,12 @@ export const CartProvider = ({ children }) => {
         selectedSheen,
         selectedSize,
         quantity,
-        image: product.image
+        image: product.image,
+        selectedColor: selectedColor || defaultColor  // ✅ fallback to Serene Ivory
       }
     });
   };
+  
 
   const removeFromCart = (item) => {
     dispatch({

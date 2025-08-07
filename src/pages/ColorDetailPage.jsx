@@ -1,9 +1,10 @@
 // src/pages/ColorDetailPage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
 import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
+import { BuyNowDrawer } from '../components/BuyNowDrawer';
 
 // Helper function to create URL-friendly slugs
 const slugify = (text) => {
@@ -22,6 +23,7 @@ const getTextColor = (hexColor) => {
 const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
+  const [showDrawer, setShowDrawer] = useState(false);
 
   // Decode the colorName from the URL
   const decodedColorName = decodeURIComponent(colorName);
@@ -119,7 +121,20 @@ const ColorDetailPage = () => {
               {currentColor.color_family}
             </span>
           </div>
-          
+                {/* Buy Now Button and Drawer */}
+          <button
+            onClick={() => setShowDrawer(true)}
+            className="bg-[#493657] text-white font-semibold px-6 py-2 rounded-md mt-8"
+          >
+            Buy Now
+          </button>
+          <BuyNowDrawer
+            isOpen={showDrawer}
+            onClose={() => setShowDrawer(false)}
+            currentColor={currentColor}
+          />
+
+            
         </div>
       </section>
 
@@ -149,6 +164,7 @@ const ColorDetailPage = () => {
 
       {/* Section 4: See Other Families */}
       {/* Other families section code here */}
+
     </div>
   );
 };
