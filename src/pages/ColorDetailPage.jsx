@@ -84,7 +84,7 @@ const ColorDetailPage = () => {
   };
   
   return (
-    <div className="min-h-screen bg-white mt-20">
+    <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
       {/* Section 1: Hero Section */}
       <section className="min-h-screen flex flex-col md:flex-row relative" style={{ backgroundColor: currentColor.hex }}>
         

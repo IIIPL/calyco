@@ -30,7 +30,7 @@ export default function KitchenInspiration() {
       {/* Top Banner Image */}
       <div className="w-full overflow-hidden">
         <img
-          src="/Assets/inspiration.png"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/KitchenHero_a8fyfn.jpg"
           alt="Kitchen Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />

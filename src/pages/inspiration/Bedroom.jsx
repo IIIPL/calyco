@@ -28,7 +28,7 @@ export default function BedroomInspiration() {
       {/* Top Image (full-width edge-to-edge) */}
       <div className="w-full overflow-hidden">
         <img
-          src="/Assets/inspiration.png"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
           alt="Bedroom Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />

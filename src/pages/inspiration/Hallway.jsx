@@ -25,7 +25,7 @@ export default function HallwayInspiration() {
     <div className="font-poppins bg-white min-h-screen pt-20">
       <div className="w-full overflow-hidden">
         <img
-          src="/Assets/inspiration.png"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png"
           alt="Hallway Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
