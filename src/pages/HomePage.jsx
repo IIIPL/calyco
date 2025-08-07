@@ -206,53 +206,7 @@ export const HomePage = () => {
                 
             </section>
 
-            {/* Enhanced Call to Action Section */}
-            <section className="py-20 px-6 md:px-32 relative overflow-hidden">
-                {/* Enhanced Background Elements */}
-                <div className="absolute inset-0">
-                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-b from-[#F0C85A]/10 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-t from-[#493657]/10 to-transparent rounded-full blur-3xl"></div>
-                </div>
-                
-                <motion.div 
-                    className="text-center text-[#493657] relative z-10"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    <motion.h2 
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        Ready to Transform Your Space?
-                    </motion.h2>
-                    <motion.p 
-                        className="text-xl mb-8 opacity-90 max-w-2xl mx-auto"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        Join thousands of satisfied customers who have trusted Calyco Paints for their projects
-                    </motion.p>
-                    <motion.button 
-                        className="group px-10 py-4 bg-white text-[#493657] font-semibold rounded-2xl border border-[#493657]/20 hover:bg-[#493657]/5 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl relative overflow-hidden"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {/* Enhanced button background */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#F0C85A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span className="flex items-center gap-2 relative">
-                            Get Free Consultation
-                            <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                    </motion.button>
-                </motion.div>
-            </section>
+            
             <section>
                 <ColorTrends/>
             </section>

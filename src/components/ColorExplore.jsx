@@ -29,8 +29,15 @@ const ColorExplore = () => {
 
 
 
+  
   const slugify = (text) =>
-    text.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and");
+    text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')        // Replace spaces with hyphens
+      .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+      .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+  
 
   return (
     <div className="min-h-screen bg-white text-[#1a1a1a]">

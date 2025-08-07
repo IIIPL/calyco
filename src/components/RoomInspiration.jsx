@@ -1,14 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-/**
- * RoomInspiration component
- * Props:
- * - title: string
- * - description: string
- * - imageUrl: string
- * - colors: array of { name, code, hex }
- */
+const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and'); // To slugify the name
+
 export default function RoomInspiration({ title, description, imageUrl, colors = [] }) {
   return (
     <div className="relative w-full max-w-5xl mx-auto mb-20">
@@ -36,7 +30,7 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
             {colors.map((color, idx) => (
               <Link
                 key={color.code + idx}
-                to={`/colors/family/${color.color_family?.toLowerCase().replace(/\s+/g, '-')}/${color.name.toLowerCase().replace(/\s+/g, '-')}`}
+                to={`/colors/family/${slugify(color.color_family)}/${slugify(color.name)}`}
                 className="flex flex-col items-center group"
               >
                 <div

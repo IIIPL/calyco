@@ -12,6 +12,9 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
+    "@tensorflow-models/deeplab": "^0.2.2",
+    "@tensorflow/tfjs": "^3.21.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.21.0",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
     "keen-slider": "^6.8.6",
