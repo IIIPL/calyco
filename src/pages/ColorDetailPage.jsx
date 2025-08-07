@@ -112,14 +112,16 @@ const ColorDetailPage = () => {
           <img 
             src={currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"} 
             alt="Contained" 
-            className='h-[700px] w-full object-cover' 
+            className='w-full h-auto max-h-[90vh] object-contain md:mb-10'
+
           />
         </div>
         
         {/* Right Side - Details Panel */}
-        <div className={`w-full md:w-1/2 p-12 flex flex-col justify-start`}>
+        <div className={`w-full md:w-1/2 pl-6 pr-10 pt-20 flex flex-col justify-start mb-10`}>
+
           {/* Color Name and Code */}
-          <div className="mb-8 pt-16">
+          <div className="mb-8 md:pt-16">
             <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
               {currentColor.name}
             </h1>
@@ -148,7 +150,7 @@ const ColorDetailPage = () => {
           {/* Buy Now Button and Drawer */}
           <button
             onClick={() => setShowDrawer(true)}
-            className="bg-[#493657] text-white font-semibold px-6 py-2 rounded-md mt-8"
+            className="bg-black text-white font-semibold px-6 py-2 rounded-md mt-8 self-start"
           >
             Buy Now
           </button>
