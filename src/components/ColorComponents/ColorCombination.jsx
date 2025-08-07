@@ -1,7 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const slugify = (text) =>
-  text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and');
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
 const ColorCombination = ({ currentColor, similarColors }) => {
   const navigate = useNavigate();

@@ -122,22 +122,22 @@ const ColorDetailPage = () => {
 
           {/* Color Name and Code */}
           <div className="mb-8 md:pt-16">
-            <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 font-semibold">
               {currentColor.name}
             </h1>
-            <p className="text-xl">
+            <p className="text-xl ">
               <span>Color Code :</span>
               {currentColor.hex}
             </p>
           </div>
           
           {/* Description */}
-          <p className="mb-8 text-xl leading-relaxed">
+          <p className="mb-8 text-lg md:text-xl lg:text-2xl leading-relaxed">
             {currentColor.description || "A beautiful color from our curated collection."}
           </p>
           
           {/* Color Family */}
-          <div className="mb-8 text-xl leading-relaxed">
+          <div className="mb-8 text-lg md:text-xl lg:text-2xl leading-relaxed">
             <h2 className="">Color Family</h2>
             <span 
               onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)}
@@ -172,7 +172,7 @@ const ColorDetailPage = () => {
       {/* Section 2: Color Combination */}
       {similarColors.length > 0 && (
         <div className="bg-white py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl mb-8">Color Combination</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8">Color Combination</h2>
           
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
@@ -188,7 +188,7 @@ const ColorDetailPage = () => {
       {/* Section 3: Similar Colors */}
       {similarColors.length > 0 && (
         <div className="py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl mb-8">Similar Colors</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8">Similar Colors</h2>
           <SimilarColors currentColor={currentColor} similarColors={similarColors} />
         </div>
       )}
