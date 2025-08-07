@@ -9,19 +9,16 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   const drawerRef = useRef(null);
-
-  // Filter compatible products
+  
   const compatible = products.filter(p =>
     compatibleProducts.includes(p.name)
   ).slice(0, 5);
 
-  // Reset size and quantity when product changes or drawer closes
   useEffect(() => {
     setSelectedSize('');
     setQuantity(1);
   }, [selectedProduct, isOpen]);
 
-  // Close when clicking outside
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (isOpen && drawerRef.current && !drawerRef.current.contains(e.target)) {
@@ -32,93 +29,101 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, [isOpen, onClose]);
 
-  // Only enable Add to Cart if product and size are selected
   const canAdd = selectedProduct && selectedSize;
 
   return (
     <>
-      {/* Overlay with blur */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-40 transition-opacity duration-300" />
       )}
-
-      {/* Drawer */}
       <div
         ref={drawerRef}
-        className={`fixed top-0 right-0 h-full w-full sm:w-[520px] bg-white z-50 shadow-lg transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-[520px] lg:w-[600px] bg-white z-50 shadow-2xl rounded-l-xl transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="p-6 h-full overflow-y-auto flex flex-col">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-[#493657]">Select Product</h2>
-            <button onClick={onClose} className="text-xl">✕</button>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold text-[#493657]">Buy with this Color</h2>
+            <button 
+              onClick={onClose} 
+              className="text-2xl font-semibold text-gray-500 hover:text-gray-800 transition-colors duration-200"
+            >
+              ×
+            </button>
           </div>
-
+          
           {/* Color Preview */}
-          <div className="mb-6">
-            <div className="h-24 rounded shadow-md" style={{ backgroundColor: currentColor.hex }} />
-            <h3 className="text-lg mt-2 font-semibold">{currentColor.name}</h3>
-            <p className="text-sm text-gray-600">{currentColor.description}</p>
+          <div className="mb-8">
+            <div
+              className="h-32 rounded-xl shadow-lg border border-gray-200 transition-all duration-300"
+              style={{ backgroundColor: currentColor.hex }}
+            />
+            <h3 className="text-2xl mt-4 font-semibold text-[#342347]">{currentColor.name}</h3>
+            <p className="text-gray-600 mt-2 leading-relaxed">{currentColor.description}</p>
           </div>
-
+          
           {/* Product List */}
-          <div className="space-y-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
             {compatible.map((product) => (
               <div
                 key={product.name}
                 onClick={() => setSelectedProduct(product)}
-                className={`p-4 border rounded-lg cursor-pointer transition flex gap-4 items-center ${
-                  selectedProduct?.name === product.name ? 'border-[#493657] bg-[#f3eef8]' : 'border-gray-300'
+                className={`p-5 border rounded-xl cursor-pointer transition-all duration-300 flex flex-col hover:shadow-lg hover:border-[#493657] ${
+                  selectedProduct?.name === product.name
+                    ? 'border-[#493657] bg-[#f3eef8] shadow-md'
+                    : 'border-gray-200 bg-white'
                 }`}
               >
-                <img
-                  src={product.images[0]}
-                  alt={product.name}
-                  className="w-20 h-20 object-contain rounded-md bg-gray-50"
-                />
-                <div className="flex-1">
-                  <h4 className="font-semibold text-base">{product.name}</h4>
-                  <p className="text-sm text-gray-600">₹{product.price} / litre</p>
+                <div className="flex gap-4 items-center">
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-20 h-20 object-contain rounded-lg border border-gray-100"
+                  />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-base text-[#342347]">{product.name}</h4>
+                    <p className="text-sm text-gray-600 mt-1">₹{product.price} / litre</p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-
+          
           {/* Size Selector */}
           {selectedProduct && (
             <div className="mb-6">
-              <label className="block mb-2 font-medium text-[#493657]">Select Size</label>
+              <label className="block mb-3 font-medium text-[#342347]">Size</label>
               <select
-                className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#493657]"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-[#493657] transition-all duration-200"
                 value={selectedSize}
                 onChange={e => setSelectedSize(e.target.value)}
               >
                 <option value="">Choose a size</option>
-                {selectedProduct.packaging && selectedProduct.packaging.map(size => (
+                {selectedProduct.packaging?.map(size => (
                   <option key={size} value={size}>{size}</option>
                 ))}
               </select>
             </div>
           )}
-
+          
           {/* Quantity Stepper */}
           {selectedProduct && (
-            <div className="mb-6 flex items-center gap-4">
-              <label className="font-medium text-[#493657]">Quantity</label>
-              <div className="flex items-center gap-2">
+            <div className="mb-8 flex items-center justify-between">
+              <label className="font-medium text-[#342347]">Quantity</label>
+              <div className="flex items-center gap-4">
                 <button
-                  className="w-8 h-8 rounded-full bg-[#493657] text-white flex items-center justify-center disabled:bg-gray-300"
+                  className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center disabled:bg-gray-300 transition-colors duration-200"
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
                   disabled={quantity <= 1}
                   type="button"
                 >
-                  -
+                  −
                 </button>
-                <span className="w-8 text-center">{quantity}</span>
+                <span className="w-10 text-center text-lg font-medium">{quantity}</span>
                 <button
-                  className="w-8 h-8 rounded-full bg-[#493657] text-white flex items-center justify-center"
+                  className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center transition-colors duration-200"
                   onClick={() => setQuantity(q => q + 1)}
                   type="button"
                 >
@@ -127,7 +132,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
               </div>
             </div>
           )}
-
+          
           {/* Add to Cart Button */}
           <button
             disabled={!canAdd}
@@ -142,8 +147,10 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
               );
               onClose();
             }}
-            className={`mt-auto w-full py-3 rounded-lg text-white font-semibold transition-colors duration-200 ${
-              canAdd ? 'bg-[#493657] hover:bg-[#5a4067]' : 'bg-gray-300 cursor-not-allowed'
+            className={`mt-auto w-full py-4 rounded-xl text-white font-semibold transition-all duration-300 ${
+              canAdd 
+                ? 'bg-[#493657] hover:bg-[#5a4067] shadow-md hover:shadow-lg transform hover:-translate-y-0.5' 
+                : 'bg-gray-300 cursor-not-allowed'
             }`}
           >
             {canAdd ? 'Add to Cart' : 'Select a product and size'}

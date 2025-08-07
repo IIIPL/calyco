@@ -1,7 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and'); // To slugify the name
+
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+
+
 
 const ColorBox = ({ color, familyName }) => {
   const navigate = useNavigate();

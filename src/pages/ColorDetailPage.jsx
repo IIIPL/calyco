@@ -1,15 +1,24 @@
-// src/pages/ColorDetailPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
 import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
 import { BuyNowDrawer } from '../components/BuyNowDrawer';
+import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
+
 
 // Helper function to create URL-friendly slugs
-const slugify = (text) => {
-  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
-};
+
+
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+
+
 
 // Function to determine text color based on background brightness
 const getTextColor = (hexColor) => {
@@ -24,45 +33,61 @@ const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
   const [showDrawer, setShowDrawer] = useState(false);
-
-  // Decode the colorName from the URL
-  const decodedColorName = decodeURIComponent(colorName);
-  const currentColor = flatColors.find(
-    c => slugify(c.name) === decodedColorName && slugify(c.color_family) === familyName
-  );
-
+  
+  // State for current color
+  const [currentColor, setCurrentColor] = useState(null);
+  
+  // Initialize current color from URL params
+  useEffect(() => {
+    const decodedColorName = decodeURIComponent(colorName);
+    const foundColor = flatColors.find(
+      c => slugify(c.name) === decodedColorName && slugify(c.color_family) === familyName
+    );
+    
+    if (foundColor) {
+      setCurrentColor(foundColor);
+    }
+  }, [familyName, colorName]);
+  
   // If the color is not found, show a "not found" message
   if (!currentColor) {
     return <div className="p-20 text-center text-black">Color not found.</div>;
   }
-
+  
   // Get similar colors and combinations
   let similarColors = flatColors.filter(
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
-
+  
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(
       c => (c.group === currentColor.group || c.base === currentColor.base) && c.name !== currentColor.name
     );
   }
-
+  
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(c => c.name !== currentColor.name).slice(0, 8);
   }
-
+  
   // Get coordinating colors for combinations
   const coordinatingColors = flatColors.filter(
     c => c.color_family !== currentColor.color_family && c.name !== currentColor.name
   ).slice(0, 6);
-
+  
   // Get other families
   const otherFamilies = [...new Set(flatColors.map(c => c.color_family))].filter(
     family => family !== currentColor.color_family
   ).slice(0, 6);
-
+  
   const textColorClass = getTextColor(currentColor.hex);
-
+  
+  // Handle color selection from the shade drawer
+  const handleColorSelect = (color) => {
+    setCurrentColor(color);
+    // Update URL without reloading the page
+    navigate(`/colors/family/${slugify(color.color_family)}/${slugify(color.name)}`, { replace: true });
+  };
+  
   return (
     <div className="min-h-screen bg-white mt-20">
       {/* Section 1: Hero Section */}
@@ -78,7 +103,7 @@ const ColorDetailPage = () => {
           </span>
           <span className="mx-2">›</span>
           <span 
-            onClick={() => navigate(`/colors/family/${currentColor.color_family.toLowerCase()}`)} 
+            onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)} 
             className="cursor-pointer underline"
           >
             {currentColor.color_family}
@@ -86,15 +111,18 @@ const ColorDetailPage = () => {
           <span className="mx-2">›</span>
           <span>{currentColor.name}</span>
         </nav>
-
+        
         {/* Left Side - Image Panel */}
         <div className='px-10 pt-20'>
-          <img src={currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"} alt="Contained" className='h-[500px] w-full object-cover' />
+          <img 
+            src={currentColor.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"} 
+            alt="Contained" 
+            className='h-[500px] w-full object-cover' 
+          />
         </div>
         
         {/* Right Side - Details Panel */}
         <div className={`w-full md:w-1/2 p-12 ${textColorClass}`}>
-
           {/* Color Name and Code */}
           <div className="mb-8 pt-16">
             <h1 className="text-3xl md:text-5xl mb-2 font-semibold">
@@ -105,23 +133,24 @@ const ColorDetailPage = () => {
               {currentColor.hex}
             </p>
           </div>
-
+          
           {/* Description */}
           <p className="mb-8 text-lg leading-relaxed">
             {currentColor.description || "A beautiful color from our curated collection."}
           </p>
-
+          
           {/* Color Family */}
           <div className="mb-8 text-lg leading-relaxed">
             <h2 className="">Color Family :</h2>
             <span 
-              onClick={() => navigate(`/colors/family/${(currentColor.color_family)}`)}
+              onClick={() => navigate(`/colors/family/${slugify(currentColor.color_family)}`)}
               className="cursor-pointer underline transition-colors"
             >
               {currentColor.color_family}
             </span>
           </div>
-                {/* Buy Now Button and Drawer */}
+          
+          {/* Buy Now Button and Drawer */}
           <button
             onClick={() => setShowDrawer(true)}
             className="bg-[#493657] text-white font-semibold px-6 py-2 rounded-md mt-8"
@@ -133,11 +162,16 @@ const ColorDetailPage = () => {
             onClose={() => setShowDrawer(false)}
             currentColor={currentColor}
           />
-
-            
         </div>
       </section>
-
+      
+      {/* Shade Selector Drawer */}
+      <ShadeSelectorDrawer
+        shades={similarColors} 
+        selectedColor={currentColor}
+        onColorSelect={handleColorSelect}
+      />
+      
       {/* Section 2: Color Combination */}
       {similarColors.length > 0 && (
         <div className="bg-white py-16 px-4 md:px-8">
@@ -153,7 +187,7 @@ const ColorDetailPage = () => {
           </div>
         </div>
       )}
-
+      
       {/* Section 3: Similar Colors */}
       {similarColors.length > 0 && (
         <div className="py-16 px-4 md:px-8">
@@ -161,10 +195,9 @@ const ColorDetailPage = () => {
           <SimilarColors currentColor={currentColor} similarColors={similarColors} />
         </div>
       )}
-
+      
       {/* Section 4: See Other Families */}
       {/* Other families section code here */}
-
     </div>
   );
 };
