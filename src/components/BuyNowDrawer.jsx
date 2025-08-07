@@ -96,7 +96,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
             <div className="mb-6">
               <label className="block mb-3 font-medium text-[#342347]">Size</label>
               <select
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-[#493657] transition-all duration-200"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3  focus:outline-none focus:ring-2 focus:ring-[#493657] transition-all duration-200"
                 value={selectedSize}
                 onChange={e => setSelectedSize(e.target.value)}
               >
@@ -109,52 +109,56 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
           )}
           
           {/* Quantity Stepper */}
-          {selectedProduct && (
-            <div className="mb-8 flex items-center justify-between">
-              <label className="font-medium text-[#342347]">Quantity</label>
-              <div className="flex items-center gap-4">
-                <button
-                  className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center disabled:bg-gray-300 transition-colors duration-200"
-                  onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  disabled={quantity <= 1}
-                  type="button"
-                >
-                  −
-                </button>
-                <span className="w-10 text-center text-lg font-medium">{quantity}</span>
-                <button
-                  className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center transition-colors duration-200"
-                  onClick={() => setQuantity(q => q + 1)}
-                  type="button"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          )}
+          {/* Quantity Stepper */}
+{selectedProduct && (
+  <div className="mb-8 flex items-center justify-between">
+    <label className="font-medium text-[#342347]">Quantity</label>
+    <div className="flex items-center gap-4">
+      <button
+        className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 ${
+          quantity <= 1 ? 'bg-gray-300 text-white' : 'bg-[#493657] text-white hover:bg-[#5a4067]'
+        }`}
+        onClick={() => setQuantity(q => Math.max(1, q - 1))}
+        disabled={quantity <= 1}
+        type="button"
+      >
+        −
+      </button>
+      <span className="w-10 text-center text-lg font-medium text-[#342347]">{quantity}</span>
+      <button
+        className="w-10 h-10 rounded-full bg-[#493657] text-white flex items-center justify-center hover:bg-[#5a4067] transition-colors duration-200"
+        onClick={() => setQuantity(q => q + 1)}
+        type="button"
+      >
+        +
+      </button>
+    </div>
+  </div>
+)}
           
-          {/* Add to Cart Button */}
-          <button
-            disabled={!canAdd}
-            onClick={() => {
-              addToCart(
-                selectedProduct,
-                null,
-                selectedSize,
-                quantity,
-                undefined,
-                { name: currentColor.name, hex: currentColor.hex }
-              );
-              onClose();
-            }}
-            className={`mt-auto w-full py-4 rounded-xl text-white font-semibold transition-all duration-300 ${
-              canAdd 
-                ? 'bg-[#493657] hover:bg-[#5a4067] shadow-md hover:shadow-lg transform hover:-translate-y-0.5' 
-                : 'bg-gray-300 cursor-not-allowed'
-            }`}
-          >
-            {canAdd ? 'Add to Cart' : 'Select a product and size'}
-          </button>
+{/* Add to Cart Button */}
+<button
+  disabled={!canAdd}
+  onClick={() => {
+    addToCart(
+      selectedProduct,
+      null,
+      selectedSize,
+      quantity,
+      undefined,
+      { name: currentColor.name, hex: currentColor.hex }
+    );
+    onClose();
+  }}
+  className={`mt-auto w-full py-4 rounded-xl font-semibold transition-all duration-300 ${
+    canAdd 
+      ? 'bg-[#493657] hover:bg-[#5a4067] text-white shadow-md hover:shadow-lg transform hover:-translate-y-0.5' 
+      : 'bg-gray-300 text-white cursor-not-allowed'
+  }`}
+>
+  {canAdd ? 'Add to Cart' : 'Select a product and size'}
+</button>
+
         </div>
       </div>
     </>

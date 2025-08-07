@@ -24,47 +24,46 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
   };
 
   return (
-    <div className="w-full bg-white py-6 border-b border-gray-200">
-      <div className="container mx-auto px-4">
-        <h2 className="text-xl font-semibold mb-4">Explore Shades</h2>
-        
-        <div 
+    <div className="w-full bg-white border-b border-gray-200 py-4">
+      <div className="flex items-center justify-between px-4">
+        {/* Shade Scroll Strip */}
+        <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto pb-4 scrollbar-hide"
+          className="flex overflow-x-auto scrollbar-hide flex-grow"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div className="flex">
-            {shades.map((color) => (
-              <div 
+          {shades.map((color) => {
+            const isSelected = selectedColor && selectedColor.hex === color.hex;
+            return (
+              <div
                 key={color.hex}
-                className="flex flex-col items-center flex-shrink-0"
+                id={`shade-${color.hex}`}
+                className="relative group flex-shrink-0 w-20 h-24 cursor-pointer focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-800"
+                style={{ backgroundColor: color.hex }}
+                onClick={() => onColorSelect(color)}
+                onKeyDown={(e) => handleKeyDown(e, color)}
+                tabIndex={0}
+                aria-label={`Select color ${color.name}`}
               >
-                {/* Triangle pointer for selected color */}
-                {selectedColor && selectedColor.hex === color.hex && (
-                  <div className="w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-gray-800 mb-1"></div>
+                {/* Triangle pointer above selected color */}
+                {isSelected && (
+                  <div className="absolute -top-[10px] left-1/2 transform -translate-x-1/2">
+                    <div className="w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-transparent border-b-white" />
+                  </div>
                 )}
                 
-                {/* Color block */}
-                <div
-                  id={`shade-${color.hex}`}
-                  className="relative w-16 h-16 md:w-20 md:h-20 shadow-md cursor-pointer transform transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
-                  style={{ backgroundColor: color.hex }}
-                  onClick={() => onColorSelect(color)}
-                  onKeyDown={(e) => handleKeyDown(e, color)}
-                  tabIndex={0}
-                  aria-label={`Select color ${color.name}`}
-                >
-                  {/* Tooltip on hover */}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs opacity-0 hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                    {color.name}
-                  </div>
+                {/* Hover tooltip with color name */}
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity z-50 whitespace-nowrap">
+                  {color.name}
                 </div>
-                
-                {/* Color name (optional - can be shown if needed) */}
-                {/* <p className="mt-2 text-xs text-gray-600 truncate w-16 text-center">{color.name}</p> */}
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+        
+        {/* Explore text */}
+        <div className="ml-4 flex-shrink-0 text-sm text-gray-700 whitespace-nowrap hidden sm:block">
+          Explore more shades
         </div>
       </div>
     </div>
