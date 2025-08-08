@@ -14,13 +14,13 @@ const inspirationMenu = [
 ];
 
 const roomThumbnails = {
-  kitchen: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/KitchenHero_a8fyfn.jpg",
-  bedroom: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
-  living: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/livingroomHero_vvdi6l.jpg",
-  bathroom: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/bathroomHero_lt3vw0.jpg",
-  dining: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/diningHero_ggdfce.jpg",
-  hallway: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
-  office: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/officeHero_uq7rgp.png",
+  kitchen: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598790/KitchenHero_a8fyfn.jpg",
+  bedroom: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598790/bedroomHero_blfz2c.jpg",
+  living: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598790/livingroomHero_vvdi6l.jpg",
+  bathroom: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598789/bathroomHero_lt3vw0.jpg",
+  dining: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598789/diningHero_ggdfce.jpg",
+  hallway: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598790/hallwayhero_m6w6b5.png",
+  office: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598789/officeHero_uq7rgp.png",
   exterior: "/Assets/exterior-placeholder.jpg", // use dummy or fallback image
 };
 
