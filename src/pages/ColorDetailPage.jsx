@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
+import { groupedShades } from '../data/groupedShades'; // top of file
 import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
 import { BuyNowDrawer } from '../components/BuyNowDrawer';
@@ -35,15 +36,16 @@ const ColorDetailPage = () => {
   // Initialize current color from URL params
   useEffect(() => {
     const decodedColorName = decodeURIComponent(colorName);
-    const foundColor = flatColors.find(
-      c => slugify(c.name) === decodedColorName && slugify(c.color_family) === familyName
-    );
-    
+    const group = groupedShades.find(g => slugify(g.family) === familyName);
+    const foundColor = group?.colors.find(c => slugify(c.name) === decodedColorName);
+
     if (foundColor) {
-      setCurrentColor(foundColor);
+      setCurrentColor({
+        ...foundColor,
+        color_family: group.family, // inject full family name for shade drawer
+      });
     }
   }, [familyName, colorName]);
-  
   // If the color is not found, show a "not found" message
   if (!currentColor) {
     return <div className="p-20 text-center text-black">Color not found.</div>;
@@ -78,10 +80,11 @@ const ColorDetailPage = () => {
   
   // Handle color selection from the shade drawer
   const handleColorSelect = (color) => {
+    if (!color || !color.name || !color.color_family) return;
     setCurrentColor(color);
-    // Update URL without reloading the page
     navigate(`/colors/family/${slugify(color.color_family)}/${slugify(color.name)}`, { replace: true });
   };
+
   
   return (
     <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
@@ -146,7 +149,19 @@ const ColorDetailPage = () => {
               {currentColor.color_family}
             </span>
           </div>
-          
+          {/* Extra Info Section (Collection + Download link) */}
+          <div className="mt-4 mb-4 space-y-4 text-base md:text-lg">
+            <hr className="border-gray-300" />
+            <a 
+              href="#" // Replace with actual download link
+              download 
+              className="underline font-medium flex items-center gap-1"
+            >
+              Download digital dollop of {currentColor.name}
+              
+            </a>
+          </div>
+
           {/* Buy Now Button and Drawer */}
           <button
             onClick={() => setShowDrawer(true)}
@@ -164,7 +179,7 @@ const ColorDetailPage = () => {
       
       {/* Shade Selector Drawer */}
       <ShadeSelectorDrawer
-        shades={similarColors} 
+        shades={familyName} 
         selectedColor={currentColor}
         onColorSelect={handleColorSelect}
       />

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
-import { colorGroups } from "../../data/colorGroups";
 import { motion } from "framer-motion";
 
 // Helper to find color by name

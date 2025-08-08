@@ -1,6 +1,7 @@
 export const flatColors = [
   {
     "name": "Serene Ivory",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -23,6 +24,7 @@ export const flatColors = [
     },
   {
     "name": "Almond Mist",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Brown",
     "group": "Neutrals",
@@ -45,6 +47,7 @@ export const flatColors = [
     },
   {
     "name": "Morning Dew",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -67,6 +70,7 @@ export const flatColors = [
     },
   {
     "name": "Silk Taupe",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Neutrals",
@@ -89,6 +93,7 @@ export const flatColors = [
     },
   {
     "name": "Dusky Sand",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Neutrals",
@@ -111,6 +116,7 @@ export const flatColors = [
     },
   {
     "name": "Greige Harmony",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -133,6 +139,7 @@ export const flatColors = [
     },
   {
     "name": "Misty Fog",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -155,6 +162,7 @@ export const flatColors = [
     },
   {
     "name": "Sage Whisper",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Neutrals",
@@ -177,6 +185,7 @@ export const flatColors = [
     },
   {
     "name": "Blush Petal",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Pink",
     "group": "Pastels",
@@ -199,6 +208,7 @@ export const flatColors = [
     },
   {
     "name": "Lilac Veil",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Pastels",
@@ -221,6 +231,7 @@ export const flatColors = [
     },
   {
     "name": "Rosewood Haze",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Red",
     "group": "Pastels",
@@ -243,6 +254,7 @@ export const flatColors = [
     },
   {
     "name": "Peach Glow",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Orange",
     "group": "Pastels",
@@ -265,6 +277,7 @@ export const flatColors = [
     },
   {
     "name": "Terra Blush",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Pastels",
@@ -287,6 +300,7 @@ export const flatColors = [
     },
   {
     "name": "Coral Charm",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Orange",
     "group": "Pastels",
@@ -309,6 +323,7 @@ export const flatColors = [
     },
   {
     "name": "Blossom Warmth",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Red",
     "group": "Pastels",
@@ -331,6 +346,7 @@ export const flatColors = [
     },
   {
     "name": "Vintage Rose",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Red",
     "group": "Pastels",
@@ -353,6 +369,7 @@ export const flatColors = [
     },
   {
     "name": "Earthy Terracotta",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -375,6 +392,7 @@ export const flatColors = [
     },
   {
     "name": "Clay Beige",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -397,6 +415,7 @@ export const flatColors = [
     },
   {
     "name": "Cocoa Brown",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -419,6 +438,7 @@ export const flatColors = [
     },
   {
     "name": "Brick Red",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -441,6 +461,7 @@ export const flatColors = [
     },
   {
     "name": "Rustic Rust",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -463,6 +484,7 @@ export const flatColors = [
     },
   {
     "name": "Olive Earth",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Earthy",
@@ -485,6 +507,7 @@ export const flatColors = [
     },
   {
     "name": "Golden Harvest",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Earthy",
@@ -507,6 +530,7 @@ export const flatColors = [
     },
   {
     "name": "Mudstone Brown",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -529,6 +553,7 @@ export const flatColors = [
     },
   {
     "name": "Royal Indigo",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -551,6 +576,7 @@ export const flatColors = [
     },
   {
     "name": "Plum Midnight",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Jewel",
@@ -573,6 +599,7 @@ export const flatColors = [
     },
   {
     "name": "Indigo Twilight",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -595,6 +622,7 @@ export const flatColors = [
     },
   {
     "name": "Olive Grove",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -617,6 +645,7 @@ export const flatColors = [
     },
   {
     "name": "Teal Serenity",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -639,6 +668,7 @@ export const flatColors = [
     },
   {
     "name": "Jade Mist",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -661,6 +691,7 @@ export const flatColors = [
     },
   {
     "name": "Mauve Shadow",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Jewel",
@@ -683,6 +714,7 @@ export const flatColors = [
     },
   {
     "name": "Charcoal Grey",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -705,6 +737,7 @@ export const flatColors = [
     },
   {
     "name": "Buttercream Blush",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Yellow",
     "group": "Pastels",
@@ -727,6 +760,7 @@ export const flatColors = [
     },
   {
     "name": "Sunset Glow",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Orange",
     "group": "Pastels",
@@ -749,6 +783,7 @@ export const flatColors = [
     },
   {
     "name": "Lotus Bloom",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Pink",
     "group": "Pastels",
@@ -771,6 +806,7 @@ export const flatColors = [
     },
   {
     "name": "Pearl Blush",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -793,6 +829,7 @@ export const flatColors = [
     },
   {
     "name": "Chalk Cream",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -815,6 +852,7 @@ export const flatColors = [
     },
   {
     "name": "Canvas Sand",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -837,6 +875,7 @@ export const flatColors = [
     },
   {
     "name": "Desert Rose",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Orange",
     "group": "Pastels",
@@ -859,6 +898,7 @@ export const flatColors = [
     },
   {
     "name": "Thar Earth",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -881,6 +921,7 @@ export const flatColors = [
     },
   {
     "name": "Beach Sand",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -903,6 +944,7 @@ export const flatColors = [
     },
   {
     "name": "Powder Beige",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -925,6 +967,7 @@ export const flatColors = [
     },
   {
     "name": "Candlelight Gold",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Pastels",
@@ -947,6 +990,7 @@ export const flatColors = [
     },
   {
     "name": "Cozy Linen",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Neutrals",
@@ -969,6 +1013,7 @@ export const flatColors = [
     },
   {
     "name": "Desert Dune",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -991,6 +1036,7 @@ export const flatColors = [
     },
   {
     "name": "Ash Grey",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -1013,6 +1059,7 @@ export const flatColors = [
     },
   {
     "name": "Flint Musk",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -1035,6 +1082,7 @@ export const flatColors = [
     },
   {
     "name": "Silver Mist",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -1057,6 +1105,7 @@ export const flatColors = [
     },
   {
     "name": "Copper Glow",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -1079,6 +1128,7 @@ export const flatColors = [
     },
   {
     "name": "Taupe Warmth",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -1101,6 +1151,7 @@ export const flatColors = [
     },
   {
     "name": "Biscuit Beige",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Beige",
     "group": "Earthy",
@@ -1123,6 +1174,7 @@ export const flatColors = [
     },
   {
     "name": "Coconut Brown",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -1145,6 +1197,7 @@ export const flatColors = [
     },
   {
     "name": "Mud Brown",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -1167,6 +1220,7 @@ export const flatColors = [
     },
   {
     "name": "Basalt Stone",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1189,6 +1243,7 @@ export const flatColors = [
     },
   {
     "name": "Shadow Grey",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1211,6 +1266,7 @@ export const flatColors = [
     },
   {
     "name": "Charcoal Smoke",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1233,6 +1289,7 @@ export const flatColors = [
     },
   {
     "name": "Forest Olive",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -1255,6 +1312,7 @@ export const flatColors = [
     },
   {
     "name": "Sage Dust",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -1277,6 +1335,7 @@ export const flatColors = [
     },
   {
     "name": "Eucalyptus Breeze",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -1299,6 +1358,7 @@ export const flatColors = [
     },
   {
     "name": "Celadon Green",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -1321,6 +1381,7 @@ export const flatColors = [
     },
   {
     "name": "Mint Whisper",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Pastels",
@@ -1343,6 +1404,7 @@ export const flatColors = [
     },
   {
     "name": "Sky Blue",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Pastels",
@@ -1365,6 +1427,7 @@ export const flatColors = [
     },
   {
     "name": "Glacier Mist",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -1387,6 +1450,7 @@ export const flatColors = [
     },
   {
     "name": "Slate Stone",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Grey",
     "group": "Neutrals",
@@ -1409,6 +1473,7 @@ export const flatColors = [
     },
   {
     "name": "Indigo Night",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1431,6 +1496,7 @@ export const flatColors = [
     },
   {
     "name": "Misty Storm",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1453,6 +1519,7 @@ export const flatColors = [
     },
   {
     "name": "Navy Fade",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1475,6 +1542,7 @@ export const flatColors = [
     },
   {
     "name": "Ocean Mist",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1497,6 +1565,7 @@ export const flatColors = [
     },
   {
     "name": "Deep Ocean",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1519,6 +1588,7 @@ export const flatColors = [
     },
   {
     "name": "Oxblood Red",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1541,6 +1611,7 @@ export const flatColors = [
     },
   {
     "name": "Jet Black",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1563,6 +1634,7 @@ export const flatColors = [
     },
   {
     "name": "Graphite Grey",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1585,6 +1657,7 @@ export const flatColors = [
     },
   {
     "name": "Twilight Stone",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1607,6 +1680,7 @@ export const flatColors = [
     },
   {
     "name": "Olive Shade",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Jewel",
@@ -1629,6 +1703,7 @@ export const flatColors = [
     },
   {
     "name": "Royal Plum",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Jewel",
@@ -1651,6 +1726,7 @@ export const flatColors = [
     },
   {
     "name": "Grape Mist",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Black",
     "group": "Jewel",
@@ -1673,6 +1749,7 @@ export const flatColors = [
     },
   {
     "name": "Ash Grey",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1695,6 +1772,7 @@ export const flatColors = [
     },
   {
     "name": "Asphalt Grey",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1717,6 +1795,7 @@ export const flatColors = [
     },
   {
     "name": "Steel Grey",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Jewel",
@@ -1739,6 +1818,7 @@ export const flatColors = [
     },
   {
     "name": "Walnut Brown",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Jewel",
@@ -1761,6 +1841,7 @@ export const flatColors = [
     },
   {
     "name": "Sienna Burnt",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Jewel",
@@ -1783,6 +1864,7 @@ export const flatColors = [
     },
   {
     "name": "Terra Spice",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1805,6 +1887,7 @@ export const flatColors = [
     },
   {
     "name": "Rust Glow",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1827,6 +1910,7 @@ export const flatColors = [
     },
   {
     "name": "Molten Red",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Jewel",
@@ -1849,6 +1933,7 @@ export const flatColors = [
     },
   {
     "name": "Maroon Glow",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Jewel",
@@ -1871,6 +1956,7 @@ export const flatColors = [
     },
   {
     "name": "Taupe Smoke",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -1893,6 +1979,7 @@ export const flatColors = [
     },
   {
     "name": "Almond Beige",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -1915,6 +2002,7 @@ export const flatColors = [
     },
   {
     "name": "Rust Glow",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -1937,6 +2025,7 @@ export const flatColors = [
     },
   {
     "name": "Molten Ember",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -1959,6 +2048,7 @@ export const flatColors = [
     },
   {
     "name": "Maroon Velvet",
+    "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
     "group": "Earthy",
@@ -1981,6 +2071,7 @@ export const flatColors = [
     },
   {
     "name": "Taupe Mist",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -2003,6 +2094,7 @@ export const flatColors = [
     },
   {
     "name": "Almond Sand",
+    "code": "CP101",
     "color_family": "BROWNS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -2025,6 +2117,7 @@ export const flatColors = [
     },
   {
     "name": "Ochre Copper",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Brown",
     "group": "Earthy",
@@ -2047,6 +2140,7 @@ export const flatColors = [
     },
   {
     "name": "Brass Dust",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Earthy",
@@ -2069,6 +2163,7 @@ export const flatColors = [
     },
   {
     "name": "Golden Clay",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Earthy",
@@ -2091,6 +2186,7 @@ export const flatColors = [
     },
   {
     "name": "Curry Yellow",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Earthy",
@@ -2113,6 +2209,7 @@ export const flatColors = [
     },
   {
     "name": "Citrus Ochre",
+    "code": "CP101",
     "color_family": "YELLOWS & GREENS",
     "primary_color": "Yellow",
     "group": "Earthy",
@@ -2135,6 +2232,7 @@ export const flatColors = [
     },
   {
     "name": "Banana Cream",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Yellow",
     "group": "Pastels",
@@ -2157,6 +2255,7 @@ export const flatColors = [
     },
   {
     "name": "Vanilla Cream",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Pastels",
@@ -2179,6 +2278,7 @@ export const flatColors = [
     },
   {
     "name": "Chalk Beige",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Pastels",
@@ -2201,6 +2301,7 @@ export const flatColors = [
     },
   {
     "name": "Cloud Grey",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Grey",
     "group": "Pastels",
@@ -2223,6 +2324,7 @@ export const flatColors = [
     },
   {
     "name": "Evening Linen",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Pastels",
@@ -2245,6 +2347,7 @@ export const flatColors = [
     },
   {
     "name": "Pistachio Soft",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Greens",
@@ -2267,6 +2370,7 @@ export const flatColors = [
     },
   {
     "name": "Mint Soft",
+    "code": "CP101",
     "color_family": "GREENS",
     "primary_color": "Green",
     "group": "Greens",
@@ -2289,6 +2393,7 @@ export const flatColors = [
     },
   {
     "name": "Aqua Pale",
+    "code": "CP101",
     "color_family": "BLUES",
     "primary_color": "Blue",
     "group": "Blues",
@@ -2311,6 +2416,7 @@ export const flatColors = [
     },
   {
     "name": "Lilac Dust",
+    "code": "CP101",
     "color_family": "PURPLES & PINKS",
     "primary_color": "Purple",
     "group": "Purples & Pinks",
@@ -2333,6 +2439,7 @@ export const flatColors = [
     },
   {
     "name": "Earth Black",
+    "code": "CP101",
     "color_family": "GREYS",
     "primary_color": "Black",
     "group": "Greys",
@@ -2355,6 +2462,7 @@ export const flatColors = [
     },
   {
     "name": "Classic Cream",
+    "code": "CP101",
     "color_family": "WHITES & OFF WHITES",
     "primary_color": "Beige",
     "group": "Whites & Off Whites",
