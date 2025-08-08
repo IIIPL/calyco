@@ -76,7 +76,7 @@ const FamilyColorPage = () => {
   }, []);
 
   if (!familyColors.length) {
-    return <div className="p-20 text-center text-black">No colors found.</div>;
+    return <div className="pt-32 text-center text-black">No colors found.</div>;
   }
 
   return (

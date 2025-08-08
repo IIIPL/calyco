@@ -55,7 +55,7 @@ const RoomVisualizer = () => {
       masks: {
         walls: '/Assets/Rooms/DiningRoom/mask-walls.jpg',
         ceiling: '/Assets/Rooms/DiningRoom/mask-ceiling.jpg',
-        floor: '/Assets/Rooms/DiningRoom/mask-floor.jpg'
+        // floor: '/Assets/Rooms/DiningRoom/mask-floor.jpg'
       }
     }
   };
@@ -377,6 +377,10 @@ const RoomVisualizer = () => {
       const tempCtx = tempCanvas.getContext('2d');
       
       tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+      console.log(`Drawing mask for ${surface}`, mask.src);
+      console.log("Mask size:", mask.width, mask.height);
+      console.log("Image size:", originalImage.width, originalImage.height);
+
       tempCtx.drawImage(mask, 0, 0);
       
       const maskData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
@@ -385,29 +389,23 @@ const RoomVisualizer = () => {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixels = imageData.data;
       
-      const { r, g, b } = hexToRGB(color.hex);
-      
-      for (let i = 0; i < maskPixels.length; i += 4) {
-        const alpha = maskPixels[i + 3];
-        let isMaskPixel = false;
-        let blendAmount = 0.7;
-        
-        if (alpha < 255) {
-          isMaskPixel = alpha > 128;
-          blendAmount = alpha / 255 * 0.7;
-        } else {
-          isMaskPixel = maskPixels[i] > 200 && 
-                        maskPixels[i + 1] > 200 && 
-                        maskPixels[i + 2] > 200;
-        }
-        
-        if (isMaskPixel) {
-          pixels[i] = pixels[i] * (1 - blendAmount) + r * blendAmount;
-          pixels[i + 1] = pixels[i + 1] * (1 - blendAmount) + g * blendAmount;
-          pixels[i + 2] = pixels[i + 2] * (1 - blendAmount) + b * blendAmount;
-        }
-      }
-      
+      const targetRGB = hexToRGB(color.hex); // Store selected color once
+
+for (let i = 0; i < maskPixels.length; i += 4) {
+  const mr = maskPixels[i];       // mask red
+  const mg = maskPixels[i + 1];   // mask green
+  const mb = maskPixels[i + 2];   // mask blue
+  const ma = maskPixels[i + 3];   // mask alpha
+
+  const isMaskPixel = (mr === 255 && mg === 255 && mb === 255 && ma === 255);
+
+  if (isMaskPixel) {
+    pixels[i]     = pixels[i]     * (1 - 0.7) + targetRGB.r * 0.7;
+    pixels[i + 1] = pixels[i + 1] * (1 - 0.7) + targetRGB.g * 0.7;
+    pixels[i + 2] = pixels[i + 2] * (1 - 0.7) + targetRGB.b * 0.7;
+  }
+}
+
       ctx.putImageData(imageData, 0, 0);
     });
   };
