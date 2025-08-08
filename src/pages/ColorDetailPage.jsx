@@ -187,7 +187,7 @@ const ColorDetailPage = () => {
       {/* Section 2: Color Combination */}
       {similarColors.length > 0 && (
         <div className="bg-white py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8">Color Combination</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-black">Color Combination</h2>
           
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
@@ -203,7 +203,7 @@ const ColorDetailPage = () => {
       {/* Section 3: Similar Colors */}
       {similarColors.length > 0 && (
         <div className="py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8">Similar Colors</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-black">Similar Colors</h2>
           <SimilarColors currentColor={currentColor} similarColors={similarColors} />
         </div>
       )}
