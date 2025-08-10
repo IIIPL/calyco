@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Slider = () => {
   const [translateX, setTranslateX] = useState(0);
@@ -9,11 +10,12 @@ const Slider = () => {
   const sliderRef = useRef(null);
   const autoScrollRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
+  const navigate = useNavigate();
 
   // Sample cards data
 const cards = [
   { id: 1, title: "Wood Finishes", subtitle: "Warm & welcoming", color: "bg-gradient-to-br from-rose-700 to-amber-700" },
-  { id: 2, title: "Primers", subtitle: "Focused & productive", color: "bg-gradient-to-br from-indigo-800 to-slate-700" },
+  { id: 2, title: "Primer", subtitle: "Focused & productive", color: "bg-gradient-to-br from-indigo-800 to-slate-700" },
   // { id: 3, title: "Distempers", subtitle: "Clean & calming", color: "bg-gradient-to-br from-emerald-700 to-teal-800" },
   { id: 4, title: "Metal Coating", subtitle: "Modern & elegant", color: "bg-gradient-to-br from-zinc-700 to-neutral-800" },
   { id: 5, title: "Concrete & Floor", subtitle: "Earthy & rustic", color: "bg-gradient-to-br from-amber-800 to-orange-900" },
@@ -283,8 +285,7 @@ const cards = [
           {extendedCards.map((card, index) => (
             <div
               key={`${card.id}-${index}`}
-              onClick={() => (window.location.href = `/products?category=${encodeURIComponent(card.title)}`)}
-
+              onClick={() => navigate(`/product?search=${encodeURIComponent(card.title)}`)}
               className={`flex-shrink-0 ${card.color} text-white rounded-xl flex flex-col justify-between shadow-lg hover:shadow-xl transition-transform duration-500 cursor-pointer group transform hover:scale-95`}
               style={{ width: `${cardWidth}px`, height: '200px' }}
             >

@@ -64,9 +64,7 @@ export const HomePage = () => {
 
            {/* Section 3 */}
            <div>
-            <HeroColorShowcase/>
             <Slider/>
-            <CategoryNav/>
             <MiniVisualizer/>
            </div>
             {/* Enhanced Who We Serve Section */}
