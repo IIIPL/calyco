@@ -17,6 +17,7 @@ const slugify = (text) =>
     .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
 export default function IndividualRoomPage() {
+    const [comboOpen, setComboOpen] = useState(false);
     const { roomName } = useParams();
     const [imageLoaded, setImageLoaded] = useState(false);
     const [room, setRoom] = useState(null);
@@ -90,43 +91,83 @@ export default function IndividualRoomPage() {
                     {room.name}
                 </h1>
             </motion.div>
-            
-            {/* Color Combinations Picker */}
-            {room.shots?.length > 1 && (
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8">
-                    <h2 className="text-2xl font-bold text-[#393939] mb-4">Color Combinations</h2>
-                    <div className="flex gap-4 overflow-x-auto pb-2">
+
+            {room.shots?.length > 0 && (
+                <motion.div
+                    className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeIn}
+                >
+                    <h2 className="text-2xl font-bold text-[#393939] mb-3">Color Combinations</h2>
+
+                    <div className="relative inline-block">
+                    <button
+                        type="button"
+                        onClick={() => setComboOpen(o => !o)}
+                        className="flex items-center gap-2 px-3 py-2 border rounded-lg bg-white shadow-sm hover:shadow transition border-gray-200"
+                        aria-haspopup="listbox"
+                        aria-expanded={comboOpen}
+                    >
+                        <div className="flex -space-x-1">
+                        {(currentShot?.colors || []).slice(0, 5).map((c, idx) => {
+                            const obj = findColor(c);
+                            return (
+                            <span
+                                key={idx}
+                                className="w-5 h-5 rounded-sm border border-gray-300"
+                                style={{ backgroundColor: obj?.hex || '#ddd' }}
+                                title={c}
+                            />
+                            );
+                        })}
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 20 20" className="text-gray-600">
+                        <path fill="currentColor" d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"/>
+                        </svg>
+                    </button>
+
+                    {comboOpen && (
+                        <div
+                        role="listbox"
+                        className="absolute z-20 mt-2 w-64 max-h-64 overflow-auto rounded-lg border bg-white shadow-lg p-2"
+                        >
                         {room.shots.map((s, i) => (
                             <button
-                                key={i}
-                                type="button"
-                                onClick={() => setShotIndex(i)}
-                                className={`flex items-center gap-2 px-3 py-2 border rounded-lg transition
-                                            ${i === shotIndex ? 'border-[#393939] ring-2 ring-[#393939]/30' : 'border-gray-200 hover:border-gray-300'}`}
-                                aria-pressed={i === shotIndex}
-                                aria-label={`Choose color combination ${i + 1}`}
+                            key={i}
+                            type="button"
+                            onClick={() => {
+                                setShotIndex(i);
+                                setComboOpen(false);
+                                // document.getElementById('room-hero')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }}
+                            className={`w-full flex items-center gap-2 px-2 py-2 rounded-md hover:bg-gray-50 focus:bg-gray-50 transition ${
+                                i === shotIndex ? 'ring-2 ring-[#393939]/30' : ''
+                            }`}
+                            aria-selected={i === shotIndex}
                             >
-                                <div className="flex items-center gap-1">
-                                    {(s.colors || []).slice(0,4).map((c, idx) => {
-                                        const obj = findColor(c);
-                                        return (
-                                            <span
-                                                key={idx}
-                                                className="w-4 h-4 rounded-md shadow-sm"
-                                                style={{ backgroundColor: obj?.hex || '#ddd' }}
-                                                title={c}
-                                            />
-                                        );
-                                    })}
-                                </div>
-                                <span className="text-sm text-[#393939]">
-                                    Combo {i + 1}
-                                </span>
+                            <div className="flex gap-1">
+                                {(s.colors || []).slice(0, 5).map((c, idx) => {
+                                const obj = findColor(c);
+                                return (
+                                    <span
+                                    key={idx}
+                                    className="w-5 h-5 rounded-sm border border-gray-300"
+                                    style={{ backgroundColor: obj?.hex || '#ddd' }}
+                                    title={c}
+                                    />
+                                );
+                                })}
+                            </div>
                             </button>
                         ))}
+                        </div>
+                    )}
                     </div>
-                </div>
-            )}
+                </motion.div>
+                )}
+
+
             
             {/* Room Overview Section */}
             <motion.div 

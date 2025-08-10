@@ -746,7 +746,15 @@ export const roomData = [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754831770/sky_blue_indigo_twilight_bbiqpk.jpg",
         "colors": ["Sky Blue", "Indigo Twilight"]
-      }
+      },
+      {
+        "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754846366/jade_mist_forest_olive_kfbbs0.jpg",
+        "colors": ["Jade Mist", "Forest Olive"]
+      },
+      {
+        "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754846371/mauve_shadow_eymk7s.jpg",
+        "colors": ["Mauve Shadow"]
+      },
     ]
   },
 ];

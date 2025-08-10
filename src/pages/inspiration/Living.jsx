@@ -40,24 +40,27 @@ export default function LivingInspiration() {
       </div>
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         {filteredRooms.length > 0 ? (
-          filteredRooms.map((block, i) => (
-            <motion.div
-              key={block.name}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
-              <Link to={`/room/${block.name.toLowerCase().replace(/\s+/g, '-')}`}>
+          filteredRooms.map((block, i) => {
+            const firstShot = block.shots?.[0];
+            return (
+              <motion.div
+                key={block.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+              >
                 <RoomInspiration
                   title={block.name}
                   description={block.description}
-                  imageUrl={block.image}
-                  colors={block.colors.map(findColor).filter(Boolean)}
+                  imageUrl={firstShot?.image || ''}
+                  colors={(firstShot?.colors || []).map(findColor).filter(Boolean)}
+                  to={`/room/${block.name.toLowerCase().replace(/\s+/g, '-')}`}
                 />
-              </Link>
-            </motion.div>
-          ))
+              </motion.div>
+            );
+  
+          })
         ) : (
           <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
             <p className="text-lg text-gray-700 text-center">
