@@ -45,21 +45,21 @@ export const RoomVisualizerPage = () => {
       id: 1,
       name: 'Bedroom',
       icon: FaBed,
-      image: '/Assets/Inspiration/bedroom.jpg',
+      image: '/Assets/Rooms/Bedroom/base.jpg',
       description: 'Transform your bedroom with calming colors'
     },
     {
       id: 2,
       name: 'Living Room',
       icon: FaCouch,
-      image: '/Assets/Inspiration/living.jpg',
+      image: '/Assets/Rooms/LivingRoom/base.jpg',
       description: 'Create a welcoming living space'
     },
     {
       id: 3,
       name: 'Dining Room',
       icon: FaUtensils,
-      image: '/Assets/Inspiration/dining.jpg',
+      image: '/Assets/Rooms/DiningRoom/base.jpg',
       description: 'Design an elegant dining area'
     }
   ];
@@ -76,46 +76,11 @@ export const RoomVisualizerPage = () => {
             Choose a sample room or upload your own photo to see how Calyco colors transform your space
           </p>
         </div>
-
-        {/* Upload Section - Top */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
-            <div className="p-8">
-              <div className="text-center mb-6">
-                <FaUpload className="text-4xl text-indigo-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                  Upload Your Own Photo
-                </h3>
-                <p className="text-gray-600">
-                  Upload a photo of your room to visualize Calyco colors
-                </p>
-              </div>
-              
-              <div className="flex items-center justify-center">
-                <button
-                  onClick={handleUploadClick}
-                  className="bg-indigo-600 text-white py-3 px-8 rounded-lg hover:bg-indigo-700 transition-colors duration-200 font-medium text-lg"
-                >
-                  Choose Photo
-                </button>
-              </div>
-              
-              <input
-                type="file"
-                ref={fileInputRef}
-                className="hidden"
-                accept="image/*"
-                onChange={handleFileUpload}
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Sample Rooms Section - Below */}
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-              Or Choose a Sample Room
+              Choose a Sample Room
             </h2>
             <p className="text-gray-600">
               Explore our curated room designs
@@ -172,6 +137,42 @@ export const RoomVisualizerPage = () => {
           </div>
         </div>
 
+
+        {/* Upload Section - Top */}
+        <div className="max-w-2xl mx-auto mb-12 mt-10">
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+            <div className="p-8">
+              <div className="text-center mb-6">
+                <FaUpload className="text-4xl text-[#3f2d4d] mx-auto mb-4" />
+                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                  Or Upload Your Own Photo
+                </h3>
+                <p className="text-gray-600">
+                  Upload a photo of your room to visualize Calyco colors
+                </p>
+              </div>
+              
+              <div className="flex items-center justify-center">
+                <button
+                  onClick={handleUploadClick}
+                  className="bg-[#3f2d4d] text-white py-3 px-8 rounded-lg hover:bg-[#3f2d7d] transition-colors duration-200 font-medium text-lg"
+                >
+                  Choose Photo
+                </button>
+              </div>
+              
+              <input
+                type="file"
+                ref={fileInputRef}
+                className="hidden"
+                accept="image/*"
+                onChange={handleFileUpload}
+              />
+            </div>
+          </div>
+        </div>
+
+        
         {/* Additional Info Section */}
         <div className="mt-16 text-center">
           <div className="max-w-3xl mx-auto">

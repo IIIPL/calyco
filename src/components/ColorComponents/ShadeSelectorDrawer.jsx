@@ -60,7 +60,7 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
           className="overflow-x-auto whitespace-nowrap scrollbar-hide px-10 w-full"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div className="inline-flex gap-2 items-center">
+          <div className="inline-flex items-center">
             {/* Start buffer */}
             <div className="w-[50vw] flex-shrink-0" />
 

@@ -21,7 +21,8 @@ export const flatColors = [
     "collection": "Modern, French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Almond Mist", "Greige Harmony", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Almond Mist",
     "code": "CP101",
@@ -44,7 +45,8 @@ export const flatColors = [
     "collection": "Cottage, Cozy Cabin",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Cozy Linen", "Sage Whisper", "Terra Blush"]
+  },
   {
     "name": "Morning Dew",
     "code": "CP101",
@@ -67,7 +69,8 @@ export const flatColors = [
     "collection": "Coastal, Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Misty Fog", "Greige Harmony", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Silk Taupe",
     "code": "CP101",
@@ -90,7 +93,8 @@ export const flatColors = [
     "collection": "Vintage, Farmhouse",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Greige Harmony", "Canvas Sand", "Dusky Sand", "Olive Earth"]
+  },
   {
     "name": "Dusky Sand",
     "code": "CP101",
@@ -113,7 +117,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Canvas Sand", "Terra Blush", "Cocoa Brown"]
+  },
   {
     "name": "Greige Harmony",
     "code": "CP101",
@@ -136,7 +141,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Silk Taupe", "Sage Whisper", "Mauve Shadow"]
+  },
   {
     "name": "Misty Fog",
     "code": "CP101",
@@ -159,7 +165,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Pearl Blush", "Sky Blue", "Jade Mist"]
+  },
   {
     "name": "Sage Whisper",
     "code": "CP101",
@@ -182,7 +189,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Olive Earth", "Pistachio Soft", "Cozy Linen", "Terra Blush"]
+  },
   {
     "name": "Blush Petal",
     "code": "CP101",
@@ -205,7 +213,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Lotus Bloom", "Blossom Warmth", "Almond Mist", "Sage Whisper"]
+  },
   {
     "name": "Lilac Veil",
     "code": "CP101",
@@ -228,7 +237,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Vintage Rose", "Lilac Dust", "Morning Dew", "Teal Serenity"]
+  },
   {
     "name": "Rosewood Haze",
     "code": "CP101",
@@ -251,7 +261,8 @@ export const flatColors = [
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Vintage Rose", "Blossom Warmth", "Silk Taupe", "Olive Grove"]
+  },
   {
     "name": "Peach Glow",
     "code": "CP101",
@@ -274,7 +285,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Desert Rose", "Sunset Glow", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Terra Blush",
     "code": "CP101",
@@ -297,7 +309,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Earthy Terracotta", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Coral Charm",
     "code": "CP101",
@@ -320,7 +333,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Peach Glow", "Desert Rose", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Blossom Warmth",
     "code": "CP101",
@@ -343,7 +357,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Blush Petal", "Rosewood Haze", "Almond Mist", "Sage Whisper"]
+  },
   {
     "name": "Vintage Rose",
     "code": "CP101",
@@ -366,7 +381,8 @@ export const flatColors = [
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Rosewood Haze", "Lilac Veil", "Morning Dew", "Teal Serenity"]
+  },
   {
     "name": "Earthy Terracotta",
     "code": "CP101",
@@ -389,7 +405,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Terra Blush", "Clay Beige", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Clay Beige",
     "code": "CP101",
@@ -412,7 +429,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Earthy Terracotta", "Thar Earth", "Dusky Sand", "Teal Serenity"]
+  },
   {
     "name": "Cocoa Brown",
     "code": "CP101",
@@ -435,7 +453,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Coconut Brown", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Brick Red",
     "code": "CP101",
@@ -458,7 +477,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Rustic Rust", "Earthy Terracotta", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Rustic Rust",
     "code": "CP101",
@@ -481,7 +501,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Brick Red", "Earthy Terracotta", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Olive Earth",
     "code": "CP101",
@@ -504,7 +525,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Olive Grove", "Almond Mist", "Earthy Terracotta"]
+  },
   {
     "name": "Golden Harvest",
     "code": "CP101",
@@ -527,7 +549,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Candlelight Gold", "Vanilla Cream", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Mudstone Brown",
     "code": "CP101",
@@ -550,7 +573,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Cocoa Brown", "Coconut Brown", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Royal Indigo",
     "code": "CP101",
@@ -573,7 +597,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Indigo Twilight", "Navy Fade", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Plum Midnight",
     "code": "CP101",
@@ -596,7 +621,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Royal Indigo", "Mauve Shadow", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Indigo Twilight",
     "code": "CP101",
@@ -619,7 +645,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Royal Indigo", "Navy Fade", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Olive Grove",
     "code": "CP101",
@@ -642,7 +669,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Olive Earth", "Forest Olive", "Almond Mist", "Earthy Terracotta"]
+  },
   {
     "name": "Teal Serenity",
     "code": "CP101",
@@ -665,7 +693,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Jade Mist", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Jade Mist",
     "code": "CP101",
@@ -688,7 +717,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Teal Serenity", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Mauve Shadow",
     "code": "CP101",
@@ -711,7 +741,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Plum Midnight", "Vintage Rose", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Charcoal Grey",
     "code": "CP101",
@@ -734,7 +765,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Basalt Stone", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Buttercream Blush",
     "code": "CP101",
@@ -757,7 +789,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Peach Glow", "Desert Rose", "Almond Mist", "Sage Whisper"]
+  },
   {
     "name": "Sunset Glow",
     "code": "CP101",
@@ -780,7 +813,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Peach Glow", "Desert Rose", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Lotus Bloom",
     "code": "CP101",
@@ -803,7 +837,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Blush Petal", "Blossom Warmth", "Almond Mist", "Sage Whisper"]
+  },
   {
     "name": "Pearl Blush",
     "code": "CP101",
@@ -826,7 +861,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Misty Fog", "Sky Blue", "Jade Mist"]
+  },
   {
     "name": "Chalk Cream",
     "code": "CP101",
@@ -849,7 +885,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Canvas Sand",
     "code": "CP101",
@@ -872,7 +909,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Cozy Linen", "Terra Blush", "Cocoa Brown"]
+  },
   {
     "name": "Desert Rose",
     "code": "CP101",
@@ -895,7 +933,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Peach Glow", "Sunset Glow", "Almond Mist", "Sage Whisper"]
+  },
   {
     "name": "Thar Earth",
     "code": "CP101",
@@ -918,7 +957,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Taupe Warmth", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Beach Sand",
     "code": "CP101",
@@ -941,7 +981,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Powder Beige",
     "code": "CP101",
@@ -964,7 +1005,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Candlelight Gold",
     "code": "CP101",
@@ -987,7 +1029,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Golden Harvest", "Vanilla Cream", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Cozy Linen",
     "code": "CP101",
@@ -1010,7 +1053,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Desert Dune",
     "code": "CP101",
@@ -1033,7 +1077,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Canvas Sand", "Dusky Sand", "Olive Earth"]
+  },
   {
     "name": "Ash Grey",
     "code": "CP101",
@@ -1056,7 +1101,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Misty Fog", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Flint Musk",
     "code": "CP101",
@@ -1079,7 +1125,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Ash Grey", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Silver Mist",
     "code": "CP101",
@@ -1102,7 +1149,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Ash Grey", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Copper Glow",
     "code": "CP101",
@@ -1125,7 +1173,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Taupe Warmth", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Taupe Warmth",
     "code": "CP101",
@@ -1148,7 +1197,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Canvas Sand", "Dusky Sand", "Olive Earth"]
+  },
   {
     "name": "Biscuit Beige",
     "code": "CP101",
@@ -1171,7 +1221,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Coconut Brown",
     "code": "CP101",
@@ -1194,7 +1245,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Cocoa Brown", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Mud Brown",
     "code": "CP101",
@@ -1217,7 +1269,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Cocoa Brown", "Coconut Brown", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Basalt Stone",
     "code": "CP101",
@@ -1240,7 +1293,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Shadow Grey",
     "code": "CP101",
@@ -1263,7 +1317,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Basalt Stone", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Charcoal Smoke",
     "code": "CP101",
@@ -1286,7 +1341,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Forest Olive",
     "code": "CP101",
@@ -1309,7 +1365,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Olive Earth", "Olive Grove", "Almond Mist", "Earthy Terracotta"]
+  },
   {
     "name": "Sage Dust",
     "code": "CP101",
@@ -1332,7 +1389,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Eucalyptus Breeze",
     "code": "CP101",
@@ -1355,7 +1413,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Sage Dust", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Celadon Green",
     "code": "CP101",
@@ -1378,7 +1437,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Mint Whisper",
     "code": "CP101",
@@ -1401,7 +1461,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Celadon Green", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Sky Blue",
     "code": "CP101",
@@ -1424,7 +1485,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Glacier Mist", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Glacier Mist",
     "code": "CP101",
@@ -1447,7 +1509,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Misty Fog", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Slate Stone",
     "code": "CP101",
@@ -1470,7 +1533,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Misty Fog", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Indigo Night",
     "code": "CP101",
@@ -1493,7 +1557,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Royal Indigo", "Indigo Twilight", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Misty Storm",
     "code": "CP101",
@@ -1516,7 +1581,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Navy Fade",
     "code": "CP101",
@@ -1539,7 +1605,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Royal Indigo", "Indigo Twilight", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Ocean Mist",
     "code": "CP101",
@@ -1562,7 +1629,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior/C Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Teal Serenity", "Jade Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Deep Ocean",
     "code": "CP101",
@@ -1585,7 +1653,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Royal Indigo", "Indigo Night", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Oxblood Red",
     "code": "CP101",
@@ -1608,7 +1677,8 @@ export const flatColors = [
     "collection": "Solid",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Brick Red", "Rustic Rust", "Morning Dew", "Teal Serenity"]
+  },
   {
     "name": "Jet Black",
     "code": "CP101",
@@ -1631,7 +1701,8 @@ export const flatColors = [
     "collection": "Semi-Solid",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Smoke", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Graphite Grey",
     "code": "CP101",
@@ -1654,7 +1725,8 @@ export const flatColors = [
     "collection": "Semi-Solid",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Twilight Stone",
     "code": "CP101",
@@ -1677,7 +1749,8 @@ export const flatColors = [
     "collection": "Semi-Transparent",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Teal Serenity", "Jade Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Olive Shade",
     "code": "CP101",
@@ -1700,7 +1773,8 @@ export const flatColors = [
     "collection": "Solid",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Olive Grove", "Forest Olive", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Royal Plum",
     "code": "CP101",
@@ -1723,7 +1797,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Interior/C Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Grape Mist",
     "code": "CP101",
@@ -1746,7 +1821,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior/C Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Ash Grey",
     "code": "CP101",
@@ -1769,7 +1845,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Asphalt Grey",
     "code": "CP101",
@@ -1792,7 +1869,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Steel Grey",
     "code": "CP101",
@@ -1815,7 +1893,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Olive Grove", "Forest Olive", "Almond Mist", "Earthy Terracotta"]
+  },
   {
     "name": "Walnut Brown",
     "code": "CP101",
@@ -1838,7 +1917,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Plum Midnight", "Mauve Shadow", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Sienna Burnt",
     "code": "CP101",
@@ -1861,7 +1941,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Plum Midnight", "Mauve Shadow", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Terra Spice",
     "code": "CP101",
@@ -1884,7 +1965,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Rust Glow",
     "code": "CP101",
@@ -1907,7 +1989,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Molten Red",
     "code": "CP101",
@@ -1930,7 +2013,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Maroon Glow",
     "code": "CP101",
@@ -1953,7 +2037,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Cocoa Brown", "Coconut Brown", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Taupe Smoke",
     "code": "CP101",
@@ -1976,7 +2061,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754573587/taupe_smoke_cg6hyd.png",
-    },
+    "combinationcolor": ["Rustic Rust", "Earthy Terracotta", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Almond Beige",
     "code": "CP101",
@@ -1999,7 +2085,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Terra Blush", "Clay Beige", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Rust Glow",
     "code": "CP101",
@@ -2022,7 +2109,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Rustic Rust", "Earthy Terracotta", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Molten Ember",
     "code": "CP101",
@@ -2045,7 +2133,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Maroon Velvet",
     "code": "CP101",
@@ -2068,7 +2157,8 @@ export const flatColors = [
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
+  },
   {
     "name": "Taupe Mist",
     "code": "CP101",
@@ -2091,7 +2181,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Canvas Sand", "Dusky Sand", "Olive Earth"]
+  },
   {
     "name": "Almond Sand",
     "code": "CP101",
@@ -2114,7 +2205,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Ochre Copper",
     "code": "CP101",
@@ -2137,7 +2229,8 @@ export const flatColors = [
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Clay Beige", "Copper Glow", "Dusky Sand", "Sage Whisper"]
+  },
   {
     "name": "Brass Dust",
     "code": "CP101",
@@ -2160,7 +2253,8 @@ export const flatColors = [
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Golden Clay",
     "code": "CP101",
@@ -2183,7 +2277,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Curry Yellow",
     "code": "CP101",
@@ -2206,7 +2301,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Citrus Ochre",
     "code": "CP101",
@@ -2229,7 +2325,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Golden Harvest", "Curry Yellow", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Banana Cream",
     "code": "CP101",
@@ -2252,7 +2349,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Vanilla Cream", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
+  },
   {
     "name": "Vanilla Cream",
     "code": "CP101",
@@ -2275,7 +2373,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Chalk Beige",
     "code": "CP101",
@@ -2298,7 +2397,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
+  },
   {
     "name": "Cloud Grey",
     "code": "CP101",
@@ -2321,7 +2421,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Morning Dew", "Misty Fog", "Sky Blue", "Teal Serenity"]
+  },
   {
     "name": "Evening Linen",
     "code": "CP101",
@@ -2344,7 +2445,8 @@ export const flatColors = [
     "collection": "French Country",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Silk Taupe", "Canvas Sand", "Dusky Sand", "Olive Earth"]
+  },
   {
     "name": "Pistachio Soft",
     "code": "CP101",
@@ -2367,7 +2469,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Mint Soft",
     "code": "CP101",
@@ -2390,7 +2493,8 @@ export const flatColors = [
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Aqua Pale",
     "code": "CP101",
@@ -2413,7 +2517,8 @@ export const flatColors = [
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Sky Blue", "Glacier Mist", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Lilac Dust",
     "code": "CP101",
@@ -2436,7 +2541,8 @@ export const flatColors = [
     "collection": "Boho",
     "interior_or_exterior": "Interior",
     "image": "",
-    },
+    "combinationcolor": ["Plum Midnight", "Vintage Rose", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Earth Black",
     "code": "CP101",
@@ -2459,7 +2565,8 @@ export const flatColors = [
     "collection": "Modern",
     "interior_or_exterior": "Interior/C Exterior",
     "image": "",
-    },
+    "combinationcolor": ["Charcoal Smoke", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
+  },
   {
     "name": "Classic Cream",
     "code": "CP101",
@@ -2480,6 +2587,7 @@ export const flatColors = [
     "styling": "Pale",
     "rooms": "Living Room, Hallways",
     "collection": "French Country",
-    "interior_or_exterior": "Interior"
+    "interior_or_exterior": "Interior",
+    "combinationcolor": ["Serene Ivory", "Almond Mist", "Sage Whisper", "Vintage Rose"]
   }
 ];

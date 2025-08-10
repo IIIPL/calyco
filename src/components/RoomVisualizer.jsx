@@ -38,8 +38,8 @@ const RoomVisualizer = () => {
       base: '/Assets/Rooms/Bedroom/base.jpg',
       masks: {
         walls: '/Assets/Rooms/Bedroom/mask-walls.jpg',
-        ceiling: '/Assets/Rooms/Bedroom/mask-ceiling.jpg',
-        floor: '/Assets/Rooms/Bedroom/mask-floor.jpg'
+        // ceiling: '/Assets/Rooms/Bedroom/mask-ceiling.jpg',
+        // floor: '/Assets/Rooms/Bedroom/mask-floor.jpg'
       }
     },
     'Living Room': {
@@ -47,7 +47,7 @@ const RoomVisualizer = () => {
       masks: {
         walls: '/Assets/Rooms/LivingRoom/mask-walls.jpg',
         ceiling: '/Assets/Rooms/LivingRoom/mask-ceiling.jpg',
-        floor: '/Assets/Rooms/LivingRoom/mask-floor.jpg'
+        // floor: '/Assets/Rooms/LivingRoom/mask-floor.jpg'
       }
     },
     'Dining Room': {
@@ -55,7 +55,7 @@ const RoomVisualizer = () => {
       masks: {
         walls: '/Assets/Rooms/DiningRoom/mask-walls.jpg',
         ceiling: '/Assets/Rooms/DiningRoom/mask-ceiling.jpg',
-        // floor: '/Assets/Rooms/DiningRoom/mask-floor.jpg'
+        // floor: '/Assets/Rooms/DiningRoom/mask-wainscoting.jpg'
       }
     }
   };
@@ -223,6 +223,7 @@ const RoomVisualizer = () => {
   
   // Function to process segmentation results
   const processSegmentationResults = (labelMap, dimensions) => {
+    
     const masks = {};
     
     // Create masks for each surface
@@ -391,25 +392,28 @@ const RoomVisualizer = () => {
       
       const targetRGB = hexToRGB(color.hex); // Store selected color once
 
-for (let i = 0; i < maskPixels.length; i += 4) {
-  const mr = maskPixels[i];       // mask red
-  const mg = maskPixels[i + 1];   // mask green
-  const mb = maskPixels[i + 2];   // mask blue
-  const ma = maskPixels[i + 3];   // mask alpha
+    for (let i = 0; i < maskPixels.length; i += 4) {
+      const mr = maskPixels[i];       // mask red
+      const mg = maskPixels[i + 1];   // mask green
+      const mb = maskPixels[i + 2];   // mask blue
+      const ma = maskPixels[i + 3];   // mask alpha
 
-  const isMaskPixel = (mr === 255 && mg === 255 && mb === 255 && ma === 255);
+      const isMaskPixel = (mr === 255 && mg === 255 && mb === 255 && ma === 255);
 
-  if (isMaskPixel) {
-    pixels[i]     = pixels[i]     * (1 - 0.7) + targetRGB.r * 0.7;
-    pixels[i + 1] = pixels[i + 1] * (1 - 0.7) + targetRGB.g * 0.7;
-    pixels[i + 2] = pixels[i + 2] * (1 - 0.7) + targetRGB.b * 0.7;
-  }
-}
+      if (isMaskPixel) {
+        const strength = 0.90; // Increase this up to 0.95 if you want even deeper color
 
-      ctx.putImageData(imageData, 0, 0);
-    });
-  };
-  
+        pixels[i]     = pixels[i]     * (1 - strength) + targetRGB.r * strength;
+        pixels[i + 1] = pixels[i + 1] * (1 - strength) + targetRGB.g * strength;
+        pixels[i + 2] = pixels[i + 2] * (1 - strength) + targetRGB.b * strength;
+
+      }
+    }
+
+          ctx.putImageData(imageData, 0, 0);
+        });
+      };
+    
   // Save project functionality
   const handleSaveProject = () => {
     if (!canvasRef.current) return;
@@ -548,9 +552,12 @@ for (let i = 0; i < maskPixels.length; i += 4) {
           {/* Surface Selection Boxes */}
           <div className="flex justify-center space-x-4 mb-4 w-full">
             {surfaces.map((surface) => {
+              const hasMask = surfaceMasks[surface.id];
+              if (!hasMask) return null; // 🚫 Skip button if no mask
+
               const surfaceColor = appliedColors[surface.id]?.hex || surface.color;
               const textColor = getContrastColor(surfaceColor);
-              
+
               return (
                 <div
                   key={surface.id}
@@ -558,9 +565,9 @@ for (let i = 0; i < maskPixels.length; i += 4) {
                     activeSurface === surface.id ? 'ring-2 ring-indigo-500' : 'hover:bg-gray-200'
                   }`}
                   onClick={() => setActiveSurface(surface.id)}
-                  style={{ 
+                  style={{
                     backgroundColor: surfaceColor,
-                    color: textColor
+                    color: textColor,
                   }}
                 >
                   <span className="text-sm font-medium">{surface.name}</span>
@@ -570,6 +577,7 @@ for (let i = 0; i < maskPixels.length; i += 4) {
                 </div>
               );
             })}
+
           </div>
           
           {/* AI Processing Indicator */}
@@ -610,23 +618,10 @@ for (let i = 0; i < maskPixels.length; i += 4) {
         <div className="w-80 bg-white border-l border-gray-200 p-6 mx-4 my-4 rounded-xl shadow-md">
           <div className="flex items-center mb-6">
             <h2 className="text-lg font-semibold text-gray-800">Select a Paint Color</h2>
-            <FaQuestionCircle className="ml-2 text-gray-400" />
+            
           </div>
           
-          {/* Search Bar */}
-          <div className="mb-6">
-            <div className="flex border border-gray-300 rounded-lg overflow-hidden">
-              <button className="px-3 py-2 text-sm text-gray-600 bg-gray-100">Search Colors</button>
-              <button className="px-3 py-2 text-sm text-gray-800 bg-white border-l">Color name/number</button>
-            </div>
-            <input
-              type="text"
-              placeholder="Color name/number"
-              value={colorSearch}
-              onChange={handleSearchChange}
-              className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+          
           
           {/* Color Families Dropdown */}
           <div className="mb-6">

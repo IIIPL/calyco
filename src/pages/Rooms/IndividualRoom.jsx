@@ -8,7 +8,16 @@ import { flatColors } from "../../data/flatColors";
 const findColor = (name) => {
     return flatColors.find((c) => c.name === name);
 };
-const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/&/g, 'and'); // To slugify the name
+
+
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with hyphens
+    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
+
 
 
 export default function IndividualRoomPage() {

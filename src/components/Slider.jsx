@@ -283,6 +283,8 @@ const cards = [
           {extendedCards.map((card, index) => (
             <div
               key={`${card.id}-${index}`}
+              onClick={() => (window.location.href = `/products?category=${encodeURIComponent(card.title)}`)}
+
               className={`flex-shrink-0 ${card.color} text-white rounded-xl flex flex-col justify-between shadow-lg hover:shadow-xl transition-transform duration-500 cursor-pointer group transform hover:scale-95`}
               style={{ width: `${cardWidth}px`, height: '200px' }}
             >

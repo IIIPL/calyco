@@ -13,6 +13,9 @@ import { flatColors } from "../data/flatColors";
 import { ColorTrends } from "../components/ColorComponents/ColorTrends";
 import {HeroSlider} from "../components/HomeComponents/HeroSlider";
 import Carousel from "../components/HomeComponents/Carousel";
+import HeroColorShowcase from "../components/HeroColorShowcase";
+import CategoryNav from "../components/CategoryNav";
+import MiniVisualizer from "../components/MiniVisualizer";
 
 
 
@@ -57,6 +60,14 @@ export const HomePage = () => {
            {/* Section 2 */}
            <div className="px-10">
             <Carousel/>
+           </div>
+
+           {/* Section 3 */}
+           <div>
+            <HeroColorShowcase/>
+            <Slider/>
+            <CategoryNav/>
+            <MiniVisualizer/>
            </div>
             {/* Enhanced Who We Serve Section */}
             <section className="min-h-screen bg-gradient-to-b from-white to-[#493657]/5 flex flex-col relative overflow-hidden">
@@ -131,11 +142,8 @@ export const HomePage = () => {
 
                 
                 <div className="flex justify-center mt-10 z-10 relative">
-
                     <Button to={'/product'} children={"Explore All Products"}/>
                 </div>
-
-                {/* <Slider /> */}
             </section>
 
             {/* Enhanced Why Choose Section */}
