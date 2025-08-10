@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const slugify = (text) =>
@@ -11,13 +11,21 @@ const slugify = (text) =>
     .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
 
-export default function RoomInspiration({ title, description, imageUrl, colors = [] }) {
+export default function RoomInspiration({ title, description, imageUrl, colors = [], to }) {
+  const navigate = useNavigate();
   return (
     <div className="relative w-full max-w-5xl mx-auto mb-20">
-
-
       <h2 className="text-2xl md:text-3xl font-bold text-[#393939] mb-2 tracking-tight uppercase">
-        {title}
+        {to ? (
+          <Link
+            to={to}
+            className="hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#393939]"
+          >
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
       </h2>
       {description && (
         <p className="text-base md:text-lg text-[#393939] mb-4">{description}</p>
@@ -26,14 +34,24 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
       <div className="relative w-full">
         {/* Room Image */}
         <div className="w-full">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-auto max-h-[32rem] object-contain"
-            loading="lazy"
-          />
+          {to ? (
+            <Link to={to} aria-label={`Open ${title}`}>
+              <img
+                src={imageUrl}
+                alt={title}
+                className="w-full h-auto max-h-[32rem] object-contain"
+                loading="lazy"
+              />
+            </Link>
+          ) : (
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-auto max-h-[32rem] object-contain"
+              loading="lazy"
+            />
+          )}
         </div>
-
         {/* Colors Bottom Left */}
         {colors.length > 0 && (
           <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md p-3 rounded-lg shadow-md flex gap-4">

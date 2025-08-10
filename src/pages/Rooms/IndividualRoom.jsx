@@ -4,11 +4,9 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { roomData } from "../../data/roomData";
 import { flatColors } from "../../data/flatColors";
-
 const findColor = (name) => {
     return flatColors.find((c) => c.name === name);
 };
-
 
 const slugify = (text) =>
   text
@@ -18,36 +16,29 @@ const slugify = (text) =>
     .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
     .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
-
-
 export default function IndividualRoomPage() {
     const { roomName } = useParams();
     const [imageLoaded, setImageLoaded] = useState(false);
     const [room, setRoom] = useState(null);
+    const [shotIndex, setShotIndex] = useState(0);
+    const currentShot = room?.shots?.[shotIndex] || null;
     
     useEffect(() => {
         const foundRoom = roomData.find(
             (r) => r.name.toLowerCase().replace(/\s+/g, '-') === roomName
         );
         setRoom(foundRoom);
+        setShotIndex(0);
+        setImageLoaded(false);
     }, [roomName]);
+    
+    useEffect(() => {
+        setImageLoaded(false);
+    }, [shotIndex]);
     
     const fadeIn = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-    };
-    
-    const bounceIn = {
-        hidden: { scale: 0, opacity: 0 },
-        visible: { 
-            scale: 1, 
-            opacity: 1, 
-            transition: { 
-                type: "spring", 
-                stiffness: 400, 
-                damping: 10 
-            } 
-        }
     };
     
     const zoomIn = {
@@ -60,7 +51,7 @@ export default function IndividualRoomPage() {
             } 
         }
     };
-
+    
     if (!room) {
         return (
             <motion.div 
@@ -85,7 +76,7 @@ export default function IndividualRoomPage() {
             </motion.div>
         );
     }
-
+    
     return (
         <div className="font-poppins bg-white min-h-screen pt-20">
             {/* Hero Section */}
@@ -99,104 +90,148 @@ export default function IndividualRoomPage() {
                     {room.name}
                 </h1>
             </motion.div>
-
+            
+            {/* Color Combinations Picker */}
+            {room.shots?.length > 1 && (
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8">
+                    <h2 className="text-2xl font-bold text-[#393939] mb-4">Color Combinations</h2>
+                    <div className="flex gap-4 overflow-x-auto pb-2">
+                        {room.shots.map((s, i) => (
+                            <button
+                                key={i}
+                                type="button"
+                                onClick={() => setShotIndex(i)}
+                                className={`flex items-center gap-2 px-3 py-2 border rounded-lg transition
+                                            ${i === shotIndex ? 'border-[#393939] ring-2 ring-[#393939]/30' : 'border-gray-200 hover:border-gray-300'}`}
+                                aria-pressed={i === shotIndex}
+                                aria-label={`Choose color combination ${i + 1}`}
+                            >
+                                <div className="flex items-center gap-1">
+                                    {(s.colors || []).slice(0,4).map((c, idx) => {
+                                        const obj = findColor(c);
+                                        return (
+                                            <span
+                                                key={idx}
+                                                className="w-4 h-4 rounded-md shadow-sm"
+                                                style={{ backgroundColor: obj?.hex || '#ddd' }}
+                                                title={c}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                                <span className="text-sm text-[#393939]">
+                                    Combo {i + 1}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+            
             {/* Room Overview Section */}
             <motion.div 
+                id="room-hero"
                 className="w-full flex justify-center items-center mb-12"
                 initial="hidden"
                 animate="visible"
                 variants={zoomIn}
-                >
+            >
                 {!imageLoaded && (
                     <div className="absolute w-full h-[28rem] bg-gray-200 animate-pulse pointer-events-none" />
                 )}
-                <motion.img
-                    src={room.image}
-                    alt={room.name}
-                    className={`w-auto max-h-[28rem] ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: imageLoaded ? 1 : 0 }}
-                    transition={{ duration: 0.5 }}
-                    onLoad={() => setImageLoaded(true)}
-                />
-                </motion.div>
-
+                {currentShot ? (
+                    <motion.img
+                        src={currentShot.image}
+                        alt={`${room.name} - Color combination ${shotIndex + 1}`}
+                        className={`w-auto max-h-[28rem] ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: imageLoaded ? 1 : 0 }}
+                        transition={{ duration: 0.5 }}
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                ) : (
+                    <div className="w-full max-h-[28rem] flex items-center justify-center bg-gray-100 rounded-lg">
+                        <p className="text-gray-500 text-lg">No image available</p>
+                    </div>
+                )}
+            </motion.div>
 
             {/* Paint Colors Section */}
-            <motion.div 
-                className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-12"
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-            >
-                <h2 className="text-3xl font-bold text-[#393939] mb-6">Colors Used:</h2>
-                
-                <div className="flex overflow-x-auto pb-4 space-x-6 md:space-x-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {room.colors.map((color, i) => {
-                        const colorObj = findColor(color);
-                        const colorFamily = colorObj ? colorObj.color_family.toLowerCase().replace(/\s+/g, '-') : "";
-                        const colorName = colorObj ? colorObj.name.toLowerCase().replace(/\s+/g, '-') : "";
-                        
-                        return colorObj ? (
-                            <motion.div 
-                                key={i} 
-                                variants={bounceIn}
-                                className="flex-shrink-0 w-48 md:w-auto"
-                            >
-
-                                <Link 
-                                    to={`/colors/family/${slugify(colorFamily)}/${colorName}`}
-                                    className="block group focus:outline-none"
-                                    aria-label={`View ${colorObj.name} color details`}
+            {currentShot && (
+                <motion.div 
+                    className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-12"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeIn}
+                >
+                    <h2 className="text-3xl font-bold text-[#393939] mb-6">Colors Used:</h2>
+                    
+                    <div className="flex overflow-x-auto pb-4 space-x-6 md:space-x-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        {(currentShot.colors || []).map((color, i) => {
+                            const colorObj = findColor(color);
+                            const colorFamily = colorObj ? colorObj.color_family.toLowerCase().replace(/\s+/g, '-') : "";
+                            const colorName = colorObj ? colorObj.name.toLowerCase().replace(/\s+/g, '-') : "";
+                            
+                            return colorObj ? (
+                                <motion.div 
+                                    key={i} 
+                                    variants={fadeIn}
+                                    className="flex-shrink-0 w-48 md:w-auto"
                                 >
-                                    <div className="relative">
-                                        <div 
-                                            className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 ring-2 ring-transparent group-hover:ring-gray-300 group-focus:ring-gray-300 transition-all duration-300 shadow-md"
-                                            style={{ backgroundColor: colorObj.hex }}
-                                        ></div>
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                                            <span className="text-xs font-medium text-white bg-black bg-opacity-70 px-2 py-1 rounded">
+                                    <Link 
+                                        to={`/colors/family/${slugify(colorFamily)}/${colorName}`}
+                                        className="block group focus:outline-none"
+                                        aria-label={`View ${colorObj.name} color details`}
+                                    >
+                                        <div className="relative">
+                                            <div 
+                                                className="w-16 h-16 md:w-20 md:h-20 rounded-lg mx-auto mb-3 ring-2 ring-transparent group-hover:ring-gray-300 group-focus:ring-gray-300 transition-all duration-300 shadow-md"
+                                                style={{ backgroundColor: colorObj.hex }}
+                                            ></div>
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                                <span className="text-xs font-medium text-white bg-black bg-opacity-70 px-2 py-1 rounded">
+                                                    {colorObj.name}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="text-center">
+                                            <h3 className="font-medium text-[#393939] group-hover:text-[#666] transition-colors duration-300">
                                                 {colorObj.name}
-                                            </span>
+                                            </h3>
+                                            <p className="text-sm text-gray-500">
+                                                {colorObj.hex}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </motion.div>
+                            ) : (
+                                <motion.div 
+                                    key={i} 
+                                    variants={fadeIn}
+                                    className="flex-shrink-0 w-48 md:w-auto"
+                                >
+                                    <div className="block group">
+                                        <div 
+                                            className="w-16 h-16 md:w-20 md:h-20 rounded-lg mx-auto mb-3 bg-gray-200 flex items-center justify-center ring-2 ring-transparent group-hover:ring-gray-300 transition-all duration-300 shadow-md"
+                                            title="Color not found"
+                                        >
+                                            <span className="text-gray-500 text-xl">?</span>
+                                        </div>
+                                        <div className="text-center">
+                                            <h3 className="font-medium text-[#393939]">
+                                                {color}
+                                            </h3>
+                                            <p className="text-sm text-gray-500">
+                                                Not available
+                                            </p>
                                         </div>
                                     </div>
-                                    <div className="text-center">
-                                        <h3 className="font-medium text-[#393939] group-hover:text-[#666] transition-colors duration-300">
-                                            {colorObj.name}
-                                        </h3>
-                                        <p className="text-sm text-gray-500">
-                                            {colorObj.hex}
-                                        </p>
-                                    </div>
-                                </Link>
-                            </motion.div>
-                        ) : (
-                            <motion.div 
-                                key={i} 
-                                variants={bounceIn}
-                                className="flex-shrink-0 w-48 md:w-auto"
-                            >
-                                <div className="block group">
-                                    <div 
-                                        className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 bg-gray-200 flex items-center justify-center ring-2 ring-transparent group-hover:ring-gray-300 transition-all duration-300 shadow-md"
-                                        title="Color not found"
-                                    >
-                                        <span className="text-gray-500 text-xl">?</span>
-                                    </div>
-                                    <div className="text-center">
-                                        <h3 className="font-medium text-[#393939]">
-                                            {color}
-                                        </h3>
-                                        <p className="text-sm text-gray-500">
-                                            Not available
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-            </motion.div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+                </motion.div>
+            )}
             
             <p className="text-base sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed max-w-3xl mx-auto">
                 {room.description}
