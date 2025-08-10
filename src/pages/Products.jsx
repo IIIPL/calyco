@@ -101,28 +101,52 @@ export const Products = () => {
 
   // Apply *non-search* filters (category/substrate/app-area/price) + sort
   const baseFiltered = useMemo(() => {
-    let list = allProducts.filter(product => {
-      if (selected['Category']?.length) {
-        if (!selected['Category'].includes(product.category)) return false;
+    const q = (search || '').trim().toLowerCase();
+
+      let list = allProducts
+    .map(product => {
+      const name = String(product.display_name || product.name || '').toLowerCase();
+      const category = String(product.category || '').toLowerCase();
+      const subsRaw = Array.isArray(product.substrate) ? product.substrate : (product.substrate ? [product.substrate] : []);
+      const subs = subsRaw.map(s => String(s).toLowerCase());
+      const subsGroups = mapToStandardSubstrates(subsRaw).map(s => String(s).toLowerCase());
+
+      let rank = 0; // 0=name hit, 1=category hit, 2=substrate hit, 3=no hit
+      if (q) {
+        const nameHit = name.includes(q);
+        const catHit = category.includes(q);
+        const subHit = subs.some(s => s.includes(q)) || subsGroups.some(s => s.includes(q));
+        rank = nameHit ? 0 : catHit ? 1 : subHit ? 2 : 3;
       }
-      if (selected['Substrate']?.length) {
-        const mapped = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
-        if (!mapped.some(g => selected['Substrate'].includes(g))) return false;
-      }
+
+      return { ...product, __rank: rank };
+    })
+    .filter(product => {
+      if (q && product.__rank === 3) return false; // exclude non-matches when a query exists
+
+      if (selected['Category']?.length && !selected['Category'].includes(product.category)) return false;
+
+      const mapped = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
+      if (selected['Substrate']?.length && !mapped.some(g => selected['Substrate'].includes(g))) return false;
+
       if (selected['Application Area']?.length) {
         const appList = Array.isArray(product.application) ? product.application : (product.application ? [product.application] : []);
         const areas = mapToStandardApplicationAreas(appList);
         if (!areas.some(a => selected['Application Area'].includes(a))) return false;
       }
+
       const p = Number(product.price || 0);
       if (p < price.min || p > price.max) return false;
+
       return true;
     });
 
     if (sortOrder === 'asc') list = list.slice().sort((a, b) => (a.price || 0) - (b.price || 0));
     else if (sortOrder === 'desc') list = list.slice().sort((a, b) => (b.price || 0) - (a.price || 0));
+
     return list;
-  }, [allProducts, selected, sortOrder, price]);
+  }, [allProducts, selected, sortOrder, price, search]);
+
 
   // Bucket by search: name first (no heading), else category, else substrate
   const {
@@ -327,6 +351,7 @@ export const Products = () => {
 
               {/* If searching and name matches exist: show them (no heading) */}
               {qActive && nameMatches.length > 0 && nameMatches.map((product, idx) => (
+
                 <ProductCard
                   key={product.name + idx}
                   id={product.name}
@@ -340,14 +365,16 @@ export const Products = () => {
               ))}
 
               {/* If searching and no name matches, but category matches exist: show a one-line heading + products */}
-              {qActive && nameMatches.length === 0 && categoryMatches.length > 0 && (
+              {qActive && categoryMatches.length > 0 && (
                 <>
-                  <div className="col-span-full">
-                    <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
-                      Showing category: {categoryLabel || search}
-                    </h2>
-                    <p className="text-[#493657]/70">Products under the matching category.</p>
-                  </div>
+                  {nameMatches.length === 0 && (
+                    <div className="col-span-full">
+                      <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
+                        Showing category: {categoryLabel || search}
+                      </h2>
+                      <p className="text-[#493657]/70">Products under the matching category.</p>
+                    </div>
+                  )}
                   {categoryMatches.map((product, idx) => (
                     <ProductCard
                       key={product.name + idx}
@@ -364,14 +391,16 @@ export const Products = () => {
               )}
 
               {/* If no name/category matches, but substrate matches exist: show a one-line heading + products */}
-              {qActive && nameMatches.length === 0 && categoryMatches.length === 0 && substrateMatches.length > 0 && (
+              {qActive && substrateMatches.length > 0 && (
                 <>
-                  <div className="col-span-full">
-                    <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
-                      Showing substrate: {substrateLabel || search}
-                    </h2>
-                    <p className="text-[#493657]/70">Products compatible with the matching substrate.</p>
-                  </div>
+                  {nameMatches.length === 0 && (
+                    <div className="col-span-full">
+                      <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
+                        Showing substrate: {substrateLabel || search}
+                      </h2>
+                      <p className="text-[#493657]/70">Products compatible with the matching substrate.</p>
+                    </div>
+                  )}
                   {substrateMatches.map((product, idx) => (
                     <ProductCard
                       key={product.name + idx}
