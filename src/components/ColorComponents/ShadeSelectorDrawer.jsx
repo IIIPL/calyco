@@ -66,6 +66,23 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
 
             {colorList.map((color) => {
               const isSelected = selectedColor && selectedColor.hex === color.hex;
+              const [tooltipPos, setTooltipPos] = React.useState({ x: 0, y: 0 });
+              const [showTooltip, setShowTooltip] = React.useState(false);
+
+              const handleMouseMove = (e) => {
+                if (!isSelected) {
+                  setTooltipPos({ x: e.clientX + 12, y: e.clientY + 12 });
+                }
+              };
+
+              const handleMouseEnter = () => {
+                if (!isSelected) setShowTooltip(true);
+              };
+
+              const handleMouseLeave = () => {
+                setShowTooltip(false);
+              };
+
               return (
                 <div
                   key={color.hex}
@@ -76,15 +93,36 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
                   style={{ backgroundColor: color.hex }}
                   onClick={() => onColorSelect({ ...color, color_family: group.family })}
                   onKeyDown={(e) => handleKeyDown(e, color)}
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                   tabIndex={0}
                   aria-label={`Select color ${color.name}`}
                 >
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
-                    {color.name}
-                  </div>
+                  {/* Floating tooltip following cursor */}
+                  {showTooltip && (
+                    <div
+                      style={{
+                        position: 'fixed',
+                        top: tooltipPos.y,
+                        left: tooltipPos.x,
+                        background: 'rgba(0,0,0,0.85)',
+                        color: '#fff',
+                        padding: '4px 8px',
+                        borderRadius: '4px',
+                        fontSize: '12px',
+                        pointerEvents: 'none',
+                        whiteSpace: 'nowrap',
+                        zIndex: 9999
+                      }}
+                    >
+                      {color.name}
+                    </div>
+                  )}
                 </div>
               );
             })}
+
 
             {/* End buffer */}
             <div className="w-[50vw] flex-shrink-0" />
