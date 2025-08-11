@@ -88,7 +88,7 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
                   key={color.hex}
                   id={`shade-${color.hex.replace('#', '')}`}
                   className={`group flex-shrink-0 w-24 h-24 cursor-pointer focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-800 relative transition-all duration-300 snap-center ${
-                    isSelected ? 'ring-2 ring-black border border-black' : ''
+                    isSelected ? 'border-4 border-black' : ''
                   }`}
                   style={{ backgroundColor: color.hex }}
                   onClick={() => onColorSelect({ ...color, color_family: group.family })}

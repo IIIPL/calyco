@@ -16,6 +16,7 @@ import Carousel from "../components/HomeComponents/Carousel";
 import HeroColorShowcase from "../components/HeroColorShowcase";
 import CategoryNav from "../components/CategoryNav";
 import MiniVisualizer from "../components/MiniVisualizer";
+import MiniInspirationGallery from "../components/HomeComponents/MiniInspirationGallyer";
 
 
 
@@ -66,6 +67,7 @@ export const HomePage = () => {
            <div>
             <Slider/>
             <MiniVisualizer/>
+            <MiniInspirationGallery/>
            </div>
             {/* Enhanced Who We Serve Section */}
             
