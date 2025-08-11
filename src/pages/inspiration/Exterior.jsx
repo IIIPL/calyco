@@ -21,7 +21,7 @@ export default function ExteriorInspiration() {
       {/* Top Banner Image */}
       <div className="w-full overflow-hidden">
         <img
-          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/exteriorHero_a9xsfv.jpg"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg"
           alt="Exterior Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
