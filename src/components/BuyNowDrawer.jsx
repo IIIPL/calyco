@@ -96,15 +96,16 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
             <div className="mb-6">
               <label className="block mb-3 font-medium text-[#342347]">Size</label>
               <select
-                className="w-full border border-gray-300 rounded-lg px-4 py-3  focus:outline-none focus:ring-2 focus:ring-[#493657] transition-all duration-200"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-[#342347] focus:outline-none focus:ring-2 focus:ring-[#493657] transition-all duration-200"
                 value={selectedSize}
                 onChange={e => setSelectedSize(e.target.value)}
               >
-                <option value="">Choose a size</option>
+                <option value="" className="text-[#342347]">Choose a size</option>
                 {selectedProduct.packaging?.map(size => (
-                  <option key={size} value={size}>{size}</option>
+                  <option key={size} value={size} className="text-[#342347]">{size}</option>
                 ))}
               </select>
+
             </div>
           )}
           

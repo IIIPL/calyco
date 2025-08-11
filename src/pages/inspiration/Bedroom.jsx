@@ -1,18 +1,12 @@
-
 import React from "react";
-import { Link } from "react-router-dom";  // Import Link for navigation
 import RoomInspiration from "../../components/RoomInspiration";
-import { getRoomsByCategory } from "../../data/roomData";
+import { roomData } from "../../data/roomData";
+import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 
-// Helper to find color by name in flatColors (case-insensitive)
-const findColor = (name) => {
-  if (!name) return null;
-  return flatColors.find(
-    (c) => c.name && c.name.toLowerCase() === name.toLowerCase()
-  ) || null;
-};
+const findColor = (name) =>
+  name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -20,52 +14,52 @@ const fadeInUp = {
 };
 
 export default function BedroomInspiration() {
-  // Get filtered rooms based on 'bedroom' family
-  const filteredRooms = getRoomsByCategory("bedroom");
+  const filteredRooms = filterRoomsByFamily("bedroom", roomData);
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
-      {/* Top Image (full-width edge-to-edge) */}
+      {/* Top Banner Image */}
       <div className="w-full overflow-hidden">
         <img
-          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/bedroomHero_f6cpvc.jpg"
           alt="Bedroom Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>
 
-      {/* Header Section */}
+      {/* Title + Description */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pt-10 pb-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#393939] mb-6 tracking-tight text-center">
           BEDROOM INSPIRATION
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed">
-          Choosing a bedroom paint color is about creating your personal sanctuary. Our bedroom inspiration gallery helps you explore colors by mood, style, and palette to spark ideas and bring your dream retreat to life.
+          Create a personal sanctuary with bedroom color inspiration. Explore tones and styles that make your space calm, cozy, and uniquely yours.
         </p>
       </div>
 
-      {/* Animated Room Blocks */}
+      {/* Room Blocks */}
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         {filteredRooms.length > 0 ? (
-          filteredRooms.map((block, i) => (
-            <motion.div
-              key={block.name}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
-              {/* Wrap the RoomInspiration in a Link to navigate to individual page */}
-              <Link to={`/room/${block.name.toLowerCase().replace(/\s+/g, '-')}`}>
+          filteredRooms.map((block) => {
+            const firstShot = block.shots?.[0];
+            return (
+              <motion.div
+                key={block.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeInUp}
+              >
                 <RoomInspiration
                   title={block.name}
                   description={block.description}
-                  imageUrl={block.image}
-                  colors={block.colors.map(findColor).filter(Boolean)}  // Mapping colors dynamically
+                  imageUrl={firstShot?.image || ""}
+                  colors={(firstShot?.colors || []).map(findColor).filter(Boolean)}
+                  to={`/room/${block.name.toLowerCase().replace(/\s+/g, "-")}`}
                 />
-              </Link>
-            </motion.div>
-          ))
+              </motion.div>
+            );
+          })
         ) : (
           <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
             <p className="text-lg text-gray-700 text-center">

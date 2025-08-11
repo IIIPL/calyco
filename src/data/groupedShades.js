@@ -58,7 +58,9 @@ export const groupedShades = [
       { name: "Thar Earth", hex: "#B68B6E" },
       { name: "Maroon Glow", hex: "#6E4F3C" },
       { name: "Taupe Mist", hex: "#937E71" },
-      { name: "Almond Sand", hex: "#A67B5B" }
+      { name: "Almond Sand", hex: "#A67B5B" },
+      { name: "Mudstone Brown", hex: "#835C46" }
+      
     ]
   },
   {

@@ -6,6 +6,8 @@ import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
 import { BuyNowDrawer } from '../components/BuyNowDrawer';
 import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
+import NotFound from './NotFound'; 
+
 
 // Helper function to create URL-friendly slugs
 
@@ -48,7 +50,9 @@ const ColorDetailPage = () => {
   }, [familyName, colorName]);
   // If the color is not found, show a "not found" message
   if (!currentColor) {
-    return <div className="p-20 text-center text-black">Color not found.</div>;
+    return (
+      <NotFound/>
+    )
   }
   
   // Get similar colors and combinations
