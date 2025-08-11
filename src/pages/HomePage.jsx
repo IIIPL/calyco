@@ -19,7 +19,75 @@ import MiniVisualizer from "../components/MiniVisualizer";
 import MiniInspirationGallery from "../components/HomeComponents/MiniInspirationGallyer";
 
 
-
+const galleryImages = [
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },{
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },{
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },{
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },{
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },{
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
+    alt: "Modern exterior home at dusk",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png",
+    alt: "Bright hallway with artwork",
+  },
+  {
+    src: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg",
+    alt: "Cozy bedroom in neutral tones",
+  },
+];
 export const HomePage = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { threshold: 0.3 });
@@ -67,7 +135,7 @@ export const HomePage = () => {
            <div>
             <Slider/>
             <MiniVisualizer/>
-            <MiniInspirationGallery/>
+            <MiniInspirationGallery images={galleryImages} height={180} cardWidth={260}  />
            </div>
             {/* Enhanced Who We Serve Section */}
             

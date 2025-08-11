@@ -12,8 +12,8 @@ const slugify = (text) =>
 
 const MINI_ROOMS = [
   {
-    key: "living-room-1",
-    title: "Living room 1",
+    key: "Serene Lounge Haven",
+    title: "Serene Lounge Haven",
     imageFallback:
       "https://res.cloudinary.com/dr98axi2n/image/upload/v1754831770/sky_blue_indigo_twilight_bbiqpk.jpg",
     mask: "polygon(5% 35%, 95% 25%, 95% 95%, 5% 95%)",
