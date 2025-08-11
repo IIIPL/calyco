@@ -21,7 +21,7 @@ export default function BedroomInspiration() {
       {/* Top Banner Image */}
       <div className="w-full overflow-hidden">
         <img
-          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/bedroomHero_f6cpvc.jpg"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
           alt="Bedroom Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />

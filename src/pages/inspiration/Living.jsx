@@ -21,7 +21,7 @@ export default function LivingRoomInspiration() {
       {/* Top Banner Image */}
       <div className="w-full overflow-hidden">
         <img
-          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/livingHero_qyoxik.jpg"
+          src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/livingroomHero_vvdi6l.jpg"
           alt="Living Room Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
