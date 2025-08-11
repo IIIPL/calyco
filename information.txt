@@ -1,0 +1,101 @@
+# Project Overview
+This is a modern, single-page React application for a paint and coatings brand. Users can browse products, explore color inspirations, visualize rooms, and manage a shopping cart. The app is fully client-side, with all product and color data stored locally. The architecture is modular, with context providers for state and a data-driven UI.
+
+# Tech Stack
+- **Languages:** JavaScript, JSX
+- **Frameworks:** React (SPA)
+- **Runtime:** Browser (ESM)
+- **Package Manager:** npm
+- **Major Libraries:**
+  - Routing: react-router-dom
+  - State: React Context API
+  - Styling: Tailwind CSS, PostCSS
+  - Animation: framer-motion, gsap, keen-slider
+  - Forms/HTTP: @emailjs/browser (email integration)
+  - Image: react-lazy-load-image-component
+  - Build: Vite
+  - Linting: ESLint
+
+# File/Folder Structure
+```
+New Repo/
+├─ index.html         # HTML entry point
+├─ package.json       # Project metadata, scripts, dependencies
+├─ vite.config.js     # Vite build config
+├─ tailwind.config.js # Tailwind CSS config
+├─ postcss.config.js  # PostCSS config
+├─ eslint.config.js   # ESLint config
+├─ src/               # Application source code
+│  ├─ main.jsx        # JS entry, React root
+│  ├─ App.jsx         # Main app, routing/layout
+│  ├─ assets/         # Static assets (SVG, images)
+│  ├─ components/     # Reusable UI components
+│  ├─ context/        # React Context providers (state)
+│  ├─ data/           # All product, color, and room data
+│  ├─ hooks/          # Custom React hooks
+│  ├─ pages/          # Route-level pages (views)
+│  ├─ utils/          # Utility/helper functions
+│  └─ index.css       # Global styles
+└─ public/            # Static files (images, icons, API mocks)
+```
+- **src/main.jsx**: App entry, React root, router setup
+- **src/App.jsx**: App shell, context providers, route definitions
+- **index.html**: HTML root, loads React app
+
+# Application Flow
+- **Boot:** index.html → main.jsx (mounts App in #root)
+- **Routing:** BrowserRouter (react-router-dom) handles all navigation; routes defined in App.jsx
+- **Layout:** App.jsx wraps all pages with Navbar, Footer, and context providers (Cart, Color, Visualization)
+- **State:** Global state via React Context (cart, color, visualization); local state for UI controls
+- **Data:** All product, color, and room data is loaded from src/data/ JS/CSV files at runtime
+- **Data Fetch:** No backend—data is imported as modules; UI components/pages read from data/ as needed
+- **Pages:** Each route renders a page from src/pages/; dynamic product/color/room pages use params
+
+# Data Structure
+- **src/data/** contains all structured data:
+  - **colorGroups.js, groupedShades.js:** Color families, palettes, and groupings (arrays of objects)
+  - **flatColors.js:** Flat list of all colors with metadata (name, code, family, hex, usage, etc.)
+  - **products.js:** Array of product objects (name, description, specs, images, etc.)
+  - **products csv.csv:** CSV export of product data (for reference/import)
+  - **roomData.js:** Array of room inspiration objects (room type, name, description, color combos, images)
+  - **compatibleProducts.js, finishes.js, trends.js, template.js, something.js, projects.js:** Misc. supporting data
+- **Usage:** Data is imported directly into components/pages for rendering product lists, color selectors, inspiration galleries, and visualizer features. No external API or DB.
+
+# APIs & Integrations
+- **Internal API:** None (all data is local)
+- **External Services:**
+  - @emailjs/browser: Used for contact forms (email sending)
+
+# Key Modules & Responsibilities
+- **components/**: UI building blocks (Navbar, Footer, ProductCard, ColorSwatch, CartModal, etc.)
+- **pages/**: Route-level views (HomePage, Products, DynamicProductPage, ColorDetailPage, RoomVisualizer, etc.)
+- **context/CartContext.jsx**: Shopping cart state and actions
+- **context/ColorContext.jsx**: Selected color state, color filters
+- **context/ColorVisualizationContext.jsx**: State for color visualization/room visualizer
+- **hooks/useAutoRotate.js**: Custom hook for auto-rotating UI elements
+- **utils/**: colorutils.jsx (color math), mapping.js (data mapping), segmentation.js (image segmentation), etc.
+
+# Configuration & Scripts
+- **package.json scripts:**
+  - `dev`: Start Vite dev server
+  - `build`: Build for production
+  - `preview`: Preview production build
+  - `lint`: Run ESLint on all files
+- **Vite:** Standard React + plugin-react setup
+- **Tailwind:** Custom font family (Poppins), scans all src/ for classes
+- **PostCSS:** Tailwind + autoprefixer
+- **ESLint:** React, hooks, and Vite plugin rules; ignores dist/
+
+# Handover Notes
+- **Before shipping:**
+  - Test all routes and dynamic pages (product/color/room params)
+  - Check data/ for consistency (IDs, color names, product numbers)
+  - Validate forms (contact, checkout)
+  - Lint and build to catch errors
+- **Easy to break:**
+  - Data shape changes in data/ can break UI—update components if data structure changes
+  - Route params: Ensure dynamic routes match data keys
+- **Safe to extend:**
+  - Add new products/colors/rooms by updating data/
+  - Add new pages/components in src/pages/ or src/components/
+  - Extend context or hooks for new stateful features

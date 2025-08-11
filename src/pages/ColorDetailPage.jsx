@@ -127,7 +127,7 @@ const ColorDetailPage = () => {
           <img
             src={
               currentColor.image ||
-              'https://via.placeholder.com/800x1000?text=No+Image'
+              'https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000'
             }
             alt={currentColor.name}
             className="w-full h-auto max-h-[90vh] object-contain md:mb-10"

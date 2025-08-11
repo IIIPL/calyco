@@ -1,0 +1,109 @@
+# Environment Requirements
+- **OS Compatibility:** Windows, macOS, Linux (inferred)
+- **Node.js:** >= 18.x (inferred from Vite and React 19 usage)
+- **npm:** >= 9.x (inferred)
+- **Global Tools:** None required (all scripts run via npm; Vite/Tailwind handled via devDependencies)
+- **Browser Support:** Modern browsers (Chrome, Firefox, Edge, Safari); targets ES modules (inferred from Vite, no .browserslistrc)
+
+# Dependencies & Libraries
+## Core
+- **react, react-dom:** Main UI framework (SPA rendering)
+- **react-router-dom:** Client-side routing
+
+## UI/Styling
+- **tailwindcss:** Utility-first CSS framework
+- **postcss, autoprefixer:** CSS processing and vendor prefixing
+- **@heroicons/react, lucide-react, react-icons:** Icon libraries
+- **react-lazy-load-image-component:** Optimized image loading
+
+## Animation
+- **framer-motion:** Declarative animations
+- **gsap:** Advanced animation and timeline control
+- **keen-slider:** Touch slider/carousel
+
+## Utilities
+- **@emailjs/browser:** Email sending (contact forms)
+- **@tensorflow-models/deeplab, @tensorflow/tfjs, @tensorflow/tfjs-backend-webgl:** Image segmentation for visualizer
+
+## Build Tools
+- **vite:** Fast dev server and build tool
+- **@vitejs/plugin-react:** Vite React integration
+
+## Linting/Formatting
+- **eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals:** Linting and code quality
+- **@types/react, @types/react-dom:** TypeScript type support (for editor autocomplete)
+
+# Local Setup Steps
+1. **Clone the repository:**
+   ```sh
+   git clone <repo-url>
+   cd <repo-folder>
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+4. **Build for production:**
+   ```sh
+   npm run build
+   ```
+5. **Preview production build:**
+   ```sh
+   npm run preview
+   ```
+6. **Lint the codebase:**
+   ```sh
+   npm run lint
+   ```
+
+# Development Standards
+- **Coding Style:**
+  - ESLint: Enforces React, hooks, and Vite plugin rules
+  - No unused vars (except for those starting with uppercase/underscore)
+  - ECMAScript modules, JSX/JS only
+- **Folder Structure:**
+  - `src/components/`: Reusable UI components
+  - `src/pages/`: Route-level views
+  - `src/hooks/`: Custom React hooks
+  - `src/context/`: React Context providers
+  - `src/data/`: All static data (products, colors, rooms)
+  - `src/utils/`: Utility/helper functions
+- **State Management:**
+  - Use React Context for global state (cart, color, visualization)
+  - Local state for UI controls only
+  - Avoid prop drilling; prefer context or hooks
+- **Tailwind Usage:**
+  - Use utility classes in JSX only
+  - Theme customizations (fonts, etc.) in tailwind.config.js
+  - No custom CSS except index.css for global resets
+
+# Data Handling
+- **src/data/** is the single source of truth for all app data
+- **File formats:** JS modules (arrays/objects), CSV (for product import/export)
+- **How to add/edit:**
+  - Add new products/colors/rooms by editing or adding files in src/data/
+  - Keep data shape consistent; update UI if structure changes
+- **Warning:**
+  - Changing data structure may break components/pages—coordinate changes
+
+# Testing & Validation
+- **Manual Testing:**
+  - Test all routes in browser (see App.jsx for route list)
+  - Check dynamic pages (product/color/room params)
+  - Test visualizer and cart flows
+- **Validation:**
+  - Run `npm run lint` and `npm run build` before pushing
+  - Fix all linter errors and warnings
+
+# Handover Notes
+- **Safe to extend:**
+  - Add new data in src/data/
+  - Add new components/pages in src/components/ or src/pages/
+  - Extend context or hooks for new stateful features
+- **Common pitfalls:**
+  - Route params must match data keys (case-sensitive)
+  - Data shape changes in src/data/ can break UI—update components accordingly
