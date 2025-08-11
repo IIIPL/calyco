@@ -63,7 +63,7 @@ export default function IndividualRoomPage() {
             We couldn't find the room you're looking for. Please check the URL or return to our gallery.
           </p>
           <Link
-            to="/rooms"
+            to="/inspirations"
             className="inline-block px-8 py-3 bg-[#393939] text-white rounded-lg hover:bg-[#222] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#393939]"
           >
             Browse All Rooms

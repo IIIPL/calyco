@@ -212,7 +212,7 @@ export const flatColors = [
     "rooms": "Bedroom, Kids Room",
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913265/Blush_Petal_pqrvdy.jpg",
     "combinationcolor": ["Lotus Bloom", "Blossom Warmth", "Almond Mist", "Sage Whisper"]
   },
   {
@@ -236,7 +236,7 @@ export const flatColors = [
     "rooms": "Bedroom, Highlight Walls",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913280/Lilac_Veil_tpxjdh.jpg",
     "combinationcolor": ["Vintage Rose", "Lilac Dust", "Morning Dew", "Teal Serenity"]
   },
   {
@@ -260,7 +260,7 @@ export const flatColors = [
     "rooms": "Bedroom, Prayer Room",
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913190/Rosewood_Haze_dcjmyw.jpg",
     "combinationcolor": ["Vintage Rose", "Blossom Warmth", "Silk Taupe", "Olive Grove"]
   },
   {
@@ -284,7 +284,7 @@ export const flatColors = [
     "rooms": "Dining Room, Living Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913284/Peach_Glow_rc19ir.jpg",
     "combinationcolor": ["Desert Rose", "Sunset Glow", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -308,7 +308,7 @@ export const flatColors = [
     "rooms": "Bedroom, Kids Room",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913175/Terra_Blush_itzbvq.jpg",
     "combinationcolor": ["Clay Beige", "Earthy Terracotta", "Dusky Sand", "Sage Whisper"]
   },
   {
@@ -332,7 +332,7 @@ export const flatColors = [
     "rooms": "Living Room, Highlight Walls",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913270/Coral_Charm_xv8ot6.jpg",
     "combinationcolor": ["Peach Glow", "Desert Rose", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -356,7 +356,7 @@ export const flatColors = [
     "rooms": "Bedroom, Hallways, Kids Room",
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913261/Blossom_Warmth_w9zbfp.jpg",
     "combinationcolor": ["Blush Petal", "Rosewood Haze", "Almond Mist", "Sage Whisper"]
   },
   {
@@ -380,7 +380,7 @@ export const flatColors = [
     "rooms": "Study Room, Bedroom",
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913173/Vintage_Rose_iog929.jpg",
     "combinationcolor": ["Rosewood Haze", "Lilac Veil", "Morning Dew", "Teal Serenity"]
   },
   {
@@ -404,7 +404,7 @@ export const flatColors = [
     "rooms": "Highlight Walls, Exterior Body",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913271/Earthy_Terracotta_h46mwv.jpg",
     "combinationcolor": ["Terra Blush", "Clay Beige", "Dusky Sand", "Sage Whisper"]
   },
   {
@@ -500,7 +500,7 @@ export const flatColors = [
     "rooms": "Highlight Walls, Hallways",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913191/Rustic_Rust_cehwvi.jpg",
     "combinationcolor": ["Brick Red", "Earthy Terracotta", "Taupe Warmth", "Teal Serenity"]
   },
   {
@@ -524,7 +524,7 @@ export const flatColors = [
     "rooms": "Study Room, Exterior Trims and Accents",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913282/Olive_Earth_jr4jli.jpg",
     "combinationcolor": ["Sage Whisper", "Olive Grove", "Almond Mist", "Earthy Terracotta"]
   },
   {
@@ -548,7 +548,7 @@ export const flatColors = [
     "rooms": "Dining Room, Kitchen",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913276/Golden_Harvest_kuaxqf.jpg",
     "combinationcolor": ["Candlelight Gold", "Vanilla Cream", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -596,7 +596,7 @@ export const flatColors = [
     "rooms": "Highlight Walls, Hallways",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914415/Royal_Indigo_pbyfwj.jpg",
     "combinationcolor": ["Indigo Twilight", "Navy Fade", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -620,7 +620,7 @@ export const flatColors = [
     "rooms": "Bedroom, Study Room",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913259/Plum_Midnight_cjcugd.jpg",
     "combinationcolor": ["Royal Indigo", "Mauve Shadow", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -644,7 +644,7 @@ export const flatColors = [
     "rooms": "Living Room, Entertainment Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914480/Indigo_Twilight_tolnto.jpg",
     "combinationcolor": ["Royal Indigo", "Navy Fade", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -668,7 +668,7 @@ export const flatColors = [
     "rooms": "Study Room, Hallways",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913283/Olive_Grove_qc9ga4.jpg",
     "combinationcolor": ["Olive Earth", "Forest Olive", "Almond Mist", "Earthy Terracotta"]
   },
   {
@@ -692,7 +692,7 @@ export const flatColors = [
     "rooms": "Kitchen, Balcony",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913174/Teal_Serenity_a8lfwb.jpg",
     "combinationcolor": ["Jade Mist", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -716,7 +716,7 @@ export const flatColors = [
     "rooms": "Bathroom, Living Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913277/Jade_Mist_sgddz2.jpg",
     "combinationcolor": ["Teal Serenity", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -740,7 +740,7 @@ export const flatColors = [
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913281/Mauve_Shadow_wicx2y.jpg",
     "combinationcolor": ["Plum Midnight", "Vintage Rose", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -836,7 +836,7 @@ export const flatColors = [
     "rooms": "Bedroom, Highlight Walls",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913280/Lotus_Bloom_p4c9rq.jpg",
     "combinationcolor": ["Blush Petal", "Blossom Warmth", "Almond Mist", "Sage Whisper"]
   },
   {
@@ -932,7 +932,7 @@ export const flatColors = [
     "rooms": "Living Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913272/Desert_Rose_hatdto.jpg",
     "combinationcolor": ["Peach Glow", "Sunset Glow", "Almond Mist", "Sage Whisper"]
   },
   {
@@ -1028,7 +1028,7 @@ export const flatColors = [
     "rooms": "Dining Room",
     "collection": "French Country",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913267/Candlelight_Gold_pfdidq.jpg",
     "combinationcolor": ["Golden Harvest", "Vanilla Cream", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -1364,7 +1364,7 @@ export const flatColors = [
     "rooms": "Living Room, Prayer Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913274/Forest_Olive_qykrqm.jpg",
     "combinationcolor": ["Olive Earth", "Olive Grove", "Almond Mist", "Earthy Terracotta"]
   },
   {
@@ -1388,7 +1388,7 @@ export const flatColors = [
     "rooms": "Study Room, Bedroom",
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913264/Sage_Dust_c7lrfk.jpg",
     "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1412,7 +1412,7 @@ export const flatColors = [
     "rooms": "",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913274/Eucalyptus_Breeze_uofl5j.jpg",
     "combinationcolor": ["Sage Whisper", "Sage Dust", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1436,7 +1436,7 @@ export const flatColors = [
     "rooms": "Bathroom, Bedroom",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913269/Celadon_Green_sqddrv.jpg",
     "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1460,7 +1460,7 @@ export const flatColors = [
     "rooms": "All Rooms",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913284/Mint_Whisper_ec9v7u.jpg",
     "combinationcolor": ["Celadon Green", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1484,7 +1484,7 @@ export const flatColors = [
     "rooms": "Kids Room, Hallways",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914419/Sky_Blue_ciiizk.jpg",
     "combinationcolor": ["Glacier Mist", "Ocean Mist", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1628,7 +1628,7 @@ export const flatColors = [
     "rooms": "Kitchen, Living Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior/C Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914455/Ocean_Mist_zalnmn.jpg",
     "combinationcolor": ["Teal Serenity", "Jade Mist", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1652,7 +1652,7 @@ export const flatColors = [
     "rooms": "Prayer Room, Hallways",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914417/Deep_Ocean_xdsaxw.jpg",
     "combinationcolor": ["Royal Indigo", "Indigo Night", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1796,7 +1796,7 @@ export const flatColors = [
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Farmhouse",
     "interior_or_exterior": "Interior/C Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913173/Royal_Plum_mgicga.jpg",
     "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
   },
   {
@@ -1868,7 +1868,7 @@ export const flatColors = [
     "rooms": "Entertainment Room, Bedroom",
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913191/Asphalt_Grey_kqo8w3.jpg",
     "combinationcolor": ["Charcoal Grey", "Shadow Grey", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -1892,7 +1892,7 @@ export const flatColors = [
     "rooms": "Kitchen, Study Room",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913176/Steel_Grey_ukpg9f.jpg",
     "combinationcolor": ["Olive Grove", "Forest Olive", "Almond Mist", "Earthy Terracotta"]
   },
   {
@@ -1916,7 +1916,7 @@ export const flatColors = [
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913177/Walnut_Brown_wkjpcr.jpg",
     "combinationcolor": ["Plum Midnight", "Mauve Shadow", "Taupe Warmth", "Teal Serenity"]
   },
   {
@@ -1940,7 +1940,7 @@ export const flatColors = [
     "rooms": "Living Room, Highlight Walls",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913174/Sienna_Burnt_ecegy7.jpg",
     "combinationcolor": ["Plum Midnight", "Mauve Shadow", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -2084,7 +2084,7 @@ export const flatColors = [
     "rooms": "Exterior Body, Balcony",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913267/Almond_Beige_p4fn27.jpg",
     "combinationcolor": ["Terra Blush", "Clay Beige", "Dusky Sand", "Sage Whisper"]
   },
   {
@@ -2132,7 +2132,7 @@ export const flatColors = [
     "rooms": "Dining Room, Prayer Room",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913285/Molten_Ember_e04pu5.jpg",
     "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
   },
   {
@@ -2156,7 +2156,7 @@ export const flatColors = [
     "rooms": "Bedroom, Study Room",
     "collection": "Vintage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913281/Maroon_Velvet_xp50wi.jpg",
     "combinationcolor": ["Brick Red", "Rustic Rust", "Taupe Warmth", "Teal Serenity"]
   },
   {
@@ -2228,7 +2228,7 @@ export const flatColors = [
     "rooms": "Kitchen, Living Room",
     "collection": "Farmhouse",
     "interior_or_exterior": "Exterior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914476/Ochre_Copper_cbsttz.jpg",
     "combinationcolor": ["Clay Beige", "Copper Glow", "Dusky Sand", "Sage Whisper"]
   },
   {
@@ -2252,7 +2252,7 @@ export const flatColors = [
     "rooms": "Dining Room, Hallways",
     "collection": "Mid-Century Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914415/Brass_Dust_vmhadi.jpg",
     "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -2276,7 +2276,7 @@ export const flatColors = [
     "rooms": "Balcony, Living Room",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914449/Golden_Clay_fnmwre.jpg",
     "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -2300,7 +2300,7 @@ export const flatColors = [
     "rooms": "Kitchen, Prayer Room",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914415/Curry_Yellow_edlazx.jpg",
     "combinationcolor": ["Golden Harvest", "Candlelight Gold", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -2324,7 +2324,7 @@ export const flatColors = [
     "rooms": "Dining Room, Highlight Walls",
     "collection": "Modern",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754914412/Citrus_Ochre_dvd5wb.jpg",
     "combinationcolor": ["Golden Harvest", "Curry Yellow", "Almond Mist", "Teal Serenity"]
   },
   {
@@ -2468,7 +2468,7 @@ export const flatColors = [
     "rooms": "All Rooms",
     "collection": "Coastal",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913285/Pistachio_Soft_dzbkzl.jpg",
     "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -2492,7 +2492,7 @@ export const flatColors = [
     "rooms": "Bedroom, Kitchen",
     "collection": "Cottage",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913284/Mint_Soft_mclkid.jpg",
     "combinationcolor": ["Sage Whisper", "Eucalyptus Breeze", "Morning Dew", "Earthy Terracotta"]
   },
   {
@@ -2540,7 +2540,7 @@ export const flatColors = [
     "rooms": "Bedroom, Prayer Room",
     "collection": "Boho",
     "interior_or_exterior": "Interior",
-    "image": "",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913278/Lilac_Dust_a4hj4i.jpg",
     "combinationcolor": ["Plum Midnight", "Vintage Rose", "Morning Dew", "Earthy Terracotta"]
   },
   {

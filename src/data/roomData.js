@@ -736,7 +736,7 @@ export const roomData = [
   },
   {
     "roomFamily": "living-room",
-    "name": "Living room 1",
+    "name": "Serene Lounge Haven",
     "description": "A clean, contemporary studio workspace in orchid pink with floating shelves and pastel accents.",
     "moreInfo": "/more/study",
     "recommendedUse": "Design Studios, Compact Workspaces",
