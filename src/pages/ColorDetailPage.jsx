@@ -138,8 +138,8 @@ const ColorDetailPage = () => {
             <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 font-semibold">
               {currentColor.name}
             </h1>
-            <p className="text-xl">
-              <span>Color Code :</span> {currentColor.hex}
+            <p className="text-xl md:mt-10">
+              <span>Color Code: </span>{currentColor.code} {/* this is the color code, right now same for all */}
             </p>
           </div>
 
@@ -173,12 +173,14 @@ const ColorDetailPage = () => {
             </a>
           </div>
 
-          <button
-            onClick={() => setShowDrawer(true)}
-            className="bg-black text-white font-semibold px-6 py-2 rounded-md mt-8 self-start"
-          >
-            Buy Now
-          </button>
+            <button
+              onClick={() => setShowDrawer(true)}
+              style={{ color: currentColor.hex }}
+              className="bg-black font-semibold px-8 py-4 rounded-md mt-8 self-start"
+            >
+              Buy Now
+            </button>
+
           <BuyNowDrawer
             isOpen={showDrawer}
             onClose={() => setShowDrawer(false)}
