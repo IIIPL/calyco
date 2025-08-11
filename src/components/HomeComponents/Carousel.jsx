@@ -27,7 +27,10 @@ export default function Carousel() {
       {/* Slide container */}
       <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {slides.map((slide, index) => (
-          <div key={index} className="w-full flex-shrink-0 h-56 md:h-96 flex items-center justify-center">
+          <div
+            key={index}
+            className="w-full flex-shrink-0 h-48 sm:h-64 md:h-80 lg:h-96 flex items-center justify-center"
+          >
             {slide}
           </div>
         ))}

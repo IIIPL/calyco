@@ -51,7 +51,7 @@ export const ColorTrends = () => {
 
   {/* First Color Cards Block */}
   <motion.div
-    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+    className="grid grid-cols-5"
     initial={{ opacity: 0, x: -80 }}
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.8 }}
@@ -78,7 +78,7 @@ export const ColorTrends = () => {
 
   {/* Duplicate Color Cards Block at Bottom */}
 <motion.div
-  className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+  className="mt-20 grid grid-cols-5"
   initial={{ opacity: 0, x: 80 }}
   whileInView={{ opacity: 1, x: 0 }}
   transition={{ duration: 0.8 }}
