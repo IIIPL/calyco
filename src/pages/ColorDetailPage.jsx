@@ -94,7 +94,7 @@ const ColorDetailPage = () => {
   return (
     <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col md:flex-row md:gap-6 relative" style={{ backgroundColor: currentColor.hex }}
+      <section className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative" style={{ backgroundColor: currentColor.hex }}
       >
         {/* Breadcrumb */}
         <nav
@@ -122,18 +122,19 @@ const ColorDetailPage = () => {
         </nav>
 
         {/* Left - Image */}
-        <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0">
+        <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0 md:h-full flex items-center justify-center">
           <img
             src={
               currentColor.image 
             }
             alt={currentColor.name}
-            className="w-full h-auto max-h-[90vh] object-contain md:mb-10"
+            className="h-full w-auto object-contain md:mb-10"
           />
         </div>
 
         {/* Right - Details */}
-        <div className="w-full md:basis-[62%] min-w-0 pl-6 pr-10 pt-20 flex flex-col justify-start mb-10">
+        <div className="w-full md:basis-[62%] min-w-0 pl-6 pr-10 pt-20 flex flex-col justify-start md:h-full md:overflow-auto mb-10">
+
           <div className="mb-8 md:pt-16">
             <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 font-semibold">
               {currentColor.name}
