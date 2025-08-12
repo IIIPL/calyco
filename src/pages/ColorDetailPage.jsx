@@ -51,7 +51,8 @@ const ColorDetailPage = () => {
         ...fullColorData, // ensures image, hex, etc. are included
         color_family: group.family,
       });
-    }
+    } else { setCurrentColor(null); }
+
   }, [familyName, colorName]);
 
   if (!currentColor) {
@@ -124,8 +125,7 @@ const ColorDetailPage = () => {
         <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0">
           <img
             src={
-              currentColor.image ||
-              'https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000'
+              currentColor.image 
             }
             alt={currentColor.name}
             className="w-full h-auto max-h-[90vh] object-contain md:mb-10"

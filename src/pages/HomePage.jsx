@@ -135,7 +135,7 @@ export const HomePage = () => {
            <div>
             <Slider/>
             <MiniVisualizer/>
-            <MiniInspirationGallery images={galleryImages} height={180} cardWidth={260}  />
+            <MiniInspirationGallery height={180} cardWidth={260} />
            </div>
             {/* Enhanced Who We Serve Section */}
             
