@@ -1,7 +1,6 @@
 // src/components/MiniInspirationGallery.jsx
 import React, { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
-// adjust path if needed
 import { roomData } from "../../data/roomData";
 
 const GOLD = "#C9A941";
@@ -38,7 +37,7 @@ export default function MiniInspirationGallery({
       const j = Math.floor(Math.random() * (i + 1));
       [uniq[i], uniq[j]] = [uniq[j], uniq[i]];
     }
-    return uniq.slice(0, 10);
+    return uniq.slice(0, 12); // a bit more room for wider screens
   }, [basePath]);
 
   // never route to external URLs; force /room/<slug>
@@ -91,7 +90,8 @@ export default function MiniInspirationGallery({
   const scrollByAmount = (dir = 1) => {
     const el = trackRef.current;
     if (!el) return;
-    const step = Math.round(el.clientWidth * 0.8);
+    // bigger step on large screens, smaller on phones
+    const step = Math.round(el.clientWidth * (window.innerWidth < 640 ? 0.6 : 0.8));
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
@@ -100,84 +100,100 @@ export default function MiniInspirationGallery({
     if (e.key === "ArrowLeft") scrollByAmount(-1);
   };
 
-  const CARD_W = `clamp(220px, 72vw, ${cardWidth}px)`;
-  const CARD_H = `clamp(150px, 46vw, ${height}px)`;
-  const SECTION_H = 48 + Math.min(height, 180);
+  // responsive card sizing + consistent aspect
+  const CARD_W = `clamp(200px, 60vw, ${cardWidth}px)`;
+  const CARD_H = `clamp(180px, 42vw, ${height + 60}px)`;
+  const SECTION_H = 80 + Math.min(height, 280); // taller default for all breakpoints
 
   return (
-    <section className="w-full" style={{ height: SECTION_H }}>
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(180px,22%)_1fr] md:gap-8 h-full mx-3">
-        {/* LEFT title */}
-        <div className="px-4 sm:px-6 h-full flex items-center justify-center md:justify-start">
-          <h2 className="leading-[0.95] text-center md:text-left whitespace-nowrap md:whitespace-normal">
-            <span className="inline md:block uppercase text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1b1330]">
-              Inspiration
-            </span>
-            <span className="inline md:block uppercase text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1b1330]">
-              {" "}Gallery
-            </span>
-          </h2>
-        </div>
-
-        {/* RIGHT: carousel */}
-        <div className="relative h-full flex items-center overflow-hidden min-w-0 pl-10 md:pl-16 lg:pl-24 pr-10 md:pr-16 lg:pr-24">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent" />
-
-          <div
-            ref={trackRef}
-            data-mig
-            className="relative overflow-x-auto snap-x snap-mandatory w-full [scrollbar-width:none] [-ms-overflow-style:none] pl-14 sm:pl-16 md:pl-20 lg:pl-24 pr-0"
-            onKeyDown={onKeyDown}
-            tabIndex={0}
-            aria-label="Inspiration images"
-            style={{ height: CARD_H, scrollBehavior: "smooth" }}
-          >
-            <style>{`[data-mig]::-webkit-scrollbar{display:none;}`}</style>
-
-            <ul className="flex gap-4 h-full min-w-max">
-              {galleryImages.map(({ src, alt, to }, i) => (
-                <li
-                  key={i}
-                  className="snap-start shrink-0 ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-shadow"
-                  style={{ width: CARD_W, height: CARD_H }}
-                >
-                  <Link to={to} className="block w-full h-full overflow-hidden">
-                    <img
-                      src={src}
-                      alt={alt}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover"
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+    <section className="w-full py-4 sm:py-6" style={{ minHeight: SECTION_H }}>
+      <div className="mx-auto max-w-7xl px-3 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(200px,28%)_1fr] lg:grid-cols-[minmax(240px,26%)_1fr] gap-4 sm:gap-6 md:gap-8 items-stretch">
+          {/* LEFT title (wraps nicely, never overlaps) */}
+          <div className="flex items-center justify-start">
+            <h2 className="leading-[0.95] text-left">
+              <span className="block uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1b1330]">
+                {title.split(" ")[0] || "INSPIRATION"}
+              </span>
+              <span className="block uppercase text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1b1330]">
+                {title.split(" ")[1] ? title.split(" ").slice(1).join(" ") : "GALLERY"}
+              </span>
+            </h2>
           </div>
 
-          {/* Chevrons */}
-          <button
-            aria-label="Scroll left"
-            onClick={() => scrollByAmount(-1)}
-            className="group absolute left-3 md:left-4 lg:left-5 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/40 disabled:opacity-40 disabled:cursor-default"
-            disabled={atStart}
-          >
-            <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none">
-              <path d="M15 5L8 12l7 7" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+          {/* RIGHT: carousel */}
+          <div className="relative min-w-0">
+            {/* gradients kept narrow on mobile, wider on desktop */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 md:w-24 bg-gradient-to-r from-white to-transparent"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-14 md:w-20 bg-gradient-to-l from-white to-transparent"
+            />
 
-          <button
-            aria-label="Scroll right"
-            onClick={() => scrollByAmount(1)}
-            className="group absolute right-5 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/40 disabled:opacity-40 disabled:cursor-default"
-            disabled={atEnd}
-          >
-            <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none">
-              <path d="M9 5l7 7-7 7" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+            <div
+              ref={trackRef}
+              data-mig
+              className="relative w-full overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] px-10 sm:px-12 md:px-16 lg:px-24"
+              onKeyDown={onKeyDown}
+              tabIndex={0}
+              aria-label="Inspiration images"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              <style>{`[data-mig]::-webkit-scrollbar{display:none;}`}</style>
+
+              <ul className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-2 select-none touch-pan-x"
+                style={{ height: CARD_H }}
+              >
+                {galleryImages.map(({ src, alt, to }, i) => (
+                  <li
+                    key={i}
+                    className="snap-start shrink-0 min-w-fit rounded-2xl ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-transform duration-200"
+                    style={{ height: CARD_H }}
+                  >
+                    <Link
+                      to={to}
+                      className="w-full h-full rounded-2xl overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/50 flex items-center justify-center"
+                    >
+                      <img
+                        src={src}
+                        alt={alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-auto object-contain"
+                        sizes="(max-width: 640px) 60vw, (max-width: 1024px) 40vw, 260px"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Chevrons (kept off the title, responsive hit area) */}
+            <button
+              aria-label="Scroll left"
+              onClick={() => scrollByAmount(-1)}
+              className="group absolute left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 md:p-3 rounded-full bg-white/70 backdrop-blur shadow ring-1 ring-black/10 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/40 disabled:opacity-40 disabled:cursor-default disabled:pointer-events-none"
+              disabled={atStart}
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none">
+                <path d="M15 5L8 12l7 7" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            <button
+              aria-label="Scroll right"
+              onClick={() => scrollByAmount(1)}
+              className="group absolute right-2 sm:right-3 md:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 md:p-3 rounded-full bg-white/70 backdrop-blur shadow ring-1 ring-black/10 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/40 disabled:opacity-40 disabled:cursor-default disabled:pointer-events-none"
+              disabled={atEnd}
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="none">
+                <path d="M9 5l7 7-7 7" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
