@@ -139,7 +139,7 @@ const ColorDetailPage = () => {
               {currentColor.name}
             </h1>
             <p className="text-xl md:mt-10">
-              <span>Color Code: </span>{currentColor.code} {/* this is the color code, right now same for all */}
+              <span>Color Code: </span>{currentColor.hex} {/* this is the color code, right now same for all */}
             </p>
           </div>
 
