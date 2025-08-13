@@ -18,7 +18,7 @@ export default function BedroomInspiration() {
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
-      {/* Top Banner Image */}
+      {/* Top Banner Image — DO NOT TOUCH */}
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
@@ -28,17 +28,17 @@ export default function BedroomInspiration() {
       </div>
 
       {/* Title + Description */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pt-10 pb-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#393939] mb-6 tracking-tight text-center">
+      <div className="mx-auto max-w-5xl lg:max-w-6xl xl:max-w-7xl px-3 sm:px-6 md:px-8 pt-8 sm:pt-10 pb-6 sm:pb-8">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#393939] mb-4 sm:mb-6 tracking-tight text-center">
           BEDROOM INSPIRATION
         </h1>
-        <p className="text-base sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed">
+        <p className="text-sm sm:text-lg md:text-xl text-[#393939] text-center leading-relaxed max-w-3xl md:max-w-4xl mx-auto">
           Create a personal sanctuary with bedroom color inspiration. Explore tones and styles that make your space calm, cozy, and uniquely yours.
         </p>
       </div>
 
       {/* Room Blocks */}
-      <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-7xl px-3 sm:px-6 md:px-8 space-y-12 sm:space-y-16 md:space-y-20">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((block) => {
             const firstShot = block.shots?.[0];
@@ -61,8 +61,8 @@ export default function BedroomInspiration() {
             );
           })
         ) : (
-          <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
-            <p className="text-lg text-gray-700 text-center">
+          <div className="max-w-4xl mx-auto pt-16 sm:pt-24 pb-10 sm:pb-12 px-4">
+            <p className="text-base sm:text-lg text-gray-700 text-center">
               Beautiful bedroom inspiration coming soon...
             </p>
           </div>

@@ -179,10 +179,7 @@ const RoomVisualizer = () => {
     setColorFamily(e.target.value);
   };
   
-  // Handle back navigation
-  const handleBackToLanding = () => {
-    navigate('/room-visualization');
-  };
+  
   
   // Function to create a mask from segmentation results
   const createMaskFromSegmentation = (labelMap, dimensions, targetLabel) => {
@@ -466,52 +463,24 @@ const RoomVisualizer = () => {
   }, [originalImage, editedImage]);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 pt-20 sm:pt-24 lg:pt-24">
       {/* Top Header */}
-      <div className="bg-gray-200 py-2 px-4 text-center">
-        <p className="text-sm text-gray-700">
-          Select a photo, experiment with hundreds of colors—and create the space you've always wanted.
-        </p>
-      </div>
       
-      {/* Navigation/Step Bar */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <button 
-              onClick={handleBackToLanding}
-              className="flex items-center text-gray-600 hover:text-gray-800"
-            >
-              <FaArrowLeft className="mr-2" />
-              START OVER
-            </button>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-600">1 CHOOSE A SAMPLE</span>
-              <span className="bg-white border-2 border-gray-800 px-3 py-1 rounded font-medium">
-                2 SELECT COLORS
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center text-gray-600">
-            <FaStar className="mr-2 text-yellow-500" />
-            MY SAVED PROJECTS (1)
-          </div>
-        </div>
-      </div>
+      
       
       {/* Main Content */}
-      <div className="flex justify-center items-start min-h-[80vh] px-8 py-8">
+      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-4 sm:gap-6 lg:gap-8 min-h-[80vh] px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
         {/* Center - Room Visualization */}
-        <div className="flex-1 flex flex-col items-center bg-gray-100 p-6 mx-4 my-4 rounded-xl shadow-md max-w-3xl">
-          <div className="flex justify-between items-center w-full mb-4">
-            <div className="flex items-center space-x-2 relative group">
-              <h2 className="text-xl font-semibold text-gray-800">
+        <div className="flex-1 w-full bg-gray-100 p-4 sm:p-6 mx-0 lg:mx-4 my-4 rounded-xl shadow-md max-w-full lg:max-w-4xl xl:max-w-[920px]">
+          <div className="flex flex-wrap justify-between items-center w-full mb-4 gap-3">
+            <div className="flex items-center space-x-2 relative group focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
                 {selectedRoom ? selectedRoom.name : 'Room Visualization'}
               </h2>
               <div className="relative inline-block group">
                 <FaQuestionCircle className="text-gray-400 cursor-pointer group-hover:text-indigo-600" />
                 {/* Tooltip */}
-                <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2 bg-white shadow-lg border border-gray-300 rounded-lg p-3 w-72 text-sm text-gray-700 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute sm:left-full sm:ml-3 left-1/2 -translate-x-1/2 sm:translate-x-0 bottom-full sm:bottom-auto mb-2 sm:mb-0 bg-white shadow-lg border border-gray-300 rounded-lg p-3 w-72 text-sm text-gray-700 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <strong className="block mb-1">How to use:</strong>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Upload a room photo</li>
@@ -533,7 +502,7 @@ const RoomVisualizer = () => {
                     });
                     setSelectedColors([]);
                   }}
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-red-600 transition-colors"
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-red-600 transition-colors min-w-[140px] text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 >
                   <FaTimes className="mr-2" />
                   Remove All Colors
@@ -541,23 +510,20 @@ const RoomVisualizer = () => {
               )}
               <button 
                 onClick={handleSaveProject}
-                className="bg-[#493657] text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-[#493657] text-white px-4 py-2 rounded-lg flex items-center min-w-[140px] text-xs sm:text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               >
                 <FaStar className="mr-2" />
                 Save Project
               </button>
             </div>
           </div>
-          
           {/* Surface Selection Boxes */}
-          <div className="flex justify-center space-x-4 mb-4 w-full">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-4 w-full">
             {surfaces.map((surface) => {
               const hasMask = surfaceMasks[surface.id];
               if (!hasMask) return null; // 🚫 Skip button if no mask
-
               const surfaceColor = appliedColors[surface.id]?.hex || surface.color;
               const textColor = getContrastColor(surfaceColor);
-
               return (
                 <div
                   key={surface.id}
@@ -569,17 +535,19 @@ const RoomVisualizer = () => {
                     backgroundColor: surfaceColor,
                     color: textColor,
                   }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Select ${surface.name}`}
+                  onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setActiveSurface(surface.id); }}
                 >
-                  <span className="text-sm font-medium">{surface.name}</span>
+                  <span className="text-[11px] sm:text-xs md:text-sm font-medium">{surface.name}</span>
                   {appliedColors[surface.id] && (
                     <span className="text-xs mt-1 opacity-90">{appliedColors[surface.id].name}</span>
                   )}
                 </div>
               );
             })}
-
           </div>
-          
           {/* AI Processing Indicator */}
           {isProcessingImage && (
             <div className="mb-4 w-full bg-blue-50 rounded-lg p-3 flex items-center justify-center">
@@ -589,7 +557,6 @@ const RoomVisualizer = () => {
               </div>
             </div>
           )}
-          
           {/* Error Message */}
           {segmentationError && (
             <div className="mb-4 w-full bg-red-50 rounded-lg p-3 flex items-center justify-center">
@@ -599,12 +566,11 @@ const RoomVisualizer = () => {
               </div>
             </div>
           )}
-          
-          <div className="bg-white rounded-lg shadow-md overflow-hidden flex justify-center w-full relative" style={{maxWidth: '600px', maxHeight: '400px', minHeight: '300px', margin: '0 auto'}}>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-full mx-auto relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]">
             {editedImage || originalImage ? (
               <canvas
                 ref={canvasRef}
-                className="w-full h-auto object-contain max-h-[350px] max-w-[580px]"
+                className="w-full h-full object-contain"
               />
             ) : (
               <div className="h-72 flex items-center justify-center text-gray-500 w-full">
@@ -613,16 +579,11 @@ const RoomVisualizer = () => {
             )}
           </div>
         </div>
-        
         {/* Right Sidebar - Select a Paint Color */}
-        <div className="w-80 bg-white border-l border-gray-200 p-6 mx-4 my-4 rounded-xl shadow-md">
+        <div className="w-full lg:w-80 bg-white border border-gray-200 p-4 sm:p-6 mx-0 lg:mx-4 my-4 rounded-xl shadow-md lg:sticky lg:top-24 lg:self-start">
           <div className="flex items-center mb-6">
-            <h2 className="text-lg font-semibold text-gray-800">Select a Paint Color</h2>
-            
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Select a Paint Color</h2>
           </div>
-          
-          
-          
           {/* Color Families Dropdown */}
           <div className="mb-6">
             <select 
@@ -637,10 +598,9 @@ const RoomVisualizer = () => {
               ))}
             </select>
           </div>
-          
           {/* Color Swatch Grid */}
-          <div className="overflow-y-auto max-h-[500px]">
-            <div className="grid grid-cols-3 gap-1">
+          <div className="overflow-y-auto max-h-[50vh] sm:max-h-[60vh] lg:max-h-[calc(100vh-14rem)]">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-3 gap-1 sm:gap-1.5">
               {filteredColors.slice(0, 60).map((color) => (
                 <div
                   key={color.hex}
@@ -650,7 +610,7 @@ const RoomVisualizer = () => {
                   onClick={() => handleColorSelect(color)}
                 >
                   <div
-                    className="h-16 w-full"
+                    className="h-14 sm:h-16 md:h-16 lg:h-16 w-full"
                     style={{ backgroundColor: color.hex }}
                   ></div>
                 </div>
