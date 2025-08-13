@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { products as allProducts } from "../data/products";
 import { Link, useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css'
-
-
-
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
@@ -16,10 +13,12 @@ const leftMenu = [
 ];
 
 const grouped = {
-  Interior: allProducts.filter(p => p.category?.toLowerCase() === "interior"),
-  Exterior: allProducts.filter(p => p.category?.toLowerCase() === "exterior"),
-  Industrial: allProducts.filter(p => p.category?.toLowerCase().includes("industrial")),
-  Enamel: allProducts.filter(p => p.category?.toLowerCase().includes("enamel")),
+  Interior: allProducts.filter((p) => p.category?.toLowerCase() === "interior"),
+  Exterior: allProducts.filter((p) => p.category?.toLowerCase() === "exterior"),
+  Industrial: allProducts.filter((p) =>
+    p.category?.toLowerCase().includes("industrial")
+  ),
+  Enamel: allProducts.filter((p) => p.category?.toLowerCase().includes("enamel")),
   All: allProducts,
 };
 
@@ -48,10 +47,9 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
     }
   };
 
-  const handleHover = (product) => {
-    setHovered(product);
-  };
+  const handleHover = (product) => setHovered(product);
 
+  // ---------- MOBILE (unchanged) ----------
   if (isMobile) {
     return (
       <div className="w-full flex flex-col items-start">
@@ -60,25 +58,41 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           className="text-[#493657] hover:text-[#F0C85A] flex justify-between w-full"
         >
           <span>Products</span>
-          <span className={`transform transition-transform ${open ? 'rotate-90' : ''}`}>▶</span>
+          <span
+            className={`transform transition-transform ${open ? "rotate-90" : ""}`}
+          >
+            ▶
+          </span>
         </button>
         <div
-          className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'} w-full`}
+          className={`transition-all duration-300 ease-in-out overflow-hidden ${
+            open ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+          } w-full`}
         >
           <div className="pl-4 py-2 flex flex-col gap-2">
-            {leftMenu.map(item => (
+            {leftMenu.map((item) => (
               <div key={item.key} className="w-full">
                 <button
                   onClick={() => handleMenuClick(item)}
                   className="text-left text-[#493657] hover:text-[#F0C85A] py-1 w-full flex justify-between items-center"
                 >
                   {item.label}
-                  <span className={`transform transition-transform ${submenuOpen === item.key ? 'rotate-90' : ''}`}>▶</span>
+                  <span
+                    className={`transform transition-transform ${
+                      submenuOpen === item.key ? "rotate-90" : ""
+                    }`}
+                  >
+                    ▶
+                  </span>
                 </button>
                 <div
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${submenuOpen === item.key ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'} pl-4`}
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    submenuOpen === item.key
+                      ? "max-h-[1000px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  } pl-4`}
                 >
-                  {grouped[item.key]?.map(product => (
+                  {grouped[item.key]?.map((product) => (
                     <Link
                       key={product.name}
                       to={`/product/${product.name}`}
@@ -102,14 +116,41 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
     );
   }
 
+  // ---------- DESKTOP (shrunk left rail on smaller screens) ----------
   return (
     <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
-      <div className="max-w-screen-xl mx-auto px-24 py-14 flex justify-between">
-        <div className="flex flex-col min-w-[200px] max-w-[220px] border-r border-[#e5e0d8] pr-10">
-          {leftMenu.map(item => (
+      <div
+        className="
+          max-w-screen-xl mx-auto
+          px-4 sm:px-6 md:px-10 lg:px-24
+          py-8 md:py-12 lg:py-14
+          flex justify-between items-start
+          gap-0
+        "
+      >
+        {/* LEFT rail — narrower on small/medium */}
+        <div
+          className="
+            flex flex-col
+            min-w-[120px] max-w-[140px]
+            sm:min-w-[140px] sm:max-w-[160px]
+            md:min-w-[180px] md:max-w-[200px]
+            lg:min-w-[200px] lg:max-w-[220px]
+            border-r border-[#e5e0d8]
+            pr-2 sm:pr-3 md:pr-6 lg:pr-10
+          "
+        >
+          {leftMenu.map((item) => (
             <button
               key={item.key}
-              className={`text-left text-lg font-bold uppercase py-2 px-0 mb-1 border-b-2 ${selectedMenu === item.key ? "border-[#493657] text-[#493657]" : "border-transparent text-[#495057] hover:text-[#F0C85A]"}`}
+              className={`text-left font-bold uppercase
+                          text-sm sm:text-base lg:text-lg
+                          py-1.5 md:py-2 px-0 mb-1 border-b-2
+                          ${
+                            selectedMenu === item.key
+                              ? "border-[#493657] text-[#493657]"
+                              : "border-transparent text-[#495057] hover:text-[#F0C85A]"
+                          }`}
               onClick={() => handleMenuClick(item)}
             >
               {item.label}
@@ -117,41 +158,61 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           ))}
         </div>
 
-        <>
-          <div className="flex-1 px-12 max-h-[400px] overflow-y-auto">
-            <h4 className="font-semibold mb-4 text-[#493657] text-base uppercase tracking-wide">
-              {`ALL ${selectedMenu.toUpperCase()} PAINTS`}
-            </h4>
-            <ul className="space-y-2 text-[#493657]">
-              {grouped[selectedMenu].map(product => (
-                <li
-                  key={product.name}
-                  className={`font-medium cursor-pointer ${hovered?.name === product.name ? 'font-semibold' : ''}`}
+        {/* MIDDLE list — tiny left padding so it sits close to the rail */}
+        <div
+          className="
+            flex-1
+            pl-2 sm:pl-3 md:pl-4 lg:pl-12
+            pr-2 md:pr-4
+            max-h-[50vh] md:max-h-[400px] overflow-y-auto
+          "
+        >
+          <h4 className="font-semibold mb-3 text-[#493657] text-sm md:text-base uppercase tracking-wide">
+            {`ALL ${selectedMenu.toUpperCase()} PAINTS`}
+          </h4>
+          <ul className="space-y-2 text-[#493657]">
+            {grouped[selectedMenu].map((product) => (
+              <li
+                key={product.name}
+                className={`font-medium cursor-pointer ${
+                  hovered?.name === product.name ? "font-semibold" : ""
+                }`}
+              >
+                <Link
+                  to={`/product/${product.name}`}
+                  onClick={() => {
+                    window.scrollTo({ top: 0 });
+                    if (onSelect) onSelect();
+                  }}
+                  onMouseEnter={() => handleHover(product)}
+                  className="hover:text-[#F0C85A]"
                 >
-                  <Link
-                    to={`/product/${product.name}`}
-                    onClick={() => { window.scrollTo({ top: 0 }); if (onSelect) onSelect(); }}
-                    onMouseEnter={() => handleHover(product)}
-                    className="hover:text-[#F0C85A]"
-                  >
-                    {product.display_name || product.name}
-                  </Link>
-                </li>
-              
-              ))}
-            </ul>
-          </div>
-          <div className="min-w-[260px] max-w-[280px] flex items-center justify-center">
-            {hovered && (
-              <LazyLoadImage
-                src={hovered.images?.[0] || hovered.image}
-                alt={hovered.name}
-                effect="blur"
-                className="object-contain h-64 w-full"
-              />            
-            )}
-          </div>
-        </>
+                  {product.display_name || product.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* RIGHT preview — responsive widths */}
+        <div
+          className="
+            flex items-center justify-center
+            min-w-[140px] max-w-[160px]
+            sm:min-w-[180px] sm:max-w-[200px]
+            md:min-w-[220px] md:max-w-[240px]
+            lg:min-w-[260px] lg:max-w-[280px]
+          "
+        >
+          {hovered && (
+            <LazyLoadImage
+              src={hovered.images?.[0] || hovered.image}
+              alt={hovered.name}
+              effect="blur"
+              className="object-contain w-full h-40 md:h-56 lg:h-64"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
