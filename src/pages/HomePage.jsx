@@ -127,9 +127,9 @@ export const HomePage = () => {
            <HeroSection/>
 
            {/* Section 2 */}
-           <div className="px-10">
+           {/* <div className="px-10">
             <Carousel/>
-           </div>
+           </div> */}
 
            {/* Section 3 */}
            <div>
