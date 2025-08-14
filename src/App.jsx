@@ -22,6 +22,7 @@ import KitchenInspiration from './pages/inspiration/Kitchen';
 import BedroomInspiration from './pages/inspiration/Bedroom';
 import HallwayInspiration from './pages/inspiration/Hallway';
 import LivingInspiration from './pages/inspiration/Living';
+import EnhancedLivingRoomInspiration from './pages/inspiration/EnhancedLiving';
 import BathroomInspiration from './pages/inspiration/Bathroom';
 import DiningInspiration from './pages/inspiration/Dining';
 import OfficeInspiration from './pages/inspiration/Office';
@@ -72,6 +73,7 @@ function App() {
               <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
               <Route path='/inspirations/hallway' element={<HallwayInspiration/>}/>
               <Route path='/inspirations/living' element={<LivingInspiration/>}/>
+              <Route path='/inspirations/livingroom' element={<EnhancedLivingRoomInspiration/>}/>
               <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
               <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
               <Route path='/inspirations/office' element={<OfficeInspiration/>}/>

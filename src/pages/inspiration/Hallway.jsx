@@ -4,6 +4,7 @@ import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
+import RoomCategoryNav from "../../components/RoomCategoryNav";
 import { useNavigate } from "react-router-dom";
 
 const findColor = (name) => {
@@ -31,6 +32,9 @@ export default function HallwayInspiration() {
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>
+
+      <RoomCategoryNav currentRoom="hallway" />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 pt-10 pb-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#393939] mb-6 tracking-tight text-center">
           HALLWAY INSPIRATION
