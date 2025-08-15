@@ -2,7 +2,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Kitchen",
     description: "Transform your kitchen with colors that inspire cooking and gathering",
-    image: "/Assets/Inspiration/kitchen.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
     designs: 22,
     colors: ["#F5F5DC", "#8B4513", "#2F4F4F"],
     route: "kitchen"
@@ -26,7 +26,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Bathroom",
     description: "Refresh your bathroom with clean, spa-like color combinations",
-    image: "/Assets/Inspiration/bathroom.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
     designs: 45,
     colors: ["#F0F8FF", "#20B2AA", "#F5F5F5"],
     route: "bathroom"
@@ -42,7 +42,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Hallway",
     description: "Connect your spaces with thoughtful hallway color choices",
-    image: "/Assets/Inspiration/hallway.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0042.jpg",
     designs: 28,
     colors: ["#F5F5F5", "#696969", "#D3D3D3"],
     route: "hallway"
@@ -50,7 +50,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Office",
     description: "Boost productivity with focused and inspiring office color schemes",
-    image: "/Assets/Inspiration/office.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0044.jpg",
     designs: 48,
     colors: ["#F8F8FF", "#4A4A4A", "#87CEEB"],
     route: "office"
@@ -58,7 +58,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Kids Room",
     description: "Spark imagination with playful and vibrant children's room colors",
-    image: "/Assets/Inspiration/kids.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0045.jpg",
     designs: 6,
     colors: ["#FFB6C1", "#98FB98", "#87CEEB"],
     route: "kids"
@@ -66,7 +66,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "House Exterior",
     description: "Make a lasting first impression with stunning exterior color combinations",
-    image: "/Assets/Inspiration/exterior.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0045.jpg",
     designs: 88,
     colors: ["#F5F5DC", "#8B4513", "#2F4F4F"],
     route: "exterior"
