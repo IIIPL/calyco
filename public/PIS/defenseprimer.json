@@ -1,0 +1,70 @@
+{
+  "sheet_title": "Calyco Defense Primer – Defense Primer",
+  "pis_title": "Defense Primer– Product Information Sheet (PIS)",
+  "product_overview": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
+  "key_features": [
+    "🧲 Superior Adhesion",
+    "🌍 Multi-Surface Application: Works across Concrete, Plaster, MDF, Wood, GI steel"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Basecoat primer before any Calyco topcoat"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco Defense Primer – Defense Primer (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco Defense Primer – Defense Primer (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller"
+  ],
+  "timings": {
+    "touch_dry": "4–6 hrs",
+    "recoat": "8–16 hrs"
+  },
+  "coverage": "90–110 sq. ft./Ltr per coat",
+  "finish": "Matte",
+  "thinner": "Thinner: Mineral spirits (as needed)",
+  "technical_data": {
+    "Sheen Level": "Matte",
+    "VOC Content": "Medium VOC",
+    "Shelf Life": "3 years"
+  },
+  "surface_preparation": [
+    "Prime wood/metal and prep surface well",
+    "Sand wood lightly in the grain direction.",
+    "Remove rust from metal; prime if required.",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply on dry surface. Use mineral spirits for cleanup."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 20L",
+  "storage_safety": [
+    "Store cool (10–27°C)",
+    "dry area",
+    "Strong odor; flammable; ventilate",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

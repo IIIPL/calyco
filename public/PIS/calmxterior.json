@@ -1,0 +1,64 @@
+{
+  "sheet_title": "Calyco CalmXterior – Exterior Latex Paint",
+  "pis_title": "Exterior Latex Paint– Product Information Sheet (PIS)",
+  "product_overview": "Regal Xterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
+  "key_features": [
+    "🌞 UV-Resistant",
+    "📐 High Coverage",
+    "🧼 Easy to Wash",
+    "🎨 Fade-Resistant",
+    "🌍 Multi-Surface Application: Works across Plaster, AAC, Textured cement"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Ideal for elevated homes and designer facades"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco CalmXterior – Exterior Latex Paint (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco CalmXterior – Exterior Latex Paint (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Roller"
+  ],
+  "timings": {
+    "touch_dry": "1.5 hrs",
+    "recoat": "4 hrs"
+  },
+  "coverage": "80–100 sq. ft./Ltr per coat",
+  "finish": "Silk sheen | Soft matte",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Silk sheen | Soft matte",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "4 years"
+  },
+  "surface_preparation": [
+    "Use on clean, dust-free surfaces",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply with brush or short-nap roller. Surface must be dust-free."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L, 20L",
+  "storage_safety": [
+    "Keep in dry",
+    "sealed storage",
+    "Mask during use; avoid skin contact",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

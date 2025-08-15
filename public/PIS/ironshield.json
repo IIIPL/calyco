@@ -1,0 +1,67 @@
+{
+  "sheet_title": "Calyco IronShield – Metal Coating",
+  "pis_title": "Metal Coating– Product Information Sheet (PIS)",
+  "product_overview": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
+  "key_features": [
+    "🛡 Long-Term Protection",
+    "🧰 Flexible Film",
+    "🌍 Multi-Surface Application: Works across Metal"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Protects metal structures, fences, and steel railings"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco IronShield – Metal Coating (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco IronShield – Metal Coating (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Roller"
+  ],
+  "timings": {
+    "touch_dry": "1.5 hrs",
+    "recoat": "4 hrs"
+  },
+  "coverage": "75–100 sq. ft./Ltr per coat",
+  "finish": "Dead flat",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Dead flat",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "4 years"
+  },
+  "surface_preparation": [
+    "Remove grease; clean thoroughly",
+    "Remove rust from metal; prime if required."
+  ],
+  "application": [
+    "Use roller or floor pad. Allow full drying between coats."
+  ],
+  "pack_sizes": "Available in: 4L, 10L",
+  "storage_safety": [
+    "Store cool; keep sealed",
+    "Non-toxic; avoid eyes",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

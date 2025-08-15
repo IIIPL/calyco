@@ -1,0 +1,63 @@
+{
+  "sheet_title": "Calyco StoneShield – Masonry Sealer",
+  "pis_title": "Masonry Sealer– Product Information Sheet (PIS)",
+  "product_overview": "StoneShield offers breathable protection and colour enhancement for concrete, pavers, and masonry.",
+  "key_features": [
+    "🌬️ Breathable",
+    "🌞 UV-Resistant",
+    "🌍 Multi-Surface Application: Works across Concrete, Paver, Brick"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Best for stone driveways, basements, and outdoor masonry"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco StoneShield – Masonry Sealer (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco StoneShield – Masonry Sealer (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Deck roller"
+  ],
+  "timings": {
+    "touch_dry": "2 hrs",
+    "recoat": "8 hrs"
+  },
+  "coverage": "60–80 sq. ft./Ltr per coat",
+  "finish": "Flat | Dead flat",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Flat | Dead flat",
+    "UV Resistance": "Excellent",
+    "VOC Content": "Low VOC",
+    "Breathability": "High",
+    "Shelf Life": "4 years"
+  },
+  "surface_preparation": [
+    "Remove loose paint and clean wood",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply with roller or squeegee. Fill cracks before painting."
+  ],
+  "pack_sizes": "Available in: 4L, 10L",
+  "storage_safety": [
+    "Keep off floor; avoid heat",
+    "Use gloves and ventilate area",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

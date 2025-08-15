@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JSON Viewer</title>
+<style>
+  body{margin:0;background:#0b0f14;color:#e6edf3;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  header{padding:10px 14px;border-bottom:1px solid #1f2630;background:#0f141b;font-size:13px;color:#9fb1c1}
+  #out{white-space:pre; padding:16px; overflow:auto; font-size:13px; line-height:1.5}
+</style>
+</head>
+<body>
+<header id="hdr">JSON Viewer</header>
+<pre id="out">Loading…</pre>
+<script>
+(async () => {
+  const p = new URL(location.href).searchParams;
+  const src = p.get("src");
+  const hdr = document.getElementById("hdr");
+  const out = document.getElementById("out");
+  if (!src) { out.textContent = "Missing ?src={json-url}"; return; }
+  hdr.textContent = src;
+  try {
+    const r = await fetch(src, { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP "+r.status);
+    const text = await r.text();
+    // Pretty-print if valid JSON, else show raw
+    try {
+      const obj = JSON.parse(text);
+      out.textContent = JSON.stringify(obj, null, 2);
+    } catch {
+      out.textContent = text;
+    }
+  } catch (e) {
+    out.textContent = "Failed to load: " + e.message;
+  }
+})();
+</script>
+</body>
+</html>

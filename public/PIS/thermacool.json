@@ -1,0 +1,66 @@
+{
+  "sheet_title": "Calyco ThermaCool – Heat Shield Coating",
+  "pis_title": "Heat Shield Coating– Product Information Sheet (PIS)",
+  "product_overview": "ThermaCool reflects heat and insulates surfaces like tanks, pipes, and exposed roofing.",
+  "key_features": [
+    "🌍 Multi-Surface Application: Works across Metal, Concrete, Cement fibre"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Used on roofs, tanks, and pipelines"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco ThermaCool – Heat Shield Coating (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco ThermaCool – Heat Shield Coating (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush"
+  ],
+  "timings": {
+    "touch_dry": "1 hr",
+    "recoat": "3 hrs"
+  },
+  "coverage": "90–100 sq. ft./Ltr per coat",
+  "finish": "Matte",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Matte",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "4 years"
+  },
+  "surface_preparation": [
+    "Remove rust and mask edges before painting",
+    "Remove rust from metal; prime if required.",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply by brush or spray. Surface should be degreased and rust-free."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "storage_safety": [
+    "Keep indoors and sealed",
+    "Wear gloves; ventilate area",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

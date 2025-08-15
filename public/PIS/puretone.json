@@ -1,0 +1,62 @@
+{
+  "sheet_title": "Calyco PureTone – Interior Latex Paint",
+  "pis_title": "Interior Latex Paint– Product Information Sheet (PIS)",
+  "product_overview": "PureTone enhances clarity and light balance for elegant, minimal, and neutral-themed interiors.",
+  "key_features": [
+    "🧼 Easy to Wash",
+    "🌍 Multi-Surface Application: Works across Plaster, Wood, Drywall"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Best for clean, open-plan spaces"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco PureTone – Interior Latex Paint (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco PureTone – Interior Latex Paint (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller"
+  ],
+  "timings": {
+    "touch_dry": "1 hr",
+    "recoat": "3–5 hrs"
+  },
+  "coverage": "85–105 sq. ft./Ltr per coat",
+  "finish": "Soft matte",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Soft matte",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "6 years"
+  },
+  "surface_preparation": [
+    "Clean and remove all loose material before application",
+    "Sand wood lightly in the grain direction.",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply evenly with roller or spray. Ensure weather conditions are dry."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L, 20L",
+  "storage_safety": [
+    "Store in cool area; do not freeze",
+    "Use PPE if spraying",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "sheet_title": "Calyco Aluminium Paint – Aluminium Paint",
+  "pis_title": "Aluminium Paint– Product Information Sheet (PIS)",
+  "product_overview": "Aluminium Paint offers long-lasting metallic shine with superior coverage and flow.",
+  "key_features": [
+    "🛡 Long-Term Protection",
+    "📐 High Coverage",
+    "🧼 Easy to Wash",
+    "🌍 Multi-Surface Application: Works across Metal"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Best for tanks, ducts, equipment, and metallic fixtures"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco Aluminium Paint – Aluminium Paint (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco Aluminium Paint – Aluminium Paint (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller",
+    "spray gun"
+  ],
+  "timings": {
+    "touch_dry": "Touch dry in 1 hr; fully cured in 48–72 hrs",
+    "recoat": "8–10 mins between coats"
+  },
+  "coverage": "90–110 sq. ft./Ltr per coat",
+  "finish": "Gloss",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Gloss",
+    "VOC Content": "Medium VOC",
+    "Shelf Life": "3 years"
+  },
+  "surface_preparation": [
+    "Surface should be primed, clean and dry",
+    "Remove rust from metal; prime if required."
+  ],
+  "application": [
+    "Apply 2 coats over primer. Allow 10 mins between coats. Can be baked if needed."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 20L",
+  "storage_safety": [
+    "Store in metal can",
+    "away from flame",
+    "Highly flammable; wear PPE and ventilate",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

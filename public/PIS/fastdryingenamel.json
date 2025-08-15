@@ -1,0 +1,69 @@
+{
+  "sheet_title": "Calyco Fast Drying Enamel – Fast Drying Enamel",
+  "pis_title": "Fast Drying Enamel– Product Information Sheet (PIS)",
+  "product_overview": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
+  "key_features": [
+    "🛡 Long-Term Protection",
+    "🧲 Superior Adhesion",
+    "🌍 Multi-Surface Application: Works across Metal"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Used for auto panels, transport equipment, and defense vehicles"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco Fast Drying Enamel – Fast Drying Enamel (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco Fast Drying Enamel – Fast Drying Enamel (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller",
+    "spray"
+  ],
+  "timings": {
+    "touch_dry": "1 hr",
+    "recoat": "2–3 hrs"
+  },
+  "coverage": "90–110 sq. ft./Ltr per coat",
+  "finish": "Gloss",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Gloss",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "5 years"
+  },
+  "surface_preparation": [
+    "Remove chalk, dust and grease before use",
+    "Remove rust from metal; prime if required."
+  ],
+  "application": [
+    "Use brush or roller. Sand lightly before painting."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L, 20L",
+  "storage_safety": [
+    "Store away from frost; seal well",
+    "Use gloves; ventilated area needed",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "sheet_title": "Calyco Red Oxide Primer – Red Oxide Primer",
+  "pis_title": "Red Oxide Primer– Product Information Sheet (PIS)",
+  "product_overview": "Red Oxide Primer protects steel with a tough, rust-resistant undercoat for industrial use.",
+  "key_features": [
+    "🧲 Superior Adhesion",
+    "🧰 Flexible Film",
+    "🌍 Multi-Surface Application: Works across Steel, Iron"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Protects pipelines, beams, and steel surfaces in industrial zones"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco Red Oxide Primer – Red Oxide Primer (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco Red Oxide Primer – Red Oxide Primer (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Wood: Stain brush",
+    "Concrete/Masonry: Roller",
+    "Furniture/Detailing: Fine finish brush or pad"
+  ],
+  "finish": "Matte",
+  "technical_data": {
+    "Sheen Level": "Matte"
+  },
+  "surface_preparation": [
+    "Remove rust from metal; prime if required."
+  ],
+  "application": [
+    "Stir thoroughly before and during use."
+  ],
+  "storage_safety": [
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

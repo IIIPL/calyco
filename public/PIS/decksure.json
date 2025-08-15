@@ -1,0 +1,63 @@
+{
+  "sheet_title": "Calyco DeckSure – Deck Coating",
+  "pis_title": "Deck Coating– Product Information Sheet (PIS)",
+  "product_overview": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
+  "key_features": [
+    "🛡 Long-Term Protection",
+    "💧 Waterproof",
+    "🦠 Mold & Mildew Resistant",
+    "🧰 Flexible Film",
+    "🌍 Multi-Surface Application: Works across Rough timber"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Suitable for decks, ramps, and walkways"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco DeckSure – Deck Coating (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco DeckSure – Deck Coating (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller"
+  ],
+  "timings": {
+    "touch_dry": "2 hrs",
+    "recoat": "6 hrs"
+  },
+  "coverage": "85–105 sq. ft./Ltr per coat",
+  "finish": "Matte",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Matte",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "5 years"
+  },
+  "surface_preparation": [
+    "Light sanding recommended before application"
+  ],
+  "application": [
+    "Use pad, roller or brush. Best applied in 2 coats."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "storage_safety": [
+    "Store sealed in dry conditions",
+    "No open flame nearby",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

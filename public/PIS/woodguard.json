@@ -1,0 +1,66 @@
+{
+  "sheet_title": "Calyco WoodGuard – Wood Stain & Sealer",
+  "pis_title": "Wood Stain & Sealer– Product Information Sheet (PIS)",
+  "product_overview": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
+  "key_features": [
+    "🛡 Long-Term Protection",
+    "💧 Waterproof",
+    "🦠 Mold & Mildew Resistant",
+    "📐 High Coverage",
+    "🧲 Superior Adhesion",
+    "🧰 Flexible Film",
+    "🌍 Multi-Surface Application: Works across Hardwood, Softwood, Ply"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Ideal for fencing, sheds, and outdoor wood surfaces"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco WoodGuard – Wood Stain & Sealer (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco WoodGuard – Wood Stain & Sealer (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Standard tools"
+  ],
+  "timings": {
+    "touch_dry": "1 hr",
+    "recoat": "2–3 hrs"
+  },
+  "coverage": "100–125 sq. ft./Ltr per coat",
+  "finish": "Flat | Dead flat",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Flat | Dead flat",
+    "VOC Content": "Low VOC",
+    "Waterproofing": "Pass",
+    "Shelf Life": "5 years"
+  },
+  "surface_preparation": [
+    "Surface must be smooth and dust-free",
+    "Sand wood lightly in the grain direction."
+  ],
+  "application": [
+    "Apply using brush or roller in smooth strokes."
+  ],
+  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "storage_safety": [
+    "Store in shade; avoid sun",
+    "Use gloves; ventilated area",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

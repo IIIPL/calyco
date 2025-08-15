@@ -93,6 +93,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Nova",
+    "PIS": "/PIS/nova.json",
+    "TDS": "",
     "images": ["/Assets/Nova/NoBg.png",
       "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
       "/Assets/novaa.png",
@@ -180,6 +182,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PureTone",
+    "PIS": "/PIS/puretone.json",
+    "TDS": "",
     "images": ["/Assets/PureTone/NoBg.png", "/Assets/PureTone/OnTable.png"]
   },
   {
@@ -264,6 +268,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "WoodGuard",
+    "PIS": "/PIS/woodguard.json",
+    "TDS": "",
     "images": ["/Assets/Woodguard/NoBg.png",
       "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
       // "/Assets/WoodGuard/inuse.png",
@@ -347,6 +353,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "DeckSure",
+    "PIS": "/PIS/decksure.json",
+    "TDS": "",
     "images": ["/Assets/DeckSure/NoBg.png",
       "/Assets/DeckSure/ontable.png",
       "/Assets/DeckSure/inhouse.png",
@@ -435,6 +443,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "StoneShield",
+    "PIS": "/PIS/stoneshield.json",
+    "TDS": "",
     "images": ["/Assets/StoneShield/NoBg.png"]
   },
   {
@@ -518,6 +528,8 @@ export const products = [
     "temperature_range": "12°C–40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "CalmXterior",
+    "PIS": "/PIS/calmxterior.json",
+    "TDS": "",
     "images": ["/Assets/CalmXterior/NoBg.png",
       "/Assets/CalmXterior/inuse.png",
 
@@ -608,6 +620,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "LustroLite",
+    "PIS": "/PIS/lustrolite.json",
+    "TDS": "",
     "images": ["/Assets/LustroLite/NoBg.png",
       "/Assets/LustroLite/ontable.png",
       "/Assets/LustroLite/inhouse.png",
@@ -701,6 +715,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "SilkTouch",
+    "PIS": "/PIS/silktouch.json",
+    "TDS": "",
     "images": ["/Assets/SilkTouch/NoBg.png", 
       "/Assets/SilkTouch/ontable.png",
       "/Assets/SilkTouch/inuse.png",
@@ -783,6 +799,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "FloorPro",
+    "PIS": "/PIS/floorpro.json",
+    "TDS": "",
     "images": ["/Assets/FloorPro/NoBg.png",
       "/Assets/FloorPro/inuse.png"
     ]
@@ -866,6 +884,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "IronShield",
+    "PIS": "/PIS/ironshield.json",
+    "TDS": "",
     "images": ["/Assets/IronShield/NoBg.png",
       "/Assets/IronShield/WithBg.png",
       "/Assets/IronShield/WhiteBg.png",
@@ -952,6 +972,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "ThermaCool",
+    "PIS": "/PIS/thermacool.json",
+    "TDS": "",
     "images": ["/Assets/ThermaCool/NoBg.png"]
   },
   {
@@ -1041,6 +1063,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "Defense",
+    "PIS": "/PIS/defense.json",
+    "TDS": "",
     "images": ["/Assets/Defense/NoBg.png"]
   },
   
@@ -1130,6 +1154,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PrimeDefense Primer",
+    "PIS": "/PIS/defenseprimer.json",
+    "TDS": "",
     "images": ["/Assets/DefensePrimer/NoBg.png", "/Assets/DefensePrimer/inuse.png"]
   },
   {
@@ -1215,6 +1241,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "HydroClear Shield",
+    "PIS": "/PIS/hydroclear.json",
+    "TDS": "",
     "images": ["/Assets/HydroClear/NoBg.png",
       "/Assets/HydroClear/WhiteBg.png",
       "/Assets/HydroClear/InUse.png",
@@ -1302,6 +1330,8 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Fast Drying Enamel",
+    "PIS": "/PIS/fastdryingenamel.json",
+    "TDS": "",
     "images": ["/Assets/FastDryingEnamel/NoBg.png",
       "/Assets/FastDryingEnamel/ontable.png"]
   },
@@ -1391,6 +1421,8 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Up to 80% RH",
     "display_name": "Alkyd Enamel",
+    "PIS": "/PIS/alkydenamel.json",
+    "TDS": "",
     "images": ["/Assets/AlkydEnamel/NoBg.png",
     "/Assets/AlkydEnamel/InUse.png",
     "/Assets/AlkydEnamel/WhiteBg.png",]
@@ -1482,6 +1514,8 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Aluminium Paint",
+    "PIS": "/PIS/aluminium.json",
+    "TDS": "",
     "images": ["/Assets/Aluminium/NoBg.png"]
   },
   {
@@ -1572,1032 +1606,1070 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Red Oxide Primer",
+    "PIS": "/PIS/redoxideprimer.json",
+    "TDS": "",
     "images": ["/Assets/RedOxide/NoBg.png",
       "/Assets/redoxide.png",
     ]
   }
-  // FORBIDDEN PRODUCTS:
-  // {
-  //   "url": "https://calycopaints.com/product/regal",
-  //   "name": "Regal",
-  //   "image": "/Assets/regal.png",
-  //   "description": "Elite designer-grade interior paint with rich texture, regal finish, and long-term durability.",
-  //   "short-description": "For luxury interiors needing depth, warmth, and washable beauty.",
-  //   "details": "Regal is hand-picked by architects for its depth, elegance, and flawless finish in premium interiors.",
-  //   "category": "Interior",
-  //   "application": [
-  //     "Luxury wall painting"
-  //   ],
-  //   "advantages": [
-  //     "Extreme washability",
-  //     "Zero burnish",
-  //     "Deep colour hold"
-  //   ],
-  //   "features": [
-  //     "Velvet texture",
-  //     "Rich tones",
-  //     "Washable",
-  //     "Fade-proof"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Velvet matte",
-  //     "Matte",
-  //     "Soft sheen"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "POP",
-  //     "Wood"
-  //   ],
-  //   "recommended_uses": [
-  //     "Perfect for drawing rooms",
-  //     "feature walls",
-  //     "and hospitality interiors"
-  //   ],
-  //   "price": 649,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "85-115 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Interior designer finishes"
-  //     ],
-  //     "application_instructions": "Use a short-pile roller or soft brush for smooth finish.",
-  //     "drying_time": "45 mins",
-  //     "recoat_time": "3-5 hrs",
-  //     "cleanup": "Soap and Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "85-115 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Interior designer finishes"
-  //   ],
-  //   "application_instructions": "Use a short-pile roller or soft brush for smooth finish.",
-  //   "drying_time": "45 mins",
-  //   "recoat_time": "3-5 hrs",
-  //   "cleanup": "Soap and Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller"
-  //   ],
-  //   "color_options": [
-  //     "108 curated shades"
-  //   ],
-  //   "spread_rate": "85-115 sq. ft./Ltr",
-  //   "preparation_instructions": "Ensure dust-free and dry surface before painting",
-  //   "safety_precautions": "Use gloves; eye protection optional",
-  //   "storage_instructions": "Keep sealed; store at room temperature",
-  //   "warranty": "7 years",
-  //   "product_number": "REGAL",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 75% RH",
-  //   "display_name": "Regal",
-  //   "images": ["/Assets/regal.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/dampshield",
-  //   "name": "DampShield",
-  //   "image": "/Assets/dampshield.png",
-  //   "description": "Waterproof + anti-fungal interior wall coating for kitchens, baths, and high-humidity spaces.",
-  //   "short-description": "Ultimate moisture protection for indoors.",
-  //   "details": "SealDefense Interior blocks moisture, prevents fungal growth, and maintains a clean finish in humid interior spaces.",
-  //   "category": "Interior",
-  //   "application": [
-  //     "Bathroom",
-  //     "kitchen",
-  //     "utility area"
-  //   ],
-  //   "advantages": [
-  //     "Anti-fungal",
-  //     "Waterproof",
-  //     "Matte finish"
-  //   ],
-  //   "features": [
-  //     "Stain blocking",
-  //     "Vapour-permeable",
-  //     "Easy maintenance"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Matte",
-  //     "Flat"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "Concrete",
-  //     "Cement sheet"
-  //   ],
-  //   "recommended_uses": [
-  //     "Suitable for wet-area walls and ceilings"
-  //   ],
-  //   "price": 495,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "80-110 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Damp-prone kitchen and bathroom walls"
-  //     ],
-  //     "application_instructions": "Apply 2 coats on a clean, dry surface. Allow proper drying between coats.",
-  //     "drying_time": "1.5 hrs",
-  //     "recoat_time": "3 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "80-110 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Damp-prone kitchen and bathroom walls"
-  //   ],
-  //   "application_instructions": "Apply 2 coats on a clean, dry surface. Allow proper drying between coats.",
-  //   "drying_time": "1.5 hrs",
-  //   "recoat_time": "3 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Roller",
-  //     "brush"
-  //   ],
-  //   "color_options": [
-  //     "Neutral and white tones"
-  //   ],
-  //   "spread_rate": "85-110 sq. ft./Ltr",
-  //   "preparation_instructions": "Remove surface mold or dampness before application",
-  //   "safety_precautions": "Wear a mask if spraying",
-  //   "storage_instructions": "Store upright and away from heat",
-  //   "warranty": "4 years",
-  //   "product_number": "SEALINT",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 80% RH",
-  //   "display_name": "DampShield",
-  //   "images": ["/Assets/dampshield.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/wallarmor",
-  //   "name": "WallArmor",
-  //   "image": "/Assets/wallarmor.png",
-  //   "description": "High-resistance exterior wall paint with waterproof and UV barrier.",
-  //   "short-description": "Rain, sun, pollution - this is your wall's shield.",
-  //   "details": "WallArmor offers UV resistance and waterproofing, built to stand up to India's toughest weather conditions.",
-  //   "category": "Exterior",
-  //   "application": [
-  //     "High-exposure exterior surfaces"
-  //   ],
-  //   "advantages": [
-  //     "UV stable",
-  //     "Rainproof",
-  //     "Dust-repelling"
-  //   ],
-  //   "features": [
-  //     "Colour holding",
-  //     "Algae-resistant",
-  //     "Long life"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Satin",
-  //     "Low sheen"
-  //   ],
-  //   "substrate": [
-  //     "Brick",
-  //     "Concrete",
-  //     "Plaster",
-  //     "Cement board"
-  //   ],
-  //   "recommended_uses": [
-  //     "Great for homes",
-  //     "facades",
-  //     "and office exteriors"
-  //   ],
-  //   "price": 525,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "85-115 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Exterior plaster and cement walls"
-  //     ],
-  //     "application_instructions": "Use brush, roller or spray. Ideal in 2 coats for full coverage.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "3-4 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "85-115 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Exterior plaster and cement walls"
-  //   ],
-  //   "application_instructions": "Use brush, roller or spray. Ideal in 2 coats for full coverage.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "3-4 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller"
-  //   ],
-  //   "color_options": [
-  //     "24+ exterior shades"
-  //   ],
-  //   "spread_rate": "90-115 sq. ft./Ltr",
-  //   "preparation_instructions": "Wash with water if surface is dusty or dirty",
-  //   "safety_precautions": "Apply in dry weather only",
-  //   "storage_instructions": "Keep tightly sealed; avoid heat",
-  //   "warranty": "5 years",
-  //   "product_number": "WALLDEF",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 85% RH",
-  //   "display_name": "WallArmor",
-  //   "images": ["/Assets/wallarmor.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/regal-xterior",
-  //   "name": "Regal Xterior",
-  //   "image": "/Assets/regalxterior.png",
-  //   "description": "Premium fade-resistant paint for prestige building exteriors.",
-  //   "short-description": "Long-lasting colour even under harsh sunlight.",
-  //   "details": "Regal Xterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
-  //   "category": "Exterior",
-  //   "application": [
-  //     "Architectural & villa exteriors"
-  //   ],
-  //   "advantages": [
-  //     "ColourSet™",
-  //     "Ultra fade-resist",
-  //     "Premium finish"
-  //   ],
-  //   "features": [
-  //     "Self-cleaning",
-  //     "No chalking",
-  //     "Deep coverage"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Silk sheen",
-  //     "Soft matte"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "AAC",
-  //     "Textured cement"
-  //   ],
-  //   "recommended_uses": [
-  //     "Ideal for elevated homes and designer facades"
-  //   ],
-  //   "price": 599,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "85-105 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Exterior wall surfaces"
-  //     ],
-  //     "application_instructions": "Apply evenly with roller or spray. Ensure weather conditions are dry.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "3-5 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "85-105 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Exterior wall surfaces"
-  //   ],
-  //   "application_instructions": "Apply evenly with roller or spray. Ensure weather conditions are dry.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "3-5 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller"
-  //   ],
-  //   "color_options": [
-  //     "Custom exterior colours"
-  //   ],
-  //   "spread_rate": "85-105 sq. ft./Ltr",
-  //   "preparation_instructions": "Clean and remove all loose material before application",
-  //   "safety_precautions": "Use PPE if spraying",
-  //   "storage_instructions": "Store in cool area; do not freeze",
-  //   "warranty": "6 years",
-  //   "product_number": "REGX",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 80% RH",
-  //   "display_name": "Regal Xterior",
-  //   "images": ["/Assets/regalxterior.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/barriercoat",
-  //   "name": "BarrierCoat",
-  //   "image": "/Assets/barriercoat.png",
-  //   "description": "Anti-stain, microbial-resistant interior emulsion for kitchens and kid zones.",
-  //   "short-description": "Interior paint with stain repellent and high washability.",
-  //   "details": "BarrierCoat protects interiors from spills, microbes, and scuffs - perfect for kitchens, dining areas, and kid zones.",
-  //   "category": "Interior",
-  //   "application": [
-  //     "Kitchens",
-  //     "children's rooms",
-  //     "dining walls"
-  //   ],
-  //   "advantages": [
-  //     "Stain-resistant",
-  //     "Fire-aware",
-  //     "Anti-microbial"
-  //   ],
-  //   "features": [
-  //     "Washable matte",
-  //     "High coverage",
-  //     "Hydrophobic tech"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Matte",
-  //     "Soft matte"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "Drywall",
-  //     "Wood",
-  //     "Masonry"
-  //   ],
-  //   "recommended_uses": [
-  //     "Best for active interior spaces like kitchens and children's rooms"
-  //   ],
-  //   "price": 575,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "85-110 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Interior corners",
-  //       "trims and ceilings"
-  //     ],
-  //     "application_instructions": "Apply with brush or roller in 2 coats on dry surface.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "3-4 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "85-110 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Interior corners",
-  //     "trims and ceilings"
-  //   ],
-  //   "application_instructions": "Apply with brush or roller in 2 coats on dry surface.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "3-4 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller"
-  //   ],
-  //   "color_options": [
-  //     "Neutral and mid tones"
-  //   ],
-  //   "spread_rate": "85-110 sq. ft./Ltr",
-  //   "preparation_instructions": "Ensure surface is clean and dry",
-  //   "safety_precautions": "Wear gloves; ventilated area preferred",
-  //   "storage_instructions": "Keep sealed; store upright",
-  //   "warranty": "5 years",
-  //   "product_number": "BARRIERCOAT",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 80% RH",
-  //   "display_name": "BarrierCoat",
-  //   "images": ["/Assets/barriercoat.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/velveta",
-  //   "name": "Velveta",
-  //   "image": "/Assets/velveta.png",
-  //   "description": "Satin interior wall paint with rich glow and antimicrobial resistance.",
-  //   "short-description": "Soft-shine finish ideal for bedrooms and lounges.",
-  //   "details": "Velveta combines soft satin glow with anti-microbial defense for peaceful, premium-looking personal spaces.",
-  //   "category": "Interior",
-  //   "application": [
-  //     "Bedrooms",
-  //     "lounges",
-  //     "personal spaces"
-  //   ],
-  //   "advantages": [
-  //     "Soft satin",
-  //     "Moisture shield",
-  //     "Designer-grade"
-  //   ],
-  //   "features": [
-  //     "Moisture-block film",
-  //     "Anti-fungal",
-  //     "Refined finish"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Satin"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "Putty",
-  //     "Drywall"
-  //   ],
-  //   "recommended_uses": [
-  //     "Perfect for residential interiors needing a soft glow"
-  //   ],
-  //   "price": 575,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "90-115 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Plaster",
-  //       "POP",
-  //       "drywall partitions"
-  //     ],
-  //     "application_instructions": "Use flat brush or smooth roller. Sand surface before painting if required.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "3 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "90-115 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Plaster",
-  //     "POP",
-  //     "drywall partitions"
-  //   ],
-  //   "application_instructions": "Use flat brush or smooth roller. Sand surface before painting if required.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "3 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Roller"
-  //   ],
-  //   "color_options": [
-  //     "Light pastels and warm shades"
-  //   ],
-  //   "spread_rate": "90-115 sq. ft./Ltr",
-  //   "preparation_instructions": "Apply on levelled and primed surface",
-  //   "safety_precautions": "Use gloves; avoid eye contact",
-  //   "storage_instructions": "Store upright in cool location",
-  //   "warranty": "5 years",
-  //   "product_number": "VELVETA",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 75% RH",
-  //   "display_name": "Velveta",
-  //   "images": ["/Assets/velveta.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/roofseal",
-  //   "name": "RoofSeal",
-  //   "image": "/Assets/roofseal.png",
-  //   "description": "Glossy waterproof roof tile and clay coating with UV protection.",
-  //   "short-description": "Gloss exterior finish for tiles, baked clay, and bricks.",
-  //   "details": "RoofSeal protects porous roofing with a glossy, UV-stable coat that bonds tight and stays bright.",
-  //   "category": "Exterior",
-  //   "application": [
-  //     "Roof tiles",
-  //     "bricks",
-  //     "baked clay"
-  //   ],
-  //   "advantages": [
-  //     "Gloss",
-  //     "Waterproof",
-  //     "Anti-fade"
-  //   ],
-  //   "features": [
-  //     "Ceramic bond",
-  //     "Weather tested"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Gloss",
-  //     "Brilliant sheen"
-  //   ],
-  //   "substrate": [
-  //     "Baked clay",
-  //     "Red tile",
-  //     "Porous brick"
-  //   ],
-  //   "recommended_uses": [
-  //     "Suitable for roofs",
-  //     "domes",
-  //     "and parapets"
-  //   ],
-  //   "price": 575,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "70-90 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Clay roof tiles",
-  //       "domes",
-  //       "exterior bricks"
-  //     ],
-  //     "application_instructions": "Use brush or spray. Recommended in 2 coats for protection.",
-  //     "drying_time": "2 hrs",
-  //     "recoat_time": "6 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "70-90 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Clay roof tiles",
-  //     "domes",
-  //     "exterior bricks"
-  //   ],
-  //   "application_instructions": "Use brush or spray. Recommended in 2 coats for protection.",
-  //   "drying_time": "2 hrs",
-  //   "recoat_time": "6 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "spray"
-  //   ],
-  //   "color_options": [
-  //     "Terracotta",
-  //     "roof reds",
-  //     "browns"
-  //   ],
-  //   "spread_rate": "70-90 sq. ft./Ltr",
-  //   "preparation_instructions": "Ensure roof is dry, clean, and unglazed",
-  //   "safety_precautions": "Wear gloves and eye protection",
-  //   "storage_instructions": "Store sealed in dry area",
-  //   "warranty": "6 years",
-  //   "product_number": "ROOFSEAL",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 75% RH",
-  //   "display_name": "RoofSeal",
-  //   "images": ["/Assets/roofseal.png"]
-  // },
+  // // FORBIDDEN PRODUCTS:
+  // // {
+  // //   "url": "https://calycopaints.com/product/regal",
+  // //   "name": "Regal",
+  // //   "image": "/Assets/regal.png",
+  // //   "description": "Elite designer-grade interior paint with rich texture, regal finish, and long-term durability.",
+  // //   "short-description": "For luxury interiors needing depth, warmth, and washable beauty.",
+  // //   "details": "Regal is hand-picked by architects for its depth, elegance, and flawless finish in premium interiors.",
+  // //   "category": "Interior",
+  // //   "application": [
+  // //     "Luxury wall painting"
+  // //   ],
+  // //   "advantages": [
+  // //     "Extreme washability",
+  // //     "Zero burnish",
+  // //     "Deep colour hold"
+  // //   ],
+  // //   "features": [
+  // //     "Velvet texture",
+  // //     "Rich tones",
+  // //     "Washable",
+  // //     "Fade-proof"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Velvet matte",
+  // //     "Matte",
+  // //     "Soft sheen"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "POP",
+  // //     "Wood"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Perfect for drawing rooms",
+  // //     "feature walls",
+  // //     "and hospitality interiors"
+  // //   ],
+  // //   "price": 649,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "85-115 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Interior designer finishes"
+  // //     ],
+  // //     "application_instructions": "Use a short-pile roller or soft brush for smooth finish.",
+  // //     "drying_time": "45 mins",
+  // //     "recoat_time": "3-5 hrs",
+  // //     "cleanup": "Soap and Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "85-115 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Interior designer finishes"
+  // //   ],
+  // //   "application_instructions": "Use a short-pile roller or soft brush for smooth finish.",
+  // //   "drying_time": "45 mins",
+  // //   "recoat_time": "3-5 hrs",
+  // //   "cleanup": "Soap and Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "108 curated shades"
+  // //   ],
+  // //   "spread_rate": "85-115 sq. ft./Ltr",
+  // //   "preparation_instructions": "Ensure dust-free and dry surface before painting",
+  // //   "safety_precautions": "Use gloves; eye protection optional",
+  // //   "storage_instructions": "Keep sealed; store at room temperature",
+  // //   "warranty": "7 years",
+  // //   "product_number": "REGAL",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 75% RH",
+  // //   "display_name": "Regal",
+  
+  // "PIS": "/PIS/",
+  // "TDS": "",
+  // "images": ["/Assets/regal.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/dampshield",
+  // //   "name": "DampShield",
+  // //   "image": "/Assets/dampshield.png",
+  // //   "description": "Waterproof + anti-fungal interior wall coating for kitchens, baths, and high-humidity spaces.",
+  // //   "short-description": "Ultimate moisture protection for indoors.",
+  // //   "details": "SealDefense Interior blocks moisture, prevents fungal growth, and maintains a clean finish in humid interior spaces.",
+  // //   "category": "Interior",
+  // //   "application": [
+  // //     "Bathroom",
+  // //     "kitchen",
+  // //     "utility area"
+  // //   ],
+  // //   "advantages": [
+  // //     "Anti-fungal",
+  // //     "Waterproof",
+  // //     "Matte finish"
+  // //   ],
+  // //   "features": [
+  // //     "Stain blocking",
+  // //     "Vapour-permeable",
+  // //     "Easy maintenance"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Matte",
+  // //     "Flat"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "Concrete",
+  // //     "Cement sheet"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Suitable for wet-area walls and ceilings"
+  // //   ],
+  // //   "price": 495,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "80-110 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Damp-prone kitchen and bathroom walls"
+  // //     ],
+  // //     "application_instructions": "Apply 2 coats on a clean, dry surface. Allow proper drying between coats.",
+  // //     "drying_time": "1.5 hrs",
+  // //     "recoat_time": "3 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "80-110 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Damp-prone kitchen and bathroom walls"
+  // //   ],
+  // //   "application_instructions": "Apply 2 coats on a clean, dry surface. Allow proper drying between coats.",
+  // //   "drying_time": "1.5 hrs",
+  // //   "recoat_time": "3 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Roller",
+  // //     "brush"
+  // //   ],
+  // //   "color_options": [
+  // //     "Neutral and white tones"
+  // //   ],
+  // //   "spread_rate": "85-110 sq. ft./Ltr",
+  // //   "preparation_instructions": "Remove surface mold or dampness before application",
+  // //   "safety_precautions": "Wear a mask if spraying",
+  // //   "storage_instructions": "Store upright and away from heat",
+  // //   "warranty": "4 years",
+  // //   "product_number": "SEALINT",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 80% RH",
+  // //   "display_name": "DampShield",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/dampshield.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/wallarmor",
+  // //   "name": "WallArmor",
+  // //   "image": "/Assets/wallarmor.png",
+  // //   "description": "High-resistance exterior wall paint with waterproof and UV barrier.",
+  // //   "short-description": "Rain, sun, pollution - this is your wall's shield.",
+  // //   "details": "WallArmor offers UV resistance and waterproofing, built to stand up to India's toughest weather conditions.",
+  // //   "category": "Exterior",
+  // //   "application": [
+  // //     "High-exposure exterior surfaces"
+  // //   ],
+  // //   "advantages": [
+  // //     "UV stable",
+  // //     "Rainproof",
+  // //     "Dust-repelling"
+  // //   ],
+  // //   "features": [
+  // //     "Colour holding",
+  // //     "Algae-resistant",
+  // //     "Long life"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Satin",
+  // //     "Low sheen"
+  // //   ],
+  // //   "substrate": [
+  // //     "Brick",
+  // //     "Concrete",
+  // //     "Plaster",
+  // //     "Cement board"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Great for homes",
+  // //     "facades",
+  // //     "and office exteriors"
+  // //   ],
+  // //   "price": 525,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "85-115 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Exterior plaster and cement walls"
+  // //     ],
+  // //     "application_instructions": "Use brush, roller or spray. Ideal in 2 coats for full coverage.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "3-4 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "85-115 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Exterior plaster and cement walls"
+  // //   ],
+  // //   "application_instructions": "Use brush, roller or spray. Ideal in 2 coats for full coverage.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "3-4 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "24+ exterior shades"
+  // //   ],
+  // //   "spread_rate": "90-115 sq. ft./Ltr",
+  // //   "preparation_instructions": "Wash with water if surface is dusty or dirty",
+  // //   "safety_precautions": "Apply in dry weather only",
+  // //   "storage_instructions": "Keep tightly sealed; avoid heat",
+  // //   "warranty": "5 years",
+  // //   "product_number": "WALLDEF",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 85% RH",
+  // //   "display_name": "WallArmor",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/wallarmor.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/regal-xterior",
+  // //   "name": "Regal Xterior",
+  // //   "image": "/Assets/regalxterior.png",
+  // //   "description": "Premium fade-resistant paint for prestige building exteriors.",
+  // //   "short-description": "Long-lasting colour even under harsh sunlight.",
+  // //   "details": "Regal Xterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
+  // //   "category": "Exterior",
+  // //   "application": [
+  // //     "Architectural & villa exteriors"
+  // //   ],
+  // //   "advantages": [
+  // //     "ColourSet™",
+  // //     "Ultra fade-resist",
+  // //     "Premium finish"
+  // //   ],
+  // //   "features": [
+  // //     "Self-cleaning",
+  // //     "No chalking",
+  // //     "Deep coverage"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Silk sheen",
+  // //     "Soft matte"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "AAC",
+  // //     "Textured cement"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Ideal for elevated homes and designer facades"
+  // //   ],
+  // //   "price": 599,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "85-105 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Exterior wall surfaces"
+  // //     ],
+  // //     "application_instructions": "Apply evenly with roller or spray. Ensure weather conditions are dry.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "3-5 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "85-105 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Exterior wall surfaces"
+  // //   ],
+  // //   "application_instructions": "Apply evenly with roller or spray. Ensure weather conditions are dry.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "3-5 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "Custom exterior colours"
+  // //   ],
+  // //   "spread_rate": "85-105 sq. ft./Ltr",
+  // //   "preparation_instructions": "Clean and remove all loose material before application",
+  // //   "safety_precautions": "Use PPE if spraying",
+  // //   "storage_instructions": "Store in cool area; do not freeze",
+  // //   "warranty": "6 years",
+  // //   "product_number": "REGX",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 80% RH",
+  // //   "display_name": "Regal Xterior",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/regalxterior.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/barriercoat",
+  // //   "name": "BarrierCoat",
+  // //   "image": "/Assets/barriercoat.png",
+  // //   "description": "Anti-stain, microbial-resistant interior emulsion for kitchens and kid zones.",
+  // //   "short-description": "Interior paint with stain repellent and high washability.",
+  // //   "details": "BarrierCoat protects interiors from spills, microbes, and scuffs - perfect for kitchens, dining areas, and kid zones.",
+  // //   "category": "Interior",
+  // //   "application": [
+  // //     "Kitchens",
+  // //     "children's rooms",
+  // //     "dining walls"
+  // //   ],
+  // //   "advantages": [
+  // //     "Stain-resistant",
+  // //     "Fire-aware",
+  // //     "Anti-microbial"
+  // //   ],
+  // //   "features": [
+  // //     "Washable matte",
+  // //     "High coverage",
+  // //     "Hydrophobic tech"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Matte",
+  // //     "Soft matte"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "Drywall",
+  // //     "Wood",
+  // //     "Masonry"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Best for active interior spaces like kitchens and children's rooms"
+  // //   ],
+  // //   "price": 575,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "85-110 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Interior corners",
+  // //       "trims and ceilings"
+  // //     ],
+  // //     "application_instructions": "Apply with brush or roller in 2 coats on dry surface.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "3-4 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "85-110 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Interior corners",
+  // //     "trims and ceilings"
+  // //   ],
+  // //   "application_instructions": "Apply with brush or roller in 2 coats on dry surface.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "3-4 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "Neutral and mid tones"
+  // //   ],
+  // //   "spread_rate": "85-110 sq. ft./Ltr",
+  // //   "preparation_instructions": "Ensure surface is clean and dry",
+  // //   "safety_precautions": "Wear gloves; ventilated area preferred",
+  // //   "storage_instructions": "Keep sealed; store upright",
+  // //   "warranty": "5 years",
+  // //   "product_number": "BARRIERCOAT",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 80% RH",
+  // //   "display_name": "BarrierCoat",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/barriercoat.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/velveta",
+  // //   "name": "Velveta",
+  // //   "image": "/Assets/velveta.png",
+  // //   "description": "Satin interior wall paint with rich glow and antimicrobial resistance.",
+  // //   "short-description": "Soft-shine finish ideal for bedrooms and lounges.",
+  // //   "details": "Velveta combines soft satin glow with anti-microbial defense for peaceful, premium-looking personal spaces.",
+  // //   "category": "Interior",
+  // //   "application": [
+  // //     "Bedrooms",
+  // //     "lounges",
+  // //     "personal spaces"
+  // //   ],
+  // //   "advantages": [
+  // //     "Soft satin",
+  // //     "Moisture shield",
+  // //     "Designer-grade"
+  // //   ],
+  // //   "features": [
+  // //     "Moisture-block film",
+  // //     "Anti-fungal",
+  // //     "Refined finish"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Satin"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "Putty",
+  // //     "Drywall"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Perfect for residential interiors needing a soft glow"
+  // //   ],
+  // //   "price": 575,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "90-115 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Plaster",
+  // //       "POP",
+  // //       "drywall partitions"
+  // //     ],
+  // //     "application_instructions": "Use flat brush or smooth roller. Sand surface before painting if required.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "3 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "90-115 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Plaster",
+  // //     "POP",
+  // //     "drywall partitions"
+  // //   ],
+  // //   "application_instructions": "Use flat brush or smooth roller. Sand surface before painting if required.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "3 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "Light pastels and warm shades"
+  // //   ],
+  // //   "spread_rate": "90-115 sq. ft./Ltr",
+  // //   "preparation_instructions": "Apply on levelled and primed surface",
+  // //   "safety_precautions": "Use gloves; avoid eye contact",
+  // //   "storage_instructions": "Store upright in cool location",
+  // //   "warranty": "5 years",
+  // //   "product_number": "VELVETA",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 75% RH",
+  // //   "display_name": "Velveta",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/velveta.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/roofseal",
+  // //   "name": "RoofSeal",
+  // //   "image": "/Assets/roofseal.png",
+  // //   "description": "Glossy waterproof roof tile and clay coating with UV protection.",
+  // //   "short-description": "Gloss exterior finish for tiles, baked clay, and bricks.",
+  // //   "details": "RoofSeal protects porous roofing with a glossy, UV-stable coat that bonds tight and stays bright.",
+  // //   "category": "Exterior",
+  // //   "application": [
+  // //     "Roof tiles",
+  // //     "bricks",
+  // //     "baked clay"
+  // //   ],
+  // //   "advantages": [
+  // //     "Gloss",
+  // //     "Waterproof",
+  // //     "Anti-fade"
+  // //   ],
+  // //   "features": [
+  // //     "Ceramic bond",
+  // //     "Weather tested"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Gloss",
+  // //     "Brilliant sheen"
+  // //   ],
+  // //   "substrate": [
+  // //     "Baked clay",
+  // //     "Red tile",
+  // //     "Porous brick"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Suitable for roofs",
+  // //     "domes",
+  // //     "and parapets"
+  // //   ],
+  // //   "price": 575,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "70-90 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Clay roof tiles",
+  // //       "domes",
+  // //       "exterior bricks"
+  // //     ],
+  // //     "application_instructions": "Use brush or spray. Recommended in 2 coats for protection.",
+  // //     "drying_time": "2 hrs",
+  // //     "recoat_time": "6 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "70-90 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Clay roof tiles",
+  // //     "domes",
+  // //     "exterior bricks"
+  // //   ],
+  // //   "application_instructions": "Use brush or spray. Recommended in 2 coats for protection.",
+  // //   "drying_time": "2 hrs",
+  // //   "recoat_time": "6 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "spray"
+  // //   ],
+  // //   "color_options": [
+  // //     "Terracotta",
+  // //     "roof reds",
+  // //     "browns"
+  // //   ],
+  // //   "spread_rate": "70-90 sq. ft./Ltr",
+  // //   "preparation_instructions": "Ensure roof is dry, clean, and unglazed",
+  // //   "safety_precautions": "Wear gloves and eye protection",
+  // //   "storage_instructions": "Store sealed in dry area",
+  // //   "warranty": "6 years",
+  // //   "product_number": "ROOFSEAL",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 75% RH",
+  // //   "display_name": "RoofSeal",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/roofseal.png"]
+  // // },
   
  
  
   
   
-  // {
-  //   "url": "https://calycopaints.com/product/quickshield",
-  //   "name": "QuickShield",
-  //   "image": "/Assets/quickshield.png",
-  //   "description": "Fast-drying floor enamel for time-sensitive projects.",
-  //   "short-description": "Quick-cure coating for rapid re-use of spaces.",
-  //   "details": "QuickShield dries in hours and cures hard, enabling faster project turnover for contractors.",
-  //   "category": "Floor coatings",
-  //   "application": [
-  //     "Retail and warehouse flooring"
-  //   ],
-  //   "advantages": [
-  //     "Fast dry",
-  //     "Hard cure",
-  //     "Scuff resistant"
-  //   ],
-  //   "features": [
-  //     "Walkable in 4 hours",
-  //     "Satin finish"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Semi-gloss"
-  //   ],
-  //   "substrate": [
-  //     "Concrete",
-  //     "Tiles"
-  //   ],
-  //   "recommended_uses": [
-  //     "Ideal for garages",
-  //     "shops",
-  //     "and retail flooring"
-  //   ],
-  //   "price": 599,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "80-100 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Indoor concrete or mosaic flooring"
-  //     ],
-  //     "application_instructions": "Apply with brush or roller. Avoid humid conditions while painting.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "2-3 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "80-100 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Indoor concrete or mosaic flooring"
-  //   ],
-  //   "application_instructions": "Apply with brush or roller. Avoid humid conditions while painting.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "2-3 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Roller"
-  //   ],
-  //   "color_options": [
-  //     "Neutral grey tones"
-  //   ],
-  //   "spread_rate": "80-100 sq. ft./Ltr",
-  //   "preparation_instructions": "Clean and prime surface before painting",
-  //   "safety_precautions": "Do not spray near heat source",
-  //   "storage_instructions": "Seal tightly after use",
-  //   "warranty": "5 years",
-  //   "product_number": "DEF-RAPID",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 75% RH",
-  //   "display_name": "QuickShield",
-  //   "images": ["/Assets/quickshield.png"]
-  // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/quickshield",
+  // //   "name": "QuickShield",
+  // //   "image": "/Assets/quickshield.png",
+  // //   "description": "Fast-drying floor enamel for time-sensitive projects.",
+  // //   "short-description": "Quick-cure coating for rapid re-use of spaces.",
+  // //   "details": "QuickShield dries in hours and cures hard, enabling faster project turnover for contractors.",
+  // //   "category": "Floor coatings",
+  // //   "application": [
+  // //     "Retail and warehouse flooring"
+  // //   ],
+  // //   "advantages": [
+  // //     "Fast dry",
+  // //     "Hard cure",
+  // //     "Scuff resistant"
+  // //   ],
+  // //   "features": [
+  // //     "Walkable in 4 hours",
+  // //     "Satin finish"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Semi-gloss"
+  // //   ],
+  // //   "substrate": [
+  // //     "Concrete",
+  // //     "Tiles"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Ideal for garages",
+  // //     "shops",
+  // //     "and retail flooring"
+  // //   ],
+  // //   "price": 599,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "80-100 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Indoor concrete or mosaic flooring"
+  // //     ],
+  // //     "application_instructions": "Apply with brush or roller. Avoid humid conditions while painting.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "2-3 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "80-100 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Indoor concrete or mosaic flooring"
+  // //   ],
+  // //   "application_instructions": "Apply with brush or roller. Avoid humid conditions while painting.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "2-3 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Roller"
+  // //   ],
+  // //   "color_options": [
+  // //     "Neutral grey tones"
+  // //   ],
+  // //   "spread_rate": "80-100 sq. ft./Ltr",
+  // //   "preparation_instructions": "Clean and prime surface before painting",
+  // //   "safety_precautions": "Do not spray near heat source",
+  // //   "storage_instructions": "Seal tightly after use",
+  // //   "warranty": "5 years",
+  // //   "product_number": "DEF-RAPID",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 75% RH",
+  // //   "display_name": "QuickShield",
   
-  // {
-  //   "url": "https://calycopaints.com/product/flexcoat",
-  //   "name": "FlexCoat",
-  //   "image": "/Assets/flexcoat.png",
-  //   "description": "High-flexibility coating for concrete and metal junctions.",
-  //   "short-description": "Ideal for waterproofing transitions and expansion zones.",
-  //   "details": "FlexCoat bridges gaps with high elasticity, sealing joints and corners without cracking.",
-  //   "category": "Industrial coatings",
-  //   "application": [
-  //     "Joint & multi-surface areas"
-  //   ],
-  //   "advantages": [
-  //     "Highly flexible",
-  //     "Crack-bridging",
-  //     "Waterproof"
-  //   ],
-  //   "features": [
-  //     "Elastic finish",
-  //     "Breathable coating"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Flat"
-  //   ],
-  //   "substrate": [
-  //     "Plaster",
-  //     "Metal",
-  //     "Junctions"
-  //   ],
-  //   "recommended_uses": [
-  //     "Used on exteriors",
-  //     "frames",
-  //     "and window junctions"
-  //   ],
-  //   "price": 599,
-  //   "packaging": [
-  //     "1L",
-  //     "4L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "70-90 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Wall and beam junctions (masonry to metal)"
-  //     ],
-  //     "application_instructions": "Use brush or roller. Stretch coating well across joints.",
-  //     "drying_time": "1.5 hrs",
-  //     "recoat_time": "3 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "70-90 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Wall and beam junctions (masonry to metal)"
-  //   ],
-  //   "application_instructions": "Use brush or roller. Stretch coating well across joints.",
-  //   "drying_time": "1.5 hrs",
-  //   "recoat_time": "3 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush"
-  //   ],
-  //   "color_options": [
-  //     "Grey/white shades"
-  //   ],
-  //   "spread_rate": "70-90 sq. ft./Ltr",
-  //   "preparation_instructions": "Mask clean and dry areas",
-  //   "safety_precautions": "Keep away from eyes",
-  //   "storage_instructions": "Store in shade; avoid direct sun",
-  //   "warranty": "5 years",
-  //   "product_number": "DEF-FLEX",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 85% RH",
-  //   "display_name": "FlexCoat",
-  //   "images": ["/Assets/flexcoat.png"]
-  // },
-  // {
-  //   "url": "https://calycopaints.com/product/allguard",
-  //   "name": "AllGuard",
-  //   "image": "/Assets/allguard.png",
-  //   "description": "Multi-surface barrier coat.",
-  //   "short-description": "Stain-blocking, waterproofing topcoat for every job.",
-  //   "details": "AllGuard offers pro-level durability and adhesion for multi-surface sealing across site conditions.",
-  //   "category": "Industrial coatings",
-  //   "application": [
-  //     "General topcoat/multi-surface"
-  //   ],
-  //   "advantages": [
-  //     "All-in-one",
-  //     "Breathable",
-  //     "Adhesive"
-  //   ],
-  //   "features": [
-  //     "Flexible film",
-  //     "Anti-mold",
-  //     "Strong seal"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Flat"
-  //   ],
-  //   "substrate": [
-  //     "Wood",
-  //     "Metal",
-  //     "Plaster",
-  //     "Concrete"
-  //   ],
-  //   "recommended_uses": [
-  //     "Multi-surface sealing in commercial and home projects"
-  //   ],
-  //   "price": 599,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "90-110 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Multi-use interior and exterior surfaces"
-  //     ],
-  //     "application_instructions": "Apply with brush or roller in 2 coats.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "3-4 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "90-110 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Multi-use interior and exterior surfaces"
-  //   ],
-  //   "application_instructions": "Apply with brush or roller in 2 coats.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "3-4 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush"
-  //   ],
-  //   "color_options": [
-  //     "Clear and tinted"
-  //   ],
-  //   "spread_rate": "90-110 sq. ft./Ltr",
-  //   "preparation_instructions": "Apply on clean, stable surface",
-  //   "safety_precautions": "Wear PPE when brushing",
-  //   "storage_instructions": "Store flat and sealed",
-  //   "warranty": "4 years",
-  //   "product_number": "DEF-SHIELD",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 80% RH",
-  //   "display_name": "AllGuard",
-  //   "images": ["/Assets/allguard.png"]
-  // },
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/quickshield.png"]
+  // // },
   
-  // {
-  //   "url": "https://www.calyco.com/products/fire-retardant-paint",
-  //   "name": "Fire Retardant Paint",
-  //   "image": "/Assets/fireretardant.png",
-  //   "description": "Solvent-based fire retardant topcoat for steel, wood, and concrete offering flame and UV resistance.",
-  //   "short-description": "One-component, smooth matte fire-retardant paint for multi-surface application.",
-  //   "details": "Fire Retardant Paint delays flame spread while resisting UV, moisture, and harsh exposure.",
-  //   "category": "Industrial coatings",
-  //   "application": [
-  //     "Fireproofing for structures",
-  //     "panels",
-  //     "partitions",
-  //     "and industrial assets"
-  //   ],
-  //   "advantages": [
-  //     "Excellent fire protection",
-  //     "Easy to apply",
-  //     "UV",
-  //     "water",
-  //     "chemical resistant"
-  //   ],
-  //   "features": [
-  //     "High solids",
-  //     "Smooth matte finish",
-  //     "Multi-substrate adhesion"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Matte"
-  //   ],
-  //   "substrate": [
-  //     "Wood",
-  //     "Metal",
-  //     "Concrete"
-  //   ],
-  //   "recommended_uses": [
-  //     "Fireproofing for structures",
-  //     "partitions",
-  //     "and assets"
-  //   ],
-  //   "price": 250,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "20L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Solvent-based",
-  //     "coverage": "80-90 sq. ft./Ltr",
-  //     "voc_content": "High VOC",
-  //     "suitable_surfaces": [
-  //       "Steel gates",
-  //       "tanks",
-  //       "and industrial parts"
-  //     ],
-  //     "application_instructions": "Brush or spray on clean surface. Thin with flame retardant thinner if spraying.",
-  //     "drying_time": "Touch dry in 1 hr; hard dry in 48-72 hrs",
-  //     "recoat_time": "24 hrs",
-  //     "cleanup": "Flame retardant thinner"
-  //   },
-  //   "base_type": "Solvent-based",
-  //   "coverage": "80-90 sq. ft./Ltr",
-  //   "voc_content": "High VOC",
-  //   "suitable_surfaces": [
-  //     "Steel gates",
-  //     "tanks",
-  //     "and industrial parts"
-  //   ],
-  //   "application_instructions": "Brush or spray on clean surface. Thin with flame retardant thinner if spraying.",
-  //   "drying_time": "Touch dry in 1 hr; hard dry in 48-72 hrs",
-  //   "recoat_time": "24 hrs",
-  //   "cleanup": "Flame retardant thinner",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller",
-  //     "spray"
-  //   ],
-  //   "color_options": [
-  //     "White"
-  //   ],
-  //   "spread_rate": "80-90 sq. ft./Ltr",
-  //   "preparation_instructions": "Surface must be sandblasted and dry",
-  //   "safety_precautions": "Flammable; use PPE; avoid inhalation",
-  //   "storage_instructions": "Store sealed in cool metal drums",
-  //   "warranty": "3 years",
-  //   "product_number": "FD-FR-WHT",
-  //   "coats_required": "1 coat",
-  //   "temperature_range": "Ambient-120°C",
-  //   "humidity_range": "Below 95% RH",
-  //   "display_name": "Fire Retardant Paint",
-  //   "images": ["/Assets/fireretardant.png"]
-  // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/flexcoat",
+  // //   "name": "FlexCoat",
+  // //   "image": "/Assets/flexcoat.png",
+  // //   "description": "High-flexibility coating for concrete and metal junctions.",
+  // //   "short-description": "Ideal for waterproofing transitions and expansion zones.",
+  // //   "details": "FlexCoat bridges gaps with high elasticity, sealing joints and corners without cracking.",
+  // //   "category": "Industrial coatings",
+  // //   "application": [
+  // //     "Joint & multi-surface areas"
+  // //   ],
+  // //   "advantages": [
+  // //     "Highly flexible",
+  // //     "Crack-bridging",
+  // //     "Waterproof"
+  // //   ],
+  // //   "features": [
+  // //     "Elastic finish",
+  // //     "Breathable coating"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Flat"
+  // //   ],
+  // //   "substrate": [
+  // //     "Plaster",
+  // //     "Metal",
+  // //     "Junctions"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Used on exteriors",
+  // //     "frames",
+  // //     "and window junctions"
+  // //   ],
+  // //   "price": 599,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "70-90 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Wall and beam junctions (masonry to metal)"
+  // //     ],
+  // //     "application_instructions": "Use brush or roller. Stretch coating well across joints.",
+  // //     "drying_time": "1.5 hrs",
+  // //     "recoat_time": "3 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "70-90 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Wall and beam junctions (masonry to metal)"
+  // //   ],
+  // //   "application_instructions": "Use brush or roller. Stretch coating well across joints.",
+  // //   "drying_time": "1.5 hrs",
+  // //   "recoat_time": "3 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush"
+  // //   ],
+  // //   "color_options": [
+  // //     "Grey/white shades"
+  // //   ],
+  // //   "spread_rate": "70-90 sq. ft./Ltr",
+  // //   "preparation_instructions": "Mask clean and dry areas",
+  // //   "safety_precautions": "Keep away from eyes",
+  // //   "storage_instructions": "Store in shade; avoid direct sun",
+  // //   "warranty": "5 years",
+  // //   "product_number": "DEF-FLEX",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 85% RH",
+  // //   "display_name": "FlexCoat",
   
-  // {
-  //   "url": "https://calycopaints.com/product/calmmatte",
-  //   "name": "CalmMatte",
-  //   "image": "/Assets/calmmatte.png",
-  //   "description": "Ultra-calm interior paint for tranquil spaces.",
-  //   "short-description": "A muted, minimal designer paint ideal for bedrooms and retreat zones.",
-  //   "details": "CalmMatte softens visuals, reduces glare, and blends with serene, contemporary interiors.",
-  //   "category": "Interior",
-  //   "application": [
-  //     "Bedrooms",
-  //     "meditation rooms",
-  //     "lounges"
-  //   ],
-  //   "advantages": [
-  //     "Low glare",
-  //     "Ultra low VOC",
-  //     "Soothing colour base"
-  //   ],
-  //   "features": [
-  //     "Ultra-flat finish",
-  //     "Colour-harmonizing",
-  //     "Non-distracting"
-  //   ],
-  //   "finish_type_sheen": [
-  //     "Ultra flat"
-  //   ],
-  //   "substrate": [
-  //     "Drywall",
-  //     "Plaster",
-  //     "POP"
-  //   ],
-  //   "recommended_uses": [
-  //     "Perfect for bedrooms and quiet spaces"
-  //   ],
-  //   "price": 599,
-  //   "packaging": [
-  //     "1L",
-  //     "4L",
-  //     "10L"
-  //   ],
-  //   "technical_specs": {
-  //     "base_type": "Water-based",
-  //     "coverage": "100-120 sq. ft./Ltr",
-  //     "voc_content": "Low VOC",
-  //     "suitable_surfaces": [
-  //       "Interior ceilings and drywalls"
-  //     ],
-  //     "application_instructions": "Brush or roller recommended. Avoid over-thinning.",
-  //     "drying_time": "1 hr",
-  //     "recoat_time": "2-4 hrs",
-  //     "cleanup": "Soap & Water"
-  //   },
-  //   "base_type": "Water-based",
-  //   "coverage": "100-120 sq. ft./Ltr",
-  //   "voc_content": "Low VOC",
-  //   "suitable_surfaces": [
-  //     "Interior ceilings and drywalls"
-  //   ],
-  //   "application_instructions": "Brush or roller recommended. Avoid over-thinning.",
-  //   "drying_time": "1 hr",
-  //   "recoat_time": "2-4 hrs",
-  //   "cleanup": "Soap & Water",
-  //   "brand": "Calyco",
-  //   "tools_required": [
-  //     "Brush",
-  //     "roller",
-  //     "spray"
-  //   ],
-  //   "color_options": [
-  //     "Neutral tones"
-  //   ],
-  //   "spread_rate": "10-12 m²/L",
-  //   "preparation_instructions": "Ensure surface is clean and dry",
-  //   "safety_precautions": "Use gloves; ventilate workspace",
-  //   "storage_instructions": "Keep in cool place, tightly sealed",
-  //   "warranty": "5 years",
-  //   "product_number": "C22INT001",
-  //   "coats_required": "2 coats",
-  //   "temperature_range": "12°C-40°C",
-  //   "humidity_range": "Below 80% RH",
-  //   "display_name": "CalmMatte",
-  //   "images": ["/Assets/calmmatte.png"]
-  // },
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/flexcoat.png"]
+  // // },
+  // // {
+  // //   "url": "https://calycopaints.com/product/allguard",
+  // //   "name": "AllGuard",
+  // //   "image": "/Assets/allguard.png",
+  // //   "description": "Multi-surface barrier coat.",
+  // //   "short-description": "Stain-blocking, waterproofing topcoat for every job.",
+  // //   "details": "AllGuard offers pro-level durability and adhesion for multi-surface sealing across site conditions.",
+  // //   "category": "Industrial coatings",
+  // //   "application": [
+  // //     "General topcoat/multi-surface"
+  // //   ],
+  // //   "advantages": [
+  // //     "All-in-one",
+  // //     "Breathable",
+  // //     "Adhesive"
+  // //   ],
+  // //   "features": [
+  // //     "Flexible film",
+  // //     "Anti-mold",
+  // //     "Strong seal"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Flat"
+  // //   ],
+  // //   "substrate": [
+  // //     "Wood",
+  // //     "Metal",
+  // //     "Plaster",
+  // //     "Concrete"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Multi-surface sealing in commercial and home projects"
+  // //   ],
+  // //   "price": 599,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "90-110 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Multi-use interior and exterior surfaces"
+  // //     ],
+  // //     "application_instructions": "Apply with brush or roller in 2 coats.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "3-4 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "90-110 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Multi-use interior and exterior surfaces"
+  // //   ],
+  // //   "application_instructions": "Apply with brush or roller in 2 coats.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "3-4 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush"
+  // //   ],
+  // //   "color_options": [
+  // //     "Clear and tinted"
+  // //   ],
+  // //   "spread_rate": "90-110 sq. ft./Ltr",
+  // //   "preparation_instructions": "Apply on clean, stable surface",
+  // //   "safety_precautions": "Wear PPE when brushing",
+  // //   "storage_instructions": "Store flat and sealed",
+  // //   "warranty": "4 years",
+  // //   "product_number": "DEF-SHIELD",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 80% RH",
+  // //   "display_name": "AllGuard",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/allguard.png"]
+  // // },
+  
+  // // {
+  // //   "url": "https://www.calyco.com/products/fire-retardant-paint",
+  // //   "name": "Fire Retardant Paint",
+  // //   "image": "/Assets/fireretardant.png",
+  // //   "description": "Solvent-based fire retardant topcoat for steel, wood, and concrete offering flame and UV resistance.",
+  // //   "short-description": "One-component, smooth matte fire-retardant paint for multi-surface application.",
+  // //   "details": "Fire Retardant Paint delays flame spread while resisting UV, moisture, and harsh exposure.",
+  // //   "category": "Industrial coatings",
+  // //   "application": [
+  // //     "Fireproofing for structures",
+  // //     "panels",
+  // //     "partitions",
+  // //     "and industrial assets"
+  // //   ],
+  // //   "advantages": [
+  // //     "Excellent fire protection",
+  // //     "Easy to apply",
+  // //     "UV",
+  // //     "water",
+  // //     "chemical resistant"
+  // //   ],
+  // //   "features": [
+  // //     "High solids",
+  // //     "Smooth matte finish",
+  // //     "Multi-substrate adhesion"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Matte"
+  // //   ],
+  // //   "substrate": [
+  // //     "Wood",
+  // //     "Metal",
+  // //     "Concrete"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Fireproofing for structures",
+  // //     "partitions",
+  // //     "and assets"
+  // //   ],
+  // //   "price": 250,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "20L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Solvent-based",
+  // //     "coverage": "80-90 sq. ft./Ltr",
+  // //     "voc_content": "High VOC",
+  // //     "suitable_surfaces": [
+  // //       "Steel gates",
+  // //       "tanks",
+  // //       "and industrial parts"
+  // //     ],
+  // //     "application_instructions": "Brush or spray on clean surface. Thin with flame retardant thinner if spraying.",
+  // //     "drying_time": "Touch dry in 1 hr; hard dry in 48-72 hrs",
+  // //     "recoat_time": "24 hrs",
+  // //     "cleanup": "Flame retardant thinner"
+  // //   },
+  // //   "base_type": "Solvent-based",
+  // //   "coverage": "80-90 sq. ft./Ltr",
+  // //   "voc_content": "High VOC",
+  // //   "suitable_surfaces": [
+  // //     "Steel gates",
+  // //     "tanks",
+  // //     "and industrial parts"
+  // //   ],
+  // //   "application_instructions": "Brush or spray on clean surface. Thin with flame retardant thinner if spraying.",
+  // //   "drying_time": "Touch dry in 1 hr; hard dry in 48-72 hrs",
+  // //   "recoat_time": "24 hrs",
+  // //   "cleanup": "Flame retardant thinner",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller",
+  // //     "spray"
+  // //   ],
+  // //   "color_options": [
+  // //     "White"
+  // //   ],
+  // //   "spread_rate": "80-90 sq. ft./Ltr",
+  // //   "preparation_instructions": "Surface must be sandblasted and dry",
+  // //   "safety_precautions": "Flammable; use PPE; avoid inhalation",
+  // //   "storage_instructions": "Store sealed in cool metal drums",
+  // //   "warranty": "3 years",
+  // //   "product_number": "FD-FR-WHT",
+  // //   "coats_required": "1 coat",
+  // //   "temperature_range": "Ambient-120°C",
+  // //   "humidity_range": "Below 95% RH",
+  // //   "display_name": "Fire Retardant Paint",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/fireretardant.png"]
+  // // },
+  
+  // // {
+  // //   "url": "https://calycopaints.com/product/calmmatte",
+  // //   "name": "CalmMatte",
+  // //   "image": "/Assets/calmmatte.png",
+  // //   "description": "Ultra-calm interior paint for tranquil spaces.",
+  // //   "short-description": "A muted, minimal designer paint ideal for bedrooms and retreat zones.",
+  // //   "details": "CalmMatte softens visuals, reduces glare, and blends with serene, contemporary interiors.",
+  // //   "category": "Interior",
+  // //   "application": [
+  // //     "Bedrooms",
+  // //     "meditation rooms",
+  // //     "lounges"
+  // //   ],
+  // //   "advantages": [
+  // //     "Low glare",
+  // //     "Ultra low VOC",
+  // //     "Soothing colour base"
+  // //   ],
+  // //   "features": [
+  // //     "Ultra-flat finish",
+  // //     "Colour-harmonizing",
+  // //     "Non-distracting"
+  // //   ],
+  // //   "finish_type_sheen": [
+  // //     "Ultra flat"
+  // //   ],
+  // //   "substrate": [
+  // //     "Drywall",
+  // //     "Plaster",
+  // //     "POP"
+  // //   ],
+  // //   "recommended_uses": [
+  // //     "Perfect for bedrooms and quiet spaces"
+  // //   ],
+  // //   "price": 599,
+  // //   "packaging": [
+  // //     "1L",
+  // //     "4L",
+  // //     "10L"
+  // //   ],
+  // //   "technical_specs": {
+  // //     "base_type": "Water-based",
+  // //     "coverage": "100-120 sq. ft./Ltr",
+  // //     "voc_content": "Low VOC",
+  // //     "suitable_surfaces": [
+  // //       "Interior ceilings and drywalls"
+  // //     ],
+  // //     "application_instructions": "Brush or roller recommended. Avoid over-thinning.",
+  // //     "drying_time": "1 hr",
+  // //     "recoat_time": "2-4 hrs",
+  // //     "cleanup": "Soap & Water"
+  // //   },
+  // //   "base_type": "Water-based",
+  // //   "coverage": "100-120 sq. ft./Ltr",
+  // //   "voc_content": "Low VOC",
+  // //   "suitable_surfaces": [
+  // //     "Interior ceilings and drywalls"
+  // //   ],
+  // //   "application_instructions": "Brush or roller recommended. Avoid over-thinning.",
+  // //   "drying_time": "1 hr",
+  // //   "recoat_time": "2-4 hrs",
+  // //   "cleanup": "Soap & Water",
+  // //   "brand": "Calyco",
+  // //   "tools_required": [
+  // //     "Brush",
+  // //     "roller",
+  // //     "spray"
+  // //   ],
+  // //   "color_options": [
+  // //     "Neutral tones"
+  // //   ],
+  // //   "spread_rate": "10-12 m²/L",
+  // //   "preparation_instructions": "Ensure surface is clean and dry",
+  // //   "safety_precautions": "Use gloves; ventilate workspace",
+  // //   "storage_instructions": "Keep in cool place, tightly sealed",
+  // //   "warranty": "5 years",
+  // //   "product_number": "C22INT001",
+  // //   "coats_required": "2 coats",
+  // //   "temperature_range": "12°C-40°C",
+  // //   "humidity_range": "Below 80% RH",
+  // //   "display_name": "CalmMatte",
+  
+  // "PIS": "",
+  // "TDS": "",
+  // "images": ["/Assets/calmmatte.png"]
+  // // },
 ];
 
 export function getProductById(id) {

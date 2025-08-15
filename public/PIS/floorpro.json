@@ -1,0 +1,59 @@
+{
+  "sheet_title": "Calyco FloorPro – Concrete Coating",
+  "pis_title": "Concrete Coating– Product Information Sheet (PIS)",
+  "product_overview": "FloorPro is made for garages and industrial spaces that demand toughness, cleanability, and impact resistance.",
+  "key_features": [
+    "🌍 Multi-Surface Application: Works across Smooth concrete"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Designed for warehouses, basements, and garages"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Base Coat",
+      "product": "Calyco FloorPro – Concrete Coating (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 2,
+      "label": "Topcoat",
+      "product": "Calyco FloorPro – Concrete Coating (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Roller"
+  ],
+  "timings": {
+    "touch_dry": "2 hrs",
+    "recoat": "4 hrs"
+  },
+  "coverage": "90–110 sq. ft./Ltr per coat",
+  "finish": "Low sheen",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Low sheen",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "5 years"
+  },
+  "surface_preparation": [
+    "Etch surface and clean dust before application",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Apply with brush, roller or spray. Ensure base is clean and cured."
+  ],
+  "pack_sizes": "Available in: 4L, 10L, 20L",
+  "storage_safety": [
+    "Store upright in cool place",
+    "Gloves and mask recommended",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

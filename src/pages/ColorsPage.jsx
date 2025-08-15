@@ -4,6 +4,7 @@ import { colorGroups } from "../data/colorGroups";
 import ColorExplorer from "../components/ColorExplore";
 import { useNavigate } from "react-router-dom";
 import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer";
+import ColorExplore from "../components/ColorExplore";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -272,11 +273,13 @@ export default function ColorsPage() {
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100/20 to-blue-100/20"></div>
         </div>
+        <ColorExplore/>
         
-        {/* Filter Bar */}
-        
+        {/* Filter Bar */} 
        
-       
+      </div>
+      <div className="px-10">
+        <ColorDisclaimer variant="full"/>
       </div>
     </div>
   );
