@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { colorGroups } from "../data/colorGroups";
 import ColorExplorer from "../components/ColorExplore";
 import { useNavigate } from "react-router-dom";
+import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -272,88 +273,10 @@ export default function ColorsPage() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-100/20 to-blue-100/20"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span>🎨</span>
-              <span>Color Families</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Explore Our Color Families
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              From earthy neutrals to vibrant hues, discover the perfect color for every space and mood. 
-              Each family tells a story of nature's beauty and cultural heritage.
-            </p>
-          </motion.div>
-          
-          <div className="relative z-10">
-            <ColorExplorer />
-          </div>
-        </div>
-      </div>
-
-      {/* Enhanced Call to Action */}
-      <div className="py-20 bg-gradient-to-r from-[#493657] to-[#5a4067] relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent"></div>
-        </div>
+        {/* Filter Bar */}
         
-        <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center text-white">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span>✨</span>
-              <span>Transform Your Space</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Bring Your Vision to Life?
-            </h2>
-            <p className="text-xl mb-10 opacity-90 leading-relaxed">
-              Start your color journey with our expert-curated palette and create spaces that inspire, 
-              comfort, and reflect your unique style while respecting our planet.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <motion.button 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-                onClick={() => navigate('/contact')}
-                className="px-10 py-5 bg-[#F0C85A] text-[#493657] rounded-xl font-semibold hover:bg-[#E6B84A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Get Expert Advice
-              </motion.button>
-              <motion.button 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                viewport={{ once: true }}
-                onClick={() => navigate('/product')}
-                className="px-10 py-5 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-[#493657] transition-all duration-300 backdrop-blur-sm hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                Shop Colors
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
+       
+       
       </div>
     </div>
   );

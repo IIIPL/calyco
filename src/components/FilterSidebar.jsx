@@ -1,13 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { products } from '../data/products';
 import {
   orderedSubstrateGroups,
   APPLICATION_GROUPS_ORDER,
-  mapToStandardApplicationAreas
+  mapToStandardApplicationAreas,
+  APPLICATION_TOOLTIPS,
+  mapToStandardCategories,
+  sortCategoriesWithOrder
 } from '../utils/mapping';
 
+const HoverTip = ({ text, children, openDelay = 250, closeDelay = 120 }) => {
+  const [open, setOpen] = useState(false);
+  const openT = useRef(null);
+  const closeT = useRef(null);
+
+  const show = () => {
+    clearTimeout(closeT.current);
+    openT.current = setTimeout(() => setOpen(true), openDelay);
+  };
+  const hide = () => {
+    clearTimeout(openT.current);
+    closeT.current = setTimeout(() => setOpen(false), closeDelay);
+  };
+
+  useEffect(() => () => {
+    clearTimeout(openT.current);
+    clearTimeout(closeT.current);
+  }, []);
+
+  return (
+    <span
+      className="relative inline-flex items-center"
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
+      {children}
+
+      {text && (
+        <span
+          role="tooltip"
+          aria-hidden={!open}
+          className={[
+            "pointer-events-none absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 z-50",
+            "transition-all duration-150",
+            open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+          ].join(" ")}
+        >
+          <span className="relative block">
+            <span className="block bg-[#2c2240] text-white text-[14px] leading-snug px-3 py-2 rounded-lg shadow-xl border border-white/10 max-w-[260px] whitespace-pre-line">
+              {text}
+            </span>
+            <span className="absolute left-1/2 -translate-x-1/2 -top-1.5 w-3 h-3 bg-[#2c2240] rotate-45 shadow-xl" />
+          </span>
+        </span>
+      )}
+    </span>
+  );
+};
+
 // Build Filter Options
-const uniqueCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
+const rawCategories = products.map(p => p.category).filter(Boolean);
+const uniqueCategories = sortCategoriesWithOrder(
+  mapToStandardCategories(rawCategories)
+);
 
 const allRawApplications = products
   .flatMap(p => Array.isArray(p.application) ? p.application : (p.application ? [p.application] : []));

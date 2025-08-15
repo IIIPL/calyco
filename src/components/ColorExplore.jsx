@@ -1,20 +1,71 @@
-import React, { useState } from "react";
+// components/ColorExplore.jsx
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { flatColors } from "../data/flatColors";
+import { groupedShades } from "../data/groupedShades";
 import ColorBox from "./ColorComponents/ColorBox";
 import { FaLeaf, FaPalette, FaEye, FaChevronDown, FaChevronUp } from "react-icons/fa6";
+
+// --- helpers ---
+const hexToHsl = (hex) => {
+  let h = hex.replace("#", "");
+  if (h.length === 3) h = h.split("").map(c => c + c).join("");
+  const r = parseInt(h.slice(0, 2), 16) / 255;
+  const g = parseInt(h.slice(2, 4), 16) / 255;
+  const b = parseInt(h.slice(4, 6), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let hVal, s, l = (max + min) / 2;
+  if (max === min) { hVal = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: hVal = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: hVal = (b - r) / d + 2; break;
+      default: hVal = (r - g) / d + 4;
+    }
+    hVal /= 6;
+  }
+  return { h: Math.round(hVal * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+};
+
+const pickTextColor = (hex = "#ffffff") => {
+  const h = hex.replace("#", "");
+  const s = h.length === 3 ? h.split("").map(c => c + c).join("") : h.slice(0, 6);
+  const r = parseInt(s.slice(0, 2), 16), g = parseInt(s.slice(2, 4), 16), b = parseInt(s.slice(4, 6), 16);
+  const toLin = v => {
+    const x = v / 255;
+    return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+  };
+  const L = 0.2126 * toLin(r) + 0.7152 * toLin(g) + 0.0722 * toLin(b);
+  const contrastBlack = (L + 0.05) / 0.05;
+  const contrastWhite = 1.05 / (L + 0.05);
+  return contrastBlack >= contrastWhite ? "#000" : "#fff";
+};
+
+// mid-tone fallback if familyHex missing
+const representativeFromGroup = (list = []) => {
+  if (!list.length) return null;
+  const scored = list.map(({ hex }) => {
+    const { l, s } = hexToHsl(hex);
+    return { hex, score: Math.abs(l - 55) + (100 - s) * 0.1 };
+  });
+  scored.sort((a, b) => a.score - b.score);
+  return scored[0].hex;
+};
 
 const ColorExplore = () => {
   const navigate = useNavigate();
   const [expandedFamily, setExpandedFamily] = useState(null);
 
+  // group by family
   const colorsByFamily = flatColors.reduce((acc, color) => {
-    const family = color.color_family || "Uncategorized";
-    if (!acc[family]) acc[family] = [];
-    acc[family].push(color);
+    const f = color.color_family || "Uncategorized";
+    (acc[f] ||= []).push(color);
     return acc;
   }, {});
+  const families = Object.keys(colorsByFamily);
 
   const familyData = {
     "WHITES & OFF WHITES": {
@@ -228,6 +279,9 @@ const ColorExplore = () => {
                   </AnimatePresence>
                 </div>
               </motion.div>
+            );
+          })}
+        </div>
             );
           })}
         </div>

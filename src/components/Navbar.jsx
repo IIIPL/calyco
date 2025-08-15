@@ -164,12 +164,7 @@ export const Navbar = () => {
           {/* New Visualize Dropdown for mobile */}
           <VisualizeDropdown isMobile={true} />
           
-          <Link
-            to="/samples"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
-          >
-            Samples
-          </Link>
+
           
           <Link
             to="/about"
