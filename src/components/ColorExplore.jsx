@@ -282,9 +282,6 @@ const ColorExplore = () => {
             );
           })}
         </div>
-            );
-          })}
-        </div>
 
         {/* Enhanced Footer */}
         <motion.div 
