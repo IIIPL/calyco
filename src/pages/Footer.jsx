@@ -87,7 +87,7 @@ export const Footer = () => (
         </div>
 
         {/* Calyco */}
-        <Col title="Calyco">
+        <Col title="Quick Links">
           <Item to="/about">About Us</Item>
           <Item to="/contact">Contact Us</Item>
           <Item to="/colors">Sacred Palette</Item>
