@@ -1,16 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 
 const slugify = (text) =>
   text
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')        // Replace spaces with hyphens
-    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
-    .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
-
-
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-&]+/g, '')
+    .replace(/\-\-+/g, '-');
 
 const ColorBox = ({ color, familyName }) => {
   const navigate = useNavigate();
@@ -20,11 +18,10 @@ const ColorBox = ({ color, familyName }) => {
     const g = parseInt(hexColor.substring(3, 5), 16);
     const b = parseInt(hexColor.substring(5, 7), 16);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness > 150 ? 'text-black' : 'text-white';
+    return brightness > 150 ? 'text-gray-900' : 'text-white';
   };
 
   const handleClick = () => {
-    // Ensure the family name and color name are both slugified properly
     const familySlug = slugify(familyName);
     const colorSlug = slugify(color.name);
     navigate(`/colors/family/${familySlug}/${colorSlug}`);
@@ -33,22 +30,40 @@ const ColorBox = ({ color, familyName }) => {
   const textColor = getTextColor(color.hex);
 
   return (
-    <div
+    <motion.div
       onClick={handleClick}
-      className="relative cursor-pointer shadow-md transition-transform duration-300 ease-in-out transform hover:scale-110 md:hover:scale-150 hover:-translate-y-1 hover:z-20 hover:shadow-xl overflow-hidden w-full aspect-square md:aspect-[4/3] "
-      style={{ backgroundColor: color.hex }}
+      className="relative cursor-pointer group"
+      whileHover={{ scale: 1.1, zIndex: 10 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.2 }}
     >
-      <div className="absolute inset-0 flex flex-col justify-end p-2 md:p-3">
-        <div className={`${textColor} text-center`}>
-          <div className="font-semibold text-xs md:text-sm mb-0.5 md:mb-1 leading-tight">
-            {color.name}
-          </div>
-          <div className="text-[10px] md:text-xs opacity-90">
-            {color.hex}
+      <div
+        className="relative w-full aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-white group-hover:border-[#F0C85A]"
+        style={{ backgroundColor: color.hex }}
+      >
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+        
+        {/* Color Info */}
+        <div className="absolute inset-0 flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className={`${textColor} text-center bg-white/90 backdrop-blur-sm rounded-lg p-2`}>
+            <div className="font-semibold text-xs leading-tight mb-1">
+              {color.name}
+            </div>
+            <div className="text-[10px] opacity-75 font-mono">
+              {color.hex}
+            </div>
           </div>
         </div>
+
+        {/* Corner Indicator */}
+        <div className="absolute top-1 right-1 w-3 h-3 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <svg className="w-2 h-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

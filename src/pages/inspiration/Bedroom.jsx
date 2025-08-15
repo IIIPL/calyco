@@ -4,6 +4,7 @@ import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
+import RoomCategoryNav from "../../components/RoomCategoryNav";
 
 const findColor = (name) =>
   name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
@@ -26,6 +27,8 @@ export default function BedroomInspiration() {
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>
+
+      <RoomCategoryNav currentRoom="bedroom" />
 
       {/* Title + Description */}
       <div className="mx-auto max-w-5xl lg:max-w-6xl xl:max-w-7xl px-3 sm:px-6 md:px-8 pt-8 sm:pt-10 pb-6 sm:pb-8">
