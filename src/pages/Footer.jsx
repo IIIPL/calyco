@@ -1,30 +1,29 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const GoldenDots = ({ count = 8 }) => {
+const GoldenDots = ({ count = 10 }) => {
   const dots = Array.from({ length: count }, (_, i) => ({
     id: i,
     size: Math.random() * 8 + 4,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    animationDelay: Math.random() * 3,
-    animationDuration: Math.random() * 4 + 3,
+    delay: Math.random() * 3,
+    dur: Math.random() * 4 + 3,
   }));
-
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {dots.map((dot) => (
+      {dots.map(d => (
         <div
-          key={dot.id}
+          key={d.id}
           className="absolute rounded-full bg-gradient-to-r from-[#F0C85A] to-[#ffd700] animate-pulse"
           style={{
-            width: `${dot.size}px`,
-            height: `${dot.size}px`,
-            left: `${dot.x}%`,
-            top: `${dot.y}%`,
-            animationDelay: `${dot.animationDelay}s`,
-            animationDuration: `${dot.animationDuration}s`,
-            boxShadow: `0 0 ${dot.size * 2}px rgba(240, 200, 90, 0.4)`,
+            width: d.size,
+            height: d.size,
+            left: `${d.x}%`,
+            top: `${d.y}%`,
+            animationDelay: `${d.delay}s`,
+            animationDuration: `${d.dur}s`,
+            boxShadow: `0 0 ${d.size * 2}px rgba(240,200,90,.35)`,
           }}
         />
       ))}
@@ -32,59 +31,105 @@ const GoldenDots = ({ count = 8 }) => {
   );
 };
 
-export const Footer = () => {
-    return (
-        <footer className="relative bg-[#23182b] text-white pt-12 pb-6 border-t border-[#493657]/30 px-6 md:px-12 xl:px-32 overflow-hidden">
-            <GoldenDots count={12} />
-            <div className="relative z-10 mx-auto flex flex-col md:flex-row md:justify-between gap-12 md:gap-8 lg:gap-16">
-                {/* Left: Logo & Company Info */}
-                <div className="flex-1 flex flex-col gap-4 min-w-[220px]">
-                    <div className="flex items-center gap-3 mb-2">
-                        <img src="/Logo.png" alt="Calyco Logo" className="w-12 h-12 object-contain" />
-                        <span className="font-bold text-2xl tracking-wide">CALYCO</span>
-                    </div>
-                    
-                    <div className="text-sm text-[#e5e0d8] opacity-90 max-w-xs">Premium paints for beautiful, lasting spaces. Trusted by professionals and homeowners for quality, color, and durability.</div>
-                    <div className="mt-2 text-xs text-[#e5e0d8] opacity-60">© 2024 Calyco Paints. All rights reserved.</div>
-                </div>
-                {/* Center: Contact & Navigation */}
-                <div className="flex-1 flex flex-col gap-8 min-w-[220px]">
-                    <div>
-                        <div className="font-semibold mb-2">Contact</div>
-                        <div className="text-sm text-[#e5e0d8]">Phone: <a href="tel:+919958966881" className="hover:text-[#F0C85A]">+91-99589-66881</a> {/* , <a href="tel:+918592938439" className="hover:text-[#F0C85A]">+91-85929-38439</a>*/}</div> 
-                        <div className="text-sm text-[#e5e0d8]">Email: <a href="mailto:info@calycopaints.com" className="hover:text-[#F0C85A]">info@calycopaints.com</a></div>
-                        
-                    </div>
-                    <div>
-                        <div className="font-semibold mb-2">Quick Links</div>
-                        <div className="flex flex-wrap gap-4 text-sm">
-                            <Link to="/" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Home</Link>
-                            <Link to="/about" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>About</Link>
-                            <Link to="/product" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Products</Link>
-                            <Link to="/contact" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Contact</Link>
-                            <Link to="/colors" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Colors</Link>
-                            <Link to="/room-visualization" className="hover:text-[#F0C85A] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Visualizer</Link>
-                        </div>
-                    </div>
-                </div>
-                {/* Right: Socials */}
-                <div className="flex-1 flex flex-col gap-8 min-w-[220px] items-end justify-between">
-                    <div className="flex gap-4 mb-4">
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F0C85A]">
-                            <FaInstagram className="w-7 h-7" />
-                        </a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F0C85A]">
-                            <FaYoutube className="w-7 h-7" />
-                        </a>
-                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F0C85A]">
-                            <FaLinkedin className="w-7 h-7" />
-                        </a>
-                        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F0C85A]">
-                            <FaWhatsapp className="w-7 h-7" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
-};
+const Col = ({ title, children }) => (
+  <div>
+    <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-white/90 mb-3 md:mb-4">
+      {title}
+    </h4>
+    <ul className="space-y-2.5 text-sm md:text-[15px]">{children}</ul>
+  </div>
+);
+
+const Item = ({ to, children }) => (
+  <li>
+    <Link
+      to={to}
+      className="group inline-flex items-center gap-2 text-[#e5e0d8]/90 hover:text-[#F0C85A] transition-colors"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#F0C85A] opacity-0 group-hover:opacity-100 transition-opacity" />
+      <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-0 after:bg-[#F0C85A] group-hover:after:w-full after:transition-all">
+        {children}
+      </span>
+    </Link>
+  </li>
+);
+
+export const Footer = () => (
+  <footer className="relative bg-[#23182b] text-white border-t border-[#493657]/30 overflow-hidden">
+    <GoldenDots />
+
+    {/* TOP GRID */}
+    <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pt-12 pb-10">
+      <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <img src="/Logo.png" alt="CALYCO" className="w-12 h-12 object-contain" />
+            <span className="font-bold text-2xl tracking-wide">CALYCO</span>
+          </div>
+          <p className="text-sm text-[#e5e0d8]/90 max-w-xs">
+            Premium paints for beautiful, lasting spaces. Low-VOC, high-performance finishes.
+          </p>
+          <div className="flex gap-4 mt-5">
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
+              <FaInstagram className="w-5 h-5" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
+              <FaYoutube className="w-5 h-5" />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
+              <FaLinkedin className="w-5 h-5" />
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
+              <FaWhatsapp className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Calyco */}
+        <Col title="Calyco">
+          <Item to="/about">About Us</Item>
+          <Item to="/contact">Contact Us</Item>
+          <Item to="/colors">Sacred Palette</Item>
+          <Item to="/product">Shop Paints</Item>
+          <Item to="/room-visualization">Room Visualizer</Item>
+        </Col>
+
+        {/* Customer Service */}
+        <Col title="Customer Service">
+          <Item to="/contact">Support &amp; Queries</Item>
+          <Item to="/policies/shipping">Shipping &amp; Delivery</Item>
+          <Item to="/policies/returns">Returns &amp; Refunds</Item>
+          <Item to="/policies/warranty">Warranty</Item>
+          <Item to="/faq">FAQ</Item>
+        </Col>
+
+        {/* Policies */}
+        <Col title="Policies">
+          <Item to="/policies/privacy">Privacy Policy (DPDP)</Item>
+          <Item to="/policies/terms">Terms &amp; Conditions</Item>
+          <Item to="/policies/payments-gst">Payment, Pricing &amp; GST/Invoices</Item>
+          <Item to="/policies/quality">Quality Policy</Item>
+          <Item to="/policies/environment">Environmental &amp; Sustainability</Item>
+          <Item to="/policies/disclaimer">Product/Color Disclaimer</Item>
+        </Col>
+      </div>
+    </div>
+
+    {/* BOTTOM BAR
+    <div className="relative z-10 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#e5e0d8]/70">
+        <p>© {new Date().getFullYear()} CALYCO Paints. All rights reserved.</p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <Link to="/policies/privacy" className="hover:text-[#F0C85A]">Privacy</Link>
+          <Link to="/policies/terms" className="hover:text-[#F0C85A]">Terms</Link>
+          <Link to="/accessibility" className="hover:text-[#F0C85A]">Accessibility</Link>
+          <Link to="/policies" className="hover:text-[#F0C85A]">All Policies</Link>
+        </div>
+      </div>
+    </div> */}
+  </footer>
+);
+
+export default Footer;

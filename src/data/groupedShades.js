@@ -1,6 +1,8 @@
+// data/groupedShades.js
 export const groupedShades = [
   {
     family: "WHITES & OFF WHITES",
+    familyHex: "#EDEBE6",
     colors: [
       { name: "Serene Ivory", hex: "#F8F4E3" },
       { name: "Almond Mist", hex: "#D6C6B8" },
@@ -19,6 +21,7 @@ export const groupedShades = [
   },
   {
     family: "GREYS",
+    familyHex: "#8E8E8E",
     colors: [
       { name: "Morning Dew", hex: "#B9B6B0" },
       { name: "Greige Harmony", hex: "#CCC4B8" },
@@ -42,6 +45,7 @@ export const groupedShades = [
   },
   {
     family: "BROWNS",
+    familyHex: "#8B5E3C",
     colors: [
       { name: "Silk Taupe", hex: "#A8988A" },
       { name: "Dusky Sand", hex: "#8C6B57" },
@@ -60,11 +64,11 @@ export const groupedShades = [
       { name: "Taupe Mist", hex: "#937E71" },
       { name: "Almond Sand", hex: "#A67B5B" },
       { name: "Mudstone Brown", hex: "#835C46" }
-      
     ]
   },
   {
     family: "GREENS",
+    familyHex: "#5F8A63",
     colors: [
       { name: "Sage Whisper", hex: "#9BA290" },
       { name: "Olive Earth", hex: "#7A6B4F" },
@@ -83,6 +87,7 @@ export const groupedShades = [
   },
   {
     family: "BLUES",
+    familyHex: "#2F5DAA",
     colors: [
       { name: "Royal Indigo", hex: "#3B2E7A" },
       { name: "Indigo Twilight", hex: "#41547A" },
@@ -101,6 +106,7 @@ export const groupedShades = [
   },
   {
     family: "REDS & ORANGES",
+    familyHex: "#C84C2F",
     colors: [
       { name: "Peach Glow", hex: "#F3C6AC" },
       { name: "Terra Blush", hex: "#B96A6B" },
@@ -121,6 +127,7 @@ export const groupedShades = [
   },
   {
     family: "PURPLES & PINKS",
+    familyHex: "#8A5BA5",
     colors: [
       { name: "Blush Petal", hex: "#D7A9A1" },
       { name: "Lilac Veil", hex: "#BFA5C3" },
@@ -138,6 +145,7 @@ export const groupedShades = [
   },
   {
     family: "YELLOWS & GREENS",
+    familyHex: "#D6A21F",
     colors: [
       { name: "Golden Harvest", hex: "#D1A54F" },
       { name: "Candlelight Gold", hex: "#DFAF6E" },
