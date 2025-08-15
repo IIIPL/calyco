@@ -65,8 +65,7 @@ export const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/Logo.png" alt="CALYCO" className="w-12 h-12 object-contain" />
-            <span className="font-bold text-2xl tracking-wide">CALYCO</span>
+            <img src="/logowhite.png" alt="CALYCO" className="w-16 object-contain" />
           </div>
           <p className="text-sm text-[#e5e0d8]/90 max-w-xs">
             Premium paints for beautiful, lasting spaces. Low-VOC, high-performance finishes.

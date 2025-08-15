@@ -44,9 +44,9 @@ import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
 import PrivacyPolicy from "./pages/Policies/PrivacyPolicy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
-// import PaymentsGst from "./pages/Policies/PaymentsGst";
+import PaymentsGst from './pages/Policies/PaymentsGST.jsx'
 import QualityPolicy from "./pages/Policies/QualityPolicy";
-// import EnvironmentSustainability from "./pages/Policies/EnvironmentSustainability";
+import EnvironmentalSustainability from './pages/Policies/EnvironmentSustainability.jsx'
 import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
 import ShippingDelivery from "./pages/Policies/ShippingDelivery";
 import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
@@ -103,9 +103,9 @@ function App() {
               <Route path="/policies" element={<PoliciesIndex />} />
               <Route path="/policies/privacy" element={<PrivacyPolicy />} />
               <Route path="/policies/terms" element={<TermsAndConditions />} />
-              {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
+              <Route path="/policies/payments-gst" element={<PaymentsGst />} />
               <Route path="/policies/quality" element={<QualityPolicy />} />
-              {/* <Route path="/policies/environment" element={< />} /> */}
+              <Route path="/policies/environment" element={<EnvironmentalSustainability />} />
               <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
               <Route path="/policies/shipping" element={<ShippingDelivery />} />
               <Route path="/policies/returns" element={<ReturnsRefunds />} />
