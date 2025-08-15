@@ -8,7 +8,12 @@ export const products = [
     "details": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",
     "category": "Interior",
     "application": [
-      "Interior wall painting"
+      "Interior wall painting",
+      "plaster",
+      "drywall",
+      "wood",
+      "masonry",
+      "metal"
     ],
     "advantages": [
       "High-pigment colour",
@@ -88,7 +93,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Nova",
-    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
+    "images": ["/Assets/Nova/NoBg.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
       "/Assets/novaa.png",
     ]
   },
@@ -103,7 +109,8 @@ export const products = [
     "application": [
       "Living rooms",
       "hallways",
-      "offices"
+      "offices",
+      "plaster", "wood", "drywall"
     ],
     "advantages": [
       "High clarity",
@@ -173,7 +180,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PureTone",
-    "images": ["/Assets/PureTone/OnTable.png"]
+    "images": ["/Assets/PureTone/NoBg.png", "/Assets/PureTone/OnTable.png"]
   },
   {
     "url": "https://calycopaints.com/product/woodguard",
@@ -184,7 +191,8 @@ export const products = [
     "details": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
     "category": "Wood coatings",
     "application": [
-      "Exterior wooden surfaces"
+      "Exterior wooden surfaces",
+      "wood",
     ],
     "advantages": [
       "Solid colour",
@@ -256,7 +264,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "WoodGuard",
-    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
+    "images": ["/Assets/Woodguard/NoBg.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
       // "/Assets/WoodGuard/inuse.png",
       // "/Assets/WoodGuard/OnTable.png",
     ]
@@ -270,7 +279,8 @@ export const products = [
     "details": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
     "category": "Wood coatings",
     "application": [
-      "Deck restoration"
+      "Deck restoration",
+      "wood",
     ],
     "advantages": [
       "Fills cracks",
@@ -353,7 +363,8 @@ export const products = [
     "category": "Floor coatings",
     "application": [
       "Masonry sealing",
-      "concrete protection"
+      "concrete protection",
+      "concrete", "masonry", "paver", "brick",
     ],
     "advantages": [
       "Stain + seal",
@@ -435,7 +446,8 @@ export const products = [
     "details": "CalmXterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
     "category": "Exterior",
     "application": [
-      "Architectural & villa exteriors"
+      "Architectural & villa exteriors",
+      "plaster", "aac", "cement",
     ],
     "advantages": [
       "ColourSet™",
@@ -522,7 +534,8 @@ export const products = [
     "application": [
       "Formal spaces",
       "staircases",
-      "lobbies"
+      "lobbies" ,
+      "plaster", "mdf", "drywall", "wood",
     ],
     "advantages": [
       "Gloss",
@@ -595,7 +608,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "LustroLite",
-    "images": ["/Assets/LustroLite/ontable.png",
+    "images": ["/Assets/LustroLite/NoBg.png",
+      "/Assets/LustroLite/ontable.png",
       "/Assets/LustroLite/inhouse.png",
       "/Assets/LustroLite/inuse.png",
     ]
@@ -609,7 +623,8 @@ export const products = [
     "details": "SilkTouch balances refined shine with easy maintenance for elegant homes and corridors.",
     "category": "Interior",
     "application": [
-      "Interior wall decoration"
+      "Interior wall decoration",
+      "plaster", "drywall", "concrete", "wood", "masonry",
     ],
     "advantages": [
       "Scuff resistant",
@@ -686,7 +701,8 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "SilkTouch",
-    "images": ["/Assets/SilkTouch/ontable.png",
+    "images": ["/Assets/SilkTouch/NoBg.png", 
+      "/Assets/SilkTouch/ontable.png",
       "/Assets/SilkTouch/inuse.png",
       "/Assets/SilkTouch/inhouse.png",
     ]
@@ -694,13 +710,14 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/floorpro",
     "name": "FloorPro",
-    "image": "/Assets/floorpro.png",
+    "image": "/Assets/FloorPro/inuse.png",
     "description": "Tough coating for industrial floors and commercial interiors.",
     "short-description": "Impact-resistant, easy-to-clean floor protection.",
     "details": "FloorPro is made for garages and industrial spaces that demand toughness, cleanability, and impact resistance.",
     "category": "Floor coatings",
     "application": [
-      "Interior floors"
+      "Interior floors",
+      "concrete",
     ],
     "advantages": [
       "Impact resistant",
@@ -766,7 +783,9 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 75% RH",
     "display_name": "FloorPro",
-    "images": ["/Assets/FloorPro/NoBg.png"]
+    "images": ["/Assets/FloorPro/NoBg.png",
+      "/Assets/FloorPro/inuse.png"
+    ]
   },
   {
     "url": "https://calycopaints.com/product/ironshield",
@@ -777,7 +796,8 @@ export const products = [
     "details": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
     "category": "Floor coatings",
     "application": [
-      "Steel protection"
+      "Steel protection",
+      "metal"
     ],
     "advantages": [
       "Anti-rust",
@@ -861,7 +881,8 @@ export const products = [
     "details": "ThermaCool reflects heat and insulates surfaces like tanks, pipes, and exposed roofing.",
     "category": "Industrial coatings",
     "application": [
-      "Heat-prone outdoor surfaces"
+      "Heat-prone outdoor surfaces", 
+      "metal", "concrete", "cement-fibre"
     ],
     "advantages": [
       "Reflective",
@@ -942,7 +963,8 @@ export const products = [
     "details": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
     "category": "Stain & sealer",
     "application": [
-      "Multi-surface areas"
+      "Multi-surface areas", 
+      "wood", "metal", "concrete", "plaster", "brick", "tile", "masonry"
     ],
     "advantages": [
       "All-in-one",
@@ -1031,7 +1053,8 @@ export const products = [
     "details": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
     "category": "Primer",
     "application": [
-      "Substrate priming & sealing"
+      "Substrate priming & sealing",
+      "concrete", "plaster", "mdf", "wood", "metal"
     ],
     "advantages": [
       "Alkali-resistant",
@@ -1107,7 +1130,7 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
     "display_name": "PrimeDefense Primer",
-    "images": ["/Assets/DefensePrimer/inuse.png"]
+    "images": ["/Assets/DefensePrimer/NoBg.png", "/Assets/DefensePrimer/inuse.png"]
   },
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
@@ -1120,7 +1143,8 @@ export const products = [
     "application": [
       "Masonry",
       "brick",
-      "tile waterproofing"
+      "tile waterproofing",
+      "masonry", "brick", "tile", "concrete", "stone", "plaster"
     ],
     "advantages": [
       "Deep-seal breathable barrier",
@@ -1199,7 +1223,7 @@ export const products = [
   {
     "url": "https://www.calyco.com/products/fast-drying-enamel",
     "name": "Fast Drying Enamel",
-    "image": "/Assets/FastDryingEnamel/ontable.png",
+    "image": "/Assets/FastDryingEnamel/NoBg.png",
     "description": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance.",
     "short-description": "Fast-drying, high-gloss black enamel for metal surfaces.",
     "details": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
@@ -1208,7 +1232,8 @@ export const products = [
       "Automotive panels",
       "fenders",
       "transport equipment",
-      "defense vehicles"
+      "defense vehicles", 
+      "metal"
     ],
     "advantages": [
       "Fast drying",
@@ -1277,7 +1302,8 @@ export const products = [
     "temperature_range": "Ambient-40°C",
     "humidity_range": "Below 95% RH",
     "display_name": "Fast Drying Enamel",
-    "images": ["/Assets/FastDryingEnamel/ontable.png"]
+    "images": ["/Assets/FastDryingEnamel/NoBg.png",
+      "/Assets/FastDryingEnamel/ontable.png"]
   },
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
@@ -1291,7 +1317,8 @@ export const products = [
       "Trim",
       "doors",
       "cabinets",
-      "industrial surfaces"
+      "industrial surfaces", 
+      "wood", "metal", "previously-painted"
     ],
     "advantages": [
       "Extremely durable",
@@ -1383,7 +1410,8 @@ export const products = [
       "equipment",
       "railings",
       "ducts",
-      "infrastructure"
+      "infrastructure", 
+      "metal"
     ],
     "advantages": [
       "Excellent hide",
@@ -1468,7 +1496,8 @@ export const products = [
       "Mild steel structures",
       "pipelines",
       "tanks",
-      "beams"
+      "beams", 
+      "metal"
     ],
     "advantages": [
       "Excellent corrosion resistance",

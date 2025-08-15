@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { colorGroups } from "../data/colorGroups";
 import ColorExplorer from "../components/ColorExplore";
 import { useNavigate } from "react-router-dom";
+import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -90,8 +91,12 @@ export default function ColorsPage() {
           <ColorExplorer />
         </div>
         
-        {/* Filter Bar */}
-        
+
+        {/* Color Disclaimer */}
+        <div className="px-6 md:px-12 mb-10">
+          <ColorDisclaimer variant="full" />
+        </div>
+
        
        
       </div>

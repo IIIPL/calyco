@@ -236,7 +236,7 @@ export const Products = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">Products</h1>
 
         {/* Search + Sort */}
-        <div className="flex flex-wrap items-center gap-4 mb-4">
+        <div className="flex flex-wrap items-center gap-4 mb-4">  
           <input
             type="text"
             placeholder="Search by name, category, or substrate..."
@@ -356,7 +356,7 @@ export const Products = () => {
                   key={product.name + idx}
                   id={product.name}
                   name={product.display_name || product.name}
-                  image={product.image || (product.images && product.images[0])}
+                  image={product.images[0]}
                   price={product.price}
                   finishTypeSheen={product.finish_type_sheen}
                   packaging={product.packaging}
@@ -380,7 +380,7 @@ export const Products = () => {
                       key={product.name + idx}
                       id={product.name}
                       name={product.display_name || product.name}
-                      image={product.image || (product.images && product.images[0])}
+                      image={product.images[0]}
                       price={product.price}
                       finishTypeSheen={product.finish_type_sheen}
                       packaging={product.packaging}
@@ -406,7 +406,7 @@ export const Products = () => {
                       key={product.name + idx}
                       id={product.name}
                       name={product.display_name || product.name}
-                      image={product.image || (product.images && product.images[0])}
+                      image={product.images[0]}
                       price={product.price}
                       finishTypeSheen={product.finish_type_sheen}
                       packaging={product.packaging}
@@ -422,7 +422,7 @@ export const Products = () => {
                   key={product.name + idx}
                   id={product.name}
                   name={product.display_name || product.name}
-                  image={product.image || (product.images && product.images[0])}
+                  image={product.images[0]}
                   price={product.price}
                   finishTypeSheen={product.finish_type_sheen}
                   packaging={product.packaging}

@@ -7,6 +7,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
   { key: "Exterior", label: "EXTERIOR" },
+  { key: "StainSealer", label: "STAIN & SEALER" }, // ← new
   { key: "Industrial", label: "INDUSTRIAL" },
   { key: "Enamel", label: "ENAMEL" },
   { key: "All", label: "SHOW ALL PRODUCTS" },
@@ -15,9 +16,14 @@ const leftMenu = [
 const grouped = {
   Interior: allProducts.filter((p) => p.category?.toLowerCase() === "interior"),
   Exterior: allProducts.filter((p) => p.category?.toLowerCase() === "exterior"),
+  StainSealer: allProducts.filter((p) => {
+    const c = p.category?.toLowerCase() || "";
+    return c.includes("stain") || c.includes("sealer"); // matches “stain & sealer”
+  }),
   Industrial: allProducts.filter((p) =>
     p.category?.toLowerCase().includes("industrial")
   ),
+
   Enamel: allProducts.filter((p) => p.category?.toLowerCase().includes("enamel")),
   All: allProducts,
 };
@@ -167,9 +173,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
             max-h-[50vh] md:max-h-[400px] overflow-y-auto
           "
         >
-          <h4 className="font-semibold mb-3 text-[#493657] text-sm md:text-base uppercase tracking-wide">
-            {`ALL ${selectedMenu.toUpperCase()} PAINTS`}
-          </h4>
+          
           <ul className="space-y-2 text-[#493657]">
             {grouped[selectedMenu].map((product) => (
               <li
@@ -197,7 +201,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         {/* RIGHT preview — responsive widths */}
         <div
           className="
-            flex items-center justify-center
+            flex flex-col items-center justify-center gap-3
             min-w-[140px] max-w-[160px]
             sm:min-w-[180px] sm:max-w-[200px]
             md:min-w-[220px] md:max-w-[240px]
@@ -205,14 +209,30 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           "
         >
           {hovered && (
-            <LazyLoadImage
-              src={hovered.images?.[0] || hovered.image}
-              alt={hovered.name}
-              effect="blur"
-              className="object-contain w-full h-40 md:h-56 lg:h-64"
-            />
+            <>
+              <LazyLoadImage
+                src={hovered.images?.[0] || hovered.image}
+                alt={hovered.name}
+                effect="blur"
+                className="object-contain w-full h-40 md:h-56 lg:h-64"
+              />
+
+              <Link
+                to={`/product/${hovered.name}`}
+                onClick={() => {
+                  window.scrollTo({ top: 0 });
+                  if (onSelect) onSelect();
+                }}
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg
+                          bg-[#493657] text-white text-sm font-medium
+                          hover:bg-[#F0C85A] hover:text-[#493657] transition-colors"
+              >
+                Explore more
+              </Link>
+            </>
           )}
         </div>
+
       </div>
     </div>
   );

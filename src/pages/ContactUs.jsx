@@ -14,14 +14,11 @@ const cardVariants = {
     }),
 };
 
-// Removed imageVariants as the specific image section is being replaced.
-
 export const ContactUs = () => {
     const form = useRef();
     const [toast, setToast] = useState(null);
     const [sending, setSending] = useState(false);
 
-    // State for form fields to control their values for emailjs
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [postalCode, setPostalCode] = useState('');
@@ -29,12 +26,9 @@ export const ContactUs = () => {
     const [message, setMessage] = useState('');
     useEffect(() => {
         document.title = "Contact Calyco";
-        // Initialize emailjs with your public key
-        // Ensure this key is correct and accessible.
         emailjs.init('o3nHktLCZY2hMn6EE'); 
     }, []);
 
-    // Toaster auto-hide
     useEffect(() => {
         if (toast) {
             const timer = setTimeout(() => setToast(null), 3500);
@@ -46,8 +40,6 @@ export const ContactUs = () => {
         e.preventDefault();
         setSending(true);
 
-        // Construct the user_name, subject, and message for emailjs
-        // This ensures the existing emailjs template receives expected fields.
         const userName = `${firstName} ${lastName}`.trim();
         const subject = `Website Inquiry from ${userName}`;
         const messageContent = `
@@ -57,8 +49,6 @@ export const ContactUs = () => {
             Postal Code: ${postalCode}
         `;
 
-        // Create a temporary form data object to send to emailjs
-        // This is a workaround to send custom data when the form fields don't directly match template variables.
         const formData = new FormData();
         formData.append('user_name', userName);
         formData.append('user_email', email);
@@ -66,14 +56,9 @@ export const ContactUs = () => {
         formData.append('message', messageContent);
 
         try {
-            // Using emailjs.send instead of emailjs.sendForm to send custom data
             await emailjs.send('service_nztkw4l', 'template_qaobwqf', Object.fromEntries(formData));
             setToast({ type: 'success', message: 'Message sent!' });
-            // Clear form fields after successful submission
-            setFirstName('');
-            setLastName('');
-            setPostalCode('');
-            setEmail('');
+            setFirstName(''); setLastName(''); setPostalCode(''); setEmail('');
         } catch (error) {
             console.error('Failed to send email:', error);
             setToast({ type: 'error', message: 'Failed to send. Please try again.' });
@@ -84,10 +69,9 @@ export const ContactUs = () => {
 
     return (
         <div className="pt-20 min-h-screen">
-            {/* Hero Section with Background Image */}
+            {/* Hero */}
             <div className="relative h-80 bg-gradient-to-r from-[#493657] to-[#F0C85A] overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/20"></div>
-                
                 <div className="relative z-10 text-center text-white px-6">
                     <motion.h1
                         className="text-6xl font-bold mb-4"
@@ -97,16 +81,13 @@ export const ContactUs = () => {
                     >
                         Contact Us
                     </motion.h1>
-                    
-                    
                 </div>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 -mt-20 relative z-20">
-                {/* Main Contact Content - Replaced existing cards with new layout */}
+                {/* Main */}
                 <div className="flex flex-col md:flex-row gap-8 mb-20">
-                    {/* Right Column: Contact Form */}
-
+                    {/* Form (left) */}
                     <motion.div
                         className="bg-white w-full md:w-4/5 max-w-3xl shadow-xl p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
                         custom={1}
@@ -118,7 +99,7 @@ export const ContactUs = () => {
                         <p className="text-gray-600 mb-8 text-center max-w-prose mx-auto">
                             Fill out the form below and we'll get back to you as soon as possible.
                         </p>
-                        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                        <form id="contact-form" ref={form} onSubmit={sendEmail} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
                                     <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">First Name</label>
@@ -163,29 +144,25 @@ export const ContactUs = () => {
                             <div>
                                 <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
                                 <textarea 
-                                    rows="6" // Increased rows for more space
-                                    id="message" // Added ID for label association
+                                    rows="6"
+                                    id="message"
                                     name="message"
-                                    value={message} // Bind to the new message state
+                                    value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent resize-y transition-all duration-200"
                                     placeholder="Tell us more about your project or inquiry..."
                                     required
                                 ></textarea>
                             </div>
-                            
                             <div className="text-center pt-4">
-                                <Button
-                                    type="submit"
-                                    disabled={sending}
-                                    onClick={() => {/* optional custom logic */}}
-                                >
+                                <Button type="submit" disabled={sending}>
                                     {sending ? 'Sending...' : 'Send Message'}
                                 </Button>
                             </div>
-
                         </form>
                     </motion.div>
+
+                    {/* Right panel (actions + blended Expert Team) */}
                     <motion.div
                         className="bg-white w-full md:w-2/5 max-w-3xl flex flex-col shadow-xl p-8 md:p-12 hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
                         custom={1}
@@ -193,8 +170,6 @@ export const ContactUs = () => {
                         animate="visible"
                         variants={cardVariants}
                     >
-                        
-
                         <div class="mb-8 flex items-start">
                             <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
                                 <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -208,7 +183,7 @@ export const ContactUs = () => {
                             </div>
                         </div>
 
-                        <div class="mb-8 flex items-start">
+                        <div class="mb-6 flex items-start">
                             <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
                                 <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7m18 0a2 2 0 00-2-2H5a2 2 0 00-2 2m18 0V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6"></path>
@@ -221,36 +196,41 @@ export const ContactUs = () => {
                             </div>
                         </div>
 
-                        <div class="mb-8 flex items-start">
-                            <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
-                                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
+                        {/* subtle divider to blend sections */}
+                        <div className="border-t border-gray-100 my-4" />
+
+                        {/* Expert Team (blended style) */}
+                        <div className="mb-3 flex items-start">
+                            <div className="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
+                                <FaUsers className="h-8 w-8" />
                             </div>
                             <div>
-                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Visit Us</h4>
-                                <p className="text-gray-700 text-lg">B-37, Sector - 1</p>
-                                <p className="text-gray-700 text-lg">Noida NCR, India</p>
+                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Expert Team</h4>
+                                <p className="text-gray-500 text-sm">Collective 70+ years experience • Local market expertise</p>
                             </div>
                         </div>
-                     
-                        <div class="mb-8 flex items-start">
-                            <div class="flex-shrink-0 mr-4 text-white bg-[#493657]  rounded-full p-2">
-                                <FaGlobe className="h-8 w-8" />
+                        <div className="grid grid-cols-2 gap-3">
+                            <div className="rounded-lg border border-gray-100 px-3 py-3">
+                                <div className="text-lg font-bold text-gray-800">25</div>
+                                <div className="text-gray-500 text-xs">Years Architecture</div>
                             </div>
-                            <div>
-                                <h4 class="text-xl font-semibold text-gray-800 mb-1">Global Presence</h4>
-                                <p class="text-gray-700 text-lg">PROLIFIC ENERGY FZE</p>
-                                <p class="text-gray-700 text-lg">Po Box: 42747 Hamriyah FZ,</p>
-                                <p class="text-gray-700 text-lg">Sharjah, U.A.E.</p>
-                                <p class="text-gray-500 text-sm"><a href="tel:+971588285925">+97-15882-85925</a></p>
+                            <div className="rounded-lg border border-gray-100 px-3 py-3">
+                                <div className="text-lg font-bold text-gray-800">27</div>
+                                <div className="text-gray-500 text-xs">Years Design</div>
+                            </div>
+                            <div className="rounded-lg border border-gray-100 px-3 py-3">
+                                <div className="text-lg font-bold text-[#f59e0b]">19M+</div>
+                                <div className="text-gray-500 text-xs">Sq Ft Delivered</div>
+                            </div>
+                            <div className="rounded-lg border border-gray-100 px-3 py-3">
+                                <div className="text-lg font-bold text-[#f59e0b]">15+</div>
+                                <div className="text-gray-500 text-xs">Awards Won</div>
                             </div>
                         </div>
-
-
                     </motion.div>
                 </div>
+
+                {/* Address cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                     <div className="flex justify-center">
                         <AddressCard
@@ -263,7 +243,7 @@ export const ContactUs = () => {
                         <AddressCard
                             CountrName="Dubai"
                             emailId="dubai@calycopaints.com"
-                            completeAddress="PROLIFIC ENERGY FZE Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E."
+                            completeAddress="Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E."
                         />
                     </div>
                     <div className="flex justify-center">
@@ -294,13 +274,6 @@ export const ContactUs = () => {
                             completeAddress="Karamehmet Mh. Avrupa Serbest Bolgesi, Ergene/Tekirdag, Turkey"
                         />
                     </div>
-                    {/* <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="USA"
-                            emailId="usa@calycopaints.com"
-                            completeAddress="762 Green St. Iselin, NJ 08830, USA"
-                        />
-                    </div> */}
                     <div className="flex justify-center">
                         <AddressCard
                             CountrName="Singapore"
@@ -322,10 +295,7 @@ export const ContactUs = () => {
                             completeAddress="Jl. Modern Industri XVIII, Desa Nambo Udik, Cikande, Serang - Banten, Indonesia"
                         />
                     </div>
-                    </div>
-                    
-
-
+                </div>
             </div>
         </div>
     );

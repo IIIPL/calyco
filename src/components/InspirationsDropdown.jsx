@@ -21,7 +21,7 @@ const roomThumbnails = {
   dining: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598789/diningHero_ggdfce.jpg",
   hallway: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598790/hallwayhero_m6w6b5.png",
   office: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754598789/officeHero_uq7rgp.png",
-  exterior: "/Assets/exterior-placeholder.jpg",
+  exterior: "https://res.cloudinary.com/dr98axi2n/image/upload/w_400,q_auto,f_auto/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg",
 };
 
 const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
