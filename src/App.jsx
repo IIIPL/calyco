@@ -40,6 +40,19 @@ import { RoomVisualizerPage } from './pages/RoomVisualizer.jsx';
 import RoomVisualizer from './components/RoomVisualizer.jsx';
 import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 
+// Policies: 
+import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
+import PrivacyPolicy from "./pages/Policies/PrivacyPolicy";
+import TermsAndConditions from "./pages/Policies/TermsAndConditions";
+// import PaymentsGst from "./pages/Policies/PaymentsGst";
+import QualityPolicy from "./pages/Policies/QualityPolicy";
+// import EnvironmentSustainability from "./pages/Policies/EnvironmentSustainability";
+import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
+import ShippingDelivery from "./pages/Policies/ShippingDelivery";
+import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
+import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
+import CustomerService from "./pages/Policies/CustomerService";
+
 const ColorPageWrapper = () => {
   return <FullColorPage />;
 }
@@ -84,7 +97,21 @@ function App() {
               <Route path='/room-visualization/livingroom' element={<RoomVisualizer/>} />
               <Route path='/room-visualization/diningroom' element={<RoomVisualizer/>} />
               <Route path='/room-visualization/personalVisual' element={<RoomVisualizer/>} />
-              
+
+
+              {/* Policy Routes */}
+              <Route path="/policies" element={<PoliciesIndex />} />
+              <Route path="/policies/privacy" element={<PrivacyPolicy />} />
+              <Route path="/policies/terms" element={<TermsAndConditions />} />
+              {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
+              <Route path="/policies/quality" element={<QualityPolicy />} />
+              {/* <Route path="/policies/environment" element={< />} /> */}
+              <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
+              <Route path="/policies/shipping" element={<ShippingDelivery />} />
+              <Route path="/policies/returns" element={<ReturnsRefunds />} />
+              <Route path="/policies/warranty" element={<WarrantyPolicy />} />
+              <Route path="/customer-service" element={<CustomerService />} />
+
               {/* 404 Fallback Route */}
               <Route path="*" element={<NotFound/>}/>
             </Routes>
