@@ -81,9 +81,14 @@ const FILTERS = [
 
 const DEFAULT_VISIBLE = 4;
 
-export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
+export const FilterSidebar = ({ checked, onCheck, expanded, onToggle, getFilterCounts }) => {
   const [showMore, setShowMore] = useState(Array(FILTERS.length).fill(false));
   const handleShowMore = idx => setShowMore(prev => prev.map((val, i) => (i === idx ? !val : val)));
+
+  // Compute counts for each group if getFilterCounts is provided
+  const filterCounts = getFilterCounts
+    ? FILTERS.map((group) => getFilterCounts(group.label, group.options))
+    : [];
 
   return (
     <aside className="w-full bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
@@ -98,7 +103,7 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
       {FILTERS.map((group, idx) => {
         const visibleOptions = showMore[idx] ? group.options : group.options.slice(0, DEFAULT_VISIBLE);
         const hasShowMore = group.options.length > DEFAULT_VISIBLE;
-
+        const counts = filterCounts[idx] || [];
         return (
           <div key={group.label} className="mb-6 last:mb-0">
             <button
@@ -122,7 +127,7 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
 
             {expanded[idx] && (
               <div className="space-y-3 pl-2">
-                {visibleOptions.map(option => (
+                {visibleOptions.map((option, optIdx) => (
                   <label key={option} className="flex items-center gap-3 text-gray-700 text-sm cursor-pointer group hover:text-gray-900 transition-colors duration-200">
                     <div className="relative">
                       <input
@@ -146,7 +151,6 @@ export const FilterSidebar = ({ checked, onCheck, expanded, onToggle }) => {
                     <span className="font-medium">{option}</span>
                   </label>
                 ))}
-                
                 {hasShowMore && (
                   <button
                     className="text-[#493657] text-sm font-medium mt-3 flex items-center gap-2 hover:text-[#5a4067] focus:outline-none focus:ring-2 focus:ring-[#F0C85A] rounded-lg px-2 py-1 transition-all duration-200"

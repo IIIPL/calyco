@@ -6,6 +6,7 @@ import ColorBox from '../components/ColorComponents/ColorBox';
 import { InspirationCard } from '../components/ColorComponents/Inspiration';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer"; // add import
+import FamilyNavigator from '../components/ColorComponents/FamilyNavigator';
 
 
 const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
@@ -18,6 +19,12 @@ const FamilyColorPage = () => {
   const navigate = useNavigate();
   const family = unslugify(familyName);
   const familyHeading = formatCaps(family);
+  useEffect(() => {
+    if (familyHeading) {
+      document.title = `${familyHeading} Paint Colors | Calyco Paints`;
+    }
+  }, [familyHeading]);
+  
   const btnRefs = useRef({});
   const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0 });
 
@@ -217,6 +224,7 @@ useEffect(() => {
       {/* Heading */}
       <div className="mb-12 px-6 md:px-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-2">{familyHeading} Paint Colors</h1>
+        <FamilyNavigator />
         <p className="text-md text-gray-700">Explore a range of {familyHeading} paint colors to find the perfect shade for your space.</p>
       </div>
 

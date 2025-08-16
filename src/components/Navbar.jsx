@@ -85,34 +85,34 @@ export const Navbar = () => {
       <div className="hidden md:flex w-full justify-center items-center h-12 relative">
         <nav className="flex gap-8 text-base font-medium items-center">
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
           >Products</button>
           
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
           >Inspirations</button>
 
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
           >Colors</button>
           
           {/* // In your Navbar component, add this button to the navigation menu */}
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
           >Visualize</button>
           <Link
             to="/about"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(null)}
           >About</Link>
           
           <Link
             to="/contact"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
             onClick={() => setDropdownOpen(null)}
           >Contact</Link>
         </nav>
@@ -160,22 +160,17 @@ export const Navbar = () => {
           <ProductsDropdown isMobile={true} />
           <InspirationsDropdown isMobile={true} />
           <ColorsDropdown isMobile={true} />
-          
           {/* New Visualize Dropdown for mobile */}
           <VisualizeDropdown isMobile={true} />
-          
-
-          
           <Link
             to="/about"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+            className="text-[#493657] hover:text-[#C9A941] w-full text-left focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
           >
             About Us
           </Link>
-          
           <Link
             to="/contact"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+            className="text-[#493657] hover:text-[#C9A941] w-full text-left focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
           >
             Contact Us
           </Link>

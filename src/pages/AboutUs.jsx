@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const AboutUs = () => {
+  useEffect(() => {
+    document.title = "About Us";
+  }, []);
   const navigate = useNavigate();
   return (
     <div className="bg-white text-gray-800 min-h-screen">
@@ -58,7 +61,7 @@ export const AboutUs = () => {
       </div>
 
       {/* Content Section */}
-      <div className="px-6 py-16 max-w-6xl mx-auto">
+      <div className="px-6 py-16 max-w-7xl mx-auto">
         {/* Company Introduction */}
         <div className="mb-16">
           <div className="text-center mb-12">
@@ -233,54 +236,92 @@ export const AboutUs = () => {
             </div>
           </div>
 
+          
           {/* Research & Innovation */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Research & Innovation */}
+<div className="mb-16">
+  <div className="grid lg:grid-cols-2 gap-16 items-start">
+    {/* LEFT: taller column */}
+    <div className="space-y-6">
+      {/* Pioneering Innovation (expanded copy) */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#5E3A98] to-[#F0C85A] rounded-xl mb-6 flex items-center justify-center">
+        <div className="w-16 h-16 bg-gradient-to-br from-[#5E3A98] to-[#F0C85A] rounded-xl mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">🔬</span>
               </div>
               <h4 className="text-2xl font-bold text-gray-800 mb-4">Pioneering Innovation</h4>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Our commitment to research and development has positioned us as leaders in sustainable paint technology. We continuously innovate to create products that are effective, safe, and minimize environmental impact.
-              </p>
-              <div className="text-[#5E3A98] text-sm font-medium">
-                ✓ In-house R&D facility  ✓ Proprietary formulations  ✓ Continuous testing
+          Our commitment to research and development has positioned us as leaders in sustainable paint technology.
+          We continuously innovate to create products that are effective, safe, and minimize environmental impact.
+          Using our EcoMax colorant system and low-VOC binders, we prototype, test, and iterate until performance
+          meets CALYCO standards for coverage, washability, and UV stability.
+        </p>
+        <div className="text-[#5E3A98] text-sm font-medium space-y-1">
+          <div>✓ In-house R&amp;D facility  ✓ Proprietary formulations  ✓ Continuous testing</div>
+          <div>✓ Zero-VOC tinting workflow that preserves low-VOC after color</div>
+        </div>
+      </div>
+
+      {/* NEW card to remove bottom gap */}
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#5E3A98]/30">
+        <div className="w-16 h-16 bg-[#5E3A98]/10 rounded-xl mb-6 flex items-center justify-center">
+          <span className="text-[#5E3A98] text-2xl">🧯</span>
+        </div>
+        <h4 className="text-2xl font-bold text-gray-800 mb-3">Materials, Testing & Certifications</h4>
+        <p className="text-gray-600 leading-relaxed mb-4">
+          Every batch passes accelerated weathering, scrub-resistance, and adhesion tests. We validate against BIS/ASTM
+          methods and run field panels on masonry, metal, and wood to prove long-term durability in Indian climates.
+        </p>
               </div>
             </div>
             
-            <div>
-              <h4 className="text-2xl font-bold text-gray-800 mb-6">What We're All About</h4>
-              <div className="space-y-6">
-                <div className="bg-white rounded-xl p-6 shadow-md border border-[#5E3A98]">
-                  <h5 className="text-lg font-semibold text-[#5E3A98] mb-3">🎨 Color Excellence</h5>
-                  <p className="text-gray-600">
-                    A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting vibrancy in both interior and exterior applications.
+    {/* RIGHT: keep as before */}
+    <div className="">
+      <div className="mb-6">
+        <h4 className="text-2xl font-bold text-gray-800 mb-2">What We're All About</h4>
+        <p className="text-gray-600 text-base leading-relaxed">
+          Our core values drive everything we do, from product development to customer service. We're committed to
+          delivering excellence in every aspect of our business.
+        </p>
+      </div>
+
+      <div className="grid gap-4">
+        <div className="bg-white rounded-2xl p-5 shadow-md border border-[#5E3A98]">
+          <h5 className="text-lg font-semibold text-[#5E3A98] mb-2">🎨 Color Excellence</h5>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting
+            vibrancy in both interior and exterior applications.
                   </p>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 shadow-md border border-[#F0C85A]">
-                  <h5 className="text-lg font-semibold text-[#5E3A98] mb-3">💪 Uncompromising Quality</h5>
-                  <p className="text-gray-600">
-                    Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish every time, backed by our EcoMax Technology.
+        <div className="bg-white rounded-2xl p-5 shadow-md border border-[#F0C85A]">
+          <h5 className="text-lg font-semibold text-[#5E3A98] mb-2">💪 Uncompromising Quality</h5>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish
+            every time, backed by our EcoMax Technology.
                   </p>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 shadow-md border border-[#5E3A98]">
-                  <h5 className="text-lg font-semibold text-[#5E3A98] mb-3">🌱 Planet-First Approach</h5>
-                  <p className="text-gray-600">
-                    We put people and planet at the heart of every decision we make, from our innovative production process to our commitment to zero-VOC formulations.
+        <div className="bg-white rounded-2xl p-5 shadow-md border border-[#5E3A98]">
+          <h5 className="text-lg font-semibold text-[#5E3A98] mb-2">🌱 Planet-First Approach</h5>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            We put people and planet at the heart of every decision we make, from our innovative production process to
+            our commitment to zero-VOC formulations.
                   </p>
                 </div>
                 
-                <div className="bg-white rounded-xl p-6 shadow-md border border-[#F0C85A]">
-                  <h5 className="text-lg font-semibold text-[#5E3A98] mb-3">🤝 Building Better Homes</h5>
-                  <p className="text-gray-600">
-                    We're here to help transform Indian homes with sustainable solutions, providing expert guidance and premium products for every painting project.
+        <div className="bg-white rounded-2xl p-5 shadow-md border border-[#F0C85A]">
+          <h5 className="text-lg font-semibold text-[#5E3A98] mb-2">🤝 Building Better Homes</h5>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            We're here to help transform Indian homes with sustainable solutions, providing expert guidance and premium
+            products for every painting project.
                   </p>
                 </div>
               </div>
             </div>
           </div>
+</div>
+
+          
         </div>
 
         {/* Contact Information */}

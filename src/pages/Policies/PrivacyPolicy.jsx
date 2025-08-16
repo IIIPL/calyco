@@ -2,7 +2,7 @@
 import React from "react";
 import PolicyLayout from "./PolicyLayout";
 
-export default function PrivacyPolicy() {
+export default function PoliciesPrivacy() {
   return (
     <PolicyLayout title="Privacy Policy (DPDP)" lastUpdated="August 15, 2025">
       <h2>Scope</h2>

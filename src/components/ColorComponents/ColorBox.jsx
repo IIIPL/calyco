@@ -46,7 +46,7 @@ const ColorBox = ({ color, familyName }) => {
         
         {/* Color Info */}
         <div className="absolute inset-0 flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className={`${textColor} text-center bg-white/90 backdrop-blur-sm rounded-lg p-2`}>
+          <div className={`${textColor} text-center backdrop-blur-sm rounded-lg p-2`}>
             <div className="font-semibold text-xs leading-tight mb-1">
               {color.name}
             </div>

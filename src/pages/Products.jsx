@@ -4,7 +4,6 @@ import { products as allProducts } from '../data/products';
 import { FilterSidebar } from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
 import ActiveFilters from '../components/ActiveFilters';
-import PriceRange from '../components/PriceRange';
 import {
   mapToStandardSubstrates,
   mapToStandardApplicationAreas
@@ -24,15 +23,6 @@ export const Products = () => {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Price bounds
-  const prices = allProducts.map(p => p.price || 0).filter(n => Number.isFinite(n));
-  const dataMin = prices.length ? Math.min(...prices) : 0;
-  const dataMax = prices.length ? Math.max(...prices) : 10000;
-
-  // Applied vs Draft price
-  const [price, setPrice] = useState({ min: dataMin, max: dataMax });        // applied
-  const [priceDraft, setPriceDraft] = useState({ min: dataMin, max: dataMax }); // editable
-
   useEffect(() => { document.title = 'Products'; }, []);
   useEffect(() => { setSearchDraft(search); }, [search]);
 
@@ -44,7 +34,6 @@ export const Products = () => {
       if (s.search !== undefined) setSearch(s.search);
       if (s.checked) setChecked(s.checked);
       if (s.sortOrder) setSortOrder(s.sortOrder);
-      if (s.price) { setPrice(s.price); setPriceDraft(s.price); }
     }
   }, []);
 
@@ -57,8 +46,6 @@ export const Products = () => {
     // prefer ?search=, fallback to legacy ?q=
     const q = searchParams.get('search') ?? searchParams.get('q');
     const sort = searchParams.get('sort');
-    const min = searchParams.get('min');
-    const max = searchParams.get('max');
 
     const urlChecked = {};
     cats.forEach(c => { urlChecked[`Category-${c}`] = true; });
@@ -70,23 +57,13 @@ export const Products = () => {
     if (q !== null) setSearch(q);
     if (sort) setSortOrder(sort);
 
-    if (min || max) {
-      const minVal = Number(min ?? dataMin);
-      const maxVal = Number(max ?? dataMax);
-      const next = {
-        min: Number.isFinite(minVal) ? minVal : dataMin,
-        max: Number.isFinite(maxVal) ? maxVal : dataMax,
-      };
-      setPrice(next);
-      setPriceDraft(next);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   // Persist state
   useEffect(() => {
-    sessionStorage.setItem('productFilters', JSON.stringify({ search, checked, sortOrder, price }));
-  }, [search, checked, sortOrder, price]);
+    sessionStorage.setItem('productFilters', JSON.stringify({ search, checked, sortOrder }));
+  }, [search, checked, sortOrder]);
 
   // Build selected map BEFORE filtering
   const selected = useMemo(() => {
@@ -99,7 +76,7 @@ export const Products = () => {
     return out;
   }, [checked]);
 
-  // Apply *non-search* filters (category/substrate/app-area/price) + sort
+  // Apply *non-search* filters (category/substrate/app-area) + sort
   const baseFiltered = useMemo(() => {
     const q = (search || '').trim().toLowerCase();
 
@@ -135,9 +112,6 @@ export const Products = () => {
         if (!areas.some(a => selected['Application Area'].includes(a))) return false;
       }
 
-      const p = Number(product.price || 0);
-      if (p < price.min || p > price.max) return false;
-
       return true;
     });
 
@@ -145,7 +119,7 @@ export const Products = () => {
     else if (sortOrder === 'desc') list = list.slice().sort((a, b) => (b.price || 0) - (a.price || 0));
 
     return list;
-  }, [allProducts, selected, sortOrder, price, search]);
+  }, [allProducts, selected, sortOrder, search]);
 
 
   // Bucket by search: name first (no heading), else category, else substrate
@@ -230,10 +204,100 @@ export const Products = () => {
       ? (nameMatches.length === 0 && categoryMatches.length === 0 && substrateMatches.length === 0)
       : baseFiltered.length === 0;
 
+  // --- Filter Option Counts ---
+  const getFilterCounts = (groupLabel, options) => {
+    // For each option, count how many products would match if that option were toggled ON (with all other filters as currently set)
+    return options.map(option => {
+      // Simulate checked state with this option ON
+      const simulatedChecked = { ...checked, [`${groupLabel}-${option}`]: true };
+      const simulatedSelected = {};
+      for (const g of FILTER_GROUPS) {
+        simulatedSelected[g] = Object.keys(simulatedChecked)
+          .filter(key => key.startsWith(`${g}-`) && simulatedChecked[key])
+          .map(key => key.replace(`${g}-`, ''));
+      }
+      // Filter products as in baseFiltered, but with simulatedSelected
+      let count = allProducts.filter(product => {
+        // Category
+        if (groupLabel === 'Category' && simulatedSelected['Category']?.length && !simulatedSelected['Category'].includes(product.category)) return false;
+        if (groupLabel !== 'Category' && selected['Category']?.length && !selected['Category'].includes(product.category)) return false;
+        // Substrate
+        const mapped = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
+        if (groupLabel === 'Substrate' && simulatedSelected['Substrate']?.length && !mapped.some(g => simulatedSelected['Substrate'].includes(g))) return false;
+        if (groupLabel !== 'Substrate' && selected['Substrate']?.length && !selected['Substrate'].includes(g => mapped.includes(g))) return false;
+        // Application Area
+        if (groupLabel === 'Application Area' && simulatedSelected['Application Area']?.length) {
+          const appList = Array.isArray(product.application) ? product.application : (product.application ? [product.application] : []);
+          const areas = mapToStandardApplicationAreas(appList);
+          if (!areas.some(a => simulatedSelected['Application Area'].includes(a))) return false;
+        }
+        if (groupLabel !== 'Application Area' && selected['Application Area']?.length) {
+          const appList = Array.isArray(product.application) ? product.application : (product.application ? [product.application] : []);
+          const areas = mapToStandardApplicationAreas(appList);
+          if (!areas.some(a => selected['Application Area'].includes(a))) return false;
+        }
+        // (Removed price filter logic here)
+        return true;
+      }).length;
+      return count;
+    });
+  };
+  // ---
+  // --- Sorting Dropdown ---
+  const sortOptions = [
+    { value: '', label: 'Most Popular' },
+    { value: 'asc', label: 'Price: Low to High' },
+    { value: 'desc', label: 'Price: High to Low' },
+    { value: 'newest', label: 'Newest First' },
+  ];
+  // ---
+  // --- Update URL on filter/sort change ---
+  useEffect(() => {
+    const params = new URLSearchParams();
+    // Filters
+    Object.keys(checked).forEach(key => {
+      if (checked[key]) {
+        const [group, value] = key.split('-');
+        if (group && value) {
+          if (group === 'Category') params.append('category', value);
+          if (group === 'Substrate') params.append('substrate', value);
+          if (group === 'Application Area') params.append('application', value);
+        }
+      }
+    });
+    // Search
+    if (search) params.set('search', search);
+    // Sort
+    if (sortOrder) params.set('sort', sortOrder);
+    // (Removed price min/max params)
+    setSearchParams(params, { replace: true });
+  }, [checked, search, sortOrder, setSearchParams]);
+  // ---
+  // --- Sorting logic ---
+  const sortedFiltered = useMemo(() => {
+    let list = baseFiltered;
+    if (sortOrder === 'asc') list = list.slice().sort((a, b) => (a.price || 0) - (b.price || 0));
+    else if (sortOrder === 'desc') list = list.slice().sort((a, b) => (b.price || 0) - (a.price || 0));
+    else if (sortOrder === 'newest') list = list.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    // Most Popular: default order
+    return list;
+  }, [baseFiltered, sortOrder]);
+  // ... existing code ...
   return (
     <div className="pt-16 md:pt-20 min-h-screen bg-[#f9f6f2] pb-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto mb-10 pt-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">Products</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4 flex items-baseline gap-2">
+        PRODUCTS
+        {((selected['Category']?.length || 0) > 0 ||
+          (selected['Substrate']?.length || 0) > 0 ||
+          (selected['Application Area']?.length || 0) > 0 ||
+          search.trim().length > 0) && (
+          <span className="text-base md:text-lg text-[#493657]/70 font-medium">
+            ({sortedFiltered.length})
+          </span>
+        )}
+      </h1>
+
 
         {/* Search + Sort */}
         <div className="flex flex-wrap items-center gap-4 mb-4">  
@@ -251,7 +315,6 @@ export const Products = () => {
           >
             Search
           </button>
-
           {/* Mobile controls */}
           <div className="w-full flex md:hidden items-center gap-2 mb-2">
             <button
@@ -260,19 +323,16 @@ export const Products = () => {
             >
               {mobileFilterOpen ? 'Hide Filters' : 'Show Filters'}
             </button>
-            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
+            <label htmlFor="sortDropdown" className="text-[#493657] font-medium ml-2">Sort:</label>
             <select
-              id="sortPrice"
+              id="sortDropdown"
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
               className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-sm"
             >
-              <option value="">None</option>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
+              {sortOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
-
           {/* Desktop controls */}
           <div className="ml-auto hidden md:flex items-center gap-2 w-full md:w-auto">
             <button
@@ -281,40 +341,23 @@ export const Products = () => {
             >
               {showFilter ? 'Hide Filters' : 'Show Filters'}
             </button>
-            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
+            <label htmlFor="sortDropdown" className="text-[#493657] font-medium ml-2">Sort:</label>
             <select
-              id="sortPrice"
+              id="sortDropdown"
               value={sortOrder}
               onChange={e => setSortOrder(e.target.value)}
               className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-base"
             >
-              <option value="">None</option>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
+              {sortOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
           </div>
         </div>
-
-        {/* Price control + chips */}
-        <div className="mb-4">
-          <PriceRange
-            min={dataMin}
-            max={dataMax}
-            value={priceDraft}
-            applied={price}
-            onChange={setPriceDraft}
-            onApply={(val) => setPrice(val)}
-          />
-        </div>
-
+        {/* (Removed PriceRange and price controls) */}
         <ActiveFilters
           selected={selected}
-          price={price}
           onRemove={(group, value) => setChecked(prev => ({ ...prev, [`${group}-${value}`]: false }))}
           onClearAll={() => {
             setChecked({});
-            setPrice({ min: dataMin, max: dataMax });
-            setPriceDraft({ min: dataMin, max: dataMax });
             setSortOrder('');
             setSearch('');
             setSearchDraft('');
@@ -324,23 +367,20 @@ export const Products = () => {
             setSearchParams(params);
           }}
         />
-
         {/* Mobile sidebar */}
         {mobileFilterOpen && (
           <div className="md:hidden mb-6 animate-fade-in-down">
-            <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
+            <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} getFilterCounts={getFilterCounts} />
           </div>
         )}
-
         {/* Layout */}
         <div className="flex flex-row items-start gap-4">
           {/* Desktop sidebar */}
           <div className="hidden md:block sticky top-28 self-start max-h-[calc(100vh-7rem)] overflow-y-auto">
             {showFilter && (
-              <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
+              <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} getFilterCounts={getFilterCounts} />
             )}
           </div>
-
           {/* Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -348,10 +388,8 @@ export const Products = () => {
               {nothingFound && (
                 <div className="col-span-full text-center text-[#493657] text-lg">No products found.</div>
               )}
-
               {/* If searching and name matches exist: show them (no heading) */}
               {qActive && nameMatches.length > 0 && nameMatches.map((product, idx) => (
-
                 <ProductCard
                   key={product.name + idx}
                   id={product.name}
@@ -363,7 +401,6 @@ export const Products = () => {
                   areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
                 />
               ))}
-
               {/* If searching and no name matches, but category matches exist: show a one-line heading + products */}
               {qActive && categoryMatches.length > 0 && (
                 <>
@@ -389,7 +426,6 @@ export const Products = () => {
                   ))}
                 </>
               )}
-
               {/* If no name/category matches, but substrate matches exist: show a one-line heading + products */}
               {qActive && substrateMatches.length > 0 && (
                 <>
@@ -415,9 +451,8 @@ export const Products = () => {
                   ))}
                 </>
               )}
-
               {/* No search active: show the baseFiltered grid like before */}
-              {!qActive && baseFiltered.length > 0 && baseFiltered.map((product, idx) => (
+              {!qActive && sortedFiltered.length > 0 && sortedFiltered.map((product, idx) => (
                 <ProductCard
                   key={product.name + idx}
                   id={product.name}

@@ -43,7 +43,7 @@ import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 
 // Policies: 
 import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
-import PrivacyPolicy from "./pages/Policies/PrivacyPolicy";
+import PoliciesPrivacy from "./pages/Policies/PrivacyPolicy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
 import PaymentsGst from './pages/Policies/PaymentsGST.jsx'
 import QualityPolicy from "./pages/Policies/QualityPolicy";
@@ -53,6 +53,7 @@ import ShippingDelivery from "./pages/Policies/ShippingDelivery";
 import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
 import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
 import CustomerService from "./pages/Policies/CustomerService";
+import ToastHost from './ui/ToastHost.jsx'
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
@@ -103,7 +104,7 @@ function App() {
 
               {/* Policy Routes */}
               <Route path="/policies" element={<PoliciesIndex />} />
-              <Route path="/policies/privacy" element={<PrivacyPolicy />} />
+              <Route path="/policies/privacy" element={<PoliciesPrivacy />} />
               <Route path="/policies/terms" element={<TermsAndConditions />} />
               <Route path="/policies/payments-gst" element={<PaymentsGst />} />
               <Route path="/policies/quality" element={<QualityPolicy />} />
@@ -114,9 +115,12 @@ function App() {
               <Route path="/policies/warranty" element={<WarrantyPolicy />} />
               <Route path="/customer-service" element={<CustomerService />} />
 
+              {/* Toaster */}
+
               {/* 404 Fallback Route */}
               <Route path="*" element={<NotFound/>}/>
             </Routes>
+            <ToastHost />
             <Footer/>
           </div>
         </ColorVisualizationProvider>
