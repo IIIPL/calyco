@@ -42,7 +42,7 @@ export const AboutUs = () => {
               <button className="px-8 py-4 bg-white text-[#5E3A98] font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg" onClick={() => navigate('/product')}>
                 Our Products
               </button>
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-[#5E3A98] transform hover:scale-105 transition-all duration-300">
+              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-[#5E3A98] transform hover:scale-105 transition-all duration-300" onClick={() => navigate('/contact')}>
                 Contact Us
               </button>
             </div>
