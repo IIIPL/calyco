@@ -6,6 +6,7 @@ import { flatColors } from "../data/flatColors";
 import { groupedShades } from "../data/groupedShades";
 import ColorBox from "./ColorComponents/ColorBox";
 import { FaLeaf, FaPalette, FaEye, FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import { BuyNowDrawer } from "./BuyNowDrawer";
 
 // --- helpers ---
 const hexToHsl = (hex) => {
@@ -58,6 +59,10 @@ const representativeFromGroup = (list = []) => {
 const ColorExplore = () => {
   const navigate = useNavigate();
   const [expandedFamily, setExpandedFamily] = useState(null);
+
+  // Drawer state for ColorBox cart functionality
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   // group by family
   const colorsByFamily = flatColors.reduce((acc, color) => {
@@ -255,6 +260,10 @@ const ColorExplore = () => {
                                 <ColorBox
                                   color={color}
                                   familyName={family}
+                                  onOpenDrawer={(colorPayload) => {
+                                    setSelectedColor(colorPayload);
+                                    setDrawerOpen(true);
+                                  }}
                                 />
                               </motion.div>
                             ))}
@@ -302,6 +311,13 @@ const ColorExplore = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Buy Now Drawer for ColorBox cart functionality */}
+      <BuyNowDrawer
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        currentColor={selectedColor || { name: "", hex: "#ffffff", description: "" }}
+      />
     </div>
   );
 };

@@ -82,48 +82,57 @@ export default function FamilyNavigator() {
           </button> */}
 
           {/* Chips scroller */}
-          <div ref={scrollerRef} className="flex-1 overflow-x-auto no-scrollbar">
-            <div className="flex gap-2 py-1 justify-center">
-            {families.map((f, idx) => {
-  const isActive = idx === activeIndex;
-  return (
-    <button
-      key={f}
-      data-family-index={idx}
-      onClick={() => goToFamily(f)}
-      className="flex flex-col items-center gap-2 px-2 focus:outline-none"
-      title={f}
-    >
-      {/* square swatch */}
-      <span
-        className={`
-          block rounded-sm border transition-all
-          ${isActive ? "border-gray-900 border-2" : "border-gray-300"}
-          w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16
-        `}
-        style={{ backgroundColor: familyHex[f] || "#ccc" }}
-        aria-label={`${f} swatch`}
-      />
-
-      {/* family name */}
-      <span
-        className={`font-medium text-center ${
-          isActive
-            ? "underline decoration-2 underline-offset-2"
-            : "text-gray-700"
-        }`}
-      >
-        <span className="text-xs sm:text-sm md:text-base lg:text-lg">
-          {f.split(" ")[0]}
-        </span>
-      </span>
-    </button>
-  );
-})}
-
+          <div
+            ref={scrollerRef}
+            className="flex-1 overflow-x-auto overflow-y-visible scroll-smooth no-scrollbar"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            <div
+              className="
+                flex items-start min-w-max
+                gap-1 sm:gap-2           
+                py-1 px-1 sm:px-2 md:px-0
+                snap-x snap-mandatory    
+                justify-center
+              "
+            >
+              {families.map((f, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <button
+                    key={f}
+                    data-family-index={idx}
+                    onClick={() => goToFamily(f)}
+                    className="flex flex-col items-center gap-1 sm:gap-2 px-1 sm:px-2 focus:outline-none shrink-0 snap-start md:snap-center cursor-pointer justify-center"
+                    title={f}
+                  >
+                    {/* square swatch */}
+                    <span
+                      className={`
+                        block rounded-sm border transition-all
+                        ${isActive ? "border-gray-900 border-2" : "border-gray-300"}
+                        w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16
+                      `}
+                      style={{ backgroundColor: familyHex[f] || "#ccc" }}
+                      aria-label={`${f} swatch`}
+                    />
+                    {/* family name */}
+                    <span
+                      className={`font-medium text-center ${
+                        isActive
+                          ? "underline decoration-2 underline-offset-2"
+                          : "text-gray-700"
+                      }`}
+                    >
+                      <span className="text-[11px] sm:text-sm md:text-base lg:text-lg">
+                        {f.split(" ")[0]}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
-
           {/* Next */}
           {/* <button
             aria-label="Next family"

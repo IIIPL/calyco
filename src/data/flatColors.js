@@ -2088,7 +2088,7 @@ export const flatColors = [
     "combinationcolor": ["Terra Blush", "Clay Beige", "Dusky Sand", "Sage Whisper"]
   },
   {
-    "name": "Rust Glow",
+    "name": "Rust Glow Red",
     "code": "CP101",
     "color_family": "REDS & ORANGES",
     "primary_color": "Red",
