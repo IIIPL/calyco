@@ -199,7 +199,7 @@ export const DynamicProductPage = () => {
                             >
                                 <img
                                     src={selectedImage || product.image}
-                                    alt={product.name}
+                                    alt={`CALYCO ${product.name} paint product`}
                                     className="object-contain w-full h-full mx-auto hover:scale-105 transition-transform duration-500"
                                     style={{ maxWidth: '100%', maxHeight: '100%' }}
                                 />
@@ -215,7 +215,7 @@ export const DynamicProductPage = () => {
                                 className={`border rounded-lg p-1 transition-all focus:outline-none ${selectedImage === img ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]' : 'border-[#493657]/20 hover:border-[#493657]/40'}`}
                                 style={{background: selectedImage === img ? '#F0C85A22' : 'white'}}
                               >
-                                <img src={img} alt={`Thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
+                                <img src={img} alt={`CALYCO ${product.name} paint product thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
                               </button>
                             ))}
                           </div>
@@ -515,9 +515,9 @@ export const DynamicProductPage = () => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
+                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Product Information Sheet</h4>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href={`/pis-viewer.html?src=${encodeURIComponent(product.PIS)}`}  target="_blank" rel="noopener noreferrer" className="underline">TDS</a></li>
+                                <li><a href={`/pis-viewer.html?src=${encodeURIComponent(product.PIS)}`}  target="_blank" rel="noopener noreferrer" className="underline">PIS</a></li>
                             </ul>
                         </div>
                     </div>
@@ -540,69 +540,88 @@ export const DynamicProductPage = () => {
                     { label: 'Clean Up', key: 'cleanup' },
                   ];
 
-                  const MobileTable = () => (
-                    <div className="md:hidden mt-24 pb-16 -mx-4 overflow-x-auto px-4">
-                      <h2 className="text-lg font-bold text-[#493657] mb-4">Compare Similar Products</h2>
-                      <table className="min-w-[560px] w-full border border-[#e5e0d8] text-[#493657] bg-white text-[11px]">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th className="sticky left-0 z-20 bg-gray-50 text-left font-bold px-3 py-3 w-40 border-b border-[#e5e0d8]">
-                              Feature
-                            </th>
-                            {compareProducts.map((p, idx) => (
-                              <th
-                                key={p.name}
-                                className={`px-3 py-3 text-center border-b border-[#e5e0d8] ${
-                                  idx === 0 ? 'bg-gray-200' : 'bg-gray-50'
-                                }`}
-                              >
-                                <div className="flex flex-col items-center gap-1">
+                  // --- Mobile: swipeable comparison cards (replace MobileTable) ---
+                  const MobileTable = () => {
+                    // helper: normalize values for diffing
+                    const valOf = (p, field) => {
+                      let v = p[field.key];
+                      if (field.isArray && Array.isArray(v)) v = v.join(", ");
+                      if (!v || (Array.isArray(v) && v.length === 0)) v = "-";
+                      return String(v);
+                    };
+
+                    // which fields differ across products?
+                    const fieldsThatDiffer = new Set(
+                      fields
+                        .filter((f) => {
+                          const values = new Set(compareProducts.map((p) => valOf(p, f).toLowerCase().trim()));
+                          return values.size > 1;
+                        })
+                        .map((f) => f.key)
+                    );
+
+                    return (
+                      <div className="md:hidden mt-24 pb-16 -mx-4">
+                        <h2 className="text-lg font-bold text-[#493657] mb-4 px-4">
+                          Compare Similar Products
+                        </h2>
+
+                        {/* swipeable cards */}
+                        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 scroll-smooth">
+                          {compareProducts.map((p, idx) => (
+                            <div
+                              key={p.name}
+                              className={`snap-center shrink-0 w-[86vw] max-w-[420px] bg-white rounded-2xl shadow border border-[#e5e0d8]`}
+                            >
+                              {/* header */}
+                              <div className={`p-4 rounded-t-2xl ${idx === 0 ? "bg-gray-100" : "bg-gray-50"}`}>
+                                <div className="flex items-center gap-3">
                                   <img
                                     src={Array.isArray(p.images) ? p.images[0] : p.image}
-                                    alt={p.name}
-                                    className="w-14 h-14 object-contain mx-auto"
+                                    alt={`CALYCO ${p.name} paint product`}
+                                    className="w-14 h-14 object-contain rounded-md"
                                     loading="lazy"
                                   />
-                                  <div className="font-semibold leading-tight">{p.name}</div>
-                                  <Link
-                                    to={`/product/${p.name}`}
-                                    className="underline text-[#493657]"
-                                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                  >
-                                    Details
-                                  </Link>
+                                  <div>
+                                    <div className="font-bold text-[#493657] leading-tight">{p.name}</div>
+                                    <Link
+                                      to={`/product/${p.name}`}
+                                      className="underline text-[#493657]/80 text-sm"
+                                      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    >
+                                      See details
+                                    </Link>
+                                  </div>
                                 </div>
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {fields.map((field) => (
-                            <tr key={field.label}>
-                              <td className="sticky left-0 z-10 bg-white font-semibold px-3 py-3 border-t border-[#e5e0d8] align-top">
-                                {field.label}
-                              </td>
-                              {compareProducts.map((p, idx) => {
-                                let value = p[field.key];
-                                if (field.isArray && Array.isArray(value)) value = value.join(', ');
-                                if (!value || (Array.isArray(value) && value.length === 0)) value = '-';
-                  return (
-                                  <td
-                                    key={p.name + '-' + field.key}
-                                    className={`px-3 py-3 text-center border-t border-[#e5e0d8] align-top ${
-                                      idx === 0 ? 'bg-gray-100' : 'bg-white'
-                                    }`}
-                                  >
-                                    {value}
-                                  </td>
-                                );
-                              })}
-                            </tr>
+                              </div>
+
+                              {/* features list */}
+                              <dl className="divide-y divide-[#e5e0d8]">
+                                {fields.map((field) => {
+                                  const value = valOf(p, field);
+                                  const differs = fieldsThatDiffer.has(field.key);
+                                  return (
+                                    <div key={field.label} className="grid grid-cols-2 gap-3 px-4 py-3">
+                                      <dt className="text-[#493657] font-semibold text-sm">{field.label}</dt>
+                                      <dd
+                                        className={`text-sm ${
+                                          differs ? "font-semibold text-[#301A44]" : "text-[#493657]/80"
+                                        }`}
+                                      >
+                                        {value}
+                                      </dd>
+                                    </div>
+                                  );
+                                })}
+                              </dl>
+                            </div>
                           ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  );
+                        </div>
+
+                        <p className="text-xs text-[#493657]/60 text-center mt-3">Swipe to compare →</p>
+                      </div>
+                    );
+                  };
 
                   const DesktopTable = () => (
                     <div className="hidden md:block mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20 hide-scrollbar">
@@ -629,7 +648,7 @@ export const DynamicProductPage = () => {
                                     >
                                       <img
                                         src={Array.isArray(p.images) ? p.images[0] : p.image}
-                                        alt={p.name}
+                                        alt={`CALYCO ${p.name} paint product for comparison`}
                                         className="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105"
                                         loading="lazy"
                                       />

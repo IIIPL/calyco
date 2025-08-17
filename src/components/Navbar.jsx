@@ -76,8 +76,8 @@ export const Navbar = () => {
     <header ref={navRef} className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm">
       {/* Logo Row */}
       <div className="w-full flex justify-center items-center h-20 md:h-14">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src="/Logo.png" className="object-contain h-16 md:h-20 pt-2 mx-auto" alt="Calyco Logo" />
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="CALYCO — Home">
+          <img src="/Logo.png" className="object-contain h-16 md:h-20 pt-2 mx-auto" alt="CALYCO Logo" />
         </Link>
       </div>
       
@@ -135,6 +135,7 @@ export const Navbar = () => {
           className="text-[#493657] text-2xl mr-3"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle mobile menu"
+          aria-expanded={menuOpen}
         >☰</button>
       </div>
       
@@ -148,11 +149,12 @@ export const Navbar = () => {
         <button
           className="absolute top-6 right-6 text-3xl text-[#493657]"
           onClick={() => setMenuOpen(false)}
+          aria-label="Close mobile menu"
         >&times;</button>
         
         <div className="flex justify-center items-center mt-8 mb-8">
-          <Link to="/">
-            <img src="/Logo.png" className="object-contain max-h-16 mx-auto" alt="Calyco Logo" />
+          <Link to="/" aria-label="CALYCO — Home">
+            <img src="/Logo.png" className="object-contain max-h-16 mx-auto" alt="CALYCO Logo" />
           </Link>
         </div>
         

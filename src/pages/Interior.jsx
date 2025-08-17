@@ -17,7 +17,7 @@ export const Interior = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
         {interiorProducts.map(product => (
           <div key={product.id} className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
-            <img src={product.image} alt={product.name} className="w-28 h-28 object-contain mb-4" />
+            <img src={product.image} alt={`CALYCO ${product.name} interior paint product`} className="w-28 h-28 object-contain mb-4" />
             <h3 className="text-lg font-bold text-[#493657] mb-2 text-center">{product.name}</h3>
             <p className="text-[#493657]/80 text-sm mb-4 text-center">{product.shortDescription}</p>
             <ul className="text-[#493657] text-xs mb-4 list-disc pl-4 text-left w-full">

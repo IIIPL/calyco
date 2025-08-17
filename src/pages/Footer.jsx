@@ -65,23 +65,23 @@ export const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/logowhite.png" alt="CALYCO" className="w-16 object-contain" />
+            <img src="/logowhite.png" alt="CALYCO Logo" className="w-16 object-contain" />
           </div>
           <p className="text-sm text-[#F9F6F2] max-w-xs">
             Premium paints for beautiful, lasting spaces. Low-VOC, high-performance finishes.
           </p>
           <div className="flex gap-4 mt-5">
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaInstagram className="w-5 h-5" />
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on Instagram">
+              <FaInstagram className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaYoutube className="w-5 h-5" />
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on YouTube">
+              <FaYoutube className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaLinkedin className="w-5 h-5" />
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on LinkedIn">
+              <FaLinkedin className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaWhatsapp className="w-5 h-5" />
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Contact CALYCO on WhatsApp">
+              <FaWhatsapp className="w-5 h-5" aria-hidden="true" />
             </a>
           </div>
         </div>

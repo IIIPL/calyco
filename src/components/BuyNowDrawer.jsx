@@ -79,7 +79,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
                 <div className="flex gap-4 items-center">
                   <img
                     src={product.images[0]}
-                    alt={product.name}
+                    alt={`CALYCO ${product.name} paint product`}
                     className="w-20 h-20 object-contain rounded-lg border border-gray-100"
                   />
                   <div className="flex-1">

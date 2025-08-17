@@ -49,7 +49,7 @@ export default function ProductCard({
   return (
     <div className="p-0 w-full max-w-xs mx-auto flex flex-col items-start bg-transparent border-none shadow-none">
       <Link to={`/product/${product.name}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2">
-        <img src={(product.images && product.images[0]) || product.image} alt={product.name} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
+        <img src={(product.images && product.images[0]) || product.image} alt={`CALYCO ${product.name} paint product`} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
       </Link>
 
       <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full break-words">

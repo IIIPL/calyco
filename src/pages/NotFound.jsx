@@ -53,7 +53,7 @@ export default function NotFound() {
         >
           <img 
             src="/404.png" 
-            alt="Empty paint bucket - 404 not found" 
+            alt="CALYCO 404 error — Empty paint bucket illustration" 
             className="w-56 h-56 md:w-72 md:h-72 object-contain"
             loading="lazy"
           />

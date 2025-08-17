@@ -103,7 +103,7 @@ export const RoomVisualizerPage = () => {
                   {/* Room Image */}
                   <img
                     src={room.image}
-                    alt={room.name}
+                    alt={`${room.name} room for color visualization`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       e.target.style.display = 'none';

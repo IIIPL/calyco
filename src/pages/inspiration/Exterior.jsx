@@ -23,7 +23,7 @@ export default function ExteriorInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754906014/webaliser-_TPTXZd9mOo-unsplash_hb5na0.jpg"
-          alt="Exterior Inspiration"
+          alt="CALYCO exterior design inspiration — beautiful home exterior with modern architecture and landscaping"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

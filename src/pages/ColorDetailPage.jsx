@@ -141,7 +141,7 @@ const ColorDetailPage = () => {
             src={
               currentColor.image 
             }
-            alt={currentColor.name}
+            alt={`${currentColor.name} color swatch and inspiration`}
             className="h-full w-auto object-contain md:mb-10"
           />
         </div>

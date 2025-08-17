@@ -174,7 +174,7 @@ export default function ColorsPage() {
                 <img
                   src="/Assets/color-banner.png"
                   className="w-full h-auto object-cover"
-                  alt="Calyco Paint Collection"
+                  alt="CALYCO Sacred Palette — 108 eco-friendly paint colors collection showcase"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                 

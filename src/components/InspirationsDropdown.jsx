@@ -173,7 +173,7 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
         >
           <img
             src={roomThumbnails[hoveredRoom]}
-            alt={hoveredRoom}
+            alt={`${hoveredRoom} room design inspiration preview`}
             className="
               rounded-xl shadow-md border border-gray-100 object-cover w-full
               h-40 md:h-52 lg:h-60
