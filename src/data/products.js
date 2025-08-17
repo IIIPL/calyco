@@ -274,8 +274,7 @@ export const products = [
     "PIS": "/PIS/woodguard.json",
     "TDS": "",
     "SDS": "/SDS/WoodGuard.json",
-    "images": ["/Assets/Woodguard/NoBg.png",
-      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429858/NoBg_kxlcrj.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429858/NoBg_kxlcrj.png",
       // "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142464/inuse_spw706.png",
       // "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142463/OnTable_sf1xsz.png",
     ]
