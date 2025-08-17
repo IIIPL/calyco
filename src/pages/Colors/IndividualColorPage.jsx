@@ -16,7 +16,7 @@ const ColorPage = ({ colorName }) => {
   }
 
   const similarColors = flatColors.filter(
-    c => c.groupTitle === currentColor.groupTitle && c.name !== currentColor.name
+    c => c.groupTitle === currentColor?.groupTitle && c.name !== currentColor?.name
   );
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const ColorPage = ({ colorName }) => {
     <div className="text-[#1a1a1a] min-h-screen mt-20">
 
         <div className="px-20 py-10"
-            style={{ backgroundColor: currentColor.hex }}
+            style={{ backgroundColor: currentColor?.hex || "#301A44" }}
         >
             {/* Breadcrumb */}
             <div className= "text-sm">
@@ -38,12 +38,12 @@ const ColorPage = ({ colorName }) => {
                     <span>›</span>
                     <span
                     className="text-[#1a1a1a] underline cursor-pointer hover:text-black"
-                    onClick={() => navigate(`/colors#${currentColor.groupTitle.replace(/\s+/g, "-").toLowerCase()}`)}
+                    onClick={() => navigate(`/colors#${currentColor?.groupTitle?.replace(/\s+/g, "-")?.toLowerCase() || ""}`)}
                     >
-                    {currentColor.groupTitle}
+                    {currentColor?.groupTitle || ""}
                     </span>
                     <span>›</span>
-                    <span className="text-[#1a1a1a] font-medium">{currentColor.name}</span>
+                    <span className="text-[#1a1a1a] font-medium">{currentColor?.name || ""}</span>
                 </div>
             </div>
         
@@ -53,14 +53,14 @@ const ColorPage = ({ colorName }) => {
                 <div className="w-full md:w-2/5 mb-10 md:mb-0">
                     <div
                     className="w-full h-[500px] rounded-lg border"
-                    style={{ backgroundColor: currentColor.hex }}
+                    style={{ backgroundColor: currentColor?.hex || "#301A44" }}
                     ></div>
                 </div>
 
                 {/* RIGHT PANEL: content */}
                 <div className="w-full md:w-3/5 md:pl-16 flex flex-col justify-center">
                     {/* Title */}
-                    <h1 className="text-5xl font-semibold mb-2">{currentColor.name}</h1>
+                    <h1 className="text-5xl font-semibold mb-2">{currentColor?.name || ""}</h1>
                     
                     {/* Description (placeholder) */}
                     <p className="text-md text-black mb-10">
@@ -82,7 +82,7 @@ const ColorPage = ({ colorName }) => {
 
                     <div>
                     <p className="font-medium text-sm text-black mb-1">Collection</p>
-                    <p className="text-blue-700 underline cursor-pointer hover:text-blue-900">{currentColor.groupTitle}</p>
+                    <p className="text-blue-700 underline cursor-pointer hover:text-blue-900">{currentColor?.groupTitle || ""}</p>
                     </div>
                 </div>
             </div>

@@ -32,6 +32,7 @@ import FullColorPage from './pages/Colors/FullColorPage'
 import FamilyColorGroup from './pages/FamilyPage'
 import ColorDetailPage from './pages/ColorDetailPage'
 import ColorsSearchPage from './pages/Colors/ColorsSearchPage'
+import SimpleErrorBoundary from './components/SimpleErrorBoundary'
 
 
 // Import new providers and pages
@@ -83,7 +84,7 @@ function App() {
               <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
               <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
               <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
-              <Route path="/colors/search" element={<ColorsSearchPage />} />
+              <Route path="/colors/search" element={<SimpleErrorBoundary><ColorsSearchPage /></SimpleErrorBoundary>} />
               <Route path='/inspirations' element={<InspirationPage/>}/>
               <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
               <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>

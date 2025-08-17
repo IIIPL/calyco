@@ -63,7 +63,12 @@ export default function ColorBox({ color, familyName, onOpenDrawer }) {
           className="transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0C85A] hover:scale-110 hover:bg-white/10 px-1.5 py-1 rounded-md"
           onClick={(e) => {
             e.stopPropagation();
-            onOpenDrawer?.({ name: color.name, hex: color.hex, description: color.description || '' });
+            onOpenDrawer?.({
+              name: color?.name || "",
+              hex: color?.hex || "#301A44",
+              description: color?.description || "",
+              color_family: color?.color_family || "",
+            });
           }}
         >
           <CartIcon className={`h-7 w-7 ${textColor}`} />

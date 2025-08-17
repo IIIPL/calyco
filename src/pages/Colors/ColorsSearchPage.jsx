@@ -1,8 +1,9 @@
+// pages/ColorsSearchPage.jsx
 import React, { useMemo, useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { flatColors } from "../../data/flatColors";
-// ⬇️ Adjust the path to where your ColorBox actually lives
 import ColorBox from "../../components/ColorComponents/ColorBox";
+import { BuyNowDrawer } from "../../components/BuyNowDrawer";
 
 const slugify = (text) =>
   text?.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w\-&]+/g, "").replace(/\-\-+/g, "-");
@@ -10,46 +11,64 @@ const slugify = (text) =>
 const norm = (s) => (s || "").toLowerCase().trim();
 
 export default function ColorsSearchPage() {
-    const navigate = useNavigate();
-    const [params] = useSearchParams();
-    const q = norm(params.get("query"));
-    const [term, setTerm] = useState(params.get("query") || "");
-    
-    useEffect(() => {
-        document.title = "Search results for " + q;
-    }, [q]);
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const q = norm(params.get("query"));
+  const [term, setTerm] = useState(params.get("query") || "");
 
+  // Drawer state
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [buyColor, setBuyColor] = useState(null);
+
+  useEffect(() => {
+    if (q) document.title = "Search results for " + q;
+  }, [q]);
 
   const results = useMemo(() => {
     if (!q) return [];
-  
-    // support multi-term queries, match across several fields
+
     const terms = q.split(/\s+/).filter(Boolean);
-    const norm = s => (s || "").toLowerCase().trim();
-    const cleanHex = h => norm(h).replace(/^#/, "");
-    const expand3 = h => (h.length === 3 ? h.split("").map(ch => ch + ch).join("") : h);
-  
-    return flatColors.filter(c => {
-      const name = norm(c.name ?? c.color_name);            // <-- FIX: use `name`
-      const fam  = norm(c.color_family ?? c.family ?? "");
-      const code = norm(c.code ?? c.id ?? "");
-      const desc = norm(c.description ?? "");
-      const hexFull   = cleanHex(c.hex ?? "");
+    const _norm = (s) => (s || "").toLowerCase().trim();
+    const cleanHex = (h) => _norm(h).replace(/^#/, "");
+    const expand3 = (h) => (h.length === 3 ? h.split("").map((ch) => ch + ch).join("") : h);
+
+    return flatColors.filter((c) => {
+      const name = _norm(c.name ?? c.color_name);
+      const fam = _norm(c.color_family ?? c.family ?? "");
+      const code = _norm(c.code ?? c.id ?? "");
+      const desc = _norm(c.description ?? "");
+      const hexFull = cleanHex(c.hex ?? "");
       const hexExpand = expand3(hexFull);
-  
-      return terms.every(t => {
-        const tNorm = norm(t);
-        const tHex  = expand3(cleanHex(tNorm));
+
+      return terms.every((t) => {
+        const tNorm = _norm(t);
+        const tHex = expand3(cleanHex(tNorm));
         return (
-          name.includes(tNorm) ||        // name search works now
-          fam.includes(tNorm)  ||
+          name.includes(tNorm) ||
+          fam.includes(tNorm) ||
           code.includes(tNorm) ||
           desc.includes(tNorm) ||
-          hexFull.includes(tHex) || hexExpand.includes(tHex)
+          hexFull.includes(tHex) ||
+          hexExpand.includes(tHex)
         );
       });
     });
   }, [q]);
+
+  // Open with a 2-RAF tick so the drawer mounts "closed" then animates in
+  const handleOpenDrawer = (c) => {
+    if (!c) return;
+    setBuyColor({
+      name: c.name || "",
+      hex: c.hex || "#301A44",
+      description: c.description || "",
+      color_family: c.color_family || c.family || "",
+    });
+    setShowDrawer(false); // ensure initial closed state on mount
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setShowDrawer(true)); // then animate to open
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5">
@@ -58,15 +77,12 @@ export default function ColorsSearchPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-[#493657]">
             Search results{q ? ` for "${params.get("query")}"` : ""}
           </h1>
-          <Link
-            to="/colors"
-            className="text-[#493657] hover:text-[#F0C85A] underline"
-          >
+          <Link to="/colors" className="text-[#493657] hover:text-[#F0C85A] underline">
             Browse all colors
           </Link>
         </div>
 
-        {/* Search row (right-aligned on md+, full-width on mobile) */}
+        {/* Search row */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -95,40 +111,44 @@ export default function ColorsSearchPage() {
           </div>
         </form>
 
-        {/* Empty state */}
-        {!q && (
-          <div className="text-[#493657]/70">Type a search term above.</div>
-        )}
+        {!q && <div className="text-[#493657]/70">Type a search term above.</div>}
         {q && results.length === 0 && (
-          <div className="text-[#493657]/70">
-            No matching colors found. Try another name, family, or hex.
-          </div>
+          <div className="text-[#493657]/70">No matching colors found. Try another name, family, or hex.</div>
         )}
 
-        {/* Grid */}
         {results.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-            {results.map((c) => {
-              const famSlug = slugify(c.color_family);
-              return (
+          <>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+              {results.map((c) => (
                 <ColorBox
-                  key={`${c.color_family}-${c.color_name}-${c.hex}`}
-                  color={c}
-                  onViewFamily={() => {
-                    navigate(`/colors/family/${famSlug}`);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  key={`${c.color_family || c.family}-${c.name || c.color_name}-${c.hex}`}
+                  color={{
+                    name: c.name ?? c.color_name,
+                    hex: c.hex,
+                    description: c.description || "",
+                    color_family: c.color_family || c.family || "",
+                    image: c.image,
                   }}
-                  onCopyHex={async () => {
-                    try {
-                      await navigator.clipboard.writeText(c.hex);
-                    } catch {}
-                  }}
+                  familyName={c.color_family || c.family || "colors"}
+                  onOpenDrawer={handleOpenDrawer}
                 />
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
+
+      {/* Keep mounted so exit animation plays */}
+      {buyColor && (
+        <BuyNowDrawer
+          isOpen={showDrawer}
+          onClose={() => {
+            setShowDrawer(false);
+            setTimeout(() => setBuyColor(null), 520); // match 500ms transition in drawer
+          }}
+          currentColor={buyColor}
+        />
+      )}
     </div>
   );
 }
