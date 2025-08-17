@@ -1,0 +1,147 @@
+{
+    "product_name": "",
+    "brand": "",
+    "type": "",
+    "sheet_title": "",
+    "pis_title": "",
+  
+    "reference_image": [],
+  
+    "titles": {
+      "title": "",
+      "premium": "",
+      "title2": ""
+    },
+  
+    "icons": {
+      "main": [],
+      "minor": [],
+      "extra": []
+    },
+  
+    "product_overview": "",
+    "short_description": "",
+    "positioning": "",
+  
+    "key_features": [],
+  
+    "features_benefits": [
+      { "feature": "", "benefit": "" }
+    ],
+  
+    "recommended_use": {
+      "intro": "",
+      "items": []
+    },
+  
+    "application_system": [
+      {
+        "step": 1,
+        "label": "",
+        "product": "",
+        "purpose": ""
+      }
+    ],
+  
+    "application_tools": [],
+    
+    "timings": {
+      "surface_dry": "",
+      "recoat": "",
+      "full_cure": ""
+    },
+  
+    "coverage": "",
+    "finish": "",
+    "available_sizes": "",
+    "thinner": "",
+  
+    "technical_data": {
+      "Binder Type": "",
+      "Sheen Level": "",
+      "Colours": "",
+      "Volume Solids": "",
+      "Viscosity (KU at 25°C)": "",
+      "Density": "",
+      "Recommended DFT": "",
+      "Theoretical Coverage": "",
+      "Flash Point": "",
+      "VOC Content": "",
+      "Temperature Range": "",
+      "Humidity": "",
+      "Warranty": "",
+      "Shelf Life": ""
+    },
+  
+    "recommended_substrates": [
+      { "type": "", "description": "" }
+    ],
+  
+    "surface_preparation": [],
+  
+    "application": [],
+  
+    "limitations": {
+      "Temperature Range": "",
+      "Humidity": "",
+      "Protection Period": "",
+      "Application Conditions": "",
+      "Not Recommended For": ""
+    },
+  
+    "storage_safety": [],
+  
+    "safety_first_aid": {
+      "General": "",
+      "Skin Contact": "",
+      "Eye Contact": "",
+      "Inhalation": "",
+      "Ingestion": "",
+      "Ventilation": "",
+      "Waste Disposal": ""
+    },
+  
+    "environmental_commitment": "",
+  
+    "commerce": {
+      "name": "",
+      "category": "",
+      "price_inr": 0,
+      "packaging": "",
+      "brand": "",
+      "product_number": ""
+    },
+  
+    "usage": {
+      "application": "",
+      "advantages": [],
+      "substrate": [],
+      "recommended_uses": []
+    },
+  
+    "specs_summary": {
+      "finish_type_sheen": "",
+      "base_type": "",
+      "coverage_imperial": "",
+      "coverage_metric": "",
+      "voc_content": "",
+      "application_instructions": "",
+      "drying_time": "",
+      "recoat_time": "",
+      "cleanup": "",
+      "coats_required": "",
+      "temperature_range": "",
+      "humidity_range": "",
+      "tools_required": [],
+      "color_options": "",
+      "spread_rate": "",
+      "preparation_instructions": "",
+      "safety_precautions": "",
+      "storage_instructions": "",
+      "warranty": ""
+    },
+  
+    "contact_info": "",
+    "doc_notes": ""
+  }
+  

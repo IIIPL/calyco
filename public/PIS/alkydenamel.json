@@ -1,70 +1,166 @@
 {
-  "sheet_title": "Calyco Alkyd Enamel – Alkyd Enamel",
-  "pis_title": "Alkyd Enamel– Product Information Sheet (PIS)",
-  "product_overview": "Alkyd Enamel offers smooth gloss, chemical resistance, and strong adhesion for long-term results.",
-  "key_features": [
-    "🛡 Long-Term Protection",
-    "🌍 Multi-Surface Application: Works across Wood, Metal, Previously painted surfaces"
-  ],
-  "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
-    "items": [
-      "Great for trims, cabinets, and industrial metal surfaces"
-    ]
+  "product_name": "Alkyd Enamel",
+  "brand": "Calyco",
+  "type": "Enamel",
+  "sheet_title": "Alkyd Enamel",
+  "pis_title": "Alkyd Enamel – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "Alkyd Enamel, Durable, Smooth Gloss",
+    "premium": "Durable finish | Chemical resist | Smooth gloss",
+    "title2": "Oil-based alkyd enamel with a hard, glossy finish for long-term protection and performance."
   },
+
+  "icons": {
+    "main": ["Durable", "Smooth Gloss", "Chemical Resistant"],
+    "minor": ["Strong adhesion", "Excellent flow", "Long-term protection"],
+    "extra": ["Low VOC", "Gloss Finish"]
+  },
+
+  "product_overview": "Oil-based alkyd enamel with a hard, glossy finish for long-term protection and performance.",
+  "short_description": "Highly durable alkyd enamel ideal for trim, metal, and high-wear surfaces.",
+  "positioning": "Alkyd Enamel offers smooth gloss, chemical resistance, and strong adhesion for long-term results.",
+
+  "key_features": [
+    "Durable high-gloss finish",
+    "Excellent flow and leveling",
+    "Chemical and abrasion resistant",
+    "Strong adhesion to wood and metal",
+    "Low VOC, eco-friendly",
+    "Long-lasting protection for trim and industrial use"
+  ],
+
+  "features_benefits": [
+    { "feature": "Smooth Gloss", "benefit": "Provides a premium smooth finish with excellent leveling" },
+    { "feature": "Durable Finish", "benefit": "Withstands long-term wear on trims and high-use areas" },
+    { "feature": "Chemical Resistance", "benefit": "Protects surfaces against solvents and industrial exposure" },
+    { "feature": "Versatile Substrates", "benefit": "Adheres to wood, metal, and previously painted surfaces" },
+    { "feature": "Flow & Leveling", "benefit": "Self-leveling properties ensure brush-mark free results" }
+  ],
+
+  "recommended_use": {
+    "intro": "Designed for trims, doors, cabinets, and industrial metal surfaces.",
+    "items": ["Trim", "Doors", "Cabinets", "Industrial surfaces"]
+  },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Primer (if required)",
-      "product": "Substrate-appropriate primer",
-      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+      "label": "Surface Prep",
+      "product": "Alkyd Enamel",
+      "purpose": "Remove moss, dust, and grease; clean thoroughly"
     },
     {
       "step": 2,
-      "label": "Base Coat",
-      "product": "Calyco Alkyd Enamel – Alkyd Enamel (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "First Coat",
+      "product": "Alkyd Enamel",
+      "purpose": "Spray or brush evenly wet-on-wet"
     },
     {
       "step": 3,
-      "label": "Topcoat",
-      "product": "Calyco Alkyd Enamel – Alkyd Enamel (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "label": "Second Coat",
+      "product": "Alkyd Enamel",
+      "purpose": "Apply after 6 hrs for a uniform gloss finish"
     }
   ],
-  "application_tools": [
-    "Sprayer",
-    "brush"
-  ],
+
+  "application_tools": ["Sprayer", "Brush"],
+
   "timings": {
-    "touch_dry": "2 hrs",
-    "recoat": "6 hrs"
+    "surface_dry": "2 hrs",
+    "recoat": "6 hrs",
+    "full_cure": "7 days"
   },
-  "coverage": "75–90 sq. ft./Ltr per coat",
+
+  "coverage": "75–90 sq. ft./Ltr",
   "finish": "Gloss",
-  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
-  "technical_data": {
-    "Sheen Level": "Gloss",
-    "VOC Content": "Low VOC",
-    "Waterproofing": "Pass",
-    "Shelf Life": "5 years"
-  },
-  "surface_preparation": [
-    "Remove moss and clean thoroughly",
-    "Sand wood lightly in the grain direction.",
-    "Remove rust from metal; prime if required."
-  ],
-  "application": [
-    "Spray or brush 2 wet-on-wet coats."
-  ],
   "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Soap & Water",
+
+  "technical_data": {
+    "Binder Type": "Siloxane emulsion that waterproofs without altering surface appearance",
+    "Sheen Level": "Gloss",
+    "Colours": "Clear finish",
+    "Theoretical Coverage": "75–90 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "5 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Wood", "description": "Trim, cabinets, doors" },
+    { "type": "Metal", "description": "Industrial equipment, doors, frames" },
+    { "type": "Previously painted surfaces", "description": "Adhesion on recoated areas" }
+  ],
+
+  "surface_preparation": [
+    "Remove moss and dirt",
+    "Clean surface thoroughly",
+    "Ensure dust-free and grease-free base"
+  ],
+
+  "application": [
+    "Apply 2 wet-on-wet coats with spray or brush",
+    "Allow minimum 6 hrs before recoating",
+    "Ensure ventilation when applying indoors"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Not Recommended For": "Damp, unclean, or unprepared substrates"
+  },
+
   "storage_safety": [
-    "Store upright",
-    "avoid heat",
-    "Wear mask and avoid spraying in wind",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Store upright and sealed",
+    "Keep away from direct heat",
+    "Avoid prolonged sunlight exposure"
+  ],
+
+  "safety_first_aid": {
+    "General": "Wear a mask and avoid spraying in windy conditions",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse thoroughly with clean water",
+    "Inhalation": "Ensure ventilation when spraying"
+  },
+
+  "environmental_commitment": "Formulated with low VOC content to balance durability with eco-safety.",
+
+  "commerce": {
+    "name": "Alkyd Enamel",
+    "category": "Enamel",
+    "price_inr": 525,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "Calyco",
+    "product_number": "HYDRCLR"
+  },
+
+  "usage": {
+    "application": "Durable enamel finish for wood and metal surfaces in trims, cabinets, and industrial spaces",
+    "advantages": ["Durable gloss", "Excellent chemical resistance", "Strong adhesion", "Smooth flow"],
+    "substrate": ["Wood", "Metal", "Previously painted surfaces"],
+    "recommended_uses": ["Trim", "Doors", "Cabinets", "Industrial metal surfaces"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Gloss",
+    "base_type": "Water-based",
+    "coverage_imperial": "75–90 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Spray or brush 2 wet-on-wet coats",
+    "drying_time": "2 hrs",
+    "recoat_time": "6 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Sprayer", "Brush"],
+    "color_options": "Clear finish",
+    "spread_rate": "75–90 sq. ft./Ltr",
+    "preparation_instructions": "Remove moss and clean thoroughly",
+    "safety_precautions": "Wear mask and avoid spraying in wind",
+    "storage_instructions": "Store upright, avoid heat",
+    "warranty": "5 years"
+  }
 }

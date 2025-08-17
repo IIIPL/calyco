@@ -1,65 +1,199 @@
 {
-  "sheet_title": "Calyco SilkTouch – Interior Latex Paint",
-  "pis_title": "Interior Latex Paint– Product Information Sheet (PIS)",
-  "product_overview": "SilkTouch balances refined shine with easy maintenance for elegant homes and corridors.",
-  "key_features": [
-    "📐 High Coverage",
-    "🧼 Easy to Wash",
-    "🌍 Multi-Surface Application: Works across Plaster, Drywall, Concrete, Wood, Masonry"
+  "product_name": "Calyco® SilkTouch – Interior Latex Paint",
+  "brand": "CALYCO",
+  "type": "Interior Paint",
+  "sheet_title": "Calyco® SilkTouch — Interior Wall Paint",
+  "pis_title": "Interior Latex Paint — Product Information Sheet (PIS)",
+
+  "reference_image": [
+    "Soft-focus living room wall with smooth mid-sheen finish",
+    "Subtle wainscoting detail highlighting refined texture",
+    "Gentle brush strokes on plaster and drywall",
+    "Muted bedroom corner with soft natural light",
+    "Close-up of washable painted surface showing scuff resistance"
   ],
+
+  "titles": {
+    "title": "Interior Latex Paint",
+    "premium": "Easy Maintenance Interior Paint",
+    "title2": "Soft Silky Finish"
+  },
+
+  "icons": {
+    "main": ["Great Coverage", "Easy Maintenance"],
+    "minor": ["Water Based (Solvent Free)", "Low VOC (Eco safe)", "Eco Friendly"],
+    "extra": ["Scuff Resistant", "Washable", "Silk Sheen"]
+  },
+
+  "product_overview": "Smooth-sheen interior wall paint that delivers a soft, refined silk-like finish. Water-based and low-VOC with high pigment content for rich, lasting colour; cleans up with soap and water. Apply two coats on properly primed interiors.",
+  "short_description": "Soft mid-sheen elegance with excellent washability and easy maintenance.",
+  "positioning": "SilkTouch balances refined shine with practical cleanability for elegant homes, hallways and high-touch spaces.",
+
+  "key_features": [
+    "Mid-sheen aesthetic with refined silk look",
+    "Great coverage and excellent hide",
+    "Easy to maintain; highly washable",
+    "Scuff-resistant film",
+    "Water-based; solvent-free",
+    "Low VOC; eco-friendly formulation"
+  ],
+
+  "features_benefits": [
+    { "feature": "Mid-sheen silk finish", "benefit": "Gently reflective surface that elevates interiors and resists marks." },
+    { "feature": "Great coverage", "benefit": "Efficient two-coat system on primed surfaces reduces time and material." },
+    { "feature": "Easy maintenance", "benefit": "Washable film allows routine cleaning with mild soap and water." },
+    { "feature": "Scuff resistant", "benefit": "Withstands everyday contact in corridors and living areas." },
+    { "feature": "Low VOC, water-based", "benefit": "Low odour application and easy soap-and-water cleanup." }
+  ],
+
   "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
+    "intro": "Interior wall decoration on properly prepared, primed substrates:",
     "items": [
-      "Perfect for bedrooms, corridors, and living spaces"
+      "Plaster/POP and drywall walls & ceilings",
+      "Concrete and cement render",
+      "Masonry and blockwork",
+      "Interior wood/timber (suitably primed)",
+      "Previously painted interiors in sound condition"
     ]
   },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Base Coat",
-      "product": "Calyco SilkTouch – Interior Latex Paint (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "Primer/Sealer",
+      "product": "Calyco Interior Primer/Sealer",
+      "purpose": "Seal porosity, unify absorption and promote adhesion."
     },
     {
       "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco SilkTouch (1st coat)",
+      "purpose": "Establish colour and hide."
+    },
+    {
+      "step": 3,
       "label": "Topcoat",
-      "product": "Calyco SilkTouch – Interior Latex Paint (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "product": "Calyco SilkTouch (2nd coat)",
+      "purpose": "Deliver final sheen, durability and washability."
     }
   ],
-  "application_tools": [
-    "Brush",
-    "roller",
-    "spray"
-  ],
+
+  "application_tools": ["Brush", "Roller", "Spray"],
+  
   "timings": {
-    "touch_dry": "1 hr",
-    "recoat": "2–4 hrs"
+    "surface_dry": "1 hr @ 25°C",
+    "recoat": "2–4 hrs",
+    "full_cure": "7 days"
   },
-  "coverage": "90–125 sq. ft./Ltr per coat",
+
+  "coverage": "90–125 sq. ft./Ltr (≈ 8.5–11.6 m²/L) per coat on smooth, sealed surface",
   "finish": "Silk sheen | Soft matte",
-  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
-  "technical_data": {
-    "Sheen Level": "Silk sheen | Soft matte",
-    "VOC Content": "Low VOC",
-    "Shelf Life": "5 years"
-  },
-  "surface_preparation": [
-    "Surface should be dry and clean; apply primer if required",
-    "Sand wood lightly in the grain direction.",
-    "For masonry/concrete, cure fully and remove efflorescence before application."
-  ],
-  "application": [
-    "Apply using brush, roller or spray. Ensure surface is clean and dry."
-  ],
   "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Clean water; thin minimally only if required for application. Avoid over-thinning.",
+
+  "technical_data": {
+    "Binder Type": "100% acrylic copolymer",
+    "Sheen Level": "Silk / soft matte",
+    "Colours": "Available in 108 shades; tintable via Calyco Colour Studio",
+    "Volume Solids": "~40% ± 2%",
+    "Viscosity (KU at 25°C)": "95–105 KU",
+    "Density": "1.22 ± 0.05 g/cm³",
+    "Recommended DFT": "30 ± 5 µm per coat",
+    "Theoretical Coverage": "8.5–11.6 m²/L/coat (surface dependent)",
+    "Flash Point": "Not applicable (water-borne)",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Under 80% RH",
+    "Warranty": "5 years (film integrity) when applied as directed",
+    "Shelf Life": "24 months from manufacture (store cool, dry; avoid frost and direct sun)"
+  },
+
+  "recommended_substrates": [
+    { "type": "Plaster & POP", "description": "Interior walls and ceilings after priming" },
+    { "type": "Drywall & Cement Render", "description": "Gypsum board, cement render and concrete" },
+    { "type": "Masonry", "description": "Brick and blockwork (interior)" },
+    { "type": "Wood (Interior)", "description": "Primed trims, panels and doors" }
+  ],
+
+  "surface_preparation": [
+    "Ensure surface is dry, clean and sound; remove dust, grease and loose material.",
+    "De-gloss glossy areas; repair cracks and holes; sand smooth and wipe clean.",
+    "Prime porous/new masonry and drywall with Calyco Interior Primer/Sealer.",
+    "Spot-prime repaired/bare areas before topcoating."
+  ],
+
+  "application": [
+    "Apply by brush, roller or spray on a properly primed surface.",
+    "Stir well; maintain a wet edge; apply two uniform coats.",
+    "Observe recoat times; ensure adequate ventilation.",
+    "Clean tools with soap and water immediately after use."
+  ],
+
+  "limitations": {
+    "Temperature Range": "Apply between 12–40°C",
+    "Humidity": "Do not apply when RH > 80%",
+    "Protection Period": "Protect freshly painted surfaces from moisture for 24 hours",
+    "Application Conditions": "Avoid direct sun or hot surfaces; work in sections",
+    "Not Recommended For": "Floors, exterior or horizontal/wet surfaces"
+  },
+
   "storage_safety": [
-    "Store in cool",
-    "dry place away from sunlight",
-    "Use gloves; work in ventilated area",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Store in a cool, dry place away from sunlight.",
+    "Keep container tightly closed when not in use.",
+    "Use gloves; work in a well-ventilated area.",
+    "Keep out of reach of children and pets."
+  ],
+
+  "safety_first_aid": {
+    "General": "Water-based, non-flammable; handle with care.",
+    "Skin Contact": "Wash with soap and water.",
+    "Eye Contact": "Rinse with clean water for at least 15 minutes; seek advice if irritation persists.",
+    "Inhalation": "Move to fresh air; avoid breathing spray mist.",
+    "Ingestion": "Do not induce vomiting; seek medical attention and show container.",
+    "Ventilation": "Ensure adequate airflow during application and drying.",
+    "Waste Disposal": "Do not pour into drains; dispose of residues per local regulations."
+  },
+
+  "environmental_commitment": "Low-VOC, water-borne, solvent-free formulation packaged in recyclable containers.",
+
+  "commerce": {
+    "name": "SilkTouch",
+    "category": "Interior",
+    "price_inr": 499,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "CALYCO",
+    "product_number": "SILKTOUCH"
+  },
+
+  "usage": {
+    "application": "Interior wall decoration",
+    "advantages": ["Scuff resistant", "Washable", "Low VOC"],
+    "substrate": ["Plaster", "Drywall", "Concrete", "Wood (primed)", "Masonry"],
+    "recommended_uses": ["Perfect for bedrooms, corridors and living spaces"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Silk sheen | Soft matte",
+    "base_type": "Water-based",
+    "coverage_imperial": "90–125 sq. ft./Ltr",
+    "coverage_metric": "8.5–11.6 m²/L",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply using brush, roller or spray on clean, dry, primed surfaces.",
+    "drying_time": "1 hr",
+    "recoat_time": "2–4 hrs",
+    "cleanup": "Soap and Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Under 80% RH",
+    "tools_required": ["Brush", "Roller", "Spray"],
+    "color_options": "Available in 108 shades",
+    "spread_rate": "90–125 sq. ft./Ltr",
+    "preparation_instructions": "Surface should be dry and clean; apply primer if required",
+    "safety_precautions": "Use gloves; work in ventilated area",
+    "storage_instructions": "Store in cool, dry place away from sunlight",
+    "warranty": "5 years"
+  },
+
+  "contact_info": "www.calycopaints.com — Customer Service",
+  "doc_notes": "© 2025 CALYCO. Specifications subject to change without notice."
 }

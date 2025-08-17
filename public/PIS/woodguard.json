@@ -1,66 +1,170 @@
 {
-  "sheet_title": "Calyco WoodGuard – Wood Stain & Sealer",
-  "pis_title": "Wood Stain & Sealer– Product Information Sheet (PIS)",
-  "product_overview": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
-  "key_features": [
-    "🛡 Long-Term Protection",
-    "💧 Waterproof",
-    "🦠 Mold & Mildew Resistant",
-    "📐 High Coverage",
-    "🧲 Superior Adhesion",
-    "🧰 Flexible Film",
-    "🌍 Multi-Surface Application: Works across Hardwood, Softwood, Ply"
-  ],
-  "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
-    "items": [
-      "Ideal for fencing, sheds, and outdoor wood surfaces"
-    ]
+  "product_name": "WoodGuard",
+  "brand": "Calyco",
+  "type": "Wood Stain & Sealer",
+  "sheet_title": "Flexible & Strong Adhesion Wood Stain",
+  "pis_title": "Wood Stain & Sealer – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "WoodGuard, Mold Resistant, Strong Adhesion",
+    "premium": "WATER BASED | Low VOC | Long-term Protection | Waterproof | Stain + Seal",
+    "title2": "Rich colour stain and sealer for all wood protection needs."
   },
+
+  "icons": {
+    "main": ["WoodGuard", "Mold Resistant", "Strong Adhesion"],
+    "minor": ["Waterproof", "Stain + Seal", "Long-term Protection"],
+    "extra": ["Low VOC", "Water Based"]
+  },
+
+  "product_overview": "Rich color stain and sealer for all wood protection needs.",
+  "short_description": "Protects and covers aged, stained, or mismatched wood.",
+  "positioning": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
+
+  "key_features": [
+    "WoodGuard Protection",
+    "Mold Resistant",
+    "Strong Adhesion",
+    "Waterproof",
+    "Stain + Seal",
+    "Low VOC",
+    "Water Based"
+  ],
+
+  "features_benefits": [
+    { "feature": "WoodGuard Protection", "benefit": "Provides solid opaque stain with strong adhesion for wood surfaces" },
+    { "feature": "Mold Resistant", "benefit": "Protects against mold and fungal growth in exterior conditions" },
+    { "feature": "Strong Adhesion", "benefit": "Forms a flexible film that resists peeling and flaking" },
+    { "feature": "Waterproof", "benefit": "Seals wood against water damage and moisture penetration" },
+    { "feature": "Stain + Seal", "benefit": "Combines decorative stain with protective sealing in one step" }
+  ],
+
+  "recommended_use": {
+    "intro": "Designed for exterior wooden surfaces requiring long-term protection and colour restoration.",
+    "items": ["Fencing", "Garden sheds", "Decking", "Wooden furniture", "Outdoor ply surfaces"]
+  },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Base Coat",
-      "product": "Calyco WoodGuard – Wood Stain & Sealer (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "Prepare Surface",
+      "product": "Cleaner / Sandpaper",
+      "purpose": "Ensure wood surface is smooth, clean, and dust-free"
     },
     {
       "step": 2,
+      "label": "Primer Coat (optional)",
+      "product": "Wood Primer",
+      "purpose": "Use on highly porous or aged surfaces to improve adhesion"
+    },
+    {
+      "step": 3,
       "label": "Topcoat",
-      "product": "Calyco WoodGuard – Wood Stain & Sealer (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "product": "WoodGuard",
+      "purpose": "Apply 2 coats evenly with brush or roller"
     }
   ],
-  "application_tools": [
-    "Standard tools"
-  ],
+
+  "application_tools": ["Brush", "Roller"],
+
   "timings": {
-    "touch_dry": "1 hr",
-    "recoat": "2–3 hrs"
+    "surface_dry": "1 hr",
+    "recoat": "2–3 hrs",
+    "full_cure": "7 days"
   },
-  "coverage": "100–125 sq. ft./Ltr per coat",
-  "finish": "Flat | Dead flat",
-  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
-  "technical_data": {
-    "Sheen Level": "Flat | Dead flat",
-    "VOC Content": "Low VOC",
-    "Waterproofing": "Pass",
-    "Shelf Life": "5 years"
-  },
-  "surface_preparation": [
-    "Surface must be smooth and dust-free",
-    "Sand wood lightly in the grain direction."
-  ],
-  "application": [
-    "Apply using brush or roller in smooth strokes."
-  ],
+
+  "coverage": "100–125 sq. ft./Ltr",
+  "finish": "Flat | Dead Flat",
   "available_sizes": "1L, 4L, 10L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Balanced neutral emulsion paint",
+    "Sheen Level": "Flat | Dead Flat",
+    "Colours": "Whites, greys, off-whites",
+    "Theoretical Coverage": "9–12 m²/L",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "5 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Hardwood", "description": "Dense, exterior-grade wood" },
+    { "type": "Softwood", "description": "Pine and other structural woods" },
+    { "type": "Ply", "description": "Outdoor ply sheets and boards" }
+  ],
+
+  "surface_preparation": [
+    "Ensure wood surface is smooth and dust-free",
+    "Remove any loose particles, dirt, or old flaking coatings",
+    "Sand to open pores for better adhesion",
+    "Prime if surface is very porous"
+  ],
+
+  "application": [
+    "Apply 2 coats with brush or roller",
+    "Use smooth, even strokes for uniform coverage",
+    "Allow 2–3 hrs between coats"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Not Recommended For": "Non-wood substrates or indoor flooring"
+  },
+
   "storage_safety": [
-    "Store in shade; avoid sun",
-    "Use gloves; ventilated area",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Store in shade; avoid direct sunlight",
+    "Keep container sealed when not in use",
+    "Do not allow to freeze"
+  ],
+
+  "safety_first_aid": {
+    "General": "Use gloves; work in ventilated area",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse immediately with water; seek help if irritation persists",
+    "Inhalation": "Ensure proper ventilation during application",
+    "Ingestion": "Seek immediate medical attention; do not induce vomiting"
+  },
+
+  "environmental_commitment": "Water-based, low-VOC formula ensures eco-friendly protection for wood while minimizing impact on air quality.",
+
+  "commerce": {
+    "name": "WoodGuard",
+    "category": "Wood Coatings",
+    "price_inr": 599,
+    "packaging": "1L, 4L, 10L",
+    "brand": "Calyco",
+    "product_number": "WOODGUARD"
+  },
+
+  "usage": {
+    "application": "Exterior wooden protection and decoration",
+    "advantages": ["Solid colour", "Long-term protection", "Waterproof", "Mold resistant", "Strong adhesion"],
+    "substrate": ["Hardwood", "Softwood", "Ply"],
+    "recommended_uses": ["Fencing", "Sheds", "Decking", "Outdoor wood furniture"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Flat | Dead Flat",
+    "base_type": "Water-based",
+    "coverage_imperial": "100–125 sq. ft./Ltr",
+    "coverage_metric": "9–12 m²/L",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply using brush or roller in smooth strokes on a clean, dry surface.",
+    "drying_time": "1 hr",
+    "recoat_time": "2–3 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Brush", "Roller"],
+    "color_options": "Whites, greys, off-whites",
+    "spread_rate": "9–12 m²/L",
+    "preparation_instructions": "Surface must be smooth and dust-free before application",
+    "safety_precautions": "Use gloves and ensure ventilation during application",
+    "storage_instructions": "Store in shade; avoid sun and heat exposure",
+    "warranty": "5 years"
+  }
 }

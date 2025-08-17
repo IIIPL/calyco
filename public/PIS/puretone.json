@@ -1,62 +1,190 @@
 {
-  "sheet_title": "Calyco PureTone – Interior Latex Paint",
-  "pis_title": "Interior Latex Paint– Product Information Sheet (PIS)",
-  "product_overview": "PureTone enhances clarity and light balance for elegant, minimal, and neutral-themed interiors.",
-  "key_features": [
-    "🧼 Easy to Wash",
-    "🌍 Multi-Surface Application: Works across Plaster, Wood, Drywall"
+  "product_name": "PureTone",
+  "brand": "Calyco",
+  "type": "Interior Latex Paint",
+  "sheet_title": "Interior Latex Paint – Product Information Sheet (PIS)",
+  "pis_title": "Balanced Interior Paint",
+
+  "reference_image": [
+    "Cozy bedroom wall with warm ambient lighting",
+    "Smooth painted surfaces with subtle texture",
+    "Close-up of paint roller applying even coat",
+    "Soft-focus living space showing balanced light warmth"
   ],
-  "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
-    "items": [
-      "Best for clean, open-plan spaces"
-    ]
+
+  "titles": {
+    "title": "PureTone",
+    "premium": "Crisp neutral interior paint with brilliant clarity and balance.",
+    "title2": "Great for clean, open interiors with architectural definition."
   },
+
+  "icons": {
+    "main": ["High Opacity", "Stain Resistant"],
+    "minor": ["Low VOC", "Eco Safe", "Water Based"],
+    "extra": []
+  },
+
+  "product_overview": "PureTone enhances clarity and light balance for elegant, minimal, and neutral-themed interiors.",
+  "short_description": "High-clarity, stain-resistant acrylic emulsion with design-grade finish and superior washability.",
+  "positioning": "Fine pigment suspension | Balanced warmth and light",
+
+  "key_features": [
+    "High Opacity",
+    "Stain Resistant",
+    "Water Based",
+    "Eco Friendly",
+    "Low VOC"
+  ],
+
+  "features_benefits": [
+    { "feature": "High Opacity", "benefit": "Covers uneven base coats in fewer layers" },
+    { "feature": "Easy to Wash", "benefit": "Ideal for areas needing frequent cleaning" },
+    { "feature": "Eco Friendly", "benefit": "Water-based and low-VOC formulation reduces environmental impact" },
+    { "feature": "Design-grade finish", "benefit": "Professional sheen with high clarity and balance" }
+  ],
+
+  "recommended_use": {
+    "intro": "Best for clean, open-plan interiors and minimal-themed spaces",
+    "items": ["Living Rooms", "Hallways", "Offices"]
+  },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Base Coat",
-      "product": "Calyco PureTone – Interior Latex Paint (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "Surface Prep",
+      "product": "Water or soap + scrubbing",
+      "purpose": "Ensure surface is clean, dry, and dust-free"
     },
     {
       "step": 2,
-      "label": "Topcoat",
-      "product": "Calyco PureTone – Interior Latex Paint (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "label": "Coat 1",
+      "product": "PureTone",
+      "purpose": "Uniform base coat application"
+    },
+    {
+      "step": 3,
+      "label": "Coat 2",
+      "product": "PureTone",
+      "purpose": "Full coverage and finish consistency"
     }
   ],
-  "application_tools": [
-    "Brush",
-    "roller"
-  ],
+
+  "application_tools": ["Brush", "Roller", "Spray"],
+
   "timings": {
-    "touch_dry": "1 hr",
-    "recoat": "3–5 hrs"
+    "surface_dry": "1 hr",
+    "recoat": "3–5 hrs",
+    "full_cure": ""
   },
-  "coverage": "85–105 sq. ft./Ltr per coat",
+
+  "coverage": "85–105 sq. ft./Ltr",
   "finish": "Soft matte",
-  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
-  "technical_data": {
-    "Sheen Level": "Soft matte",
-    "VOC Content": "Low VOC",
-    "Shelf Life": "6 years"
-  },
-  "surface_preparation": [
-    "Clean and remove all loose material before application",
-    "Sand wood lightly in the grain direction.",
-    "For masonry/concrete, cure fully and remove efflorescence before application."
-  ],
-  "application": [
-    "Apply evenly with roller or spray. Ensure weather conditions are dry."
-  ],
   "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Water",
+
+  "technical_data": {
+    "Binder Type": "High-performance acrylic elastomeric paint",
+    "Sheen Level": "Soft sheen",
+    "Colours": "Custom exterior colours",
+    "Volume Solids": "",
+    "Viscosity (KU at 25°C)": "",
+    "Density": "",
+    "Recommended DFT": "",
+    "Theoretical Coverage": "85–105 sq. ft./Ltr",
+    "Flash Point": "NA",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "6 years",
+    "Shelf Life": ""
+  },
+
+  "recommended_substrates": [
+    { "type": "Plaster", "description": "Ideal for interior walls with even surface" },
+    { "type": "Wood", "description": "For primed wood surfaces" },
+    { "type": "Drywall", "description": "Best applied with roller for even finish" }
+  ],
+
+  "surface_preparation": [
+    "Remove all dust, grease, and loose material",
+    "Fill holes or cracks with suitable filler",
+    "Sand and clean prior to painting"
+  ],
+
+  "application": [
+    "Apply evenly with roller or spray",
+    "Avoid over-brushing for uniform finish",
+    "Apply second coat only after surface is dry"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Protection Period": "24 hrs minimum after application",
+    "Application Conditions": "Dry, well-ventilated, dust-free",
+    "Not Recommended For": "Wet, leaking, or dirty surfaces"
+  },
+
   "storage_safety": [
-    "Store in cool area; do not freeze",
-    "Use PPE if spraying",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Store in cool, dry area away from direct sunlight",
+    "Do not allow to freeze",
+    "Seal tightly after use"
+  ],
+
+  "safety_first_aid": {
+    "General": "Avoid contact with skin and eyes",
+    "Skin Contact": "Wash thoroughly with soap and water",
+    "Eye Contact": "Rinse with plenty of water; seek medical advice if irritation persists",
+    "Inhalation": "Use only in well-ventilated areas",
+    "Ingestion": "Do not induce vomiting; seek medical attention",
+    "Ventilation": "Ensure adequate air circulation during application",
+    "Waste Disposal": "Dispose as per local regulations for water-based paints"
+  },
+
+  "environmental_commitment": "Formulated with low VOCs and no added solvents to support a healthier indoor environment and reduce emissions.",
+
+  "commerce": {
+    "name": "PureTone",
+    "category": "Interior",
+    "price_inr": 599,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "Calyco",
+    "product_number": "PURETONE"
+  },
+
+  "usage": {
+    "application": "Living rooms, offices, hallways",
+    "advantages": [
+      "Washable finish",
+      "Soft clarity",
+      "Refined texture"
+    ],
+    "substrate": ["Plaster", "Wood", "Drywall"],
+    "recommended_uses": ["Interior wall painting"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Soft matte",
+    "base_type": "Water-based",
+    "coverage_imperial": "85–105 sq. ft./Ltr",
+    "coverage_metric": "10–12 m²/L",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply evenly with brush, roller, or spray on clean surface",
+    "drying_time": "1 hr",
+    "recoat_time": "3–5 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Brush", "Roller"],
+    "color_options": "Custom exterior colours",
+    "spread_rate": "10–12 m²/L",
+    "preparation_instructions": "Clean and remove all loose material before application",
+    "safety_precautions": "Use PPE if spraying",
+    "storage_instructions": "Store in cool area; do not freeze",
+    "warranty": "6 years"
+  },
+
+  "contact_info": "",
+  "doc_notes": ""
 }

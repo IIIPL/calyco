@@ -1,70 +1,166 @@
 {
-  "sheet_title": "Calyco Defense Primer – Defense Primer",
-  "pis_title": "Defense Primer– Product Information Sheet (PIS)",
-  "product_overview": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
-  "key_features": [
-    "🧲 Superior Adhesion",
-    "🌍 Multi-Surface Application: Works across Concrete, Plaster, MDF, Wood, GI steel"
-  ],
-  "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
-    "items": [
-      "Basecoat primer before any Calyco topcoat"
-    ]
+  "product_name": "Defense Primer",
+  "brand": "Calyco",
+  "type": "Primer",
+  "sheet_title": "Defense Primer",
+  "pis_title": "Defense Primer – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "Defense Primer, Fast Drying, Multi-Surface",
+    "premium": "Fast drying | Easy maintenance",
+    "title2": "Heavy-duty water-based acrylic primer for multi-surface bonding and sealing."
   },
+
+  "icons": {
+    "main": ["Fast Drying", "Multi-Surface", "Adhesive Bond"],
+    "minor": ["Alkali Resistant", "Stain Blocking", "Interior & Exterior Compatible"],
+    "extra": ["Matte Finish", "Medium VOC"]
+  },
+
+  "product_overview": "Heavy-duty water-based acrylic primer for multi-surface bonding and sealing.",
+  "short_description": "Universal primer that seals pores and improves topcoat adhesion.",
+  "positioning": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
+
+  "key_features": [
+    "Heavy-duty water-based acrylic formula",
+    "Fast drying with easy maintenance",
+    "Interior and exterior compatible",
+    "Excellent bonding to multiple substrates",
+    "Seals pores and blocks stains",
+    "Alkali resistance for masonry"
+  ],
+
+  "features_benefits": [
+    { "feature": "Fast Drying", "benefit": "Reduces project time, ready for topcoat quickly" },
+    { "feature": "Alkali Resistant", "benefit": "Prevents alkaline damage on masonry" },
+    { "feature": "Stain Blocking", "benefit": "Hides surface imperfections and discoloration" },
+    { "feature": "Multi-Surface", "benefit": "Bonds well to wood, metal, plaster, and concrete" },
+    { "feature": "Universal Basecoat", "benefit": "Improves topcoat adhesion for long-lasting results" }
+  ],
+
+  "recommended_use": {
+    "intro": "Designed as a universal primer for sealing and bonding multiple surfaces.",
+    "items": ["Concrete", "Plaster", "MDF", "Wood", "GI Steel"]
+  },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Primer (if required)",
-      "product": "Substrate-appropriate primer",
-      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+      "label": "Surface Prep",
+      "product": "Clean and dry substrate",
+      "purpose": "Ensure surface is free of dust, grease, and contaminants"
     },
     {
       "step": 2,
-      "label": "Base Coat",
-      "product": "Calyco Defense Primer – Defense Primer (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "First Coat",
+      "product": "Defense Primer",
+      "purpose": "Apply evenly by brush, roller, or spray"
     },
     {
       "step": 3,
-      "label": "Topcoat",
-      "product": "Calyco Defense Primer – Defense Primer (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "label": "Second Coat",
+      "product": "Defense Primer",
+      "purpose": "Apply after full drying for best adhesion"
     }
   ],
-  "application_tools": [
-    "Brush",
-    "roller"
-  ],
+
+  "application_tools": ["Brush", "Roller"],
   "timings": {
-    "touch_dry": "4–6 hrs",
-    "recoat": "8–16 hrs"
+    "surface_dry": "4–6 hrs",
+    "recoat_time": "8–16 hrs",
+    "full_cure": "Overnight"
   },
-  "coverage": "90–110 sq. ft./Ltr per coat",
+
+  "coverage": "90–110 sq. ft./Ltr (350–400 sq. ft./gal)",
   "finish": "Matte",
-  "thinner": "Thinner: Mineral spirits (as needed)",
-  "technical_data": {
-    "Sheen Level": "Matte",
-    "VOC Content": "Medium VOC",
-    "Shelf Life": "3 years"
-  },
-  "surface_preparation": [
-    "Prime wood/metal and prep surface well",
-    "Sand wood lightly in the grain direction.",
-    "Remove rust from metal; prime if required.",
-    "For masonry/concrete, cure fully and remove efflorescence before application."
-  ],
-  "application": [
-    "Apply on dry surface. Use mineral spirits for cleanup."
-  ],
   "available_sizes": "1L, 4L, 20L",
+  "thinner": "Mineral spirits",
+
+  "technical_data": {
+    "Binder Type": "Durable alkyd enamel with smooth flow, strong adhesion, and chemical resistance",
+    "Sheen Level": "Matte",
+    "Colours": "Over 3000 tintable shades",
+    "Theoretical Coverage": "90–110 sq. ft./Ltr",
+    "VOC Content": "Medium VOC",
+    "Temperature Range": "Ambient–40°C",
+    "Humidity": "Up to 80% RH",
+    "Warranty": "3 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Concrete", "description": "Masonry walls and slabs" },
+    { "type": "Plaster", "description": "Plaster and POP finishes" },
+    { "type": "MDF", "description": "Medium density fibreboard panels" },
+    { "type": "Wood", "description": "Interior and exterior wood surfaces" },
+    { "type": "Metal", "description": "Galvanized iron and steel" }
+  ],
+
+  "surface_preparation": [
+    "Prime wood/metal and prepare surface thoroughly",
+    "Surface must be clean, dry, and free of contaminants"
+  ],
+
+  "application": [
+    "Apply on dry, well-prepared surfaces",
+    "Use mineral spirits for thinning and cleanup",
+    "Ensure good ventilation during application"
+  ],
+
+  "limitations": {
+    "Temperature Range": "Ambient–40°C",
+    "Humidity": "Up to 80% RH",
+    "Not Recommended For": "Wet or unprimed surfaces"
+  },
+
   "storage_safety": [
-    "Store cool (10–27°C)",
-    "dry area",
-    "Strong odor; flammable; ventilate",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Store cool (10–27°C), dry area",
+    "Keep container sealed when not in use",
+    "Avoid open flames and ignition sources"
+  ],
+
+  "safety_first_aid": {
+    "General": "Strong odor and flammable — ensure ventilation and wear PPE",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse with water immediately",
+    "Inhalation": "Move to fresh air if discomfort occurs"
+  },
+
+  "environmental_commitment": "Primer designed to enhance durability and reduce repaint frequency, conserving resources.",
+
+  "commerce": {
+    "name": "Defense Primer",
+    "category": "Primer",
+    "price_inr": 250,
+    "packaging": "1L, 4L, 20L",
+    "brand": "Calyco",
+    "product_number": "CAL011"
+  },
+
+  "usage": {
+    "application": "Universal primer for sealing and bonding multiple substrates",
+    "advantages": ["Alkali resistant", "Stain-blocking", "Improved adhesion"],
+    "substrate": ["Concrete", "Plaster", "MDF", "Wood", "GI Steel"],
+    "recommended_uses": ["Interior & exterior basecoat primer"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Matte",
+    "base_type": "Alkyd-based",
+    "coverage_imperial": "90–110 sq. ft./Ltr (350–400 sq. ft./gal)",
+    "voc_content": "Medium VOC",
+    "application_instructions": "Apply on dry surfaces. Thin and clean with mineral spirits.",
+    "drying_time": "4–6 hrs",
+    "recoat_time": "8–16 hrs",
+    "cleanup": "Mineral spirits",
+    "coats_required": "2 coats",
+    "temperature_range": "Ambient–40°C",
+    "humidity_range": "Up to 80% RH",
+    "tools_required": ["Brush", "Roller"],
+    "color_options": "Over 3000 tintable shades",
+    "spread_rate": "90–110 sq. ft./Ltr",
+    "preparation_instructions": "Prime wood/metal and prep surface well",
+    "safety_precautions": "Strong odor; flammable; ventilate",
+    "storage_instructions": "Store cool (10–27°C), dry area",
+    "warranty": "3 years"
+  }
 }

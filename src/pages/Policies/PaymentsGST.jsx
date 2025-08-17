@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function PaymentsGst() {
+  useEffect(() => {
+    document.title = "Payment, Pricing & GST/Invoices";
+  }, []);
   return (
     <PolicyLayout
       title="Payment, Pricing & GST / Invoices"

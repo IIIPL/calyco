@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function ReturnsRefunds() {
+  useEffect(() => {
+    document.title = "Returns & Refunds";
+  }, []);
   return (
     <PolicyLayout title="Returns & Refunds" lastUpdated="—">
       <h2>Eligibility</h2>

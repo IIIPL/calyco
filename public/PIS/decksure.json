@@ -1,63 +1,166 @@
 {
-  "sheet_title": "Calyco DeckSure – Deck Coating",
-  "pis_title": "Deck Coating– Product Information Sheet (PIS)",
-  "product_overview": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
-  "key_features": [
-    "🛡 Long-Term Protection",
-    "💧 Waterproof",
-    "🦠 Mold & Mildew Resistant",
-    "🧰 Flexible Film",
-    "🌍 Multi-Surface Application: Works across Rough timber"
-  ],
-  "recommended_use": {
-    "intro": "Perfect for interior and exterior applications, including:",
-    "items": [
-      "Suitable for decks, ramps, and walkways"
-    ]
+  "product_name": "DeckSure",
+  "brand": "Calyco",
+  "type": "Deck Coating",
+  "sheet_title": "Strong Bonding & Fungal-Resistant Coating",
+  "pis_title": "Deck Coating – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "DeckSure, Waterproof, Slip Resistant",
+    "premium": "WATER BASED | Low VOC | Long-term Protection | Waterproof | Stain + Seal",
+    "title2": "Heavy-duty resurfacing coating for damaged wood decks."
   },
+
+  "icons": {
+    "main": ["DeckSure", "Waterproof", "Slip Resistant"],
+    "minor": ["Resurfacing", "Weather Protection", "Fungal-safe"],
+    "extra": ["Low VOC", "Water Based"]
+  },
+
+  "product_overview": "Heavy-duty resurfacing coating for damaged wood decks.",
+  "short_description": "Repairs cracks, seals splinters, and protects surfaces.",
+  "positioning": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
+
+  "key_features": [
+    "DeckSure Protection",
+    "Waterproof",
+    "Slip Resistant",
+    "Resurfacing",
+    "Fungal Safe",
+    "Low VOC",
+    "Water Based"
+  ],
+
+  "features_benefits": [
+    { "feature": "Strong Bonding", "benefit": "Adheres firmly to deck surfaces to prevent peeling" },
+    { "feature": "Waterproof", "benefit": "Seals timber against rain and weather exposure" },
+    { "feature": "Slip Resistant", "benefit": "Textured finish improves safety on wet decks" },
+    { "feature": "Fungal Resistant", "benefit": "Protects decks from fungal growth and decay" },
+    { "feature": "Resurfacing", "benefit": "Fills cracks, seals splinters, and extends deck life" }
+  ],
+
+  "recommended_use": {
+    "intro": "Specially designed for exterior wooden decks exposed to weather and foot traffic.",
+    "items": ["Deck restoration", "Ramps", "Walkways", "Outdoor platforms"]
+  },
+
   "application_system": [
     {
       "step": 1,
-      "label": "Base Coat",
-      "product": "Calyco DeckSure – Deck Coating (1st coat)",
-      "purpose": "Penetrates and seals substrate."
+      "label": "Prepare Surface",
+      "product": "Sandpaper / Cleaner",
+      "purpose": "Light sanding recommended before application to improve adhesion"
     },
     {
       "step": 2,
-      "label": "Topcoat",
-      "product": "Calyco DeckSure – Deck Coating (2nd coat)",
-      "purpose": "Builds final protective layer for durability."
+      "label": "First Coat",
+      "product": "DeckSure",
+      "purpose": "Apply evenly with pad, roller, or brush"
+    },
+    {
+      "step": 3,
+      "label": "Second Coat",
+      "product": "DeckSure",
+      "purpose": "Recoat after 6 hours for maximum durability"
     }
   ],
-  "application_tools": [
-    "Brush",
-    "roller"
-  ],
+
+  "application_tools": ["Brush", "Roller", "Pad Applicator"],
+
   "timings": {
-    "touch_dry": "2 hrs",
-    "recoat": "6 hrs"
+    "surface_dry": "2 hrs",
+    "recoat": "6 hrs",
+    "full_cure": "7 days"
   },
-  "coverage": "85–105 sq. ft./Ltr per coat",
+
+  "coverage": "85–105 sq. ft./Ltr",
   "finish": "Matte",
-  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
-  "technical_data": {
-    "Sheen Level": "Matte",
-    "VOC Content": "Low VOC",
-    "Shelf Life": "5 years"
-  },
-  "surface_preparation": [
-    "Light sanding recommended before application"
-  ],
-  "application": [
-    "Use pad, roller or brush. Best applied in 2 coats."
-  ],
   "available_sizes": "1L, 4L, 10L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Acrylic wood stain with weather-grade binder",
+    "Sheen Level": "Matte",
+    "Colours": "16 wood tones",
+    "Theoretical Coverage": "85–105 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Warranty": "5 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Rough Timber", "description": "Outdoor decking and walkways" }
+  ],
+
+  "surface_preparation": [
+    "Ensure surface is clean and dry",
+    "Light sanding recommended for worn or untreated decks",
+    "Remove all dirt, dust, and contaminants"
+  ],
+
+  "application": [
+    "Apply with pad, roller, or brush",
+    "2 coats recommended for durability",
+    "Allow 6 hrs between coats"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Not Recommended For": "Non-wood substrates or polished timber flooring"
+  },
+
   "storage_safety": [
     "Store sealed in dry conditions",
-    "No open flame nearby",
-    "Use PPE (gloves, mask, goggles) during application.",
-    "Keep out of reach of children.",
-    "Avoid inhalation of mist; ventilate during use.",
-    "In case of eye contact, rinse immediately with clean water."
-  ]
+    "Keep away from direct sunlight",
+    "Do not expose to open flame"
+  ],
+
+  "safety_first_aid": {
+    "General": "Ensure proper ventilation during application",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse thoroughly with clean water",
+    "Inhalation": "Avoid inhaling vapours; wear mask if spraying",
+    "Fire Safety": "Do not use near open flame"
+  },
+
+  "environmental_commitment": "Eco-friendly water-based formula ensures long-term deck protection with low environmental impact.",
+
+  "commerce": {
+    "name": "DeckSure",
+    "category": "Wood Coatings",
+    "price_inr": 599,
+    "packaging": "1L, 4L, 10L",
+    "brand": "Calyco",
+    "product_number": ""
+  },
+
+  "usage": {
+    "application": "Deck restoration and resurfacing",
+    "advantages": ["Slip resistant", "Fills cracks", "Resurfacing", "Weatherproof"],
+    "substrate": ["Rough Timber"],
+    "recommended_uses": ["Decks", "Ramps", "Walkways", "Outdoor wooden surfaces"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Matte",
+    "base_type": "Water-based",
+    "coverage_imperial": "85–105 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Use pad, roller, or brush. Best applied in 2 coats on clean, sanded deck surfaces.",
+    "drying_time": "2 hrs",
+    "recoat_time": "6 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 75% RH",
+    "tools_required": ["Brush", "Roller", "Pad Applicator"],
+    "color_options": "16 wood tones",
+    "spread_rate": "85–105 sq. ft./Ltr",
+    "preparation_instructions": "Light sanding recommended before application",
+    "safety_precautions": "Do not use near open flames; wear PPE when handling",
+    "storage_instructions": "Store sealed in dry conditions",
+    "warranty": "5 years"
+  }
 }

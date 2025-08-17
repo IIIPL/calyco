@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function ProductColorDisclaimer() {
+  useEffect(() => {
+    document.title = "Product / Color Disclaimer";
+  }, []);
   return (
     <PolicyLayout title="Product / Color Disclaimer" lastUpdated="August 15, 2025">
       <h2>Digital vs Physical</h2>

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function QualityPolicy() {
+  useEffect(() => {
+    document.title = "Quality Policy ";
+  }, []);
   return (
     <PolicyLayout title="Quality Policy" lastUpdated="August 15, 2025">
       <h2>Our Commitment</h2>

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function TermsAndConditions() {
+  useEffect(() => {
+    document.title = "Terms & Conditions";
+  }, []);
   return (
     <PolicyLayout title="Terms & Conditions" lastUpdated="August 15, 2025">
       <h2>Agreement Between You and CALYCO Paints Private Limited</h2>

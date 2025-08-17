@@ -1,8 +1,11 @@
 // PrivacyPolicy.jsx — factual, clear, no placeholders
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function PoliciesPrivacy() {
+  useEffect(() => {
+    document.title = "Privacy Policy (DPDP)";
+  }, []);
   return (
     <PolicyLayout title="Privacy Policy (DPDP)" lastUpdated="August 15, 2025">
       <h2>Scope</h2>

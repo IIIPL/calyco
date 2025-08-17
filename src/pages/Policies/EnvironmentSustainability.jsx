@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function EnvironmentalSustainability() {
+  useEffect(() => {
+    document.title = "Environmental Sustainability";
+  }, []);
   return (
     <PolicyLayout title="Environmental Sustainability" lastUpdated="August 15, 2025">
       <h2>Commitment</h2>

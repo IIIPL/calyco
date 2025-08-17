@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function WarrantyPolicy() {
+  useEffect(() => {
+    document.title = "Warranty Policy";
+  }, []); 
   return (
     <PolicyLayout title="Warranty Policy" lastUpdated="—">
       <h2>Coverage</h2>

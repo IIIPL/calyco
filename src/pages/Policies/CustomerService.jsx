@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PolicyLayout from "./PolicyLayout";
 import { Link } from "react-router-dom";
 
 export default function CustomerService() {
+  useEffect(() => {
+    document.title = "Customer Service";
+  }, []);
   return (
     <PolicyLayout title="Customer Service" lastUpdated="—">
       <p className="mb-6">How we help—orders, shipping, returns and warranties.</p>
