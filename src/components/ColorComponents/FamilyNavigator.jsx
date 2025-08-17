@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect } from "react";
+import React, { useMemo, useRef, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { flatColors } from "../../data/flatColors";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
@@ -18,6 +18,7 @@ export default function FamilyNavigator() {
   const { familyName } = useParams();
   const navigate = useNavigate();
   const scrollerRef = useRef(null);
+  const [term, setTerm] = useState("");
 
   const families = useMemo(() => {
     const seen = new Set();
@@ -71,7 +72,7 @@ export default function FamilyNavigator() {
   return (
     <div className="top-20 z-40 bg-white border-y border-[#e5e0d8] my-5">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-10 lg:px-24 py-3">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col items-stretch gap-3">
           {/* Prev */}
           {/* <button
             aria-label="Previous family"
@@ -84,7 +85,7 @@ export default function FamilyNavigator() {
           {/* Chips scroller */}
           <div
             ref={scrollerRef}
-            className="flex-1 overflow-x-auto overflow-y-visible scroll-smooth no-scrollbar"
+            className="w-full overflow-x-auto overflow-y-visible scroll-smooth no-scrollbar"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div
@@ -92,7 +93,7 @@ export default function FamilyNavigator() {
                 flex items-start min-w-max
                 gap-1 sm:gap-2           
                 py-1 px-1 sm:px-2 md:px-0
-                snap-x snap-mandatory    
+                snap-x snap-mandatory
                 justify-center
               "
             >
@@ -133,6 +134,7 @@ export default function FamilyNavigator() {
               })}
             </div>
           </div>
+
           {/* Next */}
           {/* <button
             aria-label="Next family"
@@ -142,6 +144,35 @@ export default function FamilyNavigator() {
             <ChevronRightIcon className="w-5 h-5 text-[#1a1a1a]" />
           </button> */}
         </div>
+
+        {/* Search row (below chips): right-aligned on md+, full-width on mobile */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const q = term.trim();
+            if (!q) return;
+            navigate(`/colors/search?query=${encodeURIComponent(q)}`);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="mt-2 flex justify-stretch md:justify-end"
+          role="search"
+          aria-label="Search colors"
+        >
+          <div className="flex items-center gap-2 w-full md:w-auto">
+            <input
+              value={term}
+              onChange={(e) => setTerm(e.target.value)}
+              placeholder="Search color name or hex…"
+              className="h-10 w-full md:w-64 lg:w-72 rounded-lg border border-[#e5e0d8] px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
+            />
+            <button
+              type="submit"
+              className="h-10 px-4 rounded-lg bg-[#301A44] text-white text-sm font-semibold hover:bg-[#493657] transition"
+            >
+              Search
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
