@@ -1,0 +1,104 @@
+{
+  "section_1": {
+    "title": "Hazards Identification",
+    "ghs_classification": [
+      "Acute Toxicity, Oral (Category 4)",
+      "Specific Target Organ Toxicity – Repeated Exposure – Kidney (Category 4)",
+      "Eye Irritation (Category 2A)"
+    ],
+    "ghs_pictograms": ["exclamation_mark", "health_hazard"],
+    "signal_word": "WARNING",
+    "hazard_statements": [
+      "Harmful if swallowed",
+      "May cause damage to organs (Kidney) through prolonged or repeated exposure",
+      "May cause serious eye irritation"
+    ],
+    "precautionary_statements": {
+      "prevention": [
+        "Do not breathe mists or vapors",
+        "Wash skin thoroughly after handling",
+        "Do not eat, drink or smoke when using this product",
+        "Wear eye/face protection"
+      ],
+      "response": [
+        "If SWALLOWED, call a poison centre/doctor if you feel unwell",
+        "Get medical advice/attention if you feel unwell",
+        "IF IN EYES, rinse cautiously with water for several minutes. Remove contact lenses if present and easy to do. Continue rinsing"
+      ],
+      "storage": ["Not applicable"],
+      "disposal": ["Dispose of contents/container to an approved waste disposal plant"]
+    },
+    "hazards_not_classified": "None known",
+    "supplemental_information": "If the product is in liquid or paste form, hazards related to dust are not considered significant. Products may contain substances that could be potential hazards if caused to become airborne due to abrasive processing."
+  },
+  "section_2": {
+    "title": "First-Aid Measures",
+    "most_important_symptoms": [
+      "Refer to Section 1 or labels for symptoms"
+    ],
+    "immediate_medical_attention": "Treat symptomatically",
+    "first_aid_measures": {
+      "general_advice": "Show this Safety Data Sheet to the doctor in attendance",
+      "eye_contact": "Rinse out with plenty of water. Call an ophthalmologist. Remove contact lenses.",
+      "skin_contact": "Take off immediately all contaminated clothing. Rinse skin with water/shower",
+      "inhalation": "Fresh air. Call physician",
+      "ingestion": "Immediately make the victim drink water (two glasses at most). Consult a physician. Call poison centre if unwell"
+    }
+  },
+  "section_3": {
+    "title": "Fire-Fighting Measures",
+    "suitable_extinguishing_media": ["Water fog", "Dry chemical", "Foam"],
+    "unsuitable_media": "Do not use heavy water streams as it may spread and scatter product",
+    "specific_hazards": "Product itself is non-flammable and non-combustible however may contribute fuel to fire under very high temperatures",
+    "protective_equipment": "Wear self-contained breathing apparatus (SCBA) and fire-protective clothing. Use water spray to cool fire"
+  },
+  "section_4": {
+    "title": "Accidental Release Measures",
+    "personal_precautions": "Wear protective equipment: goggles, chemically resistant clothing and gloves, appropriate respirator if in confined area. Provide ventilation",
+    "environmental_precautions": "Prevent runoff into drains, sewers, and other waterways",
+    "cleanup_methods": "Absorb small spills with clay, diatomaceous earth or other inert absorbent. Store in closed containers. Large spills may be pumped into closed containers for recovery/disposal"
+  },
+  "section_5": {
+    "title": "Handling and Storage",
+    "safe_handling": "Handle as industrial chemical. Keep containers tightly closed. Wash hands before eating or drinking",
+    "storage_conditions": "Keep container tightly closed. Store in cool, dry area",
+    "incompatibles": "No data available"
+  },
+  "section_6": {
+    "title": "Exposure Controls/Personal Protection",
+    "engineering_controls": "Use local exhaust if general ventilation inadequate. Provide safety shower and eyewash",
+    "eye_protection": "CSA approved safety glasses, goggles, or face shield",
+    "hand_skin_protection": "Protective apparel and impervious gloves (nitrile or neoprene)",
+    "respiratory_protection": "NIOSH approved respirator with organic vapor cartridge if exposure cannot be controlled",
+    "hygiene_measures": "Follow good industrial hygiene practices. Wash hands before breaks and at end of workday"
+  },
+  "section_7": {
+    "title": "Stability & Reactivity",
+    "stability": "Stable at normal usage",
+    "hazardous_reactions": "None under normal use",
+    "conditions_to_avoid": "Data not available",
+    "incompatible_materials": "Data not available",
+    "hazardous_decomposition_products": "No hazardous decomposition under normal use"
+  },
+  "section_8": {
+    "title": "Toxicological Information",
+    "acute_toxicity": "LD50 Oral 500 mg/kg (rat)",
+    "stot_repeated": "Oral – may cause kidney damage through prolonged exposure",
+    "eye_irritation": "Causes serious eye irritation (Rabbit test – OECD TG 405)"
+  },
+  "section_9": {
+    "title": "Ecological Information",
+    "ecotoxicity": "Environmental hazard possible if mishandled",
+    "voc": "10–20 g/L",
+    "persistence": "No test data",
+    "bioaccumulative_potential": "No test data",
+    "mobility_in_soil": "No test data",
+    "other_effects": "None known"
+  },
+  "section_10": {
+    "title": "Disposal Considerations",
+    "handling_for_disposal": "Follow industrial hygiene and safety practices",
+    "methods_of_disposal": "Dispose in compliance with federal, state, provincial, and local regulations",
+    "RCRA": "If waste, may meet hazardous waste criteria under RCRA. Do not incinerate closed containers"
+  }
+}

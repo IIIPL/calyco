@@ -95,6 +95,7 @@ export const products = [
     "display_name": "Nova",
     "PIS": "/PIS/nova.json",
     "TDS": "",
+    "SDS": "/SDS/Nova.json",
     "images": ["/Assets/Nova/NoBg.png",
       "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
       "/Assets/novaa.png",
@@ -184,6 +185,7 @@ export const products = [
     "display_name": "PureTone",
     "PIS": "/PIS/puretone.json",
     "TDS": "",
+    "SDS": "/SDS/PureTone.json",
     "images": ["/Assets/PureTone/NoBg.png", "/Assets/PureTone/OnTable.png"]
   },
   {
@@ -270,6 +272,7 @@ export const products = [
     "display_name": "WoodGuard",
     "PIS": "/PIS/woodguard.json",
     "TDS": "",
+    "SDS": "/SDS/WoodGuard.json",
     "images": ["/Assets/Woodguard/NoBg.png",
       "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
       // "/Assets/WoodGuard/inuse.png",
@@ -355,6 +358,7 @@ export const products = [
     "display_name": "DeckSure",
     "PIS": "/PIS/decksure.json",
     "TDS": "",
+    "SDS": "/SDS/DeckSure.json",
     "images": ["/Assets/DeckSure/NoBg.png",
       "/Assets/DeckSure/ontable.png",
       "/Assets/DeckSure/inhouse.png",
@@ -445,6 +449,7 @@ export const products = [
     "display_name": "StoneShield",
     "PIS": "/PIS/stoneshield.json",
     "TDS": "",
+    "SDS": "/SDS/StoneShield.json",
     "images": ["/Assets/StoneShield/NoBg.png"]
   },
   {
@@ -530,6 +535,7 @@ export const products = [
     "display_name": "CalmXterior",
     "PIS": "/PIS/calmxterior.json",
     "TDS": "",
+    "SDS": "/SDS/CalmXterior.json",
     "images": ["/Assets/CalmXterior/NoBg.png",
       "/Assets/CalmXterior/inuse.png",
 
@@ -622,6 +628,7 @@ export const products = [
     "display_name": "LustroLite",
     "PIS": "/PIS/lustrolite.json",
     "TDS": "",
+    "SDS": "/SDS/LustroLite.json",
     "images": ["/Assets/LustroLite/NoBg.png",
       "/Assets/LustroLite/ontable.png",
       "/Assets/LustroLite/inhouse.png",
@@ -717,6 +724,7 @@ export const products = [
     "display_name": "SilkTouch",
     "PIS": "/PIS/silktouch.json",
     "TDS": "",
+    "SDS": "/SDS/SilkTouch.json",
     "images": ["/Assets/SilkTouch/NoBg.png", 
       "/Assets/SilkTouch/ontable.png",
       "/Assets/SilkTouch/inuse.png",
@@ -801,6 +809,7 @@ export const products = [
     "display_name": "FloorPro",
     "PIS": "/PIS/floorpro.json",
     "TDS": "",
+    "SDS": "/SDS/FloorPro.json",
     "images": ["/Assets/FloorPro/NoBg.png",
       "/Assets/FloorPro/inuse.png"
     ]
@@ -886,6 +895,7 @@ export const products = [
     "display_name": "IronShield",
     "PIS": "/PIS/ironshield.json",
     "TDS": "",
+    "SDS": "/SDS/IronShield.json",
     "images": ["/Assets/IronShield/NoBg.png",
       "/Assets/IronShield/WithBg.png",
       "/Assets/IronShield/WhiteBg.png",
@@ -974,6 +984,7 @@ export const products = [
     "display_name": "ThermaCool",
     "PIS": "/PIS/thermacool.json",
     "TDS": "",
+    "SDS": "/SDS/ThermaCool.json",
     "images": ["/Assets/ThermaCool/NoBg.png"]
   },
   {
@@ -1065,6 +1076,7 @@ export const products = [
     "display_name": "Defense",
     "PIS": "/PIS/defense.json",
     "TDS": "",
+    "SDS": "/SDS/Defense.json",
     "images": ["/Assets/Defense/NoBg.png"]
   },
   
@@ -1156,6 +1168,7 @@ export const products = [
     "display_name": "PrimeDefense Primer",
     "PIS": "/PIS/defenseprimer.json",
     "TDS": "",
+    "SDS": "/SDS/DefensePrimer.json",
     "images": ["/Assets/DefensePrimer/NoBg.png", "/Assets/DefensePrimer/inuse.png"]
   },
   {
@@ -1243,6 +1256,7 @@ export const products = [
     "display_name": "HydroClear Shield",
     "PIS": "/PIS/hydroclear.json",
     "TDS": "",
+    "SDS": "/SDS/HydroClear.json",
     "images": ["/Assets/HydroClear/NoBg.png",
       "/Assets/HydroClear/WhiteBg.png",
       "/Assets/HydroClear/InUse.png",
@@ -1332,6 +1346,7 @@ export const products = [
     "display_name": "Fast Drying Enamel",
     "PIS": "/PIS/fastdryingenamel.json",
     "TDS": "",
+    "SDS": "/SDS/FastDryingEnamel.json",
     "images": ["/Assets/FastDryingEnamel/NoBg.png",
       "/Assets/FastDryingEnamel/ontable.png"]
   },
@@ -1423,6 +1438,7 @@ export const products = [
     "display_name": "Alkyd Enamel",
     "PIS": "/PIS/alkydenamel.json",
     "TDS": "",
+    "SDS": "/SDS/AlkydEnamel.json",
     "images": ["/Assets/AlkydEnamel/NoBg.png",
     "/Assets/AlkydEnamel/InUse.png",
     "/Assets/AlkydEnamel/WhiteBg.png",]
@@ -1516,6 +1532,7 @@ export const products = [
     "display_name": "Aluminium Paint",
     "PIS": "/PIS/aluminium.json",
     "TDS": "",
+    "SDS": "/SDS/Aluminium.json",
     "images": ["/Assets/Aluminium/NoBg.png"]
   },
   {
@@ -1608,6 +1625,7 @@ export const products = [
     "display_name": "Red Oxide Primer",
     "PIS": "/PIS/redoxideprimer.json",
     "TDS": "",
+    "SDS": "/SDS/RedOxidePrimer.json",
     "images": ["/Assets/RedOxide/NoBg.png",
       "/Assets/redoxide.png",
     ]
@@ -1699,7 +1717,6 @@ export const products = [
   // //   "display_name": "Regal",
   
   // "PIS": "/PIS/",
-  // "TDS": "",
   // "images": ["/Assets/regal.png"]
   // // },
   // // {
@@ -1785,7 +1802,6 @@ export const products = [
   // //   "display_name": "DampShield",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/dampshield.png"]
   // // },
   // // {
@@ -1873,7 +1889,6 @@ export const products = [
   // //   "display_name": "WallArmor",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/wallarmor.png"]
   // // },
   // // {
@@ -1958,7 +1973,6 @@ export const products = [
   // //   "display_name": "Regal Xterior",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/regalxterior.png"]
   // // },
   // // {
@@ -2048,7 +2062,6 @@ export const products = [
   // //   "display_name": "BarrierCoat",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/barriercoat.png"]
   // // },
   // // {
@@ -2137,7 +2150,6 @@ export const products = [
   // //   "display_name": "Velveta",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/velveta.png"]
   // // },
   // // {
@@ -2231,7 +2243,6 @@ export const products = [
   // //   "display_name": "RoofSeal",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/roofseal.png"]
   // // },
   
@@ -2318,7 +2329,6 @@ export const products = [
   // //   "display_name": "QuickShield",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/quickshield.png"]
   // // },
   
@@ -2401,7 +2411,6 @@ export const products = [
   // //   "display_name": "FlexCoat",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/flexcoat.png"]
   // // },
   // // {
@@ -2484,7 +2493,6 @@ export const products = [
   // //   "display_name": "AllGuard",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/allguard.png"]
   // // },
   
@@ -2580,7 +2588,6 @@ export const products = [
   // //   "display_name": "Fire Retardant Paint",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/fireretardant.png"]
   // // },
   
@@ -2667,7 +2674,6 @@ export const products = [
   // //   "display_name": "CalmMatte",
   
   // "PIS": "",
-  // "TDS": "",
   // "images": ["/Assets/calmmatte.png"]
   // // },
 ];

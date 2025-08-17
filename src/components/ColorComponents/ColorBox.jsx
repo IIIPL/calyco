@@ -6,6 +6,29 @@ import { motion } from 'framer-motion';
 const slugify = (t) =>
   t.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-&]+/g, '').replace(/\-\-+/g, '-');
 
+
+
+// cart and info icons: 
+const CartIcon = ({ className = "" }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {/* basket + frame */}
+    <path d="M3 6h2l1.7 8.2a1 1 0 0 0 1 .8H17.5a1 1 0 0 0 1-.7l2-6.8H6.2" />
+    {/* wheels as solid dots */}
+    <circle cx="9.25" cy="19.5" r="1.25" fill="currentColor" stroke="none" />
+    <circle cx="16.75" cy="19.5" r="1.25" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const InfoPlusIcon = ({ className = "" }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {/* square/info card */}
+    <rect x="4" y="4.5" width="14" height="14" rx="2" />
+    <path d="M7.5 10h7M7.5 13.5h6" />
+    {/* small plus in corner */}
+    <path d="M18.5 4.5v4M16.5 6.5h4" />
+  </svg>
+);
+
 export default function ColorBox({ color, familyName, onOpenDrawer }) {
   const navigate = useNavigate();
 
@@ -34,35 +57,35 @@ export default function ColorBox({ color, familyName, onOpenDrawer }) {
 
         {/* Controls on top */}
         <div className="absolute top-2 right-2 z-10 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <button
-            type="button"
-            aria-label="Quick buy with this color"
-            className="transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0C85A] hover:scale-110"
-            onClick={(e) => {
-              e.stopPropagation();
-              onOpenDrawer?.({ name: color.name, hex: color.hex, description: color.description || '' });
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${textColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2 9m13-9l2 9m-5-9v9" />
-            </svg>
-          </button>
+        <button
+          type="button"
+          aria-label="Quick buy with this color"
+          className="transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F0C85A] hover:scale-110 hover:bg-white/10 px-1.5 py-1 rounded-md"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenDrawer?.({ name: color.name, hex: color.hex, description: color.description || '' });
+          }}
+        >
+          <CartIcon className={`h-7 w-7 ${textColor}`} />
+        </button>
 
-          <button
-            type="button"
-            aria-label="View color details"
-            className={`px-2 py-1 rounded-md bg-white/0 hover:bg-white/10 ${textColor} text-xs font-semibold transition`}
-            onClick={(e) => { e.stopPropagation(); goToDetails(); }}
-          >
-            Details
-          </button>
-        </div>
+        <button
+          type="button"
+          aria-label="View color details"
+          title="Details"
+          className="px-1.5 py-1 rounded-md bg-white/0 hover:bg-white/10 transition"
+          onClick={(e) => { e.stopPropagation(); goToDetails(); }}
+        >
+          <InfoPlusIcon className={`h-7 w-7 ${textColor}`} />
+        </button>
+      </div>
+
 
         {/* Info block (must NOT catch clicks) */}
         <div className="absolute inset-0 flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
           <div className={`${textColor} text-center backdrop-blur-sm rounded-lg p-2`}>
-            <div className="font-semibold text-xs leading-tight mb-1">{color.name}</div>
-            <div className="text-[10px] opacity-75 font-mono">{color.hex}</div>
+            <div className="font-semibold text-xs md:text-base leading-tight mb-1">{color.name}</div>
+            <div className="text-[10px] opacity-75 font-mono md:text-xs">{color.hex}</div>
           </div>
         </div>
       </div>

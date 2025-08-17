@@ -30,6 +30,8 @@ const ColorDetailPage = () => {
   const navigate = useNavigate();
   const [showDrawer, setShowDrawer] = useState(false);
   const [currentColor, setCurrentColor] = useState(null);
+  // NEW: which color to buy (from a swatch click)
+  const [buyColor, setBuyColor] = useState(null);
 
   useEffect(() => {
     const decodedColorName = decodeURIComponent(colorName);
@@ -58,6 +60,18 @@ const ColorDetailPage = () => {
   if (!currentColor) {
     return <NotFound />;
   }
+
+  // NEW: open drawer with specific color (from ColorCombination swatch cart)
+  const openDrawerWithColor = (colorLike) => {
+    if (!colorLike) return;
+    setBuyColor({
+      name: colorLike.name,
+      hex: colorLike.hex,
+      description: colorLike.description || '',
+      color_family: colorLike.color_family || currentColor?.color_family || ''
+    });
+    setShowDrawer(true);
+  };
 
   let similarColors = flatColors.filter(
     (c) =>
@@ -175,7 +189,15 @@ const ColorDetailPage = () => {
           </div>
 
             <button
-              onClick={() => setShowDrawer(true)}
+              onClick={() => {
+                setBuyColor({
+                  name: currentColor.name,
+                  hex: currentColor.hex,
+                  description: currentColor.description || '',
+                  color_family: currentColor.color_family || ''
+                });
+                setShowDrawer(true);
+              }}
               style={{ color: currentColor.hex }}
               className="bg-black font-semibold px-8 py-4 rounded-md mt-8 self-start"
             >
@@ -185,7 +207,7 @@ const ColorDetailPage = () => {
           <BuyNowDrawer
             isOpen={showDrawer}
             onClose={() => setShowDrawer(false)}
-            currentColor={currentColor}
+            currentColor={buyColor || currentColor}
           />
         </div>
       </section>
@@ -206,12 +228,14 @@ const ColorDetailPage = () => {
               <ColorCombination
                 currentColor={currentColor}
                 similarColors={similarColors}
+                onOpenDrawer={openDrawerWithColor}
               />
             </div>
             <div className="flex-1">
               <ColorCombination
                 currentColor={currentColor}
                 similarColors={similarColors.slice(2, 4)}
+                onOpenDrawer={openDrawerWithColor}
               />
             </div>
           </div>

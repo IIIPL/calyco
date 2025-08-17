@@ -58,7 +58,7 @@ export default function ProductCard({
 
       {product.price != null && (
         <div className="text-[#493657] text-xl font-bold mb-1 w-full">
-          ₹{product.price} <span className="text-xs text-[#493657] font-medium">/ {displaySize}</span>
+          ₹{product.price} <span className="text-xs text-[#493657] font-medium">/ 1L</span>
         </div>
       )}
 

@@ -458,13 +458,13 @@ export const DynamicProductPage = () => {
                         <div>
                             <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Data Sheets</h4>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href={`/pis-viewer.html?src=${encodeURIComponent(product.PIS)}`}  target="_blank" rel="noopener noreferrer" className="underline">SDS 1</a></li>
+                                <li><a href={`/json-viewer.html?src=${encodeURIComponent(product.SDS)}`}  target="_blank" rel="noopener noreferrer" className="underline">SDS</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href="https://docs.google.com/document/d/1SxsgrtuzcKehOF3pqnUtv0HiD3ROSCX9/edit"  target="_blank" rel="noopener noreferrer" className="underline">TDS</a></li>
+                                <li><a href={`/pis-viewer.html?src=${encodeURIComponent(product.PIS)}`}  target="_blank" rel="noopener noreferrer" className="underline">TDS</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,0 +1,42 @@
+{
+  "section_1": {
+    "product_name": "Alkyd Enamel",
+    "product_class": "Enamel",
+    "intended_end_use": "Trim, doors, cabinets, and industrial surfaces – durable gloss protection for wood, metal, and high-wear areas"
+  },
+  "section_2": {
+    "components": [
+      {
+        "synonym": "Oil-based alkyd enamel system",
+        "classification": "Not classified as hazardous (industrial enamel coating)",
+        "concentration": "Proprietary blend"
+      }
+    ]
+  },
+  "section_3": {
+    "properties": {
+      "appearance": "Gloss enamel with smooth flow and leveling",
+      "color": "Clear finish",
+      "odor": "Moderate odor, low-VOC for alkyd formulation",
+      "ph": "Not applicable (alkyd-based)",
+      "voc_content_g_per_l": "Low VOC",
+      "density_g_per_ml": "1.2–1.3",
+      "specific_gravity": "1.25",
+      "viscosity_cP": "3000–5000",
+      "solids_by_volume_percent": "40–45",
+      "flash_point_c": "Not applicable (water-based variant listed)",
+      "boiling_point_c": "100",
+      "melting_point_c": "Not applicable",
+      "evaporation_rate": "Slower than acrylic latex",
+      "vapor_pressure_kPa": "2.3 (water at 20°C)",
+      "vapor_density_air_1": "0.6 (water vapor)",
+      "water_solubility": "Emulsion – partly miscible",
+      "partition_coeff_logKow": ">1",
+      "auto_ignition_c": "Not applicable",
+      "decomposition_temp_c": ">200",
+      "flammability": "Non-flammable liquid (water-based emulsion version); oil-modified resins may be combustible",
+      "uel_percent": "Not applicable",
+      "lel_percent": "Not applicable"
+    }
+  }
+}
