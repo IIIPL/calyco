@@ -60,41 +60,65 @@ export const ContactUs = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+    const resetForm = () => {
+        setIsSubmitted(false);
+        setFirstName("");
+        setLastName("");
+        setPostalCode("");
+        setEmail("");
+        setMessage("");
+        setErrors({});
+    };
+
     const sendEmail = async (e) => {
         e.preventDefault();
-    if (!validate()) return;
+        if (!validate()) return;
         setSending(true);
         const userName = `${firstName} ${lastName}`.trim();
 
-    try {
-      // add {{time}} for template
-      const timeInput = document.createElement("input");
-      timeInput.type = "hidden";
-      timeInput.name = "time";
-      timeInput.value = new Date().toLocaleString();
-      form.current.appendChild(timeInput);
+        try {
+            // Build explicit template params the template can use:
+            const templateParams = {
+                from_name: userName || "Website visitor",
+                reply_to: email,
+                message,
+                postal_code: postalCode || "",
+                time: new Date().toLocaleString(),
+            };
 
-      // main notification
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_CONTACT, form.current, PUBLIC_KEY);
+            // main notification
+            await emailjs.send(SERVICE_ID, TEMPLATE_CONTACT, templateParams, {
+                publicKey: PUBLIC_KEY,
+            });
 
-      form.current.removeChild(timeInput);
+            // optional: user confirmation — only if that template exists in your EmailJS account
+            try {
+                await emailjs.send(
+                    SERVICE_ID,
+                    TEMPLATE_CONFIRM, // make sure this template exists
+                    {
+                        to_email: email,
+                        to_name: userName || "there",
+                    },
+                    { publicKey: PUBLIC_KEY }
+                );
+            } catch (e) {
+                // Non-fatal — skip if template isn't configured
+                console.warn("Confirmation email skipped:", e?.text || e);
+            }
 
-      // user confirmation
-      await emailjs.send(SERVICE_ID, TEMPLATE_CONFIRM, {
-        to_email: email,
-        to_name: userName,
-        reply_to: email,
-        subject: "We've received your message | CALYCO",
-        message: `Hi ${userName}, thanks for contacting us. Our team will respond within 1–2 business days.`,
-      });
-
-      setToast({ type: "success", message: "Message sent!" });
-      setFirstName(""); setLastName(""); setPostalCode(""); setEmail(""); setMessage("");
-      setIsSubmitted(true);
-      setErrors({});
+            setToast({ type: "success", message: "Message sent!" });
+            setFirstName(""); setLastName(""); setPostalCode(""); setEmail(""); setMessage("");
+            setIsSubmitted(true);
+            setErrors({});
         } catch (error) {
-      console.error("Failed to send email:", error);
-      setToast({ type: "error", message: `Failed to send. Error: ${error.status || "Unknown error"}` });
+            console.error("Failed to send email:", error);
+            setToast({
+                type: "error",
+                message: `Failed to send. ${
+                    error?.text || error?.message || error?.status || "Unknown error"
+                }`,
+            });
         } finally {
             setSending(false);
         }
@@ -137,6 +161,9 @@ export const ContactUs = () => {
                 <p className="text-gray-600 max-w-prose">
                   Thanks for reaching out. We've received your message and will get back to you within 1–2 business days.
                 </p>
+                <div className="text-center flex justify-center">
+                    <Button onClick={resetForm}>Send another message</Button>
+                </div>
               </div>
             ) : (
                         <form id="contact-form" ref={form} onSubmit={sendEmail} className="space-y-6">
