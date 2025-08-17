@@ -21,6 +21,19 @@ const getProductsByCategory = (category) => {
   const lowerCat = category.toLowerCase();
   return products.filter(p => p.category && p.category.toLowerCase() === lowerCat);
 };
+
+// Choose a good default size for preselection
+const getDefaultSize = (p) => {
+  const sizes = Array.isArray(p?.packaging) ? p.packaging : [];
+  if (!sizes.length) return "";
+
+  // 1) If product JSON provides an explicit popular size, use it
+  if (p.popular_size && sizes.includes(p.popular_size)) return p.popular_size;
+
+  // 2) Heuristic: prefer 4L if offered, else first size
+  if (sizes.includes("4L")) return "4L";
+  return sizes[0];
+};
 // --- End utility functions ---
 
 export const DynamicProductPage = () => {
@@ -41,12 +54,11 @@ export const DynamicProductPage = () => {
         const foundProduct = getProductBySlugOrName(productId);
         if (foundProduct) {
             setProduct(foundProduct);
-            // Set default size to first available size in packaging
-            if (foundProduct.packaging && foundProduct.packaging.length > 0) {
-                setSelectedSize(foundProduct.packaging[0]);
-            } else {
-                setSelectedSize("");
-            }
+            // Default size: pick popular/heuristic
+            setSelectedSize(getDefaultSize(foundProduct));
+
+            // Default sheen: first available (if any)
+            setSelectedSheen(foundProduct.finish_type_sheen?.[0] || "");
             // Set default image
             if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
                 setSelectedImage(foundProduct.images[0]);
@@ -241,7 +253,7 @@ export const DynamicProductPage = () => {
                             {/* 3. Price */}
                             <div className="flex items-center gap-4 mb-4">
                               <p className="text-3xl font-bold text-[#301A44]">₹{getSizePrice(product.price, selectedSize)}</p>
-                              <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0]}</span>
+                              <span className="text-sm text-[#493657]/60">per {selectedSize || getDefaultSize(product)}</span>
                             </div>
                         </div>
 
@@ -265,33 +277,74 @@ export const DynamicProductPage = () => {
 
                             {/* 5. Size Selection */}
                             <div className="mb-4">
-                              <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
-                              <div className="flex flex-wrap gap-2">
-                                {displaySizes.map((size) => (
-                                  <button
-                                    key={size}
-                                    onClick={() => setSelectedSize(size)}
-                                    className={`px-4 py-2 rounded-lg border transition-all ${selectedSize === size ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
-                                  >
-                                    {size}
-                                  </button>
-                                ))}
+                              <h3 className="font-semibold text-[#493657] mb-1">Choose Size</h3>
+                              <p className="text-sm text-[#493657]/60 mb-2">
+                                Most popular: {getDefaultSize(product)}
+                              </p>
+
+                              <div role="listbox" aria-label="Choose size" className="flex flex-wrap gap-2">
+                                {displaySizes.map((size) => {
+                                  const isSelected = selectedSize === size;
+                                  const isPopular = size === getDefaultSize(product);
+                                  return (
+                                    <button
+                                      key={size}
+                                      onClick={() => setSelectedSize(size)}
+                                      aria-pressed={isSelected}
+                                      className={`px-4 py-2 rounded-lg border transition-all flex items-center gap-2
+                                        ${isSelected
+                                          ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] shadow"
+                                          : "border-[#493657]/20 text-[#493657]/80 hover:border-[#493657]/40"}
+                                      `}
+                                    >
+                                      {/* subtle checkmark when selected */}
+                                      {isSelected ? <span aria-hidden>✔️</span> : <span aria-hidden>▫️</span>}
+                                      {size}
+                                      {isPopular && (
+                                        <span className="text-[10px] font-bold text-[#493657] bg-[#F0C85A]/30 px-2 py-0.5 rounded-full">
+                                          Popular
+                                        </span>
+                                      )}
+                                    </button>
+                                  );
+                                })}
                               </div>
                             </div>
 
                             {/* 6. Quantity & Add to Cart */}
                             <div className="mb-6">
-                              <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
+                              <h3 className="font-semibold text-[#493657] mb-2">Quantity <span className="text-[#493657]/60">(bucket{quantity > 1 ? 's' : ''})</span></h3>
+
+                              {/* quick chips for 1–3 */}
+                              <div className="flex gap-2 mb-3">
+                                {[1,2,3].map(n => (
+                                  <button
+                                    key={n}
+                                    onClick={() => setQuantity(n)}
+                                    className={`px-3 py-1.5 rounded-lg border text-sm
+                                      ${quantity === n
+                                        ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
+                                        : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}
+                                    `}
+                                  >
+                                    {n}
+                                  </button>
+                                ))}
+                              </div>
+
+                              {/* existing stepper */}
                               <div className="flex items-center gap-4">
                                 <button
                                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                  aria-label="Decrease quantity"
                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
                                 >
-                                  -
+                                  –
                                 </button>
                                 <span className="text-xl font-semibold text-[#493657] min-w-[3rem] text-center">{quantity}</span>
                                 <button
                                   onClick={() => setQuantity(quantity + 1)}
+                                  aria-label="Increase quantity"
                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
                                 >
                                   +

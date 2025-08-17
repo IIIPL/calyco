@@ -67,6 +67,16 @@ export default function ProductCard({
           <CoverageIcon />{areaCoverage}
         </div>
       )}
+      {product.finish_type_sheen?.[0] && (
+        <div className="flex items-center text-[#493657] text-base font-medium mb-1 w-full">
+          Finish: {product.finish_type_sheen[0]}
+        </div>
+      )}
+      {product.advantages?.length > 0 && (
+        <div className="text-[#493657] text-sm font-normal italic mb-2 w-full">
+          {product.advantages.slice(0, 2).join(' · ')}
+        </div>
+      )}
 
       <div className="border-b border-[#e5e0d8] w-full my-2" />
 

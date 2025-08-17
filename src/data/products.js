@@ -2,7 +2,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/nova",
     "name": "Nova",
-    "image": "/Assets/novaa.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429467/NoBg_cqfzhy.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
     "details": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",
@@ -96,15 +96,15 @@ export const products = [
     "PIS": "/PIS/nova.json",
     "TDS": "",
     "SDS": "/SDS/Nova.json",
-    "images": ["/Assets/Nova/NoBg.png",
-      "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
-      "/Assets/novaa.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429467/NoBg_cqfzhy.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142453/novaa_a56uit.jpg",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142452/inuse_tvdlvh.png",
     ]
   },
   {
     "url": "https://calycopaints.com/product/puretone",
     "name": "PureTone",
-    "image": "/Assets/puretone.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429517/NoBg_vmxakj.png",
     "description": "Crisp neutral interior paint with brilliant clarity and balance.",
     "short-description": "Great for clean, open interiors with architectural definition.",
     "details": "PureTone enhances clarity and light balance for elegant, minimal, and neutral-themed interiors.",
@@ -186,12 +186,13 @@ export const products = [
     "PIS": "/PIS/puretone.json",
     "TDS": "",
     "SDS": "/SDS/PureTone.json",
-    "images": ["/Assets/PureTone/NoBg.png", "/Assets/PureTone/OnTable.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429517/NoBg_vmxakj.png", 
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142454/OnTable_m9odso.png"]
   },
   {
     "url": "https://calycopaints.com/product/woodguard",
     "name": "WoodGuard",
-    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429858/NoBg_kxlcrj.png",
     "description": "Rich color stain and sealer for all wood protection needs.",
     "short-description": "Protects and covers aged, stained, or mismatched wood.",
     "details": "WoodGuard restores and seals wood surfaces with deep, rich colour and long-term protection.",
@@ -274,15 +275,15 @@ export const products = [
     "TDS": "",
     "SDS": "/SDS/WoodGuard.json",
     "images": ["/Assets/Woodguard/NoBg.png",
-      "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
-      // "/Assets/WoodGuard/inuse.png",
-      // "/Assets/WoodGuard/OnTable.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429858/NoBg_kxlcrj.png",
+      // "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142464/inuse_spw706.png",
+      // "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142463/OnTable_sf1xsz.png",
     ]
   },
   {
     "url": "https://calycopaints.com/product/decksure",
     "name": "DeckSure",
-    "image": "/Assets/decksure.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428902/NoBg_cysqtg.png",
     "description": "Heavy-duty resurfacing coating for damaged wood decks.",
     "short-description": "Repairs cracks, seals splinters, and protects surfaces.",
     "details": "DeckSure resurfaces worn timber, filling cracks and sealing decks against weather and wear.",
@@ -359,16 +360,16 @@ export const products = [
     "PIS": "/PIS/decksure.json",
     "TDS": "",
     "SDS": "/SDS/DeckSure.json",
-    "images": ["/Assets/DeckSure/NoBg.png",
-      "/Assets/DeckSure/ontable.png",
-      "/Assets/DeckSure/inhouse.png",
-      "/Assets/DeckSure/inuse.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428902/NoBg_cysqtg.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142302/ontable_utotsq.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142299/inhouse_y887vs.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142302/inuse_e84gq4.png",
     ]
   },
   {
     "url": "https://calycopaints.com/product/stoneshield",
     "name": "StoneShield",
-    "image": "/Assets/stoneshield.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429768/NoBg_xg85sq.png",
     "description": "Multi-surface stain and sealer for concrete, pavers, and masonry.",
     "short-description": "Protects, colors, and waterproofs your surfaces.",
     "details": "StoneShield offers breathable protection and colour enhancement for concrete, pavers, and masonry.",
@@ -450,12 +451,12 @@ export const products = [
     "PIS": "/PIS/stoneshield.json",
     "TDS": "",
     "SDS": "/SDS/StoneShield.json",
-    "images": ["/Assets/StoneShield/NoBg.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429768/NoBg_xg85sq.png"]
   },
   {
     "url": "https://calycopaints.com/product/calmxterior",
     "name": "CalmXterior",
-    "image": "/Assets/CalmXterior/NoBg.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428850/NoBg_dk1y4k.png",
     "description": "Premium fade-resistant paint for prestige building exteriors.",
     "short-description": "Long-lasting colour even under harsh sunlight.",
     "details": "CalmXterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
@@ -465,7 +466,7 @@ export const products = [
       "plaster", "aac", "cement",
     ],
     "advantages": [
-      "ColourSet™",
+      "ColourSet",
       "Ultra fade-resist",
       "Premium finish"
     ],
@@ -536,15 +537,15 @@ export const products = [
     "PIS": "/PIS/calmxterior.json",
     "TDS": "",
     "SDS": "/SDS/CalmXterior.json",
-    "images": ["/Assets/CalmXterior/NoBg.png",
-      "/Assets/CalmXterior/inuse.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428850/NoBg_dk1y4k.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142296/inuse_z9kuii.png",
 
     ]
   },  
   {
     "url": "https://calycopaints.com/product/lustrolite",
     "name": "LustroLite",
-    "image": "/Assets/lustrolite.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429406/NoBg_ysd0e5.png",
     "description": "Gloss-finish interior paint with high sheen and easy-clean properties.",
     "short-description": "Glossy luxury paint for statement walls and halls.",
     "details": "LustroLite delivers a polished, reflective finish with high durability and designer-grade clarity.",
@@ -629,16 +630,16 @@ export const products = [
     "PIS": "/PIS/lustrolite.json",
     "TDS": "",
     "SDS": "/SDS/LustroLite.json",
-    "images": ["/Assets/LustroLite/NoBg.png",
-      "/Assets/LustroLite/ontable.png",
-      "/Assets/LustroLite/inhouse.png",
-      "/Assets/LustroLite/inuse.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429406/NoBg_ysd0e5.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142453/ontable_owgyld.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142427/inhouse_n3vuxx.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142450/inuse_o2poej.png",
     ]
   },
   {
     "url": "https://calycopaints.com/product/silktouch",
     "name": "SilkTouch",
-    "image": "/Assets/silktouch.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142460/ontable_vst7ry.png",
     "description": "Smooth-sheen interior wall paint that delivers a soft, refined silk-like finish.",
     "short-description": "Soft mid-sheen elegance for interior walls with excellent washability.",
     "details": "SilkTouch balances refined shine with easy maintenance for elegant homes and corridors.",
@@ -725,16 +726,16 @@ export const products = [
     "PIS": "/PIS/silktouch.json",
     "TDS": "",
     "SDS": "/SDS/SilkTouch.json",
-    "images": ["/Assets/SilkTouch/NoBg.png", 
-      "/Assets/SilkTouch/ontable.png",
-      "/Assets/SilkTouch/inuse.png",
-      "/Assets/SilkTouch/inhouse.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429652/NoBg_ncq7av.png", 
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142460/ontable_vst7ry.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142460/inuse_zqhivz.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142460/inhouse_nyuxyo.png",
     ]
   },
   {
     "url": "https://calycopaints.com/product/floorpro",
     "name": "FloorPro",
-    "image": "/Assets/FloorPro/inuse.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429174/NoBg_pftanq.png",
     "description": "Tough coating for industrial floors and commercial interiors.",
     "short-description": "Impact-resistant, easy-to-clean floor protection.",
     "details": "FloorPro is made for garages and industrial spaces that demand toughness, cleanability, and impact resistance.",
@@ -810,14 +811,14 @@ export const products = [
     "PIS": "/PIS/floorpro.json",
     "TDS": "",
     "SDS": "/SDS/FloorPro.json",
-    "images": ["/Assets/FloorPro/NoBg.png",
-      "/Assets/FloorPro/inuse.png"
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429174/NoBg_pftanq.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429180/inuse_b0zobi.png"
     ]
   },
   {
     "url": "https://calycopaints.com/product/ironshield",
     "name": "IronShield",
-    "image": "/Assets/IronShield/NoBg.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429351/NoBg_twiqgt.png",
     "description": "Anti-corrosive coating for direct-to-metal applications.",
     "short-description": "Stops rust, seals steel, and resists harsh environments.",
     "details": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
@@ -896,16 +897,16 @@ export const products = [
     "PIS": "/PIS/ironshield.json",
     "TDS": "",
     "SDS": "/SDS/IronShield.json",
-    "images": ["/Assets/IronShield/NoBg.png",
-      "/Assets/IronShield/WithBg.png",
-      "/Assets/IronShield/WhiteBg.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429351/NoBg_twiqgt.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142409/WithBg_awgo1u.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142408/WhiteBg_fnb8sh.png",
     ]
   },
   
   {
     "url": "https://calycopaints.com/product/thermacool",
     "name": "ThermaCool",
-    "image": "/Assets/thermacool.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429819/NoBg_plflgm.png",
     "description": "Heat-resistant coating for roofs, tanks, and pipes.",
     "short-description": "Reduces heat absorption and thermal degradation.",
     "details": "ThermaCool reflects heat and insulates surfaces like tanks, pipes, and exposed roofing.",
@@ -985,12 +986,12 @@ export const products = [
     "PIS": "/PIS/thermacool.json",
     "TDS": "",
     "SDS": "/SDS/ThermaCool.json",
-    "images": ["/Assets/ThermaCool/NoBg.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429819/NoBg_plflgm.png"]
   },
   {
     "url": "https://calycopaints.com/product/defense",
     "name": "Defense",
-    "image": "/Assets/defense.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428969/NoBg_fxpwcs.png",
     "description": "Ultimate multi-surface coating for all environments.",
     "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
     "details": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
@@ -1077,13 +1078,13 @@ export const products = [
     "PIS": "/PIS/defense.json",
     "TDS": "",
     "SDS": "/SDS/Defense.json",
-    "images": ["/Assets/Defense/NoBg.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755428969/NoBg_fxpwcs.png"]
   },
   
   {
     "url": "https://calycopaints.com/product/primedefense-primer",
     "name": "PrimeDefense Primer",
-    "image": "/Assets/DefensePrimer/inuse.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429018/NoBg_eein3o.png",
     "description": "Heavy-duty water-based acrylic primer for multi-surface bonding and sealing.",
     "short-description": "Universal primer that seals pores and improves topcoat adhesion.",
     "details": "PrimeDefense Primer boosts adhesion and ensures a strong, even base across surfaces.",
@@ -1169,12 +1170,14 @@ export const products = [
     "PIS": "/PIS/defenseprimer.json",
     "TDS": "",
     "SDS": "/SDS/DefensePrimer.json",
-    "images": ["/Assets/DefensePrimer/NoBg.png", "/Assets/DefensePrimer/inuse.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429018/NoBg_eein3o.png", 
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142303/inuse_bubas5.png"
+    ]
   },
   {
     "url": "https://calycopaints.com/product/hydroclear-shield",
     "name": "HydroClear Shield",
-    "image": "/Assets/HydroClear/WhiteBg.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429282/NoBg_ozj7xh.png",
     "description": "Transparent waterproofing coating for masonry, tile, and concrete without altering the surface look.",
     "short-description": "Invisible water-repellent that preserves natural surface aesthetics.",
     "details": "HydroClear Shield waterproofs tile, brick, and stone without changing how they look or feel.",
@@ -1257,15 +1260,14 @@ export const products = [
     "PIS": "/PIS/hydroclear.json",
     "TDS": "",
     "SDS": "/SDS/HydroClear.json",
-    "images": ["/Assets/HydroClear/NoBg.png",
-      "/Assets/HydroClear/WhiteBg.png",
-      "/Assets/HydroClear/InUse.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429282/NoBg_ozj7xh.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142306/WhiteBg_l9dga7.png",
     ]
   },
   {
     "url": "https://www.calyco.com/products/fast-drying-enamel",
     "name": "Fast Drying Enamel",
-    "image": "/Assets/FastDryingEnamel/NoBg.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429086/NoBg_lu7yiv.png",
     "description": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance.",
     "short-description": "Fast-drying, high-gloss black enamel for metal surfaces.",
     "details": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
@@ -1347,13 +1349,13 @@ export const products = [
     "PIS": "/PIS/fastdryingenamel.json",
     "TDS": "",
     "SDS": "/SDS/FastDryingEnamel.json",
-    "images": ["/Assets/FastDryingEnamel/NoBg.png",
-      "/Assets/FastDryingEnamel/ontable.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429086/NoBg_lu7yiv.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142303/ontable_zihinh.png"]
   },
   {
     "url": "https://www.calyco.com/products/alkyd-enamel",
     "name": "Alkyd Enamel",
-    "image": "/Assets/AlkydEnamel/NoBg.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142296/NoBg_pyhvl6.png",
     "description": "Oil-based alkyd enamel with a hard, glossy finish for long-term protection and performance.",
     "short-description": "Highly durable alkyd enamel ideal for trim, metal, and high-wear surfaces.",
     "details": "Alkyd Enamel offers smooth gloss, chemical resistance, and strong adhesion for long-term results.",
@@ -1439,15 +1441,15 @@ export const products = [
     "PIS": "/PIS/alkydenamel.json",
     "TDS": "",
     "SDS": "/SDS/AlkydEnamel.json",
-    "images": ["/Assets/AlkydEnamel/NoBg.png",
-    "/Assets/AlkydEnamel/InUse.png",
-    "/Assets/AlkydEnamel/WhiteBg.png",]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142296/NoBg_pyhvl6.png",
+    "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142295/InUse_cznlsc.png",
+    "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142295/WhiteBg_txebnl.png",]
   },
   
   {
     "url": "https://www.calyco.com/products/aluminium-paint",
     "name": "Aluminium Paint",
-    "image": "/Assets/aluminium.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142297/NoBg_pnnshq.png",
     "description": "High-quality aluminium alkyd enamel for durable interior and exterior use on primed metal surfaces.",
     "short-description": "Decorative alkyd topcoat with excellent hide, durability, and washability.",
     "details": "Aluminium Paint offers long-lasting metallic shine with superior coverage and flow.",
@@ -1533,12 +1535,12 @@ export const products = [
     "PIS": "/PIS/aluminium.json",
     "TDS": "",
     "SDS": "/SDS/Aluminium.json",
-    "images": ["/Assets/Aluminium/NoBg.png"]
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1754142297/NoBg_pnnshq.png"]
   },
   {
     "url": "https://www.calyco.com/products/red-oxide-primer",
     "name": "Red Oxide Primer",
-    "image": "/Assets/redoxide.png",
+    "image": "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429577/NoBg_g245u0.png",
     "description": "Economical alkyd-based red oxide primer with excellent corrosion resistance for steel surfaces.",
     "short-description": "Alkyd anti-corrosive primer with red iron oxide pigment for steel.",
     "details": "Red Oxide Primer protects steel with a tough, rust-resistant undercoat for industrial use.",
@@ -1626,8 +1628,8 @@ export const products = [
     "PIS": "/PIS/redoxideprimer.json",
     "TDS": "",
     "SDS": "/SDS/RedOxidePrimer.json",
-    "images": ["/Assets/RedOxide/NoBg.png",
-      "/Assets/redoxide.png",
+    "images": ["https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429577/NoBg_g245u0.png",
+      "https://res.cloudinary.com/dr98axi2n/image/upload/f_auto,q_auto,w_800/v1755429616/redoxide_slnyz5.png",
     ]
   }
   // // FORBIDDEN PRODUCTS:
