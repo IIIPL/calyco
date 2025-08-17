@@ -58,7 +58,7 @@
   "application": [
     "Apply 2 coats over primer. Allow 10 mins between coats. Can be baked if needed."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 20L",
+  "available_sizes": "1L, 4L, 20L",
   "storage_safety": [
     "Store in metal can",
     "away from flame",

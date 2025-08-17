@@ -57,7 +57,7 @@
   "application": [
     "Apply on dry surface. Use mineral spirits for cleanup."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 20L",
+  "available_sizes": "1L, 4L, 20L",
   "storage_safety": [
     "Store cool (10–27°C)",
     "dry area",

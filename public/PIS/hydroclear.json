@@ -53,7 +53,7 @@
   "application": [
     "Apply in 2 coats. Stir paint well before use."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 10L, 20L",
+  "available_sizes": "1L, 4L, 10L, 20L",
   "storage_safety": [
     "Store away from sunlight",
     "sealed",

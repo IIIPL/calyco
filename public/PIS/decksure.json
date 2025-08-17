@@ -51,7 +51,7 @@
   "application": [
     "Use pad, roller or brush. Best applied in 2 coats."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "available_sizes": "1L, 4L, 10L",
   "storage_safety": [
     "Store sealed in dry conditions",
     "No open flame nearby",

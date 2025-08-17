@@ -54,7 +54,7 @@
   "application": [
     "Apply by brush or spray. Surface should be degreased and rust-free."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "available_sizes": "1L, 4L, 10L",
   "storage_safety": [
     "Keep indoors and sealed",
     "Wear gloves; ventilate area",

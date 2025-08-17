@@ -46,7 +46,7 @@ footer{margin-top:22px;font-size:12px;color:var(--mut)}
   <div class="card"><h2>Technical Data</h2><table>${kv(d.technical_data)}</table></div>
   <div class="card"><h2>Surface Preparation</h2><ul>${li(d.surface_preparation)}</ul></div>
   <div class="card"><h2>Application</h2><ul>${li(d.application)}</ul></div>
-  <div class="card"><h2>Pack Sizes</h2><p>${esc(d.pack_sizes||"")}</p></div>
+          <div class="card"><h2>Available Sizes</h2><p>${esc(d.available_sizes||"")}</p></div>
   <div class="card"><h2>Storage & Safety</h2><ul>${li(d.storage_safety)}</ul></div>
 </section>
 <footer>© CALYCO</footer></body></html>`;

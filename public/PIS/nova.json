@@ -60,7 +60,7 @@
   "application": [
     "Brush or roller recommended. Avoid over-thinning."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 10L",
+  "available_sizes": "1L, 4L, 10L",
   "storage_safety": [
     "Keep in cool place",
     "tightly sealed",

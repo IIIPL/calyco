@@ -51,7 +51,7 @@
   "application": [
     "Apply with brush or short-nap roller. Surface must be dust-free."
   ],
-  "pack_sizes": "Available in: 1L, 4L, 10L, 20L",
+  "available_sizes": "1L, 4L, 10L, 20L",
   "storage_safety": [
     "Keep in dry",
     "sealed storage",
