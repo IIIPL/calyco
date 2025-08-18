@@ -22,6 +22,7 @@ export default function ColorsPage() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState([]);
   const [activeColor, setActiveColor] = useState(null);
+  const [expandedCards, setExpandedCards] = useState(null);
   const filterRef = useRef(null);
 
   useEffect(() => {
@@ -51,6 +52,17 @@ export default function ColorsPage() {
     });
   };
 
+  const toggleCardExpansion = (cardTitle) => {
+    setExpandedCards(prev => {
+      // If the clicked card is already expanded, collapse it
+      if (prev === cardTitle) {
+        return null;
+      }
+      // Otherwise, expand only the clicked card
+      return cardTitle;
+    });
+  };
+
   const filteredGroups =
     filter.length === 0
       ? colorGroups
@@ -60,6 +72,135 @@ export default function ColorsPage() {
     (acc, group) => acc + group.colors.length,
     0
   );
+
+  // Map colorGroups to the display categories
+  const colorFamilies = [
+    {
+      title: "WHITES & OFF WHITES",
+      description: "Pure and clean whites for timeless elegance",
+      count: colorGroups.find(g => g.title === "Fresh Whites and Creams")?.colors.length || 0,
+      background: "bg-white",
+      textColor: "text-gray-900",
+      descColor: "text-gray-600",
+      countBg: "bg-gray-100",
+      countText: "text-gray-700",
+      icon: "🌿",
+      route: "/colors/whites-off-whites",
+      colorGroup: colorGroups.find(g => g.title === "Fresh Whites and Creams")
+    },
+    {
+      title: "BROWNS",
+      description: "Warm earth tones inspired by nature",
+      count: (colorGroups.find(g => g.title === "Warm Neutrals and Beiges")?.colors.length || 0) + 
+             (colorGroups.find(g => g.title === "Earthen Browns and Tans")?.colors.length || 0),
+      background: "bg-amber-800",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-amber-600",
+      countText: "text-white",
+      icon: "🌲",
+      route: "/colors/browns",
+      colorGroup: {
+        title: "Browns",
+        colors: [
+          ...(colorGroups.find(g => g.title === "Warm Neutrals and Beiges")?.colors || []),
+          ...(colorGroups.find(g => g.title === "Earthen Browns and Tans")?.colors || [])
+        ]
+      }
+    },
+    {
+      title: "PURPLES & PINKS",
+      description: "Vibrant purples and soft pinks for creativity",
+      count: (colorGroups.find(g => g.title === "Pinks and Blushes")?.colors.length || 0) + 
+             (colorGroups.find(g => g.title === "Purples and Lavenders")?.colors.length || 0),
+      background: "bg-purple-600",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-purple-400",
+      countText: "text-white",
+      icon: "🌸",
+      route: "/colors/purples-pinks",
+      colorGroup: {
+        title: "Purples & Pinks",
+        colors: [
+          ...(colorGroups.find(g => g.title === "Pinks and Blushes")?.colors || []),
+          ...(colorGroups.find(g => g.title === "Purples and Lavenders")?.colors || [])
+        ]
+      }
+    },
+    {
+      title: "YELLOWS & GREENS",
+      description: "Sunny yellows and fresh greens for vitality",
+      count: (colorGroups.find(g => g.title === "Yellows and Ochres")?.colors.length || 0) + 
+             (colorGroups.find(g => g.title === "Greens of India")?.colors.length || 0),
+      background: "bg-yellow-400",
+      textColor: "text-gray-900",
+      descColor: "text-gray-900",
+      countBg: "bg-yellow-500",
+      countText: "text-gray-900",
+      icon: "🌻",
+      route: "/colors/yellows-greens",
+      colorGroup: {
+        title: "Yellows & Greens",
+        colors: [
+          ...(colorGroups.find(g => g.title === "Yellows and Ochres")?.colors || []),
+          ...(colorGroups.find(g => g.title === "Greens of India")?.colors || [])
+        ]
+      }
+    },
+    {
+      title: "GREYS",
+      description: "Sophisticated greys for modern sophistication",
+      count: colorGroups.find(g => g.title === "Minimal Greys and Steels")?.colors.length || 0,
+      background: "bg-gray-800",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-gray-600",
+      countText: "text-white",
+      icon: "🏔️",
+      route: "/colors/greys",
+      colorGroup: colorGroups.find(g => g.title === "Minimal Greys and Steels")
+    },
+    {
+      title: "GREENS",
+      description: "Fresh greens that bring the outdoors in",
+      count: colorGroups.find(g => g.title === "Greens of India")?.colors.length || 0,
+      background: "bg-green-600",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-green-500",
+      countText: "text-white",
+      icon: "🌿",
+      route: "/colors/greens",
+      colorGroup: colorGroups.find(g => g.title === "Greens of India")
+    },
+    {
+      title: "REDS & ORANGES",
+      description: "Bold reds and warm oranges for energy",
+      count: colorGroups.find(g => g.title === "Corals and Terracottas")?.colors.length || 0,
+      background: "bg-gradient-to-r from-red-500 to-orange-500",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-orange-500",
+      countText: "text-white",
+      icon: "🌅",
+      route: "/colors/reds-oranges",
+      colorGroup: colorGroups.find(g => g.title === "Corals and Terracottas")
+    },
+    {
+      title: "BLUES",
+      description: "Calming blues inspired by sky and sea",
+      count: colorGroups.find(g => g.title === "Blues and Monsoon Skies")?.colors.length || 0,
+      background: "bg-blue-500",
+      textColor: "text-white",
+      descColor: "text-white",
+      countBg: "bg-blue-400",
+      countText: "text-white",
+      icon: "🌊",
+      route: "/colors/blues",
+      colorGroup: colorGroups.find(g => g.title === "Blues and Monsoon Skies")
+    }
+  ];
 
   return (
     <div className="font-poppins bg-gradient-to-br from-green-50 via-white to-blue-50 min-h-screen">
@@ -193,6 +334,124 @@ export default function ColorsPage() {
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#493657] rounded-full opacity-20 animate-pulse shadow-lg" style={{ animationDelay: '1s' }}></div>
               <div className="absolute top-1/2 -right-8 w-12 h-12 bg-[#E6B84A] rounded-full opacity-15 animate-pulse shadow-lg" style={{ animationDelay: '2s' }}></div>
             </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Color Families Section */}
+      <div className="py-20 bg-white relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <span>🎨</span>
+              <span>Color Families</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Explore Our Color Families
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              From earthy neutrals to vibrant hues, discover the perfect color for every space and mood. 
+              Each family tells a story of nature's beauty and cultural heritage.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {colorFamilies.map((family, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                onClick={() => navigate(`/colors/family/${family.title.toLowerCase().replace(/\s+/g, '-')}`)}
+                className={`${family.background} rounded-xl p-6 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-2xl">{family.icon}</div>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleCardExpansion(family.title);
+                    }}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg 
+                      className={`w-5 h-5 transform transition-transform ${expandedCards === family.title ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <h3 className={`text-lg font-bold mb-2 ${family.textColor}`}>
+                  {family.title}
+                </h3>
+                
+                <p className={`text-sm mb-4 leading-relaxed ${family.descColor}`}>
+                  {family.description}
+                </p>
+                
+                <div className={`inline-flex items-center gap-2 ${family.countBg} ${family.countText} px-3 py-1 rounded-full text-sm font-medium`}>
+                  <span>{family.count} colors</span>
+                </div>
+
+                {/* Expanded Content with Color Swatches */}
+                {expandedCards === family.title && family.colorGroup && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-6 pt-6 border-t border-white/20"
+                  >
+                    <div className="mb-4">
+                      <h4 className={`text-lg font-semibold mb-3 ${family.textColor}`}>
+                        Explore {family.title}
+                      </h4>
+                      
+                      {/* Color Swatches Grid */}
+                      <div className="grid grid-cols-4 gap-2 mb-4">
+                        {family.colorGroup.colors.slice(0, 12).map((color, colorIndex) => (
+                          <div
+                            key={colorIndex}
+                            className="w-12 h-12 rounded-lg shadow-md border-2 border-white/30 cursor-pointer hover:scale-110 transition-transform"
+                            style={{ backgroundColor: color.hex }}
+                            title={color.name}
+                          />
+                        ))}
+                      </div>
+                      
+                      {/* Show remaining colors count */}
+                      {family.colorGroup.colors.length > 12 && (
+                        <p className={`text-sm ${family.descColor} mb-4`}>
+                          +{family.colorGroup.colors.length - 12} more colors
+                        </p>
+                      )}
+                      
+                      {/* View All Colors Button */}
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/colors/family/${family.title.toLowerCase().replace(/\s+/g, '-')}`);
+                        }}
+                        className={`w-full bg-white/20 backdrop-blur-sm text-white py-2 px-4 rounded-lg font-medium hover:bg-white/30 transition-all duration-300 text-sm border border-white/30`}
+                      >
+                        View All Colors
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
