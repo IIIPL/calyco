@@ -37,7 +37,7 @@ export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) =
                             <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
                                 <img
                                     src="/Assets/novaa.png"
-                                    alt="Paint can"
+                                    alt="CALYCO Nova interior latex paint — premium paint can showcase"
                                     className="w-full max-w-sm mx-auto hover:scale-105 transition-transform duration-500"
                                 />
                             </div>

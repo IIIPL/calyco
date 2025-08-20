@@ -120,7 +120,7 @@ export const groupedShades = [
       { name: "Royal Plum", hex: "#59251D" },
       { name: "Taupe Smoke", hex: "#E97451" },
       { name: "Almond Beige", hex: "#B25D41" },
-      { name: "Rust Glow", hex: "#A65A4B" },
+      { name: "Rust Glow Red", hex: "#A65A4B" },
       { name: "Molten Ember", hex: "#B7410E" },
       { name: "Maroon Velvet", hex: "#800000" }
     ]

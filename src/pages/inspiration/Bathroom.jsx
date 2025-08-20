@@ -23,7 +23,7 @@ export default function BathroomInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/bathroomHero_lt3vw0.jpg"
-          alt="Bathroom Inspiration"
+          alt="CALYCO bathroom design inspiration — modern spa-like bathroom with elegant fixtures and calming colors"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

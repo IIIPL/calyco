@@ -12,10 +12,12 @@ const slugify = (text) =>
 
 
 const SimilarColors = ({ currentColor, similarColors }) => {
+  if (!currentColor) return null;
+  
   const navigate = useNavigate();
 
   // Get 4 similar colors for display
-  const displayColors = similarColors.slice(0, 4);
+  const displayColors = similarColors?.slice(0, 4) || [];
 
   // Function to determine text color based on background brightness
   const getTextColor = (hexColor) => {
@@ -40,12 +42,12 @@ const SimilarColors = ({ currentColor, similarColors }) => {
         {/* Left Section - Main Color (Large) */}
         <div 
           className="w-1/2 h-64 relative cursor-pointer hover:opacity-90 transition-opacity "
-          style={{ backgroundColor: currentColor.hex }}
+          style={{ backgroundColor: currentColor?.hex || "#301A44" }}
           onClick={() => handleColorClick(currentColor)}
         >
-          <div className={`absolute bottom-4 left-4 ${getTextColor(currentColor.hex)}`}>
-            <div className="text-xl font-semibold">{currentColor.name}</div>
-            <div className="text-sm opacity-90">{currentColor.hex}</div>
+          <div className={`absolute bottom-4 left-4 ${getTextColor(currentColor?.hex || "#301A44")}`}>
+            <div className="text-xl font-semibold">{currentColor?.name || ""}</div>
+            <div className="text-sm opacity-90">{currentColor?.hex || "#301A44"}</div>
           </div>
         </div>
 

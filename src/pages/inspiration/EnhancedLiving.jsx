@@ -37,7 +37,7 @@ export default function EnhancedLivingRoomInspiration() {
       <div className="relative h-[60vh] overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/livingroomHero_vvdi6l.jpg"
-          alt="Living Room Inspiration"
+          alt="CALYCO living room design inspiration — elegant living space with comfortable seating and beautiful decor"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">

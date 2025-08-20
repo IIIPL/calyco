@@ -1,0 +1,168 @@
+{
+  "product_name": "HydroClear",
+  "brand": "Calyco",
+  "type": "Waterproof Coating",
+  "sheet_title": "Waterproof Coating",
+  "pis_title": "Waterproof Coating – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "HydroClear, Invisible Finish, Waterproof",
+    "premium": "Invisible finish | Easy maintenance",
+    "title2": "Transparent waterproofing coating for masonry, tile, and concrete without altering the surface look."
+  },
+
+  "icons": {
+    "main": ["HydroClear", "Invisible Finish", "Waterproof"],
+    "minor": ["Invisible finish", "Waterproof", "Breathable", "Anti-Algae"],
+    "extra": ["Water Based", "Low VOC"]
+  },
+
+  "product_overview": "Transparent waterproofing coating for masonry, tile, and concrete without altering the surface look.",
+  "short_description": "Invisible water-repellent that preserves natural surface aesthetics.",
+  "positioning": "HydroClear Shield waterproofs tile, brick, and stone without changing how they look or feel.",
+
+  "key_features": [
+    "Invisible waterproofing protection",
+    "Preserves natural aesthetics of surfaces",
+    "Deep-seal breathable barrier",
+    "Anti-algae, mold and mildew resistant",
+    "Water-based, low VOC eco-friendly formulation",
+    "Easy to maintain and long-lasting protection"
+  ],
+
+  "features_benefits": [
+    { "feature": "Invisible Film", "benefit": "Provides waterproofing without altering surface appearance" },
+    { "feature": "Breathable", "benefit": "Allows natural vapor escape while blocking water ingress" },
+    { "feature": "Deep Seal Protection", "benefit": "Penetrates deeply into stone, tile, and brick" },
+    { "feature": "UV Stable", "benefit": "Prevents degradation and maintains clear finish" },
+    { "feature": "Eco-Friendly", "benefit": "Low VOC water-based formula safe for interiors and exteriors" }
+  ],
+
+  "recommended_use": {
+    "intro": "Ideal for protecting natural masonry and decorative surfaces while maintaining their look.",
+    "items": ["Concrete", "Stone", "Brick", "Plaster", "Tile"]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Prep",
+      "product": "HydroClear",
+      "purpose": "Ensure surface is clean, dry, and free of dust or grease"
+    },
+    {
+      "step": 2,
+      "label": "First Coat",
+      "product": "HydroClear Waterproof Coating",
+      "purpose": "Apply evenly with brush, roller, or spray"
+    },
+    {
+      "step": 3,
+      "label": "Second Coat",
+      "product": "HydroClear Waterproof Coating",
+      "purpose": "Reapply after 4 hrs for maximum waterproof protection"
+    }
+  ],
+
+  "application_tools": ["Brush", "Roller", "Spray"],
+
+  "timings": {
+    "surface_dry": "1 hr",
+    "recoat": "4 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "85–110 sq. ft./Ltr",
+  "finish": "Flat | Dead flat (Invisible)",
+  "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Advanced multi-polymer composite",
+    "Sheen Level": "Flat | Dead flat",
+    "Colours": "Clear and tinted neutrals",
+    "Theoretical Coverage": "85–110 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "5 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Concrete", "description": "Driveways, pathways, slabs, walls" },
+    { "type": "Stone", "description": "Natural stone facades and decorative stonework" },
+    { "type": "Brick", "description": "Walls, facades, and pavers" },
+    { "type": "Plaster", "description": "Exterior plastered walls" },
+    { "type": "Tile", "description": "Bathrooms, kitchens, and outdoor decorative tiling" }
+  ],
+
+  "surface_preparation": [
+    "Apply only on dry surfaces",
+    "Ensure surfaces are clean and dust-free",
+    "Mask edges and joints before application"
+  ],
+
+  "application": [
+    "Stir well before use",
+    "Apply using brush, roller, or spray in thin even coats",
+    "2 coats recommended for maximum waterproofing performance"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Not Recommended For": "Unclean or damp substrates"
+  },
+
+  "storage_safety": [
+    "Store away from sunlight, sealed tightly",
+    "Keep in a cool, dry area",
+    "Do not allow freezing"
+  ],
+
+  "safety_first_aid": {
+    "General": "Wear protective gloves and ensure proper ventilation during application",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Flush with plenty of clean water immediately",
+    "Inhalation": "Use in well-ventilated areas to avoid vapors"
+  },
+
+  "environmental_commitment": "Eco-conscious invisible waterproofing with low VOC water-based formula, preserving natural building aesthetics.",
+
+  "commerce": {
+    "name": "HydroClear",
+    "category": "Stain & Sealer",
+    "price_inr": 599,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "Calyco",
+    "product_number": "DEFENSE"
+  },
+
+  "usage": {
+    "application": "Invisible waterproof barrier for masonry, stone, tile, plaster, and brick",
+    "advantages": ["Invisible finish", "Deep-seal protection", "Breathable barrier", "UV-stable", "Waterproof", "Anti-algae"],
+    "substrate": ["Concrete", "Stone", "Brick", "Plaster", "Tile"],
+    "recommended_uses": ["Exterior facades", "Bathrooms", "Stone walls", "Decorative tiling"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Flat | Dead flat",
+    "base_type": "Water-based",
+    "coverage_imperial": "85–110 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply in 2 coats using brush, roller, or spray. Stir well before use.",
+    "drying_time": "1 hr",
+    "recoat_time": "4 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Brush", "Roller", "Spray"],
+    "color_options": "Clear and tinted neutrals",
+    "spread_rate": "85–110 sq. ft./Ltr",
+    "preparation_instructions": "Apply on dry, masked surfaces",
+    "safety_precautions": "Wear protective gear and ventilate during use",
+    "storage_instructions": "Store away from sunlight, sealed tightly",
+    "warranty": "5 years"
+  }
+}

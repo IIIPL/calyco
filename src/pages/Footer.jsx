@@ -33,7 +33,7 @@ const GoldenDots = ({ count = 10 }) => {
 
 const Col = ({ title, children }) => (
   <div>
-    <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-white/90 mb-3 md:mb-4">
+    <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-[#F9F6F2] mb-3 md:mb-4">
       {title}
     </h4>
     <ul className="space-y-2.5 text-sm md:text-[15px]">{children}</ul>
@@ -44,7 +44,7 @@ const Item = ({ to, children }) => (
   <li>
     <Link
       to={to}
-      className="group inline-flex items-center gap-2 text-[#e5e0d8]/90 hover:text-[#F0C85A] transition-colors"
+      className="group inline-flex items-center gap-2 text-[#F9F6F2] hover:text-[#F0C85A] transition-colors"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#F0C85A] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -56,7 +56,7 @@ const Item = ({ to, children }) => (
 );
 
 export const Footer = () => (
-  <footer className="relative bg-[#23182b] text-white border-t border-[#493657]/30 overflow-hidden">
+  <footer className="relative bg-[#23182b] text-[#F9F6F2] border-t border-[#493657]/30 overflow-hidden">
     <GoldenDots />
 
     {/* TOP GRID */}
@@ -65,30 +65,29 @@ export const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/Logo.png" alt="CALYCO" className="w-12 h-12 object-contain" />
-            <span className="font-bold text-2xl tracking-wide">CALYCO</span>
+            <img src="/logowhite.png" alt="CALYCO Logo" className="w-16 object-contain" />
           </div>
-          <p className="text-sm text-[#e5e0d8]/90 max-w-xs">
+          <p className="text-sm text-[#F9F6F2] max-w-xs">
             Premium paints for beautiful, lasting spaces. Low-VOC, high-performance finishes.
           </p>
           <div className="flex gap-4 mt-5">
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaInstagram className="w-5 h-5" />
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on Instagram">
+              <FaInstagram className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaYoutube className="w-5 h-5" />
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on YouTube">
+              <FaYoutube className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaLinkedin className="w-5 h-5" />
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Follow CALYCO on LinkedIn">
+              <FaLinkedin className="w-5 h-5" aria-hidden="true" />
             </a>
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaWhatsapp className="w-5 h-5" />
+            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]" aria-label="Contact CALYCO on WhatsApp">
+              <FaWhatsapp className="w-5 h-5" aria-hidden="true" />
             </a>
           </div>
         </div>
 
         {/* Calyco */}
-        <Col title="Calyco">
+        <Col title="Quick Links">
           <Item to="/about">About Us</Item>
           <Item to="/contact">Contact Us</Item>
           <Item to="/colors">Sacred Palette</Item>
@@ -118,14 +117,14 @@ export const Footer = () => (
     </div>
 
     {/* BOTTOM BAR
-    <div className="relative z-10 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#e5e0d8]/70">
+    <div className="relative z-10 border-t border-[#F9F6F2]/10 bg-gradient-to-b from-[#F9F6F2]/[0.03] to-transparent">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#F9F6F2]">
         <p>© {new Date().getFullYear()} CALYCO Paints. All rights reserved.</p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link to="/policies/privacy" className="hover:text-[#F0C85A]">Privacy</Link>
-          <Link to="/policies/terms" className="hover:text-[#F0C85A]">Terms</Link>
-          <Link to="/accessibility" className="hover:text-[#F0C85A]">Accessibility</Link>
-          <Link to="/policies" className="hover:text-[#F0C85A]">All Policies</Link>
+          <Link to="/policies/privacy" className="hover:text-[#F0C85A] text-[#F9F6F2]">Privacy</Link>
+          <Link to="/policies/terms" className="hover:text-[#F0C85A] text-[#F9F6F2]">Terms</Link>
+          <Link to="/accessibility" className="hover:text-[#F0C85A] text-[#F9F6F2]">Accessibility</Link>
+          <Link to="/policies" className="hover:text-[#F0C85A] text-[#F9F6F2]">All Policies</Link>
         </div>
       </div>
     </div> */}

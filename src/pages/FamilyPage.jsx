@@ -6,6 +6,8 @@ import ColorBox from '../components/ColorComponents/ColorBox';
 import { InspirationCard } from '../components/ColorComponents/Inspiration';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer"; // add import
+import FamilyNavigator from '../components/ColorComponents/FamilyNavigator';
+import { BuyNowDrawer } from '../components/BuyNowDrawer';
 
 
 const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
@@ -18,6 +20,12 @@ const FamilyColorPage = () => {
   const navigate = useNavigate();
   const family = unslugify(familyName);
   const familyHeading = formatCaps(family);
+  useEffect(() => {
+    if (familyHeading) {
+      document.title = `${familyHeading} Paint Colors | Calyco Paints`;
+    }
+  }, [familyHeading]);
+  
   const btnRefs = useRef({});
   const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0 });
 
@@ -28,6 +36,10 @@ const FamilyColorPage = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const inlineBarRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(null);
+
+  // Drawer state for ColorBox cart functionality
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
 
 
   const familyColors = flatColors.filter((c) => c.color_family === family);
@@ -217,6 +229,7 @@ useEffect(() => {
       {/* Heading */}
       <div className="mb-12 px-6 md:px-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-2">{familyHeading} Paint Colors</h1>
+        <FamilyNavigator />
         <p className="text-md text-gray-700">Explore a range of {familyHeading} paint colors to find the perfect shade for your space.</p>
       </div>
 
@@ -341,7 +354,15 @@ useEffect(() => {
       {/* Color Grid */}
       <section ref={colorGridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto">
         {filteredColors.map((color, idx) => (
-          <ColorBox key={idx} color={color} familyName={familyName} />
+          <ColorBox 
+            key={idx} 
+            color={color} 
+            familyName={familyName}
+            onOpenDrawer={(colorPayload) => {
+              setSelectedColor(colorPayload);
+              setDrawerOpen(true);
+            }}
+          />
         ))}
       </section>
 
@@ -362,6 +383,13 @@ useEffect(() => {
       <div className="px-6 md:px-12">
         <ColorDisclaimer variant="short" />
       </div>
+
+      {/* Buy Now Drawer for ColorBox cart functionality */}
+      <BuyNowDrawer
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        currentColor={selectedColor || { name: "", hex: "#ffffff", description: "" }}
+      />
     </div>
   );
 };

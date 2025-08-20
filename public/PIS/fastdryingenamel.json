@@ -1,0 +1,157 @@
+{
+  "product_name": "Fast Drying Enamel",
+  "brand": "Calyco",
+  "type": "Enamel",
+  "sheet_title": "Fast Drying Enamel",
+  "pis_title": "Fast Drying Enamel – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "Fast Drying Enamel, Fast Drying, High Gloss",
+    "premium": "Glossy resistant | Long-term barrier | Chemical safe",
+    "title2": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance."
+  },
+
+  "icons": {
+    "main": ["Fast Drying", "High Gloss", "Chemical Resistant"],
+    "minor": ["Automotive-grade", "Fast cure", "Durable gloss finish"],
+    "extra": ["Low VOC", "Water Based"]
+  },
+
+  "product_overview": "Industrial fast-drying enamel with high gloss, excellent mechanical strength, and chemical resistance.",
+  "short_description": "Fast-drying, high-gloss black enamel for metal surfaces.",
+  "positioning": "Fast Drying Enamel cures fast, resists chemicals, and gives a clean, glossy metal finish.",
+
+  "key_features": [
+    "High-gloss durable finish",
+    "Fast drying time for industrial use",
+    "Chemical and abrasion resistant",
+    "Excellent adhesion to metal substrates",
+    "Low VOC, water-based eco-safe formulation",
+    "Suitable for automotive-grade finishes"
+  ],
+
+  "features_benefits": [
+    { "feature": "Fast Drying", "benefit": "Saves application time in industrial environments" },
+    { "feature": "High Gloss", "benefit": "Provides a premium glossy finish for metal surfaces" },
+    { "feature": "Chemical Resistant", "benefit": "Withstands exposure to oils, fuels, and solvents" },
+    { "feature": "Strong Adhesion", "benefit": "Excellent bonding to automotive and industrial metals" },
+    { "feature": "Eco-Friendly", "benefit": "Water-based, low VOC formula safe for workers and the environment" }
+  ],
+
+  "recommended_use": {
+    "intro": "Designed for heavy-duty automotive and industrial applications.",
+    "items": ["Automotive panels", "Fenders", "Transport equipment", "Defense vehicles"]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Prep",
+      "product": "Fast Drying Enamel",
+      "purpose": "Remove grease, chalk, and dust; sand lightly before painting"
+    },
+    {
+      "step": 2,
+      "label": "First Coat",
+      "product": "Fast Drying Enamel",
+      "purpose": "Apply evenly with brush, roller, or spray"
+    }
+  ],
+
+  "application_tools": ["Brush", "Roller", "Spray"],
+
+  "timings": {
+    "surface_dry": "1 hr",
+    "recoat": "2–3 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "90–110 sq. ft./Ltr",
+  "finish": "Gloss",
+  "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Water-based acrylic primer with strong adhesion and alkali resistance",
+    "Sheen Level": "Gloss",
+    "Colours": "Base white",
+    "Theoretical Coverage": "90–110 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "5 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Metal", "description": "Automotive panels, transport equipment, defense vehicles" }
+  ],
+
+  "surface_preparation": [
+    "Remove chalk, dust, and grease before use",
+    "Sand lightly to improve adhesion"
+  ],
+
+  "application": [
+    "Apply evenly with brush, roller, or spray",
+    "1 coat is sufficient for durable finish",
+    "Ensure well-ventilated area during use"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Not Recommended For": "Unclean or damp substrates"
+  },
+
+  "storage_safety": [
+    "Store away from frost",
+    "Seal container tightly",
+    "Keep in a cool, dry place"
+  ],
+
+  "safety_first_aid": {
+    "General": "Use gloves and work in a ventilated area",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse immediately with clean water",
+    "Inhalation": "Use in ventilated spaces to avoid vapors"
+  },
+
+  "environmental_commitment": "Eco-conscious enamel solution with low VOC, fast curing, and water-based formulation.",
+
+  "commerce": {
+    "name": "Fast Drying Enamel",
+    "category": "Enamel",
+    "price_inr": 375,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "Calyco",
+    "product_number": "PRIMEDEF"
+  },
+
+  "usage": {
+    "application": "Protective fast-drying enamel coating for automotive and industrial metals",
+    "advantages": ["Fast drying", "High gloss", "Chemical resistance", "Durable adhesion"],
+    "substrate": ["Metal"],
+    "recommended_uses": ["Automotive panels", "Fenders", "Transport equipment", "Defense vehicles"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Gloss",
+    "base_type": "Water-based",
+    "coverage_imperial": "90–110 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Use brush, roller, or spray. Sand lightly before painting.",
+    "drying_time": "1 hr",
+    "recoat_time": "2–3 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "1 coat",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Brush", "Roller", "Spray"],
+    "color_options": "Base white",
+    "spread_rate": "90–110 sq. ft./Ltr",
+    "preparation_instructions": "Remove chalk, dust, and grease before use",
+    "safety_precautions": "Use gloves and ventilated area needed",
+    "storage_instructions": "Store away from frost; seal well",
+    "warranty": "5 years"
+  }
+}

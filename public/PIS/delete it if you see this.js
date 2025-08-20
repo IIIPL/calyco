@@ -1,0 +1,74 @@
+nova backup PIS: 
+{
+  "sheet_title": "Calyco NOVA – Interior Latex Paint",
+  "pis_title": "Interior Latex Paint– Product Information Sheet (PIS)",
+  "product_overview": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",
+  "key_features": [
+    "📐 High Coverage",
+    "🧼 Easy to Wash",
+    "🧲 Superior Adhesion",
+    "🌍 Multi-Surface Application: Works across Drywall, Plaster, Wood, Masonry, Metal"
+  ],
+  "recommended_use": {
+    "intro": "Perfect for interior and exterior applications, including:",
+    "items": [
+      "Ideal for plaster, POP, and drywall walls and ceilings"
+    ]
+  },
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Primer (if required)",
+      "product": "Substrate-appropriate primer",
+      "purpose": "Ensures optimal adhesion and corrosion resistance for metals."
+    },
+    {
+      "step": 2,
+      "label": "Base Coat",
+      "product": "Calyco NOVA – Interior Latex Paint (1st coat)",
+      "purpose": "Penetrates and seals substrate."
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "Calyco NOVA – Interior Latex Paint (2nd coat)",
+      "purpose": "Builds final protective layer for durability."
+    }
+  ],
+  "application_tools": [
+    "Brush",
+    "roller",
+    "spray"
+  ],
+  "timings": {
+    "touch_dry": "1 hr",
+    "recoat": "2–4 hrs"
+  },
+  "coverage": "100–120 sq. ft./Ltr per coat",
+  "finish": "Soft sheen | Matte",
+  "thinner": "Thinner: Clean potable water (max 10% dilution if required)",
+  "technical_data": {
+    "Sheen Level": "Soft sheen | Matte",
+    "VOC Content": "Low VOC",
+    "Shelf Life": "5 years"
+  },
+  "surface_preparation": [
+    "Ensure surface is clean and dry",
+    "Sand wood lightly in the grain direction.",
+    "Remove rust from metal; prime if required.",
+    "For masonry/concrete, cure fully and remove efflorescence before application."
+  ],
+  "application": [
+    "Brush or roller recommended. Avoid over-thinning."
+  ],
+  "available_sizes": "1L, 4L, 10L",
+  "storage_safety": [
+    "Keep in cool place",
+    "tightly sealed",
+    "Use gloves; ventilate workspace",
+    "Use PPE (gloves, mask, goggles) during application.",
+    "Keep out of reach of children.",
+    "Avoid inhalation of mist; ventilate during use.",
+    "In case of eye contact, rinse immediately with clean water."
+  ]
+}

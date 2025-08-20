@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Safety Data Sheet (SDS) • CALYCO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111; --mut:#586174; --line:#e5e7eb; --head:#0b1320; --note:#6b7280;
+    --purple:#5a3ea6; --teal:#126b6b; --gold:#b08d2b;
+    --chip:#f1f5f9; --chipText:#0f172a; --bg:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0; color:var(--ink); background:var(--bg); font:14px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .container{max-width:1000px; margin:0 auto; padding:28px 18px}
+  header{margin-bottom:16px; text-align:center}
+  h1{font-size:28px; margin:0 0 4px; color:var(--head); letter-spacing:.2px}
+  .kicker{margin:0 0 18px; color:var(--mut)}
+  .btn-print{float:right; border:1px solid var(--line); background:#fafafa; padding:6px 10px; border-radius:6px; cursor:pointer}
+  .section{margin:22px 0}
+  .section h2{font-size:16px; margin:0 0 10px; color:#fff; text-align:center}
+  p{margin:0 0 10px}
+  ul{margin:6px 0 0 18px}
+  .note{color:var(--note); font-size:12px; margin-top:6px; text-align:center}
+
+  /* Card */
+  .card{border:1px solid var(--line); border-radius:6px; padding:12px; background:#fff; margin:0 0 18px}
+  .card .head{padding:10px 12px; margin:-12px -12px 10px; color:#fff; font-weight:700; text-align:center; text-transform:uppercase; letter-spacing:.2px; background:var(--purple); border-bottom:1px solid rgba(0,0,0,.06); border-top-left-radius:6px; border-top-right-radius:6px}
+
+  /* Table block */
+  .tbl{margin:0 0 18px; border:1px solid var(--line); border-radius:6px; overflow:hidden; background:#fff}
+  .tbl-head{padding:10px 12px; color:#fff; font-weight:700; letter-spacing:.2px; text-transform:uppercase; text-align:center; background:var(--teal)}
+  table{width:100%; border-collapse:collapse; background:#fff}
+  th,td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top}
+  th{width:34%; text-align:left; background:#f7f7f7; font-weight:600}
+
+  .pill{display:inline-block; padding:4px 8px; border-radius:999px; background:var(--chip); color:var(--chipText); border:1px solid var(--line); font-size:12px}
+
+  /* Precautionary table column widths */
+#precautionary { table-layout: fixed; }  /* helps widths stick */
+#precautionary th:first-child,
+#precautionary td:first-child { width:22%; }
+
+#precautionary th:nth-child(2),
+#precautionary td:nth-child(2) { width:78%; }
+
+
+/* Precautionary table column widths */
+#ecppTable { table-layout: fixed; }  /* helps widths stick */
+#ecppTable th:first-child,
+#ecppTable td:first-child { width:22%; }
+
+#ecppTable th:nth-child(2),
+#ecppTable td:nth-child(2) { width:78%; }
+
+/* First-Aid tables: tighter first column */
+#firstAidKey, #firstAidRoutes { table-layout: fixed; }
+#firstAidKey th,    #firstAidRoutes th    { width: 28%; }
+#firstAidKey td ul { margin: 6px 0 0 18px; }
+
+
+  
+
+  /* Helper grid for paired cards */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  @media (max-width: 720px){ .grid-2{grid-template-columns:1fr} }
+
+  /* KEY:VALUE mini-cards (used in First-Aid, Fire-Fighting, Spill, H&S) */
+  .kv{display:grid; grid-template-columns:180px 1fr; gap:8px 12px; align-items:start}
+  .kv .k{font-weight:700; color:var(--head); text-transform:uppercase; letter-spacing:.02em}
+  .kv .v{color:var(--ink)}
+  .kv ul{margin:6px 0 0 18px}
+
+  @media print{
+    .btn-print{display:none}
+    body{color:#000}
+    a[href]:after{content:""}
+  }
+</style>
+</head>
+<body>
+<main class="container">
+  <button class="btn-print" onclick="window.print()">Print</button>
+  <header>
+    <h1 id="title">Safety Data Sheet (SDS)</h1>
+    <div class="kicker" id="subtitle">CALYCO • Revision: <span id="rev">—</span></div>
+  </header>
+
+  <!-- STATIC/HARDCODED INTRO -->
+  <section class="section">
+    <div class="card">
+      <div class="head" style="background:var(--gold)">Document Overview</div>
+      <p>This Safety Data Sheet provides essential information for safe handling, use, and disposal of the listed CALYCO product.</p>
+    </div>
+  </section>
+
+  <!-- DYNAMIC 1: PRODUCT INFORMATION -->
+  <section class="section" id="sec1">
+    <div class="tbl">
+      <div class="tbl-head">Product Information</div>
+      <table>
+        <tr><th>Product Name</th><td id="pname">Loading…</td></tr>
+        <tr><th>Product Class</th><td id="pclass">Loading…</td></tr>
+        <tr><th>Intended End Use</th><td id="penduse">Loading…</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- HAZARDS IDENTIFICATION (unchanged) -->
+  <section class="section" id="hazards">
+    <div class="card">
+      <div class="head">Hazards Identification</div>
+      <div class="grid-2">
+        <div>
+          <h3 style="margin-top:0">GHS Classification</h3>
+          <ul>
+            <li><strong>Acute Toxicity, Oral (Category 4)</strong></li>
+            <li><strong>Specific Target Organ Toxicity – Repeated Exposure – Kidney (Category 4)</strong></li>
+            <li><strong>Eye Irritation (Category 2A)</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-top:0">Signal Word</h3>
+          <p><span class="pill">WARNING</span></p>
+        </div>
+      </div>
+
+      <h3>Hazard Statements</h3>
+      <ul>
+        <li>Harmful if swallowed.</li>
+        <li>May cause damage to organs (Kidney) through prolonged or repeated exposure.</li>
+        <li>May cause serious eye irritation.</li>
+      </ul>
+
+      <div class="tbl" style="margin-top:12px">
+        <div class="tbl-head">Precautionary Statements</div>
+        <table id="precautionary">
+          <thead>
+            <tr><th>Category</th><th>Statements</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Prevention</th>
+              <td>
+                <ul>
+                  <li>Do not breathe mists or vapors.</li>
+                  <li>Wash skin thoroughly after handling.</li>
+                  <li>Do not eat, drink or smoke when using this product.</li>
+                  <li>Wear eye/face protection.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Response</th>
+              <td>
+                <ul>
+                  <li>If SWALLOWED, call a poison centre/doctor if you feel unwell.</li>
+                  <li>Get medical advice/attention if you feel unwell.</li>
+                  <li>IF IN EYES, rinse cautiously with water for several minutes. Remove contact lenses if present and easy to do. Continue rinsing.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr><th>Storage</th><td><ul><li>Not applicable.</li></ul></td></tr>
+            <tr><th>Disposal</th><td><ul><li>Dispose of contents/container to an approved waste disposal plant.</li></ul></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Other Information</h3>
+      <p><strong>Hazards Not Otherwise Classified:</strong> None known.</p>
+      <p><strong>Supplemental Information:</strong> If the product is in liquid or paste form, hazards related to dust are not considered significant. Products may contain substances that could be potential hazards if caused to become airborne due to abrasive processing.</p>
+    </div>
+  </section>
+
+  
+  <!-- DYNAMIC 3: PROPERTIES -->
+  <section class="section" id="sec3">
+    <div class="tbl">
+      <div class="tbl-head">Properties</div>
+      <table id="props">
+        <tr><td style="text-align:center; padding:18px">Loading…</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- FIRST-AID MEASURES (already key:value style) -->
+  <section class="section" id="first-aid">
+    <div class="tbl">
+      <div class="tbl-head">First-Aid Measures</div>
+      <table id="firstAidKey">
+        <tbody>
+          <tr>
+            <th>Most Important Symptoms</th>
+            <td>
+              <ul><li>Refer to Hazards section or labels for symptoms.</li></ul>
+            </td>
+          </tr>
+          <tr>
+            <th>Immediate Medical Attention</th>
+            <td><strong>Treat symptomatically.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="tbl" style="margin-top:14px">
+      <div class="tbl-head">First-Aid Instructions (By Exposure Route)</div>
+      <table id="firstAidRoutes">
+        <tbody>
+          <tr>
+            <th>General Advice</th>
+            <td>Show this Safety Data Sheet to the doctor in attendance.</td>
+          </tr>
+          <tr>
+            <th>Eye Contact</th>
+            <td>Rinse cautiously with water for several minutes. Remove contact lenses if present and easy to do. Continue rinsing. Call an ophthalmologist.</td>
+          </tr>
+          <tr>
+            <th>Skin Contact</th>
+            <td>Remove contaminated clothing. Rinse skin with water/shower.</td>
+          </tr>
+          <tr>
+            <th>Inhalation</th>
+            <td>Move to fresh air. Call a physician if symptoms persist.</td>
+          </tr>
+          <tr>
+            <th>Ingestion</th>
+            <td>Rinse mouth. Do not induce vomiting. Make the victim drink water (two glasses max). Consult a physician/poison centre if unwell.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  
+
+  <!-- FIRE-FIGHTING MEASURES — converted to key:value boxes -->
+  <section class="section" id="fire-fighting">
+    <div class="card">
+      <div class="head">Fire-Fighting Measures</div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Suitable Extinguishing Media</div>
+          <div class="v">
+            <ul>
+              <li><strong>Water fog</strong></li>
+              <li><strong>Dry chemical</strong></li>
+              <li><strong>Foam</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Unsuitable Media</div>
+          <div class="v">Do not use heavy water streams as it may spread and scatter product.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Specific Hazards</div>
+          <div class="v">Product itself is non-flammable and non-combustible; however, it may contribute fuel to fire under very high temperatures.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Protective Equipment</div>
+          <div class="v">Wear self-contained breathing apparatus (SCBA) and fire-protective clothing. Use water spray to cool fire-exposed containers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCIDENTAL RELEASE — converted to key:value boxes -->
+  <section class="section" id="spill">
+    <div class="card">
+      <div class="head">Accidental Release Measures</div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Personal Precautions</div>
+          <div class="v">Wear protective equipment: goggles, chemically resistant clothing and gloves; appropriate respirator if in confined area. Provide ventilation.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Environmental Precautions</div>
+          <div class="v">Prevent runoff into drains, sewers, and other waterways.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Cleanup Methods</div>
+          <div class="v">Absorb small spills with clay, diatomaceous earth, or other inert absorbent. Store in closed containers. Large spills may be pumped into closed containers for recovery/disposal.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDLING & STORAGE — converted to key:value boxes -->
+  <section class="section" id="handling-storage">
+    <div class="card">
+      <div class="head">Handling & Storage</div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Safe Handling</div>
+          <div class="v">Handle as an industrial chemical. Keep containers tightly closed. Wash hands before eating or drinking.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kv">
+          <div class="k">Storage Conditions</div>
+          <div class="v">Keep container tightly closed. Store in a cool, dry, well-ventilated area.</div>
+        </div>
+        <div class="kv" style="margin-top:8px">
+          <div class="k">Incompatibles</div>
+          <div class="v">No data available.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPOSURE CONTROLS / PERSONAL PROTECTION -->
+  <section class="section" id="ecpp">
+    <div class="tbl">
+      <div class="tbl-head">Exposure Controls / Personal Protection</div>
+      <table id="ecppTable">
+        <thead>
+          <tr><th>Control/Item</th><th>Guidance</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Engineering Controls</th><td>Use local exhaust if general ventilation is inadequate. Provide safety shower and eyewash.</td></tr>
+          <tr><th>Eye Protection</th><td>CSA-approved safety glasses, goggles, or face shield.</td></tr>
+          <tr><th>Hand/Skin Protection</th><td>Protective apparel and impervious gloves (nitrile or neoprene).</td></tr>
+          <tr><th>Respiratory Protection</th><td>NIOSH-approved respirator with organic vapor cartridge if exposure cannot be controlled.</td></tr>
+          <tr><th>Hygiene Measures</th><td>Follow good industrial hygiene practices. Wash hands before breaks and at end of workday.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STABILITY & REACTIVITY -->
+  <section class="section" id="stability">
+    <div class="card">
+      <div class="head">Stability & Reactivity</div>
+      <table>
+        <tr><th>Stability</th><td>Stable at normal usage.</td></tr>
+        <tr><th>Hazardous Reactions</th><td>None under normal use.</td></tr>
+        <tr><th>Conditions to Avoid</th><td>Data not available.</td></tr>
+        <tr><th>Incompatible Materials</th><td>Data not available.</td></tr>
+        <tr><th>Hazardous Decomposition Products</th><td>No hazardous decomposition under normal use.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- TOXICOLOGICAL INFORMATION -->
+  <section class="section" id="toxicology">
+    <div class="card">
+      <div class="head">Toxicological Information</div>
+      <table>
+        <tr><th>Acute Toxicity</th><td>LD50 Oral 500 mg/kg (rat).</td></tr>
+        <tr><th>STOT — Repeated Exposure</th><td>Oral – may cause kidney damage through prolonged exposure.</td></tr>
+        <tr><th>Eye Irritation</th><td>Causes serious eye irritation (Rabbit test – OECD TG 405).</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ECOLOGICAL INFORMATION -->
+  <section class="section" id="eco">
+    <div class="card">
+      <div class="head">Ecological Information</div>
+      <table>
+        <tr><th>Ecotoxicity</th><td>Environmental hazard possible if mishandled.</td></tr>
+        <tr><th>VOC (grams/litre)</th><td>10–20 g/L.</td></tr>
+        <tr><th>Persistence and Degradability</th><td>No test data.</td></tr>
+        <tr><th>Bioaccumulative Potential</th><td>No test data.</td></tr>
+        <tr><th>Mobility in Soil</th><td>No test data.</td></tr>
+        <tr><th>Other Adverse Environmental Effects</th><td>None known.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- DYNAMIC 2: COMPONENTS -->
+  <section class="section" id="sec2">
+    <div class="tbl">
+      <div class="tbl-head">Components</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Synonym</th>
+            <th>Classification</th>
+            <th>Concentration</th>
+          </tr>
+        </thead>
+        <tbody id="components">
+          <tr><td colspan="3">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- DISPOSAL -->
+  <section class="section">
+    <div class="card">
+      <div class="head">Disposal Considerations</div>
+      <table>
+        <tr><th>Handling for Disposal</th><td>Follow industrial hygiene and safety practices.</td></tr>
+        <tr><th>Methods of Disposal</th><td>Dispose in compliance with federal, state/provincial, and local regulations.</td></tr>
+        <tr><th>RCRA</th><td>If waste, may meet hazardous waste criteria under RCRA. Do not incinerate closed containers.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="head">Disposal (General)</div>
+      <p>Dispose of contents/container in accordance with local/regional/national regulations. Do not discharge into drains or the environment.</p>
+    </div>
+    <p class="note">© 2025 CALYCO • This simplified SDS is provided for convenience and does not replace regulatory-compliant documentation where required.</p>
+  </section>
+</main>
+
+<script>
+  // ---------- helpers ----------
+  const esc = x => x==null ? "" : String(x).replace(/[&<>\"']/g, m => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+  }[m]));
+  const labelize = k => String(k||"").replace(/_/g," ").replace(/\b\w/g, m => m.toUpperCase());
+  function row(k,v){ return `<tr><th>${esc(labelize(k))}</th><td>${esc(v==null?"":v)}</td></tr>`; }
+
+  function renderComponents(list){
+    if(!Array.isArray(list) || !list.length){
+      return `<tr><td colspan="3">No components data available</td></tr>`;
+    }
+    return list.map(c => `
+      <tr>
+        <td>${esc(c.synonym||"")}</td>
+        <td>${esc(c.classification||"")}</td>
+        <td>${esc(c.concentration||"")}</td>
+      </tr>
+    `).join("");
+  }
+
+  function renderProperties(obj){
+    if(!obj || !Object.keys(obj).length){
+      return `<tr><td style="text-align:center; padding:18px">No properties data available</td></tr>`;
+    }
+    const kv = Object.entries(obj).map(([k,v]) => row(k,v)).join("");
+    return `<tbody>${kv}</tbody>`;
+  }
+
+  // ---------- boot ----------
+  (async function(){
+    const params = new URLSearchParams(location.search);
+    const src = params.get("src");
+    const $rev = document.getElementById("rev");
+    $rev.textContent = new Date().toISOString().slice(0,10);
+
+    if(!src){
+      document.getElementById("pname").textContent = "Missing JSON data source (?src=...)";
+      document.getElementById("pclass").textContent = "—";
+      document.getElementById("penduse").textContent = "—";
+      document.getElementById("components").innerHTML = `<tr><td colspan="3">—</td></tr>`;
+      document.getElementById("props").innerHTML = `<tr><td style="text-align:center; padding:18px">—</td></tr>`;
+      return;
+    }
+
+    try{
+      const r = await fetch(src, {cache:"no-store"});
+      if(!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+
+      // Section 1
+      const s1 = data.section_1 || {};
+      document.getElementById("pname").textContent  = s1.product_name || "Not available";
+      document.getElementById("pclass").textContent = s1.product_class || "Not available";
+      document.getElementById("penduse").textContent= s1.intended_end_use || "Not available";
+      if(s1.product_name){
+        document.title = `SDS • ${s1.product_name}`;
+        document.getElementById("title").textContent = "Safety Data Sheet (SDS)";
+        document.getElementById("subtitle").innerHTML = `CALYCO • <span class="pill">${esc(s1.product_name)}</span> • Revision: <span id="rev">${esc($rev.textContent)}</span>`;
+      }
+
+      // Section 2
+      const s2 = (data.section_2 && data.section_2.components) || [];
+      document.getElementById("components").innerHTML = renderComponents(s2);
+
+      // Section 3
+      const s3 = (data.section_3 && data.section_3.properties) || {};
+      document.getElementById("props").innerHTML = renderProperties(s3);
+
+    }catch(e){
+      const msg = `Failed to load data. ${e && e.message ? e.message : ""}`;
+      document.getElementById("pname").textContent = msg;
+      document.getElementById("pclass").textContent = "Error";
+      document.getElementById("penduse").textContent= "Error";
+      document.getElementById("components").innerHTML = `<tr><td colspan="3">Error loading components</td></tr>`;
+      document.getElementById("props").innerHTML = `<tr><td style="text-align:center; padding:18px">Error loading properties</td></tr>`;
+    }
+  })();
+</script>
+</body>
+</html>

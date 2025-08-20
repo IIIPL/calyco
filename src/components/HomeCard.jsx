@@ -52,7 +52,7 @@ export const HomeCard = ({ index = 0, paintName = "paintname" }) => {
       >
         <img
           src={img}
-          alt={paintName}
+          alt={`CALYCO ${paintName} paint product`}
           className="w-full h-full object-contain hover:scale-125 transition duration-300"
         />
         <div

@@ -29,7 +29,7 @@ export const HeroSection = () => {
                 >
                     <img
                         src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754145841/CALYCO_PREMIUM_Paints__NOVA_DEFENSE_1_mymkfw.png"
-                        alt="Calyco Hero"
+                        alt="CALYCO Premium Paints — Nova and Defense paint products showcase"
                         className="w-full max-w-lg mx-auto md:mx-0 object-contain"
                     />
                 </motion.div>

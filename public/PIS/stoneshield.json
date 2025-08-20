@@ -1,0 +1,169 @@
+{
+  "product_name": "StoneShield",
+  "brand": "Calyco",
+  "type": "Masonry Sealer",
+  "sheet_title": "Breathable, No-Peeling Sealer",
+  "pis_title": "Masonry Sealer – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "StoneShield, Breathable, Anti-Algae",
+    "premium": "Anti-Algae | UV-proof | Stain + Seal",
+    "title2": "Multi-surface stain and sealer for concrete, pavers, and masonry."
+  },
+
+  "icons": {
+    "main": ["StoneShield", "Breathable", "Anti-Algae"],
+    "minor": ["UV-proof", "No Peeling", "Stain + Seal"],
+    "extra": ["Low VOC", "Water Based"]
+  },
+
+  "product_overview": "Multi-surface stain and sealer for concrete, pavers, and masonry.",
+  "short_description": "Protects, colors, and waterproofs your surfaces.",
+  "positioning": "StoneShield offers breathable protection and colour enhancement for concrete, pavers, and masonry.",
+
+  "key_features": [
+    "StoneShield Protection",
+    "Breathable",
+    "Anti-Algae",
+    "UV-Proof",
+    "No Peeling",
+    "Stain + Seal",
+    "Low VOC",
+    "Water Based"
+  ],
+
+  "features_benefits": [
+    { "feature": "Breathable Film", "benefit": "Allows moisture to escape without blistering or peeling" },
+    { "feature": "Anti-Algae", "benefit": "Prevents algae and moss growth on masonry surfaces" },
+    { "feature": "UV-Proof", "benefit": "Resists UV degradation for long-lasting colour and durability" },
+    { "feature": "Stain + Seal", "benefit": "Enhances surface colour while adding a protective seal" },
+    { "feature": "Multi-Surface Use", "benefit": "Compatible with concrete, pavers, and brick" }
+  ],
+
+  "recommended_use": {
+    "intro": "Designed for exterior and interior masonry, pavers, and concrete protection.",
+    "items": ["Stone driveways", "Basements", "Outdoor masonry", "Concrete pathways", "Brick facades"]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Prep",
+      "product": "Cleaner / Scraper",
+      "purpose": "Remove loose paint, dirt, and dust. Ensure clean, dry surface."
+    },
+    {
+      "step": 2,
+      "label": "First Coat",
+      "product": "StoneShield",
+      "purpose": "Apply evenly with roller or squeegee."
+    },
+    {
+      "step": 3,
+      "label": "Second Coat",
+      "product": "StoneShield",
+      "purpose": "Apply after 8 hrs for durable protection."
+    }
+  ],
+
+  "application_tools": ["Deck roller", "Squeegee", "Brush"],
+
+  "timings": {
+    "surface_dry": "2 hrs",
+    "recoat": "8 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "60–80 sq. ft./Ltr",
+  "finish": "Flat | Dead flat",
+  "available_sizes": "4L, 10L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Thick elastomeric deck repair coating",
+    "Sheen Level": "Flat / Dead Flat",
+    "Colours": "6 deck colours",
+    "Theoretical Coverage": "60–80 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Warranty": "4 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Concrete", "description": "Floors, slabs, and basements" },
+    { "type": "Paver", "description": "Outdoor pathways and landscaping" },
+    { "type": "Brick", "description": "Walls, facades, and stone masonry" }
+  ],
+
+  "surface_preparation": [
+    "Remove all loose paint, algae, and dust",
+    "Ensure surface is smooth and dry",
+    "Clean with water; let dry fully before sealing"
+  ],
+
+  "application": [
+    "Apply evenly using roller or squeegee",
+    "Work in thin coats to avoid pooling",
+    "2 coats recommended with 8 hrs gap"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 80% RH",
+    "Not Recommended For": "Polished stone or glossy non-porous surfaces"
+  },
+
+  "storage_safety": [
+    "Keep off floor; avoid heat",
+    "Store sealed in cool, shaded conditions",
+    "Do not expose to direct sunlight"
+  ],
+
+  "safety_first_aid": {
+    "General": "Work in ventilated area; wear gloves",
+    "Skin Contact": "Wash thoroughly with soap and water",
+    "Eye Contact": "Rinse with clean water immediately",
+    "Inhalation": "Avoid inhaling vapours; wear mask if enclosed",
+    "Fire Safety": "Keep away from ignition sources"
+  },
+
+  "environmental_commitment": "Water-based, low-VOC formula that provides long-term protection while preserving breathability of masonry surfaces.",
+
+  "commerce": {
+    "name": "StoneShield",
+    "category": "Floor Coatings",
+    "price_inr": 599,
+    "packaging": "4L, 10L",
+    "brand": "Calyco",
+    "product_number": "DEF-DECK"
+  },
+
+  "usage": {
+    "application": "Masonry sealing and concrete protection",
+    "advantages": ["Stain + Seal", "UV-proof", "Breathable", "Anti-Algae"],
+    "substrate": ["Concrete", "Paver", "Brick"],
+    "recommended_uses": ["Stone driveways", "Basements", "Outdoor masonry", "Brick facades"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Flat | Dead Flat",
+    "base_type": "Water-based",
+    "coverage_imperial": "60–80 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply with roller or squeegee. Fill cracks before coating.",
+    "drying_time": "2 hrs",
+    "recoat_time": "8 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 80% RH",
+    "tools_required": ["Deck roller", "Squeegee", "Brush"],
+    "color_options": "6 deck colours",
+    "spread_rate": "60–80 sq. ft./Ltr",
+    "preparation_instructions": "Remove loose paint and clean surfaces before application",
+    "safety_precautions": "Wear gloves; ventilate area",
+    "storage_instructions": "Keep off floor; avoid heat",
+    "warranty": "4 years"
+  }
+}

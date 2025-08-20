@@ -1,0 +1,164 @@
+{
+  "product_name": "IronShield",
+  "brand": "Calyco",
+  "type": "Metal Coating",
+  "sheet_title": "No primer needed, long-lasting",
+  "pis_title": "Metal Coating – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "IronShield, Anti-Rust, No Primer",
+    "premium": "Flexible Film | Direct-to-Metal | Easy Application",
+    "title2": "Anti-corrosive coating for direct-to-metal applications."
+  },
+
+  "icons": {
+    "main": ["IronShield", "Anti-Rust", "No Primer"],
+    "minor": ["Flexible Film", "Direct-to-Metal", "Long-Term Barrier"],
+    "extra": ["Water Based", "Low VOC"]
+  },
+
+  "product_overview": "Anti-corrosive coating for direct-to-metal applications.",
+  "short_description": "Stops rust, seals steel, and resists harsh environments.",
+  "positioning": "IronShield protects structural metal from corrosion with a flexible, industrial-grade direct-to-metal film.",
+
+  "key_features": [
+    "Anti-Rust",
+    "Flexible Film",
+    "Direct-to-Metal",
+    "Long-Term Barrier",
+    "No Primer Needed",
+    "Water Based",
+    "Low VOC"
+  ],
+
+  "features_benefits": [
+    { "feature": "Anti-Rust", "benefit": "Protects steel surfaces from corrosion" },
+    { "feature": "Flexible Film", "benefit": "Expands and contracts with metal to avoid cracks" },
+    { "feature": "Direct-to-Metal", "benefit": "No primer needed, saving time and cost" },
+    { "feature": "Long-Term Barrier", "benefit": "Durable film withstands harsh industrial environments" }
+  ],
+
+  "recommended_use": {
+    "intro": "Engineered for industrial and structural metal protection.",
+    "items": ["Steel structures", "Metal fences", "Railings", "Industrial machinery", "Outdoor steel equipment"]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Prep",
+      "product": "Cleaner / Degreaser",
+      "purpose": "Remove grease, rust, and dirt before application"
+    },
+    {
+      "step": 2,
+      "label": "First Coat",
+      "product": "IronShield",
+      "purpose": "Apply direct-to-metal for corrosion protection"
+    },
+    {
+      "step": 3,
+      "label": "Second Coat",
+      "product": "IronShield",
+      "purpose": "Reapply after 4 hrs for long-term barrier performance"
+    }
+  ],
+
+  "application_tools": ["Roller", "Spray Gun", "Brush"],
+
+  "timings": {
+    "surface_dry": "1.5 hrs",
+    "recoat": "4 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "75–100 sq. ft./Ltr",
+  "finish": "Dead Flat",
+  "available_sizes": "4L, 10L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Polyacrylic floor topcoat",
+    "Sheen Level": "Dead Flat",
+    "Colours": "Greys and neutrals",
+    "Theoretical Coverage": "75–100 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Warranty": "4 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Metal", "description": "Structural steel, fences, railings, machinery" }
+  ],
+
+  "surface_preparation": [
+    "Remove grease and oil from surface",
+    "Wire-brush loose rust and scale",
+    "Ensure substrate is dry and clean before coating"
+  ],
+
+  "application": [
+    "Apply with roller, spray gun, or brush",
+    "2 coats recommended with 4 hrs gap",
+    "Allow full drying between coats for long-term barrier"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Not Recommended For": "Unclean or unprepared metal surfaces"
+  },
+
+  "storage_safety": [
+    "Store cool, sealed, and upright",
+    "Avoid prolonged sun exposure",
+    "Keep container tightly closed when not in use"
+  ],
+
+  "safety_first_aid": {
+    "General": "Non-toxic; avoid eye contact during application",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse with water immediately",
+    "Inhalation": "Apply in ventilated areas; avoid prolonged inhalation"
+  },
+
+  "environmental_commitment": "Water-based, low-VOC, no-primer system that reduces chemical use and environmental footprint.",
+
+  "commerce": {
+    "name": "IronShield",
+    "category": "Industrial Coatings",
+    "price_inr": 599,
+    "packaging": "4L, 10L",
+    "brand": "Calyco",
+    "product_number": "IRONSHIELD"
+  },
+
+  "usage": {
+    "application": "Direct-to-metal anti-corrosive coating",
+    "advantages": ["No Primer Needed", "Anti-Rust", "Flexible Film", "Long-Term Barrier"],
+    "substrate": ["Metal"],
+    "recommended_uses": ["Steel structures", "Industrial equipment", "Railings", "Fences"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Dead Flat",
+    "base_type": "Water-based",
+    "coverage_imperial": "75–100 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Use roller or spray gun. Apply 2 coats direct-to-metal.",
+    "drying_time": "1.5 hrs",
+    "recoat_time": "4 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 75% RH",
+    "tools_required": ["Roller", "Spray Gun", "Brush"],
+    "color_options": "Greys and neutrals",
+    "spread_rate": "75–100 sq. ft./Ltr",
+    "preparation_instructions": "Remove grease and clean thoroughly",
+    "safety_precautions": "Non-toxic; avoid eye contact",
+    "storage_instructions": "Store cool; keep sealed",
+    "warranty": "4 years"
+  }
+}

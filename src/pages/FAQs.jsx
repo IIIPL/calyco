@@ -49,6 +49,9 @@ const faqData = [
 export const FAQs = () => {
     const [openIndex, setOpenIndex] = useState(false);
     const contentRefs = useRef([]);
+    useEffect(() => {
+        document.title = "Frequently Asked Questions";
+    }, []);
 
     useEffect(() => {
         contentRefs.current = contentRefs.current.slice(0, faqData.length);

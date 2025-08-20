@@ -42,6 +42,8 @@ import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
 import FamilyColorGroup from './pages/FamilyPage'
 import ColorDetailPage from './pages/ColorDetailPage'
+import ColorsSearchPage from './pages/Colors/ColorsSearchPage'
+import SimpleErrorBoundary from './components/SimpleErrorBoundary'
 
 
 // Import new providers and pages
@@ -56,14 +58,15 @@ import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
 import Privacy from "./pages/Policies/Privacy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
-// import PaymentsGst from "./pages/Policies/PaymentsGst";
+import PaymentsGst from './pages/Policies/PaymentsGST.jsx'
 import QualityPolicy from "./pages/Policies/QualityPolicy";
-// import EnvironmentSustainability from "./pages/Policies/EnvironmentSustainability";
+import EnvironmentalSustainability from './pages/Policies/EnvironmentSustainability.jsx'
 import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
 import ShippingDelivery from "./pages/Policies/ShippingDelivery";
 import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
 import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
 import CustomerService from "./pages/Policies/CustomerService";
+import ToastHost from './ui/ToastHost.jsx'
 
 // Import motion for animations
 import { motion } from "framer-motion";
@@ -148,6 +151,7 @@ function App() {
               <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
               <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
               <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
+              <Route path="/colors/search" element={<SimpleErrorBoundary><ColorsSearchPage /></SimpleErrorBoundary>} />
               <Route path='/inspirations' element={<InspirationPage/>}/>
               <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
               <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
@@ -172,19 +176,22 @@ function App() {
               <Route path="/policies" element={<PoliciesIndex />} />
               <Route path="/policies/privacy" element={<Privacy />} />
               <Route path="/policies/terms" element={<TermsAndConditions />} />
-              {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
+              <Route path="/policies/payments-gst" element={<PaymentsGst />} />
               <Route path="/policies/quality" element={<QualityPolicy />} />
-              {/* <Route path="/policies/environment" element={< />} /> */}
+              <Route path="/policies/environment" element={<EnvironmentalSustainability />} />
               <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
               <Route path="/policies/shipping" element={<ShippingDelivery />} />
               <Route path="/policies/returns" element={<ReturnsRefunds />} />
               <Route path="/policies/warranty" element={<WarrantyPolicy />} />
               <Route path="/customer-service" element={<CustomerService />} />
 
+              {/* Toaster */}
+
               {/* 404 Fallback Route */}
               <Route path="*" element={<NotFound/>}/>
             </Routes>
             </React.Suspense>
+            <ToastHost />
             <Footer/>
           </div>
         </div>

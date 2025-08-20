@@ -13,7 +13,7 @@ const ColorAdviceCard = ({ section, onClick }) => {
       <div className="aspect-[16/9] overflow-hidden">
         <img
           src={section.image}
-          alt={section.title}
+          alt={`${section.title} color advice and inspiration`}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>

@@ -1,43 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
-// Constants
-const SAMPLE_PRICE = "₹99";
-const BEST_SELLERS = { "lavender": true, "sage-green": true };
-
-// Calyco Sacred Palette - 8 core colors
-const CALYCO_PALETTE = [
-  { name: "Grey Thunder", hex: "#4A5568", family: "Greys", mood: "Sophisticated", slug: "grey-thunder", rooms: ["Living Room", "Office", "Bedroom"] },
-  { name: "Grey Mist", hex: "#A0AEC0", family: "Greys", mood: "Calm", slug: "grey-mist", rooms: ["Bedroom", "Bathroom", "Living Room"] },
-  { name: "Barn Red", hex: "#C53030", family: "Reds", mood: "Energetic", slug: "barn-red", rooms: ["Kitchen", "Dining Room", "Accent Wall"] },
-  { name: "Lavender", hex: "#B794F4", family: "Purples", mood: "Serene", slug: "lavender", rooms: ["Bedroom", "Bathroom", "Nursery"] },
-  { name: "Lilac", hex: "#D6BCFA", family: "Purples", mood: "Playful", slug: "lilac", rooms: ["Bedroom", "Living Room", "Kids Room"] },
-  { name: "Linen", hex: "#EFE8DA", family: "Neutrals", mood: "Clean", slug: "linen", rooms: ["All Rooms", "Living Room", "Bedroom"] },
-  { name: "Sage Green", hex: "#68D391", family: "Greens", mood: "Fresh", slug: "sage-green", rooms: ["Kitchen", "Bathroom", "Living Room"] },
-  { name: "Purple", hex: "#6B46C1", family: "Purples", mood: "Bold", slug: "purple", rooms: ["Accent Wall", "Bedroom", "Office"] }
-];
-
-// Room categories
-const ROOM_CATEGORIES = [
-  { name: "Bedroom", image: "/Assets/Rooms/Bedroom/base.jpg", slug: "bedroom" },
-  { name: "Living Room", image: "/Assets/Rooms/LivingRoom/base.jpg", slug: "living-room" },
-  { name: "Dining Room", image: "/Assets/Rooms/DiningRoom/base.jpg", slug: "dining-room" },
-  { name: "Kitchen", image: "/Assets/Rooms/DiningRoom/base.jpg", slug: "kitchen" },
-  { name: "Bathroom", image: "/Assets/Rooms/Bedroom/base.jpg", slug: "bathroom" },
-  { name: "All Rooms", image: "/Assets/color-banner.png", slug: "all-rooms" }
-];
-
-// Mood categories
-const MOOD_CATEGORIES = [
-  { name: "Calm", gradient: "from-blue-100 to-purple-100", slug: "calm" },
-  { name: "Cozy", gradient: "from-amber-100 to-brown-100", slug: "cozy" },
-  { name: "Energetic", gradient: "from-red-100 to-orange-100", slug: "energetic" },
-  { name: "Playful", gradient: "from-pink-100 to-purple-100", slug: "playful" }
-];
-
-// Family categories
-const FAMILY_CATEGORIES = ["Greys", "Purples", "Reds", "Greens", "Neutrals"];
+import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -377,105 +341,31 @@ export default function ColorsPage() {
                   </svg>
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Shop by Room Band */}
-      <section className="py-8 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Shop by Room</h3>
-          <div className="flex gap-4 overflow-x-auto pb-4">
-            {ROOM_CATEGORIES.map((room) => (
-              <button
-                key={room.slug}
-                onClick={() => handleRoomSelect(room.slug)}
-                className="flex-shrink-0 w-48 rounded-xl overflow-hidden aspect-[4/3] group relative"
-              >
+            </motion.div>
+            
+            {/* Enhanced Image Section */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <img
-                  src={room.image}
-                  alt={room.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="/Assets/color-banner.png"
+                  className="w-full h-auto object-cover"
+                  alt="Calyco Paint Collection"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                <div className="absolute bottom-2 left-2 right-2">
-                  <p className="text-white text-sm font-medium">{room.name}</p>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sticky Discovery Toolbar */}
-      <div className="sticky top-20 z-30 bg-white border-b border-gray-200 py-6 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <p className="text-sm font-medium text-gray-700 mb-4">Filter by</p>
-          
-          <div className="flex justify-center mb-6">
-            <div className="bg-gray-100 rounded-xl p-1 flex">
-              {[
-                { id: "color", label: "Shop by Color" },
-                { id: "room", label: "Shop by Room" },
-                { id: "mood", label: "Shop by Mood" }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                    activeTab === tab.id
-                      ? "bg-white text-purple-600 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {activeTab === "color" && (
-              <motion.div
-                key="color"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="space-y-4"
-              >
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {FAMILY_CATEGORIES.map((family) => (
-                  <button 
-                      key={family}
-                      onClick={() => setFilters(prev => ({ ...prev, family: prev.family === family ? null : family }))}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex-shrink-0 ${
-                    filters.family === family
-                      ? "bg-calyco-purple text-white"
-                      : "bg-grey-mist text-grey-thunder hover:bg-grey-thunder hover:text-white"
-                  }`}
-                    >
-                      {family}
-                  </button>
-                  ))}
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                 
-                <div className="flex gap-4">
-                  <input
-                    type="text"
-                    placeholder="Search colours or hex..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 px-4 py-2 border border-grey-mist rounded-lg focus:ring-2 focus:ring-calyco-purple focus:border-transparent"
-                  />
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                    className="px-4 py-2 border border-grey-mist rounded-lg focus:ring-2 focus:ring-calyco-purple focus:border-transparent"
-                  >
-                    <option value="a-z">A–Z</option>
-                    <option value="popular">Popular</option>
-                  </select>
+                {/* Color Palette Overlay */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex gap-2 justify-center">
+                    <div className="w-8 h-8 rounded-full bg-[#F0C85A] border-2 border-white shadow-lg"></div>
+                    <div className="w-8 h-8 rounded-full bg-[#493657] border-2 border-white shadow-lg"></div>
+                    <div className="w-8 h-8 rounded-full bg-[#E6B84A] border-2 border-white shadow-lg"></div>
+                    <div className="w-8 h-8 rounded-full bg-[#5a4067] border-2 border-white shadow-lg"></div>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -647,37 +537,13 @@ export default function ColorsPage() {
       <div className="bg-white">
         <PopularCarousel />
         </div>
+        <ColorExplore/>
         
-      {/* Help Button */}
-      <div className="fixed bottom-6 left-6 z-40">
-        <button className="bg-white shadow-lg rounded-full p-3 hover:shadow-xl transition-shadow border border-gray-200">
-          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </button>
+        {/* Filter Bar */}
+        
+       
+       
       </div>
-
-      {/* Color Modal */}
-      <ColorModal />
-
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "Calyco Sacred Palette",
-            "description": "8 eco-premium paint colors",
-            "hasPart": CALYCO_PALETTE.map(color => ({
-              "@type": "Product",
-              "name": color.name,
-              "color": color.hex,
-              "category": color.family
-            }))
-          })
-        }}
-      />
     </div>
   );
 }

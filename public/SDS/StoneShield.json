@@ -1,0 +1,42 @@
+{
+  "section_1": {
+    "product_name": "StoneShield",
+    "product_class": "Masonry Sealer",
+    "intended_end_use": "Masonry sealing and concrete protection – best for stone driveways, basements, and outdoor masonry"
+  },
+  "section_2": {
+    "components": [
+      {
+        "synonym": "Water-based acrylic masonry sealer",
+        "classification": "Not classified as hazardous (consumer masonry sealer)",
+        "concentration": "Proprietary blend"
+      }
+    ]
+  },
+  "section_3": {
+    "properties": {
+      "appearance": "Flat / dead flat sealer finish",
+      "color": "6 deck colours",
+      "odor": "Low odor, low-VOC",
+      "ph": "8–9",
+      "voc_content_g_per_l": "Low VOC",
+      "density_g_per_ml": "1.3–1.4",
+      "specific_gravity": "1.35",
+      "viscosity_cP": "3500–5000",
+      "solids_by_volume_percent": "40–45",
+      "flash_point_c": "Not applicable (water-based)",
+      "boiling_point_c": "100",
+      "melting_point_c": "Not applicable",
+      "evaporation_rate": "Similar to water",
+      "vapor_pressure_kPa": "2.3 (water at 20°C)",
+      "vapor_density_air_1": "0.6 (water vapor)",
+      "water_solubility": "Miscible",
+      "partition_coeff_logKow": "<1",
+      "auto_ignition_c": "Not applicable",
+      "decomposition_temp_c": ">200",
+      "flammability": "Non-flammable liquid",
+      "uel_percent": "Not applicable",
+      "lel_percent": "Not applicable"
+    }
+  }
+}

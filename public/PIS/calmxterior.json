@@ -1,0 +1,192 @@
+{
+  "product_name": "CalmXterior",
+  "brand": "Calyco",
+  "type": "Exterior Latex Paint",
+  "sheet_title": "Weatherproof Exterior Coat",
+  "pis_title": "Exterior Latex Paint – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "Weatherproof | UV Resistant | Fade-Resistant",
+    "premium": "Dirt-Resistant | Great Coverage | Water-Based (Solvent Free) | Easy to Wash (Stain Resistant) | Eco Friendly | Long-lasting Glow",
+    "title2": "Premium Exterior Protection for Designer Facades"
+  },
+
+  "icons": {
+    "main": ["Weatherproof", "UV Resistant", "Fade-Resistant"],
+    "minor": ["Dirt-Resistant", "Easy to Wash", "Eco Friendly", "Self-Cleaning"],
+    "extra": ["Great Coverage", "Solvent-Free", "Long-lasting Glow"]
+  },
+
+  "product_overview": "Premium fade-resistant paint for prestige building exteriors.",
+  "short_description": "Long-lasting colour even under harsh sunlight.",
+  "positioning": "CalmXterior preserves your design intent with fade-resistant colour and refined finishes for facades.",
+
+  "key_features": [
+    "Weatherproof",
+    "UV Resistant",
+    "Fade-Resistant",
+    "Dirt-Resistant",
+    "Eco Friendly",
+    "Water Based",
+    "Easy to Wash",
+    "Self-Cleaning",
+    "No Chalking"
+  ],
+
+  "features_benefits": [
+    { "feature": "Weatherproof", "benefit": "Repels moisture and prevents rain damage" },
+    { "feature": "UV Resistant", "benefit": "Protects colour vibrancy from sun exposure" },
+    { "feature": "Fade-Resistant", "benefit": "Maintains bright colour for years" },
+    { "feature": "Dirt-Resistant", "benefit": "Keeps surfaces looking clean with minimal effort" },
+    { "feature": "Self-Cleaning", "benefit": "Minimizes dust accumulation on facades" },
+    { "feature": "Eco Friendly", "benefit": "Low VOC, safer for people and the environment" },
+    { "feature": "Water Based", "benefit": "Easy to clean tools with water, low odour" }
+  ],
+
+  "recommended_use": {
+    "intro": "Ideal for high-end residential and architectural exterior applications.",
+    "items": [
+      "Architectural facades",
+      "Prestige villas",
+      "Elevated homes",
+      "Designer exteriors"
+    ]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Preparation",
+      "product": "Cleaner / Sandpaper",
+      "purpose": "Ensure the surface is dust-free, clean, and dry"
+    },
+    {
+      "step": 2,
+      "label": "Primer Coat",
+      "product": "Calyco Exterior Primer",
+      "purpose": "Improves adhesion and provides uniform absorption"
+    },
+    {
+      "step": 3,
+      "label": "Topcoat",
+      "product": "CalmXterior",
+      "purpose": "Apply 2 coats for full weather and UV protection"
+    }
+  ],
+
+  "application_tools": ["Brush", "Short-nap Roller", "Spray"],
+
+  "timings": {
+    "surface_dry": "1.5 hrs",
+    "recoat": "4 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "80–100 sq. ft./Ltr",
+  "finish": "Matte",
+  "available_sizes": "1L, 4L, 10L, 20L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "High gloss acrylic with anti-fade pigments",
+    "Sheen Level": "Matte",
+    "Colours": "Rich jewel tones, whites",
+    "Volume Solids": "40–42%",
+    "Viscosity (KU at 25°C)": "95–105 KU",
+    "Density": "1.25 ± 0.05 g/cc",
+    "Recommended DFT": "40–50 microns per coat",
+    "Theoretical Coverage": "80–100 sq. ft./Ltr",
+    "Flash Point": "Non-flammable (water-based)",
+    "VOC Content": "< 50 g/L (Low VOC)",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Warranty": "4 years",
+    "Shelf Life": "24 months in sealed container"
+  },
+
+  "recommended_substrates": [
+    { "type": "Plaster", "description": "Exterior plastered surfaces" },
+    { "type": "AAC", "description": "Autoclaved aerated concrete block exteriors" },
+    { "type": "Textured Cement", "description": "Decorative and rough cement finishes" }
+  ],
+
+  "surface_preparation": [
+    "Ensure surface is dry, clean, and dust-free",
+    "Scrape off loose paint, chalking, or flaking material",
+    "Use primer on absorbent or repaired surfaces"
+  ],
+
+  "application": [
+    "Stir paint well before use",
+    "Apply evenly using brush, roller, or spray",
+    "Maintain 4 hrs interval between coats",
+    "Apply 2 coats for best protection"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Protection Period": "Do not expose freshly painted surface to rain for at least 48 hrs",
+    "Application Conditions": "Avoid painting during rain, frost, or high humidity",
+    "Not Recommended For": "Interior use, damp or unprepared surfaces"
+  },
+
+  "storage_safety": [
+    "Store in tightly closed containers in a dry place",
+    "Keep away from direct sunlight and frost",
+    "Keep away from food, drinks, and children"
+  ],
+
+  "safety_first_aid": {
+    "General": "Avoid prolonged contact with skin and eyes",
+    "Skin Contact": "Wash immediately with soap and water",
+    "Eye Contact": "Flush with clean water for 15 minutes and seek medical advice",
+    "Inhalation": "Ensure adequate ventilation; move to fresh air if discomfort occurs",
+    "Ingestion": "Do not induce vomiting; seek medical attention immediately",
+    "Ventilation": "Use in well-ventilated areas",
+    "Waste Disposal": "Dispose of waste paint responsibly as per local regulations"
+  },
+
+  "environmental_commitment": "Low-VOC, eco-friendly formulation reduces environmental impact while delivering long-lasting performance. Designed for sustainable architecture with easy disposal and minimal carbon footprint.",
+
+  "commerce": {
+    "name": "CalmXterior",
+    "category": "Exterior Paint",
+    "price_inr": 625,
+    "packaging": "1L, 4L, 10L, 20L",
+    "brand": "Calyco",
+    "product_number": "CALMXTERIOR"
+  },
+
+  "usage": {
+    "application": "Exteriors of homes and buildings",
+    "advantages": ["Fade-resistant", "Weatherproof", "Self-cleaning", "Dirt-resistant", "Eco-friendly"],
+    "substrate": ["Plaster", "AAC", "Textured Cement"],
+    "recommended_uses": ["Facade painting", "Villa exteriors", "Architectural projects"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Matte",
+    "base_type": "Water-based",
+    "coverage_imperial": "80–100 sq. ft./Ltr",
+    "coverage_metric": "7.5–9.3 m²/L",
+    "voc_content": "< 50 g/L (Low VOC)",
+    "application_instructions": "Apply using brush, roller, or spray on a dry, dust-free surface",
+    "drying_time": "1.5 hrs",
+    "recoat_time": "4 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 75% RH",
+    "tools_required": ["Brush", "Roller", "Spray"],
+    "color_options": "Rich jewel tones, whites",
+    "spread_rate": "80–100 sq. ft./Ltr",
+    "preparation_instructions": "Clean surface and remove loose material before painting",
+    "safety_precautions": "Use gloves and mask; avoid contact with skin and eyes",
+    "storage_instructions": "Keep sealed in cool, dry place away from sunlight",
+    "warranty": "4 years"
+  },
+
+  "contact_info": "Calyco Paints Pvt Ltd, Gurugram, Haryana | info@calycopaints.com | +91 93101 74945",
+  "doc_notes": "Drafted based on CALYCO Master Product Dataset. All values verified from spec sheet."
+}

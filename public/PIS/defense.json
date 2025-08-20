@@ -1,0 +1,168 @@
+{
+  "product_name": "Defense",
+  "brand": "Calyco",
+  "type": "All-Surface Stain & Sealer",
+  "sheet_title": "All-Surface Stain & Sealer",
+  "pis_title": "All-Surface Stain & Sealer – Product Information Sheet (PIS)",
+
+  "titles": {
+    "title": "Defense, Waterproof, UV Resistant",
+    "premium": "Waterproof | Mold & Mildew Resistant | Multi-Surface Application",
+    "title2": "Ultimate multi-surface coating for all environments."
+  },
+
+  "icons": {
+    "main": ["Defense", "Waterproof", "UV Resistant"],
+    "minor": ["Waterproof", "Breathable", "UV-Resistant", "Mold & Mildew Resistant"],
+    "extra": ["Water Based", "Low VOC"]
+  },
+
+  "product_overview": "Ultimate multi-surface coating for all environments.",
+  "short_description": "The one coating every surface can trust — waterproof, UV-stable, breathable, and flexible.",
+  "positioning": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
+
+  "key_features": [
+    "All-in-one multi-surface sealer",
+    "Waterproof and breathable",
+    "UV-stable with anti-fade protection",
+    "Mold & Mildew Resistant",
+    "Flexible adhesion for any substrate",
+    "Water Based | Low VOC"
+  ],
+
+  "features_benefits": [
+    { "feature": "Multi-Surface Application", "benefit": "Applies to wood, metal, concrete, plaster, brick, tile, and masonry" },
+    { "feature": "Waterproof & Breathable", "benefit": "Seals moisture out while allowing substrate breathability" },
+    { "feature": "UV-Resistant", "benefit": "Prevents fading, chalking, and sun damage" },
+    { "feature": "Flexible Film", "benefit": "Adapts to surface expansion and contraction without peeling" },
+    { "feature": "Mold & Mildew Resistance", "benefit": "Prevents microbial growth in humid or damp areas" }
+  ],
+
+  "recommended_use": {
+    "intro": "Ideal for protecting a variety of surfaces in diverse climates.",
+    "items": ["Wood", "Metal", "Concrete", "Plaster", "Brick", "Tile", "Masonry"]
+  },
+
+  "application_system": [
+    {
+      "step": 1,
+      "label": "Surface Prep",
+      "product": "Degreaser / Cleaner",
+      "purpose": "Thoroughly clean and degrease substrate"
+    },
+    {
+      "step": 2,
+      "label": "First Coat",
+      "product": "Defense All-Surface",
+      "purpose": "Apply thin, even coat across surface"
+    },
+    {
+      "step": 3,
+      "label": "Second Coat",
+      "product": "Defense All-Surface",
+      "purpose": "Apply after 4 hrs for maximum waterproof barrier"
+    }
+  ],
+
+  "application_tools": ["Spray", "Roller", "Brush"],
+
+  "timings": {
+    "surface_dry": "1 hr",
+    "recoat": "4 hrs",
+    "full_cure": "7 days"
+  },
+
+  "coverage": "80–90 sq. ft./Ltr",
+  "finish": "Flat | Dead flat",
+  "available_sizes": "1L, 4L",
+  "thinner": "Water-based",
+
+  "technical_data": {
+    "Binder Type": "Aluminum pigment ceramic matrix",
+    "Sheen Level": "Solid | Dead flat",
+    "Colours": "Silver grey",
+    "Theoretical Coverage": "80–90 sq. ft./Ltr",
+    "VOC Content": "Low VOC",
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Warranty": "4 years"
+  },
+
+  "recommended_substrates": [
+    { "type": "Wood", "description": "Decks, fences, timber structures" },
+    { "type": "Metal", "description": "Railings, cladding, steel structures" },
+    { "type": "Concrete", "description": "Floors, basements, outdoor slabs" },
+    { "type": "Plaster & Brick", "description": "Walls and facades" },
+    { "type": "Tile & Masonry", "description": "Indoor/outdoor decorative and functional tiles" }
+  ],
+
+  "surface_preparation": [
+    "Degrease and clean surface thoroughly",
+    "Ensure substrate is free of rust, dust, and oil",
+    "Mask adjacent surfaces"
+  ],
+
+  "application": [
+    "Apply by spray, roller, or brush",
+    "2 coats recommended for durability",
+    "Work during cooler hours (morning/evening) to prevent rapid drying"
+  ],
+
+  "limitations": {
+    "Temperature Range": "12°C–40°C",
+    "Humidity": "Below 75% RH",
+    "Not Recommended For": "Unclean or unprepared surfaces"
+  },
+
+  "storage_safety": [
+    "Store sealed away from heat",
+    "Keep out of direct sunlight",
+    "Seal container tightly after use"
+  ],
+
+  "safety_first_aid": {
+    "General": "Use gloves and ensure ventilation during use",
+    "Skin Contact": "Wash with soap and water",
+    "Eye Contact": "Rinse with water immediately",
+    "Inhalation": "Avoid fumes; ventilate area"
+  },
+
+  "environmental_commitment": "Water-based, low-VOC sealer designed for eco-friendly, long-lasting protection on all surfaces.",
+
+  "commerce": {
+    "name": "Defense",
+    "category": "Stain & Sealer",
+    "price_inr": 599,
+    "packaging": "1L, 4L",
+    "brand": "Calyco",
+    "product_number": "DEF-THERMO"
+  },
+
+  "usage": {
+    "application": "All-in-one multi-surface stain and sealer for maximum protection",
+    "advantages": ["Waterproof", "UV-stable", "Breathable", "Mold & Mildew Resistant", "Flexible Adhesion"],
+    "substrate": ["Wood", "Metal", "Concrete", "Plaster", "Brick", "Tile", "Masonry"],
+    "recommended_uses": ["Interior and exterior multi-surface protection"]
+  },
+
+  "specs_summary": {
+    "finish_type_sheen": "Flat | Dead flat",
+    "base_type": "Water-based",
+    "coverage_imperial": "80–90 sq. ft./Ltr",
+    "voc_content": "Low VOC",
+    "application_instructions": "Apply with spray, roller or brush. Use 2 coats for full waterproofing.",
+    "drying_time": "1 hr",
+    "recoat_time": "4 hrs",
+    "cleanup": "Soap & Water",
+    "coats_required": "2 coats",
+    "temperature_range": "12°C–40°C",
+    "humidity_range": "Below 75% RH",
+    "tools_required": ["Spray", "Roller", "Brush"],
+    "color_options": "Silver grey",
+    "spread_rate": "80–90 sq. ft./Ltr",
+    "preparation_instructions": "Degrease and clean thoroughly",
+    "safety_precautions": "No open flames nearby; use protective gloves",
+    "storage_instructions": "Store sealed away from heat",
+    "warranty": "4 years"
+  }
+}
