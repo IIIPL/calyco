@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import { toast } from '../ui/toast';
 
 const CartContext = createContext();
 
@@ -89,8 +88,11 @@ export const CartProvider = ({ children }) => {
   }, [state]);
 
   const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride, selectedColor) => {
-    const defaultColor = { name: "Serene Ivory", hex: "#F8F4E3" };
-  
+    const defaultColor = {
+      name: "Serene Ivory",
+      hex: "#F8F4E3"
+    };
+
     dispatch({
       type: 'ADD_TO_CART',
       payload: {
@@ -100,14 +102,10 @@ export const CartProvider = ({ children }) => {
         selectedSheen,
         selectedSize,
         quantity,
-        image: product.images[0],
-        selectedColor: selectedColor || defaultColor
+        image: product.image,
+        selectedColor: selectedColor || defaultColor  // ✅ fallback to Serene Ivory
       }
     });
-  
-    // Toast
-    const title = product.display_name || product.name;
-    toast(`Added to cart: ${title}`);
   };
   
 

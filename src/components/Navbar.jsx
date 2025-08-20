@@ -6,7 +6,7 @@ import InspirationsDropdown from './InspirationsDropdown';
 import ColorsDropdown from "./ColorsDropdown";
 import VisualizeDropdown from "./VisualizeDropdown"; // Import the new dropdown
 
-export const Navbar = () => {
+export const Navbar = ({ bannerVisible = true }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const navigate = useNavigate();
@@ -73,11 +73,11 @@ export const Navbar = () => {
   }, [dropdownOpen]);
   
   return (
-    <header ref={navRef} className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm">
+    <header ref={navRef} className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300" style={{ top: bannerVisible ? '32px' : '0px' }}>
       {/* Logo Row */}
       <div className="w-full flex justify-center items-center h-20 md:h-14">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="CALYCO — Home">
-          <img src="/Logo.png" className="object-contain h-16 md:h-20 pt-2 mx-auto" alt="CALYCO Logo" />
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <img src="/Logo.png" className="object-contain h-16 md:h-20 pt-2 mx-auto" alt="Calyco Logo" />
         </Link>
       </div>
       
@@ -85,34 +85,34 @@ export const Navbar = () => {
       <div className="hidden md:flex w-full justify-center items-center h-12 relative">
         <nav className="flex gap-8 text-base font-medium items-center">
           <button
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
           >Products</button>
           
           <button
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
           >Inspirations</button>
 
           <button
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
           >Colors</button>
           
           {/* // In your Navbar component, add this button to the navigation menu */}
           <button
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
           >Visualize</button>
           <Link
             to="/about"
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >About</Link>
           
           <Link
             to="/contact"
-            className="text-[#493657] hover:text-[#C9A941] transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >Contact</Link>
         </nav>
@@ -135,7 +135,6 @@ export const Navbar = () => {
           className="text-[#493657] text-2xl mr-3"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle mobile menu"
-          aria-expanded={menuOpen}
         >☰</button>
       </div>
       
@@ -149,12 +148,11 @@ export const Navbar = () => {
         <button
           className="absolute top-6 right-6 text-3xl text-[#493657]"
           onClick={() => setMenuOpen(false)}
-          aria-label="Close mobile menu"
         >&times;</button>
         
         <div className="flex justify-center items-center mt-8 mb-8">
-          <Link to="/" aria-label="CALYCO — Home">
-            <img src="/Logo.png" className="object-contain max-h-16 mx-auto" alt="CALYCO Logo" />
+          <Link to="/">
+            <img src="/Logo.png" className="object-contain max-h-16 mx-auto" alt="Calyco Logo" />
           </Link>
         </div>
         
@@ -162,17 +160,22 @@ export const Navbar = () => {
           <ProductsDropdown isMobile={true} />
           <InspirationsDropdown isMobile={true} />
           <ColorsDropdown isMobile={true} />
+          
           {/* New Visualize Dropdown for mobile */}
           <VisualizeDropdown isMobile={true} />
+          
+
+          
           <Link
             to="/about"
-            className="text-[#493657] hover:text-[#C9A941] w-full text-left focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
           >
             About Us
           </Link>
+          
           <Link
             to="/contact"
-            className="text-[#493657] hover:text-[#C9A941] w-full text-left focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#493657] focus:outline-none"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
           >
             Contact Us
           </Link>

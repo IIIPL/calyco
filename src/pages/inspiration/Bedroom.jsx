@@ -23,7 +23,7 @@ export default function BedroomInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
-          alt="CALYCO bedroom design inspiration — cozy bedroom with warm lighting and comfortable furnishings"
+          alt="Bedroom Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

@@ -15,7 +15,7 @@ const RoomGalleryCard = ({ room, onClick }) => {
         <div className="aspect-[4/5] overflow-hidden">
           <img
             src={room.image}
-            alt={`${room.title} room design inspiration`}
+            alt={room.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>

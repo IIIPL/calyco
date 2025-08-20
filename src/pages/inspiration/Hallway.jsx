@@ -28,7 +28,7 @@ export default function HallwayInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png"
-          alt="CALYCO hallway design inspiration — elegant entryway with welcoming atmosphere and beautiful lighting"
+          alt="Hallway Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

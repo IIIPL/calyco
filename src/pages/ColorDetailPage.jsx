@@ -30,8 +30,6 @@ const ColorDetailPage = () => {
   const navigate = useNavigate();
   const [showDrawer, setShowDrawer] = useState(false);
   const [currentColor, setCurrentColor] = useState(null);
-  // NEW: which color to buy (from a swatch click)
-  const [buyColor, setBuyColor] = useState(null);
 
   useEffect(() => {
     const decodedColorName = decodeURIComponent(colorName);
@@ -61,40 +59,28 @@ const ColorDetailPage = () => {
     return <NotFound />;
   }
 
-  // NEW: open drawer with specific color (from ColorCombination swatch cart)
-  const openDrawerWithColor = (colorLike) => {
-    if (!colorLike) return;
-    setBuyColor({
-      name: colorLike.name,
-      hex: colorLike.hex,
-      description: colorLike.description || '',
-      color_family: colorLike.color_family || currentColor?.color_family || ''
-    });
-    setShowDrawer(true);
-  };
-
   let similarColors = flatColors.filter(
     (c) =>
-          c.color_family === currentColor?.color_family &&
-    c.name !== currentColor?.name
+      c.color_family === currentColor.color_family &&
+      c.name !== currentColor.name
   );
 
   if (similarColors.length === 0) {
     similarColors = flatColors.filter(
       (c) =>
-              (c.group === currentColor?.group ||
-        c.base === currentColor?.base) &&
-      c.name !== currentColor?.name
+        (c.group === currentColor.group ||
+          c.base === currentColor.base) &&
+        c.name !== currentColor.name
     );
   }
 
   if (similarColors.length === 0) {
     similarColors = flatColors
-      .filter((c) => c.name !== currentColor?.name)
+      .filter((c) => c.name !== currentColor.name)
       .slice(0, 8);
   }
 
-  const textColorClass = getTextColor(currentColor?.hex || "#301A44");
+  const textColorClass = getTextColor(currentColor.hex);
 
   const handleColorSelect = (color) => {
     if (!color?.name || !color?.color_family) return;
@@ -108,7 +94,7 @@ const ColorDetailPage = () => {
   return (
     <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative" style={{ backgroundColor: currentColor?.hex || "#301A44" }}
+      <section className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative" style={{ backgroundColor: currentColor.hex }}
       >
         {/* Breadcrumb */}
         <nav
@@ -124,24 +110,24 @@ const ColorDetailPage = () => {
           <span
             onClick={() =>
               navigate(
-                `/colors/family/${slugify(currentColor?.color_family || "")}`
+                `/colors/family/${slugify(currentColor.color_family)}`
               )
             }
             className="cursor-pointer underline"
           >
-            {currentColor?.color_family || ""}
+            {currentColor.color_family}
           </span>
           <span className="mx-2">›</span>
-          <span>{currentColor?.name || ""}</span>
+          <span>{currentColor.name}</span>
         </nav>
 
         {/* Left - Image */}
         <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0 md:h-full flex items-center justify-center">
           <img
             src={
-              currentColor?.image || "https://res.cloudinary.com/dr98axi2n/image/upload/v1754913191/Rustic_Rust_cehwvi.jpg"
+              currentColor.image 
             }
-            alt={`${currentColor?.name || ""} color swatch and inspiration`}
+            alt={currentColor.name}
             className="h-full w-auto object-contain md:mb-10"
           />
         </div>
@@ -151,29 +137,29 @@ const ColorDetailPage = () => {
 
           <div className="mb-8 md:pt-16">
             <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 font-semibold">
-              {currentColor?.name || ""}
+              {currentColor.name}
             </h1>
             <p className="text-xl md:mt-10">
-              <span>Color Code: </span>{currentColor?.hex || "#301A44"} {/* this is the color code, right now same for all */}
+              <span>Color Code: </span>{currentColor.hex} {/* this is the color code, right now same for all */}
             </p>
           </div>
 
           <p className="mb-8 text-lg md:text-xl lg:text-2xl leading-relaxed">
-            {currentColor?.description ||
+            {currentColor.description ||
               'A beautiful color from our curated collection.'}
           </p>
 
           <div className="mb-8 text-lg md:text-xl lg:text-2xl leading-relaxed">
             <h2>Color Family</h2>
             <span
-                          onClick={() =>
-              navigate(
-                `/colors/family/${slugify(currentColor?.color_family || "")}`
-              )
-            }
-            className="cursor-pointer underline transition-colors"
-          >
-            {currentColor?.color_family || ""}
+              onClick={() =>
+                navigate(
+                  `/colors/family/${slugify(currentColor.color_family)}`
+                )
+              }
+              className="cursor-pointer underline transition-colors"
+            >
+              {currentColor.color_family}
             </span>
           </div>
 
@@ -184,21 +170,13 @@ const ColorDetailPage = () => {
               download
               className="underline font-medium flex items-center gap-1"
             >
-              Download digital dollop of {currentColor?.name || ""}
+              Download digital dollop of {currentColor.name}
             </a>
           </div>
 
             <button
-              onClick={() => {
-                setBuyColor({
-                  name: currentColor?.name || "",
-                  hex: currentColor?.hex || "#301A44",
-                  description: currentColor?.description || "",
-                  color_family: currentColor?.color_family || ""
-                });
-                setShowDrawer(true);
-              }}
-              style={{ color: currentColor?.hex || "#301A44" }}
+              onClick={() => setShowDrawer(true)}
+              style={{ color: currentColor.hex }}
               className="bg-black font-semibold px-8 py-4 rounded-md mt-8 self-start"
             >
               Buy Now
@@ -207,7 +185,7 @@ const ColorDetailPage = () => {
           <BuyNowDrawer
             isOpen={showDrawer}
             onClose={() => setShowDrawer(false)}
-            currentColor={buyColor || currentColor}
+            currentColor={currentColor}
           />
         </div>
       </section>
@@ -228,14 +206,12 @@ const ColorDetailPage = () => {
               <ColorCombination
                 currentColor={currentColor}
                 similarColors={similarColors}
-                onOpenDrawer={openDrawerWithColor}
               />
             </div>
             <div className="flex-1">
               <ColorCombination
                 currentColor={currentColor}
                 similarColors={similarColors.slice(2, 4)}
-                onOpenDrawer={openDrawerWithColor}
               />
             </div>
           </div>

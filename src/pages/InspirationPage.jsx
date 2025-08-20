@@ -89,7 +89,7 @@ export default function InspirationPage() {
                       <div className="relative h-64 overflow-hidden">
                         <img
                           src={room.thumbnail}
-                          alt={`${room.title} room design inspiration`}
+                          alt={room.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           draggable="false"
                         />

@@ -21,19 +21,6 @@ const getProductsByCategory = (category) => {
   const lowerCat = category.toLowerCase();
   return products.filter(p => p.category && p.category.toLowerCase() === lowerCat);
 };
-
-// Choose a good default size for preselection
-const getDefaultSize = (p) => {
-  const sizes = Array.isArray(p?.packaging) ? p.packaging : [];
-  if (!sizes.length) return "";
-
-  // 1) If product JSON provides an explicit popular size, use it
-  if (p.popular_size && sizes.includes(p.popular_size)) return p.popular_size;
-
-  // 2) Heuristic: prefer 4L if offered, else first size
-  if (sizes.includes("4L")) return "4L";
-  return sizes[0];
-};
 // --- End utility functions ---
 
 export const DynamicProductPage = () => {
@@ -54,11 +41,12 @@ export const DynamicProductPage = () => {
         const foundProduct = getProductBySlugOrName(productId);
         if (foundProduct) {
             setProduct(foundProduct);
-            // Default size: pick popular/heuristic
-            setSelectedSize(getDefaultSize(foundProduct));
-
-            // Default sheen: first available (if any)
-            setSelectedSheen(foundProduct.finish_type_sheen?.[0] || "");
+            // Set default size to first available size in packaging
+            if (foundProduct.packaging && foundProduct.packaging.length > 0) {
+                setSelectedSize(foundProduct.packaging[0]);
+            } else {
+                setSelectedSize("");
+            }
             // Set default image
             if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
                 setSelectedImage(foundProduct.images[0]);
@@ -199,7 +187,7 @@ export const DynamicProductPage = () => {
                             >
                                 <img
                                     src={selectedImage || product.image}
-                                    alt={`CALYCO ${product.name} paint product`}
+                                    alt={product.name}
                                     className="object-contain w-full h-full mx-auto hover:scale-105 transition-transform duration-500"
                                     style={{ maxWidth: '100%', maxHeight: '100%' }}
                                 />
@@ -215,7 +203,7 @@ export const DynamicProductPage = () => {
                                 className={`border rounded-lg p-1 transition-all focus:outline-none ${selectedImage === img ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]' : 'border-[#493657]/20 hover:border-[#493657]/40'}`}
                                 style={{background: selectedImage === img ? '#F0C85A22' : 'white'}}
                               >
-                                <img src={img} alt={`CALYCO ${product.name} paint product thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
+                                <img src={img} alt={`Thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
                               </button>
                             ))}
                           </div>
@@ -253,7 +241,7 @@ export const DynamicProductPage = () => {
                             {/* 3. Price */}
                             <div className="flex items-center gap-4 mb-4">
                               <p className="text-3xl font-bold text-[#301A44]">₹{getSizePrice(product.price, selectedSize)}</p>
-                              <span className="text-sm text-[#493657]/60">per {selectedSize || getDefaultSize(product)}</span>
+                              <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0]}</span>
                             </div>
                         </div>
 
@@ -277,74 +265,33 @@ export const DynamicProductPage = () => {
 
                             {/* 5. Size Selection */}
                             <div className="mb-4">
-                              <h3 className="font-semibold text-[#493657] mb-1">Choose Size</h3>
-                              <p className="text-sm text-[#493657]/60 mb-2">
-                                Most popular: {getDefaultSize(product)}
-                              </p>
-
-                              <div role="listbox" aria-label="Choose size" className="flex flex-wrap gap-2">
-                                {displaySizes.map((size) => {
-                                  const isSelected = selectedSize === size;
-                                  const isPopular = size === getDefaultSize(product);
-                                  return (
-                                    <button
-                                      key={size}
-                                      onClick={() => setSelectedSize(size)}
-                                      aria-pressed={isSelected}
-                                      className={`px-4 py-2 rounded-lg border transition-all flex items-center gap-2
-                                        ${isSelected
-                                          ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] shadow"
-                                          : "border-[#493657]/20 text-[#493657]/80 hover:border-[#493657]/40"}
-                                      `}
-                                    >
-                                      {/* subtle checkmark when selected */}
-                                      {isSelected ? <span aria-hidden>✔️</span> : <span aria-hidden>▫️</span>}
-                                      {size}
-                                      {isPopular && (
-                                        <span className="text-[10px] font-bold text-[#493657] bg-[#F0C85A]/30 px-2 py-0.5 rounded-full">
-                                          Popular
-                                        </span>
-                                      )}
-                                    </button>
-                                  );
-                                })}
+                              <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
+                              <div className="flex flex-wrap gap-2">
+                                {displaySizes.map((size) => (
+                                  <button
+                                    key={size}
+                                    onClick={() => setSelectedSize(size)}
+                                    className={`px-4 py-2 rounded-lg border transition-all ${selectedSize === size ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
+                                  >
+                                    {size}
+                                  </button>
+                                ))}
                               </div>
                             </div>
 
                             {/* 6. Quantity & Add to Cart */}
                             <div className="mb-6">
-                              <h3 className="font-semibold text-[#493657] mb-2">Quantity <span className="text-[#493657]/60">(bucket{quantity > 1 ? 's' : ''})</span></h3>
-
-                              {/* quick chips for 1–3 */}
-                              <div className="flex gap-2 mb-3">
-                                {[1,2,3].map(n => (
-                                  <button
-                                    key={n}
-                                    onClick={() => setQuantity(n)}
-                                    className={`px-3 py-1.5 rounded-lg border text-sm
-                                      ${quantity === n
-                                        ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                        : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}
-                                    `}
-                                  >
-                                    {n}
-                                  </button>
-                                ))}
-                              </div>
-
-                              {/* existing stepper */}
+                              <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
                               <div className="flex items-center gap-4">
                                 <button
                                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                  aria-label="Decrease quantity"
                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
                                 >
-                                  –
+                                  -
                                 </button>
                                 <span className="text-xl font-semibold text-[#493657] min-w-[3rem] text-center">{quantity}</span>
                                 <button
                                   onClick={() => setQuantity(quantity + 1)}
-                                  aria-label="Increase quantity"
                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5"
                                 >
                                   +
@@ -511,26 +458,29 @@ export const DynamicProductPage = () => {
                         <div>
                             <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Data Sheets</h4>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href={`/json-viewer.html?src=${encodeURIComponent(product.SDS)}`}  target="_blank" rel="noopener noreferrer" className="underline">SDS</a></li>
+                                <li><a href="https://docs.google.com/document/d/1a7G2nY1phuWpv8mLcqpqDSd2So-i43Qs/edit"  target="_blank" rel="noopener noreferrer" className="underline">SDS 1</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Product Information Sheet</h4>
+                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
                             <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href={`/pis-viewer.html?src=${encodeURIComponent(product.PIS)}`}  target="_blank" rel="noopener noreferrer" className="underline">PIS</a></li>
+                                <li><a href="https://docs.google.com/document/d/1SxsgrtuzcKehOF3pqnUtv0HiD3ROSCX9/edit"  target="_blank" rel="noopener noreferrer" className="underline">TDS</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                {/* Similar Products Section - Comparison Table (mobile = real table) */}
+                {/* Similar Products Section - Comparison Table */}
                 {(() => {
                   const similar = getProductsByCategory(product.category).filter(p => p.name !== product.name);
                   if (similar.length === 0) return null;
-
-                  const toShow =
-                    similar.length > 2 ? [...similar].sort(() => 0.5 - Math.random()).slice(0, 2) : similar;
+                  let toShow = similar;
+                  if (similar.length > 2) {
+                    // Pick 2 random products
+                    const shuffled = [...similar].sort(() => 0.5 - Math.random());
+                    toShow = shuffled.slice(0, 2);
+                  }
                   const compareProducts = [product, ...toShow];
-
+                  // Define the fields to compare (remove Short Description)
                   const fields = [
                     { label: 'Finish/Sheen(s)', key: 'finish_type_sheen', isArray: true },
                     { label: 'Recommended Use', key: 'recommended_uses', isArray: true },
@@ -539,153 +489,42 @@ export const DynamicProductPage = () => {
                     { label: 'Recoat Time', key: 'recoat_time' },
                     { label: 'Clean Up', key: 'cleanup' },
                   ];
-
-                  // --- Mobile: swipeable comparison cards (replace MobileTable) ---
-                  const MobileTable = () => {
-                    // helper: normalize values for diffing
-                    const valOf = (p, field) => {
-                      let v = p[field.key];
-                      if (field.isArray && Array.isArray(v)) v = v.join(", ");
-                      if (!v || (Array.isArray(v) && v.length === 0)) v = "-";
-                      return String(v);
-                    };
-
-                    // which fields differ across products?
-                    const fieldsThatDiffer = new Set(
-                      fields
-                        .filter((f) => {
-                          const values = new Set(compareProducts.map((p) => valOf(p, f).toLowerCase().trim()));
-                          return values.size > 1;
-                        })
-                        .map((f) => f.key)
-                    );
-
-                    return (
-                      <div className="md:hidden mt-24 pb-16 -mx-4">
-                        <h2 className="text-lg font-bold text-[#493657] mb-4 px-4">
-                          Compare Similar Products
-                        </h2>
-
-                        {/* swipeable cards */}
-                        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 scroll-smooth">
-                          {compareProducts.map((p, idx) => (
-                            <div
-                              key={p.name}
-                              className={`snap-center shrink-0 w-[86vw] max-w-[420px] bg-white rounded-2xl shadow border border-[#e5e0d8]`}
-                            >
-                              {/* header */}
-                              <div className={`p-4 rounded-t-2xl ${idx === 0 ? "bg-gray-100" : "bg-gray-50"}`}>
-                                <div className="flex items-center gap-3">
-                                  <img
-                                    src={Array.isArray(p.images) ? p.images[0] : p.image}
-                                    alt={`CALYCO ${p.name} paint product`}
-                                    className="w-14 h-14 object-contain rounded-md"
-                                    loading="lazy"
-                                  />
-                                  <div>
-                                    <div className="font-bold text-[#493657] leading-tight">{p.name}</div>
-                                    <Link
-                                      to={`/product/${p.name}`}
-                                      className="underline text-[#493657]/80 text-sm"
-                                      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                                    >
-                                      See details
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-
-                              {/* features list */}
-                              <dl className="divide-y divide-[#e5e0d8]">
-                                {fields.map((field) => {
-                                  const value = valOf(p, field);
-                                  const differs = fieldsThatDiffer.has(field.key);
-                                  return (
-                                    <div key={field.label} className="grid grid-cols-2 gap-3 px-4 py-3">
-                                      <dt className="text-[#493657] font-semibold text-sm">{field.label}</dt>
-                                      <dd
-                                        className={`text-sm ${
-                                          differs ? "font-semibold text-[#301A44]" : "text-[#493657]/80"
-                                        }`}
-                                      >
-                                        {value}
-                                      </dd>
-                                    </div>
-                                  );
-                                })}
-                              </dl>
-                            </div>
-                          ))}
-                        </div>
-
-                        <p className="text-xs text-[#493657]/60 text-center mt-3">Swipe to compare →</p>
-                      </div>
-                    );
-                  };
-
-                  const DesktopTable = () => (
-                    <div className="hidden md:block mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20 hide-scrollbar">
-                      <h2 className="text-2xl font-bold text-[#493657] mb-8">Compare Similar Products</h2>
+                  return (
+                    <div className="mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20 hide-scrollbar">
+                      <h2 className="text-lg md:text-2xl font-bold text-[#493657] mb-6 md:mb-8">Compare Similar Products</h2>
                       <div className="w-full min-w-[600px]">
-                        <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white text-lg">
+                        <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white text-sm md:text-lg">
                           <thead>
                             <tr>
-                              <th className="text-left font-bold px-8 py-5 bg-white border-b-2 border-[#e5e0d8] w-64 align-middle">
-                                Product
-                              </th>
+                              <th className="text-left font-bold px-4 md:px-8 py-3 md:py-5 bg-white border-b-2 border-[#e5e0d8] w-32 md:w-64 align-middle text-sm md:text-lg">Product</th>
                               {compareProducts.map((p, idx) => (
                                 <th
                                   key={p.name}
-                                  className={`text-center font-bold px-8 py-5 border-b-2 border-[#e5e0d8] align-middle ${
-                                    idx === 0 ? 'bg-gray-200' : 'bg-gray-50 border-l-2 border-[#e5e0d8]'
-                                  }`}
+                                  className={`text-center font-bold px-4 md:px-8 py-3 md:py-5 border-b-2 border-[#e5e0d8] align-middle text-sm md:text-lg ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'} ${idx === 0 ? '' : 'border-l-2 border-[#e5e0d8]'}`}
                                 >
                                   <div className="flex flex-col items-center">
-                                    <Link
-                                      to={`/product/${p.name}`}
-                                      className="block w-full"
-                                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                    >
-                                      <img
-                                        src={Array.isArray(p.images) ? p.images[0] : p.image}
-                                        alt={`CALYCO ${p.name} paint product for comparison`}
-                                        className="w-32 h-32 lg:w-40 lg:h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105"
-                                        loading="lazy"
-                                      />
+                                    <Link to={`/product/${p.name}`} className="block w-full" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                                      <img src={p.image} alt={p.name} className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain mx-auto mb-2 transition-transform duration-200 hover:scale-105" loading="lazy" />
                                     </Link>
-                                    <div className="text-xl font-bold mb-2 text-center">{p.name}</div>
-                                    <div className="text-[#493657]/80 font-semibold text-base mb-2 text-center max-w-xs">
-                                      {p.description}
-                                    </div>
-                                    <Link
-                                      to={`/product/${p.name}`}
-                                      className="block w-full"
-                                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                    >
-                                      See Product Details
-                                    </Link>
+                                    <div className="text-base md:text-xl font-bold mb-1 md:mb-2 text-center">{p.name}</div>
+                                    {/* Product description below bucket */}
+                                    <div className="text-[#493657]/80 font-semibold text-xs md:text-base mb-1 md:mb-2 text-center max-w-[7rem] md:max-w-xs">{p.description}</div>
+                                    <Link to={`/product/${p.name}`} className="text-[#493657] underline text-xs md:text-base" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>See Product Details</Link>
                                   </div>
                                 </th>
                               ))}
                             </tr>
                           </thead>
                           <tbody>
-                            {fields.map((field) => (
+                            {fields.map(field => (
                               <tr className="bg-white" key={field.label}>
-                                <td className="font-bold px-8 py-5 border-b border-[#e5e0d8]">{field.label}</td>
+                                <td className="font-bold px-4 md:px-8 py-3 md:py-5 border-b border-[#e5e0d8] text-sm md:text-lg">{field.label}</td>
                                 {compareProducts.map((p, idx) => {
                                   let value = p[field.key];
                                   if (field.isArray && Array.isArray(value)) value = value.join(', ');
                                   if (!value || (Array.isArray(value) && value.length === 0)) value = '-';
                                   return (
-                                    <td
-                                      key={p.name + '-' + field.key}
-                                      className={`text-center px-8 py-5 border-b border-[#e5e0d8] ${
-                                        idx === 0 ? 'bg-gray-200' : 'bg-gray-50'
-                                      }`}
-                                    >
-                                      {value}
-                                    </td>
+                                    <td key={p.name + '-' + field.key} className={`text-center px-4 md:px-8 py-3 md:py-5 border-b border-[#e5e0d8] text-sm md:text-lg ${idx === 0 ? 'bg-gray-200' : 'bg-gray-50'}`}>{value}</td>
                                   );
                                 })}
                               </tr>
@@ -694,13 +533,6 @@ export const DynamicProductPage = () => {
                         </table>
                       </div>
                     </div>
-                  );
-
-                  return (
-                    <>
-                      <MobileTable />
-                      <DesktopTable />
-                    </>
                   );
                 })()}
             </motion.section>

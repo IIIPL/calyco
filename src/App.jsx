@@ -1,8 +1,19 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Slider from './components/Slider'
 import { Navbar } from './components/Navbar'
 import { Route, Routes, useParams } from 'react-router-dom'
-import { HomePage } from './pages/HomePage'
+import SEO from "./components/SEO";
+const Home = React.lazy(() => import('./pages/Home.jsx'))
+const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
+const ProductsPage = React.lazy(() => import('./pages/ProductsPage.jsx'))
+const ProductDetailPage = React.lazy(() => import('./pages/ProductDetailPage.jsx'))
+const ContractorsPage = React.lazy(() => import('./pages/ContractorsPage.jsx'))
+const GovernmentPage = React.lazy(() => import('./pages/GovernmentPage.jsx'))
+const DownloadsPage = React.lazy(() => import('./pages/DownloadsPage.jsx'))
+const AboutPage = React.lazy(() => import('./pages/AboutPage.jsx'))
+const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.jsx'))
+const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
+const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 import { Temp } from './pages/Temp'
 import { AboutUs } from './pages/AboutUs'
 import { Footer } from './pages/Footer'
@@ -31,8 +42,6 @@ import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
 import FamilyColorGroup from './pages/FamilyPage'
 import ColorDetailPage from './pages/ColorDetailPage'
-import ColorsSearchPage from './pages/Colors/ColorsSearchPage'
-import SimpleErrorBoundary from './components/SimpleErrorBoundary'
 
 
 // Import new providers and pages
@@ -45,46 +54,100 @@ import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 
 // Policies: 
 import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
-import PoliciesPrivacy from "./pages/Policies/PrivacyPolicy";
+import Privacy from "./pages/Policies/Privacy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
-import PaymentsGst from './pages/Policies/PaymentsGST.jsx'
+// import PaymentsGst from "./pages/Policies/PaymentsGst";
 import QualityPolicy from "./pages/Policies/QualityPolicy";
-import EnvironmentalSustainability from './pages/Policies/EnvironmentSustainability.jsx'
+// import EnvironmentSustainability from "./pages/Policies/EnvironmentSustainability";
 import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
 import ShippingDelivery from "./pages/Policies/ShippingDelivery";
 import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
 import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
 import CustomerService from "./pages/Policies/CustomerService";
-import ToastHost from './ui/ToastHost.jsx'
+
+// Import motion for animations
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
 }
+
+// Offer Banner Component
+const OfferBanner = ({ onClose, isVisible }) => {
+  const navigate = useNavigate();
+  
+  return (
+    <div className={`fixed top-0 left-0 w-full bg-gray-600 overflow-hidden z-[60] transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'}`}>
+      
+      
+              <div className="relative max-w-7xl mx-auto px-6 py-2">
+          <div className="flex items-center justify-between">
+            {/* Centered Text */}
+            <div className="flex-1"></div>
+            <div className="text-center text-white text-sm">
+              Decorating over the bank holiday? Order by 12PM, 20th August.
+            </div>
+            <div className="flex-1 flex justify-end">
+              <button 
+                onClick={onClose}
+                className="text-white hover:text-gray-300 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  );
+};
+
 function App() {
+  const [bannerVisible, setBannerVisible] = useState(true);
+  
   return (
     <CartProvider>
       <ColorProvider>
         <ColorVisualizationProvider>
-          <div className='font-poppins'>
-            {/* This is your app. */}
-            <Navbar/>
-            <Routes>
-              <Route path='/' element={<HomePage/>}/>
-              <Route path='/product' element={<Products/>}/>
+        <div className='font-poppins'>
+          {/* Offer Banner - Above Header */}
+          <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} />
+          
+          {/* This is your app. */}
+          <Navbar bannerVisible={bannerVisible} />
+          {/* Add top margin to account for fixed navbar + offer banner */}
+          <div className={`transition-all duration-300 ${bannerVisible ? 'pt-20 md:pt-16' : 'pt-0'}`}>
+            <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
+          <Routes>
+              <Route path='/' element={<Home/>}/>
+              {/* New premium visual-first routes */}
+              <Route path='/colors' element={<ColorsPage/>}/>
+              <Route path='/visualizer' element={<VisualizerPage/>}/>
+              <Route path='/products' element={<ProductsPage/>}/>
+              <Route path='/products/:slug' element={<ProductDetailPage/>}/>
+              <Route path='/contractors' element={<ContractorsPage/>}/>
+              <Route path='/government' element={<GovernmentPage/>}/>
+              <Route path='/downloads' element={<DownloadsPage/>}/>
+              <Route path='/about' element={<AboutPage/>}/>
+              <Route path='/sustainability' element={<SustainabilityPage/>}/>
+              <Route path='/contact' element={<ContactPage/>}/>
+              <Route path='/cart' element={<CartPage/>}/>
+              <Route path='/product' element={<ProductDetailPage/>}/>
               <Route path='/product/:productId' element={<DynamicProductPage/>}/>
-              <Route path='/about' element={<AboutUs/>}/>
+              <Route path='/product-detail' element={<ProductDetailPage/>}/>
               <Route path='/temp' element={<Temp/>}/>
               <Route path='/faq' element={<FAQs/>}/>
               <Route path='/contact' element={<ContactUs/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />
-              {/* Colors new routes */}
+              {/* Colors new routes (existing retained) */}
               <Route path='/colors' element={<ColorsPage/>}/>
               <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
               <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
               <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
-              <Route path="/colors/search" element={<SimpleErrorBoundary><ColorsSearchPage /></SimpleErrorBoundary>} />
               <Route path='/inspirations' element={<InspirationPage/>}/>
               <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
               <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
@@ -107,28 +170,27 @@ function App() {
 
               {/* Policy Routes */}
               <Route path="/policies" element={<PoliciesIndex />} />
-              <Route path="/policies/privacy" element={<PoliciesPrivacy />} />
+              <Route path="/policies/privacy" element={<Privacy />} />
               <Route path="/policies/terms" element={<TermsAndConditions />} />
-              <Route path="/policies/payments-gst" element={<PaymentsGst />} />
+              {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
               <Route path="/policies/quality" element={<QualityPolicy />} />
-              <Route path="/policies/environment" element={<EnvironmentalSustainability />} />
+              {/* <Route path="/policies/environment" element={< />} /> */}
               <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
               <Route path="/policies/shipping" element={<ShippingDelivery />} />
               <Route path="/policies/returns" element={<ReturnsRefunds />} />
               <Route path="/policies/warranty" element={<WarrantyPolicy />} />
               <Route path="/customer-service" element={<CustomerService />} />
 
-              {/* Toaster */}
-
               {/* 404 Fallback Route */}
               <Route path="*" element={<NotFound/>}/>
             </Routes>
-            <ToastHost />
+            </React.Suspense>
             <Footer/>
           </div>
+        </div>
         </ColorVisualizationProvider>
-      </ColorProvider>
-    </CartProvider>
+        </ColorProvider>
+      </CartProvider>
   )
 }
 export default App;

@@ -76,7 +76,7 @@ export const CartModal = ({ isOpen, onClose }) => {
                       {/* Product Image */}
                       <img
                         src={item.image}
-                        alt={`CALYCO ${item.name} paint product`}
+                        alt={item.name}
                         className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded"
                       />
 

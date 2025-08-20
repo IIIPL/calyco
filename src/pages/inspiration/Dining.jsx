@@ -23,7 +23,7 @@ export default function DiningInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/diningHero_ggdfce.jpg"
-          alt="CALYCO dining room design inspiration — elegant dining space with beautiful table setting and ambient lighting"
+          alt="Dining Room Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

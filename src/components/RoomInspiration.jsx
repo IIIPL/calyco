@@ -38,7 +38,7 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
             <Link to={to} aria-label={`Open ${title}`}>
               <img
                 src={imageUrl}
-                alt={`${title} room design inspiration`}
+                alt={title}
                 className="w-full h-auto max-h-[32rem] object-contain"
                 loading="lazy"
               />
@@ -46,7 +46,7 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
           ) : (
             <img
               src={imageUrl}
-              alt={`${title} room design inspiration`}
+              alt={title}
               className="w-full h-auto max-h-[32rem] object-contain"
               loading="lazy"
             />

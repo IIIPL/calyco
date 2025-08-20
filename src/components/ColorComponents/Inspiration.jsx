@@ -41,7 +41,7 @@ export const InspirationCard = ({ colorName }) => {
       <div className="h-4/5 w-full bg-gray-200">
         <img
           src={colorImage}
-          alt={`${colorName} color inspiration and room design`}
+          alt={colorName}
           className="w-full h-full object-cover"
         />
       </div>

@@ -23,7 +23,7 @@ export default function OfficeInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598789/officeHero_uq7rgp.png"
-          alt="CALYCO office design inspiration — modern workspace with professional atmosphere and inspiring decor"
+          alt="Office Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>

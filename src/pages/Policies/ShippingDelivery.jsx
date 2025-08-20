@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PolicyLayout from "./PolicyLayout";
 
 export default function ShippingDelivery() {
-  useEffect(() => {
-    document.title = "Shipping & Delivery ";
-  }, []);
   return (
     <PolicyLayout title="Shipping & Delivery" lastUpdated="—">
       <h2>Coverage & Timelines</h2>

@@ -41,7 +41,7 @@ export const HeroProducts = ({ productName = "NOVA", productImage }) => {
           >
             <img
               src={productImage}
-              alt={`CALYCO ${productName} paint product showcase`}
+              alt={productName}
               className="max-h-full w-auto object-contain object-bottom"
               width="300"
               height="400"

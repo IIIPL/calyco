@@ -126,7 +126,7 @@ const Checkout = () => {
           <div className="flex flex-col gap-4">
             {items.map((item, idx) => (
               <div key={idx} className="flex items-center gap-4 border-b pb-4 last:border-b-0">
-                <img src={item.image} alt={`CALYCO ${item.name} paint product`} className="w-14 h-14 object-contain rounded border" />
+                <img src={item.image} alt={item.name} className="w-14 h-14 object-contain rounded border" />
                 <div className="flex-1">
                   <div className="font-semibold text-[#493657]">{item.name}</div>
                   <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>

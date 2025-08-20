@@ -23,7 +23,7 @@ export default function LivingRoomInspiration() {
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/livingroomHero_vvdi6l.jpg"
-          alt="CALYCO living room design inspiration — elegant living space with comfortable seating and beautiful decor"
+          alt="Living Room Inspiration"
           className="w-full h-64 md:h-[28rem] object-cover"
         />
       </div>
