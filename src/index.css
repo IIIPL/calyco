@@ -2,38 +2,276 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Calyco Brand Colors */
+:root {
+  /* Core Brand Colors */
+  --calyco-purple: #532E8A;
+  --calyco-gold: #C8A951;
 
+  /* Neutrals */
+  --grey-mist: #EDEDED;
+  --grey-thunder: #4A5568;
+  --linen-white: #FAFAF7;
+  --charcoal-black: #1A1A1A;
 
+  /* Supporting Natural Tones */
+  --sage-green: #68D391;
+  --barn-red: #C53030;
+  --lavender: #B794F4;
+  --lilac: #D6BCFA;
 
-@keyframes shine {
-  0% {
-    transform: translate(-150%, -150%) rotate(45deg);
-  }
-  100% {
-    transform: translate(150%, 150%) rotate(45deg);
-  }
+  /* Usage Variables */
+  --primary-bg: var(--linen-white);
+  --secondary-bg: var(--grey-mist);
+  --text-primary: var(--charcoal-black);
+  --text-secondary: var(--grey-thunder);
+  --brand-primary: var(--calyco-purple);
+  --brand-accent: var(--calyco-gold);
+  --eco-accent: var(--sage-green);
 }
 
-.animate-shine {
-  background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-  animation: shine 2s infinite linear;
-  mix-blend-mode: screen;
-  pointer-events: none;
+/* Global Styles */
+body {
+  background-color: var(--linen-white);
+  color: var(--charcoal-black);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+/* Custom utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
-.hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+
+/* Calyco Brand Utility Classes */
+.bg-calyco-purple {
+  background-color: var(--calyco-purple);
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+
+.bg-calyco-gold {
+  background-color: var(--calyco-gold);
 }
-.no-scrollbar {
+
+.bg-grey-mist {
+  background-color: var(--grey-mist);
+}
+
+.bg-grey-thunder {
+  background-color: var(--grey-thunder);
+}
+
+.bg-linen-white {
+  background-color: var(--linen-white);
+}
+
+.bg-charcoal-black {
+  background-color: var(--charcoal-black);
+}
+
+.bg-sage-green {
+  background-color: var(--sage-green);
+}
+
+.bg-barn-red {
+  background-color: var(--barn-red);
+}
+
+.bg-lavender {
+  background-color: var(--lavender);
+}
+
+.bg-lilac {
+  background-color: var(--lilac);
+}
+
+.text-calyco-purple {
+  color: var(--calyco-purple);
+}
+
+.text-calyco-gold {
+  color: var(--calyco-gold);
+}
+
+.text-grey-mist {
+  color: var(--grey-mist);
+}
+
+.text-grey-thunder {
+  color: var(--grey-thunder);
+}
+
+.text-linen-white {
+  color: var(--linen-white);
+}
+
+.text-charcoal-black {
+  color: var(--charcoal-black);
+}
+
+.text-sage-green {
+  color: var(--sage-green);
+}
+
+.text-barn-red {
+  color: var(--barn-red);
+}
+
+.text-lavender {
+  color: var(--lavender);
+}
+
+.text-lilac {
+  color: var(--lilac);
+}
+
+.border-calyco-purple {
+  border-color: var(--calyco-purple);
+}
+
+.border-calyco-gold {
+  border-color: var(--calyco-gold);
+}
+
+.border-grey-mist {
+  border-color: var(--grey-mist);
+}
+
+.border-grey-thunder {
+  border-color: var(--grey-thunder);
+}
+
+.border-sage-green {
+  border-color: var(--sage-green);
+}
+
+/* Primary CTA Button */
+.btn-primary {
+  background-color: var(--calyco-purple);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6d3ba8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(83, 46, 138, 0.3);
+}
+
+/* Secondary CTA Button */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--calyco-purple);
+  border: 2px solid var(--calyco-purple);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--calyco-purple);
+  color: white;
+}
+
+/* Gold Accent Button */
+.btn-gold {
+  background-color: var(--calyco-gold);
+  color: var(--charcoal-black);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background-color: #d4b665;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(200, 169, 81, 0.3);
+}
+
+/* Eco Badge */
+.badge-eco {
+  background-color: var(--sage-green);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area for mobile devices */
+.h-safe-area-inset-bottom {
+  height: env(safe-area-inset-bottom);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Product detail specific styles */
+.product-hero-image {
+  transition: transform 0.3s ease;
+}
+
+.product-hero-image:hover {
+  transform: scale(1.05);
+}
+
+/* Finish swatch animations */
+.finish-swatch {
+  transition: all 0.3s ease;
+}
+
+.finish-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Coverage calculator styles */
+.coverage-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* Sticky CTA animations */
+.sticky-cta-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.sticky-cta-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+
+.sticky-cta-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sticky-cta-exit-active {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in;
 }

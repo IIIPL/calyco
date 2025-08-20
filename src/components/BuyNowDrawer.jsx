@@ -31,6 +31,7 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
 
   const canAdd = selectedProduct && selectedSize;
 
+  const safeColor = currentColor && currentColor.hex ? currentColor : null;
   return (
     <>
       {isOpen && (
@@ -57,11 +58,13 @@ export const BuyNowDrawer = ({ isOpen, onClose, currentColor }) => {
           {/* Color Preview */}
           <div className="mb-8">
             <div
-              className="h-32 rounded-xl shadow-lg border border-gray-200 transition-all duration-300"
-              style={{ backgroundColor: currentColor.hex }}
-            />
-            <h3 className="text-2xl mt-4 font-semibold text-[#342347]">{currentColor.name}</h3>
-            <p className="text-gray-600 mt-2 leading-relaxed">{currentColor.description}</p>
+              className="h-32 rounded-xl shadow-lg border border-gray-200 transition-all duration-300 flex items-center justify-center text-gray-500"
+              style={{ backgroundColor: safeColor ? safeColor.hex : '#f7f7f7' }}
+            >
+              {!safeColor && <span>Select a color</span>}
+            </div>
+            <h3 className="text-2xl mt-4 font-semibold text-[#342347]">{safeColor ? safeColor.name : 'No color selected'}</h3>
+            {safeColor && <p className="text-gray-600 mt-2 leading-relaxed">{safeColor.description || ''}</p>}
           </div>
           
           {/* Product List */}

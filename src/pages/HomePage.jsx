@@ -16,6 +16,7 @@ import HeroColorShowcase from "../components/HeroColorShowcase";
 import CategoryNav from "../components/CategoryNav";
 import MiniVisualizer from "../components/MiniVisualizer";
 import MiniInspirationGallery from "../components/HomeComponents/MiniInspirationGallyer";
+import ColorSlider from "../components/ColorSlider";
 
 const galleryImages = [
   {
@@ -78,122 +79,9 @@ export const HomePage = () => {
 
     return (
         <div className="pt-20">
-            {/* Enhanced Hero Section */}
-            <section className="relative min-h-screen bg-gradient-to-br from-[#F9F6F1] via-white to-[#F0C85A]/10 overflow-hidden">
-                {/* Animated Background Elements */}
-                <div className="absolute top-20 left-10 w-32 h-32 bg-[#F0C85A]/20 rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
-                <div className="absolute top-40 right-20 w-24 h-24 bg-[#493657]/15 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-[#F0C85A]/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                
-                <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-                        {/* Enhanced Left Content */}
-                        <motion.div
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="text-center lg:text-left space-y-8"
-                        >
-                            <div className="space-y-4">
-                                <motion.div 
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2 }}
-                                    className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-sm font-medium"
-                                >
-                                    <FaLeaf className="text-green-600" />
-                                    <span>Eco-Friendly Premium Paints</span>
-                                </motion.div>
-                                
-                                <motion.h1 
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="text-5xl md:text-7xl font-bold text-[#493657] leading-tight"
-                                >
-                                    ELEVATE
-                                    <br />
-                                    <span className="text-[#F0C85A]">YOUR SPACES</span>
-                                </motion.h1>
-                                
-                                <motion.p 
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4 }}
-                                    className="text-xl text-[#493657]/70 max-w-lg lg:max-w-none"
-                                >
-                                    Transform your home with our premium, eco-friendly paint collection. 
-                                    Experience the perfect blend of beauty, durability, and sustainability.
-                                </motion.p>
-                            </div>
-
-                            {/* Enhanced Stats */}
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                className="grid grid-cols-3 gap-6"
-                            >
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-[#493657]">108+</div>
-                                    <div className="text-sm text-[#493657]/70">Colors</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-[#493657]">100%</div>
-                                    <div className="text-sm text-[#493657]/70">Low-VOC</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-[#493657]">10+</div>
-                                    <div className="text-sm text-[#493657]/70">Years</div>
-                                </div>
-                            </motion.div>
-
-                            {/* Enhanced CTA Buttons */}
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.6 }}
-                                className="flex flex-col sm:flex-row gap-4"
-                            >
-                                <button 
-                                    onClick={() => navigate('/product')}
-                                    className="px-8 py-4 bg-[#493657] text-white rounded-xl font-semibold hover:bg-[#5a4067] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                                >
-                                    <FaPaintbrush />
-                                    Explore Products
-                                </button>
-                                <button 
-                                    onClick={() => navigate('/colors')}
-                                    className="px-8 py-4 border-2 border-[#493657] text-[#493657] rounded-xl font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
-                                >
-                                    <FaArrowRight />
-                                    View Colors
-                                </button>
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Enhanced Right Image */}
-                        <motion.div
-                            initial={{ x: 100, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                            className="relative"
-                        >
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                                <img
-                                    src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754145841/CALYCO_PREMIUM_Paints__NOVA_DEFENSE_1_mymkfw.png"
-                                    alt="Calyco Premium Paints"
-                                    className="w-full h-auto object-contain"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
-                            </div>
-                            
-                            {/* Floating Elements */}
-                            <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#F0C85A] rounded-full opacity-20 animate-pulse shadow-lg"></div>
-                            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#493657] rounded-full opacity-20 animate-pulse shadow-lg" style={{ animationDelay: '1s' }}></div>
-                        </motion.div>
-                    </div>
-                </div>
+            {/* Full Screen Hero Slider */}
+            <section className="relative overflow-hidden">
+                <ColorSlider />
             </section>
 
             {/* Enhanced Product Showcase Section */}
