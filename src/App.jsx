@@ -193,4 +193,4 @@ function App() {
       </CartProvider>
   )
 }
-export default App;
+export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
