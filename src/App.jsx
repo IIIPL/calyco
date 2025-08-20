@@ -194,3 +194,4 @@ function App() {
   )
 }
 export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
+// Force new deployment - Thu Aug 21 00:54:55 IST 2025
