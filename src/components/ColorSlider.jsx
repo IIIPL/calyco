@@ -19,6 +19,11 @@ const ColorSlider = () => {
       alt: 'Luxurious Interior Living Room'
     },
     {
+      type: 'image',
+      src: '/Assets/LustroLite/inhouse.png',
+      alt: 'LustroLite Premium Paint'
+    },
+    {
       type: 'video',
       src: '/Assets/slider/assets_task_01k30y9xbyf88skvtrfhhx5tba_task_01k30y9xbyf88skvtrfhhx5tba_genid_2039803a-4a55-4a59-abbf-bd3cf487a324_25_08_19_10_35_258371_videos_00000_212151107_md.mp4',
       alt: 'Calyco Paint Video'
@@ -67,7 +72,7 @@ const ColorSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[70vh] overflow-hidden">
+    <div className="relative w-full h-[70vh] overflow-hidden mt-16">
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -107,8 +112,9 @@ const ColorSlider = () => {
       {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-30 cursor-pointer"
         aria-label="Previous slide"
+        type="button"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -117,30 +123,16 @@ const ColorSlider = () => {
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-30 cursor-pointer"
         aria-label="Next slide"
+        type="button"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
-      {/* Play/Pause button */}
-      <button
-        onClick={() => setIsPlaying(!isPlaying)}
-        className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
-        aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-      >
-        {isPlaying ? (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6" />
-          </svg>
-        ) : (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )}
-      </button>
+
 
       {/* Slide indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">

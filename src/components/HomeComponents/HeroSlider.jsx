@@ -28,96 +28,24 @@ const heroData = [
     productName: "Thermacool",
     productImage: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142461/NoBg_cb0amu.png",
   },
-  
+  {
+    productName: "LustroLite",
+    productImage: "/Assets/LustroLite/inhouse.png",
+  },
 ];
 
 export const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [isPaused, setIsPaused] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [targetSlide, setTargetSlide] = useState(null);
-  const [queue, setQueue] = useState([]);
   const autoplayTimerRef = useRef(null);
-  const transitionTimerRef = useRef(null);
 
-  // Calculate the shortest path between two slides
-  const calculateDirection = (from, to) => {
-    const diff = to - from;
-    const absDiff = Math.abs(diff);
-    const wrapDiff = heroData.length - absDiff;
-    
-    if (absDiff <= wrapDiff) {
-      return diff > 0 ? 1 : -1;
-    } else {
-      return diff > 0 ? -1 : 1;
-    }
-  };
-
-  // Handle slide transition with animation
-  const goToSlide = (slideIndex) => {
-    if (isAnimating) {
-      // If already animating, add to queue
-      setQueue(prev => [...prev, slideIndex]);
-      return;
-    }
-
-    if (slideIndex === current) return;
-
-    setIsAnimating(true);
-    setIsPaused(true); // Pause autoplay during manual navigation
-    
-    const newDirection = calculateDirection(current, slideIndex);
-    setDirection(newDirection);
-    setTargetSlide(slideIndex);
-    
-    // If it's a direct neighbor, just transition once
-    if (Math.abs(slideIndex - current) === 1 || 
-        (current === 0 && slideIndex === heroData.length - 1) ||
-        (current === heroData.length - 1 && slideIndex === 0)) {
-      setCurrent(slideIndex);
-    } else {
-      // For non-adjacent slides, start the sequence
-      const nextIndex = (current + newDirection + heroData.length) % heroData.length;
-      setCurrent(nextIndex);
-    }
-  };
-
-  // Process the next slide in the sequence
-  const processNextInSequence = () => {
-    if (targetSlide === null) return;
-    
-    // If we've reached the target, stop animating
-    if (current === targetSlide) {
-      setIsAnimating(false);
-      setTargetSlide(null);
-      
-      // Check if there's anything in the queue
-      if (queue.length > 0) {
-        const nextTarget = queue[0];
-        setQueue(prev => prev.slice(1));
-        goToSlide(nextTarget);
-      } else {
-        // Resume autoplay after a delay
-        setTimeout(() => setIsPaused(false), 1000);
-      }
-      return;
-    }
-    
-    // Continue to the next slide in the sequence
-    const nextIndex = (current + direction + heroData.length) % heroData.length;
-    setCurrent(nextIndex);
-  };
-
-  // Navigation functions
+  // Simple navigation functions
   const nextSlide = () => {
-    const nextIndex = (current + 1) % heroData.length;
-    goToSlide(nextIndex);
+    setCurrent((prev) => (prev + 1) % heroData.length);
   };
 
   const prevSlide = () => {
-    const prevIndex = (current - 1 + heroData.length) % heroData.length;
-    goToSlide(prevIndex);
+    setCurrent((prev) => (prev - 1 + heroData.length) % heroData.length);
   };
 
   // Autoplay functionality
@@ -145,28 +73,9 @@ export const HeroSlider = () => {
     };
   }, [isPaused, current]);
 
-  // Handle the sequence animation timing
-  useEffect(() => {
-    if (isAnimating) {
-      if (transitionTimerRef.current) {
-        clearTimeout(transitionTimerRef.current);
-      }
-      
-      transitionTimerRef.current = setTimeout(() => {
-        processNextInSequence();
-      }, 600); // Match this with the transition duration
-    }
-
-    return () => {
-      if (transitionTimerRef.current) {
-        clearTimeout(transitionTimerRef.current);
-      }
-    };
-  }, [isAnimating, current]);
-
   return (
     <div
-    className="relative w-full min-h-[300px] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[300px] flex items-center justify-center overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -187,13 +96,12 @@ export const HeroSlider = () => {
       </button>
       
       {/* Animated Slide */}
-      <AnimatePresence mode="wait" custom={direction}>
+      <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          custom={direction}
-          initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+          initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+          exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="absolute inset-0"
         >
@@ -209,7 +117,7 @@ export const HeroSlider = () => {
         {heroData.map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
+            onClick={() => setCurrent(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === current 
                 ? "bg-[#2C194B] scale-125" 

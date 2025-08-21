@@ -44,7 +44,7 @@ export const HomeCard = ({ index = 0, paintName = "paintname" }) => {
   }, [index]);
 
   return (
-    <div className="bg-white w-[22rem] min-h-[440px] rounded-xl flex flex-col items-center relative p-4 border border-black transition duration-300">
+    <div className="bg-white w-full max-w-[22rem] min-h-[440px] rounded-xl flex flex-col items-center relative p-4 border border-black transition duration-300">
       {/* Image with fixed height */}
       <div
         className="relative w-full h-[200px] overflow-hidden rounded-xl border border-[#B5B5B5]"

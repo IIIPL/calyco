@@ -492,8 +492,8 @@ export const DynamicProductPage = () => {
                   return (
                     <div className="mt-24 overflow-x-auto max-w-7xl px-0 mx-auto pb-20 hide-scrollbar">
                       <h2 className="text-lg md:text-2xl font-bold text-[#493657] mb-6 md:mb-8">Compare Similar Products</h2>
-                      <div className="w-full min-w-[600px]">
-                        <table className="min-w-full w-full border border-[#e5e0d8] text-[#493657] bg-white text-sm md:text-lg">
+                      <div className="w-full min-w-full">
+                        <table className="w-full border border-[#e5e0d8] text-[#493657] bg-white text-sm md:text-lg">
                           <thead>
                             <tr>
                               <th className="text-left font-bold px-4 md:px-8 py-3 md:py-5 bg-white border-b-2 border-[#e5e0d8] w-32 md:w-64 align-middle text-sm md:text-lg">Product</th>

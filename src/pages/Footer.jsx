@@ -56,7 +56,7 @@ const Item = ({ to, children }) => (
 );
 
 export const Footer = () => (
-  <footer className="relative bg-[#23182b] text-white border-t border-[#493657]/30 overflow-hidden">
+  <footer className="relative bg-[#1A1C24] text-white border-t border-[#493657]/30 overflow-hidden">
     <GoldenDots />
 
     {/* TOP GRID */}
