@@ -111,7 +111,7 @@ function App() {
     <CartProvider>
       <ColorProvider>
         <ColorVisualizationProvider>
-        <div className='font-poppins'>
+        <div className='font-poppins overflow-x-hidden'>
           {/* Offer Banner - Above Header */}
           <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} />
           

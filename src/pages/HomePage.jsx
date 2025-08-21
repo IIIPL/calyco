@@ -17,6 +17,7 @@ import CategoryNav from "../components/CategoryNav";
 import MiniVisualizer from "../components/MiniVisualizer";
 import MiniInspirationGallery from "../components/HomeComponents/MiniInspirationGallyer";
 import ColorSlider from "../components/ColorSlider";
+import ProductCategoriesSection from "../components/ProductCategoriesSection";
 
 const galleryImages = [
   {
