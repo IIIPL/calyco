@@ -45,7 +45,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
 
   const handleMenuClick = (item) => {
     if (item.key === "All") {
-      navigate("/product");
+      navigate("/products");
       if (onSelect) onSelect();
     } else {
       setSubmenuOpen(submenuOpen === item.key ? null : item.key);

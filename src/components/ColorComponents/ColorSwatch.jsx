@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaCopy, FaTimes, FaPlus } from 'react-icons/fa';
 import { getContrastTextColor } from '../../utils/colorutils';
+import { reverseColorNameMapping } from '../../data/colorNameMapping';
 
 const ColorSwatch = ({ 
   color, 
@@ -29,13 +30,20 @@ const ColorSwatch = ({
     xlarge: 'h-48 w-48'
   };
 
-
+  const getActualHexColor = (colorValue) => {
+    // If it's already a hex color, return as is
+    if (colorValue && colorValue.startsWith('#')) {
+      return colorValue;
+    }
+    // Otherwise, look up the color name in our mapping
+    return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  };
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <div 
         className={`${sizeClasses[size]} rounded-lg shadow-md flex items-center justify-center relative overflow-hidden`}
-        style={{ backgroundColor: color.hex }}
+        style={{ backgroundColor: getActualHexColor(color.hex) }}
       >
         {removable && (
           <button 

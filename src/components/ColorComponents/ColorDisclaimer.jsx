@@ -39,7 +39,7 @@ export const ColorDisclaimer = ({ variant = "full", className = "" }) => {
         "rounded-xl border border-[#e5e0d8] bg-[#f9f6ef] text-[#2c2240]",
         "p-4 sm:p-5 md:p-6 shadow-sm",
         "md:flex md:items-start md:gap-4",
-        "border-l-4 border-l-[#F0C85A]",
+        "border-l-4 border-l-gray-400",
         className,
       ].join(" ")}
     >

@@ -4,6 +4,26 @@ import { motion } from 'framer-motion';
 const GridMasonry = ({ images = [] }) => {
   if (!Array.isArray(images) || images.length === 0) return null;
   
+  // Function to get meaningful inspiration names
+  const getInspirationName = (index) => {
+    const inspirationNames = [
+      "Modern Living Room",
+      "Cozy Bedroom Retreat",
+      "Elegant Dining Space",
+      "Serene Bathroom",
+      "Contemporary Kitchen",
+      "Stylish Home Office",
+      "Warm Family Room",
+      "Luxurious Master Suite",
+      "Inviting Entryway",
+      "Peaceful Study Nook",
+      "Chic Entertainment Area",
+      "Tranquil Reading Corner"
+    ];
+    
+    return inspirationNames[index] || `Inspiration ${index + 1}`;
+  };
+  
   return (
     <section className="py-20 bg-white">
       <div className="w-full px-4 md:px-8 lg:px-12">
@@ -44,7 +64,7 @@ const GridMasonry = ({ images = [] }) => {
                   />
                 </div>
                 <div className="mt-3 text-sm text-gray-700 font-medium">
-                  Beautiful Space {idx + 1}
+                  {getInspirationName(idx)}
                 </div>
               </motion.div>
             ))}

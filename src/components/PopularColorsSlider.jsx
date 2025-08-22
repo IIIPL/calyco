@@ -1,11 +1,34 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import CartPopup from './CartPopup';
+import { useCart } from '../context/CartContext';
 
 const PopularColorsSlider = () => {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
+
+  // Map color names to their family routes
+  const getColorFamilyRoute = (colorName) => {
+    const colorToFamilyMap = {
+      'GREY MIST': 'greys',
+      'GREY THUNDER': 'greys',
+      'LAVENDER': 'purples-&-pinks',
+      'LILAC': 'purples-&-pinks',
+      'LINEN': 'whites-&-off-whites',
+      'PURPLE': 'purples-&-pinks',
+      'SAGE GREEN': 'greens',
+      'BRICK RED': 'reds-&-oranges'
+    };
+    
+    const family = colorToFamilyMap[colorName];
+    return family ? `/colors/family/${family}` : '/colors';
+  };
 
   // Popular colors data with exact colors specified by user
   const popularColors = [
@@ -13,7 +36,7 @@ const PopularColorsSlider = () => {
       id: 1,
       name: "GREY MIST",
       hex: "#C9CCCD",
-      price: "£2 Sample",
+      price: "₹499",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
       roomType: "Living Room"
@@ -22,7 +45,7 @@ const PopularColorsSlider = () => {
       id: 2,
       name: "GREY THUNDER", 
       hex: "#9DA0A3",
-      price: "£2 Sample",
+      price: "₹599",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
       roomType: "Living Room"
@@ -31,7 +54,7 @@ const PopularColorsSlider = () => {
       id: 3,
       name: "LAVENDER",
       hex: "#D4C8CD",
-      price: "£2 Sample", 
+      price: "₹449", 
       isBestSeller: false,
       roomImage: "/Assets/Rooms/Bedroom/base.jpg",
       roomType: "Bedroom"
@@ -40,7 +63,7 @@ const PopularColorsSlider = () => {
       id: 4,
       name: "LILAC",
       hex: "#C9BDC7",
-      price: "£2 Sample",
+      price: "₹549",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/Bedroom/base.jpg",
       roomType: "Bedroom"
@@ -49,7 +72,7 @@ const PopularColorsSlider = () => {
       id: 5,
       name: "LINEN",
       hex: "#D3CABB",
-      price: "£2 Sample",
+      price: "₹399",
       isBestSeller: true,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
@@ -58,7 +81,7 @@ const PopularColorsSlider = () => {
       id: 6,
       name: "PURPLE",
       hex: "#776A8C",
-      price: "£2 Sample",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
       roomType: "Living Room"
@@ -67,7 +90,7 @@ const PopularColorsSlider = () => {
       id: 7,
       name: "SAGE GREEN",
       hex: "#A8B99D",
-      price: "£2 Sample",
+      price: "₹649",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
@@ -76,7 +99,7 @@ const PopularColorsSlider = () => {
       id: 8,
       name: "BRICK RED",
       hex: "#8A3F3E",
-      price: "£2 Sample",
+      price: "₹999",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
@@ -104,7 +127,43 @@ const PopularColorsSlider = () => {
 
   const handleAddToCart = (color) => {
     console.log(`Added ${color.name} to cart`);
-    // Add your cart logic here
+    
+    // Create a product object for the cart
+    const productForCart = {
+      id: color.id,
+      name: color.name,
+      display_name: color.name,
+      price: parseInt(color.price.replace('₹', '')),
+      image: color.hex // Use hex color as image
+    };
+    
+    // Add to actual cart
+    addToCart(productForCart, 'Sample', 'Sample', 1, parseInt(color.price.replace('₹', '')), {
+      name: color.name,
+      hex: color.hex
+    });
+    
+    // Show cart popup
+    setCartPopup({ isVisible: true, item: color });
+    
+    // Auto-hide popup after 5 seconds
+    setTimeout(() => {
+      setCartPopup({ isVisible: false, item: null });
+    }, 5000);
+  };
+
+  const closeCartPopup = () => {
+    setCartPopup({ isVisible: false, item: null });
+  };
+
+  const handleContinueShopping = () => {
+    setCartPopup({ isVisible: false, item: null });
+    // Optionally scroll to top or stay on current page
+  };
+
+  const handleCheckout = () => {
+    setCartPopup({ isVisible: false, item: null });
+    navigate('/checkout');
   };
 
   // Handle drag end for swipe functionality
@@ -121,7 +180,8 @@ const PopularColorsSlider = () => {
   };
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <>
+      <section className="py-16 bg-white overflow-hidden">
       <div className="w-full px-4 md:px-8 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* Left side - Text content */}
@@ -170,7 +230,9 @@ const PopularColorsSlider = () => {
                     className="flex-shrink-0"
                     style={{ width: `${cardWidth}px` }}
                   >
-                    <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 group cursor-pointer hover:shadow-lg transform group-hover:scale-105">
+                    <div 
+                      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 group hover:shadow-lg transform group-hover:scale-105"
+                    >
                       {/* Color Swatch - Solid color instead of room image */}
                       <div className="aspect-square relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
                         {/* Solid color background */}
@@ -199,7 +261,10 @@ const PopularColorsSlider = () => {
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">{color.name}</h3>
                         <p className="text-sm text-gray-600 mb-3">{color.price}</p>
                         <button 
-                          onClick={() => handleAddToCart(color)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleAddToCart(color);
+                          }}
                           className="w-full bg-[#1a1a2e] text-white py-2.5 px-4 rounded-lg font-medium hover:bg-[#16213e] transition-colors text-sm"
                         >
                           Add to Cart
@@ -214,6 +279,16 @@ const PopularColorsSlider = () => {
         </div>
       </div>
     </section>
+
+    {/* Cart Popup */}
+    <CartPopup
+      isVisible={cartPopup.isVisible}
+      onClose={closeCartPopup}
+      item={cartPopup.item}
+      onContinueShopping={handleContinueShopping}
+      onCheckout={handleCheckout}
+    />
+    </>
   );
 };
 

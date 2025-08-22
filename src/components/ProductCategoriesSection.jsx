@@ -10,7 +10,7 @@ const ProductCategoriesSection = () => {
       description: "Eco-premium colors and finishes for every room.",
       image: "/Assets/Inspiration/living.jpg",
       alt: "Modern living room wall",
-      link: "/product"
+      link: "/products"
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const ProductCategoriesSection = () => {
       description: "Durability, weatherproofing, and bold looks for outside walls.",
       image: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
       alt: "Villa or exterior wall facade",
-      link: "/product"
+      link: "/products"
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const ProductCategoriesSection = () => {
       description: "Protective coatings for wood, metal, and concrete surfaces.",
       image: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
       alt: "Painter applying stain/sealer on wood or metal",
-      link: "/product"
+      link: "/products"
     }
   ];
 

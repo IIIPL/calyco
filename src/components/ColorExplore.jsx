@@ -183,7 +183,7 @@ const ColorExplore = () => {
                       background: `linear-gradient(135deg, ${familyInfo.color} 0%, ${familyInfo.accentColor} 100%)`,
                       color: familyInfo.textColor 
                     }}
-                    onClick={() => setExpandedFamily(expandedFamily === family ? null : family)}
+                    onClick={() => navigate(`/colors/family/${slugify(family)}`)}
                   >
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-10">
@@ -208,7 +208,11 @@ const ColorExplore = () => {
                         <motion.div
                           animate={{ rotate: expandedFamily === family ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
-                          className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                          className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setExpandedFamily(expandedFamily === family ? null : family);
+                          }}
                         >
                           <FaChevronDown className="text-sm" />
                         </motion.div>

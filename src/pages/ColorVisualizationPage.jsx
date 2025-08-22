@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useColors } from '../context/ColorContext';
+import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { useColorVisualization } from '../context/ColorVisualizationContext.jsx';
 import ColorSwatch from '../components/ColorComponents/ColorSwatch';
 import ColorPalette from '../components/ColorComponents/ColorPalette';
@@ -122,7 +123,7 @@ const ColorVisualizationPage = () => {
                   <div className="md:w-1/2">
                     <div 
                       className="h-64 w-full rounded-lg flex items-center justify-center relative"
-                      style={{ backgroundColor: selectedColor.hex }}
+                      style={{ backgroundColor: reverseColorNameMapping[selectedColor.hex] || selectedColor.hex }}
                     >
                       <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-md">
                         {selectedColor.name}

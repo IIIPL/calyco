@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Slider from './components/Slider'
+
 import { Navbar } from './components/Navbar'
-import { Route, Routes, useParams } from 'react-router-dom'
-import SEO from "./components/SEO";
+import { Route, Routes } from 'react-router-dom'
+
 const Home = React.lazy(() => import('./pages/Home.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
-const ProductsPage = React.lazy(() => import('./pages/ProductsPage.jsx'))
+
 const ProductDetailPage = React.lazy(() => import('./pages/ProductDetailPage.jsx'))
 const ContractorsPage = React.lazy(() => import('./pages/ContractorsPage.jsx'))
 const GovernmentPage = React.lazy(() => import('./pages/GovernmentPage.jsx'))
@@ -41,6 +41,7 @@ import ExteriorInspiration from './pages/inspiration/Exterior';
 import NotFound from './pages/NotFound';
 import FullColorPage from './pages/Colors/FullColorPage'
 import FamilyColorGroup from './pages/FamilyPage'
+import IndividualColorPage from './pages/Colors/IndividualColorPage'
 import ColorDetailPage from './pages/ColorDetailPage'
 
 
@@ -65,8 +66,7 @@ import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
 import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
 import CustomerService from "./pages/Policies/CustomerService";
 
-// Import motion for animations
-import { motion } from "framer-motion";
+
 import { useNavigate } from "react-router-dom";
 
 const ColorPageWrapper = () => {
@@ -86,7 +86,7 @@ const OfferBanner = ({ onClose, isVisible }) => {
             {/* Centered Text */}
             <div className="flex-1"></div>
             <div className="text-center text-white text-sm">
-              Decorating over the bank holiday? Order by 12PM, 20th August.
+              🎨 Transform your space with eco-premium paints! Free delivery on orders above ₹2000.
             </div>
             <div className="flex-1 flex justify-end">
               <button 
@@ -125,7 +125,7 @@ function App() {
               {/* New premium visual-first routes */}
               <Route path='/colors' element={<ColorsPage/>}/>
               <Route path='/visualizer' element={<VisualizerPage/>}/>
-              <Route path='/products' element={<ProductsPage/>}/>
+              <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
@@ -134,9 +134,7 @@ function App() {
               <Route path='/sustainability' element={<SustainabilityPage/>}/>
               <Route path='/contact' element={<ContactPage/>}/>
               <Route path='/cart' element={<CartPage/>}/>
-              <Route path='/product' element={<ProductDetailPage/>}/>
               <Route path='/product/:productId' element={<DynamicProductPage/>}/>
-              <Route path='/product-detail' element={<ProductDetailPage/>}/>
               <Route path='/temp' element={<Temp/>}/>
               <Route path='/faq' element={<FAQs/>}/>
               <Route path='/contact' element={<ContactUs/>}/>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { reverseColorNameMapping } from '../../data/colorNameMapping';
 
 const slugify = (text) =>
   text
@@ -15,11 +16,21 @@ const ColorCombination = ({ currentColor, similarColors }) => {
   // Get two similar colors for the combination
   const combinationColors = similarColors.slice(0, 2);
 
+  const getActualHexColor = (colorValue) => {
+    // If it's already a hex color, return as is
+    if (colorValue && colorValue.startsWith('#')) {
+      return colorValue;
+    }
+    // Otherwise, look up the color name in our mapping
+    return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  };
+
   // Function to determine text color based on background brightness
   const getTextColor = (hexColor) => {
-    const r = parseInt(hexColor.substring(1, 3), 16);
-    const g = parseInt(hexColor.substring(3, 5), 16);
-    const b = parseInt(hexColor.substring(5, 7), 16);
+    const actualHex = getActualHexColor(hexColor);
+    const r = parseInt(actualHex.substring(1, 3), 16);
+    const g = parseInt(actualHex.substring(3, 5), 16);
+    const b = parseInt(actualHex.substring(5, 7), 16);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
     return brightness > 150 ? 'text-black' : 'text-white';
   };
@@ -40,7 +51,7 @@ const ColorCombination = ({ currentColor, similarColors }) => {
         {/* Left Section - Main Color (58% width) */}
         <div 
           className="w-[58%] relative cursor-pointer transition-opacity"
-          style={{ backgroundColor: currentColor.hex }}
+          style={{ backgroundColor: getActualHexColor(currentColor.hex) }}
           onClick={() => handleColorClick(currentColor)}
         >
           <div className={`absolute bottom-0 left-0 p-4 ${getTextColor(currentColor.hex)}`}>
@@ -57,7 +68,7 @@ const ColorCombination = ({ currentColor, similarColors }) => {
               className={`flex-1 relative cursor-pointer transition-opacity ${
                 index === 0 ? 'border-b border-white/20' : ''
               }`}
-              style={{ backgroundColor: color.hex }}
+              style={{ backgroundColor: getActualHexColor(color.hex) }}
               onClick={() => handleColorClick(color)}
             >
               <div className={`absolute bottom-0 left-0 p-4 ${getTextColor(color.hex)}`}>

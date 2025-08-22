@@ -2,12 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ColorSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0); // Start with the 1st slide (video)
+  const [isPlaying, setIsPlaying] = useState(false); // Set to false to disable autoplay
   const videoRef = useRef(null);
   const intervalRef = useRef(null);
 
   const slides = [
+    {
+      type: 'video',
+      src: '/Assets/slider/assets_task_01k30y9xbyf88skvtrfhhx5tba_task_01k30y9xbyf88skvtrfhhx5tba_genid_2039803a-4a55-4a59-abbf-bd3cf487a324_25_08_19_10_35_258371_videos_00000_212151107_md.mp4',
+      alt: 'Calyco Paint Video'
+    },
     {
       type: 'image',
       src: '/Assets/slider/Luxurious_Calyco_bedroom_with_a_sophisticated_ble_d9771689-ca96-422e-997b-5a987e87cc7e_0.png',
@@ -22,11 +27,6 @@ const ColorSlider = () => {
       type: 'image',
       src: '/Assets/LustroLite/inhouse.png',
       alt: 'LustroLite Premium Paint'
-    },
-    {
-      type: 'video',
-      src: '/Assets/slider/assets_task_01k30y9xbyf88skvtrfhhx5tba_task_01k30y9xbyf88skvtrfhhx5tba_genid_2039803a-4a55-4a59-abbf-bd3cf487a324_25_08_19_10_35_258371_videos_00000_212151107_md.mp4',
-      alt: 'Calyco Paint Video'
     }
   ];
 
@@ -39,15 +39,17 @@ const ColorSlider = () => {
   };
 
   const goToSlide = (index) => {
+    console.log('Dot clicked! Changing to slide:', index);
     setCurrentSlide(index);
   };
 
   useEffect(() => {
-    if (isPlaying) {
-      intervalRef.current = setInterval(() => {
-        nextSlide();
-      }, 3000);
-    }
+    // DISABLED AUTOMATIC SLIDING - Only manual navigation
+    // if (isPlaying) {
+    //   intervalRef.current = setInterval(() => {
+    //     nextSlide();
+    //   }, 3000);
+    // }
 
     return () => {
       if (intervalRef.current) {
@@ -109,43 +111,23 @@ const ColorSlider = () => {
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
-      {/* Navigation arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-30 cursor-pointer"
-        aria-label="Previous slide"
-        type="button"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-30 cursor-pointer"
-        aria-label="Next slide"
-        type="button"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
 
 
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+
+      {/* Slide indicators - ONLY WAY TO CHANGE SLIDES */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-50">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-150 cursor-pointer border-2 border-white/30 ${
               index === currentSlide
-                ? 'bg-white scale-125'
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-white scale-125 border-white'
+                : 'bg-white/50 hover:bg-white/80 hover:border-white/60'
             }`}
             aria-label={`Go to slide ${index + 1}`}
+            style={{ pointerEvents: 'auto' }}
           />
         ))}
       </div>
