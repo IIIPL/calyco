@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { reverseColorNameMapping } from '../../data/colorNameMapping';
 
 const slugify = (text) =>
   text
@@ -13,10 +14,20 @@ const slugify = (text) =>
 const ColorBox = ({ color, familyName }) => {
   const navigate = useNavigate();
 
+  const getActualHexColor = (colorValue) => {
+    // If it's already a hex color, return as is
+    if (colorValue && colorValue.startsWith('#')) {
+      return colorValue;
+    }
+    // Otherwise, look up the color name in our mapping
+    return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  };
+
   const getTextColor = (hexColor) => {
-    const r = parseInt(hexColor.substring(1, 3), 16);
-    const g = parseInt(hexColor.substring(3, 5), 16);
-    const b = parseInt(hexColor.substring(5, 7), 16);
+    const actualHex = getActualHexColor(hexColor);
+    const r = parseInt(actualHex.substring(1, 3), 16);
+    const g = parseInt(actualHex.substring(3, 5), 16);
+    const b = parseInt(actualHex.substring(5, 7), 16);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
     return brightness > 150 ? 'text-gray-900' : 'text-white';
   };
@@ -27,6 +38,7 @@ const ColorBox = ({ color, familyName }) => {
     navigate(`/colors/family/${familySlug}/${colorSlug}`);
   };
 
+  const actualHexColor = getActualHexColor(color.hex);
   const textColor = getTextColor(color.hex);
 
   return (
@@ -38,15 +50,15 @@ const ColorBox = ({ color, familyName }) => {
       transition={{ duration: 0.2 }}
     >
       <div
-        className="relative w-full aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-white group-hover:border-[#F0C85A]"
-        style={{ backgroundColor: color.hex }}
+        className="relative w-full aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-white group-hover:border-gray-300"
+        style={{ backgroundColor: actualHexColor }}
       >
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
         
         {/* Color Info */}
         <div className="absolute inset-0 flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className={`${textColor} text-center bg-white/90 backdrop-blur-sm rounded-lg p-2`}>
+          <div className="text-white text-center bg-black/70 backdrop-blur-sm rounded-lg p-2">
             <div className="font-semibold text-xs leading-tight mb-1">
               {color.name}
             </div>

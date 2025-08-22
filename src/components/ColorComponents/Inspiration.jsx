@@ -1,12 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { flatColors } from "../../data/flatColors";
+import { reverseColorNameMapping } from "../../data/colorNameMapping";
 
 export const InspirationCard = ({ colorName }) => {
   const navigate = useNavigate();
   const color = flatColors.find(c => c.name === colorName);
-  const hex = color?.hex || "#d9d3de";
+  const colorCode = color?.hex || "#d9d3de";
   const familyName = color?.color_family?.toLowerCase() || "unknown";
-  const colorImage = color?.image || "https://assets.benjaminmoore.com/transform/dd0c8228-f6be-400a-bcc2-7d8a2c124de6/Violet-Paint-Living-Room-Accent-Wall-800x1000"
+  const colorImage = color?.image || "/Assets/chair.png";
+  
+  // Convert color code to actual hex color
+  const getActualHexColor = (colorValue) => {
+    // If it's already a hex color, return as is
+    if (colorValue && colorValue.startsWith('#')) {
+      return colorValue;
+    }
+    // Otherwise, look up the color name in our mapping
+    return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  };
+  
+  const hex = getActualHexColor(colorCode);
+  
   const slugify = (text) =>
     text
       .toLowerCase()
@@ -38,12 +52,22 @@ export const InspirationCard = ({ colorName }) => {
       className="cursor-pointer rounded-lg shrink-0 h-[500px] overflow-hidden flex flex-col shadow-md bg-white max-w-xs"
     >
       {/* Image */}
-      <div className="h-4/5 w-full bg-gray-200">
-        <img
-          src={colorImage}
-          alt={colorName}
-          className="w-full h-full object-cover"
-        />
+      <div className="h-4/5 w-full bg-gray-200 relative overflow-hidden" style={{ backgroundColor: hex }}>
+        {color?.image ? (
+          <img
+            src={colorImage}
+            alt={colorName}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={colorImage}
+              alt="Chair with color background"
+              className="w-full h-full object-contain opacity-80"
+            />
+          </div>
+        )}
       </div>
 
       {/* Content */}

@@ -2,46 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const WhyTrustUs = () => {
-  const trustReasons = [
-    {
-      id: 1,
-      title: "Premium Quality",
-      description: "Every Calyco product meets the highest industry standards for durability and finish quality.",
-      image: "/Assets/LustroLite/inhouse.png",
-      icon: "🏆"
-    },
-    {
-      id: 2,
-      title: "Expert Formulation",
-      description: "Our paints are formulated by experts with decades of experience in the coatings industry.",
-      image: "/Assets/Defense/NoBg.png",
-      icon: "🔬"
-    },
-    {
-      id: 3,
-      title: "Proven Results",
-      description: "Trusted by thousands of contractors and homeowners across India for their projects.",
-      image: "/Assets/DeckSure/inuse.png",
-      icon: "✅"
-    },
-    {
-      id: 4,
-      title: "Eco-Friendly",
-      description: "Low-VOC, water-based formulas that are safe for your family and the environment.",
-      image: "/Assets/LustroLite/ontable.png",
-      icon: "🌱"
-    }
-  ];
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0 }
-  };
-
   return (
-    <section className="py-24 bg-white">
+    <section className="py-20 bg-gradient-to-br from-amber-800 via-amber-900 to-amber-700 relative overflow-hidden">
+      {/* Floating decorations */}
+      <div className="absolute w-20 h-20 bg-white/10 rounded-full top-10 right-15 animate-bounce"></div>
+      <div className="absolute w-16 h-16 bg-white/10 rounded-full bottom-20 left-10 animate-bounce" style={{animationDelay: '-4s'}}></div>
+      
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Header */}
+        {/* Hero Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,63 +17,86 @@ const WhyTrustUs = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-8">
-            Why Trust Calyco?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We're not just another paint company. We're your partners in creating beautiful, lasting spaces.
+          <h1 className="text-5xl md:text-6xl font-light text-white mb-6 leading-tight tracking-tight">
+            Bring out the best<br />in your spaces
+          </h1>
+          <p className="text-xl md:text-2xl text-white/85 mb-10 font-light tracking-wide">
+            Premium, eco-friendly paints that elevate<br />every room, every wall.
           </p>
+          <div className="flex gap-5 justify-center flex-wrap">
+            <button className="px-10 py-4 bg-gray-900 text-white rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+              Get Started
+            </button>
+            <button className="px-10 py-4 bg-amber-400 text-gray-900 rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+              Explore Colors
+            </button>
+          </div>
         </motion.div>
 
-        {/* Trust Reasons Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {trustReasons.map((reason, index) => (
-            <motion.div
-              key={reason.id}
-              custom={index}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 h-full flex flex-col">
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden flex-shrink-0">
-                  <img
-                    src={reason.image}
-                    alt={reason.title}
-                    className="w-full h-full object-cover transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                </div>
+        {/* Family Hero Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden mb-10 bg-gradient-to-br from-amber-700 to-amber-600 shadow-2xl"
+        >
+          <div className="w-full h-full flex items-center justify-center relative">
+            <img 
+              src="/Assets/ChatGPT Image Aug 22, 2025, 01_32_07 PM.png" 
+              alt="Professional family and contractors trust Calyco" 
+              className="w-full h-full object-cover rounded-3xl"
+            />
+          </div>
+        </motion.div>
 
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {reason.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed flex-1">
-                    {reason.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom CTA */}
+        {/* Features Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
-          <button className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Start Your Project
-          </button>
+          {/* Paint Quality Card */}
+          <motion.div
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white/95 p-10 rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20"
+          >
+            <h3 className="text-3xl font-normal text-[#2a2a2a] mb-4 leading-tight tracking-tight">
+              Paint that lasts<br />longer
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
+              Advanced one-coat formulas for beauty and durability.
+            </p>
+            <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              Get Started
+            </button>
+          </motion.div>
+
+          {/* Professional Testimonial Card */}
+          <motion.div
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white/95 p-10 rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20"
+          >
+            <h3 className="text-3xl font-normal text-[#2a2a2a] mb-4 leading-tight tracking-tight">
+              What<br />professionals say
+            </h3>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
+              Calyco paints helped us finish faster, with fewer coats, and the quality is unmatched.
+            </p>
+            <div className="h-48 rounded-2xl mb-6 overflow-hidden">
+              <img 
+                src="/Assets/trust-image.png" 
+                alt="Professional contractors and builders trust Calyco" 
+                className="w-full h-full object-cover object-bottom rounded-2xl"
+              />
+            </div>
+          </motion.div>
+
+
         </motion.div>
       </div>
     </section>

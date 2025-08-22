@@ -243,7 +243,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
-                  onClick={() => navigate('/colors')}
+                  onClick={() => navigate('/products')}
                   className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group"
                 >
                   Shop Calyco
@@ -253,6 +253,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+            {/* Popular Colours Section */}
+      <PopularColorsSlider />
 
       {/* Shop by Room Gallery - Below the Hero Section */}
       <section className="py-8 bg-white">
@@ -268,12 +271,12 @@ const Home = () => {
           
           <div className="flex gap-4 overflow-x-auto overflow-y-hidden scrollbar-hide max-w-full">
             {[
-              { name: "Bedroom", image: "/Assets/InteriorInspiratoin/adjinad_A_room_with_an_overcast_atmosphere_in_a_warm_green_styl_c7f39523-e6ce-4432-a6e6-1c6f5e67cdf6.png" },
-              { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png" },
-              { name: "Office", image: "/Assets/InteriorInspiratoin/header-inspiration-office-b-mobile.jpg" },
-              { name: "Kitchen", image: "/Assets/InteriorInspiratoin/kitchen.png" },
-              { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg" },
-              { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg" }
+              { name: "Bedroom", image: "/Assets/InteriorInspiratoin/adjinad_A_room_with_an_overcast_atmosphere_in_a_warm_green_styl_c7f39523-e6ce-4432-a6e6-1c6f5e67cdf6.png", route: "/inspirations/bedroom" },
+              { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
+              { name: "Office", image: "/Assets/InteriorInspiratoin/header-inspiration-office-b-mobile.jpg", route: "/inspirations/office" },
+              { name: "Kitchen", image: "/Assets/InteriorInspiratoin/kitchen.png", route: "/inspirations/kitchen" },
+              { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
+              { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
             ].map((room, index) => (
               <motion.div
                 key={room.name}
@@ -281,6 +284,7 @@ const Home = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
                 className="flex-shrink-0 w-[280px] group cursor-pointer"
+                onClick={() => navigate(room.route)}
               >
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:scale-105">
                   <div className="aspect-square relative">
@@ -302,8 +306,6 @@ const Home = () => {
         </div>
       </section>
 
-            {/* Popular Colours Section */}
-      <PopularColorsSlider />
       <ShopByColour />
       <HowItWorks />
 
@@ -337,7 +339,7 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              FAQ's
+              About Calyco
             </h2>
           </motion.div>
 
@@ -350,24 +352,28 @@ const Home = () => {
           >
             {[
               {
-                question: "Where can I find the nearest Calyco store?",
-                answer: "You can use our store locator tool on the website to find the nearest Calyco store. Simply enter your location to get a list of nearby stores."
+                question: "What is Calyco Paints?",
+                answer: "Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability. We offer low-VOC, water-based, safe-for-family paints and industrial-grade coatings for contractors, developers, and government projects."
               },
               {
-                question: "How can I contact Calyco customer service?",
-                answer: "You can reach our customer service team through phone, email, or live chat. Visit our contact page for all available options and response times."
+                question: "How is Calyco different from other paint brands?",
+                answer: "Unlike traditional dealer-driven paint companies, Calyco is online-first, delivering paints directly to homes, projects, and government buyers. We combine luxury lifestyle appeal (like Asian Paints), minimal modern UI (like Birla Opus), and eco-premium positioning (like Lick Paint) with a special focus on contractors and government compliance."
               },
               {
-                question: "How do I choose the right colour for my home?",
-                answer: "Use our Room Visualizer tool to see how colors look in your space, or request physical samples. Our color consultants are also available for personalized advice."
+                question: "Are Calyco paints safe for children and pets?",
+                answer: "Yes. All our paints are low-VOC, odor-free, and non-toxic, making them safe for indoor spaces where families live, sleep, and play."
               },
               {
-                question: "Can I get help with colour selection from Calyco?",
-                answer: "Yes, we offer free color consultation services. Our experts can help you choose the perfect colors for your project based on your style and requirements."
+                question: "What does low-VOC mean?",
+                answer: "VOC (Volatile Organic Compounds) are chemicals that evaporate into the air and harm indoor air quality. Our low-VOC paints reduce exposure, improving health and environmental safety."
               },
               {
-                question: "What are the latest colour trends?",
-                answer: "Explore our curated color palettes and inspiration gallery to discover the latest trends. We regularly update our collections with contemporary and timeless options."
+                question: "What surfaces can Calyco paints be used on?",
+                answer: "Our range covers interior walls, exterior walls, wood, metal, concrete, asphalt, roofing, and specialty industrial surfaces."
+              },
+              {
+                question: "Are your paints waterproof and weather-resistant?",
+                answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
               }
             ].map((faq, index) => (
               <motion.div
@@ -404,6 +410,25 @@ const Home = () => {
                 </AnimatePresence>
               </motion.div>
             ))}
+
+            {/* See All FAQs Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mt-12"
+            >
+              <button
+                onClick={() => window.location.href = '/faq'}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1A1C24] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg"
+              >
+                See All FAQs
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </motion.div>
           </motion.div>
         </div>
       </section>

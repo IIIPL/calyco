@@ -1,117 +1,111 @@
-import { useNavigate } from "react-router-dom";
-import { colorGroups } from "../../data/colorGroups"
+import { useNavigate, useParams } from "react-router-dom";
+import { flatColors } from "../../data/flatColors"
+import { reverseColorNameMapping } from "../../data/colorNameMapping"
 import { motion } from "framer-motion";
 
-const ColorPage = ({ colorName }) => {
-  const flatColors = colorGroups.flatMap(group =>
-    group.colors.map(color => ({ ...color, groupTitle: group.title }))
-  );
-
+const ColorPage = () => {
+  const { familyName, colorName } = useParams();
+  
+  // Decode the color name from URL
+  const decodedColorName = decodeURIComponent(colorName);
+  
   const currentColor = flatColors.find(
-    c => c.name.toLowerCase().replace(/\s+/g, "") === colorName.toLowerCase().replace(/\s+/g, "")
+    c => c.name.toLowerCase().replace(/\s+/g, "-") === decodedColorName.toLowerCase().replace(/\s+/g, "-")
   );
 
   if (!currentColor) {
     return <div className="p-20 text-center text-black">Color not found.</div>;
   }
 
+  // Get actual hex color from the mapping
+  const getActualHexColor = (colorCode) => {
+    return reverseColorNameMapping[colorCode] || "#CCCCCC"; // fallback to grey
+  };
+
+  const actualHexColor = getActualHexColor(currentColor.hex);
+
   const similarColors = flatColors.filter(
-    c => c.groupTitle === currentColor.groupTitle && c.name !== currentColor.name
+    c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
   const navigate = useNavigate();
 
   return (
-    <div className="text-[#1a1a1a] min-h-screen mt-20">
-
-        <div className="px-20 py-10"
-            style={{ backgroundColor: currentColor.hex }}
-        >
-            {/* Breadcrumb */}
-            <div className= "text-sm">
-                <div className="flex items-center space-x-2">
-                    <span
-                    className="text-[#1a1a1a] underline cursor-pointer hover:text-black"
-                    onClick={() => navigate("/colors")}
-                    >
-                    Paint Colors
-                    </span>
-                    <span>›</span>
-                    <span
-                    className="text-[#1a1a1a] underline cursor-pointer hover:text-black"
-                    onClick={() => navigate(`/colors#${currentColor.groupTitle.replace(/\s+/g, "-").toLowerCase()}`)}
-                    >
-                    {currentColor.groupTitle}
-                    </span>
-                    <span>›</span>
-                    <span className="text-[#1a1a1a] font-medium">{currentColor.name}</span>
-                </div>
+    <div className="min-h-screen mt-20" style={{ backgroundColor: actualHexColor }}>
+      <div className="flex h-screen">
+        {/* Left Panel - Color Swatch with Still Life */}
+        <div className="w-1/3 relative">
+          {/* Still Life Image at Bottom Left */}
+          <div className="absolute bottom-8 left-8 w-32 h-32 bg-blue-200 rounded-lg overflow-hidden">
+            <div className="w-full h-full bg-blue-100 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-green-400 rounded-full mx-auto mb-2"></div>
+                <div className="w-6 h-6 bg-gray-300 rounded-full mx-auto"></div>
+              </div>
             </div>
-        
-            {/* HERO CONTENT */}
-            <div className="flex flex-col md:flex-row w-full mt-10 text-[#1a1a1a]">
-                {/* LEFT PANEL: color preview or styled background */}
-                <div className="w-full md:w-2/5 mb-10 md:mb-0">
-                    <div
-                    className="w-full h-[500px] rounded-lg border"
-                    style={{ backgroundColor: currentColor.hex }}
-                    ></div>
-                </div>
-
-                {/* RIGHT PANEL: content */}
-                <div className="w-full md:w-3/5 md:pl-16 flex flex-col justify-center">
-                    {/* Title */}
-                    <h1 className="text-5xl font-semibold mb-2">{currentColor.name}</h1>
-                    
-                    {/* Description (placeholder) */}
-                    <p className="text-md text-black mb-10">
-                    A premium shade from the Calyco Sacred Palette. Perfect for both residential and commercial applications.
-                    </p>
-
-                    {/* Section: Color Info */}
-                    <h3 className="font-semibold text-sm uppercase tracking-wider mb-3">Color Information</h3>
-
-                    <div className="mb-6">
-                    <p className="font-medium text-sm text-black mb-1">LRV</p>
-                    <p className="text-black">72.3</p> {/* placeholder */}
-                    </div>
-
-                    <div className="mb-6">
-                    <p className="font-medium text-sm text-black mb-1">Also Known As</p>
-                    <p className="text-blue-700 underline cursor-pointer hover:text-blue-900">–</p>
-                    </div>
-
-                    <div>
-                    <p className="font-medium text-sm text-black mb-1">Collection</p>
-                    <p className="text-blue-700 underline cursor-pointer hover:text-blue-900">{currentColor.groupTitle}</p>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
 
-            {/* SIMILAR COLORS */}
-            <div className="bg-[#eee9df] py-16">
-                <div className="mx-auto px-6">
-                <h2 className="text-3xl font-bold mb-8">Similar Colors</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    {similarColors.map((color, idx) => (
-                    <motion.div
-                        key={color.name}
-                        className="rounded-lg overflow-hidden shadow"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                    >
-                        <div className="h-24" style={{ backgroundColor: color.hex }}></div>
-                        <div className="p-3 bg-white">
-                        <p className="text-sm font-medium text-black">{color.name}</p>
-                        <p className="text-xs text-black">{color.hex.toUpperCase()}</p>
-                        </div>
-                    </motion.div>
-                    ))}
-                </div>
+        {/* Right Panel - Content */}
+        <div className="w-2/3 p-12 text-black">
+          {/* Breadcrumb */}
+          <div className="text-sm mb-8">
+            <div className="flex items-center space-x-2">
+              <span
+                className="underline cursor-pointer hover:text-gray-600"
+                onClick={() => navigate("/colors")}
+              >
+                Paint Colors
+              </span>
+              <span>›</span>
+              <span
+                className="underline cursor-pointer hover:text-gray-600"
+                onClick={() => navigate(`/colors/family/${familyName}`)}
+              >
+                {currentColor.color_family}
+              </span>
+              <span>›</span>
+              <span className="font-medium">{currentColor.name}</span>
             </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="max-w-2xl">
+            {/* Title */}
+            <h1 className="text-6xl font-bold mb-4">{currentColor.name}</h1>
+            
+            {/* Color Code */}
+            <p className="text-xl mb-4">Color Code: {getActualHexColor(currentColor.hex).toUpperCase()}</p>
+            
+            {/* Description */}
+            <p className="text-lg mb-8">{currentColor.description}</p>
+            
+            {/* Color Family */}
+            <p className="text-lg mb-8">
+              Color Family:{" "}
+              <span 
+                className="underline cursor-pointer hover:text-gray-600"
+                onClick={() => navigate(`/colors/family/${familyName}`)}
+              >
+                {currentColor.color_family}
+              </span>
+            </p>
+
+            {/* Separator */}
+            <div className="w-full h-px bg-black mb-8"></div>
+
+            {/* Action Items */}
+            <div className="space-y-4">
+              <p className="underline cursor-pointer hover:text-gray-600">
+                Download digital dollop of {currentColor.name}
+              </p>
+              
+              <button className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                Buy Now
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
   );
 };

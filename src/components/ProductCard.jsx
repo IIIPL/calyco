@@ -20,6 +20,8 @@ const ProductCard = ({
   price,
   sizes,
   areaCoverage,
+  finishTypeSheen,
+  packaging,
 }) => {
   // Find the smallest size and its price (assuming price is for 1L if available)
   let displaySize = sizes && sizes.length > 0 ? sizes[0] : null;
@@ -40,6 +42,22 @@ const ProductCard = ({
         {/* Area Coverage */}
         {areaCoverage && (
           <div className="flex items-center text-[#493657] text-base font-medium"><CoverageIcon />{areaCoverage}</div>
+        )}
+        {/* Finish Type & Sheen */}
+        {finishTypeSheen && Array.isArray(finishTypeSheen) && finishTypeSheen.length > 0 && (
+          <div className="flex items-center text-[#493657] text-sm font-medium">
+            <span className="text-[#493657] mr-2">Finish:</span>
+            {finishTypeSheen.slice(0, 2).join(', ')}
+            {finishTypeSheen.length > 2 && '...'}
+          </div>
+        )}
+        {/* Packaging */}
+        {packaging && Array.isArray(packaging) && packaging.length > 0 && (
+          <div className="flex items-center text-[#493657] text-sm font-medium">
+            <span className="text-[#493657] mr-2">Sizes:</span>
+            {packaging.slice(0, 3).join(', ')}
+            {packaging.length > 3 && '...'}
+          </div>
         )}
       </div>
       <div className="border-b border-[#e5e0d8] w-full my-2" />

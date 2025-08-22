@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../data/flatColors';
-import { groupedShades } from '../data/groupedShades';
+import { reverseColorNameMapping } from '../data/colorNameMapping';
 import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
-import { BuyNowDrawer } from '../components/BuyNowDrawer';
 import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
 import NotFound from './NotFound';
 
@@ -28,36 +27,32 @@ const getTextColor = (hexColor) => {
 const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
-  const [showDrawer, setShowDrawer] = useState(false);
   const [currentColor, setCurrentColor] = useState(null);
 
   useEffect(() => {
     const decodedColorName = decodeURIComponent(colorName);
-    const group = groupedShades.find(
-      (g) => slugify(g.family) === familyName
-    );
-    const groupColor = group?.colors.find(
+    const color = flatColors.find(
       (c) => slugify(c.name) === decodedColorName
     );
 
-    if (groupColor) {
-      // Merge with full flatColors data (this has `image` and extra fields)
-      const fullColorData = flatColors.find(
-        (fc) => fc.name === groupColor.name
-      );
-
-      setCurrentColor({
-        ...groupColor,
-        ...fullColorData, // ensures image, hex, etc. are included
-        color_family: group.family,
-      });
-    } else { setCurrentColor(null); }
+    if (color) {
+      setCurrentColor(color);
+    } else { 
+      setCurrentColor(null); 
+    }
 
   }, [familyName, colorName]);
 
   if (!currentColor) {
     return <NotFound />;
   }
+
+  // Get actual hex color from the mapping
+  const getActualHexColor = (colorCode) => {
+    return reverseColorNameMapping[colorCode] || "#CCCCCC"; // fallback to grey
+  };
+
+  const actualHexColor = getActualHexColor(currentColor.hex);
 
   let similarColors = flatColors.filter(
     (c) =>
@@ -80,7 +75,7 @@ const ColorDetailPage = () => {
       .slice(0, 8);
   }
 
-  const textColorClass = getTextColor(currentColor.hex);
+  const textColorClass = getTextColor(actualHexColor);
 
   const handleColorSelect = (color) => {
     if (!color?.name || !color?.color_family) return;
@@ -94,7 +89,7 @@ const ColorDetailPage = () => {
   return (
     <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative" style={{ backgroundColor: currentColor.hex }}
+      <section className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative" style={{ backgroundColor: actualHexColor }}
       >
         {/* Breadcrumb */}
         <nav
@@ -123,13 +118,24 @@ const ColorDetailPage = () => {
 
         {/* Left - Image */}
         <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0 md:h-full flex items-center justify-center">
-          <img
-            src={
-              currentColor.image 
-            }
-            alt={currentColor.name}
-            className="h-full w-auto object-contain md:mb-10"
-          />
+          {currentColor.image ? (
+            <img
+              src={currentColor.image}
+              alt={currentColor.name}
+              className="h-full w-auto object-contain md:mb-10"
+            />
+          ) : (
+            <div 
+              className="h-full w-full max-w-md flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300"
+              style={{ backgroundColor: actualHexColor }}
+            >
+              <img
+                src="/Assets/chair.png"
+                alt="Chair with color background"
+                className="w-full h-full object-contain opacity-80"
+              />
+            </div>
+          )}
         </div>
 
         {/* Right - Details */}
@@ -140,7 +146,7 @@ const ColorDetailPage = () => {
               {currentColor.name}
             </h1>
             <p className="text-xl md:mt-10">
-              <span>Color Code: </span>{currentColor.hex} {/* this is the color code, right now same for all */}
+              <span>Color Code: </span>{currentColor.hex}
             </p>
           </div>
 
@@ -175,18 +181,11 @@ const ColorDetailPage = () => {
           </div>
 
             <button
-              onClick={() => setShowDrawer(true)}
-              style={{ color: currentColor.hex }}
-              className="bg-black font-semibold px-8 py-4 rounded-md mt-8 self-start"
+              style={{ color: actualHexColor }}
+              className="bg-black text-white font-semibold px-8 py-4 rounded-md mt-8 self-start"
             >
               Buy Now
             </button>
-
-          <BuyNowDrawer
-            isOpen={showDrawer}
-            onClose={() => setShowDrawer(false)}
-            currentColor={currentColor}
-          />
         </div>
       </section>
 

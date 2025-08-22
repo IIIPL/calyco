@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { flatColors } from '../../data/flatColors';
+import { reverseColorNameMapping } from '../../data/colorNameMapping';
 
 const FullColorPage = () => {
   const { colorName } = useParams();
@@ -15,6 +16,17 @@ const FullColorPage = () => {
       <div className="p-20 text-center text-gray-600">Color not found.</div>
     );
   }
+
+  const getActualHexColor = (colorValue) => {
+    // If it's already a hex color, return as is
+    if (colorValue && colorValue.startsWith('#')) {
+      return colorValue;
+    }
+    // Otherwise, look up the color name in our mapping
+    return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  };
+
+  const actualHexColor = getActualHexColor(color.hex);
 
   return (
     <div className="bg-[#f5f4f1] min-h-screen py-16 text-[#1a1a1a]">
@@ -34,7 +46,7 @@ const FullColorPage = () => {
         <p className="text-gray-600 mb-8">{color.description}</p>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/2 rounded-lg h-64 border" style={{ backgroundColor: color.hex }}></div>
+          <div className="w-full md:w-1/2 rounded-lg h-64 border" style={{ backgroundColor: actualHexColor }}></div>
           <div className="w-full md:w-1/2 flex flex-col gap-2 text-sm">
             <div><span className="font-medium">Hex:</span> {color.hex}</div>
             <div><span className="font-medium">Color Family:</span> {color.color_family}</div>

@@ -1,19 +1,40 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { reverseColorNameMapping } from '../data/colorNameMapping';
 
 const colors = [
-  { name: 'GREY MIST', hex: '#C9CCCD' },
-  { name: 'GREY THUNDER', hex: '#9DA0A3' },
-  { name: 'LAVENDER', hex: '#D4C8CD' },
-  { name: 'LILAC', hex: '#C9BDC7' },
-  { name: 'LINEN', hex: '#D3CABB' },
-  { name: 'PURPLE', hex: '#776A8C' },
-  { name: 'SAGE GREEN', hex: '#A8B99D' },
-  { name: 'BRICK RED', hex: '#8A3F3E' },
+  { name: 'GREY MIST', hex: 'GM9304' },
+  { name: 'GREY THUNDER', hex: 'GT9873' },
+  { name: 'LAVENDER', hex: 'LV8498' },
+  { name: 'LILAC', hex: 'LL9037' },
+  { name: 'LINEN', hex: 'LN3788' },
+  { name: 'PURPLE', hex: 'PP7768' },
+  { name: 'SAGE GREEN', hex: 'SG8994' },
+  { name: 'BRICK RED', hex: 'BR9307' },
 ];
 
 const toTitle = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (t) => t.toUpperCase());
 
 const ShopByColour = () => {
+  const navigate = useNavigate();
+
+  // Map color names to their family routes
+  const getColorFamilyRoute = (colorName) => {
+    const colorToFamilyMap = {
+      'GREY MIST': 'greys',
+      'GREY THUNDER': 'greys',
+      'LAVENDER': 'purples-&-pinks',
+      'LILAC': 'purples-&-pinks',
+      'LINEN': 'whites-&-off-whites',
+      'PURPLE': 'purples-&-pinks',
+      'SAGE GREEN': 'greens',
+      'BRICK RED': 'reds-&-oranges'
+    };
+    
+    const family = colorToFamilyMap[colorName];
+    return family ? `/colors/family/${family}` : '/colors';
+  };
+
   return (
     <section className="py-8 bg-white">
       <div className="w-full px-4 md:px-8 lg:px-12">
@@ -23,10 +44,14 @@ const ShopByColour = () => {
         <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
           <div className="flex flex-nowrap gap-6">
             {colors.map((c) => (
-              <div key={c.name} className="flex-shrink-0 w-[260px] group cursor-pointer">
+              <div 
+                key={c.name} 
+                className="flex-shrink-0 w-[260px] group cursor-pointer"
+                onClick={() => navigate(getColorFamilyRoute(c.name))}
+              >
                 <div
                   className="w-full aspect-square rounded-2xl overflow-hidden shadow-md border border-black/5 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105"
-                  style={{ backgroundColor: c.hex }}
+                  style={{ backgroundColor: reverseColorNameMapping[c.hex] || c.hex }}
                   aria-label={c.name}
                 />
                 <div className="mt-2 text-sm text-[#354147]">{toTitle(c.name)}</div>

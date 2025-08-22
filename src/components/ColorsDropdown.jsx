@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { flatColors } from "../data/flatColors";
+import { reverseColorNameMapping } from "../data/colorNameMapping";
 
 // Get unique color families from flatColors
 const colorFamilies = [...new Set(flatColors.map(color => color.color_family))];
@@ -8,7 +9,9 @@ const colorFamilies = [...new Set(flatColors.map(color => color.color_family))];
 // Create thumbnails for each family using the first color from each family
 const familyThumbnails = colorFamilies.reduce((acc, family) => {
   const firstColor = flatColors.find(color => color.color_family === family);
-  acc[family] = firstColor?.hex || "#ccc"; // fallback
+  // Get actual hex color from the mapping
+  const actualHexColor = reverseColorNameMapping[firstColor?.hex] || "#CCCCCC";
+  acc[family] = actualHexColor;
   return acc;
 }, {});
 
