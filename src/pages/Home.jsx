@@ -206,7 +206,7 @@ const Home = () => {
       />
 
       {/* Hero Section with Original ColorSlider */}
-      <section className="relative overflow-hidden pt-[19.5] cursor-pointer" onClick={() => navigate('/colors')}>
+      <section className="relative overflow-hidden pt-[19.5]">
         <ColorSlider />
         
         {/* Hero Content Overlay */}
@@ -234,7 +234,7 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  onClick={() => document.getElementById('color-discovery').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => navigate('/colors')}
                   className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base"
                 >
                   Find out more

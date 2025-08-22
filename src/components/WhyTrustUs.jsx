@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const WhyTrustUs = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-20 bg-gradient-to-br from-amber-800 via-amber-900 to-amber-700 relative overflow-hidden">
       {/* Floating decorations */}
