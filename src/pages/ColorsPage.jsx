@@ -173,19 +173,7 @@ const ColorsPage = () => {
             >
               108 low-VOC shades built for modern living and professional durability.
             </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors">
-                Browse All Colors
-              </button>
-              <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-colors">
-                Open Visualizer
-                </button>
-            </motion.div>
+
               </div>
             </div>
       </section>
@@ -377,7 +365,7 @@ const ColorsPage = () => {
       
 
                         {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-700 relative overflow-hidden">
+      <section className="py-20 bg-[#b45309] relative overflow-hidden">
         <div className="absolute w-20 h-20 bg-white/10 rounded-full top-10 right-15 animate-bounce"></div>
         <div className="absolute w-16 h-16 bg-white/10 rounded-full bottom-20 left-10 animate-bounce" style={{animationDelay: '-4s'}}></div>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -388,14 +376,7 @@ const ColorsPage = () => {
             <p className="text-xl md:text-2xl text-white/85 mb-10 font-light tracking-wide">
               Premium, eco-friendly paints that elevate<br/>every room, every wall.
             </p>
-            <div className="flex gap-5 justify-center flex-wrap">
-              <button className="px-10 py-4 bg-gray-900 text-white rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-                Get Started
-              </button>
-              <button className="px-10 py-4 bg-white text-gray-900 rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-                Explore Colors
-              </button>
-            </div>
+
           </div>
           <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden mb-10 bg-gradient-to-br from-gray-700 to-gray-600 shadow-2xl">
             <div className="w-full h-full flex items-center justify-center relative">
@@ -414,9 +395,13 @@ const ColorsPage = () => {
               <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
                 Advanced one-coat formulas for beauty and durability.
               </p>
-              <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                Get Started
-              </button>
+              <div className="h-48 rounded-2xl mb-6 overflow-hidden">
+                <img 
+                  src="/Assets/allguard.png" 
+                  alt="AllGuard premium paint showing quality and durability" 
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
             </div>
             <div className="bg-white/95 p-10 rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20">
               <h3 className="text-3xl font-normal text-[#2a2a2a] mb-4 leading-tight tracking-tight">
@@ -496,12 +481,18 @@ const ColorsPage = () => {
             Ready to paint a better future?
           </h2>
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center">
-            <button className="w-full md:w-auto px-6 py-3 bg-black text-white rounded-full font-medium text-base hover:bg-gray-800 transition-colors duration-300">
+            <button 
+              onClick={() => navigate('/products')}
+              className="w-full md:w-auto px-6 py-3 bg-black text-white rounded-full font-medium text-base hover:bg-gray-800 transition-colors duration-300"
+            >
               Explore Products
             </button>
-            <button className="w-full md:w-auto px-6 py-3 border-2 border-black text-black rounded-full font-medium text-base hover:bg-black hover:text-white transition-all duration-300">
+            <button 
+              onClick={() => navigate('/contact')}
+              className="w-full md:w-auto px-6 py-3 border-2 border-black text-black rounded-full font-medium text-base hover:bg-black hover:text-white transition-all duration-300"
+            >
               Contact Us
-                  </button>
+            </button>
           </div>
         </div>
       </section>

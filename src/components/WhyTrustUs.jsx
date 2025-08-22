@@ -24,10 +24,10 @@ const WhyTrustUs = () => {
             Premium, eco-friendly paints that elevate<br />every room, every wall.
           </p>
           <div className="flex gap-5 justify-center flex-wrap">
-            <button className="px-10 py-4 bg-gray-900 text-white rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-              Get Started
-            </button>
-            <button className="px-10 py-4 bg-amber-400 text-gray-900 rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+            <button 
+              onClick={() => navigate('/colors')}
+              className="px-10 py-4 bg-amber-400 text-gray-900 rounded-full font-medium text-lg hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+            >
               Explore Colors
             </button>
           </div>
@@ -70,9 +70,13 @@ const WhyTrustUs = () => {
             <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
               Advanced one-coat formulas for beauty and durability.
             </p>
-            <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              Get Started
-            </button>
+            <div className="h-48 rounded-2xl mb-6 overflow-hidden">
+              <img 
+                src="/Assets/allguard.png" 
+                alt="AllGuard premium paint showing quality and durability" 
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
           </motion.div>
 
           {/* Professional Testimonial Card */}

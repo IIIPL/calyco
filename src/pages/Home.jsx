@@ -206,7 +206,7 @@ const Home = () => {
       />
 
       {/* Hero Section with Original ColorSlider */}
-      <section className="relative overflow-hidden pt-[19.5]">
+      <section className="relative overflow-hidden pt-[19.5] cursor-pointer" onClick={() => navigate('/colors')}>
         <ColorSlider />
         
         {/* Hero Content Overlay */}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CoverageCalculator from './CoverageCalculator';
 
 const HowItWorks: React.FC = () => {
     const navigate = useNavigate();
@@ -44,14 +43,6 @@ const HowItWorks: React.FC = () => {
                         from interiors to infrastructure, calyco delivers<br />
                         safe, durable, low-voc finishes.
                     </p>
-                    <div className="flex gap-4 justify-center flex-wrap">
-                        <button className="px-6 py-3 bg-[#1a1a1a] text-white rounded-lg font-medium hover:bg-black transition-all duration-200 hover:-translate-y-1">
-                            get started
-                        </button>
-                        <button className="px-6 py-3 bg-white/15 text-white border border-white/20 rounded-lg font-medium hover:bg-white/25 transition-all duration-200 hover:-translate-y-1 backdrop-blur-sm">
-                            see the options
-                        </button>
-                    </div>
                 </div>
 
                 {/* Painter Visual */}
@@ -65,24 +56,15 @@ const HowItWorks: React.FC = () => {
 
                 {/* Bottom Cards Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Moving Projects Card */}
-                    <div className="bg-white/10 rounded-2xl p-12 border border-white/15 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 backdrop-blur-xl">
-                        <h3 className="text-3xl font-light mb-5 lowercase tracking-tight leading-tight">
-                            moving projects<br />
-                            in the right direction
-                        </h3>
-                        <p className="text-lg opacity-90 mb-8 lowercase leading-relaxed">
-                            advanced, one-coat coverage<br />
-                            helps contractors and homeowners<br />
-                            save time and effort.
-                        </p>
-                        {/* Coverage Calculator */}
-                        <div className="mb-8">
-                            <CoverageCalculator />
+                    {/* Professional Image Card */}
+                    <div className="bg-white/10 rounded-2xl p-6 border border-white/15 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 backdrop-blur-xl overflow-hidden">
+                        <div className="h-full flex items-center justify-center">
+                            <img
+                                src="/Assets/trust-image.png"
+                                alt="Professional contractors and builders trust Calyco"
+                                className="w-full h-full object-cover rounded-xl"
+                            />
                         </div>
-                        <button className="px-6 py-3 bg-[#1a1a1a] text-white rounded-lg font-medium hover:bg-black transition-all duration-200 hover:-translate-y-1">
-                            get started
-                        </button>
                     </div>
 
                     {/* Strong Surfaces Card */}
@@ -134,7 +116,10 @@ const HowItWorks: React.FC = () => {
                                 show all products
                             </div>
                         </div>
-                        <button className="px-6 py-3 bg-white/15 text-white border border-white/20 rounded-lg font-medium hover:bg-white/25 transition-all duration-200 hover:-translate-y-1 backdrop-blur-sm">
+                        <button
+                            onClick={() => navigate('/colors')}
+                            className="px-6 py-3 bg-white/15 text-white border border-white/20 rounded-lg font-medium hover:bg-white/25 transition-all duration-200 hover:-translate-y-1 backdrop-blur-sm"
+                        >
                             learn more
                         </button>
                     </div>
@@ -147,7 +132,7 @@ const HowItWorks: React.FC = () => {
                         it's a promise
                     </h3>
                     <div className="w-20 h-20 bg-gradient-to-br from-[#f59e0b] to-[#f97316] rounded-full mx-auto mb-6 flex items-center justify-center text-4xl">
-                        🎨
+
                     </div>
                     <p className="text-lg opacity-90 italic lowercase">
                         a revolution in paint performance, innovation
