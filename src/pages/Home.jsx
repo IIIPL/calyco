@@ -86,6 +86,7 @@ const Home = () => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
+  const [showAllFAQs, setShowAllFAQs] = useState(false);
 
   const openColorModal = (color) => {
     setSelectedColor(color);
@@ -269,12 +270,12 @@ const Home = () => {
             Shop by room
           </motion.h2>
           
-          <div className="flex gap-4 overflow-x-auto overflow-y-hidden scrollbar-hide max-w-full">
+          <div className="flex gap-4 overflow-x-auto overflow-y-visible scrollbar-hide max-w-full pb-4">
             {[
               { name: "Bedroom", image: "/Assets/InteriorInspiratoin/adjinad_A_room_with_an_overcast_atmosphere_in_a_warm_green_styl_c7f39523-e6ce-4432-a6e6-1c6f5e67cdf6.png", route: "/inspirations/bedroom" },
               { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
               { name: "Office", image: "/Assets/InteriorInspiratoin/header-inspiration-office-b-mobile.jpg", route: "/inspirations/office" },
-              { name: "Kitchen", image: "/Assets/InteriorInspiratoin/kitchen.png", route: "/inspirations/kitchen" },
+                              { name: "Kitchen", image: "/Assets/u7859757176_Modern_luxury_bathroom_with_high_clerestory_windo_4f1ad61e-d8af-4e9c-bb17-4066db021cef_2.png", route: "/inspirations/kitchen" },
               { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
               { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
             ].map((room, index) => (
@@ -286,8 +287,8 @@ const Home = () => {
                 className="flex-shrink-0 w-[280px] group cursor-pointer"
                 onClick={() => navigate(room.route)}
               >
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                  <div className="aspect-square relative">
+                <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:scale-105 transform">
+                  <div className="aspect-square relative rounded-t-lg overflow-hidden">
                     <img
                       src={room.image}
                       className="w-full h-full object-cover"
@@ -296,7 +297,7 @@ const Home = () => {
                       height="1201"
                     />
                   </div>
-                  <div className="p-3 text-center">
+                  <div className="p-3 text-center rounded-b-lg">
                     <h3 className="text-[16px] font-normal text-[#354147]">{room.name}</h3>
                   </div>
                 </div>
@@ -375,7 +376,7 @@ const Home = () => {
                 question: "Are your paints waterproof and weather-resistant?",
                 answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
               }
-            ].map((faq, index) => (
+            ].slice(0, showAllFAQs ? undefined : 3).map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -420,11 +421,11 @@ const Home = () => {
               className="text-center mt-12"
             >
               <button
-                onClick={() => window.location.href = '/faq'}
+                onClick={() => setShowAllFAQs(!showAllFAQs)}
                 className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1A1C24] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg"
               >
-                See All FAQs
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {showAllFAQs ? 'Show Less FAQs' : 'See All FAQs'}
+                <svg className={`w-5 h-5 transform transition-transform duration-300 ${showAllFAQs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 9l6 6 6-6" />
                 </svg>
               </button>

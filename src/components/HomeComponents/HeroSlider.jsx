@@ -48,8 +48,24 @@ export const HeroSlider = () => {
         />
       </div>
       
-      {/* Navigation Dots - ONLY WAY TO CHANGE SLIDES */}
-      <div className="absolute bottom-6 left-1/2 bg-black p-2 rounded-2xl -translate-x-1/2 flex gap-3 z-10">
+      {/* Navigation Dots with Arrows */}
+      <div className="absolute bottom-6 left-1/2 bg-black p-2 rounded-2xl -translate-x-1/2 flex items-center gap-3 z-10">
+        {/* Left Arrow */}
+        <button
+          onClick={() => {
+            const newIndex = current === 0 ? heroData.length - 1 : current - 1;
+            console.log('Left arrow clicked, changing to slide:', newIndex);
+            setCurrent(newIndex);
+          }}
+          className="w-8 h-8 rounded-full bg-white bg-opacity-60 hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center text-gray-800 hover:scale-110"
+          aria-label="Previous slide"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Dots */}
         {heroData.map((_, index) => (
           <button
             key={index}
@@ -65,6 +81,21 @@ export const HeroSlider = () => {
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => {
+            const newIndex = current === heroData.length - 1 ? 0 : current + 1;
+            console.log('Right arrow clicked, changing to slide:', newIndex);
+            setCurrent(newIndex);
+          }}
+          className="w-8 h-8 rounded-full bg-white bg-opacity-60 hover:bg-opacity-80 transition-all duration-300 flex items-center justify-center text-gray-800 hover:scale-110"
+          aria-label="Next slide"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
   );

@@ -115,21 +115,52 @@ const ColorSlider = () => {
 
 
 
-      {/* Slide indicators - ONLY WAY TO CHANGE SLIDES */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-50">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-150 cursor-pointer border-2 border-white/30 ${
-              index === currentSlide
-                ? 'bg-white scale-125 border-white'
-                : 'bg-white/50 hover:bg-white/80 hover:border-white/60'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-            style={{ pointerEvents: 'auto' }}
-          />
-        ))}
+      {/* Slide indicators with Navigation Arrows */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-50">
+        {/* Left Arrow */}
+        <button
+          onClick={() => {
+            const newIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+            goToSlide(newIndex);
+          }}
+          className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/50 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 hover:shadow-lg"
+          aria-label="Previous slide"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Dots */}
+        <div className="flex space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-150 cursor-pointer border-2 border-white/30 ${
+                index === currentSlide
+                  ? 'bg-white scale-125 border-white'
+                  : 'bg-white/50 hover:bg-white/80 hover:border-white/60'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+              style={{ pointerEvents: 'auto' }}
+            />
+          ))}
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => {
+            const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+            goToSlide(newIndex);
+          }}
+          className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/50 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 hover:shadow-lg"
+          aria-label="Next slide"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
 
 
