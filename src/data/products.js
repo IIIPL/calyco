@@ -218,7 +218,7 @@ export const products = [
       "sheds",
       "and outdoor wood surfaces"
     ],
-    "price": 599,
+    "price": 495,
     "packaging": [
       "1L",
       "4L",
@@ -303,7 +303,7 @@ export const products = [
       "ramps",
       "and walkways"
     ],
-    "price": 599,
+    "price": 545,
     "packaging": [
       "4L",
       "10L"
@@ -390,7 +390,7 @@ export const products = [
       "basements",
       "and outdoor masonry"
     ],
-    "price": 599,
+    "price": 499,
     "packaging": [
       "4L",
       "10L",
@@ -739,7 +739,7 @@ export const products = [
       "basements",
       "and garages"
     ],
-    "price": 599,
+    "price": 575,
     "packaging": [
       "4L",
       "10L"
@@ -819,7 +819,7 @@ export const products = [
       "fences",
       "and steel railings"
     ],
-    "price": 599,
+    "price": 525,
     "packaging": [
       "1L",
       "4L",
@@ -906,7 +906,7 @@ export const products = [
       "tanks",
       "and pipelines"
     ],
-    "price": 599,
+    "price": 595,
     "packaging": [
       "1L",
       "4L"
@@ -1255,7 +1255,7 @@ export const products = [
       "transport equipment",
       "and defense vehicles"
     ],
-    "price": 250,
+    "price": 495,
     "packaging": [
       "1L",
       "4L",
@@ -1341,7 +1341,7 @@ export const products = [
       "cabinets",
       "and industrial metal surfaces"
     ],
-    "price": 250,
+    "price": 575,
     "packaging": [
       "1L",
       "4L",
@@ -1435,7 +1435,7 @@ export const products = [
       "equipment",
       "and metallic fixtures"
     ],
-    "price": 250,
+    "price": 575,
     "packaging": [
       "1L",
       "4L",

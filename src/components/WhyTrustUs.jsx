@@ -74,8 +74,8 @@ const WhyTrustUs = () => {
             </p>
             <div className="h-48 rounded-2xl mb-6 overflow-hidden">
               <img 
-                src="/Assets/allguard.png" 
-                alt="AllGuard premium paint showing quality and durability" 
+                src="/Assets/Nova/novaa.jpg" 
+                alt="Nova premium paint showing quality and durability" 
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>

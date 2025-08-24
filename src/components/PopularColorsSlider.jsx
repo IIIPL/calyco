@@ -181,113 +181,113 @@ const PopularColorsSlider = () => {
 
   return (
     <>
-      <section className="py-16 bg-white overflow-hidden">
-      <div className="w-full px-4 md:px-8 lg:px-12">
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
-          {/* Left side - Text content */}
-          <div className="lg:w-72 flex-shrink-0">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-[2.75rem] font-bold text-[#493657] mb-6 leading-[1.2] tracking-wider"
-            >
-              Popular<br />
-              <span className="mt-2 block">colours</span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-xl text-[#493657]/70 leading-relaxed tracking-wide"
-            >
-              From favourite whites to the most popular greens, discover the shades most loved by our decorators.
-            </motion.p>
-          </div>
-
-          {/* Right side - Color slider */}
-          <div className="flex-1 relative w-full min-w-0">
-            {/* Slider Container - Fixed width to prevent horizontal scroll */}
-            <div 
-              ref={sliderRef}
-              className="w-full overflow-x-auto scrollbar-hide"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <div 
-                className="flex gap-4"
-                style={{ 
-                  width: `${totalWidth}px`,
-                  minWidth: `${totalWidth}px`,
-                  maxWidth: `${totalWidth}px`
-                }}
+      <section className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white overflow-hidden">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10">
+          <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 xl:gap-8 items-center xl:items-center">
+            {/* Left side - Text content - Responsive sizing */}
+            <div className="w-full xl:w-72 2xl:w-80 flex-shrink-0 text-center xl:text-left">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[2.5rem] 2xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-[1.1] sm:leading-[1.2] tracking-wide sm:tracking-wider"
               >
-                {popularColors.map((color, index) => (
-                  <div
-                    key={color.id}
-                    className="flex-shrink-0"
-                    style={{ width: `${cardWidth}px` }}
-                  >
-                    <div 
-                      className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 group hover:shadow-lg transform group-hover:scale-105"
+                Popular<br />
+                <span className="mt-1 sm:mt-2 block">colours</span>
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-xs sm:text-xs md:text-sm lg:text-base xl:text-sm 2xl:text-base text-[#493657]/70 leading-relaxed tracking-wide max-w-sm xl:max-w-none mx-auto xl:mx-0"
+              >
+                From favourite whites to the most popular greens, discover the shades most loved by our decorators.
+              </motion.p>
+            </div>
+
+            {/* Right side - Color slider - Responsive container */}
+            <div className="flex-1 relative w-full min-w-0">
+              {/* Slider Container - Responsive width */}
+              <div 
+                ref={sliderRef}
+                className="w-full overflow-x-auto scrollbar-hide"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <div 
+                  className="flex gap-2 sm:gap-3 md:gap-4"
+                  style={{ 
+                    width: `${totalWidth}px`,
+                    minWidth: `${totalWidth}px`,
+                    maxWidth: `${totalWidth}px`
+                  }}
+                >
+                  {popularColors.map((color, index) => (
+                    <div
+                      key={color.id}
+                      className="flex-shrink-0"
+                      style={{ width: `${cardWidth}px` }}
                     >
-                      {/* Color Swatch - Solid color instead of room image */}
-                      <div className="aspect-square relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
-                        {/* Solid color background */}
-                        <div 
-                          className="w-full h-full"
-                          style={{ 
-                            backgroundColor: color.hex
-                          }}
-                        />
-                        
-                        {/* Best Seller Badge */}
-                        {color.isBestSeller && (
-                          <div className="absolute bottom-3 left-3 bg-white text-black text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            Best Seller
+                      <div 
+                        className="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden transition-all duration-300 group hover:shadow-lg hover:border-gray-300 transform group-hover:scale-105"
+                      >
+                        {/* Color Swatch - Solid color instead of room image */}
+                        <div className="aspect-square relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                          {/* Solid color background */}
+                          <div 
+                            className="w-full h-full"
+                            style={{ 
+                              backgroundColor: color.hex
+                            }}
+                          />
+                          
+                          {/* Best Seller Badge */}
+                          {color.isBestSeller && (
+                            <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 bg-white text-black text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-md border border-gray-100">
+                              Best Seller
+                            </div>
+                          )}
+                          
+                          {/* Room type indicator */}
+                          <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full border border-white/20">
+                            {color.roomType}
                           </div>
-                        )}
+                        </div>
                         
-                        {/* Room type indicator */}
-                        <div className="absolute top-3 left-3 bg-black/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
-                          {color.roomType}
+                        {/* Color Info */}
+                        <div className="p-3 sm:p-4 text-center border-t border-gray-100">
+                          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{color.name}</h3>
+                          <p className="text-sm text-gray-600 mb-3">{color.price}</p>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleAddToCart(color);
+                            }}
+                            className="w-full bg-[#1a1a2e] text-white py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg font-medium hover:bg-[#16213e] transition-colors text-sm border border-[#1a1a2e] hover:border-[#16213e]"
+                          >
+                            Add to Cart
+                          </button>
                         </div>
                       </div>
-                      
-                      {/* Color Info */}
-                      <div className="p-4 text-center">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{color.name}</h3>
-                        <p className="text-sm text-gray-600 mb-3">{color.price}</p>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleAddToCart(color);
-                          }}
-                          className="w-full bg-[#1a1a2e] text-white py-2.5 px-4 rounded-lg font-medium hover:bg-[#16213e] transition-colors text-sm"
-                        >
-                          Add to Cart
-                        </button>
-                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Cart Popup */}
-    <CartPopup
-      isVisible={cartPopup.isVisible}
-      onClose={closeCartPopup}
-      item={cartPopup.item}
-      onContinueShopping={handleContinueShopping}
-      onCheckout={handleCheckout}
-    />
+      {/* Cart Popup */}
+      <CartPopup
+        isVisible={cartPopup.isVisible}
+        onClose={closeCartPopup}
+        item={cartPopup.item}
+        onContinueShopping={handleContinueShopping}
+        onCheckout={handleCheckout}
+      />
     </>
   );
 };
