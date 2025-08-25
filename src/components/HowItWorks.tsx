@@ -148,7 +148,6 @@ const HowItWorks: React.FC = () => {
                                 onClick={() => handleCategoryClick('show all products')}
                                 onMouseEnter={() => setHoveredCategory('show all products')}
                                 onMouseLeave={() => setHoveredCategory('default')}
-                                onMouseLeave={() => setHoveredCategory('default')}
                             >
                                 show all products
                             </div>

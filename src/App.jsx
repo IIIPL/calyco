@@ -137,7 +137,6 @@ function App() {
               <Route path='/product/:productId' element={<DynamicProductPage/>}/>
               <Route path='/temp' element={<Temp/>}/>
               <Route path='/faq' element={<FAQs/>}/>
-              <Route path='/contact' element={<ContactUs/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />

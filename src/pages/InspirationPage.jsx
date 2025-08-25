@@ -146,7 +146,7 @@ export default function InspirationPage() {
         
         {/* Call to Action Section */}
         <div className="mt-20">
-          <div className="bg-gradient-to-r from-[#493657] to-[#5a4067] rounded-3xl p-8 md:p-12 text-center text-white">
+          <div className="bg-[#1A1C24] rounded-3xl p-8 md:p-12 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Space?</h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Explore our complete collection of colors and get expert advice on creating the perfect atmosphere for your home.

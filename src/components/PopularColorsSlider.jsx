@@ -134,7 +134,11 @@ const PopularColorsSlider = () => {
       name: color.name,
       display_name: color.name,
       price: parseInt(color.price.replace('₹', '')),
-      image: color.hex // Use hex color as image
+      image: `data:image/svg+xml;base64,${btoa(`
+        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" fill="${color.hex}"/>
+        </svg>
+      `)}`
     };
     
     // Add to actual cart
@@ -146,10 +150,10 @@ const PopularColorsSlider = () => {
     // Show cart popup
     setCartPopup({ isVisible: true, item: color });
     
-    // Auto-hide popup after 5 seconds
+    // Auto-hide popup after 3 seconds
     setTimeout(() => {
       setCartPopup({ isVisible: false, item: null });
-    }, 5000);
+    }, 3000);
   };
 
   const closeCartPopup = () => {

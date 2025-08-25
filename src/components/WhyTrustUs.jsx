@@ -45,7 +45,7 @@ const WhyTrustUs = () => {
         >
           <div className="w-full h-full flex items-center justify-center relative">
             <img 
-              src="/Assets/ChatGPT Image Aug 22, 2025, 01_32_07 PM.png" 
+              src="/Assets/assets_task_01k3ghnshyfm792kskvwwrt4zf_1756123438_img_0.webp" 
               alt="Professional family and contractors trust Calyco" 
               className="w-full h-full object-cover rounded-3xl"
             />

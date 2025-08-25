@@ -5,6 +5,12 @@ import emailjs from '@emailjs/browser';
 import { Button } from "../components/Button";
 import { AddressCard } from "../components/AddressCard";
 
+// EmailJS Configuration
+const SERVICE_ID = "service_nztkw4l";
+const TEMPLATE_CONTACT = "template_qaobwqf";
+const TEMPLATE_CONFIRM = "template_confirmation";
+const PUBLIC_KEY = "o3nHktLCZY2hMn6EE";
+
 const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
@@ -18,15 +24,19 @@ export const ContactUs = () => {
     const form = useRef();
     const [toast, setToast] = useState(null);
     const [sending, setSending] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [errors, setErrors] = useState({});
+
     useEffect(() => {
         document.title = "Contact Calyco";
-        emailjs.init('o3nHktLCZY2hMn6EE'); 
+        // Modern EmailJS initialization
+        emailjs.init({ publicKey: PUBLIC_KEY });
     }, []);
 
     useEffect(() => {
@@ -36,32 +46,78 @@ export const ContactUs = () => {
         }
     }, [toast]);
 
+    const validateEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+    const validate = () => {
+        const newErrors = {};
+        if (!firstName.trim()) newErrors.firstName = "First name is required.";
+        if (!lastName.trim()) newErrors.lastName = "Last name is required.";
+        if (!email.trim()) newErrors.email = "Email is required.";
+        else if (!validateEmail(email)) newErrors.email = "Enter a valid email address.";
+        if (!message.trim()) newErrors.message = "Message is required.";
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const resetForm = () => {
+        setIsSubmitted(false);
+        setFirstName("");
+        setLastName("");
+        setPostalCode("");
+        setEmail("");
+        setMessage("");
+        setErrors({});
+    };
+
     const sendEmail = async (e) => {
         e.preventDefault();
+        if (!validate()) return;
         setSending(true);
-
         const userName = `${firstName} ${lastName}`.trim();
-        const subject = `Website Inquiry from ${userName}`;
-        const messageContent = `
-            First Name: ${firstName}
-            Last Name: ${lastName}
-            Email: ${email}
-            Postal Code: ${postalCode}
-        `;
-
-        const formData = new FormData();
-        formData.append('user_name', userName);
-        formData.append('user_email', email);
-        formData.append('subject', subject);
-        formData.append('message', messageContent);
 
         try {
-            await emailjs.send('service_nztkw4l', 'template_qaobwqf', Object.fromEntries(formData));
-            setToast({ type: 'success', message: 'Message sent!' });
-            setFirstName(''); setLastName(''); setPostalCode(''); setEmail('');
+            // Build explicit template params the template can use:
+            const templateParams = {
+                from_name: userName || "Website visitor",
+                reply_to: email,
+                message,
+                postal_code: postalCode || "",
+                time: new Date().toLocaleString(),
+            };
+
+            // main notification
+            await emailjs.send(SERVICE_ID, TEMPLATE_CONTACT, templateParams, {
+                publicKey: PUBLIC_KEY,
+            });
+
+            // optional: user confirmation — only if that template exists in your EmailJS account
+            try {
+                await emailjs.send(
+                    SERVICE_ID,
+                    TEMPLATE_CONFIRM, // make sure this template exists
+                    {
+                        to_email: email,
+                        to_name: userName || "there",
+                    },
+                    { publicKey: PUBLIC_KEY }
+                );
+            } catch (e) {
+                // Non-fatal — skip if template isn't configured
+                console.warn("Confirmation email skipped:", e?.text || e);
+            }
+
+            setToast({ type: "success", message: "Message sent!" });
+            setFirstName(""); setLastName(""); setPostalCode(""); setEmail(""); setMessage("");
+            setIsSubmitted(true);
+            setErrors({});
         } catch (error) {
-            console.error('Failed to send email:', error);
-            setToast({ type: 'error', message: 'Failed to send. Please try again.' });
+            console.error("Failed to send email:", error);
+            setToast({
+                type: "error",
+                message: `Failed to send. ${
+                    error?.text || error?.message || error?.status || "Unknown error"
+                }`,
+            });
         } finally {
             setSending(false);
         }
@@ -99,67 +155,98 @@ export const ContactUs = () => {
                         <p className="text-gray-600 mb-8 text-center max-w-prose mx-auto">
                             Fill out the form below and we'll get back to you as soon as possible.
                         </p>
-                        <form id="contact-form" ref={form} onSubmit={sendEmail} className="space-y-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div>
-                                    <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">First Name</label>
-                                    <input 
-                                        type="text" 
-                                        id="firstName"
-                                        name="firstName"
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
-                                        placeholder="Your first name"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="lastName" className="block text-gray-700 font-semibold mb-2">Last Name</label>
-                                    <input 
-                                        type="text" 
-                                        id="lastName"
-                                        name="lastName"
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
-                                        placeholder="Your last name"
-                                        required
-                                    />
+
+                        {isSubmitted ? (
+                            <div className="flex flex-col items-center text-center space-y-4">
+                                <FaCheckCircle className="text-green-500 text-4xl" />
+                                <h3 className="text-2xl font-semibold text-gray-800">Message Sent!</h3>
+                                <p className="text-gray-600 max-w-prose">
+                                    Thanks for reaching out. We've received your message and will get back to you within 1–2 business days.
+                                </p>
+                                <div className="text-center flex justify-center">
+                                    <Button onClick={resetForm}>Send another message</Button>
                                 </div>
                             </div>
-                            <div>
-                                <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email Address</label>
-                                <input 
-                                    type="email" 
-                                    id="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
-                                    placeholder="your@email.com"
-                                    required
-                                />
+                        ) : (
+                            <form id="contact-form" ref={form} onSubmit={sendEmail} className="space-y-6">
+                                <input type="hidden" name="user_name" value={`${firstName} ${lastName}`.trim()} />
+                                <input type="hidden" name="name" value={`${firstName} ${lastName}`.trim()} />
+                                <input type="hidden" name="title" value="Contact Form Submission" />
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="firstName" className="block text-gray-700 font-semibold mb-2">First Name</label>
+                                        <input 
+                                            type="text" 
+                                            id="firstName"
+                                            name="first_name"
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
+                                            placeholder="Your first name"
+                                            required
+                                        />
+                                        {errors.firstName && <p className="text-red-600 text-xs mt-1">{errors.firstName}</p>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor="lastName" className="block text-gray-700 font-semibold mb-2">Last Name</label>
+                                        <input 
+                                            type="text" 
+                                            id="lastName"
+                                            name="last_name"
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
+                                            placeholder="Your last name"
+                                            required
+                                        />
+                                        {errors.lastName && <p className="text-red-600 text-xs mt-1">{errors.lastName}</p>}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email Address</label>
+                                    <input 
+                                        type="email" 
+                                        id="email"
+                                        name="user_email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent transition-all duration-200"
+                                        placeholder="your@email.com"
+                                        required
+                                    />
+                                    {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
+                                </div>
+
+                                <div>
+                                    <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+                                    <textarea 
+                                        rows="6"
+                                        id="message"
+                                        name="message"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent resize-y transition-all duration-200"
+                                        placeholder="Tell us more about your project or inquiry..."
+                                        required
+                                    ></textarea>
+                                    {errors.message && <p className="text-red-600 text-xs mt-1">{errors.message}</p>}
+                                </div>
+
+                                <div className="text-center pt-4">
+                                    <Button type="submit" disabled={sending}>
+                                        {sending ? 'Sending...' : 'Send Message'}
+                                    </Button>
+                                </div>
+                            </form>
+                        )}
+
+                        {toast && (
+                            <div className={`mt-4 text-center ${toast.type === "success" ? "text-green-600" : "text-red-600"}`}>
+                                {toast.message}
                             </div>
-                            <div>
-                                <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
-                                <textarea 
-                                    rows="6"
-                                    id="message"
-                                    name="message"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent resize-y transition-all duration-200"
-                                    placeholder="Tell us more about your project or inquiry..."
-                                    required
-                                ></textarea>
-                            </div>
-                            <div className="text-center pt-4">
-                                <Button type="submit" disabled={sending}>
-                                    {sending ? 'Sending...' : 'Send Message'}
-                                </Button>
-                            </div>
-                        </form>
+                        )}
                     </motion.div>
 
                     {/* Right panel (actions + blended Expert Team) */}
@@ -170,29 +257,29 @@ export const ContactUs = () => {
                         animate="visible"
                         variants={cardVariants}
                     >
-                        <div class="mb-8 flex items-start">
-                            <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
-                                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        <div className="mb-8 flex items-start">
+                            <div className="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
+                                <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-xl font-semibold text-gray-800 mb-1">Call Us</h4>
-                                <p class="text-gray-700 text-lg"><a href="tel:+919958966881">+91-99589-66881</a></p>
-                                <p class="text-gray-500 text-sm">Available Mon–Sat, 10am–6pm IST</p>
+                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Call Us</h4>
+                                <p className="text-gray-700 text-lg"><a href="tel:+919958966881">+91-99589-66881</a></p>
+                                <p className="text-gray-500 text-sm">Available Mon–Sat, 10am–6pm IST</p>
                             </div>
                         </div>
 
-                        <div class="mb-6 flex items-start">
-                            <div class="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
-                                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7m18 0a2 2 0 00-2-2H5a2 2 0 00-2 2m18 0V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6"></path>
+                        <div className="mb-6 flex items-start">
+                            <div className="flex-shrink-0 mr-4 text-white bg-[#493657] rounded-full p-2">
+                                <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7m18 0a2 2 0 00-2-2H5a2 2 0 00-2 2m18 0V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-xl font-semibold text-gray-800 mb-1">Email Us</h4>
-                                <p class="text-gray-700 text-lg"><a href="mailto:info@calycopaints.com">support@calycopaints.com</a></p>
-                                <p class="text-gray-500 text-sm">We reply within 24 hours</p>
+                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Email Us</h4>
+                                <p className="text-gray-700 text-lg"><a href="mailto:info@calycopaints.com">support@calycopaints.com</a></p>
+                                <p className="text-gray-500 text-sm">We reply within 24 hours</p>
                             </div>
                         </div>
 
@@ -291,7 +378,7 @@ export const ContactUs = () => {
                     <div className="flex justify-center">
                         <AddressCard
                             CountrName="Indonesia"
-                            emailId="infonesia@calycopaints.com"
+                            emailId="indonesia@calycopaints.com"
                             completeAddress="Jl. Modern Industri XVIII, Desa Nambo Udik, Cikande, Serang - Banten, Indonesia"
                         />
                     </div>
