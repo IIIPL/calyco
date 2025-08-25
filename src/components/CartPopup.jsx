@@ -17,7 +17,7 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 300 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-24 right-4 z-50 w-80 bg-white rounded-lg shadow-lg border border-gray-100"
+          className="fixed top-24 right-4 z-50 w-96 bg-white rounded-lg shadow-lg border border-gray-100"
         >
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-gray-50">
@@ -32,25 +32,25 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
 
           {/* Product item */}
           <div className="p-4">
-            <div className="flex items-center gap-4">
-              {/* Color swatch */}
+            <div className="flex items-center gap-6">
+              {/* Color Swatch */}
               <div 
-                className="w-12 h-12 rounded-lg border border-gray-200 flex-shrink-0"
+                className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0"
                 style={{ backgroundColor: item.hex }}
               />
               
               {/* Product details */}
               <div className="flex-1 min-w-0">
-                <p className="text-base font-medium text-gray-900 truncate">
+                <p className="text-lg font-semibold text-gray-900 truncate">
                   {item.name}
                 </p>
-                <p className="text-sm text-gray-500">Sample</p>
-                <p className="text-sm text-gray-500">Qty: 1</p>
+                <p className="text-base text-gray-500 mt-1">Sample • Sample</p>
+                <p className="text-sm text-gray-600 mt-1">Quantity: 1</p>
               </div>
               
               {/* Price */}
               <div className="text-right">
-                <p className="text-base font-semibold text-gray-900">{item.price}</p>
+                <p className="text-lg font-bold text-gray-900">{item.price}</p>
               </div>
             </div>
           </div>

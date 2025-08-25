@@ -6,6 +6,7 @@ import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
 import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
 import NotFound from './NotFound';
+import { useCart } from '../context/CartContext';
 
 const slugify = (text) =>
   text
@@ -27,6 +28,7 @@ const getTextColor = (hexColor) => {
 const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [currentColor, setCurrentColor] = useState(null);
 
   useEffect(() => {
@@ -181,8 +183,38 @@ const ColorDetailPage = () => {
           </div>
 
             <button
+              onClick={() => {
+                try {
+                  console.log('Buy Now clicked for:', currentColor.name);
+                  
+                  // Create a product object for the cart
+                  const productForCart = {
+                    id: `color-${currentColor.name.toLowerCase().replace(/\s+/g, '-')}`,
+                    name: currentColor.name,
+                    display_name: currentColor.name,
+                    price: 499, // Default price for colors
+                    image: "/Assets/chair.png" // Use a simple image for now
+                  };
+                  
+                  console.log('Product for cart:', productForCart);
+                  
+                  // Add to cart
+                  addToCart(productForCart, 'Sample', 'Sample', 1, 499, {
+                    name: currentColor.name,
+                    hex: actualHexColor
+                  });
+                  
+                  console.log('Added to cart, navigating to checkout...');
+                  
+                  // Navigate directly to checkout
+                  navigate('/checkout');
+                } catch (error) {
+                  console.error('Error in Buy Now:', error);
+                  alert('There was an error adding the item to cart. Please try again.');
+                }
+              }}
               style={{ color: actualHexColor }}
-              className="bg-black text-white font-semibold px-8 py-4 rounded-md mt-8 self-start"
+              className="bg-black text-white font-semibold px-8 py-4 rounded-md mt-8 self-start hover:bg-gray-800 transition-colors"
             >
               Buy Now
             </button>

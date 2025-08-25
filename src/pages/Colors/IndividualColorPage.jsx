@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { flatColors } from "../../data/flatColors"
 import { reverseColorNameMapping } from "../../data/colorNameMapping"
 import { motion } from "framer-motion";
+import { useCart } from "../../context/CartContext";
 
 const ColorPage = () => {
   const { familyName, colorName } = useParams();
@@ -28,6 +29,7 @@ const ColorPage = () => {
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   return (
     <div className="min-h-screen mt-20" style={{ backgroundColor: actualHexColor }}>
@@ -99,7 +101,40 @@ const ColorPage = () => {
                 Download digital dollop of {currentColor.name}
               </p>
               
-              <button className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+              <button 
+                onClick={() => {
+                  alert('Buy Now clicked! Adding to cart...');
+                  try {
+                    console.log('Buy Now clicked for:', currentColor.name);
+                    
+                    // Create a product object for the cart
+                    const productForCart = {
+                      id: `color-${currentColor.name.toLowerCase().replace(/\s+/g, '-')}`,
+                      name: currentColor.name,
+                      display_name: currentColor.name,
+                      price: 499, // Default price for colors
+                      image: "/Assets/chair.png" // Use a simple image for now
+                    };
+                    
+                    console.log('Product for cart:', productForCart);
+                    
+                    // Add to cart
+                    addToCart(productForCart, 'Sample', 'Sample', 1, 499, {
+                      name: currentColor.name,
+                      hex: actualHexColor
+                    });
+                    
+                    console.log('Added to cart, navigating to checkout...');
+                    
+                    // Navigate directly to checkout
+                    navigate('/checkout');
+                  } catch (error) {
+                    console.error('Error in Buy Now:', error);
+                    alert('There was an error adding the item to cart. Please try again.');
+                  }
+                }}
+                className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+              >
                 Buy Now
               </button>
             </div>

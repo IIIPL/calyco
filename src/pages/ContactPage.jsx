@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaCheckCircle } from "react-icons/fa";
+import { useForm, ValidationError } from '@formspree/react';
 
 // Animation variants
 const fadeUp = {
@@ -53,32 +55,32 @@ const FAQ_DATA = [
 
 export default function ContactPage() {
   const [activeFAQ, setActiveFAQ] = useState(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    topic: "",
-    message: "",
-    consent: false
-  });
+  const [toast, setToast] = useState(null);
+  const [state, handleSubmit] = useForm("xnnbaygb");
 
   useEffect(() => {
     document.title = "Contact Us - Calyco Paints | Get Support & Quotes";
     window.scrollTo(0, 0);
   }, []);
 
-  const handleFormChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
+  useEffect(() => {
+    if (state.succeeded) {
+      setToast({ type: "success", message: "Message sent successfully!" });
+    } else if (state.errors && state.errors.length > 0) {
+      setToast({ type: "error", message: "Failed to send message. Please try again." });
+    }
+  }, [state.succeeded, state.errors]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  const resetForm = () => {
+    // Reset form by refreshing the page or redirecting
+    window.location.reload();
   };
 
   const scrollToSection = (sectionId) => {
@@ -128,16 +130,8 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-
-
-
-
-
-
-
-
       {/* Contact Form Section */}
-      <section className="py-20 bg-white">
+      <section id="contact-form" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -154,133 +148,424 @@ export default function ContactPage() {
             </p>
           </motion.div>
 
-          <motion.form
+          {state.succeeded ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center space-y-6"
+            >
+              <FaCheckCircle className="text-green-500 text-6xl mx-auto" />
+              <h3 className="text-3xl font-semibold text-gray-800">Message Sent!</h3>
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                Thanks for reaching out. We've received your message and will get back to you within 1–2 business days.
+              </p>
+              <button
+                onClick={resetForm}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1C24] text-white rounded-lg font-semibold hover:bg-[#2a2f3a] transition-all duration-200 hover:scale-105 shadow-lg"
+              >
+                Send Another Message
+              </button>
+            </motion.div>
+          ) : (
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your full name"
+                  />
+                  <ValidationError 
+                    prefix="Name" 
+                    field="name"
+                    errors={state.errors}
+                    className="text-red-600 text-xs mt-1"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your email address"
+                  />
+                  <ValidationError 
+                    prefix="Email" 
+                    field="email"
+                    errors={state.errors}
+                    className="text-red-600 text-xs mt-1"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="topic" className="block text-sm font-medium text-gray-700 mb-2">
+                    Type of Inquiry *
+                  </label>
+                  <select
+                    id="topic"
+                    name="topic"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200 bg-white"
+                  >
+                    <option value="">Select inquiry type</option>
+                    <option value="general">General</option>
+                    <option value="bulk-order">Bulk Order</option>
+                    <option value="dealer">Dealer</option>
+                    <option value="media">Media</option>
+                    <option value="support">Support</option>
+                  </select>
+                  <ValidationError 
+                    prefix="Topic" 
+                    field="topic"
+                    errors={state.errors}
+                    className="text-red-600 text-xs mt-1"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200 resize-none"
+                  placeholder="Tell us about your inquiry or project requirements..."
+                />
+                <ValidationError 
+                  prefix="Message" 
+                  field="message"
+                  errors={state.errors}
+                  className="text-red-600 text-xs mt-1"
+                />
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  required
+                  className="mt-1 h-4 w-4 text-[#5E3A98] focus:ring-[#5E3A98] rounded border-gray-300"
+                />
+                <label htmlFor="consent" className="text-sm text-gray-600">
+                  I agree to Calyco Paints processing my personal data in accordance with the{' '}
+                  <Link to="/privacy" className="text-[#5E3A98] hover:underline">
+                    Privacy Policy
+                  </Link>
+                  . *
+                </label>
+              </div>
+              <ValidationError 
+                prefix="Consent" 
+                field="consent"
+                errors={state.errors}
+                className="text-red-600 text-xs mt-1"
+              />
+
+              <div className="text-center">
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1C24] text-white rounded-lg font-semibold hover:bg-[#2a2f3a] transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {state.submitting ? 'Sending...' : 'Send Message'}
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+              </div>
+
+              {toast && (
+                <div className={`mt-4 text-center text-sm ${toast.type === "success" ? "text-green-600" : "text-red-600"}`}>
+                  {toast.message}
+                </div>
+              )}
+            </motion.form>
+          )}
+        </div>
+      </section>
+
+      {/* International Offices Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Global Offices
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Connect with our team across the globe for local support and expertise.
+            </p>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="space-y-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleFormChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your full name"
-                />
+            {/* India */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">India</h3>
+                <p className="text-gray-600 text-sm mb-3">Headquarters</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:info@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      info@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    B-37, Sector - 1, Noida NCR, India
+                  </p>
+                </div>
               </div>
+            </motion.div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleFormChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your email address"
-                />
+            {/* Dubai */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Dubai</h3>
+                <p className="text-gray-600 text-sm mb-3">Middle East</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:dubai@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      dubai@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E.
+                  </p>
+                </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleFormChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your phone number"
-                />
+            {/* Thailand */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Thailand</h3>
+                <p className="text-gray-600 text-sm mb-3">Southeast Asia</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:thailand@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      thailand@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    75 Ocean Tower - II, 18C Floor Sukhumvit Road, Bangkok, Thailand
+                  </p>
+                </div>
               </div>
-              
-              <div>
-                <label htmlFor="topic" className="block text-sm font-medium text-gray-700 mb-2">
-                  Type of Inquiry *
-                </label>
-                <select
-                  id="topic"
-                  name="topic"
-                  value={formData.topic}
-                  onChange={handleFormChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200 bg-white"
-                >
-                  <option value="">Select inquiry type</option>
-                  <option value="general">General</option>
-                  <option value="bulk-order">Bulk Order</option>
-                  <option value="dealer">Dealer</option>
-                  <option value="media">Media</option>
-                  <option value="support">Support</option>
-                </select>
+            </motion.div>
+
+            {/* Korea */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Korea</h3>
+                <p className="text-gray-600 text-sm mb-3">East Asia</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:korea@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      korea@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Regus Gangnam Station 16F, Seocho-dong, Seoul, Korea
+                  </p>
+                </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleFormChange}
-                required
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#5E3A98] focus:border-transparent transition-all duration-200 resize-none"
-                placeholder="Tell us about your inquiry or project requirements..."
-              />
-            </div>
+            {/* Japan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Japan</h3>
+                <p className="text-gray-600 text-sm mb-3">East Asia</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:japan@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      japan@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    19F Parks Tower, Nanbanaka, Naniwa-ku, Osaka-shi, Japan
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-            <div className="flex items-start space-x-3">
-              <input
-                type="checkbox"
-                id="consent"
-                name="consent"
-                checked={formData.consent}
-                onChange={handleFormChange}
-                required
-                className="mt-1 h-4 w-4 text-[#5E3A98] focus:ring-[#5E3A98] border-gray-300 rounded"
-              />
-              <label htmlFor="consent" className="text-sm text-gray-600">
-                I agree to Calyco Paints processing my personal data in accordance with the{' '}
-                <Link to="/privacy" className="text-[#5E3A98] hover:underline">
-                  Privacy Policy
-                </Link>
-                . *
-              </label>
-            </div>
+            {/* Turkey */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Turkey</h3>
+                <p className="text-gray-600 text-sm mb-3">Europe</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:turkey@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      turkey@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Karamehmet Mh. Avrupa Serbest Bolgesi, Ergene/Tekirdag, Turkey
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-            <div className="text-center">
-              <button
-                type="submit"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#1A1C24] text-white rounded-lg font-semibold hover:bg-[#2a2f3a] transition-all duration-200 hover:scale-105 shadow-lg"
-              >
-                Send Message
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </button>
-            </div>
-          </motion.form>
+            {/* Singapore */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Singapore</h3>
+                <p className="text-gray-600 text-sm mb-3">Southeast Asia</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:singapore@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      singapore@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Levels 21 Centennial Tower, 3 Temasek Avenue, Singapore
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Netherlands */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Netherlands</h3>
+                <p className="text-gray-600 text-sm mb-3">Europe</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:netherlands@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      netherlands@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Zuidplein 126WTC, Toren H, 1077 XV Amsterdam, The Netherlands
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Indonesia */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Indonesia</h3>
+                <p className="text-gray-600 text-sm mb-3">Southeast Asia</p>
+                <div className="space-y-2 text-sm">
+                  <p className="text-gray-700">
+                    <a href="mailto:indonesia@calycopaints.com" className="text-[#5E3A98] hover:underline">
+                      indonesia@calycopaints.com
+                    </a>
+                  </p>
+                  <p className="text-gray-600">
+                    Jl. Modern Industri XVIII, Desa Nambo Udik, Cikande, Serang - Banten, Indonesia
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -308,28 +593,28 @@ export default function ContactPage() {
           >
             {[
               {
-                question: "What is Calyco Paints?",
-                answer: "Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability. We offer low-VOC, water-based, safe-for-family paints and industrial-grade coatings for contractors, developers, and government projects."
+                question: "How can I contact Calyco Paints?",
+                answer: "You can reach us through multiple channels: Call us at +91-99589-66881 (Mon–Sat, 10am–6pm IST), email us at support@calycopaints.com, or fill out the contact form above. We also have offices across 9 countries for local support."
               },
               {
-                question: "How is Calyco different from other paint brands?",
-                answer: "Unlike traditional dealer-driven paint companies, Calyco is online-first, delivering paints directly to homes, projects, and government buyers. We combine luxury lifestyle appeal (like Asian Paints), minimal modern UI (like Birla Opus), and eco-premium positioning (like Lick Paint) with a special focus on contractors and government compliance."
+                question: "What are your customer service hours?",
+                answer: "Our customer service team is available Monday through Saturday, from 10:00 AM to 6:00 PM IST. For urgent inquiries outside these hours, please email us and we'll respond within 24 hours."
               },
               {
-                question: "Are Calyco paints safe for children and pets?",
-                answer: "Yes. All our paints are low-VOC, odor-free, and non-toxic, making them safe for indoor spaces where families live, sleep, and play."
+                question: "How quickly do you respond to inquiries?",
+                answer: "We aim to respond to all inquiries within 24 hours during business days. For urgent matters, please call us directly. Technical questions and bulk orders may require additional time for detailed responses."
               },
               {
-                question: "What does low-VOC mean?",
-                answer: "VOC (Volatile Organic Compounds) are chemicals that evaporate into the air and harm indoor air quality. Our low-VOC paints reduce exposure, improving health and environmental safety."
+                question: "Do you offer support for bulk orders?",
+                answer: "Yes! For bulk orders, contractor inquiries, and government projects, we provide dedicated support. Please select 'Bulk Order' in the inquiry type when filling out the contact form, or call us directly for immediate assistance."
               },
               {
-                question: "What surfaces can Calyco paints be used on?",
-                answer: "Our range covers interior walls, exterior walls, wood, metal, concrete, asphalt, roofing, and specialty industrial surfaces."
+                question: "Can I get technical support for paint application?",
+                answer: "Absolutely. Our technical team can help with application guidance, surface preparation, color matching, and troubleshooting. Select 'Support' in the inquiry type or call us for immediate technical assistance."
               },
               {
-                question: "Are your paints waterproof and weather-resistant?",
-                answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
+                question: "Do you have international offices?",
+                answer: "Yes, we have offices in 9 countries including India (headquarters), Dubai, Thailand, Korea, Japan, Turkey, Singapore, Netherlands, and Indonesia. Each office provides local support and expertise for their respective markets."
               }
             ].map((faq, index) => (
               <motion.div
@@ -367,24 +652,7 @@ export default function ContactPage() {
               </motion.div>
             ))}
 
-            {/* See All FAQs Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mt-12"
-            >
-              <button
-                onClick={() => window.location.href = '/faq'}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1A1C24] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg"
-              >
-                See All FAQs
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-            </motion.div>
+
           </motion.div>
         </div>
       </section>
@@ -406,20 +674,14 @@ export default function ContactPage() {
             </motion.h2>
             
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex justify-center"
               variants={fadeUp}
             >
               <button
-                onClick={() => scrollToSection('general-inquiry')}
+                onClick={() => scrollToSection('contact-form')}
                 className="bg-[#1A1C24] hover:bg-[#2a2f3a] text-white px-8 py-4 rounded-lg font-medium text-base transition-all duration-300"
               >
                 Send Message
-              </button>
-              <button
-                onClick={() => scrollToSection('contractor-section')}
-                className="bg-transparent hover:bg-gray-100 text-gray-900 border border-gray-300 px-8 py-4 rounded-lg font-medium text-base transition-all duration-300"
-              >
-                Request Bulk Quote
               </button>
             </motion.div>
           </motion.div>
