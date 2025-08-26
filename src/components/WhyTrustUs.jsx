@@ -55,7 +55,7 @@ const WhyTrustUs = () => {
               {/* Phone Mockup Image */}
               <div className="flex justify-center mt-32">
                 <img 
-                  src="public/Assets/card1-trust.png"
+                  src="/Assets/card1-trust.png"
                   alt="Picture of cards depicting losing weight"
                   className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
                 />
@@ -160,7 +160,7 @@ const WhyTrustUs = () => {
               {/* Pharmacy Image */}
               <div className="flex justify-center mt-32">
                 <img 
-                  src="public/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png"
+                  src="/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png"
                   alt="collage of pictures with medicine making machines"
                   className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
                 />
