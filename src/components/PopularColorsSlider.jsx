@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import CartPopup from './CartPopup';
 import { useCart } from '../context/CartContext';
+import NavigationArrows from './NavigationArrows';
 
 const PopularColorsSlider = () => {
   const navigate = useNavigate();
@@ -107,8 +108,9 @@ const PopularColorsSlider = () => {
   ];
 
   const cardWidth = 272; // Exact size as shown in the image (272.36 x 272.36)
-  const gap = 16; // Gap between cards
-  const visibleCards = 5; // Number of cards visible at once
+  const gap = 16; // Gap between cards (matches gap-4)
+  const visibleCards = 4; // Number of cards visible at once (reduced to show more content)
+  const slideDistance = cardWidth + gap; // Total distance to move per slide
   
   // Calculate total width needed for all 8 colors
   const totalWidth = (popularColors.length * cardWidth) + ((popularColors.length - 1) * gap);
@@ -213,19 +215,31 @@ const PopularColorsSlider = () => {
 
             {/* Right side - Color slider - Responsive container */}
             <div className="flex-1 relative w-full min-w-0">
+              {/* Navigation Arrows - Above the slider */}
+              <div className="flex justify-end mb-4">
+                <NavigationArrows
+                  onPrevious={prevSlide}
+                  onNext={nextSlide}
+                  showPrevious={currentIndex > 0}
+                  showNext={currentIndex < popularColors.length - visibleCards}
+                  size="md"
+                />
+              </div>
+              
               {/* Slider Container - Responsive width */}
               <div 
                 ref={sliderRef}
-                className="w-full overflow-x-auto scrollbar-hide"
+                className="w-full overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <div 
-                  className="flex gap-2 sm:gap-3 md:gap-4"
+                  className="flex gap-4 transition-transform duration-500 ease-out"
                   style={{ 
                     width: `${totalWidth}px`,
                     minWidth: `${totalWidth}px`,
-                    maxWidth: `${totalWidth}px`
+                    maxWidth: `${totalWidth}px`,
+                    transform: `translateX(-${currentIndex * slideDistance}px)`
                   }}
                 >
                   {popularColors.map((color, index) => (

@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import NavigationArrows from './NavigationArrows';
 
 const GridMasonry = ({ images = [] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleItems = 4; // Number of items visible at once
+  const cardWidth = 400; // Width of each card
+  const gap = 24; // Gap between cards (6 * 4 = 24px)
+  const slideDistance = cardWidth + gap; // Total distance to move per slide
+  
   if (!Array.isArray(images) || images.length === 0) return null;
+
+  const nextSlide = () => {
+    setCurrentIndex(prev => 
+      prev >= images.length - visibleItems ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(prev => 
+      prev <= 0 ? images.length - visibleItems : prev - 1
+    );
+  };
   
   // Function to get meaningful inspiration names
   const getInspirationName = (index) => {
@@ -25,7 +44,7 @@ const GridMasonry = ({ images = [] }) => {
   };
   
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gray-50">
       <div className="w-full px-4 md:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -35,17 +54,30 @@ const GridMasonry = ({ images = [] }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Inspiration Gallery
-          </h2>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex-1"></div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              Inspiration Gallery
+            </h2>
+            <div className="flex-1 flex justify-end">
+              <NavigationArrows
+                onPrevious={prevSlide}
+                onNext={nextSlide}
+                showPrevious={currentIndex > 0}
+                showNext={currentIndex < images.length - visibleItems}
+                size="md"
+              />
+            </div>
+          </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Discover beautiful spaces transformed with Calyco paints
           </p>
         </motion.div>
 
         {/* Full-width horizontal scrollable slider */}
-        <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
-          <div className="flex flex-nowrap gap-6">
+        <div className="w-full overflow-hidden">
+          <div className="flex flex-nowrap gap-6 transition-transform duration-500 ease-out"
+               style={{ transform: `translateX(-${currentIndex * slideDistance}px)` }}>
             {images.map((src, idx) => (
               <motion.div
                 key={idx}
