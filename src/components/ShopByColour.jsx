@@ -1,63 +1,127 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { reverseColorNameMapping } from '../data/colorNameMapping';
+import { flatColors } from '../data/flatColors';
 
-const colors = [
-  { name: 'GREY MIST', hex: 'GM9304' },
-  { name: 'GREY THUNDER', hex: 'GT9873' },
-  { name: 'LAVENDER', hex: 'LV8498' },
-  { name: 'LILAC', hex: 'LL9037' },
-  { name: 'LINEN', hex: 'LN3788' },
-  { name: 'PURPLE', hex: 'PP7768' },
-  { name: 'SAGE GREEN', hex: 'SG8994' },
-  { name: 'BRICK RED', hex: 'BR9307' },
-];
-
-const toTitle = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (t) => t.toUpperCase());
+const PALETTES = {
+  bold: [
+    '#6A3BA5','#9B1D20','#E07A5F','#F2CC8F','#457B9D','#1D3557','#0FA3B1','#2E4057',
+    '#F79D65','#E63946','#7B2CBF','#F4A261','#3A86FF','#8338EC','#FB5607','#3A5A40'
+  ],
+  neutral: [
+    '#CDBEAA','#D7CEC7','#B6B6B4','#EDE8E2','#C2B8B2','#BCA88E','#C7C7BB','#DED7CF',
+    '#E9E4DC','#B1A79B','#C0B7A4','#D5CFC7','#EAE6DF','#BFB9AE','#C6C1B8','#D8D2C6'
+  ]
+};
 
 const ShopByColour = () => {
   const navigate = useNavigate();
+  const [mode, setMode] = useState('bold');
 
-  // Map color names to their family routes
-  const getColorFamilyRoute = (colorName) => {
-    const colorToFamilyMap = {
-      'GREY MIST': 'greys',
-      'GREY THUNDER': 'greys',
-      'LAVENDER': 'purples-&-pinks',
-      'LILAC': 'purples-&-pinks',
-      'LINEN': 'whites-&-off-whites',
-      'PURPLE': 'purples-&-pinks',
-      'SAGE GREEN': 'greens',
-      'BRICK RED': 'reds-&-oranges'
+  // Function to get color family from hex
+  const getColorFamilyFromHex = (hex) => {
+    // Remove # if present and convert to uppercase for matching
+    const cleanHex = hex.replace('#', '').toUpperCase();
+    
+    // Find the color in flatColors data
+    const color = flatColors.find(c => c.hex === cleanHex);
+    
+    if (color) {
+      // Convert color family to URL-friendly format
+      return color.color_family.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
+    }
+    
+    // Fallback mapping for colors not in flatColors
+    const fallbackMapping = {
+      // Bold colors mapping
+      '6A3BA5': 'purples-and-pinks',
+      '9B1D20': 'reds-and-oranges',
+      'E07A5F': 'reds-and-oranges',
+      'F2CC8F': 'yellows-and-greens',
+      '457B9D': 'blues',
+      '1D3557': 'blues',
+      '0FA3B1': 'blues',
+      '2E4057': 'greys',
+      'F79D65': 'reds-and-oranges',
+      'E63946': 'reds-and-oranges',
+      '7B2CBF': 'purples-and-pinks',
+      'F4A261': 'reds-and-oranges',
+      '3A86FF': 'blues',
+      '8338EC': 'purples-and-pinks',
+      'FB5607': 'reds-and-oranges',
+      '3A5A40': 'greens',
+      
+      // Neutral colors mapping
+      'CDBEAA': 'whites-and-off-whites',
+      'D7CEC7': 'whites-and-off-whites',
+      'B6B6B4': 'greys',
+      'EDE8E2': 'whites-and-off-whites',
+      'C2B8B2': 'whites-and-off-whites',
+      'BCA88E': 'browns',
+      'C7C7BB': 'whites-and-off-whites',
+      'DED7CF': 'whites-and-off-whites',
+      'E9E4DC': 'whites-and-off-whites',
+      'B1A79B': 'browns',
+      'C0B7A4': 'browns',
+      'D5CFC7': 'whites-and-off-whites',
+      'EAE6DF': 'whites-and-off-whites',
+      'BFB9AE': 'whites-and-off-whites',
+      'C6C1B8': 'whites-and-off-whites',
+      'D8D2C6': 'whites-and-off-whites'
     };
     
-    const family = colorToFamilyMap[colorName];
-    return family ? `/colors/family/${family}` : '/colors';
+    return fallbackMapping[cleanHex] || 'colors';
+  };
+
+  const handleColorClick = (hex) => {
+    const colorFamily = getColorFamilyFromHex(hex);
+    navigate(`/colors/family/${colorFamily}`);
   };
 
   return (
-    <section className="py-8 bg-white">
-      <div className="w-full px-4 md:px-8 lg:px-12">
-        <h2 className="text-[20px] font-bold text-[#354147] mb-4">Shop by colour</h2>
+    <section className="w-full flex items-start bg-transparent pb-32 md:pb-40 mt-20">
+      <div className="w-full px-2 sm:px-4 md:px-6">
+        {/* Heading */}
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#1b1b1b] mb-2 md:mb-3 text-center">
+          How do you want to transform your space?
+        </h2>
 
-        {/* One-row horizontal slider */}
-        <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
-          <div className="flex flex-nowrap gap-6">
-            {colors.map((c) => (
-              <div 
-                key={c.name} 
-                className="flex-shrink-0 w-[260px] group cursor-pointer"
-                onClick={() => navigate(getColorFamilyRoute(c.name))}
-              >
-                <div
-                  className="w-full aspect-square rounded-2xl overflow-hidden shadow-md border border-black/5 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105"
-                  style={{ backgroundColor: reverseColorNameMapping[c.hex] || c.hex }}
-                  aria-label={c.name}
-                />
-                <div className="mt-2 text-sm text-[#354147]">{toTitle(c.name)}</div>
-              </div>
-            ))}
+        {/* Segmented Control */}
+        <div className="flex justify-center mb-2 md:mb-3 py-4">
+          <div className="inline-grid grid-flow-col gap-2 rounded-full bg-[#ece7df] p-2 shadow-inner">
+          <button
+            onClick={() => setMode('bold')}
+            className={`px-5 py-2 rounded-full font-bold tracking-[.2px] transition-all ${
+              mode === 'bold'
+                ? 'bg-gradient-to-b from-[#5c476a] to-[#7b6693] text-white shadow-[0_8px_18px_rgba(90,70,110,.35)]'
+                : 'text-[#3a2d1b] hover:bg-black/5'
+            }`}
+          >
+            Bold Colors
+          </button>
+                      <button
+              onClick={() => setMode('neutral')}
+              className={`px-5 py-2 rounded-full font-bold tracking-[.2px] transition-all ${
+                mode === 'neutral'
+                  ? 'bg-gradient-to-b from-[#caa04b] to-[#e0be6a] text-[#1b1b1b] shadow-[0_8px_18px_rgba(180,130,40,.35)]'
+                  : 'text-[#3a2d1b] hover:bg-black/5'
+              }`}
+            >
+              Soothing Neutrals
+            </button>
           </div>
+        </div>
+
+        {/* Swatches Grid - exactly 8 columns */}
+        <div className="grid grid-cols-8 gap-3 md:gap-4">
+          {PALETTES[mode].map((hex) => (
+            <button
+              key={hex}
+              title={hex}
+              onClick={() => handleColorClick(hex)}
+              className="aspect-square rounded-xl shadow-[0_8px_16px_rgba(0,0,0,.12)] ring-1 ring-white/40 focus:outline-none focus:ring-2 focus:ring-black/30 hover:scale-105 transition-transform duration-200"
+              style={{ backgroundColor: hex }}
+            />
+          ))}
         </div>
       </div>
     </section>

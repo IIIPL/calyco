@@ -42,20 +42,19 @@ const HowItWorks: React.FC = () => {
     };
 
     return (
-        <section className="py-20 bg-gradient-to-br from-[#4a3f35] via-[#8b6914] to-[#d4a574] text-white">
-            <div className="max-w-7xl mx-auto px-4 md:px-8">
-
-
+        <section className="py-20 bg-[#B0732B] text-white relative min-h-[160vh] z-10">
+            {/* Content Container */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20">
                 {/* Painter Visual with Text */}
                 <div className="flex justify-center mb-20">
-                    <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/15 max-w-4xl">
+                    <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/15 max-w-4xl w-full">
                         <div className="text-center mb-8">
-                            <h2 className="text-4xl md:text-6xl font-bold mb-6 lowercase tracking-tight leading-tight text-white">
+                            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight text-white">
                                 access a range of<br />
                                 eco-premium paints<br />
                                 & coatings
                             </h2>
-                            <p className="text-xl font-light opacity-90 max-w-2xl mx-auto mb-8 lowercase text-white">
+                            <p className="text-xl font-light opacity-90 max-w-2xl mx-auto mb-8 text-white">
                                 from interiors to infrastructure, calyco delivers<br />
                                 safe, durable, low-voc finishes.
                             </p>
@@ -76,87 +75,125 @@ const HowItWorks: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Two Sections - Vertically Divided */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Upper Section - Dynamic Image */}
-                    <div className="bg-white/10 rounded-2xl p-6 border border-white/15 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 backdrop-blur-xl overflow-hidden h-[700px]">
-                        <div className="h-full flex items-center justify-center">
-                            <img
-                                key={hoveredCategory}
-                                src={categoryImages[hoveredCategory]}
-                                alt={`${hoveredCategory} painting and construction`}
-                                className="w-full h-full object-cover rounded-xl transition-all duration-500 ease-in-out opacity-100"
-                                style={{
-                                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                                }}
-                            />
-                        </div>
-                    </div>
+                {/* Lower Section - Content Cards */}
+                <div className="rounded-3xl p-8 pt-0 min-h-[900px] max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center">
+                        {/* Left Card */}
+                        <div className="rounded-2xl p-6 h-[900px] flex flex-col items-center justify-center gap-6 backdrop-blur-xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.12)' }}>
+                            <div className="text-center">
+                                <h3 className="text-4xl md:text-6xl font-bold text-white mb-2">
+                                    Moving in the
+                                </h3>
+                                <p className="text-[#D6A847] text-2xl md:text-4xl font-semibold">right direction</p>
+                            </div>
 
-                    {/* Lower Section - Strong Surfaces */}
-                    <div className="bg-white/10 rounded-2xl p-12 border border-white/15 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 backdrop-blur-xl h-[700px]">
-                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 lowercase tracking-tight leading-tight">
-                            strong, lasting<br />
-                            surfaces
-                        </h3>
-                        <p className="text-lg opacity-90 mb-8 lowercase leading-relaxed max-w-none">
-                            from interiors to industrial steel, calyco paints protect and enhance for decades.
-                        </p>
-                        <div className="grid grid-cols-2 gap-3 mb-8">
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('interior')}
-                                onMouseEnter={() => setHoveredCategory('interior')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                interior
+                            {/* Hero-style Image Wrapper */}
+                            <div className="w-full flex justify-center">
+                                <div className="w-full max-w-2xl h-[320px] md:h-[360px] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.35)] ring-1 ring-white/20 bg-white/10">
+                                    <img
+                                        key={hoveredCategory}
+                                        src={categoryImages[hoveredCategory]}
+                                        alt={`${hoveredCategory} painting and construction`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('exterior')}
-                                onMouseEnter={() => setHoveredCategory('exterior')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                exterior
-                            </div>
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('stain & sealer')}
-                                onMouseEnter={() => setHoveredCategory('stain & sealer')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                stain & sealer
-                            </div>
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('industrial')}
-                                onMouseEnter={() => setHoveredCategory('industrial')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                industrial
-                            </div>
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('enamel')}
-                                onMouseEnter={() => setHoveredCategory('enamel')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                enamel
-                            </div>
-                            <div
-                                className="h-20 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-base font-medium lowercase border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20 hover:shadow-lg"
-                                onClick={() => handleCategoryClick('show all products')}
-                                onMouseEnter={() => setHoveredCategory('show all products')}
-                                onMouseLeave={() => setHoveredCategory('default')}
-                            >
-                                show all products
+
+                            <div className="text-center max-w-md w-full">
+                                <p className="text-white/90 mb-4 leading-relaxed">
+                                    Discover the right Calyco system for every project — engineered to protect, beautify, and last.
+                                </p>
+
                             </div>
                         </div>
 
+                        {/* Right Card */}
+                        <div className="rounded-2xl p-6 h-[900px] flex flex-col backdrop-blur-xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.12)' }}>
+                            {/* Top-only header */}
+                            <div className="text-center max-w-md w-full self-center pt-4 mb-2">
+                                <h3 className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-tight leading-[0.95]">Paint smarter,</h3>
+                                <p className="text-[#D6A847] text-2xl md:text-3xl lg:text-4xl font-semibold leading-[0.95]">last longer.</p>
+                            </div>
+
+                            {/* Centered remainder */}
+                            <div className="flex-1 flex flex-col items-center justify-center gap-4 pt-0">
+                                {/* Image between headline and paragraph */}
+                                <div className="w-full flex justify-center">
+                                    <img
+                                        src="/Assets/alialshekh717_ultra-realistic_3D_render_of_an_8-meter_circular__31ec9a6f-1a6e-4555-907e-ddc6795b4aaf.png"
+                                        alt="Calyco premium paints visual"
+                                        className="w-full max-w-xs rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] ring-1 ring-white/20 bg-white/10"
+                                    />
+                                </div>
+                                <div className="text-center max-w-md w-full">
+                                    <p className="text-white/90 mb-4 leading-relaxed">
+                                        Find premium, durable paints in the Calyco range, to help you protect and enhance your surfaces.
+                                    </p>
+                                    <button
+                                        onClick={() => navigate('/products')}
+                                        className="bg-[#B88A2E] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#D6A847] transition-colors mb-4 w-full"
+                                    >
+                                        Get started
+                                    </button>
+                                </div>
+
+                                {/* Category Grid */}
+                                <div className="grid grid-cols-3 gap-2 max-w-md w-full">
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('interior')}
+                                        onMouseEnter={() => setHoveredCategory('interior')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        interior
+                                    </div>
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('exterior')}
+                                        onMouseEnter={() => setHoveredCategory('exterior')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        exterior
+                                    </div>
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('stain & sealer')}
+                                        onMouseEnter={() => setHoveredCategory('stain & sealer')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        stain & sealer
+                                    </div>
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('industrial')}
+                                        onMouseEnter={() => setHoveredCategory('industrial')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        industrial
+                                    </div>
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('enamel')}
+                                        onMouseEnter={() => setHoveredCategory('enamel')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        enamel
+                                    </div>
+                                    <div
+                                        className="h-12 bg-white/10 rounded-lg flex items-center justify-center text-white/80 text-sm font-medium cursor-pointer transition-all duration-300 hover:bg-white/20"
+                                        onClick={() => handleCategoryClick('show all products')}
+                                        onMouseEnter={() => setHoveredCategory('show all products')}
+                                        onMouseLeave={() => setHoveredCategory('default')}
+                                    >
+                                        show all
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
     );

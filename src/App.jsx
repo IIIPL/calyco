@@ -15,7 +15,7 @@ const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.j
 const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 import { Temp } from './pages/Temp'
-import { AboutUs } from './pages/AboutUs'
+import AboutUs from './pages/AboutUs'
 import { Footer } from './pages/Footer'
 import { FAQs } from './pages/FAQs'
 import ScrollToTop from './components/ScrollToTop'

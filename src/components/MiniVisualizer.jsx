@@ -61,7 +61,7 @@ export default function MiniVisualizer() {
   }, [comboIdx, roomIdx]);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 mb-20">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 mb-40">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl md:text-3xl font-bold text-[#493657]">
           Try Colors Instantly

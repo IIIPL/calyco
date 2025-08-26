@@ -11,7 +11,8 @@ import ColorSlider from '../components/ColorSlider';
 import PopularColorsSlider from '../components/PopularColorsSlider';
 import ShopByColour from '../components/ShopByColour';
 import HowItWorks from '../components/HowItWorks.tsx';
-import ProductCategoriesSection from '../components/ProductCategoriesSection';
+import NavigationArrows from '../components/NavigationArrows';
+
 
 
 import { HeroSlider } from '../components/HomeComponents/HeroSlider';
@@ -87,6 +88,8 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [showAllFAQs, setShowAllFAQs] = useState(false);
+  const [roomIndex, setRoomIndex] = useState(0);
+  const [inspirationIndex, setInspirationIndex] = useState(0);
 
   const openColorModal = (color) => {
     setSelectedColor(color);
@@ -98,6 +101,46 @@ const Home = () => {
     setIsModalOpen(false);
     setSelectedColor(null);
     document.body.style.overflow = "auto";
+  };
+
+  // Room data for Shop by Room section
+  const roomData = [
+    { name: "Bedroom", image: "/Assets/ixacurtains_A_beautiful_bedroom_with_light_blue_walls_a_vintage_357585fa-b55a-406b-935f-805bfe23eff7.png", route: "/inspirations/bedroom" },
+    { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
+    { name: "Office", image: "/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.png", route: "/inspirations/office" },
+    { name: "Kitchen", image: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", route: "/inspirations/kitchen" },
+    { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
+    { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
+  ];
+
+  const visibleRooms = 4; // Number of rooms visible at once
+  const visibleInspirations = 6; // Number of inspiration items visible at once
+  const roomCardWidth = 280; // Width of each room card
+  const roomGap = 16; // Gap between room cards (gap-4 = 16px)
+  const roomSlideDistance = roomCardWidth + roomGap;
+
+  const nextRoom = () => {
+    setRoomIndex(prev => 
+      prev >= roomData.length - visibleRooms ? 0 : prev + 1
+    );
+  };
+
+  const prevRoom = () => {
+    setRoomIndex(prev => 
+      prev <= 0 ? roomData.length - visibleRooms : prev - 1
+    );
+  };
+
+  const nextInspiration = () => {
+    setInspirationIndex(prev => 
+      prev >= galleryImages.length - visibleInspirations ? 0 : prev + 1
+    );
+  };
+
+  const prevInspiration = () => {
+    setInspirationIndex(prev => 
+      prev <= 0 ? galleryImages.length - visibleInspirations : prev - 1
+    );
   };
 
   const ColorModal = () => (
@@ -190,12 +233,13 @@ const Home = () => {
   );
 
   const insp = [
-    '/Assets/Inspiration/IMG-20250718-WA0008.jpg',
-    '/Assets/Inspiration/bedroom.jpg',
-    '/Assets/Inspiration/living.jpg',
-    '/Assets/Inspiration/IMG-20250718-WA0041.jpg',
-    '/Assets/Inspiration/dining.jpg',
-    '/Assets/Inspiration/IMG-20250718-WA0044.jpg',
+    '/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.png',
+    '/Assets/bulendi_Frame_mockup_with_white_inside_hanging_on_wall_around_m_50856212-3b35-4550-8a87-7443af3cf317.png',
+    '/Assets/sorbey._A_wide-shot_of_an_elegant_dining_room_featuring_a_woode_939e60b7-773c-49ed-b028-27b75f2fa5d1.png',
+    '/Assets/marketinghbh_Bright_modern_bathroom_warm_minimalism_strong_domi_9a9eafd9-1ec8-4df7-866a-122067cd26b3.png',
+    '/Assets/atmacro_front_view_of_a_bright_professionally_studio_photo_fron_96a27c95-879a-454e-810d-18ae1bcc4b33.png',
+    '/Assets/jonestown___a_head_on_front_facing_view_of_a_computer_monitor_o_8ce9e327-7643-4fe4-8216-dfd87bf574cd.png',
+    '/Assets/dudarte_A_cozy_living_room_with_fireplace_and_large_window_with_a2a959ab-0338-4553-87a0-f68ce48befa8.png',
   ];
 
   return (
@@ -261,24 +305,30 @@ const Home = () => {
       {/* Shop by Room Gallery - Below the Hero Section */}
       <section className="py-8 bg-white">
         <div className="w-full px-4">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[20px] font-bold text-[#354147] mb-4 text-left"
-          >
-            Shop by room
-          </motion.h2>
+          <div className="flex items-center justify-between mb-4">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-[20px] font-bold text-[#354147]"
+            >
+              Shop by room
+            </motion.h2>
+            
+            {/* Navigation Arrows */}
+            <NavigationArrows
+              onPrevious={prevRoom}
+              onNext={nextRoom}
+              showPrevious={roomIndex > 0}
+              showNext={roomIndex < roomData.length - visibleRooms}
+              size="md"
+            />
+          </div>
           
-          <div className="flex gap-4 overflow-x-auto overflow-y-visible scrollbar-hide max-w-full pb-4">
-            {[
-              { name: "Bedroom", image: "/Assets/InteriorInspiratoin/adjinad_A_room_with_an_overcast_atmosphere_in_a_warm_green_styl_c7f39523-e6ce-4432-a6e6-1c6f5e67cdf6.png", route: "/inspirations/bedroom" },
-              { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
-              { name: "Office", image: "/Assets/InteriorInspiratoin/header-inspiration-office-b-mobile.jpg", route: "/inspirations/office" },
-                              { name: "Kitchen", image: "/Assets/u7859757176_Modern_luxury_bathroom_with_high_clerestory_windo_4f1ad61e-d8af-4e9c-bb17-4066db021cef_2.png", route: "/inspirations/kitchen" },
-              { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
-              { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
-            ].map((room, index) => (
+          <div className="relative overflow-hidden">
+            <div className="flex gap-4 transition-transform duration-500 ease-out"
+                 style={{ transform: `translateX(-${roomIndex * roomSlideDistance}px)` }}>
+              {roomData.map((room, index) => (
               <motion.div
                 key={room.name}
                 initial={{ opacity: 0, x: 20 }}
@@ -303,15 +353,13 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
       </section>
 
       <ShopByColour />
       <HowItWorks />
-
-            {/* Product Categories Section */}
-      <ProductCategoriesSection />
 
       {/* Popular Colors Carousel */}
 
