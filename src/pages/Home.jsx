@@ -424,7 +424,7 @@ const Home = () => {
                 question: "Are your paints waterproof and weather-resistant?",
                 answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
               }
-            ].slice(0, showAllFAQs ? undefined : 3).map((faq, index) => (
+            ].slice(0, showAllFAQs ? undefined : 5).map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

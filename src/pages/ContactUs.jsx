@@ -340,48 +340,7 @@ export const ContactUs = () => {
                             completeAddress="75 Ocean Tower - II, 18C Floor Sukhumvit Road, Bangkok, Thailand"
                         />
                     </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Korea"
-                            emailId="korea@calycopaints.com"
-                            completeAddress="Regus Gangnam Station 16F, Seocho-dong, Seoul, Korea"
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Japan"
-                            emailId="japan@calycopaints.com"
-                            completeAddress="19F Parks Tower, Nanbanaka, Naniwa-ku, Osaka-shi, Japan"
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Turkey"
-                            emailId="turkey@calycopaints.com"
-                            completeAddress="Karamehmet Mh. Avrupa Serbest Bolgesi, Ergene/Tekirdag, Turkey"
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Singapore"
-                            emailId="singapore@calycopaints.com"
-                            completeAddress="Levels 21 Centennial Tower, 3 Temasek Avenue, Singapore"
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Netherlands"
-                            emailId="netherlands@calycopaints.com"
-                            completeAddress="Zuidplein 126WTC, Toren H, 1077 XV Amsterdam, The Netherlands"
-                        />
-                    </div>
-                    <div className="flex justify-center">
-                        <AddressCard
-                            CountrName="Indonesia"
-                            emailId="indonesia@calycopaints.com"
-                            completeAddress="Jl. Modern Industri XVIII, Desa Nambo Udik, Cikande, Serang - Banten, Indonesia"
-                        />
-                    </div>
+
                 </div>
             </div>
         </div>
