@@ -144,30 +144,50 @@ export default function MiniInspirationGallery({
             >
               <style>{`[data-mig]::-webkit-scrollbar{display:none;}`}</style>
 
-              <ul className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-2 select-none touch-pan-x"
-                style={{ height: CARD_H }}
+              <ul className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-2 select-none touch-pan-x perspective-1000"
+                style={{ height: CARD_H, transformStyle: 'preserve-3d' }}
               >
-                {galleryImages.map(({ src, alt, to }, i) => (
-                  <li
-                    key={i}
-                    className="snap-start shrink-0 min-w-fit rounded-2xl ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-transform duration-200"
-                    style={{ height: CARD_H }}
-                  >
-                    <Link
-                      to={to}
-                      className="w-full h-full rounded-2xl overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/50 flex items-center justify-center"
+                {galleryImages.map(({ src, alt, to }, i) => {
+                  // Calculate 3D effect based on position
+                  const totalItems = galleryImages.length;
+                  const centerIndex = Math.floor(totalItems / 2);
+                  const distanceFromCenter = Math.abs(i - centerIndex);
+                  const maxDistance = Math.floor(totalItems / 2);
+                  
+                  // Scale and opacity based on distance from center
+                  const scale = Math.max(0.6, 1 - (distanceFromCenter / maxDistance) * 0.4);
+                  const opacity = Math.max(0.3, 1 - (distanceFromCenter / maxDistance) * 0.7);
+                  const translateZ = -distanceFromCenter * 20; // 3D depth
+                  const translateY = distanceFromCenter * 5; // Slight upward movement for depth
+                  
+                  return (
+                    <li
+                      key={i}
+                      className="snap-start shrink-0 min-w-fit rounded-2xl ring-1 ring-black/10 bg-white shadow-sm hover:shadow-md transition-all duration-500 ease-out"
+                      style={{ 
+                        height: CARD_H,
+                        transform: `perspective(1000px) scale(${scale}) translateZ(${translateZ}px) translateY(${translateY}px)`,
+                        opacity: opacity,
+                        filter: `blur(${distanceFromCenter * 0.5}px)`,
+                        zIndex: totalItems - distanceFromCenter
+                      }}
                     >
-                      <img
-                        src={src}
-                        alt={alt}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-full w-auto object-contain"
-                        sizes="(max-width: 640px) 60vw, (max-width: 1024px) 40vw, 260px"
-                      />
-                    </Link>
-                  </li>
-                ))}
+                      <Link
+                        to={to}
+                        className="w-full h-full rounded-2xl overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A941]/50 flex items-center justify-center"
+                      >
+                        <img
+                          src={src}
+                          alt={alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-auto object-contain"
+                          sizes="(max-width: 640px) 60vw, (max-width: 1024px) 40vw, 260px"
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

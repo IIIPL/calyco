@@ -97,7 +97,7 @@ export default function ContactPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/Assets/Inspiration/IMG-20250718-WA0043.jpg')",
+            backgroundImage: "url('/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png')",
             backgroundSize: "cover",
           }}
         >

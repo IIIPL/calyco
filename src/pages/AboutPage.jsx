@@ -50,7 +50,7 @@ export default function AboutPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/Assets/Inspiration/bedroom.jpg')",
+            backgroundImage: "url('/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63 (1).png')",
             backgroundSize: "cover",
           }}
         >
@@ -126,8 +126,8 @@ export default function AboutPage() {
               viewport={{ once: true }}
             ></motion.div>
             <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">We believe paint should enhance, protect and preserve without compromising our planet. From raw material sourcing to end‑of‑life disposal, we hold ourselves to the highest environmental standards.</p>
-              <p className="text-xl text-gray-600 leading-relaxed">Our paints are formulated to be low‑VOC, water‑based and free of harmful chemicals. We work closely with suppliers who share our values and implement closed‑loop manufacturing to minimise waste.</p>
+              <p className="text-xl text-gray-600 mb-6 leading-relaxed">At <strong className="text-slate-700">Calyco Paints</strong>, we believe in doing things the right way. That's why we set out to make our paint the best it can be—combining cutting-edge sustainability with uncompromising performance.</p>
+              <p className="text-xl text-gray-600 leading-relaxed">Founded in 2023, we've developed our exclusive <strong className="text-slate-700">EcoMax™ Technology</strong> that delivers gorgeous, vibrant hues with unsurpassed durability while maintaining zero-VOC formulations. It's the science behind Calyco's commitment to healthier living and environmental responsibility.</p>
             </div>
           </motion.div>
         </div>
@@ -145,8 +145,8 @@ export default function AboutPage() {
           >
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">EcoMax™ Technology</h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">Our proprietary EcoMax™ technology blends high‑performance pigments with renewable binders, delivering colour depth, coverage and durability previously thought impossible for eco‑friendly paints.</p>
-              <p className="text-xl text-gray-600 leading-relaxed">By engineering at the molecular level, we create paints that are stain‑resistant, scrub‑resistant and maintain vibrant colour for years. It's how we keep our promise to both homeowners and professionals.</p>
+              <p className="text-xl text-gray-600 mb-6 leading-relaxed">Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.</p>
+              <p className="text-xl text-gray-600 leading-relaxed">What we created is a formula that's <strong className="text-slate-700">better, stronger, and cleaner</strong>—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.</p>
             </div>
             <div className="relative">
               <motion.div 
@@ -177,7 +177,7 @@ export default function AboutPage() {
               whileHover={{ y: -5 }}
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Leadership</h3>
-              <p className="text-gray-600 leading-relaxed">Founded by materials scientist Dr. Asha Mehta, Calyco is guided by experts in chemistry, sustainability and design. Our team believes that better paint can contribute to healthier, more beautiful spaces for all.</p>
+                             <p className="text-gray-600 leading-relaxed">At the heart of this initiative is <strong className="text-slate-700">Armaan Kothary</strong>, a young environmental entrepreneur who launched Calyco Paints at the age of 16 with a vision to build smarter solutions for sustainable home living. His goal was to create a brand that combines environmental responsibility with design excellence—while offering safer and more breathable paints and coatings to Indian households and builders.</p>
             </motion.div>
             <motion.div 
               className="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -190,7 +190,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Products Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <motion.div 
@@ -201,7 +201,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Calyco
+              Superior Performance, Sustainable Results
             </h2>
             <motion.div 
               className="w-20 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] rounded-full mx-auto mb-8"
@@ -231,8 +231,8 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">True Colour Consistency</h3>
-              <p className="text-gray-600 leading-relaxed">Our precision tinting ensures that the colour you choose is the colour you get, every time. No surprises, just perfect shades.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">True Color Consistency</h3>
+              <p className="text-gray-600 leading-relaxed">Our proprietary EcoMax™ colorants ensure the exact color you choose stays vibrant and true for years, maintaining consistency across our entire spectrum.</p>
             </motion.div>
             <motion.div 
               className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -246,7 +246,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ultra Durable Protection</h3>
-              <p className="text-gray-600 leading-relaxed">Advanced resin systems and crosslinking deliver surfaces that resist stains, scrubbing and fading—indoors and out.</p>
+              <p className="text-gray-600 leading-relaxed">Engineered to resist fading, peeling, and cracking, our paints stand up to daily wear and harsh conditions so you repaint when you want to, not out of necessity.</p>
             </motion.div>
             <motion.div 
               className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -260,7 +260,7 @@ export default function AboutPage() {
                 />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Environmentally Responsible</h3>
-              <p className="text-gray-600 leading-relaxed">From our zero‑VOC formulas to recyclable packaging, we prioritise the planet at every step of our process.</p>
+              <p className="text-gray-600 leading-relaxed">Zero-VOC waterborne tinting system ensures our low-VOC paints remain environmentally safe even after tinting—an innovation others can't replicate.</p>
             </motion.div>
           </motion.div>
         </div>
@@ -276,6 +276,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">The Future of Sustainable Painting</h2>
+            <p className="text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">Through Calyco, we're making sustainability a standard, not a specialty, in Indian homes and construction. Every product is developed with meticulous attention to finish quality, color consistency, environmental safety, and real-world application performance.</p>
             <div className="grid sm:grid-cols-3 gap-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -320,14 +322,36 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Materials & Ingredients</h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">We obsess over what goes into our cans. Only the finest pigments, binders and additives make the cut, selected for performance and safety.</p>
-              <ul className="list-disc pl-6 text-gray-600 space-y-3 text-lg">
-                <li>Renewable plant‑based binders</li>
-                <li>High‑purity mineral pigments</li>
-                <li>Non‑toxic additives for flow & leveling</li>
-                <li>Recyclable aluminium cans & packaging</li>
-              </ul>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We're All About</h2>
+              <div className="space-y-6">
+                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
+                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Color Excellence</h5>
+                  <p className="text-gray-600">
+                    A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting vibrancy in both interior and exterior applications.
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
+                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Uncompromising Quality</h5>
+                  <p className="text-gray-600">
+                    Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish every time, backed by our EcoMax™ Technology.
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
+                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Planet-First Approach</h5>
+                  <p className="text-gray-600">
+                    We put people and planet at the heart of every decision we make, from our innovative production process to our commitment to zero-VOC formulations.
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
+                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Building Better Homes</h5>
+                  <p className="text-gray-600">
+                    We're here to help transform Indian homes with sustainable solutions, providing expert guidance and premium products for every painting project.
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="relative">
               <motion.div 
@@ -344,109 +368,6 @@ export default function AboutPage() {
                 />
               </motion.div>
             </div>
-          </motion.div>
-          
-          <motion.div 
-            className="mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">Testing & Certifications</h2>
-            <p className="text-xl text-gray-600 mb-8 text-center leading-relaxed max-w-3xl mx-auto">Every batch is tested for adhesion, scrub resistance, colour retention and environmental impact. We proudly hold certifications from:</p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 bg-white rounded-xl shadow-lg text-center">
-                <h3 className="font-bold text-lg mb-2">GreenSeal GS‑11</h3>
-                <p className="text-gray-600">Low‑emission coatings</p>
-              </div>
-              <div className="p-6 bg-white rounded-xl shadow-lg text-center">
-                <h3 className="font-bold text-lg mb-2">ISO 9001 & 14001</h3>
-                <p className="text-gray-600">Quality & environmental management</p>
-              </div>
-              <div className="p-6 bg-white rounded-xl shadow-lg text-center">
-                <h3 className="font-bold text-lg mb-2">LEED v4</h3>
-                <p className="text-gray-600">Compliant for sustainable buildings</p>
-              </div>
-              <div className="p-6 bg-white rounded-xl shadow-lg text-center">
-                <h3 className="font-bold text-lg mb-2">Cradle to Cradle™</h3>
-                <p className="text-gray-600">Material health certification</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Planet First & Building Better */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Planet‑First Approach</h2>
-            <motion.div 
-              className="w-20 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] rounded-full mx-auto mb-8"
-              initial={{ width: 0 }}
-              whileInView={{ width: "5rem" }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            ></motion.div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Sustainability isn't an afterthought—it's at the core of our business. From sourcing to manufacturing to end use, we minimise our footprint while maximising performance.</p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/Inspiration/IMG-20250718-WA0045.jpg"
-                  alt="Renewable energy showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Renewable Energy</h3>
-              <p className="text-gray-600 leading-relaxed">Our production facilities are powered by solar and wind, reducing carbon emissions and operating impact.</p>
-            </motion.div>
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/Inspiration/IMG-20250718-WA0043.jpg"
-                  alt="Waste reduction showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Waste Reduction</h3>
-              <p className="text-gray-600 leading-relaxed">We've implemented closed‑loop systems that reuse solvents, recycle water and recycle unused pigments.</p>
-            </motion.div>
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/Inspiration/IMG-20250718-WA0044.jpg"
-                  alt="Community projects showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Community Projects</h3>
-              <p className="text-gray-600 leading-relaxed">We donate a portion of profits to building and renovating community spaces using our sustainable products.</p>
-            </motion.div>
           </motion.div>
         </div>
       </section>
