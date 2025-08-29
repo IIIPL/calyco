@@ -90,7 +90,7 @@ const ShopByColour = () => {
           <div className="inline-grid grid-flow-col gap-2 rounded-full bg-[#ece7df] p-2 shadow-inner">
           <button
             onClick={() => setMode('bold')}
-            className={`px-5 py-2 rounded-full font-bold tracking-[.2px] transition-all ${
+            className={`px-4 py-1.5 rounded-full font-bold text-sm md:text-base tracking-[.2px] transition-all ${
               mode === 'bold'
                 ? 'bg-gradient-to-b from-[#5c476a] to-[#7b6693] text-white shadow-[0_8px_18px_rgba(90,70,110,.35)]'
                 : 'text-[#3a2d1b] hover:bg-black/5'
@@ -100,7 +100,7 @@ const ShopByColour = () => {
           </button>
                       <button
               onClick={() => setMode('neutral')}
-              className={`px-5 py-2 rounded-full font-bold tracking-[.2px] transition-all ${
+              className={`px-4 py-1.5 rounded-full font-bold text-sm md:text-base tracking-[.2px] transition-all ${
                 mode === 'neutral'
                   ? 'bg-gradient-to-b from-[#caa04b] to-[#e0be6a] text-[#1b1b1b] shadow-[0_8px_18px_rgba(180,130,40,.35)]'
                   : 'text-[#3a2d1b] hover:bg-black/5'

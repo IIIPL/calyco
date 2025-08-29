@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const ColorSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0); // Start with the 1st slide (video)
@@ -15,20 +16,39 @@ const ColorSlider = () => {
     },
     {
       type: 'image',
-      src: '/Assets/slider/Luxurious_Calyco_bedroom_with_a_sophisticated_ble_d9771689-ca96-422e-997b-5a987e87cc7e_0.png',
-      alt: 'Luxurious Calyco Bedroom'
+      src: '/Assets/home-hero/full-page.png',
+      alt: 'Full Page Interior Design'
     },
     {
       type: 'image',
-      src: '/Assets/slider/luxurious_photorealistic_interior_living_room_i_6c8b2a09-fc4d-4e6b-ac48-4fbd3417b03d_3.png',
-      alt: 'Luxurious Interior Living Room'
+      src: '/Assets/home-hero/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d (2).png',
+      alt: 'Modern and Minimalist Living Room'
     },
     {
       type: 'image',
-      src: '/Assets/LustroLite/inhouse.png',
-      alt: 'LustroLite Premium Paint'
+      src: '/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png',
+      alt: 'Luxury Wall Art Mockup in Minimalist Setting'
+    },
+    {
+      type: 'image',
+      src: '/Assets/home-hero/zephiros6962_An_elegant_and_minimalist_living_room_viewed_from__683549cc-c734-4791-9c5a-929b9ffa2481.png',
+      alt: 'Elegant and Minimalist Living Room'
     }
   ];
+
+  // Detect responsive (mobile/tablet) viewport for slide-specific swap
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const onChange = (e) => setIsMobile(e.matches);
+    setIsMobile(mq.matches);
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -73,8 +93,11 @@ const ColorSlider = () => {
     nextSlide();
   };
 
+  const isSpecialHalfSlide = currentSlide === 1 && slides[currentSlide].type === 'image';
+
   return (
-    <div className="relative w-full h-[70vh] overflow-hidden mt-16">
+    <>
+    <div className={`relative w-full h-[70vh] overflow-hidden mt-0 ${isSpecialHalfSlide ? 'bg-[#2D0F3F]' : ''}`}>
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -99,21 +122,75 @@ const ColorSlider = () => {
               Your browser does not support the video tag.
             </video>
           ) : (
-            <img
-              src={slides[currentSlide].src}
-              alt={slides[currentSlide].alt}
-              className="w-full h-full object-cover"
-            />
+            isSpecialHalfSlide ? (
+              isMobile ? (
+                <img
+                  src="/Assets/HERO/full-page.png"
+                  alt="Calyco Hero"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 flex">
+                  {/* Left half: solid purple background on desktop */}
+                  <div className="w-1/2 h-full bg-[#2D0F3F]" />
+                  {/* Right half: image fills fully */}
+                  <div className="w-1/2 h-full">
+                    <img
+                      src={slides[currentSlide].src}
+                      alt={slides[currentSlide].alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              )
+            ) : (
+              <img
+                src={isMobile && currentSlide === 1 ? '/Assets/HERO/hero2.png' : slides[currentSlide].src}
+                alt={slides[currentSlide].alt}
+                className="w-full h-full object-cover"
+              />
+            )
           )}
         </motion.div>
       </AnimatePresence>
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+      {/* Text Overlay - show on large screens only to avoid covering content on mobile */}
+      <div className="absolute inset-0 hidden lg:flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left side - Text content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-white z-10"
+            >
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                Calyco Paint & Stain
+              </h1>
+              <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg">
+                Explore premium colors and find the perfect paint for your space
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                  Shop
+                </Link>
+                <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                  Explore Colors
+                </Link>
+              </div>
+            </motion.div>
+            
+            {/* Right side - Empty for balance */}
+            <div className="hidden lg:block"></div>
+          </div>
+        </div>
+      </div>
 
-
-
-
+      {/* Dark overlay for better text readability (disabled on special half slide); hide on mobile */}
+      {!isSpecialHalfSlide && (
+        <div className="absolute inset-0 hidden lg:block bg-black/40"></div>
+      )}
 
       {/* Slide indicators with Navigation Arrows */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-50">
@@ -162,9 +239,20 @@ const ColorSlider = () => {
           </svg>
         </button>
       </div>
-
-
     </div>
+
+    {/* Mobile/Tablet: text box below the slider to prevent overlap */}
+    <div className="lg:hidden w-full bg-[#122636] text-white px-6 py-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl font-bold mb-2">Calyco Paint & Stain</h2>
+        <p className="text-white/90 mb-4">Explore premium colors and find the perfect paint for your space</p>
+        <div className="flex flex-col sm:flex-row items-start gap-3">
+          <Link to="/products" className="inline-flex w-[176px] justify-center px-5 py-3 bg-white text-gray-900 rounded-lg font-medium text-sm">Shop</Link>
+          <Link to="/colors" className="inline-flex w-[176px] justify-center px-5 py-3 border-2 border-white text-white rounded-lg font-medium text-sm">Explore Colors</Link>
+        </div>
+      </div>
+    </div>
+    </>
   );
 };
 
