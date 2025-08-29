@@ -31,7 +31,7 @@ const WhyTrustUs = () => {
             {/* Card 1: Care that fits your schedule */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[800px]"
+              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[600px]"
             >
               <div className="text-center mb-6">
                 <h3 className="text-5xl font-bold text-gray-900 mb-2">
@@ -53,11 +53,11 @@ const WhyTrustUs = () => {
               </div>
               
               {/* Phone Mockup Image */}
-              <div className="flex justify-center mt-32">
+              <div className="flex justify-center mt-20">
                 <img 
                   src="/Assets/card1-trust.png"
                   alt="Picture of cards depicting losing weight"
-                  className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
+                  className="w-[400px] h-[300px] object-cover rounded-xl shadow-md"
                 />
               </div>
             </motion.div>
@@ -65,7 +65,7 @@ const WhyTrustUs = () => {
             {/* Card 3: Clinically proven ingredients */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[800px]"
+              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[600px]"
             >
               <div className="text-center mb-6">
                 <h3 className="text-5xl font-bold text-gray-900 mb-2">
@@ -87,11 +87,11 @@ const WhyTrustUs = () => {
               </div>
               
               {/* Ingredients Image */}
-              <div className="flex justify-center mt-32">
+              <div className="flex justify-center mt-20">
                 <img 
                   src="/Assets/piotrekf_A_minimalistic_Scandinavian-style_interior_with_soft_n_89b15a3a-fb0e-4751-a060-037b2ec6493f.png"
                   alt="Image"
-                  className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
+                  className="w-[400px] h-[300px] object-cover rounded-xl shadow-md"
                 />
               </div>
             </motion.div>
@@ -102,7 +102,7 @@ const WhyTrustUs = () => {
             {/* Card 2: Prescribed by licensed providers */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[800px]"
+              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[600px]"
             >
               <div className="text-center mb-6">
                 <h3 className="text-5xl font-bold text-gray-900 mb-2">
@@ -124,11 +124,11 @@ const WhyTrustUs = () => {
               </div>
               
               {/* Doctor Image */}
-              <div className="flex justify-center mt-32">
+              <div className="flex justify-center mt-20">
                 <img 
                   src="/Assets/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d.png"
                   alt="Image"
-                  className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
+                  className="w-[400px] h-[300px] object-cover rounded-xl shadow-md"
                 />
               </div>
             </motion.div>
@@ -136,7 +136,7 @@ const WhyTrustUs = () => {
             {/* Card 4: FDA-regulated pharmacies */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[800px]"
+              className="bg-[#F6F0E9] p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[600px]"
             >
               <div className="text-center mb-6">
                 <h3 className="text-5xl font-bold text-gray-900 mb-2">
@@ -158,11 +158,11 @@ const WhyTrustUs = () => {
               </div>
               
               {/* Pharmacy Image */}
-              <div className="flex justify-center mt-32">
+              <div className="flex justify-center mt-20">
                 <img 
                   src="/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png"
                   alt="collage of pictures with medicine making machines"
-                  className="w-[500px] h-[400px] object-cover rounded-xl shadow-md"
+                  className="w-[400px] h-[300px] object-cover rounded-xl shadow-md"
                 />
               </div>
             </motion.div>

@@ -253,50 +253,6 @@ const Home = () => {
       {/* Hero Section with Original ColorSlider */}
       <section className="relative overflow-hidden pt-[19.5]">
         <ColorSlider />
-        
-        {/* Hero Content Overlay */}
-        <div className="absolute inset-0 flex items-center justify-start z-20">
-          {/* Light overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/20"></div>
-          
-          <div className="text-left text-white max-w-2xl ml-12 md:ml-20 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-
-
-              <h1 className="text-3xl md:text-[2.75rem] font-bold mb-6 tracking-tight drop-shadow-lg" style={{ fontWeight: 700 }}>
-                Introducing, Calyco
-              </h1>
-              <p className="text-lg md:text-xl text-white mb-8 leading-relaxed drop-shadow-md max-w-2xl font-light">
-                Find your perfect shade, your perfect space, your perfect vibe.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
-                <motion.button
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  onClick={() => navigate('/colors')}
-                  className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base"
-                >
-                  Find out more
-                </motion.button>
-                <motion.button
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                  onClick={() => navigate('/products')}
-                  className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group"
-                >
-                  Shop Calyco
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
       </section>
 
             {/* Popular Colours Section */}
