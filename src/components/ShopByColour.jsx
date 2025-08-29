@@ -111,8 +111,8 @@ const ShopByColour = () => {
           </div>
         </div>
 
-        {/* Swatches Grid - exactly 8 columns */}
-        <div className="grid grid-cols-8 gap-3 md:gap-4">
+        {/* Swatches Grid - 2 rows on mobile, 8 columns on desktop */}
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-3 md:gap-4">
           {PALETTES[mode].map((hex) => (
             <button
               key={hex}

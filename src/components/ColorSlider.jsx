@@ -3,17 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ColorSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0); // Start with the 1st slide (video)
+  const [currentSlide, setCurrentSlide] = useState(0); // Start with the 1st slide
   const [isPlaying, setIsPlaying] = useState(false); // Set to false to disable autoplay
   const videoRef = useRef(null);
   const intervalRef = useRef(null);
 
   const slides = [
-    {
-      type: 'video',
-      src: '/Assets/slider/assets_task_01k30y9xbyf88skvtrfhhx5tba_task_01k30y9xbyf88skvtrfhhx5tba_genid_2039803a-4a55-4a59-abbf-bd3cf487a324_25_08_19_10_35_258371_videos_00000_212151107_md.mp4',
-      alt: 'Calyco Paint Video'
-    },
     {
       type: 'image',
       src: '/Assets/home-hero/full-page.png',
@@ -21,18 +16,18 @@ const ColorSlider = () => {
     },
     {
       type: 'image',
-      src: '/Assets/home-hero/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d (2).png',
+      src: '/Assets/HERO/hero2.png',
       alt: 'Modern and Minimalist Living Room'
     },
     {
       type: 'image',
-      src: '/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png',
-      alt: 'Luxury Wall Art Mockup in Minimalist Setting'
+      src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
+      alt: 'Modern Interior Wall in a House or Apartment Living'
     },
     {
       type: 'image',
-      src: '/Assets/home-hero/zephiros6962_An_elegant_and_minimalist_living_room_viewed_from__683549cc-c734-4791-9c5a-929b9ffa2481.png',
-      alt: 'Elegant and Minimalist Living Room'
+      src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
+      alt: 'Metallic Parapet Interrupted by Small Columns'
     }
   ];
 
@@ -93,11 +88,9 @@ const ColorSlider = () => {
     nextSlide();
   };
 
-  const isSpecialHalfSlide = currentSlide === 1 && slides[currentSlide].type === 'image';
-
   return (
     <>
-    <div className={`relative w-full h-[70vh] overflow-hidden mt-0 ${isSpecialHalfSlide ? 'bg-[#2D0F3F]' : ''}`}>
+    <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden mt-0">
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -122,32 +115,43 @@ const ColorSlider = () => {
               Your browser does not support the video tag.
             </video>
           ) : (
-            isSpecialHalfSlide ? (
-              isMobile ? (
-                <img
-                  src="/Assets/HERO/full-page.png"
-                  alt="Calyco Hero"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="absolute inset-0 flex">
-                  {/* Left half: solid purple background on desktop */}
-                  <div className="w-1/2 h-full bg-[#2D0F3F]" />
-                  {/* Right half: image fills fully */}
-                  <div className="w-1/2 h-full">
-                    <img
-                      src={slides[currentSlide].src}
-                      alt={slides[currentSlide].alt}
-                      className="w-full h-full object-cover"
-                    />
+            currentSlide === 0 && !isMobile ? (
+              // Special layout for first image on desktop only
+              <div className="absolute inset-0 flex">
+                {/* Left half: dark purple background */}
+                <div className="w-1/2 h-full bg-[#2D0F3F] flex items-center justify-center">
+                  <div className="text-white text-center px-8">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                      Calyco Paint & Stain
+                    </h1>
+                    <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
+                      Explore premium colors and find the perfect paint for your space
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                        Shop
+                      </Link>
+                      <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                        Explore Colors
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              )
+                {/* Right half: image */}
+                <div className="w-1/2 h-full">
+                  <img
+                    src={slides[currentSlide].src}
+                    alt={slides[currentSlide].alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             ) : (
               <img
                 src={isMobile && currentSlide === 1 ? '/Assets/HERO/hero2.png' : slides[currentSlide].src}
                 alt={slides[currentSlide].alt}
                 className="w-full h-full object-cover"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
             )
           )}
@@ -155,40 +159,120 @@ const ColorSlider = () => {
       </AnimatePresence>
 
       {/* Text Overlay - show on large screens only to avoid covering content on mobile */}
-      <div className="absolute inset-0 hidden lg:flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left side - Text content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-white z-10"
-            >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                Calyco Paint & Stain
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg">
-                Explore premium colors and find the perfect paint for your space
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                  Shop
-                </Link>
-                <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                  Explore Colors
-                </Link>
+      {currentSlide !== 0 && (
+        <div className="absolute inset-0 hidden lg:flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
+            {currentSlide === 2 ? (
+              // Centered layout for third image
+              <div className="w-full flex justify-center items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-white z-10 text-center"
+                >
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                    Calyco Defense Coatings
+                  </h1>
+                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
+                    Built to protect every surface – wood, concrete, steel, and more.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                      Shop
+                    </Link>
+                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                      Explore Colors
+                    </Link>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-            
-            {/* Right side - Empty for balance */}
-            <div className="hidden lg:block"></div>
+            ) : currentSlide === 3 ? (
+              // Centered layout for fourth image
+              <div className="w-full flex justify-center items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-white z-10 text-center"
+                >
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                    Eco-Friendly Innovation
+                  </h1>
+                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
+                    Advanced formulas that balance sustainability with superior performance.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                      Shop
+                    </Link>
+                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                      Explore Colors
+                    </Link>
+                  </div>
+                </motion.div>
+              </div>
+            ) : currentSlide === 1 ? (
+              // Centered layout for second image
+              <div className="w-full flex justify-center items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-white z-10 text-center"
+                >
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                    Eco-Friendly Innovation
+                  </h1>
+                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
+                    Advanced formulas that balance sustainability with superior performance.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                      Shop
+                    </Link>
+                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                      Explore Colors
+                    </Link>
+                  </div>
+                </motion.div>
+              </div>
+            ) : (
+              // Original left-aligned layout for other images (not first image)
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                {/* Left side - Text content */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-white z-10"
+                >
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
+                    Luxury Interiors
+                  </h1>
+                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg">
+                    Smooth, low-VOC paints designed for timeless elegance and durability.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
+                      Shop
+                    </Link>
+                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
+                      Explore Colors
+                    </Link>
+                  </div>
+                </motion.div>
+                
+                {/* Right side - Empty for balance */}
+                <div className="hidden lg:block"></div>
+              </div>
+            )}
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Dark overlay for better text readability (disabled on special half slide); hide on mobile */}
-      {!isSpecialHalfSlide && (
+      {/* Dark overlay for better text readability; hide on mobile and first slide */}
+      {currentSlide !== 0 && (
         <div className="absolute inset-0 hidden lg:block bg-black/40"></div>
       )}
 
@@ -242,13 +326,35 @@ const ColorSlider = () => {
     </div>
 
     {/* Mobile/Tablet: text box below the slider to prevent overlap */}
-    <div className="lg:hidden w-full bg-[#122636] text-white px-6 py-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl font-bold mb-2">Calyco Paint & Stain</h2>
-        <p className="text-white/90 mb-4">Explore premium colors and find the perfect paint for your space</p>
-        <div className="flex flex-col sm:flex-row items-start gap-3">
-          <Link to="/products" className="inline-flex w-[176px] justify-center px-5 py-3 bg-white text-gray-900 rounded-lg font-medium text-sm">Shop</Link>
-          <Link to="/colors" className="inline-flex w-[176px] justify-center px-5 py-3 border-2 border-white text-white rounded-lg font-medium text-sm">Explore Colors</Link>
+    <div className="lg:hidden w-full bg-[#2D0F3F] text-white px-6 py-8">
+      <div className="max-w-7xl mx-auto text-center">
+        {currentSlide === 0 && (
+          <>
+            <h2 className="text-3xl font-bold mb-3">Calyco Paint & Stain</h2>
+            <p className="text-white/90 mb-6 text-lg">Explore premium colors and find the perfect paint for your space</p>
+          </>
+        )}
+        {currentSlide === 1 && (
+          <>
+            <h2 className="text-3xl font-bold mb-3">Luxury Interiors</h2>
+            <p className="text-white/90 mb-6 text-lg">Smooth, low-VOC paints designed for timeless elegance and durability.</p>
+          </>
+        )}
+        {currentSlide === 2 && (
+          <>
+            <h2 className="text-3xl font-bold mb-3">Calyco Defense Coatings</h2>
+            <p className="text-white/90 mb-6 text-lg">Built to protect every surface – wood, concrete, steel, and more.</p>
+          </>
+        )}
+        {currentSlide === 3 && (
+          <>
+            <h2 className="text-3xl font-bold mb-3">Eco-Friendly Innovation</h2>
+            <p className="text-white/90 mb-6 text-lg">Advanced formulas that balance sustainability with superior performance.</p>
+          </>
+        )}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link to="/products" className="inline-flex w-[176px] justify-center px-6 py-3 bg-white text-gray-900 rounded-lg font-medium text-sm border border-gray-300">Shop</Link>
+          <Link to="/colors" className="inline-flex w-[176px] justify-center px-6 py-3 border-2 border-white text-white rounded-lg font-medium text-sm">Explore Colors</Link>
         </div>
       </div>
     </div>
