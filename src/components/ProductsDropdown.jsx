@@ -6,27 +6,29 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
-  { key: "Exterior", label: "EXTERIOR" },
-  { key: "StainSealer", label: "STAIN & SEALER" }, // ← new
-  { key: "Industrial", label: "INDUSTRIAL" },
-  { key: "Enamel", label: "ENAMEL" },
+  { key: "StainSealer", label: "STAIN & SEALER" },
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
 
+// Products to hide from Interior dropdown (keep data but hide from frontend)
+const hiddenInteriorProducts = ["Nova", "PureTone", "LustroLite", "SilkTouch"];
+
 const grouped = {
-  Interior: allProducts.filter((p) => p.category?.toLowerCase() === "interior"),
-  Exterior: allProducts.filter((p) => p.category?.toLowerCase() === "exterior"),
+  Interior: allProducts.filter((p) => 
+    p.category?.toLowerCase() === "interior" && 
+    !hiddenInteriorProducts.includes(p.name)
+  ),
   StainSealer: allProducts.filter((p) => {
     const c = p.category?.toLowerCase() || "";
-    return c.includes("stain") || c.includes("sealer"); // matches “stain & sealer”
+    return c.includes("stain") || c.includes("sealer"); // matches "stain & sealer"
   }),
-  Industrial: allProducts.filter((p) =>
-    p.category?.toLowerCase().includes("industrial")
-  ),
-
-  Enamel: allProducts.filter((p) => p.category?.toLowerCase().includes("enamel")),
   All: allProducts,
 };
+
+// Fallback: first interior product (used when visible list is empty but we still need one entry)
+const interiorPrimary = allProducts.find(
+  (p) => p.category?.toLowerCase() === "interior"
+);
 
 export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [selectedMenu, setSelectedMenu] = useState("Interior");
@@ -36,6 +38,12 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (selectedMenu === "Interior") {
+      // Prefer first visible interior; otherwise fall back to any interior product
+      const firstVisible = grouped.Interior?.[0];
+      setHovered(firstVisible || interiorPrimary || null);
+      return;
+    }
     if (selectedMenu && grouped[selectedMenu]?.[0]) {
       setHovered(grouped[selectedMenu][0]);
     } else {
@@ -98,21 +106,43 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                       : "max-h-0 opacity-0"
                   } pl-4`}
                 >
-                  {grouped[item.key]?.map((product) => (
-                    <Link
-                      key={product.name}
-                      to={`/product/${product.name}`}
-                      onClick={() => {
-                        window.scrollTo({ top: 0 });
-                        if (onSelect) onSelect();
-                        setOpen(false);
-                        setSubmenuOpen(null);
-                      }}
-                      className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
-                    >
-                      {product.display_name || product.name}
-                    </Link>
-                  ))}
+                  {item.key === "Interior" ? (
+                    (() => {
+                      const first = grouped.Interior?.[0] || interiorPrimary;
+                      if (!first) return null;
+                      return (
+                        <Link
+                          key={first.name}
+                          to={`/product/${first.name}`}
+                          onClick={() => {
+                            window.scrollTo({ top: 0 });
+                            if (onSelect) onSelect();
+                            setOpen(false);
+                            setSubmenuOpen(null);
+                          }}
+                          className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
+                        >
+                          Calyco Interior Latex Paint
+                        </Link>
+                      );
+                    })()
+                  ) : (
+                    grouped[item.key]?.map((product) => (
+                      <Link
+                        key={product.name}
+                        to={`/product/${product.name}`}
+                        onClick={() => {
+                          window.scrollTo({ top: 0 });
+                          if (onSelect) onSelect();
+                          setOpen(false);
+                          setSubmenuOpen(null);
+                        }}
+                        className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
+                      >
+                        {product.display_name || product.name}
+                      </Link>
+                    ))
+                  )}
                 </div>
               </div>
             ))}
@@ -175,26 +205,53 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         >
           
           <ul className="space-y-2 text-[#493657]">
-            {grouped[selectedMenu].map((product) => (
-              <li
-                key={product.name}
-                className={`font-medium cursor-pointer ${
-                  hovered?.name === product.name ? "font-semibold" : ""
-                }`}
-              >
-                <Link
-                  to={`/product/${product.name}`}
-                  onClick={() => {
-                    window.scrollTo({ top: 0 });
-                    if (onSelect) onSelect();
-                  }}
-                  onMouseEnter={() => handleHover(product)}
-                  className="hover:text-[#F0C85A]"
+            {selectedMenu === "Interior" ? (
+              (() => {
+                const first = grouped.Interior?.[0] || interiorPrimary;
+                if (!first) return null;
+                return (
+                  <li
+                    key={first.name}
+                    className={`font-medium cursor-pointer ${
+                      hovered?.name === first.name ? "font-semibold" : ""
+                    }`}
+                  >
+                    <Link
+                      to={`/product/${first.name}`}
+                      onClick={() => {
+                        window.scrollTo({ top: 0 });
+                        if (onSelect) onSelect();
+                      }}
+                      onMouseEnter={() => handleHover(first)}
+                      className="hover:text-[#F0C85A]"
+                    >
+                      Calyco Interior Latex Paint
+                    </Link>
+                  </li>
+                );
+              })()
+            ) : (
+              grouped[selectedMenu].map((product) => (
+                <li
+                  key={product.name}
+                  className={`font-medium cursor-pointer ${
+                    hovered?.name === product.name ? "font-semibold" : ""
+                  }`}
                 >
-                  {product.display_name || product.name}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    to={`/product/${product.name}`}
+                    onClick={() => {
+                      window.scrollTo({ top: 0 });
+                      if (onSelect) onSelect();
+                    }}
+                    onMouseEnter={() => handleHover(product)}
+                    className="hover:text-[#F0C85A]"
+                  >
+                    {product.display_name || product.name}
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
         </div>
 

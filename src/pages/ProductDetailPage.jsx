@@ -15,6 +15,8 @@ import Reviews from "../components/ProductDetail/Reviews";
 import RelatedProducts from "../components/ProductDetail/RelatedProducts";
 import StickyCTA from "../components/ProductDetail/StickyCTA";
 import SEO from "../components/SEO";
+import CartPopup from "../components/CartPopup";
+import { useCart } from "../context/CartContext";
 
 // Sample product data for demonstration
 const sampleProduct = {
@@ -130,6 +132,8 @@ export default function ProductDetailPage() {
     coats: 2,
     efficiency: 0.9
   });
+  const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
+  const { addToCart } = useCart();
 
   // TODO: Replace with actual product fetching logic
   useEffect(() => {
@@ -139,14 +143,29 @@ export default function ProductDetailPage() {
   }, [slug]);
 
   const handleAddToCart = () => {
-    // TODO: Integrate with cart context
-    console.log("Adding to cart:", {
-      product: product.name,
-      finish: product.finishes[selectedFinish].name,
-      size: product.sizes[selectedSize].size,
-      quantity,
-      price: product.sizes[selectedSize].price * quantity
-    });
+    // Create a product object for the cart
+    const productForCart = {
+      id: product.id || product.slug,
+      name: product.name,
+      display_name: product.name,
+      price: product.sizes[selectedSize].price,
+      image: product.image || "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png"
+    };
+    
+    // Add to actual cart
+    addToCart(productForCart, product.finishes[selectedFinish].name, product.sizes[selectedSize].size, quantity);
+    
+    // Show cart popup (toast notification)
+    setCartPopup({ isVisible: true, item: {
+      name: product.name,
+      hex: "#CCCCCC", // Default color for non-color products
+      price: `₹${product.sizes[selectedSize].price * quantity}`
+    }});
+    
+    // Auto-hide popup after 3 seconds
+    setTimeout(() => {
+      setCartPopup({ isVisible: false, item: null });
+    }, 3000);
   };
 
   const handleSampleOrder = () => {
@@ -180,6 +199,20 @@ export default function ProductDetailPage() {
 
   const handleCoverageCalc = (data) => {
     setCoverageData(data);
+  };
+
+  const closeCartPopup = () => {
+    setCartPopup({ isVisible: false, item: null });
+  };
+
+  const handleContinueShopping = () => {
+    setCartPopup({ isVisible: false, item: null });
+    // Stay on current page
+  };
+
+  const handleCheckout = () => {
+    setCartPopup({ isVisible: false, item: null });
+    navigate('/checkout');
   };
 
   const handleAddRecommended = () => {
@@ -384,6 +417,15 @@ export default function ProductDetailPage() {
               "color": currentFinish.name
             })
           }}
+        />
+        
+        {/* Cart Popup (Toast Notification) */}
+        <CartPopup
+          isVisible={cartPopup.isVisible}
+          onClose={closeCartPopup}
+          item={cartPopup.item}
+          onContinueShopping={handleContinueShopping}
+          onCheckout={handleCheckout}
         />
       </div>
     </>

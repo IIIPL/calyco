@@ -2,12 +2,11 @@ import React from "react";
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
-import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
+import { findColorComprehensive } from "../../utils/colorMapping";
 
-const findColor = (name) =>
-  name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
+const findColor = (name) => findColorComprehensive(name, "kitchen");
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,7 +23,7 @@ export default function KitchenInspiration() {
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/KitchenHero_a8fyfn.jpg"
           alt="Kitchen Inspiration"
-          className="w-full h-64 md:h-[28rem] object-cover"
+          className="w-full h-[500px] object-cover"
         />
       </div>
 
@@ -40,11 +39,13 @@ export default function KitchenInspiration() {
         </p>
       </div>
 
+
       {/* Room Blocks (like Hallway) */}
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((block) => {
             const firstShot = block.shots?.[0];
+            const mappedColors = (firstShot?.colors || []).map(findColor).filter(Boolean);
             return (
               <motion.div
                 key={block.name}
@@ -57,7 +58,7 @@ export default function KitchenInspiration() {
                   title={block.name}
                   description={block.description}
                   imageUrl={firstShot?.image || ""}
-                  colors={(firstShot?.colors || []).map(findColor).filter(Boolean)}
+                  colors={mappedColors}
                   to={`/room/${block.name.toLowerCase().replace(/\s+/g, "-")}`}
                 />
               </motion.div>

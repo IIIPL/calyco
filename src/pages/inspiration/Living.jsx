@@ -2,12 +2,11 @@ import React from "react";
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
-import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
+import { findColorComprehensive } from "../../utils/colorMapping";
 
-const findColor = (name) =>
-  name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
+const findColor = (name) => findColorComprehensive(name, "living");
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,7 +23,7 @@ export default function LivingRoomInspiration() {
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/livingroomHero_vvdi6l.jpg"
           alt="Living Room Inspiration"
-          className="w-full h-64 md:h-[28rem] object-cover"
+          className="w-full h-[500px] object-cover"
         />
       </div>
 
@@ -39,6 +38,7 @@ export default function LivingRoomInspiration() {
           Make your living room the heart of your home with inspiring color ideas. Discover palettes that bring warmth, elegance, and personality to your space.
         </p>
       </div>
+
 
       {/* Room Blocks */}
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">

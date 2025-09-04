@@ -2,7 +2,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/nova",
     "name": "Nova",
-    "image": "/Assets/novaa.png",
+    "image": "/interior_paint.jpeg",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
     "details": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",
@@ -92,11 +92,8 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
-    "display_name": "Nova",
-    "images": ["/Assets/Nova/NoBg.png",
-      "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142454/NoBg_ojfrtz.png",
-      "/Assets/novaa.png",
-    ]
+    "display_name": "Calyco Interior Latex Paint",
+    "images": ["/interior_paint.jpeg"]
   },
   {
     "url": "https://calycopaints.com/product/puretone",
@@ -956,8 +953,8 @@ export const products = [
   },
   {
     "url": "https://calycopaints.com/product/defense",
-    "name": "Defense",
-    "image": "/Assets/defense.png",
+    "name": "Stain & Sealer",
+    "image": "/calyco-stain&sealer.jpeg",
     "description": "Ultimate multi-surface coating for all environments.",
     "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
     "details": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
@@ -1040,8 +1037,8 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
-    "display_name": "Defense",
-    "images": ["/Assets/Defense/NoBg.png"]
+    "display_name": "Stain & Sealer",
+    "images": ["/calyco-stain&sealer.jpeg"]
   },
   
   {

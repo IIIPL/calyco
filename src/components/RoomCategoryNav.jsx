@@ -5,20 +5,18 @@ const RoomCategoryNav = ({ currentRoom }) => {
   const navigate = useNavigate();
   
   const roomCategories = [
-    { title: "Kitchen", route: "kitchen", icon: "🍳" },
-    { title: "Bedroom", route: "bedroom", icon: "🛏️" },
-    { title: "Living Room", route: "living", icon: "🛋️" },
-    { title: "Bathroom", route: "bathroom", icon: "🚿" },
-    { title: "Dining Room", route: "dining", icon: "🍽️" },
-    { title: "Hallway", route: "hallway", icon: "🚪" },
-    { title: "Office", route: "office", icon: "💼" },
-    { title: "Exterior", route: "exterior", icon: "🏠" }
+    { title: "Kitchen", route: "kitchen" },
+    { title: "Bedroom", route: "bedroom" },
+    { title: "Living Room", route: "living" },
+    { title: "Bathroom", route: "bathroom" },
+    { title: "Dining Room", route: "dining" },
+    { title: "Hallway", route: "hallway" }
   ];
 
   return (
     <div className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
-        <div className="flex items-center justify-start gap-3 md:gap-4 lg:gap-6 py-4 overflow-x-auto hide-scrollbar">
+        <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-6 py-4 overflow-x-auto hide-scrollbar">
           {roomCategories.map((room) => (
             <button
               key={room.route}
@@ -27,7 +25,6 @@ const RoomCategoryNav = ({ currentRoom }) => {
                 room.route === currentRoom ? 'text-[#493657]' : 'text-gray-700 hover:text-[#493657]'
               }`}
             >
-              <span className="text-base md:text-lg flex-shrink-0">{room.icon}</span>
               <span className="font-medium text-xs md:text-sm lg:text-base">{room.title}</span>
               {/* Underline for active state */}
               {room.route === currentRoom && (

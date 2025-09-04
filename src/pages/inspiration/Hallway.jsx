@@ -2,17 +2,12 @@ import React from "react";
 import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
-import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
 import { useNavigate } from "react-router-dom";
+import { findColorComprehensive } from "../../utils/colorMapping";
 
-const findColor = (name) => {
-  if (!name) return null;
-  return flatColors.find(
-    (c) => c.name && c.name.toLowerCase() === name.toLowerCase()
-  ) || null;
-};
+const findColor = (name) => findColorComprehensive(name, "hallway");
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -29,7 +24,7 @@ export default function HallwayInspiration() {
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/hallwayhero_m6w6b5.png"
           alt="Hallway Inspiration"
-          className="w-full h-64 md:h-[28rem] object-cover"
+          className="w-full h-[500px] object-cover"
         />
       </div>
 
@@ -43,6 +38,7 @@ export default function HallwayInspiration() {
           Make a great first impression with hallway color inspiration. Browse our gallery for ideas to brighten and personalize your home's entryways and corridors.
         </p>
       </div>
+
       <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         {filteredRooms.length > 0 ? (
           filteredRooms.map((block, i) => {

@@ -2,17 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ROOMS = [
-  { title: "Exterior", category: "Exterior", designs: 88, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0045.jpg" },
-  { title: "Living", category: "Interior", designs: 118, thumbnail: "/Assets/Inspiration/living.jpg" },
-  { title: "Bedroom", category: "Interior", designs: 111, thumbnail: "/Assets/Inspiration/bedroom.jpg" },
-  { title: "Dining", category: "Dining", designs: 40, thumbnail: "/Assets/Inspiration/dining.jpg" },
   { title: "Kitchen", category: "Kitchen", designs: 22, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.jpg" },
-  { title: "Office", category: "Interior", designs: 48, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0044.jpg" },
-  { title: "Hallway", category: "Interior", designs: 28, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0042.jpg" },
+  { title: "Bedroom", category: "Bedroom", designs: 111, thumbnail: "/Assets/Inspiration/bedroom.jpg" },
+  { title: "Living Room", category: "Living Room", designs: 118, thumbnail: "/Assets/Inspiration/living.jpg" },
   { title: "Bathroom", category: "Bathroom", designs: 1, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0041.jpg" },
+  { title: "Dining Room", category: "Dining Room", designs: 40, thumbnail: "/Assets/Inspiration/dining.jpg" },
+  { title: "Hallway", category: "Hallway", designs: 28, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0042.jpg" },
 ];
 
-const SECTION_ORDER = ["Interior", "Kitchen", "Dining", "Bathroom", "Exterior"];
+const SECTION_ORDER = ["Kitchen", "Bedroom", "Living Room", "Bathroom", "Dining Room", "Hallway"];
 
 export default function InspirationPage() {
   const navigate = useNavigate();
@@ -58,11 +56,12 @@ export default function InspirationPage() {
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{section}</h2>
                   <p className="text-gray-600 text-lg">
-                    {section === "Interior" && "Transform your living spaces with stunning interior design"}
                     {section === "Kitchen" && "Create a kitchen that inspires cooking and gathering"}
-                    {section === "Dining" && "Set the perfect mood for memorable meals"}
+                    {section === "Bedroom" && "Design a peaceful sanctuary for rest and relaxation"}
+                    {section === "Living Room" && "Transform your main living space with stunning design"}
                     {section === "Bathroom" && "Refresh your bathroom with spa-like tranquility"}
-                    {section === "Exterior" && "Make a lasting first impression with stunning exteriors"}
+                    {section === "Dining Room" && "Set the perfect mood for memorable meals"}
+                    {section === "Hallway" && "Make a lasting first impression with elegant corridors"}
                   </p>
                 </div>
                 <button 
@@ -90,7 +89,7 @@ export default function InspirationPage() {
                         <img
                           src={room.thumbnail}
                           alt={room.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                           draggable="false"
                         />
                         {/* Overlay */}
