@@ -9,7 +9,7 @@ const expressPayments = [
 ];
 
 const Checkout = () => {
-  const { items, getCartTotal } = useCart();
+  const { items, getCartTotal, removeFromCart, clearCart } = useCart();
   const [user, setUser] = useState({ email: "", subscribe: true });
   const [address, setAddress] = useState({
     country: "India",
@@ -123,54 +123,125 @@ const Checkout = () => {
         </div>
         {/* RIGHT: Cart Summary */}
         <div className="bg-gray-50 p-8 flex flex-col gap-6 min-h-full">
+          {/* Cart Header with Clear All Button */}
+          <div className="flex items-center justify-between border-b pb-4">
+            <h3 className="text-lg font-semibold text-[#493657]">Order Summary</h3>
+            {items.length > 0 && (
+              <button
+                onClick={() => {
+                  if (window.confirm('Are you sure you want to clear all items from your cart?')) {
+                    clearCart();
+                  }
+                }}
+                className="text-sm text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded transition-colors"
+              >
+                Clear All
+              </button>
+            )}
+          </div>
+          
           <div className="flex flex-col gap-4">
-            {items.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4 border-b pb-4 last:border-b-0">
-                <img src={item.image} alt={item.name} className="w-14 h-14 object-contain rounded border" />
-                <div className="flex-1">
-                  <div className="font-semibold text-[#493657]">{item.name}</div>
-                  <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
+            {items.length > 0 ? (
+              items.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-4 border-b pb-4 last:border-b-0 relative">
+                  {/* Product Image - Generate SVG for colors or use existing image */}
+                  <div className="w-14 h-14 rounded border overflow-hidden flex-shrink-0">
+                    {item.selectedColor?.hex ? (
+                      // Generate SVG for color swatches (same as product page)
+                      <img 
+                        src={`data:image/svg+xml;base64,${btoa(`
+                          <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="56" height="56" fill="${item.selectedColor.hex}"/>
+                          </svg>
+                        `)}`}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      // Use existing image for non-color products
+                      <img 
+                        src={item.image} 
+                        alt={item.name} 
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Product Details */}
+                  <div className="flex-1">
+                    <div className="font-semibold text-[#493657]">{item.name}</div>
+                    <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
+                    {item.selectedColor?.name && (
+                      <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
+                    )}
+                  </div>
+                  
+                  {/* Price */}
+                  <div className="font-bold text-[#493657]">₹{item.price}</div>
+                  
+                  {/* Delete Button */}
+                  <button
+                    onClick={() => removeFromCart(item)}
+                    className="ml-2 p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+                    title="Remove item"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
                 </div>
-                <div className="font-bold text-[#493657]">₹{item.price}</div>
+              ))
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <p className="text-lg font-medium mb-2">Your cart is empty</p>
+                <p className="text-sm">Add some products to get started</p>
               </div>
-            ))}
+            )}
           </div>
-          {/* Discount code */}
-          <div className="flex gap-2 mt-2">
-            <input
-              type="text"
-              placeholder="Discount code or gift card"
-              value={discount}
-              onChange={e => setDiscount(e.target.value)}
-              className="flex-1 border p-2 rounded"
-            />
-            <button className="px-4 py-2 bg-gray-200 rounded font-semibold">Apply</button>
-          </div>
-          {/* Subtotal, shipping, total */}
-          <div className="mt-4 space-y-2">
-            <div className="flex justify-between text-gray-700">
-              <span>Subtotal</span>
-              <span>₹{subtotal}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>Shipping</span>
-              <span className="text-sm">Enter shipping address</span>
-            </div>
-            <div className="flex justify-between font-bold text-lg mt-2">
-              <span>Total</span>
-              <span>₹{total}</span>
-            </div>
-            <div className="text-xs text-gray-500">Including ₹{tax} in taxes</div>
-          </div>
-          {/* Payment Button */}
-          <form onSubmit={handlePayment} className="mt-4">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 transition"
-            >
-              Pay Now
-            </button>
-          </form>
+          {/* Only show checkout elements when cart has items */}
+          {items.length > 0 && (
+            <>
+              {/* Discount code */}
+              <div className="flex gap-2 mt-2">
+                <input
+                  type="text"
+                  placeholder="Discount code or gift card"
+                  value={discount}
+                  onChange={e => setDiscount(e.target.value)}
+                  className="flex-1 border p-2 rounded"
+                />
+                <button className="px-4 py-2 bg-gray-200 rounded font-semibold">Apply</button>
+              </div>
+              {/* Subtotal, shipping, total */}
+              <div className="mt-4 space-y-2">
+                <div className="flex justify-between text-gray-700">
+                  <span>Subtotal</span>
+                  <span>₹{subtotal}</span>
+                </div>
+                <div className="flex justify-between text-gray-700">
+                  <span>Shipping</span>
+                  <span className="text-sm">Enter shipping address</span>
+                </div>
+                <div className="flex justify-between font-bold text-lg mt-2">
+                  <span>Total</span>
+                  <span>₹{total}</span>
+                </div>
+                <div className="text-xs text-gray-500">Including ₹{tax} in taxes</div>
+              </div>
+              {/* Payment Button */}
+              <form onSubmit={handlePayment} className="mt-4">
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 transition"
+                >
+                  Pay Now
+                </button>
+              </form>
+            </>
+          )}
           {paymentError && (
             <div className="text-red-600 font-semibold mt-2">{paymentError}</div>
           )}

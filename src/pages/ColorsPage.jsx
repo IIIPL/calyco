@@ -21,10 +21,10 @@ import { flatColors } from '../data/flatColors';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
 
-// Color Families for filtering
+// Color Families for filtering - based on actual data
 const COLOR_FAMILIES = [
-  'Neutrals', 'Greys', 'Pastels', 'Bold', 'Earthy', 
-  'Blues', 'Greens', 'Reds & Oranges', 'Browns'
+  'WHITES & OFF WHITES', 'GREYS', 'BROWNS', 'GREENS', 
+  'PURPLES & PINKS', 'REDS & ORANGES', 'BLUES', 'YELLOWS & GREENS'
 ];
 
 // Compatible Products
@@ -76,9 +76,16 @@ const ColorsPage = () => {
       filtered = filtered.filter(color => color.tonality === selectedTonality);
     }
 
-    // Suitability filter
+    // Suitability filter (Interior/Exterior)
     if (selectedSuitability) {
-      filtered = filtered.filter(color => color.recommended_use?.includes(selectedSuitability));
+      if (selectedSuitability === "Interior/C Exterior") {
+        filtered = filtered.filter(color => 
+          color.interior_or_exterior === "Interior/C Exterior" || 
+          color.interior_or_exterior === "Interior"
+        );
+      } else {
+        filtered = filtered.filter(color => color.interior_or_exterior === selectedSuitability);
+      }
     }
 
     // Sort within each family
@@ -163,7 +170,7 @@ const ColorsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-6xl font-bold text-white mb-6"
             >
-              Discover the Calyco Sacred Palette
+              Discover the Calyco Color Palette
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -217,6 +224,7 @@ const ColorsPage = () => {
                 <option value="">All Temperatures</option>
                 <option value="Cool">Cool</option>
                 <option value="Warm">Warm</option>
+                <option value="Neutral">Neutral</option>
               </select>
 
               {/* Tonality Filter */}
@@ -240,6 +248,7 @@ const ColorsPage = () => {
                 <option value="">All Uses</option>
                 <option value="Interior">Interior</option>
                 <option value="Exterior">Exterior</option>
+                <option value="Interior/C Exterior">Both Interior & Exterior</option>
               </select>
 
               {/* Sort */}
@@ -249,26 +258,10 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="name">A-Z</option>
-                <option value="popular">Popular</option>
                 <option value="light-dark">Light → Dark</option>
                 <option value="dark-light">Dark → Light</option>
               </select>
               
-              {/* View Mode Toggle */}
-              <div className="flex border border-gray-300 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`px-3 py-2 text-sm ${viewMode === 'grid' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
-                >
-                  <Squares2X2Icon className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('lifestyle')}
-                  className={`px-3 py-2 text-sm ${viewMode === 'lifestyle' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
-                >
-                  <PhotoIcon className="w-4 h-4" />
-                </button>
-              </div>
 
               {/* Clear Filters */}
               {(searchTerm || selectedFamily || selectedTemperature || selectedTonality || selectedSuitability) && (
@@ -362,176 +355,6 @@ const ColorsPage = () => {
         )}
       </section>
 
-      
-
-                        {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-800 via-amber-900 to-amber-700 relative overflow-hidden">
-        {/* Floating decorations */}
-        <div className="absolute w-20 h-20 bg-white/10 rounded-full top-10 right-15 animate-bounce"></div>
-        <div className="absolute w-16 h-16 bg-white/10 rounded-full bottom-20 left-10 animate-bounce" style={{animationDelay: '-4s'}}></div>
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          {/* Hero Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h1 className="text-5xl md:text-6xl font-light text-white mb-6 leading-tight tracking-tight">
-              Bring out the best<br />in your spaces
-            </h1>
-            <p className="text-xl md:text-2xl text-white/85 mb-10 font-light tracking-wide">
-              Premium, eco-friendly paints that elevate<br />every room, every wall.
-            </p>
-
-          </motion.div>
-
-          {/* Family Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden mb-10 bg-gradient-to-br from-amber-700 to-amber-600 shadow-2xl"
-          >
-            <div className="w-full h-full flex items-center justify-center relative">
-              <img 
-                src="/Assets/ChatGPT Image Aug 22, 2025, 01_32_07 PM.png" 
-                alt="Professional family and contractors trust Calyco" 
-                className="w-full h-full object-cover rounded-3xl"
-              />
-            </div>
-          </motion.div>
-
-          {/* Features Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-          >
-            {/* Paint Quality Card */}
-            <motion.div
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/95 p-10 rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20"
-            >
-              <h3 className="text-3xl font-normal text-[#2a2a2a] mb-4 leading-tight tracking-tight">
-                Paint that lasts<br />longer
-              </h3>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
-                Advanced one-coat formulas for beauty and durability.
-              </p>
-              <div className="h-48 rounded-2xl mb-6 overflow-hidden">
-                <img 
-                  src="/Assets/allguard.png" 
-                  alt="AllGuard premium paint showing quality and durability" 
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
-            </motion.div>
-
-            {/* Professional Testimonial Card */}
-            <motion.div
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white/95 p-10 rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20"
-            >
-              <h3 className="text-3xl font-normal text-[#2a2a2a] mb-4 leading-tight tracking-tight">
-                What<br />professionals say
-              </h3>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6 font-normal">
-                Calyco paints helped us finish faster, with fewer coats, and the quality is unmatched.
-              </p>
-              <div className="h-48 rounded-2xl mb-6 overflow-hidden">
-                <img 
-                  src="/Assets/trust-image.png" 
-                  alt="Professional contractors and builders trust Calyco" 
-                  className="w-full h-full object-cover object-bottom rounded-2xl"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-900 w-full">
-        <div className="w-full max-w-none mx-auto px-6">
-          <div className="w-full space-y-0">
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">What is Calyco Paints?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">How is Calyco different from other paint brands?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">Are Calyco paints safe for children and pets?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">What does low-VOC mean?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">What surfaces can Calyco paints be used on?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="border-b border-gray-200 last:border-b-0">
-              <button className="w-full py-8 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200">
-                <span className="text-xl font-bold text-white">Are your paints waterproof and weather-resistant?</span>
-                <span className="text-white text-2xl font-bold transform transition-transform duration-300">+</span>
-              </button>
-            </div>
-            <div className="text-center mt-12">
-              <button className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1A1C24] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg">
-                See All FAQs
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 9l6 6 6-6"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-                    </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-white border-t border-[#E5E5E5]">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 md:mb-12">
-            Ready to paint a better future?
-          </h2>
-          <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center">
-            <button 
-              onClick={() => navigate('/products')}
-              className="w-full md:w-auto px-6 py-3 bg-black text-white rounded-full font-medium text-base hover:bg-gray-800 transition-colors duration-300"
-            >
-              Explore Products
-            </button>
-            <button 
-              onClick={() => navigate('/contact')}
-              className="w-full md:w-auto px-6 py-3 border-2 border-black text-black rounded-full font-medium text-base hover:bg-black hover:text-white transition-all duration-300"
-            >
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* Color Detail Modal */}
       {selectedColor && (

@@ -9,8 +9,6 @@ const inspirationMenu = [
   { key: "bathroom", label: "BATHROOM" },
   { key: "dining", label: "DINING ROOM" },
   { key: "hallway", label: "HALLWAY" },
-  { key: "office", label: "OFFICE" },
-  { key: "exterior", label: "HOUSE EXTERIOR" },
 ];
 
 const roomThumbnails = {
@@ -20,8 +18,6 @@ const roomThumbnails = {
   bathroom: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
   dining: "/Assets/Inspiration/dining.jpg",
   hallway: "/Assets/Inspiration/IMG-20250718-WA0042.jpg",
-  office: "/Assets/Inspiration/IMG-20250718-WA0044.jpg",
-  exterior: "/Assets/Inspiration/IMG-20250718-WA0045.jpg",
 };
 
 const InspirationsDropdown = ({ onSelect, isMobile = false }) => {

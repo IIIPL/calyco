@@ -99,11 +99,22 @@ export const Products = () => {
     return out;
   }, [checked]);
 
+  // Allowed catalog: only Interior paints and Stain & Sealer
+  const allowedProducts = useMemo(() => {
+    return allProducts.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+  }, [allProducts]);
+
+  const getDisplayLabel = (product) => {
+    if (product.name === 'Nova') return 'Calyco Interior Latex Paint';
+    if (product.name === 'Stain & Sealer') return 'Calyco Defence';
+    return product.display_name || product.name;
+  };
+
   // Apply *non-search* filters (category/substrate/app-area/price) + sort
   const baseFiltered = useMemo(() => {
     const q = (search || '').trim().toLowerCase();
 
-      let list = allProducts
+      let list = allowedProducts
     .map(product => {
       const name = String(product.display_name || product.name || '').toLowerCase();
       const category = String(product.category || '').toLowerCase();
@@ -145,7 +156,7 @@ export const Products = () => {
     else if (sortOrder === 'desc') list = list.slice().sort((a, b) => (b.price || 0) - (a.price || 0));
 
     return list;
-  }, [allProducts, selected, sortOrder, price, search]);
+  }, [allowedProducts, selected, sortOrder, price, search]);
 
 
   // Bucket by search: name first (no heading), else category, else substrate
@@ -343,7 +354,7 @@ export const Products = () => {
 
           {/* Grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-items-center">
               {/* Nothing found */}
               {nothingFound && (
                 <div className="col-span-full text-center text-[#493657] text-lg">No products found.</div>
@@ -355,7 +366,7 @@ export const Products = () => {
                 <ProductCard
                   key={product.name + idx}
                   id={product.name}
-                  name={product.display_name || product.name}
+                  name={getDisplayLabel(product)}
                   image={product.images[0]}
                   price={product.price}
                   finishTypeSheen={product.finish_type_sheen}
@@ -379,7 +390,7 @@ export const Products = () => {
                     <ProductCard
                       key={product.name + idx}
                       id={product.name}
-                      name={product.display_name || product.name}
+                      name={getDisplayLabel(product)}
                       image={product.images[0]}
                       price={product.price}
                       finishTypeSheen={product.finish_type_sheen}
@@ -405,7 +416,7 @@ export const Products = () => {
                     <ProductCard
                       key={product.name + idx}
                       id={product.name}
-                      name={product.display_name || product.name}
+                      name={getDisplayLabel(product)}
                       image={product.images[0]}
                       price={product.price}
                       finishTypeSheen={product.finish_type_sheen}
@@ -421,7 +432,7 @@ export const Products = () => {
                 <ProductCard
                   key={product.name + idx}
                   id={product.name}
-                  name={product.display_name || product.name}
+                  name={getDisplayLabel(product)}
                   image={product.images[0]}
                   price={product.price}
                   finishTypeSheen={product.finish_type_sheen}

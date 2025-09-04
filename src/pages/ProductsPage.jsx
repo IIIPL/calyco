@@ -7,11 +7,19 @@ const ProductsPage = () => {
   const [cat, setCat] = useState('');
   const [finish, setFinish] = useState('');
   const list = useMemo(() => {
-    return products.filter(p => (!cat || p.category === cat) && (!finish || (p.finish_type_sheen || []).includes(finish)));
+    // Only show Nova and Stain & Sealer
+    const filteredProducts = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+    return filteredProducts.filter(p => 
+      (!cat || p.category === cat) && 
+      (!finish || (p.finish_type_sheen || []).includes(finish))
+    );
   }, [cat, finish]);
 
-  const categories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
-  const finishes = Array.from(new Set(products.flatMap(p => p.finish_type_sheen || [])));
+  // Only show categories for Nova and Stain & Sealer
+  const filteredProducts = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+  
+  const categories = Array.from(new Set(filteredProducts.map(p => p.category).filter(Boolean)));
+  const finishes = Array.from(new Set(filteredProducts.flatMap(p => p.finish_type_sheen || [])));
 
   return (
     <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
@@ -33,8 +41,10 @@ const ProductsPage = () => {
         </select>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {list.map(p => <BucketCard key={p.name} product={p} />)}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
+        {list.map(p => (
+          <BucketCard key={p.name} product={{...p, display_name: p.name === 'Nova' ? 'Calyco Interior Latex Paint' : (p.name === 'Stain & Sealer' ? 'Calyco Defence' : (p.display_name || p.name))}} />
+        ))}
       </div>
     </div>
   );

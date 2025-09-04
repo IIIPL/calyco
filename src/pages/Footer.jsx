@@ -91,8 +91,8 @@ export const Footer = () => (
         <Col title="Calyco">
           <Item to="/about">About Us</Item>
           <Item to="/contact">Contact Us</Item>
-          <Item to="/colors">Sacred Palette</Item>
-          <Item to="/product">Shop Paints</Item>
+          <Item to="/colors">Calyco Palette</Item>
+          <Item to="/products">Shop Paints</Item>
           <Item to="/room-visualization">Room Visualizer</Item>
         </Col>
 
@@ -107,7 +107,7 @@ export const Footer = () => (
 
         {/* Policies */}
         <Col title="Policies">
-          <Item to="/policies/privacy">Privacy Policy (DPDP)</Item>
+          <Item to="/policies/privacy">Privacy Policy</Item>
           <Item to="/policies/terms">Terms &amp; Conditions</Item>
           <Item to="/policies/payments-gst">Payment, Pricing &amp; GST/Invoices</Item>
           <Item to="/policies/quality">Quality Policy</Item>

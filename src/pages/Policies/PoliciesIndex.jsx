@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PolicyLayout from "./PolicyLayout";
 
 const links = [
-  { to: "/policies/privacy", label: "Privacy Policy (DPDP)" },
+  { to: "/policies/privacy", label: "Privacy Policy" },
   { to: "/policies/terms", label: "Terms & Conditions" },
   { to: "/policies/payments-gst", label: "Payment, Pricing & GST/Invoices" },
   { to: "/policies/quality", label: "Quality Policy" },

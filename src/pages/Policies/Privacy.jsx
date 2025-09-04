@@ -3,7 +3,7 @@ import PolicyLayout from "./PolicyLayout";
 
 export default function Privacy() {
   return (
-    <PolicyLayout title="Privacy Policy (DPDP)" lastUpdated="—">
+    <PolicyLayout title="Privacy Policy" lastUpdated="—">
       <h2>Scope</h2>
       <p>How Calyco collects, uses, stores and protects personal data under India's DPDP Act.</p>
       <h2>What We Collect</h2>

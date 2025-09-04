@@ -60,13 +60,16 @@ const HoverTip = ({ text, children, openDelay = 250, closeDelay = 120 }) => {
   );
 };
 
+// Restrict filters to Interior and Stain & Sealer only
+const allowed = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+
 // Build Filter Options
-const rawCategories = products.map(p => p.category).filter(Boolean);
+const rawCategories = allowed.map(p => p.category).filter(Boolean);
 const uniqueCategories = sortCategoriesWithOrder(
   mapToStandardCategories(rawCategories)
 );
 
-const allRawApplications = products
+const allRawApplications = allowed
   .flatMap(p => Array.isArray(p.application) ? p.application : (p.application ? [p.application] : []));
 let uniqueGroupedApplicationAreas = Array.from(new Set(
   mapToStandardApplicationAreas(allRawApplications)
@@ -75,8 +78,6 @@ uniqueGroupedApplicationAreas = APPLICATION_GROUPS_ORDER.filter(g => uniqueGroup
 
 const FILTERS = [
   { label: 'Category', field: 'category', options: uniqueCategories },
-  { label: 'Substrate', field: 'substrate', options: orderedSubstrateGroups },
-  { label: 'Application Area', field: 'application', options: uniqueGroupedApplicationAreas },
 ];
 
 const DEFAULT_VISIBLE = 4;

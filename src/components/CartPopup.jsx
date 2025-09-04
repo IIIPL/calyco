@@ -7,6 +7,8 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
   const { getCartItemCount } = useCart();
   const cartItemCount = getCartItemCount();
   
+  console.log('CartPopup props:', { isVisible, item, cartItemCount });
+  
   if (!isVisible || !item) return null;
 
   return (
@@ -17,7 +19,7 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 300 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-24 right-4 z-50 w-96 bg-white rounded-lg shadow-lg border border-gray-100"
+          className="fixed top-24 right-4 z-[60] w-96 bg-white rounded-lg shadow-lg border border-gray-100"
         >
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-gray-50">
