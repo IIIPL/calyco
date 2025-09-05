@@ -320,7 +320,11 @@ export const DynamicProductPage = () => {
                                     selectedSheen,
                                     selectedSize,
                                     quantity,
-                                    getSizePrice(product.price, selectedSize)
+                                    getSizePrice(product.price, selectedSize),
+                                    {
+                                      name: "Default",
+                                      hex: "#CCCCCC"
+                                    }
                                   );
                                   
                                   // Show cart popup (toast notification)

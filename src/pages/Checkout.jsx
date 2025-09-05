@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { InvoiceGenerator } from "../components/InvoiceGenerator";
+import RazorpayPayment from "../components/RazorpayPayment";
+import { paymentService } from "../services/paymentService";
 
 const expressPayments = [
   { name: "Shop Pay", color: "bg-[#5a31f4]", text: "text-white" },
@@ -27,11 +29,21 @@ const Checkout = () => {
   const [showInvoice, setShowInvoice] = useState(false);
   const [showDummyModal, setShowDummyModal] = useState(false);
   const [paymentError, setPaymentError] = useState("");
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [showRazorpayPayment, setShowRazorpayPayment] = useState(false);
+  const [orderId, setOrderId] = useState(null);
 
-  const subtotal = getCartTotal();
+  const rawSubtotal = getCartTotal();
+  const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
   const shipping = 0; // Placeholder
   const tax = Math.round(subtotal * 0.18);
-  const total = subtotal + shipping;
+  const total = subtotal + shipping + tax;
+
+  // Debug logging
+  console.log('Cart items:', items);
+  console.log('Subtotal calculation:', subtotal);
+  console.log('Tax calculation:', tax);
+  console.log('Total calculation:', total);
 
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
@@ -39,10 +51,39 @@ const Checkout = () => {
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
   };
-  const handlePayment = (e) => {
+  const handlePayment = async (e) => {
     e.preventDefault();
     setPaymentError("");
-    setShowDummyModal(true);
+    setIsProcessingPayment(true);
+
+    try {
+      // Validate required fields
+      if (!user.email || !address.firstName || !address.lastName || !address.address || !address.city || !address.postcode || !address.phone) {
+        setPaymentError("Please fill in all required fields");
+        setIsProcessingPayment(false);
+        return;
+      }
+
+      // Check if Razorpay is configured
+      const razorpayKey = import.meta.env.VITE_RAZORPAY_ID;
+      console.log('Environment check - Razorpay Key:', razorpayKey);
+      
+      if (!razorpayKey || razorpayKey === 'your_razorpay_key_id_here') {
+        // Fallback to dummy payment for testing
+        setPaymentError("Razorpay not configured. Using test payment mode.");
+        setShowDummyModal(true);
+        setIsProcessingPayment(false);
+        return;
+      }
+
+      // Direct Razorpay payment without order creation
+      console.log('Checkout total amount:', total);
+      console.log('Subtotal:', subtotal, 'Tax:', tax, 'Shipping:', shipping);
+      setShowRazorpayPayment(true);
+    } catch (error) {
+      setPaymentError("Failed to initialize payment. Please try again.");
+      setIsProcessingPayment(false);
+    }
   };
   const handleDummyPayment = (success) => {
     setShowDummyModal(false);
@@ -51,6 +92,36 @@ const Checkout = () => {
     } else {
       setPaymentError("Payment failed. Please try again.");
     }
+  };
+
+  const handleRazorpaySuccess = async (response) => {
+    try {
+      // Verify payment
+      const verification = await paymentService.verifyPayment(response);
+      if (verification.success) {
+        setShowRazorpayPayment(false);
+        setIsProcessingPayment(false);
+        setShowInvoice(true);
+        clearCart(); // Clear cart after successful payment
+      } else {
+        setPaymentError("Payment verification failed. Please contact support.");
+        setIsProcessingPayment(false);
+      }
+    } catch (error) {
+      setPaymentError("Payment verification failed. Please contact support.");
+      setIsProcessingPayment(false);
+    }
+  };
+
+  const handleRazorpayError = (error) => {
+    setPaymentError("Payment failed. Please try again.");
+    setShowRazorpayPayment(false);
+    setIsProcessingPayment(false);
+  };
+
+  const handleRazorpayClose = () => {
+    setShowRazorpayPayment(false);
+    setIsProcessingPayment(false);
   };
 
   return (
@@ -235,9 +306,10 @@ const Checkout = () => {
               <form onSubmit={handlePayment} className="mt-4">
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 transition"
+                  disabled={isProcessingPayment}
+                  className="w-full bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  Pay Now
+                  {isProcessingPayment ? "Processing..." : "Pay Now"}
                 </button>
               </form>
             </>
@@ -274,6 +346,26 @@ const Checkout = () => {
           )}
         </div>
       </div>
+
+      {/* Razorpay Payment Component */}
+      {showRazorpayPayment && (
+        <RazorpayPayment
+          amount={total}
+          currency="INR"
+          customerDetails={{
+            firstName: address.firstName,
+            lastName: address.lastName,
+            email: user.email,
+            phone: address.phone,
+            address: address.address,
+            city: address.city,
+            postcode: address.postcode,
+          }}
+          onSuccess={handleRazorpaySuccess}
+          onError={handleRazorpayError}
+          onClose={handleRazorpayClose}
+        />
+      )}
     </div>
   );
 };

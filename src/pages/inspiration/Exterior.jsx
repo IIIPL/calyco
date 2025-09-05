@@ -5,6 +5,7 @@ import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { flatColors } from "../../data/flatColors";
 import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
+import PopularColorsGrid from "../../components/PopularColorsGrid";
 
 const findColor = (name) =>
   name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
@@ -71,6 +72,9 @@ export default function ExteriorInspiration() {
           </div>
         )}
       </div>
+
+      {/* Popular Colors Section */}
+      <PopularColorsGrid />
     </div>
   );
 }

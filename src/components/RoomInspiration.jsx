@@ -31,6 +31,10 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
     setSelectedColor(null);
   };
 
+  const handleColorChange = (newColor) => {
+    setSelectedColor(newColor);
+  };
+
   return (
     <div className="relative w-full max-w-5xl mx-auto mb-20">
       <h2 className="text-2xl md:text-3xl font-bold text-[#393939] mb-2 tracking-tight uppercase">
@@ -110,6 +114,7 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
         onClose={closeSidebar}
         selectedColor={selectedColor}
         similarColors={colors.filter(color => color.name !== selectedColor?.name).slice(0, 3)}
+        onColorChange={handleColorChange}
       />
     </div>
   );

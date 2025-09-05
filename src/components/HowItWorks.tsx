@@ -87,8 +87,39 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Hero background image of man */}
-                <div className="relative mx-auto mt-8 h-[420px] w-full max-w-[980px]">
-                    <div className="absolute inset-0 bg-[url('/Assets/painter-how-it-works.webp')] bg-contain bg-bottom bg-no-repeat" />
+                <div className="relative mx-auto mt-8 flex justify-center">
+                    <div
+                        className="relative"
+                        style={{
+                            borderRadius: '16px',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                            maxWidth: '980px',
+                            maxHeight: '420px'
+                        }}
+                    >
+                        {/* Blurred background layer */}
+                        <img
+                            src="/Assets/painter-how-it-works.webp"
+                            alt="Painter working"
+                            className="absolute inset-0 w-full h-full object-contain"
+                            style={{
+                                borderRadius: '16px',
+                                filter: 'blur(12px)',
+                                transform: 'scale(1.1)',
+                                opacity: 0.4
+                            }}
+                        />
+                        {/* Sharp foreground layer */}
+                        <img
+                            src="/Assets/painter-how-it-works.webp"
+                            alt="Painter working"
+                            className="relative z-10 w-full h-full object-contain"
+                            style={{
+                                borderRadius: '16px',
+                                maxHeight: '420px'
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
 

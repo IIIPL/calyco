@@ -142,20 +142,26 @@ const PopularColorsSlider = () => {
         </svg>
       `)}`
     };
-    
-    // Add to actual cart
+
+    // Add to cart with proper parameters
     addToCart(productForCart, 'Sample', 'Sample', 1, parseInt(color.price.replace('₹', '')), {
       name: color.name,
       hex: color.hex
     });
     
     // Show cart popup
-    setCartPopup({ isVisible: true, item: color });
-    
-    // Auto-hide popup after 3 seconds
-    setTimeout(() => {
-      setCartPopup({ isVisible: false, item: null });
-    }, 3000);
+    setCartPopup({
+      isVisible: true,
+      item: {
+        name: color.name,
+        price: color.price,
+        image: `data:image/svg+xml;base64,${btoa(`
+          <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="${color.hex}"/>
+          </svg>
+        `)}`
+      }
+    });
   };
 
   const closeCartPopup = () => {

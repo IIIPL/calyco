@@ -9,7 +9,8 @@ const ColorDetailSidebar = ({
   isOpen, 
   onClose, 
   selectedColor, 
-  similarColors = [] 
+  similarColors = [],
+  onColorChange
 }) => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
@@ -56,10 +57,12 @@ const ColorDetailSidebar = ({
   };
 
   const handleSimilarColorClick = (color) => {
-    // Navigate to the color's product page
-    const colorSlug = color.name.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/colors/family/bedroom/${colorSlug}`);
-    onClose(); // Close the sidebar
+    // Update the selected color to show the similar color details
+    // The parent component will handle updating the selectedColor state
+    // We need to pass this color back to the parent
+    if (onColorChange) {
+      onColorChange(color);
+    }
   };
 
   const closeCartPopup = () => {

@@ -5,6 +5,7 @@ import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
 import { findColorComprehensive } from "../../utils/colorMapping";
+import PopularColorsGrid from "../../components/PopularColorsGrid";
 
 const findColor = (name) => findColorComprehensive(name, "bathroom");
 
@@ -71,6 +72,9 @@ export default function BathroomInspiration() {
           </div>
         )}
       </div>
+
+      {/* Popular Colors Section */}
+      <PopularColorsGrid />
     </div>
   );
 }

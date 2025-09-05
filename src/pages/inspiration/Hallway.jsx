@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import RoomCategoryNav from "../../components/RoomCategoryNav";
 import { useNavigate } from "react-router-dom";
 import { findColorComprehensive } from "../../utils/colorMapping";
+import PopularColorsGrid from "../../components/PopularColorsGrid";
 
 const findColor = (name) => findColorComprehensive(name, "hallway");
 
@@ -72,6 +73,9 @@ export default function HallwayInspiration() {
           </div>
         )}
       </div>
+
+      {/* Popular Colors Section */}
+      <PopularColorsGrid />
     </div>
   );
 } 

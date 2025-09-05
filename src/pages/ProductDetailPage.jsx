@@ -152,8 +152,11 @@ export default function ProductDetailPage() {
       image: product.image || "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png"
     };
     
-    // Add to actual cart
-    addToCart(productForCart, product.finishes[selectedFinish].name, product.sizes[selectedSize].size, quantity);
+    // Add to actual cart with default color for non-color products
+    addToCart(productForCart, product.finishes[selectedFinish].name, product.sizes[selectedSize].size, quantity, undefined, {
+      name: "Default",
+      hex: "#CCCCCC"
+    });
     
     // Show cart popup (toast notification)
     setCartPopup({ isVisible: true, item: {
