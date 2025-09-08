@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import CartPopup from './CartPopup';
 import { useCart } from '../context/CartContext';
 import NavigationArrows from './NavigationArrows';
+import ColorDetailSidebar from './ColorDetailSidebar';
 
 const PopularColorsSlider = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const PopularColorsSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   // Map color names to their family routes
   const getColorFamilyRoute = (colorName) => {
@@ -164,6 +167,20 @@ const PopularColorsSlider = () => {
     });
   };
 
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+    setIsSidebarOpen(true);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+    setSelectedColor(null);
+  };
+
+  const handleColorChange = (newColor) => {
+    setSelectedColor(newColor);
+  };
+
   const closeCartPopup = () => {
     setCartPopup({ isVisible: false, item: null });
   };
@@ -256,6 +273,7 @@ const PopularColorsSlider = () => {
                     >
                       <div 
                         className="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden transition-all duration-300 group hover:shadow-lg hover:border-gray-300 transform group-hover:scale-105"
+                        onClick={() => handleColorClick(color)}
                       >
                         {/* Color Swatch - Solid color instead of room image */}
                         <div className="aspect-square relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
@@ -311,6 +329,14 @@ const PopularColorsSlider = () => {
         item={cartPopup.item}
         onContinueShopping={handleContinueShopping}
         onCheckout={handleCheckout}
+      />
+
+      <ColorDetailSidebar
+        isOpen={isSidebarOpen}
+        onClose={closeSidebar}
+        selectedColor={selectedColor}
+        similarColors={selectedColor ? popularColors.filter(c => c.name !== selectedColor.name).slice(0, 3) : []}
+        onColorChange={handleColorChange}
       />
     </>
   );

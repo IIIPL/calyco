@@ -6,6 +6,30 @@ import React from "react";
  */
 
 export default function HowItWorks() {
+    // Popular colors used across the site
+    const popularColors: { name: string; hex: string }[] = [
+        { name: 'GREY MIST', hex: '#C9CCCD' },
+        { name: 'GREY THUNDER', hex: '#9DA0A3' },
+        { name: 'LAVENDER', hex: '#D4C8CD' },
+        { name: 'LILAC', hex: '#C9BDC7' },
+        { name: 'LINEN', hex: '#D3CABB' },
+        { name: 'PURPLE', hex: '#776A8C' },
+        { name: 'SAGE GREEN', hex: '#A8B99D' },
+        { name: 'BRICK RED', hex: '#8A3F3E' }
+    ];
+
+    // Fresh palette (lighter, lively tones) for the mini grid
+    const freshColors: string[] = [
+        '#87CEEB', // Sky Blue
+        '#ACE1AF', // Celadon Green
+        '#E0F2FE', // Glacier Mist
+        '#98FB98', // Jade Mist
+        '#F3E5AB', // Vanilla Cream
+        '#B8B8A3', // Greige Harmony
+        '#DAA520', // Golden Harvest
+        '#E6E6FA', // Lilac Veil
+        '#A7C4A0'  // Mint Soft
+    ];
     // Local gallery images to replace placeholder picsum URLs
     const galleryImages: string[] = [
         '/Assets/Inspiration/IMG-20250718-WA0008.jpg',
@@ -152,11 +176,17 @@ export default function HowItWorks() {
                         <div className="mt-6">
                             <a href="/products" className="inline-flex h-10 items-center justify-center rounded-full bg-white/10 px-5 text-[14px] font-semibold text-white ring-1 ring-white/25">Get started</a>
                         </div>
-                        <div className="mt-10 overflow-hidden rounded-[18px] ring-1 ring-white/10">
-                            <div className="grid grid-cols-6 gap-2 bg-black/10 p-2">
-                                {galleryImages.slice(0, 24).map((src, i) => (
-                                    <div key={i} className="aspect-square rounded-md bg-cover bg-center" style={{ backgroundImage: `url(${src})` }} />
-                                ))}
+                        {/* Inspiration image instead of color grid */}
+                        <div className="mt-10">
+                            <div className="overflow-hidden rounded-[18px] ring-1 ring-white/15 shadow-[0_24px_60px_-22px_rgba(0,0,0,.6)]">
+                                <div className="relative w-full aspect-[16/9]">
+                                    <img
+                                        src="/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg"
+                                        alt="Inspiration"
+                                        className="absolute inset-0 h-full w-full object-cover"
+                                    />
+                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                                </div>
                             </div>
                         </div>
                     </article>

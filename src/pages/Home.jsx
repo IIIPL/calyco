@@ -89,6 +89,7 @@ const Home = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [showAllFAQs, setShowAllFAQs] = useState(false);
   const [roomIndex, setRoomIndex] = useState(0);
+  const [visibleRooms, setVisibleRooms] = useState(4);
   const [inspirationIndex, setInspirationIndex] = useState(0);
 
   const openColorModal = (color) => {
@@ -107,17 +108,34 @@ const Home = () => {
   const roomData = [
     { name: "Bedroom", image: "/Assets/ixacurtains_A_beautiful_bedroom_with_light_blue_walls_a_vintage_357585fa-b55a-406b-935f-805bfe23eff7.png", route: "/inspirations/bedroom" },
     { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
-    { name: "Office", image: "/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.png", route: "/inspirations/office" },
     { name: "Kitchen", image: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", route: "/inspirations/kitchen" },
     { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
     { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
   ];
 
-  const visibleRooms = 4; // Number of rooms visible at once
   const visibleInspirations = 6; // Number of inspiration items visible at once
   const roomCardWidth = 280; // Width of each room card
   const roomGap = 16; // Gap between room cards (gap-4 = 16px)
   const roomSlideDistance = roomCardWidth + roomGap;
+
+  // Determine how many room cards fit per viewport
+  React.useEffect(() => {
+    const computeVisibleRooms = () => {
+      const w = window.innerWidth;
+      if (w < 640) return 1; // sm-
+      if (w < 1024) return 2; // md
+      if (w < 1280) return 3; // lg
+      return 4; // xl+
+    };
+    const apply = () => {
+      const v = computeVisibleRooms();
+      setVisibleRooms(v);
+      setRoomIndex((prev) => Math.min(prev, Math.max(0, roomData.length - v)));
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, []);
 
   const nextRoom = () => {
     setRoomIndex(prev => 
@@ -272,18 +290,20 @@ const Home = () => {
             </motion.h2>
             
             {/* Navigation Arrows */}
-            <NavigationArrows
-              onPrevious={prevRoom}
-              onNext={nextRoom}
-              showPrevious={roomIndex > 0}
-              showNext={roomIndex < roomData.length - visibleRooms}
-              size="md"
-            />
+            {(roomData.length > visibleRooms) && (
+              <NavigationArrows
+                onPrevious={prevRoom}
+                onNext={nextRoom}
+                showPrevious={roomIndex > 0}
+                showNext={roomIndex < roomData.length - visibleRooms}
+                size="md"
+              />
+            )}
           </div>
           
           <div className="relative overflow-hidden">
-            <div className="flex gap-4 transition-transform duration-500 ease-out"
-                 style={{ transform: `translateX(-${roomIndex * roomSlideDistance}px)` }}>
+            <div className={`flex gap-4 transition-transform duration-500 ease-out ${roomData.length <= visibleRooms ? 'justify-center' : ''}`}
+                 style={{ transform: roomData.length > visibleRooms ? `translateX(-${roomIndex * roomSlideDistance}px)` : undefined }}>
               {roomData.map((room, index) => (
               <motion.div
                 key={room.name}
