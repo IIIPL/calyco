@@ -7,6 +7,7 @@ import RoomInspiration from "../../components/RoomInspiration";
 import { roomData } from "../../data/roomData";
 import { filterRoomsByFamily } from "../../utils/filterRooms";
 import { flatColors } from "../../data/flatColors";
+import PopularColorsGrid from "../../components/PopularColorsGrid";
 
 const findColor = (name) =>
   name ? flatColors.find(c => c.name?.toLowerCase() === name.toLowerCase()) || null : null;
@@ -199,6 +200,9 @@ export default function EnhancedLivingRoomInspiration() {
           </motion.div>
         </div>
       )}
+
+      {/* Popular Colors Section */}
+      <PopularColorsGrid />
     </div>
   );
 }

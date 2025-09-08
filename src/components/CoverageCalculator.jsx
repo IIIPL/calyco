@@ -188,7 +188,10 @@ const CoverageCalculator = () => {
         `${pack.size_l}L`,
         pack.qty,
         pack.mrp,
-        { size: pack.size_l, coverage: results.coverage }
+        {
+          name: "Default",
+          hex: "#CCCCCC"
+        }
       );
     });
   };

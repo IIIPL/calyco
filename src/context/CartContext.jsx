@@ -98,10 +98,10 @@ export const CartProvider = ({ children }) => {
       payload: {
         id: product.id,
         name: product.display_name || product.name,
-        price: priceOverride !== undefined ? priceOverride : product.price,
+        price: parseFloat(priceOverride !== undefined ? priceOverride : product.price) || 0,
         selectedSheen,
         selectedSize,
-        quantity,
+        quantity: parseInt(quantity) || 1,
         image: product.image,
         selectedColor: selectedColor || defaultColor  // ✅ fallback to Serene Ivory
       }
@@ -119,7 +119,7 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = (item, quantity) => {
     dispatch({
       type: 'UPDATE_QUANTITY',
-      payload: { ...item, quantity }
+      payload: { ...item, quantity: parseInt(quantity) || 1 }
     });
   };
 
@@ -128,7 +128,12 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return state.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return state.items.reduce((total, item) => {
+      const price = parseFloat(item.price) || 0;
+      const quantity = parseInt(item.quantity) || 0;
+      console.log(`Item: ${item.name}, Price: ${price}, Quantity: ${quantity}, Total: ${price * quantity}`);
+      return total + (price * quantity);
+    }, 0);
   };
 
   const getCartItemCount = () => {
