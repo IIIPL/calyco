@@ -734,29 +734,6 @@ export const roomData = [
       }
     ]
   },
-  {
-    "roomFamily": "living-room",
-    "name": "Serene Lounge Haven",
-    "description": "A clean, contemporary studio workspace in orchid pink with floating shelves and pastel accents.",
-    "moreInfo": "/more/study",
-    "recommendedUse": "Design Studios, Compact Workspaces",
-    "opacity": "Sheen Matte",
-    "styling": "Modern & Expressive",
-    "shots": [
-      {
-        "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754831770/sky_blue_indigo_twilight_bbiqpk.jpg",
-        "colors": ["Sky Blue", "Indigo Twilight"]
-      },
-      {
-        "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754846366/jade_mist_forest_olive_kfbbs0.jpg",
-        "colors": ["Jade Mist", "Forest Olive"]
-      },
-      {
-        "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754846371/mauve_shadow_eymk7s.jpg",
-        "colors": ["Mauve Shadow"]
-      },
-    ]
-  },
 ];
 
 // Indexed map: roomFamily → array of room objects

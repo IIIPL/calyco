@@ -2,6 +2,7 @@
 
 import * as deeplab from '@tensorflow-models/deeplab';
 import '@tensorflow/tfjs-backend-webgl';
+import '@tensorflow/tfjs-core';
 
 // Cache the model to avoid reloading
 let model = null;
@@ -41,7 +42,7 @@ export async function segmentImage(imgElement) {
     
     // Return the labelMap and dimensions
     return {
-      labelMap: segmentation.segmentationMap,
+      labelMap: segmentation.segmentationMap || segmentation.legend, // model variance
       dimensions: {
         height: segmentation.height,
         width: segmentation.width

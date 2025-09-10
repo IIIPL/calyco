@@ -1,4 +1,6 @@
 // Comprehensive color mapping for all inspiration pages
+import { calycoColorsData } from '../data/calycoColorsData';
+
 export const COMPREHENSIVE_COLOR_MAP = {
   // Bedroom Colors
   "Sage Dust": "#8A9A5B",
@@ -80,7 +82,24 @@ export const COMPREHENSIVE_COLOR_MAP = {
 export const findColorComprehensive = (name, roomFamily = "GENERAL") => {
   if (!name) return null;
   
-  // Check comprehensive color map first
+  // Check new comprehensive color data first
+  const colorData = calycoColorsData[name];
+  if (colorData) {
+    return {
+      name: name,
+      code: colorData.code,
+      hex: colorData.hex,
+      color_family: colorData.family,
+      group: colorData.group,
+      base: colorData.base,
+      temperature: colorData.temperature,
+      tonality: colorData.tonality,
+      rooms: colorData.rooms,
+      usage: colorData.usage
+    };
+  }
+  
+  // Check comprehensive color map as fallback
   if (COMPREHENSIVE_COLOR_MAP[name]) {
     return {
       name: name,

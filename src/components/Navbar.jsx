@@ -1,7 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { CartIcon } from "./CartIcon";
-import { ProductsDropdown } from "./ProductsDropdown";
 import InspirationsDropdown from './InspirationsDropdown';
 import ColorsDropdown from "./ColorsDropdown";
 import VisualizeDropdown from "./VisualizeDropdown"; // Import the new dropdown
@@ -84,10 +83,17 @@ export const Navbar = ({ bannerVisible = true }) => {
       {/* Desktop Navigation */}
       <div className="hidden md:flex w-full justify-center items-center h-12 relative">
         <nav className="flex gap-8 text-base font-medium items-center">
-          <button
+          <Link
+            to="/product/Nova"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
-          >Products</button>
+            onClick={() => setDropdownOpen(null)}
+          >Interior</Link>
+          
+          <Link
+            to="/product/Stain%20&%20Sealer"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(null)}
+          >Stain & Sealer</Link>
           
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
@@ -123,7 +129,6 @@ export const Navbar = ({ bannerVisible = true }) => {
       </div>
       
       {/* Dropdowns (desktop only) */}
-      {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'inspirations' && <InspirationsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'colors' && <ColorsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'visualization' && <VisualizeDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
@@ -157,7 +162,20 @@ export const Navbar = ({ bannerVisible = true }) => {
         </div>
         
         <div className="flex flex-col gap-6 text-xl font-medium items-center flex-1 w-full px-4">
-          <ProductsDropdown isMobile={true} />
+          <Link
+            to="/product/Nova"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+          >
+            Interior
+          </Link>
+          
+          <Link
+            to="/product/Stain%20&%20Sealer"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+          >
+            Stain & Sealer
+          </Link>
+          
           <InspirationsDropdown isMobile={true} />
           <ColorsDropdown isMobile={true} />
           

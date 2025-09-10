@@ -34,7 +34,7 @@ const faqData = [
     },
     {
         question: "Do you have a room visualizer?",
-        answer: "Yes. Our Room Visualizer lets you preview Calyco Sacred Palette colors on sample rooms or your own photos.",
+        answer: "Yes. Our Room Visualizer lets you preview Calyco Color Palette colors on sample rooms or your own photos.",
         category: "Tools & Resources"
     },
     {

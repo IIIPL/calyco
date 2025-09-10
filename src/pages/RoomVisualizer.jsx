@@ -138,39 +138,7 @@ export const RoomVisualizerPage = () => {
         </div>
 
 
-        {/* Upload Section - Top */}
-        <div className="max-w-2xl mx-auto mb-12 mt-10">
-          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
-            <div className="p-8">
-              <div className="text-center mb-6">
-                <FaUpload className="text-4xl text-[#3f2d4d] mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                  Or Upload Your Own Photo
-                </h3>
-                <p className="text-gray-600">
-                  Upload a photo of your room to visualize Calyco colors
-                </p>
-              </div>
-              
-              <div className="flex items-center justify-center">
-                <button
-                  onClick={handleUploadClick}
-                  className="bg-[#3f2d4d] text-white py-3 px-8 rounded-lg hover:bg-[#3f2d7d] transition-colors duration-200 font-medium text-lg"
-                >
-                  Choose Photo
-                </button>
-              </div>
-              
-              <input
-                type="file"
-                ref={fileInputRef}
-                className="hidden"
-                accept="image/*"
-                onChange={handleFileUpload}
-              />
-            </div>
-          </div>
-        </div>
+        {/* Upload Section removed as requested */}
 
         
         {/* Additional Info Section */}

@@ -45,7 +45,7 @@ export const ColorDisclaimer = ({ variant = "full", className = "" }) => {
     >
       <div className="w-full">
         <h3 className="font-semibold text-[#493657] mb-2 text-base sm:text-lg">
-          CALYCO Sacred Palette — Color Disclaimer
+          CALYCO Color Palette — Color Disclaimer
         </h3>
         <div className="text-sm sm:text-[15px] leading-relaxed sm:leading-relaxed md:leading-loose">
           {variant === "full" ? <Full /> : <Short />}
