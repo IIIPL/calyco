@@ -4,6 +4,7 @@ import { useColors } from '../context/ColorContext.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaUpload, FaTrash, FaDownload, FaTimes, FaArrowLeft, FaInfoCircle, FaStar, FaQuestionCircle } from 'react-icons/fa';
 import { flatColors } from '../data/flatColors';
+import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { segmentImage } from '../utils/segmentation.js';
 
 const RoomVisualizer = () => {
@@ -86,6 +87,21 @@ const RoomVisualizer = () => {
     const b = parseInt(hex.slice(5, 7), 16);
     return { r, g, b };
   };
+
+  // Some colors in data store use codes (e.g., "SI9366"). Convert to real hex.
+  const getActualHexColor = (value) => {
+    if (!value) return '#CCCCCC';
+    return value.startsWith('#') ? value : (reverseColorNameMapping[value] || '#CCCCCC');
+  };
+
+  // Format a color name for display
+  const formatColorName = (name = '') => {
+    const title = name.toString().toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    // Common corrections (display-only)
+    return title
+      .replace(/Chasik Creem/gi, 'Classic Cream')
+      .replace(/Charck Beige/gi, 'Chalk Beige');
+  };
   
   // Filter colors based on search and family
   const filteredColors = flatColors.filter(color => {
@@ -101,29 +117,30 @@ const RoomVisualizer = () => {
   
   // Handle color selection
   const handleColorSelect = (color) => {
+    const normalizedColor = { ...color, actualHex: getActualHexColor(color.hex) };
     const currentSurfaceColor = appliedColors[activeSurface];
     
-    if (currentSurfaceColor?.hex === color.hex) {
+    if ((currentSurfaceColor?.actualHex || currentSurfaceColor?.hex) === normalizedColor.actualHex) {
       setAppliedColors(prev => ({
         ...prev,
         [activeSurface]: null
       }));
       
       const isColorUsedElsewhere = Object.entries(appliedColors).some(
-        ([key, surfaceColor]) => key !== activeSurface && surfaceColor?.hex === color.hex
+        ([key, surfaceColor]) => key !== activeSurface && (surfaceColor?.actualHex || surfaceColor?.hex) === normalizedColor.actualHex
       );
       
       if (!isColorUsedElsewhere) {
-        setSelectedColors(prev => prev.filter(c => c.hex !== color.hex));
+        setSelectedColors(prev => prev.filter(c => (c.actualHex || c.hex) !== normalizedColor.actualHex));
       }
     } else {
       setAppliedColors(prev => ({
         ...prev,
-        [activeSurface]: color
+        [activeSurface]: normalizedColor
       }));
       
-      if (!selectedColors.some(c => c.hex === color.hex)) {
-        setSelectedColors(prev => [...prev, color]);
+      if (!selectedColors.some(c => (c.actualHex || c.hex) === normalizedColor.actualHex)) {
+        setSelectedColors(prev => [...prev, normalizedColor]);
       }
     }
   };
@@ -141,11 +158,11 @@ const RoomVisualizer = () => {
         }));
         
         const isColorUsedElsewhere = Object.entries(appliedColors).some(
-          ([key, color]) => key !== surface && color?.hex === colorToRemove.hex
+          ([key, color]) => key !== surface && (color?.actualHex || color?.hex) === (colorToRemove.actualHex || colorToRemove.hex)
         );
         
         if (!isColorUsedElsewhere) {
-          setSelectedColors(prev => prev.filter(c => c.hex !== colorToRemove.hex));
+          setSelectedColors(prev => prev.filter(c => (c.actualHex || c.hex) !== (colorToRemove.actualHex || colorToRemove.hex)));
         }
       }
     } else {
@@ -154,7 +171,7 @@ const RoomVisualizer = () => {
       let colorStillUsed = false;
       
       Object.keys(updatedAppliedColors).forEach(surface => {
-        if (updatedAppliedColors[surface]?.hex === colorToRemove.hex) {
+        if ((updatedAppliedColors[surface]?.actualHex || updatedAppliedColors[surface]?.hex) === (colorToRemove.actualHex || colorToRemove.hex)) {
           updatedAppliedColors[surface] = null;
         } else if (updatedAppliedColors[surface]) {
           colorStillUsed = true;
@@ -164,7 +181,7 @@ const RoomVisualizer = () => {
       setAppliedColors(updatedAppliedColors);
       
       if (!colorStillUsed) {
-        setSelectedColors(prev => prev.filter(c => c.hex !== colorToRemove.hex));
+        setSelectedColors(prev => prev.filter(c => (c.actualHex || c.hex) !== (colorToRemove.actualHex || colorToRemove.hex)));
       }
     }
   };
@@ -182,7 +199,9 @@ const RoomVisualizer = () => {
   
   
   // Function to create a mask from segmentation results
-  const createMaskFromSegmentation = (labelMap, dimensions, targetLabel) => {
+  // Accepts either a 2D label map [h][w] or a flat array [h*w]
+  // targetLabels can be a single number or an array of label ids to merge
+  const createMaskFromSegmentation = (labelMap, dimensions, targetLabels) => {
     const { width, height } = dimensions;
     const canvas = document.createElement('canvas');
     canvas.width = width;
@@ -192,13 +211,15 @@ const RoomVisualizer = () => {
     // Create image data from labelMap
     const imageData = ctx.createImageData(width, height);
     const data = imageData.data;
+    const is2D = Array.isArray(labelMap[0]);
+    const targets = Array.isArray(targetLabels) ? new Set(targetLabels) : new Set([targetLabels]);
     
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const idx = (y * width + x) * 4;
-        const label = labelMap[y][x];
+        const label = is2D ? labelMap[y][x] : labelMap[y * width + x];
         
-        if (label === targetLabel) {
+        if (targets.has(label)) {
           // White for target pixels
           data[idx] = 255;     // R
           data[idx + 1] = 255; // G
@@ -224,10 +245,10 @@ const RoomVisualizer = () => {
     const masks = {};
     
     // Create masks for each surface
-    // walls = label 12, ceiling = label 3, floor = label 13 in Pascal VOC
-    masks.walls = createMaskFromSegmentation(labelMap, dimensions, 12);
-    masks.ceiling = createMaskFromSegmentation(labelMap, dimensions, 3);
-    masks.floor = createMaskFromSegmentation(labelMap, dimensions, 13);
+    // ADE20K: wall=12, ceiling=3, floor=9. Some models map floor to 13 → support both.
+    masks.walls = createMaskFromSegmentation(labelMap, dimensions, [12]);
+    masks.ceiling = createMaskFromSegmentation(labelMap, dimensions, [3]);
+    masks.floor = createMaskFromSegmentation(labelMap, dimensions, [9, 13]);
     
     // Convert canvas masks to image objects
     const maskImages = {};
@@ -387,7 +408,7 @@ const RoomVisualizer = () => {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixels = imageData.data;
       
-      const targetRGB = hexToRGB(color.hex); // Store selected color once
+      const targetRGB = hexToRGB(color.actualHex || color.hex); // Use normalized hex
 
     for (let i = 0; i < maskPixels.length; i += 4) {
       const mr = maskPixels[i];       // mask red
@@ -522,7 +543,7 @@ const RoomVisualizer = () => {
             {surfaces.map((surface) => {
               const hasMask = surfaceMasks[surface.id];
               if (!hasMask) return null; // 🚫 Skip button if no mask
-              const surfaceColor = appliedColors[surface.id]?.hex || surface.color;
+              const surfaceColor = (appliedColors[surface.id]?.actualHex || appliedColors[surface.id]?.hex || surface.color);
               const textColor = getContrastColor(surfaceColor);
               return (
                 <div
@@ -540,9 +561,17 @@ const RoomVisualizer = () => {
                   aria-label={`Select ${surface.name}`}
                   onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setActiveSurface(surface.id); }}
                 >
-                  <span className="text-[11px] sm:text-xs md:text-sm font-medium">{surface.name}</span>
+                  <span className="text-[11px] sm:text-xs md:text-sm font-semibold drop-shadow-sm">{surface.name}</span>
                   {appliedColors[surface.id] && (
-                    <span className="text-xs mt-1 opacity-90">{appliedColors[surface.id].name}</span>
+                    <span
+                      className="mt-1 text-[10px] sm:text-xs px-2 py-0.5 rounded-md shadow-sm border border-black/5"
+                      style={{
+                        backgroundColor: 'rgba(255,255,255,0.92)',
+                        color: '#111827'
+                      }}
+                    >
+                      {formatColorName(appliedColors[surface.id].name)}
+                    </span>
                   )}
                 </div>
               );
@@ -603,15 +632,15 @@ const RoomVisualizer = () => {
             <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-3 gap-1 sm:gap-1.5">
               {filteredColors.slice(0, 60).map((color) => (
                 <div
-                  key={color.hex}
+                  key={getActualHexColor(color.hex)}
                   className={`cursor-pointer overflow-hidden shadow-sm transition-transform hover:scale-105 ${
-                    appliedColors[activeSurface]?.hex === color.hex ? 'ring-2 ring-indigo-500' : ''
+                    (appliedColors[activeSurface]?.actualHex || appliedColors[activeSurface]?.hex) === getActualHexColor(color.hex) ? 'ring-2 ring-indigo-500' : ''
                   }`}
                   onClick={() => handleColorSelect(color)}
                 >
                   <div
                     className="h-14 sm:h-16 md:h-16 lg:h-16 w-full"
-                    style={{ backgroundColor: color.hex }}
+                    style={{ backgroundColor: getActualHexColor(color.hex) }}
                   ></div>
                 </div>
               ))}

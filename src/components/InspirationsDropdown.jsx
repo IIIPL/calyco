@@ -3,21 +3,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const inspirationMenu = [
-  { key: "kitchen", label: "KITCHEN" },
-  { key: "bedroom", label: "BEDROOM" },
   { key: "living", label: "LIVING ROOM" },
-  { key: "bathroom", label: "BATHROOM" },
+  { key: "bedroom", label: "BEDROOM" },
   { key: "dining", label: "DINING ROOM" },
+  { key: "bathroom", label: "BATHROOM" },
   { key: "hallway", label: "HALLWAY" },
+  { key: "kitchen", label: "KITCHEN" }, // moved kitchen to bottom per request
 ];
 
 const roomThumbnails = {
-  kitchen: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
-  bedroom: "/Assets/Inspiration/bedroom.jpg",
-  living: "/Assets/Inspiration/living.jpg",
-  bathroom: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
-  dining: "/Assets/Inspiration/dining.jpg",
-  hallway: "/Assets/Inspiration/IMG-20250718-WA0042.jpg",
+  // Use room-specific images already used on respective pages
+  living: "/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.png", // updated per user
+  bedroom: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg",
+  dining: "/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.png", // updated per user
+  bathroom: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg",
+  hallway: "/Assets/InteriorInspiratoin/living-room.png", // different from bedroom
+  kitchen: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", // kitchen-specific image
 };
 
 const InspirationsDropdown = ({ onSelect, isMobile = false }) => {

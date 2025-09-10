@@ -17,7 +17,7 @@ import NavigationArrows from '../components/NavigationArrows';
 
 import { HeroSlider } from '../components/HomeComponents/HeroSlider';
 
-// Calyco Sacred Palette - 8 core colors
+// Calyco Color Palette - 8 core colors
 const CALYCO_PALETTE = [
   { name: "Grey Thunder", hex: "#4A5568", family: "Neutral", mood: "Sophisticated" },
   { name: "Grey Mist", hex: "#A0AEC0", family: "Neutral", mood: "Calm" },
@@ -106,11 +106,12 @@ const Home = () => {
 
   // Room data for Shop by Room section
   const roomData = [
+    { name: "Living Room", image: "/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.png", route: "/inspirations/livingroom" },
     { name: "Bedroom", image: "/Assets/ixacurtains_A_beautiful_bedroom_with_light_blue_walls_a_vintage_357585fa-b55a-406b-935f-805bfe23eff7.png", route: "/inspirations/bedroom" },
-    { name: "Living Room", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/livingroom" },
-    { name: "Kitchen", image: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", route: "/inspirations/kitchen" },
+    { name: "Dining Room", image: "/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.png", route: "/inspirations/dining" },
     { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
-    { name: "All Rooms", image: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg", route: "/inspirations" }
+    { name: "Hallway", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/hallway" },
+    { name: "Kitchen", image: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", route: "/inspirations/kitchen" }
   ];
 
   const visibleInspirations = 6; // Number of inspiration items visible at once
@@ -122,10 +123,10 @@ const Home = () => {
   React.useEffect(() => {
     const computeVisibleRooms = () => {
       const w = window.innerWidth;
-      if (w < 640) return 1; // sm-
-      if (w < 1024) return 2; // md
-      if (w < 1280) return 3; // lg
-      return 4; // xl+
+      if (w < 640) return 1; // sm- (mobile)
+      if (w < 1024) return 2; // md (tablet)
+      if (w < 1280) return 3; // lg (small desktop)
+      return 4; // xl+ (large desktop - show 4 out of 6 cards)
     };
     const apply = () => {
       const v = computeVisibleRooms();
@@ -289,7 +290,7 @@ const Home = () => {
               Shop by room
             </motion.h2>
             
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Show on all screen sizes when cards don't fit */}
             {(roomData.length > visibleRooms) && (
               <NavigationArrows
                 onPrevious={prevRoom}
@@ -302,7 +303,7 @@ const Home = () => {
           </div>
           
           <div className="relative overflow-hidden">
-            <div className={`flex gap-4 transition-transform duration-500 ease-out ${roomData.length <= visibleRooms ? 'justify-center' : ''}`}
+            <div className={`flex gap-4 transition-transform duration-500 ease-out`}
                  style={{ transform: roomData.length > visibleRooms ? `translateX(-${roomIndex * roomSlideDistance}px)` : undefined }}>
               {roomData.map((room, index) => (
               <motion.div

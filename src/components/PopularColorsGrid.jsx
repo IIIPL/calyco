@@ -98,48 +98,51 @@ const PopularColorsGrid = () => {
 
   return (
     <>
-      <section className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white overflow-hidden">
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10">
           {/* Title and Description - Above the grid */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-12 sm:mb-16">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-[1.1] sm:leading-[1.2] tracking-wide sm:tracking-wider"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-[1.1] tracking-wide"
             >
-              Popular<br />
-              <span className="mt-1 sm:mt-2 block">colours</span>
+              Popular colours
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-sm md:text-base text-[#493657]/70 leading-relaxed tracking-wide max-w-2xl mx-auto"
+              className="text-base md:text-lg text-[#493657]/70 leading-relaxed tracking-wide max-w-3xl mx-auto"
             >
               From favourite whites to the most popular greens, discover the shades most loved by our decorators.
             </motion.p>
           </div>
 
-          {/* Color Grid - Clean palette design */}
-          <div className="w-full max-w-4xl mx-auto px-4">
-            {/* Grid Container */}
-            <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+          {/* Color Grid - Single row design */}
+          <div className="w-full max-w-7xl mx-auto overflow-x-auto">
+            {/* Single horizontal row of color swatches */}
+            <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-max">
               {popularColors.map((color, index) => (
-                <div
+                <motion.div
                   key={color.id}
-                  className="flex justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group cursor-pointer flex-shrink-0"
+                  onClick={() => handleColorClick(color)}
                 >
                   <div 
-                    className="w-32 h-32 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg border-2 border-transparent hover:border-gray-300"
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-gray-200"
                     style={{ 
                       backgroundColor: color.hex
                     }}
-                    onClick={() => handleColorClick(color)}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
