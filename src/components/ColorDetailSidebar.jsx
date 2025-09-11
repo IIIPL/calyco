@@ -5,6 +5,37 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartPopup from './CartPopup';
 
+// Utility function to convert hex to RGB
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+};
+
+// Utility function to calculate LRV (Light Reflectance Value)
+const calculateLRV = (hex) => {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return 45;
+  
+  // Convert RGB to relative luminance
+  const { r, g, b } = rgb;
+  const rsRGB = r / 255;
+  const gsRGB = g / 255;
+  const bsRGB = b / 255;
+  
+  const rLinear = rsRGB <= 0.03928 ? rsRGB / 12.92 : Math.pow((rsRGB + 0.055) / 1.055, 2.4);
+  const gLinear = gsRGB <= 0.03928 ? gsRGB / 12.92 : Math.pow((gsRGB + 0.055) / 1.055, 2.4);
+  const bLinear = bsRGB <= 0.03928 ? bsRGB / 12.92 : Math.pow((bsRGB + 0.055) / 1.055, 2.4);
+  
+  const luminance = 0.2126 * rLinear + 0.7152 * gLinear + 0.0722 * bLinear;
+  
+  // Convert to LRV (0-100 scale)
+  return Math.round(luminance * 100);
+};
+
 const ColorDetailSidebar = ({ 
   isOpen, 
   onClose, 
@@ -15,17 +46,17 @@ const ColorDetailSidebar = ({
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-  const [selectedSize, setSelectedSize] = useState('sample');
+  const [selectedSize, setSelectedSize] = useState('1l');
   const [quantity, setQuantity] = useState(1);
   const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
   
   if (!selectedColor) return null;
 
   const sizeOptions = [
-    { id: 'sample', label: '8 Oz. Sample', price: 499 },
-    { id: 'quart', label: '1 Quart', price: 1299 },
-    { id: 'gallon', label: '1 Gallon', price: 2499 },
-    { id: '5gallon', label: '5 Gallon', price: 9999 }
+    { id: '1l', label: '1L', price: 699 },
+    { id: '4l', label: '4L', price: 2796 },
+    { id: '10l', label: '10L', price: 6990 },
+    { id: '20l', label: '20L', price: 13980 }
   ];
 
   const handleAddToCart = () => {
@@ -160,15 +191,15 @@ const ColorDetailSidebar = ({
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center">
                       <div className="text-sm text-gray-500">LRV</div>
-                      <div className="font-semibold text-[#393939]">45</div>
+                      <div className="font-semibold text-[#393939]">{selectedColor?.hex ? calculateLRV(selectedColor.hex) : '45'}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm text-gray-500">R</div>
-                      <div className="font-semibold text-[#393939]">180</div>
+                      <div className="font-semibold text-[#393939]">{selectedColor?.hex ? hexToRgb(selectedColor.hex)?.r || '180' : '180'}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm text-gray-500">G</div>
-                      <div className="font-semibold text-[#393939]">165</div>
+                      <div className="font-semibold text-[#393939]">{selectedColor?.hex ? hexToRgb(selectedColor.hex)?.g || '165' : '165'}</div>
                     </div>
                   </div>
                 </div>
@@ -184,23 +215,8 @@ const ColorDetailSidebar = ({
                 {/* Disclaimer */}
                 <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
                   <p className="text-sm text-amber-800 leading-relaxed">
-                    <strong>Before finalising any shade or pattern,</strong> we strongly recommend ordering a Calyco Swatch (30 cm × 30 cm) of the actual painted surface.
+                    <strong>Before finalising any shade or pattern,</strong> please note that actual colour appearance may vary under different lighting conditions. Variations can occur due to surface preparation, lighting, and application method.
                   </p>
-                  
-                  {showFullDisclaimer && (
-                    <div className="mt-2">
-                      <p className="text-sm text-amber-800 leading-relaxed">
-                        Each swatch is peel-and-stick, so you can place it directly on your wall and see how the colour looks under different lighting conditions. Actual shade appearance may vary depending on surface preparation, lighting, and application method.
-                      </p>
-                    </div>
-                  )}
-                  
-                  <button 
-                    onClick={() => setShowFullDisclaimer(!showFullDisclaimer)}
-                    className="text-sm text-amber-700 hover:text-amber-800 underline mt-2 font-medium"
-                  >
-                    {showFullDisclaimer ? 'Show Less' : 'Learn More'}
-                  </button>
                 </div>
 
                 {/* Size Selection */}

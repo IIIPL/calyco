@@ -40,7 +40,7 @@ const PopularColorsSlider = () => {
       id: 1,
       name: "GREY MIST",
       hex: "#C9CCCD",
-      price: "₹499",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
       roomType: "Living Room"
@@ -49,7 +49,7 @@ const PopularColorsSlider = () => {
       id: 2,
       name: "GREY THUNDER", 
       hex: "#9DA0A3",
-      price: "₹599",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
       roomType: "Living Room"
@@ -58,7 +58,7 @@ const PopularColorsSlider = () => {
       id: 3,
       name: "LAVENDER",
       hex: "#D4C8CD",
-      price: "₹449", 
+      price: "₹699", 
       isBestSeller: false,
       roomImage: "/Assets/Rooms/Bedroom/base.jpg",
       roomType: "Bedroom"
@@ -67,7 +67,7 @@ const PopularColorsSlider = () => {
       id: 4,
       name: "LILAC",
       hex: "#C9BDC7",
-      price: "₹549",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/Bedroom/base.jpg",
       roomType: "Bedroom"
@@ -76,7 +76,7 @@ const PopularColorsSlider = () => {
       id: 5,
       name: "LINEN",
       hex: "#D3CABB",
-      price: "₹399",
+      price: "₹699",
       isBestSeller: true,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
@@ -94,7 +94,7 @@ const PopularColorsSlider = () => {
       id: 7,
       name: "SAGE GREEN",
       hex: "#A8B99D",
-      price: "₹649",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
@@ -103,7 +103,7 @@ const PopularColorsSlider = () => {
       id: 8,
       name: "BRICK RED",
       hex: "#8A3F3E",
-      price: "₹999",
+      price: "₹699",
       isBestSeller: false,
       roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
       roomType: "Dining Room"
