@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { GetStaticProps } from 'next';
 import { getAllContentEntries, type ContentEntry } from '../lib/content';
+import MarqueeBanner from '../components/MarqueeBanner';
 
 interface HomeProps {
   pillars: ContentEntry[];
@@ -17,6 +18,8 @@ export default function Home({ pillars, regions }: HomeProps) {
           pillars and regional guidance built for diverse climates and lifestyles across India.
         </p>
       </header>
+
+      <MarqueeBanner />
 
       <section>
         <h2>Signature Pillars</h2>
