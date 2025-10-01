@@ -33,9 +33,11 @@ const GoldenDots = ({ count = 10 }) => {
 
 const Col = ({ title, children }) => (
   <div>
-    <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-white/90 mb-3 md:mb-4">
-      {title}
-    </h4>
+    {title && (
+      <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-white/90 mb-3 md:mb-4">
+        {title}
+      </h4>
+    )}
     <ul className="space-y-2.5 text-sm md:text-[15px]">{children}</ul>
   </div>
 );
@@ -88,7 +90,7 @@ export const Footer = () => (
         </div>
 
         {/* Calyco */}
-        <Col title="Calyco">
+        <Col>
           <Item to="/about">About Us</Item>
           <Item to="/contact">Contact Us</Item>
           <Item to="/colors">Calyco Palette</Item>
