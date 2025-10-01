@@ -16,6 +16,9 @@ export default function ToolsHub() {
           <li>Coverage calculator that converts room dimensions into litres and ₹ budgets.</li>
           <li>Façade and interior visualisers calibrated for Delhi NCR, Kerala, Assam, Tamil Nadu, and Goa lighting.</li>
           <li>Contractor scheduler with verified Calyco applicators across major Indian cities.</li>
+          <li>
+            <Link href="/tools/ap-color-importer">Asian Paints palette importer for rapid Calyco onboarding.</Link>
+          </li>
           <li>Digital vault for VOC certificates, warranties, and maintenance logs.</li>
         </ul>
       </section>
