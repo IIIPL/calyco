@@ -14,6 +14,7 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage.jsx'))
 const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.jsx'))
 const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
+const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 import { Temp } from './pages/Temp'
 import AboutUs from './pages/AboutUs'
 import { Footer } from './pages/Footer'
@@ -137,6 +138,7 @@ function App() {
               <Route path='/product/:productId' element={<DynamicProductPage/>}/>
               <Route path='/temp' element={<Temp/>}/>
               <Route path='/faq' element={<FAQs/>}/>
+              <Route path='/test-page-codex' element={<TestPageCodex/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />
@@ -192,3 +194,7 @@ function App() {
 }
 export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
 // Force new deployment - Thu Aug 21 00:54:55 IST 2025
+
+
+
+

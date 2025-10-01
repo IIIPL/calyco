@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@formspree/react": "^3.0.0",
     "@heroicons/react": "^2.2.0",
+    "@mdx-js/react": "^3.1.1",
     "@tensorflow-models/deeplab": "^0.2.2",
     "@tensorflow/tfjs": "^3.21.0",
     "@tensorflow/tfjs-backend-webgl": "^3.21.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@mdx-js/rollup": "^3.1.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
