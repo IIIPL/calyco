@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { Navbar } from './components/Navbar'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 const Home = React.lazy(() => import('./pages/Home.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
@@ -15,6 +15,7 @@ const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.j
 const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
+const BlogCategoryPage = React.lazy(() => import('./pages/blogs/categories/[slug].jsx'))
 import { Temp } from './pages/Temp'
 import AboutUs from './pages/AboutUs'
 import { Footer } from './pages/Footer'
@@ -142,6 +143,8 @@ function App() {
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />
+              <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
+              <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>
               {/* Colors new routes (existing retained) */}
               <Route path='/colors' element={<ColorsPage/>}/>
               <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
@@ -194,6 +197,7 @@ function App() {
 }
 export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
 // Force new deployment - Thu Aug 21 00:54:55 IST 2025
+
 
 
 
