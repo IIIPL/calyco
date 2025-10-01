@@ -1,36 +1,40 @@
 import React from "react";
+import {
+  SparklesIcon,
+  ArrowPathIcon,
+  HandThumbUpIcon,
+  ShieldCheckIcon,
+} from "@heroicons/react/24/outline";
+
+const heroImage = "/Assets/assets_task_01k3h8ndhef0v9as4ksr6636ap_1756147620_img_0.webp";
 
 const principles = [
   {
     title: "Low-VOC Formulas",
     description:
       "Calyco reformulates every blend to stay significantly below global limits for Volatile Organic Compounds. Water-based chemistry and purified pigments keep indoor air crisp from day one, protecting families, designers, and professional applicators alike.",
-    image: "/Assets/vectorMore.png",
-    imageAlt: "Icon representing Calyco low-VOC paints",
+    Icon: SparklesIcon,
     accent: "bg-[#FFF5BF]",
   },
   {
     title: "Waste Reduction",
     description:
       "Smart coverage calculators, made-to-order tinting, and refill-friendly pack sizes mean you receive exactly what the project demands. Recycled and recyclable packaging plus disposal coaching on every invoice keep surplus paint out of landfills.",
-    image: "/Assets/vectorMore.png",
-    imageAlt: "Icon representing waste reduction",
+    Icon: ArrowPathIcon,
     accent: "bg-[#FFF1B8]",
   },
   {
     title: "Ethical Sourcing",
     description:
       "We audit raw material partners for transparency, fair labour, and reduced transport miles. Every pigment and resin is tracked from extraction to application so specifiers can document sustainability with confidence.",
-    image: "/Assets/vectorMore.png",
-    imageAlt: "Icon representing ethical sourcing",
+    Icon: HandThumbUpIcon,
     accent: "bg-[#FFEAA0]",
   },
   {
     title: "Product Longevity",
     description:
       "High-build resins, scrub-resistant finishes, and UV-stable pigments extend repaint cycles. Better durability means fewer site visits, less embodied carbon, and enduring beauty for every Calyco space.",
-    image: "/Assets/vectorMore.png",
-    imageAlt: "Icon representing product longevity",
+    Icon: ShieldCheckIcon,
     accent: "bg-[#FFE38C]",
   },
 ];
@@ -63,13 +67,13 @@ export default function EnvironmentalSustainability() {
               </p>
             </div>
             <div className="relative">
-              <div className="absolute -top-8 -left-8 h-28 w-28 rounded-full border border-[#FFD700] opacity-40" aria-hidden="true" />
-              <div className="absolute -bottom-8 -right-4 h-24 w-24 rounded-full bg-[#FFF3B0] blur-2xl opacity-70" aria-hidden="true" />
+              <div className="absolute -top-10 -left-8 h-32 w-32 rounded-full border border-[#FFD700] opacity-30" aria-hidden="true" />
+              <div className="absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-[#FFF3B0] blur-2xl opacity-70" aria-hidden="true" />
               <div className="relative z-10 overflow-hidden rounded-[36px] border border-[#F0F0F0] bg-white shadow-[0_30px_60px_rgba(17,17,17,0.08)]">
                 <img
-                  src="/Assets/painter-bg-removed.png"
-                  alt="Calyco expert applying an eco-premium coating"
-                  className="w-full object-cover"
+                  src={heroImage}
+                  alt="A serene, eco-conscious Calyco interior showcasing sustainable finishes"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -86,25 +90,28 @@ export default function EnvironmentalSustainability() {
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {principles.map((principle) => (
-              <article
-                key={principle.title}
-                className="group relative overflow-hidden rounded-[28px] border border-[#F0F0F0] bg-white p-8 shadow-[0_20px_50px_rgba(23,23,23,0.08)] transition-shadow duration-200 hover:shadow-[0_28px_60px_rgba(17,17,17,0.12)]"
-              >
-                <div className="absolute inset-x-6 top-0 h-1 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4">
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-full ${principle.accent}`}>
-                      <img src={principle.image} alt={principle.imageAlt} className="h-7 w-7 object-contain" />
+            {principles.map((principle) => {
+              const Icon = principle.Icon;
+              return (
+                <article
+                  key={principle.title}
+                  className="group relative overflow-hidden rounded-[28px] border border-[#F0F0F0] bg-white p-8 shadow-[0_20px_50px_rgba(23,23,23,0.08)] transition-shadow duration-200 hover:shadow-[0_28px_60px_rgba(17,17,17,0.12)]"
+                >
+                  <div className="absolute inset-x-6 top-0 h-1 rounded-full bg-[#FFD700]" aria-hidden="true" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4">
+                      <div className={`flex h-14 w-14 items-center justify-center rounded-full ${principle.accent}`}>
+                        <Icon className="h-7 w-7 text-[#866A00]" aria-hidden="true" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-[#1D1D1D]">{principle.title}</h3>
                     </div>
-                    <h3 className="text-xl font-semibold text-[#1D1D1D]">{principle.title}</h3>
+                    <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3F3F3F]">
+                      {principle.description}
+                    </p>
                   </div>
-                  <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3F3F3F]">
-                    {principle.description}
-                  </p>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
