@@ -111,7 +111,7 @@ export const Footer = () => (
           <Item to="/policies/terms">Terms &amp; Conditions</Item>
           <Item to="/policies/payments-gst">Payment, Pricing &amp; GST/Invoices</Item>
           <Item to="/policies/quality">Quality Policy</Item>
-          <Item to="/policies/environment">Environmental &amp; Sustainability</Item>
+          <Item to="/policies/environmental-sustainability">Environmental &amp; Sustainability</Item>
           <Item to="/policies/disclaimer">Product/Color Disclaimer</Item>
         </Col>
       </div>

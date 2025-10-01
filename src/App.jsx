@@ -60,7 +60,7 @@ import Privacy from "./pages/Policies/Privacy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
 // import PaymentsGst from "./pages/Policies/PaymentsGst";
 import QualityPolicy from "./pages/Policies/QualityPolicy";
-// import EnvironmentSustainability from "./pages/Policies/EnvironmentSustainability";
+import EnvironmentalSustainability from "./pages/Policies/EnvironmentalSustainability";
 import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
 import ShippingDelivery from "./pages/Policies/ShippingDelivery";
 import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
@@ -173,7 +173,7 @@ function App() {
               <Route path="/policies/terms" element={<TermsAndConditions />} />
               {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
               <Route path="/policies/quality" element={<QualityPolicy />} />
-              {/* <Route path="/policies/environment" element={< />} /> */}
+              <Route path="/policies/environmental-sustainability" element={<EnvironmentalSustainability />} />
               <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
               <Route path="/policies/shipping" element={<ShippingDelivery />} />
               <Route path="/policies/returns" element={<ReturnsRefunds />} />

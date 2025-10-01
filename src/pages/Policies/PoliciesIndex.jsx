@@ -7,7 +7,7 @@ const links = [
   { to: "/policies/terms", label: "Terms & Conditions" },
   { to: "/policies/payments-gst", label: "Payment, Pricing & GST/Invoices" },
   { to: "/policies/quality", label: "Quality Policy" },
-  { to: "/policies/environment", label: "Environmental & Sustainability" },
+  { to: "/policies/environmental-sustainability", label: "Environmental & Sustainability" },
   { to: "/policies/disclaimer", label: "Product/Color Disclaimer" },
   { to: "/policies/shipping", label: "Shipping & Delivery" },
   { to: "/policies/returns", label: "Returns & Refunds" },
