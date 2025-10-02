@@ -96,7 +96,7 @@ const ContactSection = () => {
               </label>
               <select
                 id="warranty-topic"
-                className="w-full appearance-none rounded-xl border border-[#f3de79]/60 bg-[#f3de79]/90 px-4 py-3 text-sm font-semibold text-[#1A1C24] shadow-inner focus:border-[#f3de79] focus:outline-none focus:ring-2 focus:ring-[#f3de79]/70"
+                className="w-full appearance-none rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white focus:border-[#f3de79] focus:outline-none focus:ring-1 focus:ring-[#f3de79]"
                 defaultValue=""
               >
                 <option value="" disabled hidden className="text-neutral-500">
