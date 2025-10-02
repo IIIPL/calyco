@@ -96,15 +96,15 @@ const ContactSection = () => {
               </label>
               <select
                 id="warranty-topic"
-                className="w-full appearance-none rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm text-white focus:border-[#f3de79] focus:outline-none focus:ring-1 focus:ring-[#f3de79]"
+                className="w-full appearance-none rounded-xl border border-white/40 bg-white/95 px-4 py-3 text-sm font-medium text-neutral-900 focus:border-[#f3de79] focus:outline-none focus:ring-1 focus:ring-[#f3de79]"
                 defaultValue=""
               >
-                <option value="" disabled hidden>
+                <option value="" disabled hidden className="text-neutral-500">
                   Select an option
                 </option>
-                <option value="product-support">Product support</option>
-                <option value="warranty-claim">Warranty claim</option>
-                <option value="technical-advice">Technical advice</option>
+                <option value="product-support" className="text-neutral-900">Product support</option>
+                <option value="warranty-claim" className="text-neutral-900">Warranty claim</option>
+                <option value="technical-advice" className="text-neutral-900">Technical advice</option>
               </select>
             </div>
 
