@@ -78,7 +78,6 @@ coverage/
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -154,3 +153,6 @@ coverage/
 test-results/
 playwright-report/
 playwright/.cache/
+!public/Assets/docs/
+!public/Assets/docs/*.pdf
+!public/Assets/

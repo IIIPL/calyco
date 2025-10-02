@@ -61,12 +61,12 @@ const Hero = () => (
         className="h-full w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2d0c52]/95 via-[#1a0631]/90 to-[#080114]/95 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#2d0c52]/80 via-[#1a0631]/75 to-[#080114]/85 mix-blend-multiply" />
       <div className="pointer-events-none absolute -left-16 bottom-12 h-56 w-56 rounded-full bg-[#f8d35e]/25 blur-3xl sm:-left-24 sm:h-72 sm:w-72" aria-hidden />
       <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 translate-x-1/3 rounded-full bg-[#8b5cf6]/30 blur-3xl sm:h-80 sm:w-80" aria-hidden />
     </div>
 
-    <div className="relative z-10 mx-auto flex h-[70vh] min-h-[520px] max-w-6xl items-center px-6 py-16 md:px-10">
+    <div className="relative z-10 mx-auto flex h-[80vh] min-h-[620px] max-w-6xl items-center px-6 py-16 md:px-10">
       <div className="max-w-3xl">
         <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#2b0f4a]">
           Calyco Warranty Care
@@ -82,7 +82,7 @@ const Hero = () => (
             <span aria-hidden>🎨</span> Premium Finishes
           </span>
           <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
-            <span aria-hidden>🛡️</span> Zero-VOC Promise
+            <span aria-hidden>🛡️</span> Low-VOC Commitment
           </span>
           <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
             <span aria-hidden>⚡</span> Fast Support
@@ -102,7 +102,7 @@ const Section = ({ title, subtitle, children, tone = "canvas", kicker }) => {
       <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20 md:py-24">
         <header className="mb-10 flex flex-col gap-3">
           {kicker && (
-            <span className={`inline-flex max-w-max items-center gap-2 rounded-full {toneStyles.kickerBg} px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] ${toneStyles.kicker}`}>
+            <span className={`inline-flex max-w-max items-center gap-2 rounded-full ${toneStyles.kickerBg} px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] ${toneStyles.kicker}`}>
               {kicker}
             </span>
           )}
@@ -147,8 +147,8 @@ const documentLinks = [
     href: "/assets/docs/exterior-weather-shield-warranty.pdf",
   },
   {
-    name: "Wood & Metal Primer",
-    href: "/assets/docs/wood-metal-primer-warranty.pdf",
+    name: "Waterproof Sealer",
+    href: "/assets/docs/waterproof-sealer-warranty.pdf",
   },
 ];
 
@@ -290,13 +290,13 @@ export default function WarrantyPolicy() {
         kicker="Protected Coverage"
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card icon="🎨" title="Manufacturing Defects" iconClassName="bg-[#f8d35e] text-[#2b0f4a]">
+          <Card icon="🎨" title="Manufacturing Defects" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#2b0f4a] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Covers defects arising from manufacturing processes that affect performance or appearance under normal use.
           </Card>
-          <Card icon="🛡️" title="What is Included" iconClassName="bg-[#f8d35e] text-[#2b0f4a]">
+          <Card icon="🛡️" title="What is Included" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#2b0f4a] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Peeling, flaking, blistering, or premature fading when applied as per CALYCO system guidelines.
           </Card>
-          <Card icon="⚠️" title="What is Excluded" iconClassName="bg-[#f8d35e] text-[#2b0f4a]">
+          <Card icon="⚠️" title="What is Excluded" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#2b0f4a] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Surface movement, water ingress, structural cracks, contamination, mishandling, or non-recommended usage.
           </Card>
         </div>
@@ -322,6 +322,7 @@ export default function WarrantyPolicy() {
               </div>
               <a
                 href={doc.href}
+                download
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#2b0f4a] shadow-[0_12px_35px_-18px_rgba(248,211,94,0.7)] transition hover:shadow-[0_16px_45px_-16px_rgba(248,211,94,0.7)]"
               >
                 Download PDF
