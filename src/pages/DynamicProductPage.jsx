@@ -7,7 +7,6 @@ import { products } from "../data/products";
 import { ralColorData as colorData } from "../data/ralColors";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
-import { buildAddToCartPayload } from "../lib/addPaintToCart";
 
 const slugify = (value) =>
   value
@@ -52,7 +51,7 @@ export const DynamicProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-    const { addToCart, add } = useCart();
+    const { addToCart } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);
@@ -527,8 +526,7 @@ export const DynamicProductPage = () => {
                                 </button>
                               </div>
                               <motion.button
-                                onClick={async () => {
-                                  // Add to old cart context for UI
+                                onClick={() => {
                                   addToCart(
                                     product,
                                     selectedSheen,
@@ -537,22 +535,6 @@ export const DynamicProductPage = () => {
                                     getSizePrice(product.price, selectedSize),
                                     colorInfo
                                   );
-
-                                  // Add to Shopify checkout if product is CALYCO Interior
-                                  if (product.id === 'calyco-interior' || product.name?.includes('CALYCO Interior')) {
-                                    try {
-                                      const payload = buildAddToCartPayload({
-                                        size: selectedSize,
-                                        quantity: quantity,
-                                        sheen: selectedSheen,
-                                        colorFamily: colorInfo?.family || '',
-                                        color: colorInfo?.name || '',
-                                      });
-                                      await add(payload);
-                                    } catch (error) {
-                                      console.error('Failed to add to Shopify cart:', error);
-                                    }
-                                  }
 
                                   // Show cart popup (toast notification)
                                   setCartPopup({ isVisible: true, item: {
