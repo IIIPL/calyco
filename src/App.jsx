@@ -29,7 +29,8 @@ import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
-import { CartProvider } from './context/CartContext'
+import CartProvider from './context/CartContext'
+import Cart from './components/Cart'
 import Checkout from "./pages/Checkout";
 import { ColorsPage, InspirationPage } from './pages'
 import KitchenInspiration from './pages/inspiration/Kitchen';
@@ -191,6 +192,7 @@ function App() {
             </React.Suspense>
             <Footer/>
           </div>
+          <Cart />
         </div>
         </ColorVisualizationProvider>
         </ColorProvider>
