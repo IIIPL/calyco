@@ -15,6 +15,7 @@ const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.j
 const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
+const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 const BlogCategoryPage = React.lazy(() => import('./pages/blogs/categories/[slug].jsx'))
 import { Temp } from './pages/Temp'
 import AboutUs from './pages/AboutUs'
@@ -140,6 +141,7 @@ function App() {
               <Route path='/temp' element={<Temp/>}/>
               <Route path='/faq' element={<FAQs/>}/>
               <Route path='/test-page-codex' element={<TestPageCodex/>}/>
+              <Route path='/pages/product-finder' element={<ProductFinder/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />
