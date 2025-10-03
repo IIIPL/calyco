@@ -94,9 +94,14 @@ export const products = [
     "humidity_range": "Under 80% RH",
     "display_name": "Calyco Interior Latex Paint",
     "images": [
-      "/Assets/Nova/NoBg.png",
-      "/Assets/Nova/inuse.png",
-      "/Assets/Nova/novaa.jpg"
+      "/Assets/Nova/1-main.png",
+      "/Assets/Nova/1.png",
+      "/Assets/Nova/2.png",
+      "/Assets/Nova/3.png",
+      "/Assets/Nova/4.png",
+      "/Assets/Nova/5.png",
+      "/Assets/Nova/6.png",
+      "/Assets/Nova/7.png"
     ]
   },
   {

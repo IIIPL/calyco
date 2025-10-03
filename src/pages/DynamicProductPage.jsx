@@ -53,10 +53,50 @@ export const DynamicProductPage = () => {
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
     const { addToCart } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
     const [selectedColorFamily, setSelectedColorFamily] = useState(() => colorFamilies[0]?.code || "");
     const [selectedColor, setSelectedColor] = useState(() => colorFamilies[0]?.colors?.[0] || null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
+
+    // Swipe gesture handlers for mobile
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        if (product?.images && product.images.length > 0) {
+            if (isLeftSwipe && selectedImageIndex < product.images.length - 1) {
+                // Swipe left - next image
+                const nextIndex = selectedImageIndex + 1;
+                setSelectedImageIndex(nextIndex);
+                setSelectedImage(product.images[nextIndex]);
+            }
+
+            if (isRightSwipe && selectedImageIndex > 0) {
+                // Swipe right - previous image
+                const prevIndex = selectedImageIndex - 1;
+                setSelectedImageIndex(prevIndex);
+                setSelectedImage(product.images[prevIndex]);
+            }
+        }
+
+        // Reset
+        setTouchStart(0);
+        setTouchEnd(0);
+    };
 
     useEffect(() => {
         if (!activeColorFamily || !Array.isArray(activeColorFamily.colors) || activeColorFamily.colors.length === 0) {
@@ -249,17 +289,36 @@ export const DynamicProductPage = () => {
                         className="md:w-1/2 w-full md:sticky md:top-24 md:self-start md:h-fit flex flex-col items-center md:items-start justify-center"
                         variants={itemVariants}
                     >
-                        <div className="relative group w-full flex items-center md:items-start justify-center">
+                        <div
+                            className="relative group w-full flex items-center md:items-start justify-center"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
                             <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#301A44]/10 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             <div
-                                className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center"
+                                className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center overflow-hidden"
                             >
                                 <img
                                     src={selectedImage || product.image}
-                                    alt={product.name}
+                                    alt={`${product.name} - Image ${selectedImageIndex + 1}`}
+                                    loading="lazy"
                                     className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
+                            {/* Swipe indicator for mobile */}
+                            {product.images && product.images.length > 1 && (
+                                <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+                                    {product.images.map((_, idx) => (
+                                        <div
+                                            key={idx}
+                                            className={`w-2 h-2 rounded-full transition-all ${
+                                                idx === selectedImageIndex ? 'bg-[#F0C85A] w-6' : 'bg-white/60'
+                                            }`}
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         {/* Image Gallery Thumbnails */}
                         {Array.isArray(product.images) && product.images.length > 1 && (
@@ -268,19 +327,23 @@ export const DynamicProductPage = () => {
                               {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
-                                  onClick={() => setSelectedImage(img)}
+                                  onClick={() => {
+                                    setSelectedImage(img);
+                                    setSelectedImageIndex(idx);
+                                  }}
                                   className={`border-2 rounded-xl p-1.5 transition-all duration-200 focus:outline-none hover:shadow-lg ${
-                                    selectedImage === img
+                                    selectedImageIndex === idx
                                       ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 shadow-md'
                                       : 'border-[#493657]/15 hover:border-[#493657]/30'
                                   }`}
-                                  style={{background: selectedImage === img ? '#F0C85A15' : 'white'}}
+                                  style={{background: selectedImageIndex === idx ? '#F0C85A15' : 'white'}}
                                   aria-label={`View image ${idx + 1}`}
                                   title={`${product.name} - Image ${idx + 1}`}
                                 >
                                   <img
                                     src={img}
                                     alt={`${product.name} view ${idx + 1}`}
+                                    loading="lazy"
                                     className="w-20 h-20 object-contain rounded-lg"
                                   />
                                 </button>
@@ -288,7 +351,7 @@ export const DynamicProductPage = () => {
                             </div>
                             {product.images.length > 1 && (
                               <p className="text-xs text-[#493657]/60 text-center md:text-left mt-3">
-                                {product.images.findIndex(img => img === selectedImage) + 1} / {product.images.length}
+                                {selectedImageIndex + 1} / {product.images.length}
                               </p>
                             )}
                           </div>
