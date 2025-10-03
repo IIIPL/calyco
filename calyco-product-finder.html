@@ -169,16 +169,17 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
             z-index: 1000;
-            display: none;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
         .chat-modal-overlay.active {
-            display: flex;
             opacity: 1;
-            align-items: flex-end;
-            justify-content: center;
+            visibility: visible;
         }
 
         /* Chat Modal Container */
@@ -871,37 +872,71 @@
         let currentQuestionIndex = 0;
         let userAnswers = {};
 
-        // DOM Elements
-        const chatModal = document.getElementById('chatModal');
-        const chatMessages = document.getElementById('chatMessages');
-        const startBtn = document.getElementById('startQuizBtn');
-        const closeBtn = document.getElementById('closeChat');
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
+        // DOM Elements (declare globally)
+        let chatModal;
+        let chatMessages;
+        let startBtn;
+        let closeBtn;
+        let progressBar;
+        let progressText;
 
-        // Initialize
-        startBtn.addEventListener('click', startQuiz);
-        closeBtn.addEventListener('click', closeQuiz);
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing quiz...');
 
-        // Close on overlay click
-        chatModal.addEventListener('click', (e) => {
-            if (e.target === chatModal) {
-                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
-                    closeQuiz();
-                }
+            // Initialize DOM Elements
+            chatModal = document.getElementById('chatModal');
+            chatMessages = document.getElementById('chatMessages');
+            startBtn = document.getElementById('startQuizBtn');
+            closeBtn = document.getElementById('closeChat');
+            progressBar = document.getElementById('progressBar');
+            progressText = document.getElementById('progressText');
+
+            // Debug: Check if elements exist
+            console.log('Start button:', startBtn);
+            console.log('Chat modal:', chatModal);
+
+            if (!startBtn) {
+                console.error('Start button not found!');
+                return;
             }
-        });
 
-        // Close on ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && chatModal.classList.contains('active')) {
-                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
-                    closeQuiz();
-                }
+            if (!chatModal) {
+                console.error('Chat modal not found!');
+                return;
             }
-        });
 
+            // Initialize - attach event listeners
+            startBtn.addEventListener('click', function() {
+                console.log('Start button clicked!');
+                startQuiz();
+            });
+
+            closeBtn.addEventListener('click', closeQuiz);
+
+            // Close on overlay click
+            chatModal.addEventListener('click', (e) => {
+                if (e.target === chatModal) {
+                    if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                        closeQuiz();
+                    }
+                }
+            });
+
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && chatModal.classList.contains('active')) {
+                    if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                        closeQuiz();
+                    }
+                }
+            });
+
+        }); // End DOMContentLoaded
+
+        // Define functions globally so they can be called from anywhere
         function startQuiz() {
+            console.log('startQuiz() called');
             currentQuestionIndex = 0;
             userAnswers = {};
             chatMessages.innerHTML = '';
@@ -1175,6 +1210,8 @@
                 userAnswers
             }));
         });
+
+        console.log('Script loaded successfully');
     </script>
 </body>
 </html>

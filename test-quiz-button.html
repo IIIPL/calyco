@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Quiz Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        .btn {
+            padding: 20px 40px;
+            font-size: 18px;
+            background: #2D5F3F;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #1e4029;
+        }
+        #quizModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        #quizModal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .close-btn {
+            float: right;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .answer-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .answer-btn:hover {
+            background: #e0e0e0;
+            border-color: #2D5F3F;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Quiz Button</h1>
+    <button class="btn" id="startQuizBtn">Start Product Finder</button>
+
+    <div id="quizModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <div id="quizContent">
+                <h2>Question 1 of 5</h2>
+                <p>What surface are you coating?</p>
+                <button class="answer-btn" data-value="interior">Interior walls</button>
+                <button class="answer-btn" data-value="exterior">Exterior walls</button>
+                <button class="answer-btn" data-value="concrete">Concrete or masonry</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Script starting...');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+
+            const startBtn = document.getElementById('startQuizBtn');
+            const modal = document.getElementById('quizModal');
+            const closeBtn = document.getElementById('closeBtn');
+
+            console.log('Start button:', startBtn);
+            console.log('Modal:', modal);
+
+            if (startBtn) {
+                startBtn.addEventListener('click', function() {
+                    console.log('Button clicked!');
+                    modal.classList.add('active');
+                });
+            } else {
+                console.error('Button not found!');
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    console.log('Close clicked!');
+                    modal.classList.remove('active');
+                });
+            }
+
+            // Close on overlay click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        console.log('Script loaded');
+    </script>
+</body>
+</html>
