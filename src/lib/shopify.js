@@ -1,6 +1,9 @@
 import Client from 'shopify-buy';
 import { SHOP_DOMAIN, SHOP_TOKEN, SHOPIFY_READY } from './env';
 
+// Re-export SHOPIFY_READY for convenience
+export { SHOPIFY_READY };
+
 export const shopifyClient = SHOPIFY_READY
   ? Client.buildClient({
       domain: SHOP_DOMAIN,

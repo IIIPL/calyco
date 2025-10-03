@@ -169,8 +169,67 @@ export const CartProvider = ({ children }) => {
     return null;
   };
 
-  const goToCheckout = () => {
-    // Redirect to existing checkout page
+  // Lazy-loaded Shopify checkout - only loads when user clicks checkout
+  const goToCheckout = async () => {
+    try {
+      // Check if cart has any Shopify products (Nova/CALYCO Interior)
+      const hasShopifyProducts = state.items.some(item =>
+        item.id === 'nova' ||
+        item.name?.includes('Nova') ||
+        item.name?.includes('CALYCO Interior')
+      );
+
+      if (hasShopifyProducts) {
+        // Dynamically import Shopify checkout hook
+        const { useShopifyCheckout } = await import('../hooks/useShopifyCheckout');
+        // Note: Can't use hooks here, so we'll import the logic directly
+
+        const { shopifyClient } = await import('../lib/shopify');
+        const { SHOPIFY_READY } = await import('../lib/env');
+
+        if (SHOPIFY_READY && shopifyClient) {
+          // Create checkout and add items
+          const checkout = await shopifyClient.checkout.create();
+
+          const lineItems = state.items
+            .filter(item => item.id === 'nova' || item.name?.includes('Nova'))
+            .map(item => {
+              const sizeMap = {
+                '1L': 'gid://shopify/ProductVariant/42585860702326',
+                '4L': 'gid://shopify/ProductVariant/42585863258230',
+                '10L': 'gid://shopify/ProductVariant/42585863290998',
+                '20L': 'gid://shopify/ProductVariant/42585863323766',
+              };
+
+              return {
+                variantId: sizeMap[item.selectedSize],
+                quantity: item.quantity,
+                customAttributes: [
+                  { key: 'Sheen', value: item.selectedSheen || '' },
+                  { key: 'Color Family', value: item.selectedColor?.family || '' },
+                  { key: 'Color', value: item.selectedColor?.name || '' },
+                ]
+              };
+            })
+            .filter(item => item.variantId);
+
+          if (lineItems.length > 0) {
+            const updatedCheckout = await shopifyClient.checkout.addLineItems(
+              checkout.id,
+              lineItems
+            );
+
+            // Redirect to Shopify checkout
+            window.location.href = updatedCheckout.webUrl;
+            return;
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Shopify checkout failed:', err);
+    }
+
+    // Fallback to regular checkout
     window.location.href = '/checkout';
   };
 
