@@ -1,11 +1,15 @@
 import Client from 'shopify-buy';
+import { SHOP_DOMAIN, SHOP_TOKEN, SHOPIFY_READY } from './env';
 
-export const shopifyClient = Client.buildClient({
-  domain: process.env.REACT_APP_SHOPIFY_STOREFRONT_DOMAIN,
-  storefrontAccessToken: process.env.REACT_APP_SHOPIFY_STOREFRONT_TOKEN,
-});
+export const shopifyClient = SHOPIFY_READY
+  ? Client.buildClient({
+      domain: SHOP_DOMAIN,
+      storefrontAccessToken: SHOP_TOKEN,
+    })
+  : null;
 
 export async function ensureCheckout(checkoutId) {
+  if (!shopifyClient) return null;
   try {
     if (checkoutId) {
       const existing = await shopifyClient.checkout.fetch(checkoutId);

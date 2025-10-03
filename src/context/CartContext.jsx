@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { shopifyClient, ensureCheckout } from '../lib/shopify';
+import { SHOPIFY_READY } from '../lib/env';
+
+if (!SHOPIFY_READY) {
+  console.error('[CALYCO] Shopify env not configured');
+}
 
 const CartCtx = createContext(null);
 export const useCart = () => useContext(CartCtx);
@@ -9,16 +14,19 @@ export default function CartProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!SHOPIFY_READY) return;
     (async () => {
       const saved = localStorage.getItem('checkoutId');
       const co = await ensureCheckout(saved);
-      setCheckout(co);
-      localStorage.setItem('checkoutId', co.id);
+      if (co?.id) {
+        setCheckout(co);
+        localStorage.setItem('checkoutId', co.id);
+      }
     })();
   }, []);
 
   const add = async ({ variantId, quantity = 1, custom = [] }) => {
-    if (!checkout?.id) return;
+    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
     setLoading(true);
     try {
       const items = [{ variantId, quantity, customAttributes: custom }];
@@ -31,7 +39,7 @@ export default function CartProvider({ children }) {
   };
 
   const remove = async (lineItemId) => {
-    if (!checkout?.id) return;
+    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
     setLoading(true);
     try {
       const updated = await shopifyClient.checkout.removeLineItems(checkout.id, [lineItemId]);
@@ -43,7 +51,7 @@ export default function CartProvider({ children }) {
   };
 
   const updateQty = async (lineItemId, quantity) => {
-    if (!checkout?.id) return;
+    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
     setLoading(true);
     try {
       const updated = await shopifyClient.checkout.updateLineItems(checkout.id, [{ id: lineItemId, quantity }]);
