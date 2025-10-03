@@ -71,20 +71,6 @@
             margin-bottom: 20px;
         }
 
-        h3 {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 16px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--charcoal);
-            margin-bottom: 16px;
-        }
-
         /* Container */
         .container {
             max-width: 1200px;
@@ -174,6 +160,319 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Chat Modal Overlay */
+        .chat-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .chat-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* Chat Modal Container */
+        .chat-modal {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 24px 24px 0 0;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-modal-overlay.active .chat-modal {
+            transform: translateY(0);
+        }
+
+        /* Chat Header */
+        .chat-header {
+            padding: 24px;
+            border-bottom: 2px solid var(--cream-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .chat-header-content h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+        }
+
+        .chat-progress {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Chat Messages Area */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px 24px;
+            background: var(--cream-bg);
+        }
+
+        /* Message Bubbles */
+        .message {
+            display: flex;
+            margin-bottom: 24px;
+            animation: messageSlideIn 0.3s ease-out;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 16px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-bubble {
+            background: white;
+            color: var(--charcoal);
+            border-bottom-left-radius: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .message.user .message-bubble {
+            background: var(--primary-green);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 6px;
+            padding: 16px 20px;
+            background: white;
+            border-radius: 20px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--warm-gray);
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Answer Options */
+        .answer-options {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .answer-option {
+            background: white;
+            border: 3px solid var(--cream-bg);
+            border-radius: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-align: left;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .answer-option:hover {
+            border-color: var(--primary-green);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .answer-option:active {
+            transform: scale(0.98);
+        }
+
+        .answer-option .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Results Section */
+        .results-content {
+            padding: 32px 24px;
+            background: white;
+        }
+
+        .loading-animation {
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--cream-bg);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        .product-result {
+            text-align: center;
+        }
+
+        .product-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .product-name {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .product-tagline {
+            font-size: 20px;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .product-benefits {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .product-benefits ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .product-benefits li {
+            padding-left: 32px;
+            margin-bottom: 16px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .product-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .product-ctas {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
         .btn-secondary {
             background-color: white;
             color: var(--primary-green);
@@ -195,356 +494,78 @@
             transform: translateY(-2px);
         }
 
-        /* Quiz Section */
-        .quiz-section {
-            padding: 80px 24px;
-            background-color: var(--warm-white);
-            min-height: 70vh;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .quiz-container {
-            max-width: 800px;
-            margin: 0 auto;
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background-color: var(--cream-bg);
-            border-radius: 20px;
-            margin-bottom: 48px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
         }
 
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-green) 0%, var(--success-green) 100%);
-            border-radius: 20px;
-            transition: width 0.4s ease;
-            width: 0%;
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        .progress-text {
-            text-align: center;
-            margin-bottom: 16px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--warm-gray);
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-modal {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .chat-header {
+                border-radius: 0;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+
+            .answer-options {
+                gap: 10px;
+            }
+
+            .product-ctas {
+                flex-direction: column;
+            }
+
+            .product-ctas .btn {
+                width: 100%;
+            }
         }
 
-        /* Question Card */
-        .question-card {
-            background: white;
-            border-radius: 24px;
-            padding: 56px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 32px;
-            display: none;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        .question-card.active {
-            display: block;
-        }
-
-        .question-number {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-green);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
-        }
-
-        .question-title {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 800;
-            margin-bottom: 40px;
-            color: var(--charcoal);
-            line-height: 1.2;
-        }
-
-        /* Answer Options */
-        .answers {
-            display: grid;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .answer-option {
-            background: var(--cream-bg);
-            border: 3px solid transparent;
-            border-radius: 16px;
-            padding: 24px 28px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--charcoal);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .answer-option::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, rgba(45, 95, 63, 0.05) 0%, transparent 100%);
-            transition: width 0.3s ease;
-        }
-
-        .answer-option:hover {
-            border-color: var(--primary-green);
-            background: white;
-            transform: translateX(4px);
-        }
-
-        .answer-option:hover::before {
-            width: 100%;
-        }
-
-        .answer-option.selected {
-            border-color: var(--primary-green);
-            background: linear-gradient(135deg, rgba(45, 95, 63, 0.08) 0%, white 100%);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .answer-option.selected::after {
-            content: '✓';
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-green);
-            font-size: 24px;
-            font-weight: 900;
-        }
-
-        /* Navigation Buttons */
-        .quiz-nav {
-            display: flex;
-            gap: 16px;
-            justify-content: space-between;
-        }
-
-        .quiz-nav .btn {
-            flex: 1;
-            max-width: 200px;
-        }
-
-        .btn-back {
-            background-color: var(--cream-bg);
-            color: var(--charcoal);
-            border: 2px solid var(--warm-gray);
-        }
-
-        .btn-back:hover {
-            background-color: #e8e8e6;
-        }
-
-        .btn-next:disabled {
-            background-color: var(--warm-gray);
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        .btn-next:disabled:hover {
-            transform: none;
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Results Section */
-        .results-section {
-            display: none;
-            padding: 80px 24px;
-            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream-bg) 100%);
-        }
-
-        .results-section.active {
-            display: block;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .results-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .results-header h2 {
-            color: var(--primary-green);
-            margin-bottom: 16px;
-        }
-
-        .results-subtitle {
-            font-size: 20px;
-            color: var(--warm-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Product Card */
-        .product-card {
-            background: white;
-            border-radius: 24px;
-            padding: 48px;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 48px;
-            border: 3px solid var(--primary-green);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: 'RECOMMENDED';
-            position: absolute;
-            top: 24px;
-            right: -32px;
-            background: var(--primary-green);
-            color: white;
-            padding: 8px 48px;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            transform: rotate(45deg);
-            box-shadow: var(--shadow-md);
-        }
-
-        .product-image {
-            width: 100%;
-            max-width: 400px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--cream-bg) 0%, #e8f5e9 100%);
-            border-radius: 16px;
-            margin: 0 auto 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 72px;
-            color: var(--primary-green);
-        }
-
-        .product-name {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 800;
-            color: var(--charcoal);
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-
-        .product-tagline {
-            font-size: 20px;
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 32px;
-        }
-
-        .product-benefits {
-            margin-bottom: 32px;
-        }
-
-        .product-benefits h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--charcoal);
-        }
-
-        .benefits-list {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .benefits-list li {
-            padding-left: 32px;
-            margin-bottom: 16px;
-            position: relative;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .benefits-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-green);
-            font-weight: 900;
-            font-size: 20px;
-        }
-
-        .product-specs {
-            background: var(--cream-bg);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 32px;
-        }
-
-        .product-specs h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--charcoal);
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .spec-item {
-            font-size: 15px;
-        }
-
-        .spec-label {
-            font-weight: 600;
-            color: var(--warm-gray);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .spec-value {
-            color: var(--charcoal);
-            font-weight: 700;
-        }
-
-        .product-ctas {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Trust Badges */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            padding: 48px 24px;
-            background: white;
-            margin-top: 48px;
-            border-radius: 16px;
-        }
-
-        .badge {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            max-width: 250px;
-        }
-
-        .badge-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .badge-text {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--charcoal);
+        /* Accessibility */
+        .answer-option:focus {
+            outline: 3px solid var(--primary-green);
+            outline-offset: 2px;
         }
 
         /* Testimonials */
@@ -634,91 +655,12 @@
             padding-left: 4px;
         }
 
-        .footer-cta {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--success-green) 100%);
-            padding: 32px;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .footer-cta h3 {
-            margin-bottom: 16px;
-        }
-
-        .footer-cta p {
-            margin-bottom: 24px;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 70vh;
-                padding: 60px 24px;
-            }
-
-            .question-card {
-                padding: 32px 24px;
-            }
-
-            .product-card {
-                padding: 32px 24px;
-            }
-
-            .quiz-nav {
-                flex-direction: column;
-            }
-
-            .quiz-nav .btn {
-                max-width: 100%;
-            }
-
-            .product-ctas {
-                flex-direction: column;
-            }
-
-            .product-ctas .btn {
-                width: 100%;
-            }
-        }
-
-        /* Accessibility */
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        /* Focus styles for keyboard navigation */
-        .answer-option:focus,
-        .btn:focus {
-            outline: 3px solid var(--primary-green);
-            outline-offset: 4px;
         }
     </style>
 </head>
@@ -728,192 +670,34 @@
         <div class="hero-content">
             <h1>Find Your Perfect Calyco Solution</h1>
             <p class="hero-subtitle">Answer 5 quick questions to discover which premium coating is engineered for your project</p>
-            <button class="btn btn-primary" id="startQuizBtn" onclick="startQuiz()">Start Product Finder</button>
+            <button class="btn btn-primary" id="startQuizBtn">Start Product Finder</button>
             <p class="tagline">Let's paint a cleaner future</p>
         </div>
     </section>
 
-    <!-- Quiz Section -->
-    <section class="quiz-section" id="quizSection" style="display: none;">
-        <div class="quiz-container">
-            <div class="progress-text" id="progressText">Question 1 of 5</div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
+    <!-- Chat Modal -->
+    <div class="chat-modal-overlay" id="chatModal">
+        <div class="chat-modal">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <h3>Product Finder</h3>
+                    <div class="chat-progress">
+                        <span id="progressText">Question 1 of 5</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="chat-close" id="closeChat" aria-label="Close">&times;</button>
             </div>
 
-            <!-- Question 1 -->
-            <div class="question-card active" data-question="1">
-                <div class="question-number">Question 01</div>
-                <h2 class="question-title">What surface are you coating?</h2>
-                <div class="answers">
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="interior-walls">
-                        Interior walls (residential)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="exterior-walls">
-                        Exterior walls (residential/commercial)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="concrete-masonry">
-                        Concrete or masonry
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="metal">
-                        Metal surfaces (machinery, equipment, automotive)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="wood">
-                        Wood (furniture, decks, structures)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="mixed">
-                        Mixed surfaces (warehouse, industrial facility)
-                    </div>
-                </div>
-                <div class="quiz-nav">
-                    <button class="btn btn-back" onclick="previousQuestion()" style="visibility: hidden;">Back</button>
-                    <button class="btn btn-primary btn-next" onclick="nextQuestion()" disabled>Next Question</button>
-                </div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="question-card" data-question="2">
-                <div class="question-number">Question 02</div>
-                <h2 class="question-title">What's your primary concern?</h2>
-                <div class="answers">
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="durability">
-                        Durability & longevity
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="eco-friendly">
-                        Eco-friendliness & low VOC
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="weather-resistance">
-                        Weather & moisture resistance
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="easy-application">
-                        Easy application & coverage
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="corrosion-protection">
-                        Corrosion protection
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="waterproofing">
-                        Waterproofing & sealing
-                    </div>
-                </div>
-                <div class="quiz-nav">
-                    <button class="btn btn-back" onclick="previousQuestion()">Back</button>
-                    <button class="btn btn-primary btn-next" onclick="nextQuestion()" disabled>Next Question</button>
-                </div>
-            </div>
-
-            <!-- Question 3 -->
-            <div class="question-card" data-question="3">
-                <div class="question-number">Question 03</div>
-                <h2 class="question-title">What's your project environment?</h2>
-                <div class="answers">
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="indoor">
-                        Indoor (climate controlled)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="outdoor">
-                        Outdoor (exposed to elements)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="commercial">
-                        High-traffic commercial space
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="industrial">
-                        Industrial/warehouse setting
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="coastal">
-                        Coastal or high-moisture area
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="submerged">
-                        Submerged or water-contact areas
-                    </div>
-                </div>
-                <div class="quiz-nav">
-                    <button class="btn btn-back" onclick="previousQuestion()">Back</button>
-                    <button class="btn btn-primary btn-next" onclick="nextQuestion()" disabled>Next Question</button>
-                </div>
-            </div>
-
-            <!-- Question 4 -->
-            <div class="question-card" data-question="4">
-                <div class="question-number">Question 04</div>
-                <h2 class="question-title">What finish do you prefer?</h2>
-                <div class="answers">
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="matte">
-                        Matte/Flat (subtle, no-glare)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="sheen">
-                        Subtle sheen (slight luster)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="glossy">
-                        Glossy (reflective, easy to clean)
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="clear">
-                        Clear/Transparent (natural surface show-through)
-                    </div>
-                </div>
-                <div class="quiz-nav">
-                    <button class="btn btn-back" onclick="previousQuestion()">Back</button>
-                    <button class="btn btn-primary btn-next" onclick="nextQuestion()" disabled>Next Question</button>
-                </div>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="question-card" data-question="5">
-                <div class="question-number">Question 05</div>
-                <h2 class="question-title">Who is applying this coating?</h2>
-                <div class="answers">
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="professional">
-                        Professional contractor
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="facilities">
-                        In-house facilities team
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="diy">
-                        DIY/Property owner
-                    </div>
-                    <div class="answer-option" tabindex="0" role="button" aria-pressed="false" data-value="industrial">
-                        Industrial applicator
-                    </div>
-                </div>
-                <div class="quiz-nav">
-                    <button class="btn btn-back" onclick="previousQuestion()">Back</button>
-                    <button class="btn btn-primary btn-next" onclick="showResults()">See My Results</button>
-                </div>
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be inserted here dynamically -->
             </div>
         </div>
-    </section>
-
-    <!-- Results Section -->
-    <section class="results-section" id="resultsSection">
-        <div class="container">
-            <div class="results-header">
-                <h2>Your Perfect Match</h2>
-                <p class="results-subtitle">Based on your answers, we recommend the following Calyco product for your project</p>
-            </div>
-
-            <!-- Product Card - Will be populated dynamically -->
-            <div id="productRecommendation"></div>
-
-            <!-- Trust Badges -->
-            <div class="trust-badges">
-                <div class="badge">
-                    <div class="badge-icon">🌱</div>
-                    <div class="badge-text">Low-VOC Certified</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-icon">🛡️</div>
-                    <div class="badge-text">10-Year Warranty</div>
-                </div>
-                <div class="badge">
-                    <div class="badge-icon">♻️</div>
-                    <div class="badge-text">Eco-Friendly Formula</div>
-                </div>
-            </div>
-
-            <!-- Restart Quiz Button -->
-            <div style="text-align: center; margin-top: 48px;">
-                <button class="btn btn-secondary" onclick="restartQuiz()">Take Quiz Again</button>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
@@ -969,11 +753,6 @@
                     <li><a href="/warranty">Warranty Info</a></li>
                 </ul>
             </div>
-            <div class="footer-section footer-cta">
-                <h3>Need Expert Help?</h3>
-                <p>Talk to a Calyco coating expert to find the perfect solution for your project.</p>
-                <a href="/contact" class="btn btn-secondary" style="background: white; color: var(--primary-green);">Contact an Expert</a>
-            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Calyco Products Pvt. Ltd. | www.calycopaints.com | All rights reserved</p>
@@ -982,17 +761,6 @@
     </footer>
 
     <script>
-        // Quiz State
-        let currentQuestion = 1;
-        const totalQuestions = 5;
-        const answers = {
-            surface: '',
-            concern: '',
-            environment: '',
-            finish: '',
-            applicator: ''
-        };
-
         // Product Definitions
         const products = {
             latexPaint: {
@@ -1007,14 +775,6 @@
                     'Low-VOC formula for healthier indoor air quality',
                     'Subtle sheen finish for elegant, modern aesthetics'
                 ],
-                specs: {
-                    coverage: '400-450 sq ft per gallon',
-                    drying: '1-2 hours touch dry, 4-6 hours recoat',
-                    finish: 'Subtle Sheen / Low Luster',
-                    surfaces: 'Drywall, Plaster, Primed Surfaces',
-                    application: 'Brush, Roller, or Spray',
-                    warranty: '10 Years'
-                },
                 idealFor: 'Interior residential walls, living rooms, bedrooms, climate-controlled spaces'
             },
             stainSealer: {
@@ -1027,17 +787,8 @@
                     'UV-resistant formula prevents sun damage and degradation',
                     'Breathable barrier allows surface moisture to escape',
                     'Anti-corrosive protection extends equipment lifespan',
-                    '5-10 years outdoor durability in harsh conditions',
-                    'Flat finish provides professional, uniform appearance'
+                    '5-10 years outdoor durability in harsh conditions'
                 ],
-                specs: {
-                    coverage: '300-350 sq ft per gallon',
-                    drying: '2-4 hours touch dry, 24 hours full cure',
-                    finish: 'Flat / Matte',
-                    surfaces: 'Concrete, Metal, Wood, Plaster, Asphalt, Tile',
-                    application: 'Brush, Roller, or Spray',
-                    warranty: '10 Years'
-                },
                 idealFor: 'Exterior walls, decks, machinery, equipment, infrastructure, industrial facilities'
             },
             waterproofSealer: {
@@ -1050,103 +801,257 @@
                     'Breathable formula prevents trapped moisture buildup',
                     'Crystal-clear or tinted options preserve natural aesthetics',
                     'Flexible membrane accommodates surface movement',
-                    'Mold and mildew resistant formulation',
-                    'Long-lasting protection for water-exposed surfaces',
-                    'Safe for potable water contact areas'
+                    'Mold and mildew resistant formulation'
                 ],
-                specs: {
-                    coverage: '250-300 sq ft per gallon',
-                    drying: '4-6 hours touch dry, 48 hours full cure',
-                    finish: 'Clear / Transparent or Tinted',
-                    surfaces: 'Concrete, Masonry, Cement, Foundation Walls',
-                    application: 'Brush, Roller, or Spray',
-                    warranty: '15 Years'
-                },
                 idealFor: 'Basements, foundations, bathrooms, pool areas, roofs, below-grade walls, water tanks'
             }
         };
 
-        // Start Quiz
-        function startQuiz() {
-            document.querySelector('.hero').style.display = 'none';
-            document.getElementById('quizSection').style.display = 'block';
-            updateProgress();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        // Questions with icons
+        const questions = [
+            {
+                id: 'surface',
+                text: 'What surface are you coating?',
+                options: [
+                    { value: 'interior-walls', label: 'Interior walls (residential)', icon: '🏠' },
+                    { value: 'exterior-walls', label: 'Exterior walls (residential/commercial)', icon: '🏢' },
+                    { value: 'concrete-masonry', label: 'Concrete or masonry', icon: '🧱' },
+                    { value: 'metal', label: 'Metal surfaces (machinery, equipment)', icon: '⚙️' },
+                    { value: 'wood', label: 'Wood (furniture, decks, structures)', icon: '🪵' },
+                    { value: 'mixed', label: 'Mixed surfaces (warehouse, industrial)', icon: '🏭' }
+                ]
+            },
+            {
+                id: 'concern',
+                text: "What's your primary concern?",
+                options: [
+                    { value: 'durability', label: 'Durability & longevity', icon: '💪' },
+                    { value: 'eco-friendly', label: 'Eco-friendliness & low VOC', icon: '🌱' },
+                    { value: 'weather-resistance', label: 'Weather & moisture resistance', icon: '⛈️' },
+                    { value: 'easy-application', label: 'Easy application & coverage', icon: '🖌️' },
+                    { value: 'corrosion-protection', label: 'Corrosion protection', icon: '🛡️' },
+                    { value: 'waterproofing', label: 'Waterproofing & sealing', icon: '💧' }
+                ]
+            },
+            {
+                id: 'environment',
+                text: "What's your project environment?",
+                options: [
+                    { value: 'indoor', label: 'Indoor (climate controlled)', icon: '🏠' },
+                    { value: 'outdoor', label: 'Outdoor (exposed to elements)', icon: '🌤️' },
+                    { value: 'commercial', label: 'High-traffic commercial space', icon: '🚶' },
+                    { value: 'industrial', label: 'Industrial/warehouse setting', icon: '🏭' },
+                    { value: 'coastal', label: 'Coastal or high-moisture area', icon: '🌊' },
+                    { value: 'submerged', label: 'Submerged or water-contact areas', icon: '💦' }
+                ]
+            },
+            {
+                id: 'finish',
+                text: 'What finish do you prefer?',
+                options: [
+                    { value: 'matte', label: 'Matte/Flat (subtle, no-glare)', icon: '⚪' },
+                    { value: 'sheen', label: 'Subtle sheen (slight luster)', icon: '✨' },
+                    { value: 'glossy', label: 'Glossy (reflective, easy to clean)', icon: '💎' },
+                    { value: 'clear', label: 'Clear/Transparent (natural show-through)', icon: '🔍' }
+                ]
+            },
+            {
+                id: 'applicator',
+                text: 'Who is applying this coating?',
+                options: [
+                    { value: 'professional', label: 'Professional contractor', icon: '👷' },
+                    { value: 'facilities', label: 'In-house facilities team', icon: '👔' },
+                    { value: 'diy', label: 'DIY/Property owner', icon: '🔨' },
+                    { value: 'industrial', label: 'Industrial applicator', icon: '⚙️' }
+                ]
+            }
+        ];
 
-        // Answer Selection
-        document.addEventListener('DOMContentLoaded', function() {
-            const answerOptions = document.querySelectorAll('.answer-option');
+        // Quiz State
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
 
-            answerOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    selectAnswer(this);
-                });
+        // DOM Elements
+        const chatModal = document.getElementById('chatModal');
+        const chatMessages = document.getElementById('chatMessages');
+        const startBtn = document.getElementById('startQuizBtn');
+        const closeBtn = document.getElementById('closeChat');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
 
-                option.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        selectAnswer(this);
-                    }
-                });
-            });
+        // Initialize
+        startBtn.addEventListener('click', startQuiz);
+        closeBtn.addEventListener('click', closeQuiz);
+
+        // Close on overlay click
+        chatModal.addEventListener('click', (e) => {
+            if (e.target === chatModal) {
+                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                    closeQuiz();
+                }
+            }
         });
 
-        function selectAnswer(element) {
-            const questionCard = element.closest('.question-card');
-            const allOptions = questionCard.querySelectorAll('.answer-option');
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && chatModal.classList.contains('active')) {
+                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                    closeQuiz();
+                }
+            }
+        });
 
-            allOptions.forEach(opt => {
-                opt.classList.remove('selected');
-                opt.setAttribute('aria-pressed', 'false');
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            chatMessages.innerHTML = '';
+            chatModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Welcome message
+            setTimeout(() => {
+                addBotMessage("Hi! I'm your Calyco Product Assistant. Let me help you find the perfect coating solution for your project. 👋");
+                setTimeout(() => {
+                    askQuestion();
+                }, 1000);
+            }, 500);
+        }
+
+        function closeQuiz() {
+            chatModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">🎨</div>
+                <div class="message-bubble">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot typing-indicator active';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🎨</div>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        function askQuestion() {
+            const question = questions[currentQuestionIndex];
+
+            showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                addBotMessage(question.text);
+                showAnswerOptions(question.options, question.id);
+                updateProgress();
+            }, 800);
+        }
+
+        function showAnswerOptions(options, questionId) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'answer-options';
+
+            options.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'answer-option';
+                optionBtn.innerHTML = `
+                    <span class="icon">${option.icon}</span>
+                    <span>${option.label}</span>
+                `;
+                optionBtn.addEventListener('click', () => selectAnswer(option, questionId, optionsDiv));
+                optionsDiv.appendChild(optionBtn);
             });
 
-            element.classList.add('selected');
-            element.setAttribute('aria-pressed', 'true');
-
-            const questionNum = parseInt(questionCard.dataset.question);
-            const value = element.dataset.value;
-
-            switch(questionNum) {
-                case 1: answers.surface = value; break;
-                case 2: answers.concern = value; break;
-                case 3: answers.environment = value; break;
-                case 4: answers.finish = value; break;
-                case 5: answers.applicator = value; break;
-            }
-
-            const nextButton = questionCard.querySelector('.btn-next');
-            nextButton.disabled = false;
+            chatMessages.appendChild(optionsDiv);
+            scrollToBottom();
         }
 
-        // Navigation
-        function nextQuestion() {
-            if (currentQuestion < totalQuestions) {
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
-                currentQuestion++;
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
-                updateProgress();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
+        function selectAnswer(option, questionId, optionsDiv) {
+            // Save answer
+            userAnswers[questionId] = option.value;
 
-        function previousQuestion() {
-            if (currentQuestion > 1) {
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
-                currentQuestion--;
-                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
-                updateProgress();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Show user's selection
+            addUserMessage(`${option.icon} ${option.label}`);
+
+            // Remove options
+            optionsDiv.remove();
+
+            // Move to next question or show results
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(() => {
+                    askQuestion();
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    showResults();
+                }, 800);
             }
         }
 
         function updateProgress() {
-            const progress = (currentQuestion / totalQuestions) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = progress + '%';
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
         }
 
-        // Product Recommendation Logic
+        function showResults() {
+            showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                addBotMessage("Great! Let me analyze your needs and find the perfect product...");
+
+                // Show loading animation
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'loading-animation';
+                loadingDiv.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <p style="color: var(--warm-gray); font-weight: 600;">Analyzing your requirements...</p>
+                `;
+                chatMessages.appendChild(loadingDiv);
+                scrollToBottom();
+
+                setTimeout(() => {
+                    loadingDiv.remove();
+                    displayRecommendation();
+                }, 2000);
+            }, 800);
+        }
+
         function getRecommendation() {
             let score = {
                 latexPaint: 0,
@@ -1155,50 +1060,50 @@
             };
 
             // Surface scoring
-            if (answers.surface === 'interior-walls') {
+            if (userAnswers.surface === 'interior-walls') {
                 score.latexPaint += 10;
-            } else if (answers.surface === 'exterior-walls' || answers.surface === 'wood' || answers.surface === 'metal') {
+            } else if (userAnswers.surface === 'exterior-walls' || userAnswers.surface === 'wood' || userAnswers.surface === 'metal') {
                 score.stainSealer += 10;
-            } else if (answers.surface === 'concrete-masonry') {
+            } else if (userAnswers.surface === 'concrete-masonry') {
                 score.waterproofSealer += 7;
                 score.stainSealer += 7;
-            } else if (answers.surface === 'mixed') {
+            } else if (userAnswers.surface === 'mixed') {
                 score.stainSealer += 10;
             }
 
             // Concern scoring
-            if (answers.concern === 'eco-friendly' || answers.concern === 'easy-application') {
+            if (userAnswers.concern === 'eco-friendly' || userAnswers.concern === 'easy-application') {
                 score.latexPaint += 8;
-            } else if (answers.concern === 'weather-resistance' || answers.concern === 'corrosion-protection') {
+            } else if (userAnswers.concern === 'weather-resistance' || userAnswers.concern === 'corrosion-protection') {
                 score.stainSealer += 10;
-            } else if (answers.concern === 'waterproofing') {
+            } else if (userAnswers.concern === 'waterproofing') {
                 score.waterproofSealer += 10;
-            } else if (answers.concern === 'durability') {
+            } else if (userAnswers.concern === 'durability') {
                 score.stainSealer += 7;
                 score.waterproofSealer += 5;
             }
 
             // Environment scoring
-            if (answers.environment === 'indoor') {
+            if (userAnswers.environment === 'indoor') {
                 score.latexPaint += 10;
-            } else if (answers.environment === 'outdoor' || answers.environment === 'industrial') {
+            } else if (userAnswers.environment === 'outdoor' || userAnswers.environment === 'industrial') {
                 score.stainSealer += 10;
-            } else if (answers.environment === 'coastal' || answers.environment === 'submerged') {
+            } else if (userAnswers.environment === 'coastal' || userAnswers.environment === 'submerged') {
                 score.waterproofSealer += 10;
-            } else if (answers.environment === 'commercial') {
+            } else if (userAnswers.environment === 'commercial') {
                 score.latexPaint += 5;
                 score.stainSealer += 5;
             }
 
             // Finish scoring
-            if (answers.finish === 'sheen') {
+            if (userAnswers.finish === 'sheen') {
                 score.latexPaint += 8;
-            } else if (answers.finish === 'matte') {
+            } else if (userAnswers.finish === 'matte') {
                 score.stainSealer += 7;
                 score.latexPaint += 3;
-            } else if (answers.finish === 'clear') {
+            } else if (userAnswers.finish === 'clear') {
                 score.waterproofSealer += 10;
-            } else if (answers.finish === 'glossy') {
+            } else if (userAnswers.finish === 'glossy') {
                 score.latexPaint += 5;
             }
 
@@ -1217,90 +1122,59 @@
             return recommended;
         }
 
-        // Show Results
-        function showResults() {
-            const selectedAnswer = document.querySelector(`[data-question="${currentQuestion}"] .answer-option.selected`);
-            if (!selectedAnswer) {
-                alert('Please select an answer before proceeding.');
-                return;
-            }
+        function displayRecommendation() {
+            const recommendedKey = getRecommendation();
+            const product = products[recommendedKey];
 
-            document.getElementById('quizSection').style.display = 'none';
-            document.getElementById('resultsSection').classList.add('active');
+            addBotMessage("Perfect! Based on your answers, I recommend:");
 
-            const recommendedProduct = getRecommendation();
-            displayProduct(recommendedProduct);
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function displayProduct(productKey) {
-            const product = products[productKey];
-            const container = document.getElementById('productRecommendation');
-
-            const benefitsList = product.benefits.map(benefit => `<li>${benefit}</li>`).join('');
-            const specsHTML = Object.entries(product.specs).map(([label, value]) => `
-                <div class="spec-item">
-                    <span class="spec-label">${label.charAt(0).toUpperCase() + label.slice(1)}:</span>
-                    <span class="spec-value">${value}</span>
-                </div>
-            `).join('');
-
-            container.innerHTML = `
-                <div class="product-card">
-                    <div class="product-image">${product.icon}</div>
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results-content';
+            resultDiv.innerHTML = `
+                <div class="product-result">
+                    <div class="product-icon">${product.icon}</div>
                     <h3 class="product-name">${product.name}</h3>
                     <p class="product-tagline">${product.tagline}</p>
 
                     <div class="product-benefits">
-                        <h3>Key Benefits</h3>
-                        <ul class="benefits-list">
-                            ${benefitsList}
+                        <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; text-align: center;">Key Benefits</h4>
+                        <ul>
+                            ${product.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
                         </ul>
                     </div>
 
-                    <div class="product-specs">
-                        <h4>Technical Specifications</h4>
-                        <div class="specs-grid">
-                            ${specsHTML}
-                        </div>
-                    </div>
-
-                    <p style="margin-bottom: 24px; font-size: 16px; color: var(--warm-gray);">
+                    <p style="margin-bottom: 24px; color: var(--warm-gray); font-size: 15px;">
                         <strong>Ideal for:</strong> ${product.idealFor}
                     </p>
 
                     <div class="product-ctas">
-                        <a href="/products/${productKey}" class="btn btn-primary">Learn More About This Product</a>
-                        <a href="/contact" class="btn btn-tertiary">Contact a Coating Expert</a>
+                        <a href="/products/${recommendedKey}" class="btn btn-primary">Learn More</a>
+                        <a href="/contact" class="btn btn-tertiary">Talk to Expert</a>
+                        <button class="btn btn-secondary" onclick="startQuiz()">Start Over</button>
                     </div>
                 </div>
             `;
+
+            chatMessages.appendChild(resultDiv);
+            scrollToBottom();
+
+            progressText.textContent = 'Complete!';
+            progressBar.style.width = '100%';
         }
 
-        function restartQuiz() {
-            currentQuestion = 1;
-            answers.surface = '';
-            answers.concern = '';
-            answers.environment = '';
-            answers.environment = '';
-            answers.finish = '';
-            answers.applicator = '';
-
-            document.querySelectorAll('.answer-option').forEach(opt => {
-                opt.classList.remove('selected');
-                opt.setAttribute('aria-pressed', 'false');
-            });
-
-            document.querySelectorAll('.btn-next').forEach(btn => {
-                btn.disabled = true;
-            });
-
-            document.getElementById('resultsSection').classList.remove('active');
-            document.querySelector('.hero').style.display = 'flex';
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function scrollToBottom() {
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 100);
         }
+
+        // Save progress to sessionStorage
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('quizProgress', JSON.stringify({
+                currentQuestionIndex,
+                userAnswers
+            }));
+        });
     </script>
 </body>
 </html>
