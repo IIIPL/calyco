@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import { useCart } from '../context/CartContext';
 
 const CartPage = () => {
-  const { items, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const { items, removeFromCart, updateQuantity, getCartTotal, goToCheckout } = useCart();
   return (
     <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
@@ -39,7 +39,12 @@ const CartPage = () => {
           <div className="font-semibold text-[#342347]">Summary</div>
           <div className="mt-2 text-sm text-gray-600">GST number can be added during checkout. // TODO:</div>
           <div className="mt-4 font-bold">Total: ₹{getCartTotal()}</div>
-          <a href="/checkout" className="mt-4 inline-block w-full text-center px-4 py-3 rounded-xl bg-[#493657] text-white font-semibold hover:bg-[#5a4067]">Checkout</a>
+          <button
+            onClick={goToCheckout}
+            className="mt-4 w-full px-4 py-3 rounded-xl bg-[#493657] text-white font-semibold hover:bg-[#5a4067] transition-colors"
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>
