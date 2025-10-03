@@ -171,15 +171,22 @@ export const CartProvider = ({ children }) => {
 
   // Lazy-loaded Shopify checkout - only loads when user clicks checkout
   const goToCheckout = async () => {
+    console.log('[CALYCO] Starting checkout process...');
+    console.log('[CALYCO] Cart items:', state.items);
+
     try {
       // Check if cart has any Shopify products (Nova/CALYCO Interior)
       const hasShopifyProducts = state.items.some(item =>
         item.id === 'nova' ||
-        item.name?.includes('Nova') ||
-        item.name?.includes('CALYCO Interior')
+        item.name?.toLowerCase().includes('nova') ||
+        item.name?.toLowerCase().includes('calyco interior') ||
+        item.name?.toLowerCase().includes('interior latex')
       );
 
+      console.log('[CALYCO] Has Shopify products?', hasShopifyProducts);
+
       if (hasShopifyProducts) {
+        console.log('[CALYCO] Loading Shopify client...');
         // Dynamically import Shopify checkout hook
         const { useShopifyCheckout } = await import('../hooks/useShopifyCheckout');
         // Note: Can't use hooks here, so we'll import the logic directly
@@ -187,12 +194,22 @@ export const CartProvider = ({ children }) => {
         const { shopifyClient } = await import('../lib/shopify');
         const { SHOPIFY_READY } = await import('../lib/env');
 
+        console.log('[CALYCO] SHOPIFY_READY:', SHOPIFY_READY);
+        console.log('[CALYCO] shopifyClient:', !!shopifyClient);
+
         if (SHOPIFY_READY && shopifyClient) {
+          console.log('[CALYCO] Creating Shopify checkout...');
           // Create checkout and add items
           const checkout = await shopifyClient.checkout.create();
+          console.log('[CALYCO] Checkout created:', checkout.id);
 
           const lineItems = state.items
-            .filter(item => item.id === 'nova' || item.name?.includes('Nova'))
+            .filter(item =>
+              item.id === 'nova' ||
+              item.name?.toLowerCase().includes('nova') ||
+              item.name?.toLowerCase().includes('calyco interior') ||
+              item.name?.toLowerCase().includes('interior latex')
+            )
             .map(item => {
               const sizeMap = {
                 '1L': 'gid://shopify/ProductVariant/42585860702326',
@@ -213,23 +230,32 @@ export const CartProvider = ({ children }) => {
             })
             .filter(item => item.variantId);
 
+          console.log('[CALYCO] Line items:', lineItems);
+
           if (lineItems.length > 0) {
+            console.log('[CALYCO] Adding line items to checkout...');
             const updatedCheckout = await shopifyClient.checkout.addLineItems(
               checkout.id,
               lineItems
             );
 
+            console.log('[CALYCO] Checkout URL:', updatedCheckout.webUrl);
             // Redirect to Shopify checkout
             window.location.href = updatedCheckout.webUrl;
             return;
+          } else {
+            console.log('[CALYCO] No valid line items, falling back to /checkout');
           }
+        } else {
+          console.log('[CALYCO] Shopify not ready, falling back to /checkout');
         }
       }
     } catch (err) {
-      console.error('Shopify checkout failed:', err);
+      console.error('[CALYCO] Shopify checkout failed:', err);
     }
 
     // Fallback to regular checkout
+    console.log('[CALYCO] Redirecting to /checkout');
     window.location.href = '/checkout';
   };
 
