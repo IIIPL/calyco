@@ -671,7 +671,7 @@
         <div class="hero-content">
             <h1>Find Your Perfect Calyco Solution</h1>
             <p class="hero-subtitle">Answer 5 quick questions to discover which premium coating is engineered for your project</p>
-            <button class="btn btn-primary" id="startQuizBtn">Start Product Finder</button>
+            <button class="btn btn-primary" id="startQuizBtn" onclick="openQuizModal()">Start Product Finder</button>
             <p class="tagline">Let's paint a cleaner future</p>
         </div>
     </section>
@@ -762,6 +762,23 @@
     </footer>
 
     <script>
+        // SIMPLE FUNCTION TO OPEN MODAL - Called directly from button onclick
+        function openQuizModal() {
+            console.log('openQuizModal called!');
+            const modal = document.getElementById('chatModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.log('Modal opened!');
+                // Start the quiz
+                setTimeout(function() {
+                    startQuiz();
+                }, 100);
+            } else {
+                console.error('Modal not found!');
+            }
+        }
+
         // Product Definitions
         const products = {
             latexPaint: {
@@ -939,8 +956,18 @@
             console.log('startQuiz() called');
             currentQuestionIndex = 0;
             userAnswers = {};
-            chatMessages.innerHTML = '';
-            chatModal.classList.add('active');
+
+            // Get elements fresh each time
+            const messages = document.getElementById('chatMessages');
+            const modal = document.getElementById('chatModal');
+
+            if (!messages || !modal) {
+                console.error('Required elements not found!');
+                return;
+            }
+
+            messages.innerHTML = '';
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
             // Welcome message
@@ -953,11 +980,17 @@
         }
 
         function closeQuiz() {
-            chatModal.classList.remove('active');
-            document.body.style.overflow = '';
+            const modal = document.getElementById('chatModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         }
 
         function addBotMessage(text) {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message bot';
             messageDiv.innerHTML = `
@@ -969,6 +1002,9 @@
         }
 
         function addUserMessage(text) {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message user';
             messageDiv.innerHTML = `
@@ -979,6 +1015,9 @@
         }
 
         function showTypingIndicator() {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+
             const typingDiv = document.createElement('div');
             typingDiv.className = 'message bot typing-indicator active';
             typingDiv.id = 'typingIndicator';
@@ -1015,6 +1054,9 @@
         }
 
         function showAnswerOptions(options, questionId) {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+
             const optionsDiv = document.createElement('div');
             optionsDiv.className = 'answer-options';
 
@@ -1058,9 +1100,14 @@
         }
 
         function updateProgress() {
-            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-            progressBar.style.width = progress + '%';
-            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+
+            if (progressBar && progressText) {
+                const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+                progressBar.style.width = progress + '%';
+                progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            }
         }
 
         function showResults() {
@@ -1071,6 +1118,9 @@
                 addBotMessage("Great! Let me analyze your needs and find the perfect product...");
 
                 // Show loading animation
+                const chatMessages = document.getElementById('chatMessages');
+                if (!chatMessages) return;
+
                 const loadingDiv = document.createElement('div');
                 loadingDiv.className = 'loading-animation';
                 loadingDiv.innerHTML = `
@@ -1163,6 +1213,12 @@
 
             addBotMessage("Perfect! Based on your answers, I recommend:");
 
+            const chatMessages = document.getElementById('chatMessages');
+            const progressText = document.getElementById('progressText');
+            const progressBar = document.getElementById('progressBar');
+
+            if (!chatMessages) return;
+
             const resultDiv = document.createElement('div');
             resultDiv.className = 'results-content';
             resultDiv.innerHTML = `
@@ -1185,7 +1241,7 @@
                     <div class="product-ctas">
                         <a href="/products/${recommendedKey}" class="btn btn-primary">Learn More</a>
                         <a href="/contact" class="btn btn-tertiary">Talk to Expert</a>
-                        <button class="btn btn-secondary" onclick="startQuiz()">Start Over</button>
+                        <button class="btn btn-secondary" onclick="openQuizModal()">Start Over</button>
                     </div>
                 </div>
             `;
@@ -1193,13 +1249,16 @@
             chatMessages.appendChild(resultDiv);
             scrollToBottom();
 
-            progressText.textContent = 'Complete!';
-            progressBar.style.width = '100%';
+            if (progressText) progressText.textContent = 'Complete!';
+            if (progressBar) progressBar.style.width = '100%';
         }
 
         function scrollToBottom() {
             setTimeout(() => {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                const chatMessages = document.getElementById('chatMessages');
+                if (chatMessages) {
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
             }, 100);
         }
 
