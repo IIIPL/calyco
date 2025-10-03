@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
-import { shopifyClient, ensureCheckout } from '../lib/shopify';
-import { SHOPIFY_READY } from '../lib/env';
+// Shopify imports commented out for performance - causing 5min load times
+// import { shopifyClient, ensureCheckout } from '../lib/shopify';
+// import { SHOPIFY_READY } from '../lib/env';
 
-if (!SHOPIFY_READY) {
-  console.error('[CALYCO] Shopify env not configured');
-}
+// if (!SHOPIFY_READY) {
+//   console.error('[CALYCO] Shopify env not configured');
+// }
 
 const CartContext = createContext();
 
@@ -95,17 +96,10 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('calycoCart', JSON.stringify(state));
   }, [state]);
 
-  // Initialize Shopify checkout
+  // Initialize Shopify checkout - disabled for performance
+  // Only initialize when user actually tries to checkout
   useEffect(() => {
-    if (!SHOPIFY_READY) return;
-    (async () => {
-      const saved = localStorage.getItem('checkoutId');
-      const co = await ensureCheckout(saved);
-      if (co?.id) {
-        setCheckout(co);
-        localStorage.setItem('checkoutId', co.id);
-      }
-    })();
+    // Shopify checkout initialization disabled - will be lazy-loaded on demand
   }, []);
 
   const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride, selectedColor) => {
@@ -159,46 +153,25 @@ export const CartProvider = ({ children }) => {
     return state.items.reduce((count, item) => count + item.quantity, 0);
   };
 
-  // Shopify-specific functions
+  // Shopify-specific functions - disabled for performance
   const add = async ({ variantId, quantity = 1, custom = [] }) => {
-    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
-    setLoading(true);
-    try {
-      const items = [{ variantId, quantity, customAttributes: custom }];
-      const updated = await shopifyClient.checkout.addLineItems(checkout.id, items);
-      setCheckout(updated);
-      return updated;
-    } finally {
-      setLoading(false);
-    }
+    console.log('Shopify checkout disabled for performance');
+    return null;
   };
 
   const remove = async (lineItemId) => {
-    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
-    setLoading(true);
-    try {
-      const updated = await shopifyClient.checkout.removeLineItems(checkout.id, [lineItemId]);
-      setCheckout(updated);
-      return updated;
-    } finally {
-      setLoading(false);
-    }
+    console.log('Shopify checkout disabled for performance');
+    return null;
   };
 
   const updateQty = async (lineItemId, quantity) => {
-    if (!SHOPIFY_READY || !shopifyClient || !checkout?.id) return;
-    setLoading(true);
-    try {
-      const updated = await shopifyClient.checkout.updateLineItems(checkout.id, [{ id: lineItemId, quantity }]);
-      setCheckout(updated);
-      return updated;
-    } finally {
-      setLoading(false);
-    }
+    console.log('Shopify checkout disabled for performance');
+    return null;
   };
 
   const goToCheckout = () => {
-    if (checkout?.webUrl) window.location.href = checkout.webUrl;
+    // Redirect to existing checkout page
+    window.location.href = '/checkout';
   };
 
   const value = {

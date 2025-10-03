@@ -1,19 +1,11 @@
 import { useCart } from '../context/CartContext';
-import { SHOPIFY_READY } from '../lib/env';
 
 export default function Cart() {
   const { checkout, updateQty, remove, goToCheckout, loading } = useCart();
 
-  if (!SHOPIFY_READY) {
-    return (
-      <div style={{ padding: '1rem', textAlign: 'center', color: '#666' }}>
-        Checkout temporarily unavailable – Shopify not configured.
-      </div>
-    );
-  }
-
+  // Shopify cart disabled for performance
   if (!checkout) return null;
-  const items = checkout.lineItems || [];
+  const items = checkout?.lineItems || [];
 
   return (
     <div>

@@ -1,5 +1,6 @@
 export const products = [
   {
+    "id": "nova",
     "url": "https://calycopaints.com/product/nova",
     "name": "Nova",
     "image": "/Assets/Nova/1-main.png",
