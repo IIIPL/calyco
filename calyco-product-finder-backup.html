@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calyco Product Finder: Discover Your Perfect Paint & Coating Solution</title>
+    <meta name="description" content="Not sure which Calyco product is right for your project? Answer a few questions about your surface, environment, and finish preferences to find the perfect paint or sealer solution.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Calyco Product Finder: Discover Your Perfect Paint & Coating Solution">
+    <meta property="og:description" content="Answer a few questions to find the perfect Calyco paint or sealer for your project.">
+    <meta property="og:image" content="https://www.calycopaints.com/images/product-finder-og.jpg">
+    <meta property="og:url" content="https://www.calycopaints.com/pages/product-finder">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calyco Product Finder: Discover Your Perfect Paint & Coating Solution">
+    <meta name="twitter:description" content="Answer a few questions to find the perfect Calyco paint or sealer for your project.">
+    <meta name="twitter:image" content="https://www.calycopaints.com/images/product-finder-twitter.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.calycopaints.com/pages/product-finder">
+
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2D5F3F;
+            --primary-green-dark: #1e4029;
+            --accent-terracotta: #C97C5D;
+            --charcoal: #1a1a1a;
+            --warm-white: #FEFEFE;
+            --cream-bg: #F9F9F7;
+            --warm-gray: #8B8680;
+            --success-green: #4CAF50;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background-color: var(--warm-white);
+            font-size: 17px;
+        }
+
+        /* Typography - Bold & Oversized */
+        h1 {
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            color: var(--charcoal);
+        }
+
+        h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--cream-bg) 0%, var(--warm-white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(45, 95, 63, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(20px, 3vw, 26px);
+            color: var(--warm-gray);
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-top: 32px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-green-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Chat Modal Overlay */
+        .chat-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .chat-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        /* Chat Modal Container */
+        .chat-modal {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 24px 24px 0 0;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-modal-overlay.active .chat-modal {
+            transform: translateY(0);
+        }
+
+        /* Chat Header */
+        .chat-header {
+            padding: 24px;
+            border-bottom: 2px solid var(--cream-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .chat-header-content h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+        }
+
+        .chat-progress {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Chat Messages Area */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px 24px;
+            background: var(--cream-bg);
+        }
+
+        /* Message Bubbles */
+        .message {
+            display: flex;
+            margin-bottom: 24px;
+            animation: messageSlideIn 0.3s ease-out;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 16px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-bubble {
+            background: white;
+            color: var(--charcoal);
+            border-bottom-left-radius: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .message.user .message-bubble {
+            background: var(--primary-green);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 6px;
+            padding: 16px 20px;
+            background: white;
+            border-radius: 20px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--warm-gray);
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Answer Options */
+        .answer-options {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .answer-option {
+            background: white;
+            border: 3px solid var(--cream-bg);
+            border-radius: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-align: left;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .answer-option:hover {
+            border-color: var(--primary-green);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .answer-option:active {
+            transform: scale(0.98);
+        }
+
+        .answer-option .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Results Section */
+        .results-content {
+            padding: 32px 24px;
+            background: white;
+        }
+
+        .loading-animation {
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--cream-bg);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        .product-result {
+            text-align: center;
+        }
+
+        .product-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        .product-name {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 900;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .product-tagline {
+            font-size: 20px;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .product-benefits {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .product-benefits ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .product-benefits li {
+            padding-left: 32px;
+            margin-bottom: 16px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .product-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .product-ctas {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--cream-bg);
+            transform: translateY(-2px);
+        }
+
+        .btn-tertiary {
+            background-color: var(--accent-terracotta);
+            color: white;
+        }
+
+        .btn-tertiary:hover {
+            background-color: #b36b4d;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-modal {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .chat-header {
+                border-radius: 0;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+
+            .answer-options {
+                gap: 10px;
+            }
+
+            .product-ctas {
+                flex-direction: column;
+            }
+
+            .product-ctas .btn {
+                width: 100%;
+            }
+        }
+
+        /* Accessibility */
+        .answer-option:focus {
+            outline: 3px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 24px;
+            background: var(--warm-white);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: var(--warm-gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 64px 24px 32px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Calyco Solution</h1>
+            <p class="hero-subtitle">Answer 5 quick questions to discover which premium coating is engineered for your project</p>
+            <button class="btn btn-primary" id="startQuizBtn">Start Product Finder</button>
+            <p class="tagline">Let's paint a cleaner future</p>
+        </div>
+    </section>
+
+    <!-- Chat Modal -->
+    <div class="chat-modal-overlay" id="chatModal">
+        <div class="chat-modal">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <h3>Product Finder</h3>
+                    <div class="chat-progress">
+                        <span id="progressText">Question 1 of 5</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="chat-close" id="closeChat" aria-label="Close">&times;</button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Calyco's Stain & Sealer transformed our outdoor deck. Five years later, it still looks brand new despite harsh weather conditions."</p>
+                    <div class="testimonial-author">Rajesh Kumar</div>
+                    <div class="testimonial-role">Homeowner, Mumbai</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"We've used Calyco products across our commercial properties. The durability and eco-friendly formulation make it our go-to choice."</p>
+                    <div class="testimonial-author">Priya Mehta</div>
+                    <div class="testimonial-role">Facilities Manager, Tech Park</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Waterproof Sealer saved our basement from monsoon flooding. Highly recommend for anyone dealing with moisture issues."</p>
+                    <div class="testimonial-author">Arjun Patel</div>
+                    <div class="testimonial-role">Property Owner, Bangalore</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="/products/latex-paint">Latex Paint</a></li>
+                    <li><a href="/products/stain-sealer">Stain & Sealer</a></li>
+                    <li><a href="/products/waterproof-sealer">Waterproof Sealer</a></li>
+                    <li><a href="/products">All Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/sustainability">Sustainability</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="/guides">Application Guides</a></li>
+                    <li><a href="/color-chart">Color Chart</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/warranty">Warranty Info</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Calyco Products Pvt. Ltd. | www.calycopaints.com | All rights reserved</p>
+            <p style="margin-top: 8px;">Let's paint a cleaner future</p>
+        </div>
+    </footer>
+
+    <script>
+        // Product Definitions
+        const products = {
+            latexPaint: {
+                name: 'Calyco Latex Paint',
+                icon: '🎨',
+                tagline: 'Premium Interior Paint for Modern Living Spaces',
+                benefits: [
+                    'One-coat coverage for faster project completion',
+                    'Stain-blocking technology keeps walls pristine',
+                    'Scrub-resistant finish withstands daily cleaning',
+                    'UV-protected formula prevents fading and yellowing',
+                    'Low-VOC formula for healthier indoor air quality',
+                    'Subtle sheen finish for elegant, modern aesthetics'
+                ],
+                idealFor: 'Interior residential walls, living rooms, bedrooms, climate-controlled spaces'
+            },
+            stainSealer: {
+                name: 'Calyco Stain & Sealer',
+                icon: '🛡️',
+                tagline: 'Heavy-Duty Multi-Surface Protection for Demanding Environments',
+                benefits: [
+                    'Multi-surface adhesion: concrete, metal, wood, plaster, asphalt, tile',
+                    '100% waterproof barrier blocks moisture penetration',
+                    'UV-resistant formula prevents sun damage and degradation',
+                    'Breathable barrier allows surface moisture to escape',
+                    'Anti-corrosive protection extends equipment lifespan',
+                    '5-10 years outdoor durability in harsh conditions'
+                ],
+                idealFor: 'Exterior walls, decks, machinery, equipment, infrastructure, industrial facilities'
+            },
+            waterproofSealer: {
+                name: 'Calyco Waterproof Sealer',
+                icon: '💧',
+                tagline: 'Maximum Moisture Protection & Waterproofing Technology',
+                benefits: [
+                    '100% waterproof barrier prevents water infiltration',
+                    'Blocks moisture penetration in below-grade applications',
+                    'Breathable formula prevents trapped moisture buildup',
+                    'Crystal-clear or tinted options preserve natural aesthetics',
+                    'Flexible membrane accommodates surface movement',
+                    'Mold and mildew resistant formulation'
+                ],
+                idealFor: 'Basements, foundations, bathrooms, pool areas, roofs, below-grade walls, water tanks'
+            }
+        };
+
+        // Questions with icons
+        const questions = [
+            {
+                id: 'surface',
+                text: 'What surface are you coating?',
+                options: [
+                    { value: 'interior-walls', label: 'Interior walls (residential)', icon: '🏠' },
+                    { value: 'exterior-walls', label: 'Exterior walls (residential/commercial)', icon: '🏢' },
+                    { value: 'concrete-masonry', label: 'Concrete or masonry', icon: '🧱' },
+                    { value: 'metal', label: 'Metal surfaces (machinery, equipment)', icon: '⚙️' },
+                    { value: 'wood', label: 'Wood (furniture, decks, structures)', icon: '🪵' },
+                    { value: 'mixed', label: 'Mixed surfaces (warehouse, industrial)', icon: '🏭' }
+                ]
+            },
+            {
+                id: 'concern',
+                text: "What's your primary concern?",
+                options: [
+                    { value: 'durability', label: 'Durability & longevity', icon: '💪' },
+                    { value: 'eco-friendly', label: 'Eco-friendliness & low VOC', icon: '🌱' },
+                    { value: 'weather-resistance', label: 'Weather & moisture resistance', icon: '⛈️' },
+                    { value: 'easy-application', label: 'Easy application & coverage', icon: '🖌️' },
+                    { value: 'corrosion-protection', label: 'Corrosion protection', icon: '🛡️' },
+                    { value: 'waterproofing', label: 'Waterproofing & sealing', icon: '💧' }
+                ]
+            },
+            {
+                id: 'environment',
+                text: "What's your project environment?",
+                options: [
+                    { value: 'indoor', label: 'Indoor (climate controlled)', icon: '🏠' },
+                    { value: 'outdoor', label: 'Outdoor (exposed to elements)', icon: '🌤️' },
+                    { value: 'commercial', label: 'High-traffic commercial space', icon: '🚶' },
+                    { value: 'industrial', label: 'Industrial/warehouse setting', icon: '🏭' },
+                    { value: 'coastal', label: 'Coastal or high-moisture area', icon: '🌊' },
+                    { value: 'submerged', label: 'Submerged or water-contact areas', icon: '💦' }
+                ]
+            },
+            {
+                id: 'finish',
+                text: 'What finish do you prefer?',
+                options: [
+                    { value: 'matte', label: 'Matte/Flat (subtle, no-glare)', icon: '⚪' },
+                    { value: 'sheen', label: 'Subtle sheen (slight luster)', icon: '✨' },
+                    { value: 'glossy', label: 'Glossy (reflective, easy to clean)', icon: '💎' },
+                    { value: 'clear', label: 'Clear/Transparent (natural show-through)', icon: '🔍' }
+                ]
+            },
+            {
+                id: 'applicator',
+                text: 'Who is applying this coating?',
+                options: [
+                    { value: 'professional', label: 'Professional contractor', icon: '👷' },
+                    { value: 'facilities', label: 'In-house facilities team', icon: '👔' },
+                    { value: 'diy', label: 'DIY/Property owner', icon: '🔨' },
+                    { value: 'industrial', label: 'Industrial applicator', icon: '⚙️' }
+                ]
+            }
+        ];
+
+        // Quiz State
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+
+        // DOM Elements
+        const chatModal = document.getElementById('chatModal');
+        const chatMessages = document.getElementById('chatMessages');
+        const startBtn = document.getElementById('startQuizBtn');
+        const closeBtn = document.getElementById('closeChat');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+
+        // Initialize
+        startBtn.addEventListener('click', startQuiz);
+        closeBtn.addEventListener('click', closeQuiz);
+
+        // Close on overlay click
+        chatModal.addEventListener('click', (e) => {
+            if (e.target === chatModal) {
+                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                    closeQuiz();
+                }
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && chatModal.classList.contains('active')) {
+                if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                    closeQuiz();
+                }
+            }
+        });
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            chatMessages.innerHTML = '';
+            chatModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Welcome message
+            setTimeout(() => {
+                addBotMessage("Hi! I'm your Calyco Product Assistant. Let me help you find the perfect coating solution for your project. 👋");
+                setTimeout(() => {
+                    askQuestion();
+                }, 1000);
+            }, 500);
+        }
+
+        function closeQuiz() {
+            chatModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">🎨</div>
+                <div class="message-bubble">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot typing-indicator active';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">🎨</div>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        function askQuestion() {
+            const question = questions[currentQuestionIndex];
+
+            showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                addBotMessage(question.text);
+                showAnswerOptions(question.options, question.id);
+                updateProgress();
+            }, 800);
+        }
+
+        function showAnswerOptions(options, questionId) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'answer-options';
+
+            options.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'answer-option';
+                optionBtn.innerHTML = `
+                    <span class="icon">${option.icon}</span>
+                    <span>${option.label}</span>
+                `;
+                optionBtn.addEventListener('click', () => selectAnswer(option, questionId, optionsDiv));
+                optionsDiv.appendChild(optionBtn);
+            });
+
+            chatMessages.appendChild(optionsDiv);
+            scrollToBottom();
+        }
+
+        function selectAnswer(option, questionId, optionsDiv) {
+            // Save answer
+            userAnswers[questionId] = option.value;
+
+            // Show user's selection
+            addUserMessage(`${option.icon} ${option.label}`);
+
+            // Remove options
+            optionsDiv.remove();
+
+            // Move to next question or show results
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                setTimeout(() => {
+                    askQuestion();
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    showResults();
+                }, 800);
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = progress + '%';
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        }
+
+        function showResults() {
+            showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                addBotMessage("Great! Let me analyze your needs and find the perfect product...");
+
+                // Show loading animation
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'loading-animation';
+                loadingDiv.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <p style="color: var(--warm-gray); font-weight: 600;">Analyzing your requirements...</p>
+                `;
+                chatMessages.appendChild(loadingDiv);
+                scrollToBottom();
+
+                setTimeout(() => {
+                    loadingDiv.remove();
+                    displayRecommendation();
+                }, 2000);
+            }, 800);
+        }
+
+        function getRecommendation() {
+            let score = {
+                latexPaint: 0,
+                stainSealer: 0,
+                waterproofSealer: 0
+            };
+
+            // Surface scoring
+            if (userAnswers.surface === 'interior-walls') {
+                score.latexPaint += 10;
+            } else if (userAnswers.surface === 'exterior-walls' || userAnswers.surface === 'wood' || userAnswers.surface === 'metal') {
+                score.stainSealer += 10;
+            } else if (userAnswers.surface === 'concrete-masonry') {
+                score.waterproofSealer += 7;
+                score.stainSealer += 7;
+            } else if (userAnswers.surface === 'mixed') {
+                score.stainSealer += 10;
+            }
+
+            // Concern scoring
+            if (userAnswers.concern === 'eco-friendly' || userAnswers.concern === 'easy-application') {
+                score.latexPaint += 8;
+            } else if (userAnswers.concern === 'weather-resistance' || userAnswers.concern === 'corrosion-protection') {
+                score.stainSealer += 10;
+            } else if (userAnswers.concern === 'waterproofing') {
+                score.waterproofSealer += 10;
+            } else if (userAnswers.concern === 'durability') {
+                score.stainSealer += 7;
+                score.waterproofSealer += 5;
+            }
+
+            // Environment scoring
+            if (userAnswers.environment === 'indoor') {
+                score.latexPaint += 10;
+            } else if (userAnswers.environment === 'outdoor' || userAnswers.environment === 'industrial') {
+                score.stainSealer += 10;
+            } else if (userAnswers.environment === 'coastal' || userAnswers.environment === 'submerged') {
+                score.waterproofSealer += 10;
+            } else if (userAnswers.environment === 'commercial') {
+                score.latexPaint += 5;
+                score.stainSealer += 5;
+            }
+
+            // Finish scoring
+            if (userAnswers.finish === 'sheen') {
+                score.latexPaint += 8;
+            } else if (userAnswers.finish === 'matte') {
+                score.stainSealer += 7;
+                score.latexPaint += 3;
+            } else if (userAnswers.finish === 'clear') {
+                score.waterproofSealer += 10;
+            } else if (userAnswers.finish === 'glossy') {
+                score.latexPaint += 5;
+            }
+
+            // Find highest score
+            let recommended = 'stainSealer';
+            let maxScore = score.stainSealer;
+
+            if (score.latexPaint > maxScore) {
+                recommended = 'latexPaint';
+                maxScore = score.latexPaint;
+            }
+            if (score.waterproofSealer > maxScore) {
+                recommended = 'waterproofSealer';
+            }
+
+            return recommended;
+        }
+
+        function displayRecommendation() {
+            const recommendedKey = getRecommendation();
+            const product = products[recommendedKey];
+
+            addBotMessage("Perfect! Based on your answers, I recommend:");
+
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'results-content';
+            resultDiv.innerHTML = `
+                <div class="product-result">
+                    <div class="product-icon">${product.icon}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-tagline">${product.tagline}</p>
+
+                    <div class="product-benefits">
+                        <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 16px; text-align: center;">Key Benefits</h4>
+                        <ul>
+                            ${product.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <p style="margin-bottom: 24px; color: var(--warm-gray); font-size: 15px;">
+                        <strong>Ideal for:</strong> ${product.idealFor}
+                    </p>
+
+                    <div class="product-ctas">
+                        <a href="/products/${recommendedKey}" class="btn btn-primary">Learn More</a>
+                        <a href="/contact" class="btn btn-tertiary">Talk to Expert</a>
+                        <button class="btn btn-secondary" onclick="startQuiz()">Start Over</button>
+                    </div>
+                </div>
+            `;
+
+            chatMessages.appendChild(resultDiv);
+            scrollToBottom();
+
+            progressText.textContent = 'Complete!';
+            progressBar.style.width = '100%';
+        }
+
+        function scrollToBottom() {
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 100);
+        }
+
+        // Save progress to sessionStorage
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('quizProgress', JSON.stringify({
+                currentQuestionIndex,
+                userAnswers
+            }));
+        });
+    </script>
+</body>
+</html>
