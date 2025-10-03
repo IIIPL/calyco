@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash } from 'react-icons/fi';
 import { products } from "../data/products";
+import { groupedShades as colorData } from "../data/groupedShades";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
+
+const slugify = (value) =>
+  value
+    ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    : "";
 
 // --- Utility functions for scalable product lookup ---
 // Consider moving these to a shared util if used elsewhere
@@ -26,6 +32,19 @@ const getProductsByCategory = (category) => {
 
 export const DynamicProductPage = () => {
     const { productId } = useParams();
+    const colorFamilies = useMemo(() => {
+        return (colorData || [])
+            .map((family) => {
+                const label = family.family || family.title || "Color Family";
+                const code = family.familyCode || slugify(label);
+                return {
+                    code,
+                    label,
+                    colors: Array.isArray(family.colors) ? family.colors : []
+                };
+            })
+            .filter((family) => family.code && family.colors.length > 0);
+    }, []);
     const [selectedSheen, setSelectedSheen] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
     const [quantity, setQuantity] = useState(1);
@@ -34,7 +53,31 @@ export const DynamicProductPage = () => {
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
     const { addToCart } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
-    
+    const [selectedColorFamily, setSelectedColorFamily] = useState(() => colorFamilies[0]?.code || "");
+    const [selectedColor, setSelectedColor] = useState(() => colorFamilies[0]?.colors?.[0] || null);
+
+    const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
+
+    useEffect(() => {
+        if (!activeColorFamily || !Array.isArray(activeColorFamily.colors) || activeColorFamily.colors.length === 0) {
+            if (selectedColor !== null) {
+                setSelectedColor(null);
+            }
+            return;
+        }
+
+        const hasSelected = activeColorFamily.colors.some(
+            (colorOption) =>
+                colorOption.hex === selectedColor?.hex && colorOption.name === selectedColor?.name
+        );
+
+        if (!hasSelected) {
+            setSelectedColor(activeColorFamily.colors[0]);
+        }
+    }, [activeColorFamily, selectedColor]);
+
+    const availableColors = activeColorFamily?.colors || [];
+
     // Use the product's actual packaging sizes
     const displaySizes = product && product.packaging ? product.packaging : [];
     
@@ -150,6 +193,15 @@ export const DynamicProductPage = () => {
     } else {
         randomSimilar = similarProducts.slice(0, 2);
     }
+
+    const colorInfo = selectedColor
+        ? {
+            name: selectedColor.name,
+            hex: selectedColor.hex,
+            family: activeColorFamily?.label,
+            familyCode: activeColorFamily?.code
+        }
+        : null;
 
     return (
         <>
@@ -270,6 +322,7 @@ export const DynamicProductPage = () => {
                                 {(product.finish_type_sheen || []).map((sheen) => (
                                   <button
                                     key={sheen}
+                                    type="button"
                                     onClick={() => setSelectedSheen(sheen)}
                                     className={`px-4 py-2 rounded-lg border transition-all ${selectedSheen === sheen ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
                                   >
@@ -279,13 +332,85 @@ export const DynamicProductPage = () => {
                               </div>
                             </div>
 
-                            {/* 5. Size Selection */}
+                            {/* 5. Color Family */}
+                            {colorFamilies.length > 0 && (
+                              <div className="mb-4">
+                                <h3 className="font-semibold text-[#493657] mb-2">Color Family</h3>
+                                <div className="flex flex-wrap gap-2">
+                                  {colorFamilies.map((family) => {
+                                    const isActive = family.code === selectedColorFamily;
+                                    return (
+                                      <button
+                                        key={family.code}
+                                        type="button"
+                                        onClick={() => setSelectedColorFamily(family.code)}
+                                        className={`px-4 py-2 rounded-lg border transition-all ${isActive ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
+                                      >
+                                        {family.label}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* 6. Color */}
+                            {availableColors.length > 0 && (
+                              <div className="mb-4">
+                                <h3 className="font-semibold text-[#493657] mb-3">Color</h3>
+                                <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+                                  {availableColors.map((color) => {
+                                    const isSelected = selectedColor?.hex === color.hex && selectedColor?.name === color.name;
+                                    return (
+                                      <button
+                                        key={`${activeColorFamily?.code || "color"}-${color.name}-${color.hex}`}
+                                        type="button"
+                                        onClick={() => setSelectedColor(color)}
+                                        className="group relative flex flex-col items-center gap-2 focus:outline-none"
+                                        aria-label={`Select color ${color.name}`}
+                                        title={color.name}
+                                      >
+                                        <span
+                                          className={`w-14 h-14 rounded-full border-2 transition-all duration-200 ${isSelected ? "border-[#F0C85A] ring-2 ring-[#F0C85A]/40 scale-105" : "border-[#493657]/15 group-hover:border-[#493657]/35"}`}
+                                          style={{ backgroundColor: color.hex }}
+                                        />
+                                        <span className={`text-xs font-medium text-center leading-tight ${isSelected ? "text-[#301A44]" : "text-[#493657]/70"}`}>
+                                          {color.name}
+                                        </span>
+                                        {isSelected && (
+                                          <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <span className="w-6 h-6 rounded-full bg-white/90 flex items-center justify-center shadow">
+                                              <svg
+                                                className="w-4 h-4 text-[#301A44]"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                              >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                              </svg>
+                                            </span>
+                                          </span>
+                                        )}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                                {selectedColor && (
+                                  <p className="text-sm text-[#493657]/80 mt-3">
+                                    Selected: {activeColorFamily?.label || "Color"} • {selectedColor.name}
+                                  </p>
+                                )}
+                              </div>
+                            )}
+
+                            {/* 7. Size Selection */}
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
                               <div className="flex flex-wrap gap-2">
                                 {displaySizes.map((size) => (
                                   <button
                                     key={size}
+                                    type="button"
                                     onClick={() => setSelectedSize(size)}
                                     className={`px-4 py-2 rounded-lg border transition-all ${selectedSize === size ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]" : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"}`}
                                   >
@@ -295,7 +420,7 @@ export const DynamicProductPage = () => {
                               </div>
                             </div>
 
-                            {/* 6. Quantity & Add to Cart */}
+                            {/* 8. Quantity & Add to Cart */}
                             <div className="mb-6">
                               <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
                               <div className="flex items-center gap-4">
@@ -321,19 +446,21 @@ export const DynamicProductPage = () => {
                                     selectedSize,
                                     quantity,
                                     getSizePrice(product.price, selectedSize),
-                                    {
-                                      name: "Default",
-                                      hex: "#CCCCCC"
-                                    }
+                                    colorInfo
                                   );
-                                  
+
                                   // Show cart popup (toast notification)
                                   setCartPopup({ isVisible: true, item: {
                                     name: product.display_name || product.name,
-                                    hex: product.color_hex || "#CCCCCC",
+                                    hex: (colorInfo && colorInfo.hex) || product.color_hex || "#CCCCCC",
+                                    colorName: colorInfo ? colorInfo.name : undefined,
+                                    colorFamily: colorInfo ? colorInfo.family : undefined,
+                                    selectedSheen,
+                                    selectedSize,
+                                    quantity,
                                     price: `₹${getSizePrice(product.price, selectedSize) * quantity}`
                                   }});
-                                  
+
                                   // Auto-hide popup after 3 seconds
                                   setTimeout(() => {
                                     setCartPopup({ isVisible: false, item: null });
