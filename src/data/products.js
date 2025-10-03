@@ -2,7 +2,7 @@ export const products = [
   {
     "url": "https://calycopaints.com/product/nova",
     "name": "Nova",
-    "image": "/interior_paint.jpeg",
+    "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
     "details": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",

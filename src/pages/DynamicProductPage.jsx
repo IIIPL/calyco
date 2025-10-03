@@ -134,8 +134,10 @@ export const DynamicProductPage = () => {
             // Set default image
             if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
                 setSelectedImage(foundProduct.images[0]);
+                setSelectedImageIndex(0);
             } else {
                 setSelectedImage(foundProduct.image);
+                setSelectedImageIndex(0);
             }
             document.title = foundProduct.display_name || foundProduct.name;
         }
@@ -302,7 +304,12 @@ export const DynamicProductPage = () => {
                                 <img
                                     src={selectedImage || product.image}
                                     alt={`${product.name} - Image ${selectedImageIndex + 1}`}
-                                    loading="lazy"
+                                    onError={(e) => {
+                                        console.error('Image failed to load:', e.target.src);
+                                        if (product.image && e.target.src !== product.image) {
+                                            e.target.src = product.image;
+                                        }
+                                    }}
                                     className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
