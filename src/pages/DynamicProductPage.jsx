@@ -243,10 +243,10 @@ export const DynamicProductPage = () => {
                     </Link>
                 </motion.div>
 
-                <div className="flex flex-col md:flex-row gap-4">
-                    {/* Product Image */}
-                    <motion.div 
-                        className="xl:w-1/2 md:w-1/2 w-full xl:sticky xl:top-24 xl:self-start flex flex-col items-center md:items-start justify-center"
+                <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+                    {/* Product Image Gallery - Sticky on MD+ screens */}
+                    <motion.div
+                        className="md:w-1/2 w-full md:sticky md:top-24 md:self-start md:h-fit flex flex-col items-center md:items-start justify-center"
                         variants={itemVariants}
                     >
                         <div className="relative group w-full flex items-center md:items-start justify-center">
@@ -261,19 +261,36 @@ export const DynamicProductPage = () => {
                                 />
                             </div>
                         </div>
-                        {/* Image Gallery Thumbnails - now below the image */}
-                        {Array.isArray(product.images) && product.images.length > 0 && (
-                          <div className="flex gap-2 mt-4 flex-wrap justify-center md:justify-start">
-                            {product.images.map((img, idx) => (
-                              <button
-                                key={img + idx}
-                                onClick={() => setSelectedImage(img)}
-                                className={`border rounded-lg p-1 transition-all focus:outline-none ${selectedImage === img ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]' : 'border-[#493657]/20 hover:border-[#493657]/40'}`}
-                                style={{background: selectedImage === img ? '#F0C85A22' : 'white'}}
-                              >
-                                <img src={img} alt={`Thumbnail ${idx+1}`} className="w-16 h-16 object-contain rounded-md" />
-                              </button>
-                            ))}
+                        {/* Image Gallery Thumbnails */}
+                        {Array.isArray(product.images) && product.images.length > 1 && (
+                          <div className="w-full mt-6">
+                            <div className="flex gap-3 flex-wrap justify-center md:justify-start">
+                              {product.images.map((img, idx) => (
+                                <button
+                                  key={img + idx}
+                                  onClick={() => setSelectedImage(img)}
+                                  className={`border-2 rounded-xl p-1.5 transition-all duration-200 focus:outline-none hover:shadow-lg ${
+                                    selectedImage === img
+                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 shadow-md'
+                                      : 'border-[#493657]/15 hover:border-[#493657]/30'
+                                  }`}
+                                  style={{background: selectedImage === img ? '#F0C85A15' : 'white'}}
+                                  aria-label={`View image ${idx + 1}`}
+                                  title={`${product.name} - Image ${idx + 1}`}
+                                >
+                                  <img
+                                    src={img}
+                                    alt={`${product.name} view ${idx + 1}`}
+                                    className="w-20 h-20 object-contain rounded-lg"
+                                  />
+                                </button>
+                              ))}
+                            </div>
+                            {product.images.length > 1 && (
+                              <p className="text-xs text-[#493657]/60 text-center md:text-left mt-3">
+                                {product.images.findIndex(img => img === selectedImage) + 1} / {product.images.length}
+                              </p>
+                            )}
                           </div>
                         )}
                     </motion.div>

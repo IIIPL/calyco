@@ -93,7 +93,11 @@ export const products = [
     "temperature_range": "12°C-40°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Calyco Interior Latex Paint",
-    "images": ["/interior_paint.jpeg"]
+    "images": [
+      "/Assets/Nova/NoBg.png",
+      "/Assets/Nova/inuse.png",
+      "/Assets/Nova/novaa.jpg"
+    ]
   },
   {
     "url": "https://calycopaints.com/product/puretone",
