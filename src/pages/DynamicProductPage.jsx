@@ -47,6 +47,7 @@ export const DynamicProductPage = () => {
     }, []);
     const [selectedSheen, setSelectedSheen] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
+    const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -567,6 +568,79 @@ export const DynamicProductPage = () => {
                               </div>
                             </div>
 
+                            {/* 7.5 Color Type Selection */}
+                            <div className="mb-4">
+                              <h3 className="font-semibold text-[#493657] mb-2 flex items-center gap-2">
+                                Color Mixing Option
+                                <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full">
+                                  Professional Choice
+                                </span>
+                              </h3>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button
+                                  type="button"
+                                  onClick={() => setSelectedColorType("ready-mixed")}
+                                  className={`relative p-4 rounded-xl border-2 transition-all duration-300 text-left ${
+                                    selectedColorType === "ready-mixed"
+                                      ? "border-[#F0C85A] bg-[#F0C85A]/5 shadow-lg"
+                                      : "border-[#493657]/20 hover:border-[#493657]/40 hover:shadow-md"
+                                  }`}
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 ${
+                                      selectedColorType === "ready-mixed"
+                                        ? "border-[#F0C85A] bg-[#F0C85A]"
+                                        : "border-[#493657]/30"
+                                    }`}>
+                                      {selectedColorType === "ready-mixed" && (
+                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="font-semibold text-[#493657] mb-1">Ready-Mixed Color</h4>
+                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                        Pre-mixed at factory, ready to use. Consistent color batch-to-batch. Ideal for large projects.
+                                      </p>
+                                      <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
+                                        ✓ Factory Fresh
+                                      </span>
+                                    </div>
+                                  </div>
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => setSelectedColorType("tint-on-demand")}
+                                  className={`relative p-4 rounded-xl border-2 transition-all duration-300 text-left ${
+                                    selectedColorType === "tint-on-demand"
+                                      ? "border-[#F0C85A] bg-[#F0C85A]/5 shadow-lg"
+                                      : "border-[#493657]/20 hover:border-[#493657]/40 hover:shadow-md"
+                                  }`}
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 ${
+                                      selectedColorType === "tint-on-demand"
+                                        ? "border-[#F0C85A] bg-[#F0C85A]"
+                                        : "border-[#493657]/30"
+                                    }`}>
+                                      {selectedColorType === "tint-on-demand" && (
+                                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="font-semibold text-[#493657] mb-1">Tint-on-Demand</h4>
+                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                        Custom mixed at store/site. Perfect color matching. Flexible for small quantities.
+                                      </p>
+                                      <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                                        ✓ Custom Mixed
+                                      </span>
+                                    </div>
+                                  </div>
+                                </button>
+                              </div>
+                            </div>
+
                             {/* 8. Quantity & Add to Cart */}
                             <div className="mb-6">
                               <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
@@ -593,7 +667,8 @@ export const DynamicProductPage = () => {
                                     selectedSize,
                                     quantity,
                                     getSizePrice(product.price, selectedSize),
-                                    colorInfo
+                                    colorInfo,
+                                    selectedColorType
                                   );
 
                                   // Show cart popup (toast notification)
@@ -604,6 +679,7 @@ export const DynamicProductPage = () => {
                                     colorFamily: colorInfo ? colorInfo.family : undefined,
                                     selectedSheen,
                                     selectedSize,
+                                    selectedColorType,
                                     quantity,
                                     price: `₹${getSizePrice(product.price, selectedSize) * quantity}`
                                   }});
