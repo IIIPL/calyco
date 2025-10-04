@@ -17,15 +17,13 @@ import {
   WrenchScrewdriverIcon,
   SparklesIcon
 } from '@heroicons/react/24/outline';
-import { flatColors } from '../data/flatColors';
+import { getAllColors, getColorFamilies } from '../data/calycoColors442';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
 
-// Color Families for filtering - based on actual data
-const COLOR_FAMILIES = [
-  'WHITES & OFF WHITES', 'GREYS', 'BROWNS', 'GREENS', 
-  'PURPLES & PINKS', 'REDS & ORANGES', 'BLUES', 'YELLOWS & GREENS'
-];
+// Get all 442 colors and families
+const ALL_COLORS = getAllColors();
+const COLOR_FAMILIES = getColorFamilies().map(f => f.name);
 
 // Compatible Products
 const COMPATIBLE_PRODUCTS = [
@@ -49,42 +47,52 @@ const ColorsPage = () => {
 
   // Group colors by family
   const groupedColors = useMemo(() => {
-    let filtered = flatColors;
+    let filtered = ALL_COLORS;
 
     // Search filter
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      filtered = filtered.filter(color => 
+      filtered = filtered.filter(color =>
         color.name.toLowerCase().includes(term) ||
         color.hex.toLowerCase().includes(term) ||
-        (color.tags && color.tags.some(tag => tag.toLowerCase().includes(term)))
+        color.code.toLowerCase().includes(term) ||
+        color.colorFamily.toLowerCase().includes(term)
       );
     }
 
     // Family filter
     if (selectedFamily) {
-      filtered = filtered.filter(color => color.color_family === selectedFamily);
+      filtered = filtered.filter(color => color.colorFamily === selectedFamily);
     }
 
     // Temperature filter
     if (selectedTemperature) {
-      filtered = filtered.filter(color => color.color_temperature === selectedTemperature);
+      filtered = filtered.filter(color =>
+        color.temperature && color.temperature === selectedTemperature
+      );
     }
 
     // Tonality filter
     if (selectedTonality) {
-      filtered = filtered.filter(color => color.tonality === selectedTonality);
+      filtered = filtered.filter(color =>
+        color.tonality && color.tonality === selectedTonality
+      );
     }
 
     // Suitability filter (Interior/Exterior)
     if (selectedSuitability) {
       if (selectedSuitability === "Interior/C Exterior") {
-        filtered = filtered.filter(color => 
-          color.interior_or_exterior === "Interior/C Exterior" || 
-          color.interior_or_exterior === "Interior"
+        filtered = filtered.filter(color =>
+          color.interiorExterior === "Interior/C Exterior" ||
+          color.interiorExterior === "Interior" ||
+          color.usage === "Interior/C Exterior" ||
+          color.usage === "Interior"
         );
       } else {
-        filtered = filtered.filter(color => color.interior_or_exterior === selectedSuitability);
+        filtered = filtered.filter(color =>
+          color.interiorExterior === selectedSuitability ||
+          color.usage === selectedSuitability
+        );
       }
     }
 
@@ -106,7 +114,7 @@ const ColorsPage = () => {
 
     // Group by color family
     const grouped = filtered.reduce((acc, color) => {
-      const family = color.color_family;
+      const family = color.colorFamily;
       if (!acc[family]) {
         acc[family] = [];
       }
@@ -134,7 +142,7 @@ const ColorsPage = () => {
   }, [getActualHexColor]);
 
   const handleColorClick = useCallback((color) => {
-    const familySlug = color.color_family.toLowerCase().replace(/\s+/g, '-');
+    const familySlug = color.colorFamily.toLowerCase().replace(/\s+/g, '-');
     const colorSlug = color.name.toLowerCase().replace(/\s+/g, '-');
     navigate(`/colors/family/${familySlug}/${colorSlug}`);
   }, [navigate]);
@@ -178,7 +186,7 @@ const ColorsPage = () => {
               transition={{ delay: 0.1 }}
               className="text-xl text-white mb-8 max-w-3xl mx-auto"
             >
-              108 low-VOC shades built for modern living and professional durability.
+              {ALL_COLORS.length} low-VOC shades built for modern living and professional durability.
             </motion.p>
 
               </div>
@@ -434,7 +442,7 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
       {/* Content */}
                     <div className="p-4">
                       <h3 className="font-semibold text-gray-900 mb-1">{color.name}</h3>
-        <p className="text-sm text-gray-600 mb-3">{color.color_family}</p>
+        <p className="text-sm text-gray-600 mb-3">{color.colorFamily}</p>
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono text-gray-500">{color.hex}</span>
           <SparklesIcon className="w-4 h-4 text-green-600" />
@@ -488,20 +496,28 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
                   <h3 className="font-semibold text-gray-900 mb-2">Color Information</h3>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
+                      <span className="text-gray-600">Code:</span>
+                      <span className="ml-2 font-mono">{color.code}</span>
+                    </div>
+                    <div>
                       <span className="text-gray-600">Hex:</span>
                       <span className="ml-2 font-mono">{color.hex}</span>
                     </div>
                     <div>
                       <span className="text-gray-600">Family:</span>
-                      <span className="ml-2">{color.color_family}</span>
+                      <span className="ml-2">{color.colorFamily}</span>
                     </div>
                     <div>
                       <span className="text-gray-600">Temperature:</span>
-                      <span className="ml-2">{color.color_temperature}</span>
+                      <span className="ml-2">{color.temperature || 'N/A'}</span>
                       </div>
                     <div>
                       <span className="text-gray-600">Tonality:</span>
-                      <span className="ml-2">{color.tonality}</span>
+                      <span className="ml-2">{color.tonality || 'N/A'}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-600">Group:</span>
+                      <span className="ml-2">{color.group || 'N/A'}</span>
                     </div>
                   </div>
                 </div>
