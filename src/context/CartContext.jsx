@@ -171,46 +171,56 @@ export const CartProvider = ({ children }) => {
 
   // Lazy-loaded Shopify checkout - only loads when user clicks checkout
   const goToCheckout = async () => {
-    console.log('[CALYCO] Starting checkout process...');
-    console.log('[CALYCO] Cart items:', state.items);
+    console.log('═══════════════════════════════════════════════════════');
+    console.log('[CALYCO CHECKOUT] Starting checkout process...');
+    console.log('[CALYCO CHECKOUT] Cart items:', JSON.stringify(state.items, null, 2));
+    console.log('═══════════════════════════════════════════════════════');
 
     try {
       // Check if cart has any Shopify products (Nova/CALYCO Interior)
-      const hasShopifyProducts = state.items.some(item =>
-        item.id === 'nova' ||
-        item.name?.toLowerCase().includes('nova') ||
-        item.name?.toLowerCase().includes('calyco interior') ||
-        item.name?.toLowerCase().includes('interior latex')
-      );
+      const hasShopifyProducts = state.items.some(item => {
+        const isShopify =
+          item.id === 'nova' ||
+          item.name?.toLowerCase().includes('nova') ||
+          item.name?.toLowerCase().includes('calyco interior') ||
+          item.name?.toLowerCase().includes('interior latex');
 
-      console.log('[CALYCO] Has Shopify products?', hasShopifyProducts);
+        console.log(`[CALYCO CHECKOUT] Item "${item.name}" (id: ${item.id}) - Is Shopify? ${isShopify}`);
+        return isShopify;
+      });
+
+      console.log('[CALYCO CHECKOUT] Has Shopify products?', hasShopifyProducts);
 
       if (hasShopifyProducts) {
-        console.log('[CALYCO] Loading Shopify client...');
-        // Dynamically import Shopify checkout hook
-        const { useShopifyCheckout } = await import('../hooks/useShopifyCheckout');
-        // Note: Can't use hooks here, so we'll import the logic directly
+        console.log('[CALYCO CHECKOUT] 🚀 Loading Shopify client...');
 
         const { shopifyClient } = await import('../lib/shopify');
         const { SHOPIFY_READY } = await import('../lib/env');
 
-        console.log('[CALYCO] SHOPIFY_READY:', SHOPIFY_READY);
-        console.log('[CALYCO] shopifyClient:', !!shopifyClient);
+        console.log('[CALYCO CHECKOUT] SHOPIFY_READY:', SHOPIFY_READY);
+        console.log('[CALYCO CHECKOUT] shopifyClient exists?', !!shopifyClient);
 
         if (SHOPIFY_READY && shopifyClient) {
-          console.log('[CALYCO] Creating Shopify checkout...');
-          // Create checkout and add items
+          console.log('[CALYCO CHECKOUT] ✅ Shopify is ready! Creating checkout...');
+
           const checkout = await shopifyClient.checkout.create();
-          console.log('[CALYCO] Checkout created:', checkout.id);
+          console.log('[CALYCO CHECKOUT] ✅ Checkout created:', checkout.id);
 
           const lineItems = state.items
-            .filter(item =>
-              item.id === 'nova' ||
-              item.name?.toLowerCase().includes('nova') ||
-              item.name?.toLowerCase().includes('calyco interior') ||
-              item.name?.toLowerCase().includes('interior latex')
-            )
+            .filter(item => {
+              const match = item.id === 'nova' ||
+                item.name?.toLowerCase().includes('nova') ||
+                item.name?.toLowerCase().includes('calyco interior') ||
+                item.name?.toLowerCase().includes('interior latex');
+              console.log(`[CALYCO CHECKOUT] Filtering item "${item.name}" - Match? ${match}`);
+              return match;
+            })
             .map(item => {
+              console.log(`[CALYCO CHECKOUT] Mapping item:`, item);
+              console.log(`[CALYCO CHECKOUT] - selectedSize: "${item.selectedSize}"`);
+              console.log(`[CALYCO CHECKOUT] - selectedSheen: "${item.selectedSheen}"`);
+              console.log(`[CALYCO CHECKOUT] - selectedColor:`, item.selectedColor);
+
               const sizeMap = {
                 '1L': 'gid://shopify/ProductVariant/42585860702326',
                 '4L': 'gid://shopify/ProductVariant/42585863258230',
@@ -218,44 +228,71 @@ export const CartProvider = ({ children }) => {
                 '20L': 'gid://shopify/ProductVariant/42585863323766',
               };
 
-              return {
-                variantId: sizeMap[item.selectedSize],
+              const variantId = sizeMap[item.selectedSize];
+              console.log(`[CALYCO CHECKOUT] - Variant ID for "${item.selectedSize}":`, variantId);
+
+              const lineItem = {
+                variantId: variantId,
                 quantity: item.quantity,
                 customAttributes: [
                   { key: 'Sheen', value: item.selectedSheen || '' },
-                  { key: 'Color Family', value: item.selectedColor?.family || '' },
-                  { key: 'Color', value: item.selectedColor?.name || '' },
+                  { key: 'Color Family', value: item.selectedColor?.family || item.selectedColor?.colorFamily || '' },
+                  { key: 'Color', value: item.selectedColor?.name || item.selectedColor?.colorName || '' },
                 ]
               };
-            })
-            .filter(item => item.variantId);
 
-          console.log('[CALYCO] Line items:', lineItems);
+              console.log('[CALYCO CHECKOUT] - Created line item:', lineItem);
+              return lineItem;
+            })
+            .filter(item => {
+              const hasVariant = !!item.variantId;
+              console.log(`[CALYCO CHECKOUT] Line item has variant? ${hasVariant}:`, item);
+              return hasVariant;
+            });
+
+          console.log('[CALYCO CHECKOUT] Final line items array:', JSON.stringify(lineItems, null, 2));
+          console.log('[CALYCO CHECKOUT] Line items count:', lineItems.length);
 
           if (lineItems.length > 0) {
-            console.log('[CALYCO] Adding line items to checkout...');
+            console.log('[CALYCO CHECKOUT] ✅ Adding', lineItems.length, 'items to checkout...');
+
             const updatedCheckout = await shopifyClient.checkout.addLineItems(
               checkout.id,
               lineItems
             );
 
-            console.log('[CALYCO] Checkout URL:', updatedCheckout.webUrl);
-            // Redirect to Shopify checkout
-            window.location.href = updatedCheckout.webUrl;
+            console.log('[CALYCO CHECKOUT] ✅ Items added successfully!');
+            console.log('[CALYCO CHECKOUT] 🔗 Checkout URL:', updatedCheckout.webUrl);
+            console.log('[CALYCO CHECKOUT] 🚀 Redirecting to Shopify in 1 second...');
+            console.log('═══════════════════════════════════════════════════════');
+
+            // Small delay so you can see the logs
+            setTimeout(() => {
+              window.location.href = updatedCheckout.webUrl;
+            }, 1000);
             return;
           } else {
-            console.log('[CALYCO] No valid line items, falling back to /checkout');
+            console.log('[CALYCO CHECKOUT] ❌ No valid line items (all missing variant IDs)');
+            console.log('[CALYCO CHECKOUT] ⚠️ Falling back to /checkout');
           }
         } else {
-          console.log('[CALYCO] Shopify not ready, falling back to /checkout');
+          console.log('[CALYCO CHECKOUT] ❌ Shopify not ready');
+          console.log('[CALYCO CHECKOUT] - SHOPIFY_READY:', SHOPIFY_READY);
+          console.log('[CALYCO CHECKOUT] - shopifyClient:', shopifyClient);
+          console.log('[CALYCO CHECKOUT] ⚠️ Falling back to /checkout');
         }
+      } else {
+        console.log('[CALYCO CHECKOUT] ℹ️ No Shopify products in cart');
+        console.log('[CALYCO CHECKOUT] ⚠️ Using regular checkout');
       }
     } catch (err) {
-      console.error('[CALYCO] Shopify checkout failed:', err);
+      console.error('[CALYCO CHECKOUT] ❌ ERROR:', err);
+      console.error('[CALYCO CHECKOUT] Error stack:', err.stack);
     }
 
     // Fallback to regular checkout
-    console.log('[CALYCO] Redirecting to /checkout');
+    console.log('[CALYCO CHECKOUT] 🔄 Redirecting to /checkout');
+    console.log('═══════════════════════════════════════════════════════');
     window.location.href = '/checkout';
   };
 
