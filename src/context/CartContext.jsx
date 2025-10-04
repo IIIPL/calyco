@@ -221,6 +221,23 @@ export const CartProvider = ({ children }) => {
               console.log(`[CALYCO CHECKOUT] - selectedSheen: "${item.selectedSheen}"`);
               console.log(`[CALYCO CHECKOUT] - selectedColor:`, item.selectedColor);
 
+              // Normalize size to handle different formats
+              const normalizeSize = (size) => {
+                if (!size) return null;
+                const sizeStr = size.toString().toUpperCase().trim();
+
+                // Handle various formats: "1L", "1 L", "1 litre", "1 LITRE", "1 Litre", etc.
+                if (sizeStr.includes('1') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '1L';
+                if (sizeStr.includes('4') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '4L';
+                if (sizeStr.includes('10') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '10L';
+                if (sizeStr.includes('20') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '20L';
+
+                return null;
+              };
+
+              const normalizedSize = normalizeSize(item.selectedSize);
+              console.log(`[CALYCO CHECKOUT] - Original size: "${item.selectedSize}" → Normalized: "${normalizedSize}"`);
+
               const sizeMap = {
                 '1L': 'gid://shopify/ProductVariant/42585860702326',
                 '4L': 'gid://shopify/ProductVariant/42585863258230',
@@ -228,7 +245,7 @@ export const CartProvider = ({ children }) => {
                 '20L': 'gid://shopify/ProductVariant/42585863323766',
               };
 
-              const variantId = sizeMap[item.selectedSize];
+              const variantId = sizeMap[normalizedSize];
               console.log(`[CALYCO CHECKOUT] - Variant ID for "${item.selectedSize}":`, variantId);
 
               const lineItem = {
