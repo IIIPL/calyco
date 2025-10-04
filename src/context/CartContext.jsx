@@ -16,6 +16,7 @@ const cartReducer = (state, action) => {
         item.id === action.payload.id &&
         item.selectedSheen === action.payload.selectedSheen &&
         item.selectedSize === action.payload.selectedSize &&
+        item.selectedColorType === action.payload.selectedColorType &&
         item.selectedColor?.name === action.payload.selectedColor?.name
       );
 
@@ -26,6 +27,7 @@ const cartReducer = (state, action) => {
             item.id === action.payload.id &&
             item.selectedSheen === action.payload.selectedSheen &&
             item.selectedSize === action.payload.selectedSize &&
+            item.selectedColorType === action.payload.selectedColorType &&
             item.selectedColor?.name === action.payload.selectedColor?.name
               ? { ...item, quantity: item.quantity + action.payload.quantity }
               : item
@@ -45,6 +47,7 @@ const cartReducer = (state, action) => {
           !(item.id === action.payload.id &&
             item.selectedSheen === action.payload.selectedSheen &&
             item.selectedSize === action.payload.selectedSize &&
+            item.selectedColorType === action.payload.selectedColorType &&
             item.selectedColor?.name === action.payload.selectedColor?.name)
         )
       };
@@ -56,6 +59,7 @@ const cartReducer = (state, action) => {
           item.id === action.payload.id &&
           item.selectedSheen === action.payload.selectedSheen &&
           item.selectedSize === action.payload.selectedSize &&
+          item.selectedColorType === action.payload.selectedColorType &&
           item.selectedColor?.name === action.payload.selectedColor?.name
             ? { ...item, quantity: action.payload.quantity }
             : item
@@ -102,7 +106,7 @@ export const CartProvider = ({ children }) => {
     // Shopify checkout initialization disabled - will be lazy-loaded on demand
   }, []);
 
-  const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride, selectedColor) => {
+  const addToCart = (product, selectedSheen, selectedSize, quantity, priceOverride, selectedColor, selectedColorType) => {
     const defaultColor = {
       name: "Serene Ivory",
       hex: "#F8F4E3"
@@ -116,6 +120,7 @@ export const CartProvider = ({ children }) => {
         price: parseFloat(priceOverride !== undefined ? priceOverride : product.price) || 0,
         selectedSheen,
         selectedSize,
+        selectedColorType: selectedColorType || 'ready-mixed',
         quantity: parseInt(quantity) || 1,
         image: product.image,
         selectedColor: selectedColor || defaultColor
@@ -255,6 +260,7 @@ export const CartProvider = ({ children }) => {
                   { key: 'Sheen', value: item.selectedSheen || '' },
                   { key: 'Color Family', value: item.selectedColor?.family || item.selectedColor?.colorFamily || '' },
                   { key: 'Color', value: item.selectedColor?.name || item.selectedColor?.colorName || '' },
+                  { key: 'Color Type', value: item.selectedColorType === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand' },
                 ]
               };
 
