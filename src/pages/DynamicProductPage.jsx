@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { products } from "../data/products";
-import { groupedShades as colorData } from "../data/groupedShades";
+import { calycoColors442 as colorData } from "../data/calycoColors442";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 
