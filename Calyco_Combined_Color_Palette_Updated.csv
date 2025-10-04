@@ -1,0 +1,443 @@
+Code,Name,Hex,Group,Description,Color Family,Rooms,Recommended Use,Color Temperature,Tonality,Interior/Exterior,Color Collection,Style,Opacity
+0N02,Warmstone,#BC8F8F,Neutrals,,Beiges,,,,,,AP Exterior,,
+0N68,Victorian Wisp,#F8F8F8,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+195,Manor Blue-N,#483D8B,Blues,,Blues,,,,,,AP Exterior,,
+210,Cascade,#5F9EA0,Decor Suggested Combinations,Decor accents,Blues,"Bedrooms, Bathrooms",Accent Walls,Cool,Medium,Interior,Royale,,
+307,Cream,#FFFDD0,Neutrals,,Beiges,,,,,,AP Exterior,,
+315,Ivory,#FFFFF0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+3196,Pine Nut,#DEB887,Decor Suggested Combinations,Decor accents,Browns,"Living Room, Study",Accent Walls,Warm,Medium,Interior,Royale,,
+3203,Puppy Love,#FFF0F5,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+3211,Sandstone,#FAA460,Jewel,,Oranges,,,,,,AP Exterior,,
+3226,Touch Of Spring-N,#90EE90,Greens,,Greens,,,,,,AP Exterior,,
+387,Magnolia,#FDF6E3,Neutrals,,Beiges,,,,,,AP Exterior,,
+4120,Burnt Yellowstone-N,#DAA520,Jewel,,Oranges,,,,,,AP Exterior,,
+4202,Sands of Time,#C2B280,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Beiges,"Living Room, Bedroom",Primary Walls,Warm,Medium,Interior,Royale,,
+470,Light Coffee,#D2B48C,Neutrals,,Beiges,,,,,,AP Exterior,,
+5206,Pale Rose,#FFE4E1,Decor Suggested Combinations,Decor accents,Pinks,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+6142,Steel,#8A8A8A,Decor Suggested Combinations,Decor accents,Greys,"Study, Living Room",Feature Walls,Cool,Medium,Interior,Royale,,
+615,Silver Grey,#C0C0C0,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Greys,All Rooms,Feature Walls,Cool,Light,Interior,Royale,,
+616,Smoke-N,#808080,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Greys,"Study, Living Room",Feature Walls,Cool,Medium,Interior,Royale,,
+7151,Heirloom,#9370DB,"Violets, Blues and Greens",Cool | Serene | Refreshing,Violets,Bedrooms,Accent Walls,Cool,Medium,Interior,Royale,,
+7156,Lavender Lace,#E6E6FA,Decor Suggested Combinations,Decor accents,Violets,Bedrooms,Accent Walls,Cool,Light,Interior,Royale,,
+7160,Dash of Purple,#9932CC,"Violets, Blues and Greens",Cool | Serene | Refreshing,Violets,Accent Walls,"Study, Bedroom",Cool,Medium,Interior,Royale,,
+7163,Lavender Secret,#E6E6FA,"Violets, Blues and Greens",Cool | Serene | Refreshing,Violets,Bedrooms,Accent Walls,Cool,Light,Interior,Royale,,
+7164,Delicate Violet,#BA55D3,"Violets, Blues and Greens",Cool | Serene | Refreshing,Violets,Bedrooms,Accent Walls,Cool,Medium,Interior,Royale,,
+719,Gypsy Queen,#8B008B,Purples & Pinks,,Purples,,,,,,AP Exterior,,
+7196,Soft Ballad,#DDA0DD,Pastels,,Lavenders,,,,,,AP Exterior,,
+7211,Innocence,#F8F8FF,"Violets, Blues and Greens",Cool | Serene | Refreshing,Whites,"Bedrooms, Nursery",Primary Walls,Cool,Light,Interior,Royale,,
+7220,Shy Iris,#9370DB,Decor Suggested Combinations,Decor accents,Violets,Bedrooms,Accent Walls,Cool,Medium,Interior,Royale,,
+7248,Blue Charm,#4169E1,Blues,,Blues,,,,,,AP Exterior,,
+7249,Morning Sky,#87CEEB,Decor Suggested Combinations,Decor accents,Blues,"Bedrooms, Bathrooms",Primary Walls,Cool,Light,Interior,Royale,,
+7274,Summer Sky,#87CEFA,Blues,,Blues,,,,,,AP Exterior,,
+7275,Blue Dawn,#87CEEB,Blues,,Cyans,,,,,,AP Exterior,,
+7300,Jet Stream,#6495ED,Blues,,Blues,,,,,,AP Exterior,,
+7308,Surfs Up,#00BFFF,Blues,,Cyans,,,,,,AP Exterior,,
+7326,Soothing Sapphire,#0F52BA,Blues,,Blues,,,,,,AP Exterior,,
+7331,Light Sky,#87CEFA,Blues,,Blues,,,,,,AP Exterior,,
+7344,Gauguin Blue,#4682B4,Decor Suggested Combinations,Decor accents,Blues,Living Room,Accent Walls,Cool,Medium,Interior,Royale,,
+7347,Bird Bath,#B0C4DE,Blues,,Blues,,,,,,AP Exterior,,
+7358,Hidden Springs,#20B2AA,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,"Study, Living Room",Accent Walls,Cool,Medium,Interior,Royale,,
+7362,Sky Watch,#87CEEB,Blues,,Cyans,,,,,,AP Exterior,,
+7364,Star Gaze,#6A5ACD,"Violets, Blues and Greens",Cool | Serene | Refreshing,Blues,"Bedrooms, Living Room",Feature Walls,Cool,Medium,Interior,Royale,,
+7368,Thunder Bay,#2F4F4F,Blues,,Dark Blues,,,,,,AP Exterior,,
+7371,Water Rapids,#4682B4,Blues,,Blues,,,,,,AP Exterior,,
+7372,Phanton Lake,#4682B4,Decor Suggested Combinations,Decor accents,Blues,Bedrooms,Accent Walls,Cool,Medium,Interior,Royale,,
+7408,Running Stream,#4682B4,"Violets, Blues and Greens",Cool | Serene | Refreshing,Blues,"Study, Living Room",Accent Walls,Cool,Medium,Interior,Royale,,
+7416,Tropical Sea,#008B8B,Blues,,Cyans,,,,,,AP Exterior,,
+7419,Caribbean Sky,#87CEEB,"Violets, Blues and Greens",Cool | Serene | Refreshing,Blues,"Bedrooms, Living Room",Primary Walls,Cool,Light,Interior,Royale,,
+7444,Sail Boat,#F0F8FF,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+7508,Subtle Green,#90EE90,Greens,,Greens,,,,,,AP Exterior,,
+7527,Green Haven,#6B8E23,Greens,,Greens,,,,,,AP Exterior,,
+7530,Mint Cocktail,#98FB98,Greens,,Greens,,,,,,AP Exterior,,
+7542,Emerald Valley,#50C878,Greens,,Greens,,,,,,AP Exterior,,
+7545,Wild Mint,#98FB98,Decor Suggested Combinations,Decor accents,Greens,"Kitchen, Living Room",Accent Walls,Cool,Light,Interior,Royale,,
+7547,Mint Crush,#F5FFFA,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+758,Sweet Lime,#32CD32,Greens,,Greens,,,,,,AP Exterior,,
+765,Morning Glory,#F8F8FF,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,All Rooms,Primary Walls,Cool,Light,Interior,Royale,,
+7665,Crisp Lettuce,#7CFC00,Decor Suggested Combinations,Decor accents,Greens,Children’s Room,Accent Walls,Cool,Light,Interior,Royale,,
+7667,Forest Musk,#556B2F,Decor Suggested Combinations,Decor accents,Greens,"Living Room, Bedroom",Accent Walls,Cool,Dark,Interior,Royale,,
+7709,Chartreuse,#7FFF00,Greens,,Greens,,,,,,AP Exterior,,
+7724,New Green,#32CD32,Greens,,Greens,,,,,,AP Exterior,,
+7727,Lime Accent,#ADFF2F,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,Children’s Room,Accent Walls,Cool,Light,Interior,Royale,,
+7728,Spring Surprise,#7FFF00,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,Living Room,Accent Walls,Cool,Medium,Interior,Royale,,
+7729,Lime Grove,#32CD32,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,"Kitchen, Living Room",Accent Walls,Cool,Medium,Interior,Royale,,
+7781,Garland,#228B22,Greens,,Greens,,,,,,AP Exterior,,
+7784,Diced Olive,#6B8E23,Greens,,Greens,,,,,,AP Exterior,,
+7787,Spring Frolic,#7CFC00,Greens,,Greens,,,,,,AP Exterior,,
+7790,Bambi Beige,#F5F5DC,Neutrals,,Beiges,,,,,,AP Exterior,,
+7809,Chinese Tea,#228B22,Greens,,Greens,,,,,,AP Exterior,,
+7810,Dry Moss,#8FBC8F,Greens,,Greens,,,,,,AP Exterior,,
+7823,Italian Olive,#808000,Decor Suggested Combinations,Decor accents,Greens,"Kitchen, Living Room",Accent Walls,Warm,Medium,Interior,Royale,,
+7883,Whipped Cream,#FFFFF0,Decor Suggested Combinations,Decor accents,Whites,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+7892,Pale Ivory,#FFF8E1,Neutrals,,Beiges,,,,,,AP Exterior,,
+7895,Tons of Sun,#FFD93B,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Yellows,Children’s Room,Accent Walls,Warm,Medium,Interior,Royale,,
+7896,Sunlit Sand,#FAE7B5,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Yellows,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+7906,Eager Yellow,#FFF44F,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Yellows,Children’s Room,Accent Walls,Warm,Light,Interior,Royale,,
+7907,Candle Wick,#FFE5B4,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Yellows,Living Room,Accent Walls,Warm,Light,Interior,Royale,,
+7919,Burnished Sun,#E97451,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,"Living Room, Dining",Accent Walls,Warm,Medium,Interior,Royale,,
+7921,Summer Harvest,#F4A300,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,"Living Room, Dining",Feature Walls,Warm,Medium,Interior,Royale,,
+7924,Moon Year,#FFFACD,Neutrals,,Beiges,,,,,,AP Exterior,,
+7925,True Ochre,#CC7722,Jewel,,Oranges,,,,,,AP Exterior,,
+7927,Casablanca,#F5DEB3,Neutrals,,Beiges,,,,,,AP Exterior,,
+7935,Yellow Charm,#FFD700,Jewel,,Yellows,,,,,,AP Exterior,,
+7936,Hacienda Clay,#CD853F,Jewel,,Oranges,,,,,,AP Exterior,,
+7937,Yellow Iris,#FFD700,Jewel,,Yellows,,,,,,AP Exterior,,
+7938,Desert Sun,#FFD700,Jewel,,Yellows,,,,,,AP Exterior,,
+7948,Crescent,#F0E68C,Jewel,,Yellows,,,,,,AP Exterior,,
+7952,Martian Sky,#FF6347,Jewel,,Reds,,,,,,AP Exterior,,
+7954,Dreamsicle,#FFCBA4,Neutrals,,Beiges,,,,,,AP Exterior,,
+7960,Mango Shake,#FFCBA4,Neutrals,,Beiges,,,,,,AP Exterior,,
+7970,Nacho Cheese,#FFD700,Jewel,,Yellows,,,,,,AP Exterior,,
+7975,Roasted Sesame,#C19A6B,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Browns,"Study, Bedroom",Feature Walls,Warm,Medium,Interior,Royale,,
+7976,Sunset Cloud,#FF7F50,Jewel,,Oranges,,,,,,AP Exterior,,
+7977,Mango Duet,#FFCBA4,Neutrals,,Beiges,,,,,,AP Exterior,,
+7978,Orange Frost,#FFA500,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,Accent Walls,"Dining, Kitchen",Warm,Medium,Interior,Royale,,
+7979,Apricot Illusion,#FFB347,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,"Living Room, Dining",Accent Walls,Warm,Medium,Interior,Royale,,
+7980,Sand Bed,#F4A460,Jewel,,Oranges,,,,,,AP Exterior,,
+7983,Canyon Sun,#FF6347,Jewel,,Reds,,,,,,AP Exterior,,
+7984,Sun-N-Sand,#FFD39B,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,Living Room,Feature Walls,Warm,Light,Interior,Royale,,
+7985,Fossil,#D2B48C,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Browns,"Study, Living Room",Feature Walls,Warm,Medium,Interior,Royale,,
+7986,Marigold,#FFD700,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Yellows,"Living Room, Dining",Accent Walls,Warm,Medium,Interior,Royale,,
+7996,Cream Tone,#FFFDD0,Decor Suggested Combinations,Decor accents,Whites,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+8000,Perfect Peach,#FFCBA4,Neutrals,,Beiges,,,,,,AP Exterior,,
+8002,Bashful Beige,#F5DEB3,Neutrals,,Beiges,,,,,,AP Exterior,,
+8007,Fawn Dream,#D2B48C,Decor Suggested Combinations,Decor accents,Browns,"Living Room, Bedroom",Accent Walls,Warm,Medium,Interior,Royale,,
+8010,Peach Beach,#FFCBA4,Neutrals,,Beiges,,,,,,AP Exterior,,
+8027,Touch Of Paprika,#FF6347,Jewel,,Reds,,,,,,AP Exterior,,
+8060,Day Lily,#FFD700,Decor Suggested Combinations,Decor accents,Yellows,Living Room,Accent Walls,Warm,Medium,Interior,Royale,,
+8089,Ballet Slippers,#FFCCE5,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Pinks,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+8090,Garden Pink,#FFB6C1,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Pinks,"Bedrooms, Living Room",Accent Walls,Warm,Light,Interior,Royale,,
+8107,Tinge Of Mauve,#DDA0DD,Pastels,,Lavenders,,,,,,AP Exterior,,
+8116,Soft Breeze,#FFDAB9,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Oranges,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+8132,Pale Blush,#FADADD,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Pinks,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+8289,Cold Flint,#696969,Greys,,Dark Greys,,,,,,AP Exterior,,
+8292,White Gold,#FDF5E6,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+8299,Ice Age,#F0F8FF,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+8300,Confetti,#FDF5E6,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Neutrals,All Rooms,Accent Walls,Warm,Light,Interior,Royale,,
+8307,Quicksilver,#C0C0C0,Whites & Off Whites,,Off-Whites,,,,,,AP Exterior,,
+8308,Whispering Smoke,#DCDCDC,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Greys,"Living Room, Bedroom",Accent Walls,Cool,Medium,Interior,Royale,,
+8444,Ice Crystal,#E0E0E0,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Greys,"Bathroom, Kitchen",Feature Walls,Cool,Light,Interior,Royale,,
+8456,Butter Rum,#DEB887,Neutrals,,Beiges,,,,,,AP Exterior,,
+8472,Wild Mushroom,#D2B48C,Decor Suggested Combinations,Decor accents,Browns,Living Room,Feature Walls,Warm,Medium,Interior,Royale,,
+8476,Whitener,#F0F0F0,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,All Rooms,Primary Walls,Cool,Light,Interior,Royale,,
+8495,Highland Grass,#9ACD32,Greens,,Greens,,,,,,AP Exterior,,
+8499,Meadow Lark,#F0E68C,Jewel,,Yellows,,,,,,AP Exterior,,
+8512,Almond Sand,#F5DEB3,Decor Suggested Combinations,Decor accents,Beiges,"Living Room, Bedroom",Primary Walls,Warm,Light,Interior,Royale,,
+8524,Garlic Pod,#F8F8F0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+8537,Milk Chocolate,#7B3F00,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Browns,"Living Room, Study",Accent Walls,Warm,Dark,Interior,Royale,,
+8539,River Reed,#E0E0E0,Whites & Off Whites,,Off-Whites,,,,,,AP Exterior,,
+8554,Heritage Hills,#D2B48C,Neutrals,,Beiges,,,,,,AP Exterior,,
+8589,Ethnic Brown,#5C4033,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Browns,"Living Room, Study",Accent Walls,Warm,Dark,Interior,Royale,,
+8636,Cobbled Path,#E6E6E6,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+8716,Zinnia Bloom,#FF69B4,Purples & Pinks,,Pinks,,,,,,AP Exterior,,
+9150,Lucky Sapphire,#0F52BA,Blues,,Blues,,,,,,AP Exterior,,
+9209,Water Jet,#00CED1,Blues,,Cyans,,,,,,AP Exterior,,
+9210,Soft Blue,#ADD8E6,"Violets, Blues and Greens",Cool | Serene | Refreshing,Blues,"Bedrooms, Bathrooms",Primary Walls,Cool,Light,Interior,Royale,,
+9223,Deep Water,#191970,Blues,,Blues,,,,,,AP Exterior,,
+9308,Spring Green,#00FF7F,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,"Bedrooms, Living Room",Accent Walls,Cool,Light,Interior,Royale,,
+9406,Rose Meadows,#FF9999,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Pinks,Bedrooms,Accent Walls,Warm,Medium,Interior,Royale,,
+9407,Fruit Pink,#FF91A4,"Yellows, Oranges and Reds",Warm | Radiant | Cheerful,Pinks,Bedrooms,Accent Walls,Warm,Medium,Interior,Royale,,
+9408,Early Bloom,#FFC0CB,Neutrals,,Beiges,,,,,,AP Exterior,,
+951,Coral Shell,#FF7F50,Jewel,,Oranges,,,,,,AP Exterior,,
+9514,Creamy Crust,#F5DEB3,Neutrals,,Beiges,,,,,,AP Exterior,,
+9531A,Soothing Silk,#FFF5EE,Royale Play Luxe Collection,Stucco Marble effect,Neutrals,"Bedrooms, Living Room",Accent Walls,Warm,Light,Interior,Royale,,
+9630,Lilac Feather-N,#DDA0DD,"Violets, Blues and Greens",Cool | Serene | Refreshing,Violets,"Bedrooms, Living Room",Accent Walls,Cool,Light,Interior,Royale,,
+9645,Stratos-N,#191970,Blues,,Blues,,,,,,AP Exterior,,
+9647,Naval Club-N,#000080,Blues,,Blues,,,,,,AP Exterior,,
+9656,Gulmarg Winters-N,#E0FFFF,"Violets, Blues and Greens",Cool | Serene | Refreshing,Blues,"Bedrooms, Living Room",Feature Walls,Cool,Light,Interior,Royale,,
+9662,Dayflower Blue-N,#6495ED,Blues,,Blues,,,,,,AP Exterior,,
+9665,Electric Azure-N,#007FFF,Blues,,Blues,,,,,,AP Exterior,,
+9668,Blackwater-N,#2F4F4F,Blues,,Dark Blues,,,,,,AP Exterior,,
+9675,Iznik Blue-N,#4169E1,Blues,,Blues,,,,,,AP Exterior,,
+972,Tapestry,#8FBC8F,Greens,,Greens,,,,,,AP Exterior,,
+9732,Midnight Jade-N,#00A86B,Greens,,Greens,,,,,,AP Exterior,,
+974,Basra Pearl-N,#E8E8E8,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,Bedrooms,Primary Walls,Cool,Light,Interior,Royale,,
+9774,Lush Treetops-N,#228B22,Greens,,Greens,,,,,,AP Exterior,,
+9775,Tulsi-N,#228B22,Greens,,Greens,,,,,,AP Exterior,,
+9776,Turtle Cove-N,#2E8B57,Greens,,Greens,,,,,,AP Exterior,,
+9812,Parakeet Green-N,#32CD32,Greens,,Greens,,,,,,AP Exterior,,
+9821,French Bean-N,#556B2F,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,Accent Walls,"Living Room, Dining",Cool,Dark,Interior,Royale,,
+9887,Crème Anglaise-N,#FFFDD0,Decor Suggested Combinations,Decor accents,Whites,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+9891,Chandan-N,#F5DEB3,Neutrals,,Beiges,,,,,,AP Exterior,,
+9893,Hobakjuk Yellow-N,#FFD700,Jewel,,Yellows,,,,,,AP Exterior,,
+9897,Afternoon Glow-N,#FF6347,Jewel,,Reds,,,,,,AP Exterior,,
+9920,Deccan Earth-N,#CD853F,Jewel,,Oranges,,,,,,AP Exterior,,
+997,Radiant White,#FFFFFF,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,All Rooms,Primary Walls,Cool,Light,Interior,Royale,,
+BR 8120,Barn Red,#7A1E1E,Jewel,"Barn Red – a deep, rustic red ideal for bold feature walls and heritage-style exteriors",Reds,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Warm,Dark,Both,Essential Colors Collection,Traditional,Excellent Coverage
+GM 9304,Grey Mist,#C9CCCD,Greys,Grey Mist – a soft light grey with subtle neutrality; brightens interiors while pairing easily with accent shades,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,Essential Colors Collection,Minimalist,High Coverage
+GT 9873,Grey Thunder,#9DA0A3,Greys,"Grey Thunder – a balanced mid-grey that provides depth without overpowering, ideal for modern living areas",Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Primary Walls",Neutral,Medium,Both,Essential Colors Collection,Modern Classic,Full Coverage
+K094,Pearl Grey-N,#DCDCDC,Whites & Off Whites,,Off-Whites,,,,,,AP Exterior,,
+K106,Weathered Rock-N,#708090,Blues,,Blues,,,,,,AP Exterior,,
+K122,Seagull Bay-N,#B0C4DE,Blues,,Blues,,,,,,AP Exterior,,
+L103,Pearl Star,#F0F0E8,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L104,Cotton Wool,#F8F8F0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L116,Menthol,#98FF98,"Violets, Blues and Greens",Cool | Serene | Refreshing,Greens,"Bedrooms, Bathroom",Accent Walls,Cool,Light,Interior,Royale,,
+L124,Pure Ivory,#FFFFF0,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,"Bedrooms, Living Rooms",Primary Walls,Warm,Light,Interior,Royale,,
+L126,Sugared Nut,#D2B48C,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Browns,"Living Room, Bedroom",Accent Walls,Warm,Medium,Interior,Royale,,
+L127,Sesame Seed,#F5F5DC,Neutrals,,Beiges,,,,,,AP Exterior,,
+L129,Cold Coffee,#F5F0E8,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L133,Arabian Sand,#F5DEB3,Neutrals,,Beiges,,,,,,AP Exterior,,
+L136,Pebble White,#F5F5DC,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Neutrals,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+L140,Crushed Ice,#F0F8FF,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L143,Rain Drop,#F5F5F5,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L146,Sonnet,#EEE8AA,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Yellows,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+L152,Cream Pie,#FFF8E7,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L156,Almost Ivory,#FFF8E7,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L157,White Canvas,#FFFAF0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L164,White Butter,#FFFACD,Neutrals,,Beiges,,,,,,AP Exterior,,
+L165,Indian Cotton,#FFF8F0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L166,Sour Cream,#FFF8DC,Neutrals,,Beiges,,,,,,AP Exterior,,
+L169,Spotless,#FFFFFF,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L171,White Silk,#F5F5F5,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,All Rooms,Primary Walls,Cool,Light,Interior,Royale,,
+L176,White Bush,#F5F5F5,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L180,Innocent White,#FFF8F0,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+L189,Light Butter-N,#FFFACD,Neutrals,,Beiges,,,,,,AP Exterior,,
+L190,Dawn Dew-N,#F5F5F0,"Whites, Browns, and Greys",Classic | Elegant | Splendid,Whites,"Bedrooms, Living Rooms",Primary Walls,Warm,Light,Interior,Royale,,
+LL 9037,Lilac,#C9BDC7,Pastels,Lilac – a romantic pale violet with soft charm; excellent for serene and youthful spaces,Purples,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Bedrooms, Accent Walls",Cool,Light,Interior,Essential Colors Collection,Romantic,Complete Coverage
+LN 3788,Linen,#D3CABB,Neutrals,Linen – a warm beige off-white offering timeless neutrality; pairs seamlessly with wood and stone,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Warm,Light,Both,Essential Colors Collection,Transitional,High Coverage
+LV 8498,Lavender,#D4C8CD,Pastels,"Lavender – a delicate pastel purple that brings calm and sophistication, best for bedrooms or boutique spaces",Purples,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Bedrooms, Accent Walls",Cool,Light,Interior,Essential Colors Collection,Calming,High Coverage
+M011,Dune Medallion,#FFD700,Royale Play Luxe Collection,Dune Halo,Yellows,Living Room,Accent Walls,Warm,Medium,Interior,Royale,,
+M8299,Antico Ice Age,#C0C0C0,Royale Play Luxe Collection,Antico Classique,Metallics,Living Room,Accent Walls,Cool,Medium,Interior,Royale,,
+OA53,Brilliant White,#FFFFFF,Whites & Off Whites,,Whites,,,,,,AP Exterior,,
+PP 7768,Purple,#776A8C,Purples & Pinks,Purple – a rich mid-tone purple with sophistication; perfect for statement walls and retail accents,Purples,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Decorative Accents",Cool,Medium,Interior,Essential Colors Collection,Classic,Full Coverage
+RAL 1000,Green Beige,#CDBA88,Earthy,Green Beige – sandy beige with warm undertones; versatile and natural for subtle interiors,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Feature Walls",Warm,Light,Interior,RAL Standard Collection,Earthy,High Coverage
+RAL 1001,Beige,#D0B084,Earthy,Beige – classic warm beige offering soft neutrality; reliable for whole-home use,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Warm,Light,Interior,RAL Standard Collection,Classic,High Coverage
+RAL 1002,Sand Yellow,#D2AA6D,Earthy,Sand Yellow – a golden beige that adds warmth and vibrancy without overwhelming,Oranges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Kids Room","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 1003,Signal Yellow,#F9A800,Jewel,Signal Yellow – a bold vibrant yellow designed for energy and high visibility,Yellows,"Kitchen, Dining Room, Kids Room, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1004,Golden Yellow,#E49E00,Jewel,Golden Yellow – a glowing sunshine tone for striking interiors and commercial highlights,Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1005,Honey Yellow,#CB8E00,Jewel,Honey Yellow – a deep golden yellow with warmth and character,Yellows,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1006,Maize Yellow,#E29000,Jewel,Maize Yellow – a warm earthy yellow reminiscent of ripe corn; bright yet grounded,Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1007,Chrome Yellow,#E88C00,Jewel,"Chrome Yellow – an intense warm yellow-orange, excellent for strong highlights",Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1011,Brown Beige,#AF804F,Earthy,Brown Beige – a warm brown-beige that grounds interiors with cozy richness,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Cozy,Full Coverage
+RAL 1012,Lemon Yellow,#DDAF27,Jewel,Lemon Yellow – a fresh citrus yellow that uplifts kitchens and social areas,Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1013,Oyster White,#E3D9C6,Whites & Off Whites,Oyster White – a subtle warm white with creamy undertones,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior, Kids Room","Walls, Ceilings, Feature Walls",Neutral,Light,Interior,RAL Standard Collection,Pale,High Coverage
+RAL 1014,Ivory,#DDC49A,Pastels,Ivory – a classic soft ivory for timeless elegance in living areas and bedrooms,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Feature Walls",Warm,Light,Interior,RAL Standard Collection,Classic,High Coverage
+RAL 1015,Light Ivory,#E6D2B5,Pastels,Light Ivory – pale ivory with gentle warmth; enhances small spaces,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Feature Walls",Warm,Light,Interior,RAL Standard Collection,Soft,High Coverage
+RAL 1016,Sulfur Yellow,#F1DD38,Jewel,Sulfur Yellow – a striking yellow that enlivens interiors and commercial accents,Yellows,"Kitchen, Kids Room, Dining Room, Living Room, Bedroom, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Light,Interior,RAL Standard Collection,Vibrant,High Coverage
+RAL 1017,Saffron Yellow,#F6A950,Jewel,Saffron Yellow – warm golden saffron tone that radiates luxury and richness,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality, Living Room","Feature Walls, Decorative Accents",Warm,Light,Interior,RAL Standard Collection,Rich,High Coverage
+RAL 1018,Zinc Yellow,#FACA30,Jewel,"Zinc Yellow – bright, high-energy yellow suited for accent walls and playful spaces",Yellows,"Kitchen, Kids Room, Dining Room, Living Room, Bedroom, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Light,Interior,RAL Standard Collection,Vibrant,High Coverage
+RAL 1019,Grey Beige,#A48F7A,Earthy,Grey Beige – an elegant taupe-beige with grounding warmth; ideal for sophisticated living spaces,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Feature Walls",Neutral,Medium,Interior,RAL Standard Collection,Grounding,Full Coverage
+RAL 1020,Olive Yellow,#A08F65,Earthy,Olive Yellow – muted olive with golden undertones; adds rustic charm to interiors,Olive,"Living Room, Dining Room, Retail","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Cozy,Full Coverage
+RAL 1021,Colza Yellow,#F6B600,Jewel,"Colza Yellow – a lively golden yellow, uplifting for social and hospitality spaces",Yellows,"Kitchen, Kids Room, Dining Room, Living Room, Bedroom, Retail, Hospitality","Feature Walls, Bedrooms, Living Areas",Warm,Light,Interior,RAL Standard Collection,Vibrant,High Coverage
+RAL 1023,Traffic Yellow,#F7B500,Jewel,Traffic Yellow – high-energy yellow for bold accents and modern interiors,Yellows,"Kitchen, Kids Room, Dining Room, Living Room, Bedroom, Retail, Hospitality, Exterior","Feature Walls, Accents",Warm,Light,Interior,RAL Standard Collection,Playful,High Coverage
+RAL 1024,Ochre Yellow,#BA8F4C,Earthy,Ochre Yellow – earthy ochre with timeless warmth; versatile for traditional schemes,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Heritage,Full Coverage
+RAL 1026,Luminous Yellow,#FFFF00,Jewel,Luminous Yellow – intense neon yellow for modern highlights and playful spaces,Yellows,"Kitchen, Kids Room, Dining Room, Living Room, Bedroom, Retail, Hospitality","Accent Walls, Bold Features",Warm,Light,Interior,RAL Standard Collection,Bold,High Coverage
+RAL 1027,Curry,#A77F0E,Earthy,"Curry – spicy golden brown-yellow, strong and grounding for accents",Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 1028,Melon Yellow,#FF9B00,Jewel,"Melon Yellow – a juicy, bright orange-yellow; brings playful warmth",Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 1032,Broom Yellow,#E2A300,Jewel,Broom Yellow – vivid golden yellow with radiant depth; ideal for high-energy zones,Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 1033,Dahlia Yellow,#F99A1C,Jewel,Dahlia Yellow – floral-inspired rich yellow-orange; warm and expressive,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Expressive,Full Coverage
+RAL 1034,Pastel Yellow,#EB9C52,Pastels,"Pastel Yellow – a soft, muted yellow-orange with gentle warmth",Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Bedrooms",Warm,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 1035,Pearl Beige,#A29985,Earthy,Pearl Beige – sophisticated beige with subtle shimmer; timeless and grounding,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Timeless,Full Coverage
+RAL 1036,Pearl Gold,#8A6F30,Jewel,Pearl Gold – metallic-inspired gold-brown; luxurious and bold,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Rich,Full Coverage
+RAL 1037,Sun Yellow,#F09200,Jewel,Sun Yellow – a radiant sunshine yellow-orange that enlivens interiors,Yellows,"Kitchen, Kids Room, Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 2000,Yellow Orange,#DD7907,Jewel,Yellow Orange – strong golden orange; vibrant for modern highlights,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 2001,Red Orange,#C93C20,Jewel,Red Orange – fiery orange-red that adds drama and warmth,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 2002,Vermilion,#CB2821,Jewel,Vermilion – iconic vivid red-orange; expressive and striking,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Expressive,Full Coverage
+RAL 2003,Pastel Orange,#FF7514,Pastels,Pastel Orange – cheerful orange softened for comfort; friendly and bright,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Feature Walls, Bedrooms",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 2004,Pure Orange,#F44611,Jewel,Pure Orange – uncompromising bright orange; energizes any space,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 2005,Luminous Orange,#FF4E00,Jewel,Luminous Orange – glowing neon orange for modern statements,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Bold Features",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 2007,Luminous Bright Orange,#FFA421,Jewel,Luminous Bright Orange – vivid orange with playful brilliance,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 2008,Bright Red Orange,#F75E25,Jewel,Bright Red Orange – dynamic orange-red with youthful energy,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 2009,Traffic Orange,#F54021,Jewel,Traffic Orange – strong signal orange for bold modern interiors,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality, Exterior","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 2010,Signal Orange,#D84B20,Jewel,Signal Orange – rich orange-red that brings vitality and strength,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality, Exterior","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Expressive,Full Coverage
+RAL 2011,Deep Orange,#EC7C26,Jewel,Deep Orange – warm deep orange with earthy richness; perfect for accents,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 2012,Salmon Orange,#E55137,Jewel,Salmon Orange – a bright coral-orange bringing playful warmth and vibrancy,Oranges,"Kitchen, Dining Room, Kids Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 2013,Pearl Orange,#A9461E,Jewel,"Pearl Orange – a deep, rich burnt orange with luxurious depth",Oranges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Kids Room","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 3000,Flame Red,#AF2B1E,Jewel,Flame Red – a vivid fiery red ideal for energizing statement walls,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 3001,Signal Red,#A52019,Jewel,"Signal Red – iconic bright red; high-visibility, dynamic and striking",Reds,"Dining Room, Retail, Hospitality, Exterior","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 3002,Carmine Red,#A2231D,Jewel,Carmine Red – a deep crimson red with dramatic intensity,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Dramatic,Full Coverage
+RAL 3003,Ruby Red,#9B111E,Jewel,Ruby Red – jewel-toned red with depth and elegance,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Industrial Applications",Warm,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 3004,Purple Red,#701F29,Jewel,Purple Red – a dark red with plum undertones; moody and sophisticated,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 3005,Wine Red,#5E2028,Earthy,"Wine Red – a rich, dark claret red offering depth and tradition",Reds,"Dining Room, Retail, Hospitality","Accent Walls, Industrial Applications",Warm,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 3007,Black Red,#412227,Earthy,"Black Red – very dark brown-red, dramatic and grounding",Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Dramatic,Excellent Coverage
+RAL 3009,Oxide Red,#6D3F33,Earthy,"Oxide Red – earthy, natural brown-red; reliable and grounding",Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Traditional,Full Coverage
+RAL 3011,Brown Red,#781F19,Earthy,Brown Red – a deep reddish-brown with strength and permanence,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Warm,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 3012,Beige Red,#C68873,Earthy,"Beige Red – warm rose-tinted beige, elegant and versatile",Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 3013,Tomato Red,#9C322E,Jewel,Tomato Red – lively red with a hint of orange; bright and expressive,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Expressive,Full Coverage
+RAL 3014,Antique Pink,#CB7375,Pastels,"Antique Pink – muted vintage rose for romantic, soft interiors",Pinks,"Living Room, Dining Room, Retail","Feature Walls, Bedrooms",Warm,Medium,Interior,RAL Standard Collection,Romantic,Full Coverage
+RAL 3015,Light Pink,#E1A6AD,Pastels,Light Pink – delicate pastel pink bringing charm and comfort,Pinks,"Bedroom, Kids Room, Retail","Feature Walls, Bedrooms",Neutral,Light,Interior,RAL Standard Collection,Soft,High Coverage
+RAL 3016,Coral Red,#B32821,Jewel,Coral Red – vibrant coral-red; lively and uplifting,Reds,"Dining Room, Retail, Hospitality, Bedroom, Kids Room, Bathroom","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 3017,Rose,#D36B6B,Pastels,"Rose – warm rosy red; classic, romantic, and timeless",Reds,"Dining Room, Retail, Hospitality","Feature Walls, Bedrooms",Warm,Medium,Interior,RAL Standard Collection,Romantic,Full Coverage
+RAL 3018,Strawberry Red,#D53032,Jewel,Strawberry Red – bright juicy red with playful energy,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 3020,Traffic Red,#CC0000,Jewel,Traffic Red – strong signal red; bold and uncompromising,Reds,"Dining Room, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Warm,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 3022,Salmon Pink,#D95030,Jewel,Salmon Pink – coral-pink blend that adds freshness and vibrancy,Pinks,"Living Room, Dining Room, Retail","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 3024,Luminous Red,#FF2D21,Jewel,Luminous Red – fluorescent red with striking modern appeal,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Bold Features",Warm,Medium,Interior,RAL Standard Collection,Bold,High Coverage
+RAL 3026,Luminous Bright Red,#FF1F1F,Jewel,Luminous Bright Red – vivid intense red; energetic and bold,Reds,"Dining Room, Retail, Hospitality","Accent Walls, Bold Features",Warm,Medium,Interior,RAL Standard Collection,Vibrant,High Coverage
+RAL 3027,Raspberry Red,#C51D34,Jewel,Raspberry Red – deep raspberry tone; rich and dramatic,Reds,"Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 3028,Pure Red,#E10721,Jewel,"Pure Red – clean, bright red; versatile and timeless",Reds,"Dining Room, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Classic,Full Coverage
+RAL 3031,Orient Red,#B32428,Jewel,Orient Red – exotic warm red with richness and character,Reds,"Dining Room, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Heritage,Full Coverage
+RAL 3032,Pearl ruby red,#711521,Jewel,Pearl ruby red – deep jewel red with luxurious depth; dramatic for statement features,Reds,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Accent Walls, Decorative Accents",Warm,Dark,Both,RAL Standard Collection,Dramatic,Excellent Coverage
+RAL 3033,Pearl pink,#B24C56,Pastels,Pearl pink – refined rose-pink with a soft sheen; elegant and welcoming,Pinks,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Bedrooms",Warm,Medium,Interior,RAL Standard Collection,Romantic,Full Coverage
+RAL 4001,Red lilac,#6D3F5B,Purples & Pinks,Red lilac – muted plum-lilac; sophisticated and calming,Purples,"Bedroom, Kids Room, Retail","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Classic,Full Coverage
+RAL 4002,Red violet,#922B3E,Purples & Pinks,Red violet – saturated violet-red; bold and expressive,Purples,"Bedroom, Kids Room, Retail","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 4003,Heather violet,#DE4C8A,Purples & Pinks,Heather violet – lively pink-violet; playful and modern,Pinks,"Living Room, Dining Room, Retail","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 4004,Claret violet,#641C34,Jewel,Claret violet – very dark wine-violet; moody and luxurious,Purples,"Bedroom, Kids Room, Retail","Accent Walls, Decorative Accents",Warm,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 4005,Blue lilac,#6C4675,Purples & Pinks,Blue lilac – cool lavender-purple; refined and serene,Purples,"Bedroom, Kids Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Calming,Full Coverage
+RAL 4006,Traffic purple,#A03472,Purples & Pinks,Traffic purple – vivid magenta-purple; energetic focal color,Purples,"Bedroom, Kids Room, Retail, Exterior","Accent Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 4007,Purple violet,#4A192C,Jewel,Purple violet – ultra-deep purple; dramatic and intimate,Purples,"Bedroom, Kids Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 4008,Signal violet,#924B9A,Purples & Pinks,Signal violet – assertive violet with contemporary edge,Purples,"Bedroom, Kids Room, Retail, Exterior","Accent Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 4009,Pastel violet,#A18594,Purples & Pinks,Pastel violet – dusted mauve; gentle and timeless,Purples,"Bedroom, Kids Room, Retail","Feature Walls, Bedrooms",Neutral,Medium,Interior,RAL Standard Collection,Timeless,Full Coverage
+RAL 4010,Telemagenta,#CF3476,Purples & Pinks,Telemagenta – high-chroma magenta; bold pop for modern spaces,Pinks,"Living Room, Dining Room, Retail","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 4011,Pearl violet,#6C5885,Purples & Pinks,Pearl violet – subdued violet-blue; elegant and composed,Purples,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior, Kids Room","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 4012,Pearl blackberry,#6C687A,Purples & Pinks,Pearl blackberry – smoky violet-grey; sophisticated and balanced,Purples,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Kids Room","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Timeless,Full Coverage
+RAL 5000,Violet blue,#354D73,Blues,Violet blue – cool blue with violet cast; composed and professional,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Classic,Full Coverage
+RAL 5001,Green blue,#1F3A93,Blues,Green blue – deep teal-blue; strong and architectural,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 5002,Ultramarine blue,#20214F,Blues,Ultramarine blue – intense deep blue; refined and dramatic,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Dramatic,Excellent Coverage
+RAL 5003,Sapphire blue,#1D1E33,Blues,Sapphire blue – near-black blue for premium contrast,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 5004,Black blue,#18171C,Blues,Black blue – almost black with a blue undertone; ultra-sleek,Blues,"Bedroom, Bathroom, Office, Living Room","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Timeless,Complete Coverage
+RAL 5005,Signal blue,#1E2460,Blues,Signal blue – vivid signal blue; crisp and modern,Blues,"Bedroom, Bathroom, Office, Living Room, Retail, Exterior","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 5007,Brilliant blue,#3E5F8A,Blues,Brilliant blue – clean mid blue; versatile and uplifting,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 5008,Grey blue,#26252D,Blues,Grey blue – charcoal-blue; understated and architectural,Blues,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Timeless,Complete Coverage
+RAL 5009,Azure blue,#025669,Blues,Azure blue – deep marine blue; cool and composed,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 5010,Gentian blue,#0E294B,Blues,Gentian blue – saturated dark blue; confident and clear,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Decorative Accents",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 5011,Steel blue,#231A24,Blues,Steel blue – ultra-dark blue-black; sophisticated depth,Blues,"Bedroom, Bathroom, Office, Living Room","Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Moody,Complete Coverage
+RAL 5012,Light blue,#3B83BD,Blues,Light Blue – fresh and airy sky-toned blue; uplifting for interiors,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 5013,Cobalt blue,#1E213D,Blues,Cobalt Blue – dark indigo-blue with strong visual depth,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 5014,Pigeon blue,#606E8C,Blues,Pigeon Blue – muted grey-blue; calm and understated,Blues,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Timeless,Full Coverage
+RAL 5015,Sky blue,#2271B3,Blues,"Sky Blue – bright, clear mid-blue; invigorating and fresh",Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 5017,Traffic blue,#063971,Blues,Traffic Blue – deep signal blue; bold and commanding,Blues,"Bedroom, Bathroom, Office, Living Room, Retail, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Strong,Excellent Coverage
+RAL 5018,Turquoise blue,#3F888F,Blues,Turquoise Blue – aqua-toned blue-green; lively and refreshing,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 5019,Capri blue,#1B5583,Blues,Capri Blue – bright marine blue; crisp and modern,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 5020,Ocean blue,#1D334A,Blues,Ocean Blue – deep oceanic navy; dramatic and grounding,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 5021,Water blue,#256D7B,Blues,Water Blue – cool teal-blue; refreshing and versatile,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Refreshing,Full Coverage
+RAL 5022,Night blue,#252850,Blues,Night Blue – very dark midnight blue; sleek and elegant,Blues,"Bedroom, Bathroom, Office, Living Room, Retail","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 5023,Distant blue,#49678D,Blues,Distant Blue – desaturated blue-grey; calm and sophisticated,Blues,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Subtle,Full Coverage
+RAL 5024,Pastel blue,#5D9B9B,Blues,Pastel Blue – gentle aqua blue; soothing and airy,Blues,"Office, Bathroom, Retail","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 5025,Pearl gentian blue,#2A6478,Blues,Pearl Gentian Blue – rich teal-blue with pearlescent depth,Blues,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 5026,Pearl night blue,#102C54,Blues,Pearl Night Blue – dark pearlescent navy; sophisticated and bold,Blues,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Dramatic,Excellent Coverage
+RAL 6000,Patina green,#316C5E,Greens,Patina Green – weathered teal-green; natural and balanced,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Earthy,Full Coverage
+RAL 6001,Emerald green,#287233,Greens,Emerald Green – classic jewel green; vibrant and timeless,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6002,Leaf green,#2D572C,Greens,Leaf Green – deep forest green; natural and grounding,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Grounding,Excellent Coverage
+RAL 6003,Olive green,#424632,Earthy,Olive Green – muted army green; rustic and versatile,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Traditional,Excellent Coverage
+RAL 6004,Blue green,#0E4243,Greens,Blue Green – deep blue-toned green; strong and striking,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 6005,Moss green,#2F4538,Greens,Moss Green – dark mossy green; organic and grounding,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 6006,Grey olive,#3E3B32,Earthy,Grey Olive – greyed earthy green; subtle and muted,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 6007,Bottle green,#343B29,Greens,"Bottle Green – dark, dense green; elegant and traditional",Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 6008,Brown green,#39352A,Earthy,Brown Green – earthy brown-green; rustic and grounding,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Earthy,Excellent Coverage
+RAL 6009,Fir green,#31372B,Greens,Fir Green – coniferous deep green; timeless and robust,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Decorative Accents",Neutral,Dark,Both,RAL Standard Collection,Timeless,Complete Coverage
+RAL 6010,Grass green,#35682D,Greens,"Grass Green – fresh, natural green; vibrant and energizing",Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6011,Reseda green,#587246,Greens,Reseda Green – muted leafy green; calm and versatile,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 6012,Black green,#343E40,Greens,Black Green – very dark green with grey tone; sleek and grounding,Greens,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Accent Walls",Neutral,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 6013,Reed green,#6C7156,Greens,Reed Green – natural muted green; subtle and timeless,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Timeless,Full Coverage
+RAL 6014,Yellow olive,#47402E,Earthy,Yellow Olive – earthy olive-brown; rustic and grounding,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 6015,Black olive,#3B3C36,Greens,Black Olive – near-black olive green; dramatic and modern,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 6016,Turquoise green,#1E5945,Greens,Turquoise Green – cool green-teal; lively and bold,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 6017,May green,#4C9141,Greens,May Green – bright spring green; fresh and energizing,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6018,Yellow green,#57B74C,Greens,Yellow Green – citrus-tinted green; dynamic and playful,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 6019,Pastel green,#BDECB6,Greens,Pastel Green – soft minty green; light and refreshing,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior, Kids Room, Kitchen","Feature Walls, Bedrooms",Neutral,Light,Interior,RAL Standard Collection,Soft,High Coverage
+RAL 6020,Chrome green,#36422F,Greens,Chrome Green – deep industrial green; strong and reliable,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Strong,Excellent Coverage
+RAL 6021,Pale green,#8A9977,Greens,Pale Green – gentle muted green; calming and restorative,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Calming,Full Coverage
+RAL 6022,Olive drab,#393122,Earthy,Olive Drab – dark military olive; rugged and strong,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Robust,Complete Coverage
+RAL 6024,Traffic green,#308446,Greens,Traffic Green – bright signal green; vivid and eye-catching,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior, Retail","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6025,Fern green,#3D642D,Greens,Fern Green – natural woodland green; grounded and organic,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Earthy,Full Coverage
+RAL 6026,Opal green,#015D52,Greens,Opal Green – jewel-toned deep teal; striking and bold,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 6027,Light green,#84C3BE,Greens,Light Green – fresh aqua-green; bright and airy,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Refreshing,Full Coverage
+RAL 6028,Pine green,#2C5545,Greens,Pine Green – dark evergreen; strong and natural,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Heritage,Full Coverage
+RAL 6029,Mint green,#20603D,Greens,Mint Green – cool saturated green; fresh and invigorating,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior, Kitchen","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Playful,Full Coverage
+RAL 6031,Bronze green,#4B573E,Greens,Bronze Green – muted olive-bronze; traditional and grounding,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Traditional,Full Coverage
+RAL 6032,Signal green,#317F43,Greens,Signal Green – crisp saturated green; bold and reliable,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior, Retail","Feature Walls, Decorative Accents",Neutral,Medium,Interior,RAL Standard Collection,Bold,Full Coverage
+RAL 6033,Mint turquoise,#497E76,Greens,Mint Turquoise – teal-mint blend; cool and refreshing,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior, Kitchen","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Refreshing,Full Coverage
+RAL 6034,Pastel turquoise,#7FB5B5,Greens,Pastel Turquoise – gentle aqua turquoise; light and soothing,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Cool,Medium,Interior,RAL Standard Collection,Soft,Full Coverage
+RAL 6035,Pearl green,#1B542C,Greens,Pearl Green – deep pearl green; elegant and bold,Greens,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Strong,Excellent Coverage
+RAL 6036,Pearl opal green,#005D4C,Greens,Pearl Opal Green – jewel deep emerald-teal; luxurious and dramatic,Greens,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Rich,Excellent Coverage
+RAL 6037,Pure green,#25E712,Greens,Pure Green – vivid saturated green; lively and modern,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6038,Luminous green,#00F700,Greens,Luminous Green – neon vivid green for high-impact accents,Greens,"Living Room, Bedroom, Office, Bathroom, Hospitality, Exterior","Accent Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Vibrant,Full Coverage
+RAL 6039,Fibrous green,#005D52,Greens,"Fibrous Green – deep teal-green; bold, modern, and architectural",Greens,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Accent Walls, Industrial Applications",Cool,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 7000,Squirrel grey,#78858B,Greys,Squirrel Grey – balanced mid grey; calm and versatile,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Timeless,Full Coverage
+RAL 7001,Silver grey,#8A9597,Greys,"Silver Grey – clean silvery grey for crisp, modern spaces",Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 7002,Olive grey,#7E7B52,Earthy,Olive Grey – warm olive-tinged grey; grounded and subtle,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Earthy,Full Coverage
+RAL 7003,Moss grey,#6C7059,Greys,Moss Grey – softened green-grey; understated and natural,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Subtle,Full Coverage
+RAL 7004,Signal grey,#969992,Greys,Signal Grey – reliable neutral for unified schemes,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Minimalist,Full Coverage
+RAL 7005,Mouse grey,#646B63,Greys,Mouse Grey – sturdy mid-dark grey; excellent for contrast,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 7006,Beige grey,#756F61,Earthy,Beige Grey – warm beige-grey; cozy and versatile,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Warm,Medium,Both,RAL Standard Collection,Transitional,Full Coverage
+RAL 7008,Khaki grey,#6A5F31,Earthy,Khaki Grey – brown-khaki depth; rugged and grounded,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Heritage,Full Coverage
+RAL 7009,Green grey,#4D5645,Greys,"Green Grey – cool, muted grey-green; composed and practical",Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 7010,Tarpaulin grey,#4C514A,Greys,Tarpaulin Grey – robust utility grey; steady and discreet,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 7011,Iron grey,#434B4D,Greys,Iron Grey – graphite-leaning grey; firm and architectural,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 7012,Basalt grey,#4E5754,Greys,Basalt Grey – cool stone grey; refined and durable,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 7013,Brown grey,#464531,Earthy,Brown Grey – deep brown-cast grey; warm and grounding,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 7015,Slate grey,#434750,Greys,Slate Grey – crisp slate tone for clear definition,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 7016,Anthracite grey,#383E42,Greys,Anthracite Grey – popular dark grey; dramatic contrast,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Contemporary,Excellent Coverage
+RAL 7021,Black grey,#23282B,Classic,Black Grey – ultra-dark grey-black; sleek and timeless,Blacks,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Timeless,Complete Coverage
+RAL 7022,Umbra grey,#332F2C,Earthy,Umbra Grey – brown-umbered dark grey; rich and grounded,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Heritage,Complete Coverage
+RAL 7023,Concrete grey,#686C5E,Greys,Concrete Grey – utilitarian cement grey; steady and clean,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Minimalist,Full Coverage
+RAL 7024,Graphite grey,#474A51,Greys,Graphite Grey – technical dark grey; sharp and modern,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 7026,Granite grey,#2F353B,Classic,Granite Grey – very dark stone grey; powerful and composed,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 7030,Stone grey,#8B8C7A,Greys,Stone Grey – natural mineral grey; balanced and adaptable,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 7031,Blue grey,#474B4E,Greys,Blue Grey – grey with blue cast; cool and composed,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Cool,Medium,Both,RAL Standard Collection,Subtle,Full Coverage
+RAL 7032,Pebble grey,#B8BDB6,Greys,Pebble Grey – light pebble tone; airy and clean,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Minimalist,High Coverage
+RAL 7033,Cement grey,#7D8471,Greys,Cement Grey – cool utilitarian grey; steady and professional,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 7034,Yellow grey,#8F8B66,Earthy,Yellow Grey – warm grey with subtle yellow cast; grounding,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Earthy,Full Coverage
+RAL 7035,Light grey,#D7D7D7,Greys,Light Grey – crisp light grey; versatile and airy,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Soft,Complete Coverage
+RAL 7036,Platinum grey,#7F7679,Greys,Platinum Grey – sophisticated grey with subtle warmth,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Contemporary,Full Coverage
+RAL 7037,Dusty grey,#7D7F7D,Greys,Dusty Grey – muted flat grey; balanced and understated,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Minimalist,Full Coverage
+RAL 7038,Agate grey,#B5B8B1,Greys,Agate Grey – light stone-grey; subtle and calming,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Soft,Full Coverage
+RAL 7039,Quartz grey,#6C6960,Greys,Quartz Grey – deep muted grey; natural and strong,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 7040,Window grey,#9DA1AA,Greys,Window Grey – clear mid-grey; crisp and clean,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 7042,Traffic grey A,#8D948D,Greys,Traffic Grey A – functional urban grey; reliable,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 7043,Traffic grey B,#4E5452,Greys,"Traffic Grey B – dark, strong grey; robust and serious",Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Strong,Full Coverage
+RAL 7044,Silk grey,#CAC4B0,Greys,Silk Grey – light beige-grey; elegant and soft,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Bedrooms",Neutral,Light,Interior,RAL Standard Collection,Soft,High Coverage
+RAL 7045,Telegrey 1,#909090,Greys,Telegrey 1 – balanced neutral grey; technical and versatile,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Minimalist,Full Coverage
+RAL 7046,Telegrey 2,#82898F,Greys,Telegrey 2 – slightly blue-grey; modern and practical,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern Classic,Full Coverage
+RAL 7047,Telegrey 4,#D0D0D0,Greys,Telegrey 4 – very light grey; bright and versatile,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Soft,Complete Coverage
+RAL 7048,Pearl mouse grey,#898176,Greys,Pearl Mouse Grey – mid-grey with pearlescent depth,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 8000,Green brown,#826C34,Earthy,Green Brown – earthy brown-green; warm and rustic,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Earthy,Full Coverage
+RAL 8001,Ochre brown,#955F20,Earthy,Ochre Brown – warm ochre-toned brown; strong and natural,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Traditional,Full Coverage
+RAL 8002,Signal brown,#6C3B2A,Earthy,Signal Brown – dark red-brown; strong and grounded,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior, Retail","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Bold,Full Coverage
+RAL 8003,Clay brown,#734222,Earthy,Clay Brown – earthy brown tone; natural and grounded,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Classic,Full Coverage
+RAL 8004,Copper brown,#8E402A,Earthy,Copper Brown – metallic warm brown; rich and glowing,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Rich,Full Coverage
+RAL 8007,Fawn brown,#59351F,Earthy,Fawn Brown – deep dark brown; warm and rustic,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Warm,Dark,Both,RAL Standard Collection,Strong,Excellent Coverage
+RAL 8008,Olive brown,#6F4F28,Earthy,Olive Brown – greenish earthy brown; muted and grounded,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Earthy,Full Coverage
+RAL 8012,Red brown,#592321,Earthy,Red Brown – dark reddish brown; rich and powerful,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Bold,Excellent Coverage
+RAL 8014,Sepia brown,#382C1E,Earthy,Sepia Brown – very dark brown; vintage and dramatic,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 8015,Chestnut brown,#633A34,Earthy,Chestnut Brown – deep chestnut tone; warm and strong,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 8016,Mahogany brown,#4C2F27,Earthy,Mahogany Brown – rich dark wood tone; elegant and durable,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 8017,Chocolate brown,#45322E,Earthy,Chocolate Brown – deep cocoa brown; cozy and grounding,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Moody,Excellent Coverage
+RAL 8019,Grey brown,#403A3A,Greys,Grey Brown – balanced brown-grey; versatile and subtle,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Classic,Excellent Coverage
+RAL 8023,Orange brown,#A45729,Earthy,Orange Brown – warm earthy brown-orange; vibrant accent,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Interior,RAL Standard Collection,Rich,Full Coverage
+RAL 8024,Beige brown,#795038,Earthy,Beige Brown – soft medium brown; warm and approachable,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Transitional,Full Coverage
+RAL 8025,Pale brown,#755C48,Earthy,Pale Brown – muted earthy brown; grounded and calm,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Neutral,Medium,Both,RAL Standard Collection,Grounding,Full Coverage
+RAL 8028,Terra brown,#4E3629,Earthy,Terra Brown – earthy soil tone; strong and authentic,Browns,"Living Room, Dining Room, Office, Hospitality, Exterior","Accent Walls, Industrial Applications",Neutral,Dark,Both,RAL Standard Collection,Heritage,Excellent Coverage
+RAL 8029,Pearl copper,#763C28,Earthy,Pearl Copper – metallic warm copper-brown; rich and bold,Browns,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Decorative Accents",Warm,Medium,Both,RAL Standard Collection,Luxury,Full Coverage
+RAL 9001,Cream,#F6F1CE,Whites & Off Whites,Cream – soft warm white; inviting and elegant,Beiges,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Feature Walls, Bedrooms, Living Areas",Warm,Light,Interior,RAL Standard Collection,Pale,High Coverage
+RAL 9002,Grey white,#E4E3E1,Whites & Off Whites,Grey White – subtle cool white; versatile and clean,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Minimalist,Complete Coverage
+RAL 9003,Signal white,#F4F4F4,Whites & Off Whites,Signal White – bright pure white; crisp and modern,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Modern Classic,Complete Coverage
+RAL 9004,Signal black,#282828,Classic,Signal Black – deep charcoal black; sleek and strong,Blacks,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Strong,Complete Coverage
+RAL 9005,Jet black,#0A0A0A,Classic,Jet Black – absolute black; dramatic and timeless,Blacks,"Office, Retail, Exterior, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Timeless,Complete Coverage
+RAL 9006,White aluminium,#A5A5A5,Greys,White Aluminium – metallic silver-grey; reflective and modern,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern,Full Coverage
+RAL 9007,Grey aluminium,#8F8F8F,Greys,Grey Aluminium – mid metallic grey; industrial and robust,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+RAL 9010,Pure white,#FFFFFF,Whites & Off Whites,Pure White – classic bright white; timeless and clean,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Classic,Complete Coverage
+RAL 9011,Graphite black,#1C1C1C,Classic,Graphite Black – dark graphite tone; sleek and strong,Blacks,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Modern Classic,Complete Coverage
+RAL 9012,Clean room white,#EDEEEC,Whites & Off Whites,Clean Room White – hygienic clean white; sterile and crisp,Whites,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Minimalist,Complete Coverage
+RAL 9016,Traffic white,#F6F6F6,Whites & Off Whites,Traffic White – clean neutral white; versatile and bright,Whites,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Soft,Complete Coverage
+RAL 9017,Traffic black,#1E1E1E,Classic,Traffic Black – strong urban black; timeless and bold,Blacks,"Office, Retail, Exterior, Hospitality","Walls, Ceilings, Trim",Neutral,Dark,Both,RAL Standard Collection,Industrial,Complete Coverage
+RAL 9018,Papyrus white,#D7D4D1,Whites & Off Whites,Papyrus White – soft parchment white; subtle and refined,Whites,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Walls, Ceilings, Trim",Neutral,Light,Both,RAL Standard Collection,Classic,Complete Coverage
+RAL 9022,Pearl light grey,#9C9C9C,Greys,Pearl Light Grey – metallic light grey; modern and balanced,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Modern,Full Coverage
+RAL 9023,Pearl dark grey,#828282,Greys,Pearl Dark Grey – metallic mid-grey; bold and technical,Greys,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality","Walls, Ceilings, Trim",Neutral,Medium,Both,RAL Standard Collection,Industrial,Full Coverage
+SA04,Mysore Ivory,#FFFFF0,Decor Suggested Combinations,Decor accents,Whites,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+SA05,Sonchampa,#FFDAB9,Decor Suggested Combinations,Decor accents,Yellows,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+SA08,Parchment,#F5F5DC,Decor Suggested Combinations,Decor accents,Neutrals,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+SA10,Velour Grey,#A9A9A9,Heritage Décor,Shades inspired by the heartland story of India,Greys,Living Room,Accent Walls,Cool,Medium,Interior,Royale,,
+SA14,Crumbed Nutmeg,#D2B48C,Heritage Décor,Shades inspired by the heartland story of India,Browns,"Study, Living Room",Accent Walls,Warm,Medium,Interior,Royale,,
+SA15,Alabaster Blush,#FFE4E1,Decor Suggested Combinations,Decor accents,Pinks,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+SA16,Apricot Cream,#FFDAB9,Heritage Décor,Shades inspired by the heartland story of India,Oranges,"Living Room, Bedroom",Primary Walls,Warm,Light,Interior,Royale,,
+SA17,Tea Rose,#FFB6C1,Decor Suggested Combinations,Decor accents,Pinks,Bedrooms,Accent Walls,Warm,Light,Interior,Royale,,
+SA26,Sepoy Green,#556B2F,Heritage Décor,Shades inspired by the heartland story of India,Greens,"Living Room, Bedroom",Accent Walls,Cool,Dark,Interior,Royale,,
+SA27,River Stone,#708090,Heritage Décor,Shades inspired by the heartland story of India,Greys,"Study, Living Room",Accent Walls,Cool,Medium,Interior,Royale,,
+SA28,Wet Turmeric,#DAA520,Heritage Décor,Shades inspired by the heartland story of India,Yellows,"Living Room, Dining",Feature Walls,Warm,Medium,Interior,Royale,,
+SA30,Chutney Green,#006400,Heritage Décor,Shades inspired by the heartland story of India,Greens,"Study, Living Room",Accent Walls,Cool,Dark,Interior,Royale,,
+SA31,Betal Leaf,#228B22,Heritage Décor,Shades inspired by the heartland story of India,Greens,"Kitchen, Living Room",Feature Walls,Cool,Medium,Interior,Royale,,
+SA34,Iranian Turquoise,#40E0D0,Decor Suggested Combinations,Decor accents,Blues,"Bathrooms, Living Room",Accent Walls,Cool,Medium,Interior,Royale,,
+SA35,Coromandel Indigo,#4B0082,Heritage Décor,Shades inspired by the heartland story of India,Indigos,"Living Room, Study",Accent Walls,Cool,Dark,Interior,Royale,,
+SG 8994,Sage Green,#A8B99D,Greens,"Sage Green – muted botanical green that creates a calming, grounded environment",Greens,"Living Room, Bedroom, Dining Room, Kitchen, Bathroom, Office, Retail, Hospitality, Exterior","Primary Walls, Feature Walls",Neutral,Medium,Both,Essential Colors Collection,Scandinavian,Full Coverage
+SV01,Namak,#F5F5DC,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,All Rooms,Primary Walls,Cool,Light,Interior,Royale,,
+SV02,Muziris,#FAF9F6,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+SV03,Mogra,#FFFFF0,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+SV07,Sondesh,#FAF0E6,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Neutrals,Living Room,Primary Walls,Warm,Light,Interior,Royale,,
+SV10,Ellora,#DCDCDC,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Greys,"Living Room, Bedroom",Accent Walls,Cool,Medium,Interior,Royale,,
+SV18,Chikankari,#FFFDD0,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,Bedrooms,Primary Walls,Warm,Light,Interior,Royale,,
+SV19,Muga Silk,#FAEBD7,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Neutrals,Living Room,Primary Walls,Warm,Light,Interior,Royale,,
+SV24,Kapas,#FFFAF0,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,All Rooms,Primary Walls,Warm,Light,Interior,Royale,,
+SV31,Jarokha,#F8F8FF,Heritage of Indian Whites & Ivories,Shades inspired by Indian heritage,Whites,Bedrooms,Accent Walls,Cool,Light,Interior,Royale,,
+X195,Jodhpur Walls-I,#6495ED,Blues,,Blues,,,,,,AP Exterior,,
+X196,Gerua-I,#CD853F,Jewel,,Oranges,,,,,,AP Exterior,,

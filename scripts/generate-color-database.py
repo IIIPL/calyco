@@ -11,13 +11,17 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-# Try multiple possible locations for the Excel file
+# Try multiple possible locations for the Excel/CSV file
 POSSIBLE_PATHS = [
     '/mnt/user-data/outputs/Calyco_Combined_Color_Palette_Updated.xlsx',
     'C:/user-data/outputs/Calyco_Combined_Color_Palette_Updated.xlsx',
     'C:/calyco-github/Calyco_Combined_Color_Palette_Updated.xlsx',
     './Calyco_Combined_Color_Palette_Updated.xlsx',
     '../Calyco_Combined_Color_Palette_Updated.xlsx',
+    # Also check for CSV files
+    'C:/calyco-github/Calyco_Combined_Color_Palette_Updated.csv',
+    './Calyco_Combined_Color_Palette_Updated.csv',
+    '../Calyco_Combined_Color_Palette_Updated.csv',
 ]
 
 def find_excel_file():
@@ -35,9 +39,14 @@ def find_excel_file():
     return None
 
 def read_color_data(file_path):
-    """Read color data from Excel file"""
-    print(f"[INFO] Reading Excel file...")
-    df = pd.read_excel(file_path)
+    """Read color data from Excel or CSV file"""
+    file_ext = file_path.suffix.lower()
+    print(f"[INFO] Reading {file_ext} file...")
+
+    if file_ext == '.csv':
+        df = pd.read_csv(file_path)
+    else:
+        df = pd.read_excel(file_path)
 
     print(f"[OK] Loaded {len(df)} rows")
     print(f"[INFO] Columns: {', '.join(df.columns)}\n")
