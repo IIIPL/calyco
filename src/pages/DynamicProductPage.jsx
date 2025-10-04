@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart } from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { products } from "../data/products";
 import { groupedShades as colorData } from "../data/groupedShades";
 import { useCart } from "../context/CartContext";
@@ -96,6 +96,23 @@ export const DynamicProductPage = () => {
         // Reset
         setTouchStart(0);
         setTouchEnd(0);
+    };
+
+    // Navigation arrow handlers
+    const handlePrevImage = () => {
+        if (product?.images && product.images.length > 0 && selectedImageIndex > 0) {
+            const prevIndex = selectedImageIndex - 1;
+            setSelectedImageIndex(prevIndex);
+            setSelectedImage(product.images[prevIndex]);
+        }
+    };
+
+    const handleNextImage = () => {
+        if (product?.images && product.images.length > 0 && selectedImageIndex < product.images.length - 1) {
+            const nextIndex = selectedImageIndex + 1;
+            setSelectedImageIndex(nextIndex);
+            setSelectedImage(product.images[nextIndex]);
+        }
     };
 
     useEffect(() => {
@@ -320,8 +337,41 @@ export const DynamicProductPage = () => {
                                             e.target.src = product.image;
                                         }
                                     }}
-                                    className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain hover:scale-105 transition-transform duration-500"
+                                    className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain transition-opacity duration-300"
                                 />
+
+                                {/* Premium Navigation Arrows */}
+                                {product.images && product.images.length > 1 && (
+                                    <>
+                                        {/* Previous Arrow */}
+                                        <button
+                                            onClick={handlePrevImage}
+                                            disabled={selectedImageIndex === 0}
+                                            className={`absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+                                                selectedImageIndex === 0
+                                                    ? 'opacity-30 cursor-not-allowed'
+                                                    : 'opacity-0 group-hover:opacity-100 hover:shadow-xl'
+                                            }`}
+                                            aria-label="Previous image"
+                                        >
+                                            <FiChevronLeft className="w-6 h-6 text-[#493657]" />
+                                        </button>
+
+                                        {/* Next Arrow */}
+                                        <button
+                                            onClick={handleNextImage}
+                                            disabled={selectedImageIndex === product.images.length - 1}
+                                            className={`absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+                                                selectedImageIndex === product.images.length - 1
+                                                    ? 'opacity-30 cursor-not-allowed'
+                                                    : 'opacity-0 group-hover:opacity-100 hover:shadow-xl'
+                                            }`}
+                                            aria-label="Next image"
+                                        >
+                                            <FiChevronRight className="w-6 h-6 text-[#493657]" />
+                                        </button>
+                                    </>
+                                )}
                             </div>
                             {/* Swipe indicator for mobile */}
                             {product.images && product.images.length > 1 && (
@@ -865,25 +915,6 @@ export const DynamicProductPage = () => {
                     </div>
                   </>
                 )}
-                {/* Documentation */}
-                <div className="space-y-8 bg-gray-100 rounded-xl p-8">
-                    <h2 className="text-3xl font-bold text-[#493657] mb-6">Documentation</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div>
-                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Safety Data Sheets</h4>
-                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href="https://docs.google.com/document/d/1a7G2nY1phuWpv8mLcqpqDSd2So-i43Qs/edit"  target="_blank" rel="noopener noreferrer" className="underline">SDS 1</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold text-[#493657] text-lg mb-2">Technical Data Sheets</h4>
-                            <ul className="list-disc pl-6 text-[#493657]/80 space-y-2">
-                                <li><a href="https://docs.google.com/document/d/1SxsgrtuzcKehOF3pqnUtv0HiD3ROSCX9/edit"  target="_blank" rel="noopener noreferrer" className="underline">TDS</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {/* Comparison table removed per request */}
             </motion.section>
         </div>
         
