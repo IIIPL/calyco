@@ -6,7 +6,7 @@ export const products = [
     "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
-    "details": "The most discerning designers and homeowners choose Nova for its rich, lasting colour and unmatched interior performance.",
+    "details": "Trusted by discerning designers and homeowners alike, Calyco Nova delivers breathtaking colour with unmatched quality.",
     "category": "Interior",
     "application": [
       "Interior wall painting",
@@ -17,22 +17,22 @@ export const products = [
       "metal"
     ],
     "advantages": [
-      "High-pigment colour",
-      "Superior coverage",
-      "Scrub-resistant"
+      "High-Pigment Colour",
+      "Superior Coverage",
+      "Scrub-Resistant"
     ],
     "features": [
       "Burnish and scuff resistant",
       "Low VOC",
       "Unbeatable hide",
-      "Designer-grade colour"
+      "Designer-grade color"
     ],
     "finish_type_sheen": [
       "Gloss",
-      "Semi-gloss",
-      "Soft sheen",
+      "Semi-Gloss",
+      "Soft Sheen",
       "Matte",
-      "Ultra flat matte"
+      "Ultra Flat Matte"
     ],
     "substrate": [
       "Drywall",
@@ -42,56 +42,90 @@ export const products = [
       "Metal"
     ],
     "recommended_uses": [
-      "Ideal for plaster",
-      "POP",
-      "and drywall walls and ceilings"
+      "Walls & Ceilings: Ideal for plaster, POP, and drywall surfaces"
     ],
     "price": 499,
     "packaging": [
-      "1L",
-      "4L",
-      "10L",
-      "20L"
+      "1 litre",
+      "4 litres",
+      "10 litres",
+      "20 litres"
     ],
     "technical_specs": {
-      "base_type": "Water-based",
-      "coverage": "90-125 sq. ft./Ltr",
-      "voc_content": "Low VOC",
+      "product_code": "CAL-00135",
+      "base_type": "Proprietary Acrylic Dispersion",
+      "vehicle_type": "Water-based acrylic emulsion",
+      "coverage": "140-180 sq.ft./L/coat",
+      "voc_content": "< 35 g/L (Low VOC)",
+      "volume_solids": "Approx. 35%",
+      "pH": "7-8.5",
+      "weight_per_volume": "~1.26 kg/L",
       "suitable_surfaces": [
-        "Interior walls and ceilings"
+        "Interior walls and ceilings",
+        "Plaster, drywall, wood, masonry surfaces"
       ],
-      "application_instructions": "Apply using brush, roller or spray. Ensure surface is clean and dry.",
-      "drying_time": "1 hr",
-      "recoat_time": "2-4 hrs",
-      "cleanup": "Soap and Water"
+      "application_instructions": "Apply with brush, roller, or sprayer. Ensure surface is clean, dry, and properly primed if needed.",
+      "drying_time": "Touch dry: 1 hour | Recoat: 2-4 hours | Full cure: 24 hours",
+      "recoat_time": "2-4 hours",
+      "cleanup": "Soap and Water",
+      "shelf_life": "48 months in sealed containers",
+      "storage_temp": "5°C – 40°C",
+      "ingredients": [
+        { "name": "Limestone", "cas": "1317-65-3", "weight": "10-30%" },
+        { "name": "Kaolin", "cas": "1332-58-7", "weight": "7-13%" },
+        { "name": "Titanium Dioxide", "cas": "13463-67-7", "weight": "3-7%" },
+        { "name": "Quartz (SiO₂)", "cas": "14808-60-7", "weight": "0.1-1%" }
+      ]
     },
     "base_type": "Water-based",
     "coverage": "90-125 sq. ft./Ltr",
-    "voc_content": "Low VOC",
+    "voc_content": "Low VOC (trace VOC)",
     "suitable_surfaces": [
       "Interior walls and ceilings"
     ],
-    "application_instructions": "Apply using brush, roller or spray. Ensure surface is clean and dry.",
-    "drying_time": "1 hr",
-    "recoat_time": "2-4 hrs",
+    "application_instructions": "Apply with brush, roller, or sprayer",
+    "drying_time": "1 hour",
+    "recoat_time": "2–4 hours",
     "cleanup": "Soap and Water",
     "brand": "Calyco",
     "tools_required": [
       "Brush",
-      "roller",
-      "spray"
+      "Roller",
+      "Spray"
     ],
     "color_options": [
-      "Available in 108 shades"
+      "Available in 108 designer shades"
     ],
-    "spread_rate": "90-125 sq. ft./Ltr",
-    "preparation_instructions": "Surface should be dry and clean; apply primer if required",
-    "safety_precautions": "Use gloves; work in ventilated area",
-    "storage_instructions": "Store in cool, dry place away from sunlight",
+    "spread_rate": "90–125 sq. ft./Ltr",
+    "preparation_instructions": "Clean dry surface, primed if needed",
+    "safety_precautions": "Gloves recommended, ventilated area",
+    "safety_warnings": {
+      "signal_word": "Warning",
+      "hazard_statements": [
+        "H319: Causes serious eye irritation",
+        "H332: Harmful if inhaled",
+        "H351: Suspected of causing cancer"
+      ],
+      "precautionary_statements": [
+        "P261: Avoid breathing dust/fume/gas/mist/vapours/spray",
+        "P264: Wash exposed skin thoroughly after handling",
+        "P271: Use only outdoors or in a well-ventilated area",
+        "P280: Wear protective gloves/eye protection/face protection",
+        "P305+P351+P338: IF IN EYES: Rinse cautiously with water for several minutes. Remove contact lenses if present and easy to do. Continue rinsing",
+        "P312: Call a POISON CENTER or doctor if you feel unwell"
+      ],
+      "first_aid": {
+        "inhalation": "Move to fresh air. If symptoms persist, seek medical attention.",
+        "skin_contact": "Wash with soap and water. If irritation develops, seek medical attention.",
+        "eye_contact": "Rinse immediately with plenty of water for at least 15 minutes. Seek medical attention if irritation persists.",
+        "ingestion": "Do NOT induce vomiting. Rinse mouth with water. Seek medical attention immediately."
+      }
+    },
+    "storage_instructions": "Store in cool dry place, avoid freezing",
     "warranty": "5 years",
     "product_number": "NOVA",
     "coats_required": "2 coats",
-    "temperature_range": "12°C-40°C",
+    "temperature_range": "10°C–35°C",
     "humidity_range": "Under 80% RH",
     "display_name": "Calyco Interior Latex Paint",
     "images": [

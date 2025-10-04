@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash } from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart } from 'react-icons/fi';
 import { products } from "../data/products";
 import { ralColorData as colorData } from "../data/ralColors";
 import { useCart } from "../context/CartContext";
@@ -643,15 +643,45 @@ export const DynamicProductPage = () => {
                 {/* Technical Specifications Section */}
                 <div className="mb-20 mt-16">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    {product.technical_specs?.product_code && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Product Code</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.product_code}</span>
+                      </div>
+                    )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
                       <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technical_specs && product.technical_specs.base_type) || 'N/A'}</span>
                     </div>
+                    {product.technical_specs?.vehicle_type && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Vehicle Type</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.vehicle_type}</span>
+                      </div>
+                    )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
                       <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || 'N/A'}</span>
                     </div>
+                    {product.technical_specs?.volume_solids && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Volume Solids</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.volume_solids}</span>
+                      </div>
+                    )}
+                    {product.technical_specs?.pH && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">pH Level</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.pH}</span>
+                      </div>
+                    )}
+                    {product.technical_specs?.weight_per_volume && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Weight/Volume</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.weight_per_volume}</span>
+                      </div>
+                    )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
                       <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technical_specs && product.technical_specs.application_instructions) || 'N/A'}</span>
@@ -664,6 +694,18 @@ export const DynamicProductPage = () => {
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
                       <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technical_specs && product.technical_specs.recoat_time) || 'N/A'}</span>
                     </div>
+                    {product.technical_specs?.shelf_life && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCalendar className="w-5 h-5 text-[#493657]" />Shelf Life</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.shelf_life}</span>
+                      </div>
+                    )}
+                    {product.technical_specs?.storage_temp && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Storage Temperature</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.storage_temp}</span>
+                      </div>
+                    )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
                       <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technical_specs && product.technical_specs.cleanup) || 'N/A'}</span>
@@ -681,10 +723,6 @@ export const DynamicProductPage = () => {
                       <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technical_specs && product.technical_specs.preparation_instructions) || 'N/A'}</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiAlertCircle className="w-5 h-5 text-[#493657]" />Safety Precautions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.safety_precautions || (product.technical_specs && product.technical_specs.safety_precautions) || 'N/A'}</span>
-                    </div>
-                    <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
                       <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technical_specs && product.technical_specs.storage_instructions) || 'N/A'}</span>
                     </div>
@@ -692,9 +730,131 @@ export const DynamicProductPage = () => {
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
                       <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technical_specs && product.technical_specs.warranty) || 'N/A'}</span>
                     </div>
-                    
+
+                    {/* Ingredients Section */}
+                    {product.technical_specs?.ingredients && product.technical_specs.ingredients.length > 0 && (
+                      <div className="md:col-span-2">
+                        <h3 className="font-semibold text-[#493657] text-xl mb-3 mt-4">Composition</h3>
+                        <div className="bg-gray-50 rounded-lg p-4">
+                          <table className="w-full text-left">
+                            <thead>
+                              <tr className="border-b border-[#493657]/20">
+                                <th className="pb-2 text-[#493657] font-semibold">Ingredient</th>
+                                <th className="pb-2 text-[#493657] font-semibold">CAS Number</th>
+                                <th className="pb-2 text-[#493657] font-semibold">Weight %</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {product.technical_specs.ingredients.map((ingredient, idx) => (
+                                <tr key={idx} className="border-b border-[#493657]/10">
+                                  <td className="py-2 text-[#493657]/80">{ingredient.name}</td>
+                                  <td className="py-2 text-[#493657]/80">{ingredient.cas}</td>
+                                  <td className="py-2 text-[#493657]/80">{ingredient.weight}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
+
+                {/* Safety Information Section */}
+                {product.safety_warnings && (
+                  <>
+                    <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
+                    <div className="mb-20 mt-16">
+                      <h2 className="text-5xl font-bold text-[#493657] mb-8">Safety Information</h2>
+
+                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
+                        <div className="flex items-start">
+                          <FiAlertCircle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
+                          <div>
+                            <h3 className="font-bold text-yellow-800 text-xl mb-2">
+                              {product.safety_warnings.signal_word || 'Warning'}
+                            </h3>
+                            <p className="text-yellow-700 text-base">
+                              Please read all safety information before use
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Hazard Statements */}
+                      {product.safety_warnings.hazard_statements && (
+                        <div className="mb-6">
+                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
+                            <FiAlertCircle className="w-5 h-5" />
+                            Hazard Statements
+                          </h3>
+                          <ul className="list-disc pl-6 space-y-2">
+                            {product.safety_warnings.hazard_statements.map((statement, idx) => (
+                              <li key={idx} className="text-[#493657]/80 text-lg">{statement}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Precautionary Statements */}
+                      {product.safety_warnings.precautionary_statements && (
+                        <div className="mb-6">
+                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
+                            <FiShield className="w-5 h-5" />
+                            Precautionary Statements
+                          </h3>
+                          <ul className="list-disc pl-6 space-y-2">
+                            {product.safety_warnings.precautionary_statements.map((statement, idx) => (
+                              <li key={idx} className="text-[#493657]/80 text-lg">{statement}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* First Aid Measures */}
+                      {product.safety_warnings.first_aid && (
+                        <div className="mb-6">
+                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
+                            <FiHeart className="w-5 h-5" />
+                            First Aid Measures
+                          </h3>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            {product.safety_warnings.first_aid.inhalation && (
+                              <div className="bg-gray-50 rounded-lg p-4">
+                                <h4 className="font-semibold text-[#493657] mb-2">Inhalation</h4>
+                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.inhalation}</p>
+                              </div>
+                            )}
+                            {product.safety_warnings.first_aid.skin_contact && (
+                              <div className="bg-gray-50 rounded-lg p-4">
+                                <h4 className="font-semibold text-[#493657] mb-2">Skin Contact</h4>
+                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.skin_contact}</p>
+                              </div>
+                            )}
+                            {product.safety_warnings.first_aid.eye_contact && (
+                              <div className="bg-gray-50 rounded-lg p-4">
+                                <h4 className="font-semibold text-[#493657] mb-2">Eye Contact</h4>
+                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.eye_contact}</p>
+                              </div>
+                            )}
+                            {product.safety_warnings.first_aid.ingestion && (
+                              <div className="bg-gray-50 rounded-lg p-4">
+                                <h4 className="font-semibold text-[#493657] mb-2">Ingestion</h4>
+                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.ingestion}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Basic Safety Precautions */}
+                      <div className="bg-blue-50 rounded-lg p-6 mt-6">
+                        <h3 className="font-semibold text-blue-800 text-lg mb-3">General Safety Precautions</h3>
+                        <p className="text-blue-700">{product.safety_precautions || 'Use appropriate protective equipment. Work in well-ventilated areas.'}</p>
+                      </div>
+                    </div>
+                  </>
+                )}
                 {/* Documentation */}
                 <div className="space-y-8 bg-gray-100 rounded-xl p-8">
                     <h2 className="text-3xl font-bold text-[#493657] mb-6">Documentation</h2>
