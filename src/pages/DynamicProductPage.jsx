@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart } from 'react-icons/fi';
 import { products } from "../data/products";
-import { ralColorData as colorData } from "../data/ralColors";
+import { groupedShades as colorData } from "../data/groupedShades";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 
@@ -206,16 +206,26 @@ export const DynamicProductPage = () => {
         }
     };
 
-    // Price multipliers for each size
-    const sizePriceMultipliers = {
-        "1L": 1,
-        "4L": 3.5,
-        "10L": 8,
-        "20L": 14
+    // Price multipliers for each size (supports both formats: "1L" and "1 litre")
+    const getSizeMultiplier = (size) => {
+        if (!size) return 1;
+
+        // Normalize the size string to extract the number
+        const sizeNum = size.toString().match(/\d+/)?.[0];
+
+        const multipliers = {
+            "1": 1,
+            "4": 3.5,
+            "10": 8,
+            "20": 14
+        };
+
+        return multipliers[sizeNum] || 1;
     };
+
     // Calculate price for selected size
     const getSizePrice = (basePrice, size) => {
-        const multiplier = sizePriceMultipliers[size] || 1;
+        const multiplier = getSizeMultiplier(size);
         return Math.round(basePrice * multiplier);
     };
 
