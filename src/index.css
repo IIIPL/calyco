@@ -307,3 +307,17 @@ body {
   opacity: 0;
   transition: all 0.3s ease-in;
 }
+/* Sticky layout for product media */
+.product-hero__media {
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+@media (max-width: 1023.98px) {
+  .product-hero__media {
+    position: static;
+  }
+}
+

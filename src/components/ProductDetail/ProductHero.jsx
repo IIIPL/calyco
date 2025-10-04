@@ -73,7 +73,7 @@ const ProductHero = ({ product, selectedFinish, onAddToCart, onSampleOrder, onVi
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Media Carousel */}
-          <div className="space-y-6">
+          <div className="space-y-6 product-hero__media">
             {/* Main Image/Video */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
               <AnimatePresence mode="wait">
