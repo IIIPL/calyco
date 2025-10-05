@@ -225,20 +225,14 @@ export const CartProvider = ({ children }) => {
       addStep('Has Shopify products?', hasShopifyProducts);
 
       if (hasShopifyProducts) {
-        addStep('Loading Shopify client...');
+        addStep('Loading Shopify cart client...');
 
-        const { shopifyClient } = await import('../lib/shopify');
-        const { SHOPIFY_READY } = await import('../lib/env');
+        const { createCart, SHOPIFY_READY } = await import('../lib/shopify');
 
-        addStep('Shopify readiness check', { SHOPIFY_READY, hasClient: !!shopifyClient });
+        addStep('Shopify readiness check', { SHOPIFY_READY });
 
-        if (SHOPIFY_READY && shopifyClient) {
-          addStep('Creating Shopify checkout...');
-
-          const checkout = await shopifyClient.checkout.create();
-          addStep('Checkout created', { checkoutId: checkout.id });
-
-          const lineItems = state.items
+        if (SHOPIFY_READY) {
+          const cartLines = state.items
             .filter(item => {
               const match = item.id === 'nova' ||
                 item.name?.toLowerCase().includes('nova') ||
@@ -281,48 +275,50 @@ export const CartProvider = ({ children }) => {
               const variantId = sizeMap[normalizedSize];
               addStep('Resolved variant ID', { size: normalizedSize, variantId });
 
+              if (!variantId) return null;
+
+              const attributes = [
+                { key: 'Sheen', value: item.selectedSheen || '' },
+                { key: 'Color Family', value: item.selectedColor?.family || item.selectedColor?.colorFamily || '' },
+                { key: 'Color', value: item.selectedColor?.name || item.selectedColor?.colorName || '' },
+                { key: 'Color Type', value: item.selectedColorType === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand' },
+                { key: 'Size', value: normalizedSize || item.selectedSize || '' },
+              ].map(attr => ({ ...attr, value: attr.value ?? '' }));
+
               return {
-                variantId,
+                merchandiseId: variantId,
                 quantity: item.quantity,
-                customAttributes: [
-                  { key: 'Sheen', value: item.selectedSheen || '' },
-                  { key: 'Color Family', value: item.selectedColor?.family || item.selectedColor?.colorFamily || '' },
-                  { key: 'Color', value: item.selectedColor?.name || item.selectedColor?.colorName || '' },
-                  { key: 'Color Type', value: item.selectedColorType === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand' },
-                ],
+                attributes,
               };
             })
             .filter(item => {
-              const hasVariant = !!item.variantId;
-              addStep('Line item variant check', { hasVariant, variantId: item.variantId });
+              const hasVariant = !!item?.merchandiseId;
+              addStep('Line item variant check', { hasVariant, variantId: item?.merchandiseId });
               return hasVariant;
             });
 
-          addStep('Final line items', lineItems);
+          addStep('Final cart lines', cartLines);
 
-          if (lineItems.length > 0) {
-            addStep('Adding line items to checkout', { count: lineItems.length });
+          if (cartLines.length > 0) {
+            addStep('Creating Shopify cart...', { count: cartLines.length });
 
-            const updatedCheckout = await shopifyClient.checkout.addLineItems(
-              checkout.id,
-              lineItems
-            );
+            const cart = await createCart({ lines: cartLines });
 
-            addStep('Line items added successfully', { checkoutUrl: updatedCheckout.webUrl });
-            flushDebug('shopify', { checkoutId: checkout.id, webUrl: updatedCheckout.webUrl, lineItems });
+            addStep('Shopify cart created', { cartId: cart?.id, checkoutUrl: cart?.checkoutUrl });
+            flushDebug('shopify', { cartId: cart?.id, webUrl: cart?.checkoutUrl, lines: cartLines });
             console.log('═══════════════════════════════════════════════════════');
 
             setTimeout(() => {
-              window.location.href = updatedCheckout.webUrl;
+              window.location.href = cart?.checkoutUrl;
             }, 1000);
             return;
           } else {
-            addStep('No valid line items found after variant mapping');
-            flushDebug('fallback', { reason: 'no-valid-line-items' });
+            addStep('No valid cart lines after variant mapping');
+            flushDebug('fallback', { reason: 'no-valid-cart-lines' });
           }
         } else {
-          addStep('Shopify not ready', { SHOPIFY_READY, hasClient: !!shopifyClient });
-          flushDebug('fallback', { reason: 'shopify-not-ready', SHOPIFY_READY, hasClient: !!shopifyClient });
+          addStep('Shopify not ready', { SHOPIFY_READY });
+          flushDebug('fallback', { reason: 'shopify-not-ready', SHOPIFY_READY });
         }
       } else {
         addStep('No Shopify products detected in cart');

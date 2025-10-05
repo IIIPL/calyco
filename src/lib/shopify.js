@@ -1,35 +1,77 @@
-import Client from 'shopify-buy';
 import { SHOP_DOMAIN, SHOP_TOKEN, SHOPIFY_READY } from './env';
 
-// Re-export SHOPIFY_READY for convenience
 export { SHOPIFY_READY };
 
-export const shopifyClient = SHOPIFY_READY
-  ? Client.buildClient({
-      domain: SHOP_DOMAIN,
-      storefrontAccessToken: SHOP_TOKEN,
-      apiVersion: '2023-07',
-    })
-  : null;
+const API_VERSION = '2024-07';
 
-export async function ensureCheckout(checkoutId) {
-  if (!shopifyClient) return null;
-  try {
-    if (checkoutId) {
-      const existing = await shopifyClient.checkout.fetch(checkoutId);
-      if (!existing?.completedAt) return existing;
+function getGraphQLEndpoint() {
+  return `https://${SHOP_DOMAIN}/api/${API_VERSION}/graphql.json`;
+}
+
+async function shopifyGraphQL(query, variables = {}) {
+  if (!SHOPIFY_READY) {
+    throw new Error('Shopify env not configured');
+  }
+
+  const response = await fetch(getGraphQLEndpoint(), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Shopify-Storefront-Access-Token': SHOP_TOKEN,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(`Shopify GraphQL error: ${response.status} ${response.statusText}`);
+  }
+
+  if (json.errors?.length) {
+    const messages = json.errors.map((err) => err.message).join(' | ');
+    throw new Error(`Shopify GraphQL errors: ${messages}`);
+  }
+
+  return json.data;
+}
+
+export async function createCart({ lines, note, buyerIdentity, discountCodes } = {}) {
+  const mutation = `mutation cartCreate($input: CartInput!) {
+    cartCreate(input: $input) {
+      cart {
+        id
+        checkoutUrl
+      }
+      userErrors {
+        field
+        message
+        code
+      }
     }
-  } catch (err) {
-    console.warn('[SHOPIFY] Could not fetch existing checkout:', err.message);
+  }`;
+
+  const input = {
+    lines,
+  };
+
+  if (note) input.note = note;
+  if (buyerIdentity) input.buyerIdentity = buyerIdentity;
+  if (discountCodes?.length) input.discountCodes = discountCodes;
+
+  const data = await shopifyGraphQL(mutation, { input });
+  const { cartCreate } = data || {};
+
+  if (!cartCreate) {
+    throw new Error('Shopify cartCreate returned no data');
   }
 
-  try {
-    console.log('[SHOPIFY] Creating new checkout...');
-    const checkout = await shopifyClient.checkout.create();
-    console.log('[SHOPIFY] Checkout created successfully:', checkout.id);
-    return checkout;
-  } catch (err) {
-    console.error('[SHOPIFY] Failed to create checkout:', err);
-    throw err;
+  if (cartCreate.userErrors?.length) {
+    const messages = cartCreate.userErrors.map((err) => err.message).join(' | ');
+    const error = new Error(messages || 'Unknown Shopify cart error');
+    error.userErrors = cartCreate.userErrors;
+    throw error;
   }
+
+  return cartCreate.cart;
 }

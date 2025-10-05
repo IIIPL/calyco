@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 
 /**
  * Lazy-loaded Shopify checkout hook
- * Only initializes Shopify client when user clicks checkout
+ * Only initializes when user clicks checkout
  */
 export function useShopifyCheckout() {
   const [loading, setLoading] = useState(false);
@@ -13,46 +13,39 @@ export function useShopifyCheckout() {
     setError(null);
 
     try {
-      // Dynamically import Shopify client only when needed
-      const { shopifyClient, SHOPIFY_READY } = await import('../lib/shopify');
+      const { createCart, SHOPIFY_READY } = await import('../lib/shopify');
 
-      if (!SHOPIFY_READY || !shopifyClient) {
+      if (!SHOPIFY_READY) {
         throw new Error('Shopify not configured');
       }
 
-      // Create a new checkout
-      const checkout = await shopifyClient.checkout.create();
+      const lines = cartItems
+        .map(item => ({
+          merchandiseId: getVariantId(item),
+          quantity: item.quantity,
+          attributes: [
+            { key: 'Sheen', value: item.selectedSheen || '' },
+            { key: 'Color Family', value: item.selectedColor?.family || '' },
+            { key: 'Color', value: item.selectedColor?.name || '' },
+            { key: 'Size', value: item.selectedSize || '' },
+          ].map(attr => ({ ...attr, value: attr.value ?? '' })),
+        }))
+        .filter(line => line.merchandiseId);
 
-      // Map cart items to Shopify line items
-      const lineItems = cartItems.map(item => ({
-        variantId: getVariantId(item),
-        quantity: item.quantity,
-        customAttributes: [
-          { key: 'Sheen', value: item.selectedSheen || '' },
-          { key: 'Color Family', value: item.selectedColor?.family || '' },
-          { key: 'Color', value: item.selectedColor?.name || '' },
-          { key: 'Size', value: item.selectedSize || '' },
-        ]
-      })).filter(item => item.variantId); // Only include items with valid variant IDs
-
-      if (lineItems.length === 0) {
-        // No Shopify products in cart, redirect to regular checkout
+      if (lines.length === 0) {
         window.location.href = '/checkout';
         return;
       }
 
-      // Add line items to checkout
-      const updatedCheckout = await shopifyClient.checkout.addLineItems(
-        checkout.id,
-        lineItems
-      );
+      const cart = await createCart({ lines });
+      if (!cart?.checkoutUrl) {
+        throw new Error('Unable to retrieve Shopify checkout URL');
+      }
 
-      // Redirect to Shopify checkout
-      window.location.href = updatedCheckout.webUrl;
+      window.location.href = cart.checkoutUrl;
     } catch (err) {
       console.error('Shopify checkout error:', err);
-      setError(err.message);
-      // Fallback to regular checkout on error
+      setError(err.message || 'Shopify checkout failed');
       window.location.href = '/checkout';
     } finally {
       setLoading(false);
@@ -62,12 +55,7 @@ export function useShopifyCheckout() {
   return { initiateCheckout, loading, error };
 }
 
-/**
- * Map cart item to Shopify variant ID
- * Add your product mappings here
- */
 function getVariantId(cartItem) {
-  // CALYCO Interior (Nova) product variants
   if (cartItem.id === 'nova' || cartItem.name?.includes('Nova') || cartItem.name?.includes('CALYCO Interior')) {
     const sizeMap = {
       '1L': 'gid://shopify/ProductVariant/42585860702326',
@@ -78,11 +66,5 @@ function getVariantId(cartItem) {
     return sizeMap[cartItem.selectedSize];
   }
 
-  // Add more product mappings here as you add them to Shopify
-  // Example:
-  // if (cartItem.id === 'puretone') {
-  //   return sizeMap[cartItem.selectedSize];
-  // }
-
-  return null; // Return null for non-Shopify products
+  return null;
 }
