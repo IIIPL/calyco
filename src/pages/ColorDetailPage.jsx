@@ -28,7 +28,7 @@ const getTextColor = (hexColor) => {
 const ColorDetailPage = () => {
   const { familyName, colorName } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
   const [currentColor, setCurrentColor] = useState(null);
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const ColorDetailPage = () => {
           </div>
 
             <button
-              onClick={() => {
+              onClick={async () => {
                 try {
                   console.log('Buy Now clicked for:', currentColor.name);
                   
@@ -207,7 +207,7 @@ const ColorDetailPage = () => {
                   console.log('Added to cart, navigating to checkout...');
                   
                   // Navigate directly to checkout
-                  navigate('/checkout');
+                  await goToCheckout();
                 } catch (error) {
                   console.error('Error in Buy Now:', error);
                   alert('There was an error adding the item to cart. Please try again.');

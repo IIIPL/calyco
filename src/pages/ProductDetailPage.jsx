@@ -133,7 +133,7 @@ export default function ProductDetailPage() {
     efficiency: 0.9
   });
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
 
   // TODO: Replace with actual product fetching logic
   useEffect(() => {
@@ -213,9 +213,9 @@ export default function ProductDetailPage() {
     // Stay on current page
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     setCartPopup({ isVisible: false, item: null });
-    navigate('/checkout');
+    await goToCheckout();
   };
 
   const handleAddRecommended = () => {

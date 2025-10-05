@@ -52,7 +52,7 @@ export const DynamicProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-    const { addToCart } = useCart();
+    const { addToCart, goToCheckout } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);
@@ -207,10 +207,9 @@ export const DynamicProductPage = () => {
         // Stay on current page
     };
 
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
         setCartPopup({ isVisible: false, item: null });
-        // Navigate to checkout
-        window.location.href = '/checkout';
+        await goToCheckout();
     };
 
     const getTierColor = (tier) => {

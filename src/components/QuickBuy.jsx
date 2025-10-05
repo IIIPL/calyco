@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 import CartPopup from './CartPopup';
 
 const QuickBuy = ({ product, selectedColor }) => {
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
   const [size, setSize] = useState(product?.packaging?.[0] || '1L');
   const [qty, setQty] = useState(1);
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });

@@ -8,7 +8,7 @@ import ColorDetailSidebar from './ColorDetailSidebar';
 
 const PopularColorsSlider = () => {
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -190,9 +190,9 @@ const PopularColorsSlider = () => {
     // Optionally scroll to top or stay on current page
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     setCartPopup({ isVisible: false, item: null });
-    navigate('/checkout');
+    await goToCheckout();
   };
 
   // Handle drag end for swipe functionality

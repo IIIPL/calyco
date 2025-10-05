@@ -29,7 +29,7 @@ const ColorPage = () => {
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
   );
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
 
   return (
     <div className="min-h-screen mt-20" style={{ backgroundColor: actualHexColor }}>

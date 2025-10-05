@@ -44,7 +44,7 @@ const ColorDetailSidebar = ({
   onColorChange
 }) => {
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, goToCheckout } = useCart();
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
   const [selectedSize, setSelectedSize] = useState('1l');
   const [quantity, setQuantity] = useState(1);

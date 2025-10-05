@@ -1,12 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
-import { useNavigate } from 'react-router-dom';
 
 export const CartModal = ({ isOpen, onClose }) => {
-  const { items, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
-  const navigate = useNavigate();
-
+  const { items, removeFromCart, updateQuantity, getCartTotal, clearCart, goToCheckout } = useCart();
   const handleQuantityChange = (item, newQuantity) => {
     if (newQuantity <= 0) {
       removeFromCart(item);
@@ -148,7 +145,10 @@ export const CartModal = ({ isOpen, onClose }) => {
                     Clear Cart
                   </button>
                   <button
-                    onClick={() => { onClose(); navigate('/checkout'); }}
+                    onClick={async () => {
+                      onClose();
+                      await goToCheckout();
+                    }}
                     className="flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors font-semibold text-sm sm:text-base"
                   >
                     Proceed to Checkout
@@ -162,3 +162,4 @@ export const CartModal = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
+
