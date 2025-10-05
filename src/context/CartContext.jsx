@@ -176,13 +176,41 @@ export const CartProvider = ({ children }) => {
 
   // Lazy-loaded Shopify checkout - only loads when user clicks checkout
   const goToCheckout = async () => {
+    const debug = {
+      timestamp: new Date().toISOString(),
+      items: state.items,
+      steps: [],
+    };
+
+    const addStep = (message, data) => {
+      const entry = { message };
+      if (data !== undefined) {
+        entry.data = data;
+      }
+      debug.steps.push(entry);
+      if (data !== undefined) {
+        console.log('[CALYCO CHECKOUT]', message, data);
+      } else {
+        console.log('[CALYCO CHECKOUT]', message);
+      }
+    };
+
+    const flushDebug = (status, extra = {}) => {
+      debug.status = status;
+      if (extra && Object.keys(extra).length) {
+        debug.extra = extra;
+      }
+      try {
+        sessionStorage.setItem('shopifyCheckoutDebug', JSON.stringify(debug));
+      } catch (storageErr) {
+        console.warn('[CALYCO CHECKOUT] Unable to persist debug info', storageErr);
+      }
+    };
+
     console.log('═══════════════════════════════════════════════════════');
-    console.log('[CALYCO CHECKOUT] Starting checkout process...');
-    console.log('[CALYCO CHECKOUT] Cart items:', JSON.stringify(state.items, null, 2));
-    console.log('═══════════════════════════════════════════════════════');
+    addStep('Starting checkout process...', state.items);
 
     try {
-      // Check if cart has any Shopify products (Nova/CALYCO Interior)
       const hasShopifyProducts = state.items.some(item => {
         const isShopify =
           item.id === 'nova' ||
@@ -190,26 +218,25 @@ export const CartProvider = ({ children }) => {
           item.name?.toLowerCase().includes('calyco interior') ||
           item.name?.toLowerCase().includes('interior latex');
 
-        console.log(`[CALYCO CHECKOUT] Item "${item.name}" (id: ${item.id}) - Is Shopify? ${isShopify}`);
+        addStep(`Checking Shopify match for ${item.name}`, { id: item.id, isShopify });
         return isShopify;
       });
 
-      console.log('[CALYCO CHECKOUT] Has Shopify products?', hasShopifyProducts);
+      addStep('Has Shopify products?', hasShopifyProducts);
 
       if (hasShopifyProducts) {
-        console.log('[CALYCO CHECKOUT] 🚀 Loading Shopify client...');
+        addStep('Loading Shopify client...');
 
         const { shopifyClient } = await import('../lib/shopify');
         const { SHOPIFY_READY } = await import('../lib/env');
 
-        console.log('[CALYCO CHECKOUT] SHOPIFY_READY:', SHOPIFY_READY);
-        console.log('[CALYCO CHECKOUT] shopifyClient exists?', !!shopifyClient);
+        addStep('Shopify readiness check', { SHOPIFY_READY, hasClient: !!shopifyClient });
 
         if (SHOPIFY_READY && shopifyClient) {
-          console.log('[CALYCO CHECKOUT] ✅ Shopify is ready! Creating checkout...');
+          addStep('Creating Shopify checkout...');
 
           const checkout = await shopifyClient.checkout.create();
-          console.log('[CALYCO CHECKOUT] ✅ Checkout created:', checkout.id);
+          addStep('Checkout created', { checkoutId: checkout.id });
 
           const lineItems = state.items
             .filter(item => {
@@ -217,21 +244,22 @@ export const CartProvider = ({ children }) => {
                 item.name?.toLowerCase().includes('nova') ||
                 item.name?.toLowerCase().includes('calyco interior') ||
                 item.name?.toLowerCase().includes('interior latex');
-              console.log(`[CALYCO CHECKOUT] Filtering item "${item.name}" - Match? ${match}`);
+              addStep(`Filtering item ${item.name}`, { match });
               return match;
             })
             .map(item => {
-              console.log(`[CALYCO CHECKOUT] Mapping item:`, item);
-              console.log(`[CALYCO CHECKOUT] - selectedSize: "${item.selectedSize}"`);
-              console.log(`[CALYCO CHECKOUT] - selectedSheen: "${item.selectedSheen}"`);
-              console.log(`[CALYCO CHECKOUT] - selectedColor:`, item.selectedColor);
+              addStep('Mapping item', {
+                id: item.id,
+                name: item.name,
+                selectedSize: item.selectedSize,
+                selectedSheen: item.selectedSheen,
+                quantity: item.quantity,
+              });
 
-              // Normalize size to handle different formats
               const normalizeSize = (size) => {
                 if (!size) return null;
                 const sizeStr = size.toString().toUpperCase().trim();
 
-                // Handle various formats: "1L", "1 L", "1 litre", "1 LITRE", "1 Litre", etc.
                 if (sizeStr.includes('1') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '1L';
                 if (sizeStr.includes('4') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '4L';
                 if (sizeStr.includes('10') && (sizeStr.includes('L') || sizeStr.includes('LITRE'))) return '10L';
@@ -241,7 +269,7 @@ export const CartProvider = ({ children }) => {
               };
 
               const normalizedSize = normalizeSize(item.selectedSize);
-              console.log(`[CALYCO CHECKOUT] - Original size: "${item.selectedSize}" → Normalized: "${normalizedSize}"`);
+              addStep('Normalized size', { original: item.selectedSize, normalized: normalizedSize });
 
               const sizeMap = {
                 '1L': 'gid://shopify/ProductVariant/42585860702326',
@@ -251,74 +279,67 @@ export const CartProvider = ({ children }) => {
               };
 
               const variantId = sizeMap[normalizedSize];
-              console.log(`[CALYCO CHECKOUT] - Variant ID for "${item.selectedSize}":`, variantId);
+              addStep('Resolved variant ID', { size: normalizedSize, variantId });
 
-              const lineItem = {
-                variantId: variantId,
+              return {
+                variantId,
                 quantity: item.quantity,
                 customAttributes: [
                   { key: 'Sheen', value: item.selectedSheen || '' },
                   { key: 'Color Family', value: item.selectedColor?.family || item.selectedColor?.colorFamily || '' },
                   { key: 'Color', value: item.selectedColor?.name || item.selectedColor?.colorName || '' },
                   { key: 'Color Type', value: item.selectedColorType === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand' },
-                ]
+                ],
               };
-
-              console.log('[CALYCO CHECKOUT] - Created line item:', lineItem);
-              return lineItem;
             })
             .filter(item => {
               const hasVariant = !!item.variantId;
-              console.log(`[CALYCO CHECKOUT] Line item has variant? ${hasVariant}:`, item);
+              addStep('Line item variant check', { hasVariant, variantId: item.variantId });
               return hasVariant;
             });
 
-          console.log('[CALYCO CHECKOUT] Final line items array:', JSON.stringify(lineItems, null, 2));
-          console.log('[CALYCO CHECKOUT] Line items count:', lineItems.length);
+          addStep('Final line items', lineItems);
 
           if (lineItems.length > 0) {
-            console.log('[CALYCO CHECKOUT] ✅ Adding', lineItems.length, 'items to checkout...');
+            addStep('Adding line items to checkout', { count: lineItems.length });
 
             const updatedCheckout = await shopifyClient.checkout.addLineItems(
               checkout.id,
               lineItems
             );
 
-            console.log('[CALYCO CHECKOUT] ✅ Items added successfully!');
-            console.log('[CALYCO CHECKOUT] 🔗 Checkout URL:', updatedCheckout.webUrl);
-            console.log('[CALYCO CHECKOUT] 🚀 Redirecting to Shopify in 1 second...');
+            addStep('Line items added successfully', { checkoutUrl: updatedCheckout.webUrl });
+            flushDebug('shopify', { checkoutId: checkout.id, webUrl: updatedCheckout.webUrl, lineItems });
             console.log('═══════════════════════════════════════════════════════');
 
-            // Small delay so you can see the logs
             setTimeout(() => {
               window.location.href = updatedCheckout.webUrl;
             }, 1000);
             return;
           } else {
-            console.log('[CALYCO CHECKOUT] ❌ No valid line items (all missing variant IDs)');
-            console.log('[CALYCO CHECKOUT] ⚠️ Falling back to /checkout');
+            addStep('No valid line items found after variant mapping');
+            flushDebug('fallback', { reason: 'no-valid-line-items' });
           }
         } else {
-          console.log('[CALYCO CHECKOUT] ❌ Shopify not ready');
-          console.log('[CALYCO CHECKOUT] - SHOPIFY_READY:', SHOPIFY_READY);
-          console.log('[CALYCO CHECKOUT] - shopifyClient:', shopifyClient);
-          console.log('[CALYCO CHECKOUT] ⚠️ Falling back to /checkout');
+          addStep('Shopify not ready', { SHOPIFY_READY, hasClient: !!shopifyClient });
+          flushDebug('fallback', { reason: 'shopify-not-ready', SHOPIFY_READY, hasClient: !!shopifyClient });
         }
       } else {
-        console.log('[CALYCO CHECKOUT] ℹ️ No Shopify products in cart');
-        console.log('[CALYCO CHECKOUT] ⚠️ Using regular checkout');
+        addStep('No Shopify products detected in cart');
+        flushDebug('fallback', { reason: 'no-shopify-products' });
       }
     } catch (err) {
-      console.error('[CALYCO CHECKOUT] ❌ ERROR:', err);
+      console.error('[CALYCO CHECKOUT] ERROR:', err);
       console.error('[CALYCO CHECKOUT] Error stack:', err.stack);
+      flushDebug('error', { message: err.message, stack: err.stack });
     }
 
-    // Fallback to regular checkout
-    console.log('[CALYCO CHECKOUT] 🔄 Redirecting to /checkout');
+    addStep('Redirecting to /checkout as fallback');
     console.log('═══════════════════════════════════════════════════════');
-    window.location.href = '/checkout';
+    setTimeout(() => {
+      window.location.href = '/checkout';
+    }, 100);
   };
-
   const value = {
     items: state.items,
     addToCart,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { InvoiceGenerator } from "../components/InvoiceGenerator";
 import RazorpayPayment from "../components/RazorpayPayment";
@@ -32,6 +32,29 @@ const Checkout = () => {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [showRazorpayPayment, setShowRazorpayPayment] = useState(false);
   const [orderId, setOrderId] = useState(null);
+  const [shopifyDebugInfo, setShopifyDebugInfo] = useState(null);
+
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('shopifyCheckoutDebug');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        setShopifyDebugInfo(parsed);
+        console.group('[CALYCO CHECKOUT][SESSION]');
+        console.log('Status:', parsed.status);
+        if (parsed.extra) {
+          console.log('Extra:', parsed.extra);
+        }
+        if (parsed.steps) {
+          console.log('Steps:', parsed.steps);
+        }
+        console.groupEnd();
+        sessionStorage.removeItem('shopifyCheckoutDebug');
+      }
+    } catch (err) {
+      console.warn('[CALYCO CHECKOUT] Failed to read session debug info', err);
+    }
+  }, []);
 
   const rawSubtotal = getCartTotal();
   const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
@@ -126,6 +149,24 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 mt-20">
+      {shopifyDebugInfo && (
+        <div className="max-w-3xl mx-auto mb-6 px-4">
+          <div
+            className={`rounded-xl border p-4 text-sm ${
+              shopifyDebugInfo.status === 'shopify'
+                ? 'border-green-200 bg-green-50 text-green-900'
+                : 'border-amber-200 bg-amber-50 text-amber-900'
+            }`}
+          >
+            <p className="font-semibold">
+              Shopify checkout {shopifyDebugInfo.status === 'shopify' ? 'succeeded. Redirecting to Shopify checkout.' : 'did not run; using local checkout instead.'}
+            </p>
+            {shopifyDebugInfo.status !== 'shopify' && shopifyDebugInfo.extra?.reason && (
+              <p className="mt-1">Reason: {shopifyDebugInfo.extra.reason}</p>
+            )}
+          </div>
+        </div>
+      )}
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
         {/* LEFT: Checkout Form */}
         <div className="p-8 flex flex-col gap-8">
