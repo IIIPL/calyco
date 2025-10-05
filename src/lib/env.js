@@ -1,3 +1,4 @@
+// Shopify environment configuration - Updated with new secure token
 const vite = typeof import.meta !== 'undefined' ? import.meta.env : {};
 
 export const SHOP_DOMAIN =
