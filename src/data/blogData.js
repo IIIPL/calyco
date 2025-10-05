@@ -128,11 +128,74 @@ export const BLOG_POSTS = [
   },
   {
     id: 'design-trends-02',
+    slug: 'biophilic-design-nature-indoors-paint',
     category_slug: 'design-trends',
-    title: 'Statement Ceilings That Steal the Scene',
-    summary: 'See why color-drenched ceilings are the new design focal point for contemporary homes. Learn which Calyco sheens deliver drama without sacrificing durability.',
+    title: 'Biophilic Design: Bringing Nature Indoors with Paint',
+    meta_title: 'Biophilic Design with Paint: Bring Nature Indoors | Calyco Paints',
+    meta_description: 'Transform your home with biophilic design principles using Calyco\'s nature-inspired paint colors. Create healthier, more connected living spaces.',
+    summary: 'Discover how to harness biophilic design principles through strategic paint color selection, bringing the restorative power of nature into your home.',
     image_path: '/Assets/Inspiration/IMG-20250718-WA0009.jpg',
-    read_time: '6 MIN READ'
+    read_time: '9 MIN READ',
+    author: 'Calyco Editorial Team',
+    publish_date: '2025-03-01',
+    updated_date: '2025-03-01',
+    featured_image: {
+      src: '/Assets/Inspiration/IMG-20250718-WA0009.jpg',
+      alt: 'Biophilic interior with nature-inspired green paint colors',
+      width: 1200,
+      height: 630
+    },
+    content: {
+      introduction: 'In our increasingly urbanized world, the human need for connection with nature hasn\'t diminished—if anything, it has intensified. Biophilic design, the practice of incorporating natural elements into built environments, offers a scientifically-backed solution to this modern disconnect. While plants, natural light, and organic materials play crucial roles, color remains one of the most accessible and transformative tools for bringing nature\'s restorative qualities indoors.',
+      sections: [
+        {
+          id: 'what-is-biophilic',
+          heading: 'Understanding Biophilic Design',
+          content: `<p>Biophilic design emerged from biophilia, a concept suggesting that humans possess an innate tendency to seek connections with nature. Research demonstrates that biophilic environments reduce stress, lower blood pressure, improve cognitive function, and accelerate healing.</p>
+
+<p>True biophilic design systematically incorporates natural patterns, materials, light, and colors that mirror the natural world. The color component draws from nature's palette: verdant greens of forests, tranquil blues of water and sky, warm browns of earth and wood, and subtle grays of stone.</p>`,
+          images: [],
+          products: []
+        },
+        {
+          id: 'nature-inspired-palette',
+          heading: 'Nature-Inspired Color Palettes',
+          content: `<p><strong>Forest Greens:</strong> Green dominates natural landscapes, signaling growth, vitality, and safety. Medium-tone greens work beautifully in living spaces, promoting balance. Calyco's green formulations capture specific natural moments: moss-covered forest floors, sun-dappled meadows, or tranquil fern glades.</p>
+
+<p><strong>Water and Sky Blues:</strong> Blue triggers calming responses. Powder blues evoke clear skies, while deeper slate blues mirror twilight waters. Biophilic blues incorporate slight green or gray undertones, mimicking natural water complexity.</p>
+
+<p><strong>Earth Browns:</strong> Browns and beiges of earth, sand, and bark provide grounding warmth, connecting us to the solid, reliable aspects of nature. Modern earth tones embrace greige, warm taupes, and terracotta.</p>`,
+          images: [{
+            src: '/Assets/Inspiration/IMG-20250718-WA0024.jpg',
+            alt: 'Nature-inspired color palette',
+            caption: 'Draw inspiration from your local natural environment'
+          }],
+          products: []
+        },
+        {
+          id: 'room-applications',
+          heading: 'Room-Specific Applications',
+          content: `<p><strong>Bedrooms:</strong> Soft sage, eucalyptus, or moss greens create sanctuary-like atmospheres for restorative sleep.</p>
+
+<p><strong>Bathrooms:</strong> Water blues and seafoam greens keep spaces fresh while evoking seaside tranquility.</p>
+
+<p><strong>Living Rooms:</strong> Sky blues, warm sand tones, or pale sage create welcoming environments.</p>
+
+<p><strong>Home Offices:</strong> Medium-tone greens reduce eye fatigue and promote balanced mental states for productivity.</p>`,
+          images: [],
+          products: ['sage-green-silk']
+        }
+      ],
+      conclusion: 'Biophilic design through paint represents a research-backed approach to creating spaces that support human health and connection to nature. By selecting nature-inspired hues from Calyco\'s range and layering color with natural materials, you create environments where we naturally feel more balanced, focused, and alive.'
+    },
+    seo: {
+      focus_keyword: 'biophilic design paint colors',
+      keywords: ['nature-inspired paint', 'biophilic interior colors', 'green paint wellness', 'eco paint biophilic'],
+      internal_links: ['2025-sustainable-color-palettes', 'psychology-color-commercial-spaces'],
+      external_links: []
+    },
+    related_posts: ['design-trends-01', 'color-psychology-01', 'home-inspiration-01'],
+    featured_products: ['sage-green-silk', 'stain-sealer-clear']
   },
   {
     id: 'design-trends-03',
