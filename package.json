@@ -28,7 +28,7 @@
     "react-icons": "^5.5.0",
     "react-lazy-load-image-component": "^1.6.3",
     "react-router-dom": "^7.6.3",
-    "shopify-buy": "^3.0.7"
+    "shopify-buy": "^2.17.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
