@@ -8,5 +8,9 @@ export default defineConfig({
     react(),
     mdx(),
   ],
+  define: {
+    'import.meta.env.VITE_SHOPIFY_STOREFRONT_DOMAIN': JSON.stringify(process.env.VITE_SHOPIFY_STOREFRONT_DOMAIN),
+    'import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN': JSON.stringify(process.env.VITE_SHOPIFY_STOREFRONT_TOKEN),
+  },
 })
 
