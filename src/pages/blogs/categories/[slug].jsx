@@ -107,13 +107,13 @@ const CategoryPage = () => {
                 </p>
 
                 <div className="mt-auto pt-8">
-                  <button
-                    type="button"
-                    className="text-sm font-semibold tracking-wide uppercase"
+                  <NavLink
+                    to={post.slug ? `/blogs/${post.slug}` : '#'}
+                    className="text-sm font-semibold tracking-wide uppercase hover:underline"
                     style={{ color: GOLD_ACCENT }}
                   >
                     Read Article
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             </article>

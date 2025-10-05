@@ -16,7 +16,9 @@
       "Bash(npm run build:*)",
       "Bash(git log:*)",
       "Bash(pip install:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

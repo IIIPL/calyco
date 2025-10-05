@@ -16,7 +16,9 @@ const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
+const BlogIndexPage = React.lazy(() => import('./pages/blogs/index.jsx'))
 const BlogCategoryPage = React.lazy(() => import('./pages/blogs/categories/[slug].jsx'))
+const BlogPostPage = React.lazy(() => import('./pages/blogs/[slug].jsx'))
 import { Temp } from './pages/Temp'
 import AboutUs from './pages/AboutUs'
 import { Footer } from './pages/Footer'
@@ -146,8 +148,10 @@ function App() {
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
               <Route path='/checkout' element={<Checkout />} />
+              <Route path='/blogs' element={<BlogIndexPage/>}/>
               <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
               <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>
+              <Route path='/blogs/:slug' element={<BlogPostPage/>}/>
               {/* Colors new routes (existing retained) */}
               <Route path='/colors' element={<ColorsPage/>}/>
               <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
