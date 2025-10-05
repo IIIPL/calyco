@@ -18,6 +18,17 @@ export async function ensureCheckout(checkoutId) {
       const existing = await shopifyClient.checkout.fetch(checkoutId);
       if (!existing?.completedAt) return existing;
     }
-  } catch {}
-  return shopifyClient.checkout.create();
+  } catch (err) {
+    console.warn('[SHOPIFY] Could not fetch existing checkout:', err.message);
+  }
+
+  try {
+    console.log('[SHOPIFY] Creating new checkout...');
+    const checkout = await shopifyClient.checkout.create();
+    console.log('[SHOPIFY] Checkout created successfully:', checkout.id);
+    return checkout;
+  } catch (err) {
+    console.error('[SHOPIFY] Failed to create checkout:', err);
+    throw err;
+  }
 }
