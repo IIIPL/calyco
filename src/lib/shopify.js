@@ -8,6 +8,7 @@ export const shopifyClient = SHOPIFY_READY
   ? Client.buildClient({
       domain: SHOP_DOMAIN,
       storefrontAccessToken: SHOP_TOKEN,
+      apiVersion: '2023-07',
     })
   : null;
 
