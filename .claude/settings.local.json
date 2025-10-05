@@ -18,7 +18,9 @@
       "Bash(pip install:*)",
       "Bash(node:*)",
       "Bash(mkdir:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []
