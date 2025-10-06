@@ -7,6 +7,9 @@ import { products } from "../data/products";
 import { calycoColors442 as colorData } from "../data/calycoColors442";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
+import RatingStars from "../components/RatingStars";
+import ReviewsSection from "../components/ReviewsSection";
+import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 
 const slugify = (value) =>
   value
@@ -61,6 +64,19 @@ export const DynamicProductPage = () => {
     const [selectedColor, setSelectedColor] = useState(() => colorFamilies[0]?.colors?.[0] || null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
+
+    // Get reviews data for this product
+    const productReviews = product ? getProductReviews(product.id) : [];
+    const averageRating = product ? getAverageRating(product.id) : 0;
+    const totalReviews = product ? getTotalReviews(product.id) : 0;
+
+    // Scroll to reviews section
+    const scrollToReviews = () => {
+        const reviewsSection = document.getElementById('reviews-section');
+        if (reviewsSection) {
+            reviewsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     // Swipe gesture handlers for mobile
     const handleTouchStart = (e) => {
@@ -436,6 +452,19 @@ export const DynamicProductPage = () => {
                             </div>
                             {/* 1. Product Name */}
                             <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
+
+                            {/* Rating Stars */}
+                            {totalReviews > 0 && (
+                              <div className="my-3">
+                                <RatingStars
+                                  rating={averageRating}
+                                  totalReviews={totalReviews}
+                                  onClick={scrollToReviews}
+                                  size="lg"
+                                />
+                              </div>
+                            )}
+
                             {/* 2. Short Description (distinguishable) */}
                             <p className="text-lg text-[#301A44] font-semibold mb-2">{product["short-description"] || product.shortDescription}</p>
                             {/* 3. Gap */}
@@ -991,8 +1020,16 @@ export const DynamicProductPage = () => {
                   </>
                 )}
             </motion.section>
+
+            {/* Reviews Section */}
+            {productReviews.length > 0 && (
+                <ReviewsSection
+                    reviews={productReviews}
+                    productName={product.display_name || product.name}
+                />
+            )}
         </div>
-        
+
         {/* Cart Popup (Toast Notification) */}
         <CartPopup
             isVisible={cartPopup.isVisible}
