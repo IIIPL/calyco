@@ -1,0 +1,32 @@
+[
+  {
+    "id": "Nova",
+    "name": "Calyco Interior Latex Paint",
+    "availableForColors": "all",
+    "defaultFinish": "Low Sheen",
+    "finishes": [
+      "Low Sheen",
+      "Pearl"
+    ],
+    "sizes": [
+      { "label": "1L" },
+      { "label": "4L" },
+      { "label": "10L" },
+      { "label": "20L" }
+    ],
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42619088371830" },
+        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42619088437366" },
+        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42619088502902" },
+        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42619088568438" }
+      },
+      "Pearl": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42619088339062" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42619088404598" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42619088470134" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42619088535670" }
+      }
+    }
+  }
+]

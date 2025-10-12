@@ -11,15 +11,17 @@ const slugify = (text) =>
         .replace(/\-\-+/g, '-')
     : '';
 
-const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
+const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect, colorList: providedList }) => {
   const scrollContainerRef = useRef(null);
-  const group = groupedShades.find(g => slugify(g.family) === shades);
-  const colorList = group ? group.colors : [];
+  const group = groupedShades.find((g) => slugify(g.family) === shades);
+  const fallbackList = group ? group.colors : [];
+  const colorList = providedList?.length ? providedList : fallbackList;
 
   useEffect(() => {
     if (scrollContainerRef.current && selectedColor) {
       const container = scrollContainerRef.current;
-      const selectedElement = document.getElementById(`shade-${selectedColor.hex.replace('#', '')}`);
+      const elementId = `shade-${selectedColor.slug || selectedColor.hex?.replace('#', '')}`;
+      const selectedElement = document.getElementById(elementId);
       const triangle = document.getElementById('shade-indicator');
 
       setTimeout(() => {
@@ -42,18 +44,16 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
   const handleKeyDown = (e, color) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      onColorSelect({ ...color, color_family: group.family });
+      onColorSelect(color);
     }
   };
 
   return (
     <div className="w-full bg-white border-b border-gray-200 py-6 relative">
-      {/* Centered triangle indicator */}
       <div id="shade-indicator" className="absolute top-[24px] left-1/2 transform -translate-x-1/2 z-30 pointer-events-none">
         <div className="border-l-[16px] border-r-[16px] border-t-[20px] border-l-transparent border-r-transparent border-t-white" />
       </div>
 
-      {/* Scrollable shade strip */}
       <div className="flex flex-col items-center px-4">
         <div
           ref={scrollContainerRef}
@@ -61,13 +61,14 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <div className="inline-flex items-center">
-            {/* Start buffer */}
             <div className="w-[50vw] flex-shrink-0" />
 
             {colorList.map((color) => {
-              const isSelected = selectedColor && selectedColor.hex === color.hex;
+              const isSelected = selectedColor && (selectedColor.slug ? selectedColor.slug === color.slug : selectedColor.hex === color.hex);
               const [tooltipPos, setTooltipPos] = React.useState({ x: 0, y: 0 });
               const [showTooltip, setShowTooltip] = React.useState(false);
+              const background = color.actualHex || color.hex || '#CCCCCC';
+              const elementId = `shade-${color.slug || String(color.hex).replace('#', '')}`;
 
               const handleMouseMove = (e) => {
                 if (!isSelected) {
@@ -85,13 +86,13 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
 
               return (
                 <div
-                  key={color.hex}
-                  id={`shade-${color.hex.replace('#', '')}`}
+                  key={elementId}
+                  id={elementId}
                   className={`group flex-shrink-0 w-24 h-24 cursor-pointer focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-800 relative transition-all duration-300 snap-center ${
                     isSelected ? 'border-4 border-black' : ''
                   }`}
-                  style={{ backgroundColor: color.hex }}
-                  onClick={() => onColorSelect({ ...color, color_family: group.family })}
+                  style={{ backgroundColor: background }}
+                  onClick={() => onColorSelect(color)}
                   onKeyDown={(e) => handleKeyDown(e, color)}
                   onMouseMove={handleMouseMove}
                   onMouseEnter={handleMouseEnter}
@@ -99,7 +100,6 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
                   tabIndex={0}
                   aria-label={`Select color ${color.name}`}
                 >
-                  {/* Floating tooltip following cursor */}
                   {showTooltip && (
                     <div
                       style={{
@@ -113,7 +113,7 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
                         fontSize: '12px',
                         pointerEvents: 'none',
                         whiteSpace: 'nowrap',
-                        zIndex: 9999
+                        zIndex: 9999,
                       }}
                     >
                       {color.name}
@@ -123,16 +123,11 @@ const ShadeSelectorDrawer = ({ shades, selectedColor, onColorSelect }) => {
               );
             })}
 
-
-            {/* End buffer */}
             <div className="w-[50vw] flex-shrink-0" />
           </div>
         </div>
 
-        {/* Label moved to bottom */}
-        <div className="mt-4 text-sm text-gray-700 whitespace-nowrap">
-          Explore more shades
-        </div>
+        <div className="mt-4 text-sm text-gray-700 whitespace-nowrap">Explore more shades</div>
       </div>
     </div>
   );

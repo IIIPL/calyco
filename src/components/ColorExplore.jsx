@@ -1,60 +1,13 @@
 // components/ColorExplore.jsx
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { flatColors } from "../data/flatColors";
-import { groupedShades } from "../data/groupedShades";
 import ColorBox from "./ColorComponents/ColorBox";
 import { FaLeaf, FaPalette, FaEye, FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 // --- helpers ---
-const hexToHsl = (hex) => {
-  let h = hex.replace("#", "");
-  if (h.length === 3) h = h.split("").map(c => c + c).join("");
-  const r = parseInt(h.slice(0, 2), 16) / 255;
-  const g = parseInt(h.slice(2, 4), 16) / 255;
-  const b = parseInt(h.slice(4, 6), 16) / 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let hVal, s, l = (max + min) / 2;
-  if (max === min) { hVal = s = 0; }
-  else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: hVal = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: hVal = (b - r) / d + 2; break;
-      default: hVal = (r - g) / d + 4;
-    }
-    hVal /= 6;
-  }
-  return { h: Math.round(hVal * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
-};
-
-const pickTextColor = (hex = "#ffffff") => {
-  const h = hex.replace("#", "");
-  const s = h.length === 3 ? h.split("").map(c => c + c).join("") : h.slice(0, 6);
-  const r = parseInt(s.slice(0, 2), 16), g = parseInt(s.slice(2, 4), 16), b = parseInt(s.slice(4, 6), 16);
-  const toLin = v => {
-    const x = v / 255;
-    return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
-  };
-  const L = 0.2126 * toLin(r) + 0.7152 * toLin(g) + 0.0722 * toLin(b);
-  const contrastBlack = (L + 0.05) / 0.05;
-  const contrastWhite = 1.05 / (L + 0.05);
-  return contrastBlack >= contrastWhite ? "#000" : "#fff";
-};
-
 // mid-tone fallback if familyHex missing
-const representativeFromGroup = (list = []) => {
-  if (!list.length) return null;
-  const scored = list.map(({ hex }) => {
-    const { l, s } = hexToHsl(hex);
-    return { hex, score: Math.abs(l - 55) + (100 - s) * 0.1 };
-  });
-  scored.sort((a, b) => a.score - b.score);
-  return scored[0].hex;
-};
-
 const ColorExplore = () => {
   const navigate = useNavigate();
   const [expandedFamily, setExpandedFamily] = useState(null);
@@ -65,66 +18,110 @@ const ColorExplore = () => {
     (acc[f] ||= []).push(color);
     return acc;
   }, {});
-  const families = Object.keys(colorsByFamily);
+
+  const orderedFamilies = [
+    "Whites",
+    "Grays",
+    "Earth Tones",
+    "Blues",
+    "Greens",
+    "Yellows & Golds",
+    "Reds & Pinks",
+    "Purples & Violets",
+    "Beiges & Tans",
+    "Oranges",
+    "Blacks & Deep Tones",
+    "Specialty Metallics"
+  ];
+
+  const families = orderedFamilies.filter(name => colorsByFamily[name]);
 
   const familyData = {
-    "WHITES & OFF WHITES": {
-      color: "#F8F9FA",
+    "Whites": {
+      color: "#F7F4EF",
       textColor: "#2C3E50",
-      accentColor: "#E9ECEF",
-      icon: "🌿",
-      description: "Pure and clean whites for timeless elegance"
+      accentColor: "#EDE8DC",
+      icon: "W",
+      description: "Pure whites and soft neutrals for bright, timeless spaces"
     },
-    "GREYS": {
-      color: "#6C757D",
+    "Grays": {
+      color: "#8E959C",
       textColor: "#FFFFFF",
-      accentColor: "#495057",
-      icon: "🏔️",
-      description: "Sophisticated greys for modern sophistication"
+      accentColor: "#5E6670",
+      icon: "G",
+      description: "Modern grays ranging from misty silvers to bold charcoals"
     },
-    "BROWNS": {
-      color: "#8B4513",
+    "Earth Tones": {
+      color: "#8A5C3D",
       textColor: "#FFFFFF",
-      accentColor: "#A0522D",
-      icon: "🌳",
-      description: "Warm earth tones inspired by nature"
+      accentColor: "#B27A4F",
+      icon: "E",
+      description: "Grounded clays, ochres, and natural hues drawn from the earth"
     },
-    "GREENS": {
-      color: "#2E8B57",
+    "Blues": {
+      color: "#2D5C8A",
       textColor: "#FFFFFF",
-      accentColor: "#3CB371",
-      icon: "🌱",
-      description: "Fresh greens that bring the outdoors in"
+      accentColor: "#4A7FB5",
+      icon: "B",
+      description: "Oceanic blues from airy coastal shades to deep nautical statements"
     },
-    "PURPLES & PINKS": {
-      color: "#9370DB",
+    "Greens": {
+      color: "#3E6D4C",
       textColor: "#FFFFFF",
-      accentColor: "#BA55D3",
-      icon: "🌸",
-      description: "Vibrant purples and soft pinks for creativity"
+      accentColor: "#5A8A65",
+      icon: "N",
+      description: "Botanical greens delivering serene, restorative energy"
     },
-    "REDS & ORANGES": {
-      color: "#DC3545",
+    "Yellows & Golds": {
+      color: "#D9B234",
+      textColor: "#2C2C2C",
+      accentColor: "#F4C74E",
+      icon: "Y",
+      description: "Sunlit yellows and luminous golds that energize every space"
+    },
+    "Reds & Pinks": {
+      color: "#B94249",
       textColor: "#FFFFFF",
-      accentColor: "#FD7E14",
-      icon: "🌅",
-      description: "Bold reds and warm oranges for energy"
+      accentColor: "#E05B67",
+      icon: "R",
+      description: "Expressive reds and romantic pinks for fearless color stories"
     },
-    "YELLOWS & GREENS": {
-      color: "#FFD700",
-      textColor: "#2C3E50",
-      accentColor: "#FFA500",
-      icon: "🌻",
-      description: "Sunny yellows and fresh greens for vitality"
-    },
-    "BLUES": {
-      color: "#1E90FF",
+    "Purples & Violets": {
+      color: "#6F4A74",
       textColor: "#FFFFFF",
-      accentColor: "#4169E1",
-      icon: "🌊",
-      description: "Calming blues inspired by sky and sea"
+      accentColor: "#8A61A0",
+      icon: "P",
+      description: "Lavenders and violets balancing creativity with sophistication"
     },
-  };
+    "Beiges & Tans": {
+      color: "#C3A985",
+      textColor: "#2C2C2C",
+      accentColor: "#D6BA96",
+      icon: "A",
+      description: "Elevated neutrals that bring tailored warmth to any palette"
+    },
+    "Oranges": {
+      color: "#D7662E",
+      textColor: "#FFFFFF",
+      accentColor: "#F08545",
+      icon: "O",
+      description: "Sunset-inspired oranges infused with cultural vibrancy"
+    },
+    "Blacks & Deep Tones": {
+      color: "#2B2B2B",
+      textColor: "#FFFFFF",
+      accentColor: "#4A4A4A",
+      icon: "D",
+      description: "Shadowy blacks and deep urban accents for statement contrasts"
+    },
+    "Specialty Metallics": {
+      color: "#9A9FA6",
+      textColor: "#2C2C2C",
+      accentColor: "#C3C6CC",
+      icon: "M",
+      description: "Architectural metallics crafted for premium highlights"
+    },
+  }; 
 
   const slugify = (text) =>
     text
@@ -158,12 +155,13 @@ const ColorExplore = () => {
 
         {/* Enhanced Color Families Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {Object.entries(colorsByFamily).map(([family, colors], index) => {
+          {families.map((family, index) => {
+            const colors = colorsByFamily[family] || [];
             const familyInfo = familyData[family] || {
               color: "#E0E0E0",
               textColor: "#2C3E50",
               accentColor: "#B0B0B0",
-              icon: "🎨",
+              icon: "*",
               description: "Beautiful colors for your space"
             };
 
@@ -311,3 +309,13 @@ const ColorExplore = () => {
 };
 
 export default ColorExplore;
+
+
+
+
+
+
+
+
+
+

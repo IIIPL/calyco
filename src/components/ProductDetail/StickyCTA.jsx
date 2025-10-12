@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const StickyCTA = ({ price, size, onAddToCart }) => {
+const StickyCTA = ({ price, size, finish, onAddToCart }) => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -36,7 +36,7 @@ const StickyCTA = ({ price, size, onAddToCart }) => {
                     {formatPrice(price)}
                   </div>
                   <div className="text-xs text-gray-500">
-                    {size} pack
+                    {size} pack{finish ? ` • ${finish} finish` : ''}
                   </div>
                 </div>
               </div>

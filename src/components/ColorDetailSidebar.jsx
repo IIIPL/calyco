@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartPopup from './CartPopup';
 
@@ -43,7 +42,6 @@ const ColorDetailSidebar = ({
   similarColors = [],
   onColorChange
 }) => {
-  const navigate = useNavigate();
   const { addToCart, goToCheckout } = useCart();
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
   const [selectedSize, setSelectedSize] = useState('1l');
@@ -128,9 +126,9 @@ const ColorDetailSidebar = ({
     // Stay on current page
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     setCartPopup({ isVisible: false, item: null });
-    navigate('/checkout');
+    await goToCheckout();
   };
 
   return (

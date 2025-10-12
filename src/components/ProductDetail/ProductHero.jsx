@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const ProductHero = ({ product, selectedFinish, onAddToCart, onSampleOrder, onVisualizer }) => {
+const ProductHero = ({ product, selectedFinish, currentPrice, currentSizeLabel, currentFinishName, onAddToCart, onSampleOrder, onVisualizer }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
@@ -172,8 +172,14 @@ const ProductHero = ({ product, selectedFinish, onAddToCart, onSampleOrder, onVi
                   {product.finishes[selectedFinish].name}
                 </span>
                 <span className="text-2xl font-bold text-charcoal-black">
-                  {formatPrice(product.finishes[selectedFinish].price)}
+                  {formatPrice(currentPrice)}
                 </span>
+                {currentSizeLabel && (
+                  <div className="text-xs text-gray-500">{currentSizeLabel} pack</div>
+                )}
+                {currentFinishName && (
+                  <div className="text-xs text-gray-500">Finish: {currentFinishName}</div>
+                )}
               </div>
             </div>
 

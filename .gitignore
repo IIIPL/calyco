@@ -156,3 +156,4 @@ playwright/.cache/
 !public/Assets/docs/
 !public/Assets/docs/*.pdf
 !public/Assets/
+.aider*

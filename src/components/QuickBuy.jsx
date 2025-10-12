@@ -19,10 +19,9 @@ const QuickBuy = ({ product, selectedColor }) => {
     // Stay on current page
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     setCartPopup({ isVisible: false, item: null });
-    // Navigate to checkout
-    window.location.href = '/checkout';
+    await goToCheckout();
   };
 
   return (

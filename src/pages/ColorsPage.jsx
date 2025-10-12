@@ -17,13 +17,32 @@ import {
   WrenchScrewdriverIcon,
   SparklesIcon
 } from '@heroicons/react/24/outline';
-import { getAllColors, getColorFamilies } from '../data/calycoColors442';
+import { getAllColors, getColorFamilies } from '../data/calycoColors.js';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
 
 // Get all 442 colors and families
 const ALL_COLORS = getAllColors();
 const COLOR_FAMILIES = getColorFamilies().map(f => f.name);
+const TEMPERATURE_OPTIONS = Array.from(
+  new Set(ALL_COLORS.map(color => color.temperature || color.colorTemperature).filter(Boolean))
+).sort();
+const TONALITY_OPTIONS = Array.from(
+  new Set(ALL_COLORS.map(color => color.tonality).filter(Boolean))
+).sort();
+const SUITABILITY_OPTIONS = (() => {
+  const values = Array.from(
+    new Set(
+      ALL_COLORS
+        .map(color => color.suitability || color.interiorExterior || color.usage)
+        .filter(Boolean)
+    )
+  );
+  const preferred = ['Interior', 'Exterior', 'Interior & Exterior'];
+  const ordered = preferred.filter(value => values.includes(value));
+  const remaining = values.filter(value => !preferred.includes(value)).sort();
+  return [...ordered, ...remaining];
+})();
 
 // Compatible Products
 const COMPATIBLE_PRODUCTS = [
@@ -79,21 +98,16 @@ const ColorsPage = () => {
       );
     }
 
-    // Suitability filter (Interior/Exterior)
+    // Suitability filter
     if (selectedSuitability) {
-      if (selectedSuitability === "Interior/C Exterior") {
-        filtered = filtered.filter(color =>
-          color.interiorExterior === "Interior/C Exterior" ||
-          color.interiorExterior === "Interior" ||
-          color.usage === "Interior/C Exterior" ||
-          color.usage === "Interior"
-        );
-      } else {
-        filtered = filtered.filter(color =>
-          color.interiorExterior === selectedSuitability ||
-          color.usage === selectedSuitability
-        );
-      }
+      filtered = filtered.filter(color => {
+        const suitability = (color.suitability || color.interiorExterior || color.usage || "").trim();
+        if (!suitability) return false;
+        if (selectedSuitability === "Interior & Exterior") {
+          return suitability === "Interior & Exterior" || suitability === "Interior";
+        }
+        return suitability === selectedSuitability;
+      });
     }
 
     // Sort within each family
@@ -108,7 +122,7 @@ const ColorsPage = () => {
         case 'dark-light':
           return getColorBrightness(b.hex) - getColorBrightness(a.hex);
         default:
-    return 0;
+          return 0;
       }
     });
 
@@ -230,9 +244,9 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="">All Temperatures</option>
-                <option value="Cool">Cool</option>
-                <option value="Warm">Warm</option>
-                <option value="Neutral">Neutral</option>
+                {TEMPERATURE_OPTIONS.map(option => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
               </select>
 
               {/* Tonality Filter */}
@@ -242,9 +256,9 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="">All Tonalities</option>
-                <option value="Light">Light</option>
-                <option value="Medium">Medium</option>
-                <option value="Dark">Dark</option>
+                {TONALITY_OPTIONS.map(option => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
               </select>
 
               {/* Suitability Filter */}
@@ -254,9 +268,9 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="">All Uses</option>
-                <option value="Interior">Interior</option>
-                <option value="Exterior">Exterior</option>
-                <option value="Interior/C Exterior">Both Interior & Exterior</option>
+                {SUITABILITY_OPTIONS.map(option => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
               </select>
 
               {/* Sort */}
@@ -266,8 +280,8 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="name">A-Z</option>
-                <option value="light-dark">Light → Dark</option>
-                <option value="dark-light">Dark → Light</option>
+                <option value="light-dark">Light ÔåÆ Dark</option>
+                <option value="dark-light">Dark ÔåÆ Light</option>
               </select>
               
 
@@ -480,7 +494,7 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600"
             >
-              ✕
+              Ô£ò
                           </button>
                         </div>
 
@@ -561,7 +575,7 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
                   <ul className="text-sm text-gray-600 mb-4">
                     {selectedProducts.map(productId => {
                       const product = compatibleProducts.find(p => p.id === productId);
-                      return <li key={productId}>• {product?.name}</li>;
+                      return <li key={productId}>ÔÇó {product?.name}</li>;
                     })}
                   </ul>
                   <button className="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
@@ -578,3 +592,4 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
 };
 
 export default ColorsPage;
+

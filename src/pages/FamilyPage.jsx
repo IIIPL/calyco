@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { flatColors } from '../data/flatColors';
+import { getColorsForFamily, getFamilyInfo } from '../lib/catalog';
 import Filter from '../components/ColorComponents/Filter';
 import ColorBox from '../components/ColorComponents/ColorBox';
 import { InspirationCard } from '../components/ColorComponents/Inspiration';
@@ -8,19 +8,18 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import ColorDisclaimer from "../components/ColorComponents/ColorDisclaimer"; // add import
 
 
-const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
-const unslugify = (text) => text.replace(/-/g, ' ').replace(/and/g, '&').toUpperCase();
 const formatCaps = (text) =>
   text.replace(/\b\w+/g, word => word[0].toUpperCase() + word.slice(1).toLowerCase());
 
 const FamilyColorPage = () => {
   const { familyName } = useParams();
   const navigate = useNavigate();
-  const family = unslugify(familyName);
-  const familyHeading = formatCaps(family);
+  const decodedSlug = decodeURIComponent(familyName || '');
+  const rawFamilyName = decodedSlug.replace(/-/g, ' ');
+  const familyInfo = useMemo(() => getFamilyInfo(decodedSlug) || getFamilyInfo(rawFamilyName) || null, [decodedSlug, rawFamilyName]);
+  const familyHeading = formatCaps(familyInfo?.name || rawFamilyName);
   const btnRefs = useRef({});
   const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0 });
-
 
   const colorGridRef = useRef(null);
 
@@ -29,8 +28,18 @@ const FamilyColorPage = () => {
   const inlineBarRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(null);
 
+  const familyColors = useMemo(() => {
+    const primary = getColorsForFamily(decodedSlug);
+    if (primary.length) return primary;
+    if (familyInfo?.name) {
+      const byName = getColorsForFamily(familyInfo.name);
+      if (byName.length) return byName;
+    }
+    const fallback = getColorsForFamily(familyHeading);
+    if (fallback.length) return fallback;
+    return [];
+  }, [decodedSlug, familyInfo?.name, familyHeading]);
 
-  const familyColors = flatColors.filter((c) => c.color_family === family);
   const calcDropdownPos = (key) => {
     const btn = btnRefs.current[key];
     if (!btn) return;
@@ -339,9 +348,13 @@ useEffect(() => {
       />
 
       {/* Color Grid */}
-      <section ref={colorGridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto">
+      <section ref={colorGridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 px-10 mx-auto gap-y-6">
         {filteredColors.map((color, idx) => (
-          <ColorBox key={idx} color={color} familyName={familyName} />
+          <div key={color.slug || color.id || idx} className="space-y-2">
+            <ColorBox color={color} familyName={familyHeading} />
+            <div className="text-sm font-medium text-gray-900">{color.name}</div>
+            <div className="text-xs font-mono text-gray-500">{color.code || color.tintCode || color.id}</div>
+          </div>
         ))}
       </section>
 

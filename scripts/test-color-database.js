@@ -5,11 +5,10 @@
 
 // Import the color database
 import {
-  calycoColors442,
   getColorFamilies,
   getAllColors,
   getColorsByFamily
-} from '../src/data/calycoColors442.js';
+} from '../src/data/calycoColors.js';
 
 console.log('============================================================');
 console.log('  Color Database Verification');
@@ -75,14 +74,18 @@ console.log('  Expected Families Check');
 console.log('============================================================\n');
 
 const expectedFamilies = [
-  'GREENS',
+  'WHITES',
+  'GRAYS',
+  'EARTH TONES',
   'BLUES',
-  'GREYS',
-  'WHITES & OFF WHITES',
-  'BROWNS',
-  'REDS & ORANGES',
-  'YELLOWS & GREENS',
-  'PURPLES & PINKS'
+  'GREENS',
+  'YELLOWS & GOLDS',
+  'REDS & PINKS',
+  'PURPLES & VIOLETS',
+  'BEIGES & TANS',
+  'ORANGES',
+  'BLACKS & DEEP TONES',
+  'SPECIALTY METALLICS'
 ];
 
 expectedFamilies.forEach(expected => {
@@ -107,3 +110,6 @@ console.log('\n[INFO] Next Steps:');
 console.log('  1. Visit product page: http://localhost:5173/product/nova');
 console.log('  2. Check Color Family filters display correctly');
 console.log('  3. Verify color counts match the distribution above\n');
+
+
+

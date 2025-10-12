@@ -4,20 +4,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { products } from "../data/products";
-import { calycoColors442 as colorData } from "../data/calycoColors442";
+import { calycoColors as colorData } from "../data/calycoColors.js";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 
+import variantMapInterior from '../data/variantMap.interior.json';
+
 const slugify = (value) =>
   value
     ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
     : "";
 
-// --- Utility functions for scalable product lookup ---
-// Consider moving these to a shared util if used elsewhere
+const VARIANT_MAPS = {
+  'variantMap.interior.json': variantMapInterior,
+};
+
+// --- Utility functions ---
 const getProductBySlugOrName = (productId) => {
   if (!productId) return null;
   const lowerId = productId.toLowerCase();
@@ -26,12 +31,27 @@ const getProductBySlugOrName = (productId) => {
     (p.url && p.url.split("/").pop().toLowerCase() === lowerId)
   );
 };
+
 const getProductsByCategory = (category) => {
   if (!category) return [];
   const lowerCat = category.toLowerCase();
   return products.filter(p => p.category && p.category.toLowerCase() === lowerCat);
 };
-// --- End utility functions ---
+
+const normalizeSizeLabel = (label = "") => label.replace(/\s+/g, "").toUpperCase();
+
+// Price multipliers for each size
+const getSizeMultiplier = (size) => {
+    if (!size) return 1;
+    const sizeNum = size.toString().match(/\d+/)?.[0];
+    const multipliers = {
+        "1": 1,
+        "4": 3.5,
+        "10": 8,
+        "20": 14
+    };
+    return multipliers[sizeNum] || 1;
+};
 
 export const DynamicProductPage = () => {
     const { productId } = useParams();
@@ -48,6 +68,7 @@ export const DynamicProductPage = () => {
             })
             .filter((family) => family.code && family.colors.length > 0);
     }, []);
+
     const [selectedSheen, setSelectedSheen] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
@@ -55,6 +76,7 @@ export const DynamicProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
+    const [addingToCart, setAddingToCart] = useState(false);
     const { addToCart, goToCheckout } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -65,12 +87,12 @@ export const DynamicProductPage = () => {
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
 
-    // Get reviews data for this product
+    // Get reviews data
     const productReviews = product ? getProductReviews(product.id) : [];
     const averageRating = product ? getAverageRating(product.id) : 0;
     const totalReviews = product ? getTotalReviews(product.id) : 0;
 
-    // Scroll to reviews section
+    // Scroll to reviews
     const scrollToReviews = () => {
         const reviewsSection = document.getElementById('reviews-section');
         if (reviewsSection) {
@@ -78,7 +100,7 @@ export const DynamicProductPage = () => {
         }
     };
 
-    // Swipe gesture handlers for mobile
+    // Touch handlers
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
     };
@@ -89,33 +111,26 @@ export const DynamicProductPage = () => {
 
     const handleTouchEnd = () => {
         if (!touchStart || !touchEnd) return;
-
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > 50;
         const isRightSwipe = distance < -50;
 
         if (product?.images && product.images.length > 0) {
             if (isLeftSwipe && selectedImageIndex < product.images.length - 1) {
-                // Swipe left - next image
                 const nextIndex = selectedImageIndex + 1;
                 setSelectedImageIndex(nextIndex);
                 setSelectedImage(product.images[nextIndex]);
             }
-
             if (isRightSwipe && selectedImageIndex > 0) {
-                // Swipe right - previous image
                 const prevIndex = selectedImageIndex - 1;
                 setSelectedImageIndex(prevIndex);
                 setSelectedImage(product.images[prevIndex]);
             }
         }
-
-        // Reset
         setTouchStart(0);
         setTouchEnd(0);
     };
 
-    // Navigation arrow handlers
     const handlePrevImage = () => {
         if (product?.images && product.images.length > 0 && selectedImageIndex > 0) {
             const prevIndex = selectedImageIndex - 1;
@@ -152,20 +167,120 @@ export const DynamicProductPage = () => {
 
     const availableColors = activeColorFamily?.colors || [];
 
-    // Use the product's actual packaging sizes
-    const displaySizes = product && product.packaging ? product.packaging : [];
-    
+    const colorInfo = selectedColor
+        ? {
+            name: selectedColor.name,
+            hex: selectedColor.hex,
+            family: activeColorFamily?.label,
+            familyCode: activeColorFamily?.code
+        }
+        : null;
+
+    const priceByFinish = useMemo(() => {
+        if (!product) return {};
+        return product.priceByFinish || product.price_by_finish || {};
+    }, [product]);
+
+    const normalizedSelectedSheen =
+        selectedSheen ||
+        product?.defaultFinish ||
+        product?.default_finish ||
+        product?.finish_type_sheen?.[0] ||
+        "Low Sheen";
+
+    const activeFinishPricing = useMemo(() => {
+        return priceByFinish?.[normalizedSelectedSheen] || {};
+    }, [priceByFinish, normalizedSelectedSheen]);
+
+    const resolvePriceEntry = (sizeLabel) => {
+        if (!sizeLabel) return undefined;
+        if (!activeFinishPricing || typeof activeFinishPricing !== "object") return undefined;
+        if (activeFinishPricing[sizeLabel] !== undefined) {
+            return activeFinishPricing[sizeLabel];
+        }
+        const normalized = normalizeSizeLabel(sizeLabel);
+        const match = Object.entries(activeFinishPricing).find(([key]) => normalizeSizeLabel(key) === normalized);
+        return match ? match[1] : undefined;
+    };
+
+    const calculatePrice = (sizeLabel) => {
+        const entry = resolvePriceEntry(sizeLabel);
+        if (entry === undefined || entry === null) {
+            if (typeof product?.price === "number") {
+                const multiplier = getSizeMultiplier(sizeLabel);
+                return Math.round(product.price * multiplier);
+            }
+            return 0;
+        }
+        if (typeof entry === "number") {
+            return entry;
+        }
+        if (typeof entry === "object" && entry.price !== undefined) {
+            return entry.price;
+        }
+        return 0;
+    };
+
+    const getVariantIdForSelection = (finishLabel, sizeLabel) => {
+        const entry = resolvePriceEntry(sizeLabel);
+        if (entry && typeof entry === "object" && entry.variantId) {
+            return entry.variantId;
+        }
+        let variantMap = product?.shopify_variant_map || {};
+        const variantMapFile = product?.variantMapFile;
+        if ((!variantMap || Object.keys(variantMap).length === 0) && variantMapFile) {
+            variantMap = VARIANT_MAPS[variantMapFile] || variantMap;
+        }
+        const exactKey = `${sizeLabel}-${finishLabel}`;
+        if (variantMap[exactKey]) {
+            return variantMap[exactKey];
+        }
+        const normalized = normalizeSizeLabel(sizeLabel);
+        const fallbackKey = `${normalized}-${finishLabel}`;
+        return variantMap[fallbackKey] || null;
+    };
+
+    const displaySizes = useMemo(() => {
+        const finishSizes =
+            activeFinishPricing && typeof activeFinishPricing === "object"
+                ? Object.keys(activeFinishPricing)
+                : [];
+        if (finishSizes.length > 0) {
+            return finishSizes;
+        }
+        if (Array.isArray(product?.packaging)) {
+            return product.packaging;
+        }
+        return [];
+    }, [activeFinishPricing, product?.packaging]);
+
     useEffect(() => {
         const foundProduct = getProductBySlugOrName(productId);
         if (foundProduct) {
             setProduct(foundProduct);
-            // Set default size to first available size in packaging
-            if (foundProduct.packaging && foundProduct.packaging.length > 0) {
+            const defaultFinish =
+                foundProduct.defaultFinish ||
+                foundProduct.default_finish ||
+                foundProduct.finish_type_sheen?.[0] ||
+                "Low Sheen";
+            setSelectedSheen(defaultFinish);
+
+            const finishPricing = (foundProduct.priceByFinish || foundProduct.price_by_finish || {})[defaultFinish];
+            if (finishPricing && typeof finishPricing === "object") {
+                const sizeKeys = Object.keys(finishPricing);
+                if (sizeKeys.length > 0) {
+                    setSelectedSize(sizeKeys[0]);
+                } else if (foundProduct.packaging && foundProduct.packaging.length > 0) {
+                    setSelectedSize(foundProduct.packaging[0]);
+                } else {
+                    setSelectedSize("");
+                }
+            } else if (foundProduct.packaging && foundProduct.packaging.length > 0) {
                 setSelectedSize(foundProduct.packaging[0]);
             } else {
                 setSelectedSize("");
             }
-            // Set default image
+
             if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
                 setSelectedImage(foundProduct.images[0]);
                 setSelectedImageIndex(0);
@@ -177,6 +292,17 @@ export const DynamicProductPage = () => {
         }
         setLoading(false);
     }, [productId]);
+
+    useEffect(() => {
+        if (!displaySizes.length) {
+            return;
+        }
+        const normalized = normalizeSizeLabel(selectedSize);
+        const hasCurrent = displaySizes.some((label) => normalizeSizeLabel(label) === normalized);
+        if (!hasCurrent) {
+            setSelectedSize(displaySizes[0]);
+        }
+    }, [displaySizes, selectedSize]);
 
     if (loading) {
         return (
@@ -220,7 +346,6 @@ export const DynamicProductPage = () => {
 
     const handleContinueShopping = () => {
         setCartPopup({ isVisible: false, item: null });
-        // Stay on current page
     };
 
     const handleCheckout = async () => {
@@ -239,38 +364,10 @@ export const DynamicProductPage = () => {
         }
     };
 
-    // Price multipliers for each size (supports both formats: "1L" and "1 litre")
-    const getSizeMultiplier = (size) => {
-        if (!size) return 1;
-
-        // Normalize the size string to extract the number
-        const sizeNum = size.toString().match(/\d+/)?.[0];
-
-        const multipliers = {
-            "1": 1,
-            "4": 3.5,
-            "10": 8,
-            "20": 14
-        };
-
-        return multipliers[sizeNum] || 1;
-    };
-
-    // Calculate price for selected size
-    const getSizePrice = (basePrice, size) => {
-        const multiplier = getSizeMultiplier(size);
-        return Math.round(basePrice * multiplier);
-    };
-
-    // Responsive: Only sticky on xl and above
-    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1280;
-
-    // Get similar products (same category, excluding current)
     const similarProducts = product
       ? getProductsByCategory(product.category).filter(p => p.name !== product.name)
       : [];
 
-    // Get 2 random similar products (same category, excluding current)
     let randomSimilar = [];
     if (similarProducts.length > 2) {
         const shuffled = [...similarProducts].sort(() => 0.5 - Math.random());
@@ -278,15 +375,6 @@ export const DynamicProductPage = () => {
     } else {
         randomSimilar = similarProducts.slice(0, 2);
     }
-
-    const colorInfo = selectedColor
-        ? {
-            name: selectedColor.name,
-            hex: selectedColor.hex,
-            family: activeColorFamily?.label,
-            familyCode: activeColorFamily?.code
-        }
-        : null;
 
     return (
         <>
@@ -329,7 +417,7 @@ export const DynamicProductPage = () => {
                 </motion.div>
 
                 <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-                    {/* Product Image Gallery - Sticky on MD+ screens */}
+                    {/* Product Image Gallery */}
                     <motion.div
                         className="md:w-1/2 w-full md:sticky md:top-24 md:self-start md:h-fit flex flex-col items-center md:items-start justify-center"
                         variants={itemVariants}
@@ -341,9 +429,7 @@ export const DynamicProductPage = () => {
                             onTouchEnd={handleTouchEnd}
                         >
                             <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#301A44]/10 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <div
-                                className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center overflow-hidden"
-                            >
+                            <div className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center overflow-hidden">
                                 <img
                                     src={selectedImage || product.image}
                                     alt={`${product.name} - Image ${selectedImageIndex + 1}`}
@@ -356,10 +442,8 @@ export const DynamicProductPage = () => {
                                     className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain transition-opacity duration-300"
                                 />
 
-                                {/* Premium Navigation Arrows */}
                                 {product.images && product.images.length > 1 && (
                                     <>
-                                        {/* Previous Arrow */}
                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
@@ -373,7 +457,6 @@ export const DynamicProductPage = () => {
                                             <FiChevronLeft className="w-6 h-6 text-[#493657]" />
                                         </button>
 
-                                        {/* Next Arrow */}
                                         <button
                                             onClick={handleNextImage}
                                             disabled={selectedImageIndex === product.images.length - 1}
@@ -389,7 +472,6 @@ export const DynamicProductPage = () => {
                                     </>
                                 )}
                             </div>
-                            {/* Swipe indicator for mobile */}
                             {product.images && product.images.length > 1 && (
                                 <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1.5">
                                     {product.images.map((_, idx) => (
@@ -403,7 +485,6 @@ export const DynamicProductPage = () => {
                                 </div>
                             )}
                         </div>
-                        {/* Image Gallery Thumbnails */}
                         {Array.isArray(product.images) && product.images.length > 1 && (
                           <div className="w-full mt-6">
                             <div className="flex gap-3 flex-wrap justify-center md:justify-start">
@@ -440,20 +521,18 @@ export const DynamicProductPage = () => {
                           </div>
                         )}
                     </motion.div>
+
                     {/* Product Details */}
                     <motion.div 
                         className="xl:w-1/2 md:w-1/2 w-full flex flex-col gap-8"
                         variants={itemVariants}
                     >
-                        {/* Product Header */}
                         <div className="space-y-4">
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
-                            {/* 1. Product Name */}
                             <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
 
-                            {/* Rating Stars */}
                             {totalReviews > 0 && (
                               <div className="my-3">
                                 <RatingStars
@@ -465,16 +544,12 @@ export const DynamicProductPage = () => {
                               </div>
                             )}
 
-                            {/* 2. Short Description (distinguishable) */}
                             <p className="text-lg text-[#301A44] font-semibold mb-2">{product["short-description"] || product.shortDescription}</p>
-                            {/* 3. Gap */}
                             <div className="my-4" />
-                            {/* 4. Main Description (distinguishable) */}
                             <p className="text-xl text-[#493657]/90 mb-4 font-medium leading-relaxed">{product.description || product.details}</p>
-                            {/* 5. Features as bullet points */}
+                            
                             {Array.isArray(product.features) && product.features.length > 0 && (
                               <div className="mb-4">
-                                
                                 <ul className="list-disc pl-6 space-y-2 text-lg text-[#301A44] font-semibold">
                                   {product.features.map((feature, idx) => (
                                     <li key={idx}>{feature}</li>
@@ -482,20 +557,21 @@ export const DynamicProductPage = () => {
                                 </ul>
                               </div>
                             )}
-                            {/* 3. Price */}
+                            
                             <div className="flex items-center gap-4 mb-4">
-                              <p className="text-3xl font-bold text-[#301A44]">₹{getSizePrice(product.price, selectedSize)}</p>
+                              <p className="text-3xl font-bold text-[#301A44]">₹{calculatePrice(selectedSize)}</p>
                               <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0]}</span>
                             </div>
                         </div>
 
                         {/* Product Options */}
                         <div className="space-y-6">
-                            {/* 4. Finish Type/Sheen */}
+                            {/* Sheen */}
+                            {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2">Sheen</h3>
                               <div className="flex flex-wrap gap-2">
-                                {(product.finish_type_sheen || []).map((sheen) => (
+                                {product.finish_type_sheen.map((sheen) => (
                                   <button
                                     key={sheen}
                                     type="button"
@@ -507,8 +583,9 @@ export const DynamicProductPage = () => {
                                 ))}
                               </div>
                             </div>
+                            )}
 
-                            {/* 5. Color Family */}
+                            {/* Color Family */}
                             {colorFamilies.length > 0 && (
                               <div className="mb-4">
                                 <h3 className="font-semibold text-[#493657] mb-2">Color Family</h3>
@@ -530,7 +607,7 @@ export const DynamicProductPage = () => {
                               </div>
                             )}
 
-                            {/* 6. Color */}
+                            {/* Color Selection */}
                             {availableColors.length > 0 && (
                               <div className="mb-4">
                                 <h3 className="font-semibold text-[#493657] mb-3">Color</h3>
@@ -556,12 +633,7 @@ export const DynamicProductPage = () => {
                                         {isSelected && (
                                           <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <span className="w-6 h-6 rounded-full bg-white/90 flex items-center justify-center shadow">
-                                              <svg
-                                                className="w-4 h-4 text-[#301A44]"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                              >
+                                              <svg className="w-4 h-4 text-[#301A44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                               </svg>
                                             </span>
@@ -579,7 +651,8 @@ export const DynamicProductPage = () => {
                               </div>
                             )}
 
-                            {/* 7. Size Selection */}
+                            {/* Size Selection */}
+                            {displaySizes.length > 0 && (
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
                               <div className="flex flex-wrap gap-2">
@@ -595,8 +668,9 @@ export const DynamicProductPage = () => {
                                 ))}
                               </div>
                             </div>
+                            )}
 
-                            {/* 7.5 Color Type Selection */}
+                            {/* Color Type Selection */}
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2 flex items-center gap-2">
                                 Color Mixing Option
@@ -627,7 +701,7 @@ export const DynamicProductPage = () => {
                                     <div className="flex-1">
                                       <h4 className="font-semibold text-[#493657] mb-1">Ready-Mixed Color</h4>
                                       <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Pre-mixed at factory, ready to use. Consistent color batch-to-batch. Ideal for large projects.
+                                        Pre-mixed at factory, ready to use. Consistent color batch-to-batch.
                                       </p>
                                       <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
                                         ✓ Factory Fresh
@@ -658,7 +732,7 @@ export const DynamicProductPage = () => {
                                     <div className="flex-1">
                                       <h4 className="font-semibold text-[#493657] mb-1">Tint-on-Demand</h4>
                                       <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Custom mixed at store/site. Perfect color matching. Flexible for small quantities.
+                                        Custom mixed at store/site. Perfect color matching.
                                       </p>
                                       <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
                                         ✓ Custom Mixed
@@ -669,7 +743,7 @@ export const DynamicProductPage = () => {
                               </div>
                             </div>
 
-                            {/* 8. Quantity & Add to Cart */}
+                            {/* Quantity & Add to Cart */}
                             <div className="mb-6">
                               <h3 className="font-semibold text-[#493657] mb-2">Quantity</h3>
                               <div className="flex items-center gap-4">
@@ -694,12 +768,11 @@ export const DynamicProductPage = () => {
                                     selectedSheen,
                                     selectedSize,
                                     quantity,
-                                    getSizePrice(product.price, selectedSize),
+                                    calculatePrice(selectedSize),
                                     colorInfo,
                                     selectedColorType
                                   );
 
-                                  // Show cart popup (toast notification)
                                   setCartPopup({ isVisible: true, item: {
                                     name: product.display_name || product.name,
                                     hex: (colorInfo && colorInfo.hex) || product.color_hex || "#CCCCCC",
@@ -709,10 +782,9 @@ export const DynamicProductPage = () => {
                                     selectedSize,
                                     selectedColorType,
                                     quantity,
-                                    price: `₹${getSizePrice(product.price, selectedSize) * quantity}`
+                                    price: `₹${calculatePrice(selectedSize) * quantity}`
                                   }});
 
-                                  // Auto-hide popup after 3 seconds
                                   setTimeout(() => {
                                     setCartPopup({ isVisible: false, item: null });
                                   }, 3000);
@@ -722,13 +794,10 @@ export const DynamicProductPage = () => {
                                 whileTap={{ scale: 0.98 }}
                               >
                                 <FaShoppingCart className="w-5 h-5" />
-                                Add to Cart - ₹{getSizePrice(product.price, selectedSize) * quantity}
+                                Add to Cart - ₹{calculatePrice(selectedSize) * quantity}
                               </motion.button>
                             </div>
                         </div>
-
-                        {/* Add to Cart Button */}
-                        {/* This block is now handled above */}
                     </motion.div>
                 </div>
 
@@ -738,19 +807,15 @@ export const DynamicProductPage = () => {
                     variants={itemVariants}
                 >
                     <div className="flex flex-col gap-8">
-                      {/* Heading */}
                       <div className="w-full">
                         <h2 className="text-5xl font-bold text-[#493657]">Product Details</h2>
                       </div>
-                      {/* Content: Description and Advantages side by side */}
                       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-                        {/* Left: Description */}
                         <div className="lg:w-1/2 w-full">
                           <p className="text-2xl md:text-3xl font-semibold text-[#301A44] leading-snug">
                             {product.details || product.description}
                           </p>
                         </div>
-                        {/* Right: Bulleted advantages */}
                         <div className="lg:w-1/2 w-full">
                           <ul className="list-disc pl-6 space-y-3 text-lg text-[#493657] font-medium">
                             {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
@@ -766,45 +831,45 @@ export const DynamicProductPage = () => {
                     </div>
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
                 </motion.div>
+
                 {/* Specifications Section */}
                 <div className="mt-16 mb-12">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
                       <span className="text-[#493657]/80 text-lg">{product.category || 'N/A'}</span>
                     </div>
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
                       <span className="text-[#493657]/80 text-lg">{Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A')}</span>
                     </div>
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
                       <span className="text-[#493657]/80 text-lg">{Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A')}</span>
                     </div>
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
                       <span className="text-[#493657]/80 text-lg">{Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A')}</span>
                     </div>
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
                       <span className="text-[#493657]/80 text-lg">{Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A')}</span>
                     </div>
                     <div>
-                      <span className=" font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
+                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
                       <span className="text-[#493657]/80 text-lg">{product.coats_required || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiBox className="w-5 h-5 text-[#493657]" />Coverage</span>
                       <span className="text-[#493657]/80 text-lg">{product.coverage || 'N/A'}</span>
                     </div>
-                    
-                    
                   </div>
                 </div>
-                {/* Add divider between Specifications and Technical Specifications */}
+
                 <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
-                {/* Technical Specifications Section */}
+
+                {/* Technical Specifications */}
                 <div className="mb-20 mt-16">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
@@ -895,7 +960,6 @@ export const DynamicProductPage = () => {
                       <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technical_specs && product.technical_specs.warranty) || 'N/A'}</span>
                     </div>
 
-                    {/* Ingredients Section */}
                     {product.technical_specs?.ingredients && product.technical_specs.ingredients.length > 0 && (
                       <div className="md:col-span-2">
                         <h3 className="font-semibold text-[#493657] text-xl mb-3 mt-4">Composition</h3>
@@ -924,7 +988,7 @@ export const DynamicProductPage = () => {
                   </div>
                 </div>
 
-                {/* Safety Information Section */}
+                {/* Safety Information */}
                 {product.safety_warnings && (
                   <>
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
@@ -945,7 +1009,6 @@ export const DynamicProductPage = () => {
                         </div>
                       </div>
 
-                      {/* Hazard Statements */}
                       {product.safety_warnings.hazard_statements && (
                         <div className="mb-6">
                           <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
@@ -960,7 +1023,6 @@ export const DynamicProductPage = () => {
                         </div>
                       )}
 
-                      {/* Precautionary Statements */}
                       {product.safety_warnings.precautionary_statements && (
                         <div className="mb-6">
                           <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
@@ -975,7 +1037,6 @@ export const DynamicProductPage = () => {
                         </div>
                       )}
 
-                      {/* First Aid Measures */}
                       {product.safety_warnings.first_aid && (
                         <div className="mb-6">
                           <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
@@ -1011,7 +1072,6 @@ export const DynamicProductPage = () => {
                         </div>
                       )}
 
-                      {/* Basic Safety Precautions */}
                       <div className="bg-blue-50 rounded-lg p-6 mt-6">
                         <h3 className="font-semibold text-blue-800 text-lg mb-3">General Safety Precautions</h3>
                         <p className="text-blue-700">{product.safety_precautions || 'Use appropriate protective equipment. Work in well-ventilated areas.'}</p>
@@ -1030,7 +1090,7 @@ export const DynamicProductPage = () => {
             )}
         </div>
 
-        {/* Cart Popup (Toast Notification) */}
+        {/* Cart Popup */}
         <CartPopup
             isVisible={cartPopup.isVisible}
             onClose={closeCartPopup}
@@ -1040,4 +1100,4 @@ export const DynamicProductPage = () => {
         />
     </>
     );
-}; 
+};

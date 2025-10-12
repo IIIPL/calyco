@@ -1,8 +1,8 @@
 export const products = [
   {
-    "id": "nova",
+    "id": "Nova",
     "url": "https://calycopaints.com/product/nova",
-    "name": "Nova",
+    "name": "Calyco Interior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
@@ -28,11 +28,12 @@ export const products = [
       "Designer-grade color"
     ],
     "finish_type_sheen": [
-      "Gloss",
-      "Semi-Gloss",
-      "Soft Sheen",
-      "Matte",
-      "Ultra Flat Matte"
+      "Low Sheen",
+      "Pearl"
+    ],
+    "finishes": [
+      "Low Sheen",
+      "Pearl"
     ],
     "substrate": [
       "Drywall",
@@ -44,13 +45,54 @@ export const products = [
     "recommended_uses": [
       "Walls & Ceilings: Ideal for plaster, POP, and drywall surfaces"
     ],
-    "price": 499,
+    "price": 700,
     "packaging": [
-      "1 litre",
-      "4 litres",
-      "10 litres",
-      "20 litres"
+      "1L",
+      "4L",
+      "10L",
+      "20L"
     ],
+    "default_finish": "Low Sheen",
+    "defaultFinish": "Low Sheen",
+    "availableForColors": "all",
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42619088371830" },
+        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42619088437366" },
+        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42619088502902" },
+        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42619088568438" }
+      },
+      "Pearl": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42619088339062" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42619088404598" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42619088470134" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42619088535670" }
+      }
+    },
+    "price_by_finish": {
+      "Low Sheen": {
+        "1L": 700,
+        "4L": 2700,
+        "10L": 6500,
+        "20L": 12800
+      },
+      "Pearl": {
+        "1L": 800,
+        "4L": 3500,
+        "10L": 8400,
+        "20L": 16000
+      }
+    },
+    "shopify_variant_map": {
+      "1L-Low Sheen": "gid://shopify/ProductVariant/42619088371830",
+      "4L-Low Sheen": "gid://shopify/ProductVariant/42619088437366",
+      "10L-Low Sheen": "gid://shopify/ProductVariant/42619088502902",
+      "20L-Low Sheen": "gid://shopify/ProductVariant/42619088568438",
+      "1L-Pearl": "gid://shopify/ProductVariant/42619088339062",
+      "4L-Pearl": "gid://shopify/ProductVariant/42619088404598",
+      "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
+      "20L-Pearl": "gid://shopify/ProductVariant/42619088535670"
+    },
     "technical_specs": {
       "product_code": "CAL-00135",
       "base_type": "Proprietary Acrylic Dispersion",

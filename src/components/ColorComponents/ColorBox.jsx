@@ -11,20 +11,23 @@ const slugify = (text) =>
     .replace(/[^\w\-&]+/g, '')
     .replace(/\-\-+/g, '-');
 
+const resolveHex = (color) => {
+  if (!color) return '#CCCCCC';
+  if (color.actualHex) return color.actualHex;
+  const value = color.hex;
+  if (typeof value === 'string' && value.startsWith('#')) {
+    return value;
+  }
+  return reverseColorNameMapping[value] || '#CCCCCC';
+};
+
+const displayCode = (color) => color?.code || color?.tintCode || color?.hex || '';
+
 const ColorBox = ({ color, familyName }) => {
   const navigate = useNavigate();
 
-  const getActualHexColor = (colorValue) => {
-    // If it's already a hex color, return as is
-    if (colorValue && colorValue.startsWith('#')) {
-      return colorValue;
-    }
-    // Otherwise, look up the color name in our mapping
-    return reverseColorNameMapping[colorValue] || '#CCCCCC';
-  };
-
   const getTextColor = (hexColor) => {
-    const actualHex = getActualHexColor(hexColor);
+    const actualHex = resolveHex({ hex: hexColor, actualHex: hexColor.startsWith('#') ? hexColor : undefined });
     const r = parseInt(actualHex.substring(1, 3), 16);
     const g = parseInt(actualHex.substring(3, 5), 16);
     const b = parseInt(actualHex.substring(5, 7), 16);
@@ -34,12 +37,12 @@ const ColorBox = ({ color, familyName }) => {
 
   const handleClick = () => {
     const familySlug = slugify(familyName);
-    const colorSlug = slugify(color.name);
+    const colorSlug = color.slug || slugify(color.name);
     navigate(`/colors/family/${familySlug}/${colorSlug}`);
   };
 
-  const actualHexColor = getActualHexColor(color.hex);
-  const textColor = getTextColor(color.hex);
+  const actualHexColor = resolveHex(color);
+  const textColor = getTextColor(actualHexColor);
 
   return (
     <motion.div
@@ -53,22 +56,19 @@ const ColorBox = ({ color, familyName }) => {
         className="relative w-full aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-white group-hover:border-gray-300"
         style={{ backgroundColor: actualHexColor }}
       >
-        {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-        
-        {/* Color Info */}
+
         <div className="absolute inset-0 flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <div className="text-white text-center bg-black/70 backdrop-blur-sm rounded-lg p-2">
             <div className="font-semibold text-xs leading-tight mb-1">
               {color.name}
             </div>
-            <div className="text-[10px] opacity-75 font-mono">
-              {color.hex}
+            <div className={`text-[10px] opacity-75 font-mono ${textColor === 'text-gray-900' ? 'text-gray-200' : ''}`}>
+              {displayCode(color)}
             </div>
           </div>
         </div>
 
-        {/* Corner Indicator */}
         <div className="absolute top-1 right-1 w-3 h-3 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
           <svg className="w-2 h-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

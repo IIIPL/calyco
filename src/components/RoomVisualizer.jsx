@@ -69,7 +69,21 @@ const RoomVisualizer = () => {
   ];
   
   // Color families
-  const colorFamilies = ['All', 'WHITES & OFF WHITES', 'GREYS', 'BROWNS', 'BLUES', 'GREENS', 'YELLOWS & GREENS'];
+  const colorFamilies = [
+    'All',
+    'Whites',
+    'Grays',
+    'Earth Tones',
+    'Blues',
+    'Greens',
+    'Yellows & Golds',
+    'Reds & Pinks',
+    'Purples & Violets',
+    'Beiges & Tans',
+    'Oranges',
+    'Blacks & Deep Tones',
+    'Specialty Metallics'
+  ];
   
   // Helper function to determine text color based on background
   const getContrastColor = (hex) => {

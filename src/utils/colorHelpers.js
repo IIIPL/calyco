@@ -12,7 +12,8 @@ export const getActualHexColor = (colorValue) => {
     return colorValue;
   }
   // Otherwise, look up the color name in our mapping
-  return reverseColorNameMapping[colorValue] || '#CCCCCC';
+  const key = typeof colorValue === 'string' ? colorValue.trim().toUpperCase() : '';
+  return reverseColorNameMapping[key] || '#CCCCCC';
 };
 
 /**

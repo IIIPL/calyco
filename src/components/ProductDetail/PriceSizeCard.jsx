@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const PriceSizeCard = ({ 
-  product, 
-  selectedSize, 
-  quantity, 
-  onSizeChange, 
-  onQuantityChange, 
-  onAddToCart 
+const PriceSizeCard = ({
+  product,
+  selectedSize,
+  selectedFinish = 0,
+  quantity,
+  onSizeChange,
+  onQuantityChange,
+  onAddToCart
 }) => {
   const [showEMIInfo, setShowEMIInfo] = useState(false);
+
+  const finishName = product.finishes?.[selectedFinish]?.name || 'Low Sheen';
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
@@ -23,9 +26,17 @@ const PriceSizeCard = ({
     return original - current;
   };
 
+  const getCurrentPrice = (sizeIndex) => {
+    const size = product.sizes[sizeIndex];
+    // If priceByFinish exists, use it; otherwise fall back to size.price
+    if (size.priceByFinish && size.priceByFinish[finishName]) {
+      return size.priceByFinish[finishName];
+    }
+    return size.price || 0;
+  };
+
   const calculateTotal = () => {
-    const size = product.sizes[selectedSize];
-    return size.price * quantity;
+    return getCurrentPrice(selectedSize) * quantity;
   };
 
   const getSizeInLitres = (sizeStr) => {
@@ -41,17 +52,20 @@ const PriceSizeCard = ({
             Select Size & Quantity
           </h2>
           <p className="text-grey-thunder">Choose the right amount for your project</p>
+          <p className="mt-2 text-sm text-gray-600">Finish: <span className="font-semibold">{finishName}</span></p>
         </div>
 
         {/* Size Selector */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-charcoal-black">Select Size</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {product.sizes.map((size, index) => {
               const isSelected = selectedSize === index;
-              const savings = calculateSavings(size.originalPrice, size.price);
+              const currentPrice = getCurrentPrice(index);
               const sizeInLitres = getSizeInLitres(size.size);
-              
+              const hasOriginalPrice = size.originalPrice && size.originalPrice > currentPrice;
+              const savings = hasOriginalPrice ? calculateSavings(size.originalPrice, currentPrice) : 0;
+
               return (
                 <motion.button
                   key={index}
@@ -71,15 +85,15 @@ const PriceSizeCard = ({
                     }`}>
                       {size.size}
                     </div>
-                    
+
                     {/* Price */}
                     <div className="space-y-1">
                       <div className="text-2xl font-bold text-charcoal-black">
-                        {formatPrice(size.price)}
+                        {formatPrice(currentPrice)}
                       </div>
-                      
+
                       {/* Original Price & Savings */}
-                      {size.originalPrice > size.price && (
+                      {hasOriginalPrice && (
                         <div className="space-y-1">
                           <div className="text-sm text-grey-thunder line-through">
                             {formatPrice(size.originalPrice)}
@@ -93,7 +107,7 @@ const PriceSizeCard = ({
 
                     {/* Price per litre */}
                     <div className="text-xs text-grey-thunder">
-                      {formatPrice(size.price / sizeInLitres)}/L
+                      {formatPrice(currentPrice / sizeInLitres)}/L
                     </div>
                   </div>
 

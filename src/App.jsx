@@ -33,7 +33,6 @@ import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
-import Checkout from "./pages/Checkout";
 import { ColorsPage, InspirationPage } from './pages'
 import KitchenInspiration from './pages/inspiration/Kitchen';
 import BedroomInspiration from './pages/inspiration/Bedroom';
@@ -147,7 +146,6 @@ function App() {
               <Route path='/pages/product-finder' element={<ProductFinder/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
               {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
-              <Route path='/checkout' element={<Checkout />} />
               <Route path='/blogs' element={<BlogIndexPage/>}/>
               <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
               <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>

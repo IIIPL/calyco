@@ -3,6 +3,8 @@
  * Contains customer reviews for all products
  */
 
+const normalizeKey = (productId) => String(productId || '').toLowerCase();
+
 export const productReviews = {
   // Nova Interior Paint Reviews
   "nova": [
@@ -61,7 +63,8 @@ export const productReviews = {
  * @returns {Array} Array of review objects
  */
 export const getProductReviews = (productId) => {
-  return productReviews[productId] || [];
+  const key = normalizeKey(productId);
+  return productReviews[key] || [];
 };
 
 /**

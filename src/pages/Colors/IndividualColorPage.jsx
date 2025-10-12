@@ -102,7 +102,7 @@ const ColorPage = () => {
               </p>
               
               <button 
-                onClick={() => {
+                onClick={async () => {
                   alert('Buy Now clicked! Adding to cart...');
                   try {
                     console.log('Buy Now clicked for:', currentColor.name);
@@ -124,10 +124,7 @@ const ColorPage = () => {
                       hex: actualHexColor
                     });
                     
-                    console.log('Added to cart, navigating to checkout...');
-                    
-                    // Navigate directly to checkout
-                    navigate('/checkout');
+                    await goToCheckout();
                   } catch (error) {
                     console.error('Error in Buy Now:', error);
                     alert('There was an error adding the item to cart. Please try again.');

@@ -3,8 +3,7 @@ import { useCart } from '../context/CartContext';
 
 /**
  * Smart checkout button that:
- * - Uses Shopify for Nova/CALYCO Interior products
- * - Falls back to /checkout for other products
+ * - Routes all checkout flows through Shopify
  * - Lazy-loads Shopify only when clicked
  */
 export default function ShopifyCheckoutButton({

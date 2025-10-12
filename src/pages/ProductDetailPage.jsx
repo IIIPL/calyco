@@ -18,19 +18,47 @@ import SEO from "../components/SEO";
 import CartPopup from "../components/CartPopup";
 import { useCart } from "../context/CartContext";
 
+const INTERIOR_LATEX_VARIANT_MAP = {
+  '1L-Low Sheen': 'gid://shopify/ProductVariant/42619088371830',
+  '4L-Low Sheen': 'gid://shopify/ProductVariant/42619088437366',
+  '10L-Low Sheen': 'gid://shopify/ProductVariant/42619088502902',
+  '20L-Low Sheen': 'gid://shopify/ProductVariant/42619088568438',
+  '1L-Pearl': 'gid://shopify/ProductVariant/42619088339062',
+  '4L-Pearl': 'gid://shopify/ProductVariant/42619088404598',
+  '10L-Pearl': 'gid://shopify/ProductVariant/42619088470134',
+  '20L-Pearl': 'gid://shopify/ProductVariant/42619088535670',
+};
+
+const INTERIOR_LATEX_PRICING = {
+  'Low Sheen': {
+    '1L': 700,
+    '4L': 2700,
+    '10L': 6500,
+    '20L': 12800,
+  },
+  'Pearl': {
+    '1L': 800,
+    '4L': 3500,
+    '10L': 8400,
+    '20L': 16000,
+  },
+};
+
+const normaliseSizeLabel = (label = '') => label.replace(/\s+/g, '');
+
 // Sample product data for demonstration
 const sampleProduct = {
   id: "nova-premium",
+  defaultFinish: "Low Sheen",
   name: "Nova Premium Interior Paint",
   slug: "nova-premium",
   brand: "Calyco",
   rating: 4.8,
   reviewCount: 127,
-  finish: "Matte",
+  finish: "Low Sheen",
   finishes: [
-    { name: "Matte", price: 499, description: "Elegant, non-reflective finish" },
-    { name: "Satin", price: 549, description: "Subtle sheen, easy to clean" },
-    { name: "Gloss", price: 599, description: "High shine, maximum durability" }
+    { name: "Low Sheen", description: "Soft velvety appearance with excellent washability" },
+    { name: "Pearl", description: "Subtle sheen that enhances color depth and durability" }
   ],
   selectedFinish: 0,
   keyBenefits: [
@@ -40,10 +68,36 @@ const sampleProduct = {
   ],
   microCopy: "Low-VOC • Safe for kids • Water-based",
   sizes: [
-    { size: "1L", price: 499, originalPrice: 599 },
-    { size: "5L", price: 2199, originalPrice: 2599 },
-    { size: "20L", price: 7999, originalPrice: 8999 }
+    { size: "1L", priceByFinish: { "Low Sheen": 700, "Pearl": 800 } },
+    { size: "4L", priceByFinish: { "Low Sheen": 2700, "Pearl": 3500 } },
+    { size: "10L", priceByFinish: { "Low Sheen": 6500, "Pearl": 8400 } },
+    { size: "20L", priceByFinish: { "Low Sheen": 12800, "Pearl": 16000 } }
   ],
+
+  price_by_finish: {
+    "Low Sheen": {
+      "1L": 700,
+      "4L": 2700,
+      "10L": 6500,
+      "20L": 12800
+    },
+    "Pearl": {
+      "1L": 800,
+      "4L": 3500,
+      "10L": 8400,
+      "20L": 16000
+    }
+  },
+  shopify_variant_map: {
+    "1L-Low Sheen": "gid://shopify/ProductVariant/42619088371830",
+    "4L-Low Sheen": "gid://shopify/ProductVariant/42619088437366",
+    "10L-Low Sheen": "gid://shopify/ProductVariant/42619088502902",
+    "20L-Low Sheen": "gid://shopify/ProductVariant/42619088568438",
+    "1L-Pearl": "gid://shopify/ProductVariant/42619088339062",
+    "4L-Pearl": "gid://shopify/ProductVariant/42619088404598",
+    "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
+    "20L-Pearl": "gid://shopify/ProductVariant/42619088535670"
+  },
   selectedSize: 1,
   quantity: 1,
   coveragePerLitre: 12, // sqm per litre
@@ -135,6 +189,12 @@ export default function ProductDetailPage() {
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
   const { addToCart, goToCheckout } = useCart();
 
+  const formatCurrency = (value) => new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 0,
+  }).format(value);
+
   // TODO: Replace with actual product fetching logic
   useEffect(() => {
     // Simulate fetching product by slug
@@ -143,33 +203,128 @@ export default function ProductDetailPage() {
   }, [slug]);
 
   const handleAddToCart = () => {
-    // Create a product object for the cart
-    const productForCart = {
-      id: product.id || product.slug,
-      name: product.name,
-      display_name: product.name,
-      price: product.sizes[selectedSize].price,
-      image: product.image || "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png"
+
+    const selectedFinishName = product.finishes[selectedFinish].name;
+
+    const currentSize = product.sizes[selectedSize];
+
+    const sizeLabel = currentSize.size || currentSize.label;
+
+    const currentPrice = currentSize.priceByFinish[selectedFinishName];
+
+    const variantKey = `${normaliseSizeLabel(sizeLabel)}-${selectedFinishName}`;
+
+    const variantId = INTERIOR_LATEX_VARIANT_MAP[variantKey];
+
+
+
+    const selectedColor = product.selectedColor || {
+
+      name: 'Custom Color',
+
+      hex: '#F8F4E3',
+
+      code: '',
+
+      family: '',
+
     };
-    
-    // Add to actual cart with default color for non-color products
-    addToCart(productForCart, product.finishes[selectedFinish].name, product.sizes[selectedSize].size, quantity, undefined, {
-      name: "Default",
-      hex: "#CCCCCC"
-    });
-    
-    // Show cart popup (toast notification)
-    setCartPopup({ isVisible: true, item: {
+
+
+
+    const productForCart = {
+
+      id: variantId || `${product.id || product.slug}-${variantKey}`,
+
       name: product.name,
-      hex: "#CCCCCC", // Default color for non-color products
-      price: `₹${product.sizes[selectedSize].price * quantity}`
-    }});
-    
-    // Auto-hide popup after 3 seconds
+
+      display_name: product.name,
+
+      price: currentPrice,
+
+      image: product.image || '/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png',
+
+    };
+
+
+
+    const attributes = {
+
+      'Color Code': selectedColor.code || '',
+
+      'Color Name': selectedColor.name || 'Custom Color',
+
+      'Color Family': selectedColor.family || '',
+
+      'Color Hex': selectedColor.hex || '#F8F4E3',
+
+      Finish: selectedFinishName,
+
+      'Product Type': 'Interior Latex Paint',
+
+      Size: sizeLabel,
+
+    };
+
+
+
+    addToCart(
+
+      productForCart,
+
+      selectedFinishName,
+
+      sizeLabel,
+
+      quantity,
+
+      currentPrice,
+
+      selectedColor,
+
+      'paint',
+
+      {
+
+        variantId,
+
+        productType: 'Interior Latex Paint',
+
+        attributes,
+
+      },
+
+    );
+
+
+
+    setCartPopup({
+
+      isVisible: true,
+
+      item: {
+
+        name: product.name,
+
+        hex: selectedColor.hex || '#F8F4E3',
+
+        price: formatCurrency(currentPrice * quantity),
+
+      },
+
+    });
+
+
+
     setTimeout(() => {
+
       setCartPopup({ isVisible: false, item: null });
+
     }, 3000);
+
   };
+
+
 
   const handleSampleOrder = () => {
     // TODO: Add sample to cart (100ml/250ml sample SKU)
@@ -182,14 +337,8 @@ export default function ProductDetailPage() {
 
   const handleFinishChange = (index) => {
     setSelectedFinish(index);
-    // Update product with new finish pricing
-    const updatedProduct = { ...product };
-    updatedProduct.finishes.forEach((finish, i) => {
-      if (i === index) {
-        finish.price = finish.price;
-      }
-    });
-    setProduct(updatedProduct);
+    // Pricing automatically updates based on selectedFinish and selectedSize
+    // No need to modify product state as priceByFinish is already defined
   };
 
   const handleSizeChange = (index) => {
@@ -220,9 +369,10 @@ export default function ProductDetailPage() {
 
   const handleAddRecommended = () => {
     // Calculate recommended packs based on coverage
-    const area = parseFloat(data.area) || 0;
-    const totalArea = area + (data.doors * 2) + (data.windows * 1.5);
-    const totalLitres = (totalArea / product.coveragePerLitre) * data.coats / data.efficiency;
+    const selectedFinishName = product.finishes[selectedFinish].name;
+    const area = parseFloat(coverageData.area) || 0;
+    const totalArea = area + (coverageData.doors * 2) + (coverageData.windows * 1.5);
+    const totalLitres = (totalArea / product.coveragePerLitre) * coverageData.coats / coverageData.efficiency;
     
     // Find best pack combination
     let recommendedPacks = [];
@@ -240,7 +390,8 @@ export default function ProductDetailPage() {
       if (remainingLitres >= sizeLitres) {
         const packs = Math.floor(remainingLitres / sizeLitres);
         if (packs > 0) {
-          recommendedPacks.push({ size: size.size, packs, price: size.price });
+          const sizePrice = size.priceByFinish ? size.priceByFinish[selectedFinishName] : size.price;
+          recommendedPacks.push({ size: size.size, packs, price: sizePrice });
           remainingLitres -= packs * sizeLitres;
         }
       }
@@ -248,7 +399,7 @@ export default function ProductDetailPage() {
     
     // Add to cart
     recommendedPacks.forEach(pack => {
-      console.log(`Adding ${pack.packs} × ${pack.size} to cart`);
+      console.log(`Adding ${pack.packs} • ${pack.size} to cart`);
     });
   };
 
@@ -263,8 +414,10 @@ export default function ProductDetailPage() {
     );
   }
 
-  const currentPrice = product.sizes[selectedSize].price;
+  const currentSize = product.sizes[selectedSize];
   const currentFinish = product.finishes[selectedFinish];
+  const currentFinishName = currentFinish?.name || 'Low Sheen';
+  const currentPrice = currentSize.priceByFinish[currentFinishName];
 
   return (
     <>
@@ -276,9 +429,12 @@ export default function ProductDetailPage() {
       
       <div className="min-h-screen bg-linen-white pt-20">
         {/* Product Hero Section */}
-        <ProductHero 
+        <ProductHero
           product={product}
           selectedFinish={selectedFinish}
+          currentPrice={currentPrice}
+          currentSizeLabel={currentSize.size || currentSize.label}
+          currentFinishName={currentFinishName}
           onAddToCart={handleAddToCart}
           onSampleOrder={handleSampleOrder}
           onVisualizer={handleVisualizer}
@@ -290,6 +446,7 @@ export default function ProductDetailPage() {
             <PriceSizeCard
               product={product}
               selectedSize={selectedSize}
+              selectedFinish={selectedFinish}
               quantity={quantity}
               onSizeChange={handleSizeChange}
               onQuantityChange={handleQuantityChange}
@@ -382,8 +539,9 @@ export default function ProductDetailPage() {
 
         {/* Sticky CTA (Mobile Only) */}
         <StickyCTA
-          price={currentPrice}
-          size={product.sizes[selectedSize].size}
+          price={currentPrice * quantity}
+          size={currentSize.size}
+          finish={currentFinishName}
           onAddToCart={handleAddToCart}
         />
 

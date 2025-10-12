@@ -1,0 +1,4 @@
+[
+  {"id": "SwatchCard", "name": "Swatch Card", "price": 99, "skuPrefix": "SWATCH", "size": {"ml": 0}},
+  {"id": "SamplePot200", "name": "Sample Pot 200 ml", "price": 149, "skuPrefix": "SMP200", "size": {"ml": 200}}
+]
