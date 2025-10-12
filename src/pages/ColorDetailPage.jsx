@@ -4,7 +4,11 @@ import ColorCombination from '../components/ColorComponents/ColorCombination';
 import SimilarColors from '../components/ColorComponents/SimilarColors';
 import ShadeSelectorDrawer from '../components/ColorComponents/ShadeSelectorDrawer';
 import ColorBuyBox from '../components/ColorComponents/ColorBuyBox';
+import ColorInfoHeader from '../components/ColorComponents/ColorInfoHeader';
+import ColorAttributes from '../components/ColorComponents/ColorAttributes';
+import ProductTypeSelector from '../components/ColorComponents/ProductTypeSelector';
 import NotFound from './NotFound';
+import colorsData from '../data/colors.json';
 import {
   getColorBySlugs,
   getColorsForFamily,
@@ -58,16 +62,86 @@ const RelationshipSection = ({ title, colors }) => {
   );
 };
 
+const COLORS_DATABASE = Array.isArray(colorsData) ? colorsData : [];
+
+const buildColorLookup = () => {
+  const map = new Map();
+  const register = (key, entry) => {
+    if (!key) return;
+    map.set(String(key).toLowerCase(), entry);
+  };
+
+  COLORS_DATABASE.forEach((entry) => {
+    if (!entry) return;
+    register(entry.slug);
+    register(slugify(entry.slug || ''));
+    register(entry.name);
+    register(slugify(entry.name || ''));
+    register(entry.ralCode);
+    if (entry.ralCode) {
+      register(entry.ralCode.replace(/\s+/g, '-'));
+      register(entry.ralCode.replace(/\s+/g, ''));
+    }
+    if (entry.hexCode) {
+      register(entry.hexCode);
+      register(entry.hexCode.replace(/^#/, ''));
+    }
+  });
+
+  return map;
+};
+
+const COLOR_LOOKUP = buildColorLookup();
+
+const resolveColorAttributes = (color, fallbackSlug) => {
+  const candidates = new Set();
+
+  if (fallbackSlug) {
+    candidates.add(fallbackSlug);
+    candidates.add(slugify(fallbackSlug));
+  }
+
+  if (color) {
+    candidates.add(color.slug);
+    candidates.add(color.name);
+    candidates.add(slugify(color.name || ''));
+    candidates.add(color.code);
+    candidates.add(color.altCode);
+    candidates.add(color.tintCode);
+    candidates.add(color.actualHex);
+    candidates.add(color.hex);
+  }
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    const key = String(candidate).toLowerCase();
+    if (COLOR_LOOKUP.has(key)) {
+      return COLOR_LOOKUP.get(key);
+    }
+    const slugCandidate = slugify(String(candidate));
+    if (slugCandidate && COLOR_LOOKUP.has(slugCandidate.toLowerCase())) {
+      return COLOR_LOOKUP.get(slugCandidate.toLowerCase());
+    }
+  }
+
+  return null;
+};
+
 const ColorDetailPage = () => {
   const navigate = useNavigate();
   const { familyName: familyParam, colorName: colorParam } = useParams();
   const familySlug = decodeURIComponent(familyParam || '');
   const colorSlug = decodeURIComponent(colorParam || '');
   const [currentColor, setCurrentColor] = useState(() => getColorBySlugs(familySlug, colorSlug));
+  const [selectedProductType, setSelectedProductType] = useState('Interior Latex Paint');
 
   useEffect(() => {
     setCurrentColor(getColorBySlugs(familySlug, colorSlug) || null);
   }, [familySlug, colorSlug]);
+
+  useEffect(() => {
+    setSelectedProductType('Interior Latex Paint');
+  }, [colorSlug]);
 
   const familyInfo = useMemo(() => {
     if (currentColor?.colorFamily) {
@@ -95,7 +169,10 @@ const ColorDetailPage = () => {
   const actualHexColor = currentColor.actualHex || currentColor.hex || '#CCCCCC';
   const textColorClass = getTextColor(actualHexColor);
 
-  const products = useMemo(() => getProductOptionsForColor(currentColor.code || currentColor.tintCode), [currentColor]);
+  const products = useMemo(
+    () => getProductOptionsForColor(currentColor.code || currentColor.tintCode),
+    [currentColor],
+  );
   const relations = useMemo(() => getRelations(currentColor.tintCode || currentColor.code), [currentColor]);
 
   const relationColors = useMemo(() => {
@@ -114,133 +191,147 @@ const ColorDetailPage = () => {
     return familyColors.filter((color) => color.slug !== currentColor.slug);
   }, [familyColors, currentColor.slug]);
 
-  const handleColorSelect = (color) => {
-    if (!color?.name) return;
-    const nextFamilySlug = color.familySlug || slugify(color.color_family || color.colorFamily || '');
-    const nextColorSlug = color.slug || slugify(color.name);
-    navigate(`/colors/family/${nextFamilySlug}/${nextColorSlug}`);
-  };
+  const colorAttributesEntry = useMemo(
+    () => resolveColorAttributes(currentColor, colorSlug),
+    [currentColor, colorSlug],
+  );
 
-  const displayCode = currentColor.code || currentColor.altCode || currentColor.tintCode || currentColor.id || 'N/A';
-  const familyDisplayName = familyInfo?.name || currentColor.colorFamily;
+  const mergedAttributes = useMemo(() => {
+    if (!currentColor && !colorAttributesEntry) return null;
+    const base = colorAttributesEntry || {};
+    const fallback = currentColor || {};
+
+    return {
+      tone: base.tone || fallback.tone || '',
+      sheen: base.sheen || fallback.sheen || '',
+      collection: base.collection || fallback.collection || '',
+      layer: base.layer || fallback.layer || '',
+      undertone: base.undertone || fallback.undertone || '',
+      lightReflectance: base.lightReflectance || fallback.lightReflectance || '',
+      interiorUse: base.interiorUse || fallback.interiorUse || '',
+      exteriorUse: base.exteriorUse || fallback.exteriorUse || '',
+      mood: base.mood || fallback.mood || fallback.description || '',
+      contractor:
+        typeof base.contractor === 'boolean' ? base.contractor : !!fallback.contractor,
+      designer:
+        typeof base.designer === 'boolean' ? base.designer : !!fallback.designer,
+      colorFamily: base.colorFamily || fallback.colorFamily || familyInfo?.name || '',
+      ralCode: base.ralCode || fallback.code || fallback.tintCode || '',
+    };
+  }, [colorAttributesEntry, currentColor, familyInfo]);
+
+  const displayCode = mergedAttributes?.ralCode || currentColor.id || 'N/A';
+  const downloadKey = displayCode && displayCode !== 'N/A' ? displayCode : currentColor.slug;
+  const familyDisplayName = mergedAttributes?.colorFamily || familyInfo?.name || currentColor.colorFamily;
+  const familySlugForLink = currentColor.familySlug || slugify(familyDisplayName || '');
 
   return (
-    <div className={`min-h-screen bg-white mt-20 ${textColorClass}`}>
-      <section
-        className="min-h-screen flex flex-col md:flex-row md:items-stretch md:gap-6 relative"
-        style={{ backgroundColor: actualHexColor }}
-      >
-        <nav className={`absolute top-12 left-12 text-sm ${textColorClass}`}>
-          <span onClick={() => navigate('/colors')} className="cursor-pointer underline">
+    <div className="min-h-screen bg-gray-50 pt-24 text-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <nav className="text-sm text-gray-600 flex flex-wrap items-center gap-2">
+          <Link to="/colors" className="hover:text-gray-900 transition">
             Paint Colors
-          </span>
-          <span className="mx-2">&gt;</span>
-          <span
-            onClick={() => navigate(`/colors/family/${currentColor.familySlug || slugify(familyDisplayName)}`)}
-            className="cursor-pointer underline"
+          </Link>
+          <span className="text-gray-400">›</span>
+          <Link
+            to={`/colors/family/${familySlugForLink}`}
+            className="hover:text-gray-900 transition"
           >
             {familyDisplayName}
-          </span>
-          <span className="mx-2">&gt;</span>
-          <span>{currentColor.name}</span>
+          </Link>
+          <span className="text-gray-400">›</span>
+          <span className="text-gray-900">{currentColor.name}</span>
         </nav>
 
-        <div className="px-10 pt-20 md:basis-[38%] md:shrink-0 md:grow-0 md:h-full flex items-center justify-center">
-          {currentColor.image ? (
-            <img
-              src={currentColor.image}
-              alt={currentColor.name}
-              className="h-full w-auto object-contain md:mb-10"
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
+          <div className="space-y-6">
+            <div className="relative h-60 sm:h-72 lg:h-[420px] rounded-3xl overflow-hidden border border-gray-200 shadow-inner">
+              <div className="absolute inset-0" style={{ backgroundColor: actualHexColor }} aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" aria-hidden="true" />
+              <div className={`absolute bottom-4 left-4 text-sm font-medium ${textColorClass}`}>
+                <div>{actualHexColor}</div>
+                {mergedAttributes?.lightReflectance && (
+                  <div className="text-xs uppercase tracking-wide opacity-80">
+                    LRV {mergedAttributes.lightReflectance}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <ColorInfoHeader
+              name={currentColor.name}
+              ralCode={displayCode}
+              colorFamily={familyDisplayName}
+              mood={mergedAttributes?.mood}
+              downloadHref={`/download/dollop/${encodeURIComponent(downloadKey || currentColor.slug)}`}
             />
-          ) : (
-            <div
-              className="h-full w-full max-w-md flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300"
-              style={{ backgroundColor: actualHexColor }}
-            >
-              <img
-                src="/Assets/chair.png"
-                alt="Chair with color background"
-                className="w-full h-full object-contain opacity-80"
-              />
+
+            <ColorAttributes attributes={mergedAttributes} />
+
+            <ProductTypeSelector
+              selectedType={selectedProductType}
+              onChange={setSelectedProductType}
+            />
+
+            <ColorBuyBox
+              color={currentColor}
+              products={products}
+              selectedProductType={selectedProductType}
+            />
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <ShadeSelectorDrawer
+            shades={familyInfo?.slug || currentColor.familySlug}
+            selectedColor={currentColor}
+            onColorSelect={(color) => {
+              if (!color?.name) return;
+              const nextFamilySlug = color.familySlug || slugify(color.color_family || color.colorFamily || '');
+              const nextColorSlug = color.slug || slugify(color.name);
+              navigate(`/colors/family/${nextFamilySlug}/${nextColorSlug}`);
+            }}
+            colorList={familyColors}
+          />
+        </div>
+      </div>
+
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RelationshipSection title="Related Shades" colors={relationColors.related} />
+          <RelationshipSection title="Complementary" colors={relationColors.complementary} />
+          {relations.trendingRank && relations.trendingRank <= 20 && (
+            <div className="mt-6 text-sm font-medium text-purple-700">
+              Trending #{relations.trendingRank}
             </div>
           )}
         </div>
-
-        <div className="w-full md:basis-[62%] min-w-0 pl-6 pr-10 pt-20 flex flex-col justify-start md:h-full md:overflow-auto mb-10">
-          <div className="mb-8 md:pt-16">
-            <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 font-semibold text-white drop-shadow">
-              {currentColor.name}
-            </h1>
-            <p className="text-lg md:text-xl text-white/90">
-              <span>Color Code: </span>
-              {displayCode || 'N/A'}
-            </p>
-          </div>
-
-          {currentColor.description && (
-            <p className="mb-6 text-lg md:text-xl lg:text-2xl leading-relaxed text-white/90">
-              {currentColor.description}
-            </p>
-          )}
-
-          <div className="mb-6 text-lg md:text-xl lg:text-2xl leading-relaxed text-white">
-            <h2 className="font-medium text-white/90">Color Family</h2>
-            <span
-              onClick={() => navigate(`/colors/family/${currentColor.familySlug || slugify(familyDisplayName)}`)}
-              className="cursor-pointer underline transition-colors"
-            >
-              {familyDisplayName}
-            </span>
-          </div>
-
-          <div className="mt-4 mb-6 space-y-4 text-base md:text-lg">
-            <hr className="border-white/30" />
-            <a href={`/download/dollop/${displayCode || currentColor.slug}`} className="underline font-medium flex items-center gap-1">
-              Download digital dollop of {currentColor.name}
-            </a>
-          </div>
-
-          <div className="mb-12">
-            <ColorBuyBox color={currentColor} products={products} />
-          </div>
-        </div>
-      </section>
-
-      <ShadeSelectorDrawer
-        shades={familyInfo?.slug || currentColor.familySlug}
-        selectedColor={currentColor}
-        onColorSelect={handleColorSelect}
-        colorList={familyColors}
-      />
-
-      <div className="bg-white py-16 px-4 md:px-12 text-gray-900">
-        <RelationshipSection title="Related Shades" colors={relationColors.related} />
-        <RelationshipSection title="Complementary" colors={relationColors.complementary} />
-        {relations.trendingRank && relations.trendingRank <= 20 && (
-          <div className="mt-6 text-sm font-medium text-purple-700">
-            Trending #{relations.trendingRank}
-          </div>
-        )}
       </div>
 
       {similarColors.length > 0 && (
-        <div className="bg-white py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-black">Color Combination</h2>
-          <div className="flex flex-col md:flex-row gap-8">
-            <div className="flex-1">
-              <ColorCombination currentColor={currentColor} similarColors={similarColors} />
-            </div>
-            <div className="flex-1">
-              <ColorCombination currentColor={currentColor} similarColors={similarColors.slice(2, 4)} />
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-gray-900">Color Combination</h2>
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="flex-1">
+                <ColorCombination currentColor={currentColor} similarColors={similarColors} />
+              </div>
+              <div className="flex-1">
+                <ColorCombination currentColor={currentColor} similarColors={similarColors.slice(2, 4)} />
+              </div>
             </div>
           </div>
         </div>
       )}
 
       {similarColors.length > 0 && (
-        <div className="py-16 px-4 md:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-black">Similar Colors</h2>
-          <SimilarColors currentColor={currentColor} similarColors={similarColors} />
+        <div className="bg-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl mb-8 text-gray-900">Similar Colors</h2>
+            <SimilarColors currentColor={currentColor} similarColors={similarColors} />
+          </div>
         </div>
       )}
     </div>

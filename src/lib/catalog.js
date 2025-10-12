@@ -1,8 +1,8 @@
 import { calycoColors } from '../data/calycoColors.js';
 import { flatColors } from '../data/flatColors.js';
 import { products } from '../data/products.js';
-import samplesData from '../data/samples.json' assert { type: 'json' };
-import colorRelations from '../data/color-relations.json' assert { type: 'json' };
+import samplesData from '../data/samples.json';
+import colorRelations from '../data/color-relations.json';
 
 export const VISUALIZER_PATH = '/room-visualization';
 

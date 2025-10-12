@@ -46,7 +46,7 @@ const extractSizeMultiplier = (label = '') => {
   return map[key] || 1;
 };
 
-const ColorBuyBox = ({ color, products = [] }) => {
+const ColorBuyBox = ({ color, products = [], selectedProductType }) => {
   const product = products[0];
   const defaultFinish = product?.defaultFinish || product?.finishes?.[0] || 'Low Sheen';
   const [size, setSize] = useState('');
@@ -145,7 +145,7 @@ const ColorBuyBox = ({ color, products = [] }) => {
   const colorCode = sanitizeCode(color?.code || color?.tintCode || color?.hex || color?.name);
   const colorFamily = color?.colorFamily || color?.color_family || '';
 
-  const productType = product?.productType || 'Interior Latex Paint';
+  const productType = selectedProductType || product?.productType || 'Interior Latex Paint';
 
   const addVariantToCart = async () => {
     if (!size) {
