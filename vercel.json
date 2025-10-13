@@ -19,6 +19,16 @@
       "source": "/product/interior-latex-paint",
       "destination": "/product/Interior-Latex-Paint",
       "statusCode": 301
+    },
+    {
+      "source": "/product/Calyco%20Exterior%20Latex%20Paint",
+      "destination": "/product/Exterior-Latex-Paint",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/Calyco Exterior Latex Paint",
+      "destination": "/product/Exterior-Latex-Paint",
+      "statusCode": 301
     }
   ],
   "rewrites": [
