@@ -37,7 +37,7 @@ All products are defined in `src/data/products.js` with the following structure:
 
 ### 2. Dynamic Routing
 - **URL Pattern**: `/product/:productId`
-- **Example**: `/product/nova`, `/product/lumen`, `/product/regal`
+- **Example**: `/product/Interior-Latex-Paint`, `/product/lumen`, `/product/regal`
 - **Component**: `DynamicProductPage.jsx` handles all product displays
 
 ### 3. Adding New Products
@@ -124,7 +124,7 @@ const tiers = getProductTiers();
 ### 7. URL Examples
 
 ```
-/product/nova          → Nova interior paint
+/product/Interior-Latex-Paint          → Nova interior paint
 /product/lumen         → Lumen interior paint
 /product/regal         → Regal ultra-premium paint
 /product/emerald-exterior → Emerald exterior paint

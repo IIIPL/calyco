@@ -160,7 +160,7 @@ npm run dev
 ```
 
 ### Verify on Product Page
-1. Visit: `http://localhost:5173/product/nova`
+1. Visit: `http://localhost:5173/product/Interior-Latex-Paint`
 2. Scroll to **"Color Family"** section
 3. Verify filters show: Greens (14), Blues (10), Greys (20), etc.
 4. Click a family filter → verify only those colors display

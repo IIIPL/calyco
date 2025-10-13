@@ -159,7 +159,7 @@ npm run dev
 
 ### 2. Visit Product Page
 ```
-http://localhost:5173/product/nova
+http://localhost:5173/product/Interior-Latex-Paint
 ```
 
 ### 3. Verify Color Families

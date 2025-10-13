@@ -84,7 +84,7 @@ export const Navbar = ({ bannerVisible = true }) => {
       <div className="hidden md:flex w-full justify-center items-center h-12 relative">
         <nav className="flex gap-8 text-base font-medium items-center">
           <Link
-            to="/product/Nova"
+            to="/product/Interior-Latex-Paint"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >Interior</Link>
@@ -163,7 +163,7 @@ export const Navbar = ({ bannerVisible = true }) => {
         
         <div className="flex flex-col gap-6 text-xl font-medium items-center flex-1 w-full px-4">
           <Link
-            to="/product/Nova"
+            to="/product/Interior-Latex-Paint"
             className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
           >
             Interior

@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/product/Nova",
+      "destination": "/product/Interior-Latex-Paint",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/nova",
+      "destination": "/product/Interior-Latex-Paint",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]

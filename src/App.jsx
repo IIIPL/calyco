@@ -132,6 +132,8 @@ function App() {
               <Route path='/visualizer' element={<VisualizerPage/>}/>
               <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
+              <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
+              <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
               <Route path='/downloads' element={<DownloadsPage/>}/>

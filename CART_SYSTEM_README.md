@@ -104,7 +104,7 @@ const {
 ## Usage Examples
 
 ### Add Product to Cart
-1. Navigate to any product page (e.g., `/product/nova`)
+1. Navigate to any product page (e.g., `/product/Interior-Latex-Paint`)
 2. Select sheen and size options
 3. Choose quantity
 4. Click "Add to Cart"

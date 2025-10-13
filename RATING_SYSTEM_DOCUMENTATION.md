@@ -450,7 +450,7 @@ Warnings: 0
 ### Test It
 ```bash
 npm run dev
-# Visit http://localhost:5173/product/nova
+# Visit http://localhost:5173/product/Interior-Latex-Paint
 # Click the rating stars below the title
 # Scroll to see reviews at the bottom
 ```

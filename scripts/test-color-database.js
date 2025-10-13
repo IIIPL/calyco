@@ -107,7 +107,7 @@ console.log(`[OK] ${allColors.length} total colors available`);
 console.log(`[OK] All colors have required fields`);
 
 console.log('\n[INFO] Next Steps:');
-console.log('  1. Visit product page: http://localhost:5173/product/nova');
+console.log('  1. Visit product page: http://localhost:5173/product/Interior-Latex-Paint');
 console.log('  2. Check Color Family filters display correctly');
 console.log('  3. Verify color counts match the distribution above\n');
 

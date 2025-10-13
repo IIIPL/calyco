@@ -150,7 +150,7 @@ npm run dev
 ```
 
 ### Manual Testing
-1. Visit: `http://localhost:5173/product/nova`
+1. Visit: `http://localhost:5173/product/Interior-Latex-Paint`
 2. Verify Color Family filters show correct counts
 3. Click family filter → verify only those colors display
 4. Select color and add to cart

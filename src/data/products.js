@@ -1,7 +1,7 @@
 export const products = [
   {
     "id": "Nova",
-    "url": "https://calycopaints.com/product/nova",
+    "url": "https://calycopaints.com/product/interior-latex-paint",
     "name": "Calyco Interior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
