@@ -134,9 +134,7 @@ function App() {
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
               <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
               <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
-              <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
-              <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
-              <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
+              <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/exterior-latex-paint' replace />}/>
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
               <Route path='/downloads' element={<DownloadsPage/>}/>
