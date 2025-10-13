@@ -59,9 +59,20 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
 
   const buildProductPath = (product) => {
     if (!product) return "#";
-    const slugSource = product.url
-      ? product.url.split("/").filter(Boolean).pop()
-      : product.id || product.name;
+    let slugSource = product.slug;
+    if (!slugSource && product.url) {
+      slugSource = product.url.split("/").filter(Boolean).pop();
+    }
+    if (!slugSource && product.id) {
+      slugSource = product.id;
+    }
+    if (!slugSource && product.name) {
+      slugSource = product.name
+        .toString()
+        .trim()
+        .replace(/[^a-z0-9]+/gi, "-")
+        .replace(/(^-+|-+$)/g, "");
+    }
     if (!slugSource) return "#";
     return `/product/${encodeURIComponent(slugSource)}`;
   };

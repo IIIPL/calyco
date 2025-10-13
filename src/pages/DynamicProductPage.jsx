@@ -28,6 +28,7 @@ const getProductBySlugOrName = (productId) => {
   const lowerId = productId.toLowerCase();
   return products.find(p =>
     (p.name && p.name.toLowerCase() === lowerId) ||
+    (p.slug && p.slug.toLowerCase() === lowerId) ||
     (p.url && p.url.split("/").pop().toLowerCase() === lowerId)
   );
 };

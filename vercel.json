@@ -11,8 +11,13 @@
       "statusCode": 301
     },
     {
-      "source": "/product/Exterior-Latex-Paint",
-      "destination": "/product/exterior-latex-paint",
+      "source": "/product/exterior-latex-paint",
+      "destination": "/product/Exterior-Latex-Paint",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/interior-latex-paint",
+      "destination": "/product/Interior-Latex-Paint",
       "statusCode": 301
     }
   ],

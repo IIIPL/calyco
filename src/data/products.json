@@ -1,6 +1,7 @@
 [
   {
     "id": "Nova",
+    "slug": "Interior-Latex-Paint",
     "name": "Calyco Interior Latex Paint",
     "availableForColors": "all",
     "defaultFinish": "Low Sheen",
@@ -31,6 +32,7 @@
   },
   {
     "id": "ExteriorLatex",
+    "slug": "Exterior-Latex-Paint",
     "name": "Calyco Exterior Latex Paint",
     "availableForColors": "all",
     "defaultFinish": "Satin",

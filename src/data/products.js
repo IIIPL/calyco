@@ -1,7 +1,8 @@
 export const products = [
   {
     "id": "Nova",
-    "url": "https://calycopaints.com/product/interior-latex-paint",
+    "slug": "Interior-Latex-Paint",
+    "url": "https://calycopaints.com/product/Interior-Latex-Paint",
     "name": "Calyco Interior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
@@ -183,7 +184,8 @@ export const products = [
   },
   {
     "id": "ExteriorLatex",
-    "url": "https://calycopaints.com/product/exterior-latex-paint",
+    "slug": "Exterior-Latex-Paint",
+    "url": "https://calycopaints.com/product/Exterior-Latex-Paint",
     "name": "Calyco Exterior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
     "description": "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",

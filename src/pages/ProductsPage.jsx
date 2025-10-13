@@ -6,6 +6,24 @@ import BucketCard from '../components/BucketCard';
 const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
 const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
 
+const getProductSlug = (product = {}) => {
+  if (product.slug) return product.slug;
+  if (product.url) {
+    const tail = product.url.split('/').filter(Boolean).pop();
+    if (tail) return tail;
+  }
+  if (product.id) return product.id;
+  if (product.name) {
+    const normalized = product.name
+      .toString()
+      .trim()
+      .replace(/[^a-z0-9]+/gi, '-')
+      .replace(/(^-+|-+$)/g, '');
+    if (normalized) return normalized;
+  }
+  return '';
+};
+
 const ProductsPage = () => {
   const [cat, setCat] = useState('');
   const [finish, setFinish] = useState('');
@@ -50,17 +68,19 @@ const ProductsPage = () => {
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
         {list.map(p => {
           const name = String(p.name || '').toLowerCase();
-          const displayName = FEATURED_PRODUCT_IDS.has(p.id) || name.includes('interior latex paint')
-            ? 'Calyco Interior Latex Paint'
-            : p.id === 'ExteriorLatex' || name.includes('exterior latex paint')
-              ? 'Calyco Exterior Latex Paint'
-              : FEATURED_PRODUCT_NAMES.has(p.name)
-                ? 'Calyco Defence'
-                : (p.display_name || p.name);
+          const slug = getProductSlug(p);
+          let displayName = p.display_name || p.name;
+          if (p.id === 'Nova' || name.includes('interior latex paint')) {
+            displayName = 'Calyco Interior Latex Paint';
+          } else if (p.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
+            displayName = 'Calyco Exterior Latex Paint';
+          } else if (FEATURED_PRODUCT_NAMES.has(p.name)) {
+            displayName = 'Calyco Defence';
+          }
           return (
             <BucketCard
-              key={p.id || p.name}
-              product={{ ...p, display_name: displayName }}
+              key={slug || p.id || p.name}
+              product={{ ...p, display_name: displayName, slug }}
             />
           );
         })}

@@ -13,6 +13,24 @@ import {
 const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
 const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
 
+const getProductSlug = (product = {}) => {
+  if (product.slug) return product.slug;
+  if (product.url) {
+    const tail = product.url.split('/').filter(Boolean).pop();
+    if (tail) return tail;
+  }
+  if (product.id) return product.id;
+  if (product.name) {
+    const normalized = product.name
+      .toString()
+      .trim()
+      .replace(/[^a-z0-9]+/gi, '-')
+      .replace(/(^-+|-+$)/g, '');
+    if (normalized) return normalized;
+  }
+  return '';
+};
+
 const FILTER_GROUPS = ['Category', 'Substrate', 'Application Area'];
 
 export const Products = () => {
@@ -111,7 +129,7 @@ export const Products = () => {
 
   const getDisplayLabel = (product) => {
     const name = String(product.name || '').toLowerCase();
-    if (FEATURED_PRODUCT_IDS.has(product.id) || name.includes('interior latex paint')) {
+    if (product.id === 'Nova' || name.includes('interior latex paint')) {
       return 'Calyco Interior Latex Paint';
     }
     if (product.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
@@ -372,19 +390,21 @@ export const Products = () => {
               )}
 
               {/* If searching and name matches exist: show them (no heading) */}
-              {qActive && nameMatches.length > 0 && nameMatches.map((product, idx) => (
-
-                <ProductCard
-                  key={product.name + idx}
-                  id={product.name}
-                  name={getDisplayLabel(product)}
-                  image={product.images[0]}
-                  price={product.price}
-                  finishTypeSheen={product.finish_type_sheen}
-                  packaging={product.packaging}
-                  areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                />
-              ))}
+              {qActive && nameMatches.length > 0 && nameMatches.map((product, idx) => {
+                const slug = getProductSlug(product);
+                return (
+                  <ProductCard
+                    key={(slug || product.name) + idx}
+                    id={slug}
+                    name={getDisplayLabel(product)}
+                    image={product.images[0]}
+                    price={product.price}
+                    finishTypeSheen={product.finish_type_sheen}
+                    packaging={product.packaging}
+                    areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
+                  />
+                );
+              })}
 
               {/* If searching and no name matches, but category matches exist: show a one-line heading + products */}
               {qActive && categoryMatches.length > 0 && (
@@ -397,18 +417,21 @@ export const Products = () => {
                       <p className="text-[#493657]/70">Products under the matching category.</p>
                     </div>
                   )}
-                  {categoryMatches.map((product, idx) => (
-                    <ProductCard
-                      key={product.name + idx}
-                      id={product.name}
-                      name={getDisplayLabel(product)}
-                      image={product.images[0]}
-                      price={product.price}
-                      finishTypeSheen={product.finish_type_sheen}
-                      packaging={product.packaging}
-                      areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                    />
-                  ))}
+                  {categoryMatches.map((product, idx) => {
+                    const slug = getProductSlug(product);
+                    return (
+                      <ProductCard
+                        key={(slug || product.name) + idx}
+                        id={slug}
+                        name={getDisplayLabel(product)}
+                        image={product.images[0]}
+                        price={product.price}
+                        finishTypeSheen={product.finish_type_sheen}
+                        packaging={product.packaging}
+                        areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
+                      />
+                    );
+                  })}
                 </>
               )}
 
@@ -423,34 +446,40 @@ export const Products = () => {
                       <p className="text-[#493657]/70">Products compatible with the matching substrate.</p>
                     </div>
                   )}
-                  {substrateMatches.map((product, idx) => (
-                    <ProductCard
-                      key={product.name + idx}
-                      id={product.name}
-                      name={getDisplayLabel(product)}
-                      image={product.images[0]}
-                      price={product.price}
-                      finishTypeSheen={product.finish_type_sheen}
-                      packaging={product.packaging}
-                      areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                    />
-                  ))}
+                  {substrateMatches.map((product, idx) => {
+                    const slug = getProductSlug(product);
+                    return (
+                      <ProductCard
+                        key={(slug || product.name) + idx}
+                        id={slug}
+                        name={getDisplayLabel(product)}
+                        image={product.images[0]}
+                        price={product.price}
+                        finishTypeSheen={product.finish_type_sheen}
+                        packaging={product.packaging}
+                        areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
+                      />
+                    );
+                  })}
                 </>
               )}
 
               {/* No search active: show the baseFiltered grid like before */}
-              {!qActive && baseFiltered.length > 0 && baseFiltered.map((product, idx) => (
-                <ProductCard
-                  key={product.name + idx}
-                  id={product.name}
-                  name={getDisplayLabel(product)}
-                  image={product.images[0]}
-                  price={product.price}
-                  finishTypeSheen={product.finish_type_sheen}
-                  packaging={product.packaging}
-                  areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                />
-              ))}
+              {!qActive && baseFiltered.length > 0 && baseFiltered.map((product, idx) => {
+                const slug = getProductSlug(product);
+                return (
+                  <ProductCard
+                    key={(slug || product.name) + idx}
+                    id={slug}
+                    name={getDisplayLabel(product)}
+                    image={product.images[0]}
+                    price={product.price}
+                    finishTypeSheen={product.finish_type_sheen}
+                    packaging={product.packaging}
+                    areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

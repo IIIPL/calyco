@@ -26,10 +26,11 @@ const ProductCard = ({
   // Find the smallest size and its price (assuming price is for 1L if available)
   let displaySize = sizes && sizes.length > 0 ? sizes[0] : null;
   let displayPrice = price;
+  const target = id ? `/product/${encodeURIComponent(id)}` : '/product';
 
   return (
     <div className="p-0 w-full max-w-xs mx-auto flex flex-col items-start bg-transparent border-none shadow-none">
-      <Link to={`/product/${id}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2">
+      <Link to={target} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2">
         <img src={image} alt={name} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
       </Link>
       <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{wordBreak: 'break-word'}}>{name}</div>
@@ -63,7 +64,7 @@ const ProductCard = ({
       <div className="border-b border-[#e5e0d8] w-full my-2" />
       <div className="w-full flex justify-start">
         <Link 
-          to={`/product/${id}`}
+          to={target}
           className="mt-1 px-4 py-2 bg-[#493657] text-white text-sm rounded hover:bg-[#5a4067] transition duration-300 font-semibold"
           onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
         >
