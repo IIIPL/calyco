@@ -46,6 +46,15 @@ export const compatibleProducts: CompatibleProduct[] = [
     image: '/Assets/PureTone/NoBg.png'
   },
   {
+    id: 'ExteriorLatex',
+    name: 'Exterior Latex Paint',
+    type: 'Exterior',
+    description: 'High-performance exterior latex with UV blockers and weatherproof seal',
+    price: '?1500-1700/litre',
+    features: ['UV Resistant', 'Weatherproof', 'Low VOC', 'Mildew Guard'],
+    image: '/Assets/Nova/NoBg.png'
+  },
+  {
     id: 'CalmXterior',
     name: 'CalmXterior Weather Shield',
     type: 'Exterior',

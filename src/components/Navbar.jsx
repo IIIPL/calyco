@@ -88,6 +88,11 @@ export const Navbar = ({ bannerVisible = true }) => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >Interior</Link>
+          <Link
+            to="/product/exterior-latex-paint"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(null)}
+          >Exterior</Link>
           
           <Link
             to="/product/Stain%20&%20Sealer"
@@ -167,6 +172,13 @@ export const Navbar = ({ bannerVisible = true }) => {
             className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
           >
             Interior
+          </Link>
+          
+          <Link
+            to="/product/exterior-latex-paint"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+          >
+            Exterior
           </Link>
           
           <Link

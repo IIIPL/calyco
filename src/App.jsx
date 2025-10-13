@@ -134,6 +134,7 @@ function App() {
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
               <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
               <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
+              <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/exterior-latex-paint' replace />}/>
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
               <Route path='/downloads' element={<DownloadsPage/>}/>

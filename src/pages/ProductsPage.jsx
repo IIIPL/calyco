@@ -3,20 +3,26 @@ import SEO from '../components/SEO';
 import { products } from '../data/products';
 import BucketCard from '../components/BucketCard';
 
+const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
+const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
+
 const ProductsPage = () => {
   const [cat, setCat] = useState('');
   const [finish, setFinish] = useState('');
+  const featuredProducts = useMemo(() => {
+    return products.filter(
+      (p) => FEATURED_PRODUCT_IDS.has(p.id) || FEATURED_PRODUCT_NAMES.has(p.name)
+    );
+  }, []);
+
   const list = useMemo(() => {
-    // Only show Nova and Stain & Sealer
-    const filteredProducts = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
-    return filteredProducts.filter(p => 
-      (!cat || p.category === cat) && 
+    return featuredProducts.filter(p =>
+      (!cat || p.category === cat) &&
       (!finish || (p.finish_type_sheen || []).includes(finish))
     );
-  }, [cat, finish]);
+  }, [cat, finish, featuredProducts]);
 
-  // Only show categories for Nova and Stain & Sealer
-  const filteredProducts = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+  const filteredProducts = featuredProducts;
   
   const categories = Array.from(new Set(filteredProducts.map(p => p.category).filter(Boolean)));
   const finishes = Array.from(new Set(filteredProducts.flatMap(p => p.finish_type_sheen || [])));
@@ -42,9 +48,22 @@ const ProductsPage = () => {
       </div>
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
-        {list.map(p => (
-          <BucketCard key={p.name} product={{...p, display_name: p.name === 'Nova' ? 'Calyco Interior Latex Paint' : (p.name === 'Stain & Sealer' ? 'Calyco Defence' : (p.display_name || p.name))}} />
-        ))}
+        {list.map(p => {
+          const name = String(p.name || '').toLowerCase();
+          const displayName = FEATURED_PRODUCT_IDS.has(p.id) || name.includes('interior latex paint')
+            ? 'Calyco Interior Latex Paint'
+            : p.id === 'ExteriorLatex' || name.includes('exterior latex paint')
+              ? 'Calyco Exterior Latex Paint'
+              : FEATURED_PRODUCT_NAMES.has(p.name)
+                ? 'Calyco Defence'
+                : (p.display_name || p.name);
+          return (
+            <BucketCard
+              key={p.id || p.name}
+              product={{ ...p, display_name: displayName }}
+            />
+          );
+        })}
       </div>
     </div>
   );

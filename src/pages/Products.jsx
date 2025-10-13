@@ -10,6 +10,9 @@ import {
   mapToStandardApplicationAreas
 } from '../utils/mapping';
 
+const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
+const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
+
 const FILTER_GROUPS = ['Category', 'Substrate', 'Application Area'];
 
 export const Products = () => {
@@ -101,12 +104,20 @@ export const Products = () => {
 
   // Allowed catalog: only Interior paints and Stain & Sealer
   const allowedProducts = useMemo(() => {
-    return allProducts.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+    return allProducts.filter(
+      (p) => FEATURED_PRODUCT_IDS.has(p.id) || FEATURED_PRODUCT_NAMES.has(p.name)
+    );
   }, [allProducts]);
 
   const getDisplayLabel = (product) => {
-    if (product.name === 'Nova') return 'Calyco Interior Latex Paint';
-    if (product.name === 'Stain & Sealer') return 'Calyco Defence';
+    const name = String(product.name || '').toLowerCase();
+    if (FEATURED_PRODUCT_IDS.has(product.id) || name.includes('interior latex paint')) {
+      return 'Calyco Interior Latex Paint';
+    }
+    if (product.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
+      return 'Calyco Exterior Latex Paint';
+    }
+    if (FEATURED_PRODUCT_NAMES.has(product.name)) return 'Calyco Defence';
     return product.display_name || product.name;
   };
 

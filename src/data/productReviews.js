@@ -50,6 +50,34 @@ export const productReviews = {
     }
   ],
 
+  // Exterior Latex Paint Reviews
+  "exteriorlatex": [
+    {
+      id: 1,
+      author: "Sanjay Pillai",
+      rating: 5,
+      date: "2024-09-02",
+      review: "Painted our villa exterior before monsoon and the finish still looks fresh. Rain just beads off and colour has not faded.",
+      verified: true
+    },
+    {
+      id: 2,
+      author: "Meera D'Souza",
+      rating: 4,
+      date: "2024-08-14",
+      review: "Loved the coverage and how easily it rolled on textured plaster. Needed two coats as suggested but worth it for the protection.",
+      verified: true
+    },
+    {
+      id: 3,
+      author: "Arjun Batra",
+      rating: 5,
+      date: "2024-07-29",
+      review: "Used the satin finish for fascia boards and trims. No chalking and the hydrophobic effect is impressive even in coastal humidity.",
+      verified: true
+    }
+  ],
+
   // You can add reviews for other products here
   // Example:
   // "product-id": [

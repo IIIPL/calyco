@@ -28,5 +28,35 @@
         "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42619088535670" }
       }
     }
+  },
+  {
+    "id": "ExteriorLatex",
+    "name": "Calyco Exterior Latex Paint",
+    "availableForColors": "all",
+    "defaultFinish": "Satin",
+    "finishes": [
+      "Low Sheen",
+      "Satin"
+    ],
+    "sizes": [
+      { "label": "1L" },
+      { "label": "4L" },
+      { "label": "10L" },
+      { "label": "20L" }
+    ],
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 750, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-1L" },
+        "4L": { "price": 2850, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-4L" },
+        "10L": { "price": 6800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-10L" },
+        "20L": { "price": 12950, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-20L" }
+      },
+      "Satin": {
+        "1L": { "price": 820, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-1L" },
+        "4L": { "price": 3200, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-4L" },
+        "10L": { "price": 7700, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-10L" },
+        "20L": { "price": 14800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-20L" }
+      }
+    }
   }
 ]

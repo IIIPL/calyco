@@ -6,6 +6,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
+  { key: "Exterior", label: "EXTERIOR" },
   { key: "StainSealer", label: "STAIN & SEALER" },
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
@@ -18,6 +19,9 @@ const grouped = {
     p.category?.toLowerCase() === "interior" && 
     !hiddenInteriorProducts.includes(p.name)
   ),
+  Exterior: allProducts.filter((p) => 
+    p.category?.toLowerCase() === "exterior"
+  ),
   StainSealer: allProducts.filter((p) => {
     const c = p.category?.toLowerCase() || "";
     return c.includes("stain") || c.includes("sealer"); // matches "stain & sealer"
@@ -29,6 +33,9 @@ const grouped = {
 const interiorPrimary = allProducts.find(
   (p) => p.category?.toLowerCase() === "interior"
 );
+const exteriorPrimary = allProducts.find(
+  (p) => p.category?.toLowerCase() === "exterior"
+);
 
 export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [selectedMenu, setSelectedMenu] = useState("Interior");
@@ -37,15 +44,34 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [submenuOpen, setSubmenuOpen] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (selectedMenu === "Interior") {
-      // Prefer first visible interior; otherwise fall back to any interior product
-      const firstVisible = grouped.Interior?.[0];
-      setHovered(firstVisible || interiorPrimary || null);
-      return;
+  const getProductsForMenu = (menuKey) => {
+    const list = grouped[menuKey] || [];
+    if (menuKey === "Interior") {
+      if (list.length) return list;
+      return interiorPrimary ? [interiorPrimary] : [];
     }
-    if (selectedMenu && grouped[selectedMenu]?.[0]) {
-      setHovered(grouped[selectedMenu][0]);
+    if (menuKey === "Exterior") {
+      if (list.length) return list;
+      return exteriorPrimary ? [exteriorPrimary] : [];
+    }
+    return list;
+  };
+
+  const buildProductPath = (product) => {
+    if (!product) return "#";
+    const slugSource = product.url
+      ? product.url.split("/").filter(Boolean).pop()
+      : product.id || product.name;
+    if (!slugSource) return "#";
+    return `/product/${encodeURIComponent(slugSource)}`;
+  };
+
+  useEffect(() => {
+    const productsForMenu = getProductsForMenu(selectedMenu);
+    if (productsForMenu.length) {
+      setHovered(productsForMenu[0]);
+    } else if (selectedMenu === "All" && grouped.All?.length) {
+      setHovered(grouped.All[0]);
     } else {
       setHovered(null);
     }
@@ -106,43 +132,26 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                       : "max-h-0 opacity-0"
                   } pl-4`}
                 >
-                  {item.key === "Interior" ? (
-                    (() => {
-                      const first = grouped.Interior?.[0] || interiorPrimary;
-                      if (!first) return null;
-                      return (
-                        <Link
-                          key={first.name}
-                          to={`/product/${first.name}`}
-                          onClick={() => {
-                            window.scrollTo({ top: 0 });
-                            if (onSelect) onSelect();
-                            setOpen(false);
-                            setSubmenuOpen(null);
-                          }}
-                          className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
-                        >
-                          Calyco Interior Latex Paint
-                        </Link>
-                      );
-                    })()
-                  ) : (
-                    grouped[item.key]?.map((product) => (
+                  {(() => {
+                    const menuProducts = getProductsForMenu(item.key);
+                    if (!menuProducts.length) return null;
+                    return menuProducts.map((product) => (
                       <Link
-                        key={product.name}
-                        to={`/product/${product.name}`}
+                        key={product.id || product.name}
+                        to={buildProductPath(product)}
                         onClick={() => {
                           window.scrollTo({ top: 0 });
                           if (onSelect) onSelect();
                           setOpen(false);
                           setSubmenuOpen(null);
+                          setHovered(product);
                         }}
                         className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
                       >
                         {product.display_name || product.name}
                       </Link>
-                    ))
-                  )}
+                    ));
+                  })()}
                 </div>
               </div>
             ))}
@@ -205,41 +214,18 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         >
           
           <ul className="space-y-2 text-[#493657]">
-            {selectedMenu === "Interior" ? (
-              (() => {
-                const first = grouped.Interior?.[0] || interiorPrimary;
-                if (!first) return null;
-                return (
-                  <li
-                    key={first.name}
-                    className={`font-medium cursor-pointer ${
-                      hovered?.name === first.name ? "font-semibold" : ""
-                    }`}
-                  >
-                    <Link
-                      to={`/product/${first.name}`}
-                      onClick={() => {
-                        window.scrollTo({ top: 0 });
-                        if (onSelect) onSelect();
-                      }}
-                      onMouseEnter={() => handleHover(first)}
-                      className="hover:text-[#F0C85A]"
-                    >
-                      Calyco Interior Latex Paint
-                    </Link>
-                  </li>
-                );
-              })()
-            ) : (
-              grouped[selectedMenu].map((product) => (
+            {(() => {
+              const menuProducts = getProductsForMenu(selectedMenu);
+              if (!menuProducts.length) return null;
+              return menuProducts.map((product) => (
                 <li
-                  key={product.name}
+                  key={product.id || product.name}
                   className={`font-medium cursor-pointer ${
                     hovered?.name === product.name ? "font-semibold" : ""
                   }`}
                 >
                   <Link
-                    to={`/product/${product.name}`}
+                    to={buildProductPath(product)}
                     onClick={() => {
                       window.scrollTo({ top: 0 });
                       if (onSelect) onSelect();
@@ -250,8 +236,8 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                     {product.display_name || product.name}
                   </Link>
                 </li>
-              ))
-            )}
+              ));
+            })()}
           </ul>
         </div>
 
@@ -275,7 +261,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
               />
 
               <Link
-                to={`/product/${hovered.name}`}
+                to={buildProductPath(hovered)}
                 onClick={() => {
                   window.scrollTo({ top: 0 });
                   if (onSelect) onSelect();

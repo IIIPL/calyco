@@ -182,6 +182,188 @@ export const products = [
     ]
   },
   {
+    "id": "ExteriorLatex",
+    "url": "https://calycopaints.com/product/exterior-latex-paint",
+    "name": "Calyco Exterior Latex Paint",
+    "image": "/Assets/Nova/1-main.png",
+    "description": "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
+    "short-description": "UV-shielding, hydrophobic exterior latex for enduring curb appeal.",
+    "details": "Calyco Exterior Latex Paint fortifies exterior walls with advanced UV blockers, breathable polymers, and mildew guards for long-lasting beauty.",
+    "category": "Exterior",
+    "application": [
+      "Exterior wall painting",
+      "stucco",
+      "brick",
+      "concrete",
+      "fiber cement",
+      "wood"
+    ],
+    "advantages": [
+      "UV shield",
+      "Weatherproof barrier",
+      "Mildew resistant"
+    ],
+    "features": [
+      "UV-blocking pigments",
+      "Hydrophobic weather seal",
+      "Breathable film technology",
+      "Anti-mildew additive"
+    ],
+    "finish_type_sheen": [
+      "Low Sheen",
+      "Satin"
+    ],
+    "finishes": [
+      "Low Sheen",
+      "Satin"
+    ],
+    "substrate": [
+      "Stucco",
+      "Concrete",
+      "Brick",
+      "Fiber cement",
+      "Wood"
+    ],
+    "recommended_uses": [
+      "Exterior façades, trims, and masonry requiring long-term protection"
+    ],
+    "price": 750,
+    "packaging": [
+      "1L",
+      "4L",
+      "10L",
+      "20L"
+    ],
+    "default_finish": "Satin",
+    "defaultFinish": "Satin",
+    "availableForColors": "all",
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 750, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-1L" },
+        "4L": { "price": 2850, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-4L" },
+        "10L": { "price": 6800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-10L" },
+        "20L": { "price": 12950, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-20L" }
+      },
+      "Satin": {
+        "1L": { "price": 820, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-1L" },
+        "4L": { "price": 3200, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-4L" },
+        "10L": { "price": 7700, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-10L" },
+        "20L": { "price": 14800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-20L" }
+      }
+    },
+    "price_by_finish": {
+      "Low Sheen": {
+        "1L": 750,
+        "4L": 2850,
+        "10L": 6800,
+        "20L": 12950
+      },
+      "Satin": {
+        "1L": 820,
+        "4L": 3200,
+        "10L": 7700,
+        "20L": 14800
+      }
+    },
+    "shopify_variant_map": {
+      "1L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-1L",
+      "4L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-4L",
+      "10L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-10L",
+      "20L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-20L",
+      "1L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-1L",
+      "4L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-4L",
+      "10L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-10L",
+      "20L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-20L"
+    },
+    "technical_specs": {
+      "product_code": "CAL-00240",
+      "base_type": "Advanced acrylic exterior latex",
+      "vehicle_type": "Water-based acrylic emulsion",
+      "coverage": "120-160 sq.ft./L/coat",
+      "voc_content": "< 60 g/L (Low VOC)",
+      "volume_solids": "Approx. 42%",
+      "pH": "8-9",
+      "weight_per_volume": "~1.30 kg/L",
+      "suitable_surfaces": [
+        "Exterior plaster and stucco",
+        "Brick, masonry, and concrete",
+        "Primed wood and fiber-cement siding"
+      ],
+      "application_instructions": "Apply with brush, roller, or sprayer. Do not apply when rain is expected within 4 hours.",
+      "drying_time": "Touch dry: 45 minutes | Recoat: 4-6 hours | Full cure: 7 days",
+      "recoat_time": "4-6 hours",
+      "cleanup": "Soap and Water",
+      "shelf_life": "36 months in sealed containers",
+      "storage_temp": "5C - 40C",
+      "ingredients": [
+        { "name": "Acrylic copolymer emulsion", "cas": "N/A", "weight": "20-40%" },
+        { "name": "Titanium Dioxide", "cas": "13463-67-7", "weight": "5-15%" },
+        { "name": "Calcium Carbonate", "cas": "471-34-1", "weight": "10-25%" },
+        { "name": "Silicone Additive", "cas": "63148-62-9", "weight": "1-3%" }
+      ]
+    },
+    "base_type": "Water-based",
+    "coverage": "110-140 sq. ft./Ltr",
+    "voc_content": "Low VOC (exterior compliant)",
+    "suitable_surfaces": [
+      "Exterior plaster",
+      "Rendered walls",
+      "Concrete",
+      "Brick",
+      "Fiber cement siding"
+    ],
+    "application_instructions": "Apply with brush, roller, or airless sprayer. Avoid application below 10C or before rainfall.",
+    "drying_time": "1 hr",
+    "recoat_time": "4-6 hrs",
+    "cleanup": "Soap and Water",
+    "brand": "Calyco",
+    "tools_required": [
+      "Brush",
+      "Roller",
+      "Spray"
+    ],
+    "color_options": [
+      "Available in 108 designer shades"
+    ],
+    "spread_rate": "110-140 sq. ft./Ltr",
+    "preparation_instructions": "Clean chalking, mildew, and loose paint; prime bare masonry or metal.",
+    "safety_precautions": "Use PPE and ensure adequate ventilation when spraying. Avoid windy application.",
+    "safety_warnings": {
+      "signal_word": "Warning",
+      "hazard_statements": [
+        "H315: Causes skin irritation",
+        "H319: Causes serious eye irritation",
+        "H332: Harmful if inhaled"
+      ],
+      "precautionary_statements": [
+        "P261: Avoid breathing spray or mist",
+        "P264: Wash exposed areas thoroughly after handling",
+        "P271: Use only outdoors or in a well-ventilated area",
+        "P280: Wear protective gloves/eye protection/face protection",
+        "P312: Call a POISON CENTER or doctor if you feel unwell"
+      ],
+      "first_aid": {
+        "inhalation": "Move person to fresh air. Keep comfortable for breathing. Seek medical attention if symptoms persist.",
+        "skin_contact": "Wash with soap and water. Remove contaminated clothing and wash before reuse.",
+        "eye_contact": "Rinse cautiously with water for several minutes. Remove contact lenses if present and easy to do. Continue rinsing.",
+        "ingestion": "Rinse mouth. Do not induce vomiting. Seek medical advice if feeling unwell."
+      }
+    },
+    "storage_instructions": "Store in a cool, dry place away from direct sunlight and freezing temperatures.",
+    "warranty": "7 years",
+    "product_number": "EXTERIOR-LATEX",
+    "coats_required": "2 coats",
+    "temperature_range": "10C-40C",
+    "humidity_range": "Under 85% RH",
+    "display_name": "Calyco Exterior Latex Paint",
+    "images": [
+      "/Assets/Nova/1-main.png",
+      "/Assets/Nova/1.png",
+      "/Assets/Nova/2.png",
+      "/Assets/Nova/3.png"
+    ]
+  },
+  {
     "url": "https://calycopaints.com/product/puretone",
     "name": "PureTone",
     "image": "/Assets/puretone.png",
