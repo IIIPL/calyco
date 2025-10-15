@@ -720,7 +720,7 @@ export const DynamicProductPage = () => {
                                             e.target.src = product.image;
                                         }
                                     }}
-                                    className="w-full h-auto max-h-[500px] object-contain"
+                                    className="w-full h-auto max-h-[700px] object-contain rounded-xl"
                                 />
 
                                 {product.images && product.images.length > 1 && (
@@ -775,10 +775,15 @@ export const DynamicProductPage = () => {
                                 </div>
                             )}
                         </div>
-                        {/* Thumbnail Gallery */}
+                        {/* Thumbnail Gallery - Auto-sliding */}
                         {Array.isArray(product.images) && product.images.length > 1 && (
-                          <div className="w-full mt-6">
-                            <div className="grid grid-cols-4 gap-3">
+                          <div className="w-full mt-6 overflow-hidden">
+                            <div
+                              className="flex gap-3 transition-transform duration-500 ease-in-out"
+                              style={{
+                                transform: `translateX(-${Math.max(0, (selectedImageIndex - 1) * (96 + 12))}px)`
+                              }}
+                            >
                               {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
@@ -786,7 +791,7 @@ export const DynamicProductPage = () => {
                                     setSelectedImage(img);
                                     setSelectedImageIndex(idx);
                                   }}
-                                  className={`rounded-lg p-2 transition-all duration-200 focus:outline-none ${
+                                  className={`rounded-lg p-2 transition-all duration-200 focus:outline-none flex-shrink-0 w-24 ${
                                     selectedImageIndex === idx
                                       ? 'bg-[#F0C85A]/10'
                                       : 'bg-gray-50 hover:bg-gray-100'
@@ -809,7 +814,7 @@ export const DynamicProductPage = () => {
 
                     {/* RIGHT SIDE - Product Information */}
                     <motion.div
-                        className="w-full flex flex-col gap-6 lg:pt-0"
+                        className="w-full flex flex-col gap-6 lg:pt-8"
                         variants={itemVariants}
                     >
                         {/* Product Title */}
