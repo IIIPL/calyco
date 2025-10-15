@@ -360,7 +360,6 @@ const WaterproofingSealer = () => {
                     {/* LEFT SIDE - Product Image Gallery (Sticky) */}
                     <motion.div
                         className="lg:sticky lg:top-24 w-full self-start"
-                        style={{ maxHeight: 'calc(100vh - 7rem)', overflow: 'auto' }}
                         variants={itemVariants}
                     >
                         <div
