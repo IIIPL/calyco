@@ -710,7 +710,7 @@ export const DynamicProductPage = () => {
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
                         >
-                            <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-[#493657]/10">
+                            <div className="relative bg-white rounded-2xl p-4">
                                 <img
                                     src={selectedImage || product.image}
                                     alt={`${product.name} - Image ${selectedImageIndex + 1}`}
@@ -786,9 +786,9 @@ export const DynamicProductPage = () => {
                                     setSelectedImage(img);
                                     setSelectedImageIndex(idx);
                                   }}
-                                  className={`border-2 rounded-lg p-2 transition-all duration-200 focus:outline-none hover:shadow-md ${
+                                  className={`border-2 rounded-lg p-2 transition-all duration-200 focus:outline-none ${
                                     selectedImageIndex === idx
-                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 shadow-md bg-[#F0C85A]/5'
+                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 bg-[#F0C85A]/5'
                                       : 'border-[#493657]/10 hover:border-[#493657]/30 bg-white'
                                   }`}
                                   aria-label={`View image ${idx + 1}`}
@@ -863,7 +863,7 @@ export const DynamicProductPage = () => {
                         )}
 
                         {/* 3 Feature Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-3">
                           {isInteriorLatexProduct && (
                             <>
                               <div className="bg-gradient-to-br from-[#B8E6F0] to-[#8DD4E8] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
