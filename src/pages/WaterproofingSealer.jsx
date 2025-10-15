@@ -505,39 +505,44 @@ const WaterproofingSealer = () => {
                           </div>
                         )}
 
-                        {/* Bullet Points */}
+                        {/* Bullet Points in Card */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
                           <div className="my-2">
-                            <ul className="list-disc pl-6 space-y-2 text-base text-[#493657]">
-                              {product.features.map((feature, idx) => (
-                                <li key={idx}>{feature}</li>
-                              ))}
-                            </ul>
+                            <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-6 shadow-md">
+                              <ul className="space-y-3">
+                                {product.features.map((feature, idx) => (
+                                  <li key={idx} className="flex items-start gap-3">
+                                    <FiCheckCircle className="w-5 h-5 text-[#F0C85A] mt-0.5 flex-shrink-0" />
+                                    <span className="text-base font-bold text-[#493657]">{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </div>
                         )}
 
                         {/* 3 Feature Cards */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
-                          <div className="bg-[#E8F4F8] rounded-lg p-4 text-center">
-                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
-                              <FiDroplet className="w-6 h-6 text-[#493657]" />
+                          <div className="bg-gradient-to-br from-[#B8E6F0] to-[#8DD4E8] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
+                              <FiDroplet className="w-7 h-7 text-[#493657]" />
                             </div>
-                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Waterproof Protection</h4>
-                            <p className="text-xs text-[#493657]/70">Complete sealing</p>
+                            <h4 className="font-bold text-[#493657] text-base mb-1">Waterproof Protection</h4>
+                            <p className="text-sm text-[#493657]/80 font-medium">Complete sealing</p>
                           </div>
-                          <div className="bg-[#F5E6D3] rounded-lg p-4 text-center">
-                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
-                              <FiShield className="w-6 h-6 text-[#493657]" />
+                          <div className="bg-gradient-to-br from-[#F5D9A8] to-[#F0C85A] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
+                              <FiShield className="w-7 h-7 text-[#493657]" />
                             </div>
-                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Eco-Friendly</h4>
-                            <p className="text-xs text-[#493657]/70">Safe for environment</p>
+                            <h4 className="font-bold text-[#493657] text-base mb-1">Eco-Friendly</h4>
+                            <p className="text-sm text-[#493657]/80 font-medium">Safe for environment</p>
                           </div>
-                          <div className="bg-[#D4E4D7] rounded-lg p-4 text-center">
-                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
-                              <FiClock className="w-6 h-6 text-[#493657]" />
+                          <div className="bg-gradient-to-br from-[#A8D5B0] to-[#7EC488] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
+                              <FiClock className="w-7 h-7 text-[#493657]" />
                             </div>
-                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Long Lasting</h4>
-                            <p className="text-xs text-[#493657]/70">Durable protection</p>
+                            <h4 className="font-bold text-[#493657] text-base mb-1">Long Lasting</h4>
+                            <p className="text-sm text-[#493657]/80 font-medium">Durable protection</p>
                           </div>
                         </div>
 
