@@ -1,79 +1,24 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { products } from "../data/products";
-import { calycoColors as colorData } from "../data/calycoColors.js";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
-
-import variantMapInterior from '../data/variantMap.interior.json';
-
-const EXTERIOR_LATEX_VARIANTS = {
-  'Matte Finish': {
-    displayName: 'Matte Finish',
-    subTitle: 'Premium Exterior Emulsion',
-    description: 'Weather-resistant matte finish for exteriors',
-    sizes: {
-      '1L': { price: 700, variantId: 'gid://shopify/ProductVariant/42637669400694' },
-      '4L': { price: 2700, variantId: 'gid://shopify/ProductVariant/42637669466230' },
-      '10L': { price: 6500, variantId: 'gid://shopify/ProductVariant/42637669531766' },
-      '20L': { price: 12800, variantId: 'gid://shopify/ProductVariant/42637669597302' },
-    },
-  },
-  'High Sheen Finish': {
-    displayName: 'High Sheen Finish',
-    subTitle: 'Luxury Exterior Emulsion',
-    description: 'Premium high-sheen finish for luxury exteriors',
-    sizes: {
-      '1L': { price: 800, variantId: 'gid://shopify/ProductVariant/42637669433462' },
-      '4L': { price: 3500, variantId: 'gid://shopify/ProductVariant/42637669498998' },
-      '10L': { price: 8400, variantId: 'gid://shopify/ProductVariant/42637669564534' },
-      '20L': { price: 16000, variantId: 'gid://shopify/ProductVariant/42637669630070' },
-    },
-  },
-};
-
-const EXTERIOR_SIZE_ORDER = ['1L', '4L', '10L', '20L'];
-
-// MRP pricing for Interior Latex Paint (Nova)
-const INTERIOR_LATEX_MRP = {
-  'Low Sheen': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
-  },
-  'Pearl': {
-    '1L': 950,
-    '4L': 4200,
-    '10L': 10100,
-    '20L': 19200,
-  },
-};
-
-// MRP pricing for Exterior Latex Paint
-const EXTERIOR_LATEX_MRP = {
-  'Matte Finish': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
-  },
-  'High Sheen Finish': {
-    '1L': 950,
-    '4L': 4200,
-    '10L': 10100,
-    '20L': 19200,
-  },
-};
+import waterproofingSealerDetail from '../data/productDetail.waterproofingSealer';
+import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // MRP pricing for Waterproofing Sealer
 const WATERPROOFING_SEALER_MRP = {
+  'Matte Finish': {
+    '1L': 850,
+    '4L': 3200,
+    '10L': 7800,
+    '20L': 15600,
+  },
   'Clear': {
     '1L': 850,
     '4L': 3200,
@@ -86,12 +31,6 @@ const WATERPROOFING_SEALER_MRP = {
     '10L': 7800,
     '20L': 15600,
   },
-  'Matte Finish': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
-  },
 };
 
 const slugify = (value) =>
@@ -99,44 +38,7 @@ const slugify = (value) =>
     ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
     : "";
 
-const VARIANT_MAPS = {
-  'variantMap.interior.json': variantMapInterior,
-};
-
-// --- Utility functions ---
-const getProductBySlugOrName = (productId) => {
-  if (!productId) return null;
-  const lowerId = productId.toLowerCase();
-  return products.find(p =>
-    (p.name && p.name.toLowerCase() === lowerId) ||
-    (p.slug && p.slug.toLowerCase() === lowerId) ||
-    (p.url && p.url.split("/").pop().toLowerCase() === lowerId)
-  );
-};
-
-const getProductsByCategory = (category) => {
-  if (!category) return [];
-  const lowerCat = category.toLowerCase();
-  return products.filter(p => p.category && p.category.toLowerCase() === lowerCat);
-};
-
-const normalizeSizeLabel = (label = "") => label.replace(/\s+/g, "").toUpperCase();
-
-// Price multipliers for each size
-const getSizeMultiplier = (size) => {
-    if (!size) return 1;
-    const sizeNum = size.toString().match(/\d+/)?.[0];
-    const multipliers = {
-        "1": 1,
-        "4": 3.5,
-        "10": 8,
-        "20": 14
-    };
-    return multipliers[sizeNum] || 1;
-};
-
-export const DynamicProductPage = () => {
-    const { productId } = useParams();
+const WaterproofingSealer = () => {
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -158,7 +60,6 @@ export const DynamicProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-    const [addingToCart, setAddingToCart] = useState(false);
     const { addToCart, goToCheckout } = useCart();
     const [selectedImage, setSelectedImage] = useState("");
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -168,23 +69,7 @@ export const DynamicProductPage = () => {
     const [selectedColor, setSelectedColor] = useState(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
-    const isExteriorProduct =
-        product &&
-        (product.id === 'ExteriorLatex' ||
-            product.slug === 'Exterior-Latex-Paint' ||
-            (product.name && product.name.toLowerCase().includes('exterior latex')));
-
-    const isInteriorLatexProduct =
-        product &&
-        (product.id === 'Nova' ||
-            product.slug === 'Interior-Latex-Paint' ||
-            (product.name && product.name.toLowerCase().includes('interior latex')));
-
-    const isWaterproofingSealerProduct =
-        product &&
-        (product.id === 'WaterproofingSealer' ||
-            product.slug === 'waterproofing-sealer' ||
-            (product.name && product.name.toLowerCase().includes('waterproofing sealer')));
+    const availableColors = activeColorFamily?.colors || [];
 
     // Get reviews data
     const productReviews = product ? getProductReviews(product.id) : [];
@@ -199,7 +84,7 @@ export const DynamicProductPage = () => {
         }
     };
 
-    // Touch handlers
+    // Touch handlers for image gallery
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
     };
@@ -264,8 +149,6 @@ export const DynamicProductPage = () => {
         }
     }, [activeColorFamily, selectedColor]);
 
-    const availableColors = activeColorFamily?.colors || [];
-
     const colorInfo = selectedColor
         ? {
             name: selectedColor.name,
@@ -275,73 +158,24 @@ export const DynamicProductPage = () => {
         }
         : null;
 
-    const exteriorFinishConfig = isExteriorProduct
-        ? EXTERIOR_LATEX_VARIANTS[selectedSheen] || EXTERIOR_LATEX_VARIANTS['Matte Finish']
-        : null;
-
-    const currentExteriorVariant =
-        isExteriorProduct && selectedSheen && selectedSize
-            ? EXTERIOR_LATEX_VARIANTS[selectedSheen]?.sizes?.[selectedSize]
-            : null;
-
     const formatINR = (value) => `₹${Number(value || 0).toLocaleString('en-IN')}`;
 
     const priceByFinish = useMemo(() => {
         if (!product) return {};
-        if (isExteriorProduct) {
-            const mapped = {};
-            Object.entries(EXTERIOR_LATEX_VARIANTS).forEach(([finish, info]) => {
-                mapped[finish] = {};
-                EXTERIOR_SIZE_ORDER.forEach((size) => {
-                    if (info.sizes[size]) {
-                        mapped[finish][size] = {
-                            price: info.sizes[size].price,
-                            variantId: info.sizes[size].variantId,
-                        };
-                    }
-                });
-                Object.entries(info.sizes).forEach(([size, config]) => {
-                    if (!mapped[finish][size]) {
-                        mapped[finish][size] = {
-                            price: config.price,
-                            variantId: config.variantId,
-                        };
-                    }
-                });
-            });
-            return mapped;
-        }
         return product.priceByFinish || product.price_by_finish || {};
-    }, [product, isExteriorProduct]);
+    }, [product]);
 
-    const normalizedSelectedSheen =
-        selectedSheen ||
-        product?.defaultFinish ||
-        product?.default_finish ||
-        product?.finish_type_sheen?.[0] ||
-        "Low Sheen";
+    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matte Finish";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
     }, [priceByFinish, normalizedSelectedSheen]);
 
-    const resolvePriceEntry = (sizeLabel) => {
-        if (!sizeLabel) return undefined;
-        if (!activeFinishPricing || typeof activeFinishPricing !== "object") return undefined;
-        if (activeFinishPricing[sizeLabel] !== undefined) {
-            return activeFinishPricing[sizeLabel];
-        }
-        const normalized = normalizeSizeLabel(sizeLabel);
-        const match = Object.entries(activeFinishPricing).find(([key]) => normalizeSizeLabel(key) === normalized);
-        return match ? match[1] : undefined;
-    };
-
     const calculatePrice = (sizeLabel) => {
-        const entry = resolvePriceEntry(sizeLabel);
+        const entry = activeFinishPricing[sizeLabel];
         if (entry === undefined || entry === null) {
             if (typeof product?.price === "number") {
-                const multiplier = getSizeMultiplier(sizeLabel);
-                return Math.round(product.price * multiplier);
+                return product.price;
             }
             return 0;
         }
@@ -355,49 +189,24 @@ export const DynamicProductPage = () => {
     };
 
     const getVariantIdForSelection = (finishLabel, sizeLabel) => {
-        const entry = resolvePriceEntry(sizeLabel);
-        if (entry && typeof entry === "object" && entry.variantId) {
-            return entry.variantId;
-        }
         let variantMap = product?.shopify_variant_map || {};
-        const variantMapFile = product?.variantMapFile;
-        if ((!variantMap || Object.keys(variantMap).length === 0) && variantMapFile) {
-            variantMap = VARIANT_MAPS[variantMapFile] || variantMap;
-        }
         const exactKey = `${sizeLabel}-${finishLabel}`;
         if (variantMap[exactKey]) {
             return variantMap[exactKey];
         }
-        const normalized = normalizeSizeLabel(sizeLabel);
-        const fallbackKey = `${normalized}-${finishLabel}`;
-        return variantMap[fallbackKey] || null;
+        return null;
     };
 
-    const displayPriceValue = isExteriorProduct
-        ? currentExteriorVariant?.price || 0
-        : calculatePrice(selectedSize);
+    const displayPriceValue = calculatePrice(selectedSize);
 
-    // Calculate MRP for products with MRP pricing
+    // Calculate MRP for Waterproofing Sealer
     const calculateMRP = (sizeLabel) => {
-        let mrpSource = null;
-
-        if (isInteriorLatexProduct) {
-            mrpSource = INTERIOR_LATEX_MRP;
-        } else if (isExteriorProduct) {
-            mrpSource = EXTERIOR_LATEX_MRP;
-        } else if (isWaterproofingSealerProduct) {
-            mrpSource = WATERPROOFING_SEALER_MRP;
-        }
-
-        if (!mrpSource) return null;
-
-        const mrpData = mrpSource[normalizedSelectedSheen];
+        const mrpData = WATERPROOFING_SEALER_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
         return mrpData[sizeLabel] || null;
     };
 
-    const shouldShowMRP = isInteriorLatexProduct || isExteriorProduct || isWaterproofingSealerProduct;
-    const displayMRPValue = shouldShowMRP ? calculateMRP(selectedSize) : null;
+    const displayMRPValue = calculateMRP(selectedSize);
 
     const displaySizes = useMemo(() => {
         const finishSizes =
@@ -414,64 +223,33 @@ export const DynamicProductPage = () => {
     }, [activeFinishPricing, product?.packaging]);
 
     useEffect(() => {
-        const foundProduct = getProductBySlugOrName(productId);
-        if (foundProduct) {
-            setProduct(foundProduct);
-            const defaultFinish =
-                foundProduct.defaultFinish ||
-                foundProduct.default_finish ||
-                foundProduct.finish_type_sheen?.[0] ||
-                "Low Sheen";
-            const looksLikeExterior =
-                foundProduct.id === 'ExteriorLatex' ||
-                foundProduct.slug === 'Exterior-Latex-Paint' ||
-                (foundProduct.name && foundProduct.name.toLowerCase().includes('exterior latex'));
-            setSelectedSheen(looksLikeExterior ? 'Matte Finish' : defaultFinish);
+        setProduct(waterproofingSealerDetail);
+        setSelectedSheen(waterproofingSealerDetail.defaultFinish || "Matte Finish");
 
-            const finishPricing = looksLikeExterior
-                ? EXTERIOR_LATEX_VARIANTS['Matte Finish'].sizes
-                : (foundProduct.priceByFinish || foundProduct.price_by_finish || {})[
-                      looksLikeExterior ? 'Matte Finish' : defaultFinish
-                  ];
-            if (finishPricing && typeof finishPricing === "object") {
-                const sizeKeys = Object.keys(finishPricing);
-                if (sizeKeys.length > 0) {
-                    setSelectedSize(looksLikeExterior ? '1L' : sizeKeys[0]);
-                } else if (foundProduct.packaging && foundProduct.packaging.length > 0) {
-                    setSelectedSize(foundProduct.packaging[0]);
-                } else {
-                    setSelectedSize("");
-                }
-            } else if (foundProduct.packaging && foundProduct.packaging.length > 0) {
-                setSelectedSize(foundProduct.packaging[0]);
-            } else {
-                setSelectedSize("");
+        const finishPricing = (waterproofingSealerDetail.priceByFinish || waterproofingSealerDetail.price_by_finish || {})["Matte Finish"];
+        if (finishPricing && typeof finishPricing === "object") {
+            const sizeKeys = Object.keys(finishPricing);
+            if (sizeKeys.length > 0) {
+                setSelectedSize(sizeKeys[0]);
+            } else if (waterproofingSealerDetail.packaging && waterproofingSealerDetail.packaging.length > 0) {
+                setSelectedSize(waterproofingSealerDetail.packaging[0]);
             }
-
-            if (Array.isArray(foundProduct.images) && foundProduct.images.length > 0) {
-                setSelectedImage(foundProduct.images[0]);
-                setSelectedImageIndex(0);
-            } else {
-                setSelectedImage(foundProduct.image);
-                setSelectedImageIndex(0);
-            }
-            document.title = foundProduct.display_name || foundProduct.name;
+        } else if (waterproofingSealerDetail.packaging && waterproofingSealerDetail.packaging.length > 0) {
+            setSelectedSize(waterproofingSealerDetail.packaging[0]);
         }
+
+        if (Array.isArray(waterproofingSealerDetail.images) && waterproofingSealerDetail.images.length > 0) {
+            setSelectedImage(waterproofingSealerDetail.images[0]);
+            setSelectedImageIndex(0);
+        } else {
+            setSelectedImage(waterproofingSealerDetail.image);
+            setSelectedImageIndex(0);
+        }
+        document.title = waterproofingSealerDetail.name;
         setLoading(false);
-    }, [productId]);
+    }, []);
 
-    useEffect(() => {
-        if (!displaySizes.length) {
-            return;
-        }
-        const normalized = normalizeSizeLabel(selectedSize);
-        const hasCurrent = displaySizes.some((label) => normalizeSizeLabel(label) === normalized);
-        if (!hasCurrent) {
-            setSelectedSize(displaySizes[0]);
-        }
-    }, [displaySizes, selectedSize]);
-
-    const handleGenericAddToCart = () => {
+    const handleAddToCart = () => {
         const variantId = getVariantIdForSelection(normalizedSelectedSheen, selectedSize);
         addToCart(
             product,
@@ -487,8 +265,8 @@ export const DynamicProductPage = () => {
         setCartPopup({
             isVisible: true,
             item: {
-                name: product.display_name || product.name,
-                hex: (colorInfo && colorInfo.hex) || product.color_hex || "#CCCCCC",
+                name: product.name,
+                hex: (colorInfo && colorInfo.hex) || "#CCCCCC",
                 colorName: colorInfo ? colorInfo.name : undefined,
                 colorFamily: colorInfo ? colorInfo.family : undefined,
                 selectedSheen,
@@ -504,103 +282,6 @@ export const DynamicProductPage = () => {
         }, 3000);
     };
 
-    const handleExteriorAddToCart = async () => {
-        if (!selectedColor) {
-            alert("Please select a color first");
-            return;
-        }
-
-        const variantData = EXTERIOR_LATEX_VARIANTS[selectedSheen]?.sizes?.[selectedSize];
-        if (!variantData) {
-            alert("Please select a valid size option");
-            return;
-        }
-
-        const variantId = variantData.variantId;
-        if (!variantId) {
-            alert("Unable to determine a Shopify variant for the selected combination.");
-            return;
-        }
-
-        const customAttributes = [
-            { key: "Product Type", value: "Exterior Latex Paint" },
-            { key: "Finish Type", value: selectedSheen },
-            { key: "Finish Name", value: exteriorFinishConfig?.subTitle || selectedSheen },
-            { key: "Color Code", value: selectedColor.ralCode || selectedColor.code || "" },
-            { key: "Color Name", value: selectedColor.name || "" },
-            { key: "Hex Code", value: selectedColor.hexCode || selectedColor.hex || "" },
-            { key: "Color Family", value: selectedColor.colorFamily || activeColorFamily?.label || "" },
-        ];
-
-        console.log('[CALYCO] Adding Exterior to cart:', {
-            finish: selectedSheen,
-            size: selectedSize,
-            color: selectedColor.name,
-            variantId,
-            price: variantData.price,
-        });
-        console.log('[CALYCO] Custom attributes:', customAttributes);
-
-        try {
-            await addToCart(
-                {
-                    id: variantId,
-                    name: `${product.display_name || product.name} - ${selectedColor.name}`,
-                    display_name: `${product.display_name || product.name} - ${selectedColor.name}`,
-                    price: variantData.price,
-                    image: product.image || product.images?.[0] || '/Assets/chair.png',
-                },
-                selectedSheen,
-                selectedSize,
-                quantity,
-                variantData.price,
-                {
-                    name: selectedColor.name || "",
-                    hex: selectedColor.hex || selectedColor.hexCode || "",
-                    code: selectedColor.ralCode || selectedColor.code || "",
-                    family: selectedColor.colorFamily || activeColorFamily?.label || "",
-                },
-                'paint',
-                {
-                    variantId,
-                    productType: 'Exterior Latex Paint',
-                    attributes: customAttributes,
-                },
-            );
-
-            console.log('[CALYCO] Successfully added to cart');
-
-            setCartPopup({
-                isVisible: true,
-                item: {
-                    name: product.display_name || product.name,
-                    hex: selectedColor.hex || selectedColor.hexCode || '#CCCCCC',
-                    colorName: selectedColor.name || '',
-                    colorFamily: selectedColor.colorFamily || activeColorFamily?.label || '',
-                    selectedSheen,
-                    selectedSize,
-                    quantity,
-                    price: formatINR(variantData.price * quantity),
-                },
-            });
-
-            setTimeout(() => {
-                setCartPopup({ isVisible: false, item: null });
-            }, 3000);
-        } catch (error) {
-            console.error('[CALYCO] Failed to add Exterior paint:', error);
-            alert(`Failed to add to cart: ${error.message}`);
-        }
-    };
-
-    const handleAddToCartClick = () => {
-        if (isExteriorProduct) {
-            void handleExteriorAddToCart();
-        } else {
-            handleGenericAddToCart();
-        }
-    };
-
     if (loading) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 flex items-center justify-center">
@@ -613,7 +294,7 @@ export const DynamicProductPage = () => {
     }
 
     if (!product) {
-        return <Navigate to="/product" replace />;
+        return null;
     }
 
     const containerVariants = {
@@ -650,40 +331,17 @@ export const DynamicProductPage = () => {
         await goToCheckout();
     };
 
-    const getTierColor = (tier) => {
-        switch (tier) {
-            case "Ultra-Premium": return "text-purple-600 bg-purple-100";
-            case "Premium": return "text-blue-600 bg-blue-100";
-            case "Standard": return "text-green-600 bg-green-100";
-            case "Value": return "text-orange-600 bg-orange-100";
-            case "Specialty": return "text-red-600 bg-red-100";
-            default: return "text-gray-600 bg-gray-100";
-        }
-    };
-
-    const similarProducts = product
-      ? getProductsByCategory(product.category).filter(p => p.name !== product.name)
-      : [];
-
-    let randomSimilar = [];
-    if (similarProducts.length > 2) {
-        const shuffled = [...similarProducts].sort(() => 0.5 - Math.random());
-        randomSimilar = shuffled.slice(0, 2);
-    } else {
-        randomSimilar = similarProducts.slice(0, 2);
-    }
-
     return (
         <>
         <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-2 md:px-6 xl:px-10">
-            <motion.section 
+            <motion.section
                 className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
             >
                 {/* Breadcrumb */}
-                <motion.div 
+                <motion.div
                     className="flex items-center gap-2 text-sm text-[#493657]/60 mb-8"
                     variants={itemVariants}
                 >
@@ -695,15 +353,15 @@ export const DynamicProductPage = () => {
                         Products
                     </Link>
                     <span>/</span>
-                    <span className="text-[#493657] font-medium">{product.display_name || product.name}</span>
+                    <span className="text-[#493657] font-medium">{product.name}</span>
                 </motion.div>
 
                 {/* Back Button */}
-                <motion.div 
+                <motion.div
                     className="mb-6"
                     variants={itemVariants}
                 >
-                    <Link 
+                    <Link
                         to="/products"
                         className="inline-flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors"
                         onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
@@ -820,7 +478,7 @@ export const DynamicProductPage = () => {
                     </motion.div>
 
                     {/* Product Details */}
-                    <motion.div 
+                    <motion.div
                         className="xl:w-1/2 md:w-1/2 w-full flex flex-col gap-8"
                         variants={itemVariants}
                     >
@@ -828,7 +486,7 @@ export const DynamicProductPage = () => {
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-[#493657]/60">{product.category}</span>
                             </div>
-                            <h1 className="text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
+                            <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
 
                             {totalReviews > 0 && (
                               <div className="my-3">
@@ -841,10 +499,10 @@ export const DynamicProductPage = () => {
                               </div>
                             )}
 
-                            <p className="text-lg text-[#301A44] font-semibold mb-2">{product["short-description"] || product.shortDescription}</p>
+                            <p className="text-lg text-[#301A44] font-semibold mb-2">{product.shortDescription}</p>
                             <div className="my-4" />
-                            <p className="text-xl text-[#493657]/90 mb-4 font-medium leading-relaxed">{product.description || product.details}</p>
-                            
+                            <p className="text-xl text-[#493657]/90 mb-4 font-medium leading-relaxed">{product.description}</p>
+
                             {Array.isArray(product.features) && product.features.length > 0 && (
                               <div className="mb-4">
                                 <ul className="list-disc pl-6 space-y-2 text-lg text-[#301A44] font-semibold">
@@ -854,8 +512,8 @@ export const DynamicProductPage = () => {
                                 </ul>
                               </div>
                             )}
-                            
-                            {shouldShowMRP && displayMRPValue ? (
+
+                            {displayMRPValue ? (
                               <div className="price-container mb-4">
                                 <div className="flex items-center gap-3">
                                   <span className="current-price">{formatINR(displayPriceValue)}</span>
@@ -877,32 +535,7 @@ export const DynamicProductPage = () => {
                         {/* Product Options */}
                         <div className="space-y-6">
                             {/* Sheen / Finish */}
-                            {isExteriorProduct ? (
-                              <div className="mb-4">
-                                <h3 className="font-semibold text-[#493657] mb-2">Choose Finish Type</h3>
-                                <div className="flex flex-wrap gap-2">
-                                  {Object.entries(EXTERIOR_LATEX_VARIANTS).map(([finishKey, info]) => {
-                                    const isSelected = selectedSheen === finishKey;
-                                    return (
-                                      <button
-                                        key={finishKey}
-                                        type="button"
-                                        onClick={() => setSelectedSheen(finishKey)}
-                                        className={`px-4 py-2 rounded-lg border transition-all ${
-                                          isSelected
-                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                        }`}
-                                      >
-                                        {info.displayName}
-                                      </button>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            ) : (
-                              product.finish_type_sheen &&
-                              product.finish_type_sheen.length > 0 && (
+                            {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
                                 <div className="mb-4">
                                   <h3 className="font-semibold text-[#493657] mb-2">Choose Finish Type</h3>
                                   <div className="flex flex-wrap gap-2">
@@ -922,7 +555,29 @@ export const DynamicProductPage = () => {
                                     ))}
                                   </div>
                                 </div>
-                              )
+                            )}
+
+                            {/* Size Selection */}
+                            {displaySizes.length > 0 && (
+                                <div className="mb-4">
+                                  <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
+                                  <div className="flex flex-wrap gap-2">
+                                    {displaySizes.map((size) => (
+                                      <button
+                                        key={size}
+                                        type="button"
+                                        onClick={() => setSelectedSize(size)}
+                                        className={`px-4 py-2 rounded-lg border transition-all ${
+                                          selectedSize === size
+                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
+                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
+                                        }`}
+                                      >
+                                        {size}
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
                             )}
 
                             {/* Color Family */}
@@ -991,57 +646,7 @@ export const DynamicProductPage = () => {
                               </div>
                             )}
 
-                            {/* Size Selection */}
-                            {isExteriorProduct ? (
-                              <div className="mb-4">
-                                <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
-                                <div className="flex flex-wrap gap-2">
-                                  {EXTERIOR_SIZE_ORDER.map((size) => {
-                                    const variant = EXTERIOR_LATEX_VARIANTS[selectedSheen]?.sizes?.[size];
-                                    if (!variant) return null;
-                                    const isSelected = selectedSize === size;
-                                    return (
-                                      <button
-                                        key={size}
-                                        type="button"
-                                        onClick={() => setSelectedSize(size)}
-                                        className={`px-4 py-2 rounded-lg border transition-all ${
-                                          isSelected
-                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                        }`}
-                                      >
-                                        {size}
-                                      </button>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            ) : (
-                              displaySizes.length > 0 && (
-                                <div className="mb-4">
-                                  <h3 className="font-semibold text-[#493657] mb-2">Size</h3>
-                                  <div className="flex flex-wrap gap-2">
-                                    {displaySizes.map((size) => (
-                                      <button
-                                        key={size}
-                                        type="button"
-                                        onClick={() => setSelectedSize(size)}
-                                        className={`px-4 py-2 rounded-lg border transition-all ${
-                                          selectedSize === size
-                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                        }`}
-                                      >
-                                        {size}
-                                      </button>
-                                    ))}
-                                  </div>
-                                </div>
-                              )
-                            )}
-
-                            {/* Color Type Selection */}
+                            {/* Color Mixing Option */}
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2 flex items-center gap-2">
                                 Color Mixing Option
@@ -1133,7 +738,7 @@ export const DynamicProductPage = () => {
                                 </button>
                               </div>
                               <motion.button
-                                onClick={handleAddToCartClick}
+                                onClick={handleAddToCart}
                                 className="w-full bg-gradient-to-r from-[#301A44] to-[#493657]/80 text-white font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#301A44]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
@@ -1147,7 +752,7 @@ export const DynamicProductPage = () => {
                 </div>
 
                 {/* Product Details Section */}
-                <motion.div 
+                <motion.div
                     className="mt-32"
                     variants={itemVariants}
                 >
@@ -1166,6 +771,10 @@ export const DynamicProductPage = () => {
                             {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
                               product.advantages.map((adv, idx) => (
                                 <li key={idx}>{adv}</li>
+                              ))
+                            ) : Array.isArray(product.keyBenefits) && product.keyBenefits.length > 0 ? (
+                              product.keyBenefits.map((benefit, idx) => (
+                                <li key={idx}>{benefit}</li>
                               ))
                             ) : (
                               <li>No key advantages listed.</li>
@@ -1218,118 +827,92 @@ export const DynamicProductPage = () => {
                 <div className="mb-20 mt-16">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    {product.technical_specs?.product_code && (
+                    {product.technicalSpecs?.product_code && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Product Code</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.product_code}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.product_code}</span>
                       </div>
                     )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
-                      <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technical_specs && product.technical_specs.base_type) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technicalSpecs && product.technicalSpecs.base_type) || 'N/A'}</span>
                     </div>
-                    {product.technical_specs?.vehicle_type && (
+                    {product.technicalSpecs?.vehicle_type && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Vehicle Type</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.vehicle_type}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.vehicle_type}</span>
                       </div>
                     )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
-                      <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technicalSpecs && product.technicalSpecs.voc_content) || 'N/A'}</span>
                     </div>
-                    {product.technical_specs?.volume_solids && (
+                    {product.technicalSpecs?.volume_solids && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Volume Solids</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.volume_solids}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.volume_solids}</span>
                       </div>
                     )}
-                    {product.technical_specs?.pH && (
+                    {product.technicalSpecs?.pH && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">pH Level</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.pH}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.pH}</span>
                       </div>
                     )}
-                    {product.technical_specs?.weight_per_volume && (
+                    {product.technicalSpecs?.weight_per_volume && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Weight/Volume</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.weight_per_volume}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.weight_per_volume}</span>
                       </div>
                     )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technical_specs && product.technical_specs.application_instructions) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technicalSpecs && product.technicalSpecs.application_instructions) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClock className="w-5 h-5 text-[#493657]" />Drying Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.drying_time || (product.technical_specs && product.technical_specs.drying_time) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.drying_time || (product.technicalSpecs && product.technicalSpecs.dryingTime) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technical_specs && product.technical_specs.recoat_time) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technicalSpecs && product.technicalSpecs.recoatTime) || 'N/A'}</span>
                     </div>
-                    {product.technical_specs?.shelf_life && (
+                    {product.technicalSpecs?.shelf_life && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCalendar className="w-5 h-5 text-[#493657]" />Shelf Life</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.shelf_life}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.shelf_life}</span>
                       </div>
                     )}
-                    {product.technical_specs?.storage_temp && (
+                    {product.technicalSpecs?.storage_temp && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Storage Temperature</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.storage_temp}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.storage_temp}</span>
                       </div>
                     )}
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
-                      <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technical_specs && product.technical_specs.cleanup) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technicalSpecs && product.technicalSpecs.cleanup) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Temperature Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.temperature_range || (product.technical_specs && product.technical_specs.temperature_range) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.temperature_range || (product.technicalSpecs && product.technicalSpecs.temperature_range) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Humidity Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.humidity_range || (product.technical_specs && product.technical_specs.humidity_range) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.humidity_range || (product.technicalSpecs && product.technicalSpecs.humidity_range) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiInfo className="w-5 h-5 text-[#493657]" />Surface Preparation</span>
-                      <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technical_specs && product.technical_specs.preparation_instructions) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technicalSpecs && product.technicalSpecs.preparation_instructions) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technical_specs && product.technical_specs.storage_instructions) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technicalSpecs && product.technicalSpecs.storage_instructions) || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
-                      <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technical_specs && product.technical_specs.warranty) || 'N/A'}</span>
+                      <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technicalSpecs && product.technicalSpecs.warranty) || 'N/A'}</span>
                     </div>
-
-                    {product.technical_specs?.ingredients && product.technical_specs.ingredients.length > 0 && (
-                      <div className="md:col-span-2">
-                        <h3 className="font-semibold text-[#493657] text-xl mb-3 mt-4">Composition</h3>
-                        <div className="bg-gray-50 rounded-lg p-4">
-                          <table className="w-full text-left">
-                            <thead>
-                              <tr className="border-b border-[#493657]/20">
-                                <th className="pb-2 text-[#493657] font-semibold">Ingredient</th>
-                                <th className="pb-2 text-[#493657] font-semibold">CAS Number</th>
-                                <th className="pb-2 text-[#493657] font-semibold">Weight %</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {product.technical_specs.ingredients.map((ingredient, idx) => (
-                                <tr key={idx} className="border-b border-[#493657]/10">
-                                  <td className="py-2 text-[#493657]/80">{ingredient.name}</td>
-                                  <td className="py-2 text-[#493657]/80">{ingredient.cas}</td>
-                                  <td className="py-2 text-[#493657]/80">{ingredient.weight}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -1430,7 +1013,7 @@ export const DynamicProductPage = () => {
             {productReviews.length > 0 && (
                 <ReviewsSection
                     reviews={productReviews}
-                    productName={product.display_name || product.name}
+                    productName={product.name}
                 />
             )}
         </div>
@@ -1446,3 +1029,5 @@ export const DynamicProductPage = () => {
     </>
     );
 };
+
+export default WaterproofingSealer;

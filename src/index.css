@@ -321,3 +321,39 @@ body {
   }
 }
 
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.current-price {
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.mrp-row {
+  color: #dc2626;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.mrp-price {
+  text-decoration: line-through;
+  text-decoration-color: #dc2626;
+  color: #dc2626;
+}
+
+/* Responsive pricing for mobile */
+@media (max-width: 640px) {
+  .current-price {
+    font-size: 28px;
+  }
+
+  .mrp-row {
+    font-size: 14px;
+  }
+}
+
