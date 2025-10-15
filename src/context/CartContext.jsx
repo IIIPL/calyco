@@ -453,7 +453,7 @@ export const CartProvider = ({ children }) => {
           return null;
         }
 
-        const attributes = buildCustomAttributes({
+        const baseAttributes = buildCustomAttributes({
           'Color Code': colour.code,
           'Color Name': colour.name,
           'Color Family': colour.family,
@@ -461,8 +461,42 @@ export const CartProvider = ({ children }) => {
           'Finish': selectedSheen,
           'Product Type': productType,
           'Size': selectedSize,
-          ...options.attributes,
         });
+
+        let extraAttributes = [];
+        if (Array.isArray(options.attributes)) {
+          extraAttributes = options.attributes
+            .filter(
+              (entry) =>
+                entry &&
+                Object.prototype.hasOwnProperty.call(entry, 'key') &&
+                Object.prototype.hasOwnProperty.call(entry, 'value'),
+            )
+            .map((entry) => ({
+              key: String(entry.key ?? '').trim(),
+              value: String(entry.value ?? ''),
+            }))
+            .filter((entry) => entry.key.length > 0);
+        } else if (
+          options.attributes &&
+          typeof options.attributes === 'object' &&
+          !Array.isArray(options.attributes)
+        ) {
+          extraAttributes = buildCustomAttributes(options.attributes);
+        }
+
+        const mergedAttributesMap = new Map();
+        [...baseAttributes, ...extraAttributes].forEach(({ key, value }) => {
+          const trimmedKey = String(key || '').trim();
+          if (!trimmedKey) return;
+          const normalisedValue = value === undefined || value === null ? '' : String(value);
+          mergedAttributesMap.set(trimmedKey, normalisedValue);
+        });
+
+        const attributes = Array.from(mergedAttributesMap.entries()).map(([key, value]) => ({
+          key,
+          value,
+        }));
 
         console.log('[CALYCO] Adding to cart with:', {
           cartId: activeCart.id,

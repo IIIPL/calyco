@@ -333,7 +333,7 @@ const WaterproofingSealer = () => {
 
     return (
         <>
-        <div className="min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5 px-2 md:px-6 xl:px-10">
+        <div className="min-h-screen bg-white px-2 md:px-6 xl:px-10">
             <motion.section
                 className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
                 variants={containerVariants}
@@ -356,35 +356,20 @@ const WaterproofingSealer = () => {
                     <span className="text-[#493657] font-medium">{product.name}</span>
                 </motion.div>
 
-                {/* Back Button */}
-                <motion.div
-                    className="mb-6"
-                    variants={itemVariants}
-                >
-                    <Link
-                        to="/products"
-                        className="inline-flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors"
-                        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-                    >
-                        <FaArrowLeft className="w-4 h-4" />
-                        Back to Products
-                    </Link>
-                </motion.div>
-
-                <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-                    {/* Product Image Gallery */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+                    {/* LEFT SIDE - Product Image Gallery (Sticky) */}
                     <motion.div
-                        className="md:w-1/2 w-full md:sticky md:top-24 md:self-start md:h-fit flex flex-col items-center md:items-start justify-center"
+                        className="lg:sticky lg:top-24 w-full self-start"
+                        style={{ maxHeight: 'calc(100vh - 7rem)', overflow: 'auto' }}
                         variants={itemVariants}
                     >
                         <div
-                            className="relative group w-full flex items-center md:items-start justify-center"
+                            className="relative group w-full"
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
                             onTouchEnd={handleTouchEnd}
                         >
-                            <div className="hidden xl:block absolute inset-0 bg-gradient-to-r from-[#301A44]/10 to-[#493657]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <div className="relative bg-white rounded-3xl p-2 md:p-4 xl:p-6 shadow-2xl flex items-center justify-center overflow-hidden">
+                            <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-[#493657]/10">
                                 <img
                                     src={selectedImage || product.image}
                                     alt={`${product.name} - Image ${selectedImageIndex + 1}`}
@@ -394,7 +379,7 @@ const WaterproofingSealer = () => {
                                             e.target.src = product.image;
                                         }
                                     }}
-                                    className="max-w-[90vw] max-h-[90vw] md:max-w-[440px] md:max-h-[440px] xl:max-w-[600px] xl:max-h-[600px] object-contain transition-opacity duration-300"
+                                    className="w-full h-auto max-h-[500px] object-contain"
                                 />
 
                                 {product.images && product.images.length > 1 && (
@@ -402,47 +387,58 @@ const WaterproofingSealer = () => {
                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
-                                            className={`absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+                                            className={`absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
                                                 selectedImageIndex === 0
                                                     ? 'opacity-30 cursor-not-allowed'
-                                                    : 'opacity-0 group-hover:opacity-100 hover:shadow-xl'
+                                                    : 'opacity-100'
                                             }`}
                                             aria-label="Previous image"
                                         >
-                                            <FiChevronLeft className="w-6 h-6 text-[#493657]" />
+                                            <FiChevronLeft className="w-5 h-5 text-[#493657]" />
                                         </button>
 
                                         <button
                                             onClick={handleNextImage}
                                             disabled={selectedImageIndex === product.images.length - 1}
-                                            className={`absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+                                            className={`absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
                                                 selectedImageIndex === product.images.length - 1
                                                     ? 'opacity-30 cursor-not-allowed'
-                                                    : 'opacity-0 group-hover:opacity-100 hover:shadow-xl'
+                                                    : 'opacity-100'
                                             }`}
                                             aria-label="Next image"
                                         >
-                                            <FiChevronRight className="w-6 h-6 text-[#493657]" />
+                                            <FiChevronRight className="w-5 h-5 text-[#493657]" />
                                         </button>
                                     </>
                                 )}
                             </div>
+
+                            {/* Carousel Dots - Always at bottom */}
                             {product.images && product.images.length > 1 && (
-                                <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+                                <div className="flex justify-center gap-2 mt-4">
                                     {product.images.map((_, idx) => (
-                                        <div
+                                        <button
                                             key={idx}
-                                            className={`w-2 h-2 rounded-full transition-all ${
-                                                idx === selectedImageIndex ? 'bg-[#F0C85A] w-6' : 'bg-white/60'
+                                            onClick={() => {
+                                                setSelectedImageIndex(idx);
+                                                setSelectedImage(product.images[idx]);
+                                            }}
+                                            className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
+                                                idx === selectedImageIndex
+                                                    ? 'bg-[#F0C85A] w-8'
+                                                    : 'bg-[#493657]/20 hover:bg-[#493657]/40'
                                             }`}
+                                            aria-label={`View image ${idx + 1}`}
                                         />
                                     ))}
                                 </div>
                             )}
                         </div>
+
+                        {/* Thumbnail Gallery */}
                         {Array.isArray(product.images) && product.images.length > 1 && (
                           <div className="w-full mt-6">
-                            <div className="flex gap-3 flex-wrap justify-center md:justify-start">
+                            <div className="grid grid-cols-4 gap-3">
                               {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
@@ -450,12 +446,11 @@ const WaterproofingSealer = () => {
                                     setSelectedImage(img);
                                     setSelectedImageIndex(idx);
                                   }}
-                                  className={`border-2 rounded-xl p-1.5 transition-all duration-200 focus:outline-none hover:shadow-lg ${
+                                  className={`border-2 rounded-lg p-2 transition-all duration-200 focus:outline-none hover:shadow-md ${
                                     selectedImageIndex === idx
-                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 shadow-md'
-                                      : 'border-[#493657]/15 hover:border-[#493657]/30'
+                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 shadow-md bg-[#F0C85A]/5'
+                                      : 'border-[#493657]/10 hover:border-[#493657]/30 bg-white'
                                   }`}
-                                  style={{background: selectedImageIndex === idx ? '#F0C85A15' : 'white'}}
                                   aria-label={`View image ${idx + 1}`}
                                   title={`${product.name} - Image ${idx + 1}`}
                                 >
@@ -463,76 +458,91 @@ const WaterproofingSealer = () => {
                                     src={img}
                                     alt={`${product.name} view ${idx + 1}`}
                                     loading="lazy"
-                                    className="w-20 h-20 object-contain rounded-lg"
+                                    className="w-full h-20 object-contain"
                                   />
                                 </button>
                               ))}
                             </div>
-                            {product.images.length > 1 && (
-                              <p className="text-xs text-[#493657]/60 text-center md:text-left mt-3">
-                                {selectedImageIndex + 1} / {product.images.length}
-                              </p>
-                            )}
                           </div>
                         )}
                     </motion.div>
 
-                    {/* Product Details */}
+                    {/* RIGHT SIDE - Product Information */}
                     <motion.div
-                        className="xl:w-1/2 md:w-1/2 w-full flex flex-col gap-8"
+                        className="w-full flex flex-col gap-6"
                         variants={itemVariants}
                     >
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <span className="text-sm text-[#493657]/60">{product.category}</span>
+                        {/* Product Title */}
+                        <h1 className="text-3xl md:text-4xl font-bold text-[#493657]">{product.name}</h1>
+
+                        {/* Reviews - New Style */}
+                        {totalReviews > 0 && (
+                          <div className="flex items-center gap-4">
+                            <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-4 py-2">
+                              <RatingStars
+                                rating={averageRating}
+                                totalReviews={0}
+                                onClick={scrollToReviews}
+                                size="md"
+                              />
                             </div>
-                            <h1 className="text-4xl font-bold text-[#493657]">{product.name}</h1>
+                            <span className="text-[#493657] font-medium cursor-pointer hover:text-[#F0C85A]" onClick={scrollToReviews}>
+                              {averageRating.toFixed(1)}/5 ({totalReviews} {totalReviews === 1 ? 'review' : 'reviews'})
+                            </span>
+                          </div>
+                        )}
 
-                            {totalReviews > 0 && (
-                              <div className="my-3">
-                                <RatingStars
-                                  rating={averageRating}
-                                  totalReviews={totalReviews}
-                                  onClick={scrollToReviews}
-                                  size="lg"
-                                />
-                              </div>
-                            )}
+                        {/* Pricing - Single Line with MRP */}
+                        {displayMRPValue ? (
+                          <div className="flex items-baseline gap-3 flex-wrap">
+                            <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
+                            <span className="text-xl text-[#dc2626] line-through">{formatINR(displayMRPValue)}</span>
+                            <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-baseline gap-3">
+                            <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
+                            <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
+                          </div>
+                        )}
 
-                            <p className="text-lg text-[#301A44] font-semibold mb-2">{product.shortDescription}</p>
-                            <div className="my-4" />
-                            <p className="text-xl text-[#493657]/90 mb-4 font-medium leading-relaxed">{product.description}</p>
+                        {/* Bullet Points */}
+                        {Array.isArray(product.features) && product.features.length > 0 && (
+                          <div className="my-2">
+                            <ul className="list-disc pl-6 space-y-2 text-base text-[#493657]">
+                              {product.features.map((feature, idx) => (
+                                <li key={idx}>{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
 
-                            {Array.isArray(product.features) && product.features.length > 0 && (
-                              <div className="mb-4">
-                                <ul className="list-disc pl-6 space-y-2 text-lg text-[#301A44] font-semibold">
-                                  {product.features.map((feature, idx) => (
-                                    <li key={idx}>{feature}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {displayMRPValue ? (
-                              <div className="price-container mb-4">
-                                <div className="flex items-center gap-3">
-                                  <span className="current-price">{formatINR(displayPriceValue)}</span>
-                                  <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
-                                </div>
-                                <div className="mrp-row">
-                                  <span>M.R.P: </span>
-                                  <span className="mrp-price">{formatINR(displayMRPValue)}</span>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="flex items-center gap-4 mb-4">
-                                <p className="text-3xl font-bold text-[#301A44]">{formatINR(displayPriceValue)}</p>
-                                <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
-                              </div>
-                            )}
+                        {/* 3 Feature Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                          <div className="bg-[#E8F4F8] rounded-lg p-4 text-center">
+                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                              <FiDroplet className="w-6 h-6 text-[#493657]" />
+                            </div>
+                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Waterproof Protection</h4>
+                            <p className="text-xs text-[#493657]/70">Complete sealing</p>
+                          </div>
+                          <div className="bg-[#F5E6D3] rounded-lg p-4 text-center">
+                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                              <FiShield className="w-6 h-6 text-[#493657]" />
+                            </div>
+                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Eco-Friendly</h4>
+                            <p className="text-xs text-[#493657]/70">Safe for environment</p>
+                          </div>
+                          <div className="bg-[#D4E4D7] rounded-lg p-4 text-center">
+                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                              <FiClock className="w-6 h-6 text-[#493657]" />
+                            </div>
+                            <h4 className="font-semibold text-[#493657] text-sm mb-1">Long Lasting</h4>
+                            <p className="text-xs text-[#493657]/70">Durable protection</p>
+                          </div>
                         </div>
 
-                        {/* Product Options */}
+                        {/* Product Selectors */}
                         <div className="space-y-6">
                             {/* Sheen / Finish */}
                             {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
@@ -641,11 +651,10 @@ const WaterproofingSealer = () => {
                                 {selectedColor && (
                                   <p className="text-sm text-[#493657]/80 mt-3">
                                     Selected: {activeColorFamily?.label || "Color"} • {selectedColor.name}
-                                  </p>
-                                )}
-                              </div>
+                              </p>
                             )}
-
+                          </div>
+                        )}
                             {/* Color Mixing Option */}
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2 flex items-center gap-2">
@@ -1007,6 +1016,55 @@ const WaterproofingSealer = () => {
                     </div>
                   </>
                 )}
+
+                {/* Download Documents */}
+                <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
+                <div className="mb-20 mt-16">
+                  <h2 className="text-5xl font-bold text-[#493657] mb-8">Download Documents</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* TDS Document */}
+                    <div className="bg-white rounded-xl border-2 border-[#493657]/20 p-6 hover:border-[#F0C85A] hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-[#F0C85A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <FiClipboard className="w-6 h-6 text-[#493657]" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-[#493657] text-lg mb-1">Technical Data Sheet</h3>
+                          <p className="text-sm text-[#493657]/60">Product specifications and application details</p>
+                        </div>
+                        <a
+                          href="/Assets/docs/waterproofing-sealer-tds.pdf"
+                          download
+                          className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
+                        >
+                          <FiClipboard className="w-4 h-4" />
+                          Download
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* SDS Document */}
+                    <div className="bg-white rounded-xl border-2 border-[#493657]/20 p-6 hover:border-[#F0C85A] hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-[#F0C85A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <FiShield className="w-6 h-6 text-[#493657]" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-[#493657] text-lg mb-1">Safety Data Sheet</h3>
+                          <p className="text-sm text-[#493657]/60">Health and safety information</p>
+                        </div>
+                        <a
+                          href="/Assets/docs/waterproofing-sealer-sds.pdf"
+                          download
+                          className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
+                        >
+                          <FiShield className="w-4 h-4" />
+                          Download
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </motion.section>
 
             {/* Reviews Section */}

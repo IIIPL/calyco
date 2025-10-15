@@ -40,7 +40,7 @@ const ProductFinder = () => {
       idealFor: 'Interior residential walls, living rooms, bedrooms, climate-controlled spaces'
     },
     stainSealer: {
-      name: 'Calyco Stain & Sealer',
+      name: 'Calyco Waterproofing Sealer',
       icon: '🛡️',
       tagline: 'Heavy-Duty Multi-Surface Protection for Demanding Environments',
       benefits: [
@@ -388,7 +388,7 @@ const ProductFinder = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-2xl shadow-md border-l-4 border-[#2D5F3F]">
                 <p className="text-gray-700 italic mb-4">
-                  "Calyco's Stain & Sealer transformed our outdoor deck. Five years later, it still looks brand new despite harsh weather conditions."
+                  "Calyco's Waterproofing Sealer transformed our outdoor deck. Five years later, it still looks brand new despite harsh weather conditions."
                 </p>
                 <div className="font-bold text-gray-900">Rajesh Kumar</div>
                 <div className="text-sm text-gray-600">Homeowner, Mumbai</div>

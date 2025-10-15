@@ -9,10 +9,10 @@ const paintData = {
     link: "product",
     bgCol: "[#493657]"
   },
-  "Stain & Sealer": {
+  "Waterproofing Sealer": {
     img: "/Assets/Defense/NoBg.png",
-    desc: "Elegant blue tones perfect for modern interiors.",
-    link: "product",
+    desc: "Waterproof, UV-stable protection for any surface.",
+    link: "product/waterproofing-sealer",
     bgCol: "[#493657]"
   },
   default: {

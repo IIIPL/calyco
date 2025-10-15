@@ -185,7 +185,7 @@ export const products = [
   {
     "id": "ExteriorLatex",
     "slug": "Exterior-Latex-Paint",
-    "url": "https://calycopaints.com/product/Exterior-Latex-Paint",
+    "url": "https://calycopaints.com/product/exterior-latex-paint",
     "name": "Calyco Exterior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
     "description": "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
@@ -212,12 +212,12 @@ export const products = [
       "Anti-mildew additive"
     ],
     "finish_type_sheen": [
-      "Low Sheen",
-      "Satin"
+      "Matte Finish",
+      "High Sheen Finish"
     ],
     "finishes": [
-      "Low Sheen",
-      "Satin"
+      "Matte Finish",
+      "High Sheen Finish"
     ],
     "substrate": [
       "Stucco",
@@ -229,53 +229,52 @@ export const products = [
     "recommended_uses": [
       "Exterior façades, trims, and masonry requiring long-term protection"
     ],
-    "price": 750,
+    "price": 700,
     "packaging": [
       "1L",
       "4L",
-      "10L",
-      "20L"
+      "10L"
     ],
-    "default_finish": "Satin",
-    "defaultFinish": "Satin",
+    "default_finish": "Matte Finish",
+    "defaultFinish": "Matte Finish",
     "availableForColors": "all",
     "priceByFinish": {
-      "Low Sheen": {
-        "1L": { "price": 750, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-1L" },
-        "4L": { "price": 2850, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-4L" },
-        "10L": { "price": 6800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-10L" },
-        "20L": { "price": 12950, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-20L" }
+      "Matte Finish": {
+        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42637669400694" },
+        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42637669466230" },
+        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42637669531766" },
+        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42637669597302" }
       },
-      "Satin": {
-        "1L": { "price": 820, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-1L" },
-        "4L": { "price": 3200, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-4L" },
-        "10L": { "price": 7700, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-10L" },
-        "20L": { "price": 14800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-20L" }
+      "High Sheen Finish": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42637669433462" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42637669498998" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42637669564534" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42637669630070" }
       }
     },
     "price_by_finish": {
-      "Low Sheen": {
-        "1L": 750,
-        "4L": 2850,
-        "10L": 6800,
-        "20L": 12950
+      "Matte Finish": {
+        "1L": 700,
+        "4L": 2700,
+        "10L": 6500,
+        "20L": 12800
       },
-      "Satin": {
-        "1L": 820,
-        "4L": 3200,
-        "10L": 7700,
-        "20L": 14800
+      "High Sheen Finish": {
+        "1L": 800,
+        "4L": 3500,
+        "10L": 8400,
+        "20L": 16000
       }
     },
     "shopify_variant_map": {
-      "1L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-1L",
-      "4L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-4L",
-      "10L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-10L",
-      "20L-Low Sheen": "gid://shopify/ProductVariant/EXTERIOR-LS-20L",
-      "1L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-1L",
-      "4L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-4L",
-      "10L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-10L",
-      "20L-Satin": "gid://shopify/ProductVariant/EXTERIOR-ST-20L"
+      "1L-Matte Finish": "gid://shopify/ProductVariant/42637669400694",
+      "4L-Matte Finish": "gid://shopify/ProductVariant/42637669466230",
+      "10L-Matte Finish": "gid://shopify/ProductVariant/42637669531766",
+      "20L-Matte Finish": "gid://shopify/ProductVariant/42637669597302",
+      "1L-High Sheen Finish": "gid://shopify/ProductVariant/42637669433462",
+      "4L-High Sheen Finish": "gid://shopify/ProductVariant/42637669498998",
+      "10L-High Sheen Finish": "gid://shopify/ProductVariant/42637669564534",
+      "20L-High Sheen Finish": "gid://shopify/ProductVariant/42637669630070"
     },
     "technical_specs": {
       "product_code": "CAL-00240",
@@ -472,8 +471,7 @@ export const products = [
       "Strong adhesion"
     ],
     "finish_type_sheen": [
-      "Flat",
-      "Dead flat"
+      "Matte Finish"
     ],
     "substrate": [
       "Hardwood",
@@ -644,8 +642,7 @@ export const products = [
       "Breathable barrier"
     ],
     "finish_type_sheen": [
-      "Flat",
-      "Dead flat"
+      "Matte Finish"
     ],
     "substrate": [
       "Concrete",
@@ -742,8 +739,7 @@ export const products = [
     "packaging": [
       "1L",
       "4L",
-      "10L",
-      "20L"
+      "10L"
     ],
     "technical_specs": {
       "base_type": "Water-based",
@@ -1222,31 +1218,46 @@ export const products = [
     "images": ["/Assets/ThermaCool/NoBg.png"]
   },
   {
-    "url": "https://calycopaints.com/product/defense",
-    "name": "Stain & Sealer",
-    "image": "/calyco-stain&sealer.jpeg",
+    "id": "WaterproofingSealer",
+    "slug": "waterproofing-sealer",
+    "url": "https://calycopaints.com/product/waterproofing-sealer",
+    "name": "Waterproofing Sealer",
+    "image": "/Assets/Defense/NoBg.png",
     "description": "Ultimate multi-surface coating for all environments.",
     "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
-    "details": "Defense adapts to nearly any surface, offering long-lasting protection across all climates and use cases.",
+    "details": "Waterproofing Sealer adapts to nearly any surface, offering a breathable, flexible, and long-lasting barrier across interior and exterior conditions.",
     "category": "Stain & sealer",
     "application": [
-      "Multi-surface areas", 
-      "wood", "metal", "concrete", "plaster", "brick", "tile", "masonry"
+      "Multi-surface areas",
+      "wood",
+      "metal",
+      "concrete",
+      "plaster",
+      "brick",
+      "tile",
+      "masonry",
+      "asphalt"
     ],
     "advantages": [
-      "All-in-one",
-      "Waterproof",
-      "Breathable",
-      "UV-resist"
+      "Waterproof barrier",
+      "UV stable",
+      "Breathable film",
+      "Flexible protection"
     ],
     "features": [
       "Anti-fungal",
       "Crack-bridging",
-      "Long-lasting barrier"
+      "Long-lasting barrier",
+      "Multi-surface adhesion (concrete, metal, wood, plaster, asphalt, tile)",
+      "Waterproof and UV-resistant",
+      "Breathable barrier",
+      "Anti-corrosive",
+      "Flat finish",
+      "5-10 years outdoor durability"
     ],
     "finish_type_sheen": [
-      "Flat",
-      "Dead flat"
+      "Clear",
+      "Protective"
     ],
     "substrate": [
       "Wood",
@@ -1255,17 +1266,17 @@ export const products = [
       "Plaster",
       "Brick",
       "Tile",
-      "Masonry"
+      "Masonry",
+      "Asphalt"
     ],
     "recommended_uses": [
-      "Ideal for interior and exterior surfaces of any kind"
+      "Ideal for interior and exterior surfaces requiring long-term waterproof durability"
     ],
     "price": 599,
     "packaging": [
       "1L",
       "4L",
-      "10L",
-      "20L"
+      "10L"
     ],
     "technical_specs": {
       "base_type": "Water-based",
@@ -1274,7 +1285,7 @@ export const products = [
       "suitable_surfaces": [
         "Interior and exterior plaster/wood/metal"
       ],
-      "application_instructions": "Apply in 2 coats. Stir paint well before use.",
+      "application_instructions": "Apply in 2 coats. Stir sealer well before use.",
       "drying_time": "1 hr",
       "recoat_time": "4 hrs",
       "cleanup": "Soap & Water"
@@ -1285,7 +1296,7 @@ export const products = [
     "suitable_surfaces": [
       "Interior and exterior plaster/wood/metal"
     ],
-    "application_instructions": "Apply in 2 coats. Stir paint well before use.",
+    "application_instructions": "Apply in 2 coats. Stir sealer well before use.",
     "drying_time": "1 hr",
     "recoat_time": "4 hrs",
     "cleanup": "Soap & Water",
@@ -1307,8 +1318,47 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "12°C-40°C",
     "humidity_range": "Below 80% RH",
-    "display_name": "Stain & Sealer",
-    "images": ["/calyco-stain&sealer.jpeg"]
+    "display_name": "Waterproofing Sealer",
+    "default_finish": "Clear",
+    "defaultFinish": "Clear",
+    "priceByFinish": {
+      "Clear": {
+        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
+        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
+        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
+      },
+      "Protective": {
+        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
+        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
+        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
+      }
+    },
+    "price_by_finish": {
+      "Clear": {
+        "1L": 599,
+        "4L": 2299,
+        "10L": 5499
+      },
+      "Protective": {
+        "1L": 599,
+        "4L": 2299,
+        "10L": 5499
+      }
+    },
+    "shopify_variant_map": {
+      "1L-Clear": "gid://shopify/ProductVariant/42638016217206",
+      "4L-Clear": "gid://shopify/ProductVariant/42638016282742",
+      "10L-Clear": "gid://shopify/ProductVariant/42638016348278",
+      "1L-Protective": "gid://shopify/ProductVariant/42638016217206",
+      "4L-Protective": "gid://shopify/ProductVariant/42638016282742",
+      "10L-Protective": "gid://shopify/ProductVariant/42638016348278"
+    },
+    "images": ["/Assets/Defense/NoBg.png"],
+    "docs": {
+      "tds": "/Assets/docs/waterproofing-sealer-tds.pdf",
+      "sds": "/Assets/docs/waterproofing-sealer-sds.pdf",
+      "warranty": "/Assets/docs/waterproof-sealer-warranty.pdf"
+    }
   },
   
   {

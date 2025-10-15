@@ -95,10 +95,10 @@ export const Navbar = ({ bannerVisible = true }) => {
           >Exterior</Link>
           
           <Link
-            to="/product/Stain%20&%20Sealer"
+            to="/product/waterproofing-sealer"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
-          >Stain & Sealer</Link>
+          >Waterproofing Sealer</Link>
           
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
@@ -182,10 +182,10 @@ export const Navbar = ({ bannerVisible = true }) => {
           </Link>
           
           <Link
-            to="/product/Stain%20&%20Sealer"
+            to="/product/waterproofing-sealer"
             className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
           >
-            Stain & Sealer
+            Waterproofing Sealer
           </Link>
           
           <InspirationsDropdown isMobile={true} />

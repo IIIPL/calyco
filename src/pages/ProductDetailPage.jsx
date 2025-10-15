@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { products } from "../data/products";
+import React, { useState, useEffect, useCallback } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import ProductHero from "../components/ProductDetail/ProductHero";
 import PriceSizeCard from "../components/ProductDetail/PriceSizeCard";
 import CoverageCalc from "../components/ProductDetail/CoverageCalc";
@@ -44,7 +43,65 @@ const INTERIOR_LATEX_PRICING = {
   },
 };
 
+const INTERIOR_LATEX_MRP = {
+  'Low Sheen': {
+    '1L': 850,
+    '4L': 3200,
+    '10L': 7800,
+    '20L': 15600,
+  },
+  'Pearl': {
+    '1L': 950,
+    '4L': 4200,
+    '10L': 10100,
+    '20L': 19200,
+  },
+};
+
 const normaliseSizeLabel = (label = '') => label.replace(/\s+/g, '');
+
+const getFinishEntry = (data, index) => {
+  if (!data || !Array.isArray(data.finishes) || data.finishes.length === 0) {
+    return { name: data?.defaultFinish || data?.default_finish || "Standard" };
+  }
+  const entry = data.finishes[index] ?? data.finishes[0];
+  if (typeof entry === "string") {
+    return { name: entry };
+  }
+  return entry;
+};
+
+const resolveDefaultFinishIndex = (data) => {
+  if (!data || !Array.isArray(data.finishes) || data.finishes.length === 0) {
+    return 0;
+  }
+  const defaultFinishName = data.defaultFinish || data.default_finish;
+  if (!defaultFinishName) {
+    return 0;
+  }
+  const matchIndex = data.finishes.findIndex((finish) => {
+    if (typeof finish === "string") {
+      return finish === defaultFinishName;
+    }
+    return finish?.name === defaultFinishName;
+  });
+  return matchIndex >= 0 ? matchIndex : 0;
+};
+
+const resolveDefaultSizeIndex = (data, finishName) => {
+  if (!data || !Array.isArray(data.sizes) || data.sizes.length === 0) {
+    return 0;
+  }
+  const matchIndex = data.sizes.findIndex((size) => {
+    if (!size) return false;
+    const priceMap = size.priceByFinish || size.price_by_finish;
+    if (priceMap && finishName) {
+      return priceMap[finishName] !== undefined;
+    }
+    return Boolean(size.price);
+  });
+  return matchIndex >= 0 ? matchIndex : 0;
+};
 
 // Sample product data for demonstration
 const sampleProduct = {
@@ -53,6 +110,7 @@ const sampleProduct = {
   name: "Nova Premium Interior Paint",
   slug: "nova-premium",
   brand: "Calyco",
+  category: "Interior",
   rating: 4.8,
   reviewCount: 127,
   finish: "Low Sheen",
@@ -68,10 +126,26 @@ const sampleProduct = {
   ],
   microCopy: "Low-VOC • Safe for kids • Water-based",
   sizes: [
-    { size: "1L", priceByFinish: { "Low Sheen": 700, "Pearl": 800 } },
-    { size: "4L", priceByFinish: { "Low Sheen": 2700, "Pearl": 3500 } },
-    { size: "10L", priceByFinish: { "Low Sheen": 6500, "Pearl": 8400 } },
-    { size: "20L", priceByFinish: { "Low Sheen": 12800, "Pearl": 16000 } }
+    {
+      size: "1L",
+      priceByFinish: { "Low Sheen": 700, "Pearl": 800 },
+      mrpByFinish: { "Low Sheen": 850, "Pearl": 950 },
+    },
+    {
+      size: "4L",
+      priceByFinish: { "Low Sheen": 2700, "Pearl": 3500 },
+      mrpByFinish: { "Low Sheen": 3200, "Pearl": 4200 },
+    },
+    {
+      size: "10L",
+      priceByFinish: { "Low Sheen": 6500, "Pearl": 8400 },
+      mrpByFinish: { "Low Sheen": 7800, "Pearl": 10100 },
+    },
+    {
+      size: "20L",
+      priceByFinish: { "Low Sheen": 12800, "Pearl": 16000 },
+      mrpByFinish: { "Low Sheen": 15600, "Pearl": 19200 },
+    }
   ],
 
   price_by_finish: {
@@ -172,12 +246,12 @@ const sampleProduct = {
   }
 };
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage({ productData }) {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(sampleProduct);
+  const [product, setProduct] = useState(productData || sampleProduct);
   const [selectedFinish, setSelectedFinish] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [coverageData, setCoverageData] = useState({
     area: "",
@@ -195,133 +269,141 @@ export default function ProductDetailPage() {
     minimumFractionDigits: 0,
   }).format(value);
 
-  // TODO: Replace with actual product fetching logic
+  const initialiseProduct = useCallback((data) => {
+    if (!data) {
+      return;
+    }
+    setProduct(data);
+    const finishIndex = resolveDefaultFinishIndex(data);
+    setSelectedFinish(finishIndex);
+    const finishName = getFinishEntry(data, finishIndex).name;
+    const sizeIndex = resolveDefaultSizeIndex(data, finishName);
+    setSelectedSize(sizeIndex);
+    setQuantity(1);
+    setCoverageData((prev) => ({
+      ...prev,
+      coats: data.defaultCoats || data.default_coats || 2,
+      efficiency: data.efficiency !== undefined ? data.efficiency : prev.efficiency,
+    }));
+
+    if (typeof document !== "undefined") {
+      if (data.seo?.title) {
+        document.title = data.seo.title;
+      } else if (data.name) {
+        document.title = data.name;
+      }
+    }
+  }, [setProduct, setSelectedFinish, setSelectedSize, setQuantity, setCoverageData]);
+
   useEffect(() => {
-    // Simulate fetching product by slug
-    console.log("Fetching product:", slug);
-    // setProduct(fetchedProduct);
-  }, [slug]);
+    if (productData) {
+      initialiseProduct(productData);
+      return;
+    }
+
+    if (slug) {
+      const normalisedSlug = slug.toLowerCase();
+      if (normalisedSlug === "interior-latex-paint") {
+        initialiseProduct(sampleProduct);
+        return;
+      }
+    }
+
+    if (!productData && !slug) {
+      initialiseProduct(sampleProduct);
+    }
+  }, [slug, productData, initialiseProduct]);
 
   const handleAddToCart = () => {
+    if (!product || !Array.isArray(product.sizes) || product.sizes.length === 0) {
+      return;
+    }
 
-    const selectedFinishName = product.finishes[selectedFinish].name;
+    const finishEntry = getFinishEntry(product, selectedFinish);
+    const selectedFinishName = finishEntry?.name || "Standard";
+    const currentSize = product.sizes[selectedSize] || product.sizes[0];
+    if (!currentSize) {
+      return;
+    }
 
-    const currentSize = product.sizes[selectedSize];
-
-    const sizeLabel = currentSize.size || currentSize.label;
-
-    const currentPrice = currentSize.priceByFinish[selectedFinishName];
+    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "1L";
+    const sizeLabel = typeof sizeLabelRaw === "string" ? sizeLabelRaw : String(sizeLabelRaw);
+    const priceMap = currentSize.priceByFinish || currentSize.price_by_finish || {};
+    const currentPrice =
+      priceMap[selectedFinishName] !== undefined ? priceMap[selectedFinishName] : currentSize.price || 0;
 
     const variantKey = `${normaliseSizeLabel(sizeLabel)}-${selectedFinishName}`;
-
-    const variantId = INTERIOR_LATEX_VARIANT_MAP[variantKey];
-
-
+    const variantMap = {
+      ...INTERIOR_LATEX_VARIANT_MAP,
+      ...(product.shopify_variant_map || {}),
+      ...(product.variantMap || {}),
+    };
+    const variantId =
+      variantMap[variantKey] ||
+      variantMap[`${sizeLabel}-${selectedFinishName}`] ||
+      variantMap[`${normaliseSizeLabel(sizeLabel)}-${selectedFinishName}`] ||
+      null;
 
     const selectedColor = product.selectedColor || {
-
-      name: 'Custom Color',
-
-      hex: '#F8F4E3',
-
-      code: '',
-
-      family: '',
-
+      name: "Custom Color",
+      hex: "#F8F4E3",
+      code: "",
+      family: "",
     };
-
-
 
     const productForCart = {
-
-      id: variantId || `${product.id || product.slug}-${variantKey}`,
-
+      id: variantId || `${product.id || product.slug || "product"}-${variantKey}`,
       name: product.name,
-
       display_name: product.name,
-
       price: currentPrice,
-
-      image: product.image || '/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png',
-
+      image:
+        product.image ||
+        (Array.isArray(product.images) ? product.images[0] : undefined) ||
+        "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png",
     };
-
-
 
     const attributes = {
-
-      'Color Code': selectedColor.code || '',
-
-      'Color Name': selectedColor.name || 'Custom Color',
-
-      'Color Family': selectedColor.family || '',
-
-      'Color Hex': selectedColor.hex || '#F8F4E3',
-
+      "Color Code": selectedColor.code || "",
+      "Color Name": selectedColor.name || "Custom Color",
+      "Color Family": selectedColor.family || "",
+      "Color Hex": selectedColor.hex || "#F8F4E3",
       Finish: selectedFinishName,
-
-      'Product Type': 'Interior Latex Paint',
-
       Size: sizeLabel,
-
+      "Product Type": product.name,
     };
 
-
-
     addToCart(
-
       productForCart,
-
       selectedFinishName,
-
       sizeLabel,
-
       quantity,
-
       currentPrice,
-
       selectedColor,
-
-      'paint',
-
+      "paint",
       {
-
         variantId,
-
-        productType: 'Interior Latex Paint',
-
+        productType: product.name,
         attributes,
-
       },
-
     );
 
-
-
     setCartPopup({
-
       isVisible: true,
-
       item: {
-
         name: product.name,
-
-        hex: selectedColor.hex || '#F8F4E3',
-
+        hex: selectedColor.hex || "#F8F4E3",
+        colorName: selectedColor.name || "Custom Color",
+        colorFamily: selectedColor.family || "",
+        selectedFinish: selectedFinishName,
+        selectedSize: sizeLabel,
+        quantity,
         price: formatCurrency(currentPrice * quantity),
-
       },
-
     });
 
-
-
     setTimeout(() => {
-
       setCartPopup({ isVisible: false, item: null });
-
     }, 3000);
-
   };
 
 
@@ -414,10 +496,50 @@ export default function ProductDetailPage() {
     );
   }
 
-  const currentSize = product.sizes[selectedSize];
-  const currentFinish = product.finishes[selectedFinish];
-  const currentFinishName = currentFinish?.name || 'Low Sheen';
-  const currentPrice = currentSize.priceByFinish[currentFinishName];
+  const currentSize =
+    Array.isArray(product.sizes) && product.sizes.length > 0
+      ? product.sizes[selectedSize] || product.sizes[0]
+      : null;
+  const currentFinishEntry = getFinishEntry(product, selectedFinish);
+  const currentFinishName = currentFinishEntry?.name || "Standard";
+  const currentPrice = (() => {
+    if (!currentSize) {
+      return 0;
+    }
+    const priceMap = currentSize.priceByFinish || currentSize.price_by_finish || {};
+    if (priceMap[currentFinishName] !== undefined) {
+      return priceMap[currentFinishName];
+    }
+    return currentSize.price || 0;
+  })();
+  const currentSizeLabel = currentSize
+    ? currentSize.size || currentSize.label || currentSize.name || "1L"
+    : "1L";
+  const currentMrp = (() => {
+    if (!currentSize) {
+      return null;
+    }
+    const mrpMap = currentSize.mrpByFinish || currentSize.mrp_by_finish || {};
+    if (mrpMap[currentFinishName] !== undefined) {
+      return mrpMap[currentFinishName];
+    }
+    if (typeof currentSize.originalPrice === "number") {
+      return currentSize.originalPrice;
+    }
+    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "1L";
+    const sizeLabel = typeof sizeLabelRaw === "string" ? sizeLabelRaw : String(sizeLabelRaw);
+    const finishMrp = INTERIOR_LATEX_MRP[currentFinishName];
+    if (finishMrp) {
+      const normalisedLabel = normaliseSizeLabel(sizeLabel);
+      if (finishMrp[normalisedLabel] !== undefined) {
+        return finishMrp[normalisedLabel];
+      }
+      if (finishMrp[sizeLabel] !== undefined) {
+        return finishMrp[sizeLabel];
+      }
+    }
+    return null;
+  })();
 
   return (
     <>
@@ -428,12 +550,24 @@ export default function ProductDetailPage() {
       />
       
       <div className="min-h-screen bg-linen-white pt-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors mb-6"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <FaArrowLeft className="w-4 h-4" />
+            Back to Products
+          </Link>
+        </div>
+
         {/* Product Hero Section */}
         <ProductHero
           product={product}
           selectedFinish={selectedFinish}
           currentPrice={currentPrice}
-          currentSizeLabel={currentSize.size || currentSize.label}
+          mrpPrice={currentMrp}
+          currentSizeLabel={currentSizeLabel}
           currentFinishName={currentFinishName}
           onAddToCart={handleAddToCart}
           onSampleOrder={handleSampleOrder}
@@ -470,7 +604,7 @@ export default function ProductDetailPage() {
         </section>
 
         {/* Finish Swatches */}
-        {product.finishes.length > 1 && (
+        {product.finishes.length > 0 && (
           <section className="py-16 lg:py-24 bg-linen-white">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
               <FinishSwatches
@@ -540,7 +674,7 @@ export default function ProductDetailPage() {
         {/* Sticky CTA (Mobile Only) */}
         <StickyCTA
           price={currentPrice * quantity}
-          size={currentSize.size}
+          size={currentSizeLabel}
           finish={currentFinishName}
           onAddToCart={handleAddToCart}
         />
@@ -575,7 +709,7 @@ export default function ProductDetailPage() {
                 "reviewCount": product.reviewCount
               },
               "material": product.technicalSpecs.base,
-              "color": currentFinish.name
+              "color": currentFinishName
             })
           }}
         />

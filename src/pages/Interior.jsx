@@ -1,6 +1,7 @@
 import React from "react";
 import { products as allProducts } from "../data/products";
 import { Link } from "react-router-dom";
+import { getProductPath } from "../utils/productHelpers";
 
 // Example: Show only interior products
 const interiorProducts = Object.values(allProducts).filter(p => p.category === "Interior");
@@ -25,7 +26,7 @@ export const Interior = () => {
                 <li key={idx}>{feature}</li>
               ))}
             </ul>
-            <Link to={`/product/${product.id}`} className="mt-auto px-6 py-2 rounded-full bg-[#F0C85A] text-[#493657] font-semibold shadow hover:bg-[#ffe9a7] transition">View Details</Link>
+            <Link to={getProductPath(product)} className="mt-auto px-6 py-2 rounded-full bg-[#F0C85A] text-[#493657] font-semibold shadow hover:bg-[#ffe9a7] transition">View Details</Link>
           </div>
         ))}
       </div>

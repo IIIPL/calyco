@@ -4,7 +4,7 @@ import { products } from '../data/products';
 import BucketCard from '../components/BucketCard';
 
 const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
-const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
+const FEATURED_PRODUCT_NAMES = new Set(['Waterproofing Sealer']);
 
 const getProductSlug = (product = {}) => {
   if (product.slug) return product.slug;
@@ -75,7 +75,7 @@ const ProductsPage = () => {
           } else if (p.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
             displayName = 'Calyco Exterior Latex Paint';
           } else if (FEATURED_PRODUCT_NAMES.has(p.name)) {
-            displayName = 'Calyco Defence';
+            displayName = 'Calyco Waterproofing Sealer';
           }
           return (
             <BucketCard

@@ -30,7 +30,7 @@ const SAMPLE_PRODUCTS = [
   },
   {
     id: 'stain-sealer-clear',
-    name: 'Multi-Surface Stain & Sealer',
+    name: 'Waterproofing Sealer',
     color: 'Clear',
     finish: 'Primer/Sealer',
     hex: '#E8E4D9',
@@ -38,7 +38,7 @@ const SAMPLE_PRODUCTS = [
     price: '₹899',
     size: '1L',
     image: '/Assets/Products/stain-sealer.jpg',
-    url: '/products/stain-sealer'
+    url: '/product/waterproofing-sealer'
   },
   {
     id: 'terracotta-silk',

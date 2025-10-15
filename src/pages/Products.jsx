@@ -10,8 +10,17 @@ import {
   mapToStandardApplicationAreas
 } from '../utils/mapping';
 
-const FEATURED_PRODUCT_IDS = new Set(['Nova', 'ExteriorLatex']);
-const FEATURED_PRODUCT_NAMES = new Set(['Stain & Sealer']);
+const FEATURED_PRODUCTS = [
+  { id: 'Nova', label: 'Calyco Interior Latex Paint' },
+  { id: 'ExteriorLatex', label: 'Calyco Exterior Latex Paint' },
+  { id: 'WaterproofingSealer', label: 'Calyco Waterproofing Sealer' }
+];
+
+const FEATURED_ORDER = FEATURED_PRODUCTS.map(product => product.id);
+const FEATURED_LABELS = FEATURED_PRODUCTS.reduce((acc, product) => {
+  acc[product.id] = product.label;
+  return acc;
+}, {});
 
 const getProductSlug = (product = {}) => {
   if (product.slug) return product.slug;
@@ -120,23 +129,15 @@ export const Products = () => {
     return out;
   }, [checked]);
 
-  // Allowed catalog: only Interior paints and Stain & Sealer
+  // Allowed catalog: only the curated trio, in the specified order
   const allowedProducts = useMemo(() => {
-    return allProducts.filter(
-      (p) => FEATURED_PRODUCT_IDS.has(p.id) || FEATURED_PRODUCT_NAMES.has(p.name)
-    );
+    return FEATURED_ORDER
+      .map((id) => allProducts.find((product) => product.id === id))
+      .filter(Boolean);
   }, [allProducts]);
 
   const getDisplayLabel = (product) => {
-    const name = String(product.name || '').toLowerCase();
-    if (product.id === 'Nova' || name.includes('interior latex paint')) {
-      return 'Calyco Interior Latex Paint';
-    }
-    if (product.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
-      return 'Calyco Exterior Latex Paint';
-    }
-    if (FEATURED_PRODUCT_NAMES.has(product.name)) return 'Calyco Defence';
-    return product.display_name || product.name;
+    return FEATURED_LABELS[product.id] || product.display_name || product.name;
   };
 
   // Apply *non-search* filters (category/substrate/app-area/price) + sort
@@ -383,7 +384,7 @@ export const Products = () => {
 
           {/* Grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center">
               {/* Nothing found */}
               {nothingFound && (
                 <div className="col-span-full text-center text-[#493657] text-lg">No products found.</div>

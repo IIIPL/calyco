@@ -202,6 +202,7 @@ const ColorDetailPage = () => {
     const fallback = currentColor || {};
 
     return {
+      hexCode: base.hexCode || fallback.actualHex || fallback.hex || '',
       tone: base.tone || fallback.tone || '',
       sheen: base.sheen || fallback.sheen || '',
       collection: base.collection || fallback.collection || '',
@@ -211,6 +212,7 @@ const ColorDetailPage = () => {
       interiorUse: base.interiorUse || fallback.interiorUse || '',
       exteriorUse: base.exteriorUse || fallback.exteriorUse || '',
       mood: base.mood || fallback.mood || fallback.description || '',
+      popularity: base.popularity || fallback.popularity || '',
       contractor:
         typeof base.contractor === 'boolean' ? base.contractor : !!fallback.contractor,
       designer:
@@ -219,6 +221,40 @@ const ColorDetailPage = () => {
       ralCode: base.ralCode || fallback.code || fallback.tintCode || '',
     };
   }, [colorAttributesEntry, currentColor, familyInfo]);
+
+  const colorDetailsForCart = useMemo(() => {
+    if (!currentColor) return null;
+    const safeAttributes = mergedAttributes || {};
+    const rawHex =
+      (typeof colorAttributesEntry?.hexCode === 'string' && colorAttributesEntry.hexCode.trim()) ||
+      (typeof currentColor.actualHex === 'string' && currentColor.actualHex.trim()) ||
+      (typeof currentColor.hex === 'string' && currentColor.hex.trim()) ||
+      '';
+    const normalizedHex = rawHex
+      ? rawHex.trim().startsWith('#')
+        ? rawHex.trim().toUpperCase()
+        : `#${rawHex.trim().replace(/^#/, '').toUpperCase()}`
+      : '';
+
+    return {
+      name: currentColor.name || '',
+      ralCode: safeAttributes.ralCode || '',
+      hexCode: normalizedHex,
+      colorFamily: safeAttributes.colorFamily || '',
+      tone: safeAttributes.tone || '',
+      layer: safeAttributes.layer || '',
+      sheen: safeAttributes.sheen || '',
+      collection: safeAttributes.collection || '',
+      interiorUse: safeAttributes.interiorUse || '',
+      exteriorUse: safeAttributes.exteriorUse || '',
+      mood: safeAttributes.mood || '',
+      lightReflectance: safeAttributes.lightReflectance || '',
+      undertone: safeAttributes.undertone || '',
+      popularity: safeAttributes.popularity || '',
+      contractor: safeAttributes.contractor ?? false,
+      designer: safeAttributes.designer ?? false,
+    };
+  }, [colorAttributesEntry, currentColor, mergedAttributes]);
 
   const displayCode = mergedAttributes?.ralCode || currentColor.id || 'N/A';
   const downloadKey = displayCode && displayCode !== 'N/A' ? displayCode : currentColor.slug;
@@ -279,6 +315,7 @@ const ColorDetailPage = () => {
               color={currentColor}
               products={products}
               selectedProductType={selectedProductType}
+              colorAttributes={colorDetailsForCart}
             />
           </div>
         </div>

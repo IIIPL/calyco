@@ -3,11 +3,12 @@ import { products as allProducts } from "../data/products";
 import { Link, useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { getProductPath } from "../utils/productHelpers";
 
 const leftMenu = [
   { key: "Interior", label: "INTERIOR" },
   { key: "Exterior", label: "EXTERIOR" },
-  { key: "StainSealer", label: "STAIN & SEALER" },
+  { key: "WaterproofingSealer", label: "WATERPROOFING SEALER" },
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
 
@@ -22,7 +23,7 @@ const grouped = {
   Exterior: allProducts.filter((p) => 
     p.category?.toLowerCase() === "exterior"
   ),
-  StainSealer: allProducts.filter((p) => {
+  WaterproofingSealer: allProducts.filter((p) => {
     const c = p.category?.toLowerCase() || "";
     return c.includes("stain") || c.includes("sealer"); // matches "stain & sealer"
   }),
@@ -57,25 +58,8 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
     return list;
   };
 
-  const buildProductPath = (product) => {
-    if (!product) return "#";
-    let slugSource = product.slug;
-    if (!slugSource && product.url) {
-      slugSource = product.url.split("/").filter(Boolean).pop();
-    }
-    if (!slugSource && product.id) {
-      slugSource = product.id;
-    }
-    if (!slugSource && product.name) {
-      slugSource = product.name
-        .toString()
-        .trim()
-        .replace(/[^a-z0-9]+/gi, "-")
-        .replace(/(^-+|-+$)/g, "");
-    }
-    if (!slugSource) return "#";
-    return `/product/${encodeURIComponent(slugSource)}`;
-  };
+  // Use centralized product path helper
+  const buildProductPath = (product) => getProductPath(product);
 
   useEffect(() => {
     const productsForMenu = getProductsForMenu(selectedMenu);

@@ -26,7 +26,7 @@ import { FAQs } from './pages/FAQs'
 import ScrollToTop from './components/ScrollToTop'
 import { ContactUs } from './pages/ContactUs'
 import { Interior } from './pages/Interior'
-import { StainSealer } from './pages/StainSealer'
+import WaterproofingSealer from './pages/WaterproofingSealer'
 import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
@@ -148,7 +148,9 @@ function App() {
               <Route path='/test-page-codex' element={<TestPageCodex/>}/>
               <Route path='/pages/product-finder' element={<ProductFinder/>}/>
               {/* <Route path='/interior' element={<Interior/>}/> */}
-              {/* <Route path='/stain-sealer' element={<StainSealer/>}/> */}
+              <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
+              <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+              <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
               <Route path='/blogs' element={<BlogIndexPage/>}/>
               <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
               <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>

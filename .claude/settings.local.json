@@ -21,7 +21,8 @@
       "Bash(npm install:*)",
       "Bash(git filter-branch:*)",
       "Bash(git rm:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(git revert:*)"
     ],
     "deny": [],
     "ask": []

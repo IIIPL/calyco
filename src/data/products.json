@@ -35,10 +35,10 @@
     "slug": "Exterior-Latex-Paint",
     "name": "Calyco Exterior Latex Paint",
     "availableForColors": "all",
-    "defaultFinish": "Satin",
+    "defaultFinish": "Matte Finish",
     "finishes": [
-      "Low Sheen",
-      "Satin"
+      "Matte Finish",
+      "High Sheen Finish"
     ],
     "sizes": [
       { "label": "1L" },
@@ -47,17 +47,45 @@
       { "label": "20L" }
     ],
     "priceByFinish": {
-      "Low Sheen": {
-        "1L": { "price": 750, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-1L" },
-        "4L": { "price": 2850, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-4L" },
-        "10L": { "price": 6800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-10L" },
-        "20L": { "price": 12950, "variantId": "gid://shopify/ProductVariant/EXTERIOR-LS-20L" }
+      "Matte Finish": {
+        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42637669400694" },
+        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42637669466230" },
+        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42637669531766" },
+        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42637669597302" }
       },
-      "Satin": {
-        "1L": { "price": 820, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-1L" },
-        "4L": { "price": 3200, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-4L" },
-        "10L": { "price": 7700, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-10L" },
-        "20L": { "price": 14800, "variantId": "gid://shopify/ProductVariant/EXTERIOR-ST-20L" }
+      "High Sheen Finish": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42637669433462" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42637669498998" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42637669564534" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42637669630070" }
+      }
+    }
+  },
+  {
+    "id": "WaterproofingSealer",
+    "slug": "waterproofing-sealer",
+    "name": "Waterproofing Sealer",
+    "availableForColors": "none",
+    "defaultFinish": "Clear",
+    "finishes": [
+      "Clear",
+      "Protective"
+    ],
+    "sizes": [
+      { "label": "1L" },
+      { "label": "4L" },
+      { "label": "10L" }
+    ],
+    "priceByFinish": {
+      "Clear": {
+        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
+        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
+        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
+      },
+      "Protective": {
+        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
+        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
+        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
       }
     }
   }

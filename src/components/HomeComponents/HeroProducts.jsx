@@ -1,6 +1,8 @@
 // src/components/HeroProducts.jsx
 import React from "react";
 import { Button } from "../Button";
+import { products as allProducts } from "../../data/products";
+import { getProductPath } from "../../utils/productHelpers";
 
 const Brand = {
   purple: "#5E3A98",
@@ -8,10 +10,17 @@ const Brand = {
   lavender: "#F3F0F9",
 };
 
-const slugify = (text = "") =>
-  text.toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w\-&]+/g, "").replace(/\-\-+/g, "-");
-
 export const HeroProducts = ({ productName = "NOVA", productImage }) => {
+  // Find the matching product to get the correct slug
+  const product = allProducts.find(p =>
+    p.name?.toLowerCase().includes(productName.toLowerCase()) ||
+    p.display_name?.toLowerCase().includes(productName.toLowerCase()) ||
+    p.id?.toLowerCase() === productName.toLowerCase()
+  );
+
+  // Get the proper product path using the centralized helper
+  const productPath = product ? getProductPath(product) : `/product/${productName.replace(/\s+/g, '-')}`;
+
   return (
     <div
       className="w-full ring-1 ring-black/5"
@@ -69,7 +78,7 @@ export const HeroProducts = ({ productName = "NOVA", productImage }) => {
             <Button
               size="sm"
               className="mt-4 w-max"
-              to={`/product/${slugify(productName)}`}
+              to={productPath}
               style={{ backgroundColor: Brand.gold, color: "#1f2937" }}
             >
               Learn More

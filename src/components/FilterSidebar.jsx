@@ -60,8 +60,8 @@ const HoverTip = ({ text, children, openDelay = 250, closeDelay = 120 }) => {
   );
 };
 
-// Restrict filters to Interior and Stain & Sealer only
-const allowed = products.filter(p => p.name === 'Nova' || p.name === 'Stain & Sealer');
+// Restrict filters to Interior and Waterproofing Sealer only
+const allowed = products.filter(p => p.name === 'Nova' || p.name === 'Waterproofing Sealer');
 
 // Build Filter Options
 const rawCategories = allowed.map(p => p.category).filter(Boolean);

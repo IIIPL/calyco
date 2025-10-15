@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
-const ProductHero = ({ product, selectedFinish, currentPrice, currentSizeLabel, currentFinishName, onAddToCart, onSampleOrder, onVisualizer }) => {
+const ProductHero = ({ product, selectedFinish, currentPrice, mrpPrice, currentSizeLabel, currentFinishName, onAddToCart, onSampleOrder, onVisualizer }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const heroLabel = product.category || product.brand || "";
 
   const handleImageChange = (index) => {
     setCurrentImageIndex(index);
@@ -76,18 +76,12 @@ const ProductHero = ({ product, selectedFinish, currentPrice, currentSizeLabel, 
           <div className="space-y-6 product-hero__media">
             {/* Main Image/Video */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImageIndex}
-                  src={product.images[currentImageIndex]}
-                  alt={`${product.name} - ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </AnimatePresence>
+              <img
+                key={currentImageIndex}
+                src={product.images[currentImageIndex]}
+                alt={`${product.name} - ${currentImageIndex + 1}`}
+                className="w-full h-full object-cover transition-opacity duration-300"
+              />
               
               {/* Video Play Button (if first image is video) */}
               {currentImageIndex === 0 && (
@@ -153,7 +147,7 @@ const ProductHero = ({ product, selectedFinish, currentPrice, currentSizeLabel, 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-calyco-purple bg-lilac px-3 py-1 rounded-full">
-                  {product.brand}
+                  {heroLabel}
                 </span>
                 <div className="flex items-center gap-1">
                   {renderStars(product.rating)}
@@ -167,13 +161,19 @@ const ProductHero = ({ product, selectedFinish, currentPrice, currentSizeLabel, 
                 {product.name}
               </h1>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-start gap-3">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-grey-mist text-grey-thunder">
                   {product.finishes[selectedFinish].name}
                 </span>
-                <span className="text-2xl font-bold text-charcoal-black">
-                  {formatPrice(currentPrice)}
-                </span>
+                <div className="price-container">
+                  <span className="current-price">{formatPrice(currentPrice)}</span>
+                  {mrpPrice && mrpPrice > currentPrice && (
+                    <div className="mrp-row">
+                      <span>M.R.P: </span>
+                      <span className="mrp-price">{formatPrice(mrpPrice)}</span>
+                    </div>
+                  )}
+                </div>
                 {currentSizeLabel && (
                   <div className="text-xs text-gray-500">{currentSizeLabel} pack</div>
                 )}
