@@ -786,10 +786,10 @@ export const DynamicProductPage = () => {
                                     setSelectedImage(img);
                                     setSelectedImageIndex(idx);
                                   }}
-                                  className={`border-2 rounded-lg p-2 transition-all duration-200 focus:outline-none ${
+                                  className={`rounded-lg p-2 transition-all duration-200 focus:outline-none ${
                                     selectedImageIndex === idx
-                                      ? 'border-[#F0C85A] ring-2 ring-[#F0C85A]/30 bg-[#F0C85A]/5'
-                                      : 'border-[#493657]/10 hover:border-[#493657]/30 bg-white'
+                                      ? 'bg-[#F0C85A]/10'
+                                      : 'bg-gray-50 hover:bg-gray-100'
                                   }`}
                                   aria-label={`View image ${idx + 1}`}
                                   title={`${product.name} - Image ${idx + 1}`}
@@ -809,11 +809,11 @@ export const DynamicProductPage = () => {
 
                     {/* RIGHT SIDE - Product Information */}
                     <motion.div
-                        className="w-full flex flex-col gap-6"
+                        className="w-full flex flex-col gap-6 lg:pt-0"
                         variants={itemVariants}
                     >
                         {/* Product Title */}
-                        <h1 className="text-3xl md:text-4xl font-bold text-[#493657]">{product.display_name || product.name}</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold text-[#493657] leading-tight">{product.display_name || product.name}</h1>
 
                         {/* Reviews - New Style */}
                         {totalReviews > 0 && (
@@ -830,6 +830,13 @@ export const DynamicProductPage = () => {
                               {averageRating.toFixed(1)}/5 ({totalReviews} {totalReviews === 1 ? 'review' : 'reviews'})
                             </span>
                           </div>
+                        )}
+
+                        {/* Product Description */}
+                        {(product.tagline || product.short_description || product.description) && (
+                          <p className="text-lg text-[#493657]/80 leading-relaxed">
+                            {product.tagline || product.short_description || product.description}
+                          </p>
                         )}
 
                         {/* Pricing - Single Line with MRP */}
