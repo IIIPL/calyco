@@ -72,16 +72,21 @@ export const Navbar = ({ bannerVisible = true }) => {
   }, [dropdownOpen]);
   
   return (
-    <header ref={navRef} className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300" style={{ top: bannerVisible ? '32px' : '0px' }}>
-      {/* Logo Row */}
-      <div className="w-full flex justify-center items-center h-20 md:h-14">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src="/Logo.png" className="object-contain h-16 md:h-20 pt-2 mx-auto" alt="Calyco Logo" />
-        </Link>
-      </div>
-      
+    <header
+      ref={navRef}
+      className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300"
+      style={{ top: bannerVisible ? '32px' : '0px' }}
+    >
       {/* Desktop Navigation */}
-      <div className="hidden md:flex w-full justify-center items-center h-12 relative">
+      <div className="hidden md:flex items-center justify-between px-10 lg:px-16 h-20">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex items-center gap-3"
+        >
+          <img src="/Logo.png" className="object-contain h-16" alt="Calyco Logo" />
+        </Link>
+
         <nav className="flex gap-8 text-base font-medium items-center">
           <Link
             to="/product/Interior-Latex-Paint"
@@ -127,9 +132,29 @@ export const Navbar = ({ bannerVisible = true }) => {
             onClick={() => setDropdownOpen(null)}
           >Contact</Link>
         </nav>
-        
-        <div className="absolute right-8">
+
+        <div className="flex items-center">
           <CartIcon />
+        </div>
+      </div>
+
+      {/* Mobile top bar */}
+      <div className="md:hidden flex items-center justify-between px-4 py-3">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex items-center gap-2"
+        >
+          <img src="/Logo.png" className="h-12 object-contain" alt="Calyco Logo" />
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <CartIcon />
+          <button
+            className="text-[#493657] text-2xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle mobile menu"
+          >☰</button>
         </div>
       </div>
       
@@ -138,16 +163,6 @@ export const Navbar = ({ bannerVisible = true }) => {
       {dropdownOpen === 'colors' && <ColorsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'visualization' && <VisualizeDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
 
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden flex items-center gap-2 ml-2 absolute top-0 right-0 h-20">
-        <CartIcon />
-        <button
-          className="text-[#493657] text-2xl mr-3"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle mobile menu"
-        >☰</button>
-      </div>
-      
       {/* Mobile Menu */}
       <div
         ref={drawerRef}
