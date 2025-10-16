@@ -60,7 +60,7 @@ const ColorsPage = () => {
   const [selectedTemperature, setSelectedTemperature] = useState('');
   const [selectedTonality, setSelectedTonality] = useState('');
   const [selectedSuitability, setSelectedSuitability] = useState('');
-  const [sortBy, setSortBy] = useState('name');
+  const [sortBy, setSortBy] = useState('light-dark');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'lifestyle'
   const [selectedColor, setSelectedColor] = useState(null);
 
@@ -118,9 +118,9 @@ const ColorsPage = () => {
         case 'popular':
           return (b.popularity || 0) - (a.popularity || 0);
         case 'light-dark':
-          return getColorBrightness(a.hex) - getColorBrightness(b.hex);
-        case 'dark-light':
           return getColorBrightness(b.hex) - getColorBrightness(a.hex);
+        case 'dark-light':
+          return getColorBrightness(a.hex) - getColorBrightness(b.hex);
         default:
           return 0;
       }

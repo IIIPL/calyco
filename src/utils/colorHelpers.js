@@ -42,3 +42,54 @@ export const getColorBrightness = (hexColor) => {
   const b = parseInt(actualHex.substring(5, 7), 16);
   return (r * 299 + g * 587 + b * 114) / 1000;
 };
+
+/**
+ * Resolve a hex color value from a color object or identifier
+ * @param {object|string} color - Color object or identifier
+ * @returns {string} - Hex color value with leading '#'
+ */
+export const resolveColorHex = (color) => {
+  if (!color) {
+    return '#000000';
+  }
+
+  if (typeof color === 'string') {
+    return getActualHexColor(color);
+  }
+
+  const candidates = [
+    color.actualHex,
+    color.hex,
+    color.hexCode,
+    color.tintCode,
+    color.code,
+  ];
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    const resolved = getActualHexColor(candidate);
+    if (resolved) return resolved;
+  }
+
+  return '#000000';
+};
+
+/**
+ * Get brightness for a full color object
+ * @param {object|string} color - Color record or identifier
+ * @returns {number} - Brightness value (0-255)
+ */
+export const getColorBrightnessForColor = (color) => {
+  const hex = resolveColorHex(color);
+  return getColorBrightness(hex);
+};
+
+/**
+ * Compare function for sorting colors from lightest to darkest
+ * @param {object} a - First color
+ * @param {object} b - Second color
+ * @returns {number} - Sort order
+ */
+export const compareColorsByBrightness = (a, b) => {
+  return getColorBrightnessForColor(b) - getColorBrightnessForColor(a);
+};

@@ -104,6 +104,25 @@ const normalizeField = (value) => {
   return trimmed;
 };
 
+const getBrightness = (hexValue) => {
+  const hex = ensureHex(hexValue);
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000;
+};
+
+const colorBrightness = (color) => {
+  if (!color) return 0;
+  const candidates = [color.hex, color.hexCode, color.hexcode, color.actualHex];
+  for (const candidate of candidates) {
+    if (candidate) {
+      return getBrightness(candidate);
+    }
+  }
+  return 0;
+};
+
 const records = readCsv(SOURCE_FILE);
 
 const familyBuckets = new Map();
@@ -230,7 +249,9 @@ const orderedFamilies = [
 ].map((familyName) => {
   const bucket = familyBuckets.get(familyName);
   if (!bucket) return null;
-  const sortedColors = bucket.colors.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const sortedColors = bucket.colors
+    .slice()
+    .sort((a, b) => colorBrightness(b) - colorBrightness(a));
   return {
     family: bucket.family,
     familyCode: bucket.familyCode,

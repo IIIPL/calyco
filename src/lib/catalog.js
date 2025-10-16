@@ -3,6 +3,7 @@ import { flatColors } from '../data/flatColors.js';
 import { products } from '../data/products.js';
 import samplesData from '../data/samples.json';
 import colorRelations from '../data/color-relations.json';
+import { getColorBrightnessForColor } from '../utils/colorHelpers.js';
 
 export const VISUALIZER_PATH = '/room-visualization';
 
@@ -185,6 +186,10 @@ const registerColor = (color, familyName) => {
 calycoColors.forEach((family) => {
   const familyName = family.family;
   (family.colors || []).forEach((color) => registerColor(color, familyName));
+});
+
+familyKeyToColors.forEach((list) => {
+  list.sort((a, b) => getColorBrightnessForColor(b) - getColorBrightnessForColor(a));
 });
 
 const familyList = Array.from(familyMeta.values()).map((meta) => ({
