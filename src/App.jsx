@@ -27,6 +27,8 @@ import ScrollToTop from './components/ScrollToTop'
 import { ContactUs } from './pages/ContactUs'
 import { Interior } from './pages/Interior'
 import WaterproofingSealer from './pages/WaterproofingSealer'
+import InteriorLatexPaint from './pages/InteriorLatexPaint'
+import ExteriorLatexPaint from './pages/ExteriorLatexPaint'
 import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
@@ -132,9 +134,16 @@ function App() {
               <Route path='/visualizer' element={<VisualizerPage/>}/>
               <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
+              <Route path='/product/Interior-Latex-Paint' element={<InteriorLatexPaint/>}/>
               <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
               <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
-              <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/exterior-latex-paint' replace />}/>
+              <Route path='/product/Exterior-Latex-Paint' element={<ExteriorLatexPaint/>}/>
+              <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
+              <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
+              <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
+              <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
+              <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+              <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
               <Route path='/downloads' element={<DownloadsPage/>}/>
@@ -147,10 +156,6 @@ function App() {
               <Route path='/faq' element={<FAQs/>}/>
               <Route path='/test-page-codex' element={<TestPageCodex/>}/>
               <Route path='/pages/product-finder' element={<ProductFinder/>}/>
-              {/* <Route path='/interior' element={<Interior/>}/> */}
-              <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
-              <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
-              <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
               <Route path='/blogs' element={<BlogIndexPage/>}/>
               <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
               <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>

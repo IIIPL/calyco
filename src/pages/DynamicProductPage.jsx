@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
@@ -166,25 +166,34 @@ export const DynamicProductPage = () => {
     const [touchEnd, setTouchEnd] = useState(0);
     const [selectedColorFamily, setSelectedColorFamily] = useState(() => colorFamilies[0]?.code || "");
     const [selectedColor, setSelectedColor] = useState(null);
+    const leftColumnWrapperRef = useRef(null);
+    const stickyImageRef = useRef(null);
+    const rightColumnRef = useRef(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
+
+    const normalizedId = (product?.id || "").toLowerCase();
+    const normalizedSlug = (product?.slug || product?.url?.split("/").pop() || "").toLowerCase();
+    const normalizedName = (product?.name || "").toLowerCase();
+
     const isExteriorProduct =
         product &&
-        (product.id === 'ExteriorLatex' ||
-            product.slug === 'Exterior-Latex-Paint' ||
-            (product.name && product.name.toLowerCase().includes('exterior latex')));
+        (normalizedId === 'exteriorlatex' ||
+            normalizedSlug.includes('exterior') ||
+            normalizedName.includes('exterior latex'));
 
     const isInteriorLatexProduct =
         product &&
-        (product.id === 'Nova' ||
-            product.slug === 'Interior-Latex-Paint' ||
-            (product.name && product.name.toLowerCase().includes('interior latex')));
+        (normalizedId === 'nova' ||
+            normalizedSlug.includes('interior-latex') ||
+            normalizedName.includes('interior latex'));
 
     const isWaterproofingSealerProduct =
         product &&
-        (product.id === 'WaterproofingSealer' ||
-            product.slug === 'waterproofing-sealer' ||
-            (product.name && product.name.toLowerCase().includes('waterproofing sealer')));
+        (normalizedId.includes('waterproof') ||
+            normalizedSlug.includes('waterproof') ||
+            normalizedName.includes('waterproof'));
+    const enableStickySync = isInteriorLatexProduct || isExteriorProduct || isWaterproofingSealerProduct;
 
     // Get reviews data
     const productReviews = product ? getProductReviews(product.id) : [];
@@ -198,6 +207,138 @@ export const DynamicProductPage = () => {
             reviewsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
+
+    useEffect(() => {
+        let rafId = 0;
+        let cleanupFn = () => {};
+
+        const setup = () => {
+            const wrapper = leftColumnWrapperRef.current;
+            const stickyEl = stickyImageRef.current;
+            const rightEl = rightColumnRef.current;
+
+            if (!wrapper || !stickyEl) {
+                rafId = requestAnimationFrame(setup);
+                return;
+            }
+
+            const topOffset = 96; // matches lg:top-24
+
+            const resetStyles = () => {
+                stickyEl.style.position = "relative";
+                stickyEl.style.top = "0px";
+                stickyEl.style.left = "0px";
+                stickyEl.style.width = "100%";
+                stickyEl.style.zIndex = "";
+            };
+
+            const updateWrapperHeight = () => {
+                if (wrapper && rightEl) {
+                    wrapper.style.minHeight = enableStickySync ? `${rightEl.offsetHeight}px` : "";
+                }
+            };
+
+            if (!enableStickySync || !rightEl) {
+                resetStyles();
+                if (wrapper) {
+                    wrapper.style.minHeight = "";
+                }
+                return;
+            }
+
+            const handleScroll = () => {
+                if (!enableStickySync || !wrapper || !stickyEl || !rightEl) {
+                    resetStyles();
+                    return;
+                }
+
+                if (window.innerWidth < 1024) {
+                    resetStyles();
+                    return;
+                }
+
+                const containerTop = wrapper.getBoundingClientRect().top + window.scrollY;
+                const rightBottom = rightEl.getBoundingClientRect().bottom + window.scrollY;
+                const stickyHeight = stickyEl.offsetHeight;
+                const scrollTop = window.scrollY;
+
+                const startStick = scrollTop + topOffset;
+                const stopStick = rightBottom - stickyHeight;
+
+                if (stopStick <= containerTop) {
+                    resetStyles();
+                    return;
+                }
+
+                if (startStick <= containerTop) {
+                    resetStyles();
+                } else if (startStick >= stopStick) {
+                    stickyEl.style.position = "absolute";
+                    stickyEl.style.top = `${rightBottom - containerTop - stickyHeight}px`;
+                    stickyEl.style.left = "0px";
+                    stickyEl.style.width = "100%";
+                    stickyEl.style.zIndex = "";
+                } else {
+                    stickyEl.style.position = "fixed";
+                    stickyEl.style.top = `${topOffset}px`;
+                    stickyEl.style.left = `${wrapper.getBoundingClientRect().left}px`;
+                    stickyEl.style.width = `${wrapper.offsetWidth}px`;
+                    stickyEl.style.zIndex = "30";
+                }
+            };
+
+            const handleResize = () => {
+                updateWrapperHeight();
+                handleScroll();
+            };
+
+            updateWrapperHeight();
+            handleScroll();
+
+            window.addEventListener("scroll", handleScroll, { passive: true });
+            window.addEventListener("resize", handleResize);
+
+            const resizeObserver = typeof ResizeObserver !== "undefined"
+                ? new ResizeObserver(() => {
+                    updateWrapperHeight();
+                    handleScroll();
+                })
+                : null;
+
+            if (resizeObserver && rightEl) {
+                resizeObserver.observe(rightEl);
+            }
+
+            cleanupFn = () => {
+                window.removeEventListener("scroll", handleScroll);
+                window.removeEventListener("resize", handleResize);
+                if (resizeObserver) {
+                    resizeObserver.disconnect();
+                }
+                resetStyles();
+                if (wrapper) {
+                    wrapper.style.minHeight = "";
+                }
+            };
+        };
+
+        setup();
+
+        return () => {
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+            }
+            cleanupFn();
+        };
+    }, [
+        enableStickySync,
+        product?.id,
+        selectedColorFamily,
+        selectedColor?.name,
+        selectedSheen,
+        selectedSize,
+        quantity
+    ]);
 
     // Touch handlers
     const handleTouchStart = (e) => {
@@ -424,6 +565,7 @@ export const DynamicProductPage = () => {
                 "Low Sheen";
             const looksLikeExterior =
                 foundProduct.id === 'ExteriorLatex' ||
+                foundProduct.slug === 'exterior-latex-paint' ||
                 foundProduct.slug === 'Exterior-Latex-Paint' ||
                 (foundProduct.name && foundProduct.name.toLowerCase().includes('exterior latex'));
             setSelectedSheen(looksLikeExterior ? 'Matte Finish' : defaultFinish);
@@ -700,8 +842,10 @@ export const DynamicProductPage = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
                     {/* LEFT SIDE - Product Image Gallery (Sticky) */}
+                    <div ref={leftColumnWrapperRef} className="relative w-full">
                     <motion.div
-                        className="lg:sticky lg:top-24 w-full self-start"
+                        ref={stickyImageRef}
+                        className="w-full"
                         variants={itemVariants}
                     >
                         <div
@@ -811,9 +955,11 @@ export const DynamicProductPage = () => {
                           </div>
                         )}
                     </motion.div>
+                    </div>
 
                     {/* RIGHT SIDE - Product Information */}
                     <motion.div
+                        ref={rightColumnRef}
                         className="w-full flex flex-col gap-6 lg:pt-8"
                         variants={itemVariants}
                     >

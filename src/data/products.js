@@ -184,7 +184,7 @@ export const products = [
   },
   {
     "id": "ExteriorLatex",
-    "slug": "Exterior-Latex-Paint",
+    "slug": "exterior-latex-paint",
     "url": "https://calycopaints.com/product/exterior-latex-paint",
     "name": "Calyco Exterior Latex Paint",
     "image": "/Assets/Nova/1-main.png",
