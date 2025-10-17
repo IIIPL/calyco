@@ -67,7 +67,7 @@ export const exteriorLatexPaintDetail = {
   id: "Calyco Exterior Latex Paint",
   slug: "Calyco Exterior Latex Paint",
   name: "Calyco Exterior Latex Paint",
-  image: "/Assets/Nova/1-main.png",
+  image: "/Assets/Exterior Latex Paint/Main.png",
   brand: "Calyco",
   category: "Exterior",
   rating: 4.7,
@@ -198,16 +198,9 @@ export const exteriorLatexPaintDetail = {
   },
   warranty: "7 years",
   packaging: ["1L", "4L", "10L", "20L"],
-  bucketImage: "/Assets/Nova/1-main.png",
+  bucketImage: "/Assets/Exterior Latex Paint/Main.png",
   images: [
-    "/Assets/Nova/1-main.png",
-    "/Assets/Nova/1.png",
-    "/Assets/Nova/2.png",
-    "/Assets/Nova/3.png",
-    "/Assets/Nova/4.png",
-    "/Assets/Nova/5.png",
-    "/Assets/Nova/6.png",
-    "/Assets/Nova/7.png"
+    "/Assets/Exterior Latex Paint/Main.png"
   ],
   seo: {
     title: "Exterior Latex Paint | Weather-Resistant Exterior Paint | Calyco",

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiSun, FiWind, FiStar, FiCloudRain } from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiSun, FiWind, FiStar, FiCloudRain, FiDownload } from 'react-icons/fi';
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
@@ -312,7 +312,7 @@ const ExteriorLatexPaint = () => {
 
     const displayPriceValue = calculatePrice(selectedSize);
 
-    // Calculate MRP for Waterproofing Sealer
+    // Calculate MRP for Exterior Latex Paint
     const calculateMRP = (sizeLabel) => {
         const mrpData = EXTERIOR_LATEX_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
@@ -448,14 +448,14 @@ const ExteriorLatexPaint = () => {
         <>
         <div className="min-h-screen bg-white px-2 md:px-6 xl:px-10">
             <motion.section
-                className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
+                className="w-full max-w-[1400px] mx-auto px-4 py-6 pt-20"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
             >
                 {/* Breadcrumb */}
                 <motion.div
-                    className="flex items-center gap-2 text-sm text-[#493657]/60 mb-8"
+                    className="flex items-center gap-2 text-sm text-[#493657]/60 mb-6"
                     variants={itemVariants}
                 >
                     <Link to="/" className="hover:text-[#493657] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
@@ -620,19 +620,24 @@ const ExteriorLatexPaint = () => {
                           </p>
                         )}
 
-                        {/* Pricing - Single Line with MRP */}
-                        {displayMRPValue ? (
-                          <div className="flex items-baseline gap-3 flex-wrap">
-                            <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
-                            <span className="text-xl text-[#dc2626] line-through">{formatINR(displayMRPValue)}</span>
-                            <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
-                          </div>
-                        ) : (
-                          <div className="flex items-baseline gap-3">
-                            <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
-                            <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
-                          </div>
-                        )}
+                        {/* Compact Sale Label & Pricing */}
+                        <div>
+                            <div className="inline-block bg-[#dc2626] text-white px-3 py-1 text-sm font-semibold rounded mb-2">
+                                Sale is Live
+                            </div>
+                            {displayMRPValue ? (
+                              <div className="flex items-baseline gap-3 flex-wrap">
+                                <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
+                                <span className="text-xl text-[#dc2626] line-through">{formatINR(displayMRPValue)}</span>
+                                <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
+                              </div>
+                            ) : (
+                              <div className="flex items-baseline gap-3">
+                                <span className="text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
+                                <span className="text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
+                              </div>
+                            )}
+                        </div>
 
                         {/* Bullet Points in Card */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
@@ -650,28 +655,28 @@ const ExteriorLatexPaint = () => {
                           </div>
                         )}
 
-                        {/* 3 Feature Cards */}
+                        {/* 3 Feature Cards - SIMPLE BRIGHT COLORS */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-3">
-                          <div className="bg-gradient-to-br from-[#B8E6F0] to-[#8DD4E8] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
-                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                              <FiDroplet className="w-7 h-7 text-[#493657]" />
+                          <div className="bg-[#00BCD4] rounded-xl p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                              <FiCloudRain className="w-7 h-7 text-[#00BCD4]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-base mb-1">Waterproof Protection</h4>
-                            <p className="text-sm text-[#493657]/80 font-medium">Complete sealing</p>
+                            <h4 className="font-bold text-white text-base mb-1 drop-shadow-sm">Weather Shield</h4>
+                            <p className="text-sm text-white/90 font-medium drop-shadow-sm">UV & rain protection</p>
                           </div>
-                          <div className="bg-gradient-to-br from-[#F5D9A8] to-[#F0C85A] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
-                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                              <FiShield className="w-7 h-7 text-[#493657]" />
+                          <div className="bg-[#FF9500] rounded-xl p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                              <FiSun className="w-7 h-7 text-[#FF9500]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-base mb-1">Eco-Friendly</h4>
-                            <p className="text-sm text-[#493657]/80 font-medium">Safe for environment</p>
+                            <h4 className="font-bold text-white text-base mb-1 drop-shadow-sm">Fade Defence</h4>
+                            <p className="text-sm text-white/90 font-medium drop-shadow-sm">Color retention</p>
                           </div>
-                          <div className="bg-gradient-to-br from-[#A8D5B0] to-[#7EC488] rounded-xl p-5 text-center shadow-md border border-[#493657]/10 hover:shadow-lg transition-all duration-300">
-                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                              <FiClock className="w-7 h-7 text-[#493657]" />
+                          <div className="bg-[#34C759] rounded-xl p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                              <FiCheckCircle className="w-7 h-7 text-[#34C759]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-base mb-1">Long Lasting</h4>
-                            <p className="text-sm text-[#493657]/80 font-medium">Durable protection</p>
+                            <h4 className="font-bold text-white text-base mb-1 drop-shadow-sm">Crack Resistant</h4>
+                            <p className="text-sm text-white/90 font-medium drop-shadow-sm">Flexible film</p>
                           </div>
                         </div>
 
@@ -881,7 +886,7 @@ const ExteriorLatexPaint = () => {
                               </div>
                               <motion.button
                                 onClick={handleAddToCart}
-                                className="w-full bg-gradient-to-r from-[#301A44] to-[#493657]/80 text-white font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#301A44]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
+                                className="w-full bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white font-semibold py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#2D1B69]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
@@ -893,364 +898,361 @@ const ExteriorLatexPaint = () => {
                     </motion.div>
                 </div>
 
-                {/* Product Details Section */}
+                {/* ENHANCED Product Details Section - CONSISTENT SPACING */}
                 <motion.div
-                    className="mt-32"
+                    className="mt-16"
                     variants={itemVariants}
                 >
-                    <div className="flex flex-col gap-8">
-                      <div className="w-full">
-                        <h2 className="text-3xl font-bold text-[#493657]">Product Details</h2>
-                      </div>
-                      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-                        <div className="lg:w-1/2 w-full">
-                          <p className="text-lg md:text-xl font-semibold text-[#301A44] leading-snug">
-                            {product.details || product.description}
-                          </p>
+                    <div className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] rounded-2xl p-8 shadow-lg border border-[#493657]/10">
+                        <h2 className="text-3xl font-bold text-[#493657] mb-8">Product Details</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div className="bg-white rounded-xl p-6 shadow-md border border-[#493657]/10">
+                                <div className="flex items-start gap-4 mb-4">
+                                    <div className="w-12 h-12 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <FiInfo className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-[#493657] text-lg mb-2">About This Product</h3>
+                                        <p className="text-[#493657]/80 leading-relaxed">
+                                            {product.details || product.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded-xl p-6 shadow-md border border-[#493657]/10">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 bg-gradient-to-br from-[#22c55e] to-[#16a34a] rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <FiCheckCircle className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-[#493657] text-lg mb-4">Key Benefits</h3>
+                                        <div className="space-y-3">
+                                            {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
+                                                product.advantages.map((adv, idx) => (
+                                                    <div key={idx} className="flex items-center gap-3 p-3 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                                        <div className="w-6 h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0">
+                                                            <FiCheckCircle className="w-4 h-4 text-white" />
+                                                        </div>
+                                                        <span className="text-[#493657] font-medium">{adv}</span>
+                                                    </div>
+                                                ))
+                                            ) : Array.isArray(product.keyBenefits) && product.keyBenefits.length > 0 ? (
+                                                product.keyBenefits.map((benefit, idx) => (
+                                                    <div key={idx} className="flex items-center gap-3 p-3 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                                        <div className="w-6 h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0">
+                                                            <FiCheckCircle className="w-4 h-4 text-white" />
+                                                        </div>
+                                                        <span className="text-[#493657] font-medium">{benefit}</span>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="flex items-center gap-3 p-3 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                                    <div className="w-6 h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0">
+                                                        <FiCheckCircle className="w-4 h-4 text-white" />
+                                                    </div>
+                                                    <span className="text-[#493657] font-medium">No key advantages listed.</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="lg:w-1/2 w-full">
-                          <ul className="list-disc pl-6 space-y-3 text-base text-[#493657] font-medium">
-                            {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
-                              product.advantages.map((adv, idx) => (
-                                <li key={idx}>{adv}</li>
-                              ))
-                            ) : Array.isArray(product.keyBenefits) && product.keyBenefits.length > 0 ? (
-                              product.keyBenefits.map((benefit, idx) => (
-                                <li key={idx}>{benefit}</li>
-                              ))
-                            ) : (
-                              <li>No key advantages listed.</li>
-                            )}
-                          </ul>
-                        </div>
-                      </div>
                     </div>
-                    <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
                 </motion.div>
 
-                {/* Specifications Section */}
-                <div className="mt-16 mb-12">
-                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Specifications</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
-                      <span className="text-[#493657]/80 text-lg">{product.category || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
-                      <span className="text-[#493657]/80 text-lg">{product.coats_required || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiBox className="w-5 h-5 text-[#493657]" />Coverage</span>
-                      <span className="text-[#493657]/80 text-lg">{product.coverage || 'N/A'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
-
-                {/* Technical Specifications */}
-                <div className="mb-20 mt-16">
-                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    {product.technicalSpecs?.product_code && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Product Code</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.product_code}</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
-                      <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technicalSpecs && product.technicalSpecs.base_type) || 'N/A'}</span>
-                    </div>
-                    {product.technicalSpecs?.vehicle_type && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Vehicle Type</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.vehicle_type}</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
-                      <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technicalSpecs && product.technicalSpecs.voc_content) || 'N/A'}</span>
-                    </div>
-                    {product.technicalSpecs?.volume_solids && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Volume Solids</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.volume_solids}</span>
-                      </div>
-                    )}
-                    {product.technicalSpecs?.pH && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">pH Level</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.pH}</span>
-                      </div>
-                    )}
-                    {product.technicalSpecs?.weight_per_volume && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Weight/Volume</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.weight_per_volume}</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technicalSpecs && product.technicalSpecs.application_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClock className="w-5 h-5 text-[#493657]" />Drying Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.drying_time || (product.technicalSpecs && product.technicalSpecs.dryingTime) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technicalSpecs && product.technicalSpecs.recoatTime) || 'N/A'}</span>
-                    </div>
-                    {product.technicalSpecs?.shelf_life && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCalendar className="w-5 h-5 text-[#493657]" />Shelf Life</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.shelf_life}</span>
-                      </div>
-                    )}
-                    {product.technicalSpecs?.storage_temp && (
-                      <div>
-                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Storage Temperature</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technicalSpecs.storage_temp}</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
-                      <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technicalSpecs && product.technicalSpecs.cleanup) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Temperature Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.temperature_range || (product.technicalSpecs && product.technicalSpecs.temperature_range) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Humidity Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.humidity_range || (product.technicalSpecs && product.technicalSpecs.humidity_range) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiInfo className="w-5 h-5 text-[#493657]" />Surface Preparation</span>
-                      <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technicalSpecs && product.technicalSpecs.preparation_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technicalSpecs && product.technicalSpecs.storage_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
-                      <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technicalSpecs && product.technicalSpecs.warranty) || 'N/A'}</span>
+                {/* ENHANCED Specifications Section - Dark Purple Gradient - CONSISTENT SPACING */}
+                <div className="mt-16">
+                    <div className="bg-white rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
+                        <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-6 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/20"></div>
+                            <h2 className="text-3xl font-bold text-center relative z-10 text-white drop-shadow-lg">Specifications</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 bg-[#e2e8f0]">
+                            {[
+                                { label: "Category", value: product.category || 'N/A', icon: FiTag },
+                                { label: "Application Areas", value: Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A'), icon: FiClipboard },
+                                { label: "Recommended Uses", value: Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A'), icon: FiList },
+                                { label: "Finish / Sheen", value: Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A'), icon: FiDroplet },
+                                { label: "Surface Compatibility", value: Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A'), icon: FiLayers },
+                                { label: "Coats Required", value: product.coats_required || 'N/A', icon: FiCheckCircle },
+                                { label: "Coverage", value: product.coverage || 'N/A', icon: FiBox }
+                            ].map((spec, idx) => (
+                                <div key={idx} className="bg-white p-6 flex items-center justify-between hover:bg-[#f8fafc] transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        <spec.icon className="w-5 h-5 text-[#6366f1]" />
+                                        <span className="font-semibold text-[#374151]">{spec.label}</span>
+                                    </div>
+                                    <span className="text-[#6b7280] font-medium text-right max-w-xs">{spec.value}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-              </div>
 
-                {/* Safety Information */}
+                {/* ENHANCED Technical Specifications - Dark Purple Gradient - CONSISTENT SPACING */}
+                <div className="mt-16">
+                    <div className="bg-white rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
+                        <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-6 text-center relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/20"></div>
+                            <h2 className="text-3xl font-bold relative z-10 text-white drop-shadow-lg">Technical Specifications</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 bg-[#e2e8f0]">
+                            {[
+                                { label: "Product Code", value: product.technicalSpecs?.product_code, icon: FiTag },
+                                { label: "Base Type", value: product.base_type || (product.technicalSpecs && product.technicalSpecs.base_type) || 'N/A', icon: FiBox },
+                                { label: "Vehicle Type", value: product.technicalSpecs?.vehicle_type, icon: FiPackage },
+                                { label: "VOC Content", value: product.voc_content || (product.technicalSpecs && product.technicalSpecs.voc_content) || 'N/A', icon: FiShield },
+                                { label: "Volume Solids", value: product.technicalSpecs?.volume_solids, icon: FiDroplet },
+                                { label: "pH Level", value: product.technicalSpecs?.pH, icon: FiInfo },
+                                { label: "Weight/Volume", value: product.technicalSpecs?.weight_per_volume, icon: FiPackage },
+                                { label: "Application Instructions", value: product.application_instructions || (product.technicalSpecs && product.technicalSpecs.application_instructions) || 'N/A', icon: FiClipboard },
+                                { label: "Drying Time", value: product.drying_time || (product.technicalSpecs && product.technicalSpecs.dryingTime) || 'N/A', icon: FiClock },
+                                { label: "Recoat Time", value: product.recoat_time || (product.technicalSpecs && product.technicalSpecs.recoatTime) || 'N/A', icon: FiRepeat },
+                                { label: "Shelf Life", value: product.technicalSpecs?.shelf_life, icon: FiCalendar },
+                                { label: "Storage Temperature", value: product.technicalSpecs?.storage_temp, icon: FiThermometer },
+                                { label: "Cleanup", value: product.cleanup || (product.technicalSpecs && product.technicalSpecs.cleanup) || 'N/A', icon: FiArchive },
+                                { label: "Temperature Range", value: product.temperature_range || (product.technicalSpecs && product.technicalSpecs.temperature_range) || 'N/A', icon: FiThermometer },
+                                { label: "Humidity Range", value: product.humidity_range || (product.technicalSpecs && product.technicalSpecs.humidity_range) || 'N/A', icon: FiDroplet },
+                                { label: "Surface Preparation", value: product.preparation_instructions || (product.technicalSpecs && product.technicalSpecs.preparation_instructions) || 'N/A', icon: FiInfo }
+                            ].filter(spec => spec.value && spec.value !== 'N/A').map((spec, idx) => (
+                                <div key={idx} className="bg-white p-5 flex items-center justify-between hover:bg-[#f8fafc] transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        <spec.icon className="w-5 h-5 text-[#6366f1]" />
+                                        <span className="font-semibold text-[#374151]">{spec.label}</span>
+                                    </div>
+                                    <span className="text-[#6b7280] font-medium text-right max-w-xs">{spec.value}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* IMPROVED Safety Information - Cleaner Layout - CONSISTENT SPACING */}
                 {product.safety_warnings && (
-                  <>
-                    <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
-                    <div className="mb-20 mt-16">
-                      <h2 className="text-3xl font-bold text-[#493657] mb-8">Safety Information</h2>
+                    <div className="mt-16">
+                        <div className="bg-white rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
+                            <div className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white p-6 flex items-center gap-4">
+                                <FiAlertCircle className="w-8 h-8" />
+                                <div>
+                                    <h2 className="text-3xl font-bold">Safety Information</h2>
+                                    <p className="text-orange-100 mt-1">Please read all safety information before use</p>
+                                </div>
+                            </div>
 
-                      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
-                        <div className="flex items-start">
-                          <FiAlertCircle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
-                          <div>
-                            <h3 className="font-bold text-yellow-800 text-xl mb-2">
-                              {product.safety_warnings.signal_word || 'Warning'}
-                            </h3>
-                            <p className="text-yellow-700 text-base">
-                              Please read all safety information before use
-                            </p>
-                          </div>
+                            <div className="p-8">
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    {/* Hazard Statements */}
+                                    {product.safety_warnings.hazard_statements && (
+                                        <div>
+                                            <h3 className="font-bold text-[#493657] text-xl mb-4 flex items-center gap-3">
+                                                <FiAlertCircle className="w-6 h-6 text-[#f59e0b]" />
+                                                Hazard Statements
+                                            </h3>
+                                            <div className="space-y-2">
+                                                {product.safety_warnings.hazard_statements.map((statement, idx) => (
+                                                    <div key={idx} className="flex items-start gap-3 p-3 bg-[#fef3c7] border-l-4 border-[#fbbf24] rounded-r-lg">
+                                                        <div className="w-5 h-5 bg-[#f59e0b] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <span className="text-white text-xs font-bold">!</span>
+                                                        </div>
+                                                        <span className="text-[#92400e] font-medium text-sm">{statement}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Precautionary Statements */}
+                                    {product.safety_warnings.precautionary_statements && (
+                                        <div>
+                                            <h3 className="font-bold text-[#493657] text-xl mb-4 flex items-center gap-3">
+                                                <FiShield className="w-6 h-6 text-[#2563eb]" />
+                                                Precautionary Statements
+                                            </h3>
+                                            <div className="space-y-2">
+                                                {product.safety_warnings.precautionary_statements.map((statement, idx) => (
+                                                    <div key={idx} className="flex items-start gap-3 p-3 bg-[#dbeafe] border-l-4 border-[#60a5fa] rounded-r-lg">
+                                                        <div className="w-5 h-5 bg-[#2563eb] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <FiShield className="w-3 h-3 text-white" />
+                                                        </div>
+                                                        <span className="text-[#1e40af] font-medium text-sm">{statement}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* First Aid Measures */}
+                                {product.safety_warnings.first_aid && (
+                                    <div className="mt-8">
+                                        <h3 className="font-bold text-[#493657] text-xl mb-6 flex items-center gap-3">
+                                            <FiHeart className="w-6 h-6 text-[#22c55e]" />
+                                            First Aid Measures
+                                        </h3>
+                                        <div className="grid md:grid-cols-2 gap-4">
+                                            {product.safety_warnings.first_aid.inhalation && (
+                                                <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-5">
+                                                    <h4 className="font-bold text-[#166534] mb-3 flex items-center gap-2">
+                                                        <FiWind className="w-5 h-5" />
+                                                        Inhalation
+                                                    </h4>
+                                                    <p className="text-[#166534] text-sm">{product.safety_warnings.first_aid.inhalation}</p>
+                                                </div>
+                                            )}
+                                            {product.safety_warnings.first_aid.skin_contact && (
+                                                <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-5">
+                                                    <h4 className="font-bold text-[#166534] mb-3 flex items-center gap-2">
+                                                        <FiShield className="w-5 h-5" />
+                                                        Skin Contact
+                                                    </h4>
+                                                    <p className="text-[#166534] text-sm">{product.safety_warnings.first_aid.skin_contact}</p>
+                                                </div>
+                                            )}
+                                            {product.safety_warnings.first_aid.eye_contact && (
+                                                <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-5">
+                                                    <h4 className="font-bold text-[#166534] mb-3 flex items-center gap-2">
+                                                        <FiInfo className="w-5 h-5" />
+                                                        Eye Contact
+                                                    </h4>
+                                                    <p className="text-[#166534] text-sm">{product.safety_warnings.first_aid.eye_contact}</p>
+                                                </div>
+                                            )}
+                                            {product.safety_warnings.first_aid.ingestion && (
+                                                <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-5">
+                                                    <h4 className="font-bold text-[#166534] mb-3 flex items-center gap-2">
+                                                        <FiAlertCircle className="w-5 h-5" />
+                                                        Ingestion
+                                                    </h4>
+                                                    <p className="text-[#166534] text-sm">{product.safety_warnings.first_aid.ingestion}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                      </div>
-
-                      {product.safety_warnings.hazard_statements && (
-                        <div className="mb-6">
-                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
-                            <FiAlertCircle className="w-5 h-5" />
-                            Hazard Statements
-                          </h3>
-                          <ul className="list-disc pl-6 space-y-2">
-                            {product.safety_warnings.hazard_statements.map((statement, idx) => (
-                              <li key={idx} className="text-[#493657]/80 text-lg">{statement}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {product.safety_warnings.precautionary_statements && (
-                        <div className="mb-6">
-                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
-                            <FiShield className="w-5 h-5" />
-                            Precautionary Statements
-                          </h3>
-                          <ul className="list-disc pl-6 space-y-2">
-                            {product.safety_warnings.precautionary_statements.map((statement, idx) => (
-                              <li key={idx} className="text-[#493657]/80 text-lg">{statement}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {product.safety_warnings.first_aid && (
-                        <div className="mb-6">
-                          <h3 className="font-semibold text-[#493657] text-xl mb-3 flex items-center gap-2">
-                            <FiHeart className="w-5 h-5" />
-                            First Aid Measures
-                          </h3>
-                          <div className="grid md:grid-cols-2 gap-4">
-                            {product.safety_warnings.first_aid.inhalation && (
-                              <div className="bg-gray-50 rounded-lg p-4">
-                                <h4 className="font-semibold text-[#493657] mb-2">Inhalation</h4>
-                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.inhalation}</p>
-                              </div>
-                            )}
-                            {product.safety_warnings.first_aid.skin_contact && (
-                              <div className="bg-gray-50 rounded-lg p-4">
-                                <h4 className="font-semibold text-[#493657] mb-2">Skin Contact</h4>
-                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.skin_contact}</p>
-                              </div>
-                            )}
-                            {product.safety_warnings.first_aid.eye_contact && (
-                              <div className="bg-gray-50 rounded-lg p-4">
-                                <h4 className="font-semibold text-[#493657] mb-2">Eye Contact</h4>
-                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.eye_contact}</p>
-                              </div>
-                            )}
-                            {product.safety_warnings.first_aid.ingestion && (
-                              <div className="bg-gray-50 rounded-lg p-4">
-                                <h4 className="font-semibold text-[#493657] mb-2">Ingestion</h4>
-                                <p className="text-[#493657]/80">{product.safety_warnings.first_aid.ingestion}</p>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="bg-blue-50 rounded-lg p-6 mt-6">
-                        <h3 className="font-semibold text-blue-800 text-lg mb-3">General Safety Precautions</h3>
-                        <p className="text-blue-700">{product.safety_precautions || 'Use appropriate protective equipment. Work in well-ventilated areas.'}</p>
-                      </div>
                     </div>
-                  </>
                 )}
 
-                {/* Download Documents */}
-                <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
-                <div className="mb-20 mt-16">
-                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Download Documents</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* TDS Document */}
-                    <div className="bg-white rounded-xl border-2 border-[#493657]/20 p-6 hover:border-[#F0C85A] hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-[#F0C85A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <FiClipboard className="w-6 h-6 text-[#493657]" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-[#493657] text-lg mb-1">Technical Data Sheet</h3>
-                          <p className="text-sm text-[#493657]/60">Product specifications and application details</p>
-                        </div>
-                        <a
-                          href="/Assets/docs/exterior-latex-paint-tds.pdf"
-                          download
-                          className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
-                        >
-                          <FiClipboard className="w-4 h-4" />
-                          Download
-                        </a>
-                      </div>
-                    </div>
+                {/* ENHANCED Download Documents - CONSISTENT SPACING */}
+                <div className="mt-16">
+                    <div className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] rounded-2xl p-8 shadow-lg border border-[#493657]/10">
+                        <h2 className="text-3xl font-bold text-[#493657] mb-8 text-center">Download Documents</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* TDS Document */}
+                            <div className="bg-white rounded-xl p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <FiClipboard className="w-8 h-8 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-bold text-[#493657] text-xl mb-2">Technical Data Sheet</h3>
+                                        <p className="text-[#493657]/70 text-sm">Product specifications and application details</p>
+                                    </div>
+                                </div>
+                                <a
+                                    href="/Assets/docs/exterior-latex-paint-tds.pdf"
+                                    download
+                                    className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 font-semibold group-hover:scale-102"
+                                >
+                                    <FiDownload className="w-5 h-5" />
+                                    Download TDS
+                                </a>
+                            </div>
 
-                    {/* SDS Document */}
-                    <div className="bg-white rounded-xl border-2 border-[#493657]/20 p-6 hover:border-[#F0C85A] hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-[#F0C85A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <FiShield className="w-6 h-6 text-[#493657]" />
+                            {/* SDS Document */}
+                            <div className="bg-white rounded-xl p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <FiShield className="w-8 h-8 text-white" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-bold text-[#493657] text-xl mb-2">Safety Data Sheet</h3>
+                                        <p className="text-[#493657]/70 text-sm">Health and safety information</p>
+                                    </div>
+                                </div>
+                                <a
+                                    href="/Assets/docs/exterior-latex-paint-sds.pdf"
+                                    download
+                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 font-semibold group-hover:scale-102"
+                                >
+                                    <FiDownload className="w-5 h-5" />
+                                    Download SDS
+                                </a>
+                            </div>
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-[#493657] text-lg mb-1">Safety Data Sheet</h3>
-                          <p className="text-sm text-[#493657]/60">Health and safety information</p>
-                        </div>
-                        <a
-                          href="/Assets/docs/exterior-latex-paint-sds.pdf"
-                          download
-                          className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
-                        >
-                          <FiShield className="w-4 h-4" />
-                          Download
-                        </a>
-                      </div>
                     </div>
-                  </div>
                 </div>
 
-                {/* Features Section */}
+                {/* ENHANCED Features Section - Bright Poppy Colors - CONSISTENT SPACING */}
                 <motion.div
-                    className="mt-16 mb-20"
+                    className="mt-16"
                     variants={itemVariants}
                 >
-                    <div className="relative rounded-3xl bg-gradient-to-br from-[#493657]/8 via-white to-[#F0C85A]/10 p-8 md:p-12 shadow-lg overflow-hidden">
-                        <div className="pointer-events-none absolute -top-24 -right-12 w-56 h-56 bg-[#F0C85A]/25 blur-3xl rounded-full" />
-                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-64 h-64 bg-[#493657]/20 blur-3xl rounded-full" />
+                    <div className="relative rounded-3xl bg-gradient-to-br from-[#493657]/5 via-white to-[#F0C85A]/5 p-8 md:p-12 shadow-2xl overflow-hidden border border-[#493657]/10">
+                        {/* Premium Background Effects */}
+                        <div className="pointer-events-none absolute -top-24 -right-12 w-96 h-96 bg-gradient-to-br from-[#F0C85A]/20 to-[#493657]/10 blur-3xl rounded-full" />
+                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-80 h-80 bg-gradient-to-tr from-[#493657]/15 to-[#F0C85A]/10 blur-3xl rounded-full" />
+                        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#667eea]/10 to-[#764ba2]/10 blur-2xl rounded-full" />
 
-                        <h2 className="relative text-3xl font-bold text-[#493657] mb-10 text-center">Features</h2>
+                        <div className="relative z-10">
+                            <h2 className="text-4xl font-bold text-[#493657] mb-4 text-center">Premium Features</h2>
+                            <p className="text-center text-[#493657]/70 mb-12 text-lg">Built for India's harshest exterior conditions</p>
 
-                        <div className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                            <div className="group relative rounded-2xl bg-white/90 backdrop-blur-sm border border-white/70 shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#F0C85A] to-[#ffd86f] flex items-center justify-center text-white shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110">
-                                    <FiCloudRain className="w-10 h-10" />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+                                {/* Feature 1: Extreme Weather Shield */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-2xl border border-[#493657]/20 p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#FFC107] via-[#FFD54F] to-[#FFEB3B] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <FiCloudRain className="w-8 h-8 text-white drop-shadow-sm" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#493657] mb-3">Extreme Weather Shield</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Hydrophobic technology repels monsoon rain while breathable film prevents blistering</p>
+                                    <div className="mt-4 h-1 w-12 bg-gradient-to-r from-[#FFC107] to-[#FFC107]/40 rounded-full group-hover:w-16 transition-all duration-300"></div>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[#493657] mb-2">Extreme Weather Shield</h3>
-                                <p className="text-sm text-[#493657]/75 leading-relaxed">Hydrophobic technology repels monsoon rain while breathable film prevents blistering.</p>
-                            </div>
-                            <div className="group relative rounded-2xl bg-white/90 backdrop-blur-sm border border-white/70 shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#493657] to-[#6e4a93] flex items-center justify-center text-white shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110">
-                                    <FiSun className="w-10 h-10" />
+
+                                {/* Feature 2: UV Fade Defence */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-2xl border border-[#493657]/20 p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#673AB7] via-[#7E57C2] to-[#9575CD] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <FiSun className="w-8 h-8 text-white drop-shadow-sm" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#493657] mb-3">UV Fade Defence</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Advanced UV blockers keep façade colours bold and fresh despite harsh sunlight</p>
+                                    <div className="mt-4 h-1 w-12 bg-gradient-to-r from-[#673AB7] to-[#673AB7]/40 rounded-full group-hover:w-16 transition-all duration-300"></div>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[#493657] mb-2">UV Fade Defence</h3>
-                                <p className="text-sm text-[#493657]/75 leading-relaxed">Advanced UV blockers keep façade colours bold and fresh despite harsh sunlight.</p>
-                            </div>
-                            <div className="group relative rounded-2xl bg-white/90 backdrop-blur-sm border border-white/70 shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#F0C85A] to-[#ffda72] flex items-center justify-center text-white shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110">
-                                    <FiCheckCircle className="w-10 h-10" />
+
+                                {/* Feature 3: Crack Resistant Film */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-2xl border border-[#493657]/20 p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#4CAF50] via-[#66BB6A] to-[#81C784] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <FiCheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#493657] mb-3">Crack Resistant Film</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Elastic matrix bridges hairline cracks and resists peeling across temperature swings</p>
+                                    <div className="mt-4 h-1 w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-16 transition-all duration-300"></div>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[#493657] mb-2">Crack Resistant Film</h3>
-                                <p className="text-sm text-[#493657]/75 leading-relaxed">Elastic matrix bridges hairline cracks and resists peeling across temperature swings.</p>
-                            </div>
-                            <div className="group relative rounded-2xl bg-white/90 backdrop-blur-sm border border-white/70 shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#493657] to-[#71479a] flex items-center justify-center text-white shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110">
-                                    <FiWind className="w-10 h-10" />
+
+                                {/* Feature 4: Self-Cleaning Smoothness */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-2xl border border-[#493657]/20 p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-16 h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <FiWind className="w-8 h-8 text-white drop-shadow-sm" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-[#493657] mb-3">Self-Cleaning Smoothness</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Low-dirt pick-up surface helps dust and pollutants wash away with the next rain</p>
+                                    <div className="mt-4 h-1 w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-16 transition-all duration-300"></div>
                                 </div>
-                                <h3 className="text-lg font-semibold text-[#493657] mb-2">Self-Cleaning Smoothness</h3>
-                                <p className="text-sm text-[#493657]/75 leading-relaxed">Low-dirt pick-up surface helps dust and pollutants wash away with the next rain.</p>
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* You Might Also Like Section */}
+                {/* You Might Also Like Section - Wide Cards, Left Aligned - CONSISTENT SPACING */}
                 <motion.div
-                    className="relative mt-20 mb-24"
+                    className="relative mt-16 mb-8"
                     variants={itemVariants}
                 >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#493657]/10 to-transparent rounded-3xl blur-2xl opacity-80 pointer-events-none" />
 
-                    <div className="relative max-w-5xl mx-auto rounded-3xl bg-white/90 backdrop-blur-md border border-white/70 shadow-2xl px-6 py-10 md:px-10">
+                    <div className="relative max-w-6xl mx-auto rounded-3xl bg-white/90 backdrop-blur-md border border-white/70 shadow-2xl px-6 py-10 md:px-10">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
                             <div>
                                 <h2 className="text-3xl font-bold text-[#493657]">You might also like</h2>
@@ -1258,88 +1260,90 @@ const ExteriorLatexPaint = () => {
                             </div>
                             <div className="flex items-center gap-2 text-xs font-medium text-[#493657]/60 uppercase tracking-[0.2em]">
                                 <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />
-                                Calyco companions
+                                Calyco picks
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* Interior Latex Paint Card - Wide & Left Aligned */}
                             <Link to="/product/Interior-Latex-Paint" className="group h-full">
                                 <div className="relative h-full rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
 
-                                    <div className="relative pt-8 px-6 pb-4">
-                                        <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                                            <FiStar className="w-4 h-4" />
-                                            Interior elegance
-                                        </span>
-                                        <div className="mt-6">
+                                    <div className="flex items-center p-6 gap-6">
+                                        {/* Product Image - Left Side */}
+                                        <div className="flex-shrink-0 w-32 h-32">
                                             <img
-                                                src="/Assets/Nova/1-main.png"
+                                                src="/Assets/Interior Latex Paint/Main.png"
                                                 alt="Interior Latex Paint"
-                                                className="w-full h-56 object-contain drop-shadow-lg"
+                                                className="w-full h-full object-contain drop-shadow-lg"
                                             />
                                         </div>
-                                    </div>
 
-                                    <div className="px-6 pb-6">
-                                        <div className="flex items-center justify-between mb-3">
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiHeart className="w-5 h-5" />
-                                                Favourite
-                                            </button>
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiClipboard className="w-5 h-5" />
-                                                Compare
-                                            </button>
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-[#493657] mb-2">Interior Latex Paint</h3>
-                                        <p className="text-sm text-[#493657]/70 leading-relaxed mb-4">Ultra smooth, low-odour finish that brings walls to life with long-lasting colour.</p>
-                                        <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
-                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                            <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
-                                            <span className="text-base line-through text-gray-400">₹850</span>
-                                            <span className="text-2xl font-bold text-[#493657]">₹700</span>
+                                        {/* Product Info - Right Side */}
+                                        <div className="flex-1">
+                                            <div className="flex items-center justify-between mb-3">
+                                                <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                                                    <FiStar className="w-3 h-3" />
+                                                    Interior elegance
+                                                </span>
+                                                <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
+                                                    <FiHeart className="w-4 h-4" />
+                                                    Favourite
+                                                </button>
+                                            </div>
+                                            
+                                            <h3 className="text-xl font-semibold text-[#493657] mb-2">Interior Latex Paint</h3>
+                                            <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">Ultra smooth, low-odour finish that brings walls to life with long-lasting colour.</p>
+                                            <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
+                                            
+                                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                                <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
+                                                <span className="text-base line-through text-gray-400">₹850</span>
+                                                <span className="text-2xl font-bold text-[#493657]">₹700</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </Link>
 
+                            {/* Waterproofing Sealer Card - Wide & Left Aligned */}
                             <Link to="/product/waterproofing-sealer" className="group h-full">
                                 <div className="relative h-full rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
 
-                                    <div className="relative pt-8 px-6 pb-4">
-                                        <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                                            <FiShield className="w-4 h-4" />
-                                            Surface seal
-                                        </span>
-                                        <div className="mt-6">
+                                    <div className="flex items-center p-6 gap-6">
+                                        {/* Product Image - Left Side */}
+                                        <div className="flex-shrink-0 w-32 h-32">
                                             <img
                                                 src="/Assets/Defense/NoBg.png"
                                                 alt="Waterproofing Sealer"
-                                                className="w-full h-56 object-contain drop-shadow-lg"
+                                                className="w-full h-full object-contain drop-shadow-lg"
                                             />
                                         </div>
-                                    </div>
 
-                                    <div className="px-6 pb-6">
-                                        <div className="flex items-center justify-between mb-3">
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiHeart className="w-5 h-5" />
-                                                Favourite
-                                            </button>
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiClipboard className="w-5 h-5" />
-                                                Compare
-                                            </button>
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-[#493657] mb-2">Waterproofing Sealer</h3>
-                                        <p className="text-sm text-[#493657]/70 leading-relaxed mb-4">Flexible, breathable defence that locks in durability for metal, wood, stone, and more.</p>
-                                        <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
-                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                            <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
-                                            <span className="text-base line-through text-gray-400">₹850</span>
-                                            <span className="text-2xl font-bold text-[#493657]">₹700</span>
+                                        {/* Product Info - Right Side */}
+                                        <div className="flex-1">
+                                            <div className="flex items-center justify-between mb-3">
+                                                <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                                                    <FiShield className="w-3 h-3" />
+                                                    Surface seal
+                                                </span>
+                                                <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
+                                                    <FiHeart className="w-4 h-4" />
+                                                    Favourite
+                                                </button>
+                                            </div>
+                                            
+                                            <h3 className="text-xl font-semibold text-[#493657] mb-2">Waterproofing Sealer</h3>
+                                            <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">Flexible, breathable defence that locks in durability for metal, wood, stone, and more.</p>
+                                            <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
+                                            
+                                            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                                <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
+                                                <span className="text-base line-through text-gray-400">₹850</span>
+                                                <span className="text-2xl font-bold text-[#493657]">₹700</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1350,12 +1354,14 @@ const ExteriorLatexPaint = () => {
 
             </motion.section>
 
-            {/* Reviews Section */}
+            {/* Reviews Section - REDUCED SPACING */}
             {productReviews.length > 0 && (
-                <ReviewsSection
-                    reviews={productReviews}
-                    productName={product.name}
-                />
+                <div className="mt-8">
+                    <ReviewsSection
+                        reviews={productReviews}
+                        productName={product.name}
+                    />
+                </div>
             )}
         </div>
 

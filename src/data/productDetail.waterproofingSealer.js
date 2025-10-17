@@ -53,7 +53,7 @@ export const waterproofingSealerDetail = {
   id: "waterproofing-sealer",
   slug: "waterproofing-sealer",
   name: "Calyco Waterproofing Sealer",
-  image: "/calyco-stain&sealer.jpeg",
+  image: "/Assets/Waterproof Sealer/Main.png",
   brand: "Calyco",
   category: "Waterproofing",
   rating: 4.8,
@@ -231,7 +231,7 @@ export const waterproofingSealerDetail = {
     {
       id: "exterior-latex",
       name: "Calyco Exterior Latex Paint",
-      image: "/Assets/Nova/1-main.png",
+      image: "/Assets/Exterior Latex Paint/Main.png",
       price: 700,
     },
     {
@@ -243,11 +243,9 @@ export const waterproofingSealerDetail = {
   ],
   warranty: "5-year waterproofing guarantee when applied as per TDS.",
   packaging: ["1L", "4L", "10L", "20L"],
-  bucketImage: "/calyco-stain&sealer.jpeg",
+  bucketImage: "/Assets/Waterproof Sealer/Main.png",
   images: [
-    "/calyco-stain&sealer.jpeg",
-    "/Assets/junk/stainSealer.png",
-    "/Assets/Nova/ontable.png",
+    "/Assets/Waterproof Sealer/Main.png"
   ],
   seo: {
     title: "Waterproofing Sealer | Elastomeric Waterproof Barrier | Calyco",
