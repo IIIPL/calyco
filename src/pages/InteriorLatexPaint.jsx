@@ -2,34 +2,28 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiStar } from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiStar, FiWind } from 'react-icons/fi';
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
-import waterproofingSealerDetail from '../data/productDetail.waterproofingSealer';
+import interiorLatexPaintDetail from '../data/productDetail.interiorLatexPaint';
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
-// MRP pricing for Waterproofing Sealer
-const WATERPROOFING_SEALER_MRP = {
-  'Matte Finish': {
+// MRP pricing for Interior Latex Paint
+const INTERIOR_LATEX_MRP = {
+  'Low Sheen': {
     '1L': 850,
     '4L': 3200,
     '10L': 7800,
     '20L': 15600,
   },
-  'Clear': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
-  },
-  'Protective': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
+  'Pearl': {
+    '1L': 950,
+    '4L': 4200,
+    '10L': 10100,
+    '20L': 19200,
   },
 };
 
@@ -38,7 +32,7 @@ const slugify = (value) =>
     ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
     : "";
 
-const WaterproofingSealer = () => {
+const InteriorLatexPaint = () => {
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -320,7 +314,7 @@ const WaterproofingSealer = () => {
 
     // Calculate MRP for Waterproofing Sealer
     const calculateMRP = (sizeLabel) => {
-        const mrpData = WATERPROOFING_SEALER_MRP[normalizedSelectedSheen];
+        const mrpData = INTERIOR_LATEX_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
         return mrpData[sizeLabel] || null;
     };
@@ -342,29 +336,29 @@ const WaterproofingSealer = () => {
     }, [activeFinishPricing, product?.packaging]);
 
     useEffect(() => {
-        setProduct(waterproofingSealerDetail);
-        setSelectedSheen(waterproofingSealerDetail.defaultFinish || "Matte Finish");
+        setProduct(interiorLatexPaintDetail);
+        setSelectedSheen(interiorLatexPaintDetail.defaultFinish || "Low Sheen");
 
-        const finishPricing = (waterproofingSealerDetail.priceByFinish || waterproofingSealerDetail.price_by_finish || {})["Matte Finish"];
+        const finishPricing = (interiorLatexPaintDetail.priceByFinish || interiorLatexPaintDetail.price_by_finish || {})["Low Sheen"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {
                 setSelectedSize(sizeKeys[0]);
-            } else if (waterproofingSealerDetail.packaging && waterproofingSealerDetail.packaging.length > 0) {
-                setSelectedSize(waterproofingSealerDetail.packaging[0]);
+            } else if (interiorLatexPaintDetail.packaging && interiorLatexPaintDetail.packaging.length > 0) {
+                setSelectedSize(interiorLatexPaintDetail.packaging[0]);
             }
-        } else if (waterproofingSealerDetail.packaging && waterproofingSealerDetail.packaging.length > 0) {
-            setSelectedSize(waterproofingSealerDetail.packaging[0]);
+        } else if (interiorLatexPaintDetail.packaging && interiorLatexPaintDetail.packaging.length > 0) {
+            setSelectedSize(interiorLatexPaintDetail.packaging[0]);
         }
 
-        if (Array.isArray(waterproofingSealerDetail.images) && waterproofingSealerDetail.images.length > 0) {
-            setSelectedImage(waterproofingSealerDetail.images[0]);
+        if (Array.isArray(interiorLatexPaintDetail.images) && interiorLatexPaintDetail.images.length > 0) {
+            setSelectedImage(interiorLatexPaintDetail.images[0]);
             setSelectedImageIndex(0);
         } else {
-            setSelectedImage(waterproofingSealerDetail.image);
+            setSelectedImage(interiorLatexPaintDetail.image);
             setSelectedImageIndex(0);
         }
-        document.title = waterproofingSealerDetail.name;
+        document.title = interiorLatexPaintDetail.name;
         setLoading(false);
     }, []);
 
@@ -901,7 +895,7 @@ const WaterproofingSealer = () => {
 
                 {/* Product Details Section */}
                 <motion.div
-                    className="mt-20"
+                    className="mt-32"
                     variants={itemVariants}
                 >
                     <div className="flex flex-col gap-8">
@@ -910,12 +904,12 @@ const WaterproofingSealer = () => {
                       </div>
                       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                         <div className="lg:w-1/2 w-full">
-                          <p className="text-lg md:text-xl font-semibold text-[#301A44] leading-relaxed">
+                          <p className="text-lg md:text-xl font-semibold text-[#301A44] leading-snug">
                             {product.details || product.description}
                           </p>
                         </div>
                         <div className="lg:w-1/2 w-full">
-                          <ul className="list-disc pl-6 space-y-2 text-base text-[#493657] font-medium">
+                          <ul className="list-disc pl-6 space-y-3 text-base text-[#493657] font-medium">
                             {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
                               product.advantages.map((adv, idx) => (
                                 <li key={idx}>{adv}</li>
@@ -936,7 +930,7 @@ const WaterproofingSealer = () => {
 
                 {/* Specifications Section */}
                 <div className="mt-16 mb-12">
-                  <h2 className="text-5xl font-bold text-[#493657] mb-8">Specifications</h2>
+                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                     <div>
                       <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
@@ -973,7 +967,7 @@ const WaterproofingSealer = () => {
 
                 {/* Technical Specifications */}
                 <div className="mb-20 mt-16">
-                  <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
+                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     {product.technicalSpecs?.product_code && (
                       <div>
@@ -1069,7 +1063,7 @@ const WaterproofingSealer = () => {
                   <>
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
                     <div className="mb-20 mt-16">
-                      <h2 className="text-5xl font-bold text-[#493657] mb-8">Safety Information</h2>
+                      <h2 className="text-3xl font-bold text-[#493657] mb-8">Safety Information</h2>
 
                       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
                         <div className="flex items-start">
@@ -1159,7 +1153,7 @@ const WaterproofingSealer = () => {
                 {/* Download Documents */}
                 <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-8" />
                 <div className="mb-20 mt-16">
-                  <h2 className="text-5xl font-bold text-[#493657] mb-8">Download Documents</h2>
+                  <h2 className="text-3xl font-bold text-[#493657] mb-8">Download Documents</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* TDS Document */}
                     <div className="bg-white rounded-xl border-2 border-[#493657]/20 p-6 hover:border-[#F0C85A] hover:shadow-lg transition-all duration-300">
@@ -1172,7 +1166,7 @@ const WaterproofingSealer = () => {
                           <p className="text-sm text-[#493657]/60">Product specifications and application details</p>
                         </div>
                         <a
-                          href="/Assets/docs/waterproofing-sealer-tds.pdf"
+                          href="/Assets/docs/interior-latex-paint-tds.pdf"
                           download
                           className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
                         >
@@ -1193,7 +1187,7 @@ const WaterproofingSealer = () => {
                           <p className="text-sm text-[#493657]/60">Health and safety information</p>
                         </div>
                         <a
-                          href="/Assets/docs/waterproofing-sealer-sds.pdf"
+                          href="/Assets/docs/interior-latex-paint-sds.pdf"
                           download
                           className="bg-[#493657] text-white px-4 py-2 rounded-lg hover:bg-[#301A44] transition-colors duration-300 flex items-center gap-2 flex-shrink-0"
                         >
@@ -1217,40 +1211,40 @@ const WaterproofingSealer = () => {
                         <h2 className="relative text-3xl font-bold text-[#493657] mb-10 text-center">Features</h2>
 
                         <div className="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                            {/* Feature 1: Waterproof Barrier */}
+                            {/* Feature 1: High-Pigment Colour */}
                             <div className="group bg-white/70 backdrop-blur-md rounded-2xl border border-[#493657]/20 p-6 hover:shadow-xl hover:border-[#F0C85A] transition-all duration-300">
                                 <div className="w-14 h-14 bg-gradient-to-br from-[#F0C85A] to-[#F0C85A]/70 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <FiDroplet className="w-7 h-7 text-white" />
+                                    <FiStar className="w-7 h-7 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-[#493657] mb-2">Waterproof Barrier</h3>
-                                <p className="text-sm text-[#493657]/70 leading-relaxed">Locks out moisture to prevent water damage</p>
+                                <h3 className="text-lg font-bold text-[#493657] mb-2">High-Pigment Colour</h3>
+                                <p className="text-sm text-[#493657]/70 leading-relaxed">Rich, vibrant colors that stay true for years</p>
                             </div>
 
-                            {/* Feature 2: Eco-Safe Formula */}
+                            {/* Feature 2: Superior Coverage */}
                             <div className="group bg-white/70 backdrop-blur-md rounded-2xl border border-[#493657]/20 p-6 hover:shadow-xl hover:border-[#F0C85A] transition-all duration-300">
                                 <div className="w-14 h-14 bg-gradient-to-br from-[#493657] to-[#493657]/70 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <FiShield className="w-7 h-7 text-white" />
+                                    <FiLayers className="w-7 h-7 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-[#493657] mb-2">Eco-Safe Formula</h3>
-                                <p className="text-sm text-[#493657]/70 leading-relaxed">Non-toxic, safe for all environments</p>
+                                <h3 className="text-lg font-bold text-[#493657] mb-2">Superior Coverage</h3>
+                                <p className="text-sm text-[#493657]/70 leading-relaxed">One coat coverage on most surfaces</p>
                             </div>
 
-                            {/* Feature 3: Easy Application */}
+                            {/* Feature 3: Scrub Resistant */}
                             <div className="group bg-white/70 backdrop-blur-md rounded-2xl border border-[#493657]/20 p-6 hover:shadow-xl hover:border-[#F0C85A] transition-all duration-300">
                                 <div className="w-14 h-14 bg-gradient-to-br from-[#7EC488] to-[#7EC488]/70 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                                     <FiCheckCircle className="w-7 h-7 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-[#493657] mb-2">Easy Application</h3>
-                                <p className="text-sm text-[#493657]/70 leading-relaxed">Smooth consistency for hassle-free use</p>
+                                <h3 className="text-lg font-bold text-[#493657] mb-2">Scrub Resistant</h3>
+                                <p className="text-sm text-[#493657]/70 leading-relaxed">Easy to clean without damaging finish</p>
                             </div>
 
-                            {/* Feature 4: Long-Lasting Shield */}
+                            {/* Feature 4: Ultra-Low VOC */}
                             <div className="group bg-white/70 backdrop-blur-md rounded-2xl border border-[#493657]/20 p-6 hover:shadow-xl hover:border-[#F0C85A] transition-all duration-300">
                                 <div className="w-14 h-14 bg-gradient-to-br from-[#8DD4E8] to-[#8DD4E8]/70 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <FiLayers className="w-7 h-7 text-white" />
+                                    <FiWind className="w-7 h-7 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-[#493657] mb-2">Long-Lasting Shield</h3>
-                                <p className="text-sm text-[#493657]/70 leading-relaxed">Proven durability against weather changes</p>
+                                <h3 className="text-lg font-bold text-[#493657] mb-2">Ultra-Low VOC</h3>
+                                <p className="text-sm text-[#493657]/70 leading-relaxed">Safe for family and environment</p>
                             </div>
                         </div>
                     </div>
@@ -1267,7 +1261,7 @@ const WaterproofingSealer = () => {
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
                             <div>
                                 <h2 className="text-3xl font-bold text-[#493657]">You might also like</h2>
-                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Pair your waterproofing with interior and exterior paint for complete home protection.</p>
+                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Pair your interior makeover with exterior protection and multi-surface sealing.</p>
                             </div>
                             <div className="flex items-center gap-2 text-xs font-medium text-[#493657]/60 uppercase tracking-[0.2em]">
                                 <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />
@@ -1276,56 +1270,14 @@ const WaterproofingSealer = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Interior Latex Paint Card */}
-                            <Link to="/product/Interior-Latex-Paint" className="group h-full">
+                            {/* Exterior Latex Paint Card */}
+                            <Link to="/product/Exterior-Latex-Paint" className="group h-full">
                                 <div className="relative h-full rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
 
                                     <div className="relative pt-8 px-6 pb-4">
                                         <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
                                             <FiStar className="w-4 h-4" />
-                                            Interior elegance
-                                        </span>
-                                        <div className="mt-6">
-                                            <img
-                                                src="/Assets/Nova/1-main.png"
-                                                alt="Interior Latex Paint"
-                                                className="w-full h-56 object-contain drop-shadow-lg"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="px-6 pb-6">
-                                        <div className="flex items-center justify-between mb-3">
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiHeart className="w-5 h-5" />
-                                                Favourite
-                                            </button>
-                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
-                                                <FiClipboard className="w-5 h-5" />
-                                                Compare
-                                            </button>
-                                        </div>
-                                        <h3 className="text-xl font-semibold text-[#493657] mb-2">Interior Latex Paint</h3>
-                                        <p className="text-sm text-[#493657]/70 leading-relaxed mb-4">Ultra smooth, low-odour finish that brings walls to life with long-lasting colour.</p>
-                                        <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
-                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                                            <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
-                                            <span className="text-base line-through text-gray-400">₹850</span>
-                                            <span className="text-2xl font-bold text-[#493657]">₹700</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Exterior Latex Paint Card */}
-                            <Link to="/product/Exterior-Latex-Paint" className="group h-full">
-                                <div className="relative h-full rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
-                                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
-
-                                    <div className="relative pt-8 px-6 pb-4">
-                                        <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                                            <FiShield className="w-4 h-4" />
                                             Climate ready
                                         </span>
                                         <div className="mt-6">
@@ -1350,6 +1302,48 @@ const WaterproofingSealer = () => {
                                         </div>
                                         <h3 className="text-xl font-semibold text-[#493657] mb-2">Exterior Latex Paint</h3>
                                         <p className="text-sm text-[#493657]/70 leading-relaxed mb-4">High-performance exterior emulsion designed for maximum UV and rain defence.</p>
+                                        <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
+                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                            <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
+                                            <span className="text-base line-through text-gray-400">₹850</span>
+                                            <span className="text-2xl font-bold text-[#493657]">₹700</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+
+                            {/* Waterproofing Sealer Card */}
+                            <Link to="/product/waterproofing-sealer" className="group h-full">
+                                <div className="relative h-full rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
+                                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
+
+                                    <div className="relative pt-8 px-6 pb-4">
+                                        <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                                            <FiShield className="w-4 h-4" />
+                                            Surface guard
+                                        </span>
+                                        <div className="mt-6">
+                                            <img
+                                                src="/Assets/Defense/NoBg.png"
+                                                alt="Waterproofing Sealer"
+                                                className="w-full h-56 object-contain drop-shadow-lg"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="px-6 pb-6">
+                                        <div className="flex items-center justify-between mb-3">
+                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
+                                                <FiHeart className="w-5 h-5" />
+                                                Favourite
+                                            </button>
+                                            <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium">
+                                                <FiClipboard className="w-5 h-5" />
+                                                Compare
+                                            </button>
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-[#493657] mb-2">Waterproofing Sealer</h3>
+                                        <p className="text-sm text-[#493657]/70 leading-relaxed mb-4">Flexible, breathable membrane that keeps moisture out on every surface.</p>
                                         <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
                                         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                                             <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
@@ -1385,4 +1379,4 @@ const WaterproofingSealer = () => {
     );
 };
 
-export default WaterproofingSealer;
+export default InteriorLatexPaint;
