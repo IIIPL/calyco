@@ -29,6 +29,10 @@ import { Interior } from './pages/Interior'
 import WaterproofingSealer from './pages/WaterproofingSealer'
 import InteriorLatexPaint from './pages/InteriorLatexPaint'
 import ExteriorLatexPaint from './pages/ExteriorLatexPaint'
+import PremiumInteriorEmulsion from './pages/PremiumInteriorEmulsion'
+import LuxuryInteriorEmulsion from './pages/LuxuryInteriorEmulsion'
+import PremiumExteriorEmulsion from './pages/PremiumExteriorEmulsion'
+import LuxuryExteriorEmulsion from './pages/LuxuryExteriorEmulsion'
 import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
@@ -134,6 +138,17 @@ function App() {
               <Route path='/visualizer' element={<VisualizerPage/>}/>
               <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
+              {/* NEW PRODUCTS - Premium & Luxury Emulsions */}
+              <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion/>}/>
+              <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />}/>
+              <Route path='/product/Luxury-Interior-Emulsion' element={<LuxuryInteriorEmulsion/>}/>
+              <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+              <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion/>}/>
+              <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />}/>
+              <Route path='/product/Luxury-Exterior-Emulsion' element={<LuxuryExteriorEmulsion/>}/>
+              <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+
+              {/* OLD PRODUCTS - Keep for backward compatibility */}
               <Route path='/product/Interior-Latex-Paint' element={<InteriorLatexPaint/>}/>
               <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
               <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
