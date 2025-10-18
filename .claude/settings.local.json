@@ -22,8 +22,7 @@
       "Bash(git filter-branch:*)",
       "Bash(git rm:*)",
       "Bash(npm uninstall:*)",
-      "Bash(git revert:*)",
-      "Bash(rm nul)"
+      "Bash(git revert:*)"
     ],
     "deny": [],
     "ask": []
