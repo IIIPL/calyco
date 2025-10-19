@@ -3,7 +3,7 @@
  * Total Colors: 176
  * Color Families: 12
  *
- * Generated on: 2025-10-16
+ * Generated on: 2025-10-19
  * Source: data\calyco_colors_150.csv
  *
  * NOTE: File is auto-generated. Run `node scripts/generate-calyco-colors.mjs` after updating CSV.
@@ -127,8 +127,8 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 9010",
-        "ralCode": "RAL 9010",
+        "code": "RAL 9011",
+        "ralCode": "RAL 9011",
         "name": "Monsoon White",
         "calycoName": "Monsoon White",
         "hex": "#F7F4EF",
@@ -153,7 +153,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "whites",
-          "ral 9010",
+          "ral 9011",
           "monsoon white",
           "neutral",
           "signature",
@@ -236,59 +236,57 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 9001",
-        "ralCode": "RAL 9001",
-        "name": "Lotus Cream",
-        "calycoName": "Lotus Cream",
+        "code": "RAL 1004",
+        "ralCode": "RAL 1004",
+        "name": "Jasmine White",
+        "calycoName": "Jasmine White",
         "hex": "#F5E8DC",
         "hexCode": "#F5E8DC",
         "colorFamily": "Whites",
         "tone": "Warm",
         "layer": "Signature",
-        "sheen": "Matte/Satin",
+        "sheen": "Satin",
         "sheenOptions": [
-          "Matte",
           "Satin"
         ],
         "collection": "Heritage Collection",
-        "interiorUse": "Meditation Rooms, Spas",
-        "exteriorUse": "Wellness Centers",
+        "interiorUse": "Master Bedrooms, Lounges",
+        "exteriorUse": "Boutique Properties",
         "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Meditation Rooms, Spas | Exterior: Wellness Centers",
-        "mood": "Spiritual, Serene, Sacred",
-        "lightReflectance": "80-85%",
-        "undertone": "Cream",
+        "interiorExteriorDetails": "Interior: Master Bedrooms, Lounges | Exterior: Boutique Properties",
+        "mood": "Fragrant, Luxurious, Indian",
+        "lightReflectance": "70-75%",
+        "undertone": "Yellow",
         "popularity": "Low",
         "contractor": false,
         "designer": true,
         "tags": [
           "whites",
-          "ral 9001",
-          "lotus cream",
+          "ral 1004",
+          "jasmine white",
           "warm",
           "signature",
-          "cream",
+          "yellow",
           "heritage collection",
-          "spiritual",
-          "serene",
-          "sacred"
+          "fragrant",
+          "luxurious",
+          "indian"
         ],
         "suitability": "Interior & Exterior",
-        "description": "Spiritual, Serene, Sacred",
-        "rooms": "Meditation Rooms, Spas",
+        "description": "Fragrant, Luxurious, Indian",
+        "rooms": "Master Bedrooms, Lounges",
         "colorCollection": "Heritage Collection",
         "colorTemperature": "Warm",
         "temperature": "Warm",
-        "tonality": "Cream",
+        "tonality": "Yellow",
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Signature",
           "sheenOptions": [
-            "Matte",
             "Satin"
           ],
           "popularity": "Low",
-          "lightReflectance": "80-85%"
+          "lightReflectance": "70-75%"
         }
       },
       {
@@ -454,60 +452,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 1013",
-        "ralCode": "RAL 1013",
-        "name": "Jasmine White",
-        "calycoName": "Jasmine White",
-        "hex": "#EAE3CD",
-        "hexCode": "#EAE3CD",
-        "colorFamily": "Whites",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Master Bedrooms, Lounges",
-        "exteriorUse": "Boutique Properties",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Master Bedrooms, Lounges | Exterior: Boutique Properties",
-        "mood": "Fragrant, Luxurious, Indian",
-        "lightReflectance": "70-75%",
-        "undertone": "Yellow",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "whites",
-          "ral 1013",
-          "jasmine white",
-          "warm",
-          "signature",
-          "yellow",
-          "heritage collection",
-          "fragrant",
-          "luxurious",
-          "indian"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Fragrant, Luxurious, Indian",
-        "rooms": "Master Bedrooms, Lounges",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Yellow",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "70-75%"
-        }
-      },
-      {
         "code": "RAL 1015",
         "ralCode": "RAL 1015",
         "name": "Ivory",
@@ -560,6 +504,62 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "70-75%"
+        }
+      },
+      {
+        "code": "RAL 1012",
+        "ralCode": "RAL 1012",
+        "name": "Lotus Cream",
+        "calycoName": "Lotus Cream",
+        "hex": "#E5D9C8",
+        "hexCode": "#E5D9C8",
+        "colorFamily": "Whites",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Meditation Rooms, Spas",
+        "exteriorUse": "Wellness Centers",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Meditation Rooms, Spas | Exterior: Wellness Centers",
+        "mood": "Spiritual, Serene, Sacred",
+        "lightReflectance": "80-85%",
+        "undertone": "Cream",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "whites",
+          "ral 1012",
+          "lotus cream",
+          "warm",
+          "signature",
+          "cream",
+          "heritage collection",
+          "spiritual",
+          "serene",
+          "sacred"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Spiritual, Serene, Sacred",
+        "rooms": "Meditation Rooms, Spas",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Cream",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "80-85%"
         }
       },
       {
@@ -902,11 +902,11 @@ export const calycoColors = [
           "Satin"
         ],
         "collection": "Contemporary Neutrals",
-        "interiorUse": "Feature Walls, Accents",
-        "exteriorUse": "Architectural Details",
+        "interiorUse": "Industrial Lofts",
+        "exteriorUse": "Urban Buildings",
         "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Accents | Exterior: Architectural Details",
-        "mood": "Luxe, Industrial, Bold",
+        "interiorExteriorDetails": "Interior: Industrial Lofts | Exterior: Urban Buildings",
+        "mood": "Industrial, Modern, Urban",
         "lightReflectance": "40-45%",
         "undertone": "Neutral",
         "popularity": "Medium",
@@ -920,13 +920,13 @@ export const calycoColors = [
           "editorial",
           "neutral",
           "contemporary neutrals",
-          "luxe",
           "industrial",
-          "bold"
+          "modern",
+          "urban"
         ],
         "suitability": "Interior & Exterior",
-        "description": "Luxe, Industrial, Bold",
-        "rooms": "Feature Walls, Accents",
+        "description": "Industrial, Modern, Urban",
+        "rooms": "Industrial Lofts",
         "colorCollection": "Contemporary Neutrals",
         "colorTemperature": "Cool",
         "temperature": "Cool",
@@ -1821,8 +1821,8 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 7016",
-        "ralCode": "RAL 7016",
+        "code": "RAL 7015",
+        "ralCode": "RAL 7015",
         "name": "Modern Charcoal",
         "calycoName": "Modern Charcoal",
         "hex": "#434750",
@@ -1848,7 +1848,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "grays",
-          "ral 7016",
+          "ral 7015",
           "modern charcoal",
           "cool",
           "signature",
@@ -1992,6 +1992,59 @@ export const calycoColors = [
     "colorCount": 23,
     "colors": [
       {
+        "code": "RAL 1006",
+        "ralCode": "RAL 1006",
+        "name": "Turmeric Earth",
+        "calycoName": "Turmeric Earth",
+        "hex": "#E49E00",
+        "hexCode": "#E49E00",
+        "colorFamily": "Earth Tones",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Dining Rooms, Traditional Spaces",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Dining Rooms, Traditional Spaces | Exterior: Cultural Buildings",
+        "mood": "Vibrant, Cultural, Warm",
+        "lightReflectance": "35-40%",
+        "undertone": "Yellow",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "earth tones",
+          "ral 1006",
+          "turmeric earth",
+          "warm",
+          "signature",
+          "yellow",
+          "heritage collection",
+          "vibrant",
+          "cultural"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Vibrant, Cultural, Warm",
+        "rooms": "Dining Rooms, Traditional Spaces",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Yellow",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "35-40%"
+        }
+      },
+      {
         "code": "RAL 1027",
         "ralCode": "RAL 1027",
         "name": "Curry Gold",
@@ -2038,59 +2091,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Editorial",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "35-40%"
-        }
-      },
-      {
-        "code": "RAL 1027",
-        "ralCode": "RAL 1027",
-        "name": "Turmeric Earth",
-        "calycoName": "Turmeric Earth",
-        "hex": "#A77F0E",
-        "hexCode": "#A77F0E",
-        "colorFamily": "Earth Tones",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Dining Rooms, Traditional Spaces",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Dining Rooms, Traditional Spaces | Exterior: Cultural Buildings",
-        "mood": "Vibrant, Cultural, Warm",
-        "lightReflectance": "35-40%",
-        "undertone": "Yellow",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "earth tones",
-          "ral 1027",
-          "turmeric earth",
-          "warm",
-          "signature",
-          "yellow",
-          "heritage collection",
-          "vibrant",
-          "cultural"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Vibrant, Cultural, Warm",
-        "rooms": "Dining Rooms, Traditional Spaces",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Yellow",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Satin"
           ],
@@ -2308,59 +2308,6 @@ export const calycoColors = [
             "Matte"
           ],
           "popularity": "High",
-          "lightReflectance": "30-35%"
-        }
-      },
-      {
-        "code": "RAL 8023",
-        "ralCode": "RAL 8023",
-        "name": "Terracotta Heritage",
-        "calycoName": "Terracotta Heritage",
-        "hex": "#A45729",
-        "hexCode": "#A45729",
-        "colorFamily": "Earth Tones",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Traditional Dining, Kitchens",
-        "exteriorUse": "Indian Architecture",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Traditional Dining, Kitchens | Exterior: Indian Architecture",
-        "mood": "Traditional, Warm, Cultural",
-        "lightReflectance": "30-35%",
-        "undertone": "Orange",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "earth tones",
-          "ral 8023",
-          "terracotta heritage",
-          "warm",
-          "signature",
-          "orange",
-          "heritage collection",
-          "traditional",
-          "cultural"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Traditional, Warm, Cultural",
-        "rooms": "Traditional Dining, Kitchens",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Orange",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Medium",
           "lightReflectance": "30-35%"
         }
       },
@@ -2901,60 +2848,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 8003",
-        "ralCode": "RAL 8003",
-        "name": "Rajasthani Clay",
-        "calycoName": "Rajasthani Clay",
-        "hex": "#6C3B2A",
-        "hexCode": "#6C3B2A",
-        "colorFamily": "Earth Tones",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Traditional Spaces",
-        "exteriorUse": "Heritage Properties",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Traditional Spaces | Exterior: Heritage Properties",
-        "mood": "Cultural, Traditional, Authentic",
-        "lightReflectance": "18-22%",
-        "undertone": "Red",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "earth tones",
-          "ral 8003",
-          "rajasthani clay",
-          "warm",
-          "signature",
-          "red",
-          "heritage collection",
-          "cultural",
-          "traditional",
-          "authentic"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Cultural, Traditional, Authentic",
-        "rooms": "Feature Walls, Traditional Spaces",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Red",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "18-22%"
-        }
-      },
-      {
         "code": "RAL 8015",
         "ralCode": "RAL 8015",
         "name": "Chestnut",
@@ -3060,6 +2953,60 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "15-20%"
+        }
+      },
+      {
+        "code": "RAL 8028",
+        "ralCode": "RAL 8028",
+        "name": "Rajasthani Clay",
+        "calycoName": "Rajasthani Clay",
+        "hex": "#4E3B31",
+        "hexCode": "#4E3B31",
+        "colorFamily": "Earth Tones",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Traditional Spaces",
+        "exteriorUse": "Heritage Properties",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Traditional Spaces | Exterior: Heritage Properties",
+        "mood": "Cultural, Traditional, Authentic",
+        "lightReflectance": "18-22%",
+        "undertone": "Red",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "earth tones",
+          "ral 8028",
+          "rajasthani clay",
+          "warm",
+          "signature",
+          "red",
+          "heritage collection",
+          "cultural",
+          "traditional",
+          "authentic"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Cultural, Traditional, Authentic",
+        "rooms": "Feature Walls, Traditional Spaces",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Red",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "18-22%"
         }
       },
       {
@@ -3225,6 +3172,59 @@ export const calycoColors = [
           "popularity": "Low",
           "lightReflectance": "12-17%"
         }
+      },
+      {
+        "code": "RAL 8014",
+        "ralCode": "RAL 8014",
+        "name": "Terracotta Heritage",
+        "calycoName": "Terracotta Heritage",
+        "hex": "#382C1E",
+        "hexCode": "#382C1E",
+        "colorFamily": "Earth Tones",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Traditional Dining, Kitchens",
+        "exteriorUse": "Indian Architecture",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Traditional Dining, Kitchens | Exterior: Indian Architecture",
+        "mood": "Traditional, Warm, Cultural",
+        "lightReflectance": "30-35%",
+        "undertone": "Orange",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "earth tones",
+          "ral 8014",
+          "terracotta heritage",
+          "warm",
+          "signature",
+          "orange",
+          "heritage collection",
+          "traditional",
+          "cultural"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Traditional, Warm, Cultural",
+        "rooms": "Traditional Dining, Kitchens",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Orange",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "30-35%"
+        }
       }
     ]
   },
@@ -3344,60 +3344,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 5012",
-        "ralCode": "RAL 5012",
-        "name": "Peacock Blue",
-        "calycoName": "Peacock Blue",
-        "hex": "#3B83BD",
-        "hexCode": "#3B83BD",
-        "colorFamily": "Blues",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Dining",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Dining | Exterior: Cultural Buildings",
-        "mood": "Vibrant, Regal, Indian",
-        "lightReflectance": "30-35%",
-        "undertone": "Blue",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blues",
-          "ral 5012",
-          "peacock blue",
-          "cool",
-          "signature",
-          "blue",
-          "heritage collection",
-          "vibrant",
-          "regal",
-          "indian"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Vibrant, Regal, Indian",
-        "rooms": "Feature Walls, Dining",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "30-35%"
-        }
-      },
-      {
         "code": "RAL 5018",
         "ralCode": "RAL 5018",
         "name": "Aqua Blue",
@@ -3449,172 +3395,6 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "28-33%"
-        }
-      },
-      {
-        "code": "RAL 5014",
-        "ralCode": "RAL 5014",
-        "name": "Dusty Blue",
-        "calycoName": "Dusty Blue",
-        "hex": "#606E8C",
-        "hexCode": "#606E8C",
-        "colorFamily": "Blues",
-        "tone": "Cool",
-        "layer": "Editorial",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Contemporary Blues",
-        "interiorUse": "Living Rooms, Bedrooms",
-        "exteriorUse": "Boutique Hotels",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Living Rooms, Bedrooms | Exterior: Boutique Hotels",
-        "mood": "Sophisticated, Muted, Elegant",
-        "lightReflectance": "25-30%",
-        "undertone": "Blue",
-        "popularity": "High",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blues",
-          "ral 5014",
-          "dusty blue",
-          "cool",
-          "editorial",
-          "blue",
-          "contemporary blues",
-          "sophisticated",
-          "muted",
-          "elegant"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Sophisticated, Muted, Elegant",
-        "rooms": "Living Rooms, Bedrooms",
-        "colorCollection": "Contemporary Blues",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Editorial",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "High",
-          "lightReflectance": "25-30%"
-        }
-      },
-      {
-        "code": "RAL 5014",
-        "ralCode": "RAL 5014",
-        "name": "Monsoon Sky",
-        "calycoName": "Monsoon Sky",
-        "hex": "#606E8C",
-        "hexCode": "#606E8C",
-        "colorFamily": "Blues",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Living Spaces, Bedrooms",
-        "exteriorUse": "Residential Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Living Spaces, Bedrooms | Exterior: Residential Buildings",
-        "mood": "Cultural, Serene, Indian",
-        "lightReflectance": "25-30%",
-        "undertone": "Blue",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blues",
-          "ral 5014",
-          "monsoon sky",
-          "cool",
-          "signature",
-          "blue",
-          "heritage collection",
-          "cultural",
-          "serene",
-          "indian"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Cultural, Serene, Indian",
-        "rooms": "Living Spaces, Bedrooms",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "25-30%"
-        }
-      },
-      {
-        "code": "RAL 5023",
-        "ralCode": "RAL 5023",
-        "name": "Distant Blue",
-        "calycoName": "Distant Blue",
-        "hex": "#49678D",
-        "hexCode": "#49678D",
-        "colorFamily": "Blues",
-        "tone": "Cool",
-        "layer": "Editorial",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Contemporary Blues",
-        "interiorUse": "Studies, Home Offices",
-        "exteriorUse": "Modern Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Studies, Home Offices | Exterior: Modern Buildings",
-        "mood": "Contemplative, Refined, Serene",
-        "lightReflectance": "20-25%",
-        "undertone": "Blue",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blues",
-          "ral 5023",
-          "distant blue",
-          "cool",
-          "editorial",
-          "blue",
-          "contemporary blues",
-          "contemplative",
-          "refined",
-          "serene"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Contemplative, Refined, Serene",
-        "rooms": "Studies, Home Offices",
-        "colorCollection": "Contemporary Blues",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Editorial",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "20-25%"
         }
       },
       {
@@ -3778,62 +3558,6 @@ export const calycoColors = [
             "Satin"
           ],
           "popularity": "High",
-          "lightReflectance": "22-27%"
-        }
-      },
-      {
-        "code": "RAL 5021",
-        "ralCode": "RAL 5021",
-        "name": "Arabian Sea",
-        "calycoName": "Arabian Sea",
-        "hex": "#256D7B",
-        "hexCode": "#256D7B",
-        "colorFamily": "Blues",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Bathrooms",
-        "exteriorUse": "Coastal Properties",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Bathrooms | Exterior: Coastal Properties",
-        "mood": "Maritime, Cultural, Bold",
-        "lightReflectance": "22-27%",
-        "undertone": "Teal",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blues",
-          "ral 5021",
-          "arabian sea",
-          "cool",
-          "signature",
-          "teal",
-          "heritage collection",
-          "maritime",
-          "cultural",
-          "bold"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Maritime, Cultural, Bold",
-        "rooms": "Feature Walls, Bathrooms",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Teal",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
           "lightReflectance": "22-27%"
         }
       },
@@ -4004,6 +3728,116 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 5009",
+        "ralCode": "RAL 5009",
+        "name": "Arabian Sea",
+        "calycoName": "Arabian Sea",
+        "hex": "#025669",
+        "hexCode": "#025669",
+        "colorFamily": "Blues",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Bathrooms",
+        "exteriorUse": "Coastal Properties",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Bathrooms | Exterior: Coastal Properties",
+        "mood": "Maritime, Cultural, Bold",
+        "lightReflectance": "22-27%",
+        "undertone": "Teal",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blues",
+          "ral 5009",
+          "arabian sea",
+          "cool",
+          "signature",
+          "teal",
+          "heritage collection",
+          "maritime",
+          "cultural",
+          "bold"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Maritime, Cultural, Bold",
+        "rooms": "Feature Walls, Bathrooms",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Teal",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "22-27%"
+        }
+      },
+      {
+        "code": "RAL 5017",
+        "ralCode": "RAL 5017",
+        "name": "Peacock Blue",
+        "calycoName": "Peacock Blue",
+        "hex": "#063971",
+        "hexCode": "#063971",
+        "colorFamily": "Blues",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Dining",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Dining | Exterior: Cultural Buildings",
+        "mood": "Vibrant, Regal, Indian",
+        "lightReflectance": "30-35%",
+        "undertone": "Blue",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blues",
+          "ral 5017",
+          "peacock blue",
+          "cool",
+          "signature",
+          "blue",
+          "heritage collection",
+          "vibrant",
+          "regal",
+          "indian"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Vibrant, Regal, Indian",
+        "rooms": "Feature Walls, Dining",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "30-35%"
+        }
+      },
+      {
         "code": "RAL 5020",
         "ralCode": "RAL 5020",
         "name": "Ocean Blue",
@@ -4055,6 +3889,62 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "12-17%"
+        }
+      },
+      {
+        "code": "RAL 5011",
+        "ralCode": "RAL 5011",
+        "name": "Monsoon Sky",
+        "calycoName": "Monsoon Sky",
+        "hex": "#1F2A44",
+        "hexCode": "#1F2A44",
+        "colorFamily": "Blues",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Living Spaces, Bedrooms",
+        "exteriorUse": "Residential Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Living Spaces, Bedrooms | Exterior: Residential Buildings",
+        "mood": "Cultural, Serene, Indian",
+        "lightReflectance": "25-30%",
+        "undertone": "Blue",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blues",
+          "ral 5011",
+          "monsoon sky",
+          "cool",
+          "signature",
+          "blue",
+          "heritage collection",
+          "cultural",
+          "serene",
+          "indian"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Cultural, Serene, Indian",
+        "rooms": "Living Spaces, Bedrooms",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "25-30%"
         }
       },
       {
@@ -4114,6 +4004,60 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 5008",
+        "ralCode": "RAL 5008",
+        "name": "Distant Blue",
+        "calycoName": "Distant Blue",
+        "hex": "#26252D",
+        "hexCode": "#26252D",
+        "colorFamily": "Blues",
+        "tone": "Cool",
+        "layer": "Editorial",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Contemporary Blues",
+        "interiorUse": "Studies, Home Offices",
+        "exteriorUse": "Modern Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Studies, Home Offices | Exterior: Modern Buildings",
+        "mood": "Contemplative, Refined, Serene",
+        "lightReflectance": "20-25%",
+        "undertone": "Blue",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blues",
+          "ral 5008",
+          "distant blue",
+          "cool",
+          "editorial",
+          "blue",
+          "contemporary blues",
+          "contemplative",
+          "refined",
+          "serene"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Contemplative, Refined, Serene",
+        "rooms": "Studies, Home Offices",
+        "colorCollection": "Contemporary Blues",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Editorial",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "20-25%"
+        }
+      },
+      {
         "code": "RAL 5010",
         "ralCode": "RAL 5010",
         "name": "Deep Navy",
@@ -4167,6 +4111,62 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "8-12%"
+        }
+      },
+      {
+        "code": "RAL 5013",
+        "ralCode": "RAL 5013",
+        "name": "Dusty Blue",
+        "calycoName": "Dusty Blue",
+        "hex": "#1E213D",
+        "hexCode": "#1E213D",
+        "colorFamily": "Blues",
+        "tone": "Cool",
+        "layer": "Editorial",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Contemporary Blues",
+        "interiorUse": "Living Rooms, Bedrooms",
+        "exteriorUse": "Boutique Hotels",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Living Rooms, Bedrooms | Exterior: Boutique Hotels",
+        "mood": "Sophisticated, Muted, Elegant",
+        "lightReflectance": "25-30%",
+        "undertone": "Blue",
+        "popularity": "High",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blues",
+          "ral 5013",
+          "dusty blue",
+          "cool",
+          "editorial",
+          "blue",
+          "contemporary blues",
+          "sophisticated",
+          "muted",
+          "elegant"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Sophisticated, Muted, Elegant",
+        "rooms": "Living Rooms, Bedrooms",
+        "colorCollection": "Contemporary Blues",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Editorial",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "High",
+          "lightReflectance": "25-30%"
         }
       }
     ]
@@ -4281,60 +4281,6 @@ export const calycoColors = [
             "Satin"
           ],
           "popularity": "High",
-          "lightReflectance": "52-57%"
-        }
-      },
-      {
-        "code": "RAL 6027",
-        "ralCode": "RAL 6027",
-        "name": "Ganges Mint",
-        "calycoName": "Ganges Mint",
-        "hex": "#84C3BE",
-        "hexCode": "#84C3BE",
-        "colorFamily": "Greens",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Bathrooms, Meditation Spaces",
-        "exteriorUse": "Wellness Centers",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Bathrooms, Meditation Spaces | Exterior: Wellness Centers",
-        "mood": "Serene, Sacred, Peaceful",
-        "lightReflectance": "52-57%",
-        "undertone": "Cyan",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "greens",
-          "ral 6027",
-          "ganges mint",
-          "cool",
-          "signature",
-          "cyan",
-          "heritage collection",
-          "serene",
-          "sacred",
-          "peaceful"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Serene, Sacred, Peaceful",
-        "rooms": "Bathrooms, Meditation Spaces",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Cyan",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Low",
           "lightReflectance": "52-57%"
         }
       },
@@ -4725,6 +4671,62 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 6037",
+        "ralCode": "RAL 6037",
+        "name": "Monsoon Leaf",
+        "calycoName": "Monsoon Leaf",
+        "hex": "#008F39",
+        "hexCode": "#008F39",
+        "colorFamily": "Greens",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Living Spaces, Dining",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Living Spaces, Dining | Exterior: Cultural Buildings",
+        "mood": "Lush, Vibrant, Indian",
+        "lightReflectance": "20-25%",
+        "undertone": "Green",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "greens",
+          "ral 6037",
+          "monsoon leaf",
+          "cool",
+          "signature",
+          "green",
+          "heritage collection",
+          "lush",
+          "vibrant",
+          "indian"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Lush, Vibrant, Indian",
+        "rooms": "Living Spaces, Dining",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Green",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "20-25%"
+        }
+      },
+      {
         "code": "RAL 6001",
         "ralCode": "RAL 6001",
         "name": "Emerald Green",
@@ -4772,62 +4774,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Foundation",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "20-25%"
-        }
-      },
-      {
-        "code": "RAL 6001",
-        "ralCode": "RAL 6001",
-        "name": "Monsoon Leaf",
-        "calycoName": "Monsoon Leaf",
-        "hex": "#287233",
-        "hexCode": "#287233",
-        "colorFamily": "Greens",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Living Spaces, Dining",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Living Spaces, Dining | Exterior: Cultural Buildings",
-        "mood": "Lush, Vibrant, Indian",
-        "lightReflectance": "20-25%",
-        "undertone": "Green",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "greens",
-          "ral 6001",
-          "monsoon leaf",
-          "cool",
-          "signature",
-          "green",
-          "heritage collection",
-          "lush",
-          "vibrant",
-          "indian"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Lush, Vibrant, Indian",
-        "rooms": "Living Spaces, Dining",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Green",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Matte",
             "Satin"
@@ -4945,60 +4891,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 6029",
-        "ralCode": "RAL 6029",
-        "name": "Kerala Palm",
-        "calycoName": "Kerala Palm",
-        "hex": "#20603D",
-        "hexCode": "#20603D",
-        "colorFamily": "Greens",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Traditional Spaces",
-        "exteriorUse": "Heritage Properties",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Traditional Spaces | Exterior: Heritage Properties",
-        "mood": "Tropical, Cultural, Rich",
-        "lightReflectance": "22-27%",
-        "undertone": "Green",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "greens",
-          "ral 6029",
-          "kerala palm",
-          "cool",
-          "signature",
-          "green",
-          "heritage collection",
-          "tropical",
-          "cultural",
-          "rich"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Tropical, Cultural, Rich",
-        "rooms": "Feature Walls, Traditional Spaces",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Green",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "22-27%"
-        }
-      },
-      {
         "code": "RAL 6028",
         "ralCode": "RAL 6028",
         "name": "Deep Pine",
@@ -5104,6 +4996,60 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "18-23%"
+        }
+      },
+      {
+        "code": "RAL 6035",
+        "ralCode": "RAL 6035",
+        "name": "Kerala Palm",
+        "calycoName": "Kerala Palm",
+        "hex": "#1C542D",
+        "hexCode": "#1C542D",
+        "colorFamily": "Greens",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Traditional Spaces",
+        "exteriorUse": "Heritage Properties",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Traditional Spaces | Exterior: Heritage Properties",
+        "mood": "Tropical, Cultural, Rich",
+        "lightReflectance": "22-27%",
+        "undertone": "Green",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "greens",
+          "ral 6035",
+          "kerala palm",
+          "cool",
+          "signature",
+          "green",
+          "heritage collection",
+          "tropical",
+          "cultural",
+          "rich"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Tropical, Cultural, Rich",
+        "rooms": "Feature Walls, Traditional Spaces",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Green",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "22-27%"
         }
       },
       {
@@ -5266,6 +5212,60 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "12-17%"
+        }
+      },
+      {
+        "code": "RAL 6036",
+        "ralCode": "RAL 6036",
+        "name": "Ganges Mint",
+        "calycoName": "Ganges Mint",
+        "hex": "#193737",
+        "hexCode": "#193737",
+        "colorFamily": "Greens",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Bathrooms, Meditation Spaces",
+        "exteriorUse": "Wellness Centers",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Bathrooms, Meditation Spaces | Exterior: Wellness Centers",
+        "mood": "Serene, Sacred, Peaceful",
+        "lightReflectance": "52-57%",
+        "undertone": "Cyan",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "greens",
+          "ral 6036",
+          "ganges mint",
+          "cool",
+          "signature",
+          "cyan",
+          "heritage collection",
+          "serene",
+          "sacred",
+          "peaceful"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Serene, Sacred, Peaceful",
+        "rooms": "Bathrooms, Meditation Spaces",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Cyan",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "52-57%"
         }
       }
     ]
@@ -5493,60 +5493,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 1017",
-        "ralCode": "RAL 1017",
-        "name": "Turmeric Gold",
-        "calycoName": "Turmeric Gold",
-        "hex": "#F5BD00",
-        "hexCode": "#F5BD00",
-        "colorFamily": "Yellows & Golds",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Dining Rooms, Traditional Spaces",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Dining Rooms, Traditional Spaces | Exterior: Cultural Buildings",
-        "mood": "Rich, Cultural, Spicy",
-        "lightReflectance": "73-78%",
-        "undertone": "Yellow",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "yellows & golds",
-          "ral 1017",
-          "turmeric gold",
-          "warm",
-          "signature",
-          "yellow",
-          "heritage collection",
-          "rich",
-          "cultural",
-          "spicy"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Rich, Cultural, Spicy",
-        "rooms": "Dining Rooms, Traditional Spaces",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Yellow",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "73-78%"
-        }
-      },
-      {
         "code": "RAL 1034",
         "ralCode": "RAL 1034",
         "name": "Pastel Yellow",
@@ -5600,6 +5546,60 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 1031",
+        "ralCode": "RAL 1031",
+        "name": "Golden Temple",
+        "calycoName": "Golden Temple",
+        "hex": "#E6A747",
+        "hexCode": "#E6A747",
+        "colorFamily": "Yellows & Golds",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Religious Spaces",
+        "exteriorUse": "Heritage Properties",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Religious Spaces | Exterior: Heritage Properties",
+        "mood": "Sacred, Golden, Magnificent",
+        "lightReflectance": "68-73%",
+        "undertone": "Gold",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "yellows & golds",
+          "ral 1031",
+          "golden temple",
+          "warm",
+          "signature",
+          "gold",
+          "heritage collection",
+          "sacred",
+          "golden",
+          "magnificent"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Sacred, Golden, Magnificent",
+        "rooms": "Feature Walls, Religious Spaces",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Gold",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "68-73%"
+        }
+      },
+      {
         "code": "RAL 1028",
         "ralCode": "RAL 1028",
         "name": "Melon Yellow",
@@ -5649,62 +5649,6 @@ export const calycoColors = [
             "Matte"
           ],
           "popularity": "Medium",
-          "lightReflectance": "72-77%"
-        }
-      },
-      {
-        "code": "RAL 1028",
-        "ralCode": "RAL 1028",
-        "name": "Marigold",
-        "calycoName": "Marigold",
-        "hex": "#F4A900",
-        "hexCode": "#F4A900",
-        "colorFamily": "Yellows & Golds",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Celebrations",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Celebrations | Exterior: Cultural Buildings",
-        "mood": "Vibrant, Festive, Indian",
-        "lightReflectance": "72-77%",
-        "undertone": "Orange",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "yellows & golds",
-          "ral 1028",
-          "marigold",
-          "warm",
-          "signature",
-          "orange",
-          "heritage collection",
-          "vibrant",
-          "festive",
-          "indian"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Vibrant, Festive, Indian",
-        "rooms": "Feature Walls, Celebrations",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Orange",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Low",
           "lightReflectance": "72-77%"
         }
       },
@@ -5980,12 +5924,68 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 1032",
-        "ralCode": "RAL 1032",
-        "name": "Golden Temple",
-        "calycoName": "Golden Temple",
-        "hex": "#D6AE01",
-        "hexCode": "#D6AE01",
+        "code": "RAL 1008",
+        "ralCode": "RAL 1008",
+        "name": "Marigold",
+        "calycoName": "Marigold",
+        "hex": "#E49E00",
+        "hexCode": "#E49E00",
+        "colorFamily": "Yellows & Golds",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Celebrations",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Celebrations | Exterior: Cultural Buildings",
+        "mood": "Vibrant, Festive, Indian",
+        "lightReflectance": "72-77%",
+        "undertone": "Orange",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "yellows & golds",
+          "ral 1008",
+          "marigold",
+          "warm",
+          "signature",
+          "orange",
+          "heritage collection",
+          "vibrant",
+          "festive",
+          "indian"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Vibrant, Festive, Indian",
+        "rooms": "Feature Walls, Celebrations",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Orange",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "72-77%"
+        }
+      },
+      {
+        "code": "RAL 1007",
+        "ralCode": "RAL 1007",
+        "name": "Turmeric Gold",
+        "calycoName": "Turmeric Gold",
+        "hex": "#DC9D00",
+        "hexCode": "#DC9D00",
         "colorFamily": "Yellows & Golds",
         "tone": "Warm",
         "layer": "Signature",
@@ -5994,43 +5994,43 @@ export const calycoColors = [
           "Satin"
         ],
         "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Religious Spaces",
-        "exteriorUse": "Heritage Properties",
+        "interiorUse": "Dining Rooms, Traditional Spaces",
+        "exteriorUse": "Cultural Buildings",
         "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Religious Spaces | Exterior: Heritage Properties",
-        "mood": "Sacred, Golden, Magnificent",
-        "lightReflectance": "68-73%",
-        "undertone": "Gold",
-        "popularity": "Low",
+        "interiorExteriorDetails": "Interior: Dining Rooms, Traditional Spaces | Exterior: Cultural Buildings",
+        "mood": "Rich, Cultural, Spicy",
+        "lightReflectance": "73-78%",
+        "undertone": "Yellow",
+        "popularity": "Medium",
         "contractor": false,
         "designer": true,
         "tags": [
           "yellows & golds",
-          "ral 1032",
-          "golden temple",
+          "ral 1007",
+          "turmeric gold",
           "warm",
           "signature",
-          "gold",
+          "yellow",
           "heritage collection",
-          "sacred",
-          "golden",
-          "magnificent"
+          "rich",
+          "cultural",
+          "spicy"
         ],
         "suitability": "Interior & Exterior",
-        "description": "Sacred, Golden, Magnificent",
-        "rooms": "Feature Walls, Religious Spaces",
+        "description": "Rich, Cultural, Spicy",
+        "rooms": "Dining Rooms, Traditional Spaces",
         "colorCollection": "Heritage Collection",
         "colorTemperature": "Warm",
         "temperature": "Warm",
-        "tonality": "Gold",
+        "tonality": "Yellow",
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Signature",
           "sheenOptions": [
             "Satin"
           ],
-          "popularity": "Low",
-          "lightReflectance": "68-73%"
+          "popularity": "Medium",
+          "lightReflectance": "73-78%"
         }
       },
       {
@@ -6149,60 +6149,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 3015",
-        "ralCode": "RAL 3015",
-        "name": "Lotus Pink",
-        "calycoName": "Lotus Pink",
-        "hex": "#EA899A",
-        "hexCode": "#EA899A",
-        "colorFamily": "Reds & Pinks",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Nurseries, Bedrooms",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Nurseries, Bedrooms | Exterior: Cultural Buildings",
-        "mood": "Graceful, Gentle, Cultural",
-        "lightReflectance": "60-65%",
-        "undertone": "Pink",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "reds & pinks",
-          "ral 3015",
-          "lotus pink",
-          "cool",
-          "signature",
-          "pink",
-          "heritage collection",
-          "graceful",
-          "gentle",
-          "cultural"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Graceful, Gentle, Cultural",
-        "rooms": "Nurseries, Bedrooms",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Pink",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "60-65%"
-        }
-      },
-      {
         "code": "RAL 3012",
         "ralCode": "RAL 3012",
         "name": "Beige Red",
@@ -6248,60 +6194,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Editorial",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "50-55%"
-        }
-      },
-      {
-        "code": "RAL 3012",
-        "ralCode": "RAL 3012",
-        "name": "Rajasthani Pink",
-        "calycoName": "Rajasthani Pink",
-        "hex": "#C1876B",
-        "hexCode": "#C1876B",
-        "colorFamily": "Reds & Pinks",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Bedrooms, Living Rooms",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Bedrooms, Living Rooms | Exterior: Cultural Buildings",
-        "mood": "Cultural, Earthy, Elegant",
-        "lightReflectance": "50-55%",
-        "undertone": "Terracotta",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "reds & pinks",
-          "ral 3012",
-          "rajasthani pink",
-          "warm",
-          "signature",
-          "terracotta",
-          "heritage collection",
-          "cultural",
-          "earthy",
-          "elegant"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Cultural, Earthy, Elegant",
-        "rooms": "Bedrooms, Living Rooms",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Terracotta",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Matte"
           ],
@@ -6583,62 +6475,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 3000",
-        "ralCode": "RAL 3000",
-        "name": "Vermillion Spice",
-        "calycoName": "Vermillion Spice",
-        "hex": "#AF2B1E",
-        "hexCode": "#AF2B1E",
-        "colorFamily": "Reds & Pinks",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Cultural",
-        "exteriorUse": "Heritage Properties",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Cultural | Exterior: Heritage Properties",
-        "mood": "Festive, Cultural, Bold",
-        "lightReflectance": "30-35%",
-        "undertone": "Red",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "reds & pinks",
-          "ral 3000",
-          "vermillion spice",
-          "warm",
-          "signature",
-          "red",
-          "heritage collection",
-          "festive",
-          "cultural",
-          "bold"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Festive, Cultural, Bold",
-        "rooms": "Feature Walls, Cultural",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Red",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "30-35%"
-        }
-      },
-      {
         "code": "RAL 3031",
         "ralCode": "RAL 3031",
         "name": "Orient Red",
@@ -6693,6 +6529,62 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 3013",
+        "ralCode": "RAL 3013",
+        "name": "Vermillion Spice",
+        "calycoName": "Vermillion Spice",
+        "hex": "#A12312",
+        "hexCode": "#A12312",
+        "colorFamily": "Reds & Pinks",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Cultural",
+        "exteriorUse": "Heritage Properties",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Cultural | Exterior: Heritage Properties",
+        "mood": "Festive, Cultural, Bold",
+        "lightReflectance": "30-35%",
+        "undertone": "Red",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "reds & pinks",
+          "ral 3013",
+          "vermillion spice",
+          "warm",
+          "signature",
+          "red",
+          "heritage collection",
+          "festive",
+          "cultural",
+          "bold"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Festive, Cultural, Bold",
+        "rooms": "Feature Walls, Cultural",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Red",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "30-35%"
+        }
+      },
+      {
         "code": "RAL 3020",
         "ralCode": "RAL 3020",
         "name": "Traffic Red",
@@ -6744,6 +6636,60 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "35-40%"
+        }
+      },
+      {
+        "code": "RAL 3011",
+        "ralCode": "RAL 3011",
+        "name": "Lotus Pink",
+        "calycoName": "Lotus Pink",
+        "hex": "#7E2121",
+        "hexCode": "#7E2121",
+        "colorFamily": "Reds & Pinks",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Nurseries, Bedrooms",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Nurseries, Bedrooms | Exterior: Cultural Buildings",
+        "mood": "Graceful, Gentle, Cultural",
+        "lightReflectance": "60-65%",
+        "undertone": "Pink",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "reds & pinks",
+          "ral 3011",
+          "lotus pink",
+          "cool",
+          "signature",
+          "pink",
+          "heritage collection",
+          "graceful",
+          "gentle",
+          "cultural"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Graceful, Gentle, Cultural",
+        "rooms": "Nurseries, Bedrooms",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Pink",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "60-65%"
         }
       },
       {
@@ -6911,6 +6857,60 @@ export const calycoColors = [
           "popularity": "Low",
           "lightReflectance": "18-23%"
         }
+      },
+      {
+        "code": "RAL 3007",
+        "ralCode": "RAL 3007",
+        "name": "Rajasthani Pink",
+        "calycoName": "Rajasthani Pink",
+        "hex": "#412227",
+        "hexCode": "#412227",
+        "colorFamily": "Reds & Pinks",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Bedrooms, Living Rooms",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Bedrooms, Living Rooms | Exterior: Cultural Buildings",
+        "mood": "Cultural, Earthy, Elegant",
+        "lightReflectance": "50-55%",
+        "undertone": "Terracotta",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "reds & pinks",
+          "ral 3007",
+          "rajasthani pink",
+          "warm",
+          "signature",
+          "terracotta",
+          "heritage collection",
+          "cultural",
+          "earthy",
+          "elegant"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Cultural, Earthy, Elegant",
+        "rooms": "Bedrooms, Living Rooms",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Terracotta",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "50-55%"
+        }
       }
     ]
   },
@@ -7028,6 +7028,60 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 4010",
+        "ralCode": "RAL 4010",
+        "name": "Mystic Violet",
+        "calycoName": "Mystic Violet",
+        "hex": "#CF3476",
+        "hexCode": "#CF3476",
+        "colorFamily": "Purples & Violets",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Feature Walls, Niche Areas",
+        "exteriorUse": "Cultural Interiors",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Feature Walls, Niche Areas | Exterior: Cultural Interiors",
+        "mood": "Mystic, Cultural, Elegant",
+        "lightReflectance": "28-33%",
+        "undertone": "Violet",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "purples & violets",
+          "ral 4010",
+          "mystic violet",
+          "cool",
+          "signature",
+          "violet",
+          "heritage collection",
+          "mystic",
+          "cultural",
+          "elegant"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Mystic, Cultural, Elegant",
+        "rooms": "Feature Walls, Niche Areas",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Violet",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "28-33%"
+        }
+      },
+      {
         "code": "RAL 4008",
         "ralCode": "RAL 4008",
         "name": "Signal Violet",
@@ -7073,60 +7127,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Foundation",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "28-33%"
-        }
-      },
-      {
-        "code": "RAL 4008",
-        "ralCode": "RAL 4008",
-        "name": "Mystic Violet",
-        "calycoName": "Mystic Violet",
-        "hex": "#924E7D",
-        "hexCode": "#924E7D",
-        "colorFamily": "Purples & Violets",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Feature Walls, Niche Areas",
-        "exteriorUse": "Cultural Interiors",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Feature Walls, Niche Areas | Exterior: Cultural Interiors",
-        "mood": "Mystic, Cultural, Elegant",
-        "lightReflectance": "28-33%",
-        "undertone": "Violet",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "purples & violets",
-          "ral 4008",
-          "mystic violet",
-          "cool",
-          "signature",
-          "violet",
-          "heritage collection",
-          "mystic",
-          "cultural",
-          "elegant"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Mystic, Cultural, Elegant",
-        "rooms": "Feature Walls, Niche Areas",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Violet",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Matte"
           ],
@@ -7181,60 +7181,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Foundation",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "25-30%"
-        }
-      },
-      {
-        "code": "RAL 4006",
-        "ralCode": "RAL 4006",
-        "name": "Royal Mauve",
-        "calycoName": "Royal Mauve",
-        "hex": "#A03472",
-        "hexCode": "#A03472",
-        "colorFamily": "Purples & Violets",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Accent Walls, Lounges",
-        "exteriorUse": "Cultural Interiors",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Accent Walls, Lounges | Exterior: Cultural Interiors",
-        "mood": "Regal, Cultural, Refined",
-        "lightReflectance": "25-30%",
-        "undertone": "Magenta",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "purples & violets",
-          "ral 4006",
-          "royal mauve",
-          "cool",
-          "signature",
-          "magenta",
-          "heritage collection",
-          "regal",
-          "cultural",
-          "refined"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Regal, Cultural, Refined",
-        "rooms": "Accent Walls, Lounges",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Magenta",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Matte"
           ],
@@ -7456,6 +7402,60 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "12-17%"
+        }
+      },
+      {
+        "code": "RAL 4007",
+        "ralCode": "RAL 4007",
+        "name": "Royal Mauve",
+        "calycoName": "Royal Mauve",
+        "hex": "#4A192C",
+        "hexCode": "#4A192C",
+        "colorFamily": "Purples & Violets",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Accent Walls, Lounges",
+        "exteriorUse": "Cultural Interiors",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Accent Walls, Lounges | Exterior: Cultural Interiors",
+        "mood": "Regal, Cultural, Refined",
+        "lightReflectance": "25-30%",
+        "undertone": "Magenta",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "purples & violets",
+          "ral 4007",
+          "royal mauve",
+          "cool",
+          "signature",
+          "magenta",
+          "heritage collection",
+          "regal",
+          "cultural",
+          "refined"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Regal, Cultural, Refined",
+        "rooms": "Accent Walls, Lounges",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Magenta",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "25-30%"
         }
       }
     ]
@@ -7680,12 +7680,12 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 1001",
-        "ralCode": "RAL 1001",
+        "code": "RAL 1022",
+        "ralCode": "RAL 1022",
         "name": "Desert Sand",
         "calycoName": "Desert Sand",
-        "hex": "#C2B078",
-        "hexCode": "#C2B078",
+        "hex": "#C6A664",
+        "hexCode": "#C6A664",
         "colorFamily": "Beiges & Tans",
         "tone": "Warm",
         "layer": "Signature",
@@ -7706,7 +7706,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "beiges & tans",
-          "ral 1001",
+          "ral 1022",
           "desert sand",
           "warm",
           "signature",
@@ -7730,6 +7730,60 @@ export const calycoColors = [
           ],
           "popularity": "High",
           "lightReflectance": "60-65%"
+        }
+      },
+      {
+        "code": "RAL 1025",
+        "ralCode": "RAL 1025",
+        "name": "Sandstone",
+        "calycoName": "Sandstone",
+        "hex": "#A5A5A5",
+        "hexCode": "#A5A5A5",
+        "colorFamily": "Beiges & Tans",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Living, Lounge",
+        "exteriorUse": "Cultural Interiors",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Living, Lounge | Exterior: Cultural Interiors",
+        "mood": "Stone, Earth, Classic",
+        "lightReflectance": "40-45%",
+        "undertone": "Brown",
+        "popularity": "High",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "beiges & tans",
+          "ral 1025",
+          "sandstone",
+          "warm",
+          "signature",
+          "brown",
+          "heritage collection",
+          "stone",
+          "earth",
+          "classic"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Stone, Earth, Classic",
+        "rooms": "Living, Lounge",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Brown",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "High",
+          "lightReflectance": "40-45%"
         }
       },
       {
@@ -7783,6 +7837,59 @@ export const calycoColors = [
           ],
           "popularity": "Medium",
           "lightReflectance": "50-55%"
+        }
+      },
+      {
+        "code": "RAL 1009",
+        "ralCode": "RAL 1009",
+        "name": "Amber Honey",
+        "calycoName": "Amber Honey",
+        "hex": "#E29000",
+        "hexCode": "#E29000",
+        "colorFamily": "Beiges & Tans",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Dining, Accents",
+        "exteriorUse": "Cultural Interiors",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Dining, Accents | Exterior: Cultural Interiors",
+        "mood": "Amber, Warm, Luxe",
+        "lightReflectance": "40-45%",
+        "undertone": "Gold",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "beiges & tans",
+          "ral 1009",
+          "amber honey",
+          "warm",
+          "signature",
+          "gold",
+          "heritage collection",
+          "amber",
+          "luxe"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Amber, Warm, Luxe",
+        "rooms": "Dining, Accents",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Gold",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "40-45%"
         }
       },
       {
@@ -7840,8 +7947,8 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 7034",
-        "ralCode": "RAL 7034",
+        "code": "RAL 7036",
+        "ralCode": "RAL 7036",
         "name": "Yellow Grey",
         "calycoName": "Yellow Grey",
         "hex": "#8F8B66",
@@ -7866,7 +7973,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "beiges & tans",
-          "ral 7034",
+          "ral 7036",
           "yellow grey",
           "neutral",
           "editorial",
@@ -7949,59 +8056,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 1005",
-        "ralCode": "RAL 1005",
-        "name": "Amber Honey",
-        "calycoName": "Amber Honey",
-        "hex": "#A98307",
-        "hexCode": "#A98307",
-        "colorFamily": "Beiges & Tans",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Dining, Accents",
-        "exteriorUse": "Cultural Interiors",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Dining, Accents | Exterior: Cultural Interiors",
-        "mood": "Amber, Warm, Luxe",
-        "lightReflectance": "40-45%",
-        "undertone": "Gold",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "beiges & tans",
-          "ral 1005",
-          "amber honey",
-          "warm",
-          "signature",
-          "gold",
-          "heritage collection",
-          "amber",
-          "luxe"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Amber, Warm, Luxe",
-        "rooms": "Dining, Accents",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Gold",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "40-45%"
-        }
-      },
-      {
         "code": "RAL 1011",
         "ralCode": "RAL 1011",
         "name": "Brown Beige",
@@ -8048,60 +8102,6 @@ export const calycoColors = [
         "usage": "Interior & Exterior",
         "metadata": {
           "layer": "Foundation",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "High",
-          "lightReflectance": "40-45%"
-        }
-      },
-      {
-        "code": "RAL 1011",
-        "ralCode": "RAL 1011",
-        "name": "Sandstone",
-        "calycoName": "Sandstone",
-        "hex": "#8A6642",
-        "hexCode": "#8A6642",
-        "colorFamily": "Beiges & Tans",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Living, Lounge",
-        "exteriorUse": "Cultural Interiors",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Living, Lounge | Exterior: Cultural Interiors",
-        "mood": "Stone, Earth, Classic",
-        "lightReflectance": "40-45%",
-        "undertone": "Brown",
-        "popularity": "High",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "beiges & tans",
-          "ral 1011",
-          "sandstone",
-          "warm",
-          "signature",
-          "brown",
-          "heritage collection",
-          "stone",
-          "earth",
-          "classic"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Stone, Earth, Classic",
-        "rooms": "Living, Lounge",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Brown",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
           "sheenOptions": [
             "Matte"
           ],
@@ -8225,6 +8225,59 @@ export const calycoColors = [
     "familyCode": "oranges",
     "colorCount": 12,
     "colors": [
+      {
+        "code": "RAL 2007",
+        "ralCode": "RAL 2007",
+        "name": "Henna Orange",
+        "calycoName": "Henna Orange",
+        "hex": "#FFA420",
+        "hexCode": "#FFA420",
+        "colorFamily": "Oranges",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte",
+        "sheenOptions": [
+          "Matte"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Accent Walls, Dining",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Accent Walls, Dining | Exterior: Cultural Buildings",
+        "mood": "Henna, Earthy, Warm",
+        "lightReflectance": "35-40%",
+        "undertone": "Red-Orange",
+        "popularity": "Low",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "oranges",
+          "ral 2007",
+          "henna orange",
+          "warm",
+          "signature",
+          "red-orange",
+          "heritage collection",
+          "henna",
+          "earthy"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Henna, Earthy, Warm",
+        "rooms": "Accent Walls, Dining",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Red-Orange",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte"
+          ],
+          "popularity": "Low",
+          "lightReflectance": "35-40%"
+        }
+      },
       {
         "code": "RAL 2011",
         "ralCode": "RAL 2011",
@@ -8546,114 +8599,6 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 2004",
-        "ralCode": "RAL 2004",
-        "name": "Marigold Flame",
-        "calycoName": "Marigold Flame",
-        "hex": "#F44611",
-        "hexCode": "#F44611",
-        "colorFamily": "Oranges",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Festival Decor, Accents",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Festival Decor, Accents | Exterior: Cultural Buildings",
-        "mood": "Festive, Cultural, Warm",
-        "lightReflectance": "40-45%",
-        "undertone": "Orange",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "oranges",
-          "ral 2004",
-          "marigold flame",
-          "warm",
-          "signature",
-          "orange",
-          "heritage collection",
-          "festive",
-          "cultural"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Festive, Cultural, Warm",
-        "rooms": "Festival Decor, Accents",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Orange",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "40-45%"
-        }
-      },
-      {
-        "code": "RAL 2013",
-        "ralCode": "RAL 2013",
-        "name": "Henna Orange",
-        "calycoName": "Henna Orange",
-        "hex": "#C35831",
-        "hexCode": "#C35831",
-        "colorFamily": "Oranges",
-        "tone": "Warm",
-        "layer": "Signature",
-        "sheen": "Matte",
-        "sheenOptions": [
-          "Matte"
-        ],
-        "collection": "Heritage Collection",
-        "interiorUse": "Accent Walls, Dining",
-        "exteriorUse": "Cultural Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Accent Walls, Dining | Exterior: Cultural Buildings",
-        "mood": "Henna, Earthy, Warm",
-        "lightReflectance": "35-40%",
-        "undertone": "Red-Orange",
-        "popularity": "Low",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "oranges",
-          "ral 2013",
-          "henna orange",
-          "warm",
-          "signature",
-          "red-orange",
-          "heritage collection",
-          "henna",
-          "earthy"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Henna, Earthy, Warm",
-        "rooms": "Accent Walls, Dining",
-        "colorCollection": "Heritage Collection",
-        "colorTemperature": "Warm",
-        "temperature": "Warm",
-        "tonality": "Red-Orange",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte"
-          ],
-          "popularity": "Low",
-          "lightReflectance": "35-40%"
-        }
-      },
-      {
         "code": "RAL 2009",
         "ralCode": "RAL 2009",
         "name": "Traffic Orange",
@@ -8810,6 +8755,61 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "35-40%"
+        }
+      },
+      {
+        "code": "RAL 2005",
+        "ralCode": "RAL 2005",
+        "name": "Marigold Flame",
+        "calycoName": "Marigold Flame",
+        "hex": "#FF2301",
+        "hexCode": "#FF2301",
+        "colorFamily": "Oranges",
+        "tone": "Warm",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Heritage Collection",
+        "interiorUse": "Festival Decor, Accents",
+        "exteriorUse": "Cultural Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Festival Decor, Accents | Exterior: Cultural Buildings",
+        "mood": "Festive, Cultural, Warm",
+        "lightReflectance": "40-45%",
+        "undertone": "Orange",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "oranges",
+          "ral 2005",
+          "marigold flame",
+          "warm",
+          "signature",
+          "orange",
+          "heritage collection",
+          "festive",
+          "cultural"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Festive, Cultural, Warm",
+        "rooms": "Festival Decor, Accents",
+        "colorCollection": "Heritage Collection",
+        "colorTemperature": "Warm",
+        "temperature": "Warm",
+        "tonality": "Orange",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "40-45%"
         }
       },
       {
@@ -9198,6 +9198,62 @@ export const calycoColors = [
         }
       },
       {
+        "code": "RAL 9017",
+        "ralCode": "RAL 9017",
+        "name": "Carbon Shield",
+        "calycoName": "Carbon Shield",
+        "hex": "#1E1E1E",
+        "hexCode": "#1E1E1E",
+        "colorFamily": "Blacks & Deep Tones",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Matte/Satin",
+        "sheenOptions": [
+          "Matte",
+          "Satin"
+        ],
+        "collection": "Urban Collection",
+        "interiorUse": "Accent Walls, Brand Areas",
+        "exteriorUse": "Exterior Accents",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Accent Walls, Brand Areas | Exterior: Exterior Accents",
+        "mood": "Protective, Bold, Premium",
+        "lightReflectance": "2-5%",
+        "undertone": "Neutral",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "blacks & deep tones",
+          "ral 9017",
+          "carbon shield",
+          "cool",
+          "signature",
+          "neutral",
+          "urban collection",
+          "protective",
+          "bold",
+          "premium"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Protective, Bold, Premium",
+        "rooms": "Accent Walls, Brand Areas",
+        "colorCollection": "Urban Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Neutral",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Matte",
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "2-5%"
+        }
+      },
+      {
         "code": "RAL 9005",
         "ralCode": "RAL 9005",
         "name": "Jet Black",
@@ -9250,62 +9306,6 @@ export const calycoColors = [
           "popularity": "Medium",
           "lightReflectance": "2-5%"
         }
-      },
-      {
-        "code": "RAL 9005",
-        "ralCode": "RAL 9005",
-        "name": "Carbon Shield",
-        "calycoName": "Carbon Shield",
-        "hex": "#0A0A0A",
-        "hexCode": "#0A0A0A",
-        "colorFamily": "Blacks & Deep Tones",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Matte/Satin",
-        "sheenOptions": [
-          "Matte",
-          "Satin"
-        ],
-        "collection": "Urban Collection",
-        "interiorUse": "Accent Walls, Brand Areas",
-        "exteriorUse": "Exterior Accents",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Accent Walls, Brand Areas | Exterior: Exterior Accents",
-        "mood": "Protective, Bold, Premium",
-        "lightReflectance": "2-5%",
-        "undertone": "Neutral",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "blacks & deep tones",
-          "ral 9005",
-          "carbon shield",
-          "cool",
-          "signature",
-          "neutral",
-          "urban collection",
-          "protective",
-          "bold",
-          "premium"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Protective, Bold, Premium",
-        "rooms": "Accent Walls, Brand Areas",
-        "colorCollection": "Urban Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Neutral",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Matte",
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "2-5%"
-        }
       }
     ]
   },
@@ -9315,8 +9315,8 @@ export const calycoColors = [
     "colorCount": 6,
     "colors": [
       {
-        "code": "RAL 9006",
-        "ralCode": "RAL 9006",
+        "code": "RAL 9008",
+        "ralCode": "RAL 9008",
         "name": "White Aluminium",
         "calycoName": "White Aluminium",
         "hex": "#A5A5A0",
@@ -9341,7 +9341,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "specialty metallics",
-          "ral 9006",
+          "ral 9008",
           "white aluminium",
           "cool",
           "editorial",
@@ -9366,113 +9366,6 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "40-45%"
-        }
-      },
-      {
-        "code": "RAL 7001",
-        "ralCode": "RAL 7001",
-        "name": "Silver Grey",
-        "calycoName": "Silver Grey",
-        "hex": "#8D9296",
-        "hexCode": "#8D9296",
-        "colorFamily": "Specialty Metallics",
-        "tone": "Cool",
-        "layer": "Editorial",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Industrial Collection",
-        "interiorUse": "Accents, Frames",
-        "exteriorUse": "Architectural Details",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Accents, Frames | Exterior: Architectural Details",
-        "mood": "Technical, Cool, Subtle",
-        "lightReflectance": "45-50%",
-        "undertone": "Blue-Grey",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "specialty metallics",
-          "ral 7001",
-          "silver grey",
-          "cool",
-          "editorial",
-          "blue-grey",
-          "industrial collection",
-          "technical",
-          "subtle"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Technical, Cool, Subtle",
-        "rooms": "Accents, Frames",
-        "colorCollection": "Industrial Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue-Grey",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Editorial",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "45-50%"
-        }
-      },
-      {
-        "code": "RAL 7001",
-        "ralCode": "RAL 7001",
-        "name": "Machinery Grey",
-        "calycoName": "Machinery Grey",
-        "hex": "#8D9296",
-        "hexCode": "#8D9296",
-        "colorFamily": "Specialty Metallics",
-        "tone": "Cool",
-        "layer": "Signature",
-        "sheen": "Satin",
-        "sheenOptions": [
-          "Satin"
-        ],
-        "collection": "Industrial Collection",
-        "interiorUse": "Equipment Areas, Frames",
-        "exteriorUse": "Industrial Buildings",
-        "interiorExterior": "Interior & Exterior",
-        "interiorExteriorDetails": "Interior: Equipment Areas, Frames | Exterior: Industrial Buildings",
-        "mood": "Technical, Durable, Neutral",
-        "lightReflectance": "45-50%",
-        "undertone": "Blue-Grey",
-        "popularity": "Medium",
-        "contractor": false,
-        "designer": true,
-        "tags": [
-          "specialty metallics",
-          "ral 7001",
-          "machinery grey",
-          "cool",
-          "signature",
-          "blue-grey",
-          "industrial collection",
-          "technical",
-          "durable",
-          "neutral"
-        ],
-        "suitability": "Interior & Exterior",
-        "description": "Technical, Durable, Neutral",
-        "rooms": "Equipment Areas, Frames",
-        "colorCollection": "Industrial Collection",
-        "colorTemperature": "Cool",
-        "temperature": "Cool",
-        "tonality": "Blue-Grey",
-        "usage": "Interior & Exterior",
-        "metadata": {
-          "layer": "Signature",
-          "sheenOptions": [
-            "Satin"
-          ],
-          "popularity": "Medium",
-          "lightReflectance": "45-50%"
         }
       },
       {
@@ -9584,12 +9477,12 @@ export const calycoColors = [
         }
       },
       {
-        "code": "RAL 9007",
-        "ralCode": "RAL 9007",
+        "code": "RAL 7046",
+        "ralCode": "RAL 7046",
         "name": "Industrial Steel",
         "calycoName": "Industrial Steel",
-        "hex": "#8F8F8F",
-        "hexCode": "#8F8F8F",
+        "hex": "#82898F",
+        "hexCode": "#82898F",
         "colorFamily": "Specialty Metallics",
         "tone": "Cool",
         "layer": "Signature",
@@ -9610,7 +9503,7 @@ export const calycoColors = [
         "designer": true,
         "tags": [
           "specialty metallics",
-          "ral 9007",
+          "ral 7046",
           "industrial steel",
           "cool",
           "signature",
@@ -9635,6 +9528,113 @@ export const calycoColors = [
           ],
           "popularity": "Low",
           "lightReflectance": "35-40%"
+        }
+      },
+      {
+        "code": "RAL 7000",
+        "ralCode": "RAL 7000",
+        "name": "Machinery Grey",
+        "calycoName": "Machinery Grey",
+        "hex": "#78858B",
+        "hexCode": "#78858B",
+        "colorFamily": "Specialty Metallics",
+        "tone": "Cool",
+        "layer": "Signature",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Industrial Collection",
+        "interiorUse": "Equipment Areas, Frames",
+        "exteriorUse": "Industrial Buildings",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Equipment Areas, Frames | Exterior: Industrial Buildings",
+        "mood": "Technical, Durable, Neutral",
+        "lightReflectance": "45-50%",
+        "undertone": "Blue-Grey",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "specialty metallics",
+          "ral 7000",
+          "machinery grey",
+          "cool",
+          "signature",
+          "blue-grey",
+          "industrial collection",
+          "technical",
+          "durable",
+          "neutral"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Technical, Durable, Neutral",
+        "rooms": "Equipment Areas, Frames",
+        "colorCollection": "Industrial Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue-Grey",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Signature",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "45-50%"
+        }
+      },
+      {
+        "code": "RAL 7002",
+        "ralCode": "RAL 7002",
+        "name": "Silver Grey",
+        "calycoName": "Silver Grey",
+        "hex": "#7E7B52",
+        "hexCode": "#7E7B52",
+        "colorFamily": "Specialty Metallics",
+        "tone": "Cool",
+        "layer": "Editorial",
+        "sheen": "Satin",
+        "sheenOptions": [
+          "Satin"
+        ],
+        "collection": "Industrial Collection",
+        "interiorUse": "Accents, Frames",
+        "exteriorUse": "Architectural Details",
+        "interiorExterior": "Interior & Exterior",
+        "interiorExteriorDetails": "Interior: Accents, Frames | Exterior: Architectural Details",
+        "mood": "Technical, Cool, Subtle",
+        "lightReflectance": "45-50%",
+        "undertone": "Blue-Grey",
+        "popularity": "Medium",
+        "contractor": false,
+        "designer": true,
+        "tags": [
+          "specialty metallics",
+          "ral 7002",
+          "silver grey",
+          "cool",
+          "editorial",
+          "blue-grey",
+          "industrial collection",
+          "technical",
+          "subtle"
+        ],
+        "suitability": "Interior & Exterior",
+        "description": "Technical, Cool, Subtle",
+        "rooms": "Accents, Frames",
+        "colorCollection": "Industrial Collection",
+        "colorTemperature": "Cool",
+        "temperature": "Cool",
+        "tonality": "Blue-Grey",
+        "usage": "Interior & Exterior",
+        "metadata": {
+          "layer": "Editorial",
+          "sheenOptions": [
+            "Satin"
+          ],
+          "popularity": "Medium",
+          "lightReflectance": "45-50%"
         }
       }
     ]
