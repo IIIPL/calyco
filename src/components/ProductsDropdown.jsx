@@ -12,22 +12,32 @@ const leftMenu = [
   { key: "All", label: "SHOW ALL PRODUCTS" },
 ];
 
-// Products to hide from Interior dropdown (keep data but hide from frontend)
-const hiddenInteriorProducts = ["Nova", "PureTone", "LustroLite", "SilkTouch"];
+// Only show these specific products in the dropdown
+const allowedProducts = [
+  "Luxury Interior Emulsion",
+  "Premium Interior Emulsion",
+  "Luxury Exterior Emulsion",
+  "Premium Exterior Emulsion"
+];
 
 const grouped = {
-  Interior: allProducts.filter((p) => 
-    p.category?.toLowerCase() === "interior" && 
-    !hiddenInteriorProducts.includes(p.name)
+  Interior: allProducts.filter((p) =>
+    p.category?.toLowerCase() === "interior" &&
+    allowedProducts.includes(p.name)
   ),
-  Exterior: allProducts.filter((p) => 
-    p.category?.toLowerCase() === "exterior"
+  Exterior: allProducts.filter((p) =>
+    p.category?.toLowerCase() === "exterior" &&
+    allowedProducts.includes(p.name)
   ),
   WaterproofingSealer: allProducts.filter((p) => {
     const c = p.category?.toLowerCase() || "";
     return c.includes("stain") || c.includes("sealer"); // matches "stain & sealer"
   }),
-  All: allProducts,
+  All: allProducts.filter((p) =>
+    allowedProducts.includes(p.name) ||
+    p.category?.toLowerCase().includes("stain") ||
+    p.category?.toLowerCase().includes("sealer")
+  ),
 };
 
 // Fallback: first interior product (used when visible list is empty but we still need one entry)
