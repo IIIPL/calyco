@@ -28,7 +28,7 @@ const TEMPERATURE_OPTIONS = Array.from(
   new Set(ALL_COLORS.map(color => color.temperature || color.colorTemperature).filter(Boolean))
 ).sort();
 const TONALITY_OPTIONS = Array.from(
-  new Set(ALL_COLORS.map(color => color.tonality).filter(Boolean))
+  new Set(ALL_COLORS.map(color => color.undertone).filter(Boolean))
 ).sort();
 const SUITABILITY_OPTIONS = (() => {
   const values = Array.from(
@@ -94,7 +94,7 @@ const ColorsPage = () => {
     // Tonality filter
     if (selectedTonality) {
       filtered = filtered.filter(color =>
-        color.tonality && color.tonality === selectedTonality
+        color.undertone && color.undertone === selectedTonality
       );
     }
 
@@ -280,8 +280,8 @@ const ColorsPage = () => {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
               >
                 <option value="name">A-Z</option>
-                <option value="light-dark">Light ÔåÆ Dark</option>
-                <option value="dark-light">Dark ÔåÆ Light</option>
+                <option value="light-dark">Light → Dark</option>
+                <option value="dark-light">Dark → Light</option>
               </select>
               
 
@@ -526,8 +526,8 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
                       <span className="ml-2">{color.temperature || 'N/A'}</span>
                       </div>
                     <div>
-                      <span className="text-gray-600">Tonality:</span>
-                      <span className="ml-2">{color.tonality || 'N/A'}</span>
+                      <span className="text-gray-600">Undertone:</span>
+                      <span className="ml-2">{color.undertone || 'N/A'}</span>
                     </div>
                     <div>
                       <span className="text-gray-600">Group:</span>
