@@ -1,6 +1,8 @@
 // src/context/ColorContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 
 const ColorContext = createContext();
 

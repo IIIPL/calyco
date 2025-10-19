@@ -1,5 +1,6 @@
-import { calycoColors } from '../data/calycoColors.js';
-import { flatColors } from '../data/flatColors.js';
+import { calycoColors, getAllColors as getAllColorsFromData } from '../data/calycoColors.js';
+
+const flatColors = getAllColorsFromData();
 import { products } from '../data/products.js';
 import samplesData from '../data/samples.json';
 import colorRelations from '../data/color-relations.json';

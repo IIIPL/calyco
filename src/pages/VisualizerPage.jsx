@@ -1,6 +1,8 @@
 import React, { useMemo, useRef, useState } from 'react';
 import SEO from '../components/SEO';
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 
 const sampleRooms = [
   { key: 'living', base: '/Assets/Rooms/LivingRoom/base.jpg', mask: '/Assets/Rooms/LivingRoom/mask-walls.jpg' },

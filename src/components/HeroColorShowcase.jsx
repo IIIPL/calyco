@@ -3,7 +3,9 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import useAutoRotate from "../hooks/useAutoRotate";
 import HeroColorCard from "./HeroColorCard";
-import { flatColors } from "../data/flatColors";
+import { getAllColors } from "../data/calycoColors.js";
+
+const flatColors = getAllColors();
 import { Link } from "react-router-dom";
 
 const FEATURED = ["Serene Ivory", "Sage Whisper", "Vintage Rose", "Indigo Twilight", "Teal Serenity"]; // pick any 3–5 you like

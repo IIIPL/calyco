@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 
 const PALETTES = {
   bold: [

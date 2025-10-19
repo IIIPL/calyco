@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { flatColors } from "../data/flatColors";
+import { getAllColors } from "../data/calycoColors.js";
+
+const flatColors = getAllColors();
 import ColorBox from "./ColorComponents/ColorBox";
 import { FaLeaf, FaPalette, FaEye, FaChevronDown, FaChevronUp } from "react-icons/fa6";
 

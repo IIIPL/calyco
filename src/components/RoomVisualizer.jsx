@@ -3,7 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useColors } from '../context/ColorContext.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaUpload, FaTrash, FaDownload, FaTimes, FaArrowLeft, FaInfoCircle, FaStar, FaQuestionCircle } from 'react-icons/fa';
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { segmentImage } from '../utils/segmentation.js';
 

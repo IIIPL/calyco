@@ -8,7 +8,9 @@ import Slider from "../components/Slider";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { HeroSection } from "../components/HomeComponents/HeroSection";
-import { flatColors } from "../data/flatColors";
+import { getAllColors } from "../data/calycoColors.js";
+
+const flatColors = getAllColors();
 import { ColorTrends } from "../components/ColorComponents/ColorTrends";
 import {HeroSlider} from "../components/HomeComponents/HeroSlider";
 import Carousel from "../components/HomeComponents/Carousel";

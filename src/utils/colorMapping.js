@@ -1,5 +1,24 @@
 // Comprehensive color mapping for all inspiration pages
-import { calycoColorsData } from '../data/calycoColorsData';
+import { getAllColors } from '../data/calycoColors.js';
+
+// Convert array to object for lookup
+const calycoColorsDataArray = getAllColors();
+const calycoColorsData = {};
+calycoColorsDataArray.forEach(color => {
+  if (color.name) {
+    calycoColorsData[color.name] = {
+      code: color.code || 'CP101',
+      hex: color.hex || '#CCCCCC',
+      family: color.colorFamily || 'GENERAL',
+      group: color.group || '',
+      base: color.primary_color || '',
+      temperature: color.temperature || '',
+      tonality: color.tonality || '',
+      rooms: color.rooms || '',
+      usage: color.interiorExterior || ''
+    };
+  }
+});
 
 export const COMPREHENSIVE_COLOR_MAP = {
   // Bedroom Colors

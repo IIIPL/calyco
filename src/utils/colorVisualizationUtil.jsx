@@ -1,5 +1,7 @@
 // Utility functions for color visualization
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 
 // Generate color harmonies
 export const generateColorHarmonies = (baseColor) => {

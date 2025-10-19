@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Eye, Download, Share2, X, ArrowLeft, ArrowRight } from 'lucide-react';
-import { flatColors } from '../data/flatColors';
+import { getAllColors } from '../data/calycoColors.js';
+
+const flatColors = getAllColors();
 
 const ColorVisualizer = () => {
   const [selectedColor, setSelectedColor] = useState(null);
