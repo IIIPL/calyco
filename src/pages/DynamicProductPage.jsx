@@ -137,25 +137,39 @@ const getSizeMultiplier = (size) => {
 
 export const DynamicProductPage = () => {
     const { productId } = useParams();
+    const [product, setProduct] = useState(null);
+
     const colorFamilies = useMemo(() => {
+        // Get available colors from product if specified
+        const availableColorNames = product?.availableColors || [];
+        const hasColorRestriction = availableColorNames && availableColorNames.length > 0;
+
         return (colorData || [])
             .map((family) => {
                 const label = family.family || family.title || "Color Family";
                 const code = family.familyCode || slugify(label);
+                let colors = Array.isArray(family.colors) ? family.colors : [];
+
+                // Filter colors if product has availableColors restriction
+                if (hasColorRestriction) {
+                    colors = colors.filter(color =>
+                        availableColorNames.includes(color.name)
+                    );
+                }
+
                 return {
                     code,
                     label,
-                    colors: Array.isArray(family.colors) ? family.colors : []
+                    colors
                 };
             })
             .filter((family) => family.code && family.colors.length > 0);
-    }, []);
+    }, [product]);
 
     const [selectedSheen, setSelectedSheen] = useState("Matte Finish");
     const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
-    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
     const [addingToCart, setAddingToCart] = useState(false);

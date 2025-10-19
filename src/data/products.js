@@ -1351,6 +1351,9 @@ export const products = [
     "color_options": [
       "Clear and tinted neutrals"
     ],
+    "availableColors": [
+      "Chocolate Brown"
+    ],
     "spread_rate": "85-110 sq. ft./Ltr",
     "preparation_instructions": "Apply on dry, masked surfaces",
     "safety_precautions": "Wear protective gear and ventilate",
