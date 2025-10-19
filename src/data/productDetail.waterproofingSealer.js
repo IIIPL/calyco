@@ -1,8 +1,12 @@
+// 🔧 UPDATED: Waterproofing Sealer with Swatch Card + Sample Pot variants
+
 const WATERPROOFING_SEALER_VARIANT_MAP = {
   "1L-Matte Finish": "gid://shopify/ProductVariant/42638016217206",
   "4L-Matte Finish": "gid://shopify/ProductVariant/42638016282742",
   "10L-Matte Finish": "gid://shopify/ProductVariant/42638016348278",
   "20L-Matte Finish": "gid://shopify/ProductVariant/42638016413814",
+  "Swatch Card-Matte Finish": "gid://shopify/ProductVariant/42663763017846",
+  "SamplePot 200ml-Matte Finish": "gid://shopify/ProductVariant/42663763050614",
 };
 
 const priceByFinish = {
@@ -11,9 +15,12 @@ const priceByFinish = {
     "4L": 2700,
     "10L": 6500,
     "20L": 12800,
+    "Swatch Card": 99,        // ₹99 as per your Shopify setup
+    "SamplePot 200ml": 199,   // ₹199 as per your Shopify setup
   },
 };
 
+// 🔧 UPDATED: Sizes array with sample variants in correct order (after 20L)
 const sizes = [
   {
     size: "1L",
@@ -47,6 +54,25 @@ const sizes = [
     price: priceByFinish["Matte Finish"]["20L"],
     originalPrice: 13499,
   },
+  // 🔧 Sample options AFTER regular sizes
+  {
+    size: "Swatch Card",
+    priceByFinish: {
+      "Matte Finish": priceByFinish["Matte Finish"]["Swatch Card"],
+    },
+    price: priceByFinish["Matte Finish"]["Swatch Card"],
+    originalPrice: 150,
+    description: "Waterproof sealer color sample card"
+  },
+  {
+    size: "SamplePot 200ml",
+    priceByFinish: {
+      "Matte Finish": priceByFinish["Matte Finish"]["SamplePot 200ml"],
+    },
+    price: priceByFinish["Matte Finish"]["SamplePot 200ml"],
+    originalPrice: 250,
+    description: "200ml sample pot for sealing trials"
+  },
 ];
 
 export const waterproofingSealerDetail = {
@@ -64,7 +90,7 @@ export const waterproofingSealerDetail = {
     "Formulated from an advanced water-based acrylic elastomer, Calyco Waterproofing Sealer bridges cracks up to 1 mm, adheres tenaciously to concrete, masonry, metal, timber, tile, and asphalt, and maintains long-term weatherproof protection without trapping vapour. The breathable film mitigates blistering, while fungicides and UV blockers preserve integrity in exposed environments.",
   shortDescription:
     "Breathable, crack-bridging waterproof membrane engineered for terraces, facades, planter boxes, and high-moisture interiors.",
-  microCopy: "Low VOC  Breathable barrier  Crack-bridging 1 mm",
+  microCopy: "Low VOC  Breathable barrier  Crack-bridging 1 mm",
   keyBenefits: [
     "Bridges hairline cracks up to 1 mm",
     "Breathable barrier prevents trapped moisture blisters",
@@ -242,7 +268,10 @@ export const waterproofingSealerDetail = {
     },
   ],
   warranty: "5-year waterproofing guarantee when applied as per TDS.",
-  packaging: ["1L", "4L", "10L", "20L"],
+  
+  // 🔧 UPDATED: Added sample variants in correct order
+  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  
   bucketImage: "/Assets/Waterproof Sealer/Main.png",
   images: [
     "/Assets/Waterproof Sealer/Main.png"

@@ -1,12 +1,11 @@
+// 🏗️ UPDATED: Premium Exterior Emulsion with Matte Finish Only + Sample Variants
 const PREMIUM_EXTERIOR_VARIANT_MAP = {
-  "1L-Matte Finish": "gid://shopify/ProductVariant/42637669400694",
-  "4L-Matte Finish": "gid://shopify/ProductVariant/42637669466230",
-  "10L-Matte Finish": "gid://shopify/ProductVariant/42637669531766",
-  "20L-Matte Finish": "gid://shopify/ProductVariant/42637669597302",
-  "1L-High Sheen Finish": "gid://shopify/ProductVariant/42637669433462",
-  "4L-High Sheen Finish": "gid://shopify/ProductVariant/42637669498998",
-  "10L-High Sheen Finish": "gid://shopify/ProductVariant/42637669564534",
-  "20L-High Sheen Finish": "gid://shopify/ProductVariant/42637669630070"
+  "1L-Matte Finish": "gid://shopify/ProductVariant/42663725006966",
+  "4L-Matte Finish": "gid://shopify/ProductVariant/42663725072502",
+  "10L-Matte Finish": "gid://shopify/ProductVariant/42663725138038",
+  "20L-Matte Finish": "gid://shopify/ProductVariant/42663725203574",
+  "Swatch Card-Matte Finish": "gid://shopify/ProductVariant/42663725596790",
+  "SamplePot 200ml-Matte Finish": "gid://shopify/ProductVariant/42663725629558",
 };
 
 const priceByFinish = {
@@ -15,21 +14,17 @@ const priceByFinish = {
     "4L": 2700,
     "10L": 6500,
     "20L": 12800,
-  },
-  "High Sheen Finish": {
-    "1L": 800,
-    "4L": 3500,
-    "10L": 8400,
-    "20L": 16000,
+    "Swatch Card": 99,        // ₹99 as per your Shopify setup
+    "SamplePot 200ml": 199,   // ₹199 as per your Shopify setup
   },
 };
 
+// 🏗️ UPDATED: Reordered sizes - Sample options AFTER regular sizes
 const sizes = [
   {
     size: "1L",
     priceByFinish: {
       "Matte Finish": priceByFinish["Matte Finish"]["1L"],
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["1L"],
     },
     price: priceByFinish["Matte Finish"]["1L"],
     originalPrice: 850,
@@ -38,7 +33,6 @@ const sizes = [
     size: "4L",
     priceByFinish: {
       "Matte Finish": priceByFinish["Matte Finish"]["4L"],
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["4L"],
     },
     price: priceByFinish["Matte Finish"]["4L"],
     originalPrice: 3200,
@@ -47,7 +41,6 @@ const sizes = [
     size: "10L",
     priceByFinish: {
       "Matte Finish": priceByFinish["Matte Finish"]["10L"],
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["10L"],
     },
     price: priceByFinish["Matte Finish"]["10L"],
     originalPrice: 7800,
@@ -56,10 +49,28 @@ const sizes = [
     size: "20L",
     priceByFinish: {
       "Matte Finish": priceByFinish["Matte Finish"]["20L"],
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["20L"],
     },
     price: priceByFinish["Matte Finish"]["20L"],
     originalPrice: 15600,
+  },
+  // 🏗️ Sample options AFTER regular sizes
+  {
+    size: "Swatch Card",
+    priceByFinish: {
+      "Matte Finish": priceByFinish["Matte Finish"]["Swatch Card"],
+    },
+    price: priceByFinish["Matte Finish"]["Swatch Card"],
+    originalPrice: 150,
+    description: "Color sample card for testing"
+  },
+  {
+    size: "SamplePot 200ml",
+    priceByFinish: {
+      "Matte Finish": priceByFinish["Matte Finish"]["SamplePot 200ml"],
+    },
+    price: priceByFinish["Matte Finish"]["SamplePot 200ml"],
+    originalPrice: 250,
+    description: "Small sample pot for color testing"
   },
 ];
 
@@ -73,37 +84,31 @@ export const premiumExteriorEmulsionDetail = {
   rating: 4.7,
   reviewCount: 8,
   description:
-    "High-performance exterior emulsion engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
+    "Premium exterior emulsion with sophisticated matte finish, engineered to withstand intense sun, heavy rain, and humidity while maintaining vibrant color depth.",
   details:
-    "Calyco Premium Exterior Emulsion fortifies exterior walls with advanced UV blockers, breathable polymers, and mildew guards for long-lasting beauty.",
+    "Calyco Premium Exterior Emulsion fortifies exterior walls with advanced UV blockers, breathable polymers, and mildew guards for long-lasting matte elegance.",
   shortDescription:
-    "UV-shielding, hydrophobic exterior latex for enduring curb appeal.",
-  tagline: "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
-  microCopy: "UV shield  Weatherproof barrier  Mildew resistant",
+    "Premium matte finish exterior emulsion. UV-resistant, weather-proof barrier for enduring protection.",
+  tagline: "Premium exterior emulsion with sophisticated matte finish - engineered for superior weather resistance and lasting beauty.",
+  microCopy: "UV Shield  Weather-Resistant  Premium Matte",
   keyBenefits: [
-    "UV shield protects colors from fading",
-    "Weatherproof barrier withstands rain and humidity",
-    "Mildew resistant formula prevents fungal growth",
-    "Breathable film technology allows moisture escape"
+    "Premium Matte Finish provides sophisticated, non-reflective elegance",
+    "Advanced UV Protection prevents color fading and chalking",
+    "Weather-Resistant Barrier withstands rain, humidity, and temperature extremes",
+    "Anti-Fungal Technology prevents mildew and algae growth"
   ],
   features: [
-    "UV-blocking pigments",
+    "Premium matte finish technology",
+    "Advanced UV-blocking pigments",
     "Hydrophobic weather seal",
-    "Breathable film technology",
-    "Anti-mildew additive"
+    "Anti-fungal and anti-algae formula"
   ],
   finishes: [
     {
       name: "Matte Finish",
       description:
-        "Weather-resistant matte finish for exteriors with a modern, sophisticated look.",
+        "Premium weather-resistant matte finish that provides sophisticated elegance with superior hiding power and durability.",
       price: priceByFinish["Matte Finish"]["1L"],
-    },
-    {
-      name: "High Sheen Finish",
-      description:
-        "Premium high-sheen finish for luxury exteriors with enhanced durability.",
-      price: priceByFinish["High Sheen Finish"]["1L"],
     },
   ],
   defaultFinish: "Matte Finish",
@@ -116,7 +121,7 @@ export const premiumExteriorEmulsionDetail = {
   defaultCoats: 2,
   efficiency: 0.9,
   application: [
-    "Exterior wall painting",
+    "Premium exterior wall painting",
     "stucco",
     "brick",
     "concrete",
@@ -124,10 +129,10 @@ export const premiumExteriorEmulsionDetail = {
     "wood"
   ],
   applicationInstructions:
-    "Apply with brush, roller, or sprayer. Do not apply when rain is expected within 4 hours.",
+    "Apply with premium brush, roller, or sprayer. Do not apply when rain is expected within 6 hours for optimal matte finish.",
   preparation:
-    "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces.",
-  base_type: "Advanced acrylic exterior latex",
+    "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces for best matte finish results.",
+  base_type: "Premium acrylic exterior emulsion",
   voc_content: "< 60 g/L (Low VOC)",
   coverage: "120-160 sq.ft./L/coat",
   coats_required: "2 coats",
@@ -137,33 +142,36 @@ export const premiumExteriorEmulsionDetail = {
   humidity_range: "Below 85% RH",
   cleanup: "Soap and Water",
   storage_instructions: "Store in cool dry place, avoid freezing. Store between 5°C – 40°C.",
-  application_instructions: "Apply with brush, roller, or sprayer. Do not apply when rain is expected within 4 hours.",
-  preparation_instructions: "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces.",
-  recommended_uses: ["Exterior façades, trims, and masonry requiring long-term protection"],
+  application_instructions: "Apply with premium brush, roller, or sprayer. Do not apply when rain is expected within 6 hours.",
+  preparation_instructions: "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces for premium finish.",
+  recommended_uses: ["Premium exterior façades, architectural features, and masonry requiring sophisticated matte elegance"],
   substrate: ["Stucco", "Concrete", "Brick", "Fiber cement", "Wood"],
-  finish_type_sheen: ["Matte Finish", "High Sheen Finish"],
+  
+  // 🏗️ UPDATED: Only Matte Finish available
+  finish_type_sheen: ["Matte Finish"],
+  
   advantages: [
-    "UV shield protects against color fading from sunlight",
-    "Weatherproof barrier withstands rain, snow, and humidity",
-    "Mildew resistant formula prevents fungal and algal growth",
-    "Breathable film technology prevents moisture trapping"
+    "Premium Matte Finish delivers sophisticated, non-reflective elegance that hides surface imperfections",
+    "Advanced UV Protection technology prevents color fading, chalking, and degradation from sunlight",
+    "Superior Weather Resistance withstands rain, snow, humidity, and temperature fluctuations",
+    "Anti-Fungal Technology prevents mildew, algae, and black spot formation for lasting cleanliness"
   ],
   technicalSpecs: {
-    product_code: "CAL-00240",
-    base: "Advanced acrylic exterior latex",
-    base_type: "Advanced acrylic exterior latex",
+    product_code: "CAL-00241",
+    base: "Premium acrylic exterior emulsion",
+    base_type: "Premium acrylic exterior emulsion",
     vehicle_type: "Water-based acrylic emulsion",
     dryingTime: "Touch dry: 45 minutes | Recoat: 4-6 hours | Full cure: 7 days",
     thinning: "Up to 5% water for brush/roller application",
     recoatTime: "4-6 hours",
-    volume_solids: "Approx. 42%",
+    volume_solids: "Approx. 44%",
     voc_content: "< 60 g/L (Low VOC)",
     pH: "8-9",
-    weight_per_volume: "~1.30 kg/L",
+    weight_per_volume: "~1.32 kg/L",
     shelf_life: "48 months in sealed containers",
     storage_temp: "5°C – 40°C",
-    application_instructions: "Apply with brush, roller, or sprayer. Do not apply when rain is expected within 4 hours.",
-    preparation_instructions: "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces.",
+    application_instructions: "Apply with premium brush, roller, or sprayer. Do not apply when rain is expected within 6 hours.",
+    preparation_instructions: "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces for premium results.",
     temperature_range: "10°C–40°C",
     humidity_range: "Below 85% RH",
     cleanup: "Soap and Water immediately after use",
@@ -190,24 +198,27 @@ export const premiumExteriorEmulsionDetail = {
       ingestion: "Rinse mouth. Do NOT induce vomiting. Seek medical attention immediately."
     }
   },
-  safety_precautions: "Wear protective gloves, goggles, and long sleeves during application. Work in well-ventilated areas.",
+  safety_precautions: "Wear premium protective gloves, goggles, and long sleeves during application. Work in well-ventilated areas.",
   documents: {
-    tds: "/Assets/docs/exterior-latex-paint-tds.pdf",
-    sds: "/Assets/docs/exterior-latex-paint-sds.pdf",
-    warranty: "/Assets/docs/exterior-latex-paint-warranty.pdf",
+    tds: "/Assets/docs/premium-exterior-emulsion-tds.pdf",
+    sds: "/Assets/docs/premium-exterior-emulsion-sds.pdf",
+    warranty: "/Assets/docs/premium-exterior-emulsion-warranty.pdf",
   },
   warranty: "7 years",
-  packaging: ["1L", "4L", "10L", "20L"],
+  
+  // 🏗️ UPDATED: Added sample variants in correct order
+  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  
   bucketImage: "/Assets/Exterior Latex Paint/Main.png",
   images: [
     "/Assets/Exterior Latex Paint/Main.png"
   ],
   seo: {
-    title: "Premium Exterior Emulsion | Weather-Resistant Exterior Paint | Calyco",
+    title: "Premium Exterior Emulsion | Matte Finish Exterior Paint | Calyco",
     description:
-      "Calyco Premium Exterior Emulsion delivers long-lasting protection with UV shield, weatherproof barrier, and mildew resistance. Perfect for facades and outdoor surfaces.",
+      "Calyco Premium Exterior Emulsion delivers sophisticated matte finish with superior UV protection, weather resistance, and anti-fungal technology for lasting exterior beauty.",
     keywords:
-      "exterior paint, emulsion paint, weather resistant paint, uv resistant paint, mildew resistant paint, premium emulsion",
+      "premium exterior paint, matte finish emulsion, weather resistant paint, uv resistant paint, anti-fungal exterior paint, premium matte emulsion",
   },
 };
 

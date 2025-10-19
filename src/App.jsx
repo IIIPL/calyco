@@ -136,20 +136,26 @@ function App() {
               <Route path='/visualizer' element={<VisualizerPage/>}/>
               <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
-              {/* NEW PREMIUM PRODUCTS */}
+              {/* PREMIUM PRODUCTS */}
               <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion/>}/>
               <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />}/>
               <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion/>}/>
               <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />}/>
 
-              {/* ORIGINAL PRODUCTS */}
-              <Route path='/product/Interior-Latex-Paint' element={<InteriorLatexPaint/>}/>
-              <Route path='/product/Nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
-              <Route path='/product/nova' element={<Navigate to='/product/Interior-Latex-Paint' replace />}/>
-              <Route path='/product/Exterior-Latex-Paint' element={<ExteriorLatexPaint/>}/>
-              <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
-              <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
-              <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Exterior-Latex-Paint' replace />}/>
+              {/* LUXURY PRODUCTS - UPDATED URLS */}
+              <Route path='/product/Luxury-Interior-Emulsion' element={<InteriorLatexPaint/>}/>
+              <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+              <Route path='/product/Luxury-Exterior-Emulsion' element={<ExteriorLatexPaint/>}/>
+              <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+
+              {/* OLD URLS - Redirect to new Luxury URLs for backward compatibility */}
+              <Route path='/product/Interior-Latex-Paint' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+              <Route path='/product/Nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+              <Route path='/product/nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+              <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+              <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+              <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+              <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
               <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
               <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
               <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>

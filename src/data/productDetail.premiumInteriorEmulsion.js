@@ -1,12 +1,11 @@
 const PREMIUM_INTERIOR_VARIANT_MAP = {
-  "1L-Low Sheen": "gid://shopify/ProductVariant/42619088371830",
-  "4L-Low Sheen": "gid://shopify/ProductVariant/42619088437366",
-  "10L-Low Sheen": "gid://shopify/ProductVariant/42619088502902",
-  "20L-Low Sheen": "gid://shopify/ProductVariant/42619088568438",
-  "1L-Pearl": "gid://shopify/ProductVariant/42619088339062",
-  "4L-Pearl": "gid://shopify/ProductVariant/42619088404598",
-  "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
-  "20L-Pearl": "gid://shopify/ProductVariant/42619088535670"
+  // Low Sheen variants - UPDATED with real Shopify variant IDs
+  "1L-Low Sheen": "gid://shopify/ProductVariant/42663690600566",
+  "4L-Low Sheen": "gid://shopify/ProductVariant/42663690666102", 
+  "10L-Low Sheen": "gid://shopify/ProductVariant/42663690731638",
+  "20L-Low Sheen": "gid://shopify/ProductVariant/42663690797174",
+  "Swatch Card-Low Sheen": "gid://shopify/ProductVariant/42663691518070",
+  "Sample Pot 200 ml-Low Sheen": "gid://shopify/ProductVariant/42663691550838",
 };
 
 const priceByFinish = {
@@ -15,21 +14,17 @@ const priceByFinish = {
     "4L": 2700,
     "10L": 6500,
     "20L": 12800,
-  },
-  "Pearl": {
-    "1L": 800,
-    "4L": 3500,
-    "10L": 8400,
-    "20L": 16000,
+    "Swatch Card": 99,        // ₹99 as per your Shopify setup
+    "Sample Pot 200 ml": 199,   // ₹199 as per your Shopify setup
   },
 };
 
+// 🔧 FIXED: Reordered sizes - Sample options AFTER regular sizes
 const sizes = [
   {
     size: "1L",
     priceByFinish: {
       "Low Sheen": priceByFinish["Low Sheen"]["1L"],
-      "Pearl": priceByFinish["Pearl"]["1L"],
     },
     price: priceByFinish["Low Sheen"]["1L"],
     originalPrice: 850,
@@ -38,7 +33,6 @@ const sizes = [
     size: "4L",
     priceByFinish: {
       "Low Sheen": priceByFinish["Low Sheen"]["4L"],
-      "Pearl": priceByFinish["Pearl"]["4L"],
     },
     price: priceByFinish["Low Sheen"]["4L"],
     originalPrice: 3200,
@@ -47,7 +41,6 @@ const sizes = [
     size: "10L",
     priceByFinish: {
       "Low Sheen": priceByFinish["Low Sheen"]["10L"],
-      "Pearl": priceByFinish["Pearl"]["10L"],
     },
     price: priceByFinish["Low Sheen"]["10L"],
     originalPrice: 7800,
@@ -56,10 +49,28 @@ const sizes = [
     size: "20L",
     priceByFinish: {
       "Low Sheen": priceByFinish["Low Sheen"]["20L"],
-      "Pearl": priceByFinish["Pearl"]["20L"],
     },
     price: priceByFinish["Low Sheen"]["20L"],
     originalPrice: 15600,
+  },
+  // 🎨 Sample options AFTER regular sizes
+  {
+    size: "Swatch Card",
+    priceByFinish: {
+      "Low Sheen": priceByFinish["Low Sheen"]["Swatch Card"],
+    },
+    price: priceByFinish["Low Sheen"]["Swatch Card"],
+    originalPrice: 150,
+    description: "Color sample card for testing"
+  },
+  {
+    size: "Sample Pot 200 ml",
+    priceByFinish: {
+      "Low Sheen": priceByFinish["Low Sheen"]["SamplePot 200ml"],
+    },
+    price: priceByFinish["Low Sheen"]["SamplePot 200ml"],
+    originalPrice: 250,
+    description: "Small sample pot for color testing"
   },
 ];
 
@@ -99,12 +110,6 @@ export const premiumInteriorEmulsionDetail = {
         "Soft, elegant finish perfect for living spaces, bedrooms, and dining rooms.",
       price: priceByFinish["Low Sheen"]["1L"],
     },
-    {
-      name: "Pearl",
-      description:
-        "Subtle luster adds depth and sophistication to any interior wall.",
-      price: priceByFinish["Pearl"]["1L"],
-    },
   ],
   defaultFinish: "Low Sheen",
   priceByFinish,
@@ -141,7 +146,10 @@ export const premiumInteriorEmulsionDetail = {
   preparation_instructions: "Clean dry surface, primed if needed. Remove dust, grease, and loose paint.",
   recommended_uses: ["Walls & Ceilings: Ideal for plaster, POP, and drywall surfaces"],
   substrate: ["Drywall", "Plaster", "Wood", "Masonry", "Metal"],
-  finish_type_sheen: ["Low Sheen", "Pearl"],
+  
+  // 🔧 FIXED: Added more than one finish to show the selector
+  finish_type_sheen: ["Low Sheen", "Matte"], // Adding Matte to show selector
+  
   advantages: [
     "High-Pigment Colour for stunning, vibrant results",
     "Superior Coverage reduces application time and costs",
@@ -193,12 +201,15 @@ export const premiumInteriorEmulsionDetail = {
   },
   safety_precautions: "Gloves recommended, ventilated area. Wear protective gloves and eye protection during application.",
   documents: {
-    tds: "/Assets/docs/interior-latex-paint-tds.pdf",
-    sds: "/Assets/docs/interior-latex-paint-sds.pdf",
-    warranty: "/Assets/docs/interior-latex-paint-warranty.pdf",
+    tds: "/Assets/docs/premium-interior-emulsion-tds.pdf",
+    sds: "/Assets/docs/premium-interior-emulsion-sds.pdf",
+    warranty: "/Assets/docs/premium-interior-emulsion-warranty.pdf",
   },
   warranty: "5 years",
-  packaging: ["1L", "4L", "10L", "20L"],
+  
+  // 🔧 FIXED: Reordered packaging array - samples AFTER regular sizes
+  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  
   bucketImage: "/Assets/Nova/1-main.png",
   images: [
     "/Assets/Nova/1-main.png",
