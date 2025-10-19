@@ -27,9 +27,8 @@ const COLOR_FAMILIES = getColorFamilies().map(f => f.name);
 const TEMPERATURE_OPTIONS = Array.from(
   new Set(ALL_COLORS.map(color => color.temperature || color.colorTemperature).filter(Boolean))
 ).sort();
-const TONALITY_OPTIONS = Array.from(
-  new Set(ALL_COLORS.map(color => color.undertone).filter(Boolean))
-).sort();
+// Tonality options - curated list matching filter panel
+const TONALITY_OPTIONS = ['Cool', 'Warm', 'Yellow', 'Neutral', 'Beige', 'Cream', 'Silver', 'Sand'];
 const SUITABILITY_OPTIONS = (() => {
   const values = Array.from(
     new Set(
