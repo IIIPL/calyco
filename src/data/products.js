@@ -1,9 +1,10 @@
 export const products = [
   {
-    "id": "Nova",
-    "slug": "Interior-Latex-Paint",
-    "url": "https://calycopaints.com/product/Interior-Latex-Paint",
-    "name": "Calyco Interior Latex Paint",
+    "id": "Luxury-Interior-Emulsion",
+    "slug": "Luxury-Interior-Emulsion",
+    "url": "https://calycopaints.com/product/Luxury-Interior-Emulsion",
+    "name": "Luxury Interior Emulsion",
+    "display_name": "Luxury Interior Emulsion",
     "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
@@ -183,10 +184,11 @@ export const products = [
     ]
   },
   {
-    "id": "ExteriorLatex",
-    "slug": "exterior-latex-paint",
-    "url": "https://calycopaints.com/product/exterior-latex-paint",
-    "name": "Calyco Exterior Latex Paint",
+    "id": "Luxury-Exterior-Emulsion",
+    "slug": "Luxury-Exterior-Emulsion",
+    "url": "https://calycopaints.com/product/Luxury-Exterior-Emulsion",
+    "name": "Luxury Exterior Emulsion",
+    "display_name": "Luxury Exterior Emulsion",
     "image": "/Assets/Nova/1-main.png",
     "description": "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
     "short-description": "UV-shielding, hydrophobic exterior latex for enduring curb appeal.",
@@ -362,6 +364,46 @@ export const products = [
       "/Assets/Nova/1.png",
       "/Assets/Nova/2.png",
       "/Assets/Nova/3.png"
+    ]
+  },
+  {
+    "id": "Premium-Interior-Emulsion",
+    "slug": "Premium-Interior-Emulsion",
+    "url": "https://calycopaints.com/product/Premium-Interior-Emulsion",
+    "name": "Premium Interior Emulsion",
+    "display_name": "Premium Interior Emulsion",
+    "image": "/Assets/Nova/1-main.png",
+    "description": "Premium interior emulsion with low sheen finish for sophisticated spaces.",
+    "short-description": "Low sheen finish. Ultra-low VOC. Designer-grade quality.",
+    "details": "Premium Interior Emulsion delivers elegant low sheen finish with superior coverage and durability.",
+    "category": "Interior",
+    "finish_type_sheen": ["Low Sheen"],
+    "finishes": ["Low Sheen"],
+    "price": 700,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "images": [
+      "/Assets/Nova/1-main.png",
+      "/Assets/Nova/1.png",
+      "/Assets/Nova/2.png"
+    ]
+  },
+  {
+    "id": "Premium-Exterior-Emulsion",
+    "slug": "Premium-Exterior-Emulsion",
+    "url": "https://calycopaints.com/product/Premium-Exterior-Emulsion",
+    "name": "Premium Exterior Emulsion",
+    "display_name": "Premium Exterior Emulsion",
+    "image": "/Assets/Exterior Latex Paint/Main.png",
+    "description": "Premium exterior emulsion with matte finish for modern exteriors.",
+    "short-description": "Matte finish. Weather-resistant. UV protection.",
+    "details": "Premium Exterior Emulsion provides durable matte finish with advanced weather protection.",
+    "category": "Exterior",
+    "finish_type_sheen": ["Matte Finish"],
+    "finishes": ["Matte Finish"],
+    "price": 700,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "images": [
+      "/Assets/Exterior Latex Paint/Main.png"
     ]
   },
   {
