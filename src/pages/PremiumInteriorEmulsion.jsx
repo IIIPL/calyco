@@ -8,22 +8,16 @@ import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
-import interiorLatexPaintDetail from '../data/productDetail.interiorLatexPaint';
+import premiumInteriorEmulsionDetail from '../data/productDetail.premiumInteriorEmulsion';
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
-// MRP pricing for Premium Interior Emulsion
+// MRP pricing for Premium Interior Emulsion - ONLY Low Sheen Finish
 const PREMIUM_INTERIOR_MRP = {
-  'Low Sheen': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
-  },
-  'Pearl': {
+  'Low Sheen Finish': {
     '1L': 950,
-    '4L': 4200,
-    '10L': 10100,
-    '20L': 19200,
+    '4L': 3600,
+    '10L': 8500,
+    '20L': 16800,
   },
 };
 
@@ -47,7 +41,7 @@ const PremiumInteriorEmulsion = () => {
             .filter((family) => family.code && family.colors.length > 0);
     }, []);
 
-    const [selectedSheen, setSelectedSheen] = useState("Low Sheen");
+    const [selectedSheen, setSelectedSheen] = useState("Low Sheen Finish");
     const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
@@ -283,7 +277,7 @@ const PremiumInteriorEmulsion = () => {
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
 
-    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Low Sheen";
+    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Low Sheen Finish";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
@@ -317,7 +311,7 @@ const PremiumInteriorEmulsion = () => {
 
     const displayPriceValue = calculatePrice(selectedSize);
 
-    // Calculate MRP for Premium Interior Emulsion
+    // Calculate MRP for Premium Interior Emulsion - ONLY Low Sheen Finish
     const calculateMRP = (sizeLabel) => {
         const mrpData = PREMIUM_INTERIOR_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
@@ -341,29 +335,29 @@ const PremiumInteriorEmulsion = () => {
     }, [activeFinishPricing, product?.packaging]);
 
     useEffect(() => {
-        setProduct(interiorLatexPaintDetail);
-        setSelectedSheen(interiorLatexPaintDetail.defaultFinish || "Low Sheen");
+        setProduct(premiumInteriorEmulsionDetail);
+        setSelectedSheen(premiumInteriorEmulsionDetail.defaultFinish || "Low Sheen Finish");
 
-        const finishPricing = (interiorLatexPaintDetail.priceByFinish || interiorLatexPaintDetail.price_by_finish || {})["Low Sheen"];
+        const finishPricing = (premiumInteriorEmulsionDetail.priceByFinish || premiumInteriorEmulsionDetail.price_by_finish || {})["Low Sheen Finish"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {
                 setSelectedSize(sizeKeys[0]);
-            } else if (interiorLatexPaintDetail.packaging && interiorLatexPaintDetail.packaging.length > 0) {
-                setSelectedSize(interiorLatexPaintDetail.packaging[0]);
+            } else if (premiumInteriorEmulsionDetail.packaging && premiumInteriorEmulsionDetail.packaging.length > 0) {
+                setSelectedSize(premiumInteriorEmulsionDetail.packaging[0]);
             }
-        } else if (interiorLatexPaintDetail.packaging && interiorLatexPaintDetail.packaging.length > 0) {
-            setSelectedSize(interiorLatexPaintDetail.packaging[0]);
+        } else if (premiumInteriorEmulsionDetail.packaging && premiumInteriorEmulsionDetail.packaging.length > 0) {
+            setSelectedSize(premiumInteriorEmulsionDetail.packaging[0]);
         }
 
-        if (Array.isArray(interiorLatexPaintDetail.images) && interiorLatexPaintDetail.images.length > 0) {
-            setSelectedImage(interiorLatexPaintDetail.images[0]);
+        if (Array.isArray(premiumInteriorEmulsionDetail.images) && premiumInteriorEmulsionDetail.images.length > 0) {
+            setSelectedImage(premiumInteriorEmulsionDetail.images[0]);
             setSelectedImageIndex(0);
         } else {
-            setSelectedImage(interiorLatexPaintDetail.image);
+            setSelectedImage(premiumInteriorEmulsionDetail.image);
             setSelectedImageIndex(0);
         }
-        document.title = interiorLatexPaintDetail.name;
+        document.title = premiumInteriorEmulsionDetail.name;
         setLoading(false);
     }, []);
 
@@ -662,50 +656,43 @@ const PremiumInteriorEmulsion = () => {
 
                         {/* 3 Feature Cards - SIMPLE BRIGHT COLORS - MOBILE RESPONSIVE */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-3">
-                          <div className="bg-[#00BCD4] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                          <div className="bg-[#9C27B0] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiDroplet className="w-6 h-6 sm:w-7 sm:h-7 text-[#00BCD4]" />
+                              <FiStar className="w-6 h-6 sm:w-7 sm:h-7 text-[#9C27B0]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Washable Protection</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Easy cleaning</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Premium Quality</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Luxury finish</p>
                           </div>
-                          <div className="bg-[#FF9500] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                          <div className="bg-[#FF6F00] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF9500]" />
+                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF6F00]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Eco-Friendly</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Safe for environment</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Advanced Formula</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Superior protection</p>
                           </div>
-                          <div className="bg-[#34C759] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                          <div className="bg-[#2E7D32] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiClock className="w-6 h-6 sm:w-7 sm:h-7 text-[#34C759]" />
+                              <FiClock className="w-6 h-6 sm:w-7 sm:h-7 text-[#2E7D32]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Long Lasting</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Durable protection</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Extended Durability</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Long-lasting beauty</p>
                           </div>
                         </div>
 
                         {/* Product Selectors */}
                         <div className="space-y-4 sm:space-y-6">
-                            {/* Sheen / Finish */}
-                            {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
+                            {/* Only show finish selector if there are multiple finishes (but we only have Low Sheen) */}
+                            {product.finish_type_sheen && product.finish_type_sheen.length > 1 && (
                                 <div className="mb-4">
                                   <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Choose Finish Type</h3>
                                   <div className="flex flex-wrap gap-2">
-                                    {product.finish_type_sheen.map((sheen) => (
-                                      <button
-                                        key={sheen}
-                                        type="button"
-                                        onClick={() => setSelectedSheen(sheen)}
-                                        className={`px-3 sm:px-4 py-2 rounded-lg border transition-all text-sm sm:text-base ${
-                                          selectedSheen === sheen
-                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
-                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
-                                        }`}
-                                      >
-                                        {sheen}
-                                      </button>
-                                    ))}
+                                    {/* Only show Low Sheen Finish button */}
+                                    <button
+                                      type="button"
+                                      className="px-3 sm:px-4 py-2 rounded-lg border border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] text-sm sm:text-base cursor-default"
+                                    >
+                                      Low Sheen Finish
+                                    </button>
                                   </div>
                                 </div>
                             )}
@@ -798,6 +785,7 @@ const PremiumInteriorEmulsion = () => {
                             )}
                           </div>
                         )}
+
                             {/* Color Mixing Option */}
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
@@ -959,7 +947,7 @@ const PremiumInteriorEmulsion = () => {
                                                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                                                     <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                                                 </div>
-                                                <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">No key advantages listed.</span>
+                                                <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">Premium emulsion with advanced features for superior interior walls.</span>
                                             </div>
                                         )}
                                     </div>
@@ -978,13 +966,13 @@ const PremiumInteriorEmulsion = () => {
                         </div>
                         <div className="grid grid-cols-1 gap-px bg-[#e2e8f0]">
                             {[
-                                { label: "Category", value: product.category || 'N/A', icon: FiTag },
-                                { label: "Application Areas", value: Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A'), icon: FiClipboard },
-                                { label: "Recommended Uses", value: Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A'), icon: FiList },
-                                { label: "Finish / Sheen", value: Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A'), icon: FiDroplet },
-                                { label: "Surface Compatibility", value: Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A'), icon: FiLayers },
-                                { label: "Coats Required", value: product.coats_required || 'N/A', icon: FiCheckCircle },
-                                { label: "Coverage", value: product.coverage || 'N/A', icon: FiBox }
+                                { label: "Category", value: product.category || 'Premium Interior Emulsion', icon: FiTag },
+                                { label: "Application Areas", value: Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'Interior Walls & Ceilings'), icon: FiClipboard },
+                                { label: "Recommended Uses", value: Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'Living rooms, bedrooms, dining areas'), icon: FiList },
+                                { label: "Finish / Sheen", value: "Low Sheen Finish", icon: FiDroplet },
+                                { label: "Surface Compatibility", value: Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'Drywall, plaster, masonry'), icon: FiLayers },
+                                { label: "Coats Required", value: product.coats_required || '1-2 coats', icon: FiCheckCircle },
+                                { label: "Coverage", value: product.coverage || '12-14 sqm/L', icon: FiBox }
                             ].map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
                                     <div className="flex items-center gap-3">
@@ -1008,21 +996,21 @@ const PremiumInteriorEmulsion = () => {
                         <div className="grid grid-cols-1 gap-px bg-[#e2e8f0]">
                             {[
                                 { label: "Product Code", value: product.technicalSpecs?.product_code, icon: FiTag },
-                                { label: "Base Type", value: product.base_type || (product.technicalSpecs && product.technicalSpecs.base_type) || 'N/A', icon: FiBox },
+                                { label: "Base Type", value: product.base_type || (product.technicalSpecs && product.technicalSpecs.base_type) || 'Water-based acrylic', icon: FiBox },
                                 { label: "Vehicle Type", value: product.technicalSpecs?.vehicle_type, icon: FiPackage },
-                                { label: "VOC Content", value: product.voc_content || (product.technicalSpecs && product.technicalSpecs.voc_content) || 'N/A', icon: FiShield },
+                                { label: "VOC Content", value: product.voc_content || (product.technicalSpecs && product.technicalSpecs.voc_content) || 'Ultra-low VOC', icon: FiShield },
                                 { label: "Volume Solids", value: product.technicalSpecs?.volume_solids, icon: FiDroplet },
                                 { label: "pH Level", value: product.technicalSpecs?.pH, icon: FiInfo },
                                 { label: "Weight/Volume", value: product.technicalSpecs?.weight_per_volume, icon: FiPackage },
-                                { label: "Application Instructions", value: product.application_instructions || (product.technicalSpecs && product.technicalSpecs.application_instructions) || 'N/A', icon: FiClipboard },
-                                { label: "Drying Time", value: product.drying_time || (product.technicalSpecs && product.technicalSpecs.dryingTime) || 'N/A', icon: FiClock },
-                                { label: "Recoat Time", value: product.recoat_time || (product.technicalSpecs && product.technicalSpecs.recoatTime) || 'N/A', icon: FiRepeat },
+                                { label: "Application Instructions", value: product.application_instructions || (product.technicalSpecs && product.technicalSpecs.application_instructions) || 'Apply with brush or roller', icon: FiClipboard },
+                                { label: "Drying Time", value: product.drying_time || (product.technicalSpecs && product.technicalSpecs.dryingTime) || '2-4 hours', icon: FiClock },
+                                { label: "Recoat Time", value: product.recoat_time || (product.technicalSpecs && product.technicalSpecs.recoatTime) || '4-6 hours', icon: FiRepeat },
                                 { label: "Shelf Life", value: product.technicalSpecs?.shelf_life, icon: FiCalendar },
                                 { label: "Storage Temperature", value: product.technicalSpecs?.storage_temp, icon: FiThermometer },
-                                { label: "Cleanup", value: product.cleanup || (product.technicalSpecs && product.technicalSpecs.cleanup) || 'N/A', icon: FiArchive },
-                                { label: "Temperature Range", value: product.temperature_range || (product.technicalSpecs && product.technicalSpecs.temperature_range) || 'N/A', icon: FiThermometer },
-                                { label: "Humidity Range", value: product.humidity_range || (product.technicalSpecs && product.technicalSpecs.humidity_range) || 'N/A', icon: FiDroplet },
-                                { label: "Surface Preparation", value: product.preparation_instructions || (product.technicalSpecs && product.technicalSpecs.preparation_instructions) || 'N/A', icon: FiInfo }
+                                { label: "Cleanup", value: product.cleanup || (product.technicalSpecs && product.technicalSpecs.cleanup) || 'Water cleanup', icon: FiArchive },
+                                { label: "Temperature Range", value: product.temperature_range || (product.technicalSpecs && product.technicalSpecs.temperature_range) || '10-35°C', icon: FiThermometer },
+                                { label: "Humidity Range", value: product.humidity_range || (product.technicalSpecs && product.technicalSpecs.humidity_range) || 'Below 85% RH', icon: FiDroplet },
+                                { label: "Surface Preparation", value: product.preparation_instructions || (product.technicalSpecs && product.technicalSpecs.preparation_instructions) || 'Clean, dry surface required', icon: FiInfo }
                             ].filter(spec => spec.value && spec.value !== 'N/A').map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
                                     <div className="flex items-center gap-3">
@@ -1160,7 +1148,7 @@ const PremiumInteriorEmulsion = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/interior-latex-paint-tds.pdf"
+                                    href="/Assets/docs/premium-interior-emulsion-tds.pdf"
                                     download
                                     className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
@@ -1181,7 +1169,7 @@ const PremiumInteriorEmulsion = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/interior-latex-paint-sds.pdf"
+                                    href="/Assets/docs/premium-interior-emulsion-sds.pdf"
                                     download
                                     className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
@@ -1206,46 +1194,46 @@ const PremiumInteriorEmulsion = () => {
 
                         <div className="relative z-10">
                             <h2 className="text-3xl sm:text-4xl font-bold text-[#493657] mb-3 sm:mb-4 text-center">Premium Features</h2>
-                            <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">Experience the difference with professional-grade quality</p>
+                            <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">Experience luxury with our premium-grade interior emulsion</p>
 
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 sm:gap-8">
-                                {/* Feature 1: High-Pigment Colour */}
+                                {/* Feature 1: Ultra-Premium Finish */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFC107] via-[#FFD54F] to-[#FFEB3B] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#9C27B0] via-[#BA68C8] to-[#CE93D8] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiStar className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">High-Pigment Colour</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Rich, vibrant colors that stay true for years with superior color retention technology</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#FFC107] to-[#FFC107]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Ultra-Premium Finish</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Luxurious low-sheen finish that adds elegance and sophistication to any interior space</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#9C27B0] to-[#9C27B0]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 2: Superior Coverage */}
+                                {/* Feature 2: Advanced Coverage */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#673AB7] via-[#7E57C2] to-[#9575CD] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FF6F00] via-[#FF8F00] to-[#FFB300] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Superior Coverage</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">One coat coverage on most surfaces with advanced formula for maximum efficiency</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#673AB7] to-[#673AB7]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Advanced Coverage</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Superior hiding power with excellent coverage that minimizes the number of coats required</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#FF6F00] to-[#FF6F00]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 3: Scrub Resistant */}
+                                {/* Feature 3: Maximum Durability */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#4CAF50] via-[#66BB6A] to-[#81C784] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiCheckCircle className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2E7D32] via-[#388E3C] to-[#43A047] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                        <FiShield className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Scrub Resistant</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Easy to clean without damaging finish, perfect for high-traffic areas</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Maximum Durability</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Enhanced formulation provides exceptional resistance to wear, stains, and fading</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#2E7D32] to-[#2E7D32]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 4: Ultra-Low VOC */}
+                                {/* Feature 4: Zero-VOC Formula */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiWind className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Ultra-Low VOC</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Safe for family and environment with minimal odor and emissions</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Zero-VOC Formula</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Premium eco-friendly formulation with zero harmful emissions for healthier indoor air</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
                             </div>
@@ -1264,7 +1252,7 @@ const PremiumInteriorEmulsion = () => {
                         <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-10 md:flex-row md:items-center md:justify-between">
                             <div>
                                 <h2 className="text-2xl sm:text-3xl font-bold text-[#493657]">You might also like</h2>
-                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Pair your interior makeover with exterior protection and multi-surface sealing.</p>
+                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Complete your premium interior project with exterior protection and multi-surface sealing.</p>
                             </div>
                             <div className="flex items-center gap-2 text-xs font-medium text-[#493657]/60 uppercase tracking-[0.2em] w-fit">
                                 <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />

@@ -8,7 +8,7 @@ import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
-import exteriorLatexPaintDetail from '../data/productDetail.exteriorLatexPaint';
+import premiumExteriorEmulsionDetail from '../data/productDetail.premiumExteriorEmulsion';
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // MRP pricing for Premium Exterior Emulsion
@@ -341,29 +341,29 @@ const PremiumExteriorEmulsion = () => {
     }, [activeFinishPricing, product?.packaging]);
 
     useEffect(() => {
-        setProduct(exteriorLatexPaintDetail);
-        setSelectedSheen(exteriorLatexPaintDetail.defaultFinish || "Matte Finish");
+        setProduct(premiumExteriorEmulsionDetail);
+        setSelectedSheen(premiumExteriorEmulsionDetail.defaultFinish || "Matte Finish");
 
-        const finishPricing = (exteriorLatexPaintDetail.priceByFinish || exteriorLatexPaintDetail.price_by_finish || {})["Matte Finish"];
+        const finishPricing = (premiumExteriorEmulsionDetail.priceByFinish || premiumExteriorEmulsionDetail.price_by_finish || {})["Matte Finish"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {
                 setSelectedSize(sizeKeys[0]);
-            } else if (exteriorLatexPaintDetail.packaging && exteriorLatexPaintDetail.packaging.length > 0) {
-                setSelectedSize(exteriorLatexPaintDetail.packaging[0]);
+            } else if (premiumExteriorEmulsionDetail.packaging && premiumExteriorEmulsionDetail.packaging.length > 0) {
+                setSelectedSize(premiumExteriorEmulsionDetail.packaging[0]);
             }
-        } else if (exteriorLatexPaintDetail.packaging && exteriorLatexPaintDetail.packaging.length > 0) {
-            setSelectedSize(exteriorLatexPaintDetail.packaging[0]);
+        } else if (premiumExteriorEmulsionDetail.packaging && premiumExteriorEmulsionDetail.packaging.length > 0) {
+            setSelectedSize(premiumExteriorEmulsionDetail.packaging[0]);
         }
 
-        if (Array.isArray(exteriorLatexPaintDetail.images) && exteriorLatexPaintDetail.images.length > 0) {
-            setSelectedImage(exteriorLatexPaintDetail.images[0]);
+        if (Array.isArray(premiumExteriorEmulsionDetail.images) && premiumExteriorEmulsionDetail.images.length > 0) {
+            setSelectedImage(premiumExteriorEmulsionDetail.images[0]);
             setSelectedImageIndex(0);
         } else {
-            setSelectedImage(exteriorLatexPaintDetail.image);
+            setSelectedImage(premiumExteriorEmulsionDetail.image);
             setSelectedImageIndex(0);
         }
-        document.title = exteriorLatexPaintDetail.name;
+        document.title = premiumExteriorEmulsionDetail.name;
         setLoading(false);
     }, []);
 
