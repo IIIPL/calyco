@@ -3,7 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { CartIcon } from "./CartIcon";
 import InspirationsDropdown from './InspirationsDropdown';
 import ColorsDropdown from "./ColorsDropdown";
-import VisualizeDropdown from "./VisualizeDropdown"; // Import the new dropdown
+import VisualizeDropdown from "./VisualizeDropdown";
+import { ProductsDropdown } from "./ProductsDropdown";
 
 export const Navbar = ({ bannerVisible = true }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -88,23 +89,11 @@ export const Navbar = ({ bannerVisible = true }) => {
         </Link>
 
         <nav className="flex gap-8 text-base font-medium items-center">
-          <Link
-            to="/product/Interior-Latex-Paint"
+          <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >Interior</Link>
-          <Link
-            to="/product/Exterior-Latex-Paint"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >Exterior</Link>
-          
-          <Link
-            to="/product/waterproofing-sealer"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >Waterproofing Sealer</Link>
-          
+            onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
+          >Products</button>
+
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
@@ -114,8 +103,7 @@ export const Navbar = ({ bannerVisible = true }) => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
           >Colors</button>
-          
-          {/* // In your Navbar component, add this button to the navigation menu */}
+
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
@@ -159,6 +147,7 @@ export const Navbar = ({ bannerVisible = true }) => {
       </div>
       
       {/* Dropdowns (desktop only) */}
+      {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'inspirations' && <InspirationsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'colors' && <ColorsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'visualization' && <VisualizeDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
@@ -182,31 +171,9 @@ export const Navbar = ({ bannerVisible = true }) => {
         </div>
         
         <div className="flex flex-col gap-6 text-xl font-medium items-center flex-1 w-full px-4">
-          <Link
-            to="/product/Interior-Latex-Paint"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
-          >
-            Interior
-          </Link>
-          
-          <Link
-            to="/product/Exterior-Latex-Paint"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
-          >
-            Exterior
-          </Link>
-          
-          <Link
-            to="/product/waterproofing-sealer"
-            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
-          >
-            Waterproofing Sealer
-          </Link>
-          
+          <ProductsDropdown isMobile={true} onSelect={() => setMenuOpen(false)} />
           <InspirationsDropdown isMobile={true} />
           <ColorsDropdown isMobile={true} />
-          
-          {/* New Visualize Dropdown for mobile */}
           <VisualizeDropdown isMobile={true} />
           
 
