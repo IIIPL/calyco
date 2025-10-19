@@ -171,7 +171,7 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "10°C–35°C",
     "humidity_range": "Under 80% RH",
-    "display_name": "Calyco Interior Latex Paint",
+    "display_name": "Luxury Interior Emulsion",
     "images": [
       "/Assets/Nova/1-main.png",
       "/Assets/Nova/1.png",
@@ -358,7 +358,7 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "10C-40C",
     "humidity_range": "Under 85% RH",
-    "display_name": "Calyco Exterior Latex Paint",
+    "display_name": "Luxury Exterior Emulsion",
     "images": [
       "/Assets/Nova/1-main.png",
       "/Assets/Nova/1.png",
