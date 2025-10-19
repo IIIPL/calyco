@@ -20,7 +20,10 @@ const resolveHex = (color) => {
   return reverseColorNameMapping[value] || '#CCCCCC';
 };
 
-const displayCode = (color) => color?.code || color?.tintCode || color?.hex || '';
+const displayCode = (color) => {
+  const hex = resolveHex(color);
+  return hex || '#CCCCCC';
+};
 
 const SimilarColors = ({ currentColor, similarColors }) => {
   const navigate = useNavigate();

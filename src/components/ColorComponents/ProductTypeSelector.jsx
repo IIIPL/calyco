@@ -2,14 +2,24 @@ import React from 'react';
 
 const PRODUCT_TYPE_OPTIONS = [
   {
-    value: 'Interior Latex Paint',
-    title: 'Interior Latex Paint',
+    value: 'Premium Interior Emulsion',
+    title: 'Premium Interior Emulsion',
     description: 'Premium interior paint for walls & ceilings',
   },
   {
-    value: 'Exterior Latex Paint',
-    title: 'Exterior Latex Paint',
+    value: 'Luxury Interior Emulsion',
+    title: 'Luxury Interior Emulsion',
+    description: 'Luxury interior finish for premium spaces',
+  },
+  {
+    value: 'Premium Exterior Emulsion',
+    title: 'Premium Exterior Emulsion',
     description: 'Weather-resistant exterior coating',
+  },
+  {
+    value: 'Luxury Exterior Emulsion',
+    title: 'Luxury Exterior Emulsion',
+    description: 'Premium weather-resistant luxury finish',
   },
   {
     value: 'Waterproofing Sealer',
@@ -18,11 +28,21 @@ const PRODUCT_TYPE_OPTIONS = [
   },
 ];
 
-const ProductTypeSelector = ({ selectedType, onChange }) => (
-  <div className="p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm">
-    <h3 className="text-sm uppercase tracking-wide text-gray-500">Choose Product Type</h3>
-    <div className="mt-5 space-y-3">
-      {PRODUCT_TYPE_OPTIONS.map((option) => {
+const ProductTypeSelector = ({ selectedType, onChange, colorName }) => {
+  // Filter options based on color
+  const filteredOptions = PRODUCT_TYPE_OPTIONS.filter(option => {
+    // Only show Waterproofing Sealer for Chocolate Brown
+    if (option.value === 'Waterproofing Sealer') {
+      return colorName === 'Chocolate Brown';
+    }
+    return true;
+  });
+
+  return (
+    <div className="p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm">
+      <h3 className="text-sm uppercase tracking-wide text-gray-500">Choose Product Type</h3>
+      <div className="mt-5 space-y-3">
+        {filteredOptions.map((option) => {
         const isSelected = option.value === selectedType;
         return (
           <label
@@ -50,6 +70,7 @@ const ProductTypeSelector = ({ selectedType, onChange }) => (
       })}
     </div>
   </div>
-);
+  );
+};
 
 export default ProductTypeSelector;

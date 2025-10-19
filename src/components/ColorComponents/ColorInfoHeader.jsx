@@ -4,11 +4,6 @@ const ColorInfoHeader = ({ name, ralCode, colorFamily, mood, downloadHref }) => 
   <div className="p-6 md:p-8 bg-white border border-gray-200 rounded-3xl shadow-sm space-y-4">
     <div>
       <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">{name}</h1>
-      {ralCode && (
-        <p className="mt-2 text-sm uppercase tracking-wide text-gray-500">
-          Color Code: {ralCode}
-        </p>
-      )}
     </div>
 
     {mood && (

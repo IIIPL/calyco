@@ -40,20 +40,19 @@ const RelationshipSection = ({ title, colors }) => {
         {colors.map((color) => {
           const familySlug = color.familySlug || slugify(color.color_family || color.colorFamily || '');
           const colorSlug = color.slug || slugify(color.name);
+          const hexCode = color.actualHex || color.hex || '#CCCCCC';
           return (
             <Link key={`${colorSlug}`} to={`/colors/family/${familySlug}/${colorSlug}`} className="block group">
               <div
                 className="h-24 rounded-xl shadow-inner border border-black/5 transition group-hover:shadow-md"
-                style={{ backgroundColor: color.actualHex || color.hex || '#CCCCCC' }}
+                style={{ backgroundColor: hexCode }}
               />
               <div className="mt-2 text-sm font-medium text-gray-900 group-hover:underline">
                 {color.name}
               </div>
-              {color.code && (
-                <div className="text-xs uppercase tracking-wide text-gray-500">
-                  {color.code}
-                </div>
-              )}
+              <div className="text-xs uppercase tracking-wide text-gray-500">
+                {hexCode}
+              </div>
             </Link>
           );
         })}
@@ -133,14 +132,14 @@ const ColorDetailPage = () => {
   const familySlug = decodeURIComponent(familyParam || '');
   const colorSlug = decodeURIComponent(colorParam || '');
   const [currentColor, setCurrentColor] = useState(() => getColorBySlugs(familySlug, colorSlug));
-  const [selectedProductType, setSelectedProductType] = useState('Interior Latex Paint');
+  const [selectedProductType, setSelectedProductType] = useState('Premium Interior Emulsion');
 
   useEffect(() => {
     setCurrentColor(getColorBySlugs(familySlug, colorSlug) || null);
   }, [familySlug, colorSlug]);
 
   useEffect(() => {
-    setSelectedProductType('Interior Latex Paint');
+    setSelectedProductType('Premium Interior Emulsion');
   }, [colorSlug]);
 
   const familyInfo = useMemo(() => {
@@ -309,6 +308,7 @@ const ColorDetailPage = () => {
             <ProductTypeSelector
               selectedType={selectedProductType}
               onChange={setSelectedProductType}
+              colorName={currentColor.name}
             />
 
             <ColorBuyBox

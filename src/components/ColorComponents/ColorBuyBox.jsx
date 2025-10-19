@@ -1,33 +1,58 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { coverageFor, getSamples, VISUALIZER_PATH } from '../../lib/catalog';
+import { coverageFor, VISUALIZER_PATH } from '../../lib/catalog';
 import { reverseColorNameMapping } from '../../data/colorNameMapping';
 
 const fallbackImage = '/Assets/chair.png';
 const PAINT_COLOR_PRODUCT_NAME = 'Paint Color';
 const DEFAULT_FINISH = 'Standard Finish';
 
-const PAINT_COLOR_VARIANTS = Object.freeze({
-  '1L': {
-    price: 499,
-    shopifyVariantId: 'gid://shopify/ProductVariant/42619077984374',
+// Pricing and Shopify variants for all 5 products
+const PRODUCT_PRICING = Object.freeze({
+  'Premium Interior Emulsion': {
+    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42619077984374' },
+    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42619078049910' },
+    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42619078115446' },
+    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42619078180982' },
+    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304443510' },
+    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304476278' },
   },
-  '4L': {
-    price: 1747,
-    shopifyVariantId: 'gid://shopify/ProductVariant/42619078049910',
+  'Luxury Interior Emulsion': {
+    '1L': { price: 800, mrp: 1000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304509046' },
+    '4L': { price: 3500, mrp: 4200, shopifyVariantId: 'gid://shopify/ProductVariant/42664304541814' },
+    '10L': { price: 8400, mrp: 10000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304574582' },
+    '20L': { price: 16000, mrp: 20000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304607350' },
+    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304640118' },
+    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304672886' },
   },
-  '10L': {
-    price: 3992,
-    shopifyVariantId: 'gid://shopify/ProductVariant/42619078115446',
+  'Premium Exterior Emulsion': {
+    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42664304705654' },
+    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42664304738422' },
+    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42664304771190' },
+    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304803958' },
+    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304836726' },
+    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304869494' },
   },
-  '20L': {
-    price: 6986,
-    shopifyVariantId: 'gid://shopify/ProductVariant/42619078180982',
+  'Luxury Exterior Emulsion': {
+    '1L': { price: 800, mrp: 1000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304902262' },
+    '4L': { price: 3500, mrp: 4200, shopifyVariantId: 'gid://shopify/ProductVariant/42664304935030' },
+    '10L': { price: 8400, mrp: 10000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304967798' },
+    '20L': { price: 16000, mrp: 20000, shopifyVariantId: 'gid://shopify/ProductVariant/42664305000566' },
+    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664305033334' },
+    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664305066102' },
+  },
+  'Waterproofing Sealer': {
+    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42664305098870' },
+    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42664305131638' },
+    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42664305164406' },
+    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42664305197174' },
+    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664305229942' },
+    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664305262710' },
   },
 });
 
-const PAINT_COLOR_SIZE_ORDER = ['1L', '4L', '10L', '20L'];
+const PAINT_COLOR_SIZE_ORDER = ['1L', '4L', '10L', '20L', 'Swatch Card', 'Sample Pot 200ml'];
 
 const sanitizeCode = (value) => {
   if (!value) return '';
@@ -78,7 +103,6 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
   const [size, setSize] = useState(PAINT_COLOR_SIZE_ORDER[0]);
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
-  const samples = getSamples();
 
   useEffect(() => {
     setSize(PAINT_COLOR_SIZE_ORDER[0]);
@@ -122,24 +146,35 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
     [color, colorMeta],
   );
 
+  const productVariants = useMemo(() => {
+    const productType = selectedProductType || 'Premium Interior Emulsion';
+    return PRODUCT_PRICING[productType] || PRODUCT_PRICING['Premium Interior Emulsion'];
+  }, [selectedProductType]);
+
   const unitPrice = useMemo(() => {
-    const variantConfig = PAINT_COLOR_VARIANTS[size];
+    const variantConfig = productVariants[size];
     return variantConfig ? variantConfig.price : 0;
-  }, [size]);
+  }, [size, productVariants]);
+
+  const unitMrp = useMemo(() => {
+    const variantConfig = productVariants[size];
+    return variantConfig ? variantConfig.mrp : 0;
+  }, [size, productVariants]);
 
   const variantId = useMemo(
-    () => (PAINT_COLOR_VARIANTS[size] ? PAINT_COLOR_VARIANTS[size].shopifyVariantId : null),
-    [size],
+    () => (productVariants[size] ? productVariants[size].shopifyVariantId : null),
+    [size, productVariants],
   );
 
   const sizeOptions = useMemo(
-    () => PAINT_COLOR_SIZE_ORDER.map((label) => [label, PAINT_COLOR_VARIANTS[label]]),
-    [],
+    () => PAINT_COLOR_SIZE_ORDER.map((label) => [label, productVariants[label]]),
+    [productVariants],
   );
 
   const coverage = useMemo(() => coverageFor(product), [product]);
   const totalPrice = unitPrice * qty;
-  const productType = selectedProductType || 'Interior Latex Paint';
+  const totalMrp = unitMrp * qty;
+  const productType = selectedProductType || 'Premium Interior Emulsion';
 
   const customAttributes = useMemo(
     () => [
@@ -209,28 +244,6 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
     );
   };
 
-  const addSampleToCart = (sample) => {
-    if (!sample || !color) return;
-    const sku = `${sample.skuPrefix}-${colorCode || sanitizeCode(colorMeta.name)}`;
-    const sampleLabel = sample.size?.ml ? `${sample.size.ml} ml` : 'Swatch';
-    const productForCart = {
-      id: sku,
-      name: `${sample.name} - ${colorMeta.name || color.name}`,
-      display_name: `${sample.name} - ${colorMeta.name || color.name}`,
-      price: sample.price,
-      image: color?.image || fallbackImage,
-    };
-
-    addToCart(
-      productForCart,
-      'Sample',
-      sampleLabel,
-      1,
-      sample.price,
-      { name: colorMeta.name || color?.name || '', hex: colorMeta.hexCode || actualHex, code: colorCode, family: colorMeta.colorFamily || '' },
-      'sample',
-    );
-  };
 
   return (
     <div className="space-y-6 p-6 border rounded-2xl bg-white/90 shadow-sm">
@@ -277,7 +290,12 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
             +
           </button>
         </div>
-        <div className="text-2xl font-semibold text-gray-900">{formatCurrency(totalPrice)}</div>
+        <div className="flex items-center gap-2">
+          <div className="text-2xl font-semibold text-gray-900">{formatCurrency(totalPrice)}</div>
+          {totalMrp > 0 && totalMrp !== totalPrice && (
+            <div className="text-lg text-red-500 line-through">{formatCurrency(totalMrp)}</div>
+          )}
+        </div>
         <button
           onClick={addVariantToCart}
           className="px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition"
@@ -286,19 +304,10 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        {samples.map((sample) => (
-          <button
-            key={sample.id}
-            onClick={() => addSampleToCart(sample)}
-            className="px-3 py-2 border rounded-lg bg-white text-gray-900 hover:border-black/40 transition"
-          >
-            {sample.name} - {formatCurrency(sample.price)}
-          </button>
-        ))}
+      <div>
         <Link
           to={`${VISUALIZER_PATH}?color=${encodeURIComponent(colorCode || colorMeta.name)}&hex=${encodeURIComponent(colorMeta.hexCode || actualHex)}`}
-          className="px-3 py-2 rounded-lg bg-gray-900 text-white hover:bg-black transition"
+          className="inline-block px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-black transition"
         >
           Visualize This Color
         </Link>
