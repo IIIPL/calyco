@@ -1,99 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import ColorDetailSidebar from './ColorDetailSidebar';
+import { useNavigate } from 'react-router-dom';
+import { getPopularColors } from '../data/homepageColors';
 
 const PopularColorsGrid = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(null);
+  const navigate = useNavigate();
 
-  // Popular colors data with exact colors specified by the user
-  const popularColors = [
-    {
-      id: 1,
-      name: "GREY MIST",
-      hex: "#C9CCCD",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 2,
-      name: "GREY THUNDER", 
-      hex: "#9DA0A3",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 3,
-      name: "LAVENDER",
-      hex: "#D4C8CD",
-      price: "₹699", 
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/Bedroom/base.jpg",
-      roomType: "Bedroom"
-    },
-    {
-      id: 4,
-      name: "LILAC",
-      hex: "#C9BDC7",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/Bedroom/base.jpg",
-      roomType: "Bedroom"
-    },
-    {
-      id: 5,
-      name: "LINEN",
-      hex: "#D3CABB",
-      price: "₹699",
-      isBestSeller: true,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    },
-    {
-      id: 6,
-      name: "PURPLE",
-      hex: "#776A8C",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 7,
-      name: "SAGE GREEN",
-      hex: "#A8B99D",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    },
-    {
-      id: 8,
-      name: "BRICK RED",
-      hex: "#8A3F3E",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    }
-  ];
+  // Get popular colors from database
+  const dbColors = getPopularColors();
+
+  // Map database colors to component format
+  const popularColors = dbColors.map((color, index) => ({
+    id: index + 1,
+    name: color.name,
+    hex: color.hex.startsWith('#') ? color.hex : `#${color.hex}`,
+    code: color.code || color.ralCode,
+    isBestSeller: color.popularity === "High" || color.name === "Linen",
+    colorFamily: color.colorFamily,
+    temperature: color.temperature || color.colorTemperature,
+    description: color.mood || color.description,
+    ...color // Include all other properties from database
+  }));
 
   const handleColorClick = (color) => {
-    setSelectedColor(color);
-    setIsSidebarOpen(true);
-  };
+    // Convert color family to URL-friendly format
+    const family = color.colorFamily
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[&]/g, '-');
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setSelectedColor(null);
-  };
+    // Convert color name to URL-friendly format
+    const colorName = color.name
+      .toLowerCase()
+      .replace(/\s+/g, '-');
 
-  const handleColorChange = (newColor) => {
-    setSelectedColor(newColor);
+    // Navigate to color detail page
+    navigate(`/colors/family/${family}/${colorName}`);
   };
 
   return (
@@ -148,15 +90,6 @@ const PopularColorsGrid = () => {
           </div>
         </div>
       </section>
-
-      {/* Color Detail Sidebar */}
-      <ColorDetailSidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
-        selectedColor={selectedColor}
-        similarColors={popularColors.filter(color => color.name !== selectedColor?.name).slice(0, 3)}
-        onColorChange={handleColorChange}
-      />
     </>
   );
 };

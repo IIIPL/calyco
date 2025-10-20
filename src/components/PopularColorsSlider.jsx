@@ -1,114 +1,33 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import CartPopup from './CartPopup';
-import { useCart } from '../context/CartContext';
 import NavigationArrows from './NavigationArrows';
-import ColorDetailSidebar from './ColorDetailSidebar';
+import { getPopularColors } from '../data/homepageColors';
 
 const PopularColorsSlider = () => {
   const navigate = useNavigate();
-  const { addToCart, goToCheckout } = useCart();
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(null);
 
-  // Map color names to their family routes
-  const getColorFamilyRoute = (colorName) => {
-    const colorToFamilyMap = {
-      'GREY MIST': 'greys',
-      'GREY THUNDER': 'greys',
-      'LAVENDER': 'purples-&-pinks',
-      'LILAC': 'purples-&-pinks',
-      'LINEN': 'whites-&-off-whites',
-      'PURPLE': 'purples-&-pinks',
-      'SAGE GREEN': 'greens',
-      'BRICK RED': 'reds-&-oranges'
-    };
-    
-    const family = colorToFamilyMap[colorName];
-    return family ? `/colors/family/${family}` : '/colors';
-  };
+  // Get popular colors from database
+  const dbColors = getPopularColors();
 
-  // Popular colors data with exact colors specified by user
-  const popularColors = [
-    {
-      id: 1,
-      name: "GREY MIST",
-      hex: "#C9CCCD",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 2,
-      name: "GREY THUNDER", 
-      hex: "#9DA0A3",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 3,
-      name: "LAVENDER",
-      hex: "#D4C8CD",
-      price: "₹699", 
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/Bedroom/base.jpg",
-      roomType: "Bedroom"
-    },
-    {
-      id: 4,
-      name: "LILAC",
-      hex: "#C9BDC7",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/Bedroom/base.jpg",
-      roomType: "Bedroom"
-    },
-    {
-      id: 5,
-      name: "LINEN",
-      hex: "#D3CABB",
-      price: "₹699",
-      isBestSeller: true,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    },
-    {
-      id: 6,
-      name: "PURPLE",
-      hex: "#776A8C",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
-      roomType: "Living Room"
-    },
-    {
-      id: 7,
-      name: "SAGE GREEN",
-      hex: "#A8B99D",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    },
-    {
-      id: 8,
-      name: "BRICK RED",
-      hex: "#8A3F3E",
-      price: "₹699",
-      isBestSeller: false,
-      roomImage: "/Assets/Rooms/DiningRoom/base.jpg",
-      roomType: "Dining Room"
-    }
-  ];
+  // Map database colors to component format
+  const popularColors = dbColors.map((color, index) => ({
+    id: index + 1,
+    name: color.name,
+    hex: color.hex.startsWith('#') ? color.hex : `#${color.hex}`,
+    code: color.code || color.ralCode,
+    isBestSeller: color.popularity === "High" || color.name === "Linen",
+    roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
+    roomType: color.interiorUse?.split(',')[0] || "Living Room",
+    colorFamily: color.colorFamily,
+    temperature: color.temperature || color.colorTemperature,
+    description: color.mood || color.description,
+    ...color // Include all other properties from database
+  }));
 
   const cardWidth = 272; // Exact size as shown in the image (272.36 x 272.36)
   const gap = 16; // Gap between cards (matches gap-4)
@@ -130,69 +49,20 @@ const PopularColorsSlider = () => {
     );
   };
 
-  const handleAddToCart = (color) => {
-    console.log(`Added ${color.name} to cart`);
-    
-    // Create a product object for the cart
-    const productForCart = {
-      id: color.id,
-      name: color.name,
-      display_name: color.name,
-      price: parseInt(color.price.replace('₹', '')),
-      image: `data:image/svg+xml;base64,${btoa(`
-        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="100" fill="${color.hex}"/>
-        </svg>
-      `)}`
-    };
-
-    // Add to cart with proper parameters
-    addToCart(productForCart, 'Sample', 'Sample', 1, parseInt(color.price.replace('₹', '')), {
-      name: color.name,
-      hex: color.hex
-    });
-    
-    // Show cart popup
-    setCartPopup({
-      isVisible: true,
-      item: {
-        name: color.name,
-        price: color.price,
-        image: `data:image/svg+xml;base64,${btoa(`
-          <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" fill="${color.hex}"/>
-          </svg>
-        `)}`
-      }
-    });
-  };
-
   const handleColorClick = (color) => {
-    setSelectedColor(color);
-    setIsSidebarOpen(true);
-  };
+    // Convert color family to URL-friendly format
+    const family = color.colorFamily
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[&]/g, '-');
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setSelectedColor(null);
-  };
+    // Convert color name to URL-friendly format
+    const colorName = color.name
+      .toLowerCase()
+      .replace(/\s+/g, '-');
 
-  const handleColorChange = (newColor) => {
-    setSelectedColor(newColor);
-  };
-
-  const closeCartPopup = () => {
-    setCartPopup({ isVisible: false, item: null });
-  };
-
-  const handleContinueShopping = () => {
-    setCartPopup({ isVisible: false, item: null });
-    // Optionally scroll to top or stay on current page
-  };
-
-  const handleCheckout = async () => {
-    setCartPopup({ isVisible: false, item: null });
-    await goToCheckout();
+    // Navigate to color detail page
+    navigate(`/colors/family/${family}/${colorName}`);
   };
 
   // Handle drag end for swipe functionality
@@ -300,17 +170,10 @@ const PopularColorsSlider = () => {
                         
                         {/* Color Info */}
                         <div className="p-3 sm:p-4 text-center border-t border-gray-100">
-                          <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">{color.name}</h3>
-                          <p className="text-sm text-gray-600 mb-3">{color.price}</p>
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAddToCart(color);
-                            }}
-                            className="w-full bg-[#1a1a2e] text-white py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg font-medium hover:bg-[#16213e] transition-colors text-sm border border-[#1a1a2e] hover:border-[#16213e]"
-                          >
-                            Add to Cart
-                          </button>
+                          <h3 className="text-base sm:text-lg font-semibold text-gray-900">{color.name}</h3>
+                          {color.code && (
+                            <p className="text-sm text-gray-600 mt-1">{color.code}</p>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -321,23 +184,6 @@ const PopularColorsSlider = () => {
           </div>
         </div>
       </section>
-
-      {/* Cart Popup */}
-      <CartPopup
-        isVisible={cartPopup.isVisible}
-        onClose={closeCartPopup}
-        item={cartPopup.item}
-        onContinueShopping={handleContinueShopping}
-        onCheckout={handleCheckout}
-      />
-
-      <ColorDetailSidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
-        selectedColor={selectedColor}
-        similarColors={selectedColor ? popularColors.filter(c => c.name !== selectedColor.name).slice(0, 3) : []}
-        onColorChange={handleColorChange}
-      />
     </>
   );
 };
