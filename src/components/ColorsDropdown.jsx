@@ -8,6 +8,7 @@ const ALL_COLORS = getAllColors();
 const toSlug = (value) =>
   value
     .toLowerCase()
+    .replace(/&/g, "and")  // Replace & with 'and' before removing other chars
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 

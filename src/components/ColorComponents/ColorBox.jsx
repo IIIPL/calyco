@@ -7,8 +7,9 @@ const slugify = (text) =>
   text
     .toLowerCase()
     .trim()
+    .replace(/&/g, 'and')  // Replace & with 'and' first
     .replace(/\s+/g, '-')
-    .replace(/[^\w\-&]+/g, '')
+    .replace(/[^\w\-]+/g, '')
     .replace(/\-\-+/g, '-');
 
 const resolveHex = (color) => {

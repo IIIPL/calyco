@@ -122,15 +122,16 @@ const RoomVisualizer = () => {
   // Filter colors based on search and family
   const filteredColors = flatColors.filter(color => {
     const searchTerm = colorSearch.toLowerCase().trim();
-    const matchesSearch = searchTerm === '' || 
+    const family = color.colorFamily || color.color_family || '';
+    const matchesSearch = searchTerm === '' ||
                          color.name.toLowerCase().includes(searchTerm) ||
                          color.hex.toLowerCase().includes(searchTerm) ||
-                         color.color_family.toLowerCase().includes(searchTerm);
-                         
-    const matchesFamily = colorFamily === 'All' || color.color_family === colorFamily;
+                         family.toLowerCase().includes(searchTerm);
+
+    const matchesFamily = colorFamily === 'All' || family === colorFamily;
     return matchesSearch && matchesFamily;
   });
-  
+
   // Handle color selection
   const handleColorSelect = (color) => {
     const normalizedColor = { ...color, actualHex: getActualHexColor(color.hex) };

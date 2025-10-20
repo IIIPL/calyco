@@ -10,7 +10,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565810/926305ec604562133a8501e5ba25b58f_dntyvh.jpg",
-        "colors": ["Banana Cream", "Charcoal Smoke", "Jet Black"]
+        "colors": ["Cream White", "Anthracite Gray", "Jet Black"]
       }
     ]
   },
@@ -25,7 +25,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565810/695d4fd9302a838dfe75e25cdac0703f_c2jana.jpg",
-        "colors": ["Earthy Terracotta", "Clay Beige", "Cocoa Brown"]
+        "colors": ["Old Rose", "Green Beige", "Signal Orange"]
       }
     ]
   },
@@ -40,7 +40,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565809/3f0964f8b4c4660c90f641c6ca88e988_rpgbjl.jpg",
-        "colors": ["Terra Blush", "Blossom Warmth", "Mudstone Brown"]
+        "colors": ["Linen", "Ivory", "Rustic Clay"]
       }
     ]
   },
@@ -55,7 +55,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565808/2067ffd2a83feb54603c161a4064c298_erjh8n.jpg",
-        "colors": ["Deep Ocean", "Ocean Mist", "Glacier Mist"]
+        "colors": ["Marine Blue", "Cyan Turquoise", "Bright White"]
       }
     ]
   },
@@ -70,7 +70,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565928/6375fc5ccd2485b73ba06e822320bdcf_jfoipb.png",
-        "colors": ["Serene Ivory", "Sage Dust"]
+        "colors": ["Pure White", "Olive Yellow"]
       }
     ]
   },
@@ -85,7 +85,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565927/4c16aaa5b851d5753f632ba44988142b_e6ox87.jpg",
-        "colors": ["Molten Ember", "Maroon Velvet", "Vintage Rose"]
+        "colors": ["Orient Red", "Purple Red", "Beige Red"]
       }
     ]
   },
@@ -100,7 +100,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565926/22d83918c3d0c6e72acc4e2bdaaea0ad_t4r0wb.jpg",
-        "colors": ["Curry Yellow", "Vanilla Cream", "Classic Cream"]
+        "colors": ["Signal Yellow", "Linen", "Cream White"]
       }
     ]
   },
@@ -115,7 +115,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565881/b61ebc11d686a411fcbdbdf5f8286169_vdwf9m.jpg",
-        "colors": ["Sky Blue", "Slate Stone", "Classic Cream"]
+        "colors": ["Sky Blue", "Silver Gray", "Cream White"]
       }
     ]
   },
@@ -130,7 +130,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565877/923dfb07a61f0903e484ab7bf07b1541_aneek2.png",
-        "colors": ["Chalk Beige", "Celadon Green", "Classic Cream"]
+        "colors": ["Cream White", "Pastel Green", "Cream White"]
       }
     ]
   },
@@ -145,7 +145,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565876/88f5a299181bb01256da49990ee99d2c_zzyv18.jpg",
-        "colors": ["Glacier Mist", "Slate Stone", "Charcoal Grey"]
+        "colors": ["Bright White", "Silver Gray", "Anthracite Gray"]
       }
     ]
   },
@@ -160,7 +160,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565875/838e69c2c1fc6960e411a9b3389e9048_avl4qh.webp",
-        "colors": ["Forest Olive", "Sage Dust", "Mud Brown"]
+        "colors": ["Sage Green", "Olive Yellow", "Rustic Clay"]
       }
     ]
   },
@@ -175,7 +175,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565869/7f053964b0cbf7d47effa2db9c4e3c7a_zqpfdz.jpg",
-        "colors": ["Sky Blue", "Silver Mist", "Classic Cream"]
+        "colors": ["Sky Blue", "Concrete Shield", "Cream White"]
       }
     ]
   },
@@ -190,7 +190,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565868/257e1d70e4d5a40ed0605dd04ba85759_kkinqq.jpg",
-        "colors": ["Indigo Night", "Slate Stone", "Chalk Cream"]
+        "colors": ["Twilight Blue", "Silver Gray", "Cream White"]
       }
     ]
   },
@@ -205,7 +205,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754564638/b714944b75e09096b8eb0bede0650172_pwisbm.jpg",
-        "colors": ["Sage Dust", "Eucalyptus Breeze", "Classic Cream"]
+        "colors": ["Olive Yellow", "Metallic White", "Cream White"]
       }
     ]
   },
@@ -220,7 +220,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754564638/17b209e9565b8007de703ccdf0a26dbe_mxcuyc.jpg",
-        "colors": ["Mint Soft", "Vanilla Cream", "Evening Linen"]
+        "colors": ["Quartz Gray", "Linen", "Silk Gray"]
       }
     ]
   },
@@ -235,7 +235,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754564536/a159d74ee9aab65fd10b5d15f041252b_fzptna.webp",
-        "colors": ["Indigo Night", "Graphite Grey", "Classic Cream"]
+        "colors": ["Twilight Blue", "Distant Blue", "Cream White"]
       }
     ]
   },
@@ -250,7 +250,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754564535/9b59ed39da1e43369c29140b25e08bf4_gquf8j.png",
-        "colors": ["Ocean Mist", "Slate Stone", "Chalk Cream"]
+        "colors": ["Cyan Turquoise", "Silver Gray", "Cream White"]
       }
     ]
   },
@@ -265,7 +265,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754564535/78dc9bef7be18affc728fe63d0603ed4_w5dli9.jpg",
-        "colors": ["Royal Indigo", "Golden Clay", "Vanilla Cream"]
+        "colors": ["Twilight Blue", "Golden Temple", "Linen"]
       }
     ]
   },
@@ -280,7 +280,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565994/f7fc4ef5b12841a30061a1a5b994e902_asvlzq.jpg",
-        "colors": ["Sky Blue", "Chalk Cream", "Slate Stone"]
+        "colors": ["Sky Blue", "Cream White", "Silver Gray"]
       }
     ]
   },
@@ -295,7 +295,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565992/ebe0cb099b287f45bee757dede5e7706_jmnwcc.jpg",
-        "colors": ["Eucalyptus Breeze", "Celadon Green", "Chalk Beige"]
+        "colors": ["Metallic White", "Pastel Green", "Cream White"]
       }
     ]
   },
@@ -310,7 +310,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565991/eb75c19d1d21730a7f0e993319092734_qt6kjt.jpg",
-        "colors": ["Lilac Veil", "Classic Cream", "Lotus Bloom"]
+        "colors": ["Studio White", "Cream White", "Ivory"]
       }
     ]
   },
@@ -325,7 +325,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565987/c22874f2a12bc04f5f0adb765dd88353_z37nl4.jpg",
-        "colors": ["Slate Stone", "Ocean Mist", "Chalk Cream"]
+        "colors": ["Silver Gray", "Cyan Turquoise", "Cream White"]
       }
     ]
   },
@@ -340,7 +340,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754565986/b8c9f69bbc877b23b7f8598f7a27e4d3_rhfwfv.jpg",
-        "colors": ["Sage Whisper", "Golden Harvest", "Chalk Cream"]
+        "colors": ["Pale Green", "Signal Yellow", "Cream White"]
       }
     ]
   },
@@ -355,7 +355,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400301/ff677e193402353bfc2074b2bef00a17_ndpyw6.jpg",
-        "colors": ["Taupe Warmth", "Chalk Cream", "Coconut Brown"]
+        "colors": ["Olive Earth", "Cream White", "Rustic Clay"]
       }
     ]
   },
@@ -370,7 +370,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400300/fc7800a59856fd15eac3e22772d3e5cf_fusmwl.jpg",
-        "colors": ["Sage Dust", "Celadon Green", "Chalk Beige"]
+        "colors": ["Olive Yellow", "Pastel Green", "Cream White"]
       }
     ]
   },
@@ -385,7 +385,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400299/b6e06640dce82b188fdf079c71d0f62c_kq7z6y.jpg",
-        "colors": ["Sky Blue", "Slate Stone", "Chalk Cream"]
+        "colors": ["Sky Blue", "Silver Gray", "Cream White"]
       }
     ]
   },
@@ -400,7 +400,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400298/a0584dc0341013027a4290206a86e035_uhnitx.jpg",
-        "colors": ["Terra Blush", "Clay Beige", "Mudstone Brown"]
+        "colors": ["Linen", "Green Beige", "Rustic Clay"]
       }
     ]
   },
@@ -415,7 +415,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400297/9c77738049facac0b4e97e5f3e9472a4_n0jhj2.jpg",
-        "colors": ["Vanilla Cream", "Chalk Beige", "Classic Cream"]
+        "colors": ["Linen", "Cream White", "Cream White"]
       }
     ]
   },
@@ -430,7 +430,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400297/992d83075453ec30ae9b8d013577fac8_homsas.jpg",
-        "colors": ["Slate Stone", "Greige Harmony", "Chalk Cream"]
+        "colors": ["Silver Gray", "Quartz Gray", "Cream White"]
       }
     ]
   },
@@ -445,7 +445,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400296/8a50bd7be16f85b3e2cf085de81a4999_f1p7by.jpg",
-        "colors": ["Eucalyptus Breeze", "Chalk Cream", "Celadon Green"]
+        "colors": ["Metallic White", "Cream White", "Pastel Green"]
       }
     ]
   },
@@ -460,7 +460,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400296/82aa2a7f4b49a75a435d5bf685b32aaa_ecvqdg.jpg",
-        "colors": ["Teal Serenity", "Chalk Cream", "Greige Harmony"]
+        "colors": ["Teal Blue", "Cream White", "Quartz Gray"]
       }
     ]
   },
@@ -475,7 +475,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400296/271ee93f4eb8042f2d5d26a1a1868e3f_pulo3y.jpg",
-        "colors": ["Golden Clay", "Curry Yellow", "Chalk Beige"]
+        "colors": ["Golden Temple", "Signal Yellow", "Cream White"]
       }
     ]
   },
@@ -490,7 +490,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400295/13d69ee84c80114b99defe499925c51e_tn1jwz.jpg",
-        "colors": ["Curry Yellow", "Mudstone Brown", "Vanilla Cream"]
+        "colors": ["Signal Yellow", "Rustic Clay", "Linen"]
       }
     ]
   },
@@ -505,7 +505,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400295/1685dc68bba1b10a0b6220f182f402ff_uzivbe.jpg",
-        "colors": ["Olive Grove", "Sage Whisper", "Greige Harmony"]
+        "colors": ["Lime Green", "Pale Green", "Quartz Gray"]
       }
     ]
   },
@@ -520,7 +520,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754400294/02580d0fd459c58d98f1fc0b97db6552_bezhmv.jpg",
-        "colors": ["Clay Beige", "Mudstone Brown", "Chalk Beige"]
+        "colors": ["Green Beige", "Rustic Clay", "Cream White"]
       }
     ]
   },
@@ -535,7 +535,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401383/vecteezy_3d-rendering-of-the-modern-living-room-with-couches-and_34527923_yue3x4.jpg",
-        "colors": ["Classic Cream", "Serene Ivory", "Chalk Cream"]
+        "colors": ["Cream White", "Pure White", "Cream White"]
       }
     ]
   },
@@ -550,7 +550,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401380/unique-wainscoting-ideas-24_zsv7z0.jpg",
-        "colors": ["Sky Blue", "Slate Stone", "Vanilla Cream"]
+        "colors": ["Light Cyan", "Silver Gray", "Linen"]
       }
     ]
   },
@@ -565,7 +565,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401380/unique-wainscoting-ideas-23_ldufpt.jpg",
-        "colors": ["Blush Petal", "Sky Blue", "Serene Ivory"]
+        "colors": ["Silk Gray", "Light Cyan", "Pure White"]
       }
     ]
   },
@@ -580,7 +580,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401379/unique-wainscoting-ideas-22_qqfs6s.jpg",
-        "colors": ["Greige Harmony", "Ash Grey", "Classic Cream"]
+        "colors": ["Quartz Gray", "Slate Gray", "Cream White"]
       }
     ]
   },
@@ -595,7 +595,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401377/unique-wainscoting-ideas-20_mkk0cc.jpg",
-        "colors": ["Serene Ivory", "Classic Cream", "Chalk Beige"]
+        "colors": ["Pure White", "Cream White", "Cream White"]
       }
     ]
   },
@@ -610,7 +610,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401376/unique-wainscoting-ideas-19_fcjzuh.jpg",
-        "colors": ["Sky Blue", "Serene Ivory", "Classic Cream"]
+        "colors": ["Light Cyan", "Pure White", "Cream White"]
       }
     ]
   },
@@ -625,7 +625,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401375/unique-wainscoting-ideas-17_kcllkw.jpg",
-        "colors": ["Greige Harmony", "Ash Grey", "Serene Ivory"]
+        "colors": ["Quartz Gray", "Slate Gray", "Pure White"]
       }
     ]
   },
@@ -640,7 +640,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754401374/u7859757176_Create_a_ultra_modern_and_luxe_living_room_wall_t_e0a64558-dadd-4f6a-a76e-4ae9dd398d62_3_d4krmw.png",
-        "colors": ["Chalk Cream", "Vanilla Cream", "Greige Harmony"]
+        "colors": ["Cream White", "Linen", "Quartz Gray"]
       }
     ]
   },
@@ -655,7 +655,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754566023/ee0bef3b7b518e4dc5f5d606488394a4_wkycm7.jpg",
-        "colors": ["Sky Blue", "Serene Ivory", "Slate Stone"]
+        "colors": ["Sky Blue", "Pure White", "Silver Gray"]
       }
     ]
   },
@@ -670,7 +670,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754566022/9f510780c2f2edc570497c3d2ca47ae3_yol9bv.jpg",
-        "colors": ["Indigo Night", "Glacier Mist", "Chalk Cream"]
+        "colors": ["Twilight Blue", "Bright White", "Cream White"]
       }
     ]
   },
@@ -685,7 +685,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754566019/8bc6098e720c1e18d48721cbacea705c_a4s5sx.jpg",
-        "colors": ["Lilac Veil", "Lotus Bloom", "Classic Cream"]
+        "colors": ["Studio White", "Ivory", "Cream White"]
       }
     ]
   },
@@ -700,7 +700,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754566018/6264be6ce9afd2f03e45ee2aff3e9108_flfjvj.jpg",
-        "colors": ["Plum Midnight", "Mud Brown", "Ash Grey"]
+        "colors": ["Blue Lilac", "Rustic Clay", "Ash Grey"]
       }
     ]
   },
@@ -715,7 +715,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://res.cloudinary.com/dr98axi2n/image/upload/v1754566016/13b11e5d8c8998db876653a909b2f05d_m6voxt.jpg",
-        "colors": ["Lilac Veil", "Pearl Blush", "Classic Cream"]
+        "colors": ["Studio White", "Ivory", "Cream White"]
       }
     ]
   },
@@ -730,7 +730,7 @@ export const roomData = [
     "shots": [
       {
         "image": "https://blog.buyerselect.com/wp-content/uploads/2020/06/bedroom-decorating-ideas.jpg",
-        "colors": ["Serene Ivory", "Blush Petal", "Silk Taupe"]
+        "colors": ["Pure White", "Blush Petal", "Pastel Violet"]
       }
     ]
   },

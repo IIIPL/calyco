@@ -1,38 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ColorDetailSidebar from "./ColorDetailSidebar";
 
 
 const slugify = (text) =>
   text
     .toLowerCase()
     .trim()
+    .replace(/&/g, 'and')        // Replace & with 'and' first
     .replace(/\s+/g, '-')        // Replace spaces with hyphens
-    .replace(/[^\w\-&]+/g, '')   // Remove all non-word chars EXCEPT hyphens and '&'
+    .replace(/[^\w\-]+/g, '')    // Remove all non-word chars except hyphens
     .replace(/\-\-+/g, '-');     // Collapse multiple hyphens
 
 
 export default function RoomInspiration({ title, description, imageUrl, colors = [], to }) {
   const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(null);
-  
+
   // Debug: Log the colors being received
   console.log(`RoomInspiration ${title} - Colors received:`, colors);
 
   const handleColorClick = (color, event) => {
     event.preventDefault();
-    setSelectedColor(color);
-    setIsSidebarOpen(true);
-  };
 
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-    setSelectedColor(null);
-  };
+    // Navigate to color detail page
+    if (color.colorFamily || color.color_family) {
+      const family = (color.colorFamily || color.color_family)
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[&]/g, '-');
 
-  const handleColorChange = (newColor) => {
-    setSelectedColor(newColor);
+      const colorName = color.name
+        .toLowerCase()
+        .replace(/\s+/g, '-');
+
+      navigate(`/colors/family/${family}/${colorName}`);
+    }
   };
 
   return (
@@ -107,15 +108,6 @@ export default function RoomInspiration({ title, description, imageUrl, colors =
           </div>
         )}
       </div>
-
-      {/* Color Detail Sidebar */}
-      <ColorDetailSidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
-        selectedColor={selectedColor}
-        similarColors={colors.filter(color => color.name !== selectedColor?.name).slice(0, 3)}
-        onColorChange={handleColorChange}
-      />
     </div>
   );
 }
