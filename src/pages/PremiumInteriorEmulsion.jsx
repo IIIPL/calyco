@@ -13,11 +13,11 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // MRP pricing for Premium Interior Emulsion - ONLY Low Sheen Finish
 const PREMIUM_INTERIOR_MRP = {
-  'Low Sheen Finish': {
-    '1L': 950,
-    '4L': 3600,
-    '10L': 8500,
-    '20L': 16800,
+  'Low Sheen': {
+    '1L': 700,
+    '4L': 2700,
+    '10L': 6500,
+    '20L': 12800,
   },
 };
 

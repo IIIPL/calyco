@@ -1,0 +1,129 @@
+{
+  "products": [
+    {
+      "key": "premiumInteriorEmulsion",
+      "slug": "Premium-Interior-Emulsion",
+      "name": "Calyco Premium Interior Emulsion",
+      "category": "Interior",
+      "image": "/Assets/Nova/1-main.png",
+      "tagline": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
+      "shortDescription": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
+      "defaultFinish": "Low Sheen",
+      "finishes": [
+        "Low Sheen"
+      ],
+      "sizes": [
+        "1L",
+        "4L",
+        "10L",
+        "20L",
+        "Swatch Card",
+        "SamplePot 200ml"
+      ],
+      "startingPrice": 600,
+      "pricingKey": "premiumInteriorEmulsion",
+      "status": "active",
+      "featured": true
+    },
+    {
+      "key": "interiorLatexPaint",
+      "slug": "Interior-Latex-Paint",
+      "name": "Calyco Luxury Interior Emulsion",
+      "category": "Interior",
+      "image": "/Assets/Nova/1-main.png",
+      "tagline": "Luxury interior emulsion with pearl finish - where elegance meets excellence for extraordinary interiors.",
+      "shortDescription": "Premium pearl finish emulsion. Ultra-low VOC. Water-based luxury for sophisticated living.",
+      "defaultFinish": "Pearl",
+      "finishes": [
+        "Pearl"
+      ],
+      "sizes": [
+        "1L",
+        "4L",
+        "10L",
+        "20L",
+        "Swatch Card",
+        "SamplePot 200ml"
+      ],
+      "startingPrice": 800,
+      "pricingKey": "interiorLatexPaint",
+      "status": "active",
+      "featured": false
+    },
+    {
+      "key": "premiumExteriorEmulsion",
+      "slug": "Premium-Exterior-Emulsion",
+      "name": "Calyco Premium Exterior Emulsion",
+      "category": "Exterior",
+      "image": "/Assets/Exterior Latex Paint/Main.png",
+      "tagline": "Premium exterior emulsion with sophisticated matte finish - engineered for superior weather resistance and lasting beauty.",
+      "shortDescription": "Premium matte finish exterior emulsion. UV-resistant, weather-proof barrier for enduring protection.",
+      "defaultFinish": "Matte Finish",
+      "finishes": [
+        "Matte Finish"
+      ],
+      "sizes": [
+        "1L",
+        "4L",
+        "10L",
+        "20L",
+        "Swatch Card",
+        "SamplePot 200ml"
+      ],
+      "startingPrice": 600,
+      "pricingKey": "premiumExteriorEmulsion",
+      "status": "active",
+      "featured": true
+    },
+    {
+      "key": "exteriorLatexPaint",
+      "slug": "Luxury-Exterior-Emulsion",
+      "name": "Calyco Luxury Exterior Emulsion",
+      "category": "Exterior",
+      "image": "/Assets/Exterior Latex Paint/Main.png",
+      "tagline": "Luxury high-sheen exterior emulsion - brilliant façades, weather after weather.",
+      "shortDescription": "High sheen, UV-shielded luxury exterior emulsion engineered for lasting brilliance and protection.",
+      "defaultFinish": "High Sheen Finish",
+      "finishes": [
+        "High Sheen Finish"
+      ],
+      "sizes": [
+        "1L",
+        "4L",
+        "10L",
+        "20L",
+        "Swatch Card",
+        "SamplePot 200ml"
+      ],
+      "startingPrice": 800,
+      "pricingKey": "exteriorLatexPaint",
+      "status": "active",
+      "featured": false
+    },
+    {
+      "key": "waterproofingSealer",
+      "slug": "waterproofing-sealer",
+      "name": "Calyco Waterproofing Sealer",
+      "category": "Waterproofing",
+      "image": "/Assets/Waterproof Sealer/Main.png",
+      "tagline": "Breathable, crack-bridging waterproof membrane engineered for terraces, façades, planter boxes, and high-moisture interiors.",
+      "shortDescription": "Flexible, breathable waterproofing membrane that locks out moisture while resisting UV degradation and fungal growth.",
+      "defaultFinish": "Matte Finish",
+      "finishes": [
+        "Matte Finish"
+      ],
+      "sizes": [
+        "1L",
+        "4L",
+        "10L",
+        "20L",
+        "Swatch Card",
+        "SamplePot 200ml"
+      ],
+      "startingPrice": 600,
+      "pricingKey": "waterproofingSealer",
+      "status": "active",
+      "featured": true
+    }
+  ]
+}

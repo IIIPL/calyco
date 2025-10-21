@@ -6,18 +6,18 @@ const WATERPROOFING_SEALER_VARIANT_MAP = {
   "10L-Matte Finish": "gid://shopify/ProductVariant/42638016348278",
   "20L-Matte Finish": "gid://shopify/ProductVariant/42638016413814",
   "Swatch Card-Matte Finish": "gid://shopify/ProductVariant/42663763017846",
-  "SamplePot 200ml-Matte Finish": "gid://shopify/ProductVariant/42663763050614",
+  "SamplePot 200ml-Matte Finish": "gid://shopify/ProductVariant/42663763050614"
 };
 
 const priceByFinish = {
   "Matte Finish": {
-    "1L": 700,
-    "4L": 2700,
-    "10L": 6500,
-    "20L": 12800,
-    "Swatch Card": 99,        // ₹99 as per your Shopify setup
-    "SamplePot 200ml": 199,   // ₹199 as per your Shopify setup
-  },
+    "1L": 600,
+    "4L": 2200,
+    "10L": 4100,
+    "20L": 8000,
+    "Swatch Card": 99,
+    "SamplePot 200ml": 199
+  }
 };
 
 // 🔧 UPDATED: Sizes array with sample variants in correct order (after 20L)
@@ -25,54 +25,53 @@ const sizes = [
   {
     size: "1L",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["1L"],
+      "Matte Finish": priceByFinish["Matte Finish"]["1L"]
     },
     price: priceByFinish["Matte Finish"]["1L"],
-    originalPrice: 760,
+    originalPrice: 700,
   },
   {
     size: "4L",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["4L"],
+      "Matte Finish": priceByFinish["Matte Finish"]["4L"]
     },
     price: priceByFinish["Matte Finish"]["4L"],
-    originalPrice: 2899,
+    originalPrice: 2700,
   },
   {
     size: "10L",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["10L"],
+      "Matte Finish": priceByFinish["Matte Finish"]["10L"]
     },
     price: priceByFinish["Matte Finish"]["10L"],
-    originalPrice: 6999,
+    originalPrice: 6500,
   },
   {
     size: "20L",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["20L"],
+      "Matte Finish": priceByFinish["Matte Finish"]["20L"]
     },
     price: priceByFinish["Matte Finish"]["20L"],
-    originalPrice: 13499,
+    originalPrice: 12800,
   },
-  // 🔧 Sample options AFTER regular sizes
   {
     size: "Swatch Card",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["Swatch Card"],
+      "Matte Finish": priceByFinish["Matte Finish"]["Swatch Card"]
     },
     price: priceByFinish["Matte Finish"]["Swatch Card"],
     originalPrice: 150,
-    description: "Waterproof sealer color sample card"
+    description: "Color swatch card for quick shade checks",
   },
   {
     size: "SamplePot 200ml",
     priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["SamplePot 200ml"],
+      "Matte Finish": priceByFinish["Matte Finish"]["SamplePot 200ml"]
     },
     price: priceByFinish["Matte Finish"]["SamplePot 200ml"],
     originalPrice: 250,
-    description: "200ml sample pot for sealing trials"
-  },
+    description: "Small sample size for color testing",
+  }
 ];
 
 export const waterproofingSealerDetail = {
@@ -270,7 +269,14 @@ export const waterproofingSealerDetail = {
   warranty: "5-year waterproofing guarantee when applied as per TDS.",
   
   // 🔧 UPDATED: Added sample variants in correct order
-  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  packaging: [
+    "1L",
+    "4L",
+    "10L",
+    "20L",
+    "Swatch Card",
+    "SamplePot 200ml"
+  ],
   
   bucketImage: "/Assets/Waterproof Sealer/Main.png",
   images: [

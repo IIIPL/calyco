@@ -14,22 +14,22 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 // MRP pricing for Waterproofing Sealer
 const WATERPROOFING_SEALER_MRP = {
   'Matte Finish': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
+    '1L': 700,
+    '4L': 2700,
+    '10L': 6500,
+    '20L': 12800,
   },
   'Clear': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
+    '1L': 700,
+    '4L': 2700,
+    '10L': 6500,
+    '20L': 12800,
   },
   'Protective': {
-    '1L': 850,
-    '4L': 3200,
-    '10L': 7800,
-    '20L': 15600,
+    '1L': 700,
+    '4L': 2700,
+    '10L': 6500,
+    '20L': 12800,
   },
 };
 

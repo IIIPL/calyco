@@ -3,56 +3,149 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { coverageFor, VISUALIZER_PATH } from '../../lib/catalog';
 import { reverseColorNameMapping } from '../../data/colorNameMapping';
+import premiumInteriorEmulsionDetail from '../../data/productDetail.premiumInteriorEmulsion';
+import interiorLatexPaintDetail from '../../data/productDetail.interiorLatexPaint';
+import premiumExteriorEmulsionDetail from '../../data/productDetail.premiumExteriorEmulsion';
+import exteriorLatexPaintDetail from '../../data/productDetail.exteriorLatexPaint';
+import waterproofingSealerDetail from '../../data/productDetail.waterproofingSealer';
 
 const fallbackImage = '/Assets/chair.png';
 const PAINT_COLOR_PRODUCT_NAME = 'Paint Color';
 const DEFAULT_FINISH = 'Standard Finish';
 
-// Pricing and Shopify variants for all 5 products
-const PRODUCT_PRICING = Object.freeze({
-  'Premium Interior Emulsion': {
-    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42619077984374' },
-    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42619078049910' },
-    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42619078115446' },
-    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42619078180982' },
-    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304443510' },
-    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304476278' },
-  },
-  'Luxury Interior Emulsion': {
-    '1L': { price: 800, mrp: 1000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304509046' },
-    '4L': { price: 3500, mrp: 4200, shopifyVariantId: 'gid://shopify/ProductVariant/42664304541814' },
-    '10L': { price: 8400, mrp: 10000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304574582' },
-    '20L': { price: 16000, mrp: 20000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304607350' },
-    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304640118' },
-    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304672886' },
-  },
-  'Premium Exterior Emulsion': {
-    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42664304705654' },
-    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42664304738422' },
-    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42664304771190' },
-    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304803958' },
-    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664304836726' },
-    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664304869494' },
-  },
-  'Luxury Exterior Emulsion': {
-    '1L': { price: 800, mrp: 1000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304902262' },
-    '4L': { price: 3500, mrp: 4200, shopifyVariantId: 'gid://shopify/ProductVariant/42664304935030' },
-    '10L': { price: 8400, mrp: 10000, shopifyVariantId: 'gid://shopify/ProductVariant/42664304967798' },
-    '20L': { price: 16000, mrp: 20000, shopifyVariantId: 'gid://shopify/ProductVariant/42664305000566' },
-    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664305033334' },
-    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664305066102' },
-  },
-  'Waterproofing Sealer': {
-    '1L': { price: 700, mrp: 850, shopifyVariantId: 'gid://shopify/ProductVariant/42664305098870' },
-    '4L': { price: 2700, mrp: 3400, shopifyVariantId: 'gid://shopify/ProductVariant/42664305131638' },
-    '10L': { price: 6500, mrp: 8500, shopifyVariantId: 'gid://shopify/ProductVariant/42664305164406' },
-    '20L': { price: 12800, mrp: 17000, shopifyVariantId: 'gid://shopify/ProductVariant/42664305197174' },
-    'Swatch Card': { price: 99, mrp: 150, shopifyVariantId: 'gid://shopify/ProductVariant/42664305229942' },
-    'Sample Pot 200ml': { price: 199, mrp: 250, shopifyVariantId: 'gid://shopify/ProductVariant/42664305262710' },
-  },
-});
+const DEFAULT_PRODUCT_TYPE = 'Premium Interior Emulsion';
+const DEFAULT_SIZE_ORDER = ['1L', '4L', '10L', '20L', 'Swatch Card', 'SamplePot 200ml'];
 
-const PAINT_COLOR_SIZE_ORDER = ['1L', '4L', '10L', '20L', 'Swatch Card', 'Sample Pot 200ml'];
+const productDetailMap = {
+  'Premium Interior Emulsion': premiumInteriorEmulsionDetail,
+  'Luxury Interior Emulsion': interiorLatexPaintDetail,
+  'Premium Exterior Emulsion': premiumExteriorEmulsionDetail,
+  'Luxury Exterior Emulsion': exteriorLatexPaintDetail,
+  'Waterproofing Sealer': waterproofingSealerDetail,
+};
+
+const normalizeSizeKey = (label = '') => label.toLowerCase().replace(/[\s-]+/g, '');
+
+const formatSizeLabel = (label = '') =>
+  label
+    .replace(/SamplePot/gi, 'Sample Pot')
+    .replace(/(\d)\s*ml/gi, '$1 ml')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+const createSizeAliases = (label = '') => {
+  const canonical = label.replace(/\s+/g, ' ').trim();
+  const aliases = new Set([canonical]);
+  aliases.add(canonical.replace(/SamplePot/gi, 'Sample Pot'));
+  aliases.add(canonical.replace(/Sample\s+Pot/gi, 'SamplePot'));
+  aliases.add(canonical.replace(/(\d)\s*ml/gi, '$1 ml'));
+  aliases.add(normalizeSizeKey(label));
+  return Array.from(aliases);
+};
+
+const extractPriceValue = (entry) => {
+  if (entry === null || entry === undefined) return undefined;
+  if (typeof entry === 'number') return entry;
+  if (typeof entry === 'object') {
+    if (typeof entry.price === 'number') return entry.price;
+    if (typeof entry.current === 'number') return entry.current;
+  }
+  return undefined;
+};
+
+const extractMrpValue = (entry, fallback) => {
+  if (entry === null || entry === undefined) return fallback;
+  if (typeof entry === 'number') return entry;
+  if (typeof entry === 'object') {
+    if (typeof entry.mrp === 'number') return entry.mrp;
+    if (typeof entry.original === 'number') return entry.original;
+  }
+  return fallback;
+};
+
+const resolveVariantId = (map = {}, label, finish) => {
+  if (!map) return null;
+  const finishOptions = [
+    finish,
+    finish.replace(/\s+/g, ''),
+    finish.replace(/\s*finish$/i, ' Finish'),
+  ];
+
+  for (const sizeAlias of createSizeAliases(label)) {
+    const compactAlias = sizeAlias.replace(/\s+/g, '');
+    for (const finishOption of finishOptions) {
+      const finishCompact = finishOption.replace(/\s+/g, '');
+      const candidates = [
+        `${sizeAlias}-${finishOption}`,
+        `${compactAlias}-${finishOption}`,
+        `${compactAlias}-${finishCompact}`,
+        `${sizeAlias}-${finishCompact}`,
+      ];
+      for (const key of candidates) {
+        if (map[key]) return map[key];
+      }
+    }
+  }
+
+  return null;
+};
+
+const buildVariantData = (detail) => {
+  if (!detail) {
+    return { detail: null, variants: {}, sizeOrder: DEFAULT_SIZE_ORDER, defaultFinish: '' };
+  }
+
+  const finishes = detail.priceByFinish || detail.price_by_finish || {};
+  const finish = detail.defaultFinish || Object.keys(finishes)[0] || '';
+  const finishPricing = finishes[finish] || {};
+  const sizes = Array.isArray(detail.sizes) ? detail.sizes : [];
+
+  const sizeOrder =
+    sizes.length > 0
+      ? sizes
+          .map((entry) => (entry.size || '').replace(/\s+/g, ' ').trim())
+          .filter(Boolean)
+      : DEFAULT_SIZE_ORDER;
+
+  const variants = {};
+
+  sizeOrder.forEach((label) => {
+    const sizeEntry =
+      sizes.find((entry) => (entry.size || '').replace(/\s+/g, ' ').trim() === label) || {};
+    const finishEntry = finishPricing[label];
+    const salePrice = sizeEntry.price ?? extractPriceValue(finishEntry);
+    const mrp = sizeEntry.originalPrice ?? extractMrpValue(finishEntry, salePrice);
+    const variantId = resolveVariantId(detail.shopify_variant_map, label, finish);
+
+    const variantData = {
+      price: Number.isFinite(salePrice) ? Number(salePrice) : 0,
+      mrp: Number.isFinite(mrp) ? Number(mrp) : Number.isFinite(salePrice) ? Number(salePrice) : 0,
+      shopifyVariantId: variantId || null,
+    };
+
+    createSizeAliases(label).forEach((alias) => {
+      if (alias) {
+        variants[alias] = variantData;
+      }
+    });
+  });
+
+  return {
+    detail,
+    variants,
+    sizeOrder,
+    defaultFinish: finish,
+  };
+};
+
+const PRODUCT_VARIANT_DATA = Object.fromEntries(
+  Object.entries(productDetailMap).map(([key, detail]) => [key, buildVariantData(detail)]),
+);
+
+const DEFAULT_PRODUCT_DATA = PRODUCT_VARIANT_DATA[DEFAULT_PRODUCT_TYPE];
+
+const getVariantConfig = (variants, label) =>
+  variants[label] || variants[normalizeSizeKey(label)] || null;
 
 const sanitizeCode = (value) => {
   if (!value) return '';
@@ -99,17 +192,32 @@ const safeBoolean = (value) => {
 };
 
 const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttributes }) => {
-  const product = products[0];
-  const [size, setSize] = useState(PAINT_COLOR_SIZE_ORDER[0]);
+  const productType = selectedProductType || DEFAULT_PRODUCT_TYPE;
+  const productData = useMemo(
+    () => PRODUCT_VARIANT_DATA[productType] || DEFAULT_PRODUCT_DATA,
+    [productType],
+  );
+  const productVariants = productData?.variants || {};
+  const sizeOrder =
+    productData?.sizeOrder && productData.sizeOrder.length > 0
+      ? productData.sizeOrder
+      : DEFAULT_SIZE_ORDER;
+
+  const [size, setSize] = useState(() => sizeOrder[0] || DEFAULT_SIZE_ORDER[0]);
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
 
   useEffect(() => {
-    setSize(PAINT_COLOR_SIZE_ORDER[0]);
+    const nextOrder =
+      productData?.sizeOrder && productData.sizeOrder.length > 0
+        ? productData.sizeOrder
+        : DEFAULT_SIZE_ORDER;
+    setSize(nextOrder[0] || DEFAULT_SIZE_ORDER[0]);
     setQty(1);
-  }, [color?.slug, color?.name]);
+  }, [color?.slug, color?.name, productData]);
 
   const actualHex = useMemo(() => resolveHex(color), [color]);
+  const productRecord = products[0] || productData.detail || {};
 
   const colorMeta = useMemo(() => {
     const meta = colorAttributes || {};
@@ -146,35 +254,30 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
     [color, colorMeta],
   );
 
-  const productVariants = useMemo(() => {
-    const productType = selectedProductType || 'Premium Interior Emulsion';
-    return PRODUCT_PRICING[productType] || PRODUCT_PRICING['Premium Interior Emulsion'];
-  }, [selectedProductType]);
-
-  const unitPrice = useMemo(() => {
-    const variantConfig = productVariants[size];
-    return variantConfig ? variantConfig.price : 0;
-  }, [size, productVariants]);
-
-  const unitMrp = useMemo(() => {
-    const variantConfig = productVariants[size];
-    return variantConfig ? variantConfig.mrp : 0;
-  }, [size, productVariants]);
-
-  const variantId = useMemo(
-    () => (productVariants[size] ? productVariants[size].shopifyVariantId : null),
-    [size, productVariants],
+  const currentVariant = useMemo(
+    () => getVariantConfig(productVariants, size),
+    [productVariants, size],
   );
+
+  const unitPrice = currentVariant?.price ?? 0;
+  const unitMrp = currentVariant?.mrp ?? 0;
+  const variantId = currentVariant?.shopifyVariantId ?? null;
 
   const sizeOptions = useMemo(
-    () => PAINT_COLOR_SIZE_ORDER.map((label) => [label, productVariants[label]]),
-    [productVariants],
+    () =>
+      sizeOrder
+        .map((label) => {
+          const variantConfig = getVariantConfig(productVariants, label);
+          if (!variantConfig) return null;
+          return [label, variantConfig];
+        })
+        .filter(Boolean),
+    [productVariants, sizeOrder],
   );
 
-  const coverage = useMemo(() => coverageFor(product), [product]);
+  const coverage = useMemo(() => coverageFor(productRecord), [productRecord]);
   const totalPrice = unitPrice * qty;
   const totalMrp = unitMrp * qty;
-  const productType = selectedProductType || 'Premium Interior Emulsion';
 
   const customAttributes = useMemo(
     () => [
@@ -195,7 +298,7 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
       { key: 'Contractor', value: safeBoolean(colorMeta.contractor) },
       { key: 'Designer', value: safeBoolean(colorMeta.designer) },
       { key: 'Product Type', value: safeString(productType) },
-      { key: 'Size', value: safeString(size) },
+      { key: 'Size', value: safeString(formatSizeLabel(size)) },
     ],
     [actualHex, color?.name, colorMeta, productType, size],
   );
@@ -225,7 +328,7 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
       name: `${PAINT_COLOR_PRODUCT_NAME} - ${selectedColorInfo.name}`,
       display_name: `${PAINT_COLOR_PRODUCT_NAME} - ${selectedColorInfo.name}`,
       price: unitPrice,
-      image: color?.image || product?.image || fallbackImage,
+      image: color?.image || productRecord?.image || fallbackImage,
     };
 
     await addToCart(
@@ -261,7 +364,7 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
                   isSelected ? 'bg-black text-white border-black' : 'bg-white text-gray-900 hover:border-black/40'
                 }`}
               >
-                <div className="font-medium">{label}</div>
+                <div className="font-medium">{formatSizeLabel(label)}</div>
                 <div className={`text-xs ${isSelected ? 'text-white/80' : 'text-gray-500'}`}>
                   {formatCurrency(optionPrice)}
                 </div>

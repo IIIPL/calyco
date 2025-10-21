@@ -180,9 +180,9 @@
     "layer": "Editorial",
     "sheen": "Matte/Satin",
     "collection": "Contemporary Neutrals",
-    "interiorUse": "Feature Walls, Accents",
-    "exteriorUse": "Architectural Details",
-    "mood": "Luxe, Industrial, Bold",
+    "interiorUse": "Industrial Lofts",
+    "exteriorUse": "Urban Buildings",
+    "mood": "Industrial, Modern, Urban",
     "lightReflectance": "40-45%",
     "undertone": "Neutral",
     "popularity": "Medium",
@@ -266,7 +266,7 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 9010",
+    "ralCode": "RAL 9011",
     "name": "Monsoon White",
     "slug": "monsoon-white",
     "hexCode": "#F7F4EF",
@@ -285,10 +285,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 9001",
+    "ralCode": "RAL 1012",
     "name": "Lotus Cream",
     "slug": "lotus-cream",
-    "hexCode": "#F5E8DC",
+    "hexCode": "#E5D9C8",
     "colorFamily": "Whites",
     "tone": "Warm",
     "layer": "Signature",
@@ -304,10 +304,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1013",
+    "ralCode": "RAL 1004",
     "name": "Jasmine White",
     "slug": "jasmine-white",
-    "hexCode": "#EAE3CD",
+    "hexCode": "#F5E8DC",
     "colorFamily": "Whites",
     "tone": "Warm",
     "layer": "Signature",
@@ -646,7 +646,7 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 7016",
+    "ralCode": "RAL 7015",
     "name": "Modern Charcoal",
     "slug": "modern-charcoal",
     "hexCode": "#434750",
@@ -1064,10 +1064,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 8003",
+    "ralCode": "RAL 8028",
     "name": "Rajasthani Clay",
     "slug": "rajasthani-clay",
-    "hexCode": "#6C3B2A",
+    "hexCode": "#4E3B31",
     "colorFamily": "Earth Tones",
     "tone": "Warm",
     "layer": "Signature",
@@ -1083,10 +1083,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 8023",
+    "ralCode": "RAL 8014",
     "name": "Terracotta Heritage",
     "slug": "terracotta-heritage",
-    "hexCode": "#A45729",
+    "hexCode": "#382C1E",
     "colorFamily": "Earth Tones",
     "tone": "Warm",
     "layer": "Signature",
@@ -1102,10 +1102,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1027",
+    "ralCode": "RAL 1006",
     "name": "Turmeric Earth",
     "slug": "turmeric-earth",
-    "hexCode": "#A77F0E",
+    "hexCode": "#E49E00",
     "colorFamily": "Earth Tones",
     "tone": "Warm",
     "layer": "Signature",
@@ -1254,10 +1254,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 5014",
+    "ralCode": "RAL 5013",
     "name": "Dusty Blue",
     "slug": "dusty-blue",
-    "hexCode": "#606E8C",
+    "hexCode": "#1E213D",
     "colorFamily": "Blues",
     "tone": "Cool",
     "layer": "Editorial",
@@ -1273,10 +1273,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 5023",
+    "ralCode": "RAL 5008",
     "name": "Distant Blue",
     "slug": "distant-blue",
-    "hexCode": "#49678D",
+    "hexCode": "#26252D",
     "colorFamily": "Blues",
     "tone": "Cool",
     "layer": "Editorial",
@@ -1387,10 +1387,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 5014",
+    "ralCode": "RAL 5011",
     "name": "Monsoon Sky",
     "slug": "monsoon-sky",
-    "hexCode": "#606E8C",
+    "hexCode": "#1F2A44",
     "colorFamily": "Blues",
     "tone": "Cool",
     "layer": "Signature",
@@ -1406,10 +1406,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 5021",
+    "ralCode": "RAL 5009",
     "name": "Arabian Sea",
     "slug": "arabian-sea",
-    "hexCode": "#256D7B",
+    "hexCode": "#025669",
     "colorFamily": "Blues",
     "tone": "Cool",
     "layer": "Signature",
@@ -1425,10 +1425,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 5012",
+    "ralCode": "RAL 5017",
     "name": "Peacock Blue",
     "slug": "peacock-blue",
-    "hexCode": "#3B83BD",
+    "hexCode": "#063971",
     "colorFamily": "Blues",
     "tone": "Cool",
     "layer": "Signature",
@@ -1767,10 +1767,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 6029",
+    "ralCode": "RAL 6035",
     "name": "Kerala Palm",
     "slug": "kerala-palm",
-    "hexCode": "#20603D",
+    "hexCode": "#1C542D",
     "colorFamily": "Greens",
     "tone": "Cool",
     "layer": "Signature",
@@ -1786,10 +1786,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 6001",
+    "ralCode": "RAL 6037",
     "name": "Monsoon Leaf",
     "slug": "monsoon-leaf",
-    "hexCode": "#287233",
+    "hexCode": "#008F39",
     "colorFamily": "Greens",
     "tone": "Cool",
     "layer": "Signature",
@@ -1805,10 +1805,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 6027",
+    "ralCode": "RAL 6036",
     "name": "Ganges Mint",
     "slug": "ganges-mint",
-    "hexCode": "#84C3BE",
+    "hexCode": "#193737",
     "colorFamily": "Greens",
     "tone": "Cool",
     "layer": "Signature",
@@ -2052,10 +2052,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1017",
+    "ralCode": "RAL 1007",
     "name": "Turmeric Gold",
     "slug": "turmeric-gold",
-    "hexCode": "#F5BD00",
+    "hexCode": "#DC9D00",
     "colorFamily": "Yellows & Golds",
     "tone": "Warm",
     "layer": "Signature",
@@ -2071,10 +2071,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1028",
+    "ralCode": "RAL 1008",
     "name": "Marigold",
     "slug": "marigold",
-    "hexCode": "#F4A900",
+    "hexCode": "#E49E00",
     "colorFamily": "Yellows & Golds",
     "tone": "Warm",
     "layer": "Signature",
@@ -2090,10 +2090,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1032",
+    "ralCode": "RAL 1031",
     "name": "Golden Temple",
     "slug": "golden-temple",
-    "hexCode": "#D6AE01",
+    "hexCode": "#E6A747",
     "colorFamily": "Yellows & Golds",
     "tone": "Warm",
     "layer": "Signature",
@@ -2337,10 +2337,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 3000",
+    "ralCode": "RAL 3013",
     "name": "Vermillion Spice",
     "slug": "vermillion-spice",
-    "hexCode": "#AF2B1E",
+    "hexCode": "#A12312",
     "colorFamily": "Reds & Pinks",
     "tone": "Warm",
     "layer": "Signature",
@@ -2356,10 +2356,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 3012",
+    "ralCode": "RAL 3007",
     "name": "Rajasthani Pink",
     "slug": "rajasthani-pink",
-    "hexCode": "#C1876B",
+    "hexCode": "#412227",
     "colorFamily": "Reds & Pinks",
     "tone": "Warm",
     "layer": "Signature",
@@ -2375,10 +2375,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 3015",
+    "ralCode": "RAL 3011",
     "name": "Lotus Pink",
     "slug": "lotus-pink",
-    "hexCode": "#EA899A",
+    "hexCode": "#7E2121",
     "colorFamily": "Reds & Pinks",
     "tone": "Cool",
     "layer": "Signature",
@@ -2546,10 +2546,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 4006",
+    "ralCode": "RAL 4007",
     "name": "Royal Mauve",
     "slug": "royal-mauve",
-    "hexCode": "#A03472",
+    "hexCode": "#4A192C",
     "colorFamily": "Purples & Violets",
     "tone": "Cool",
     "layer": "Signature",
@@ -2565,10 +2565,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 4008",
+    "ralCode": "RAL 4010",
     "name": "Mystic Violet",
     "slug": "mystic-violet",
-    "hexCode": "#924E7D",
+    "hexCode": "#CF3476",
     "colorFamily": "Purples & Violets",
     "tone": "Cool",
     "layer": "Signature",
@@ -2717,7 +2717,7 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 7034",
+    "ralCode": "RAL 7036",
     "name": "Yellow Grey",
     "slug": "yellow-grey",
     "hexCode": "#8F8B66",
@@ -2793,10 +2793,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1001",
+    "ralCode": "RAL 1022",
     "name": "Desert Sand",
     "slug": "desert-sand",
-    "hexCode": "#C2B078",
+    "hexCode": "#C6A664",
     "colorFamily": "Beiges & Tans",
     "tone": "Warm",
     "layer": "Signature",
@@ -2812,10 +2812,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1011",
+    "ralCode": "RAL 1025",
     "name": "Sandstone",
     "slug": "sandstone",
-    "hexCode": "#8A6642",
+    "hexCode": "#A5A5A5",
     "colorFamily": "Beiges & Tans",
     "tone": "Warm",
     "layer": "Signature",
@@ -2831,10 +2831,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 1005",
+    "ralCode": "RAL 1009",
     "name": "Amber Honey",
     "slug": "amber-honey",
-    "hexCode": "#A98307",
+    "hexCode": "#E29000",
     "colorFamily": "Beiges & Tans",
     "tone": "Warm",
     "layer": "Signature",
@@ -3040,10 +3040,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 2004",
+    "ralCode": "RAL 2005",
     "name": "Marigold Flame",
     "slug": "marigold-flame",
-    "hexCode": "#F44611",
+    "hexCode": "#FF2301",
     "colorFamily": "Oranges",
     "tone": "Warm",
     "layer": "Signature",
@@ -3059,10 +3059,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 2013",
+    "ralCode": "RAL 2007",
     "name": "Henna Orange",
     "slug": "henna-orange",
-    "hexCode": "#C35831",
+    "hexCode": "#FFA420",
     "colorFamily": "Oranges",
     "tone": "Warm",
     "layer": "Signature",
@@ -3211,10 +3211,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 9005",
+    "ralCode": "RAL 9017",
     "name": "Carbon Shield",
     "slug": "carbon-shield",
-    "hexCode": "#0A0A0A",
+    "hexCode": "#1E1E1E",
     "colorFamily": "Blacks & Deep Tones",
     "tone": "Cool",
     "layer": "Signature",
@@ -3249,7 +3249,7 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 9006",
+    "ralCode": "RAL 9008",
     "name": "White Aluminium",
     "slug": "white-aluminium",
     "hexCode": "#A5A5A0",
@@ -3268,10 +3268,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 7001",
+    "ralCode": "RAL 7002",
     "name": "Silver Grey",
     "slug": "silver-grey",
-    "hexCode": "#8D9296",
+    "hexCode": "#7E7B52",
     "colorFamily": "Specialty Metallics",
     "tone": "Cool",
     "layer": "Editorial",
@@ -3306,10 +3306,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 9007",
+    "ralCode": "RAL 7046",
     "name": "Industrial Steel",
     "slug": "industrial-steel",
-    "hexCode": "#8F8F8F",
+    "hexCode": "#82898F",
     "colorFamily": "Specialty Metallics",
     "tone": "Cool",
     "layer": "Signature",
@@ -3325,10 +3325,10 @@
     "designer": true
   },
   {
-    "ralCode": "RAL 7001",
+    "ralCode": "RAL 7000",
     "name": "Machinery Grey",
     "slug": "machinery-grey",
-    "hexCode": "#8D9296",
+    "hexCode": "#78858B",
     "colorFamily": "Specialty Metallics",
     "tone": "Cool",
     "layer": "Signature",

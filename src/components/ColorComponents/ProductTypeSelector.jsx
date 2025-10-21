@@ -19,7 +19,7 @@ const PRODUCT_TYPE_OPTIONS = [
   {
     value: 'Luxury Exterior Emulsion',
     title: 'Luxury Exterior Emulsion',
-    description: 'Premium weather-resistant luxury finish',
+    description: 'Weather-resistant luxury finish',
   },
   {
     value: 'Waterproofing Sealer',

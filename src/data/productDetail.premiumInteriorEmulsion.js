@@ -1,22 +1,21 @@
 const PREMIUM_INTERIOR_VARIANT_MAP = {
-  // Low Sheen variants - UPDATED with real Shopify variant IDs
   "1L-Low Sheen": "gid://shopify/ProductVariant/42663690600566",
-  "4L-Low Sheen": "gid://shopify/ProductVariant/42663690666102", 
+  "4L-Low Sheen": "gid://shopify/ProductVariant/42663690666102",
   "10L-Low Sheen": "gid://shopify/ProductVariant/42663690731638",
   "20L-Low Sheen": "gid://shopify/ProductVariant/42663690797174",
   "Swatch Card-Low Sheen": "gid://shopify/ProductVariant/42663691518070",
-  "Sample Pot 200 ml-Low Sheen": "gid://shopify/ProductVariant/42663691550838",
+  "SamplePot 200ml-Low Sheen": "gid://shopify/ProductVariant/42663691550838"
 };
 
 const priceByFinish = {
   "Low Sheen": {
-    "1L": 700,
-    "4L": 2700,
-    "10L": 6500,
-    "20L": 12800,
-    "Swatch Card": 99,        // ₹99 as per your Shopify setup
-    "Sample Pot 200 ml": 199,   // ₹199 as per your Shopify setup
-  },
+    "1L": 600,
+    "4L": 1700,
+    "10L": 4100,
+    "20L": 8000,
+    "Swatch Card": 99,
+    "SamplePot 200ml": 199
+  }
 };
 
 // 🔧 FIXED: Reordered sizes - Sample options AFTER regular sizes
@@ -24,54 +23,53 @@ const sizes = [
   {
     size: "1L",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["1L"],
+      "Low Sheen": priceByFinish["Low Sheen"]["1L"]
     },
     price: priceByFinish["Low Sheen"]["1L"],
-    originalPrice: 850,
+    originalPrice: 700,
   },
   {
     size: "4L",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["4L"],
+      "Low Sheen": priceByFinish["Low Sheen"]["4L"]
     },
     price: priceByFinish["Low Sheen"]["4L"],
-    originalPrice: 3200,
+    originalPrice: 2700,
   },
   {
     size: "10L",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["10L"],
+      "Low Sheen": priceByFinish["Low Sheen"]["10L"]
     },
     price: priceByFinish["Low Sheen"]["10L"],
-    originalPrice: 7800,
+    originalPrice: 6500,
   },
   {
     size: "20L",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["20L"],
+      "Low Sheen": priceByFinish["Low Sheen"]["20L"]
     },
     price: priceByFinish["Low Sheen"]["20L"],
-    originalPrice: 15600,
+    originalPrice: 12800,
   },
-  // 🎨 Sample options AFTER regular sizes
   {
     size: "Swatch Card",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["Swatch Card"],
+      "Low Sheen": priceByFinish["Low Sheen"]["Swatch Card"]
     },
     price: priceByFinish["Low Sheen"]["Swatch Card"],
     originalPrice: 150,
-    description: "Color sample card for testing"
+    description: "Color swatch card for quick shade checks",
   },
   {
-    size: "Sample Pot 200 ml",
+    size: "SamplePot 200ml",
     priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["SamplePot 200ml"],
+      "Low Sheen": priceByFinish["Low Sheen"]["SamplePot 200ml"]
     },
     price: priceByFinish["Low Sheen"]["SamplePot 200ml"],
     originalPrice: 250,
-    description: "Small sample pot for color testing"
-  },
+    description: "Small sample size for color testing",
+  }
 ];
 
 export const premiumInteriorEmulsionDetail = {
@@ -208,7 +206,14 @@ export const premiumInteriorEmulsionDetail = {
   warranty: "5 years",
   
   // 🔧 FIXED: Reordered packaging array - samples AFTER regular sizes
-  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  packaging: [
+    "1L",
+    "4L",
+    "10L",
+    "20L",
+    "Swatch Card",
+    "SamplePot 200ml"
+  ],
   
   bucketImage: "/Assets/Nova/1-main.png",
   images: [

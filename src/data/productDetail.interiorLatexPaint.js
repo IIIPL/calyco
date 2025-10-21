@@ -5,18 +5,18 @@ const LUXURY_INTERIOR_VARIANT_MAP = {
   "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
   "20L-Pearl": "gid://shopify/ProductVariant/42619088535670",
   "Swatch Card-Pearl": "gid://shopify/ProductVariant/42663703085174",
-  "SamplePot 200ml-Pearl": "gid://shopify/ProductVariant/42663703117942",
+  "SamplePot 200ml-Pearl": "gid://shopify/ProductVariant/42663703117942"
 };
 
 const priceByFinish = {
   "Pearl": {
     "1L": 800,
-    "4L": 3500,
-    "10L": 8400,
-    "20L": 16000,
-    "Swatch Card": 99,        // ₹99 as per your Shopify setup
-    "SamplePot 200ml": 199,   // ₹199 as per your Shopify setup
-  },
+    "4L": 2200,
+    "10L": 5200,
+    "20L": 9700,
+    "Swatch Card": 99,
+    "SamplePot 200ml": 199
+  }
 };
 
 // 🎨 UPDATED: Reordered sizes - Sample options AFTER regular sizes
@@ -24,54 +24,53 @@ const sizes = [
   {
     size: "1L",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["1L"],
+      "Pearl": priceByFinish["Pearl"]["1L"]
     },
     price: priceByFinish["Pearl"]["1L"],
-    originalPrice: 950,
+    originalPrice: 900,
   },
   {
     size: "4L",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["4L"],
+      "Pearl": priceByFinish["Pearl"]["4L"]
     },
     price: priceByFinish["Pearl"]["4L"],
-    originalPrice: 4200,
+    originalPrice: 3500,
   },
   {
     size: "10L",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["10L"],
+      "Pearl": priceByFinish["Pearl"]["10L"]
     },
     price: priceByFinish["Pearl"]["10L"],
-    originalPrice: 10100,
+    originalPrice: 8400,
   },
   {
     size: "20L",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["20L"],
+      "Pearl": priceByFinish["Pearl"]["20L"]
     },
     price: priceByFinish["Pearl"]["20L"],
-    originalPrice: 19200,
+    originalPrice: 16000,
   },
-  // 🎨 Sample options AFTER regular sizes
   {
     size: "Swatch Card",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["Swatch Card"],
+      "Pearl": priceByFinish["Pearl"]["Swatch Card"]
     },
     price: priceByFinish["Pearl"]["Swatch Card"],
     originalPrice: 150,
-    description: "Color sample card for testing"
+    description: "Color swatch card for quick shade checks",
   },
   {
     size: "SamplePot 200ml",
     priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["SamplePot 200ml"],
+      "Pearl": priceByFinish["Pearl"]["SamplePot 200ml"]
     },
     price: priceByFinish["Pearl"]["SamplePot 200ml"],
     originalPrice: 250,
-    description: "Small sample pot for color testing"
-  },
+    description: "Small sample size for color testing",
+  }
 ];
 
 export const interiorLatexPaintDetail = {
@@ -205,7 +204,14 @@ export const interiorLatexPaintDetail = {
   warranty: "5 years",
   
   // 🎨 UPDATED: Added sample variants in correct order
-  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  packaging: [
+    "1L",
+    "4L",
+    "10L",
+    "20L",
+    "Swatch Card",
+    "SamplePot 200ml"
+  ],
   
   bucketImage: "/Assets/Nova/1-main.png",
   images: [

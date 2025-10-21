@@ -1,0 +1,262 @@
+{
+  "premiumInteriorEmulsion": {
+    "slug": "Premium-Interior-Emulsion",
+    "defaultFinish": "Low Sheen",
+    "finishes": {
+      "Low Sheen": {
+        "sizes": [
+          {
+            "label": "1L",
+            "current": 600,
+            "original": 700,
+            "variantId": "gid://shopify/ProductVariant/42663690600566",
+            "type": "standard"
+          },
+          {
+            "label": "4L",
+            "current": 1700,
+            "original": 2700,
+            "variantId": "gid://shopify/ProductVariant/42663690666102",
+            "type": "standard"
+          },
+          {
+            "label": "10L",
+            "current": 4100,
+            "original": 6500,
+            "variantId": "gid://shopify/ProductVariant/42663690731638",
+            "type": "standard"
+          },
+          {
+            "label": "20L",
+            "current": 8000,
+            "original": 12800,
+            "variantId": "gid://shopify/ProductVariant/42663690797174",
+            "type": "standard"
+          },
+          {
+            "label": "Swatch Card",
+            "current": 99,
+            "original": 150,
+            "variantId": "gid://shopify/ProductVariant/42663691518070",
+            "type": "sample"
+          },
+          {
+            "label": "SamplePot 200ml",
+            "current": 199,
+            "original": 250,
+            "variantId": "gid://shopify/ProductVariant/42663691550838",
+            "type": "sample"
+          }
+        ]
+      }
+    }
+  },
+  "interiorLatexPaint": {
+    "slug": "Interior-Latex-Paint",
+    "defaultFinish": "Pearl",
+    "finishes": {
+      "Pearl": {
+        "sizes": [
+          {
+            "label": "1L",
+            "current": 800,
+            "original": 900,
+            "variantId": "gid://shopify/ProductVariant/42619088339062",
+            "type": "standard"
+          },
+          {
+            "label": "4L",
+            "current": 2200,
+            "original": 3500,
+            "variantId": "gid://shopify/ProductVariant/42619088404598",
+            "type": "standard"
+          },
+          {
+            "label": "10L",
+            "current": 5200,
+            "original": 8400,
+            "variantId": "gid://shopify/ProductVariant/42619088470134",
+            "type": "standard"
+          },
+          {
+            "label": "20L",
+            "current": 9700,
+            "original": 16000,
+            "variantId": "gid://shopify/ProductVariant/42619088535670",
+            "type": "standard"
+          },
+          {
+            "label": "Swatch Card",
+            "current": 99,
+            "original": 150,
+            "variantId": "gid://shopify/ProductVariant/42663703085174",
+            "type": "sample"
+          },
+          {
+            "label": "SamplePot 200ml",
+            "current": 199,
+            "original": 250,
+            "variantId": "gid://shopify/ProductVariant/42663703117942",
+            "type": "sample"
+          }
+        ]
+      }
+    }
+  },
+  "premiumExteriorEmulsion": {
+    "slug": "Premium-Exterior-Emulsion",
+    "defaultFinish": "Matte Finish",
+    "finishes": {
+      "Matte Finish": {
+        "sizes": [
+          {
+            "label": "1L",
+            "current": 600,
+            "original": 700,
+            "variantId": "gid://shopify/ProductVariant/42663725006966",
+            "type": "standard"
+          },
+          {
+            "label": "4L",
+            "current": 1700,
+            "original": 2700,
+            "variantId": "gid://shopify/ProductVariant/42663725072502",
+            "type": "standard"
+          },
+          {
+            "label": "10L",
+            "current": 4100,
+            "original": 6500,
+            "variantId": "gid://shopify/ProductVariant/42663725138038",
+            "type": "standard"
+          },
+          {
+            "label": "20L",
+            "current": 8000,
+            "original": 12800,
+            "variantId": "gid://shopify/ProductVariant/42663725203574",
+            "type": "standard"
+          },
+          {
+            "label": "Swatch Card",
+            "current": 99,
+            "original": 150,
+            "variantId": "gid://shopify/ProductVariant/42663725596790",
+            "type": "sample"
+          },
+          {
+            "label": "SamplePot 200ml",
+            "current": 199,
+            "original": 250,
+            "variantId": "gid://shopify/ProductVariant/42663725629558",
+            "type": "sample"
+          }
+        ]
+      }
+    }
+  },
+  "exteriorLatexPaint": {
+    "slug": "Luxury-Exterior-Emulsion",
+    "defaultFinish": "High Sheen Finish",
+    "finishes": {
+      "High Sheen Finish": {
+        "sizes": [
+          {
+            "label": "1L",
+            "current": 800,
+            "original": 900,
+            "variantId": "gid://shopify/ProductVariant/42637669433462",
+            "type": "standard"
+          },
+          {
+            "label": "4L",
+            "current": 2200,
+            "original": 3500,
+            "variantId": "gid://shopify/ProductVariant/42637669498998",
+            "type": "standard"
+          },
+          {
+            "label": "10L",
+            "current": 5200,
+            "original": 8400,
+            "variantId": "gid://shopify/ProductVariant/42637669564534",
+            "type": "standard"
+          },
+          {
+            "label": "20L",
+            "current": 9700,
+            "original": 16000,
+            "variantId": "gid://shopify/ProductVariant/42637669630070",
+            "type": "standard"
+          },
+          {
+            "label": "Swatch Card",
+            "current": 99,
+            "original": 150,
+            "variantId": "gid://shopify/ProductVariant/42663730577526",
+            "type": "sample"
+          },
+          {
+            "label": "SamplePot 200ml",
+            "current": 199,
+            "original": 250,
+            "variantId": "gid://shopify/ProductVariant/42663730610294",
+            "type": "sample"
+          }
+        ]
+      }
+    }
+  },
+  "waterproofingSealer": {
+    "slug": "waterproofing-sealer",
+    "defaultFinish": "Matte Finish",
+    "finishes": {
+      "Matte Finish": {
+        "sizes": [
+          {
+            "label": "1L",
+            "current": 600,
+            "original": 700,
+            "variantId": "gid://shopify/ProductVariant/42638016217206",
+            "type": "standard"
+          },
+          {
+            "label": "4L",
+            "current": 2200,
+            "original": 2700,
+            "variantId": "gid://shopify/ProductVariant/42638016282742",
+            "type": "standard"
+          },
+          {
+            "label": "10L",
+            "current": 4100,
+            "original": 6500,
+            "variantId": "gid://shopify/ProductVariant/42638016348278",
+            "type": "standard"
+          },
+          {
+            "label": "20L",
+            "current": 8000,
+            "original": 12800,
+            "variantId": "gid://shopify/ProductVariant/42638016413814",
+            "type": "standard"
+          },
+          {
+            "label": "Swatch Card",
+            "current": 99,
+            "original": 150,
+            "variantId": "gid://shopify/ProductVariant/42663763017846",
+            "type": "sample"
+          },
+          {
+            "label": "SamplePot 200ml",
+            "current": 199,
+            "original": 250,
+            "variantId": "gid://shopify/ProductVariant/42663763050614",
+            "type": "sample"
+          }
+        ]
+      }
+    }
+  }
+}

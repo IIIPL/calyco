@@ -6,60 +6,72 @@ const LUXURY_EXTERIOR_VARIANT_MAP = {
   "10L-High Sheen Finish": "gid://shopify/ProductVariant/42637669564534",
   "20L-High Sheen Finish": "gid://shopify/ProductVariant/42637669630070",
   "Swatch Card-High Sheen Finish": "gid://shopify/ProductVariant/42663730577526",
-  "SamplePot 200ml-High Sheen Finish": "gid://shopify/ProductVariant/42663730610294",
+  "SamplePot 200ml-High Sheen Finish": "gid://shopify/ProductVariant/42663730610294"
 };
 
 const priceByFinish = {
   "High Sheen Finish": {
     "1L": 800,
-    "4L": 3500,
-    "10L": 8400,
-    "20L": 16000,
+    "4L": 2200,
+    "10L": 5200,
+    "20L": 9700,
     "Swatch Card": 99,
-    "SamplePot 200ml": 199,
-  },
+    "SamplePot 200ml": 199
+  }
 };
 
 // Order: 1L, 4L, 10L, 20L, then samples
 const sizes = [
   {
     size: "1L",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["1L"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["1L"]
+    },
     price: priceByFinish["High Sheen Finish"]["1L"],
-    originalPrice: 950,
+    originalPrice: 900,
   },
   {
     size: "4L",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["4L"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["4L"]
+    },
     price: priceByFinish["High Sheen Finish"]["4L"],
-    originalPrice: 4200,
+    originalPrice: 3500,
   },
   {
     size: "10L",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["10L"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["10L"]
+    },
     price: priceByFinish["High Sheen Finish"]["10L"],
-    originalPrice: 10100,
+    originalPrice: 8400,
   },
   {
     size: "20L",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["20L"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["20L"]
+    },
     price: priceByFinish["High Sheen Finish"]["20L"],
-    originalPrice: 19200,
+    originalPrice: 16000,
   },
   {
     size: "Swatch Card",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["Swatch Card"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["Swatch Card"]
+    },
     price: priceByFinish["High Sheen Finish"]["Swatch Card"],
     originalPrice: 150,
     description: "Color swatch card for quick shade checks",
   },
   {
     size: "SamplePot 200ml",
-    priceByFinish: { "High Sheen Finish": priceByFinish["High Sheen Finish"]["SamplePot 200ml"] },
+    priceByFinish: {
+      "High Sheen Finish": priceByFinish["High Sheen Finish"]["SamplePot 200ml"]
+    },
     price: priceByFinish["High Sheen Finish"]["SamplePot 200ml"],
     originalPrice: 250,
-    description: "200 ml sample pot for on-surface trials",
-  },
+    description: "Small sample size for color testing",
+  }
 ];
 
 export const exteriorLatexPaintDetail = {
@@ -208,7 +220,14 @@ export const exteriorLatexPaintDetail = {
   warranty: "7 years",
 
   // Regular sizes first, then samples
-  packaging: ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+  packaging: [
+    "1L",
+    "4L",
+    "10L",
+    "20L",
+    "Swatch Card",
+    "SamplePot 200ml"
+  ],
 
   bucketImage: "/Assets/Exterior Latex Paint/Main.png",
   images: ["/Assets/Exterior Latex Paint/Main.png"],

@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:colors": "node scripts/generateColors.js",
+    "generate:products": "node scripts/generateProducts.js",
+    "sync-admin": "node scripts/sync-admin-data.js",
+    "publish-changes": "npm run sync-admin && git add src/data && git commit -m \"Admin: Updated data\" && git push"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
