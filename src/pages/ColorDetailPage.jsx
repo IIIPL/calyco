@@ -259,7 +259,6 @@ const ColorDetailPage = () => {
   const downloadKey = displayCode && displayCode !== 'N/A' ? displayCode : currentColor.slug;
   const familyDisplayName = mergedAttributes?.colorFamily || familyInfo?.name || currentColor.colorFamily;
   const familySlugForLink = currentColor.familySlug || slugify(familyDisplayName || '');
-
   return (
     <div className="min-h-screen bg-gray-50 pt-24 text-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
@@ -278,19 +277,16 @@ const ColorDetailPage = () => {
           <span className="text-gray-900">{currentColor.name}</span>
         </nav>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
-          <div className="space-y-6">
-            <div className="relative h-60 sm:h-72 lg:h-[420px] rounded-3xl overflow-hidden border border-gray-200 shadow-inner">
-              <div className="absolute inset-0" style={{ backgroundColor: actualHexColor }} aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" aria-hidden="true" />
-              <div className={`absolute bottom-4 left-4 text-sm font-medium ${textColorClass}`}>
-                <div>{actualHexColor}</div>
-                {mergedAttributes?.lightReflectance && (
-                  <div className="text-xs uppercase tracking-wide opacity-80">
-                    LRV {mergedAttributes.lightReflectance}
-                  </div>
-                )}
-              </div>
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <div className="h-60 sm:h-72 lg:h-auto relative rounded-3xl overflow-hidden border border-gray-200 shadow-inner">
+            <div className="absolute inset-0" style={{ backgroundColor: actualHexColor }} aria-hidden="true" />
+            <div className={`absolute top-4 left-4 text-sm font-medium ${textColorClass}`}>
+              <div>{actualHexColor}</div>
+              {mergedAttributes?.lightReflectance && (
+                <div className="text-xs uppercase tracking-wide opacity-80">
+                  LRV {mergedAttributes.lightReflectance}
+                </div>
+              )}
             </div>
           </div>
 

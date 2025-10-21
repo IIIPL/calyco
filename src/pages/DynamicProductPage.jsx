@@ -679,7 +679,7 @@ export const DynamicProductPage = () => {
         }
 
         const customAttributes = [
-            { key: "Product Type", value: "Exterior Latex Paint" },
+            { key: "Product Type", value: "Luxury Exterior Emulsion" },
             { key: "Finish Type", value: selectedSheen },
             { key: "Finish Name", value: exteriorFinishConfig?.subTitle || selectedSheen },
             { key: "Color Code", value: selectedColor.ralCode || selectedColor.code || "" },
@@ -719,7 +719,7 @@ export const DynamicProductPage = () => {
                 'paint',
                 {
                     variantId,
-                    productType: 'Exterior Latex Paint',
+                    productType: 'Luxury Exterior Emulsion',
                     attributes: customAttributes,
                 },
             );

@@ -21,6 +21,8 @@ const PREMIUM_INTERIOR_MRP = {
   },
 };
 
+const SHOW_SAFETY_SECTION = false;
+
 const slugify = (value) =>
   value
     ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
@@ -1025,7 +1027,7 @@ const PremiumInteriorEmulsion = () => {
                 </div>
 
                 {/* IMPROVED Safety Information - MOBILE RESPONSIVE */}
-                {product.safety_warnings && (
+                {SHOW_SAFETY_SECTION && product.safety_warnings && (
                     <div className="mt-8 sm:mt-12 lg:mt-16">
                         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
                             <div className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
@@ -1261,8 +1263,8 @@ const PremiumInteriorEmulsion = () => {
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
-                            {/* Exterior Latex Paint Card */}
-                            <Link to="/product/Exterior-Latex-Paint" className="group h-full">
+                            {/* Luxury Exterior Emulsion Card */}
+                            <Link to="/product/Luxury-Exterior-Emulsion" className="group h-full">
                                 <div className="relative h-full rounded-xl sm:rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
 
@@ -1271,7 +1273,7 @@ const PremiumInteriorEmulsion = () => {
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
                                                 src="/Assets/Exterior Latex Paint/Main.png"
-                                                alt="Exterior Latex Paint"
+                                                alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
                                         </div>
@@ -1280,7 +1282,7 @@ const PremiumInteriorEmulsion = () => {
                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
                                                 <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md w-fit mx-auto sm:mx-0">
-                                                    <FiStar className="w-3 h-3" />
+                                                    <FiShield className="w-3 h-3" />
                                                     Climate ready
                                                 </span>
                                                 <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium w-fit mx-auto sm:mx-0">
@@ -1289,7 +1291,7 @@ const PremiumInteriorEmulsion = () => {
                                                 </button>
                                             </div>
                                             
-                                            <h3 className="text-lg sm:text-xl font-semibold text-[#493657] mb-2">Exterior Latex Paint</h3>
+                                            <h3 className="text-lg sm:text-xl font-semibold text-[#493657] mb-2">Luxury Exterior Emulsion</h3>
                                             <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">High-performance exterior emulsion designed for maximum UV and rain defence.</p>
                                             <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
                                             

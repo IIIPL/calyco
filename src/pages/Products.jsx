@@ -11,8 +11,8 @@ import {
 } from '../utils/mapping';
 
 const FEATURED_PRODUCTS = [
-  { id: 'Nova', label: 'Calyco Interior Latex Paint' },
-  { id: 'ExteriorLatex', label: 'Calyco Exterior Latex Paint' },
+  { id: 'Nova', label: 'Calyco Luxury Interior Emulsion' },
+  { id: 'ExteriorLatex', label: 'Calyco Luxury Exterior Emulsion' },
   { id: 'WaterproofingSealer', label: 'Calyco Waterproofing Sealer' }
 ];
 

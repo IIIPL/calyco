@@ -321,6 +321,20 @@ body {
   }
 }
 
+/* Sticky layout for color preview */
+.sticky-color-preview {
+  position: sticky;
+  top: 7rem;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+@media (max-width: 1023px) {
+  .sticky-color-preview {
+    position: static;
+  }
+}
+
 .price-container {
   display: flex;
   flex-direction: column;

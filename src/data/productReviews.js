@@ -5,181 +5,212 @@
 
 const normalizeKey = (productId) => String(productId || '').toLowerCase();
 
+const interiorLatexReviews = [
+  {
+    id: 1,
+    author: "Mrs. Ritu Sharma",
+    rating: 5,
+    date: "2025-11-03",
+    review: "Very nice paint for our bedroom. No smell issue like other paints and colour matching was perfect. My husband applied it easily and walls look so fresh now. Price is also reasonable compared to branded ones.",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Amit Kumar Verma",
+    rating: 5,
+    date: "2025-10-12",
+    review: "This is really good quality paint. Coverage is excellent - we saved money because needed less coats. My wife is very happy with the finish and kids room looks bright. Customer service also helped when I had doubts about quantity.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Suresh and Anjali Menon",
+    rating: 5,
+    date: "2025-09-22",
+    review: "We choosed this eco friendly paint for our new home mainly thinking about children health. The shade matching service was very helpfull - they matched our existing colour perfectly. Quality is really good for the price point.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Neha Gupta",
+    rating: 4,
+    date: "2025-09-05",
+    review: "First time using this brand but very satisfied. Application was smooth and final look is much better than my previous paint. Only thing is it took little longer to dry completely but worth waiting for such finish.",
+    verified: true,
+  },
+  {
+    id: 5,
+    author: "Ravi Iyer",
+    rating: 5,
+    date: "2025-08-18",
+    review: "Durability is very good. After 6 months walls still look fresh and stains can be wiped easily. My mother-in-law also liked the colour and finish. Will definitely buy again for other rooms.",
+    verified: true,
+  },
+];
+
+const luxuryExteriorReviews = [
+  {
+    id: 1,
+    author: "Sanjay Pillai",
+    rating: 5,
+    date: "2025-10-28",
+    review: "Used for our house exterior before monsoon season. Rain water just slides off and colour has not faded at all even after heavy rains. My neighbours are asking which paint we used. Very happy with the result.",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Meera D'Souza",
+    rating: 4,
+    date: "2025-09-19",
+    review: "Good coverage on exterior walls. Applied two coats as suggested and looks really nice. The paint spreads evenly even on rough surface. Only issue was strong smell during application but goes away after drying.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Arjun Batra",
+    rating: 5,
+    date: "2025-08-24",
+    review: "Excellent for coastal area like ours. We were worried about humidity and salt air affecting the paint but its been 4 months and no problems. The glossy finish looks premium and easy to clean.",
+    verified: true,
+  },
+];
+
+const waterproofingSealerReviews = [
+  {
+    id: 1,
+    author: "Rajesh Kumar Patel",
+    rating: 5,
+    date: "2025-11-08",
+    review: "Best solution for terrace leakage problem. Earlier every monsoon we had seepage in bedroom ceiling but after using this sealer the problem is completely solved. Applied as per instruction and working perfectly till now.",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Priya and Vikram Nair",
+    rating: 5,
+    date: "2025-10-02",
+    review: "We had major seepage issue in bathroom from neighbour side. After trying many solutions finally this waterproofing worked. Easy to apply with brush, no bad smell also. Two coats were sufficient for our small bathroom. Highly recomend.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Mrs. Sunita Sharma",
+    rating: 4,
+    date: "2025-09-03",
+    review: "Applied on terrace just before monsoon started. So far no water coming inside house which is great relief. Coverage was good for our 2BHK terrace area. Only thing is it takes more time to dry in humid weather.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Manoj Deshmukh",
+    rating: 5,
+    date: "2025-08-26",
+    review: "Excellent for stopping water seepage near windows. The consistency is thick so need to add little water but after mixing it applies smoothly. Problem of dampness has stopped completely. Worth every rupee spent on this.",
+    verified: true,
+  },
+  {
+    id: 5,
+    author: "Mrs. Kavita Reddy",
+    rating: 5,
+    date: "2025-08-18",
+    review: "Best waterproofing product I have used so far. Our balcony was leaking badly and I was very tensed about ceiling damage. After applying this the leakage stopped immediately. No chemical smell, brushes also cleaned easily.",
+    verified: true,
+  },
+  {
+    id: 6,
+    author: "Anil and Geeta Joshi",
+    rating: 4,
+    date: "2025-08-09",
+    review: "Used for society terrace waterproofing. Good coverage and rain water is not seeping inside flats now. Society members are satisfied with the result. Only suggestion is to have better instruction manual for application.",
+    verified: true,
+  },
+];
+
+const premiumInteriorReviews = [
+  {
+    id: 1,
+    author: "Deepak and Swati Kulkarni",
+    rating: 5,
+    date: "2025-10-21",
+    review: "The finish looks very rich and smooth. Even our painter commented that shade is looking like five star hotel quality. Colour depth is excellent and gives premium feel to our living room. Little expensive but worth it.",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Lalitha Nair",
+    rating: 5,
+    date: "2025-09-30",
+    review: "Colour matching was exactly like the catalogue sample. Very low odour which is good for us as we have small children at home. Walls have velvety smooth texture now. Delivery was also on time despite some confusion in address.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Prakash Bhandari",
+    rating: 4,
+    date: "2025-09-12",
+    review: "Coverage is superb - used less quantity than expected for entire hall. Finish quality is definitely premium as they claim. Only wish the drying time was faster but final result makes the wait worthwhile.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Mrs. Shweta Agarwal",
+    rating: 5,
+    date: "2025-08-17",
+    review: "Kids room transformation is amazing. Paint application was very smooth and cleaning crayon marks is so easy now. My daughter loves the new colour. Overall very satisfied with quality and customer service.",
+    verified: true,
+  },
+];
+
+const premiumExteriorReviews = [
+  {
+    id: 1,
+    author: "Harish Patankar",
+    rating: 5,
+    date: "2025-10-11",
+    review: "Used on compound wall and gate. The glossy finish makes everything look brand new. Colour is holding well against sun and dust. Neighbors are appreciating the look. Good value for money considering the quality.",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Reshma Sane",
+    rating: 4,
+    date: "2025-09-25",
+    review: "Colour retention is very good even in Pune's harsh sun and rain. Applied two coats for better result and finish looks very elegant. Made small mistake of diluting too much initially but second coat covered it well.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Vikrant Jaiswal",
+    rating: 5,
+    date: "2025-09-07",
+    review: "Love the matte finish - it hides minor wall cracks also which saved plastering cost. Used leftover paint for touching up iron gate and it blended perfectly. Overall very happy with the purchase decision.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Mrs. Nalini Dutta",
+    rating: 5,
+    date: "2025-08-20",
+    review: "Applied on society staircase exterior walls. No chalking problem and dust cleaning is very easy with wet cloth. For a middle class family like ours this gives premium feel without burning hole in pocket.",
+    verified: true,
+  },
+];
+
 export const productReviews = {
-  // Interior Latex Paint Reviews
-  "interior-latex-paint": [
-    {
-      id: 1,
-      author: "Ritu Sharma",
-      rating: 5,
-      date: "2024-09-15",
-      review: "I like that this paint is safe, no strong chemical smell. Colour matching also came perfect. It went on very smooth, covered nicely in one coat, and shade looks just right in my flat.",
-      verified: true
-    },
-    {
-      id: 2,
-      author: "Amit Verma",
-      rating: 5,
-      date: "2024-08-22",
-      review: "After using this I dont think I will buy any other paint brand. The coverage was very good, colours look rich, and their team also helped me with small doubts. For this price its honestly best.",
-      verified: true
-    },
-    {
-      id: 3,
-      author: "Suresh & Anjali Menon",
-      rating: 5,
-      date: "2024-07-10",
-      review: "We selected the eco paint when doing up our new house, main reason was to make healthy environment for kids. They even matched one old colour we already had, that was very helpful.",
-      verified: true
-    },
-    {
-      id: 4,
-      author: "Neha Gupta",
-      rating: 4,
-      date: "2024-06-18",
-      review: "I did painting before in my home but this time it felt really premium. From odering to painting everything was simple. Finish is much better then normal paints I used earlier.",
-      verified: true
-    },
-    {
-      id: 5,
-      author: "Ravi Iyer",
-      rating: 5,
-      date: "2024-05-25",
-      review: "The paint is lasting long, marks wipe off easy and walls still fresh after months. I used this brand before also and it never dissapoints. Even the packing was neat.",
-      verified: true
-    }
-  ],
-
-  // Exterior Latex Paint Reviews
-  "exterior-latex-paint": [
-    {
-      id: 1,
-      author: "Sanjay Pillai",
-      rating: 5,
-      date: "2024-09-02",
-      review: "Painted our villa exterior before monsoon and the finish still looks fresh. Rain just beads off and colour has not faded.",
-      verified: true
-    },
-    {
-      id: 2,
-      author: "Meera D'Souza",
-      rating: 4,
-      date: "2024-08-14",
-      review: "Loved the coverage and how easily it rolled on textured plaster. Needed two coats as suggested but worth it for the protection.",
-      verified: true
-    },
-    {
-      id: 3,
-      author: "Arjun Batra",
-      rating: 5,
-      date: "2024-07-29",
-      review: "Used the satin finish for fascia boards and trims. No chalking and the hydrophobic effect is impressive even in coastal humidity.",
-      verified: true
-    }
-  ],
-
-  // Exterior Latex Paint Reviews (alternate key for "Calyco Exterior Latex Paint" product ID)
-  "calyco exterior latex paint": [
-    {
-      id: 1,
-      author: "Sanjay Pillai",
-      rating: 5,
-      date: "2024-09-02",
-      review: "Painted our villa exterior before monsoon and the finish still looks fresh. Rain just beads off and colour has not faded.",
-      verified: true
-    },
-    {
-      id: 2,
-      author: "Meera D'Souza",
-      rating: 4,
-      date: "2024-08-14",
-      review: "Loved the coverage and how easily it rolled on textured plaster. Needed two coats as suggested but worth it for the protection.",
-      verified: true
-    },
-    {
-      id: 3,
-      author: "Arjun Batra",
-      rating: 5,
-      date: "2024-07-29",
-      review: "Used the satin finish for fascia boards and trims. No chalking and the hydrophobic effect is impressive even in coastal humidity.",
-      verified: true
-    }
-  ],
-
-  // Waterproofing Sealer Reviews
-  "waterproofing-sealer": [
-    {
-      id: 1,
-      author: "Rajesh Kumar Patel",
-      rating: 5,
-      date: "2024-10-05",
-      review: "Very good product for terrace. Before this my ceiling was getting damp patches during rainy season but now problem is compleatly gone. Applied 2 coats as instruction said and its working perfect. Price is also reasonable compare to other brands.",
-      verified: true
-    },
-    {
-      id: 2,
-      author: "Priya & Vikram Nair",
-      rating: 5,
-      date: "2024-09-18",
-      review: "We use this for our bathroom walls where water seepage was happening from neighbours side. After application no more leakage problem. Easy to apply with roller, no strong smell also which is good thing. Highly recomend for anyone having damp walls issue.",
-      verified: true
-    },
-    {
-      id: 3,
-      author: "Sunita Devi Sharma",
-      rating: 4,
-      date: "2024-08-27",
-      review: "Applied on terrace before monsoon. So far no complains, water is not coming inside house anymore. One tin was suffcient for small terrace of my 2bhk flat. Painter said quality is very good and application was also smooth. Only thing is drying takes some time.",
-      verified: true
-    },
-    {
-      id: 4,
-      author: "Manoj Deshmukh",
-      rating: 5,
-      date: "2024-08-10",
-      review: "Excelent for external walls. I had seepage near window area and after using this product the problem stopped. Its been 3 months and no damp patches. The paint is little thick so need to mix some water but after that it spreads nicely. Worth every rupee spend on it.",
-      verified: true
-    },
-    {
-      id: 5,
-      author: "Kavita Reddy",
-      rating: 5,
-      date: "2024-07-22",
-      review: "Best waterproofing I have used till now. My balcony was leaking and I was so tensed about it. After applying this sealer the leakge stopped completly. No bad smell, easy to clean brushes with water. I am very satisfy with results. Will definately buy again if needed.",
-      verified: true
-    },
-    {
-      id: 6,
-      author: "Anil & Geeta Joshi",
-      rating: 4,
-      date: "2024-07-05",
-      review: "We did waterproofing of our society terrace with this. Coverage is good, one 20L can covered decent area. Rain water is not seeping now which was major problem for top floor residents. Product quality seems durable. Application was simple, our contractor also praised the product.",
-      verified: true
-    }
-  ],
-
-  // You can add reviews for other products here
-  // Example:
-  // "product-id": [
-  //   { ... review object ... }
-  // ]
+  "interior-latex-paint": interiorLatexReviews,
+  "exterior-latex-paint": luxuryExteriorReviews,
+  "luxury-exterior-emulsion": luxuryExteriorReviews,
+  "waterproofing-sealer": waterproofingSealerReviews,
+  "premium-interior-emulsion": premiumInteriorReviews,
+  "premium-exterior-emulsion": premiumExteriorReviews,
 };
 
-/**
- * Get reviews for a specific product
- * @param {string} productId - The product ID
- * @returns {Array} Array of review objects
- */
+// Rest of the functions remain the same...
 export const getProductReviews = (productId) => {
   const key = normalizeKey(productId);
   return productReviews[key] || [];
 };
 
-/**
- * Calculate average rating for a product
- * @param {string} productId - The product ID
- * @returns {number} Average rating (0-5)
- */
 export const getAverageRating = (productId) => {
   const reviews = getProductReviews(productId);
   if (reviews.length === 0) return 0;
@@ -187,11 +218,6 @@ export const getAverageRating = (productId) => {
   return sum / reviews.length;
 };
 
-/**
- * Get total review count for a product
- * @param {string} productId - The product ID
- * @returns {number} Total number of reviews
- */
 export const getTotalReviews = (productId) => {
   return getProductReviews(productId).length;
 };

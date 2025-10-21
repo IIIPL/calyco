@@ -71,9 +71,9 @@ const ProductsPage = () => {
           const slug = getProductSlug(p);
           let displayName = p.display_name || p.name;
           if (p.id === 'Nova' || name.includes('interior latex paint')) {
-            displayName = 'Calyco Interior Latex Paint';
+        displayName = 'Calyco Luxury Interior Emulsion';
           } else if (p.id === 'ExteriorLatex' || name.includes('exterior latex paint')) {
-            displayName = 'Calyco Exterior Latex Paint';
+        displayName = 'Calyco Luxury Exterior Emulsion';
           } else if (FEATURED_PRODUCT_NAMES.has(p.name)) {
             displayName = 'Calyco Waterproofing Sealer';
           }
