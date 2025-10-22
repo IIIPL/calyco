@@ -1,490 +1,388 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { products as allProducts } from '../data/products';
-import { FilterSidebar } from '../components/FilterSidebar';
-import ProductCard from '../components/ProductCard';
-import ActiveFilters from '../components/ActiveFilters';
-import PriceRange from '../components/PriceRange';
-import {
-  mapToStandardSubstrates,
-  mapToStandardApplicationAreas
-} from '../utils/mapping';
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FiSearch, FiShoppingCart, FiEye } from "react-icons/fi";
+import SEO from "../components/SEO";
+import { useCart } from "../context/CartContext";
 
-const FEATURED_PRODUCTS = [
-  { id: 'Nova', label: 'Calyco Luxury Interior Emulsion' },
-  { id: 'ExteriorLatex', label: 'Calyco Luxury Exterior Emulsion' },
-  { id: 'WaterproofingSealer', label: 'Calyco Waterproofing Sealer' }
+import interiorLuxuryDetail from "../data/productDetail.interiorLatexPaint";
+import premiumInteriorDetail from "../data/productDetail.premiumInteriorEmulsion";
+import exteriorLuxuryDetail from "../data/productDetail.exteriorLatexPaint";
+import premiumExteriorDetail from "../data/productDetail.premiumExteriorEmulsion";
+import waterproofingSealerDetail from "../data/productDetail.waterproofingSealer";
+
+const HERO_PRODUCTS = [
+  {
+    id: "Luxury-Interior-Emulsion",
+    tag: "Interior",
+    title: "Luxury Interior Emulsion",
+    detail: interiorLuxuryDetail,
+  },
+  {
+    id: "Premium-Interior-Emulsion",
+    tag: "Interior", 
+    title: "Premium Interior Emulsion",
+    detail: premiumInteriorDetail,
+  },
+  {
+    id: "Luxury-Exterior-Emulsion",
+    tag: "Exterior",
+    title: "Luxury Exterior Emulsion",
+    detail: exteriorLuxuryDetail,
+  },
+  {
+    id: "Premium-Exterior-Emulsion",
+    tag: "Exterior",
+    title: "Premium Exterior Emulsion",
+    detail: premiumExteriorDetail,
+  },
+  {
+    id: "WaterproofingSealer",
+    tag: "Stain & sealer",
+    title: "Waterproofing Sealer",
+    detail: waterproofingSealerDetail,
+  },
 ];
 
-const FEATURED_ORDER = FEATURED_PRODUCTS.map(product => product.id);
-const FEATURED_LABELS = FEATURED_PRODUCTS.reduce((acc, product) => {
-  acc[product.id] = product.label;
-  return acc;
-}, {});
+const formatINR = (value) =>
+  value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹—";
 
-const getProductSlug = (product = {}) => {
-  if (product.slug) return product.slug;
-  if (product.url) {
-    const tail = product.url.split('/').filter(Boolean).pop();
-    if (tail) return tail;
+const isSampleSize = (size = "") => /swatch|sample/i.test(size);
+
+const pickDefaultSize = (detail) => {
+  if (Array.isArray(detail?.packaging)) {
+    const regular = detail.packaging.find((size) => !isSampleSize(size));
+    if (regular) return regular;
   }
-  if (product.id) return product.id;
-  if (product.name) {
-    const normalized = product.name
-      .toString()
-      .trim()
-      .replace(/[^a-z0-9]+/gi, '-')
-      .replace(/(^-+|-+$)/g, '');
-    if (normalized) return normalized;
+  if (Array.isArray(detail?.sizes)) {
+    const regularEntry = detail.sizes.find((entry) => entry?.size && !isSampleSize(entry.size));
+    if (regularEntry) return regularEntry.size;
   }
-  return '';
+  return detail?.packaging?.[0] || detail?.sizes?.[0]?.size || "";
 };
 
-const FILTER_GROUPS = ['Category', 'Substrate', 'Application Area'];
+const pickDefaultFinish = (detail) =>
+  detail?.defaultFinish || detail?.finishes?.[0]?.name || "";
+
+const getPriceForSelection = (detail, finish, size) => {
+  if (!detail) return 0;
+  const priceMaps =
+    detail.priceByFinish || detail.price_by_finish || detail.price_by_finish_all || {};
+  const finishPrices = priceMaps?.[finish] || priceMaps?.[finish?.replace(/ Finish$/, "")] || {};
+  let price = finishPrices?.[size];
+  if (price === undefined && Array.isArray(detail?.sizes)) {
+    const match = detail.sizes.find((entry) => entry.size === size);
+    if (match && match.price !== undefined) price = match.price;
+  }
+  return price !== undefined ? price : detail.price || 0;
+};
+
+const getVariantId = (detail, size, finish) => {
+  const map =
+    detail?.shopify_variant_map ||
+    detail?.variantMap ||
+    detail?.variant_map ||
+    detail?.shopifyVariantMap ||
+    {};
+
+  const candidates = [
+    `${size}-${finish}`,
+    `${size}-${finish} Finish`,
+    `${size}-${finish?.replace(/ Finish$/, "")}`,
+    `${size}-${finish?.replace(/\s+/g, " ")}`,
+    `${size}-${finish?.replace(/\s+/g, "")}`,
+  ];
+
+  for (const key of candidates) {
+    if (map[key]) return map[key];
+  }
+  return null;
+};
+
+const normaliseHeroProduct = ({ id, tag, title, detail }) => {
+  const finish = pickDefaultFinish(detail);
+  const size = pickDefaultSize(detail);
+  return {
+    id,
+    title,
+    category: tag || detail?.category || "General",
+    description: detail?.shortDescription || detail?.description || "",
+    image: detail?.image || detail?.bucketImage || "/Assets/Nova/1-main.png",
+    slug: detail?.slug || detail?.id || id,
+    finish,
+    size,
+    price: getPriceForSelection(detail, finish, size),
+    coverage: detail?.coverage || detail?.coveragePerLitre || "",
+    detail,
+  };
+};
 
 export const Products = () => {
-  // applied vs draft search
-  const [search, setSearch] = useState('');
-  const [searchDraft, setSearchDraft] = useState('');
+  const { addToCart } = useCart();
 
-  const [checked, setChecked] = useState({});
-  const [expanded, setExpanded] = useState([true, true, true]);
-  const [sortOrder, setSortOrder] = useState('');
-  const [showFilter, setShowFilter] = useState(true);
-  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [addingId, setAddingId] = useState(null);
+  const [lastAddedId, setLastAddedId] = useState(null);
+  const [errorId, setErrorId] = useState(null);
 
-  // Price bounds
-  const prices = allProducts.map(p => p.price || 0).filter(n => Number.isFinite(n));
-  const dataMin = prices.length ? Math.min(...prices) : 0;
-  const dataMax = prices.length ? Math.max(...prices) : 10000;
+  const catalog = useMemo(
+    () => HERO_PRODUCTS.map(normaliseHeroProduct),
+    []
+  );
 
-  // Applied vs Draft price
-  const [price, setPrice] = useState({ min: dataMin, max: dataMax });        // applied
-  const [priceDraft, setPriceDraft] = useState({ min: dataMin, max: dataMax }); // editable
+  // Fixed categories as requested
+  const categories = ["All", "Interior", "Exterior", "Stain & sealer"];
 
-  useEffect(() => { document.title = 'Products'; }, []);
-  useEffect(() => { setSearchDraft(search); }, [search]);
+  const filteredProducts = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    return catalog.filter((product) => {
+      const matchesCategory =
+        selectedCategory === "All" ||
+        (selectedCategory === "Interior" && (product.category === "Interior" || product.title.toLowerCase().includes("interior"))) ||
+        (selectedCategory === "Exterior" && (product.category === "Exterior" || product.title.toLowerCase().includes("exterior"))) ||
+        (selectedCategory === "Stain & sealer" && (product.category === "Stain & sealer" || product.title.toLowerCase().includes("sealer") || product.title.toLowerCase().includes("waterproof")));
 
-  // Restore persisted state
-  useEffect(() => {
-    const saved = sessionStorage.getItem('productFilters');
-    if (saved) {
-      const s = JSON.parse(saved);
-      if (s.search !== undefined) setSearch(s.search);
-      if (s.checked) setChecked(s.checked);
-      if (s.sortOrder) setSortOrder(s.sortOrder);
-      if (s.price) { setPrice(s.price); setPriceDraft(s.price); }
-    }
-  }, []);
+      const matchesTerm =
+        !term ||
+        product.title.toLowerCase().includes(term) ||
+        (product.description || "").toLowerCase().includes(term) ||
+        (product.category || "").toLowerCase().includes(term);
 
-  // URL → filters (react when URL changes)
-  useEffect(() => {
-    const cats = searchParams.getAll('category');
-    const subs = searchParams.getAll('substrate');
-    const apps = searchParams.getAll('application');
-
-    // prefer ?search=, fallback to legacy ?q=
-    const q = searchParams.get('search') ?? searchParams.get('q');
-    const sort = searchParams.get('sort');
-    const min = searchParams.get('min');
-    const max = searchParams.get('max');
-
-    const urlChecked = {};
-    cats.forEach(c => { urlChecked[`Category-${c}`] = true; });
-    subs.forEach(s => { urlChecked[`Substrate-${s}`] = true; });
-    apps.forEach(a => { urlChecked[`Application Area-${a}`] = true; });
-
-    if (Object.keys(urlChecked).length) setChecked(prev => ({ ...prev, ...urlChecked }));
-
-    if (q !== null) setSearch(q);
-    if (sort) setSortOrder(sort);
-
-    if (min || max) {
-      const minVal = Number(min ?? dataMin);
-      const maxVal = Number(max ?? dataMax);
-      const next = {
-        min: Number.isFinite(minVal) ? minVal : dataMin,
-        max: Number.isFinite(maxVal) ? maxVal : dataMax,
-      };
-      setPrice(next);
-      setPriceDraft(next);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
-
-  // Persist state
-  useEffect(() => {
-    sessionStorage.setItem('productFilters', JSON.stringify({ search, checked, sortOrder, price }));
-  }, [search, checked, sortOrder, price]);
-
-  // Build selected map BEFORE filtering
-  const selected = useMemo(() => {
-    const out = {};
-    for (const g of FILTER_GROUPS) {
-      out[g] = Object.keys(checked)
-        .filter(key => key.startsWith(`${g}-`) && checked[key])
-        .map(key => key.replace(`${g}-`, ''));
-    }
-    return out;
-  }, [checked]);
-
-  // Allowed catalog: only the curated trio, in the specified order
-  const allowedProducts = useMemo(() => {
-    return FEATURED_ORDER
-      .map((id) => allProducts.find((product) => product.id === id))
-      .filter(Boolean);
-  }, [allProducts]);
-
-  const getDisplayLabel = (product) => {
-    return FEATURED_LABELS[product.id] || product.display_name || product.name;
-  };
-
-  // Apply *non-search* filters (category/substrate/app-area/price) + sort
-  const baseFiltered = useMemo(() => {
-    const q = (search || '').trim().toLowerCase();
-
-      let list = allowedProducts
-    .map(product => {
-      const name = String(product.display_name || product.name || '').toLowerCase();
-      const category = String(product.category || '').toLowerCase();
-      const subsRaw = Array.isArray(product.substrate) ? product.substrate : (product.substrate ? [product.substrate] : []);
-      const subs = subsRaw.map(s => String(s).toLowerCase());
-      const subsGroups = mapToStandardSubstrates(subsRaw).map(s => String(s).toLowerCase());
-
-      let rank = 0; // 0=name hit, 1=category hit, 2=substrate hit, 3=no hit
-      if (q) {
-        const nameHit = name.includes(q);
-        const catHit = category.includes(q);
-        const subHit = subs.some(s => s.includes(q)) || subsGroups.some(s => s.includes(q));
-        rank = nameHit ? 0 : catHit ? 1 : subHit ? 2 : 3;
-      }
-
-      return { ...product, __rank: rank };
-    })
-    .filter(product => {
-      if (q && product.__rank === 3) return false; // exclude non-matches when a query exists
-
-      if (selected['Category']?.length && !selected['Category'].includes(product.category)) return false;
-
-      const mapped = mapToStandardSubstrates(Array.isArray(product.substrate) ? product.substrate : []);
-      if (selected['Substrate']?.length && !mapped.some(g => selected['Substrate'].includes(g))) return false;
-
-      if (selected['Application Area']?.length) {
-        const appList = Array.isArray(product.application) ? product.application : (product.application ? [product.application] : []);
-        const areas = mapToStandardApplicationAreas(appList);
-        if (!areas.some(a => selected['Application Area'].includes(a))) return false;
-      }
-
-      const p = Number(product.price || 0);
-      if (p < price.min || p > price.max) return false;
-
-      return true;
+      return matchesCategory && matchesTerm;
     });
+  }, [catalog, selectedCategory, searchTerm]);
 
-    if (sortOrder === 'asc') list = list.slice().sort((a, b) => (a.price || 0) - (b.price || 0));
-    else if (sortOrder === 'desc') list = list.slice().sort((a, b) => (b.price || 0) - (a.price || 0));
+  const handleAddToCart = async (item) => {
+    const productKey = item.slug || item.id;
+    setAddingId(productKey);
+    setErrorId(null);
 
-    return list;
-  }, [allowedProducts, selected, sortOrder, price, search]);
-
-
-  // Bucket by search: name first (no heading), else category, else substrate
-  const {
-    nameMatches,
-    categoryMatches,
-    substrateMatches,
-    categoryLabel,
-    substrateLabel
-  } = useMemo(() => {
-    const q = (search || '').trim().toLowerCase();
-    if (!q) {
-      return {
-        nameMatches: baseFiltered,
-        categoryMatches: [],
-        substrateMatches: [],
-        categoryLabel: '',
-        substrateLabel: ''
-      };
+    try {
+      const variantId = getVariantId(item.detail, item.size, item.finish);
+      await addToCart(
+        item.detail,
+        item.finish,
+        item.size,
+        1,
+        item.price,
+        null,
+        "paint",
+        variantId ? { variantId, productType: "paint" } : { productType: "paint" }
+      );
+      setLastAddedId(productKey);
+      setTimeout(() => {
+        setLastAddedId((current) => (current === productKey ? null : current));
+      }, 2500);
+    } catch (error) {
+      console.error("[Products] addToCart failed", error);
+      setErrorId(productKey);
+    } finally {
+      setAddingId(null);
     }
-
-    const nameMatches = baseFiltered.filter(p =>
-      String(p.display_name || p.name || '').toLowerCase().includes(q)
-    );
-
-    const inName = new Set(nameMatches.map(p => p.name));
-    const categoryMatches = baseFiltered.filter(p =>
-      !inName.has(p.name) &&
-      String(p.category || '').toLowerCase().includes(q)
-    );
-
-    const inNameOrCat = new Set([...nameMatches, ...categoryMatches].map(p => p.name));
-    const substrateMatches = baseFiltered.filter(p => {
-      if (inNameOrCat.has(p.name)) return false;
-      const raw = Array.isArray(p.substrate) ? p.substrate : (p.substrate ? [p.substrate] : []);
-      const rawL = raw.map(s => String(s).toLowerCase());
-      const groupedL = mapToStandardSubstrates(raw).map(s => String(s).toLowerCase());
-      return rawL.some(s => s.includes(q)) || groupedL.some(s => s.includes(q));
-    });
-
-    // Labels for the headings (one-liners)
-    const categorySet = new Set(categoryMatches.map(p => p.category).filter(Boolean));
-    const categoryLabel = Array.from(categorySet).join(', ');
-
-    const subSet = new Set();
-    substrateMatches.forEach(p => {
-      const raw = Array.isArray(p.substrate) ? p.substrate : (p.substrate ? [p.substrate] : []);
-      const grouped = mapToStandardSubstrates(raw);
-      [...raw, ...grouped].forEach(s => {
-        if (String(s).toLowerCase().includes(q)) subSet.add(String(s));
-      });
-    });
-    const substrateLabel = Array.from(subSet).join(', ');
-
-    return { nameMatches, categoryMatches, substrateMatches, categoryLabel, substrateLabel };
-  }, [baseFiltered, search]);
-
-  // Click/Enter to apply search + sync URL
-  const applySearch = () => {
-    setSearch(searchDraft);
-
-    const params = new URLSearchParams(searchParams);
-    const trimmed = (searchDraft || '').trim();
-    if (trimmed) {
-      params.set('search', trimmed);
-      params.delete('q'); // clean legacy
-    } else {
-      params.delete('search');
-      params.delete('q');
-    }
-    setSearchParams(params); // updates URL
   };
-
-  const handleCheck = (group, option) => {
-    setChecked(prev => ({ ...prev, [`${group}-${option}`]: !prev[`${group}-${option}`] }));
-  };
-  const handleToggle = idx => setExpanded(exp => exp.map((v, i) => (i === idx ? !v : v)));
-
-  const qActive = (search || '').trim().length > 0;
-  const nothingFound =
-    qActive
-      ? (nameMatches.length === 0 && categoryMatches.length === 0 && substrateMatches.length === 0)
-      : baseFiltered.length === 0;
 
   return (
-    <div className="pt-16 md:pt-20 min-h-screen bg-[#f9f6f2] pb-20 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto mb-10 pt-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">Products</h1>
+    <>
+      <SEO
+        title="Calyco Products"
+        description="Discover Calyco's professional-grade paint systems curated for long-lasting colour and protection."
+      />
 
-        {/* Search + Sort */}
-        <div className="flex flex-wrap items-center gap-4 mb-4">  
-          <input
-            type="text"
-            placeholder="Search by name, category, or substrate..."
-            value={searchDraft}
-            onChange={e => setSearchDraft(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter') applySearch(); }}
-            className="w-full max-w-md px-4 py-2 rounded-lg border border-[#e5e0d8] focus:outline-none focus:ring-2 focus:ring-[#F0C85A]"
-          />
-          <button
-            onClick={applySearch}
-            className="px-4 py-2 bg-[#493657] text-white font-semibold rounded-md shadow hover:bg-[#301A44] transition text-base"
-          >
-            Search
-          </button>
+      <section className="min-h-screen bg-[#f9f6f2]">
+        {/* 
+          🎯 IMPROVED HERO SECTION - Fixed spacing, no subtext, removed circle
+        */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#493657]/95 via-[#493657] to-[#1f102e] text-white">
+          <div className="absolute -top-24 -left-10 w-64 h-64 bg-[#F0C85A]/30 blur-[120px] rounded-full" />
+          {/* Removed the round circle from right side */}
 
-          {/* Mobile controls */}
-          <div className="w-full flex md:hidden items-center gap-2 mb-2">
-            <button
-              className="px-3 py-2 bg-[#493657] text-white font-semibold rounded-md shadow hover:bg-[#301A44] transition text-sm"
-              onClick={() => setMobileFilterOpen(o => !o)}
+          {/* 🎯 MAIN CONTAINER PADDING: pt-24 = more top padding, pb-6 = minimal bottom */}
+          <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-6">
+            {/* 
+              🎯 TITLE SPACING - Centered and improved
+            */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-10"
             >
-              {mobileFilterOpen ? 'Hide Filters' : 'Show Filters'}
-            </button>
-            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
-            <select
-              id="sortPrice"
-              value={sortOrder}
-              onChange={e => setSortOrder(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-sm"
-            >
-              <option value="">None</option>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
-            </select>
-          </div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-5xl md:text-6xl font-bold"
+              >
+                Professional-Grade Paint Systems
+              </motion.h1>
+            </motion.div>
 
-          {/* Desktop controls */}
-          <div className="ml-auto hidden md:flex items-center gap-2 w-full md:w-auto">
-            <button
-              className="px-4 py-2 bg-[#493657] text-white font-semibold rounded-md shadow hover:bg-[#301A44] transition text-base mr-2"
-              onClick={() => setShowFilter(f => !f)}
+            {/* 
+              🎯 SHORTER SEARCH BAR - Centered and limited width
+            */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-10 flex justify-center"
             >
-              {showFilter ? 'Hide Filters' : 'Show Filters'}
-            </button>
-            <label htmlFor="sortPrice" className="text-[#493657] font-medium ml-2">Sort by Price:</label>
-            <select
-              id="sortPrice"
-              value={sortOrder}
-              onChange={e => setSortOrder(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-[#e5e0d8] bg-white text-[#493657] focus:outline-none text-base"
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 w-full max-w-2xl">
+                <FiSearch className="w-5 h-5 text-white/80" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search products by name, category, or keywords..."
+                  className="flex-1 bg-transparent py-4 outline-none text-white placeholder:text-white/60 text-lg"
+                />
+              </div>
+            </motion.div>
+
+            {/* 
+              🎯 CATEGORY FILTER BUTTONS - Centered and improved styling
+            */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap justify-center gap-4 pb-6"
             >
-              <option value="">None</option>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
-            </select>
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-3 rounded-full transition-all duration-200 font-medium ${
+                    selectedCategory === category
+                      ? "bg-white text-[#493657] shadow-lg"
+                      : "bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
           </div>
         </div>
 
-        {/* Price control + chips */}
-        <div className="mb-4">
-          <PriceRange
-            min={dataMin}
-            max={dataMax}
-            value={priceDraft}
-            applied={price}
-            onChange={setPriceDraft}
-            onApply={(val) => setPrice(val)}
-          />
-        </div>
+        {/* 
+          🎯 PRODUCTS SECTION
+        */}
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          {filteredProducts.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-20 bg-white border border-dashed border-[#493657]/20 rounded-3xl"
+            >
+              <h3 className="text-2xl font-semibold text-[#493657] mb-2">
+                No matching products
+              </h3>
+              <p className="text-[#493657]/60">
+                Try adjusting your search or browse another category to discover more Calyco
+                finishes.
+              </p>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="grid gap-8 md:grid-cols-2 xl:grid-cols-3"
+            >
+              {filteredProducts.map((product, index) => {
+                const productKey = product.slug || product.id || String(index);
+                const busy = addingId === productKey;
+                const added = lastAddedId === productKey;
+                const errored = errorId === productKey;
 
-        <ActiveFilters
-          selected={selected}
-          price={price}
-          onRemove={(group, value) => setChecked(prev => ({ ...prev, [`${group}-${value}`]: false }))}
-          onClearAll={() => {
-            setChecked({});
-            setPrice({ min: dataMin, max: dataMax });
-            setPriceDraft({ min: dataMin, max: dataMax });
-            setSortOrder('');
-            setSearch('');
-            setSearchDraft('');
-            const params = new URLSearchParams(searchParams);
-            params.delete('search');
-            params.delete('q');
-            setSearchParams(params);
-          }}
-        />
-
-        {/* Mobile sidebar */}
-        {mobileFilterOpen && (
-          <div className="md:hidden mb-6 animate-fade-in-down">
-            <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
-          </div>
-        )}
-
-        {/* Layout */}
-        <div className="flex flex-row items-start gap-4">
-          {/* Desktop sidebar */}
-          <div className="hidden md:block sticky top-28 self-start max-h-[calc(100vh-7rem)] overflow-y-auto">
-            {showFilter && (
-              <FilterSidebar checked={checked} onCheck={handleCheck} expanded={expanded} onToggle={handleToggle} />
-            )}
-          </div>
-
-          {/* Grid */}
-          <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center">
-              {/* Nothing found */}
-              {nothingFound && (
-                <div className="col-span-full text-center text-[#493657] text-lg">No products found.</div>
-              )}
-
-              {/* If searching and name matches exist: show them (no heading) */}
-              {qActive && nameMatches.length > 0 && nameMatches.map((product, idx) => {
-                const slug = getProductSlug(product);
                 return (
-                  <ProductCard
-                    key={(slug || product.name) + idx}
-                    id={slug}
-                    name={getDisplayLabel(product)}
-                    image={product.images[0]}
-                    price={product.price}
-                    finishTypeSheen={product.finish_type_sheen}
-                    packaging={product.packaging}
-                    areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                  />
+                  <motion.div
+                    key={productKey}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 + index * 0.05 }}
+                    className="group relative rounded-3xl bg-white border border-[#493657]/12 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-[520px]"
+                  >
+                    {/* Top gradient bar */}
+                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A]" />
+                    
+                    {/* Category badge only - overlapping the image */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#493657]/90 text-white backdrop-blur-sm">
+                        {product.category}
+                      </span>
+                    </div>
+
+                    {/* 
+                      🎯 3:4 ASPECT RATIO PRODUCT IMAGE - No white space, no borders
+                    */}
+                    <div className="relative w-full aspect-[3/4] overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.src = "/Assets/Nova/1-main.png";
+                        }}
+                      />
+                    </div>
+
+                    {/* 
+                      🎯 PRODUCT DETAILS - Clean layout without unnecessary badges
+                    */}
+                    <div className="flex-1 flex flex-col justify-between p-6">
+                      <div>
+                        <h3 className="text-xl font-bold text-[#493657] mb-2 group-hover:text-[#F0C85A] transition-colors">
+                          {product.title}
+                        </h3>
+                        <p className="text-sm text-[#493657]/70 leading-relaxed">
+                          {product.description}
+                        </p>
+                      </div>
+
+                      {/* 
+                        🎯 TWO ACTION BUTTONS - Side by side, no pricing
+                      */}
+                      <div className="grid grid-cols-2 gap-2 mt-4">
+                        <Link
+                          to={`/product/${product.slug}`}
+                          className="inline-flex items-center justify-center gap-1 bg-white border-2 border-[#493657] text-[#493657] px-3 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300"
+                        >
+                          <FiEye className="w-4 h-4" />
+                          Details
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => handleAddToCart(product)}
+                          disabled={busy}
+                          className={`inline-flex items-center justify-center gap-1 px-3 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                            busy
+                              ? "bg-[#493657]/60 text-white cursor-not-allowed"
+                              : added
+                              ? "bg-green-500 text-white"
+                              : "bg-[#493657] text-white hover:bg-[#F0C85A] hover:text-[#493657]"
+                          }`}
+                        >
+                          <FiShoppingCart className="w-4 h-4" />
+                          {busy ? "Adding..." : added ? "Added!" : "Add to Cart"}
+                        </button>
+                      </div>
+                      
+                      {/* Error message */}
+                      {errored && (
+                        <p className="text-xs text-red-500 mt-2 text-center">
+                          Unable to add to cart. Please try again.
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
                 );
               })}
-
-              {/* If searching and no name matches, but category matches exist: show a one-line heading + products */}
-              {qActive && categoryMatches.length > 0 && (
-                <>
-                  {nameMatches.length === 0 && (
-                    <div className="col-span-full">
-                      <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
-                        Showing category: {categoryLabel || search}
-                      </h2>
-                      <p className="text-[#493657]/70">Products under the matching category.</p>
-                    </div>
-                  )}
-                  {categoryMatches.map((product, idx) => {
-                    const slug = getProductSlug(product);
-                    return (
-                      <ProductCard
-                        key={(slug || product.name) + idx}
-                        id={slug}
-                        name={getDisplayLabel(product)}
-                        image={product.images[0]}
-                        price={product.price}
-                        finishTypeSheen={product.finish_type_sheen}
-                        packaging={product.packaging}
-                        areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                      />
-                    );
-                  })}
-                </>
-              )}
-
-              {/* If no name/category matches, but substrate matches exist: show a one-line heading + products */}
-              {qActive && substrateMatches.length > 0 && (
-                <>
-                  {nameMatches.length === 0 && (
-                    <div className="col-span-full">
-                      <h2 className="text-xl md:text-2xl font-bold text-[#493657]">
-                        Showing substrate: {substrateLabel || search}
-                      </h2>
-                      <p className="text-[#493657]/70">Products compatible with the matching substrate.</p>
-                    </div>
-                  )}
-                  {substrateMatches.map((product, idx) => {
-                    const slug = getProductSlug(product);
-                    return (
-                      <ProductCard
-                        key={(slug || product.name) + idx}
-                        id={slug}
-                        name={getDisplayLabel(product)}
-                        image={product.images[0]}
-                        price={product.price}
-                        finishTypeSheen={product.finish_type_sheen}
-                        packaging={product.packaging}
-                        areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                      />
-                    );
-                  })}
-                </>
-              )}
-
-              {/* No search active: show the baseFiltered grid like before */}
-              {!qActive && baseFiltered.length > 0 && baseFiltered.map((product, idx) => {
-                const slug = getProductSlug(product);
-                return (
-                  <ProductCard
-                    key={(slug || product.name) + idx}
-                    id={slug}
-                    name={getDisplayLabel(product)}
-                    image={product.images[0]}
-                    price={product.price}
-                    finishTypeSheen={product.finish_type_sheen}
-                    packaging={product.packaging}
-                    areaCoverage={product.coverage || (product.technical_specs && product.technical_specs.coverage) || ''}
-                  />
-                );
-              })}
-            </div>
-          </div>
+            </motion.div>
+          )}
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
+
+export default Products;
