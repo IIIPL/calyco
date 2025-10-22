@@ -1,16 +1,14 @@
 // src/components/RoomVisualizer.jsx
-import React, { useState, useRef, useEffect } from 'react';
-import { useColors } from '../context/ColorContext.jsx';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaUpload, FaTrash, FaDownload, FaTimes, FaArrowLeft, FaInfoCircle, FaStar, FaQuestionCircle } from 'react-icons/fa';
-import { getAllColors } from '../data/calycoColors.js';
+import { calycoColors, getAllColors } from '../data/calycoColors.js';
 
 const flatColors = getAllColors();
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { segmentImage } from '../utils/segmentation.js';
 
 const RoomVisualizer = () => {
-  const { allColors } = useColors();
   const location = useLocation();
   const navigate = useNavigate();
   const canvasRef = useRef(null);
@@ -70,21 +68,21 @@ const RoomVisualizer = () => {
     { id: 'floor', name: 'FLOOR', color: '#F9FAFB' }
   ];
   
-  // Color families
-  const colorFamilies = [
-    'All',
-    'Whites',
-    'Grays',
-    'Earth Tones',
-    'Blues',
-    'Greens',
-    'Yellows & Golds',
-    'Reds & Pinks',
-    'Purples & Violets',
-    'Beiges & Tans',
-    'Oranges',
-    'Blacks & Deep Tones',
-    'Specialty Metallics'
+  // Color family groupings displayed in the dropdown
+  const colorFamilyOptions = [
+    { label: 'All', families: null },
+    { label: 'Whites & Off-Whites', families: ['Whites'] },
+    { label: 'Yellows & Golds', families: ['Yellows & Golds'] },
+    { label: 'Oranges', families: ['Oranges'] },
+    { label: 'Reds & Pinks', families: ['Reds & Pinks'] },
+    { label: 'Purples & Violets', families: ['Purples & Violets'] },
+    { label: 'Blues', families: ['Blues'] },
+    { label: 'Blue Greens', families: ['Blues', 'Greens'] },
+    { label: 'Greens', families: ['Greens'] },
+    { label: 'Yellow Greens', families: ['Greens', 'Yellows & Golds'] },
+    { label: 'Neutrals - Browns, Greys', families: ['Earth Tones', 'Grays', 'Blacks & Deep Tones'] },
+    { label: 'Specialty Metallics', families: ['Specialty Metallics'] },
+    { label: 'Beiges & Tans', families: ['Beiges & Tans'] },
   ];
   
   // Helper function to determine text color based on background
@@ -119,18 +117,59 @@ const RoomVisualizer = () => {
       .replace(/Charck Beige/gi, 'Chalk Beige');
   };
   
-  // Filter colors based on search and family
-  const filteredColors = flatColors.filter(color => {
-    const searchTerm = colorSearch.toLowerCase().trim();
-    const family = color.colorFamily || color.color_family || '';
-    const matchesSearch = searchTerm === '' ||
-                         color.name.toLowerCase().includes(searchTerm) ||
-                         color.hex.toLowerCase().includes(searchTerm) ||
-                         family.toLowerCase().includes(searchTerm);
+  // Build lookup by color family preserving curated ordering in calycoColors data
+  const colorsByFamily = useMemo(() => {
+    const map = {};
+    calycoColors.forEach((familyEntry) => {
+      const familyName = familyEntry.family;
+      map[familyName] = (familyEntry.colors || []).map((color) => ({
+        ...color,
+        colorFamily: color.colorFamily || familyName,
+        color_family: color.colorFamily || familyName,
+        hex: color.hex || color.hexCode || '#CCCCCC',
+        actualHex: color.actualHex || color.hex || color.hexCode,
+      }));
+    });
+    return map;
+  }, []);
 
-    const matchesFamily = colorFamily === 'All' || family === colorFamily;
-    return matchesSearch && matchesFamily;
-  });
+  // Determine the base list of colors based on the selected family
+  const familyColors = useMemo(() => {
+    const selectedOption = colorFamilyOptions.find((option) => option.label === colorFamily);
+    if (!selectedOption || !selectedOption.families) {
+      return flatColors;
+    }
+
+    const uniqueColors = new Map();
+    selectedOption.families.forEach((familyName) => {
+      const familyList = colorsByFamily[familyName] || [];
+      familyList.forEach((color) => {
+        const key = color.code || color.ralCode || color.slug || color.name || color.hex;
+        if (!uniqueColors.has(key)) {
+          uniqueColors.set(key, color);
+        }
+      });
+    });
+
+    return Array.from(uniqueColors.values());
+  }, [colorFamily, colorFamilyOptions, colorsByFamily]);
+
+  // Filter colors based on search term (family already applied)
+  const filteredColors = useMemo(() => {
+    const searchTerm = colorSearch.toLowerCase().trim();
+    if (!searchTerm) {
+      return familyColors;
+    }
+
+    return familyColors.filter((color) => {
+      const family = color.colorFamily || color.color_family || '';
+      return (
+        color.name?.toLowerCase().includes(searchTerm) ||
+        color.hex?.toLowerCase().includes(searchTerm) ||
+        family.toLowerCase().includes(searchTerm)
+      );
+    });
+  }, [familyColors, colorSearch]);
 
   // Handle color selection
   const handleColorSelect = (color) => {
@@ -637,9 +676,9 @@ const RoomVisualizer = () => {
               onChange={handleFamilyChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              {colorFamilies.map(family => (
-                <option key={family} value={family}>
-                  {family}
+              {colorFamilyOptions.map(option => (
+                <option key={option.label} value={option.label}>
+                  {option.label}
                 </option>
               ))}
             </select>
@@ -649,7 +688,7 @@ const RoomVisualizer = () => {
             <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-3 gap-1 sm:gap-1.5">
               {filteredColors.slice(0, 60).map((color) => (
                 <div
-                  key={getActualHexColor(color.hex)}
+                  key={`${color.code || color.ralCode || color.slug || color.name || ''}-${getActualHexColor(color.hex)}`}
                   className={`cursor-pointer overflow-hidden shadow-sm transition-transform hover:scale-105 ${
                     (appliedColors[activeSurface]?.actualHex || appliedColors[activeSurface]?.hex) === getActualHexColor(color.hex) ? 'ring-2 ring-indigo-500' : ''
                   }`}
