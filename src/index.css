@@ -7,17 +7,21 @@ html {
   overflow-x: hidden;
 }
 
-/* Calyco Brand Colors */
+/* CALYCO Brand Colors (v1.0) */
 :root {
   /* Core Brand Colors */
-  --calyco-purple: #532E8A;
-  --calyco-gold: #C8A951;
+  --calyco-purple: #4B007D;
+  --calyco-gold: #D4AF37;
+  --ink: #0F1221;
+  --cream: #F6F3EE;
+  --warm: #FBF9F6;
+  --line: rgba(15, 18, 33, 0.08);
 
-  /* Neutrals */
+  /* Neutrals (backward compatibility) */
   --grey-mist: #EDEDED;
   --grey-thunder: #4A5568;
-  --linen-white: #FAFAF7;
-  --charcoal-black: #1A1A1A;
+  --linen-white: #F6F3EE;
+  --charcoal-black: #0F1221;
 
   /* Supporting Natural Tones */
   --sage-green: #68D391;
@@ -26,10 +30,10 @@ html {
   --lilac: #D6BCFA;
 
   /* Usage Variables */
-  --primary-bg: var(--linen-white);
-  --secondary-bg: var(--grey-mist);
-  --text-primary: var(--charcoal-black);
-  --text-secondary: var(--grey-thunder);
+  --primary-bg: var(--cream);
+  --secondary-bg: var(--warm);
+  --text-primary: var(--ink);
+  --text-secondary: rgba(15, 18, 33, 0.7);
   --brand-primary: var(--calyco-purple);
   --brand-accent: var(--calyco-gold);
   --eco-accent: var(--sage-green);
@@ -37,19 +41,19 @@ html {
 
 /* Global Styles */
 body {
-  background-color: var(--linen-white);
-  color: var(--charcoal-black);
-  font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow-x: hidden;
 }
 
 /* Typography helpers */
 .h-font {
-  font-family: 'Manrope', 'Inter', sans-serif;
+  font-family: 'Poppins', 'Inter', sans-serif;
 }
 
 .body-font {
-  font-family: 'Inter', 'Manrope', sans-serif;
+  font-family: 'Poppins', 'Inter', sans-serif;
 }
 
 /* Custom utility classes */
@@ -178,45 +182,46 @@ body {
   border-color: var(--sage-green);
 }
 
-/* Primary CTA Button */
+/* Primary CTA Button (Gold bg, Ink text) */
 .btn-primary {
-  background-color: var(--calyco-purple);
-  color: white;
+  background-color: var(--calyco-gold);
+  color: var(--ink);
   border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(15, 18, 33, 0.08);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #6d3ba8;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(83, 46, 138, 0.3);
+  background-color: #c29f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(15, 18, 33, 0.12);
 }
 
-/* Secondary CTA Button */
+/* Secondary CTA Button (Transparent, Gold border) */
 .btn-secondary {
   background-color: transparent;
-  color: var(--calyco-purple);
-  border: 2px solid var(--calyco-purple);
+  color: var(--calyco-gold);
+  border: 2px solid var(--calyco-gold);
+  border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background-color: var(--calyco-purple);
-  color: white;
+  background-color: rgba(212, 175, 55, 0.1);
 }
 
-/* Gold Accent Button */
-.btn-gold {
-  background-color: var(--calyco-gold);
-  color: var(--charcoal-black);
+/* Tertiary Button (Text link, Purple) */
+.btn-tertiary {
+  background-color: transparent;
+  color: var(--calyco-purple);
   border: none;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.btn-gold:hover {
-  background-color: #d4b665;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(200, 169, 81, 0.3);
+.btn-tertiary:hover {
+  text-decoration: underline;
 }
 
 /* Eco Badge */

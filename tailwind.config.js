@@ -7,33 +7,24 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        heading: ['Manrope', 'Inter', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         brand: {
-          purple: 'rgb(26 28 36)',      // Your specified RGB color (primary surface / text on light)
-          purpleDark: '#1A1C24',         // Deep sections / hero overlays (from homepage)
-          gold: '#F0C85A',               // Accent, CTAs, highlights (from homepage)
-          silver: '#D9D9D9',             // Subtle borders, dividers on dark
-          bronze: '#E6B84A',             // Secondary accent (hover state from homepage)
-        },
-        ink: {
-          900: '#0B0B0E',
-          700: '#1E1E26',
-          500: '#424252',
-          300: '#A2A2B3',
-          100: '#E8E8EF',
-        },
-        paper: {
-          0: '#FFFFFF',
-          50: '#FAFAFD',
-          100: '#F5F6FA',
+          purple: '#4B007D',             // Primary brand color
+          gold: '#D4AF37',               // Primary accent
+          ink: '#0F1221',                // Text color
+          cream: '#F6F3EE',              // Page background
+          warm: '#FBF9F6',               // Card background
         },
         // Keep existing colors for backward compatibility
-        'calyco-purple': '#532E8A',
-        'calyco-gold': '#C8A951',
+        'calyco-purple': '#4B007D',
+        'calyco-gold': '#D4AF37',
+        ink: '#0F1221',
+        cream: '#F6F3EE',
+        warm: '#FBF9F6',
         'grey-mist': '#EDEDED',
         'grey-thunder': '#4A5568',
         'linen-white': '#FAFAF7',
@@ -46,12 +37,14 @@ export default {
       borderRadius: {
         xl: '0.75rem',
         '2xl': '1rem',
-        '3xl': '1.25rem',
+        '3xl': '1.5rem',          // 24px for cards
+        'button': '0.75rem',      // 12px for buttons
+        'full': '9999px',         // pills
       },
       boxShadow: {
-        card: '0 8px 24px rgba(0,0,0,.08)',
-        cardLg: '0 16px 48px rgba(0,0,0,.12)',
-        glowGold: '0 10px 30px rgba(240,200,90,.35)',
+        card: '0 8px 32px rgba(15, 18, 33, 0.08)',
+        cardLg: '0 16px 48px rgba(15, 18, 33, 0.12)',
+        subtle: '0 8px 32px rgba(15, 18, 33, 0.08)',
       },
       spacing: {
         // section rhythm
