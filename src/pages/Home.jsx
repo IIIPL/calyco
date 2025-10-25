@@ -302,6 +302,14 @@ const Home = () => {
         ogType="website"
       />
 
+      {/* Hero Section with Original ColorSlider */}
+      <section className="relative overflow-hidden pt-[19.5]">
+        <ColorSlider />
+      </section>
+
+
+
+
       {/* High-conversion Landing Hero */}
       <section className="relative bg-[#F6F3EE]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#4B007D0F] to-[#4B007D05] pointer-events-none" aria-hidden="true" />
@@ -467,7 +475,7 @@ const Home = () => {
               </ul>
             </div>
             <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-[0_8px_32px_rgba(75,0,125,0.12)]">
-              <h3 className="text-2xl font-semibold text-[#4B007D]">CALYCO (Powered by Techno India)</h3>
+              <h3 className="text-2xl font-semibold text-[#4B007D]">CALYCO </h3>
               <ul className="mt-6 space-y-4 text-sm text-[#0F1221]/85">
                 <li><strong className="text-[#0F1221]">Price:</strong> <span className="text-[#4B007D] font-semibold">20% Lower ✓</span></li>
                 <li><strong className="text-[#0F1221]">Experience:</strong> 30 Years Manufacturing</li>
@@ -565,113 +573,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-[#0F1221] md:text-[48px]">
-              What Our Customers Say
-            </h2>
-            <p className="mt-4 text-base text-[#0F1221]/70 md:text-lg">
-              Join 100+ satisfied homeowners in Delhi NCR
-            </p>
-          </div>
-          
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-[0_8px_32px_rgba(15,18,33,0.06)]">
-              <div className="mb-4 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm text-[#0F1221]/80 leading-relaxed mb-4">
-                "Finally, a paint service that doesn't harass you with calls. Got my 3 BHK painted for 20% less than Asian Paints quote. Quality is excellent!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-sm font-semibold text-white">
-                  RM
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#0F1221]">Rajesh M.</p>
-                  <p className="text-xs text-[#0F1221]/60">Dwarka, Delhi</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-[0_8px_32px_rgba(15,18,33,0.06)]">
-              <div className="mb-4 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm text-[#0F1221]/80 leading-relaxed mb-4">
-                "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-sm font-semibold text-white">
-                  PS
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#0F1221]">Priya S.</p>
-                  <p className="text-xs text-[#0F1221]/60">Gurgaon</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-[0_8px_32px_rgba(15,18,33,0.06)]">
-              <div className="mb-4 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm text-[#0F1221]/80 leading-relaxed mb-4">
-                "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-sm font-semibold text-white">
-                  AK
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#0F1221]">Amit K.</p>
-                  <p className="text-xs text-[#0F1221]/60">Noida</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mt-16 grid grid-cols-3 gap-8 rounded-[24px] border border-[#0F1221]/10 bg-[#F6F3EE] p-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                4.9/5
-              </p>
-              <p className="mt-2 text-sm text-[#0F1221]/70">Average Rating</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                100+
-              </p>
-              <p className="mt-2 text-sm text-[#0F1221]/70">Happy Customers</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                ₹12L+
-              </p>
-              <p className="mt-2 text-sm text-[#0F1221]/70">Total Savings</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
-      {/* Hero Section with Original ColorSlider */}
-      <section className="relative overflow-hidden pt-[19.5]">
-        <ColorSlider />
-      </section>
+  
 
       {/* Popular Colours Section */}
       <PopularColorsSlider />
