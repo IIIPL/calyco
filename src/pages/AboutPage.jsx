@@ -1,413 +1,533 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
-import SEO from '../components/SEO';
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 
-// Simplified animation variants - very subtle
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+const storyMilestones = [
+  { icon: "🎯", text: "Closing the gap between performance & responsibility" },
+  { icon: "🚀", text: "150+ shades, world-class facilities, 10 states served" },
+  { icon: "👑", text: "Serving homes & projects nationwide, sustainable growth" },
+];
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
+const valuePillars = [
+  { text: "Quality without compromise", icon: "⭐" },
+  { text: "Relentless innovation", icon: "🔬" },
+  { text: "Environmental stewardship", icon: "🌱" },
+  { text: "Customer-first approach", icon: "🤝" },
+  { text: "Integrity", icon: "🛡️" },
+];
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+const leadershipPillars = [
+  {
+    caption: "Science-led Innovation",
+    title: "R&D Excellence",
+    description:
+      "Coatings technologists and material scientists advance resin chemistry, pigments, and additives tuned for India's humidity, dust, and monsoon cycles.",
+    icon: "🧪",
+    gradient: "from-[#4B007D] to-[#6B46C1]",
   },
-};
+  {
+    caption: "Operations & Scale",
+    title: "Manufacturing Mastery",
+    description:
+      "Manufacturing, supply chain, and quality leaders orchestrate end-to-end efficiency with rigorous batch-to-bucket validation.",
+    icon: "⚙️",
+    gradient: "from-[#D4AF37] to-[#F59E0B]",
+  },
+  {
+    caption: "Experience Design",
+    title: "Customer Excellence",
+    description:
+      "Design strategists and service teams translate field feedback into intuitive product systems and support for homeowners and specifiers.",
+    icon: "💎",
+    gradient: "from-[#4B007D] to-[#8B5CF6]",
+  },
+  {
+    caption: "Partner Enablement",
+    title: "Trade Enablement",
+    description:
+      "Applicator trainers and technical advisors equip dealers, contractors, and architects with real-world application guidance.",  
+    icon: "🏗️",
+    gradient: "from-[#D4AF37] to-[#EAB308]",
+  },
+];
 
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: { opacity: 1, scale: 1 },
-};
+const manufacturingHighlights = [
+  {
+    title: "State-of-the-Art Facilities",
+    description:
+      "50,000 sq. ft. factory in Maharashtra featuring automated mixing, tinting, and packaging lines for consistent, scalable output.",
+    icon: "🏭",
+    metric: "50,000 sq. ft.",
+  },
+  {
+    title: "Quality Assurance",
+    description:
+      "Every batch tested for color accuracy, coverage, film build, adhesion, scrub resistance, and weather durability before release.",
+    icon: "🔍",
+    metric: "100% Tested",
+  },
+  {
+    title: "Sustainable Operations",
+    description:
+      "Water-based systems, low-/zero-VOC formulations, and waste reduction practices minimize impact across the product lifecycle.",
+    icon: "🌿",
+    metric: "Zero-VOC",
+  },
+];
+
+const ecoMaxFeatures = [
+  {
+    title: "Zero-VOC Colorants",
+    description: "Proprietary eco-friendly colorants eliminate harsh chemicals while delivering exceptional color vibrancy and depth.",
+    icon: "🎨",
+    stat: "0% VOC"
+  },
+  {
+    title: "Enhanced Durability",
+    description: "Advanced formulation strengthens paint performance, extending lifespan and reducing maintenance requirements.",
+    icon: "🛡️",
+    stat: "25% Stronger"
+  },
+  {
+    title: "Superior Air Quality",
+    description: "Low-odor technology ensures healthier indoor environments during and after application.",
+    icon: "💨",
+    stat: "Low Odor"
+  }
+];
+
+const sustainabilityPoints = [
+  {
+    title: "Safer Indoors",
+    description:
+      "Low-/zero-VOC technologies help reduce indoor air pollutants during and after application.",
+    icon: "🏠",
+  },
+  {
+    title: "Responsible Supply",
+    description:
+      "Ethically sourced raw materials and packaging optimized for recyclability support responsible consumption.",
+    icon: "♻️",
+  },
+  {
+    title: "Full Transparency",
+    description:
+      "Product and safety data sheets, plus third-party certifications, empower informed decision-making.",
+    icon: "📜",
+  },
+];
 
 export default function AboutPage() {
   const navigate = useNavigate();
-  
+  const observerRef = useRef();
+
   useEffect(() => {
-    document.title = "About Us - Calyco Paints | Eco-Premium, Safety-First";
     window.scrollTo(0, 0);
+    // Add CSS styles to document head
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      .animate-fadeInUp {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .premium-shadow {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      }
+      .premium-shadow-lg {
+        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #4B007D 0%, #D4AF37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fadeInUp");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) =>
+      observerRef.current?.observe(el)
+    );
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+      if (styleSheet.parentNode) {
+        styleSheet.parentNode.removeChild(styleSheet);
+      }
+    };
   }, []);
 
+  const handleNavigate = (path) => () => navigate(path);
+
   return (
-    <div className="font-poppins bg-white min-h-screen">
-      <SEO 
-        title="About Us - Calyco Paints | Eco-Premium, Safety-First"
-        description="Learn about Calyco's mission to provide eco-premium paints with low VOC and water-based formulations."
+    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins overflow-x-hidden">
+      <SEO
+        title="About CALYCO | Professional-Grade Paint Systems for India"
+        description="CALYCO delivers premium, low-/zero-VOC paint systems engineered for Indian conditions—combining durability, innovation, and sustainability."
         ogType="website"
       />
-      {/* Hero Section - Full width with large image */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63 (1).png')",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/20" />
-        </div>
-        
-        {/* Hero Content */}
-        <motion.div 
-          className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.h1 
-            className="text-3xl md:text-[2.75rem] font-bold mb-6 tracking-tight drop-shadow-lg"
-            style={{ fontWeight: 700 }}
-            variants={fadeUp}
-          >
-            About Calyco
-          </motion.h1>
+
+      <main>
+        {/* 
+          🎯 HERO SECTION - Fixed padding and mobile responsiveness
+        */}
+        <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-32 pb-12 md:min-h-[90vh] md:pt-32 lg:min-h-[95vh] lg:pt-32">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
+              alt="Modern Indian home exterior finished with CALYCO paints"
+              className="h-full w-full object-cover scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/95 via-[#4B007D]/90 to-[#2E0053]/88" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          </div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse float-animation"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl animate-pulse float-animation" style={{ animationDelay: "1s" }}></div>
           
-          <motion.p 
-            className="text-lg md:text-xl mb-8 leading-relaxed drop-shadow-md max-w-2xl mx-auto font-light"
-            variants={fadeUp}
-          >
-            Next-generation sustainable paint solutions for a cleaner future
-          </motion.p>
-          
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            variants={fadeUp}
-          >
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              onClick={() => navigate('/products')}
-              className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base"
-            >
-              Our Products
-            </motion.button>
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              onClick={() => navigate('/contact')}
-              className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group"
-            >
-              Contact Us
-            </motion.button>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Story & Mission */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Doing Things the Right Way
-            </h2>
-            <motion.div 
-              className="w-20 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] rounded-full mx-auto mb-8"
-              initial={{ width: 0 }}
-              whileInView={{ width: "5rem" }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            ></motion.div>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">At <strong className="text-slate-700">Calyco Paints</strong>, we believe in doing things the right way. That's why we set out to make our paint the best it can be—combining cutting-edge sustainability with uncompromising performance.</p>
-              <p className="text-xl text-gray-600 leading-relaxed">Founded in 2023, we've developed our exclusive <strong className="text-slate-700">EcoMax™ Technology</strong> that delivers gorgeous, vibrant hues with unsurpassed durability while maintaining zero-VOC formulations. It's the science behind Calyco's commitment to healthier living and environmental responsibility.</p>
+          {/* 
+            🎯 HERO CONTENT - Better mobile layout and fixed title
+          */}
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6 text-center px-4 md:px-6 lg:gap-8">
+            {/* Brand Badge */}
+            <span className="inline-flex justify-center items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm md:text-base font-medium text-white/90 glass-effect border border-white/20 mx-auto md:px-6">
+              <span className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></span>
+              <span className="hidden sm:inline">Next-generation sustainable paint solutions for a cleaner future</span>
+              <span className="sm:hidden">Sustainable paint solutions for India</span>
+            </span>
+            
+            {/* 
+              🎯 FIXED TITLE - Always 2 lines
+            */}
+            <h1 className="mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+              Professional-Grade Paint Systems
+              <br />
+              <span className="text-gradient">for India</span>
+            </h1>
+            
+            {/* 
+              🎯 RESPONSIVE DESCRIPTION
+            */}
+            <div className="max-w-2xl mx-auto space-y-2 md:space-y-3">
+              <p className="text-base md:text-lg text-white/90 font-medium">
+                Premium paints engineered for Indian homes, offices, and industries.
+              </p>
+              <p className="text-sm md:text-base text-white/80">
+                CALYCO elevates how India paints with high-performance coatings, designer-curated palettes, and low-/zero-VOC innovations for beautiful, durable spaces.
+              </p>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technology & Leadership */}
-      <section id="ecomax" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="grid md:grid-cols-2 gap-12 items-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">EcoMax™ Technology</h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.</p>
-              <p className="text-xl text-gray-600 leading-relaxed">What we created is a formula that's <strong className="text-slate-700">better, stronger, and cleaner</strong>—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.</p>
-            </div>
-            <div className="relative">
-              <motion.div 
-                className="aspect-square rounded-2xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+            
+            {/* 
+              🎯 ULTRA COMPACT MOBILE BUTTONS - Much smaller on mobile
+            */}
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center mt-4 md:mt-6 max-w-sm sm:max-w-none mx-auto">
+              <button
+                type="button"
+                onClick={handleNavigate("/products")}
+                className="group rounded-lg sm:rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-4 py-2 sm:px-6 sm:py-3 md:px-8 text-xs sm:text-sm md:text-base font-semibold text-[#0F1221] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
               >
-                <img 
-                  src="/Assets/dudarte_A_cozy_living_room_with_fireplace_and_large_window_with_a2a959ab-0338-4553-87a0-f68ce48befa8.png"
-                  alt="Modern interior showcasing Calyco paint technology"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="grid md:grid-cols-2 gap-8 mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Leadership</h3>
-                             <p className="text-gray-600 leading-relaxed">At the heart of this initiative is <strong className="text-slate-700">Armaan Kothary</strong>, a young environmental entrepreneur who launched Calyco Paints at the age of 16 with a vision to build smarter solutions for sustainable home living. His goal was to create a brand that combines environmental responsibility with design excellence—while offering safer and more breathable paints and coatings to Indian households and builders.</p>
-            </motion.div>
-            <motion.div 
-              className="p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Community & Partnerships</h3>
-              <p className="text-gray-600 leading-relaxed">We collaborate with architects, contractors and communities to create spaces that inspire. By listening and co‑creating, we design solutions tailored to real projects and visions.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Superior Performance, Sustainable Results
-            </h2>
-            <motion.div 
-              className="w-20 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] rounded-full mx-auto mb-8"
-              initial={{ width: 0 }}
-              whileInView={{ width: "5rem" }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-            ></motion.div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Every Calyco can is packed with innovation. Here are a few ways our paints stand out in the industry.</p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/asiiiasia0631_realistic_modern_interior_bright_minimalist_room__aedc26f1-f314-4909-b18e-756e99406eb9.png"
-                  alt="Color consistency showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">True Color Consistency</h3>
-              <p className="text-gray-600 leading-relaxed">Our proprietary EcoMax™ colorants ensure the exact color you choose stays vibrant and true for years, maintaining consistency across our entire spectrum.</p>
-            </motion.div>
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/sorbey._A_wide-shot_of_an_elegant_dining_room_featuring_a_woode_939e60b7-773c-49ed-b028-27b75f2fa5d1.png"
-                  alt="Durable protection showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Ultra Durable Protection</h3>
-              <p className="text-gray-600 leading-relaxed">Engineered to resist fading, peeling, and cracking, our paints stand up to daily wear and harsh conditions so you repaint when you want to, not out of necessity.</p>
-            </motion.div>
-            <motion.div 
-              className="p-8 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-              whileHover={{ y: -5 }}
-            >
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img 
-                  src="/Assets/marketinghbh_Bright_modern_bathroom_warm_minimalism_strong_domi_9a9eafd9-1ec8-4df7-866a-122067cd26b3.png"
-                  alt="Environmental responsibility showcase"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Environmentally Responsible</h3>
-              <p className="text-gray-600 leading-relaxed">Zero-VOC waterborne tinting system ensures our low-VOC paints remain environmentally safe even after tinting—an innovation others can't replicate.</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Metrics Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">The Future of Sustainable Painting</h2>
-            <p className="text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">Through Calyco, we're making sustainability a standard, not a specialty, in Indian homes and construction. Every product is developed with meticulous attention to finish quality, color consistency, environmental safety, and real-world application performance.</p>
-            <div className="grid sm:grid-cols-3 gap-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-5xl font-bold text-[#493657] mb-4">0</div>
-                <p className="text-xl text-gray-600 font-medium">VOC Emissions</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-5xl font-bold text-[#493657] mb-4">100%</div>
-                <p className="text-xl text-gray-600 font-medium">Water‑based Formulas</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-5xl font-bold text-[#493657] mb-4">10+</div>
-                <p className="text-xl text-gray-600 font-medium">Years of Protection</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Materials & Certifications */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div 
-            className="grid md:grid-cols-2 gap-12 items-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">What We're All About</h2>
-              <div className="space-y-6">
-                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
-                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Color Excellence</h5>
-                  <p className="text-gray-600">
-                    A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting vibrancy in both interior and exterior applications.
-                  </p>
-                </div>
-                
-                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
-                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Uncompromising Quality</h5>
-                  <p className="text-gray-600">
-                    Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish every time, backed by our EcoMax™ Technology.
-                  </p>
-                </div>
-                
-                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
-                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Planet-First Approach</h5>
-                  <p className="text-gray-600">
-                    We put people and planet at the heart of every decision we make, from our innovative production process to our commitment to zero-VOC formulations.
-                  </p>
-                </div>
-                
-                <div className="bg-white rounded-xl p-6 shadow-md border border-slate-100">
-                  <h5 className="text-lg font-semibold text-slate-700 mb-3">Building Better Homes</h5>
-                  <p className="text-gray-600">
-                    We're here to help transform Indian homes with sustainable solutions, providing expert guidance and premium products for every painting project.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <motion.div 
-                className="aspect-square rounded-2xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <img 
-                  src="/Assets/bulendi_Frame_mockup_with_white_inside_hanging_on_wall_around_m_50856212-3b35-4550-8a87-7443af3cf317.png"
-                  alt="Premium materials and ingredients showcase"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 bg-[#1A1C24] text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to paint a better future?</h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">Join us on our mission to transform spaces with sustainable colour. Explore our products or talk to our team today.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                onClick={() => navigate('/products')}
-                className="px-8 py-4 bg-white text-[#1A1C24] rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                Explore Products
-              </motion.button>
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                onClick={() => navigate('/contact')}
-                className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-[#1A1C24] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                Explore Our Products
+              </button>
+              <button
+                type="button"
+                onClick={handleNavigate("/contact")}
+                className="group rounded-lg sm:rounded-xl border-2 border-white/30 px-4 py-2 sm:px-6 sm:py-3 md:px-8 text-xs sm:text-sm md:text-base font-semibold text-white glass-effect transition hover:bg-white/10 hover:border-white/50"
               >
                 Contact Us
-              </motion.button>
+              </button>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
+
+        {/* 
+          🎯 CONSISTENT SECTION SPACING
+          All sections now use: py-16 md:py-20 lg:py-24
+        */}
+
+        {/* Our Story */}
+        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#F6F3EE] to-white">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Story image */}
+              <div className="rounded-3xl overflow-hidden shadow-lg order-2 md:order-1">
+                <img
+                  src="/Assets/about-us.png"
+                  alt="CALYCO team collaborating on colour development"
+                  className="w-full h-full object-cover aspect-[4/3]"
+                  loading="lazy"
+                />
+              </div>
+              {/* Story text */}
+              <div className="space-y-6 md:space-y-8 order-1 md:order-2">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-3">Our Story</h2>
+                <p className="text-base md:text-lg text-[#31274B] font-medium">
+                  Founded to merge professional-grade performance with environmental responsibility, CALYCO is building the future of paints for India.
+                </p>
+                <ul className="mt-4 md:mt-6 space-y-3 text-[#4B007D] font-semibold">
+                  {storyMilestones.map((item) => (
+                    <li key={item.text} className="flex items-start gap-3 text-sm md:text-base">
+                      <span className="text-lg md:text-xl mt-0.5">{item.icon}</span> 
+                      <span>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {/* Values */}
+            <div className="mt-16 md:mt-20">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#4B007D] mb-6 md:mb-8 text-center">Our Core Values</h3>
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                {valuePillars.map((value) => (
+                  <span
+                    key={value.text}
+                    className="group flex items-center gap-2 md:gap-3 rounded-full border-2 border-[#4B007D]/20 bg-gradient-to-r from-white to-[#FBF9F6] px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm font-semibold text-[#4B007D] premium-shadow transition-all duration-300 hover:scale-105 hover:border-[#D4AF37] hover:bg-gradient-to-r hover:from-[#D4AF37]/10 hover:to-[#4B007D]/10"
+                  >
+                    <span className="text-base md:text-lg transition-transform group-hover:scale-125">
+                      {value.icon}
+                    </span>
+                    <span>{value.text}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership & Culture */}
+        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-[#4B007D]/5 to-[#D4AF37]/5">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div className="mb-10 md:mb-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2">
+                Leadership & Culture
+              </h2>
+              <p className="mx-auto max-w-4xl text-base md:text-lg text-[#31274B]/90 leading-relaxed">
+                A multidisciplinary leadership group with deep experience drives CALYCO's roadmap—powered by an expert network that keeps performance and people at the center.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+              {leadershipPillars.map((pillar) => (
+                <div
+                  key={pillar.title}
+                  className="group relative overflow-hidden rounded-3xl bg-white glass-effect p-6 md:p-8 premium-shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-3 flex flex-col h-full"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-5`}></div>
+                  <div className="relative space-y-4 md:space-y-6">
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className={`flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} text-xl md:text-2xl text-white premium-shadow`}>
+                        {pillar.icon}
+                      </div>
+                      <div>
+                        <span className="text-xs md:text-sm font-medium uppercase tracking-wide text-[#D4AF37]">
+                          {pillar.caption}
+                        </span>
+                        <h3 className="text-lg md:text-xl font-bold text-[#4B007D]">
+                          {pillar.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-sm md:text-base text-[#31274B]/90 leading-relaxed">{pillar.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Manufacturing Excellence */}
+        <section className="py-16 md:py-20 lg:py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Extra wide image */}
+              <div className="rounded-3xl overflow-hidden min-h-[300px] md:min-h-[400px] max-h-[400px] md:max-h-[540px] aspect-[16/9] md:aspect-[16/7] flex items-center w-full">
+                <img
+                  src="/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.png"
+                  alt="Inside CALYCO's automated manufacturing facility"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              {/* Text content */}
+              <div className="space-y-6 md:space-y-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2">
+                  Manufacturing Excellence
+                </h2>
+                <p className="text-base md:text-lg text-[#31274B]/90 leading-relaxed">
+                  Precision manufacturing and rigorous quality assurance turn our formulations into consistent, high-performing paint systems—batch after batch.
+                </p>
+                {/* Highlights */}
+                <div className="space-y-4 md:space-y-6">
+                  {manufacturingHighlights.map((highlight) => (
+                    <div
+                      key={highlight.title}
+                      className="flex items-start gap-3 md:gap-4 rounded-3xl border-2 border-[#4B007D]/10 bg-gradient-to-r from-white to-[#FBF9F6]/50 p-4 md:p-6 premium-shadow"
+                    >
+                      <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#4B007D] to-[#D4AF37] text-lg md:text-xl text-white premium-shadow">
+                        {highlight.icon}
+                      </div>
+                      <div className="flex-1 space-y-1 md:space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-base md:text-lg font-bold text-[#4B007D]">{highlight.title}</h3>
+                          <span className="rounded-full bg-[#D4AF37]/20 px-2 py-1 md:px-3 text-xs font-bold text-[#4B007D]">
+                            {highlight.metric}
+                          </span>
+                        </div>
+                        <p className="text-xs md:text-sm text-[#31274B]/90 leading-relaxed">
+                          {highlight.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* EcoMax™ Technology */}
+        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-[#4B007D]/5 via-white to-[#D4AF37]/5">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+            {/* Header */}
+            <div className="text-center mb-12 md:mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4B007D]/10 to-[#D4AF37]/10 px-6 py-2 text-sm font-medium text-[#4B007D] mb-6">
+                <span className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></span>
+                Revolutionary Innovation
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#4B007D] mb-4">
+                EcoMax™ <span className="text-gradient">Technology</span>
+              </h2>
+              <div className="max-w-4xl mx-auto space-y-4">
+                <p className="text-lg md:text-xl text-[#31274B] font-medium leading-relaxed">
+                  Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
+                </p>
+                <p className="text-base md:text-lg text-[#31274B]/80 leading-relaxed">
+                  What we created is a formula that's better, stronger, and cleaner—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
+                </p>
+              </div>
+            </div>
+
+            {/* Features Grid */}
+            <div className="grid gap-6 md:gap-8 md:grid-cols-3 mb-12">
+              {ecoMaxFeatures.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className="group relative overflow-hidden rounded-3xl bg-white p-6 md:p-8 premium-shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-3"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/5 to-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4B007D] to-[#D4AF37] text-2xl text-white premium-shadow">
+                        {feature.icon}
+                      </div>
+                      <span className="rounded-full bg-[#D4AF37]/20 px-4 py-1 text-xs font-bold text-[#4B007D] uppercase tracking-wide">
+                        {feature.stat}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#4B007D]">{feature.title}</h3>
+                    <p className="text-sm md:text-base text-[#31274B]/90 leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center bg-gradient-to-r from-[#4B007D] to-[#D4AF37] rounded-3xl p-8 md:p-12 text-white">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                Experience the EcoMax™ Difference
+              </h3>
+              <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+                Discover how our revolutionary colorant technology delivers superior performance while protecting your family and the environment.
+              </p>
+              <button
+                type="button"
+                onClick={handleNavigate("/products")}
+                className="group rounded-xl bg-white px-6 py-3 md:px-8 text-sm md:text-base font-semibold text-[#4B007D] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
+              >
+                Explore EcoMax™ Products
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Sustainability */}
+        <section className="py-16 md:py-20 lg:py-24 bg-[#F6F3EE]">
+          <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2 text-center">Sustainability & Responsibility</h2>
+            <p className="text-base md:text-lg text-[#31274B]/90 text-center mb-8 md:mb-10">
+              Responsible chemistry and transparent reporting guide every decision—today and for the future.
+            </p>
+            <div className="grid gap-6 md:gap-8 md:grid-cols-3">
+              {sustainabilityPoints.map((item) => (
+                <div key={item.title} className="flex flex-col items-center rounded-2xl bg-white p-6 md:p-8 shadow-md border">
+                  <span className="h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-teal-600 text-xl md:text-2xl text-white mb-3">
+                    {item.icon}
+                  </span>
+                  <div className="font-semibold text-[#4B007D] mb-2 text-center text-sm md:text-base">{item.title}</div>
+                  <div className="text-xs md:text-sm text-[#31274B] text-center">{item.description}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer CTA */}
+        <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#4B007D] via-[#5B1A8B] to-[#2E0053] overflow-hidden">
+          <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 md:gap-8 px-4 text-center md:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+              Ready to paint a better future?
+            </h2>
+            <p className="max-w-3xl text-sm md:text-base text-white/90 leading-relaxed">
+              Reach our team for specifications, tenders, and bespoke projects—or explore designer-curated colour palettes tailored for Indian spaces.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <button
+                type="button"
+                onClick={handleNavigate("/contact")}
+                className="group rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 text-sm md:text-base font-semibold text-[#0F1221] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
+              >
+                Contact Us
+              </button>
+              <button
+                type="button"
+                onClick={handleNavigate("/colors")}
+                className="group rounded-xl border-2 border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 text-sm md:text-base font-semibold text-white glass-effect transition hover:bg-white/10 hover:border-white/50"
+              >
+                Explore Colours
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
-
-

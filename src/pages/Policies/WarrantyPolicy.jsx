@@ -140,15 +140,23 @@ const Card = ({ icon, title, children, className = "", iconClassName = "" }) => 
 const documentLinks = [
   {
     name: "Premium Interior Emulsion",
-    href: "/assets/docs/premium-interior-warranty.pdf",
+    href: "/Assets/docs/premium-interior-warranty.pdf",
   },
   {
-    name: "Exterior Weather Shield",
-    href: "/assets/docs/exterior-weather-shield-warranty.pdf",
+    name: "Premium Exterior Emulsion",
+    href: "/Assets/docs/premium-exterior-warranty.pdf",
   },
   {
-    name: "Waterproof Sealer",
-    href: "/assets/docs/waterproof-sealer-warranty.pdf",
+    name: "Exterior Latex Paint",
+    href: "/Assets/docs/exterior-latex-warranty.pdf",
+  },
+  {
+    name: "Interior Latex Paint",
+    href: "/Assets/docs/interior-latex-warranty.pdf",
+  },
+  {
+    name: "Waterproofing Sealer",
+    href: "/Assets/docs/waterproof-sealer-warranty.pdf",
   },
 ];
 

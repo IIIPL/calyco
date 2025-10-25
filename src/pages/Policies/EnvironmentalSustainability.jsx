@@ -1,195 +1,317 @@
-import React from "react";
-import {
-  SparklesIcon,
-  ArrowPathIcon,
-  HandThumbUpIcon,
-  ShieldCheckIcon,
-} from "@heroicons/react/24/outline";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import SEO from "../../components/SEO";
 
-const heroImage = "/Assets/assets_task_01k3h8ndhef0v9as4ksr6636ap_1756147620_img_0.webp";
-
-const principles = [
+const sustainabilityPrinciples = [
   {
-    title: "Low-VOC Formulas",
-    description:
-      "Calyco reformulates every blend to stay significantly below global limits for Volatile Organic Compounds. Water-based chemistry and purified pigments keep indoor air crisp from day one, protecting families, designers, and professional applicators alike.",
-    Icon: SparklesIcon,
-    accent: "bg-[#FFF5BF]",
+    title: "Low-VOC Formulations",
+    details: "Every CALYCO paint is formulated to stay significantly below global VOC limits. Water-based chemistry and purified pigments ensure indoor air quality from day one, protecting families and professional applicators.",
   },
   {
     title: "Waste Reduction",
-    description:
-      "Smart coverage calculators, made-to-order tinting, and refill-friendly pack sizes mean you receive exactly what the project demands. Recycled and recyclable packaging plus disposal coaching on every invoice keep surplus paint out of landfills.",
-    Icon: ArrowPathIcon,
-    accent: "bg-[#FFF1B8]",
+    details: "Smart coverage calculators, made-to-order tinting, and refill-friendly pack sizes mean you receive exactly what your project demands. Recycled packaging keeps surplus paint out of landfills.",
   },
   {
     title: "Ethical Sourcing",
-    description:
-      "We audit raw material partners for transparency, fair labour, and reduced transport miles. Every pigment and resin is tracked from extraction to application so specifiers can document sustainability with confidence.",
-    Icon: HandThumbUpIcon,
-    accent: "bg-[#FFEAA0]",
+    details: "We audit raw material partners for transparency, fair labor practices, and reduced transport miles. Every pigment and resin is tracked from extraction to application.",
   },
   {
     title: "Product Longevity",
-    description:
-      "High-build resins, scrub-resistant finishes, and UV-stable pigments extend repaint cycles. Better durability means fewer site visits, less embodied carbon, and enduring beauty for every Calyco space.",
-    Icon: ShieldCheckIcon,
-    accent: "bg-[#FFE38C]",
+    details: "High-build resins, scrub-resistant finishes, and UV-stable pigments extend repaint cycles. Better durability means fewer site visits, less embodied carbon, and enduring beauty.",
   },
 ];
 
-const certificationHighlights = [
-  "Third-party verified low VOC",
-  "Virtually odorless application",
-  "Approved for sensitive spaces",
+const environmentalImpact = [
+  {
+    title: "Carbon Footprint Reduction",
+    details: "Optimized manufacturing processes, local sourcing where possible, and energy-efficient production facilities reduce our carbon emissions by 30% compared to industry averages.",
+  },
+  {
+    title: "Water Conservation",
+    details: "Closed-loop water recycling systems in our production facilities minimize water waste. We've reduced water consumption by 40% over the past three years.",
+  },
+  {
+    title: "Renewable Energy",
+    details: "Our manufacturing facilities use 50% renewable energy from solar installations, with a goal of 100% renewable energy by 2027.",
+  },
+  {
+    title: "Zero Liquid Discharge",
+    details: "Advanced wastewater treatment ensures zero liquid discharge from our facilities, protecting local water ecosystems and communities.",
+  },
+];
+
+const packagingInitiatives = [
+  "100% post-consumer recycled steel or HDPE paint cans",
+  "Recyclable and biodegradable protective packaging materials",
+  "Minimal use of plastic wrapping and non-recyclable materials",
+  "Clear recycling instructions on every product label",
+  "Refillable container programs for commercial customers",
+  "Reduced packaging sizes to minimize waste",
+];
+
+const certifications = [
+  { title: "Green Building Compliance", details: "CALYCO paints meet IGBC and LEED requirements for low-VOC content, contributing to green building certification points." },
+  { title: "ISO 14001 Certified", details: "Environmental Management System certification ensuring continuous improvement in environmental performance and compliance." },
+  { title: "Third-Party VOC Testing", details: "Independent laboratory verification of VOC levels, ensuring our products meet or exceed international standards." },
+  { title: "Safety & Health Standards", details: "Compliance with WHO indoor air quality guidelines and Indian safety regulations for paint manufacturing and application." },
+];
+
+const recyclingGuidelines = [
+  { step: "Empty Cans", instruction: "Rinse cans with minimal water, allow to dry completely, and drop at metal or plastic recycling centers according to local guidelines." },
+  { step: "Leftover Paint", instruction: "Keep usable paint sealed and labeled with shade details. Contact us to donate surplus paint to community projects or schools." },
+  { step: "Dried Paint", instruction: "Follow our waste segregation checklist to ensure safe, compliant disposal of dried paint skins and contaminated materials." },
+  { step: "Applicators", instruction: "Clean brushes and rollers thoroughly. Reusable tools extend lifespan; dispose of worn materials at designated waste facilities." },
+];
+
+const sustainabilityGoals = [
+  { year: "2025", goal: "Achieve 50% renewable energy in all manufacturing facilities" },
+  { year: "2026", goal: "Launch nationwide paint can recycling program with collection points" },
+  { year: "2027", goal: "Transition to 100% renewable energy across all operations" },
+  { year: "2030", goal: "Achieve carbon-neutral manufacturing and distribution" },
 ];
 
 export default function EnvironmentalSustainability() {
-  return (
-    <main className="bg-white text-[#1F1F1F]">
-      <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.35em] uppercase text-[#6C6C6C]">
-                <span className="h-px w-10 bg-[#FFD700]" aria-hidden="true" />
-                Calyco Policies
-              </span>
-              <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-[#1C1C1C]">
-                Environmental & Sustainability
-              </h1>
-              <p className="text-lg md:text-xl text-[#2F2F2F]">
-                Eco-Premium Paints. Performance without Compromise.
-              </p>
-              <p className="text-base md:text-lg leading-relaxed text-[#3F3F3F]">
-                At Calyco, sustainability is foundational, not an afterthought. We're committed to minimizing our environmental footprint while delivering the highest quality, low-VOC paints that contribute to healthier homes and a healthier planet.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="absolute -top-10 -left-8 h-32 w-32 rounded-full border border-[#FFD700] opacity-30" aria-hidden="true" />
-              <div className="absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-[#FFF3B0] blur-2xl opacity-70" aria-hidden="true" />
-              <div className="relative z-10 overflow-hidden rounded-[36px] border border-[#F0F0F0] bg-white shadow-[0_30px_60px_rgba(17,17,17,0.08)]">
-                <img
-                  src={heroImage}
-                  alt="A serene, eco-conscious Calyco interior showcasing sustainable finishes"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  const navigate = useNavigate();
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#1F1F1F]">Our Green Promise</h2>
-            <p className="mt-4 text-base md:text-lg text-[#464646] leading-relaxed">
-              Every Calyco finish is engineered to balance circular design principles with the premium performance designers demand. These four pillars guide every formulation and every project consultation we deliver.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
+      <SEO
+        title="Environmental & Sustainability Policy | CALYCO Paints"
+        description="Learn about CALYCO's commitment to sustainability through low-VOC formulations, waste reduction, ethical sourcing, and circular economy practices."
+        ogType="website"
+      />
+
+      <main>
+        {/* Hero */}
+        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-gradient-to-br from-[#4B007D] to-[#2E0053]">
+          <div className="absolute inset-0">
+            <img
+              src="/Assets/InteriorInspiratoin/living-room.png"
+              alt="Eco-conscious CALYCO sustainable interior"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/90 via-[#4B007D]/85 to-[#2E0053]/82" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
+            <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
+              Environmental & Sustainability
+            </span>
+            <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
+              Eco-Premium Paints Without Compromise
+            </h1>
+            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
+              Sustainability is foundational at CALYCO, not an afterthought. We're committed to minimizing environmental impact while delivering high-performance, low-VOC paints for healthier homes and a healthier planet.
+            </p>
+            <button
+              onClick={() => navigate("/contact")}
+              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+            >
+              Learn More About Our Commitment
+            </button>
+            <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p>
+          </div>
+        </section>
+
+        {/* Introduction */}
+        <section className="py-20 bg-white">
+          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Our Environmental Commitment</h2>
+            <p className="text-lg text-[#31274B]/85 mb-4">
+              At CALYCO, we believe that premium quality and environmental responsibility go hand in hand. Our eco-premium paints are engineered to deliver exceptional performance while minimizing environmental impact at every stage—from raw material sourcing to manufacturing, packaging, application, and disposal.
+            </p>
+            <p className="text-base text-[#31274B]/85 mb-4">
+              We're not just meeting environmental standards—we're setting them. Our commitment to sustainability is embedded in our formulations, operations, and long-term vision for a greener future.
+            </p>
+            <p className="text-base text-[#31274B]/85">
+              This policy outlines our sustainability principles, environmental impact reduction strategies, certifications, recycling programs, and future goals.
             </p>
           </div>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {principles.map((principle) => {
-              const Icon = principle.Icon;
-              return (
-                <article
-                  key={principle.title}
-                  className="group relative overflow-hidden rounded-[28px] border border-[#F0F0F0] bg-white p-8 shadow-[0_20px_50px_rgba(23,23,23,0.08)] transition-shadow duration-200 hover:shadow-[0_28px_60px_rgba(17,17,17,0.12)]"
-                >
-                  <div className="absolute inset-x-6 top-0 h-1 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-4">
-                      <div className={`flex h-14 w-14 items-center justify-center rounded-full ${principle.accent}`}>
-                        <Icon className="h-7 w-7 text-[#866A00]" aria-hidden="true" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#1D1D1D]">{principle.title}</h3>
-                    </div>
-                    <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3F3F3F]">
-                      {principle.description}
-                    </p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="bg-[#FAFAF9] py-20">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="relative overflow-hidden rounded-[36px] border border-[#F0F0F0] bg-white px-8 py-12 md:px-12 md:py-16 shadow-[0_30px_60px_rgba(19,19,19,0.08)]">
-            <div className="absolute -top-3 left-16 h-1 w-24 bg-[#FFD700]" aria-hidden="true" />
-            <div className="absolute -bottom-8 -right-10 h-32 w-32 rounded-full bg-[#FFF0A8] blur-3xl opacity-60" aria-hidden="true" />
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1F1F1F]">
-                Certifiably Better: Our Low-VOC Standard
-              </h2>
-              <p className="mt-6 text-base md:text-lg leading-relaxed text-[#3C3C3C]">
-                Our paints meet rigorous international standards for low-VOC content, making them suitable for sensitive environments like schools and hospitals. We believe beautiful colors shouldn't come at the expense of air quality. Our commitment ensures that every can of Calyco paint is virtually odorless and free from harmful toxins.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {certificationHighlights.map((highlight) => (
-                  <span
-                    key={highlight}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#FFE590] bg-[#FFF9DC] px-4 py-2 text-xs md:text-sm font-medium text-[#5C4A00]"
-                  >
-                    <span className="block h-2 w-2 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                    {highlight}
-                  </span>
-                ))}
-              </div>
+        {/* Four Pillars */}
+        <section className="py-20 bg-[#FBF9F6]">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Four Pillars of Sustainability</h2>
+            <p className="text-lg text-[#31274B]/85 mb-8">
+              Every CALYCO formulation and project consultation is guided by these four foundational sustainability principles.
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {sustainabilityPrinciples.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
+                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="relative order-2 overflow-hidden rounded-[32px] border border-[#F0F0F0] bg-white shadow-[0_26px_60px_rgba(17,17,17,0.08)] lg:order-1">
-              <img
-                src="/Assets/painter-how-it-works.webp"
-                alt="Eco-conscious paint packaging prepared for recycling"
-                className="w-full object-cover"
-              />
-              <div className="absolute bottom-6 left-6 flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-medium text-[#5C4A00] shadow-sm backdrop-blur">
-                <span className="h-2 w-2 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                Circular by design
-              </div>
-            </div>
-            <div className="order-1 space-y-6 lg:order-2">
-              <span className="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.28em] uppercase text-[#6C6C6C]">
-                <span className="h-px w-10 bg-[#FFD700]" aria-hidden="true" />
-                Circular Economy
-              </span>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1F1F1F]">
-                Closing the Loop: Packaging & Recycling
-              </h2>
-              <p className="text-base md:text-lg leading-relaxed text-[#3F3F3F]">
-                Calyco paint cans are made from 100% post-consumer recycled steel or HDPE and designed for curbside recycling. Clear guidance accompanies every order so customers can quickly rinse, reseal, and return empties to local programs.
-              </p>
-              <ul className="space-y-4 text-sm md:text-base leading-relaxed text-[#3F3F3F]">
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                  Rinse cans with minimal water, allow to dry, and drop them at metal or plastic recycling streams according to your municipality's guidance.
+        {/* Low-VOC Standard */}
+        <section className="py-20 bg-white">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Certifiably Better: Our Low-VOC Standard</h2>
+            <p className="text-lg text-[#31274B]/85 mb-8">
+              Our paints meet rigorous international standards for low-VOC content, making them safe for sensitive environments like homes, schools, and hospitals.
+            </p>
+            <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-[#4B007D] mb-4">VOC Compliance Highlights</h3>
+              <ul className="space-y-3 text-base text-[#31274B]/85">
+                <li className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">✓</span>
+                  <span><strong>VOC Levels:</strong> Less than 50 g/L for premium interior paints, less than 100 g/L for exterior paints</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                  Keep leftover paint sealed and label the shade; our advisors can help you donate usable volumes to community projects.
+                <li className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">✓</span>
+                  <span><strong>Third-Party Verified:</strong> Independent lab testing confirms compliance with international VOC standards</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-[#FFD700]" aria-hidden="true" />
-                  For dried paint skins or applicators, follow our waste segregation checklist to ensure safe, compliant disposal.
+                <li className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">✓</span>
+                  <span><strong>Virtually Odorless:</strong> Minimal paint smell during and after application for comfortable living spaces</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">✓</span>
+                  <span><strong>Safe for Sensitive Spaces:</strong> Approved for use in children's rooms, hospitals, and educational facilities</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">✓</span>
+                  <span><strong>No Harmful Toxins:</strong> Free from lead, mercury, heavy metals, and carcinogenic compounds</span>
                 </li>
               </ul>
-              <div className="rounded-3xl border border-[#FFE48A] bg-[#FFFBEB] px-6 py-5 text-sm md:text-base text-[#5C4A00]">
-                Need support? Our sustainability concierge can coordinate pick-ups with certified recycling partners and provide documentation for your ESG reporting.
+            </div>
+          </div>
+        </section>
+
+        {/* Environmental Impact */}
+        <section className="py-20 bg-[#FBF9F6]">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">Reducing Our Environmental Footprint</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {environmentalImpact.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
+                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Packaging & Recycling */}
+        <section className="py-20 bg-white">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Circular Economy: Packaging & Recycling</h2>
+            <p className="text-lg text-[#31274B]/85 mb-8">
+              CALYCO paint cans are designed for circularity—made from recycled materials and fully recyclable after use.
+            </p>
+            <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm mb-8">
+              <h3 className="text-lg font-semibold text-[#4B007D] mb-4">Our Packaging Initiatives</h3>
+              <ul className="space-y-2 text-base text-[#31274B]/85">
+                {packagingInitiatives.map((initiative) => (
+                  <li key={initiative} className="flex items-start">
+                    <span className="text-[#D4AF37] mr-3 mt-1">•</span>
+                    <span>{initiative}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <h3 className="text-2xl font-bold text-[#4B007D] mb-6">Recycling Guidelines</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              {recyclingGuidelines.map((item) => (
+                <div key={item.step} className="rounded-xl bg-white border border-[#0F1221]/10 p-6 shadow-sm">
+                  <h4 className="text-base font-semibold text-[#4B007D] mb-2">{item.step}</h4>
+                  <p className="text-sm text-[#31274B]/80">{item.instruction}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 rounded-2xl border-2 border-[#D4AF37]/30 bg-white p-6 shadow-sm">
+              <p className="text-sm text-[#31274B]/85">
+                <strong className="text-[#4B007D]">Need Support?</strong> Our sustainability team can coordinate pick-ups with certified recycling partners and provide documentation for your ESG reporting. Contact us for assistance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section className="py-20 bg-[#FBF9F6]">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">Certifications & Compliance</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {certifications.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
+                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Future Goals */}
+        <section className="py-20 bg-white">
+          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Our Sustainability Roadmap</h2>
+            <p className="text-lg text-[#31274B]/85 mb-8">
+              We're committed to continuous improvement. Here are our environmental targets for the coming years:
+            </p>
+            <div className="space-y-4">
+              {sustainabilityGoals.map((item) => (
+                <div key={item.year} className="rounded-xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 flex items-center gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold text-lg">
+                      {item.year}
+                    </div>
+                  </div>
+                  <p className="text-base text-[#31274B]/85">{item.goal}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20 bg-[#FBF9F6]">
+          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
+            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Questions About Sustainability?</h2>
+            <p className="text-lg text-[#31274B]/85 mb-8">
+              Our sustainability team is here to answer your questions about our environmental practices, certifications, and recycling programs.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Email</h3>
+                <a href="mailto:sustainability@calycopaints.com" className="text-sm text-[#31274B]/85 hover:text-[#4B007D] underline">
+                  sustainability@calycopaints.com
+                </a>
+              </div>
+              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Phone</h3>
+                <p className="text-sm text-[#31274B]/85">
+                  Sustainability Team: <a href="tel:+919145000500" className="hover:text-[#4B007D] font-semibold">+91 9145 000 500</a>
+                </p>
+                <p className="text-xs text-[#31274B]/70 mt-2">Monday - Saturday: 9:00 AM - 6:00 PM IST</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        {/* Footer Note */}
+        <section className="py-16 bg-white">
+          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
+            <p className="text-sm text-[#31274B]/70 mb-2">
+              CALYCO's environmental and sustainability practices are continually evolving based on emerging technologies, regulations, and best practices.
+            </p>
+            <p className="text-xs text-[#31274B]/70">
+              We welcome feedback and suggestions from customers, partners, and environmental advocates to improve our sustainability initiatives.
+            </p>
+            <p className="mt-4 text-sm text-[#4B007D] font-semibold">Effective date: 30 October 2025</p>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }

@@ -90,7 +90,7 @@ const ColorSlider = () => {
 
   return (
     <>
-    <div className="relative w-full h-[50vh] md:h-[70vh] overflow-hidden mt-0">
+    <div className="relative w-full min-h-[75vh] md:min-h-[85vh] lg:min-h-[90vh] overflow-hidden mt-0">
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -117,9 +117,9 @@ const ColorSlider = () => {
           ) : (
             currentSlide === 0 && !isMobile ? (
               // Special layout for first image on desktop only
-              <div className="absolute inset-0 flex">
+              <div className="flex h-full w-full flex-col lg:flex-row">
                 {/* Left half: dark purple background */}
-                <div className="w-1/2 h-full bg-[#2D0F3F] flex items-center justify-center">
+                <div className="w-full lg:w-1/2 h-full bg-[#2D0F3F] flex items-center justify-center px-6 md:px-12">
                   <div className="text-white text-center px-8">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
                       Calyco Paint & Stain
@@ -138,11 +138,11 @@ const ColorSlider = () => {
                   </div>
                 </div>
                 {/* Right half: image */}
-                <div className="w-1/2 h-full">
+                <div className="hidden lg:block w-1/2 h-full relative">
                   <img
                     src={slides[currentSlide].src}
                     alt={slides[currentSlide].alt}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
               </div>

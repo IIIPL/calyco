@@ -1,27 +1,62 @@
 %PDF-1.4
-1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
-2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
-3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj
-4 0 obj << /Length 86 >> stream
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 952 >>
+stream
 BT
-/F1 24 Tf
 72 720 Td
-(Waterproof Sealer) Tj
-0 -36 Td
-(Warranty document placeholder. Full content coming soon.) Tj
+/F2 24 Tf
+(Waterproofing Sealer Warranty Certificate) Tj
+0 -29 Td
+/F1 12 Tf
+(Warranty Term: 10 years post installation) Tj
+0 -18 Td
+/F1 12 Tf
+(Coverage: Water leakage through treated terraces, balconies, and wet walls when the full CALYCO waterproofing system is applied.) Tj
+0 -18 Td
+/F1 12 Tf
+(Maintenance: Inspect joints every 6 months, keep outlets unclogged, avoid drilling through waterproofed surfaces without resealing.) Tj
+0 -18 Td
+/F1 12 Tf
+(Exclusions: Structural cracks exceeding 2mm, negative-side water pressure, mechanical damage, or incomplete CALYCO system use.) Tj
+0 -18 Td
+/F1 12 Tf
+(Claims Process: Register claim with photos, proof of system usage, and maintenance log. On approval CALYCO will repair or supply replacement material.) Tj
+0 -18 Td
+/F1 12 Tf
+(Support: Email warranty@calycopaints.com or call +91 9145 000 200.) Tj
+0 -18 Td
+/F1 10 Tf
+(For full legal terms visit calycopaints.com/warranty.) Tj
+0 -18 Td
 ET
+
 endstream
 endobj
-5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
 xref
-0 6
+0 7
 0000000000 65535 f 
-0000000010 00000 n 
-0000000061 00000 n 
-0000000118 00000 n 
-0000000279 00000 n 
-0000000505 00000 n 
-trailer << /Size 6 /Root 1 0 R >>
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001254 00000 n 
+0000001324 00000 n 
+trailer << /Size 7 /Root 1 0 R >>
 startxref
-612
+1399
 %%EOF

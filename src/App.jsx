@@ -66,7 +66,7 @@ import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
 import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
 import Privacy from "./pages/Policies/Privacy";
 import TermsAndConditions from "./pages/Policies/TermsAndConditions";
-// import PaymentsGst from "./pages/Policies/PaymentsGst";
+import PaymentsGst from "./pages/Policies/PaymentsGST.jsx";
 import QualityPolicy from "./pages/Policies/QualityPolicy";
 import EnvironmentalSustainability from "./pages/Policies/EnvironmentalSustainability";
 import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
@@ -204,7 +204,7 @@ function App() {
               <Route path="/policies" element={<PoliciesIndex />} />
               <Route path="/policies/privacy" element={<Privacy />} />
               <Route path="/policies/terms" element={<TermsAndConditions />} />
-              {/* <Route path="/policies/payments-gst" element={<PaymentsGst />} /> */}
+              <Route path="/policies/payments-gst" element={<PaymentsGst />} />
               <Route path="/policies/quality" element={<QualityPolicy />} />
               <Route path="/policies/environmental-sustainability" element={<EnvironmentalSustainability />} />
               <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />

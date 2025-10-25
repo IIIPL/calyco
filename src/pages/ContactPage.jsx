@@ -1,651 +1,512 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import { FaCheckCircle } from "react-icons/fa";
-import { useForm, ValidationError } from '@formspree/react';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useForm } from "@formspree/react";
+import SEO from "../components/SEO";
 
-// Animation variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1 },
-};
-
-// FAQ Data
-const FAQ_DATA = [
+const contactChannels = [
   {
-    question: "What is Calyco Paints?",
-    answer: "Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability. We offer low-VOC, water-based, safe-for-family paints and industrial-grade coatings for contractors, developers, and government projects."
+    title: "Call Us",
+    detail: "+91-99589-66881",
+    subDetail: "Mon–Sat, 10am–6pm IST",
+    description: "Speak directly with our experts",
+    icon: "📞",
+    href: "tel:+919958966881",
   },
   {
-    question: "How is Calyco different from other paint brands?",
-    answer: "Unlike traditional dealer-driven paint companies, Calyco is online-first, delivering paints directly to homes, projects, and government buyers. We combine luxury lifestyle appeal (like Asian Paints), minimal modern UI (like Birla Opus), and eco-premium positioning (like Lick Paint) with a special focus on contractors and government compliance."
+    title: "Email Us",
+    detail: "support@calycopaints.com",
+    subDetail: "24/7 support available",
+    description: "Get detailed responses quickly",
+    icon: "✉️",
+    href: "mailto:support@calycopaints.com",
   },
   {
-    question: "Are Calyco paints safe for children and pets?",
-    answer: "Yes. All our paints are low-VOC, odor-free, and non-toxic, making them safe for indoor spaces where families live, sleep, and play."
+    title: "Visit Us",
+    detail: "B-37, Sector - 1, Noida NCR, India",
+    subDetail: "By appointment only",
+    description: "Our headquarters",
+    icon: "🏢",
   },
-  {
-    question: "What does low-VOC mean?",
-    answer: "VOC (Volatile Organic Compounds) are chemicals that evaporate into the air and harm indoor air quality. Our low-VOC paints reduce exposure, improving health and environmental safety."
-  },
-  {
-    question: "What surfaces can Calyco paints be used on?",
-    answer: "Our range covers interior walls, exterior walls, wood, metal, concrete, asphalt, roofing, and specialty industrial surfaces."
-  },
-  {
-    question: "Are your paints waterproof and weather-resistant?",
-    answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
-  }
 ];
 
+const businessSupport = [
+  {
+    title: "24h Response Time",
+    description: "Our team will get back to you within 24 hours with personalized solutions.",
+    icon: "⏰",
+  },
+  {
+    title: "Expert Support",
+    description: "Connect with our technical specialists for detailed product guidance.",
+    icon: "🎯",
+  },
+  {
+    title: "Global Presence",
+    description: "Local support and expertise across multiple countries and regions.",
+    icon: "🌍",
+  },
+];
+
+const offices = [
+  {
+    id: "india",
+    name: "India",
+    region: "Headquarters",
+    address: "B-37, Sector - 1, Noida NCR, India",
+    email: "info@calycopaints.com",
+  },
+  {
+    id: "dubai",
+    name: "Dubai",
+    region: "Middle East",
+    address: "Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E.",
+    email: "dubai@calycopaints.com",
+  },
+  {
+    id: "thailand",
+    name: "Thailand",
+    region: "Southeast Asia",
+    address: "75 Ocean Tower - II, 18C Floor Sukhumvit Road, Bangkok, Thailand",
+    email: "thailand@calycopaints.com",
+  },
+];
+
+const inquiryTypes = [
+  "General Inquiry",
+  "Bulk Order",
+  "Dealer Partnership",
+  "Media & Press",
+  "Technical Support",
+  "Request Quote",
+];
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Calyco Paints",
+  url: "https://calycopaints.com",
+  telephone: "+91-99589-66881",
+  email: "support@calycopaints.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "B-37, Sector - 1",
+    addressLocality: "Noida NCR",
+    addressRegion: "Uttar Pradesh",
+    postalCode: "201301",
+    addressCountry: "IN",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
+  areaServed: ["IN"],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-99589-66881",
+      contactType: "customer support",
+      availableLanguage: ["English", "Hindi"],
+    },
+  ],
+};
+
 export default function ContactPage() {
-  const [activeFAQ, setActiveFAQ] = useState(null);
-  const [toast, setToast] = useState(null);
   const [state, handleSubmit] = useForm("xnnbaygb");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const formRef = useRef(null);
 
   useEffect(() => {
-    document.title = "Contact Us - Calyco Paints | Get Support & Quotes";
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     if (state.succeeded) {
-      setToast({ type: "success", message: "Message sent successfully!" });
-    } else if (state.errors && state.errors.length > 0) {
-      setToast({ type: "error", message: "Failed to send message. Please try again." });
+      setShowSuccess(true);
     }
-  }, [state.succeeded, state.errors]);
+  }, [state.succeeded]);
 
-  useEffect(() => {
-    if (toast) {
-      const timer = setTimeout(() => setToast(null), 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [toast]);
-
-  const resetForm = () => {
-    window.location.reload();
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png')",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        
-        {/* Hero Content */}
-        <motion.div 
-          className="relative z-10 text-center text-white px-6 max-w-6xl mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.h1 
-            className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-wide"
-            variants={fadeUp}
-          >
-            Talk to Calyco.
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl mb-12 text-gray-200 leading-relaxed max-w-3xl mx-auto font-light"
-            variants={fadeUp}
-          >
-            Eco-premium paint support for homes, contractors, and public projects.
-          </motion.p>
-        </motion.div>
-      </section>
+    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
+      <SEO
+        title="Contact Calyco | Expert Paint Support Across India"
+        description="Speak with CALYCO's team for product advice, bulk orders, or technical support. Call, email, live chat, or submit our enquiry form."
+        ogType="website"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
 
-      {/* Contact Info Cards Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Multiple Ways to Reach Us
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose the most convenient way to get in touch with our expert team.
+      <main>
+        {/* Hero - Fixed spacing and removed call button */}
+        <section className="relative flex min-h-[78vh] items-start justify-center overflow-hidden pt-24 pb-16 md:min-h-[85vh] md:pt-28 lg:min-h-[90vh]">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
+              alt="Modern Indian home exterior finished with Calyco paints"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/95 via-[#4B007D]/90 to-[#2E0053]/85" />
+          </div>
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-7 px-6 pb-12 pt-12 text-center md:px-10 md:pt-16 lg:px-12">
+            {/* Fixed badge spacing */}
+            <div className="flex justify-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur">
+                <span className="h-2 w-2 rounded-full bg-[#D4AF37]"></span>
+                Calyco Support Network
+              </span>
+            </div>
+            <h1 className="mx-auto max-w-[680px] text-3xl font-semibold leading-[1.12] text-white md:text-[3.25rem] lg:text-[3.6rem]">
+              <span className="block">
+                Get in Touch with{" "}
+                <span className="text-[#D4AF37]">Calyco</span>
+              </span>
+            </h1>
+            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg">
+              We're here to answer questions, provide expert advice, and help you
+              specify the perfect paint system—whether you're a homeowner,
+              contractor, architect, or designer.
             </p>
-          </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {/* Phone Card */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Call Us</h3>
-              <p className="text-gray-600 mb-4">Speak directly with our experts</p>
-              <a 
-                href="tel:+919958966881" 
-                className="text-gray-900 text-xl font-semibold hover:underline"
-              >
-                +91-99589-66881
-              </a>
-              <p className="text-sm text-gray-500 mt-2">Mon–Sat, 10am–6pm IST</p>
-            </motion.div>
-
-            {/* Email Card */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Email Us</h3>
-              <p className="text-gray-600 mb-4">Get detailed responses quickly</p>
-              <a 
-                href="mailto:support@calycopaints.com" 
-                className="text-gray-900 text-lg font-semibold hover:underline"
-              >
-                support@calycopaints.com
-              </a>
-              <p className="text-sm text-gray-500 mt-2">24/7 support available</p>
-            </motion.div>
-
-            {/* Location Card */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Visit Us</h3>
-              <p className="text-gray-600 mb-4">Our headquarters</p>
-              <p className="text-gray-900 text-lg font-semibold">
-                B-37, Sector - 1, Noida NCR, India
-              </p>
-              <p className="text-sm text-gray-500 mt-2">By appointment only</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section id="contact-form" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Form Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                  Send Us a Message
-                </h2>
-                <div className="w-20 h-1 bg-gradient-to-r from-gray-900 to-gray-600 rounded-full mb-6"></div>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Tell us about your project, ask questions, or request a quote. Our team will get back to you within 24 hours with personalized solutions.
-                </p>
-              </div>
-
-              {state.succeeded ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-center space-y-6 bg-green-50 p-8 rounded-2xl"
-            >
-              <FaCheckCircle className="text-green-500 text-6xl mx-auto" />
-              <h3 className="text-3xl font-semibold text-gray-800">Message Sent!</h3>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                Thanks for reaching out. We've received your message and will get back to you within 1–2 business days.
-              </p>
+            {/* Removed the second paragraph and call button */}
+            <div className="flex justify-center pt-4">
               <button
-                onClick={resetForm}
-                     className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-all duration-200 hover:scale-105 shadow-lg"
+                type="button"
+                onClick={handleScrollToForm}
+                className="inline-flex items-center justify-center rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000014] transition hover:bg-[#bb9831]"
               >
-                Send Another Message
+                Submit an Enquiry
               </button>
-            </motion.div>
-          ) : (
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              onSubmit={handleSubmit}
-                   className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100"
-                 >
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                     <div className="space-y-2">
-                       <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-all duration-200 bg-gray-50 focus:bg-white"
-                    placeholder="Enter your full name"
-                  />
-                  <ValidationError 
-                    prefix="Name" 
-                    field="name"
-                    errors={state.errors}
-                    className="text-red-600 text-xs mt-1"
-                  />
-                </div>
+            </div>
+          </div>
+        </section>
 
-                     <div className="space-y-2">
-                       <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-all duration-200 bg-gray-50 focus:bg-white"
-                    placeholder="Enter your email address"
-                  />
-                  <ValidationError 
-                    prefix="Email" 
-                    field="email"
-                    errors={state.errors}
-                    className="text-red-600 text-xs mt-1"
-                  />
+        {/* Multiple Ways to Reach Us */}
+        <section className="py-24">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <div className="mb-12 space-y-4 text-center">
+              <h2 className="text-3xl font-semibold text-[#4B007D] md:text-4xl">
+                Multiple Ways to Reach Us
+              </h2>
+              <p className="mx-auto max-w-3xl text-base text-[#31274B]/80 md:text-lg">
+                Choose the most convenient way to get in touch with our expert team.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {contactChannels.map((channel) => (
+                <div
+                  key={channel.title}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#D4AF37]/20 text-2xl">
+                      <span role="img" aria-label={`${channel.title} icon`}>
+                        {channel.icon}
+                      </span>
+                    </span>
+                    <div>
+                      <h3 className="text-xl font-semibold text-[#4B007D]">
+                        {channel.title}
+                      </h3>
+                      <p className="text-sm text-[#31274B]/70">
+                        {channel.description}
+                      </p>
+                    </div>
+                  </div>
+                  {channel.href ? (
+                    <a
+                      href={channel.href}
+                      className="text-base font-medium text-[#31274B] underline-offset-4 transition hover:text-[#4B007D] hover:underline"
+                    >
+                      {channel.detail}
+                    </a>
+                  ) : (
+                    <p className="text-base font-medium text-[#31274B]">
+                      {channel.detail}
+                    </p>
+                  )}
+                  {channel.subDetail && (
+                    <p className="text-sm text-[#31274B]/70">{channel.subDetail}</p>
+                  )}
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                     <div className="space-y-2">
-                       <label htmlFor="phone" className="block text-sm font-semibold text-gray-700">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-all duration-200 bg-gray-50 focus:bg-white"
-                    placeholder="Enter your phone number"
-                  />
+        {/* Send Us a Message - Fixed image height */}
+        <section className="py-20" ref={formRef}>
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            {/* Header */}
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl font-semibold text-[#4B007D] md:text-4xl mb-4">
+                Send Us a Message
+              </h2>
+              <p className="mx-auto max-w-3xl text-base text-[#31274B]/85 md:text-lg">
+                Tell us about your project, ask questions, or request a quote. Our team will get back to you within 24 hours with personalized solutions.
+              </p>
+            </div>
+
+            {/* Form and Image Layout - Fixed height matching */}
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] items-stretch">
+              {/* Contact Form */}
+              <form
+                onSubmit={handleSubmit}
+                className="rounded-[32px] border border-[#0F1221]/10 bg-white/80 p-8 shadow-lg backdrop-blur"
+                noValidate
+                aria-live="polite"
+              >
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="name"
+                      className="text-sm font-semibold text-[#4B007D]"
+                    >
+                      Full Name<span className="text-[#D4AF37]">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] px-4 py-3 text-sm text-[#0F1221] shadow-sm outline-none transition focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                      aria-invalid={Boolean(state.errors?.some((e) => e.field === "name"))}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-semibold text-[#4B007D]"
+                    >
+                      Email Address<span className="text-[#D4AF37]">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] px-4 py-3 text-sm text-[#0F1221] shadow-sm outline-none transition focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                      aria-invalid={Boolean(state.errors?.some((e) => e.field === "email"))}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="phone"
+                      className="text-sm font-semibold text-[#4B007D]"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      pattern="^\\+?[0-9\\s-]{7,}$"
+                      className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] px-4 py-3 text-sm text-[#0F1221] shadow-sm outline-none transition focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                      aria-invalid={Boolean(state.errors?.some((e) => e.field === "phone"))}
+                      placeholder="+91 99999 99999"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label
+                      htmlFor="inquiry"
+                      className="text-sm font-semibold text-[#4B007D]"
+                    >
+                      Type of Inquiry<span className="text-[#D4AF37]">*</span>
+                    </label>
+                    <select
+                      id="inquiry"
+                      name="inquiry"
+                      required
+                      className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] px-4 py-3 text-sm text-[#0F1221] shadow-sm outline-none transition focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                    >
+                      <option value="">Select inquiry type</option>
+                      {inquiryTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                
-                     <div className="space-y-2">
-                       <label htmlFor="topic" className="block text-sm font-semibold text-gray-700">
-                    Type of Inquiry *
-                  </label>
-                  <select
-                    id="topic"
-                    name="topic"
-                    required
-                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-all duration-200 bg-gray-50 focus:bg-white"
+                <div className="mt-6 flex flex-col gap-2">
+                  <label
+                    htmlFor="message"
+                    className="text-sm font-semibold text-[#4B007D]"
                   >
-                    <option value="">Select inquiry type</option>
-                         <option value="general">General Inquiry</option>
-                    <option value="bulk-order">Bulk Order</option>
-                         <option value="dealer">Dealer Partnership</option>
-                         <option value="media">Media & Press</option>
-                         <option value="support">Technical Support</option>
-                         <option value="quote">Request Quote</option>
-                  </select>
-                  <ValidationError 
-                    prefix="Topic" 
-                    field="topic"
-                    errors={state.errors}
-                    className="text-red-600 text-xs mt-1"
-                  />
+                    Message<span className="text-[#D4AF37]">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    className="resize-none rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] px-4 py-3 text-sm text-[#0F1221] shadow-sm outline-none transition focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                  ></textarea>
                 </div>
-              </div>
-
-                   <div className="mb-8 space-y-2">
-                     <label htmlFor="message" className="block text-sm font-semibold text-gray-700">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                       rows={5}
-                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 transition-all duration-200 bg-gray-50 focus:bg-white resize-none"
-                       placeholder="Tell us about your project, requirements, or any questions you have..."
-                />
-                <ValidationError 
-                  prefix="Message" 
-                  field="message"
-                  errors={state.errors}
-                  className="text-red-600 text-xs mt-1"
-                />
-              </div>
-
-                   <div className="flex items-start space-x-3 mb-8 p-4 bg-gray-50 rounded-lg">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  required
-                       className="mt-1 h-4 w-4 text-gray-900 focus:ring-gray-900 rounded border-gray-300"
-                />
-                     <label htmlFor="consent" className="text-sm text-gray-600 leading-relaxed">
-                  I agree to Calyco Paints processing my personal data in accordance with the{' '}
-                       <Link to="/privacy" className="text-gray-900 hover:underline font-semibold">
-                    Privacy Policy
-                  </Link>
-                  . *
-                </label>
-              </div>
-              <ValidationError 
-                prefix="Consent" 
-                field="consent"
-                errors={state.errors}
-                className="text-red-600 text-xs mt-1"
-              />
-
-                   <div className="pt-4">
+                <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-[#FBF9F6] px-4 py-3 text-sm text-[#31274B]/85">
+                  <label className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      name="privacy_agreement"
+                      required
+                      className="mt-0.5 h-4 w-4 rounded border-[#0F1221]/20 text-[#4B007D] focus:ring-[#4B007D]"
+                    />
+                    <span>
+                      I agree to Calyco Paints processing my personal data in accordance with the{" "}
+                      <a
+                        href="/privacy"
+                        className="font-semibold text-[#4B007D] underline-offset-4 hover:underline"
+                      >
+                        Privacy Policy
+                      </a>
+                      .<span className="text-[#D4AF37]">*</span>
+                    </span>
+                  </label>
+                </div>
+                {state.errors && state.errors.length > 0 && (
+                  <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    Please review the highlighted fields and try again.
+                  </div>
+                )}
+                {showSuccess && (
+                  <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                    Thanks for reaching out! Our team will get back to you soon.
+                  </div>
+                )}
                 <button
                   type="submit"
                   disabled={state.submitting}
-                       className="w-full bg-gray-900 hover:bg-gray-800 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#D4AF37] px-6 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000014] transition hover:bg-[#bb9831] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                       {state.submitting ? 'Sending Message...' : 'Send Message'}
+                  {state.submitting ? "Sending..." : "Send Message"}
                 </button>
-              </div>
+              </form>
 
-              {toast && (
-                <div className={`mt-4 text-center text-sm ${toast.type === "success" ? "text-green-600" : "text-red-600"}`}>
-                  {toast.message}
+              {/* Right Side Image - Fixed to match form height */}
+              <div className="flex items-stretch lg:pl-8">
+                <div className="rounded-3xl overflow-hidden shadow-lg w-full flex">
+                  <img
+                    src="/Assets/about-us.png"
+                    alt="Calyco customer service team"
+                    className="w-full h-full object-cover min-h-full"
+                    loading="lazy"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-              )}
-            </motion.form>
-          )}
-            </motion.div>
-
-            {/* Image Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="relative">
-                <img 
-                  src="/Assets/card1-trust.png"
-                  alt="Contact us illustration"
-                  className="w-full h-[600px] object-cover rounded-2xl shadow-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
               </div>
-              
-              {/* Floating Stats Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl"
-              >
-                                 <div className="text-center">
-                   <div className="text-3xl font-bold text-gray-900 mb-2">24h</div>
-                   <div className="text-sm text-gray-600">Response Time</div>
-                 </div>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* International Offices Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Global Presence
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Connect with our team across the globe for local support and expertise.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
-          >
-            {/* India */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">India</h3>
-                <p className="text-gray-600 text-sm mb-4">Headquarters</p>
-                <div className="space-y-2 text-sm">
-                  <p className="text-gray-700">
-                    <a href="mailto:info@calycopaints.com" className="text-gray-900 hover:underline font-semibold">
-                      info@calycopaints.com
-                    </a>
-                  </p>
-                  <p className="text-gray-600">
-                    B-37, Sector - 1, Noida NCR, India
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Dubai */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Dubai</h3>
-                <p className="text-gray-600 text-sm mb-4">Middle East</p>
-                <div className="space-y-2 text-sm">
-                  <p className="text-gray-700">
-                    <a href="mailto:dubai@calycopaints.com" className="text-gray-900 hover:underline font-semibold">
-                      dubai@calycopaints.com
-                    </a>
-                  </p>
-                  <p className="text-gray-600">
-                    Po Box: 42747 Hamriyah FZ, Sharjah, U.A.E.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Thailand */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Thailand</h3>
-                <p className="text-gray-600 text-sm mb-4">Southeast Asia</p>
-                <div className="space-y-2 text-sm">
-                  <p className="text-gray-700">
-                    <a href="mailto:thailand@calycopaints.com" className="text-gray-900 hover:underline font-semibold">
-                      thailand@calycopaints.com
-                    </a>
-                  </p>
-                  <p className="text-gray-600">
-                    75 Ocean Tower - II, 18C Floor Sukhumvit Road, Bangkok, Thailand
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-[#1A1C24]">
-        <div className="w-full px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="w-full space-y-0"
-          >
-            {[
-              {
-                question: "How can I contact Calyco Paints?",
-                answer: "You can reach us through multiple channels: Call us at +91-99589-66881 (Mon–Sat, 10am–6pm IST), email us at support@calycopaints.com, or fill out the contact form above. We also have offices across multiple countries for local support."
-              },
-              {
-                question: "What are your customer service hours?",
-                answer: "Our customer service team is available Monday through Saturday, from 10:00 AM to 6:00 PM IST. For urgent inquiries outside these hours, please email us and we'll respond within 24 hours."
-              },
-              {
-                question: "How quickly do you respond to inquiries?",
-                answer: "We aim to respond to all inquiries within 24 hours during business days. For urgent matters, please call us directly. Technical questions and bulk orders may require additional time for detailed responses."
-              },
-              {
-                question: "Do you offer support for bulk orders?",
-                answer: "Yes! For bulk orders, contractor inquiries, and government projects, we provide dedicated support. Please select 'Bulk Order' in the inquiry type when filling out the contact form, or call us directly for immediate assistance."
-              },
-              {
-                question: "Can I get technical support for paint application?",
-                answer: "Absolutely. Our technical team can help with application guidance, surface preparation, color matching, and troubleshooting. Select 'Support' in the inquiry type or call us for immediate technical assistance."
-              },
-              {
-                question: "Do you have international offices?",
-                answer: "Yes, we have offices in multiple countries including India (headquarters), Dubai, and Thailand. Each office provides local support and expertise for their respective markets."
-              }
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="border-b border-gray-700 last:border-b-0"
-              >
-                <button
-                  onClick={() => setActiveFAQ(activeFAQ === index ? null : index)}
-                  className="w-full py-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-200"
+        {/* Business Support Features - Separate Section with Minimal Spacing */}
+        <section className="py-12">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <div className="grid gap-6 sm:grid-cols-3">
+              {businessSupport.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex flex-col items-center gap-4 rounded-3xl border border-[#0F1221]/8 bg-[#FBF9F6] p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <span className="text-lg font-bold text-white">{faq.question}</span>
-                  <span className={`text-white text-xl font-bold transform transition-transform duration-300 ${activeFAQ === index ? 'rotate-45' : ''}`}>
-                    {activeFAQ === index ? '×' : '+'}
-                  </span>
-                </button>
-                <AnimatePresence>
-                {activeFAQ === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pb-6 pl-4">
-                        <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#4B007D]/15 text-2xl text-[#4B007D]">
+                    <span role="img" aria-label={`${item.title} icon`}>
+                      {item.icon}
+                    </span>
                   </div>
-                    </motion.div>
-                )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#4B007D] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#31274B]/85 leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* Final CTA Section */}
-      <section className="py-32 bg-white text-gray-900">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-light mb-8 tracking-wide text-gray-900"
-              variants={fadeUp}
-            >
-              Ready to transform your space?
-            </motion.h2>
-            
-            <motion.p 
-              className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-              variants={fadeUp}
-            >
-              Let's discuss your project and find the perfect colors for your vision.
-            </motion.p>
-            
-            <motion.div 
-              className="flex justify-center"
-              variants={fadeUp}
-            >
-              <button
-                onClick={() => scrollToSection('contact-form')}
-                className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+        {/* Global Presence */}
+        <section className="py-24">
+          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+            <div className="mb-12 space-y-4 text-center">
+              <h2 className="text-3xl font-semibold text-[#4B007D] md:text-4xl">
+                Global Presence
+              </h2>
+              <p className="mx-auto max-w-3xl text-base text-[#31274B]/80 md:text-lg">
+                Connect with our team across the globe for local support and expertise.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {offices.map((office) => (
+                <div
+                  key={office.id}
+                  className="flex h-full flex-col gap-4 rounded-3xl border border-[#0F1221]/10 bg-white/80 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div>
+                    <span className="text-sm font-semibold uppercase tracking-wide text-[#D4AF37]">
+                      {office.region}
+                    </span>
+                    <h3 className="mt-1 text-2xl font-semibold text-[#4B007D]">
+                      {office.name}
+                    </h3>
+                  </div>
+                  <div className="space-y-2 text-sm text-[#31274B]/85">
+                    <p className="font-medium">{office.address}</p>
+                    <div>
+                      <a
+                        href={`mailto:${office.email}`}
+                        className="text-[#4B007D] underline-offset-4 hover:underline"
+                      >
+                        {office.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer CTA */}
+        <section className="bg-[#FBF9F6] py-20">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 text-center md:px-10 lg:px-12">
+            <h2 className="text-3xl font-semibold text-[#4B007D] md:text-4xl">
+              Need specifications or color inspiration?
+            </h2>
+            <p className="max-w-3xl text-base text-[#31274B]/85 md:text-lg">
+              Continue exploring CALYCO products or visit Support & FAQs for quick
+              answers to common questions.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/products"
+                className="inline-flex items-center justify-center rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000014] transition hover:bg-[#bb9831]"
               >
-                Send Message
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+                Back to Products
+              </a>
+              <a
+                href="/faq"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-[#D4AF37] px-8 py-3 text-base font-semibold text-[#D4AF37] transition hover:bg-[#D4AF37]/10"
+              >
+                Support & FAQs
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
-
-

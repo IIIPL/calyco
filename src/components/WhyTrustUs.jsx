@@ -1,177 +1,96 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
+const cards = [
+  {
+    id: 1,
+    title: "Colors that fit",
+    highlight: "your lifestyle",
+    description: "Personalised shade recommendations for every room and style—designed to match your home perfectly.",
+    ctaLabel: "Explore Colors",
+    ctaHref: "/colors",
+    image: "/Assets/card1-trust.png",
+  },
+  {
+    id: 2,
+    title: "Premium eco-friendly",
+    highlight: "paints",
+    description: "Low-VOC, non-toxic paints tested for long-lasting finishes and safe for kids and pets.",
+    ctaLabel: "View Paint Range",
+    ctaHref: "/products",
+    image: "/Assets/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d.png",
+  },
+  {
+    id: 3,
+    title: "Recommended by",
+    highlight: "design experts",
+    description: "Professional advice and curated palettes to help you choose the right paints for lasting beauty.",
+    ctaLabel: "Get Expert Advice",
+    ctaHref: "/about",
+    image: "/Assets/piotrekf_A_minimalistic_Scandinavian-style_interior_with_soft_n_89b15a3a-fb0e-4751-a060-037b2ec6493f.png",
+  },
+  {
+    id: 4,
+    title: "Certified & trusted",
+    highlight: "delivery",
+    description: "Paints are dispatched fresh from our certified facilities with reliable, trackable shipping to your door.",
+    ctaLabel: "Shop Now",
+    ctaHref: "/products",
+    image: "/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png",
+  },
+];
 
 const WhyTrustUs = () => {
   const navigate = useNavigate();
-  
+
   return (
-    <section className="w-full py-20 bg-white">
-      <div className="w-full">
-        {/* Main Heading */}
+    <section className="bg-white py-16 font-poppins md:py-20 lg:py-24">
+      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20 px-4 md:px-8"
+          className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-          Quality you can trust, 
-          </h2>
-          <p className="text-2xl md:text-3xl font-semibold text-[#C6843A]">
-          Colors you’ll love
-          </p>
+          <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">Quality you can trust,</h2>
+          <p className="mt-2 text-2xl font-semibold text-[#C6843A] md:text-3xl">Colors you’ll love</p>
         </motion.div>
 
-        {/* Four Cards Grid - offset layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-          {/* Left Column - Cards positioned higher */}
-          <div className="flex flex-col gap-1 -mt-8 md:-mt-12">
-            {/* Card 1: Care that fits your schedule */}
-            <motion.div
-              whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-6 sm:p-8 md:p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[500px] sm:min-h-[550px] md:min-h-[600px]"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mt-12 grid gap-8 md:grid-cols-2"
+        >
+          {cards.map((card) => (
+            <article
+              key={card.id}
+              className="flex h-full flex-col gap-6 rounded-[28px] bg-[#F6F0E9] p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:p-10"
             >
-              <div className="text-center mb-4 sm:mb-6">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  Colors that fit
-                </h3>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C6843A] -mt-1 mb-3 sm:mb-4">
-                  your lifestyle
-                </h3>
-                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Personalized shade recommendations for every room and style—designed to match your home perfectly.
-                </p>
-                
-                <button 
-                  onClick={() => navigate('/colors')}
-                  className="bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-colors text-sm sm:text-base"
+              <div className="text-center">
+                <h3 className="text-3xl font-semibold text-gray-900 md:text-4xl">{card.title}</h3>
+                <h3 className="mt-1 text-3xl font-semibold text-[#C6843A] md:text-4xl">{card.highlight}</h3>
+                <p className="mt-4 text-sm text-gray-600 md:text-base">{card.description}</p>
+                <button
+                  onClick={() => navigate(card.ctaHref)}
+                  className="mt-5 inline-flex items-center justify-center rounded-lg bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:shadow-lg"
                 >
-                  Explore Colors
+                  {card.ctaLabel}
                 </button>
               </div>
-              
-              {/* Phone Mockup Image */}
-              <div className="flex justify-center mt-8 sm:mt-12 md:mt-20">
-                <img 
-                  src="/Assets/card1-trust.png"
-                  alt="Picture of cards depicting losing weight"
-                  className="w-[280px] h-[210px] sm:w-[350px] sm:h-[260px] md:w-[400px] md:h-[300px] object-cover rounded-xl shadow-md"
-                />
+              <div className="mt-auto overflow-hidden rounded-2xl border border-white/80 shadow-md">
+                <img src={card.image} alt={card.highlight} className="h-full w-full object-cover" loading="lazy" />
               </div>
-            </motion.div>
+            </article>
+          ))}
+        </motion.div>
 
-            {/* Card 3: Clinically proven ingredients */}
-            <motion.div
-              whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-6 sm:p-8 md:p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[500px] sm:min-h-[550px] md:min-h-[600px]"
-            >
-              <div className="text-center mb-4 sm:mb-6">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  Recommended by
-                </h3>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C6843A] -mt-1 mb-3 sm:mb-4">
-                  design experts
-                </h3>
-            
-                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Professional advice and curated palettes to help you choose the right paints for lasting beauty.
-                </p>
-                <button 
-                  onClick={() => navigate('/about')}
-                  className="bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-colors text-sm sm:text-base"
-                >
-                  Get Expert Advice
-                </button>
-              </div>
-              
-              {/* Ingredients Image */}
-              <div className="flex justify-center mt-8 sm:mt-12 md:mt-20">
-                <img 
-                  src="/Assets/piotrekf_A_minimalistic_Scandinavian-style_interior_with_soft_n_89b15a3a-fb0e-4751-a060-037b2ec6493f.png"
-                  alt="Image"
-                  className="w-[280px] h-[210px] sm:w-[350px] sm:h-[260px] md:w-[400px] md:h-[300px] object-cover rounded-xl shadow-md"
-                />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Column - Cards positioned lower */}
-          <div className="flex flex-col gap-1 mt-0 md:mt-12">
-            {/* Card 2: Prescribed by licensed providers */}
-            <motion.div
-              whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-6 sm:p-8 md:p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[500px] sm:min-h-[550px] md:min-h-[600px]"
-            >
-              <div className="text-center mb-4 sm:mb-6">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  Premium eco-friendly
-                </h3>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C6843A] -mt-1 mb-3 sm:mb-4">
-                  paints
-                </h3>
-    
-                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Low-VOC, non-toxic paints tested for long-lasting finish and safe for kids and pets.
-                </p>
-                <button 
-                  onClick={() => navigate('/products')}
-                  className="bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-colors text-sm sm:text-base"
-                >
-                  View Paint Range
-                </button>
-              </div>
-              
-              {/* Doctor Image */}
-              <div className="flex justify-center mt-8 sm:mt-12 md:mt-20">
-                <img 
-                  src="/Assets/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d.png"
-                  alt="Image"
-                  className="w-[280px] h-[210px] sm:w-[350px] sm:h-[260px] md:w-[400px] md:h-[300px] object-cover rounded-xl shadow-md"
-                />
-              </div>
-            </motion.div>
-
-            {/* Card 4: FDA-regulated pharmacies */}
-            <motion.div
-              whileHover={{ y: -2 }}
-              className="bg-[#F6F0E9] p-6 sm:p-8 md:p-12 shadow-sm rounded-[28px] overflow-hidden transition-all duration-300 min-h-[500px] sm:min-h-[550px] md:min-h-[600px]"
-            >
-              <div className="text-center mb-4 sm:mb-6">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  Certified & trusted
-                </h3>
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#C6843A] -mt-1 mb-3 sm:mb-4">
-                  delivery
-                </h3>
-             
-                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-                  Delivered fresh from our certified facilities with quick, reliable shipping right to your door.
-                </p>
-                <button 
-                  onClick={() => navigate('/products')}
-                  className="bg-gray-900 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-colors text-sm sm:text-base"
-                >
-                  Shop Now
-                </button>
-              </div>
-              
-              {/* Pharmacy Image */}
-              <div className="flex justify-center mt-8 sm:mt-12 md:mt-20">
-                <img 
-                  src="/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png"
-                  alt="collage of pictures with medicine making machines"
-                  className="w-[280px] h-[210px] sm:w-[350px] sm:h-[260px] md:w-[400px] md:h-[300px] object-cover rounded-xl shadow-md"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <p className="mt-10 text-center text-xs text-gray-500 max-w-2xl mx-auto leading-relaxed px-8 sm:px-12 md:px-16 lg:px-20">
-        Calyco Paints products are formulated to meet strict industry standards for safety, durability, and performance. Always review product details and seek professional guidance for proper use.
+        <p className="mt-12 text-center text-xs leading-relaxed text-gray-500">
+          CALYCO Paints products are formulated to meet strict industry standards for safety, durability, and performance.
+          Always review product specifications and consult a professional for correct application.
         </p>
       </div>
     </section>
@@ -179,3 +98,4 @@ const WhyTrustUs = () => {
 };
 
 export default WhyTrustUs;
+
