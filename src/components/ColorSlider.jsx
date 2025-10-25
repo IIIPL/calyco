@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ColorSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0); // Start with the 1st slide
-  const [isPlaying, setIsPlaying] = useState(false); // Set to false to disable autoplay
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const intervalRef = useRef(null);
 
@@ -12,38 +12,44 @@ const ColorSlider = () => {
     {
       type: 'image',
       src: '/Assets/home-hero/full-page.png',
-      alt: 'Full Page Interior Design'
+      alt: 'Full Page Interior Design',
+      badge: 'CALYCO PREMIUM COLLECTION',
+      title: 'Calyco Paint & Stain',
+      subtitle: 'Transform Your Space with Eco-Premium Excellence',
+      description: 'Explore our curated collection of premium colors and find the perfect paint for your space. Low-VOC, durable, and designed for modern living.',
+      features: ['Premium Finishes', 'Low-VOC Commitment', 'Expert Support']
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero2.png',
-      alt: 'Modern and Minimalist Living Room'
+      alt: 'Modern and Minimalist Living Room',
+      badge: 'INTERIOR COLLECTION',
+      title: 'Luxury Interiors',
+      subtitle: 'Timeless Elegance Meets Superior Performance',
+      description: 'Smooth, low-VOC paints engineered for discerning homeowners. Advanced formulas that deliver flawless finishes and lasting beauty.',
+      features: ['Washable & Durable', 'Zero Odor', 'Premium Pigments']
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
-      alt: 'Modern Interior Wall in a House or Apartment Living'
+      alt: 'Modern Interior Wall in a House or Apartment Living',
+      badge: 'CALYCO DEFENSE SYSTEMS',
+      title: 'Defense Coatings',
+      subtitle: 'Industrial-Grade Protection for Every Surface',
+      description: 'Built to protect and enhance wood, concrete, steel, and more. Weather-resistant technology that stands the test of time.',
+      features: ['All-Surface Protection', 'Weather Resistant', 'Long-Lasting']
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
-      alt: 'Metallic Parapet Interrupted by Small Columns'
+      alt: 'Metallic Parapet Interrupted by Small Columns',
+      badge: 'ECO-INNOVATION SERIES',
+      title: 'Eco-Friendly Innovation',
+      subtitle: 'Sustainability Without Compromise',
+      description: 'Advanced formulas that balance environmental responsibility with superior performance. Safe for families, kind to the planet.',
+      features: ['Plant-Based Ingredients', 'Carbon Neutral', 'Safe for All']
     }
   ];
-
-  // Detect responsive (mobile/tablet) viewport for slide-specific swap
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 1023px)');
-    const onChange = (e) => setIsMobile(e.matches);
-    setIsMobile(mq.matches);
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else mq.addListener(onChange);
-    return () => {
-      if (mq.removeEventListener) mq.removeEventListener('change', onChange);
-      else mq.removeListener(onChange);
-    };
-  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -54,18 +60,10 @@ const ColorSlider = () => {
   };
 
   const goToSlide = (index) => {
-    console.log('Dot clicked! Changing to slide:', index);
     setCurrentSlide(index);
   };
 
   useEffect(() => {
-    // DISABLED AUTOMATIC SLIDING - Only manual navigation
-    // if (isPlaying) {
-    //   intervalRef.current = setInterval(() => {
-    //     nextSlide();
-    //   }, 3000);
-    // }
-
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -74,7 +72,6 @@ const ColorSlider = () => {
   }, [isPlaying, currentSlide]);
 
   useEffect(() => {
-    // Pause video when slide changes
     if (videoRef.current) {
       if (slides[currentSlide].type === 'video') {
         videoRef.current.play();
@@ -89,16 +86,15 @@ const ColorSlider = () => {
   };
 
   return (
-    <>
-    <div className="relative w-full min-h-[75vh] md:min-h-[85vh] lg:min-h-[90vh] overflow-hidden mt-0">
-      {/* Slides */}
+    <div className="relative w-full min-h-[85vh] md:min-h-[90vh] lg:min-h-screen overflow-hidden">
+      {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           {slides[currentSlide].type === 'video' ? (
@@ -115,250 +111,163 @@ const ColorSlider = () => {
               Your browser does not support the video tag.
             </video>
           ) : (
-            currentSlide === 0 && !isMobile ? (
-              // Special layout for first image on desktop only
-              <div className="flex h-full w-full flex-col lg:flex-row">
-                {/* Left half: dark purple background */}
-                <div className="w-full lg:w-1/2 h-full bg-[#2D0F3F] flex items-center justify-center px-6 md:px-12">
-                  <div className="text-white text-center px-8">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                      Calyco Paint & Stain
-                    </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
-                      Explore premium colors and find the perfect paint for your space
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                        Shop
-                      </Link>
-                      <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                        Explore Colors
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                {/* Right half: image */}
-                <div className="hidden lg:block w-1/2 h-full relative">
-                  <img
-                    src={slides[currentSlide].src}
-                    alt={slides[currentSlide].alt}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            ) : (
-              <img
-                src={isMobile && currentSlide === 1 ? '/Assets/HERO/hero2.png' : slides[currentSlide].src}
-                alt={slides[currentSlide].alt}
-                className="w-full h-full object-cover"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-              />
-            )
+            <img
+              src={slides[currentSlide].src}
+              alt={slides[currentSlide].alt}
+              className="w-full h-full object-cover"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
           )}
         </motion.div>
       </AnimatePresence>
 
-      {/* Text Overlay - show on large screens only to avoid covering content on mobile */}
-      {currentSlide !== 0 && (
-        <div className="absolute inset-0 hidden lg:flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-            {currentSlide === 2 ? (
-              // Centered layout for third image
-              <div className="w-full flex justify-center items-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-white z-10 text-center"
+      {/* Dark Purple Gradient Overlay (matching warranty page) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0626]/95 via-[#2D0F3F]/90 to-[#1a0626]/95" />
+
+      {/* Content Overlay */}
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+          <motion.div
+            key={`content-${currentSlide}`}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="text-white z-20 max-w-3xl"
+          >
+            {/* Premium Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="inline-block mb-6"
+            >
+              <span className="inline-flex items-center px-5 py-2.5 bg-[#D4AF37] text-[#0F1221] rounded-full text-xs font-bold uppercase tracking-[0.15em] shadow-lg">
+                {slides[currentSlide].badge}
+              </span>
+            </motion.div>
+
+            {/* Main Title - Reduced size */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-[1.1] text-white tracking-tight"
+            >
+              {slides[currentSlide].title}
+            </motion.h1>
+
+            {/* Subtitle - Reduced size */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-lg md:text-xl lg:text-2xl mb-5 text-white/95 font-medium leading-relaxed"
+            >
+              {slides[currentSlide].subtitle}
+            </motion.p>
+
+            {/* Description - Reduced size */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-sm md:text-base lg:text-lg mb-7 text-white/90 leading-relaxed max-w-2xl"
+            >
+              {slides[currentSlide].description}
+            </motion.p>
+
+            {/* Feature Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex flex-wrap gap-3 mb-8"
+            >
+              {slides[currentSlide].features.map((feature, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-sm font-medium text-white hover:bg-white/20 transition-all duration-300"
                 >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                    Calyco Defense Coatings
-                  </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
-                    Built to protect every surface – wood, concrete, steel, and more.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                      Shop
-                    </Link>
-                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                      Explore Colors
-                    </Link>
-                  </div>
-                </motion.div>
-              </div>
-            ) : currentSlide === 3 ? (
-              // Centered layout for fourth image
-              <div className="w-full flex justify-center items-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-white z-10 text-center"
-                >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                    Eco-Friendly Innovation
-                  </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
-                    Advanced formulas that balance sustainability with superior performance.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                      Shop
-                    </Link>
-                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                      Explore Colors
-                    </Link>
-                  </div>
-                </motion.div>
-              </div>
-            ) : currentSlide === 1 ? (
-              // Centered layout for second image
-              <div className="w-full flex justify-center items-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-white z-10 text-center"
-                >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                    Eco-Friendly Innovation
-                  </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg mx-auto">
-                    Advanced formulas that balance sustainability with superior performance.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                      Shop
-                    </Link>
-                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                      Explore Colors
-                    </Link>
-                  </div>
-                </motion.div>
-              </div>
-            ) : (
-              // Original left-aligned layout for other images (not first image)
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                {/* Left side - Text content */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-white z-10"
-                >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight text-white">
-                    Luxury Interiors
-                  </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 max-w-lg">
-                    Smooth, low-VOC paints designed for timeless elegance and durability.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link to="/products" className="px-6 py-3 bg-white text-gray-900 rounded-lg font-normal hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base">
-                      Shop
-                    </Link>
-                    <Link to="/colors" className="px-6 py-3 border-2 border-white text-white rounded-lg font-normal hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base group">
-                      Explore Colors
-                    </Link>
-                  </div>
-                </motion.div>
-                
-                {/* Right side - Empty for balance */}
-                <div className="hidden lg:block"></div>
-              </div>
-            )}
-          </div>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  {feature}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link
+                to="/products"
+                className="group inline-flex items-center justify-center px-8 py-3.5 bg-white text-[#0F1221] rounded-[12px] font-semibold text-base hover:bg-[#D4AF37] hover:text-[#0F1221] transition-all duration-300 shadow-[0_8px_32px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_48px_rgba(212,175,55,0.4)] transform hover:-translate-y-1 min-w-[180px]"
+              >
+                Shop Now
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                to="/colors"
+                className="group inline-flex items-center justify-center px-8 py-3.5 border-2 border-white/80 text-white rounded-[12px] font-semibold text-base hover:bg-white hover:text-[#4B007D] transition-all duration-300 shadow-[0_8px_32px_rgba(255,255,255,0.15)] hover:shadow-[0_12px_48px_rgba(255,255,255,0.3)] transform hover:-translate-y-1 min-w-[180px] backdrop-blur-sm"
+              >
+                Explore Colors
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-      )}
+      </div>
 
-      {/* Dark overlay for better text readability; hide on mobile and first slide */}
-      {currentSlide !== 0 && (
-        <div className="absolute inset-0 hidden lg:block bg-black/40"></div>
-      )}
-
-      {/* Slide indicators with Navigation Arrows */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-50">
+      {/* Slide Navigation */}
+      <div className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 flex items-center space-x-6 z-30">
         {/* Left Arrow */}
         <button
-          onClick={() => {
-            const newIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
-            goToSlide(newIndex);
-          }}
-          className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/50 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 hover:shadow-lg"
+          onClick={prevSlide}
+          className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
           aria-label="Previous slide"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
         {/* Dots */}
-        <div className="flex space-x-2">
+        <div className="flex space-x-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-150 cursor-pointer border-2 border-white/30 ${
+              className={`transition-all duration-300 rounded-full ${
                 index === currentSlide
-                  ? 'bg-white scale-125 border-white'
-                  : 'bg-white/50 hover:bg-white/80 hover:border-white/60'
+                  ? 'w-12 h-3.5 bg-white shadow-lg'
+                  : 'w-3.5 h-3.5 bg-white/40 hover:bg-white/70 hover:scale-125 border border-white/30'
               }`}
               aria-label={`Go to slide ${index + 1}`}
-              style={{ pointerEvents: 'auto' }}
             />
           ))}
         </div>
 
         {/* Right Arrow */}
         <button
-          onClick={() => {
-            const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
-            goToSlide(newIndex);
-          }}
-          className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/50 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 hover:shadow-lg"
+          onClick={nextSlide}
+          className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
           aria-label="Next slide"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
     </div>
-
-    {/* Mobile/Tablet: text box below the slider to prevent overlap */}
-    <div className="lg:hidden w-full bg-[#2D0F3F] text-white px-6 py-8">
-      <div className="max-w-7xl mx-auto text-center">
-        {currentSlide === 0 && (
-          <>
-            <h2 className="text-3xl font-bold mb-3">Calyco Paint & Stain</h2>
-            <p className="text-white/90 mb-6 text-lg">Explore premium colors and find the perfect paint for your space</p>
-          </>
-        )}
-        {currentSlide === 1 && (
-          <>
-            <h2 className="text-3xl font-bold mb-3">Luxury Interiors</h2>
-            <p className="text-white/90 mb-6 text-lg">Smooth, low-VOC paints designed for timeless elegance and durability.</p>
-          </>
-        )}
-        {currentSlide === 2 && (
-          <>
-            <h2 className="text-3xl font-bold mb-3">Calyco Defense Coatings</h2>
-            <p className="text-white/90 mb-6 text-lg">Built to protect every surface – wood, concrete, steel, and more.</p>
-          </>
-        )}
-        {currentSlide === 3 && (
-          <>
-            <h2 className="text-3xl font-bold mb-3">Eco-Friendly Innovation</h2>
-            <p className="text-white/90 mb-6 text-lg">Advanced formulas that balance sustainability with superior performance.</p>
-          </>
-        )}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="/products" className="inline-flex w-[176px] justify-center px-6 py-3 bg-white text-gray-900 rounded-lg font-medium text-sm border border-gray-300">Shop</Link>
-          <Link to="/colors" className="inline-flex w-[176px] justify-center px-6 py-3 border-2 border-white text-white rounded-lg font-medium text-sm">Explore Colors</Link>
-        </div>
-      </div>
-    </div>
-    </>
   );
 };
 
