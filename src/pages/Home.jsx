@@ -360,8 +360,8 @@ const Home = () => {
               </div>
               <div className="mt-10 grid grid-cols-3 gap-6 max-w-sm text-center text-[#0F1221]/80">
                 {[
-                  { value: '30 Years', label: 'Experience' },
-                  { value: '2L+ Sq Ft', label: 'Painted' },
+                  { value: '#1', label: 'in Delhi' },
+                  { value: '95%', label: 'Odor-Free' },
                   { value: 'NTPC', label: 'Approved' },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col items-center gap-1">
