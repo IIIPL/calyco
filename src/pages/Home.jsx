@@ -303,30 +303,27 @@ const Home = () => {
       />
 
       {/* Hero Section with Original ColorSlider */}
-      <section className="relative overflow-hidden pt-[19.5]">
+      <section className="relative overflow-hidden">
         <ColorSlider />
       </section>
 
-
-
-
       {/* High-conversion Landing Hero */}
-      <section className="relative bg-[#F6F3EE]">
+      <section className="relative bg-[#F6F3EE] py-12 md:py-16 lg:py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-[#4B007D0F] to-[#4B007D05] pointer-events-none" aria-hidden="true" />
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10 py-16 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
+          <div className="grid gap-8 lg:gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
             <div>
-              <span className="inline-flex items-center rounded-full bg-[#FBF9F6] border border-[#0F1221]/10 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.25em] text-[#4B007D]">
+              <span className="inline-flex items-center rounded-full bg-[#FBF9F6] border border-[#0F1221]/10 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4B007D]">
                 Launch Offer — First 100 Customers
               </span>
-              <h1 className="mt-6 text-[#0F1221] text-[40px] leading-[1.05] tracking-[-0.01em] font-bold md:text-[56px]">
+              <h1 className="mt-4 sm:mt-6 text-[#0F1221] text-[28px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] font-bold">
                 Asian Paints Is #1. We're #2. So We Try Harder.{" "}
                 <span className="text-[#4B007D]">And Cost 20% Less.</span>
               </h1>
-              <p className="mt-4 text-base md:text-lg text-[#0F1221]/70 leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed">
                 Premium paint services in Delhi NCR · 30 years manufacturing excellence · Zero sales calls, ever
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
                 {[
                   '💰 ₹8K–20K Saved on 2–3 BHK',
                   '🚫 No Phone Spam — WhatsApp Only',
@@ -334,23 +331,23 @@ const Home = () => {
                 ].map((pill) => (
                   <span
                     key={pill}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#0F1221]/10 bg-[#FBF9F6] px-4 py-2 text-sm font-medium text-[#0F1221]"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#0F1221]/10 bg-[#FBF9F6] px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-[#0F1221]"
                   >
                     {pill}
                   </span>
                 ))}
               </div>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:gap-4 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => document.getElementById('calyco-quote-calculator')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#0F1221] shadow-[0_8px_32px_rgba(15,18,33,0.08)] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#D4AF37]"
+                  className="inline-flex items-center justify-center rounded-[12px] bg-[#D4AF37] px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-semibold text-[#0F1221] shadow-[0_8px_32px_rgba(15,18,33,0.08)] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#D4AF37] w-full sm:w-auto"
                 >
                   Get My Instant Quote — Save 20%
                 </button>
                 <a
                   href="https://wa.me/919999999999?text=Hi,%20I%20want%20a%20quote%20for%20my%20paint%20project"
-                  className="inline-flex items-center justify-center rounded-[12px] border-2 border-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#D4AF37] transition hover:bg-[#D4AF37]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  className="inline-flex items-center justify-center rounded-[12px] border-2 border-[#D4AF37] px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-semibold text-[#D4AF37] transition hover:bg-[#D4AF37]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-white w-full sm:w-auto"
                 >
                   <span role="img" aria-hidden="true" className="mr-2">
                     💬
@@ -358,7 +355,7 @@ const Home = () => {
                   Chat on WhatsApp
                 </a>
               </div>
-              <div className="mt-10 grid grid-cols-3 gap-6 max-w-sm text-center text-[#0F1221]/80">
+              <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 max-w-sm text-center text-[#0F1221]/80">
                 {[
                   { value: '#1', label: 'in Delhi' },
                   { value: '95%', label: 'Odor-Free' },
@@ -366,12 +363,12 @@ const Home = () => {
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col items-center gap-1">
                     <span
-                      className="text-2xl font-semibold text-[#4B007D]"
+                      className="text-xl sm:text-2xl font-semibold text-[#4B007D]"
                       style={{ fontFeatureSettings: '"tnum"' }}
                     >
                       {item.value}
                     </span>
-                    <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#0F1221]/70">
+                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#0F1221]/70">
                       {item.label}
                     </span>
                   </div>
@@ -381,12 +378,12 @@ const Home = () => {
 
             <div
               id="calyco-quote-calculator"
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-[0_8px_32px_rgba(15,18,33,0.08)]"
+              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-5 sm:p-6 shadow-[0_8px_32px_rgba(15,18,33,0.08)]"
             >
-              <h2 className="text-[28px] font-semibold text-[#0F1221]">
+              <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#0F1221]">
                 Calculate Your Savings
               </h2>
-              <label className="mt-6 mb-2 block text-sm font-medium text-[#0F1221]/80" htmlFor="home-size">
+              <label className="mt-4 sm:mt-6 mb-2 block text-sm font-medium text-[#0F1221]/80" htmlFor="home-size">
                 Your Home Size
               </label>
               <select
@@ -401,7 +398,7 @@ const Home = () => {
                 <option value="4bhk">4 BHK / Villa (1500+ sq ft)</option>
               </select>
 
-              <div className="mt-6 rounded-[12px] border border-[#0F1221]/10 bg-white p-5">
+              <div className="mt-5 sm:mt-6 rounded-[12px] border border-[#0F1221]/10 bg-white p-4 sm:p-5">
                 <div className="flex items-center justify-between text-sm text-[#0F1221]/70">
                   <span>Asian Paints Cost</span>
                   <span
@@ -417,12 +414,12 @@ const Home = () => {
                     {currencyFormatter.format(currentSavings.calyco)}
                   </span>
                 </div>
-                <div className="mt-4 flex items-center justify-between rounded-[10px] bg-[#4B007D]/5 px-4 py-3 text-[#4B007D]">
-                  <span className="text-sm font-semibold uppercase tracking-[0.2em]">
+                <div className="mt-4 flex items-center justify-between rounded-[10px] bg-[#4B007D]/5 px-3 sm:px-4 py-2.5 sm:py-3 text-[#4B007D]">
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em]">
                     Your Savings
                   </span>
                   <span
-                    className="text-2xl font-semibold"
+                    className="text-xl sm:text-2xl font-semibold"
                     style={{ fontFeatureSettings: '"tnum"' }}
                   >
                     {currencyFormatter.format(currentSavings.savings)}
@@ -432,11 +429,11 @@ const Home = () => {
 
               <button
                 type="button"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-[12px] bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#0F1221] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF9F6]"
+                className="mt-5 sm:mt-6 inline-flex w-full items-center justify-center rounded-[12px] bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#0F1221] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF9F6]"
               >
                 Lock In My 20% Discount
               </button>
-              <p className="mt-4 text-center text-[13px] text-[#0F1221]/60">
+              <p className="mt-3 sm:mt-4 text-center text-[12px] sm:text-[13px] text-[#0F1221]/60">
                 Minimum project value: ₹50,000 · Delhi NCR only
               </p>
             </div>
@@ -445,8 +442,8 @@ const Home = () => {
       </section>
 
       {/* Urgency Bar */}
-      <div className="bg-[#FBF9F6] border-y border-[#0F1221]/10 py-3 px-6">
-        <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-between gap-3 text-center text-[15px] text-[#0F1221]/80 sm:flex-row">
+      <div className="bg-[#FBF9F6] border-y border-[#0F1221]/10 py-3 px-4 sm:px-6">
+        <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-between gap-3 text-center text-[13px] sm:text-[15px] text-[#0F1221]/80 sm:flex-row">
           <div className="font-medium">
             ⚠️ First 100 Customers Only — <span className="font-semibold text-[#4B007D]">73 spots remaining</span>
           </div>
@@ -457,15 +454,15 @@ const Home = () => {
       </div>
 
       {/* Comparison Section */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <h2 className="text-center text-3xl font-semibold text-[#0F1221] md:text-[48px]">
+          <h2 className="text-center text-[28px] sm:text-3xl font-semibold text-[#0F1221] md:text-[40px] lg:text-[48px]">
             Why We're Better Than Asian Paints
           </h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-white p-8 shadow-[0_8px_32px_rgba(15,18,33,0.05)]">
-              <h3 className="text-2xl font-semibold text-[#0F1221]">Asian Paints</h3>
-              <ul className="mt-6 space-y-4 text-sm text-[#0F1221]/80">
+          <div className="mt-8 sm:mt-12 grid gap-6 lg:grid-cols-2">
+            <div className="rounded-[24px] border border-[#0F1221]/10 bg-white p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.05)]">
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#0F1221]">Asian Paints</h3>
+              <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-sm text-[#0F1221]/80">
                 <li><strong className="text-[#0F1221]">Price:</strong> Standard Market Rate</li>
                 <li><strong className="text-[#0F1221]">Experience:</strong> Market Leader</li>
                 <li><strong className="text-[#0F1221]">Marketing Approach:</strong> Aggressive phone calls, sales visits</li>
@@ -474,9 +471,9 @@ const Home = () => {
                 <li><strong className="text-[#0F1221]">Service Model:</strong> Franchised contractors</li>
               </ul>
             </div>
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-[0_8px_32px_rgba(75,0,125,0.12)]">
-              <h3 className="text-2xl font-semibold text-[#4B007D]">CALYCO </h3>
-              <ul className="mt-6 space-y-4 text-sm text-[#0F1221]/85">
+            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(75,0,125,0.12)]">
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#4B007D]">CALYCO </h3>
+              <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-sm text-[#0F1221]/85">
                 <li><strong className="text-[#0F1221]">Price:</strong> <span className="text-[#4B007D] font-semibold">20% Lower ✓</span></li>
                 <li><strong className="text-[#0F1221]">Experience:</strong> 30 Years Manufacturing</li>
                 <li><strong className="text-[#0F1221]">Marketing Approach:</strong> <span className="text-[#4B007D] font-semibold">Zero Spam - Chat Only ✓</span></li>
@@ -487,15 +484,15 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 sm:grid-cols-2">
             {[
               { title: "✓ No Phone Spam, Ever", body: "We answer when YOU call. No follow-ups, no pressure." },
               { title: "✓ Delhi NCR Focused", body: "Local expertise, faster response, better understanding." },
               { title: "✓ Manufacturer Direct", body: "From factory to your walls, no middleman markup." },
               { title: "✓ Government Trusted", body: "Same quality approved for NTPC power plants." },
             ].map((callout) => (
-              <div key={callout.title} className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-[0_6px_24px_rgba(15,18,33,0.06)]">
-                <h4 className="text-lg font-semibold text-[#4B007D]">{callout.title}</h4>
+              <div key={callout.title} className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-5 sm:p-6 shadow-[0_6px_24px_rgba(15,18,33,0.06)]">
+                <h4 className="text-base sm:text-lg font-semibold text-[#4B007D]">{callout.title}</h4>
                 <p className="mt-2 text-sm text-[#0F1221]/80">{callout.body}</p>
               </div>
             ))}
@@ -503,27 +500,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* REMOVED: Trust Logos Bar - DELETED THIS SECTION */}
-
       {/* How It Works */}
-      <section className="bg-[#F6F3EE] py-16 md:py-20">
+      <section className="bg-[#F6F3EE] py-12 md:py-16 lg:py-20">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-[#0F1221] md:text-[48px]">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-[28px] sm:text-3xl font-semibold text-[#0F1221] md:text-[40px] lg:text-[48px]">
               How It Works
             </h2>
-            <p className="mt-4 text-base text-[#0F1221]/70 md:text-lg">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-[#0F1221]/70 md:text-lg">
               Get premium paint services in three simple steps
             </p>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
             <div className="relative">
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4B007D] text-2xl font-bold text-white mb-6">
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#4B007D] text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6">
                   1
                 </div>
-                <h3 className="text-xl font-semibold text-[#0F1221] mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
                   Request Quote
                 </h3>
                 <p className="text-sm text-[#0F1221]/70 leading-relaxed">
@@ -535,10 +530,10 @@ const Home = () => {
             
             <div className="relative">
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#D4AF37] text-2xl font-bold text-[#0F1221] mb-6">
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#D4AF37] text-xl sm:text-2xl font-bold text-[#0F1221] mb-5 sm:mb-6">
                   2
                 </div>
-                <h3 className="text-xl font-semibold text-[#0F1221] mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
                   Get Assessment
                 </h3>
                 <p className="text-sm text-[#0F1221]/70 leading-relaxed">
@@ -549,10 +544,10 @@ const Home = () => {
             </div>
             
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4B007D] text-2xl font-bold text-white mb-6">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#4B007D] text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-[#0F1221] mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
                 Project Start
               </h3>
               <p className="text-sm text-[#0F1221]/70 leading-relaxed">
@@ -561,21 +556,17 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-10 sm:mt-12 text-center">
             <button
               type="button"
               onClick={() => document.getElementById('calyco-quote-calculator')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center rounded-[12px] bg-[#4B007D] px-8 py-4 text-base font-semibold text-white shadow-[0_8px_32px_rgba(75,0,125,0.15)] transition hover:bg-[#3d0066] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-[12px] bg-[#4B007D] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-[0_8px_32px_rgba(75,0,125,0.15)] transition hover:bg-[#3d0066] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 w-full sm:w-auto max-w-md"
             >
               Get Started — Calculate Savings
             </button>
           </div>
         </div>
       </section>
-
-      
-
-  
 
       {/* Popular Colours Section */}
       <PopularColorsSlider />
@@ -646,43 +637,43 @@ const Home = () => {
       {/* Why Trust Us Section */}
       <WhyTrustUs />
 
-      {/* NEW: What Our Customers Say Section - Added right after WhyTrustUs */}
-      <section className="bg-white py-20 md:py-24 lg:py-32">
+      {/* What Our Customers Say Section */}
+      <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="text-center mb-16">
-            <h2 className="text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-[28px] sm:text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
               What Our <span className="text-[#4B007D]">Customers Say</span>
             </h2>
-            <p className="mt-6 text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
               Join 100+ satisfied homeowners in Delhi NCR who trust CALYCO for premium paint solutions.
             </p>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
+              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
             >
-              <div className="mb-6 flex text-[#D4AF37]">
+              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
                     <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-base text-[#0F1221]/80 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
                 "Finally, a paint service that doesn't harass you with calls. Got my 3 BHK painted for 20% less than Asian Paints quote. Quality is excellent!"
               </p>
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4B007D] text-base font-semibold text-white">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
                   RM
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-[#0F1221]">Rajesh M.</p>
-                  <p className="text-sm text-[#0F1221]/60">Dwarka, Delhi</p>
+                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Rajesh M.</p>
+                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Dwarka, Delhi</p>
                 </div>
               </div>
             </motion.div>
@@ -692,25 +683,25 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
+              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
             >
-              <div className="mb-6 flex text-[#D4AF37]">
+              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
                     <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-base text-[#0F1221]/80 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
                 "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
               </p>
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4B007D] text-base font-semibold text-white">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
                   PS
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-[#0F1221]">Priya S.</p>
-                  <p className="text-sm text-[#0F1221]/60">Gurgaon</p>
+                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Priya S.</p>
+                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Gurgaon</p>
                 </div>
               </div>
             </motion.div>
@@ -720,25 +711,25 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
+              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
             >
-              <div className="mb-6 flex text-[#D4AF37]">
+              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
                     <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-base text-[#0F1221]/80 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
                 "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
               </p>
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4B007D] text-base font-semibold text-white">
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
                   AK
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-[#0F1221]">Amit K.</p>
-                  <p className="text-sm text-[#0F1221]/60">Noida</p>
+                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Amit K.</p>
+                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Noida</p>
                 </div>
               </div>
             </motion.div>
@@ -749,44 +740,44 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 grid grid-cols-3 gap-8 rounded-[24px] border border-[#0F1221]/10 bg-[#F6F3EE] p-10"
+            className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 rounded-[24px] border border-[#0F1221]/10 bg-[#F6F3EE] p-6 sm:p-8 md:p-10"
           >
             <div className="text-center">
-              <p className="text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
+              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
                 4.9/5
               </p>
-              <p className="mt-3 text-base text-[#0F1221]/70">Average Rating</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Average Rating</p>
             </div>
             <div className="text-center">
-              <p className="text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
+              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
                 100+
               </p>
-              <p className="mt-3 text-base text-[#0F1221]/70">Happy Customers</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Happy Customers</p>
             </div>
             <div className="text-center">
-              <p className="text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
+              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
                 ₹12L+
               </p>
-              <p className="mt-3 text-base text-[#0F1221]/70">Total Savings</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Total Savings</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ENHANCED: About Calyco FAQ Section */}
-      <section className="py-20 md:py-24 lg:py-32 bg-[#F6F3EE]">
+      {/* About Calyco FAQ Section */}
+      <section className="py-12 md:py-16 lg:py-20 bg-[#F6F3EE]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
+            <h2 className="text-[28px] sm:text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
               About <span className="text-[#4B007D]">Calyco</span>
             </h2>
-            <p className="mt-6 text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
               Everything you need to know about our premium eco-friendly paints.
             </p>
           </motion.div>
@@ -834,10 +825,10 @@ const Home = () => {
               >
                 <button
                   onClick={() => setActiveFAQ(activeFAQ === index ? null : index)}
-                  className="w-full py-6 text-left flex justify-between items-center hover:bg-white/50 transition-colors duration-200 px-4 rounded-lg"
+                  className="w-full py-5 sm:py-6 text-left flex justify-between items-center hover:bg-white/50 transition-colors duration-200 px-3 sm:px-4 rounded-lg"
                 >
-                  <span className="text-lg font-semibold text-[#0F1221] pr-8">{faq.question}</span>
-                  <span className={`text-[#4B007D] text-2xl font-bold transform transition-transform duration-300 flex-shrink-0 ${activeFAQ === index ? 'rotate-45' : ''}`}>
+                  <span className="text-base sm:text-lg font-semibold text-[#0F1221] pr-6 sm:pr-8">{faq.question}</span>
+                  <span className={`text-[#4B007D] text-xl sm:text-2xl font-bold transform transition-transform duration-300 flex-shrink-0 ${activeFAQ === index ? 'rotate-45' : ''}`}>
                     +
                   </span>
                 </button>
@@ -850,8 +841,8 @@ const Home = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-6 px-4">
-                        <p className="text-[#0F1221]/70 leading-relaxed text-base">{faq.answer}</p>
+                      <div className="pb-5 sm:pb-6 px-3 sm:px-4">
+                        <p className="text-[#0F1221]/70 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
                       </div>
                     </motion.div>
                   )}
@@ -864,14 +855,14 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-center mt-12 pt-8"
+              className="text-center mt-10 sm:mt-12 pt-6 sm:pt-8"
             >
               <button
                 onClick={() => setShowAllFAQs(!showAllFAQs)}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#4B007D] text-white rounded-[12px] font-semibold hover:bg-[#3d0066] transition-all duration-300 shadow-[0_8px_32px_rgba(75,0,125,0.2)] hover:shadow-[0_12px_48px_rgba(75,0,125,0.3)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#4B007D] text-white rounded-[12px] text-sm sm:text-base font-semibold hover:bg-[#3d0066] transition-all duration-300 shadow-[0_8px_32px_rgba(75,0,125,0.2)] hover:shadow-[0_12px_48px_rgba(75,0,125,0.3)] hover:-translate-y-0.5 w-full sm:w-auto max-w-xs"
               >
                 {showAllFAQs ? 'Show Less FAQs' : 'See All FAQs'}
-                <svg className={`w-5 h-5 transform transition-transform duration-300 ${showAllFAQs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <svg className={`w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-300 ${showAllFAQs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
