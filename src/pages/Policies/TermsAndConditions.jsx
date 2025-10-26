@@ -128,7 +128,7 @@ export default function TermsAndConditions() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-gradient-to-br from-[#4B007D] to-[#2E0053]">
+        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
@@ -136,7 +136,7 @@ export default function TermsAndConditions() {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/90 via-[#4B007D]/85 to-[#2E0053]/82" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
             <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">

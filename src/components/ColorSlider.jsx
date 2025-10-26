@@ -121,8 +121,8 @@ const ColorSlider = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dark Purple Gradient Overlay (matching warranty page) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0626]/95 via-[#2D0F3F]/90 to-[#1a0626]/95" />
+      {/* Subtle dark overlay for readability while keeping imagery vibrant */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/20" />
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-start sm:items-center pt-16 sm:pt-0">

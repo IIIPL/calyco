@@ -210,7 +210,7 @@ export default function AboutPage() {
               className="h-full w-full object-cover scale-105"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/95 via-[#4B007D]/90 to-[#2E0053]/88" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse float-animation"></div>

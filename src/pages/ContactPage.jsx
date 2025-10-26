@@ -161,7 +161,7 @@ export default function ContactPage() {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/95 via-[#4B007D]/90 to-[#2E0053]/85" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
           </div>
           <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-7 px-6 pb-12 pt-12 text-center md:px-10 md:pt-16 lg:px-12">
             {/* Fixed badge spacing */}

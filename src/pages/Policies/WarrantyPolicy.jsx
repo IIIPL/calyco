@@ -61,7 +61,7 @@ const Hero = () => (
         className="h-full w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2d0c52]/80 via-[#1a0631]/75 to-[#080114]/85 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
       <div className="pointer-events-none absolute -left-16 bottom-12 h-56 w-56 rounded-full bg-[#f8d35e]/25 blur-3xl sm:-left-24 sm:h-72 sm:w-72" aria-hidden />
       <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 translate-x-1/3 rounded-full bg-[#8b5cf6]/30 blur-3xl sm:h-80 sm:w-80" aria-hidden />
     </div>
