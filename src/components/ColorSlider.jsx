@@ -202,7 +202,7 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.4] text-white tracking-normal max-w-4xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.25] sm:leading-[1.3] text-white tracking-normal max-w-4xl"
               style={{ letterSpacing: '0.01em' }}
             >
               {slides[currentSlide].title}
@@ -227,10 +227,10 @@ const ColorSlider = () => {
             >
               <Link
                 to={slides[currentSlide].ctaLink}
-                className="group inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 bg-white text-[#0F1221] rounded-lg font-semibold text-sm sm:text-base hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 {slides[currentSlide].ctaText}
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
