@@ -227,10 +227,10 @@ const ColorSlider = () => {
             >
               <Link
                 to={slides[currentSlide].ctaLink}
-                className="group inline-flex items-center justify-center px-8 py-4 sm:px-10 sm:py-4 bg-white text-[#0F1221] rounded-lg font-semibold text-base hover:bg-[#D4AF37] hover:text-[#0F1221] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 bg-white text-[#0F1221] rounded-lg font-semibold text-sm sm:text-base hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 {slides[currentSlide].ctaText}
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
