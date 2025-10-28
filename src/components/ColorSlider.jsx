@@ -1,6 +1,61 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+const SLIDES = [
+  {
+    type: 'image',
+    src: '/Assets/home-hero/full-page.png',
+    alt: 'Beautiful transformed home interior',
+    badge: 'TRUSTED NATIONWIDE',
+    title: 'Colors That Transform Homes Into Havens',
+    subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
+    ctaText: 'Discover Your Perfect Shade',
+    ctaLink: '/colors',
+  },
+  {
+    type: 'image',
+    src: '/Assets/HERO/hero2.png',
+    alt: 'Premium quality paint finish',
+    badge: 'GUARANTEED EXCELLENCE',
+    title: 'A Decade of Beauty, Guaranteed',
+    subtitle: "We stand behind every brush stroke with India's strongest 10-year warranty. Your walls deserve nothing less.",
+    ctaText: 'See Our Promise',
+    ctaLink: '/about',
+  },
+  {
+    type: 'image',
+    src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
+    alt: 'Wide range of color collections',
+    badge: '2,000+ SHADES',
+    title: 'Every Mood. Every Room. Every Dream.',
+    subtitle: 'From calming neutrals to bold statements—explore our curated collections designed for the way you live.',
+    ctaText: 'Explore Color Collections',
+    ctaLink: '/colors',
+  },
+  {
+    type: 'image',
+    src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
+    alt: 'Made in India manufacturing facility',
+    badge: 'MADE IN INDIA',
+    title: 'Factory-Direct Quality. Family-Friendly Prices.',
+    subtitle: 'By cutting out middlemen, we deliver premium paint at 20% less than competitors—without compromising an ounce of quality.',
+    ctaText: 'See How We Do It',
+    ctaLink: '/about',
+  },
+];
+
+const buildPreloadCache = (slides) => {
+  const cache = new Map();
+  slides.forEach((slide) => {
+    if (slide.type === 'image' && slide.src) {
+      const img = new Image();
+      img.src = slide.src;
+      cache.set(slide.src, img);
+    }
+  });
+  return cache;
+};
 
 const ColorSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,60 +63,51 @@ const ColorSlider = () => {
   const videoRef = useRef(null);
   const intervalRef = useRef(null);
 
-  const slides = [
-    {
-      type: 'image',
-      src: '/Assets/home-hero/full-page.png',
-      alt: 'Full Page Interior Design',
-      badge: 'TRUSTED BY THOUSANDS',
-      title: 'India\'s #2 Paint Brand, Right After Asian Paints',
-      subtitle: 'Premium quality you can trust. 20% more affordable. Manufactured in-house with 10-year guarantee.',
-      cta1Text: 'Explore Colors',
-      cta2Text: 'Get Free Consultation'
-    },
-    {
-      type: 'image',
-      src: '/Assets/HERO/hero2.png',
-      alt: 'Modern and Minimalist Living Room',
-      badge: 'QUALITY ASSURANCE',
-      title: '10-Year Guarantee on All Products',
-      subtitle: 'We stand behind our paints with industry-leading warranty and commitment to excellence.',
-      cta1Text: 'Shop Now',
-      cta2Text: 'Learn More'
-    },
-    {
-      type: 'image',
-      src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
-      alt: 'Modern Interior Wall in a House or Apartment Living',
-      badge: 'PROFESSIONAL SERVICE',
-      title: 'Expert Painting Services Across Delhi NCR',
-      subtitle: 'Certified painters, quality materials, and flawless execution for your home.',
-      cta1Text: 'Book Service',
-      cta2Text: 'View Portfolio'
-    },
-    {
-      type: 'image',
-      src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
-      alt: 'Metallic Parapet Interrupted by Small Columns',
-      badge: 'MADE IN INDIA',
-      title: 'Manufactured In-House for Unbeatable Value',
-      subtitle: 'Direct from our factory to your home. No middlemen. Just quality and affordability.',
-      cta1Text: 'Our Story',
-      cta2Text: 'Shop Products'
-    }
-  ];
+  const slides = SLIDES;
+  const preloadCache = useMemo(() => buildPreloadCache(slides), [slides]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  const getNextIndex = useCallback(
+    (index, direction = 1) => (index + direction + slides.length) % slides.length,
+    [slides.length]
+  );
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const preloadSlide = useCallback(
+    (index) => {
+      const slide = slides[index];
+      if (!slide) return;
+      if (slide.type === 'image' && slide.src) {
+        const cached = preloadCache.get(slide.src);
+        if (cached && !cached.complete) {
+          cached.decode?.().catch(() => {});
+        }
+      }
+    },
+    [preloadCache, slides]
+  );
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      const nextIdx = getNextIndex(prev, 1);
+      preloadSlide(getNextIndex(nextIdx, 1));
+      return nextIdx;
+    });
+  }, [getNextIndex, preloadSlide]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      const nextIdx = getNextIndex(prev, -1);
+      preloadSlide(getNextIndex(nextIdx, -1));
+      return nextIdx;
+    });
+  }, [getNextIndex, preloadSlide]);
+
+  const goToSlide = useCallback(
+    (index) => {
+      setCurrentSlide(index);
+      preloadSlide(getNextIndex(index, 1));
+    },
+    [getNextIndex, preloadSlide]
+  );
 
   useEffect(() => {
     return () => {
@@ -80,6 +126,10 @@ const ColorSlider = () => {
       }
     }
   }, [currentSlide]);
+
+  useEffect(() => {
+    preloadSlide(getNextIndex(currentSlide, 1));
+  }, [currentSlide, getNextIndex, preloadSlide]);
 
   const handleVideoEnd = () => {
     nextSlide();
@@ -135,14 +185,14 @@ const ColorSlider = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="text-white z-20 max-w-3xl"
           >
-            {/* Badge - Smaller, more subtle with better spacing */}
+            {/* Badge - Premium styling with sophisticated colors */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="inline-block mb-6 sm:mb-8"
             >
-              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-[#D4AF37] text-[#0F1221] rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
+              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
                 {slides[currentSlide].badge}
               </span>
             </motion.div>
@@ -176,10 +226,10 @@ const ColorSlider = () => {
               className="mb-24 sm:mb-0"
             >
               <Link
-                to="/colors"
+                to={slides[currentSlide].ctaLink}
                 className="group inline-flex items-center justify-center px-8 py-4 sm:px-10 sm:py-4 bg-white text-[#0F1221] rounded-lg font-semibold text-base hover:bg-[#D4AF37] hover:text-[#0F1221] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                Explore Colors
+                {slides[currentSlide].ctaText}
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
