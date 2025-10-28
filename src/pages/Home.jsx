@@ -15,6 +15,7 @@ import NavigationArrows from '../components/NavigationArrows';
 import TrustBar from '../components/HomeComponents/TrustBar';
 import DelhiNCRServices from '../components/HomeComponents/DelhiNCRServices';
 import SocialProof from '../components/HomeComponents/SocialProof';
+import PaintingServices from '../components/HomeComponents/PaintingServices';
 
 
 const Home = () => {
@@ -194,6 +195,9 @@ const Home = () => {
       <section className="relative overflow-hidden">
         <ColorSlider />
       </section>
+
+      {/* Professional Painting Services Section */}
+      <PaintingServices />
 
       {/* Quality You Can Trust Section */}
       <section className="relative bg-gradient-to-br from-[#F6F3EE] to-white py-16 md:py-24">
