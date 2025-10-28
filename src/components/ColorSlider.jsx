@@ -8,7 +8,8 @@ const SLIDES = [
     src: '/Assets/home-hero/full-page.png',
     alt: 'Beautiful transformed home interior',
     badge: 'TRUSTED NATIONWIDE',
-    title: 'Colors That Transform Homes Into Havens',
+    titleLine1: 'Colors That Transform Homes',
+    titleLine2: 'Into Havens',
     subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
     ctaText: 'Discover Your Perfect Shade',
     ctaLink: '/colors',
@@ -202,10 +203,17 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.6] sm:leading-[1.7] text-white tracking-normal max-w-4xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 text-white tracking-normal max-w-4xl"
               style={{ letterSpacing: '0.01em' }}
             >
-              {slides[currentSlide].title}
+              {slides[currentSlide].titleLine1 ? (
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <div className="leading-[1.2]">{slides[currentSlide].titleLine1}</div>
+                  <div className="leading-[1.2]">{slides[currentSlide].titleLine2}</div>
+                </div>
+              ) : (
+                <div className="leading-[1.6] sm:leading-[1.7]">{slides[currentSlide].title}</div>
+              )}
             </motion.h1>
 
             {/* Subtitle - Proper sizing with breathing room */}
