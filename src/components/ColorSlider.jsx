@@ -202,7 +202,7 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.25] sm:leading-[1.3] text-white tracking-normal max-w-4xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.4] sm:leading-[1.5] text-white tracking-normal max-w-4xl"
               style={{ letterSpacing: '0.01em' }}
             >
               {slides[currentSlide].title}
