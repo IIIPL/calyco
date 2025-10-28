@@ -4,39 +4,39 @@ import { motion } from "framer-motion";
 export const WhyChooseCard = ({ index = 0 }) => {
   const whyChooseData = [
     {
-      heading: "High-Performance Coatings",
-      description: "Calyco delivers long-lasting, waterproof, UV-resistant paints built for Indian climates and surfaces.",
+      heading: "10-Year Guarantee",
+      description: "Industry-leading warranty on all products. We stand behind our quality with a decade-long commitment to your satisfaction.",
       icon: FaShieldHalved,
       color: "from-blue-500 to-blue-600"
     },
     {
-      heading: "Low-VOC & Eco-Friendly",
-      description: "All products are water-based and low in VOCs, ensuring healthier indoor air and minimal environmental impact.",
-      icon: FaLeaf,
+      heading: "20% More Affordable",
+      description: "Premium quality at unbeatable prices. Save significantly compared to Asian Paints without compromising on excellence.",
+      icon: FaAward,
       color: "from-green-500 to-green-600"
     },
     {
-      heading: "Multi-Surface Compatibility",
-      description: "From walls to metal, wood to concrete—Calyco products adhere and perform across diverse substrates.",
-      icon: FaPaintRoller,
+      heading: "Manufactured In-House",
+      description: "Direct from our state-of-the-art facilities to your home. No middlemen, just pure quality and value.",
+      icon: FaGlobe,
       color: "from-purple-500 to-purple-600"
     },
     {
-      heading: "Professional-Grade Durability",
-      description: "Trusted by contractors and developers for 10+ year lifespan under real-world wear and tear.",
-      icon: FaAward,
+      heading: "Expert Paint Services",
+      description: "Professional painters across Delhi NCR. From consultation to completion, we handle everything with care.",
+      icon: FaPaintRoller,
       color: "from-amber-500 to-amber-600"
     },
     {
-      heading: "Innovative & Versatile Formulas",
-      description: "Smart sealers, flexible coatings, one-coat paints—Calyco blends science and simplicity in application.",
-      icon: FaRocket,
-      color: "from-red-500 to-red-600"
+      heading: "Eco-Friendly Formulas",
+      description: "Low-VOC, water-based paints that are safe for your family and kind to the environment. Green without compromise.",
+      icon: FaLeaf,
+      color: "from-teal-500 to-teal-600"
     },
     {
-      heading: "Made for India. Ready for the World.",
-      description: "Proudly formulated and manufactured in India, calibrated for global standards of quality and reliability.",
-      icon: FaGlobe,
+      heading: "#2 in India",
+      description: "Ranked second only to Asian Paints. Trusted by thousands of homes and businesses across the country.",
+      icon: FaRocket,
       color: "from-indigo-500 to-indigo-600"
     },
   ];

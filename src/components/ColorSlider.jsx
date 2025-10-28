@@ -13,41 +13,41 @@ const ColorSlider = () => {
       type: 'image',
       src: '/Assets/home-hero/full-page.png',
       alt: 'Full Page Interior Design',
-      badge: 'CALYCO PREMIUM COLLECTION',
-      title: 'Calyco Paint & Stain',
-      subtitle: 'Transform Your Space with Eco-Premium Excellence',
-      description: 'Explore our curated collection of premium colors and find the perfect paint for your space. Low-VOC, durable, and designed for modern living.',
-      features: ['Premium Finishes', 'Low-VOC Commitment', 'Expert Support']
+      badge: 'TRUSTED BY THOUSANDS',
+      title: 'India\'s #2 Paint Brand, Right After Asian Paints',
+      subtitle: 'Premium quality you can trust. 20% more affordable. Manufactured in-house with 10-year guarantee.',
+      cta1Text: 'Explore Colors',
+      cta2Text: 'Get Free Consultation'
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero2.png',
       alt: 'Modern and Minimalist Living Room',
-      badge: 'INTERIOR COLLECTION',
-      title: 'Luxury Interiors',
-      subtitle: 'Timeless Elegance Meets Superior Performance',
-      description: 'Smooth, low-VOC paints engineered for discerning homeowners. Advanced formulas that deliver flawless finishes and lasting beauty.',
-      features: ['Washable & Durable', 'Zero Odor', 'Premium Pigments']
+      badge: 'QUALITY ASSURANCE',
+      title: '10-Year Guarantee on All Products',
+      subtitle: 'We stand behind our paints with industry-leading warranty and commitment to excellence.',
+      cta1Text: 'Shop Now',
+      cta2Text: 'Learn More'
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
       alt: 'Modern Interior Wall in a House or Apartment Living',
-      badge: 'CALYCO DEFENSE SYSTEMS',
-      title: 'Defense Coatings',
-      subtitle: 'Industrial-Grade Protection for Every Surface',
-      description: 'Built to protect and enhance wood, concrete, steel, and more. Weather-resistant technology that stands the test of time.',
-      features: ['All-Surface Protection', 'Weather Resistant', 'Long-Lasting']
+      badge: 'PROFESSIONAL SERVICE',
+      title: 'Expert Painting Services Across Delhi NCR',
+      subtitle: 'Certified painters, quality materials, and flawless execution for your home.',
+      cta1Text: 'Book Service',
+      cta2Text: 'View Portfolio'
     },
     {
       type: 'image',
       src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
       alt: 'Metallic Parapet Interrupted by Small Columns',
-      badge: 'ECO-INNOVATION SERIES',
-      title: 'Eco-Friendly Innovation',
-      subtitle: 'Sustainability Without Compromise',
-      description: 'Advanced formulas that balance environmental responsibility with superior performance. Safe for families, kind to the planet.',
-      features: ['Plant-Based Ingredients', 'Carbon Neutral', 'Safe for All']
+      badge: 'MADE IN INDIA',
+      title: 'Manufactured In-House for Unbeatable Value',
+      subtitle: 'Direct from our factory to your home. No middlemen. Just quality and affordability.',
+      cta1Text: 'Our Story',
+      cta2Text: 'Shop Products'
     }
   ];
 
@@ -135,91 +135,53 @@ const ColorSlider = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="text-white z-20 max-w-3xl"
           >
-            {/* Premium Badge */}
+            {/* Badge - Smaller, more subtle with better spacing */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-block mb-3 sm:mb-4 md:mb-6"
+              className="inline-block mb-6 sm:mb-8"
             >
-              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-[#D4AF37] text-[#0F1221] rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] shadow-lg">
+              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-[#D4AF37] text-[#0F1221] rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
                 {slides[currentSlide].badge}
               </span>
             </motion.div>
 
-            {/* Main Title */}
+            {/* Main Title - Professional sizing with generous spacing and better tracking */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 leading-[1.1] text-white tracking-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.4] text-white tracking-normal max-w-4xl"
+              style={{ letterSpacing: '0.01em' }}
             >
               {slides[currentSlide].title}
             </motion.h1>
 
-            {/* Subtitle */}
+            {/* Subtitle - Proper sizing with breathing room */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-5 text-white/95 font-medium leading-relaxed"
+              className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 text-white/90 font-normal leading-[1.7] max-w-2xl"
             >
               {slides[currentSlide].subtitle}
             </motion.p>
 
-            {/* Description */}
-            <motion.p
+            {/* Single CTA Button - Clean and focused */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-xs sm:text-sm md:text-base lg:text-lg mb-4 sm:mb-5 md:mb-7 text-white/90 leading-relaxed max-w-2xl"
+              className="mb-24 sm:mb-0"
             >
-              {slides[currentSlide].description}
-            </motion.p>
-
-            {/* Feature Pills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-6 md:mb-8"
-            >
-              {slides[currentSlide].features.map((feature, index) => (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 md:py-2.5 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-xs sm:text-sm font-medium text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  {feature}
-                </span>
-              ))}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-24 sm:mb-0"
-            >
-              <Link
-                to="/products"
-                className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 bg-white text-[#0F1221] rounded-[12px] font-semibold text-sm sm:text-base hover:bg-[#D4AF37] hover:text-[#0F1221] transition-all duration-300 shadow-[0_8px_32px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_48px_rgba(212,175,55,0.4)] transform hover:-translate-y-1 w-full sm:w-auto sm:min-w-[180px]"
-              >
-                Shop Now
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
               <Link
                 to="/colors"
-                className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 border-2 border-white/80 text-white rounded-[12px] font-semibold text-sm sm:text-base hover:bg-white hover:text-[#4B007D] transition-all duration-300 shadow-[0_8px_32px_rgba(255,255,255,0.15)] hover:shadow-[0_12px_48px_rgba(255,255,255,0.3)] transform hover:-translate-y-1 w-full sm:w-auto sm:min-w-[180px] backdrop-blur-sm"
+                className="group inline-flex items-center justify-center px-8 py-4 sm:px-10 sm:py-4 bg-white text-[#0F1221] rounded-lg font-semibold text-base hover:bg-[#D4AF37] hover:text-[#0F1221] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Explore Colors
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
             </motion.div>

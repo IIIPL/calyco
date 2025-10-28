@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SEO from '../components/SEO';
@@ -12,129 +12,17 @@ import PopularColorsSlider from '../components/PopularColorsSlider';
 import ShopByColour from '../components/ShopByColour';
 import HowItWorks from '../components/HowItWorks.tsx';
 import NavigationArrows from '../components/NavigationArrows';
+import TrustBar from '../components/HomeComponents/TrustBar';
+import DelhiNCRServices from '../components/HomeComponents/DelhiNCRServices';
+import SocialProof from '../components/HomeComponents/SocialProof';
 
-import { HeroSlider } from '../components/HomeComponents/HeroSlider';
-
-// Calyco Color Palette - 8 core colors
-const CALYCO_PALETTE = [
-  { name: "Grey Thunder", hex: "#4A5568", family: "Neutral", mood: "Sophisticated" },
-  { name: "Grey Mist", hex: "#A0AEC0", family: "Neutral", mood: "Calm" },
-  { name: "Barn Red", hex: "#C53030", family: "Warm", mood: "Energetic" },
-  { name: "Lavender", hex: "#B794F4", family: "Cool", mood: "Serene" },
-  { name: "Lilac", hex: "#D6BCFA", family: "Cool", mood: "Playful" },
-  { name: "Linen", hex: "#F7FAFC", family: "Neutral", mood: "Clean" },
-  { name: "Sage Green", hex: "#68D391", family: "Nature", mood: "Fresh" },
-  { name: "Purple", hex: "#805AD5", family: "Cool", mood: "Bold" }
-];
-
-// Room categories
-const ROOM_CATEGORIES = [
-  { name: "Bedroom", image: "/Assets/Rooms/Bedroom/base.jpg", colors: ["Grey Mist", "Lavender", "Linen"] },
-  { name: "Living Room", image: "/Assets/Rooms/LivingRoom/base.jpg", colors: ["Grey Thunder", "Sage Green", "Linen"] },
-  { name: "Kitchen", image: "/Assets/Rooms/DiningRoom/base.jpg", colors: ["Barn Red", "Sage Green", "Linen"] },
-  { name: "Bathroom", image: "/Assets/Rooms/Bedroom/base.jpg", colors: ["Lavender", "Lilac", "Linen"] },
-  { name: "All Rooms", image: "/Assets/color-banner.png", colors: CALYCO_PALETTE.map(c => c.name) }
-];
-
-// Mood categories
-const MOOD_CATEGORIES = [
-  { name: "Calm", gradient: "from-blue-100 to-purple-100", colors: ["Grey Mist", "Lavender", "Linen"] },
-  { name: "Energetic", gradient: "from-red-100 to-orange-100", colors: ["Barn Red", "Sage Green", "Purple"] },
-  { name: "Cozy", gradient: "from-amber-100 to-brown-100", colors: ["Grey Thunder", "Linen", "Sage Green"] },
-  { name: "Playful", gradient: "from-pink-100 to-purple-100", colors: ["Lilac", "Sage Green", "Purple"] }
-];
-
-// Curated palettes
-const CURATED_PALETTES = [
-  {
-    name: "Serene Simplicity",
-    description: "Minimalist elegance for modern spaces",
-    colors: ["Linen", "Grey Mist", "Sage Green"],
-    image: "/Assets/Inspiration/bedroom.jpg"
-  },
-  {
-    name: "Playful Brights",
-    description: "Vibrant energy for creative spaces",
-    colors: ["Purple", "Lilac", "Sage Green"],
-    image: "/Assets/Inspiration/living.jpg"
-  },
-  {
-    name: "Warm Earth",
-    description: "Natural warmth for cozy interiors",
-    colors: ["Barn Red", "Grey Thunder", "Linen"],
-    image: "/Assets/Inspiration/dining.jpg"
-  }
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.4,
-      ease: "easeOut",
-    },
-  }),
-};
 
 const Home = () => {
   const navigate = useNavigate();
-  const [homeSize, setHomeSize] = useState('2bhk');
-  const [activeTab, setActiveTab] = useState("color");
   const [selectedColor, setSelectedColor] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeFAQ, setActiveFAQ] = useState(null);
-  const [showAllFAQs, setShowAllFAQs] = useState(false);
   const [roomIndex, setRoomIndex] = useState(0);
   const [visibleRooms, setVisibleRooms] = useState(4);
-  const [inspirationIndex, setInspirationIndex] = useState(0);
-  
-  const savingsMap = {
-    '1bhk': {
-      label: '1 BHK (500–700 sq ft)',
-      asian: 21000,
-      calyco: 16800,
-      savings: 4200,
-    },
-    '2bhk': {
-      label: '2 BHK (800–1000 sq ft)',
-      asian: 32400,
-      calyco: 25920,
-      savings: 6480,
-    },
-    '3bhk': {
-      label: '3 BHK (1100–1300 sq ft)',
-      asian: 45000,
-      calyco: 36000,
-      savings: 9000,
-    },
-    '4bhk': {
-      label: '4 BHK / Villa (1500+ sq ft)',
-      asian: 64000,
-      calyco: 51200,
-      savings: 12800,
-    },
-  };
-  
-  const currencyFormatter = useMemo(
-    () =>
-      new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR',
-        maximumFractionDigits: 0,
-      }),
-    []
-  );
-  
-  const currentSavings = savingsMap[homeSize];
-
-  const openColorModal = (color) => {
-    setSelectedColor(color);
-    setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
-  };
 
   const closeColorModal = () => {
     setIsModalOpen(false);
@@ -307,266 +195,94 @@ const Home = () => {
         <ColorSlider />
       </section>
 
-      {/* High-conversion Landing Hero */}
-      <section className="relative bg-[#F6F3EE] py-12 md:py-16 lg:py-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4B007D0F] to-[#4B007D05] pointer-events-none" aria-hidden="true" />
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="grid gap-8 lg:gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-[#FBF9F6] border border-[#0F1221]/10 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-[12px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#4B007D]">
-                Launch Offer — First 100 Customers
-              </span>
-              <h1 className="mt-4 sm:mt-6 text-[#0F1221] text-[28px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-0.01em] font-bold">
-                Asian Paints Is #1. We're #2. So We Try Harder.{" "}
-                <span className="text-[#4B007D]">And Cost 20% Less.</span>
-              </h1>
-              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed">
-                Premium paint services in Delhi NCR · 30 years manufacturing excellence · Zero sales calls, ever
-              </p>
-              <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
-                {[
-                  '💰 ₹8K–20K Saved on 2–3 BHK',
-                  '🚫 No Phone Spam — WhatsApp Only',
-                  '🏆 NTPC-Approved Quality',
-                ].map((pill) => (
-                  <span
-                    key={pill}
-                    className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#0F1221]/10 bg-[#FBF9F6] px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-[#0F1221]"
-                  >
-                    {pill}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:gap-4 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => document.getElementById('calyco-quote-calculator')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-flex items-center justify-center rounded-[12px] bg-[#D4AF37] px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-semibold text-[#0F1221] shadow-[0_8px_32px_rgba(15,18,33,0.08)] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#D4AF37] w-full sm:w-auto"
-                >
-                  Get My Instant Quote — Save 20%
-                </button>
-                <a
-                  href="https://wa.me/919999999999?text=Hi,%20I%20want%20a%20quote%20for%20my%20paint%20project"
-                  className="inline-flex items-center justify-center rounded-[12px] border-2 border-[#D4AF37] px-5 py-3 sm:px-6 sm:py-3.5 text-sm font-semibold text-[#D4AF37] transition hover:bg-[#D4AF37]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-white w-full sm:w-auto"
-                >
-                  <span role="img" aria-hidden="true" className="mr-2">
-                    💬
-                  </span>
-                  Chat on WhatsApp
-                </a>
-              </div>
-              <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6 max-w-sm text-center text-[#0F1221]/80">
-                {[
-                  { value: '#1', label: 'in Delhi' },
-                  { value: '95%', label: 'Odor-Free' },
-                  { value: 'NTPC', label: 'Approved' },
-                ].map((item) => (
-                  <div key={item.label} className="flex flex-col items-center gap-1">
-                    <span
-                      className="text-xl sm:text-2xl font-semibold text-[#4B007D]"
-                      style={{ fontFeatureSettings: '"tnum"' }}
-                    >
-                      {item.value}
-                    </span>
-                    <span className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#0F1221]/70">
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+      {/* Quality You Can Trust Section */}
+      <section className="relative bg-gradient-to-br from-[#F6F3EE] to-white py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#4B007D]/5 to-transparent pointer-events-none" aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 bg-[#4B007D]/10 text-[#4B007D] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Our Promise to You</span>
             </div>
 
-            <div
-              id="calyco-quote-calculator"
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-5 sm:p-6 shadow-[0_8px_32px_rgba(15,18,33,0.08)]"
-            >
-              <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#0F1221]">
-                Calculate Your Savings
-              </h2>
-              <label className="mt-4 sm:mt-6 mb-2 block text-sm font-medium text-[#0F1221]/80" htmlFor="home-size">
-                Your Home Size
-              </label>
-              <select
-                id="home-size"
-                value={homeSize}
-                onChange={(event) => setHomeSize(event.target.value)}
-                className="w-full rounded-[12px] border border-[#0F1221]/15 bg-white px-4 py-3 text-sm text-[#0F1221] shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D]"
-              >
-                <option value="1bhk">1 BHK (500–700 sq ft)</option>
-                <option value="2bhk">2 BHK (800–1000 sq ft)</option>
-                <option value="3bhk">3 BHK (1100–1300 sq ft)</option>
-                <option value="4bhk">4 BHK / Villa (1500+ sq ft)</option>
-              </select>
-
-              <div className="mt-5 sm:mt-6 rounded-[12px] border border-[#0F1221]/10 bg-white p-4 sm:p-5">
-                <div className="flex items-center justify-between text-sm text-[#0F1221]/70">
-                  <span>Asian Paints Cost</span>
-                  <span
-                    className="line-through"
-                    style={{ fontFeatureSettings: '"tnum"' }}
-                  >
-                    {currencyFormatter.format(currentSavings.asian)}
-                  </span>
-                </div>
-                <div className="mt-3 flex items-center justify-between text-base font-semibold text-[#0F1221]">
-                  <span>CALYCO Cost</span>
-                  <span style={{ fontFeatureSettings: '"tnum"' }}>
-                    {currencyFormatter.format(currentSavings.calyco)}
-                  </span>
-                </div>
-                <div className="mt-4 flex items-center justify-between rounded-[10px] bg-[#4B007D]/5 px-3 sm:px-4 py-2.5 sm:py-3 text-[#4B007D]">
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em]">
-                    Your Savings
-                  </span>
-                  <span
-                    className="text-xl sm:text-2xl font-semibold"
-                    style={{ fontFeatureSettings: '"tnum"' }}
-                  >
-                    {currencyFormatter.format(currentSavings.savings)}
-                  </span>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="mt-5 sm:mt-6 inline-flex w-full items-center justify-center rounded-[12px] bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#0F1221] transition hover:bg-[#bb9831] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4B007D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF9F6]"
-              >
-                Lock In My 20% Discount
-              </button>
-              <p className="mt-3 sm:mt-4 text-center text-[12px] sm:text-[13px] text-[#0F1221]/60">
-                Minimum project value: ₹50,000 · Delhi NCR only
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Urgency Bar */}
-      <div className="bg-[#FBF9F6] border-y border-[#0F1221]/10 py-3 px-4 sm:px-6">
-        <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-between gap-3 text-center text-[13px] sm:text-[15px] text-[#0F1221]/80 sm:flex-row">
-          <div className="font-medium">
-            ⚠️ First 100 Customers Only — <span className="font-semibold text-[#4B007D]">73 spots remaining</span>
-          </div>
-          <div className="w-full sm:w-[200px] h-2 rounded-full bg-white/60">
-            <div className="h-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#4B007D]" style={{ width: '27%' }} aria-hidden="true" />
-          </div>
-        </div>
-      </div>
-
-      {/* Comparison Section */}
-      <section className="bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <h2 className="text-center text-[28px] sm:text-3xl font-semibold text-[#0F1221] md:text-[40px] lg:text-[48px]">
-            Why We're Better Than Asian Paints
-          </h2>
-          <div className="mt-8 sm:mt-12 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-white p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.05)]">
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#0F1221]">Asian Paints</h3>
-              <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-sm text-[#0F1221]/80">
-                <li><strong className="text-[#0F1221]">Price:</strong> Standard Market Rate</li>
-                <li><strong className="text-[#0F1221]">Experience:</strong> Market Leader</li>
-                <li><strong className="text-[#0F1221]">Marketing Approach:</strong> Aggressive phone calls, sales visits</li>
-                <li><strong className="text-[#0F1221]">Focus Area:</strong> Pan-India</li>
-                <li><strong className="text-[#0F1221]">Quality Guarantee:</strong> Standard warranty</li>
-                <li><strong className="text-[#0F1221]">Service Model:</strong> Franchised contractors</li>
-              </ul>
-            </div>
-            <div className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(75,0,125,0.12)]">
-              <h3 className="text-xl sm:text-2xl font-semibold text-[#4B007D]">CALYCO </h3>
-              <ul className="mt-5 sm:mt-6 space-y-3 sm:space-y-4 text-sm text-[#0F1221]/85">
-                <li><strong className="text-[#0F1221]">Price:</strong> <span className="text-[#4B007D] font-semibold">20% Lower ✓</span></li>
-                <li><strong className="text-[#0F1221]">Experience:</strong> 30 Years Manufacturing</li>
-                <li><strong className="text-[#0F1221]">Marketing Approach:</strong> <span className="text-[#4B007D] font-semibold">Zero Spam - Chat Only ✓</span></li>
-                <li><strong className="text-[#0F1221]">Focus Area:</strong> <span className="text-[#4B007D] font-semibold">Delhi NCR Specialists ✓</span></li>
-                <li><strong className="text-[#0F1221]">Quality Guarantee:</strong> NTPC-approved standards</li>
-                <li><strong className="text-[#0F1221]">Service Model:</strong> Direct manufacturer team</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 sm:grid-cols-2">
-            {[
-              { title: "✓ No Phone Spam, Ever", body: "We answer when YOU call. No follow-ups, no pressure." },
-              { title: "✓ Delhi NCR Focused", body: "Local expertise, faster response, better understanding." },
-              { title: "✓ Manufacturer Direct", body: "From factory to your walls, no middleman markup." },
-              { title: "✓ Government Trusted", body: "Same quality approved for NTPC power plants." },
-            ].map((callout) => (
-              <div key={callout.title} className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-5 sm:p-6 shadow-[0_6px_24px_rgba(15,18,33,0.06)]">
-                <h4 className="text-base sm:text-lg font-semibold text-[#4B007D]">{callout.title}</h4>
-                <p className="mt-2 text-sm text-[#0F1221]/80">{callout.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="bg-[#F6F3EE] py-12 md:py-16 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-10">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-[28px] sm:text-3xl font-semibold text-[#0F1221] md:text-[40px] lg:text-[48px]">
-              How It Works
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
+              Quality You Can Trust, <span className="text-[#4B007D]">Colors You'll Love</span>
             </h2>
-            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-[#0F1221]/70 md:text-lg">
-              Get premium paint services in three simple steps
+
+            <p className="text-lg md:text-xl text-[#0F1221]/70 mb-10 leading-relaxed">
+              We believe premium quality shouldn't come with a premium price tag. That's why we manufacture in-house,
+              cut out middlemen, and deliver professional-grade paints directly to your doorstep.
             </p>
-          </div>
-          
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#4B007D] text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6">
-                  1
+
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
-                  Request Quote
-                </h3>
-                <p className="text-sm text-[#0F1221]/70 leading-relaxed">
-                  Fill the form or WhatsApp us. We respond in 2 hours with a detailed estimate.
-                </p>
-              </div>
-              <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-[#4B007D]/20" aria-hidden="true" />
-            </div>
-            
-            <div className="relative">
-              <div className="flex flex-col items-center text-center">
-                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#D4AF37] text-xl sm:text-2xl font-bold text-[#0F1221] mb-5 sm:mb-6">
-                  2
+                <h3 className="text-xl font-bold text-[#0F1221] mb-2">10-Year Guarantee</h3>
+                <p className="text-[#0F1221]/70">Industry-leading warranty on all products</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
-                  Get Assessment
-                </h3>
-                <p className="text-sm text-[#0F1221]/70 leading-relaxed">
-                  Our team visits (only when YOU confirm). Transparent pricing breakdown provided.
-                </p>
-              </div>
-              <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-[#D4AF37]/20" aria-hidden="true" />
+                <h3 className="text-xl font-bold text-[#0F1221] mb-2">20% More Affordable</h3>
+                <p className="text-[#0F1221]/70">Save significantly vs Asian Paints</p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-2">Manufactured In-House</h3>
+                <p className="text-[#0F1221]/70">Direct from factory to your home</p>
+              </motion.div>
             </div>
-            
-            <div className="flex flex-col items-center text-center">
-              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#4B007D] text-xl sm:text-2xl font-bold text-white mb-5 sm:mb-6">
-                3
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-[#0F1221] mb-2 sm:mb-3">
-                Project Start
-              </h3>
-              <p className="text-sm text-[#0F1221]/70 leading-relaxed">
-                Fixed timeline commitment. Direct manufacturer supervision ensures quality.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-10 sm:mt-12 text-center">
-            <button
-              type="button"
-              onClick={() => document.getElementById('calyco-quote-calculator')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center rounded-[12px] bg-[#4B007D] px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-[0_8px_32px_rgba(75,0,125,0.15)] transition hover:bg-[#3d0066] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 w-full sm:w-auto max-w-md"
-            >
-              Get Started — Calculate Savings
-            </button>
-          </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* Trust Bar - Key Value Props */}
+      <TrustBar />
+
+      {/* Delhi NCR Services - Professional Landing Page Section */}
+      <DelhiNCRServices />
+
+      {/* Social Proof - Build Trust with Numbers */}
+      <SocialProof />
 
       {/* Popular Colours Section */}
       <PopularColorsSlider />
@@ -764,109 +480,136 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Calyco FAQ Section */}
-      <section className="py-12 md:py-16 lg:py-20 bg-[#F6F3EE]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+      {/* About Calyco Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-white to-[#F6F3EE]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12 sm:mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-[28px] sm:text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
-              About <span className="text-[#4B007D]">Calyco</span>
+            <div className="inline-flex items-center gap-2 bg-[#4B007D]/10 text-[#4B007D] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Our Story</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
+              About <span className="text-[#4B007D]">Calyco Paints</span>
             </h2>
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
-              Everything you need to know about our premium eco-friendly paints.
+            <p className="text-lg md:text-xl text-[#0F1221]/70 leading-relaxed max-w-3xl mx-auto">
+              India's #2 paint brand with 30 years of manufacturing excellence, delivering premium quality at unbeatable value.
             </p>
           </motion.div>
 
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0F1221] mb-6">
+                Premium Eco-Friendly Paints for Modern Living
+              </h3>
+              <p className="text-[#0F1221]/70 leading-relaxed mb-4">
+                Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability.
+                We manufacture low-VOC, water-based, safe-for-family paints that don't compromise on quality or durability.
+              </p>
+              <p className="text-[#0F1221]/70 leading-relaxed">
+                As India's #2 paint brand, we're trusted by thousands of homeowners, contractors, and government projects.
+                Our in-house manufacturing allows us to deliver the same quality as premium brands at 20% lower cost.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-xl border border-[#0F1221]/10"
+            >
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0F1221] mb-1">Low-VOC & Eco-Friendly</h4>
+                    <p className="text-sm text-[#0F1221]/70">Safe for your family and the environment</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0F1221] mb-1">Versatile Application</h4>
+                    <p className="text-sm text-[#0F1221]/70">Interior, exterior, wood, metal, and specialty surfaces</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0F1221] mb-1">Weather-Resistant Formula</h4>
+                    <p className="text-sm text-[#0F1221]/70">Waterproof, anti-fungal, heat-reflective coatings</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-[#0F1221] mb-1">Direct-to-Customer</h4>
+                    <p className="text-sm text-[#0F1221]/70">Online-first model with no middlemen markup</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="w-full max-w-4xl mx-auto space-y-0"
+            className="text-center"
           >
-            {[
-              {
-                question: "What is Calyco Paints?",
-                answer: "Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability. We offer low-VOC, water-based, safe-for-family paints and industrial-grade coatings for contractors, developers, and government projects."
-              },
-              {
-                question: "How is Calyco different from other paint brands?",
-                answer: "Unlike traditional dealer-driven paint companies, Calyco is online-first, delivering paints directly to homes, projects, and government buyers. We combine luxury lifestyle appeal (like Asian Paints), minimal modern UI (like Birla Opus), and eco-premium positioning (like Lick Paint) with a special focus on contractors and government compliance."
-              },
-              {
-                question: "Are Calyco paints safe for children and pets?",
-                answer: "Yes. All our paints are low-VOC, odor-free, and non-toxic, making them safe for indoor spaces where families live, sleep, and play."
-              },
-              {
-                question: "What does low-VOC mean?",
-                answer: "VOC (Volatile Organic Compounds) are chemicals that evaporate into the air and harm indoor air quality. Our low-VOC paints reduce exposure, improving health and environmental safety."
-              },
-              {
-                question: "What surfaces can Calyco paints be used on?",
-                answer: "Our range covers interior walls, exterior walls, wood, metal, concrete, asphalt, roofing, and specialty industrial surfaces."
-              },
-              {
-                question: "Are your paints waterproof and weather-resistant?",
-                answer: "Yes. We offer waterproof coatings, anti-fungal interior paints, heat-reflective roof coatings, and long-lasting exterior emulsions designed for Indian weather conditions."
-              }
-            ].slice(0, showAllFAQs ? undefined : 5).map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="border-b border-[#0F1221]/10 last:border-b-0"
-              >
-                <button
-                  onClick={() => setActiveFAQ(activeFAQ === index ? null : index)}
-                  className="w-full py-5 sm:py-6 text-left flex justify-between items-center hover:bg-white/50 transition-colors duration-200 px-3 sm:px-4 rounded-lg"
-                >
-                  <span className="text-base sm:text-lg font-semibold text-[#0F1221] pr-6 sm:pr-8">{faq.question}</span>
-                  <span className={`text-[#4B007D] text-xl sm:text-2xl font-bold transform transition-transform duration-300 flex-shrink-0 ${activeFAQ === index ? 'rotate-45' : ''}`}>
-                    +
-                  </span>
-                </button>
-                <AnimatePresence>
-                  {activeFAQ === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pb-5 sm:pb-6 px-3 sm:px-4">
-                        <p className="text-[#0F1221]/70 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-center mt-10 sm:mt-12 pt-6 sm:pt-8"
-            >
-              <button
-                onClick={() => setShowAllFAQs(!showAllFAQs)}
-                className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#4B007D] text-white rounded-[12px] text-sm sm:text-base font-semibold hover:bg-[#3d0066] transition-all duration-300 shadow-[0_8px_32px_rgba(75,0,125,0.2)] hover:shadow-[0_12px_48px_rgba(75,0,125,0.3)] hover:-translate-y-0.5 w-full sm:w-auto max-w-xs"
-              >
-                {showAllFAQs ? 'Show Less FAQs' : 'See All FAQs'}
-                <svg className={`w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-300 ${showAllFAQs ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </motion.div>
+            <h3 className="text-2xl md:text-3xl font-bold text-[#0F1221] mb-8">Why Choose Calyco?</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
+                <div className="text-4xl font-bold text-[#4B007D] mb-2">30+</div>
+                <p className="text-[#0F1221]/70 font-medium">Years of Excellence</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
+                <div className="text-4xl font-bold text-[#4B007D] mb-2">#2</div>
+                <p className="text-[#0F1221]/70 font-medium">Paint Brand in India</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
+                <div className="text-4xl font-bold text-[#4B007D] mb-2">10K+</div>
+                <p className="text-[#0F1221]/70 font-medium">Projects Completed</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
+                <div className="text-4xl font-bold text-[#4B007D] mb-2">20%</div>
+                <p className="text-[#0F1221]/70 font-medium">More Affordable</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
