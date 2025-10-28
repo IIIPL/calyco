@@ -12,11 +12,6 @@ const SLIDES = [
     subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
     ctaText: 'Discover Your Perfect Shade',
     ctaLink: '/colors',
-    colors: [
-      { name: 'CREAM WHITE', code: 'RAL 9001', hex: '#F1EBD7', slug: 'cream-white' },
-      { name: 'PURE WHITE', code: 'RAL 9010', hex: '#F4F4F4', slug: 'pure-white' },
-      { name: 'GREY MIST', code: 'RAL 7035', hex: '#D1D4D7', slug: 'grey-mist' },
-    ]
   },
   {
     type: 'image',
@@ -27,11 +22,6 @@ const SLIDES = [
     subtitle: "We stand behind every brush stroke with India's strongest 10-year warranty. Your walls deserve nothing less.",
     ctaText: 'See Our Promise',
     ctaLink: '/about',
-    colors: [
-      { name: 'LINEN', code: 'RAL 9002', hex: '#E7EBDA', slug: 'linen' },
-      { name: 'GREY THUNDER', code: 'RAL 7016', hex: '#4A5568', slug: 'grey-thunder' },
-      { name: 'SAGE GREEN', code: 'RAL 6019', hex: '#BDECB6', slug: 'sage-green' },
-    ]
   },
   {
     type: 'image',
@@ -42,11 +32,6 @@ const SLIDES = [
     subtitle: 'From calming neutrals to bold statements—explore our curated collections designed for the way you live.',
     ctaText: 'Explore Color Collections',
     ctaLink: '/colors',
-    colors: [
-      { name: 'LAVENDER', code: 'RAL 4009', hex: '#A18594', slug: 'lavender' },
-      { name: 'LILAC', code: 'RAL 4003', hex: '#DE4C8A', slug: 'lilac' },
-      { name: 'PURE WHITE', code: 'RAL 9010', hex: '#F4F4F4', slug: 'pure-white' },
-    ]
   },
   {
     type: 'image',
@@ -57,10 +42,6 @@ const SLIDES = [
     subtitle: 'By cutting out middlemen, we deliver premium paint at 20% less than competitors—without compromising an ounce of quality.',
     ctaText: 'See How We Do It',
     ctaLink: '/about',
-    colors: [
-      { name: 'GREY THUNDER', code: 'RAL 7016', hex: '#4A5568', slug: 'grey-thunder' },
-      { name: 'CREAM WHITE', code: 'RAL 9001', hex: '#F1EBD7', slug: 'cream-white' },
-    ]
   },
 ];
 
@@ -257,42 +238,6 @@ const ColorSlider = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Color Palette - Bottom Right */}
-      {slides[currentSlide].colors && (
-        <motion.div
-          key={`colors-${currentSlide}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="absolute bottom-4 sm:bottom-8 md:bottom-12 right-4 sm:right-8 md:right-12 z-30"
-        >
-          <div className="flex gap-3 sm:gap-4">
-            {slides[currentSlide].colors.map((color, index) => (
-              <Link
-                key={index}
-                to={`/colors/${color.slug}`}
-                className="group flex flex-col items-center"
-              >
-                <div
-                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg border-2 border-white shadow-lg cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:border-white/80"
-                  style={{ backgroundColor: color.hex }}
-                  title={`${color.name} - ${color.code}`}
-                />
-                <div className="mt-2 text-center">
-                  <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide drop-shadow-lg">
-                    {color.name}
-                  </p>
-                  <p className="text-white/80 text-[8px] sm:text-[10px] font-medium drop-shadow-md">
-                    {color.code}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      )}
 
       {/* Slide Navigation */}
       <div className="absolute bottom-4 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 sm:space-x-4 md:space-x-6 z-30">
