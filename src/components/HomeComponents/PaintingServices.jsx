@@ -1,23 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCheckCircle, FaPaintRoller, FaCalendarDays, FaShieldHalved } from 'react-icons/fa6';
+import { FaCircleCheck, FaPaintRoller, FaCalendarDays, FaShieldHalved } from 'react-icons/fa6';
 
 const PaintingServices = () => {
   const features = [
     {
-      icon: FaCheckCircle,
+      icon: FaCircleCheck,
       text: "Trained & Certified Painters"
     },
     {
-      icon: FaCheckCircle,
+      icon: FaCircleCheck,
       text: "Site Visit & Free Quote"
     },
     {
-      icon: FaCheckCircle,
+      icon: FaCircleCheck,
       text: "Quality Materials Guaranteed"
     },
     {
-      icon: FaCheckCircle,
+      icon: FaCircleCheck,
       text: "On-Time Project Completion"
     }
   ];
