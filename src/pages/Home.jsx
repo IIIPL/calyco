@@ -13,8 +13,6 @@ import ShopByColour from '../components/ShopByColour';
 import HowItWorks from '../components/HowItWorks.tsx';
 import NavigationArrows from '../components/NavigationArrows';
 import TrustBar from '../components/HomeComponents/TrustBar';
-import DelhiNCRServices from '../components/HomeComponents/DelhiNCRServices';
-import SocialProof from '../components/HomeComponents/SocialProof';
 import PaintingServices from '../components/HomeComponents/PaintingServices';
 
 
@@ -221,72 +219,16 @@ const Home = () => {
               Quality You Can Trust, <span className="text-[#4B007D]">Colors You'll Love</span>
             </h2>
 
-            <p className="text-lg md:text-xl text-[#0F1221]/70 mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-[#0F1221]/70 leading-relaxed">
               We believe premium quality shouldn't come with a premium price tag. That's why we manufacture in-house,
               cut out middlemen, and deliver professional-grade paints directly to your doorstep.
             </p>
-
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-[#0F1221] mb-2">10-Year Guarantee</h3>
-                <p className="text-[#0F1221]/70">Industry-leading warranty on all products</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-[#0F1221] mb-2">20% More Affordable</h3>
-                <p className="text-[#0F1221]/70">Save significantly vs Asian Paints</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-[#0F1221] mb-2">Manufactured In-House</h3>
-                <p className="text-[#0F1221]/70">Direct from factory to your home</p>
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Trust Bar - Key Value Props */}
       <TrustBar />
-
-      {/* Delhi NCR Services - Professional Landing Page Section */}
-      <DelhiNCRServices />
-
-      {/* Social Proof - Build Trust with Numbers */}
-      <SocialProof />
 
       {/* Popular Colours Section */}
       <PopularColorsSlider />
