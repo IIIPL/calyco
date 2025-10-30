@@ -12,40 +12,36 @@ const SLIDES = [
     subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
     ctaText: 'Discover Your Perfect Shade',
     ctaLink: '/colors',
-    objectPosition: 'center right',
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero1-full-page.png',
+    src: '/Assets/HERO/hero2.png',
     alt: 'Premium quality paint finish',
     badge: 'GUARANTEED EXCELLENCE',
     title: 'A Decade of Beauty, Guaranteed',
     subtitle: "We stand behind every brush stroke with India's strongest 10-year warranty. Your walls deserve nothing less.",
     ctaText: 'See Our Promise',
     ctaLink: '/about',
-    objectPosition: 'center',
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero4-TEXT OVERLAID-facing_wide_studio_interior_of_a_modern_corn_2e883c31-d715-40dd-95b2-b754593fef14.png',
+    src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
     alt: 'Wide range of color collections',
     badge: '2,000+ SHADES',
     title: 'Every Mood. Every Room. Every Dream.',
     subtitle: 'From calming neutrals to bold statements—explore our curated collections designed for the way you live.',
     ctaText: 'Explore Color Collections',
     ctaLink: '/colors',
-    objectPosition: 'center',
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero2.png',
+    src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
     alt: 'Made in India manufacturing facility',
     badge: 'MADE IN INDIA',
     title: 'Factory-Direct Quality. Family-Friendly Prices.',
     subtitle: 'By cutting out middlemen, we deliver premium paint at 20% less than competitors—without compromising an ounce of quality.',
     ctaText: 'See How We Do It',
     ctaLink: '/about',
-    objectPosition: 'center',
   },
 ];
 
@@ -169,11 +165,7 @@ const ColorSlider = () => {
               src={slides[currentSlide].src}
               alt={slides[currentSlide].alt}
               className="w-full h-full object-cover"
-              style={{
-                objectFit: 'cover',
-                objectPosition: slides[currentSlide].objectPosition || 'center',
-                transform: currentSlide === 0 ? 'scale(1.1)' : 'scale(1)'
-              }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
           )}
         </motion.div>
