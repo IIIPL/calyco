@@ -60,8 +60,11 @@ export default function PaymentsGST() {
     window.scrollTo(0, 0);
   }, []);
 
+  const sectionPad = "py-10 md:py-12";
+  const sectionPadTight = "py-7 md:py-9";
+
   return (
-    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
+    <div className="min-h-screen bg-white text-[#0F1221] font-poppins">
       <SEO
         title="Payment & GST Policy | CALYCO Paints"
         description="Learn about CALYCO's payment methods, GST compliance, pricing policy, EMI options, and secure payment processing."
@@ -70,250 +73,221 @@ export default function PaymentsGST() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
+        <section className="relative overflow-hidden pt-20 pb-12 bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
               alt="Secure payment for CALYCO paints"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
-            <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
-              Payment & GST Policy
-            </span>
-            <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 py-14 text-center">
+            <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
               Secure, Flexible, Transparent Payments
             </h1>
-            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
-              Explore our payment methods, GST compliance, pricing structure, and invoicing tools designed for seamless transactions.
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
-            >
-              Contact Billing Team
-            </button>
-            <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p>
           </div>
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Payment Policy Overview</h2>
-            <p className="text-lg text-[#31274B]/85 mb-4">
-              CALYCO offers secure, convenient, and flexible payment options to ensure a seamless shopping experience. All transactions are processed through certified payment gateways with industry-leading security standards.
-            </p>
-            <p className="text-base text-[#31274B]/85 mb-4">
-              We are fully GST compliant and provide proper tax invoices for all purchases. Whether you're an individual customer or a registered business, our payment and invoicing system is designed for transparency and ease.
-            </p>
-            <p className="text-base text-[#31274B]/85">
-              This policy outlines accepted payment methods, GST rates, pricing policies, EMI options, refund timelines, and security measures.
-            </p>
-          </div>
+        <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-3 text-[#0F1221]">Payment Policy Overview</h2>
+          <p className="text-lg max-w-3xl mx-auto leading-relaxed text-[#23263a] mb-1">
+            CALYCO offers secure, convenient, and flexible payment options to ensure a seamless shopping experience. All transactions are processed through certified payment gateways with industry-leading security standards.
+          </p>
+          <p className="text-base max-w-3xl mx-auto text-[#23263a] mb-1">
+            We are fully GST compliant and provide proper tax invoices for all purchases. Whether you're an individual customer or a registered business, our payment and invoicing system is designed for transparency and ease.
+          </p>
+          <p className="text-base max-w-3xl mx-auto text-[#23263a]">
+            This policy outlines accepted payment methods, GST rates, pricing policies, EMI options, refund timelines, and security measures.
+          </p>
         </section>
 
         {/* Payment Methods */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Accepted Payment Methods</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              Choose from a variety of secure payment options designed for your convenience.
-            </p>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {paymentMethods.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Accepted Payment Methods</h2>
+          <p className="text-lg text-[#23263a] mb-6">
+            Choose from a variety of secure payment options designed for your convenience.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {paymentMethods.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Pricing Structure */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Pricing Structure</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              CALYCO pricing is transparent with GST included and clearly indicated tinting or shipping charges.
-            </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              {pricingInfo.map((item) => (
-                <div key={item.label} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.label || item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.value}</p>
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Pricing Structure</h2>
+          <p className="text-lg text-[#23263a] mb-6">
+            CALYCO pricing is transparent with GST included and clearly indicated tinting or shipping charges.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {pricingInfo.map((item) => (
+              <div key={item.label || item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.label || item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.value}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Pack Sizes */}
+          <div className="mt-10">
+            <h3 className="text-2xl font-bold text-[#0F1221] mb-4">Available Pack Sizes</h3>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {packSizes.map((item) => (
+                <div key={item.pack} className="rounded-xl bg-[#FBF9F6] p-5 text-center">
+                  <h4 className="text-xl font-bold text-[#0F1221] mb-1">{item.pack}</h4>
+                  <p className="text-sm text-[#23263a]">{item.notes}</p>
                 </div>
               ))}
             </div>
-
-            {/* Pack Sizes */}
-            <div className="mt-10">
-              <h3 className="text-2xl font-bold text-[#4B007D] mb-6">Available Pack Sizes</h3>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {packSizes.map((item) => (
-                  <div key={item.pack} className="rounded-xl bg-[#FBF9F6] p-5 text-center">
-                    <h4 className="text-xl font-bold text-[#4B007D] mb-2">{item.pack}</h4>
-                    <p className="text-sm text-[#31274B]/80">{item.notes}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-sm text-[#31274B]/70 italic">
-                * Prices vary by product type, finish, and promotions. View product pages for current pricing and add to cart for final cost including GST and shipping.
-              </p>
-            </div>
+            <p className="mt-4 text-sm text-[#23263a]/80 italic">
+              * Prices vary by product type, finish, and promotions. View product pages for current pricing and add to cart for final cost including GST and shipping.
+            </p>
           </div>
         </section>
 
         {/* GST Information */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">GST Compliance & Tax Information</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              {taxDetails.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 rounded-2xl border-2 border-[#D4AF37]/30 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Important for Business Customers</h3>
-              <p className="text-sm text-[#31274B]/85 mb-2">
-                If you're a GST-registered business, ensure your GSTIN is entered correctly during checkout for:
-              </p>
-              <ul className="space-y-1 text-sm text-[#31274B]/80 ml-4">
-                <li>✓ Proper tax invoice with your business details</li>
-                <li>✓ Eligibility to claim Input Tax Credit (ITC)</li>
-                <li>✓ Compliance with GST accounting requirements</li>
-              </ul>
-            </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">GST Compliance & Tax Information</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {taxDetails.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 rounded-2xl border-2 border-[#D4AF37]/30 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Important for Business Customers</h3>
+            <p className="text-sm text-[#23263a] mb-1">
+              If you're a GST-registered business, ensure your GSTIN is entered correctly during checkout for:
+            </p>
+            <ul className="space-y-1 text-sm text-[#23263a] ml-4">
+              <li>✓ Proper tax invoice with your business details</li>
+              <li>✓ Eligibility to claim Input Tax Credit (ITC)</li>
+              <li>✓ Compliance with GST accounting requirements</li>
+            </ul>
           </div>
         </section>
 
         {/* Invoice & Billing */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Invoices & Billing Management</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              Access invoices instantly after checkout and manage billing profiles for projects or business units.
-            </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              {invoiceFeatures.map((item) => (
-                <div key={item.label} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.label}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.action}</p>
-                </div>
-              ))}
-            </div>
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Invoices & Billing Management</h2>
+          <p className="text-lg text-[#23263a] mb-6">
+            Access invoices instantly after checkout and manage billing profiles for projects or business units.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            {invoiceFeatures.map((item) => (
+              <div key={item.label} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.label}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.action}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Payment Security */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Payment Security & Data Protection</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              Your payment information is protected by industry-leading security standards. We never store sensitive payment data.
-            </p>
-            <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#4B007D] mb-4">Security Measures</h3>
-              <ul className="space-y-2 text-base text-[#31274B]/85">
-                {securityPractices.map((measure) => (
-                  <li key={measure} className="flex items-start">
-                    <span className="text-[#D4AF37] mr-3 mt-1">🔒</span>
-                    <span>{measure}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 pt-6 border-t border-[#0F1221]/10">
-                <p className="text-sm text-[#31274B]/80">
-                  <strong className="text-[#4B007D]">Safe Shopping Guarantee:</strong> If unauthorized charges appear on your account due to a security breach on our platform, we'll work with you and your financial institution to resolve the issue promptly.
-                </p>
-              </div>
-              <div className="mt-4 text-sm text-[#31274B]/70">
-                <p><strong>Compliance Standards:</strong> PCI DSS • ISO 27001 (gateway partners) • RBI Payment Aggregator Guidelines • GST Invoicing Standards</p>
-              </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Payment Security & Data Protection</h2>
+          <p className="text-lg text-[#23263a] mb-6">
+            Your payment information is protected by industry-leading security standards. We never store sensitive payment data.
+          </p>
+          <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
+            <h3 className="text-lg font-semibold text-[#0F1221] mb-3">Security Measures</h3>
+            <ul className="space-y-2 text-base text-[#23263a]">
+              {securityPractices.map((measure) => (
+                <li key={measure} className="flex items-start">
+                  <span className="text-[#D4AF37] mr-3 mt-1">🔒</span>
+                  <span>{measure}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 pt-6 border-t border-[#0F1221]/10">
+              <p className="text-sm text-[#23263a]">
+                <strong className="text-[#0F1221]">Safe Shopping Guarantee:</strong> If unauthorized charges appear on your account due to a security breach on our platform, we'll work with you and your financial institution to resolve the issue promptly.
+              </p>
+            </div>
+            <div className="mt-4 text-sm text-[#23263a]/80">
+              <p><strong>Compliance Standards:</strong> PCI DSS • ISO 27001 (gateway partners) • RBI Payment Aggregator Guidelines • GST Invoicing Standards</p>
             </div>
           </div>
         </section>
 
         {/* Corporate & Bulk Orders */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Corporate & Bulk Order Billing</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              CALYCO supports contractors, developers, and institutional buyers with flexible payment and invoicing solutions.
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Corporate & Bulk Order Billing</h2>
+          <p className="text-lg text-[#23263a] mb-6">
+            CALYCO supports contractors, developers, and institutional buyers with flexible payment and invoicing solutions.
+          </p>
+          <div className="grid gap-6 md:grid-cols-3">
+            {bulkOptions.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-[#23263a] mb-3">
+              For corporate billing, credit terms, or bulk order pricing inquiries:
             </p>
-            <div className="grid gap-6 md:grid-cols-3">
-              {bulkOptions.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <p className="text-sm text-[#31274B]/80 mb-4">
-                For corporate billing, credit terms, or bulk order pricing inquiries:
-              </p>
-              <button
-                onClick={() => navigate("/contact")}
-                className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
-              >
-                Contact Us
-              </button>
-            </div>
+            <button
+              onClick={() => navigate("/contact")}
+              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+            >
+              Contact Us
+            </button>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Billing & Payment Support</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              For payment-related queries, invoice requests, or GST clarifications, contact our billing team.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Email</h3>
-                <a href="mailto:billing@calycopaints.com" className="text-sm text-[#31274B]/85 hover:text-[#4B007D] underline">
-                  billing@calycopaints.com
-                </a>
-              </div>
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Phone</h3>
-                <p className="text-sm text-[#31274B]/85">
-                  Billing Helpline: <a href="tel:+919145000400" className="hover:text-[#4B007D] font-semibold">+91 9145 000 400</a>
-                </p>
-                <p className="text-xs text-[#31274B]/70 mt-2">Monday - Saturday: 9:00 AM - 6:00 PM IST</p>
-              </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Billing & Payment Support</h2>
+          <p className="text-lg text-[#23263a] mb-5">
+            For payment-related queries, invoice requests, or GST clarifications, contact our billing team.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Email</h3>
+              <a href="mailto:billing@calycopaints.com" className="text-sm text-[#23263a] hover:text-[#D4AF37] underline">
+                billing@calycopaints.com
+              </a>
+            </div>
+            <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Phone</h3>
+              <p className="text-sm text-[#23263a]">
+                Billing Helpline: <a href="tel:+919145000400" className="hover:text-[#D4AF37] font-semibold">+91 9145 000 400</a>
+              </p>
+              <p className="text-xs text-[#23263a]/80 mt-2">Monday - Saturday: 9:00 AM - 6:00 PM IST</p>
             </div>
           </div>
         </section>
 
         {/* Footer Note */}
-        <section className="py-16 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
-            <p className="text-sm text-[#31274B]/70 mb-2">
-              CALYCO complies with all applicable tax laws and payment regulations in India. This policy is subject to change based on regulatory updates.
-            </p>
-            <p className="text-xs text-[#31274B]/70 mb-4">
-              For cross-references, review our{" "}
-              <a href="/policies/returns" className="font-semibold text-[#4B007D] underline-offset-4 hover:underline">
-                Returns & Refunds
-              </a>{" "}
-              and{" "}
-              <a href="/policies/terms" className="font-semibold text-[#4B007D] underline-offset-4 hover:underline">
-                Terms & Conditions
-              </a>{" "}
-              policies.
-            </p>
-            <p className="mt-4 text-sm text-[#4B007D] font-semibold">Effective date: 30 October 2025</p>
-          </div>
+        <section className="py-14 bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12 text-center">
+          <p className="text-sm text-[#23263a]/80 mb-1">
+            CALYCO complies with all applicable tax laws and payment regulations in India. This policy is subject to change based on regulatory updates.
+          </p>
+          <p className="text-xs text-[#23263a]/70 mb-2">
+            For cross-references, review our{" "}
+            <a href="/policies/returns" className="font-semibold text-[#0F1221] underline-offset-4 hover:underline">
+              Returns & Refunds
+            </a>{" "}
+            and{" "}
+            <a href="/policies/terms" className="font-semibold text-[#0F1221] underline-offset-4 hover:underline">
+              Terms & Conditions
+            </a>{" "}
+            policies.
+          </p>
+          <p className="mt-3 text-sm text-[#0F1221] font-semibold">
+            Effective date: 20 August 2025
+          </p>
         </section>
       </main>
     </div>

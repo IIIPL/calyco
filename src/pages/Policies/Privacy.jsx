@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import SEO from "../../components/SEO";
 
 const dataCollection = [
@@ -81,14 +80,16 @@ const userRights = [
 ];
 
 export default function Privacy() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Compact vertical spacing variables
+  const sectionPad = "py-10 md:py-14";
+  const sectionPadTight = "py-8 md:py-10";
+
   return (
-    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
+    <div className="min-h-screen bg-white text-[#0F1221] font-poppins">
       <SEO
         title="Privacy Policy | CALYCO Paints"
         description="Understand how CALYCO collects, uses, shares, and protects personal data. Review cookie usage, security practices, and your privacy rights under India's DPDP Act."
@@ -97,257 +98,221 @@ export default function Privacy() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
+        <section className="relative overflow-hidden pt-20 pb-16 bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
               alt="Calm living room showcasing CALYCO colours"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
-            <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
-              Privacy Policy
-            </span>
-            <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 py-16 text-center">
+            <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
               Protecting Your Data Is Integral to Our Promise
             </h1>
-            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
-              This policy explains how CALYCO Paints Private Limited collects, uses, shares, and safeguards personal data in compliance with Indian DPDP, GDPR, and other applicable regulations.
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
-            >
-              Contact Privacy Team
-            </button>
-            <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p>
           </div>
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Introduction & Scope</h2>
-            <p className="text-lg text-[#31274B]/85 mb-4">
-              This policy applies to visitors, customers, partners, and suppliers interacting with CALYCO across digital properties, customer support, and offline order fulfilment.
-            </p>
-            <p className="text-base text-[#31274B]/85">
-              We process personal data as data fiduciaries under the Digital Personal Data Protection Act (India) and adhere to GDPR principles for international users.
-            </p>
-          </div>
+        <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12 text-center`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221]">Introduction & Scope</h2>
+          <p className="text-lg max-w-3xl mx-auto leading-relaxed text-[#23263a]">
+            This policy applies to visitors, customers, partners, and suppliers interacting with CALYCO across digital properties, customer support, and offline order fulfilment. We process personal data as data fiduciaries under the Digital Personal Data Protection Act (India) and adhere to GDPR principles for international users.
+          </p>
         </section>
 
         {/* Data collection */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Data We Collect</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              We collect only the information required to deliver services, comply with legal obligations, and enhance the CALYCO experience.
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {dataCollection.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Data We Collect</h2>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {dataCollection.map((item) => (
+              <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm hover:shadow transition">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Use of data */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">How We Use Your Information</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              {useOfData.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Sharing */}
-        <section className="py-20 bg-[#FBF9F6]" id="sharing">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Data Sharing & Disclosure</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              We never sell personal data. Information is shared only with trusted partners under contractual safeguards or when required by law.
-            </p>
-            <div className="grid gap-4 md:grid-cols-2">
-              {dataSharing.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Cookies */}
-        {/* Cookies */}
-<section className="py-20 bg-white" id="cookies">
-  <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)]">
-      <div className="space-y-6">
-        <h2 className="text-3xl font-bold text-[#4B007D]">Cookie Policy</h2>
-        <p className="text-base text-[#31274B]/85">
-          We use cookies to personalise your experience, understand usage patterns, and show relevant offers. Manage preferences via the cookie banner or browser settings.
-        </p>
-      </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {cookieTypes.map((cookie) => (
-                  <div key={cookie.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold text-[#4B007D]">{cookie.title}</h3>
-                    <p className="mt-2 text-sm text-[#31274B]/80">{cookie.details}</p>
-                  </div>
-                ))}
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">How We Use Your Information</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {useOfData.map((item) => (
+              <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] p-7 shadow-sm hover:shadow transition">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Data sharing */}
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Data Sharing & Disclosure</h2>
+          <p className="text-center mb-6 text-[#23263a] max-w-3xl mx-auto leading-relaxed">
+            We never sell personal data. Information is shared only with trusted partners under contractual safeguards or when required by law.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {dataSharing.map((item) => (
+              <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm hover:shadow transition">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Cookies */}
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-4 text-[#0F1221]">Cookie Policy</h2>
+              <p className="text-base text-[#23263a] leading-relaxed max-w-3xl">
+                We use cookies to personalise your experience, understand usage patterns, and show relevant offers. Manage preferences via the cookie banner or browser settings.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {cookieTypes.map((cookie) => (
+                <div key={cookie.title} className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] p-5 shadow-sm">
+                  <h3 className="text-base font-semibold text-[#0F1221]">{cookie.title}</h3>
+                  <p className="mt-1 text-sm text-[#23263a]">{cookie.details}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Security */}
-        <section className="py-20 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">Data Security & Retention</h2>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Security Measures</h3>
-                <ul className="space-y-2 text-sm text-[#31274B]/85">
-                  {securityMeasures.map((measure) => (
-                    <li key={measure} className="flex items-start">
-                      <span className="text-[#D4AF37] mr-2">•</span>
-                      <span>{measure}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Retention Policy</h3>
-                <p className="text-sm text-[#31274B]/85">
-                  Personal data is retained only as long as necessary to fulfil the purpose collected, comply with statutory obligations, resolve disputes, and enforce agreements. We anonymise or delete data once retention requirements lapse.
-                </p>
-              </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Data Security & Retention</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Security Measures</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-[#23263a]">
+                {securityMeasures.map((measure) => (
+                  <li key={measure}>{measure}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Retention Policy</h3>
+              <p className="text-sm text-[#23263a] leading-relaxed">
+                Personal data is retained only as long as necessary to fulfil the purpose collected, comply with statutory obligations, resolve disputes, and enforce agreements. We anonymise or delete data once retention requirements lapse.
+              </p>
             </div>
           </div>
         </section>
 
         {/* User rights */}
-        <section className="py-20 bg-white" id="rights">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Your Rights & Choices</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              We respond to verified requests within statutory timelines. Use the data request form to exercise your rights.
-            </p>
-            <div className="grid gap-4 md:grid-cols-2 mb-10">
-              {userRights.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-[#4B007D]">{item.title}</h3>
-                  <p className="mt-2 text-sm text-[#31274B]/80">{item.details}</p>
-                </div>
-              ))}
-            </div>
+        <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Your Rights & Choices</h2>
+          <p className="text-lg text-[#23263a] mb-8 max-w-3xl mx-auto leading-relaxed text-center">
+            We respond to verified requests within statutory timelines. Use the data request form below to exercise your rights.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2 mb-12">
+            {userRights.map((item) => (
+              <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] p-7 shadow-sm">
+                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
+              </div>
+            ))}
+          </div>
 
-            {/* Data Request Form */}
-            <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-semibold text-[#4B007D] mb-6">Request Access, Correction, or Deletion</h3>
-              <form className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-[#4B007D]">Full Name</span>
-                    <input
-                      type="text"
-                      className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
-                      placeholder="Your name"
-                    />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-[#4B007D]">Email</span>
-                    <input
-                      type="email"
-                      className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
-                      placeholder="you@example.com"
-                    />
-                  </label>
-                </div>
-                <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-[#4B007D]">Request Type</span>
-                  <select className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20">
-                    <option value="access">Access / Portability</option>
-                    <option value="correction">Correction</option>
-                    <option value="erasure">Erasure</option>
-                    <option value="consent">Withdraw Consent</option>
-                  </select>
-                </label>
-                <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-[#4B007D]">Details</span>
-                  <textarea
-                    rows={4}
-                    className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
-                    placeholder="Provide any reference numbers or additional context."
+          {/* Data Request Form */}
+          <div className="rounded-xl border border-[#0F1221]/15 bg-white p-8 shadow-sm max-w-3xl mx-auto">
+            <h3 className="text-xl font-semibold text-[#0F1221] mb-5 text-center">Request Access, Correction, or Deletion</h3>
+            <form className="space-y-5">
+              <div className="grid md:grid-cols-2 gap-5">
+                <label className="flex flex-col gap-1 text-[#0F1221]">
+                  <span className="text-sm font-medium">Full Name</span>
+                  <input
+                    type="text"
+                    className="rounded-lg border border-[#0F1221]/15 px-4 py-2 text-sm outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/15"
+                    placeholder="Your name"
                   />
                 </label>
-                <button type="submit" className="rounded-xl bg-[#D4AF37] px-8 py-3 text-sm font-semibold text-[#0F1221] shadow-sm transition hover:bg-[#bb9831]">
-                  Submit Request
-                </button>
-                <p className="text-xs text-[#31274B]/70">
-                  We may request additional information to verify your identity before processing the request to protect your data.
-                </p>
-              </form>
-            </div>
+                <label className="flex flex-col gap-1 text-[#0F1221]">
+                  <span className="text-sm font-medium">Email</span>
+                  <input
+                    type="email"
+                    className="rounded-lg border border-[#0F1221]/15 px-4 py-2 text-sm outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/15"
+                    placeholder="you@example.com"
+                  />
+                </label>
+              </div>
+              <label className="flex flex-col gap-1 text-[#0F1221]">
+                <span className="text-sm font-medium">Request Type</span>
+                <select className="rounded-lg border border-[#0F1221]/15 px-4 py-2 text-sm outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/15">
+                  <option value="access">Access / Portability</option>
+                  <option value="correction">Correction</option>
+                  <option value="erasure">Erasure</option>
+                  <option value="consent">Withdraw Consent</option>
+                </select>
+              </label>
+              <label className="flex flex-col gap-1 text-[#0F1221]">
+                <span className="text-sm font-medium">Details</span>
+                <textarea
+                  rows={4}
+                  className="resize-none rounded-lg border border-[#0F1221]/15 px-4 py-2 text-sm outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/15"
+                  placeholder="Provide any reference numbers or additional context."
+                />
+              </label>
+              <button
+                type="submit"
+                className="mx-auto block rounded-lg bg-[#D4AF37] px-8 py-2 text-sm font-semibold text-[#0F1221] shadow-md hover:bg-[#bb9831] transition border-0"
+              >
+                Submit Request
+              </button>
+              <p className="text-center text-xs text-[#23263a]/80 mt-3 max-w-xs mx-auto">
+                We may request additional information to verify your identity before processing the request to protect your data.
+              </p>
+            </form>
           </div>
         </section>
 
         {/* Contact */}
-        <section className="py-20 bg-[#FBF9F6]" id="contact">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Contact & Grievance Officer</h2>
-            <p className="text-lg text-[#31274B]/85 mb-8">
-              For privacy-related queries or grievances, contact our designated officer. We respond within the timelines prescribed under the Information Technology (Reasonable Security Practices and Procedures) Rules, 2011.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Email</h3>
-                <a href="mailto:privacy@calycopaints.com" className="text-sm text-[#31274B]/85 hover:text-[#4B007D] underline">
-                  privacy@calycopaints.com
-                </a>
-              </div>
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Grievance Officer</h3>
-                <p className="text-sm text-[#31274B]/85">
-                  Rahul Mehra<br />
-                  CALYCO Paints Private Limited<br />
-                  Sector V, MIDC Industrial Estate<br />
-                  Nashik, Maharashtra 422010
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Contact & Grievance Officer</h2>
+          <p className="text-lg text-[#23263a] mb-8 max-w-3xl mx-auto text-center leading-relaxed">
+            For privacy-related queries or grievances, contact our designated officer. We respond within prescribed timelines under applicable IT rules.
+          </p>
+          <div className="grid md:grid-cols-2 gap-7 max-w-4xl mx-auto">
+            <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm text-center">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Email</h3>
+              <a
+                href="mailto:privacy@calycopaints.com"
+                className="text-[#23263a] hover:text-[#0F1221] underline break-words"
+              >
+                privacy@calycopaints.com
+              </a>
+            </div>
+            <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm text-center">
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Grievance Officer</h3>
+              <address className="not-italic text-sm text-[#23263a] space-y-1">
+                <p>Rahul Mehra</p>
+                <p>CALYCO Paints Private Limited</p>
+                <p>Sector V, MIDC Industrial Estate</p>
+                <p>Nashik, Maharashtra 422010</p>
+                <p>
+                  Phone: <a href="tel:+919145000100" className="hover:text-[#0F1221]">+91 9145 000 100</a>
                 </p>
-                <p className="text-sm text-[#31274B]/85 mt-2">
-                  Phone: <a href="tel:+919145000100" className="hover:text-[#4B007D]">+91 9145 000 100</a>
-                </p>
-              </div>
+              </address>
             </div>
           </div>
         </section>
 
         {/* Updates Notice */}
-        <section className="py-16 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
-            <p className="text-sm text-[#31274B]/70 mb-2">
-              CALYCO may update this policy periodically. Significant changes will be notified via email or prominent website banners.
-            </p>
-            <p className="text-xs text-[#31274B]/70">
-              Please review this page regularly to stay informed about our privacy practices.
-            </p>
-            <p className="mt-4 text-sm text-[#4B007D] font-semibold">Effective date: 30 October 2025</p>
-          </div>
+        <section className={`${sectionPadTight} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12 text-center`}>
+          <p className="text-sm text-[#23263a]/80 mb-1">
+            CALYCO may update this policy periodically. Significant changes will be notified via email or prominent website banners.
+          </p>
+          <p className="text-xs text-[#23263a]/70">
+            Please review this page regularly to stay informed about our privacy practices.
+          </p>
+          <p className="mt-2 text-sm text-[#0F1221] font-semibold">Effective date: 30 October 2025</p>
         </section>
       </main>
     </div>

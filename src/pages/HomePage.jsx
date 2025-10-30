@@ -1,60 +1,25 @@
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { HomeCard } from "../components/HomeCard";
+import { useEffect, useRef } from "react";
 import { WhyChooseCard } from "../components/WhyChooseCard";
-import { FaArrowRight, FaPaintbrush, FaLeaf, FaAward, FaUsers, FaShieldHalved, FaRocket } from "react-icons/fa6";
+import { FaPaintbrush, FaAward, FaUsers, FaShieldHalved, FaRocket } from "react-icons/fa6";
 import Slider from "../components/Slider";
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../components/Button";
-import { HeroSection } from "../components/HomeComponents/HeroSection";
-import { getAllColors } from "../data/calycoColors.js";
-
-const flatColors = getAllColors();
+import { useNavigate } from "react-router-dom";
 import { ColorTrends } from "../components/ColorComponents/ColorTrends";
-import {HeroSlider} from "../components/HomeComponents/HeroSlider";
-import Carousel from "../components/HomeComponents/Carousel";
-import HeroColorShowcase from "../components/HeroColorShowcase";
-import CategoryNav from "../components/CategoryNav";
 import MiniVisualizer from "../components/MiniVisualizer";
 import MiniInspirationGallery from "../components/HomeComponents/MiniInspirationGallyer";
 import ColorSlider from "../components/ColorSlider";
-import ProductCategoriesSection from "../components/ProductCategoriesSection";
-
-const galleryImages = [
-  {
-    src: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
-    alt: "Modern kitchen design",
-  },
-  {
-    src: "/Assets/Inspiration/bedroom.jpg",
-    alt: "Cozy bedroom in neutral tones",
-  },
-  {
-    src: "/Assets/Inspiration/living.jpg",
-    alt: "Bright living room with artwork",
-  },
-  {
-    src: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
-    alt: "Spa-like bathroom design",
-  },
-  {
-    src: "/Assets/Inspiration/dining.jpg",
-    alt: "Elegant dining area",
-  },
-  {
-    src: "/Assets/Inspiration/IMG-20250718-WA0044.jpg",
-    alt: "Modern office space",
-  },
-];
+import TrustBar from "../components/HomeComponents/TrustBar";
+import DelhiNCRServices from "../components/HomeComponents/DelhiNCRServices";
+import SocialProof from "../components/HomeComponents/SocialProof";
 
 export const HomePage = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { threshold: 0.3 });
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        document.title = "Calyco Paints - Premium Paint Solutions";
+        document.title = "Calyco Paints - India's #2 Paint Brand | Premium Quality, 20% More Affordable";
     }, []);
 
     const containerVariants = {
@@ -82,142 +47,131 @@ export const HomePage = () => {
 
     return (
         <div className="pt-20">
-            {/* Full Screen Hero Slider */}
+            {/* Hero Slider - Cleaner, More Professional */}
             <section className="relative overflow-hidden">
                 <ColorSlider />
             </section>
 
-            {/* Enhanced Product Showcase Section */}
-            <section className="py-20 bg-white relative overflow-hidden">
+            {/* Trust Bar - Immediate Value Props */}
+            <TrustBar />
+
+            {/* Popular Colors Section - Kept as Requested */}
+            <section className="py-16 md:py-24 bg-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#493657]/5 to-transparent"></div>
                 <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-12 md:mb-16"
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#F0C85A]/20 text-[#493657] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#F0C85A]/20 text-[#493657] px-4 py-2 rounded-full text-xs font-medium mb-5">
                             <FaAward />
-                            <span>Premium Solutions</span>
+                            <span>Premium Products</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-6">
-                            Our Product Range
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4 leading-tight">
+                            Shop by Color
                         </h2>
-                        <p className="text-xl text-[#493657]/70 max-w-3xl mx-auto">
-                            Discover our comprehensive range of premium paints and coatings designed for every surface and need.
+                        <p className="text-base md:text-lg text-[#493657]/70 max-w-2xl mx-auto leading-relaxed">
+                            Browse our curated collection of premium colors. From bold statements to subtle elegance.
                         </p>
                     </motion.div>
-                    
+
                     <div className="relative z-10">
                         <Slider/>
                     </div>
                 </div>
             </section>
 
-            {/* Enhanced Visualizer Section */}
-            <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+            {/* Shop by Room Section */}
+            <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#F0C85A]/5 to-transparent"></div>
                 <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-12 md:mb-16"
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-xs font-medium mb-5">
                             <FaRocket />
-                            <span>Try Before You Buy</span>
+                            <span>Visualize Your Space</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-6">
-                            Visualize Your Space
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4 leading-tight">
+                            See Colors Come to Life
                         </h2>
-                        <p className="text-xl text-[#493657]/70 max-w-3xl mx-auto">
-                            See how our colors transform your space with our interactive room visualizer.
+                        <p className="text-base md:text-lg text-[#493657]/70 max-w-2xl mx-auto leading-relaxed">
+                            Try our interactive room visualizer and see exactly how your space will look before you paint.
                         </p>
                     </motion.div>
-                    
+
                     <div className="relative z-10">
                         <MiniVisualizer/>
                     </div>
                 </div>
             </section>
 
-            {/* Enhanced Inspiration Gallery */}
-            <section className="py-20 bg-white relative overflow-hidden">
+            {/* Delhi NCR Services - New Landing Page Style Section */}
+            <DelhiNCRServices />
+
+            {/* Social Proof - Build Trust with Numbers */}
+            <SocialProof />
+
+            {/* Inspiration Gallery - Kept as Requested */}
+            <section className="py-16 md:py-24 bg-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#493657]/5 to-transparent"></div>
                 <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-12 md:mb-16"
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#F0C85A]/20 text-[#493657] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#F0C85A]/20 text-[#493657] px-4 py-2 rounded-full text-xs font-medium mb-5">
                             <FaPaintbrush />
-                            <span>Design Inspiration</span>
+                            <span>Real Projects</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-6">
-                            Get Inspired
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4 leading-tight">
+                            Get Inspired by Real Homes
                         </h2>
-                        <p className="text-xl text-[#493657]/70 max-w-3xl mx-auto">
-                            Explore beautiful room designs and color combinations to inspire your next project.
+                        <p className="text-base md:text-lg text-[#493657]/70 max-w-2xl mx-auto leading-relaxed">
+                            See how homeowners across India are transforming their spaces with Calyco paints.
                         </p>
                     </motion.div>
-                    
+
                     <div className="relative z-10">
                         <MiniInspirationGallery height={200} cardWidth={280} />
                     </div>
                 </div>
             </section>
 
-            {/* Enhanced Why Choose Section */}
-            <section className="py-20 bg-gradient-to-br from-[#493657]/5 to-white relative overflow-hidden">
-                {/* Enhanced Background Elements */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#F0C85A]/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#493657]/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#F0C85A]/10 to-[#493657]/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '3s'}}></div>
+            {/* Why Choose Section - Updated with New USPs */}
+            <section className="py-16 md:py-24 bg-gradient-to-br from-[#493657]/5 to-white relative overflow-hidden">
+                {/* Background Elements */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-l from-[#F0C85A]/10 to-transparent rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-r from-[#493657]/10 to-transparent rounded-full blur-3xl"></div>
 
                 <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-                    <motion.div 
-                        className="text-center mb-16 z-10"
+                    <motion.div
+                        className="text-center mb-12 md:mb-16 z-10"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-xs font-medium mb-5">
                             <FaShieldHalved />
-                            <span>Why Choose Us</span>
+                            <span>Our Promise</span>
                         </div>
-                        <motion.h2 
-                            className="font-bold text-[#493657] text-4xl md:text-5xl mb-6"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            viewport={{ once: true }}
-                        >
-                            Why Choose Calyco?
-                        </motion.h2>
-                        <motion.p 
-                            className="text-xl text-[#493657]/70 max-w-3xl mx-auto"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            viewport={{ once: true }}
-                        >
-                            Discover what makes us the preferred choice for premium paint solutions
-                        </motion.p>
-                        <motion.div 
-                            className="w-20 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] rounded-full mx-auto mt-6"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "5rem" }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            viewport={{ once: true }}
-                        ></motion.div>
+                        <h2 className="font-bold text-[#493657] text-3xl md:text-4xl mb-4 leading-tight">
+                            Why Choose Calyco
+                        </h2>
+                        <p className="text-base md:text-lg text-[#493657]/70 max-w-2xl mx-auto leading-relaxed">
+                            Quality you can trust, value you'll love, and service that exceeds expectations
+                        </p>
                     </motion.div>
 
                     <motion.div 
@@ -244,11 +198,11 @@ export const HomePage = () => {
                 </div>
             </section>
 
-            {/* Enhanced Color Trends Section */}
-            <section className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+            {/* Color Trends Section - Can be removed or kept based on preference */}
+            {/* <section className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#F0C85A]/5 to-transparent"></div>
                 <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -260,61 +214,61 @@ export const HomePage = () => {
                             <span>Trending Colors</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-6">
-                            Color Trends 2024
+                            Color Trends 2025
                         </h2>
                         <p className="text-xl text-[#493657]/70 max-w-3xl mx-auto">
                             Stay ahead with the latest color trends and design inspirations for your home.
                         </p>
                     </motion.div>
-                    
+
                     <div className="relative z-10">
                         <ColorTrends/>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
-            {/* Enhanced Call to Action Section */}
-            <section className="py-20 bg-gradient-to-r from-[#493657] to-[#5a4067] relative overflow-hidden">
+            {/* Call to Action Section */}
+            <section className="py-16 md:py-20 bg-gradient-to-r from-[#493657] to-[#5a4067] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
                 <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center text-white">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium mb-5">
                             <FaRocket />
-                            <span>Ready to Start?</span>
+                            <span>Start Your Project</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            Transform Your Space Today
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                            Ready to Transform Your Space?
                         </h2>
-                        <p className="text-xl mb-10 opacity-90 leading-relaxed">
-                            Join thousands of satisfied customers who have transformed their homes with Calyco's premium paint solutions.
+                        <p className="text-base md:text-lg mb-8 opacity-90 leading-relaxed max-w-2xl mx-auto">
+                            Join thousands of homeowners who chose quality, affordability, and peace of mind with Calyco.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <motion.button 
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <motion.button
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
                                 viewport={{ once: true }}
-                                onClick={() => navigate('/product')}
-                                className="px-10 py-5 bg-[#F0C85A] text-[#493657] rounded-xl font-semibold hover:bg-[#E6B84A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                                onClick={() => navigate('/colors')}
+                                className="px-8 py-4 bg-[#F0C85A] text-[#493657] rounded-lg font-semibold hover:bg-[#E6B84A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
                             >
                                 <FaPaintbrush />
-                                Shop Now
+                                Explore Colors
                             </motion.button>
-                            <motion.button 
+                            <motion.button
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
                                 viewport={{ once: true }}
                                 onClick={() => navigate('/contact')}
-                                className="px-10 py-5 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-[#493657] transition-all duration-300 backdrop-blur-sm hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                                className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-[#493657] transition-all duration-300 backdrop-blur-sm hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2"
                             >
                                 <FaUsers />
-                                Get Expert Advice
+                                Get Free Consultation
                             </motion.button>
                         </div>
                     </motion.div>

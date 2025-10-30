@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import SEO from "../../components/SEO";
 
 const sections = [
@@ -112,14 +111,15 @@ const sections = [
 ];
 
 export default function TermsAndConditions() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const sectionPad = "py-10 md:py-12";
+  const sectionPadTight = "py-7 md:py-9";
+
   return (
-    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
+    <div className="min-h-screen bg-white text-[#0F1221] font-poppins">
       <SEO
         title="Terms & Conditions | CALYCO Paints"
         description="Review CALYCO's Terms & Conditions covering website usage, pricing, delivery, returns, liability, and dispute resolution."
@@ -128,59 +128,44 @@ export default function TermsAndConditions() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
+        <section className="relative overflow-hidden pt-20 pb-12 bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
               alt="Architectural space finished with CALYCO coatings"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
-            <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
-              Terms & Conditions
-            </span>
-            <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 py-14 text-center">
+            <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
               Know Your Rights When Using CALYCO Services
             </h1>
-            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
-              This document governs your access to calycopaints.com, purchase of CALYCO products, and related services. Please read carefully before proceeding.
-            </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
-            >
-              Contact Legal Team
-            </button>
-            <p className="mt-6 text-xs text-white/70">Effective date: 30 October 2025 • Version 2.1</p>
           </div>
         </section>
 
         {/* Introduction */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Introduction</h2>
-            <p className="text-lg text-[#31274B]/85 mb-4">
-              Welcome to CALYCO Paints. By accessing our website, placing orders, or using our services, you agree to be bound by these Terms & Conditions.
-            </p>
-            <p className="text-base text-[#31274B]/85">
-              Please read these terms carefully before using our services. If you do not agree with any part of these terms, you must not use our website or purchase our products.
-            </p>
-          </div>
+        <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-3xl font-bold mb-3 text-[#0F1221]">Introduction</h2>
+          <p className="text-lg max-w-3xl mx-auto leading-relaxed text-[#23263a] mb-1">
+            Welcome to CALYCO Paints. By accessing our website, placing orders, or using our services, you agree to be bound by these Terms & Conditions.
+          </p>
+          <p className="text-base max-w-3xl mx-auto text-[#23263a]">
+            Please read these terms carefully before using our services. If you do not agree with any part of these terms, you must not use our website or purchase our products.
+          </p>
         </section>
 
-        {/* All Sections */}
+        {/* Core Sections */}
         {sections.map((section, idx) => (
           <section
             key={section.id}
             id={section.id}
-            className={`py-20 ${idx % 2 === 0 ? 'bg-[#FBF9F6]' : 'bg-white'}`}
+            className={`${sectionPadTight} ${idx % 2 === 0 ? 'bg-[#FBF9F6]' : 'bg-white'}`}
           >
             <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-              <h2 className="text-3xl font-bold text-[#4B007D] mb-6">{section.title}</h2>
-              <div className="space-y-4 text-base text-[#31274B]/85">
+              <h2 className="text-2xl font-bold text-[#0F1221] mb-2">{section.title}</h2>
+              <div className="space-y-2 text-base text-[#23263a]">
                 {section.content.map((paragraph, index) => (
                   <p key={index} className="leading-relaxed">{paragraph}</p>
                 ))}
@@ -190,53 +175,56 @@ export default function TermsAndConditions() {
         ))}
 
         {/* Contact Section */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Need Clarification?</h2>
-            <p className="text-lg text-[#31274B]/85 mb-4">
-              For questions regarding these terms, reach out to{" "}
-              <a href="mailto:compliance@calycopaints.com" className="text-[#4B007D] font-semibold underline">
-                compliance@calycopaints.com
-              </a>{" "}
-              or call{" "}
-              <a href="tel:+919145000200" className="text-[#4B007D] font-semibold">
-                +91 9145 000 200
-              </a>.
-            </p>
-            <p className="text-base text-[#31274B]/85">
-              Business customers may request tailored agreements for enterprise projects.
-            </p>
-          </div>
+        <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
+          <h2 className="text-2xl font-bold text-[#0F1221] mb-3">Need Clarification?</h2>
+          <p className="text-lg text-[#23263a] mb-1">
+            For questions regarding these terms, reach out to{" "}
+            <a href="mailto:compliance@calycopaints.com" className="text-[#D4AF37] font-semibold underline">
+              compliance@calycopaints.com
+            </a>{" "}
+            or call{" "}
+            <a href="tel:+919145000200" className="text-[#D4AF37] font-semibold">
+              +91 9145 000 200
+            </a>.
+          </p>
+          <p className="text-base text-[#23263a]">
+            Business customers may request tailored agreements for enterprise projects.
+          </p>
         </section>
 
         {/* Related Policies */}
-        <section className="py-16 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
-            <h2 className="text-2xl font-bold text-[#4B007D] mb-4">Related Policies</h2>
-            <p className="text-sm text-[#31274B]/70 mb-6">
-              You may be asked to acknowledge these terms during checkout or account registration. For cross-references, review our other policies:
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <a
-                href="/policies/privacy"
-                className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#4B007D] transition hover:border-[#4B007D] hover:shadow-sm"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/policies/returns"
-                className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#4B007D] transition hover:border-[#4B007D] hover:shadow-sm"
-              >
-                Returns & Refunds
-              </a>
-              <a
-                href="/policies/shipping"
-                className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#4B007D] transition hover:border-[#4B007D] hover:shadow-sm"
-              >
-                Shipping & Delivery
-              </a>
-            </div>
+        <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-5xl mx-auto px-6 md:px-10 lg:px-12 text-center`}>
+          <h2 className="text-xl font-bold text-[#0F1221] mb-1">Related Policies</h2>
+          <p className="text-sm text-[#23263a] mb-2">
+            Review our other policies for more details.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href="/policies/privacy"
+              className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#0F1221] transition hover:border-[#D4AF37] hover:shadow-sm"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/policies/returns"
+              className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#0F1221] transition hover:border-[#D4AF37] hover:shadow-sm"
+            >
+              Returns & Refunds
+            </a>
+            <a
+              href="/policies/shipping"
+              className="rounded-xl bg-white border border-[#0F1221]/10 px-6 py-3 text-sm font-semibold text-[#0F1221] transition hover:border-[#D4AF37] hover:shadow-sm"
+            >
+              Shipping & Delivery
+            </a>
           </div>
+        </section>
+
+        {/* Effective Date */}
+        <section className={`${sectionPadTight} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12 text-center`}>
+          <p className="text-sm text-[#0F1221] font-semibold">
+            Effective date: 20 August 2025
+          </p>
         </section>
       </main>
     </div>

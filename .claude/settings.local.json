@@ -22,7 +22,8 @@
       "Bash(git filter-branch:*)",
       "Bash(git rm:*)",
       "Bash(npm uninstall:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "Bash(timeout 3 tail:*)"
     ],
     "deny": [],
     "ask": []

@@ -119,34 +119,45 @@ const sustainabilityPoints = [
 
 export default function AboutPage() {
   const navigate = useNavigate();
-  const observerRef = useRef();
+  const observerRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Add CSS styles to document head
+    // Attach premium palette tokens and animation helpers once per mount.
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
+      /* Calyco premium palette tokens */
+      :root {
+        --calyco-ink: #0F1221;
+        --calyco-plum: #4B007D;
+        --calyco-gold: #D4AF37;
+        --calyco-cream: #F6F3EE;
+        --calyco-warm-white: #FCFAF6;
+      }
       .animate-fadeInUp {
         opacity: 1 !important;
         transform: translateY(0) !important;
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        transition: opacity 0.8s ease, transform 0.8s ease;
       }
       .animate-on-scroll {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(28px);
       }
       .glass-effect {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
       }
       .premium-shadow {
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 22px 45px -20px rgba(15, 18, 33, 0.28);
       }
       .premium-shadow-lg {
-        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        box-shadow: 0 32px 60px -18px rgba(15, 18, 33, 0.32);
+      }
+      .surface-soft {
+        background: linear-gradient(150deg, rgba(252, 250, 246, 0.96), rgba(246, 243, 238, 0.92));
       }
       .text-gradient {
-        background: linear-gradient(135deg, #4B007D 0%, #D4AF37 100%);
+        background: linear-gradient(135deg, var(--calyco-gold) 0%, var(--calyco-plum) 95%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -157,11 +168,12 @@ export default function AboutPage() {
         50% { transform: translateY(-10px); }
       }
       .float-animation {
-        animation: float 3s ease-in-out infinite;
+        animation: float 3.5s ease-in-out infinite;
       }
     `;
     document.head.appendChild(styleSheet);
 
+    // Apply smooth intersection reveals inspired by premium editorial layouts.
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -170,18 +182,14 @@ export default function AboutPage() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.14 }
     );
 
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
-    animatedElements.forEach((el) =>
-      observerRef.current?.observe(el)
-    );
+    animatedElements.forEach((el) => observerRef.current?.observe(el));
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      observerRef.current?.disconnect();
       if (styleSheet.parentNode) {
         styleSheet.parentNode.removeChild(styleSheet);
       }
@@ -199,124 +207,79 @@ export default function AboutPage() {
       />
 
       <main>
-        {/* 
-          🎯 HERO SECTION - Fixed padding and mobile responsiveness
-        */}
-        <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-32 pb-12 md:min-h-[90vh] md:pt-32 lg:min-h-[95vh] lg:pt-32">
-          <div className="absolute inset-0 z-0">
+        {/* Hero: editorial photography with softened overlays for premium tone */}
+        <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-36">
+          <div className="absolute inset-0">
             <img
               src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
               alt="Modern Indian home exterior finished with CALYCO paints"
-              className="h-full w-full object-cover scale-105"
+              className="h-full w-full scale-105 object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
-          <div className="absolute top-20 left-10 w-32 h-32 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse float-animation"></div>
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl animate-pulse float-animation" style={{ animationDelay: "1s" }}></div>
-          
-          {/* 
-            🎯 HERO CONTENT - Better mobile layout and fixed title
-          */}
-          <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6 text-center px-4 md:px-6 lg:gap-8">
-            {/* Brand Badge */}
-            <span className="inline-flex justify-center items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm md:text-base font-medium text-white/90 glass-effect border border-white/20 mx-auto md:px-6">
-              <span className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></span>
-              <span className="hidden sm:inline">Next-generation sustainable paint solutions for a cleaner future</span>
-              <span className="sm:hidden">Sustainable paint solutions for India</span>
+          <div className="absolute top-24 left-10 h-40 w-40 rounded-full bg-[var(--calyco-gold)]/12 blur-3xl float-animation" />
+          <div
+            className="absolute bottom-24 right-14 h-44 w-44 rounded-full bg-white/10 blur-3xl float-animation"
+            style={{ animationDelay: "1.25s" }}
+          />
+          <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
+            <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 md:text-xs">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
+              CALYCO Paints | Est. 2019
             </span>
-            
-            {/* 
-              🎯 FIXED TITLE - Always 2 lines
-            */}
-            <h1 className="mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
-              Professional-Grade Paint Systems
-              <br />
-              <span className="text-gradient">for India</span>
+            <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.3rem]">
+              Colour systems crafted for modern India.
             </h1>
-            
-            {/* 
-              🎯 RESPONSIVE DESCRIPTION
-            */}
-            <div className="max-w-2xl mx-auto space-y-2 md:space-y-3">
-              <p className="text-base md:text-lg text-white/90 font-medium">
-                Premium paints engineered for Indian homes, offices, and industries.
-              </p>
-              <p className="text-sm md:text-base text-white/80">
-                CALYCO elevates how India paints with high-performance coatings, designer-curated palettes, and low-/zero-VOC innovations for beautiful, durable spaces.
-              </p>
-            </div>
-            
-            {/* 
-              🎯 ULTRA COMPACT MOBILE BUTTONS - Much smaller on mobile
-            */}
-            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 justify-center mt-4 md:mt-6 max-w-sm sm:max-w-none mx-auto">
-              <button
-                type="button"
-                onClick={handleNavigate("/products")}
-                className="group rounded-lg sm:rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-4 py-2 sm:px-6 sm:py-3 md:px-8 text-xs sm:text-sm md:text-base font-semibold text-[#0F1221] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
-              >
-                Explore Our Products
-              </button>
-              <button
-                type="button"
-                onClick={handleNavigate("/contact")}
-                className="group rounded-lg sm:rounded-xl border-2 border-white/30 px-4 py-2 sm:px-6 sm:py-3 md:px-8 text-xs sm:text-sm md:text-base font-semibold text-white glass-effect transition hover:bg-white/10 hover:border-white/50"
-              >
-                Contact Us
-              </button>
-            </div>
+            <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
+              Purpose-built finishes, sustainable chemistries, and curated palettes that bring calm luxury and long-term durability to Indian spaces.
+            </p>
           </div>
         </section>
-
-        {/* 
-          🎯 CONSISTENT SECTION SPACING
-          All sections now use: py-16 md:py-20 lg:py-24
-        */}
-
-        {/* Our Story */}
-        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#F6F3EE] to-white">
-          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Story image */}
-              <div className="rounded-3xl overflow-hidden shadow-lg order-2 md:order-1">
-                <img
-                  src="/Assets/about-us.png"
-                  alt="CALYCO team collaborating on colour development"
-                  className="w-full h-full object-cover aspect-[4/3]"
-                  loading="lazy"
-                />
-              </div>
-              {/* Story text */}
-              <div className="space-y-6 md:space-y-8 order-1 md:order-2">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-3">Our Story</h2>
-                <p className="text-base md:text-lg text-[#31274B] font-medium">
+        {/* Our Story: calm cream surface pairing photography with proof points */}
+        <section className="bg-[var(--calyco-cream)] py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
+            <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+              <div className="animate-on-scroll rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] md:p-10">
+                <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Our Story</h2>
+                <p className="mt-4 text-base text-[#31274B]/90 md:text-lg">
                   Founded to merge professional-grade performance with environmental responsibility, CALYCO is building the future of paints for India.
                 </p>
-                <ul className="mt-4 md:mt-6 space-y-3 text-[#4B007D] font-semibold">
+                <ul className="mt-8 grid gap-4 sm:grid-cols-3">
                   {storyMilestones.map((item) => (
-                    <li key={item.text} className="flex items-start gap-3 text-sm md:text-base">
-                      <span className="text-lg md:text-xl mt-0.5">{item.icon}</span> 
-                      <span>{item.text}</span>
+                    <li
+                      key={item.text}
+                      className="animate-on-scroll flex flex-col gap-3 rounded-2xl border border-black/5 bg-[var(--calyco-cream)]/75 px-4 py-5 text-left shadow-[0_18px_35px_-28px_rgba(13,15,28,0.45)]"
+                    >
+                      <span className="text-2xl">{item.icon}</span>
+                      <span className="text-sm font-medium text-[var(--calyco-ink)]/90">
+                        {item.text}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
+              <div className="animate-on-scroll overflow-hidden rounded-[36px] border border-white/70 shadow-[0_45px_70px_-50px_rgba(15,18,33,0.65)]">
+                <img
+                  src="/Assets/about-us.png"
+                  alt="CALYCO team collaborating on colour development"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            {/* Values */}
-            <div className="mt-16 md:mt-20">
-              <h3 className="text-xl md:text-2xl font-semibold text-[#4B007D] mb-6 md:mb-8 text-center">Our Core Values</h3>
-              <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+
+            <div className="mt-20 animate-on-scroll rounded-[32px] border border-black/5 bg-white/95 p-8 shadow-[0_32px_65px_-50px_rgba(13,15,28,0.55)] md:p-10">
+              <h3 className="text-center text-2xl font-semibold text-[var(--calyco-ink)] md:text-3xl">Our Core Values</h3>
+              <div className="mt-10 flex flex-wrap justify-center gap-3 lg:gap-4">
                 {valuePillars.map((value) => (
                   <span
                     key={value.text}
-                    className="group flex items-center gap-2 md:gap-3 rounded-full border-2 border-[#4B007D]/20 bg-gradient-to-r from-white to-[#FBF9F6] px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm font-semibold text-[#4B007D] premium-shadow transition-all duration-300 hover:scale-105 hover:border-[#D4AF37] hover:bg-gradient-to-r hover:from-[#D4AF37]/10 hover:to-[#4B007D]/10"
+                    className="animate-on-scroll inline-flex items-center gap-2 rounded-full border border-black/8 bg-[var(--calyco-cream)]/80 px-5 py-2 text-sm font-semibold text-[var(--calyco-plum)] transition hover:border-[var(--calyco-gold)] hover:bg-[var(--calyco-gold)]/10"
                   >
-                    <span className="text-base md:text-lg transition-transform group-hover:scale-125">
-                      {value.icon}
-                    </span>
-                    <span>{value.text}</span>
+                    <span className="text-base">{value.icon}</span>
+                    {value.text}
                   </span>
                 ))}
               </div>
@@ -324,89 +287,103 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership & Culture */}
-        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-[#4B007D]/5 to-[#D4AF37]/5">
-          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-            <div className="mb-10 md:mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2">
-                Leadership & Culture
-              </h2>
-              <p className="mx-auto max-w-4xl text-base md:text-lg text-[#31274B]/90 leading-relaxed">
+        {/* Leadership & Culture: editorial grid layered over subtle workplace imagery */}
+        <section
+          className="relative overflow-hidden py-20 md:py-24"
+          style={{
+            backgroundImage:
+              "url(/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/88 backdrop-blur-[2px]" />
+          <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll text-center">
+              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Leadership & Culture</h2>
+              <p className="mx-auto mt-4 max-w-3xl text-base text-[#31274B]/85 md:text-lg">
                 A multidisciplinary leadership group with deep experience drives CALYCO's roadmap—powered by an expert network that keeps performance and people at the center.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
               {leadershipPillars.map((pillar) => (
-                <div
+                <article
                   key={pillar.title}
-                  className="group relative overflow-hidden rounded-3xl bg-white glass-effect p-6 md:p-8 premium-shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-3 flex flex-col h-full"
+                  className="animate-on-scroll group relative flex h-full flex-col gap-5 overflow-hidden rounded-[28px] border border-black/6 bg-white/95 p-7 shadow-[0_26px_45px_-40px_rgba(15,18,33,0.55)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.6)]"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-5`}></div>
-                  <div className="relative space-y-4 md:space-y-6">
-                    <div className="flex items-center gap-3 md:gap-4">
-                      <div className={`flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} text-xl md:text-2xl text-white premium-shadow`}>
-                        {pillar.icon}
-                      </div>
-                      <div>
-                        <span className="text-xs md:text-sm font-medium uppercase tracking-wide text-[#D4AF37]">
-                          {pillar.caption}
-                        </span>
-                        <h3 className="text-lg md:text-xl font-bold text-[#4B007D]">
-                          {pillar.title}
-                        </h3>
-                      </div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 transition duration-300 group-hover:opacity-[0.08]`}
+                  />
+                  <div className="relative flex items-center gap-4">
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} text-2xl text-white shadow-lg shadow-black/20`}
+                    >
+                      {pillar.icon}
                     </div>
-                    <p className="text-sm md:text-base text-[#31274B]/90 leading-relaxed">{pillar.description}</p>
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--calyco-gold)]">
+                        {pillar.caption}
+                      </span>
+                      <h3 className="mt-1 text-xl font-semibold text-[var(--calyco-ink)]">{pillar.title}</h3>
+                    </div>
                   </div>
-                </div>
+                  <p className="relative text-sm text-[#31274B]/85 md:text-base">{pillar.description}</p>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Manufacturing Excellence */}
-        <section className="py-16 md:py-20 lg:py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Extra wide image */}
-              <div className="rounded-3xl overflow-hidden min-h-[300px] md:min-h-[400px] max-h-[400px] md:max-h-[540px] aspect-[16/9] md:aspect-[16/7] flex items-center w-full">
+        {/* Manufacturing Excellence: atelier-inspired proof of craft */}
+        <section className="bg-[#FBF7F0] py-20 md:py-24">
+          <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll grid gap-10 rounded-[44px] border border-black/5 bg-white/95 p-6 shadow-[0_40px_80px_-60px_rgba(15,18,33,0.55)] md:grid-cols-[1.05fr_1fr] md:p-12">
+              <div className="relative flex min-h-[340px] items-end overflow-hidden rounded-[36px] md:min-h-[480px]">
                 <img
                   src="/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.png"
                   alt="Inside CALYCO's automated manufacturing facility"
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]">
+                  <span className="h-2 w-2 rounded-full bg-[var(--calyco-gold)]" />
+                  Batch-to-bucket assurance
+                </div>
               </div>
-              {/* Text content */}
-              <div className="space-y-6 md:space-y-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2">
-                  Manufacturing Excellence
-                </h2>
-                <p className="text-base md:text-lg text-[#31274B]/90 leading-relaxed">
-                  Precision manufacturing and rigorous quality assurance turn our formulations into consistent, high-performing paint systems—batch after batch.
-                </p>
-                {/* Highlights */}
-                <div className="space-y-4 md:space-y-6">
+              <div className="flex flex-col justify-between">
+                <div className="space-y-5">
+                  <span className="inline-flex items-center rounded-full border border-black/10 bg-[var(--calyco-cream)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]/70">
+                    Manufacturing excellence
+                  </span>
+                  <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-[2.5rem]">
+                    Precision engineered, meticulously verified.
+                  </h2>
+                  <p className="text-base text-[#31274B]/85 md:text-lg">
+                    From resin design through finishing gloss, each Calyco batch advances through calibrated production cells, HEPA-filtered tinting, and layered quality gates built for India's humidity, dust, and UV extremes.
+                  </p>
+                </div>
+                <div className="mt-8 space-y-4">
                   {manufacturingHighlights.map((highlight) => (
-                    <div
+                    <article
                       key={highlight.title}
-                      className="flex items-start gap-3 md:gap-4 rounded-3xl border-2 border-[#4B007D]/10 bg-gradient-to-r from-white to-[#FBF9F6]/50 p-4 md:p-6 premium-shadow"
+                      className="group flex items-start gap-4 rounded-[28px] border border-black/6 bg-white px-5 py-5 shadow-[0_20px_35px_-30px_rgba(15,18,33,0.4)] transition duration-200 hover:-translate-y-[3px] hover:shadow-[0_32px_55px_-34px_rgba(15,18,33,0.45)]"
                     >
-                      <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#4B007D] to-[#D4AF37] text-lg md:text-xl text-white premium-shadow">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-lg text-[var(--calyco-plum)]">
                         {highlight.icon}
                       </div>
-                      <div className="flex-1 space-y-1 md:space-y-2">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-base md:text-lg font-bold text-[#4B007D]">{highlight.title}</h3>
-                          <span className="rounded-full bg-[#D4AF37]/20 px-2 py-1 md:px-3 text-xs font-bold text-[#4B007D]">
+                      <div className="flex-1 space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h3 className="text-lg font-semibold text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]">
+                            {highlight.title}
+                          </h3>
+                          <span className="rounded-full bg-[var(--calyco-gold)]/18 px-3 py-1 text-xs font-semibold text-[var(--calyco-ink)]">
                             {highlight.metric}
                           </span>
                         </div>
-                        <p className="text-xs md:text-sm text-[#31274B]/90 leading-relaxed">
-                          {highlight.description}
-                        </p>
+                        <p className="text-sm text-[#31274B]/75 md:text-[15px]">{highlight.description}</p>
                       </div>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>
@@ -414,64 +391,57 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* EcoMax™ Technology */}
-        <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-[#4B007D]/5 via-white to-[#D4AF37]/5">
-          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-            {/* Header */}
-            <div className="text-center mb-12 md:mb-16">
-              <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4B007D]/10 to-[#D4AF37]/10 px-6 py-2 text-sm font-medium text-[#4B007D] mb-6">
-                <span className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse"></span>
+        {/* EcoMax™ Technology: innovation layered like a brochure highlight */}
+        <section className="bg-gradient-to-br from-[var(--calyco-cream)] via-white to-[#F2ECF9] py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[var(--calyco-gold)]/40 bg-[var(--calyco-gold)]/10 px-5 py-2 text-xs font-semibold text-[var(--calyco-plum)] md:text-sm">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
                 Revolutionary Innovation
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#4B007D] mb-4">
+              <h2 className="mt-5 text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl lg:text-5xl">
                 EcoMax™ <span className="text-gradient">Technology</span>
               </h2>
-              <div className="max-w-4xl mx-auto space-y-4">
-                <p className="text-lg md:text-xl text-[#31274B] font-medium leading-relaxed">
+              <div className="mx-auto mt-6 max-w-4xl space-y-5 text-[#31274B]/85 md:text-lg">
+                <p className="font-medium">
                   Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
                 </p>
-                <p className="text-base md:text-lg text-[#31274B]/80 leading-relaxed">
+                <p>
                   What we created is a formula that's better, stronger, and cleaner—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
                 </p>
               </div>
             </div>
-
-            {/* Features Grid */}
-            <div className="grid gap-6 md:gap-8 md:grid-cols-3 mb-12">
-              {ecoMaxFeatures.map((feature, index) => (
-                <div
+            <div className="mt-14 grid gap-6 md:grid-cols-3">
+              {ecoMaxFeatures.map((feature) => (
+                <article
                   key={feature.title}
-                  className="group relative overflow-hidden rounded-3xl bg-white p-6 md:p-8 premium-shadow-lg transition-all duration-500 hover:scale-105 hover:-translate-y-3"
+                  className="animate-on-scroll group relative flex h-full flex-col gap-5 overflow-hidden rounded-[28px] border border-black/6 bg-white/95 p-7 shadow-[0_26px_45px_-38px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.6)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/5 to-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4B007D] to-[#D4AF37] text-2xl text-white premium-shadow">
-                        {feature.icon}
-                      </div>
-                      <span className="rounded-full bg-[#D4AF37]/20 px-4 py-1 text-xs font-bold text-[#4B007D] uppercase tracking-wide">
-                        {feature.stat}
-                      </span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--calyco-plum)]/8 to-[var(--calyco-gold)]/8 opacity-0 transition duration-300 group-hover:opacity-100" />
+                  <div className="relative flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--calyco-plum)] to-[var(--calyco-gold)] text-2xl text-white shadow-lg shadow-black/20">
+                      {feature.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#4B007D]">{feature.title}</h3>
-                    <p className="text-sm md:text-base text-[#31274B]/90 leading-relaxed">{feature.description}</p>
+                    <span className="rounded-full bg-[var(--calyco-gold)]/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--calyco-plum)]">
+                      {feature.stat}
+                    </span>
                   </div>
-                </div>
+                  <div className="relative space-y-3">
+                    <h3 className="text-xl font-semibold text-[var(--calyco-ink)]">{feature.title}</h3>
+                    <p className="text-sm text-[#31274B]/85 md:text-base">{feature.description}</p>
+                  </div>
+                </article>
               ))}
             </div>
-
-            {/* Bottom CTA */}
-            <div className="text-center bg-gradient-to-r from-[#4B007D] to-[#D4AF37] rounded-3xl p-8 md:p-12 text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Experience the EcoMax™ Difference
-              </h3>
-              <p className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+            <div className="animate-on-scroll mt-16 rounded-[32px] bg-gradient-to-r from-[var(--calyco-plum)] to-[var(--calyco-gold)] px-8 py-10 text-center text-white md:px-10 md:py-14">
+              <h3 className="text-2xl font-semibold md:text-3xl">Experience the EcoMax™ Difference</h3>
+              <p className="mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
                 Discover how our revolutionary colorant technology delivers superior performance while protecting your family and the environment.
               </p>
               <button
                 type="button"
                 onClick={handleNavigate("/products")}
-                className="group rounded-xl bg-white px-6 py-3 md:px-8 text-sm md:text-base font-semibold text-[#4B007D] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[var(--calyco-plum)] shadow-[0_20px_40px_-30px_rgba(0,0,0,0.65)] transition duration-200 hover:-translate-y-1 hover:scale-[1.02]"
               >
                 Explore EcoMax™ Products
               </button>
@@ -479,51 +449,69 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Sustainability */}
-        <section className="py-16 md:py-20 lg:py-24 bg-[#F6F3EE]">
-          <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4B007D] mb-2 text-center">Sustainability & Responsibility</h2>
-            <p className="text-base md:text-lg text-[#31274B]/90 text-center mb-8 md:mb-10">
-              Responsible chemistry and transparent reporting guide every decision—today and for the future.
-            </p>
-            <div className="grid gap-6 md:gap-8 md:grid-cols-3">
+        {/* Sustainability & Responsibility: layered cards over soft imagery */}
+        <section
+          className="relative overflow-hidden py-20 md:py-24"
+          style={{
+            backgroundImage:
+              "url(/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.png)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/93 backdrop-blur-sm" />
+          <div className="relative mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll text-center">
+              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Sustainability & Responsibility</h2>
+              <p className="mx-auto mt-4 max-w-3xl text-sm text-[#31274B]/85 md:text-base">
+                Responsible chemistry and transparent reporting guide every decision—today and for the future.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {sustainabilityPoints.map((item) => (
-                <div key={item.title} className="flex flex-col items-center rounded-2xl bg-white p-6 md:p-8 shadow-md border">
-                  <span className="h-10 w-10 md:h-12 md:w-12 flex items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-teal-600 text-xl md:text-2xl text-white mb-3">
+                <div
+                  key={item.title}
+                  className="animate-on-scroll flex flex-col items-center gap-3 rounded-[28px] border border-black/6 bg-white/95 p-8 text-center shadow-[0_24px_45px_-40px_rgba(15,18,33,0.6)]"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-2xl text-white shadow-lg shadow-black/20">
                     {item.icon}
                   </span>
-                  <div className="font-semibold text-[#4B007D] mb-2 text-center text-sm md:text-base">{item.title}</div>
-                  <div className="text-xs md:text-sm text-[#31274B] text-center">{item.description}</div>
+                  <h3 className="text-base font-semibold text-[var(--calyco-ink)] md:text-lg">{item.title}</h3>
+                  <p className="text-sm text-[#31274B]/80">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Footer CTA */}
-        <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#4B007D] via-[#5B1A8B] to-[#2E0053] overflow-hidden">
-          <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 md:gap-8 px-4 text-center md:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-              Ready to paint a better future?
-            </h2>
-            <p className="max-w-3xl text-sm md:text-base text-white/90 leading-relaxed">
-              Reach our team for specifications, tenders, and bespoke projects—or explore designer-curated colour palettes tailored for Indian spaces.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <button
-                type="button"
-                onClick={handleNavigate("/contact")}
-                className="group rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 text-sm md:text-base font-semibold text-[#0F1221] premium-shadow-lg transition hover:scale-105 hover:-translate-y-1"
-              >
-                Contact Us
-              </button>
-              <button
-                type="button"
-                onClick={handleNavigate("/colors")}
-                className="group rounded-xl border-2 border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 text-sm md:text-base font-semibold text-white glass-effect transition hover:bg-white/10 hover:border-white/50"
-              >
-                Explore Colours
-              </button>
+        {/* Footer CTA: warm minimal close */}
+        <section className="relative overflow-hidden py-16 md:py-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FDF9F1] via-[#F4EEE3] to-white" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#d4af3733,transparent_70%)]" />
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="animate-on-scroll flex flex-col items-center gap-6 rounded-[40px] border border-black/5 bg-white/85 px-8 py-12 text-center shadow-[0_35px_70px_-55px_rgba(15,18,33,0.55)] md:px-12">
+              <h2 className="text-2xl font-semibold text-[var(--calyco-ink)] sm:text-3xl md:text-4xl">
+                Ready to bring Calyco into your next project?
+              </h2>
+              <p className="max-w-3xl text-sm text-[#31274B]/85 md:text-base">
+                Share specifications, request colour support, or plan large-format rollouts with our technical consultants and designer network.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={handleNavigate("/contact")}
+                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--calyco-gold)] to-[#F59E0B] px-7 py-3 text-sm font-semibold text-[var(--calyco-ink)] shadow-[0_24px_45px_-30px_rgba(0,0,0,0.45)] transition duration-200 hover:-translate-y-1 hover:scale-[1.02]"
+                >
+                  Start a Conversation
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNavigate("/colors")}
+                  className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-7 py-3 text-sm font-semibold text-[var(--calyco-ink)] transition duration-200 hover:-translate-y-1 hover:bg-[var(--calyco-cream)]"
+                >
+                  View Colour Library
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -531,3 +519,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
