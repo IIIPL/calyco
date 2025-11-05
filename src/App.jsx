@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 const Home = React.lazy(() => import('./pages/Home.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
+const BudgetCalculator = React.lazy(() => import('./pages/BudgetCalculator.jsx'))
 
 const ProductDetailPage = React.lazy(() => import('./pages/ProductDetailPage.jsx'))
 const ContractorsPage = React.lazy(() => import('./pages/ContractorsPage.jsx'))
@@ -134,6 +135,7 @@ function App() {
               {/* New premium visual-first routes */}
               <Route path='/colors' element={<ColorsPage/>}/>
               <Route path='/visualizer' element={<VisualizerPage/>}/>
+              <Route path='/budget-calculator' element={<BudgetCalculator/>}/>
               <Route path='/products' element={<Products/>}/>
               <Route path='/products/:slug' element={<ProductDetailPage/>}/>
               {/* PREMIUM PRODUCTS */}

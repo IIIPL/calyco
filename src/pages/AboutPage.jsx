@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
+import BudgetCalculatorCTA from "../components/HomeComponents/BudgetCalculatorCTA";
+import WhyCalycoShowcase from "../components/HomeComponents/WhyCalycoShowcase";
 
 const storyMilestones = [
   { icon: "🎯", text: "Closing the gap between performance & responsibility" },
@@ -227,7 +229,7 @@ export default function AboutPage() {
           <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
             <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 md:text-xs">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
-              CALYCO Paints | Est. 2019
+              CALYCO Paints | Est. 2023
             </span>
             <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.3rem]">
               Colour systems crafted for modern India.
@@ -483,6 +485,12 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* Budget Calculator CTA */}
+        <BudgetCalculatorCTA />
+
+        {/* Why Calyco Paints */}
+        <WhyCalycoShowcase />
 
         {/* Footer CTA: warm minimal close */}
         <section className="relative overflow-hidden py-16 md:py-20">

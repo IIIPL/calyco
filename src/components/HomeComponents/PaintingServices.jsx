@@ -42,12 +42,12 @@ const PaintingServices = () => {
 
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
-              Professional Painting Services at Your Doorstep
+              Professional Painting <span className="text-[#998850]">Services at Your Doorstep</span>
             </h2>
 
             {/* Description */}
             <p className="text-base md:text-lg text-[#0F1221]/70 mb-8 leading-relaxed">
-              Transform your space with Calyco's expert painting services. Our certified professionals deliver flawless finishes using premium materials, backed by our 10-year guarantee.
+              Transform your space with expert painting services. Our certified professionals deliver flawless finishes using premium materials.
             </p>
 
             {/* Features Grid */}

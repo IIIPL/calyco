@@ -1,38 +1,38 @@
 import { motion } from "framer-motion";
-import { FaShieldHalved, FaIndianRupeeSign, FaIndustry, FaUserTie } from "react-icons/fa6";
+import { HiOutlineShieldCheck, HiOutlineBanknotes, HiOutlineBuildingOffice2, HiOutlineUserGroup } from "react-icons/hi2";
 
 const TrustBar = () => {
   const trustItems = [
     {
-      icon: FaShieldHalved,
+      icon: HiOutlineShieldCheck,
       title: "10-Year Guarantee",
       description: "Unmatched durability backed by our promise",
-      color: "from-blue-500 to-blue-600"
+      accent: "bg-white/10"
     },
     {
-      icon: FaIndianRupeeSign,
+      icon: HiOutlineBanknotes,
       title: "20% More Affordable",
       description: "Premium quality without the premium price",
-      color: "from-green-500 to-green-600"
+      accent: "bg-white/10"
     },
     {
-      icon: FaIndustry,
+      icon: HiOutlineBuildingOffice2,
       title: "Manufactured in India",
       description: "Direct from our factory to your home",
-      color: "from-purple-500 to-purple-600"
+      accent: "bg-white/10"
     },
     {
-      icon: FaUserTie,
+      icon: HiOutlineUserGroup,
       title: "Expert Services",
       description: "Professional painters across Delhi NCR",
-      color: "from-amber-500 to-amber-600"
+      accent: "bg-white/10"
     }
   ];
 
   return (
-    <section className="py-8 md:py-12 bg-gradient-to-br from-[#493657] to-[#5a4067] relative overflow-hidden">
+    <section className="py-8 md:py-12 bg-gradient-to-r from-[#1A0B21] to-[#432553] relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-[#D4AF37]/5"></div>
+      <div className="absolute inset-0 bg-white/5 mix-blend-overlay"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -46,8 +46,8 @@ const TrustBar = () => {
               className="flex flex-col items-center text-center group"
             >
               {/* Icon */}
-              <div className={`w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                <item.icon className="text-white text-2xl md:text-3xl" />
+              <div className={`w-14 h-14 md:w-16 md:h-16 ${item.accent} border border-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
+                <item.icon className="text-white text-2xl" />
               </div>
 
               {/* Content */}

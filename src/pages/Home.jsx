@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import SEO from '../components/SEO';
 
 import GridMasonry from '../components/GridMasonry';
-import WhyTrustUs from '../components/WhyTrustUs';
 import CallToAction from '../components/CallToAction';
 
+import StaticHero from '../components/StaticHero';
 import ColorSlider from '../components/ColorSlider';
 import PopularColorsSlider from '../components/PopularColorsSlider';
 import ShopByColour from '../components/ShopByColour';
@@ -14,6 +14,10 @@ import HowItWorks from '../components/HowItWorks.tsx';
 import NavigationArrows from '../components/NavigationArrows';
 import TrustBar from '../components/HomeComponents/TrustBar';
 import PaintingServices from '../components/HomeComponents/PaintingServices';
+import PremiumTextureSplit from '../components/HomeComponents/PremiumTextureSplit';
+import MarqueeStrip from '../components/HomeComponents/MarqueeStrip';
+import WhyCalycoShowcase from '../components/HomeComponents/WhyCalycoShowcase';
+import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCTA';
 
 
 const Home = () => {
@@ -189,46 +193,66 @@ const Home = () => {
         ogType="website"
       />
 
+      {/* Static Hero Section */}
+      <StaticHero />
+
       {/* Hero Section with Original ColorSlider */}
-      <section className="relative overflow-hidden">
+      {/* <section className="relative overflow-hidden">
         <ColorSlider />
-      </section>
+      </section> */}
 
       {/* Professional Painting Services Section */}
       <PaintingServices />
 
+      {/* Marquee Strip */}
+      <MarqueeStrip />
+
       {/* Quality You Can Trust Section */}
-      <section className="relative bg-gradient-to-br from-[#F6F3EE] to-white py-16 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4B007D]/5 to-transparent pointer-events-none" aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <div className="inline-flex items-center gap-2 bg-[#4B007D]/10 text-[#4B007D] px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Our Promise to You</span>
-            </div>
+      <section className="relative w-full h-[85vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/Assets/Texture Images/quality2.png"
+            alt="Living room showcasing premium textured wall finish"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="max-w-xl md:max-w-2xl space-y-5"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B007D]/10 text-[#4B007D] text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                </svg>
+                <span>Our Promise to You</span>
+              </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
-              Quality You Can Trust, <span className="text-[#4B007D]">Colors You'll Love</span>
-            </h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1C1A16] leading-tight drop-shadow-sm">
+                Quality You Can Trust, <span className="text-[#998850]">Colors You'll Love</span>
+              </h2>
 
-            <p className="text-lg md:text-xl text-[#0F1221]/70 leading-relaxed">
-              We believe premium quality shouldn't come with a premium price tag. That's why we manufacture in-house,
-              cut out middlemen, and deliver professional-grade paints directly to your doorstep.
-            </p>
-          </motion.div>
+              <p className="text-base md:text-lg text-[#4A4A4A] leading-relaxed max-w-xl drop-shadow-sm">
+                We believe premium quality shouldn't come with a premium price tag. That's why we manufacture in-house,
+                cut out middlemen, and deliver professional-grade paints directly to your doorstep.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Trust Bar - Key Value Props */}
       <TrustBar />
+
+      {/* Premium Texture Split Section */}
+      <PremiumTextureSplit />
+
+      {/* Budget Calculator CTA */}
+      <BudgetCalculatorCTA />
 
       {/* Popular Colours Section */}
       <PopularColorsSlider />
@@ -293,11 +317,11 @@ const Home = () => {
       <ShopByColour />
       <HowItWorks />
 
+      {/* Why Calyco Showcase */}
+      <WhyCalycoShowcase />
+
       {/* Inspiration Gallery */}
       <GridMasonry images={insp} />
-
-      {/* Why Trust Us Section */}
-      <WhyTrustUs />
 
       {/* What Our Customers Say Section */}
       <section className="bg-white py-12 md:py-16 lg:py-20">
@@ -396,167 +420,6 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 rounded-[24px] border border-[#0F1221]/10 bg-[#F6F3EE] p-6 sm:p-8 md:p-10"
-          >
-            <div className="text-center">
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                4.9/5
-              </p>
-              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Average Rating</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                100+
-              </p>
-              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Happy Customers</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4B007D]" style={{ fontFeatureSettings: '"tnum"' }}>
-                ₹12L+
-              </p>
-              <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-[#0F1221]/70">Total Savings</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Calyco Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white to-[#F6F3EE]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16"
-          >
-            <div className="inline-flex items-center gap-2 bg-[#4B007D]/10 text-[#4B007D] px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Our Story</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
-              About <span className="text-[#4B007D]">Calyco Paints</span>
-            </h2>
-            <p className="text-lg md:text-xl text-[#0F1221]/70 leading-relaxed max-w-3xl mx-auto">
-              India's #2 paint brand with 30 years of manufacturing excellence, delivering premium quality at unbeatable value.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-[#0F1221] mb-6">
-                Premium Eco-Friendly Paints for Modern Living
-              </h3>
-              <p className="text-[#0F1221]/70 leading-relaxed mb-4">
-                Calyco Paints is an eco-premium paint and coatings company that blends modern lifestyle design with sustainability.
-                We manufacture low-VOC, water-based, safe-for-family paints that don't compromise on quality or durability.
-              </p>
-              <p className="text-[#0F1221]/70 leading-relaxed">
-                As India's #2 paint brand, we're trusted by thousands of homeowners, contractors, and government projects.
-                Our in-house manufacturing allows us to deliver the same quality as premium brands at 20% lower cost.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-xl border border-[#0F1221]/10"
-            >
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0F1221] mb-1">Low-VOC & Eco-Friendly</h4>
-                    <p className="text-sm text-[#0F1221]/70">Safe for your family and the environment</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0F1221] mb-1">Versatile Application</h4>
-                    <p className="text-sm text-[#0F1221]/70">Interior, exterior, wood, metal, and specialty surfaces</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0F1221] mb-1">Weather-Resistant Formula</h4>
-                    <p className="text-sm text-[#0F1221]/70">Waterproof, anti-fungal, heat-reflective coatings</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#4B007D] to-[#6b2da8] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0F1221] mb-1">Direct-to-Customer</h4>
-                    <p className="text-sm text-[#0F1221]/70">Online-first model with no middlemen markup</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-[#0F1221] mb-8">Why Choose Calyco?</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
-                <div className="text-4xl font-bold text-[#4B007D] mb-2">30+</div>
-                <p className="text-[#0F1221]/70 font-medium">Years of Excellence</p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
-                <div className="text-4xl font-bold text-[#4B007D] mb-2">#2</div>
-                <p className="text-[#0F1221]/70 font-medium">Paint Brand in India</p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
-                <div className="text-4xl font-bold text-[#4B007D] mb-2">10K+</div>
-                <p className="text-[#0F1221]/70 font-medium">Projects Completed</p>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-[#0F1221]/10">
-                <div className="text-4xl font-bold text-[#4B007D] mb-2">20%</div>
-                <p className="text-[#0F1221]/70 font-medium">More Affordable</p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
