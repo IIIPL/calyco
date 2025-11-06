@@ -78,7 +78,7 @@ export const waterproofingSealerDetail = {
   id: "waterproofing-sealer",
   slug: "waterproofing-sealer",
   name: "Calyco Waterproofing Sealer",
-  image: "/Assets/Waterproof Sealer/Main.png",
+  image: "/Assets/Product Images/Waterproof Sealer/1.png",
   brand: "Calyco",
   category: "Waterproofing",
   rating: 4.8,
@@ -278,9 +278,9 @@ export const waterproofingSealerDetail = {
     "SamplePot 200ml"
   ],
   
-  bucketImage: "/Assets/Waterproof Sealer/Main.png",
+  bucketImage: "/Assets/Product Images/Waterproof Sealer/1.png",
   images: [
-    "/Assets/Waterproof Sealer/Main.png"
+    "/Assets/Product Images/Waterproof Sealer/1.png"
   ],
   seo: {
     title: "Waterproofing Sealer | Elastomeric Waterproof Barrier | Calyco",

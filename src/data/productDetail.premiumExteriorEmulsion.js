@@ -77,7 +77,7 @@ export const premiumExteriorEmulsionDetail = {
   id: "Premium-Exterior-Emulsion",
   slug: "Premium-Exterior-Emulsion",
   name: "Calyco Premium Exterior Emulsion",
-  image: "/Assets/Exterior Latex Paint/Main.png",
+  image: "/Assets/Product Images/Premium Exterior Emulsion/1.png",
   brand: "Calyco",
   category: "Exterior",
   rating: 4.7,
@@ -215,9 +215,9 @@ export const premiumExteriorEmulsionDetail = {
     "SamplePot 200ml"
   ],
   
-  bucketImage: "/Assets/Exterior Latex Paint/Main.png",
+  bucketImage: "/Assets/Product Images/Premium Exterior Emulsion/1.png",
   images: [
-    "/Assets/Exterior Latex Paint/Main.png"
+    "/Assets/Product Images/Premium Exterior Emulsion/1.png"
   ],
   seo: {
     title: "Premium Exterior Emulsion | Matte Finish Exterior Paint | Calyco",
