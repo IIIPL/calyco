@@ -1,11 +1,10 @@
 export const products = [
   {
-    "id": "Luxury-Interior-Emulsion",
-    "slug": "Luxury-Interior-Emulsion",
-    "url": "https://calycopaints.com/product/Luxury-Interior-Emulsion",
-    "name": "Luxury Interior Emulsion",
-    "display_name": "Luxury Interior Emulsion",
-    "image": "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+    "id": "Nova",
+    "slug": "Interior-Latex-Paint",
+    "url": "https://calycopaints.com/product/Interior-Latex-Paint",
+    "name": "Calyco Interior Latex Paint",
+    "image": "/Assets/Nova/1-main.png",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
     "details": "Trusted by discerning designers and homeowners alike, Calyco Nova delivers breathtaking colour with unmatched quality.",
@@ -171,9 +170,9 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "10°C–35°C",
     "humidity_range": "Under 80% RH",
-    "display_name": "Luxury Interior Emulsion",
+    "display_name": "Calyco Interior Latex Paint",
     "images": [
-      "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+      "/Assets/Nova/1-main.png",
       "/Assets/Nova/1.png",
       "/Assets/Nova/2.png",
       "/Assets/Nova/3.png",
@@ -184,12 +183,11 @@ export const products = [
     ]
   },
   {
-    "id": "Luxury-Exterior-Emulsion",
-    "slug": "Luxury-Exterior-Emulsion",
-    "url": "https://calycopaints.com/product/Luxury-Exterior-Emulsion",
-    "name": "Luxury Exterior Emulsion",
-    "display_name": "Luxury Exterior Emulsion",
-    "image": "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
+    "id": "ExteriorLatex",
+    "slug": "exterior-latex-paint",
+    "url": "https://calycopaints.com/product/exterior-latex-paint",
+    "name": "Calyco Exterior Latex Paint",
+    "image": "/Assets/Exterior Latex Paint/Main.png",
     "description": "High-performance exterior latex engineered to weather intense sun, rain, and humidity while keeping façades vivid.",
     "short-description": "UV-shielding, hydrophobic exterior latex for enduring curb appeal.",
     "details": "Calyco Exterior Latex Paint fortifies exterior walls with advanced UV blockers, breathable polymers, and mildew guards for long-lasting beauty.",
@@ -358,52 +356,12 @@ export const products = [
     "coats_required": "2 coats",
     "temperature_range": "10C-40C",
     "humidity_range": "Under 85% RH",
-    "display_name": "Luxury Exterior Emulsion",
+    "display_name": "Calyco Exterior Latex Paint",
     "images": [
-      "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
+      "/Assets/Exterior Latex Paint/Main.png",
       "/Assets/Nova/1.png",
       "/Assets/Nova/2.png",
       "/Assets/Nova/3.png"
-    ]
-  },
-  {
-    "id": "Premium-Interior-Emulsion",
-    "slug": "Premium-Interior-Emulsion",
-    "url": "https://calycopaints.com/product/Premium-Interior-Emulsion",
-    "name": "Premium Interior Emulsion",
-    "display_name": "Premium Interior Emulsion",
-    "image": "/Assets/Product Images/Premium Interior Emulsion/1.png",
-    "description": "Premium interior emulsion with low sheen finish for sophisticated spaces.",
-    "short-description": "Low sheen finish. Ultra-low VOC. Designer-grade quality.",
-    "details": "Premium Interior Emulsion delivers elegant low sheen finish with superior coverage and durability.",
-    "category": "Interior",
-    "finish_type_sheen": ["Low Sheen"],
-    "finishes": ["Low Sheen"],
-    "price": 700,
-    "packaging": ["1L", "4L", "10L", "20L"],
-    "images": [
-      "/Assets/Product Images/Premium Interior Emulsion/1.png",
-      "/Assets/Nova/1.png",
-      "/Assets/Nova/2.png"
-    ]
-  },
-  {
-    "id": "Premium-Exterior-Emulsion",
-    "slug": "Premium-Exterior-Emulsion",
-    "url": "https://calycopaints.com/product/Premium-Exterior-Emulsion",
-    "name": "Premium Exterior Emulsion",
-    "display_name": "Premium Exterior Emulsion",
-    "image": "/Assets/Product Images/Premium Exterior Emulsion/1.png",
-    "description": "Premium exterior emulsion with matte finish for modern exteriors.",
-    "short-description": "Matte finish. Weather-resistant. UV protection.",
-    "details": "Premium Exterior Emulsion provides durable matte finish with advanced weather protection.",
-    "category": "Exterior",
-    "finish_type_sheen": ["Matte Finish"],
-    "finishes": ["Matte Finish"],
-    "price": 700,
-    "packaging": ["1L", "4L", "10L", "20L"],
-    "images": [
-      "/Assets/Product Images/Premium Exterior Emulsion/1.png"
     ]
   },
   {
@@ -1264,7 +1222,7 @@ export const products = [
     "slug": "waterproofing-sealer",
     "url": "https://calycopaints.com/product/waterproofing-sealer",
     "name": "Waterproofing Sealer",
-    "image": "/Assets/Product Images/Waterproof Sealer/1.png",
+    "image": "/Assets/Defense/NoBg.png",
     "description": "Ultimate multi-surface coating for all environments.",
     "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
     "details": "Waterproofing Sealer adapts to nearly any surface, offering a breathable, flexible, and long-lasting barrier across interior and exterior conditions.",
@@ -1351,9 +1309,6 @@ export const products = [
     "color_options": [
       "Clear and tinted neutrals"
     ],
-    "availableColors": [
-      "Chocolate Brown"
-    ],
     "spread_rate": "85-110 sq. ft./Ltr",
     "preparation_instructions": "Apply on dry, masked surfaces",
     "safety_precautions": "Wear protective gear and ventilate",
@@ -1398,7 +1353,7 @@ export const products = [
       "4L-Protective": "gid://shopify/ProductVariant/42638016282742",
       "10L-Protective": "gid://shopify/ProductVariant/42638016348278"
     },
-    "images": ["/Assets/Product Images/Waterproof Sealer/1.png"],
+    "images": ["/Assets/Defense/NoBg.png"],
     "docs": {
       "tds": "/Assets/docs/waterproofing-sealer-tds.pdf",
       "sds": "/Assets/docs/waterproofing-sealer-sds.pdf",
