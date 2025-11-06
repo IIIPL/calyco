@@ -260,18 +260,21 @@ const BudgetCalculator = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F5FF] via-[#EFE9FC] to-[#F5F0FB]" />
+        <div className="absolute -top-16 -left-20 w-64 h-64 rounded-full bg-[#432452]/10 blur-3xl" />
+        <div className="absolute top-24 right-10 w-48 h-48 rounded-full bg-[#998850]/15 blur-[140px]" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-18 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center"
           >
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              Budget Calculator
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#0F1221]">
+              <span className="text-[#998850]">Budget</span> Calculator
             </h1>
-            <p className="text-lg text-white/90">
-              Get instant estimate for paint or texture services
+            <p className="text-base sm:text-lg text-[#0F1221]/70 max-w-3xl mx-auto">
+              Get instant, accurate estimates for paint or texture services with Calyco&apos;s planning toolkit.
+              Tailored to your space. Transparent by design.
             </p>
           </motion.div>
         </div>

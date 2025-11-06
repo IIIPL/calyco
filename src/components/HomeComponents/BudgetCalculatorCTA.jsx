@@ -1,47 +1,52 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const BudgetCalculatorCTA = () => {
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="relative min-h-[75vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh]">
-        {/* Background with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E8E4F3] via-[#F0ECF5] to-[#EDE9F4]" />
+    <section className="relative w-full bg-gradient-to-r from-white via-[#F5F0FB] to-[#F5F0FB] py-12 md:py-16 lg:py-20 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 left-16 w-48 h-48 bg-[#432452]/10 blur-[140px]" />
+        <div className="absolute bottom-0 right-24 w-56 h-56 bg-[#998850]/20 blur-[150px]" />
+      </div>
 
-        {/* Family Image on Right */}
-        <div className="absolute right-0 bottom-0 w-full lg:w-1/2 h-full">
-          <img
-            src="/Assets/family.png"
-            alt="Family holding house model"
-            className="absolute right-0 bottom-0 h-full w-auto object-contain object-bottom"
-          />
-        </div>
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h3 className="text-3xl sm:text-4xl md:text-[46px] font-bold leading-tight text-[#0F1221]">
+              <span className="text-[#998850]">Never Overpay</span> for Paint Again
+            </h3>
 
-        {/* Content */}
-        <div className="relative h-full flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-20">
-            <div className="max-w-xl lg:max-w-2xl">
-              <div className="inline-block mb-4">
-                <span className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold uppercase tracking-wider text-[#998850]">
-                  BUDGET CONFIDENCE
-                </span>
-              </div>
+            <p className="text-base sm:text-lg text-[#0F1221]/75 leading-relaxed max-w-xl">
+              Calculate exactly what you need with our intelligent budget planner. No surprises—just precise estimates tailored to your space.
+            </p>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F1221] mb-6 leading-tight">
-                Never <span className="text-[#432452]">Overpay</span> for Paint Again
-              </h2>
+            <Link
+              to="/budget-calculator"
+              className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Calculate Budget
+            </Link>
+          </motion.div>
 
-              <p className="text-base md:text-lg text-[#0F1221]/70 mb-8 leading-relaxed max-w-xl">
-                Calculate exactly what you need with our intelligent budget planner. No surprises, just precise estimates tailored to your space.
-              </p>
-
-              <Link
-                to="/budget-calculator"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#0F1221] shadow-xl transition hover:shadow-2xl hover:-translate-y-1"
-              >
-                Calculate Budget
-              </Link>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex justify-center lg:justify-end"
+          >
+            <img
+              src="/Assets/budget.png"
+              alt="Family happily planning paint budget"
+              className="w-full max-w-sm sm:max-w-md lg:max-w-[460px] object-contain drop-shadow-2xl"
+            />
+          </motion.div>
         </div>
       </div>
     </section>

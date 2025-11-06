@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { HiMiniStar } from 'react-icons/hi2';
 import SEO from '../components/SEO';
 
 import GridMasonry from '../components/GridMasonry';
@@ -18,6 +19,7 @@ import PremiumTextureSplit from '../components/HomeComponents/PremiumTextureSpli
 import MarqueeStrip from '../components/HomeComponents/MarqueeStrip';
 import WhyCalycoShowcase from '../components/HomeComponents/WhyCalycoShowcase';
 import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCTA';
+import ProductShowcase from '../components/HomeComponents/ProductShowcase';
 
 
 const Home = () => {
@@ -41,6 +43,27 @@ const Home = () => {
     { name: "Bathroom", image: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg", route: "/inspirations/bathroom" },
     { name: "Hallway", image: "/Assets/InteriorInspiratoin/living-room.png", route: "/inspirations/hallway" },
     { name: "Kitchen", image: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", route: "/inspirations/kitchen" }
+  ];
+
+  const testimonials = [
+    {
+      name: "Rajesh M.",
+      location: "Dwarka, Delhi",
+      initials: "RM",
+      quote: "Finally, a paint service that doesn't harass you with calls. Got my 3 BHK painted for 20% less than Asian Paints quote. Quality is excellent!"
+    },
+    {
+      name: "Priya S.",
+      location: "Gurgaon",
+      initials: "PS",
+      quote: "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
+    },
+    {
+      name: "Amit K.",
+      location: "Noida",
+      initials: "AK",
+      quote: "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
+    }
   ];
 
   const visibleInspirations = 6;
@@ -320,105 +343,65 @@ const Home = () => {
       {/* Why Calyco Showcase */}
       <WhyCalycoShowcase />
 
+      {/* Product Showcase Section */}
+      <ProductShowcase />
+
       {/* Inspiration Gallery */}
       <GridMasonry images={insp} />
 
       {/* What Our Customers Say Section */}
-      <section className="bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-[28px] sm:text-[32px] font-bold text-[#0F1221] md:text-[40px] lg:text-[48px] leading-tight tracking-[-0.01em]">
-              What Our <span className="text-[#4B007D]">Customers Say</span>
+      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F9F6FF] via-white to-[#F6F4FF]" />
+        <div className="absolute -top-32 left-1/3 w-[38rem] h-[38rem] -translate-y-1/2 rounded-full bg-[#432452]/12 blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[26rem] h-[26rem] translate-x-1/3 rounded-full bg-[#998850]/20 blur-[220px]" />
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-[30px] sm:text-[36px] md:text-[44px] font-bold tracking-tight text-[#0F1221]">
+              What Our <span className="text-[#432452]">Customers Say</span>
             </h2>
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
-              Join 100+ satisfied homeowners in Delhi NCR who trust CALYCO for premium paint solutions.
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-[#0F1221]/70 leading-relaxed max-w-2xl mx-auto">
+              Join 100+ satisfied homeowners across NCR who trust CALYCO for designer finishes, thoughtful service, and long-lasting protection.
             </p>
-          </div>
-          
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
-            >
-              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
-                "Finally, a paint service that doesn't harass you with calls. Got my 3 BHK painted for 20% less than Asian Paints quote. Quality is excellent!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
-                  RM
+          </motion.div>
+
+          <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <motion.article
+                key={item.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative overflow-hidden rounded-3xl bg-white/90 backdrop-blur-xl border border-white/70 shadow-[0_25px_60px_-32px_rgba(15,18,33,0.4)] hover:-translate-y-1 hover:shadow-[0_28px_70px_-28px_rgba(67,37,82,0.5)] transition-all duration-300"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#432452] via-[#998850] to-[#432452] opacity-70" />
+                <div className="p-6 sm:p-8 flex flex-col h-full">
+                  <div className="flex items-center gap-1 text-[#998850] mb-5">
+                    {Array.from({ length: 5 }).map((_, star) => (
+                      <HiMiniStar key={star} className="h-4 w-4 sm:h-5 sm:w-5" />
+                    ))}
+                  </div>
+                  <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed flex-1">
+                    “{item.quote}”
+                  </p>
+                  <div className="mt-6 pt-6 border-t border-[#0F1221]/10 flex items-center gap-3">
+                    <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#432452] text-sm sm:text-base font-semibold text-white">
+                      {item.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-semibold text-[#0F1221]">{item.name}</p>
+                      <p className="text-xs sm:text-sm text-[#0F1221]/60">{item.location}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Rajesh M.</p>
-                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Dwarka, Delhi</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
-            >
-              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
-                "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
-                  PS
-                </div>
-                <div>
-                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Priya S.</p>
-                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Gurgaon</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="rounded-[24px] border border-[#0F1221]/10 bg-[#FBF9F6] p-6 sm:p-8 shadow-[0_8px_32px_rgba(15,18,33,0.06)] hover:shadow-[0_16px_64px_rgba(75,0,125,0.12)] transition-all duration-300"
-            >
-              <div className="mb-5 sm:mb-6 flex text-[#D4AF37]">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-4 w-4 sm:h-5 sm:w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm sm:text-base text-[#0F1221]/80 leading-relaxed mb-5 sm:mb-6">
-                "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#4B007D] text-sm sm:text-base font-semibold text-white">
-                  AK
-                </div>
-                <div>
-                  <p className="text-sm sm:text-base font-semibold text-[#0F1221]">Amit K.</p>
-                  <p className="text-xs sm:text-sm text-[#0F1221]/60">Noida</p>
-                </div>
-              </div>
-            </motion.div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
