@@ -3,7 +3,7 @@
  * Total Colors: 176
  * Color Families: 12
  *
- * Generated on: 2025-10-22
+ * Generated on: 2025-11-07
  * Source: admin/colors.csv
  *
  * NOTE: File is auto-generated. Run `npm run generate:colors` after updating admin/colors.csv.
@@ -40,6 +40,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -101,6 +102,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -160,6 +162,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -219,6 +222,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -278,6 +282,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -339,6 +344,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -396,6 +402,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -455,6 +462,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -512,6 +520,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -570,6 +579,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -630,6 +640,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -689,6 +700,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -746,6 +758,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -804,6 +817,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -863,6 +877,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -923,6 +938,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -982,6 +998,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "whites",
           "ral",
@@ -1049,6 +1066,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1107,6 +1125,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1165,6 +1184,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1223,6 +1243,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1281,6 +1302,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1338,6 +1360,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1396,6 +1419,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1453,6 +1477,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1512,6 +1537,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1570,6 +1596,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1629,6 +1656,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1688,6 +1716,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1745,6 +1774,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1802,6 +1832,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1859,6 +1890,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1918,6 +1950,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -1978,6 +2011,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -2038,6 +2072,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -2098,6 +2133,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "grays",
           "ral",
@@ -2163,6 +2199,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2222,6 +2259,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2281,6 +2319,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2339,6 +2378,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2396,6 +2436,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2456,6 +2497,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior, Waterproofing Sealer",
         "tags": [
           "earth",
           "tones",
@@ -2517,6 +2559,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2576,6 +2619,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2634,6 +2678,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2693,6 +2738,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2753,6 +2799,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2811,6 +2858,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2870,6 +2918,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2928,6 +2977,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -2988,6 +3038,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3047,6 +3098,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3107,6 +3159,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3165,6 +3218,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3223,6 +3277,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3282,6 +3337,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3341,6 +3397,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3402,6 +3459,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3461,6 +3519,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "earth",
           "tones",
@@ -3528,6 +3587,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3586,6 +3646,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3643,6 +3704,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3701,6 +3763,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3759,6 +3822,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3817,6 +3881,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3876,6 +3941,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3935,6 +4001,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -3993,6 +4060,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4051,6 +4119,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4109,6 +4178,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4167,6 +4237,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4225,6 +4296,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4283,6 +4355,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4342,6 +4415,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4403,6 +4477,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4463,6 +4538,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blues",
           "ral",
@@ -4528,6 +4604,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4586,6 +4663,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4644,6 +4722,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4701,6 +4780,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4758,6 +4838,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4815,6 +4896,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4872,6 +4954,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4929,6 +5012,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -4987,6 +5071,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5045,6 +5130,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5104,6 +5190,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5161,6 +5248,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5219,6 +5307,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5276,6 +5365,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5334,6 +5424,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5392,6 +5483,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5450,6 +5542,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5508,6 +5601,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5568,6 +5662,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5628,6 +5723,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "greens",
           "ral",
@@ -5695,6 +5791,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -5755,6 +5852,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -5814,6 +5912,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -5874,6 +5973,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -5933,6 +6033,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -5992,6 +6093,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6050,6 +6152,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6111,6 +6214,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6171,6 +6275,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6231,6 +6336,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6290,6 +6396,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6348,6 +6455,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6407,6 +6515,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6469,6 +6578,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6529,6 +6639,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "yellows",
           "golds",
@@ -6597,6 +6708,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6657,6 +6769,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6717,6 +6830,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6777,6 +6891,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": false,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6837,6 +6952,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6898,6 +7014,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -6957,6 +7074,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7017,6 +7135,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7076,6 +7195,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7134,6 +7254,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7193,6 +7314,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7252,6 +7374,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7312,6 +7435,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7374,6 +7498,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7435,6 +7560,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "reds",
           "pinks",
@@ -7502,6 +7628,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7562,6 +7689,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7620,6 +7748,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7679,6 +7808,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7739,6 +7869,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7798,6 +7929,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7858,6 +7990,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7918,6 +8051,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -7978,6 +8112,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -8039,6 +8174,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "purples",
           "violets",
@@ -8105,6 +8241,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8161,6 +8298,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8221,6 +8359,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8282,6 +8421,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8341,6 +8481,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8402,6 +8543,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8461,6 +8603,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8520,6 +8663,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8578,6 +8722,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8636,6 +8781,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8695,6 +8841,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8755,6 +8902,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8814,6 +8962,7 @@ export const calycoColors = [
         "popularity": "High",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8873,6 +9022,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "beiges",
           "tans",
@@ -8939,6 +9089,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -8996,6 +9147,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9053,6 +9205,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9109,6 +9262,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9165,6 +9319,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9221,6 +9376,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9277,6 +9433,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9333,6 +9490,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9389,6 +9547,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9446,6 +9605,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9502,6 +9662,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9561,6 +9722,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "oranges",
           "ral",
@@ -9625,6 +9787,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9684,6 +9847,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9744,6 +9908,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9802,6 +9967,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": true,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9861,6 +10027,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9920,6 +10087,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -9978,6 +10146,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -10039,6 +10208,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "blacks",
           "deep",
@@ -10109,6 +10279,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",
@@ -10169,6 +10340,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",
@@ -10229,6 +10401,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",
@@ -10289,6 +10462,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",
@@ -10350,6 +10524,7 @@ export const calycoColors = [
         "popularity": "Low",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",
@@ -10409,6 +10584,7 @@ export const calycoColors = [
         "popularity": "Medium",
         "contractor": false,
         "designer": true,
+        "uses": "Interior, Exterior",
         "tags": [
           "specialty",
           "metallics",

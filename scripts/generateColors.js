@@ -122,6 +122,7 @@ function transformRowToColor(row, index) {
   const popularity = safeTrim(row['Popularity']);
   const contractor = toBoolean(row['Contractor']);
   const designer = toBoolean(row['Designer']);
+  const uses = safeTrim(row['Uses']);
 
   const sheenOptions = splitOptions(sheen);
   const suitability = computeSuitability(interiorUse, exteriorUse);
@@ -160,6 +161,7 @@ function transformRowToColor(row, index) {
     popularity,
     contractor,
     designer,
+    uses,
     tags,
     suitability,
     description: mood,

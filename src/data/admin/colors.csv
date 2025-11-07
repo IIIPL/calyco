@@ -1,177 +1,177 @@
-RAL Code,Calyco Name,Hex Code,Color Family,Tone,Layer,Sheen,Collection,Interior Use,Exterior Use,Mood,Light Reflectance,Undertone,Popularity,Contractor,Designer
-RAL 9010,Pure White,#F7F4EF,Whites,Neutral,Foundation,Matte/Eggshell,Essential Neutrals,"Ceilings, Walls, Trim","Facades, Trim","Clean, Fresh, Minimalist",85-90%,Warm,High,Yes,Yes
-RAL 9016,Bright White,#F7FBF5,Whites,Cool,Foundation,Matte/Eggshell,Essential Neutrals,"Ceilings, Modern Spaces",Contemporary Facades,"Crisp, Modern, Bright",90-95%,Cool,High,Yes,Yes
-RAL 9001,Cream White,#F5E8DC,Whites,Warm,Foundation,Matte/Satin,Essential Neutrals,"Living Rooms, Bedrooms",Traditional Homes,"Warm, Inviting, Classic",80-85%,Yellow,High,Yes,Yes
-RAL 9002,Warm White,#E7E4D8,Whites,Warm,Foundation,Matte,Essential Neutrals,"Bedrooms, Common Areas",Heritage Buildings,"Cozy, Comfortable, Soft",75-80%,Beige,Medium,Yes,Yes
-RAL 1013,Pearl White,#EAE3CD,Whites,Warm,Editorial,Satin/Pearl,Contemporary Neutrals,"Feature Walls, Dining",Luxury Facades,"Elegant, Refined, Sophisticated",70-75%,Yellow,Medium,No,Yes
-RAL 1015,Ivory,#E5D9C8,Whites,Warm,Editorial,Matte/Satin,Contemporary Neutrals,"Bedrooms, Studies",Colonial Style,"Classic, Timeless, Warm",70-75%,Cream,Medium,No,Yes
-RAL 9018,Silk White,#CFD3CD,Whites,Cool,Editorial,Satin,Contemporary Neutrals,Minimalist Spaces,Modern Architecture,"Subtle, Understated, Modern",65-70%,Grey,Low,No,Yes
-RAL 9003,Studio White,#EEE9E3,Whites,Neutral,Editorial,Matte,Contemporary Neutrals,"Art Studios, Galleries",Commercial Buildings,"Professional, Clean, Neutral",75-80%,Neutral,Medium,No,Yes
-RAL 1014,Linen,#DED3B6,Whites,Warm,Editorial,Matte,Contemporary Neutrals,"Bedrooms, Spa Spaces",Resort Style,"Natural, Organic, Calming",65-70%,Sand,Low,No,Yes
-RAL 9022,Dove Gray,#8E8E8E,Whites,Cool,Editorial,Matte/Satin,Contemporary Neutrals,Industrial Lofts,Urban Buildings,"Industrial, Modern, Urban",40-45%,Neutral,Medium,No,Yes
-RAL 7047,Cloud Gray,#C8C8C8,Whites,Cool,Editorial,Matte,Contemporary Neutrals,"Offices, Modern Homes",Commercial Facades,"Soft, Airy, Professional",55-60%,Cool Grey,Medium,No,Yes
-RAL 7035,Silver Gray,#D4D4D4,Whites,Cool,Editorial,Satin,Contemporary Neutrals,"Tech Offices, Showrooms",Modern Buildings,"Sleek, Contemporary, Tech",60-65%,Silver,Medium,No,Yes
-RAL 9006,Metallic White,#A5A5A0,Whites,Cool,Editorial,Metallic,Contemporary Neutrals,"Feature Walls, Accents",Architectural Details,"Luxe, Industrial, Bold",50-55%,Metallic,Low,No,Yes
-RAL 7044,Silk Gray,#C5BBAE,Whites,Warm,Editorial,Satin,Contemporary Neutrals,"Bedrooms, Lounges",Boutique Hotels,"Sophisticated, Soft, Elegant",55-60%,Taupe,Low,No,Yes
-RAL 9011,Monsoon White,#F7F4EF,Whites,Neutral,Signature,Matte,Heritage Collection,Traditional Homes,Heritage Properties,"Pure, Cultural, Timeless",85-90%,Warm,Medium,No,Yes
-RAL 1012,Lotus Cream,#E5D9C8,Whites,Warm,Signature,Matte/Satin,Heritage Collection,"Meditation Rooms, Spas",Wellness Centers,"Spiritual, Serene, Sacred",80-85%,Cream,Low,No,Yes
-RAL 1004,Jasmine White,#F5E8DC,Whites,Warm,Signature,Satin,Heritage Collection,"Master Bedrooms, Lounges",Boutique Properties,"Fragrant, Luxurious, Indian",70-75%,Yellow,Low,No,Yes
-RAL 7001,Light Gray,#8B949A,Grays,Cool,Foundation,Matte/Satin,Professional Grays,"Offices, Commercial",Office Buildings,"Professional, Neutral, Calm",40-45%,Blue,High,Yes,Yes
-RAL 7004,Medium Gray,#6C7156,Grays,Warm,Foundation,Matte,Professional Grays,Industrial Spaces,Warehouses,"Sturdy, Grounded, Utilitarian",30-35%,Green,Medium,Yes,No
-RAL 7005,Slate Gray,#646A58,Grays,Cool,Foundation,Matte,Professional Grays,"Basements, Garages",Industrial Buildings,"Strong, Durable, Practical",25-30%,Green,Medium,Yes,No
-RAL 7006,Neutral Gray,#665F50,Grays,Warm,Foundation,Matte,Professional Grays,"Workshops, Garages",Industrial Facades,"Functional, Understated, Practical",25-30%,Brown,Low,Yes,No
-RAL 7034,Sand Gray,#917D6C,Grays,Warm,Foundation,Matte,Professional Grays,"Corridors, Utility Spaces",Commercial Buildings,"Earthy, Warm, Subdued",35-40%,Beige,Low,Yes,No
-RAL 7040,Window Gray,#A4ADB0,Grays,Cool,Foundation,Satin,Professional Grays,"Offices, Showrooms",Window Frames,"Clean, Corporate, Modern",45-50%,Blue,High,Yes,Yes
-RAL 7012,Cool Gray,#434B4D,Grays,Cool,Foundation,Matte,Professional Grays,"Accent Walls, Offices",Commercial Buildings,"Professional, Sleek, Modern",20-25%,Blue,Medium,Yes,Yes
-RAL 7016,Anthracite Gray,#434750,Grays,Cool,Foundation,Matte/Satin,Professional Grays,"Feature Walls, Modern Spaces",Contemporary Architecture,"Bold, Sophisticated, Urban",15-20%,Blue,High,Yes,Yes
-RAL 7021,Charcoal Gray,#383E42,Grays,Cool,Foundation,Matte,Professional Grays,"Accent Walls, Lofts",Urban Buildings,"Dramatic, Moody, Strong",10-15%,Neutral,Medium,Yes,Yes
-RAL 7030,Deep Gray,#2F353B,Grays,Cool,Foundation,Matte,Professional Grays,"Feature Walls, Theaters",Modern Facades,"Intense, Dramatic, Bold",8-12%,Blue,Low,Yes,Yes
-RAL 5014,Dusty Blue-Gray,#606E8C,Grays,Cool,Editorial,Matte/Satin,Designer Grays,"Bedrooms, Living Rooms",Boutique Buildings,"Sophisticated, Calming, Trendy",25-30%,Blue,High,No,Yes
-RAL 5023,Distant Blue,#49678D,Grays,Cool,Editorial,Matte,Designer Grays,"Studies, Bedrooms",Coastal Properties,"Contemplative, Serene, Elegant",20-25%,Blue,Medium,No,Yes
-RAL 7037,Soft Gray,#7F7679,Grays,Warm,Editorial,Matte,Designer Grays,"Living Rooms, Bedrooms",Residential Buildings,"Gentle, Warm, Inviting",30-35%,Purple,Medium,No,Yes
-RAL 7038,Stone Gray,#7D7F7D,Grays,Neutral,Editorial,Matte,Designer Grays,Contemporary Spaces,Modern Architecture,"Balanced, Natural, Grounded",30-35%,Neutral,Medium,No,Yes
-RAL 7032,Pebble Gray,#474B4E,Grays,Cool,Editorial,Matte,Designer Grays,Modern Interiors,Contemporary Facades,"Refined, Understated, Modern",18-22%,Blue,Medium,No,Yes
-RAL 9023,Pearl Gray,#828282,Grays,Cool,Editorial,Pearl/Satin,Designer Grays,"Feature Walls, Offices",Luxury Buildings,"Elegant, Luminous, Premium",35-40%,Silver,Low,No,Yes
-RAL 7039,Quartz Gray,#B5B8B1,Grays,Warm,Editorial,Matte/Satin,Designer Grays,"Living Spaces, Kitchens",Residential Facades,"Light, Airy, Contemporary",50-55%,Beige,Medium,No,Yes
-RAL 7015,Modern Charcoal,#434750,Grays,Cool,Signature,Matte/Satin,Urban Collection,"Feature Walls, Commercial",High-End Commercial,"Contemporary, Bold, Premium",15-20%,Blue,High,No,Yes
-RAL 7033,Concrete Shield,#B8BDB6,Grays,Cool,Signature,Matte,Industrial Collection,Industrial Lofts,Industrial Buildings,"Protective, Durable, Industrial",50-55%,Green,Medium,Yes,Yes
-RAL 8004,Clay Brown,#734222,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Rustic Spaces, Dens",Traditional Buildings,"Grounded, Natural, Rustic",20-25%,Red,Medium,Yes,Yes
-RAL 8003,Terra Brown,#6C3B2A,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Living Rooms, Studies",Heritage Buildings,"Warm, Earthy, Traditional",18-22%,Red,Medium,Yes,Yes
-RAL 8024,Natural Tan,#795038,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Bedrooms, Lounges",Residential Buildings,"Comfortable, Warm, Inviting",22-27%,Orange,High,Yes,Yes
-RAL 8025,Soft Earth,#755C48,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Common Areas, Hallways",Traditional Homes,"Subtle, Warm, Natural",25-30%,Brown,Medium,Yes,Yes
-RAL 8011,Nut Brown,#6F4F28,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Libraries, Studies",Wood-Style Buildings,"Rich, Warm, Classic",20-25%,Orange,Medium,Yes,Yes
-RAL 8017,Chocolate Brown,#45322E,Earth Tones,Warm,Foundation,Matte/Satin,Natural Earth,"Accent Walls, Dens",Traditional Architecture,"Deep, Rich, Luxurious",12-17%,Red,Low,Yes,Yes
-RAL 8019,Warm Brown,#403A3A,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Feature Walls, Basements",Dark Wood Style,"Cozy, Dark, Enveloping",10-15%,Neutral,Low,Yes,No
-RAL 8001,Golden Ochre,#826C34,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Feature Walls, Dining",Mediterranean Style,"Warm, Inviting, Golden",30-35%,Yellow,Medium,No,Yes
-RAL 8002,Spice Brown,#955F20,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Accent Walls, Kitchens",Craftsman Style,"Bold, Warm, Spicy",25-30%,Orange,Low,No,Yes
-RAL 3009,Oxide Clay,#6D3F33,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Feature Walls, Libraries",Rustic Buildings,"Deep, Earthy, Grounded",20-25%,Red,Low,No,Yes
-RAL 8023,Terracotta,#A45729,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Dining Rooms, Kitchens",Mediterranean Buildings,"Warm, Vibrant, Mediterranean",30-35%,Orange,High,No,Yes
-RAL 2013,Burnt Orange,#A9461E,Earth Tones,Warm,Editorial,Matte/Satin,Designer Earth,"Accent Walls, Creative Spaces",Bold Architecture,"Energetic, Bold, Warm",28-33%,Orange,Medium,No,Yes
-RAL 8007,Rustic Clay,#8E402A,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Rustic Interiors, Lodges",Farmhouse Style,"Rustic, Warm, Authentic",25-30%,Red,Low,No,Yes
-RAL 1027,Curry Gold,#A77F0E,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Dining Rooms, Foyers",Statement Buildings,"Rich, Luxurious, Spicy",35-40%,Yellow,Low,No,Yes
-RAL 1036,Deep Gold,#8A6F30,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Feature Walls, Dining",Luxury Buildings,"Opulent, Warm, Elegant",32-37%,Gold,Low,No,Yes
-RAL 8029,Copper Clay,#763C28,Earth Tones,Warm,Editorial,Matte/Satin,Designer Earth,"Accent Walls, Dens",Craftsman Buildings,"Warm, Metallic, Rich",22-27%,Red,Low,No,Yes
-RAL 8015,Chestnut,#633A34,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Libraries, Studies",Traditional Homes,"Rich, Dark, Sophisticated",18-23%,Red,Low,No,Yes
-RAL 8016,Mahogany,#4C2F27,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Accent Walls, Libraries",Traditional Architecture,"Luxurious, Deep, Elegant",12-17%,Red,Low,No,Yes
-RAL 7003,Olive Earth,#7E7B52,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Living Rooms, Studies",Natural Stone Style,"Natural, Grounded, Organic",30-35%,Green,Low,No,Yes
-RAL 6003,Olive Green,#424632,Earth Tones,Cool,Editorial,Matte,Designer Earth,"Feature Walls, Modern Spaces",Contemporary Buildings,"Natural, Sophisticated, Calm",15-20%,Green,Medium,No,Yes
-RAL 8028,Rajasthani Clay,#4E3B31,Earth Tones,Warm,Signature,Matte,Heritage Collection,"Feature Walls, Traditional Spaces",Heritage Properties,"Cultural, Traditional, Authentic",18-22%,Red,Low,No,Yes
-RAL 8014,Terracotta Heritage,#382C1E,Earth Tones,Warm,Signature,Matte,Heritage Collection,"Traditional Dining, Kitchens",Indian Architecture,"Traditional, Warm, Cultural",30-35%,Orange,Medium,No,Yes
-RAL 1006,Turmeric Earth,#E49E00,Earth Tones,Warm,Signature,Satin,Heritage Collection,"Dining Rooms, Traditional Spaces",Cultural Buildings,"Vibrant, Cultural, Warm",35-40%,Yellow,Low,No,Yes
-RAL 5012,Light Blue,#3B83BD,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Bedrooms, Bathrooms",Coastal Buildings,"Fresh, Calming, Airy",30-35%,Blue,High,Yes,Yes
-RAL 5015,Sky Blue,#2271B3,Blues,Cool,Foundation,Matte,Essential Blues,"Living Rooms, Bedrooms",Residential Facades,"Bright, Cheerful, Open",28-33%,Blue,High,Yes,Yes
-RAL 5007,Clear Blue,#3E5F8A,Blues,Cool,Foundation,Matte,Essential Blues,"Offices, Commercial",Commercial Buildings,"Professional, Trustworthy, Calm",25-30%,Blue,Medium,Yes,Yes
-RAL 5019,Marine Blue,#1B5583,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Accent Walls, Studies",Maritime Buildings,"Deep, Strong, Nautical",20-25%,Blue,Medium,Yes,Yes
-RAL 5020,Ocean Blue,#1D334A,Blues,Cool,Foundation,Matte,Essential Blues,"Feature Walls, Libraries",Traditional Architecture,"Rich, Deep, Sophisticated",12-17%,Blue,Low,Yes,Yes
-RAL 5010,Deep Navy,#0E294B,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Accent Walls, Corporate",Corporate Buildings,"Bold, Authoritative, Classic",8-12%,Blue,Medium,Yes,Yes
-RAL 5024,Pastel Blue,#5D9B9B,Blues,Cool,Editorial,Matte,Contemporary Blues,"Bedrooms, Nurseries",Coastal Properties,"Soft, Soothing, Gentle",35-40%,Blue-Green,Medium,No,Yes
-RAL 5013,Dusty Blue,#1E213D,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Living Rooms, Bedrooms",Boutique Hotels,"Sophisticated, Muted, Elegant",25-30%,Blue,High,No,Yes
-RAL 5008,Distant Blue,#26252D,Blues,Cool,Editorial,Matte,Contemporary Blues,"Studies, Home Offices",Modern Buildings,"Contemplative, Refined, Serene",20-25%,Blue,Medium,No,Yes
-RAL 5021,Teal Blue,#256D7B,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Bathrooms, Feature Walls",Coastal Architecture,"Bold, Refreshing, Modern",22-27%,Teal,High,No,Yes
-RAL 5018,Aqua Blue,#3F888F,Blues,Cool,Editorial,Satin,Contemporary Blues,"Bathrooms, Kitchens",Pool Areas,"Vibrant, Fresh, Tropical",28-33%,Aqua,Medium,No,Yes
-RAL 5025,Pearl Teal,#2A6478,Blues,Cool,Editorial,Satin/Pearl,Contemporary Blues,"Feature Walls, Spas",Luxury Buildings,"Elegant, Unique, Premium",20-25%,Teal,Low,No,Yes
-RAL 5000,Twilight Blue,#354D73,Blues,Cool,Editorial,Matte,Contemporary Blues,"Bedrooms, Media Rooms",Residential Buildings,"Mysterious, Calm, Deep",18-23%,Blue,Low,No,Yes
-RAL 5026,Midnight Blue,#102C54,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Accent Walls, Theaters",Dramatic Architecture,"Dramatic, Rich, Bold",10-15%,Blue,Low,No,Yes
-RAL 5011,Monsoon Sky,#1F2A44,Blues,Cool,Signature,Matte/Satin,Heritage Collection,"Living Spaces, Bedrooms",Residential Buildings,"Cultural, Serene, Indian",25-30%,Blue,Medium,No,Yes
-RAL 5009,Arabian Sea,#025669,Blues,Cool,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Bathrooms",Coastal Properties,"Maritime, Cultural, Bold",22-27%,Teal,Medium,No,Yes
-RAL 5017,Peacock Blue,#063971,Blues,Cool,Signature,Satin,Heritage Collection,"Feature Walls, Dining",Cultural Buildings,"Vibrant, Regal, Indian",30-35%,Blue,Low,No,Yes
-RAL 6002,Leaf Green,#2D5016,Greens,Warm,Foundation,Matte,Essential Greens,"Accent Walls, Commercial",Industrial Buildings,"Natural, Fresh, Organic",18-23%,Green,Medium,Yes,Yes
-RAL 6001,Emerald Green,#287233,Greens,Cool,Foundation,Matte/Satin,Essential Greens,"Feature Walls, Offices",Commercial Buildings,"Rich, Luxurious, Bold",20-25%,Green,Medium,Yes,Yes
-RAL 6029,Mint Green,#20603D,Greens,Cool,Foundation,Matte,Essential Greens,"Hospitals, Wellness Centers",Healthcare Buildings,"Fresh, Clean, Soothing",22-27%,Green,High,Yes,Yes
-RAL 6005,Forest Green,#2F4538,Greens,Cool,Foundation,Matte,Essential Greens,"Libraries, Studies",Traditional Architecture,"Deep, Rich, Classic",15-20%,Green,Low,Yes,Yes
-RAL 6009,Pine Green,#31372B,Greens,Cool,Foundation,Matte,Essential Greens,"Accent Walls, Dens",Rustic Buildings,"Dark, Natural, Grounded",12-17%,Green,Low,Yes,No
-RAL 6028,Deep Pine,#2C5545,Greens,Cool,Foundation,Matte,Essential Greens,"Feature Walls, Commercial",Traditional Buildings,"Strong, Deep, Natural",15-20%,Green,Low,Yes,Yes
-RAL 6019,Pastel Green,#BDECB6,Greens,Cool,Editorial,Matte,Contemporary Greens,"Bedrooms, Nurseries",Residential Buildings,"Soft, Gentle, Calming",75-80%,Green,Medium,No,Yes
-RAL 6021,Pale Green,#89AC76,Greens,Warm,Editorial,Matte,Contemporary Greens,"Living Rooms, Kitchens",Residential Buildings,"Fresh, Natural, Inviting",45-50%,Green,Medium,No,Yes
-RAL 6034,Turquoise Green,#7FB5B5,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Bathrooms, Pool Areas",Coastal Properties,"Refreshing, Tropical, Bright",50-55%,Turquoise,High,No,Yes
-RAL 6027,Light Cyan,#84C3BE,Greens,Cool,Editorial,Satin,Contemporary Greens,"Bathrooms, Spas",Resort Style,"Calm, Spa-like, Serene",52-57%,Cyan,High,No,Yes
-RAL 6033,Cyan Turquoise,#497E76,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Feature Walls, Bathrooms",Modern Buildings,"Bold, Contemporary, Fresh",30-35%,Turquoise,Medium,No,Yes
-RAL 6004,Blue Green,#1F3A3D,Greens,Cool,Editorial,Matte,Contemporary Greens,"Accent Walls, Studies",Contemporary Architecture,"Deep, Sophisticated, Modern",12-17%,Teal,Low,No,Yes
-RAL 6011,Sage Green,#587246,Greens,Warm,Editorial,Matte,Contemporary Greens,"Living Rooms, Bedrooms",Residential Buildings,"Natural, Calming, Organic",30-35%,Green,High,No,Yes
-RAL 6025,Fern Green,#3D642D,Greens,Warm,Editorial,Matte,Contemporary Greens,"Feature Walls, Offices",Modern Buildings,"Fresh, Vibrant, Natural",25-30%,Green,Medium,No,Yes
-RAL 6018,Lime Green,#57A639,Greens,Warm,Editorial,Matte/Satin,Contemporary Greens,"Accent Walls, Creative Spaces",Bold Architecture,"Energetic, Bold, Fresh",38-43%,Lime,Low,No,Yes
-RAL 6024,Traffic Green,#308446,Greens,Cool,Editorial,Matte,Contemporary Greens,Commercial Spaces,Industrial Buildings,"Strong, Clear, Professional",32-37%,Green,Medium,No,Yes
-RAL 6032,Signal Green,#317F43,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Signage, Accent Walls",Commercial Buildings,"Bright, Bold, Visible",35-40%,Green,Low,No,Yes
-RAL 6035,Kerala Palm,#1C542D,Greens,Cool,Signature,Matte,Heritage Collection,"Feature Walls, Traditional Spaces",Heritage Properties,"Tropical, Cultural, Rich",22-27%,Green,Low,No,Yes
-RAL 6037,Monsoon Leaf,#008F39,Greens,Cool,Signature,Matte/Satin,Heritage Collection,"Living Spaces, Dining",Cultural Buildings,"Lush, Vibrant, Indian",20-25%,Green,Medium,No,Yes
-RAL 6036,Ganges Mint,#193737,Greens,Cool,Signature,Satin,Heritage Collection,"Bathrooms, Meditation Spaces",Wellness Centers,"Serene, Sacred, Peaceful",52-57%,Cyan,Low,No,Yes
-RAL 1018,Zinc Yellow,#F8F32B,Yellows & Golds,Warm,Foundation,Matte/Satin,Essential Yellows,"Accent Walls, Commercial",Industrial Buildings,"Bright, Energetic, Bold",80-85%,Yellow,Medium,Yes,No
-RAL 1021,Bright Yellow,#F3DA0B,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,"Feature Walls, Signage",Commercial Buildings,"Vibrant, Cheerful, Bold",78-83%,Yellow,Medium,Yes,No
-RAL 1023,Traffic Yellow,#FAD201,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,Industrial Spaces,Warning Applications,"Clear, Visible, Strong",82-87%,Yellow,Low,Yes,No
-RAL 1003,Signal Yellow,#E5A316,Yellows & Golds,Warm,Foundation,Matte/Satin,Essential Yellows,"Signage, Commercial",Industrial Buildings,"Bold, Warm, Visible",70-75%,Yellow,Medium,Yes,No
-RAL 1028,Melon Yellow,#F4A900,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,"Accent Walls, Kitchens",Residential Buildings,"Warm, Cheerful, Inviting",72-77%,Orange,Medium,Yes,Yes
-RAL 1017,Saffron Yellow,#F5BD00,Yellows & Golds,Warm,Editorial,Satin,Designer Yellows,"Dining Rooms, Kitchens",Statement Buildings,"Rich, Luxurious, Warm",73-78%,Yellow,High,No,Yes
-RAL 1032,Broom Yellow,#D6AE01,Yellows & Golds,Warm,Editorial,Satin,Designer Yellows,"Feature Walls, Foyers",Luxury Buildings,"Golden, Elegant, Rich",68-73%,Gold,Medium,No,Yes
-RAL 1033,Dahlia Yellow,#F3A505,Yellows & Golds,Warm,Editorial,Matte/Satin,Designer Yellows,"Accent Walls, Creative Spaces",Bold Architecture,"Vibrant, Bold, Warm",70-75%,Orange,Low,No,Yes
-RAL 1037,Sun Yellow,#F39F18,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Children's Rooms, Kitchens",Residential Buildings,"Bright, Cheerful, Sunny",68-73%,Orange,Medium,No,Yes
-RAL 1034,Pastel Yellow,#EFA94A,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Bedrooms, Living Rooms",Residential Buildings,"Soft, Warm, Inviting",65-70%,Peach,Medium,No,Yes
-RAL 1002,Sand Yellow,#C6A664,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Living Rooms, Bedrooms",Traditional Buildings,"Natural, Warm, Earthy",55-60%,Sand,High,No,Yes
-RAL 1019,Grey Beige,#9E9764,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Common Areas, Offices",Commercial Buildings,"Subdued, Natural, Neutral",45-50%,Beige,Low,No,Yes
-RAL 1007,Turmeric Gold,#DC9D00,Yellows & Golds,Warm,Signature,Satin,Heritage Collection,"Dining Rooms, Traditional Spaces",Cultural Buildings,"Rich, Cultural, Spicy",73-78%,Yellow,Medium,No,Yes
-RAL 1008,Marigold,#E49E00,Yellows & Golds,Warm,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Celebrations",Cultural Buildings,"Vibrant, Festive, Indian",72-77%,Orange,Low,No,Yes
-RAL 1031,Golden Temple,#E6A747,Yellows & Golds,Warm,Signature,Satin,Heritage Collection,"Feature Walls, Religious Spaces",Heritage Properties,"Sacred, Golden, Magnificent",68-73%,Gold,Low,No,Yes
-RAL 3000,Flame Red,#AF2B1E,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Accent Walls, Commercial",Industrial Buildings,"Bold, Energetic, Strong",30-35%,Red,Medium,Yes,No
-RAL 3020,Traffic Red,#CC0605,Reds & Pinks,Warm,Foundation,Matte,Essential Reds,"Signage, Industrial",Safety Applications,"Bright, Visible, Clear",35-40%,Red,Low,Yes,No
-RAL 3003,Ruby Red,#9B111E,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Feature Walls, Accent Walls",Commercial Buildings,"Deep, Rich, Luxurious",25-30%,Red,Low,Yes,Yes
-RAL 3004,Purple Red,#75151E,Reds & Pinks,Warm,Foundation,Matte,Essential Reds,"Accent Walls, Dens",Traditional Architecture,"Dark, Bold, Dramatic",18-23%,Purple-Red,Low,Yes,No
-RAL 3005,Wine Red,#5E2129,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Feature Walls, Libraries",Traditional Buildings,"Elegant, Deep, Sophisticated",15-20%,Burgundy,Low,Yes,Yes
-RAL 3012,Beige Red,#C1876B,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Living Rooms, Bedrooms",Residential Buildings,"Warm, Earthy, Soft",50-55%,Terracotta,Medium,No,Yes
-RAL 3015,Light Pink,#EA899A,Reds & Pinks,Cool,Editorial,Matte,Designer Reds,"Bedrooms, Nurseries",Residential Buildings,"Soft, Gentle, Romantic",60-65%,Pink,Medium,No,Yes
-RAL 3014,Old Rose,#D36E70,Reds & Pinks,Warm,Editorial,Matte/Satin,Designer Reds,"Bedrooms, Living Rooms",Residential Buildings,"Classic, Rosy, Warm",55-60%,Rose,Medium,No,Yes
-RAL 3017,Rose,#E63244,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Feature Walls, Creative Spaces",Boutique Buildings,"Vivid, Cheerful, Expressive",45-50%,Red,Low,No,Yes
-RAL 3018,Strawberry Red,#D53032,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Dining, Accent Walls",Modern Buildings,"Juicy, Energetic, Bold",40-45%,Red,Low,No,Yes
-RAL 3027,Raspberry Red,#C51D34,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Accent Walls, Retail",Commercial Buildings,"Punchy, Bold, Contemporary",35-40%,Red,Low,No,Yes
-RAL 3031,Orient Red,#B32428,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Accent Walls, Theaters",Dramatic Architecture,"Intense, Deep, Exotic",28-33%,Red,Low,No,Yes
-RAL 3013,Vermillion Spice,#A12312,Reds & Pinks,Warm,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Cultural",Heritage Properties,"Festive, Cultural, Bold",30-35%,Red,Medium,No,Yes
-RAL 3007,Rajasthani Pink,#412227,Reds & Pinks,Warm,Signature,Matte,Heritage Collection,"Bedrooms, Living Rooms",Cultural Buildings,"Cultural, Earthy, Elegant",50-55%,Terracotta,Medium,No,Yes
-RAL 3011,Lotus Pink,#7E2121,Reds & Pinks,Cool,Signature,Matte,Heritage Collection,"Nurseries, Bedrooms",Cultural Buildings,"Graceful, Gentle, Cultural",60-65%,Pink,Medium,No,Yes
-RAL 4006,Traffic Purple,#A03472,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Accent Walls, Creative Spaces",Modern Buildings,"Vivid, Modern, Bold",25-30%,Magenta,Low,Yes,Yes
-RAL 4008,Signal Violet,#924E7D,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Accent Walls, Retail",Commercial Buildings,"Violet, Punchy, Modern",28-33%,Violet,Low,Yes,Yes
-RAL 4009,Pastel Violet,#A18594,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Bedrooms, Studios",Residential Buildings,"Soft, Muted, Calm",45-50%,Violet,Medium,Yes,Yes
-RAL 4001,Red Lilac,#6D3F5B,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Accent Walls, Lounges",Boutique Interiors,"Deep, Layered, Artistic",25-30%,Red-Violet,Low,No,Yes
-RAL 4002,Red Violet,#922B3E,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Theaters, Accent Walls",Dramatic Interiors,"Moody, Luxurious, Bold",20-25%,Red-Violet,Low,No,Yes
-RAL 4003,Heather Violet,#DE4C8A,Purples & Violets,Cool,Editorial,Matte,Designer Purples,"Bedrooms, Creative Spaces",Modern Interiors,"Fresh, Floral, Creative",50-55%,Pink,Medium,No,Yes
-RAL 4004,Claret Violet,#641C34,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Libraries, Cozy Dens",Traditional Interiors,"Rich, Dramatic, Deep",12-17%,Wine,Low,No,Yes
-RAL 4005,Blue Lilac,#6C4675,Purples & Violets,Cool,Editorial,Matte,Designer Purples,"Bedrooms, Feature Walls",Contemporary Interiors,"Calm, Lavender, Balanced",35-40%,Violet,Medium,No,Yes
-RAL 4007,Royal Mauve,#4A192C,Purples & Violets,Cool,Signature,Matte,Heritage Collection,"Accent Walls, Lounges",Cultural Interiors,"Regal, Cultural, Refined",25-30%,Magenta,Low,No,Yes
-RAL 4010,Mystic Violet,#CF3476,Purples & Violets,Cool,Signature,Matte,Heritage Collection,"Feature Walls, Niche Areas",Cultural Interiors,"Mystic, Cultural, Elegant",28-33%,Violet,Low,No,Yes
-RAL 1001,Beige,#C2B078,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Living Rooms, Bedrooms",Residential Facades,"Neutral, Warm, Versatile",60-65%,Beige,High,Yes,Yes
-RAL 1011,Brown Beige,#8A6642,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Hallways, Offices",Commercial Buildings,"Grounded, Natural, Classic",40-45%,Brown,High,Yes,Yes
-RAL 1035,Pearl Beige,#6A5D4D,Beiges & Tans,Cool,Foundation,Satin/Pearl,Essential Beiges,"Feature Walls, Accents",Modern Facades,"Elegant, Subtle, Contemporary",35-40%,Taupe,Medium,Yes,Yes
-RAL 1024,Ochre Yellow,#AE9D5C,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Living Rooms, Dining",Residential Buildings,"Warm, Earthy, Balanced",50-55%,Yellow,Medium,Yes,Yes
-RAL 1005,Honey Yellow,#A98307,Beiges & Tans,Warm,Foundation,Matte/Satin,Essential Beiges,"Feature Walls, Kitchens",Traditional Homes,"Golden, Cozy, Rich",40-45%,Gold,Medium,Yes,Yes
-RAL 1000,Green Beige,#BEBD7F,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Bedrooms, Studies",Modern Interiors,"Subtle, Natural, Calm",55-60%,Green,Medium,No,Yes
-RAL 1020,Olive Yellow,#999950,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Accent Walls, Lounges",Residential Buildings,"Earthy, Muted, Soft",45-50%,Olive,Medium,No,Yes
-RAL 7036,Yellow Grey,#8F8B66,Beiges & Tans,Neutral,Editorial,Matte,Designer Beiges,"Offices, Hallways",Commercial Buildings,"Balanced, Subdued, Neutral",40-45%,Grey,Medium,No,Yes
-RAL 8000,Green Brown,#826C34,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Living Rooms, Studies",Natural Interiors,"Forest, Organic, Warm",35-40%,Green,Low,No,Yes
-RAL 1016,Sulfur Yellow,#EDFF21,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Kids Rooms, Accents",Modern Interiors,"Bright, Lively, Clean",80-85%,Yellow,Low,No,Yes
-RAL 1026,Luminous Yellow,#FFFF00,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Signage, Accents",High-Visibility Areas,"Neon, High-Impact, Clear",85-90%,Yellow,Low,No,Yes
-RAL 1022,Desert Sand,#C6A664,Beiges & Tans,Warm,Signature,Matte,Heritage Collection,"Bedrooms, Living Rooms",Cultural Interiors,"Timeless, Desert, Warm",60-65%,Beige,High,No,Yes
-RAL 1025,Sandstone,#A5A5A5,Beiges & Tans,Warm,Signature,Matte,Heritage Collection,"Living, Lounge",Cultural Interiors,"Stone, Earth, Classic",40-45%,Brown,High,No,Yes
-RAL 1009,Amber Honey,#E29000,Beiges & Tans,Warm,Signature,Satin,Heritage Collection,"Dining, Accents",Cultural Interiors,"Amber, Warm, Luxe",40-45%,Gold,Medium,No,Yes
-RAL 2004,Pure Orange,#F44611,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accents, Creative Spaces",Commercial Buildings,"Bright, Energetic, Bold",40-45%,Orange,Medium,Yes,Yes
-RAL 2008,Bright Red Orange,#F75E25,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accent Walls, Retail",Commercial Buildings,"Vivid, Punchy, Warm",45-50%,Orange,Medium,Yes,Yes
-RAL 2009,Traffic Orange,#F54021,Oranges,Warm,Foundation,Matte,Essential Oranges,"Signage, Accents",Commercial Buildings,"Clear, Visible, Warm",45-50%,Orange,Low,Yes,Yes
-RAL 2010,Signal Orange,#D84B20,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accent Walls, Dining",Residential Buildings,"Warm, Spicy, Bold",38-43%,Orange,Medium,Yes,Yes
-RAL 2011,Deep Orange,#EC7C26,Oranges,Warm,Editorial,Matte,Designer Oranges,"Feature Walls, Retail",Modern Buildings,"Warm, Trendy, Vivid",45-50%,Orange,Medium,No,Yes
-RAL 2000,Yellow Orange,#ED760E,Oranges,Warm,Editorial,Matte,Designer Oranges,"Dining, Kitchens",Residential Buildings,"Golden, Appetizing, Warm",45-50%,Orange,Medium,No,Yes
-RAL 2001,Red Orange,#C93C20,Oranges,Warm,Editorial,Matte,Designer Oranges,"Accent Walls, Creative",Contemporary Interiors,"Bold, Punchy, Warm",35-40%,Red-Orange,Low,No,Yes
-RAL 2002,Vermillion,#CB2821,Oranges,Warm,Editorial,Matte,Designer Oranges,"Accent Walls, Signage",Bold Architecture,"Hot, Striking, Strong",30-35%,Red,Low,No,Yes
-RAL 2003,Pastel Orange,#FF7514,Oranges,Warm,Editorial,Matte,Designer Oranges,"Bedrooms, Kids",Residential Buildings,"Soft, Sunny, Fun",55-60%,Orange,Medium,No,Yes
-RAL 2012,Salmon Orange,#E55137,Oranges,Warm,Editorial,Matte,Designer Oranges,"Dining, Accents",Boutique Interiors,"Warm, Salmon, Friendly",45-50%,Orange,Medium,No,Yes
-RAL 2005,Marigold Flame,#FF2301,Oranges,Warm,Signature,Matte/Satin,Heritage Collection,"Festival Decor, Accents",Cultural Buildings,"Festive, Cultural, Warm",40-45%,Orange,Medium,No,Yes
-RAL 2007,Henna Orange,#FFA420,Oranges,Warm,Signature,Matte,Heritage Collection,"Accent Walls, Dining",Cultural Buildings,"Henna, Earthy, Warm",35-40%,Red-Orange,Low,No,Yes
-RAL 9005,Jet Black,#0A0A0A,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Theaters",Exterior Accents,"Dramatic, Deep, Bold",2-5%,Neutral,Medium,Yes,Yes
-RAL 9004,Signal Black,#282828,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Media Rooms",Exterior Accents,"Muted, Dark, Refined",4-7%,Neutral,Medium,Yes,Yes
-RAL 8022,Black Brown,#212121,Blacks & Deep Tones,Warm,Foundation,Matte,Deep Tones,"Libraries, Dens",Exterior Accents,"Cocoa, Deep, Cozy",5-8%,Brown,Low,Yes,Yes
-RAL 7024,Graphite Grey,#474A51,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Offices",Exterior Trim,"Graphite, Urban, Sleek",10-15%,Blue-Grey,Medium,Yes,Yes
-RAL 7026,Granite Grey,#2F353B,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Feature Walls, Lofts",Modern Facades,"Granite, Industrial, Moody",8-12%,Blue,Low,No,Yes
-RAL 7031,Blue Grey,#474B4E,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Offices, Studies",Modern Facades,"Steel, Blue-Grey, Calm",12-17%,Blue,Low,No,Yes
-RAL 7043,Traffic Grey B,#4E5452,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Corridors, Utility",Urban Buildings,"Stoic, Neutral, Quiet",15-20%,Grey,Low,No,Yes
-RAL 9017,Carbon Shield,#1E1E1E,Blacks & Deep Tones,Cool,Signature,Matte/Satin,Urban Collection,"Accent Walls, Brand Areas",Exterior Accents,"Protective, Bold, Premium",2-5%,Neutral,Medium,No,Yes
-RAL 9007,Grey Aluminium,#8F8F8F,Specialty Metallics,Cool,Editorial,Metallic,Industrial Collection,"Feature Walls, Accents",Architectural Details,"Industrial, Sleek, Metallic",35-40%,Silver,Low,No,Yes
-RAL 9008,White Aluminium,#A5A5A0,Specialty Metallics,Cool,Editorial,Metallic,Industrial Collection,"Accents, Details",Architectural Details,"Aluminium, Modern, Clean",40-45%,Silver,Low,No,Yes
-RAL 7002,Silver Grey,#7E7B52,Specialty Metallics,Cool,Editorial,Satin,Industrial Collection,"Accents, Frames",Architectural Details,"Technical, Cool, Subtle",45-50%,Blue-Grey,Medium,No,Yes
-RAL 7045,Telegrey 1,#909090,Specialty Metallics,Cool,Editorial,Satin,Industrial Collection,"Offices, Showrooms",Modern Facades,"Neutral, Silvery, Clean",45-50%,Grey,Medium,No,Yes
-RAL 7046,Industrial Steel,#82898F,Specialty Metallics,Cool,Signature,Metallic,Industrial Collection,"Accents, Branding",Architectural Highlights,"Industrial, Premium, Bold",35-40%,Silver,Low,No,Yes
-RAL 7000,Machinery Grey,#78858B,Specialty Metallics,Cool,Signature,Satin,Industrial Collection,"Equipment Areas, Frames",Industrial Buildings,"Technical, Durable, Neutral",45-50%,Blue-Grey,Medium,No,Yes
+RAL Code,Calyco Name,Hex Code,Color Family,Tone,Layer,Sheen,Collection,Interior Use,Exterior Use,Mood,Light Reflectance,Undertone,Popularity,Contractor,Designer,Uses
+RAL 9010,Pure White,#F7F4EF,Whites,Neutral,Foundation,Matte/Eggshell,Essential Neutrals,"Ceilings, Walls, Trim","Facades, Trim","Clean, Fresh, Minimalist",85-90%,Warm,High,Yes,Yes,"Interior, Exterior"
+RAL 9016,Bright White,#F7FBF5,Whites,Cool,Foundation,Matte/Eggshell,Essential Neutrals,"Ceilings, Modern Spaces",Contemporary Facades,"Crisp, Modern, Bright",90-95%,Cool,High,Yes,Yes,"Interior, Exterior"
+RAL 9001,Cream White,#F5E8DC,Whites,Warm,Foundation,Matte/Satin,Essential Neutrals,"Living Rooms, Bedrooms",Traditional Homes,"Warm, Inviting, Classic",80-85%,Yellow,High,Yes,Yes,"Interior, Exterior"
+RAL 9002,Warm White,#E7E4D8,Whites,Warm,Foundation,Matte,Essential Neutrals,"Bedrooms, Common Areas",Heritage Buildings,"Cozy, Comfortable, Soft",75-80%,Beige,Medium,Yes,Yes,"Interior, Exterior"
+RAL 1013,Pearl White,#EAE3CD,Whites,Warm,Editorial,Satin/Pearl,Contemporary Neutrals,"Feature Walls, Dining",Luxury Facades,"Elegant, Refined, Sophisticated",70-75%,Yellow,Medium,No,Yes,"Interior, Exterior"
+RAL 1015,Ivory,#E5D9C8,Whites,Warm,Editorial,Matte/Satin,Contemporary Neutrals,"Bedrooms, Studies",Colonial Style,"Classic, Timeless, Warm",70-75%,Cream,Medium,No,Yes,"Interior, Exterior"
+RAL 9018,Silk White,#CFD3CD,Whites,Cool,Editorial,Satin,Contemporary Neutrals,Minimalist Spaces,Modern Architecture,"Subtle, Understated, Modern",65-70%,Grey,Low,No,Yes,"Interior, Exterior"
+RAL 9003,Studio White,#EEE9E3,Whites,Neutral,Editorial,Matte,Contemporary Neutrals,"Art Studios, Galleries",Commercial Buildings,"Professional, Clean, Neutral",75-80%,Neutral,Medium,No,Yes,"Interior, Exterior"
+RAL 1014,Linen,#DED3B6,Whites,Warm,Editorial,Matte,Contemporary Neutrals,"Bedrooms, Spa Spaces",Resort Style,"Natural, Organic, Calming",65-70%,Sand,Low,No,Yes,"Interior, Exterior"
+RAL 9022,Dove Gray,#8E8E8E,Whites,Cool,Editorial,Matte/Satin,Contemporary Neutrals,Industrial Lofts,Urban Buildings,"Industrial, Modern, Urban",40-45%,Neutral,Medium,No,Yes,"Interior, Exterior"
+RAL 7047,Cloud Gray,#C8C8C8,Whites,Cool,Editorial,Matte,Contemporary Neutrals,"Offices, Modern Homes",Commercial Facades,"Soft, Airy, Professional",55-60%,Cool Grey,Medium,No,Yes,"Interior, Exterior"
+RAL 7035,Silver Gray,#D4D4D4,Whites,Cool,Editorial,Satin,Contemporary Neutrals,"Tech Offices, Showrooms",Modern Buildings,"Sleek, Contemporary, Tech",60-65%,Silver,Medium,No,Yes,"Interior, Exterior"
+RAL 9006,Metallic White,#A5A5A0,Whites,Cool,Editorial,Metallic,Contemporary Neutrals,"Feature Walls, Accents",Architectural Details,"Luxe, Industrial, Bold",50-55%,Metallic,Low,No,Yes,"Interior, Exterior"
+RAL 7044,Silk Gray,#C5BBAE,Whites,Warm,Editorial,Satin,Contemporary Neutrals,"Bedrooms, Lounges",Boutique Hotels,"Sophisticated, Soft, Elegant",55-60%,Taupe,Low,No,Yes,"Interior, Exterior"
+RAL 9011,Monsoon White,#F7F4EF,Whites,Neutral,Signature,Matte,Heritage Collection,Traditional Homes,Heritage Properties,"Pure, Cultural, Timeless",85-90%,Warm,Medium,No,Yes,"Interior, Exterior"
+RAL 1012,Lotus Cream,#E5D9C8,Whites,Warm,Signature,Matte/Satin,Heritage Collection,"Meditation Rooms, Spas",Wellness Centers,"Spiritual, Serene, Sacred",80-85%,Cream,Low,No,Yes,"Interior, Exterior"
+RAL 1004,Jasmine White,#F5E8DC,Whites,Warm,Signature,Satin,Heritage Collection,"Master Bedrooms, Lounges",Boutique Properties,"Fragrant, Luxurious, Indian",70-75%,Yellow,Low,No,Yes,"Interior, Exterior"
+RAL 7001,Light Gray,#8B949A,Grays,Cool,Foundation,Matte/Satin,Professional Grays,"Offices, Commercial",Office Buildings,"Professional, Neutral, Calm",40-45%,Blue,High,Yes,Yes,"Interior, Exterior"
+RAL 7004,Medium Gray,#6C7156,Grays,Warm,Foundation,Matte,Professional Grays,Industrial Spaces,Warehouses,"Sturdy, Grounded, Utilitarian",30-35%,Green,Medium,Yes,No,"Interior, Exterior"
+RAL 7005,Slate Gray,#646A58,Grays,Cool,Foundation,Matte,Professional Grays,"Basements, Garages",Industrial Buildings,"Strong, Durable, Practical",25-30%,Green,Medium,Yes,No,"Interior, Exterior"
+RAL 7006,Neutral Gray,#665F50,Grays,Warm,Foundation,Matte,Professional Grays,"Workshops, Garages",Industrial Facades,"Functional, Understated, Practical",25-30%,Brown,Low,Yes,No,"Interior, Exterior"
+RAL 7034,Sand Gray,#917D6C,Grays,Warm,Foundation,Matte,Professional Grays,"Corridors, Utility Spaces",Commercial Buildings,"Earthy, Warm, Subdued",35-40%,Beige,Low,Yes,No,"Interior, Exterior"
+RAL 7040,Window Gray,#A4ADB0,Grays,Cool,Foundation,Satin,Professional Grays,"Offices, Showrooms",Window Frames,"Clean, Corporate, Modern",45-50%,Blue,High,Yes,Yes,"Interior, Exterior"
+RAL 7012,Cool Gray,#434B4D,Grays,Cool,Foundation,Matte,Professional Grays,"Accent Walls, Offices",Commercial Buildings,"Professional, Sleek, Modern",20-25%,Blue,Medium,Yes,Yes,"Interior, Exterior"
+RAL 7016,Anthracite Gray,#434750,Grays,Cool,Foundation,Matte/Satin,Professional Grays,"Feature Walls, Modern Spaces",Contemporary Architecture,"Bold, Sophisticated, Urban",15-20%,Blue,High,Yes,Yes,"Interior, Exterior"
+RAL 7021,Charcoal Gray,#383E42,Grays,Cool,Foundation,Matte,Professional Grays,"Accent Walls, Lofts",Urban Buildings,"Dramatic, Moody, Strong",10-15%,Neutral,Medium,Yes,Yes,"Interior, Exterior"
+RAL 7030,Deep Gray,#2F353B,Grays,Cool,Foundation,Matte,Professional Grays,"Feature Walls, Theaters",Modern Facades,"Intense, Dramatic, Bold",8-12%,Blue,Low,Yes,Yes,"Interior, Exterior"
+RAL 5014,Dusty Blue-Gray,#606E8C,Grays,Cool,Editorial,Matte/Satin,Designer Grays,"Bedrooms, Living Rooms",Boutique Buildings,"Sophisticated, Calming, Trendy",25-30%,Blue,High,No,Yes,"Interior, Exterior"
+RAL 5023,Distant Blue,#49678D,Grays,Cool,Editorial,Matte,Designer Grays,"Studies, Bedrooms",Coastal Properties,"Contemplative, Serene, Elegant",20-25%,Blue,Medium,No,Yes,"Interior, Exterior"
+RAL 7037,Soft Gray,#7F7679,Grays,Warm,Editorial,Matte,Designer Grays,"Living Rooms, Bedrooms",Residential Buildings,"Gentle, Warm, Inviting",30-35%,Purple,Medium,No,Yes,"Interior, Exterior"
+RAL 7038,Stone Gray,#7D7F7D,Grays,Neutral,Editorial,Matte,Designer Grays,Contemporary Spaces,Modern Architecture,"Balanced, Natural, Grounded",30-35%,Neutral,Medium,No,Yes,"Interior, Exterior"
+RAL 7032,Pebble Gray,#474B4E,Grays,Cool,Editorial,Matte,Designer Grays,Modern Interiors,Contemporary Facades,"Refined, Understated, Modern",18-22%,Blue,Medium,No,Yes,"Interior, Exterior"
+RAL 9023,Pearl Gray,#828282,Grays,Cool,Editorial,Pearl/Satin,Designer Grays,"Feature Walls, Offices",Luxury Buildings,"Elegant, Luminous, Premium",35-40%,Silver,Low,No,Yes,"Interior, Exterior"
+RAL 7039,Quartz Gray,#B5B8B1,Grays,Warm,Editorial,Matte/Satin,Designer Grays,"Living Spaces, Kitchens",Residential Facades,"Light, Airy, Contemporary",50-55%,Beige,Medium,No,Yes,"Interior, Exterior"
+RAL 7015,Modern Charcoal,#434750,Grays,Cool,Signature,Matte/Satin,Urban Collection,"Feature Walls, Commercial",High-End Commercial,"Contemporary, Bold, Premium",15-20%,Blue,High,No,Yes,"Interior, Exterior"
+RAL 7033,Concrete Shield,#B8BDB6,Grays,Cool,Signature,Matte,Industrial Collection,Industrial Lofts,Industrial Buildings,"Protective, Durable, Industrial",50-55%,Green,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8004,Clay Brown,#734222,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Rustic Spaces, Dens",Traditional Buildings,"Grounded, Natural, Rustic",20-25%,Red,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8003,Terra Brown,#6C3B2A,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Living Rooms, Studies",Heritage Buildings,"Warm, Earthy, Traditional",18-22%,Red,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8024,Natural Tan,#795038,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Bedrooms, Lounges",Residential Buildings,"Comfortable, Warm, Inviting",22-27%,Orange,High,Yes,Yes,"Interior, Exterior"
+RAL 8025,Soft Earth,#755C48,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Common Areas, Hallways",Traditional Homes,"Subtle, Warm, Natural",25-30%,Brown,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8011,Nut Brown,#6F4F28,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Libraries, Studies",Wood-Style Buildings,"Rich, Warm, Classic",20-25%,Orange,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8017,Chocolate Brown,#45322E,Earth Tones,Warm,Foundation,Matte/Satin,Natural Earth,"Accent Walls, Dens",Traditional Architecture,"Deep, Rich, Luxurious",12-17%,Red,Low,Yes,Yes,"Interior, Exterior, Waterproofing Sealer"
+RAL 8019,Warm Brown,#403A3A,Earth Tones,Warm,Foundation,Matte,Natural Earth,"Feature Walls, Basements",Dark Wood Style,"Cozy, Dark, Enveloping",10-15%,Neutral,Low,Yes,No,"Interior, Exterior"
+RAL 8001,Golden Ochre,#826C34,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Feature Walls, Dining",Mediterranean Style,"Warm, Inviting, Golden",30-35%,Yellow,Medium,No,Yes,"Interior, Exterior"
+RAL 8002,Spice Brown,#955F20,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Accent Walls, Kitchens",Craftsman Style,"Bold, Warm, Spicy",25-30%,Orange,Low,No,Yes,"Interior, Exterior"
+RAL 3009,Oxide Clay,#6D3F33,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Feature Walls, Libraries",Rustic Buildings,"Deep, Earthy, Grounded",20-25%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 8023,Terracotta,#A45729,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Dining Rooms, Kitchens",Mediterranean Buildings,"Warm, Vibrant, Mediterranean",30-35%,Orange,High,No,Yes,"Interior, Exterior"
+RAL 2013,Burnt Orange,#A9461E,Earth Tones,Warm,Editorial,Matte/Satin,Designer Earth,"Accent Walls, Creative Spaces",Bold Architecture,"Energetic, Bold, Warm",28-33%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 8007,Rustic Clay,#8E402A,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Rustic Interiors, Lodges",Farmhouse Style,"Rustic, Warm, Authentic",25-30%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 1027,Curry Gold,#A77F0E,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Dining Rooms, Foyers",Statement Buildings,"Rich, Luxurious, Spicy",35-40%,Yellow,Low,No,Yes,"Interior, Exterior"
+RAL 1036,Deep Gold,#8A6F30,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Feature Walls, Dining",Luxury Buildings,"Opulent, Warm, Elegant",32-37%,Gold,Low,No,Yes,"Interior, Exterior"
+RAL 8029,Copper Clay,#763C28,Earth Tones,Warm,Editorial,Matte/Satin,Designer Earth,"Accent Walls, Dens",Craftsman Buildings,"Warm, Metallic, Rich",22-27%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 8015,Chestnut,#633A34,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Libraries, Studies",Traditional Homes,"Rich, Dark, Sophisticated",18-23%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 8016,Mahogany,#4C2F27,Earth Tones,Warm,Editorial,Satin,Designer Earth,"Accent Walls, Libraries",Traditional Architecture,"Luxurious, Deep, Elegant",12-17%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 7003,Olive Earth,#7E7B52,Earth Tones,Warm,Editorial,Matte,Designer Earth,"Living Rooms, Studies",Natural Stone Style,"Natural, Grounded, Organic",30-35%,Green,Low,No,Yes,"Interior, Exterior"
+RAL 6003,Olive Green,#424632,Earth Tones,Cool,Editorial,Matte,Designer Earth,"Feature Walls, Modern Spaces",Contemporary Buildings,"Natural, Sophisticated, Calm",15-20%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 8028,Rajasthani Clay,#4E3B31,Earth Tones,Warm,Signature,Matte,Heritage Collection,"Feature Walls, Traditional Spaces",Heritage Properties,"Cultural, Traditional, Authentic",18-22%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 8014,Terracotta Heritage,#382C1E,Earth Tones,Warm,Signature,Matte,Heritage Collection,"Traditional Dining, Kitchens",Indian Architecture,"Traditional, Warm, Cultural",30-35%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 1006,Turmeric Earth,#E49E00,Earth Tones,Warm,Signature,Satin,Heritage Collection,"Dining Rooms, Traditional Spaces",Cultural Buildings,"Vibrant, Cultural, Warm",35-40%,Yellow,Low,No,Yes,"Interior, Exterior"
+RAL 5012,Light Blue,#3B83BD,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Bedrooms, Bathrooms",Coastal Buildings,"Fresh, Calming, Airy",30-35%,Blue,High,Yes,Yes,"Interior, Exterior"
+RAL 5015,Sky Blue,#2271B3,Blues,Cool,Foundation,Matte,Essential Blues,"Living Rooms, Bedrooms",Residential Facades,"Bright, Cheerful, Open",28-33%,Blue,High,Yes,Yes,"Interior, Exterior"
+RAL 5007,Clear Blue,#3E5F8A,Blues,Cool,Foundation,Matte,Essential Blues,"Offices, Commercial",Commercial Buildings,"Professional, Trustworthy, Calm",25-30%,Blue,Medium,Yes,Yes,"Interior, Exterior"
+RAL 5019,Marine Blue,#1B5583,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Accent Walls, Studies",Maritime Buildings,"Deep, Strong, Nautical",20-25%,Blue,Medium,Yes,Yes,"Interior, Exterior"
+RAL 5020,Ocean Blue,#1D334A,Blues,Cool,Foundation,Matte,Essential Blues,"Feature Walls, Libraries",Traditional Architecture,"Rich, Deep, Sophisticated",12-17%,Blue,Low,Yes,Yes,"Interior, Exterior"
+RAL 5010,Deep Navy,#0E294B,Blues,Cool,Foundation,Matte/Satin,Essential Blues,"Accent Walls, Corporate",Corporate Buildings,"Bold, Authoritative, Classic",8-12%,Blue,Medium,Yes,Yes,"Interior, Exterior"
+RAL 5024,Pastel Blue,#5D9B9B,Blues,Cool,Editorial,Matte,Contemporary Blues,"Bedrooms, Nurseries",Coastal Properties,"Soft, Soothing, Gentle",35-40%,Blue-Green,Medium,No,Yes,"Interior, Exterior"
+RAL 5013,Dusty Blue,#1E213D,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Living Rooms, Bedrooms",Boutique Hotels,"Sophisticated, Muted, Elegant",25-30%,Blue,High,No,Yes,"Interior, Exterior"
+RAL 5008,Distant Blue,#26252D,Blues,Cool,Editorial,Matte,Contemporary Blues,"Studies, Home Offices",Modern Buildings,"Contemplative, Refined, Serene",20-25%,Blue,Medium,No,Yes,"Interior, Exterior"
+RAL 5021,Teal Blue,#256D7B,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Bathrooms, Feature Walls",Coastal Architecture,"Bold, Refreshing, Modern",22-27%,Teal,High,No,Yes,"Interior, Exterior"
+RAL 5018,Aqua Blue,#3F888F,Blues,Cool,Editorial,Satin,Contemporary Blues,"Bathrooms, Kitchens",Pool Areas,"Vibrant, Fresh, Tropical",28-33%,Aqua,Medium,No,Yes,"Interior, Exterior"
+RAL 5025,Pearl Teal,#2A6478,Blues,Cool,Editorial,Satin/Pearl,Contemporary Blues,"Feature Walls, Spas",Luxury Buildings,"Elegant, Unique, Premium",20-25%,Teal,Low,No,Yes,"Interior, Exterior"
+RAL 5000,Twilight Blue,#354D73,Blues,Cool,Editorial,Matte,Contemporary Blues,"Bedrooms, Media Rooms",Residential Buildings,"Mysterious, Calm, Deep",18-23%,Blue,Low,No,Yes,"Interior, Exterior"
+RAL 5026,Midnight Blue,#102C54,Blues,Cool,Editorial,Matte/Satin,Contemporary Blues,"Accent Walls, Theaters",Dramatic Architecture,"Dramatic, Rich, Bold",10-15%,Blue,Low,No,Yes,"Interior, Exterior"
+RAL 5011,Monsoon Sky,#1F2A44,Blues,Cool,Signature,Matte/Satin,Heritage Collection,"Living Spaces, Bedrooms",Residential Buildings,"Cultural, Serene, Indian",25-30%,Blue,Medium,No,Yes,"Interior, Exterior"
+RAL 5009,Arabian Sea,#025669,Blues,Cool,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Bathrooms",Coastal Properties,"Maritime, Cultural, Bold",22-27%,Teal,Medium,No,Yes,"Interior, Exterior"
+RAL 5017,Peacock Blue,#063971,Blues,Cool,Signature,Satin,Heritage Collection,"Feature Walls, Dining",Cultural Buildings,"Vibrant, Regal, Indian",30-35%,Blue,Low,No,Yes,"Interior, Exterior"
+RAL 6002,Leaf Green,#2D5016,Greens,Warm,Foundation,Matte,Essential Greens,"Accent Walls, Commercial",Industrial Buildings,"Natural, Fresh, Organic",18-23%,Green,Medium,Yes,Yes,"Interior, Exterior"
+RAL 6001,Emerald Green,#287233,Greens,Cool,Foundation,Matte/Satin,Essential Greens,"Feature Walls, Offices",Commercial Buildings,"Rich, Luxurious, Bold",20-25%,Green,Medium,Yes,Yes,"Interior, Exterior"
+RAL 6029,Mint Green,#20603D,Greens,Cool,Foundation,Matte,Essential Greens,"Hospitals, Wellness Centers",Healthcare Buildings,"Fresh, Clean, Soothing",22-27%,Green,High,Yes,Yes,"Interior, Exterior"
+RAL 6005,Forest Green,#2F4538,Greens,Cool,Foundation,Matte,Essential Greens,"Libraries, Studies",Traditional Architecture,"Deep, Rich, Classic",15-20%,Green,Low,Yes,Yes,"Interior, Exterior"
+RAL 6009,Pine Green,#31372B,Greens,Cool,Foundation,Matte,Essential Greens,"Accent Walls, Dens",Rustic Buildings,"Dark, Natural, Grounded",12-17%,Green,Low,Yes,No,"Interior, Exterior"
+RAL 6028,Deep Pine,#2C5545,Greens,Cool,Foundation,Matte,Essential Greens,"Feature Walls, Commercial",Traditional Buildings,"Strong, Deep, Natural",15-20%,Green,Low,Yes,Yes,"Interior, Exterior"
+RAL 6019,Pastel Green,#BDECB6,Greens,Cool,Editorial,Matte,Contemporary Greens,"Bedrooms, Nurseries",Residential Buildings,"Soft, Gentle, Calming",75-80%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 6021,Pale Green,#89AC76,Greens,Warm,Editorial,Matte,Contemporary Greens,"Living Rooms, Kitchens",Residential Buildings,"Fresh, Natural, Inviting",45-50%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 6034,Turquoise Green,#7FB5B5,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Bathrooms, Pool Areas",Coastal Properties,"Refreshing, Tropical, Bright",50-55%,Turquoise,High,No,Yes,"Interior, Exterior"
+RAL 6027,Light Cyan,#84C3BE,Greens,Cool,Editorial,Satin,Contemporary Greens,"Bathrooms, Spas",Resort Style,"Calm, Spa-like, Serene",52-57%,Cyan,High,No,Yes,"Interior, Exterior"
+RAL 6033,Cyan Turquoise,#497E76,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Feature Walls, Bathrooms",Modern Buildings,"Bold, Contemporary, Fresh",30-35%,Turquoise,Medium,No,Yes,"Interior, Exterior"
+RAL 6004,Blue Green,#1F3A3D,Greens,Cool,Editorial,Matte,Contemporary Greens,"Accent Walls, Studies",Contemporary Architecture,"Deep, Sophisticated, Modern",12-17%,Teal,Low,No,Yes,"Interior, Exterior"
+RAL 6011,Sage Green,#587246,Greens,Warm,Editorial,Matte,Contemporary Greens,"Living Rooms, Bedrooms",Residential Buildings,"Natural, Calming, Organic",30-35%,Green,High,No,Yes,"Interior, Exterior"
+RAL 6025,Fern Green,#3D642D,Greens,Warm,Editorial,Matte,Contemporary Greens,"Feature Walls, Offices",Modern Buildings,"Fresh, Vibrant, Natural",25-30%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 6018,Lime Green,#57A639,Greens,Warm,Editorial,Matte/Satin,Contemporary Greens,"Accent Walls, Creative Spaces",Bold Architecture,"Energetic, Bold, Fresh",38-43%,Lime,Low,No,Yes,"Interior, Exterior"
+RAL 6024,Traffic Green,#308446,Greens,Cool,Editorial,Matte,Contemporary Greens,Commercial Spaces,Industrial Buildings,"Strong, Clear, Professional",32-37%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 6032,Signal Green,#317F43,Greens,Cool,Editorial,Matte/Satin,Contemporary Greens,"Signage, Accent Walls",Commercial Buildings,"Bright, Bold, Visible",35-40%,Green,Low,No,Yes,"Interior, Exterior"
+RAL 6035,Kerala Palm,#1C542D,Greens,Cool,Signature,Matte,Heritage Collection,"Feature Walls, Traditional Spaces",Heritage Properties,"Tropical, Cultural, Rich",22-27%,Green,Low,No,Yes,"Interior, Exterior"
+RAL 6037,Monsoon Leaf,#008F39,Greens,Cool,Signature,Matte/Satin,Heritage Collection,"Living Spaces, Dining",Cultural Buildings,"Lush, Vibrant, Indian",20-25%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 6036,Ganges Mint,#193737,Greens,Cool,Signature,Satin,Heritage Collection,"Bathrooms, Meditation Spaces",Wellness Centers,"Serene, Sacred, Peaceful",52-57%,Cyan,Low,No,Yes,"Interior, Exterior"
+RAL 1018,Zinc Yellow,#F8F32B,Yellows & Golds,Warm,Foundation,Matte/Satin,Essential Yellows,"Accent Walls, Commercial",Industrial Buildings,"Bright, Energetic, Bold",80-85%,Yellow,Medium,Yes,No,"Interior, Exterior"
+RAL 1021,Bright Yellow,#F3DA0B,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,"Feature Walls, Signage",Commercial Buildings,"Vibrant, Cheerful, Bold",78-83%,Yellow,Medium,Yes,No,"Interior, Exterior"
+RAL 1023,Traffic Yellow,#FAD201,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,Industrial Spaces,Warning Applications,"Clear, Visible, Strong",82-87%,Yellow,Low,Yes,No,"Interior, Exterior"
+RAL 1003,Signal Yellow,#E5A316,Yellows & Golds,Warm,Foundation,Matte/Satin,Essential Yellows,"Signage, Commercial",Industrial Buildings,"Bold, Warm, Visible",70-75%,Yellow,Medium,Yes,No,"Interior, Exterior"
+RAL 1028,Melon Yellow,#F4A900,Yellows & Golds,Warm,Foundation,Matte,Essential Yellows,"Accent Walls, Kitchens",Residential Buildings,"Warm, Cheerful, Inviting",72-77%,Orange,Medium,Yes,Yes,"Interior, Exterior"
+RAL 1017,Saffron Yellow,#F5BD00,Yellows & Golds,Warm,Editorial,Satin,Designer Yellows,"Dining Rooms, Kitchens",Statement Buildings,"Rich, Luxurious, Warm",73-78%,Yellow,High,No,Yes,"Interior, Exterior"
+RAL 1032,Broom Yellow,#D6AE01,Yellows & Golds,Warm,Editorial,Satin,Designer Yellows,"Feature Walls, Foyers",Luxury Buildings,"Golden, Elegant, Rich",68-73%,Gold,Medium,No,Yes,"Interior, Exterior"
+RAL 1033,Dahlia Yellow,#F3A505,Yellows & Golds,Warm,Editorial,Matte/Satin,Designer Yellows,"Accent Walls, Creative Spaces",Bold Architecture,"Vibrant, Bold, Warm",70-75%,Orange,Low,No,Yes,"Interior, Exterior"
+RAL 1037,Sun Yellow,#F39F18,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Children's Rooms, Kitchens",Residential Buildings,"Bright, Cheerful, Sunny",68-73%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 1034,Pastel Yellow,#EFA94A,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Bedrooms, Living Rooms",Residential Buildings,"Soft, Warm, Inviting",65-70%,Peach,Medium,No,Yes,"Interior, Exterior"
+RAL 1002,Sand Yellow,#C6A664,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Living Rooms, Bedrooms",Traditional Buildings,"Natural, Warm, Earthy",55-60%,Sand,High,No,Yes,"Interior, Exterior"
+RAL 1019,Grey Beige,#9E9764,Yellows & Golds,Warm,Editorial,Matte,Designer Yellows,"Common Areas, Offices",Commercial Buildings,"Subdued, Natural, Neutral",45-50%,Beige,Low,No,Yes,"Interior, Exterior"
+RAL 1007,Turmeric Gold,#DC9D00,Yellows & Golds,Warm,Signature,Satin,Heritage Collection,"Dining Rooms, Traditional Spaces",Cultural Buildings,"Rich, Cultural, Spicy",73-78%,Yellow,Medium,No,Yes,"Interior, Exterior"
+RAL 1008,Marigold,#E49E00,Yellows & Golds,Warm,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Celebrations",Cultural Buildings,"Vibrant, Festive, Indian",72-77%,Orange,Low,No,Yes,"Interior, Exterior"
+RAL 1031,Golden Temple,#E6A747,Yellows & Golds,Warm,Signature,Satin,Heritage Collection,"Feature Walls, Religious Spaces",Heritage Properties,"Sacred, Golden, Magnificent",68-73%,Gold,Low,No,Yes,"Interior, Exterior"
+RAL 3000,Flame Red,#AF2B1E,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Accent Walls, Commercial",Industrial Buildings,"Bold, Energetic, Strong",30-35%,Red,Medium,Yes,No,"Interior, Exterior"
+RAL 3020,Traffic Red,#CC0605,Reds & Pinks,Warm,Foundation,Matte,Essential Reds,"Signage, Industrial",Safety Applications,"Bright, Visible, Clear",35-40%,Red,Low,Yes,No,"Interior, Exterior"
+RAL 3003,Ruby Red,#9B111E,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Feature Walls, Accent Walls",Commercial Buildings,"Deep, Rich, Luxurious",25-30%,Red,Low,Yes,Yes,"Interior, Exterior"
+RAL 3004,Purple Red,#75151E,Reds & Pinks,Warm,Foundation,Matte,Essential Reds,"Accent Walls, Dens",Traditional Architecture,"Dark, Bold, Dramatic",18-23%,Purple-Red,Low,Yes,No,"Interior, Exterior"
+RAL 3005,Wine Red,#5E2129,Reds & Pinks,Warm,Foundation,Matte/Satin,Essential Reds,"Feature Walls, Libraries",Traditional Buildings,"Elegant, Deep, Sophisticated",15-20%,Burgundy,Low,Yes,Yes,"Interior, Exterior"
+RAL 3012,Beige Red,#C1876B,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Living Rooms, Bedrooms",Residential Buildings,"Warm, Earthy, Soft",50-55%,Terracotta,Medium,No,Yes,"Interior, Exterior"
+RAL 3015,Light Pink,#EA899A,Reds & Pinks,Cool,Editorial,Matte,Designer Reds,"Bedrooms, Nurseries",Residential Buildings,"Soft, Gentle, Romantic",60-65%,Pink,Medium,No,Yes,"Interior, Exterior"
+RAL 3014,Old Rose,#D36E70,Reds & Pinks,Warm,Editorial,Matte/Satin,Designer Reds,"Bedrooms, Living Rooms",Residential Buildings,"Classic, Rosy, Warm",55-60%,Rose,Medium,No,Yes,"Interior, Exterior"
+RAL 3017,Rose,#E63244,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Feature Walls, Creative Spaces",Boutique Buildings,"Vivid, Cheerful, Expressive",45-50%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 3018,Strawberry Red,#D53032,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Dining, Accent Walls",Modern Buildings,"Juicy, Energetic, Bold",40-45%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 3027,Raspberry Red,#C51D34,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Accent Walls, Retail",Commercial Buildings,"Punchy, Bold, Contemporary",35-40%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 3031,Orient Red,#B32428,Reds & Pinks,Warm,Editorial,Matte,Designer Reds,"Accent Walls, Theaters",Dramatic Architecture,"Intense, Deep, Exotic",28-33%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 3013,Vermillion Spice,#A12312,Reds & Pinks,Warm,Signature,Matte/Satin,Heritage Collection,"Feature Walls, Cultural",Heritage Properties,"Festive, Cultural, Bold",30-35%,Red,Medium,No,Yes,"Interior, Exterior"
+RAL 3007,Rajasthani Pink,#412227,Reds & Pinks,Warm,Signature,Matte,Heritage Collection,"Bedrooms, Living Rooms",Cultural Buildings,"Cultural, Earthy, Elegant",50-55%,Terracotta,Medium,No,Yes,"Interior, Exterior"
+RAL 3011,Lotus Pink,#7E2121,Reds & Pinks,Cool,Signature,Matte,Heritage Collection,"Nurseries, Bedrooms",Cultural Buildings,"Graceful, Gentle, Cultural",60-65%,Pink,Medium,No,Yes,"Interior, Exterior"
+RAL 4006,Traffic Purple,#A03472,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Accent Walls, Creative Spaces",Modern Buildings,"Vivid, Modern, Bold",25-30%,Magenta,Low,Yes,Yes,"Interior, Exterior"
+RAL 4008,Signal Violet,#924E7D,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Accent Walls, Retail",Commercial Buildings,"Violet, Punchy, Modern",28-33%,Violet,Low,Yes,Yes,"Interior, Exterior"
+RAL 4009,Pastel Violet,#A18594,Purples & Violets,Cool,Foundation,Matte,Essential Purples,"Bedrooms, Studios",Residential Buildings,"Soft, Muted, Calm",45-50%,Violet,Medium,Yes,Yes,"Interior, Exterior"
+RAL 4001,Red Lilac,#6D3F5B,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Accent Walls, Lounges",Boutique Interiors,"Deep, Layered, Artistic",25-30%,Red-Violet,Low,No,Yes,"Interior, Exterior"
+RAL 4002,Red Violet,#922B3E,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Theaters, Accent Walls",Dramatic Interiors,"Moody, Luxurious, Bold",20-25%,Red-Violet,Low,No,Yes,"Interior, Exterior"
+RAL 4003,Heather Violet,#DE4C8A,Purples & Violets,Cool,Editorial,Matte,Designer Purples,"Bedrooms, Creative Spaces",Modern Interiors,"Fresh, Floral, Creative",50-55%,Pink,Medium,No,Yes,"Interior, Exterior"
+RAL 4004,Claret Violet,#641C34,Purples & Violets,Warm,Editorial,Matte,Designer Purples,"Libraries, Cozy Dens",Traditional Interiors,"Rich, Dramatic, Deep",12-17%,Wine,Low,No,Yes,"Interior, Exterior"
+RAL 4005,Blue Lilac,#6C4675,Purples & Violets,Cool,Editorial,Matte,Designer Purples,"Bedrooms, Feature Walls",Contemporary Interiors,"Calm, Lavender, Balanced",35-40%,Violet,Medium,No,Yes,"Interior, Exterior"
+RAL 4007,Royal Mauve,#4A192C,Purples & Violets,Cool,Signature,Matte,Heritage Collection,"Accent Walls, Lounges",Cultural Interiors,"Regal, Cultural, Refined",25-30%,Magenta,Low,No,Yes,"Interior, Exterior"
+RAL 4010,Mystic Violet,#CF3476,Purples & Violets,Cool,Signature,Matte,Heritage Collection,"Feature Walls, Niche Areas",Cultural Interiors,"Mystic, Cultural, Elegant",28-33%,Violet,Low,No,Yes,"Interior, Exterior"
+RAL 1001,Beige,#C2B078,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Living Rooms, Bedrooms",Residential Facades,"Neutral, Warm, Versatile",60-65%,Beige,High,Yes,Yes,"Interior, Exterior"
+RAL 1011,Brown Beige,#8A6642,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Hallways, Offices",Commercial Buildings,"Grounded, Natural, Classic",40-45%,Brown,High,Yes,Yes,"Interior, Exterior"
+RAL 1035,Pearl Beige,#6A5D4D,Beiges & Tans,Cool,Foundation,Satin/Pearl,Essential Beiges,"Feature Walls, Accents",Modern Facades,"Elegant, Subtle, Contemporary",35-40%,Taupe,Medium,Yes,Yes,"Interior, Exterior"
+RAL 1024,Ochre Yellow,#AE9D5C,Beiges & Tans,Warm,Foundation,Matte,Essential Beiges,"Living Rooms, Dining",Residential Buildings,"Warm, Earthy, Balanced",50-55%,Yellow,Medium,Yes,Yes,"Interior, Exterior"
+RAL 1005,Honey Yellow,#A98307,Beiges & Tans,Warm,Foundation,Matte/Satin,Essential Beiges,"Feature Walls, Kitchens",Traditional Homes,"Golden, Cozy, Rich",40-45%,Gold,Medium,Yes,Yes,"Interior, Exterior"
+RAL 1000,Green Beige,#BEBD7F,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Bedrooms, Studies",Modern Interiors,"Subtle, Natural, Calm",55-60%,Green,Medium,No,Yes,"Interior, Exterior"
+RAL 1020,Olive Yellow,#999950,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Accent Walls, Lounges",Residential Buildings,"Earthy, Muted, Soft",45-50%,Olive,Medium,No,Yes,"Interior, Exterior"
+RAL 7036,Yellow Grey,#8F8B66,Beiges & Tans,Neutral,Editorial,Matte,Designer Beiges,"Offices, Hallways",Commercial Buildings,"Balanced, Subdued, Neutral",40-45%,Grey,Medium,No,Yes,"Interior, Exterior"
+RAL 8000,Green Brown,#826C34,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Living Rooms, Studies",Natural Interiors,"Forest, Organic, Warm",35-40%,Green,Low,No,Yes,"Interior, Exterior"
+RAL 1016,Sulfur Yellow,#EDFF21,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Kids Rooms, Accents",Modern Interiors,"Bright, Lively, Clean",80-85%,Yellow,Low,No,Yes,"Interior, Exterior"
+RAL 1026,Luminous Yellow,#FFFF00,Beiges & Tans,Warm,Editorial,Matte,Designer Beiges,"Signage, Accents",High-Visibility Areas,"Neon, High-Impact, Clear",85-90%,Yellow,Low,No,Yes,"Interior, Exterior"
+RAL 1022,Desert Sand,#C6A664,Beiges & Tans,Warm,Signature,Matte,Heritage Collection,"Bedrooms, Living Rooms",Cultural Interiors,"Timeless, Desert, Warm",60-65%,Beige,High,No,Yes,"Interior, Exterior"
+RAL 1025,Sandstone,#A5A5A5,Beiges & Tans,Warm,Signature,Matte,Heritage Collection,"Living, Lounge",Cultural Interiors,"Stone, Earth, Classic",40-45%,Brown,High,No,Yes,"Interior, Exterior"
+RAL 1009,Amber Honey,#E29000,Beiges & Tans,Warm,Signature,Satin,Heritage Collection,"Dining, Accents",Cultural Interiors,"Amber, Warm, Luxe",40-45%,Gold,Medium,No,Yes,"Interior, Exterior"
+RAL 2004,Pure Orange,#F44611,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accents, Creative Spaces",Commercial Buildings,"Bright, Energetic, Bold",40-45%,Orange,Medium,Yes,Yes,"Interior, Exterior"
+RAL 2008,Bright Red Orange,#F75E25,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accent Walls, Retail",Commercial Buildings,"Vivid, Punchy, Warm",45-50%,Orange,Medium,Yes,Yes,"Interior, Exterior"
+RAL 2009,Traffic Orange,#F54021,Oranges,Warm,Foundation,Matte,Essential Oranges,"Signage, Accents",Commercial Buildings,"Clear, Visible, Warm",45-50%,Orange,Low,Yes,Yes,"Interior, Exterior"
+RAL 2010,Signal Orange,#D84B20,Oranges,Warm,Foundation,Matte,Essential Oranges,"Accent Walls, Dining",Residential Buildings,"Warm, Spicy, Bold",38-43%,Orange,Medium,Yes,Yes,"Interior, Exterior"
+RAL 2011,Deep Orange,#EC7C26,Oranges,Warm,Editorial,Matte,Designer Oranges,"Feature Walls, Retail",Modern Buildings,"Warm, Trendy, Vivid",45-50%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 2000,Yellow Orange,#ED760E,Oranges,Warm,Editorial,Matte,Designer Oranges,"Dining, Kitchens",Residential Buildings,"Golden, Appetizing, Warm",45-50%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 2001,Red Orange,#C93C20,Oranges,Warm,Editorial,Matte,Designer Oranges,"Accent Walls, Creative",Contemporary Interiors,"Bold, Punchy, Warm",35-40%,Red-Orange,Low,No,Yes,"Interior, Exterior"
+RAL 2002,Vermillion,#CB2821,Oranges,Warm,Editorial,Matte,Designer Oranges,"Accent Walls, Signage",Bold Architecture,"Hot, Striking, Strong",30-35%,Red,Low,No,Yes,"Interior, Exterior"
+RAL 2003,Pastel Orange,#FF7514,Oranges,Warm,Editorial,Matte,Designer Oranges,"Bedrooms, Kids",Residential Buildings,"Soft, Sunny, Fun",55-60%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 2012,Salmon Orange,#E55137,Oranges,Warm,Editorial,Matte,Designer Oranges,"Dining, Accents",Boutique Interiors,"Warm, Salmon, Friendly",45-50%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 2005,Marigold Flame,#FF2301,Oranges,Warm,Signature,Matte/Satin,Heritage Collection,"Festival Decor, Accents",Cultural Buildings,"Festive, Cultural, Warm",40-45%,Orange,Medium,No,Yes,"Interior, Exterior"
+RAL 2007,Henna Orange,#FFA420,Oranges,Warm,Signature,Matte,Heritage Collection,"Accent Walls, Dining",Cultural Buildings,"Henna, Earthy, Warm",35-40%,Red-Orange,Low,No,Yes,"Interior, Exterior"
+RAL 9005,Jet Black,#0A0A0A,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Theaters",Exterior Accents,"Dramatic, Deep, Bold",2-5%,Neutral,Medium,Yes,Yes,"Interior, Exterior"
+RAL 9004,Signal Black,#282828,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Media Rooms",Exterior Accents,"Muted, Dark, Refined",4-7%,Neutral,Medium,Yes,Yes,"Interior, Exterior"
+RAL 8022,Black Brown,#212121,Blacks & Deep Tones,Warm,Foundation,Matte,Deep Tones,"Libraries, Dens",Exterior Accents,"Cocoa, Deep, Cozy",5-8%,Brown,Low,Yes,Yes,"Interior, Exterior"
+RAL 7024,Graphite Grey,#474A51,Blacks & Deep Tones,Cool,Foundation,Matte,Deep Tones,"Accent Walls, Offices",Exterior Trim,"Graphite, Urban, Sleek",10-15%,Blue-Grey,Medium,Yes,Yes,"Interior, Exterior"
+RAL 7026,Granite Grey,#2F353B,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Feature Walls, Lofts",Modern Facades,"Granite, Industrial, Moody",8-12%,Blue,Low,No,Yes,"Interior, Exterior"
+RAL 7031,Blue Grey,#474B4E,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Offices, Studies",Modern Facades,"Steel, Blue-Grey, Calm",12-17%,Blue,Low,No,Yes,"Interior, Exterior"
+RAL 7043,Traffic Grey B,#4E5452,Blacks & Deep Tones,Cool,Editorial,Matte,Deep Tones,"Corridors, Utility",Urban Buildings,"Stoic, Neutral, Quiet",15-20%,Grey,Low,No,Yes,"Interior, Exterior"
+RAL 9017,Carbon Shield,#1E1E1E,Blacks & Deep Tones,Cool,Signature,Matte/Satin,Urban Collection,"Accent Walls, Brand Areas",Exterior Accents,"Protective, Bold, Premium",2-5%,Neutral,Medium,No,Yes,"Interior, Exterior"
+RAL 9007,Grey Aluminium,#8F8F8F,Specialty Metallics,Cool,Editorial,Metallic,Industrial Collection,"Feature Walls, Accents",Architectural Details,"Industrial, Sleek, Metallic",35-40%,Silver,Low,No,Yes,"Interior, Exterior"
+RAL 9008,White Aluminium,#A5A5A0,Specialty Metallics,Cool,Editorial,Metallic,Industrial Collection,"Accents, Details",Architectural Details,"Aluminium, Modern, Clean",40-45%,Silver,Low,No,Yes,"Interior, Exterior"
+RAL 7002,Silver Grey,#7E7B52,Specialty Metallics,Cool,Editorial,Satin,Industrial Collection,"Accents, Frames",Architectural Details,"Technical, Cool, Subtle",45-50%,Blue-Grey,Medium,No,Yes,"Interior, Exterior"
+RAL 7045,Telegrey 1,#909090,Specialty Metallics,Cool,Editorial,Satin,Industrial Collection,"Offices, Showrooms",Modern Facades,"Neutral, Silvery, Clean",45-50%,Grey,Medium,No,Yes,"Interior, Exterior"
+RAL 7046,Industrial Steel,#82898F,Specialty Metallics,Cool,Signature,Metallic,Industrial Collection,"Accents, Branding",Architectural Highlights,"Industrial, Premium, Bold",35-40%,Silver,Low,No,Yes,"Interior, Exterior"
+RAL 7000,Machinery Grey,#78858B,Specialty Metallics,Cool,Signature,Satin,Industrial Collection,"Equipment Areas, Frames",Industrial Buildings,"Technical, Durable, Neutral",45-50%,Blue-Grey,Medium,No,Yes,"Interior, Exterior"

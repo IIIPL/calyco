@@ -296,7 +296,7 @@ const ColorDetailPage = () => {
               ralCode={displayCode}
               colorFamily={familyDisplayName}
               mood={mergedAttributes?.mood}
-              downloadHref={`/download/dollop/${encodeURIComponent(downloadKey || currentColor.slug)}`}
+              hexColor={actualHexColor}
             />
 
             <ColorAttributes attributes={mergedAttributes} />

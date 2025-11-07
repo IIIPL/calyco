@@ -23,25 +23,11 @@ import { getColorBrightness } from '../utils/colorHelpers';
 
 // Get all 442 colors and families
 const ALL_COLORS = getAllColors();
-const COLOR_FAMILIES = getColorFamilies().map(f => f.name);
-const TEMPERATURE_OPTIONS = Array.from(
-  new Set(ALL_COLORS.map(color => color.temperature || color.colorTemperature).filter(Boolean))
-).sort();
-// Tonality options - curated list matching filter panel
-const TONALITY_OPTIONS = ['Cool', 'Warm', 'Yellow', 'Neutral', 'Beige', 'Cream', 'Silver', 'Sand'];
-const SUITABILITY_OPTIONS = (() => {
-  const values = Array.from(
-    new Set(
-      ALL_COLORS
-        .map(color => color.suitability || color.interiorExterior || color.usage)
-        .filter(Boolean)
-    )
-  );
-  const preferred = ['Interior', 'Exterior', 'Interior & Exterior'];
-  const ordered = preferred.filter(value => values.includes(value));
-  const remaining = values.filter(value => !preferred.includes(value)).sort();
-  return [...ordered, ...remaining];
-})();
+const COLOR_FAMILIES = getColorFamilies().map(f => f.family);
+// Tonality options - from actual CSV database (Tone column)
+const TONALITY_OPTIONS = ['Cool', 'Warm', 'Neutral'];
+// Suitability options - Interior, Exterior, Waterproofing Sealer
+const SUITABILITY_OPTIONS = ['Interior', 'Exterior', 'Waterproofing Sealer'];
 
 // Compatible Products
 const COMPATIBLE_PRODUCTS = [
@@ -56,7 +42,6 @@ const ColorsPage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFamily, setSelectedFamily] = useState('');
-  const [selectedTemperature, setSelectedTemperature] = useState('');
   const [selectedTonality, setSelectedTonality] = useState('');
   const [selectedSuitability, setSelectedSuitability] = useState('');
   const [sortBy, setSortBy] = useState('light-dark');
@@ -83,29 +68,26 @@ const ColorsPage = () => {
       filtered = filtered.filter(color => color.colorFamily === selectedFamily);
     }
 
-    // Temperature filter
-    if (selectedTemperature) {
-      filtered = filtered.filter(color =>
-        color.temperature && color.temperature === selectedTemperature
-      );
-    }
-
-    // Tonality filter
+    // Tonality filter - filters by Tone column from CSV
     if (selectedTonality) {
       filtered = filtered.filter(color =>
-        color.undertone && color.undertone === selectedTonality
+        color.tone && color.tone === selectedTonality
       );
     }
 
-    // Suitability filter
+    // Suitability filter - based on Uses column from CSV
     if (selectedSuitability) {
       filtered = filtered.filter(color => {
-        const suitability = (color.suitability || color.interiorExterior || color.usage || "").trim();
-        if (!suitability) return false;
-        if (selectedSuitability === "Interior & Exterior") {
-          return suitability === "Interior & Exterior" || suitability === "Interior";
+        // Get the uses field from the color data (will be mapped from CSV "Uses" column)
+        const uses = color.uses || "";
+
+        // For "Waterproofing Sealer", only show colors that specifically include it
+        if (selectedSuitability === "Waterproofing Sealer") {
+          return uses.includes("Waterproofing Sealer");
         }
-        return suitability === selectedSuitability;
+
+        // For "Interior" or "Exterior", show all colors (they all have Interior and Exterior in Uses column)
+        return true;
       });
     }
 
@@ -136,7 +118,7 @@ const ColorsPage = () => {
     }, {});
 
     return grouped;
-  }, [searchTerm, selectedFamily, selectedTemperature, selectedTonality, selectedSuitability, sortBy]);
+  }, [searchTerm, selectedFamily, selectedTonality, selectedSuitability, sortBy]);
 
   const getActualHexColor = useCallback((colorValue) => {
     if (colorValue && colorValue.startsWith('#')) {
@@ -163,7 +145,6 @@ const ColorsPage = () => {
   const clearFilters = useCallback(() => {
     setSearchTerm('');
     setSelectedFamily('');
-    setSelectedTemperature('');
     setSelectedTonality('');
     setSelectedSuitability('');
   }, []);
@@ -199,7 +180,7 @@ const ColorsPage = () => {
               transition={{ delay: 0.1 }}
               className="text-xl text-white mb-8 max-w-3xl mx-auto"
             >
-              {ALL_COLORS.length} low-VOC shades built for modern living and professional durability.
+              150+ low-VOC shades built for modern living and professional durability.
             </motion.p>
 
               </div>
@@ -236,19 +217,7 @@ const ColorsPage = () => {
                 ))}
               </select>
 
-              {/* Temperature Filter */}
-              <select
-                value={selectedTemperature}
-                onChange={(e) => setSelectedTemperature(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
-              >
-                <option value="">All Temperatures</option>
-                {TEMPERATURE_OPTIONS.map(option => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
-              </select>
-
-              {/* Tonality Filter */}
+              {/* Tonality Filter - filters by Tone column from CSV */}
               <select
                 value={selectedTonality}
                 onChange={(e) => setSelectedTonality(e.target.value)}
@@ -285,7 +254,7 @@ const ColorsPage = () => {
               
 
               {/* Clear Filters */}
-              {(searchTerm || selectedFamily || selectedTemperature || selectedTonality || selectedSuitability) && (
+              {(searchTerm || selectedFamily || selectedTonality || selectedSuitability) && (
                 <button
                   onClick={clearFilters}
                   className="px-3 py-2 text-sm text-red-600 hover:text-red-800 underline"

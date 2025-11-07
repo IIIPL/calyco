@@ -6,10 +6,10 @@ import { useCart } from "../../context/CartContext";
 
 const ColorPage = () => {
   const { familyName, colorName } = useParams();
-  
+
   // Decode the color name from URL
   const decodedColorName = decodeURIComponent(colorName);
-  
+
   const currentColor = flatColors.find(
     c => c.name.toLowerCase().replace(/\s+/g, "-") === decodedColorName.toLowerCase().replace(/\s+/g, "-")
   );
@@ -24,6 +24,79 @@ const ColorPage = () => {
   };
 
   const actualHexColor = getActualHexColor(currentColor.hex);
+
+  // Function to generate and download paint dollop PNG
+  const downloadDollop = () => {
+    try {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set canvas size with transparent background
+      canvas.width = 400;
+      canvas.height = 400;
+
+      // Clear canvas (transparent)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const centerX = 200;
+      const centerY = 200;
+      const radius = 160;
+
+      // Draw main paint dollop circle
+      ctx.fillStyle = actualHexColor;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Add subtle shadow for depth
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+      ctx.shadowBlur = 15;
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.fill();
+
+      // Reset shadow
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+
+      // Add highlight for glossy paint effect
+      const gradient = ctx.createRadialGradient(
+        centerX - 50, centerY - 50, 20,
+        centerX, centerY, radius
+      );
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+      gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.2)');
+      gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.15)');
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Convert to blob and download
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          console.error('Failed to create blob');
+          alert('Failed to generate dollop image');
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${currentColor.name.toLowerCase().replace(/\s+/g, '-')}-dollop.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    } catch (error) {
+      console.error('Error generating dollop:', error);
+      alert('Failed to download dollop image');
+    }
+  };
 
   const similarColors = flatColors.filter(
     c => c.color_family === currentColor.color_family && c.name !== currentColor.name
@@ -97,7 +170,10 @@ const ColorPage = () => {
 
             {/* Action Items */}
             <div className="space-y-4">
-              <p className="underline cursor-pointer hover:text-gray-600">
+              <p
+                onClick={downloadDollop}
+                className="underline cursor-pointer hover:text-gray-600"
+              >
                 Download digital dollop of {currentColor.name}
               </p>
               
