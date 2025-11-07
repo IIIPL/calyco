@@ -275,9 +275,9 @@ export default function Privacy() {
 
         {/* Contact */}
         <section className={`${sectionPadTight} bg-[#FBF9F6] max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
-          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Contact & Grievance Officer</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[#0F1221] text-center">Privacy & Grievance Contact</h2>
           <p className="text-lg text-[#23263a] mb-8 max-w-3xl mx-auto text-center leading-relaxed">
-            For privacy-related queries or grievances, contact our designated officer. We respond within prescribed timelines under applicable IT rules.
+            For privacy-related queries or grievances, contact us through the following channels. We respond within prescribed timelines under applicable IT rules.
           </p>
           <div className="grid md:grid-cols-2 gap-7 max-w-4xl mx-auto">
             <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm text-center">
@@ -290,16 +290,15 @@ export default function Privacy() {
               </a>
             </div>
             <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm text-center">
-              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Grievance Officer</h3>
-              <address className="not-italic text-sm text-[#23263a] space-y-1">
-                <p>Rahul Mehra</p>
-                <p>CALYCO Paints Private Limited</p>
-                <p>Sector V, MIDC Industrial Estate</p>
-                <p>Nashik, Maharashtra 422010</p>
-                <p>
-                  Phone: <a href="tel:+919145000100" className="hover:text-[#0F1221]">+91 9145 000 100</a>
-                </p>
-              </address>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">WhatsApp</h3>
+              <p className="text-sm text-[#23263a] mb-3">For grievances and urgent privacy concerns</p>
+              <a
+                href="https://wa.me/918826733064"
+                className="text-[#23263a] hover:text-[#0F1221] font-semibold underline"
+              >
+                +91 8826733064
+              </a>
+              <p className="text-xs text-[#23263a]/70 mt-3">Mon-Sat: 10:00 AM - 6:00 PM IST</p>
             </div>
           </div>
         </section>

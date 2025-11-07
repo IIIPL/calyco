@@ -1295,7 +1295,7 @@ const WaterproofingSealer = () => {
                                         {/* Product Image */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Interior Latex Paint/Main.png"
+                                                src="/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.png"
                                                 alt="Luxury Interior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1337,7 +1337,7 @@ const WaterproofingSealer = () => {
                                         {/* Product Image */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Exterior Latex Paint/Main.png"
+                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />

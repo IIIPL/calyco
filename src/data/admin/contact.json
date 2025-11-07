@@ -1,0 +1,29 @@
+{
+  "contact": {
+    "whatsapp": {
+      "number": "+91 8826733064",
+      "displayNumber": "+91 8826733064",
+      "rawNumber": "918826733064",
+      "link": "https://wa.me/918826733064"
+    },
+    "phone": {
+      "number": "+91 8826733064",
+      "displayNumber": "+91 8826733064",
+      "rawNumber": "918826733064"
+    },
+    "email": {
+      "support": "support@calycopaints.com",
+      "sales": "sales@calycopaints.com"
+    },
+    "address": {
+      "line1": "B-37, Sector - 1, Noida NCR,",
+      "line2": "India",
+      "full": "B-37, Sector - 1, Noida NCR, India"
+    },
+    "workingHours": {
+      "days": "Mon-Sat",
+      "time": "10am-6pm IST"
+    },
+    "supportAvailability": "24/7 support available"
+  }
+}

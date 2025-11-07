@@ -182,9 +182,9 @@ export default function TermsAndConditions() {
             <a href="mailto:compliance@calycopaints.com" className="text-[#D4AF37] font-semibold underline">
               compliance@calycopaints.com
             </a>{" "}
-            or call{" "}
-            <a href="tel:+919145000200" className="text-[#D4AF37] font-semibold">
-              +91 9145 000 200
+            or WhatsApp{" "}
+            <a href="https://wa.me/918826733064" className="text-[#D4AF37] font-semibold">
+              +91 8826733064
             </a>.
           </p>
           <p className="text-base text-[#23263a]">

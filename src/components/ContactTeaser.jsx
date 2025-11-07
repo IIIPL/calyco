@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import contactData from '../data/admin/contact.json';
 
 const ContactTeaser = ({ href = "/contact" }) => {
   const [email, setEmail] = useState('');
@@ -64,9 +65,9 @@ const ContactTeaser = ({ href = "/contact" }) => {
                   <Phone className="w-5 h-5 text-[#5E3A98]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#493657] mb-1">Call Us</h3>
-                  <p className="text-[#493657]/70">+91 98765 43210</p>
-                  <p className="text-sm text-[#493657]/60">Mon-Fri, 9AM-6PM IST</p>
+                  <h3 className="font-semibold text-[#493657] mb-1">WhatsApp Us</h3>
+                  <a href={contactData.contact.whatsapp.link} className="text-[#493657]/70 hover:text-[#5E3A98]">{contactData.contact.whatsapp.displayNumber}</a>
+                  <p className="text-sm text-[#493657]/60">{contactData.contact.workingHours.days}, {contactData.contact.workingHours.time}</p>
                 </div>
               </div>
 

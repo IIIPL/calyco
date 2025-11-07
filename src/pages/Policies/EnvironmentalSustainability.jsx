@@ -246,11 +246,11 @@ export default function EnvironmentalSustainability() {
               </a>
             </div>
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Phone</h3>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">WhatsApp</h3>
               <p className="text-sm text-[#23263a]">
-                Sustainability Team: <a href="tel:+919145000500" className="hover:text-[#D4AF37] font-semibold">+91 9145 000 500</a>
+                Sustainability Team: <a href="https://wa.me/918826733064" className="hover:text-[#D4AF37] font-semibold">+91 8826733064</a>
               </p>
-              <p className="text-xs text-[#23263a]/80 mt-2">Monday - Saturday: 9:00 AM - 6:00 PM IST</p>
+              <p className="text-xs text-[#23263a]/80 mt-2">Monday - Saturday: 10:00 AM - 6:00 PM IST</p>
             </div>
           </div>
         </section>

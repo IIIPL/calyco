@@ -1,27 +1,28 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "@formspree/react";
 import SEO from "../components/SEO";
+import contactData from "../data/admin/contact.json";
 
 const contactChannels = [
   {
-    title: "Call Us",
-    detail: "+91-99589-66881",
-    subDetail: "Mon–Sat, 10am–6pm IST",
-    description: "Speak directly with our experts",
-    icon: "📞",
-    href: "tel:+919958966881",
+    title: "WhatsApp Us",
+    detail: contactData.contact.whatsapp.displayNumber,
+    subDetail: contactData.contact.workingHours.days + ", " + contactData.contact.workingHours.time,
+    description: "Message us directly on WhatsApp",
+    icon: "📱",
+    href: contactData.contact.whatsapp.link,
   },
   {
     title: "Email Us",
-    detail: "support@calycopaints.com",
-    subDetail: "24/7 support available",
+    detail: contactData.contact.email.support,
+    subDetail: contactData.contact.supportAvailability,
     description: "Get detailed responses quickly",
     icon: "✉️",
-    href: "mailto:support@calycopaints.com",
+    href: "mailto:" + contactData.contact.email.support,
   },
   {
     title: "Visit Us",
-    detail: "B-37, Sector - 1, Noida NCR, India",
+    detail: contactData.contact.address.full,
     subDetail: "By appointment only",
     description: "Our headquarters",
     icon: "🏢",
@@ -84,8 +85,8 @@ const schemaMarkup = {
   "@type": "LocalBusiness",
   name: "Calyco Paints",
   url: "https://calycopaints.com",
-  telephone: "+91-99589-66881",
-  email: "support@calycopaints.com",
+  telephone: contactData.contact.phone.number,
+  email: contactData.contact.email.support,
   address: {
     "@type": "PostalAddress",
     streetAddress: "B-37, Sector - 1",
@@ -113,7 +114,7 @@ const schemaMarkup = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+91-99589-66881",
+      telephone: contactData.contact.phone.number,
       contactType: "customer support",
       availableLanguage: ["English", "Hindi"],
     },

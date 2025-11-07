@@ -305,9 +305,9 @@ export default function AboutPage() {
               <div className="w-12 h-12 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <span className="text-emerald-600 text-xl">📞</span>
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">Phone</h4>
-              <a href="tel:+91-9958966881" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors">
-                +91-9958966881
+              <h4 className="font-semibold text-gray-800 mb-2">WhatsApp</h4>
+              <a href="https://wa.me/918826733064" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors">
+                +91 8826733064
               </a>
             </div>
             

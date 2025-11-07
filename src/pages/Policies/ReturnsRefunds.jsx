@@ -182,7 +182,7 @@ export default function ReturnsRefunds() {
                 </p>
                 <ul className="space-y-1 text-xs text-[#31274B]/70">
                   <li>✓ Email: support@calycopaints.com</li>
-                  <li>✓ Phone: +91-99589-66881</li>
+                  <li>✓ WhatsApp: +91 8826733064</li>
                   <li>✓ Include clear photos of product and packaging</li>
                 </ul>
               </div>
@@ -465,10 +465,10 @@ export default function ReturnsRefunds() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="tel:+919958966881"
+                href="https://wa.me/918826733064"
                 className="inline-block rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
               >
-                📞 Call: +91-99589-66881
+                📱 WhatsApp: +91 8826733064
               </a>
               <a
                 href="mailto:support@calycopaints.com"

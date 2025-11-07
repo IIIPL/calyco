@@ -374,7 +374,7 @@ export default function ShippingDelivery() {
             <div className="mt-8 rounded-xl bg-[#4B007D] p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">🤝 Our Commitment to You</h3>
               <p className="text-white/90 text-sm">
-                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team at <a href="tel:+919958966881" className="underline">+91-99589-66881</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
+                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team at <a href="https://wa.me/918826733064" className="underline">+91 8826733064 (WhatsApp)</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
               </p>
             </div>
           </div>
@@ -482,10 +482,10 @@ export default function ShippingDelivery() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="tel:+919958966881"
+                href="https://wa.me/918826733064"
                 className="inline-block rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
               >
-                📞 Call: +91-99589-66881
+                📱 WhatsApp: +91 8826733064
               </a>
               <a
                 href="mailto:support@calycopaints.com"
