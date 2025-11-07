@@ -221,7 +221,6 @@ function App() {
             </React.Suspense>
             <Footer/>
           </div>
-          <Cart />
         </div>
         </ColorVisualizationProvider>
         </ColorProvider>

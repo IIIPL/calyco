@@ -17,7 +17,8 @@ const allowedProducts = [
   "Luxury Interior Emulsion",
   "Premium Interior Emulsion",
   "Luxury Exterior Emulsion",
-  "Premium Exterior Emulsion"
+  "Premium Exterior Emulsion",
+  "Waterproofing Sealer"
 ];
 
 const grouped = {

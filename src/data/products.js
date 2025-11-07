@@ -1,5 +1,90 @@
 export const products = [
   {
+    "id": "PremiumInteriorEmulsion",
+    "slug": "Premium-Interior-Emulsion",
+    "url": "https://calycopaints.com/product/Premium-Interior-Emulsion",
+    "name": "Premium Interior Emulsion",
+    "image": "/Assets/Product Images/Premium Interior Emulsion/1.png",
+    "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
+    "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
+    "category": "interior",
+    "finish_type_sheen": ["Low Sheen"],
+    "finishes": ["Low Sheen"],
+    "price": 600,
+    "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+    "default_finish": "Low Sheen",
+    "defaultFinish": "Low Sheen",
+    "images": ["/Assets/Product Images/Premium Interior Emulsion/1.png"]
+  },
+  {
+    "id": "LuxuryInteriorEmulsion",
+    "slug": "Interior-Latex-Paint",
+    "url": "https://calycopaints.com/product/Interior-Latex-Paint",
+    "name": "Luxury Interior Emulsion",
+    "image": "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+    "description": "Luxury interior emulsion with pearl finish - where elegance meets excellence for extraordinary interiors.",
+    "short-description": "Premium pearl finish emulsion. Ultra-low VOC. Water-based luxury for sophisticated living.",
+    "category": "interior",
+    "finish_type_sheen": ["Pearl"],
+    "finishes": ["Pearl"],
+    "price": 800,
+    "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+    "default_finish": "Pearl",
+    "defaultFinish": "Pearl",
+    "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.png"]
+  },
+  {
+    "id": "PremiumExteriorEmulsion",
+    "slug": "Premium-Exterior-Emulsion",
+    "url": "https://calycopaints.com/product/Premium-Exterior-Emulsion",
+    "name": "Premium Exterior Emulsion",
+    "image": "/Assets/Product Images/Premium Exterior Emulsion/1.png",
+    "description": "Premium exterior emulsion with sophisticated matte finish - engineered for superior weather resistance and lasting beauty.",
+    "short-description": "Premium matte finish exterior emulsion. UV-resistant, weather-proof barrier for enduring protection.",
+    "category": "exterior",
+    "finish_type_sheen": ["Matte Finish"],
+    "finishes": ["Matte Finish"],
+    "price": 600,
+    "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+    "default_finish": "Matte Finish",
+    "defaultFinish": "Matte Finish",
+    "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.png"]
+  },
+  {
+    "id": "LuxuryExteriorEmulsion",
+    "slug": "Luxury-Exterior-Emulsion",
+    "url": "https://calycopaints.com/product/Luxury-Exterior-Emulsion",
+    "name": "Luxury Exterior Emulsion",
+    "image": "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
+    "description": "Luxury high-sheen exterior emulsion - brilliant façades, weather after weather.",
+    "short-description": "High sheen, UV-shielded luxury exterior emulsion engineered for lasting brilliance and protection.",
+    "category": "exterior",
+    "finish_type_sheen": ["High Sheen Finish"],
+    "finishes": ["High Sheen Finish"],
+    "price": 800,
+    "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+    "default_finish": "High Sheen Finish",
+    "defaultFinish": "High Sheen Finish",
+    "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.png"]
+  },
+  {
+    "id": "WaterproofingSealer",
+    "slug": "waterproofing-sealer",
+    "url": "https://calycopaints.com/product/waterproofing-sealer",
+    "name": "Waterproofing Sealer",
+    "image": "/Assets/Product Images/Waterproof Sealer/1.png",
+    "description": "Breathable, crack-bridging waterproof membrane engineered for terraces, façades, planter boxes, and high-moisture interiors.",
+    "short-description": "Flexible, breathable waterproofing membrane that locks out moisture while resisting UV degradation and fungal growth.",
+    "category": "sealer",
+    "finish_type_sheen": ["Matte Finish"],
+    "finishes": ["Matte Finish"],
+    "price": 600,
+    "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
+    "default_finish": "Matte Finish",
+    "defaultFinish": "Matte Finish",
+    "images": ["/Assets/Product Images/Waterproof Sealer/1.png"]
+  },
+  {
     "id": "Nova",
     "slug": "Interior-Latex-Paint",
     "url": "https://calycopaints.com/product/Interior-Latex-Paint",
@@ -1217,150 +1302,6 @@ export const products = [
     "display_name": "ThermaCool",
     "images": ["/Assets/ThermaCool/NoBg.png"]
   },
-  {
-    "id": "WaterproofingSealer",
-    "slug": "waterproofing-sealer",
-    "url": "https://calycopaints.com/product/waterproofing-sealer",
-    "name": "Waterproofing Sealer",
-    "image": "/Assets/Defense/NoBg.png",
-    "description": "Ultimate multi-surface coating for all environments.",
-    "short-description": "The one coating every surface can trust - waterproof, UV-stable, breathable, and flexible.",
-    "details": "Waterproofing Sealer adapts to nearly any surface, offering a breathable, flexible, and long-lasting barrier across interior and exterior conditions.",
-    "category": "Stain & sealer",
-    "application": [
-      "Multi-surface areas",
-      "wood",
-      "metal",
-      "concrete",
-      "plaster",
-      "brick",
-      "tile",
-      "masonry",
-      "asphalt"
-    ],
-    "advantages": [
-      "Waterproof barrier",
-      "UV stable",
-      "Breathable film",
-      "Flexible protection"
-    ],
-    "features": [
-      "Anti-fungal",
-      "Crack-bridging",
-      "Long-lasting barrier",
-      "Multi-surface adhesion (concrete, metal, wood, plaster, asphalt, tile)",
-      "Waterproof and UV-resistant",
-      "Breathable barrier",
-      "Anti-corrosive",
-      "Flat finish",
-      "5-10 years outdoor durability"
-    ],
-    "finish_type_sheen": [
-      "Clear",
-      "Protective"
-    ],
-    "substrate": [
-      "Wood",
-      "Metal",
-      "Concrete",
-      "Plaster",
-      "Brick",
-      "Tile",
-      "Masonry",
-      "Asphalt"
-    ],
-    "recommended_uses": [
-      "Ideal for interior and exterior surfaces requiring long-term waterproof durability"
-    ],
-    "price": 599,
-    "packaging": [
-      "1L",
-      "4L",
-      "10L"
-    ],
-    "technical_specs": {
-      "base_type": "Water-based",
-      "coverage": "85-110 sq. ft./Ltr",
-      "voc_content": "Low VOC",
-      "suitable_surfaces": [
-        "Interior and exterior plaster/wood/metal"
-      ],
-      "application_instructions": "Apply in 2 coats. Stir sealer well before use.",
-      "drying_time": "1 hr",
-      "recoat_time": "4 hrs",
-      "cleanup": "Soap & Water"
-    },
-    "base_type": "Water-based",
-    "coverage": "85-110 sq. ft./Ltr",
-    "voc_content": "Low VOC",
-    "suitable_surfaces": [
-      "Interior and exterior plaster/wood/metal"
-    ],
-    "application_instructions": "Apply in 2 coats. Stir sealer well before use.",
-    "drying_time": "1 hr",
-    "recoat_time": "4 hrs",
-    "cleanup": "Soap & Water",
-    "brand": "Calyco",
-    "tools_required": [
-      "Brush",
-      "roller",
-      "spray"
-    ],
-    "color_options": [
-      "Clear and tinted neutrals"
-    ],
-    "spread_rate": "85-110 sq. ft./Ltr",
-    "preparation_instructions": "Apply on dry, masked surfaces",
-    "safety_precautions": "Wear protective gear and ventilate",
-    "storage_instructions": "Store away from sunlight, sealed",
-    "warranty": "5 years",
-    "product_number": "DEFENSE",
-    "coats_required": "2 coats",
-    "temperature_range": "12°C-40°C",
-    "humidity_range": "Below 80% RH",
-    "display_name": "Waterproofing Sealer",
-    "default_finish": "Clear",
-    "defaultFinish": "Clear",
-    "priceByFinish": {
-      "Clear": {
-        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
-        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
-        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
-      },
-      "Protective": {
-        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
-        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
-        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
-      }
-    },
-    "price_by_finish": {
-      "Clear": {
-        "1L": 599,
-        "4L": 2299,
-        "10L": 5499
-      },
-      "Protective": {
-        "1L": 599,
-        "4L": 2299,
-        "10L": 5499
-      }
-    },
-    "shopify_variant_map": {
-      "1L-Clear": "gid://shopify/ProductVariant/42638016217206",
-      "4L-Clear": "gid://shopify/ProductVariant/42638016282742",
-      "10L-Clear": "gid://shopify/ProductVariant/42638016348278",
-      "1L-Protective": "gid://shopify/ProductVariant/42638016217206",
-      "4L-Protective": "gid://shopify/ProductVariant/42638016282742",
-      "10L-Protective": "gid://shopify/ProductVariant/42638016348278"
-    },
-    "images": ["/Assets/Defense/NoBg.png"],
-    "docs": {
-      "tds": "/Assets/docs/waterproofing-sealer-tds.pdf",
-      "sds": "/Assets/docs/waterproofing-sealer-sds.pdf",
-      "warranty": "/Assets/docs/waterproof-sealer-warranty.pdf"
-    }
-  },
-  
   {
     "url": "https://calycopaints.com/product/primedefense-primer",
     "name": "PrimeDefense Primer",

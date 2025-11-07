@@ -24,7 +24,8 @@
       "Bash(npm uninstall:*)",
       "Bash(git revert:*)",
       "Bash(timeout 3 tail:*)",
-      "Bash(timeout /t 5)"
+      "Bash(timeout /t 5)",
+      "Bash(nul)"
     ],
     "deny": [],
     "ask": []
