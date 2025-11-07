@@ -104,6 +104,12 @@ export const Navbar = ({ bannerVisible = true }) => {
             onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
           >Colors</button>
 
+          <Link
+            to="/textures"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(null)}
+          >Textures</Link>
+
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
@@ -174,10 +180,18 @@ export const Navbar = ({ bannerVisible = true }) => {
           <ProductsDropdown isMobile={true} onSelect={() => setMenuOpen(false)} />
           <InspirationsDropdown isMobile={true} />
           <ColorsDropdown isMobile={true} />
-          <VisualizeDropdown isMobile={true} />
-          
 
-          
+          <Link
+            to="/textures"
+            className="text-[#493657] hover:text-[#F0C85A] w-full text-left"
+          >
+            Textures
+          </Link>
+
+          <VisualizeDropdown isMobile={true} />
+
+
+
           <Link
             to="/about"
             className="text-[#493657] hover:text-[#F0C85A] w-full text-left"

@@ -292,8 +292,8 @@ const ColorsPage = () => {
                   </button>
                 </div>
                 
-                {/* Color Swatches - 7 per row */}
-                <div className="grid grid-cols-7 gap-4">
+                {/* Color Swatches - Responsive grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
                   {colors.slice(0, 7).map((color, index) => (
                     <ColorCard
                       key={color.name}
@@ -363,6 +363,7 @@ const ColorsPage = () => {
 // Color Card Component
 const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index }) => {
   const actualHexColor = getActualHexColor(color.hex);
+  const textColorClass = getTextColor(color.hex);
 
   return (
     <motion.div
@@ -372,22 +373,23 @@ const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index
       className="group cursor-pointer"
       onClick={() => onColorClick(color)}
     >
-      <div className="relative">
+      {/* Unified Card Layout - Same for mobile and desktop */}
+      <div className="bg-white shadow-sm border border-gray-200 overflow-hidden group-hover:shadow-md transition-all duration-200">
         {/* Color Swatch */}
         <div
-          className="w-full aspect-square rounded-lg shadow-md border border-gray-200 group-hover:shadow-lg transition-all duration-200 min-h-[140px] sm:min-h-[160px] md:min-h-[180px]"
+          className="w-full aspect-square relative rounded-t-2xl"
           style={{ backgroundColor: actualHexColor }}
         >
           {/* Eco Badge */}
-          <div className="absolute top-2 left-2">
-            <SparklesIcon className="w-4 h-4 text-white drop-shadow-md" />
+          <div className="absolute top-3 left-3">
+            <SparklesIcon className={`w-5 h-5 ${textColorClass === 'text-white' ? 'text-white' : 'text-gray-900'} drop-shadow-md`} />
           </div>
         </div>
 
         {/* Color Info */}
-        <div className="mt-3 text-center">
-          <h3 className="text-sm font-medium text-gray-900 truncate mb-1">{color.name}</h3>
-          <p className="text-xs text-gray-500 font-mono">{color.hex}</p>
+        <div className="p-4">
+          <h3 className="text-base font-bold text-gray-900 mb-2 uppercase tracking-wide line-clamp-2">{color.name}</h3>
+          <p className="text-sm text-gray-600 font-mono">{actualHexColor}</p>
         </div>
       </div>
     </motion.div>

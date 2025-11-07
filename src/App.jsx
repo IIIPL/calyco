@@ -53,6 +53,8 @@ import FullColorPage from './pages/Colors/FullColorPage'
 import FamilyColorGroup from './pages/FamilyPage'
 import IndividualColorPage from './pages/Colors/IndividualColorPage'
 import ColorDetailPage from './pages/ColorDetailPage'
+const TexturesPage = React.lazy(() => import('./pages/TexturesPage.jsx'))
+const TextureDetailPage = React.lazy(() => import('./pages/TextureDetailPage.jsx'))
 
 
 // Import new providers and pages
@@ -194,6 +196,11 @@ function App() {
               
               <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
               <Route path="/room/:roomName" element={<IndividualRoomPage />} />
+
+              {/* Texture Routes */}
+              <Route path='/textures' element={<TexturesPage/>}/>
+              <Route path='/textures/:textureSlug' element={<TextureDetailPage/>}/>
+
               {/* Visualization Routes */}
               <Route path='/room-visualization' element={<RoomVisualizerPage/>} />
               <Route path='/room-visualization/bedroom' element={<RoomVisualizer/>} />
