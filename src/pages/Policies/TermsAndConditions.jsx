@@ -128,7 +128,7 @@ export default function TermsAndConditions() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-20 pb-12 bg-[#0F1221]">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
@@ -136,14 +136,13 @@ export default function TermsAndConditions() {
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-4xl px-6 py-14 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full"><div>
             <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
               Know Your Rights When Using CALYCO Services
             </h1>
-          </div>
-        </section>
+          </div></div></section>
 
         {/* Introduction */}
         <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
@@ -182,10 +181,13 @@ export default function TermsAndConditions() {
             <a href="mailto:compliance@calycopaints.com" className="text-[#D4AF37] font-semibold underline">
               compliance@calycopaints.com
             </a>{" "}
-            or WhatsApp{" "}
-            <a href="https://wa.me/918826733064" className="text-[#D4AF37] font-semibold">
-              +91 8826733064
+            or{" "}
+            <a href="https://wa.me/918826733064" className="text-[#D4AF37] font-semibold underline" target="_blank" rel="noopener noreferrer">
+              WhatsApp Message
             </a>.
+          </p>
+          <p className="text-sm text-[#23263a]/80 mb-1">
+            Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon–Sat, 10:00 AM – 6:00 PM IST)
           </p>
           <p className="text-base text-[#23263a]">
             Business customers may request tailored agreements for enterprise projects.
