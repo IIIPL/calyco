@@ -210,7 +210,7 @@ export default function AboutPage() {
 
       <main>
         {/* Hero: editorial photography with softened overlays for premium tone */}
-        <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-36">
+        <section className="relative flex h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
@@ -218,8 +218,7 @@ export default function AboutPage() {
               className="h-full w-full scale-105 object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/15" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
           <div className="absolute top-24 left-10 h-40 w-40 rounded-full bg-[var(--calyco-gold)]/12 blur-3xl float-animation" />
           <div
@@ -232,10 +231,10 @@ export default function AboutPage() {
               CALYCO Paints | Est. 2023
             </span>
             <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.3rem]">
-              Colour systems crafted for modern India.
+              Colour systems for modern India
             </h1>
-            <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
-              Purpose-built finishes, sustainable chemistries, and curated palettes that bring calm luxury and long-term durability to Indian spaces.
+            <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
+              Purpose-built finishes with sustainable chemistries
             </p>
           </div>
         </section>

@@ -265,9 +265,18 @@ export const ContactUs = () => {
                                 </svg>
                             </div>
                             <div>
-                                <h4 className="text-xl font-semibold text-gray-800 mb-1">WhatsApp Us</h4>
-                                <p className="text-gray-700 text-lg"><a href={contactData.contact.whatsapp.link}>{contactData.contact.whatsapp.displayNumber}</a></p>
-                                <p className="text-gray-500 text-sm">Available {contactData.contact.workingHours.days}, {contactData.contact.workingHours.time}</p>
+                                <h4 className="text-xl font-semibold text-gray-800 mb-1">Contact Us</h4>
+                                <p className="text-gray-700 text-base mb-2">
+                                    <a
+                                        href={contactData.contact.whatsapp.link}
+                                        className="inline-flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] font-semibold transition-colors underline"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {contactData.contact.whatsapp.displayText}
+                                    </a>
+                                </p>
+                                <p className="text-gray-500 text-sm">{contactData.contact.workingHours.days}, {contactData.contact.workingHours.time}</p>
                             </div>
                         </div>
 

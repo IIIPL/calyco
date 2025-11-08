@@ -234,7 +234,7 @@ export const FAQs = () => {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
@@ -242,9 +242,9 @@ export const FAQs = () => {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
+          <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-10 lg:px-12 flex items-center justify-center h-full"><div>
             <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
               Frequently Asked Questions
             </span>

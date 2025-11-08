@@ -53,7 +53,7 @@ const Page = ({ children }) => (
 );
 
 const Hero = () => (
-  <section className="relative isolate overflow-hidden">
+  <section className="relative isolate h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden">
     <div className="absolute inset-0">
       <img
         src="/Assets/InteriorInspiratoin/living-room.png"
@@ -61,12 +61,12 @@ const Hero = () => (
         className="h-full w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+      <div className="absolute inset-0 bg-black/25" />
       <div className="pointer-events-none absolute -left-16 bottom-12 h-56 w-56 rounded-full bg-[#f8d35e]/25 blur-3xl sm:-left-24 sm:h-72 sm:w-72" aria-hidden />
       <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 translate-x-1/3 rounded-full bg-[#8b5cf6]/30 blur-3xl sm:h-80 sm:w-80" aria-hidden />
     </div>
 
-    <div className="relative z-10 mx-auto flex h-[80vh] min-h-[620px] max-w-6xl items-center px-6 py-16 md:px-10">
+    <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10">
       <div className="max-w-3xl">
         <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#2b0f4a]">
           Calyco Warranty Care

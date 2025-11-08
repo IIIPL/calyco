@@ -14,11 +14,10 @@ import { getAllColors } from './calycoColors.js';
 const allColors = getAllColors();
 
 /**
- * Popular Colors - 10 most loved colors across different families
+ * Popular Colors - 9 most loved colors across different families
  * Selected for their versatility and popularity
  */
 export const POPULAR_COLOR_NAMES = [
-  'Pure White',        // RAL 9010 - Classic white
   'Linen',            // RAL 1015 - Warm neutral bestseller
   'Sage Green',       // RAL 6021 - Trendy green
   'Peacock Blue',     // RAL 5024 - Elegant blue
@@ -78,7 +77,7 @@ export const SOOTHING_NEUTRAL_NAMES = [
 
 /**
  * Get popular colors from database
- * @returns {Array} Array of 10 popular color objects
+ * @returns {Array} Array of 9 popular color objects
  */
 export const getPopularColors = () => {
   const colors = allColors.filter(color =>
@@ -89,7 +88,7 @@ export const getPopularColors = () => {
   return POPULAR_COLOR_NAMES
     .map(name => colors.find(c => c.name === name))
     .filter(Boolean) // Remove any undefined entries
-    .slice(0, 10);
+    .slice(0, 9);
 };
 
 /**

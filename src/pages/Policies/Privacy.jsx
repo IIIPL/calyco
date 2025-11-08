@@ -98,7 +98,7 @@ export default function Privacy() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-20 pb-16 bg-[#0F1221]">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
@@ -106,12 +106,17 @@ export default function Privacy() {
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-4xl px-6 py-16 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full">
+            <div>
             <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
-              Protecting Your Data Is Integral to Our Promise
+              Privacy Policy
             </h1>
+            <p className="mt-4 text-white/90 text-base md:text-lg">
+              Your data protection is our priority
+            </p>
+            </div>
           </div>
         </section>
 
@@ -290,15 +295,23 @@ export default function Privacy() {
               </a>
             </div>
             <div className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm text-center">
-              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">WhatsApp</h3>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Us</h3>
               <p className="text-sm text-[#23263a] mb-3">For grievances and urgent privacy concerns</p>
               <a
                 href="https://wa.me/918826733064"
-                className="text-[#23263a] hover:text-[#0F1221] font-semibold underline"
+                className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline block mb-2"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                +91 8826733064
+                WhatsApp Message
               </a>
-              <p className="text-xs text-[#23263a]/70 mt-3">Mon-Sat: 10:00 AM - 6:00 PM IST</p>
+              <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
+                Please contact us only via WhatsApp message for any grievance or urgent privacy concern.
+              </p>
+              <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
+                Phone calls are not accepted on this number.
+              </p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
             </div>
           </div>
         </section>

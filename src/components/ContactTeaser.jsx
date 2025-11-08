@@ -65,8 +65,15 @@ const ContactTeaser = ({ href = "/contact" }) => {
                   <Phone className="w-5 h-5 text-[#5E3A98]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#493657] mb-1">WhatsApp Us</h3>
-                  <a href={contactData.contact.whatsapp.link} className="text-[#493657]/70 hover:text-[#5E3A98]">{contactData.contact.whatsapp.displayNumber}</a>
+                  <h3 className="font-semibold text-[#493657] mb-1">Contact Us</h3>
+                  <a
+                    href={contactData.contact.whatsapp.link}
+                    className="text-[#5E3A98] hover:text-[#493657] font-semibold underline block mb-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {contactData.contact.whatsapp.displayText}
+                  </a>
                   <p className="text-sm text-[#493657]/60">{contactData.contact.workingHours.days}, {contactData.contact.workingHours.time}</p>
                 </div>
               </div>

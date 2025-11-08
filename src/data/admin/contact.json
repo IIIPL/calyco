@@ -2,13 +2,14 @@
   "contact": {
     "whatsapp": {
       "number": "+91 8826733064",
-      "displayNumber": "+91 8826733064",
+      "displayText": "WhatsApp Message",
       "rawNumber": "918826733064",
-      "link": "https://wa.me/918826733064"
+      "link": "https://wa.me/918826733064",
+      "disclaimer": "Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number."
     },
     "phone": {
       "number": "+91 8826733064",
-      "displayNumber": "+91 8826733064",
+      "displayText": "Contact via WhatsApp",
       "rawNumber": "918826733064"
     },
     "email": {
@@ -21,9 +22,9 @@
       "full": "B-37, Sector - 1, Noida NCR, India"
     },
     "workingHours": {
-      "days": "Mon-Sat",
-      "time": "10am-6pm IST"
+      "days": "Mon–Sat",
+      "time": "10:00 AM – 6:00 PM IST"
     },
-    "supportAvailability": "24/7 support available"
+    "supportAvailability": "Message us on WhatsApp during working hours"
   }
 }

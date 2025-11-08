@@ -305,10 +305,11 @@ export default function AboutPage() {
               <div className="w-12 h-12 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <span className="text-emerald-600 text-xl">📞</span>
               </div>
-              <h4 className="font-semibold text-gray-800 mb-2">WhatsApp</h4>
-              <a href="https://wa.me/918826733064" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors">
-                +91 8826733064
+              <h4 className="font-semibold text-gray-800 mb-2">Contact Us</h4>
+              <a href="https://wa.me/918826733064" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors font-semibold underline block mb-2" target="_blank" rel="noopener noreferrer">
+                WhatsApp Message
               </a>
+              <p className="text-xs text-gray-600">Mon–Sat, 10:00 AM – 6:00 PM IST</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-md">

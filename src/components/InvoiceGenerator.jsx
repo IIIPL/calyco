@@ -23,7 +23,7 @@ export const InvoiceGenerator = ({ items, total, onClose }) => {
         company: {
           name: 'Calyco Paints',
           address: 'B37, Sector 1, Noida, NCR',
-          phone: '+91 8826733064',
+          phone: '+91 8826733064 (WhatsApp - Messages only)',
           email: 'info@calycopaints.com'
         },
         items: items.map(item => ({
@@ -354,7 +354,7 @@ export const InvoiceGenerator = ({ items, total, onClose }) => {
                 </div>
               </div>
               <div class="contact-info">
-                <div class="contact-item"><strong>Phone:</strong> +91 8826733064</div>
+                <div class="contact-item"><strong>WhatsApp:</strong> +91 8826733064 (Messages only)</div>
                 <div class="contact-item"><strong>Email:</strong> info@calycopaints.com</div>
                 <div class="contact-item"><strong>Website:</strong> calycopaints.com</div>
               </div>

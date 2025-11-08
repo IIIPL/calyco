@@ -140,7 +140,7 @@ const ProductsPage = () => {
             <div className="absolute bottom-20 right-20 w-40 h-40 bg-[#F0C85A]/15 rounded-full blur-3xl" />
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-6 py-20">
+          <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ const ProductsPage = () => {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-7xl font-bold text-white mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
               >
                 Premium Paint 
                 <span className="text-[#F0C85A]"> Collection</span>
@@ -158,7 +158,7 @@ const ProductsPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="max-w-3xl mx-auto text-xl text-white/90 leading-relaxed"
+                className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-white/90 leading-relaxed"
               >
                 Discover our complete range of professional-grade paints engineered for 
                 Indian conditions. From elegant interiors to weather-resistant exteriors.

@@ -8,12 +8,12 @@ const StaticHero = () => {
         <img
           src="/Assets/home-hero/full-page.png"
           alt="Beautiful transformed home interior"
-          className="w-full h-full object-cover object-[65%_center] scale-110"
+          className="w-full h-full object-cover object-[15%_center] md:object-[65%_center] scale-[1.25] md:scale-110"
         />
       </div>
 
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/45 to-black/30 md:from-black/55 md:via-black/35 md:to-black/20" />
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-center pt-16 sm:pt-0">
@@ -28,15 +28,21 @@ const StaticHero = () => {
 
             {/* Main Title */}
             <h1
-              className="text-3xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-2 sm:mb-3 md:mb-4 leading-[1.25] sm:leading-[1.25] md:leading-[1.25] text-white tracking-normal"
+              className="hidden md:block text-3xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-2 sm:mb-3 md:mb-4 leading-[1.25] sm:leading-[1.25] md:leading-[1.25] text-white tracking-normal"
               style={{ letterSpacing: '0.01em' }}
             >
               Colors That Transform Homes Into Havens
             </h1>
+            <h1 className="md:hidden text-[28px] font-bold mb-3 leading-tight text-white">
+              Transform Your Space With Color
+            </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 text-white/90 font-normal leading-[1.55] sm:leading-[1.55] md:leading-[1.6] max-w-2xl">
+            <p className="hidden md:block text-base sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 text-white/90 font-normal leading-[1.55] sm:leading-[1.55] md:leading-[1.6] max-w-2xl">
               Tired of overpriced paint that underdelivers? We're changing that with Premium quality paint at prices that make sense.
+            </p>
+            <p className="md:hidden text-base mb-4 text-white/90 leading-relaxed">
+              Premium finishes that look better, last longer, and don’t break the budget.
             </p>
 
             {/* CTA Buttons */}

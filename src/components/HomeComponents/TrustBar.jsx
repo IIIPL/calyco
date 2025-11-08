@@ -17,8 +17,8 @@ const TrustBar = () => {
     },
     {
       icon: HiOutlineBuildingOffice2,
-      title: "Manufactured in India",
-      description: "Direct from our factory to your home",
+      title: "In-House Manufactured",
+      description: "Local batches mixed and packed for tighter quality control",
       accent: "bg-white/10"
     },
     {

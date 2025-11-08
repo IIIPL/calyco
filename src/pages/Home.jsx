@@ -239,14 +239,14 @@ const Home = () => {
             className="w-full h-full object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 flex items-center">
+        <div className="absolute inset-0 flex items-start sm:items-center pt-16 sm:pt-0">
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="max-w-xl md:max-w-2xl space-y-5"
+              className="max-w-xl md:max-w-2xl space-y-5 text-left"
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B007D]/10 text-[#4B007D] text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">

@@ -11,18 +11,18 @@ const PremiumTextureSplit = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="relative h-[70vh] sm:h-[65vh] md:h-[70vh] lg:h-[72vh]"
+        className="relative h-[85vh] sm:h-[65vh] md:h-[70vh] lg:h-[72vh]"
       >
         <img
           src="/Assets/Texture Images/tex.png"
           alt="Premium textured living room"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[25%_center] scale-[1.18] md:object-center md:scale-100"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/5" />
 
-        <div className="absolute inset-0 flex items-center pt-16 sm:pt-0">
+        <div className="absolute inset-0 flex items-start md:items-center pt-12 sm:pt-0">
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-            <div className="text-white max-w-xl md:max-w-2xl lg:max-w-3xl">
+            <div className="text-white max-w-xl md:max-w-2xl lg:max-w-3xl flex flex-col h-full">
               <div className="inline-block mb-3 sm:mb-4">
                 <span className="inline-flex items-center px-4 py-2 sm:px-5 sm:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-xs sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
                   Premium Texture Finishes
@@ -37,11 +37,11 @@ const PremiumTextureSplit = () => {
                 Discover luxurious textures engineered to add depth, warmth, and brilliance to every surface.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto pt-6 pb-4 items-center justify-center sm:justify-start sm:items-start">
                 <button
                   type="button"
                   onClick={() => navigate('/products?category=premium-textures')}
-                  className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full max-w-xs mx-auto md:w-auto md:mx-0"
                 >
                   Explore Textures
                 </button>

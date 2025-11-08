@@ -37,15 +37,27 @@ const TexturesPage = () => {
   return (
     <div className="min-h-screen bg-white w-full">
       {/* Hero Section */}
-      <section className="relative h-[60vh] overflow-hidden bg-gradient-to-br from-[#493657] via-[#5E3A98] to-[#493657]">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative h-full flex items-center justify-center px-6">
+      <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/Assets/Texture Images/GPT_Image_1_Sophisticated_living_room_corner_with_textured_acc_0.png"
+            alt="Premium textured wall finishes"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        </div>
+
+        {/* Content */}
+        <div className="relative h-full flex items-center justify-center px-4 sm:px-6 md:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-light mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6 drop-shadow-2xl"
+              style={{ textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}
             >
               Premium Textures
             </motion.h1>
@@ -53,7 +65,8 @@ const TexturesPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl font-light opacity-90"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-light opacity-95 drop-shadow-lg px-4"
+              style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
             >
               Transform your walls with our exclusive range of textured finishes
             </motion.p>

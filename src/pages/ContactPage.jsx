@@ -5,8 +5,8 @@ import contactData from "../data/admin/contact.json";
 
 const contactChannels = [
   {
-    title: "WhatsApp Us",
-    detail: contactData.contact.whatsapp.displayNumber,
+    title: "Contact Us via WhatsApp",
+    detail: contactData.contact.whatsapp.displayText,
     subDetail: contactData.contact.workingHours.days + ", " + contactData.contact.workingHours.time,
     description: "Message us directly on WhatsApp",
     icon: "📱",
@@ -209,7 +209,7 @@ export default function ContactPage() {
 
       <main>
         {/* Hero: hospitality-inspired contact banner */}
-        <section className="relative overflow-hidden bg-[var(--calyco-ink)] text-white">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[var(--calyco-ink)] text-white">
           <div className="absolute inset-0">
             <img
               src="/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.png"
@@ -217,19 +217,21 @@ export default function ContactPage() {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/55 to-black/30" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative mx-auto w-full max-w-5xl px-4 py-28 text-center md:py-36">
-            <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 md:text-xs">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
-              CALYCO Support Desk
-            </span>
-            <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.2rem]">
-              Speak with the team keeping projects colour-true.
-            </h1>
-            <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/85 md:text-base">
-              One inbox for specifications, dealer support, bulk orders, and technical advice across India.
-            </p>
+          <div className="relative mx-auto w-full max-w-5xl px-4 text-center flex items-center justify-center h-full">
+            <div>
+              <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 md:text-xs">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
+                CALYCO Support
+              </span>
+              <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.2rem]">
+                Get in touch with our team
+              </h1>
+              <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
+                We're here to help with your paint projects
+              </p>
+            </div>
           </div>
         </section>
 

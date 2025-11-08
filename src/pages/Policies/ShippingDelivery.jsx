@@ -19,7 +19,7 @@ export default function ShippingDelivery() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28 bg-[#0F1221]">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
@@ -27,9 +27,9 @@ export default function ShippingDelivery() {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/35 to-black/20" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center md:px-10 md:py-20 lg:px-12">
+          <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-10 lg:px-12 flex items-center justify-center h-full"><div>
             <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
               Shipping & Delivery Policy
             </span>
@@ -45,8 +45,7 @@ export default function ShippingDelivery() {
             >
               Contact Support Team
             </button>
-            <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p>
-          </div>
+            <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p></div></div>
         </section>
 
 
@@ -373,8 +372,11 @@ export default function ShippingDelivery() {
 
             <div className="mt-8 rounded-xl bg-[#4B007D] p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">🤝 Our Commitment to You</h3>
-              <p className="text-white/90 text-sm">
-                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team at <a href="https://wa.me/918826733064" className="underline">+91 8826733064 (WhatsApp)</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
+              <p className="text-white/90 text-sm mb-2">
+                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team via <a href="https://wa.me/918826733064" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
+              </p>
+              <p className="text-white/80 text-xs">
+                Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon–Sat, 10:00 AM – 6:00 PM IST)
               </p>
             </div>
           </div>
@@ -484,8 +486,10 @@ export default function ShippingDelivery() {
               <a
                 href="https://wa.me/918826733064"
                 className="inline-block rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                📱 WhatsApp: +91 8826733064
+                📱 WhatsApp Message
               </a>
               <a
                 href="mailto:support@calycopaints.com"
@@ -494,6 +498,9 @@ export default function ShippingDelivery() {
                 ✉️ Email: support@calycopaints.com
               </a>
             </div>
+            <p className="text-sm text-white/80 text-center mb-4">
+              Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number.
+            </p>
 
             <div className="text-sm text-white/80">
               <p className="mb-1"><strong>Customer Support Hours:</strong></p>

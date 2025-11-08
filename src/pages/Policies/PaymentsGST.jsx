@@ -73,7 +73,7 @@ export default function PaymentsGST() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-20 pb-12 bg-[#0F1221]">
+        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
               src="/Assets/InteriorInspiratoin/living-room.png"
@@ -81,14 +81,13 @@ export default function PaymentsGST() {
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/25" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
-          <div className="relative z-10 mx-auto max-w-4xl px-6 py-14 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full"><div>
             <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
               Secure, Flexible, Transparent Payments
             </h1>
-          </div>
-        </section>
+          </div></div></section>
 
         {/* Introduction */}
         <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
@@ -260,11 +259,14 @@ export default function PaymentsGST() {
               </a>
             </div>
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">WhatsApp</h3>
-              <p className="text-sm text-[#23263a]">
-                Billing Helpline: <a href="https://wa.me/918826733064" className="hover:text-[#D4AF37] font-semibold">+91 8826733064</a>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Billing Helpline</h3>
+              <p className="text-sm text-[#23263a] mb-2">
+                <a href="https://wa.me/918826733064" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
               </p>
-              <p className="text-xs text-[#23263a]/80 mt-2">Monday - Saturday: 10:00 AM - 6:00 PM IST</p>
+              <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
+                Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number.
+              </p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
             </div>
           </div>
         </section>
