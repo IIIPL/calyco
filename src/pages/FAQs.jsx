@@ -299,6 +299,7 @@ export const FAQs = () => {
               Contact Support
             </button>
           </div>
+          </div>
         </section>
 
 
