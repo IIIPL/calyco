@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { getButtonClasses } from '../data/admin/typography';
 
 const ProductFinder = () => {
   // Quiz State
@@ -339,13 +340,13 @@ const ProductFinder = () => {
             <div className="flex flex-col md:flex-row gap-4">
               <a
                 href={`/products/${recommendedProductKey}`}
-                className="flex-1 bg-[#2D5F3F] text-white text-center py-4 px-8 rounded-xl font-bold text-lg hover:bg-[#1e4029] transition-all transform hover:-translate-y-1 shadow-lg"
+                className={`${getButtonClasses('accent')} flex-1 text-center`}
               >
                 Learn More About This Product
               </a>
               <a
                 href="/contact"
-                className="flex-1 bg-[#C97C5D] text-white text-center py-4 px-8 rounded-xl font-bold text-lg hover:bg-[#b36b4d] transition-all transform hover:-translate-y-1 shadow-lg"
+                className={`${getButtonClasses('accent')} flex-1 text-center`}
               >
                 Contact a Coating Expert
               </a>
@@ -372,7 +373,7 @@ const ProductFinder = () => {
           <div className="text-center">
             <button
               onClick={restartQuiz}
-              className="bg-white text-[#2D5F3F] border-2 border-[#2D5F3F] py-4 px-12 rounded-xl font-bold text-lg hover:bg-[#F9F9F7] transition-all"
+              className={getButtonClasses('accent')}
             >
               Take Quiz Again
             </button>
@@ -433,7 +434,7 @@ const ProductFinder = () => {
             </p>
             <button
               onClick={() => setCurrentQuestion(0)}
-              className="bg-[#2D5F3F] text-white py-5 px-16 rounded-xl text-xl font-bold hover:bg-[#1e4029] transition-all transform hover:-translate-y-1 shadow-2xl"
+              className={getButtonClasses('accent')}
             >
               Start Product Finder
             </button>

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllColors } from "../data/calycoColors.js";
 import { reverseColorNameMapping } from "../data/colorNameMapping";
+import MobileChevron from "./MobileChevron";
 
 const ALL_COLORS = getAllColors();
 
@@ -150,10 +151,10 @@ const ColorsDropdown = ({ onSelect, isMobile = false }) => {
       <div className="w-full flex flex-col items-start">
         <button
           onClick={() => setOpen(!open)}
-          className="text-[#493657] hover:text-[#F0C85A] flex justify-between w-full"
+          className="text-[#493657] hover:text-[#F0C85A] flex justify-between items-center w-full"
         >
           <span>Colors</span>
-          <span className={`transform transition-transform ${open ? "rotate-90" : ""}`}>☰</span>
+          <MobileChevron open={open} />
         </button>
         <div
           className={`transition-all duration-300 ease-in-out overflow-hidden ${

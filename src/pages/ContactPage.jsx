@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "@formspree/react";
 import SEO from "../components/SEO";
 import contactData from "../data/admin/contact.json";
+import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 const contactChannels = [
   {
@@ -225,10 +226,10 @@ export default function ContactPage() {
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
                 CALYCO Support
               </span>
-              <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.2rem]">
+              <h1 className={`${getTypographyClasses('h1')} animate-on-scroll text-white`}>
                 Get in touch with our team
               </h1>
-              <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
+              <p className={`${getTypographyClasses('bodyLarge')} animate-on-scroll mx-auto max-w-2xl text-white/90`}>
                 We're here to help with your paint projects
               </p>
             </div>
@@ -240,10 +241,10 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F8F4EC] to-white" />
           <div className="relative mx-auto max-w-5xl px-4 md:px-8 lg:px-10">
             <div className="animate-on-scroll text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 Multiple Ways to Reach Us
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base text-[#31274B]/80 md:text-lg">
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/80`}>
                 Choose the most convenient way to get in touch with our expert team.
               </p>
             </div>
@@ -260,10 +261,10 @@ export default function ContactPage() {
                       </span>
                     </span>
                     <div>
-                      <h3 className="text-xl font-semibold text-[var(--calyco-ink)]">
+                      <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>
                         {channel.title}
                       </h3>
-                      <p className="text-sm text-[#31274B]/70">{channel.description}</p>
+                      <p className={`${getTypographyClasses('body')} text-[#31274B]/70`}>{channel.description}</p>
                     </div>
                   </div>
                   {channel.href ? (
@@ -292,10 +293,10 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[var(--calyco-cream)] to-white" />
           <div className="relative mx-auto max-w-6xl px-4 md:px-8 lg:px-10">
             <div className="animate-on-scroll text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 Send Us a Message
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base text-[#31274B]/85 md:text-lg">
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
                 Tell us about your project, ask questions, or request a quote. Our team will get back to you within 24 hours with personalized solutions.
               </p>
             </div>
@@ -433,7 +434,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={state.submitting}
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[var(--calyco-gold)] to-[#F59E0B] px-6 py-3 text-sm font-semibold text-[var(--calyco-ink)] shadow-[0_22px_40px_-30px_rgba(0,0,0,0.6)] transition duration-200 hover:-translate-y-1 hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
+                  className={`${getButtonClasses('accent')} mt-6 w-full disabled:cursor-not-allowed disabled:opacity-70`}
                 >
                   {state.submitting ? "Sending..." : "Send Message"}
                 </button>
@@ -456,7 +457,7 @@ export default function ContactPage() {
         <section className="py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10">
             <div className="animate-on-scroll mb-10 text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 Why Teams Choose Calyco Support
               </h2>
             </div>
@@ -472,53 +473,10 @@ export default function ContactPage() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="mb-2 text-lg font-semibold text-[var(--calyco-ink)]">
+                    <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[#31274B]/85 leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Global Presence */}
-        <section className="relative py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#FDF9F1] via-white to-[#F4EEE3]" />
-          <div className="relative mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <div className="mb-12 space-y-4 text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">
-                Global Presence
-              </h2>
-              <p className="mx-auto max-w-3xl text-base text-[#31274B]/80 md:text-lg">
-                Connect with our team across the globe for local support and expertise.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {offices.map((office) => (
-                <div
-                  key={office.id}
-                  className="flex h-full flex-col gap-4 rounded-[28px] border border-black/7 bg-white p-6 shadow-[0_20px_40px_-35px_rgba(15,18,33,0.5)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_30px_55px_-35px_rgba(15,18,33,0.5)]"
-                >
-                  <div>
-                    <span className="text-sm font-semibold uppercase tracking-wide text-[#D4AF37]">
-                      {office.region}
-                    </span>
-                    <h3 className="mt-1 text-2xl font-semibold text-[var(--calyco-ink)]">
-                      {office.name}
-                    </h3>
-                  </div>
-                  <div className="space-y-2 text-sm text-[#31274B]/85">
-                    <p className="font-medium">{office.address}</p>
-                    <div>
-                      <a
-                        href={`mailto:${office.email}`}
-                        className="text-[var(--calyco-ink)] underline-offset-4 hover:underline"
-                      >
-                        {office.email}
-                      </a>
-                    </div>
+                    <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -529,23 +487,23 @@ export default function ContactPage() {
         {/* Footer CTA */}
         <section className="bg-[#FBF9F6] py-20">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 text-center md:px-10 lg:px-12">
-            <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">
+            <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
               Need specifications or color inspiration?
             </h2>
-            <p className="max-w-3xl text-base text-[#31274B]/85 md:text-lg">
+            <p className={`${getTypographyClasses('body')} max-w-3xl text-[#31274B]/85`}>
               Continue exploring CALYCO products or visit Support & FAQs for quick
               answers to common questions.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
                 href="/products"
-                className="inline-flex items-center justify-center rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000014] transition hover:bg-[#bb9831]"
+                className={getButtonClasses('accent')}
               >
                 Back to Products
               </a>
               <a
                 href="/faq"
-                className="inline-flex items-center justify-center rounded-xl border-2 border-[var(--calyco-ink)]/10 px-8 py-3 text-base font-semibold text-[var(--calyco-ink)] transition hover:bg-[var(--calyco-cream)]"
+                className={getButtonClasses('outline')}
               >
                 Support & FAQs
               </a>
@@ -556,5 +514,4 @@ export default function ContactPage() {
     </div>
   );
 }
-
 

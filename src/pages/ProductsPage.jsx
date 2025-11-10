@@ -149,9 +149,9 @@ const ProductsPage = () => {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+                className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-6 leading-[1.2]"
               >
-                Premium Paint 
+                Premium Paint
                 <span className="text-[#F0C85A]"> Collection</span>
               </motion.h1>
               <motion.p

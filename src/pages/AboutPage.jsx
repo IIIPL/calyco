@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import BudgetCalculatorCTA from "../components/HomeComponents/BudgetCalculatorCTA";
 import WhyCalycoShowcase from "../components/HomeComponents/WhyCalycoShowcase";
+import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 const storyMilestones = [
   { icon: "🎯", text: "Closing the gap between performance & responsibility" },
@@ -230,10 +231,10 @@ export default function AboutPage() {
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
               CALYCO Paints | Est. 2023
             </span>
-            <h1 className="animate-on-scroll mt-6 text-[2.4rem] font-semibold leading-tight text-white sm:text-[2.8rem] md:text-[3.1rem] lg:text-[3.3rem]">
+            <h1 className={`${getTypographyClasses('h1')} animate-on-scroll text-white`}>
               Colour systems for modern India
             </h1>
-            <p className="animate-on-scroll mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
+            <p className={`${getTypographyClasses('bodyLarge')} animate-on-scroll mx-auto max-w-2xl text-white/90`}>
               Purpose-built finishes with sustainable chemistries
             </p>
           </div>
@@ -243,8 +244,8 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
             <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <div className="animate-on-scroll rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] md:p-10">
-                <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Our Story</h2>
-                <p className="mt-4 text-base text-[#31274B]/90 md:text-lg">
+                <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Our Story</h2>
+                <p className={`${getTypographyClasses('body')} text-[#31274B]/90`}>
                   Founded to merge professional-grade performance with environmental responsibility, CALYCO is building the future of paints for India.
                 </p>
                 <ul className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -272,7 +273,7 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-20 animate-on-scroll rounded-[32px] border border-black/5 bg-white/95 p-8 shadow-[0_32px_65px_-50px_rgba(13,15,28,0.55)] md:p-10">
-              <h3 className="text-center text-2xl font-semibold text-[var(--calyco-ink)] md:text-3xl">Our Core Values</h3>
+              <h3 className={`${getTypographyClasses('h3')} text-center text-[var(--calyco-ink)]`}>Our Core Values</h3>
               <div className="mt-10 flex flex-wrap justify-center gap-3 lg:gap-4">
                 {valuePillars.map((value) => (
                   <span
@@ -301,8 +302,8 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-white/88 backdrop-blur-[2px]" />
           <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
             <div className="animate-on-scroll text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Leadership & Culture</h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base text-[#31274B]/85 md:text-lg">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Leadership & Culture</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
                 A multidisciplinary leadership group with deep experience drives CALYCO's roadmap—powered by an expert network that keeps performance and people at the center.
               </p>
             </div>
@@ -325,10 +326,10 @@ export default function AboutPage() {
                       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--calyco-gold)]">
                         {pillar.caption}
                       </span>
-                      <h3 className="mt-1 text-xl font-semibold text-[var(--calyco-ink)]">{pillar.title}</h3>
+                      <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>{pillar.title}</h3>
                     </div>
                   </div>
-                  <p className="relative text-sm text-[#31274B]/85 md:text-base">{pillar.description}</p>
+                  <p className={`${getTypographyClasses('body')} relative text-[#31274B]/85`}>{pillar.description}</p>
                 </article>
               ))}
             </div>
@@ -357,10 +358,10 @@ export default function AboutPage() {
                   <span className="inline-flex items-center rounded-full border border-black/10 bg-[var(--calyco-cream)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]/70">
                     Manufacturing excellence
                   </span>
-                  <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-[2.5rem]">
+                  <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                     Precision engineered, meticulously verified.
                   </h2>
-                  <p className="text-base text-[#31274B]/85 md:text-lg">
+                  <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>
                     From resin design through finishing gloss, each Calyco batch advances through calibrated production cells, HEPA-filtered tinting, and layered quality gates built for India's humidity, dust, and UV extremes.
                   </p>
                 </div>
@@ -375,14 +376,14 @@ export default function AboutPage() {
                       </div>
                       <div className="flex-1 space-y-2">
                         <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h3 className="text-lg font-semibold text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]">
+                          <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]`}>
                             {highlight.title}
                           </h3>
                           <span className="rounded-full bg-[var(--calyco-gold)]/18 px-3 py-1 text-xs font-semibold text-[var(--calyco-ink)]">
                             {highlight.metric}
                           </span>
                         </div>
-                        <p className="text-sm text-[#31274B]/75 md:text-[15px]">{highlight.description}</p>
+                        <p className={`${getTypographyClasses('body')} text-[#31274B]/75`}>{highlight.description}</p>
                       </div>
                     </article>
                   ))}
@@ -400,14 +401,14 @@ export default function AboutPage() {
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
                 Revolutionary Innovation
               </div>
-              <h2 className="mt-5 text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl lg:text-5xl">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 EcoMax™ <span className="text-gradient">Technology</span>
               </h2>
-              <div className="mx-auto mt-6 max-w-4xl space-y-5 text-[#31274B]/85 md:text-lg">
-                <p className="font-medium">
+              <div className="mx-auto mt-6 max-w-4xl space-y-5 text-[#31274B]/85">
+                <p className={`${getTypographyClasses('body')} font-medium`}>
                   Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
                 </p>
-                <p>
+                <p className={`${getTypographyClasses('body')}`}>
                   What we created is a formula that's better, stronger, and cleaner—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
                 </p>
               </div>
@@ -428,21 +429,21 @@ export default function AboutPage() {
                     </span>
                   </div>
                   <div className="relative space-y-3">
-                    <h3 className="text-xl font-semibold text-[var(--calyco-ink)]">{feature.title}</h3>
-                    <p className="text-sm text-[#31274B]/85 md:text-base">{feature.description}</p>
+                    <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>{feature.title}</h3>
+                    <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>{feature.description}</p>
                   </div>
                 </article>
               ))}
             </div>
             <div className="animate-on-scroll mt-16 rounded-[32px] bg-gradient-to-r from-[var(--calyco-plum)] to-[var(--calyco-gold)] px-8 py-10 text-center text-white md:px-10 md:py-14">
-              <h3 className="text-2xl font-semibold md:text-3xl">Experience the EcoMax™ Difference</h3>
-              <p className="mx-auto mt-4 max-w-2xl text-sm text-white/90 md:text-base">
+              <h3 className={`${getTypographyClasses('h3')} text-white`}>Experience the EcoMax™ Difference</h3>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-2xl text-white/90`}>
                 Discover how our revolutionary colorant technology delivers superior performance while protecting your family and the environment.
               </p>
               <button
                 type="button"
                 onClick={handleNavigate("/products")}
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-[var(--calyco-plum)] shadow-[0_20px_40px_-30px_rgba(0,0,0,0.65)] transition duration-200 hover:-translate-y-1 hover:scale-[1.02]"
+                className={getButtonClasses('accent')}
               >
                 Explore EcoMax™ Products
               </button>
@@ -463,8 +464,8 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-white/93 backdrop-blur-sm" />
           <div className="relative mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
             <div className="animate-on-scroll text-center">
-              <h2 className="text-3xl font-semibold text-[var(--calyco-ink)] md:text-4xl">Sustainability & Responsibility</h2>
-              <p className="mx-auto mt-4 max-w-3xl text-sm text-[#31274B]/85 md:text-base">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Sustainability & Responsibility</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
                 Responsible chemistry and transparent reporting guide every decision—today and for the future.
               </p>
             </div>
@@ -477,8 +478,8 @@ export default function AboutPage() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-2xl text-white shadow-lg shadow-black/20">
                     {item.icon}
                   </span>
-                  <h3 className="text-base font-semibold text-[var(--calyco-ink)] md:text-lg">{item.title}</h3>
-                  <p className="text-sm text-[#31274B]/80">{item.description}</p>
+                  <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>{item.title}</h3>
+                  <p className={`${getTypographyClasses('body')} text-[#31274B]/80`}>{item.description}</p>
                 </div>
               ))}
             </div>
@@ -497,24 +498,24 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#d4af3733,transparent_70%)]" />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <div className="animate-on-scroll flex flex-col items-center gap-6 rounded-[40px] border border-black/5 bg-white/85 px-8 py-12 text-center shadow-[0_35px_70px_-55px_rgba(15,18,33,0.55)] md:px-12">
-              <h2 className="text-2xl font-semibold text-[var(--calyco-ink)] sm:text-3xl md:text-4xl">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 Ready to bring Calyco into your next project?
               </h2>
-              <p className="max-w-3xl text-sm text-[#31274B]/85 md:text-base">
+              <p className={`${getTypographyClasses('body')} max-w-3xl text-[#31274B]/85`}>
                 Share specifications, request colour support, or plan large-format rollouts with our technical consultants and designer network.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={handleNavigate("/contact")}
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--calyco-gold)] to-[#F59E0B] px-7 py-3 text-sm font-semibold text-[var(--calyco-ink)] shadow-[0_24px_45px_-30px_rgba(0,0,0,0.45)] transition duration-200 hover:-translate-y-1 hover:scale-[1.02]"
+                  className={getButtonClasses('accent')}
                 >
                   Start a Conversation
                 </button>
                 <button
                   type="button"
                   onClick={handleNavigate("/colors")}
-                  className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-7 py-3 text-sm font-semibold text-[var(--calyco-ink)] transition duration-200 hover:-translate-y-1 hover:bg-[var(--calyco-cream)]"
+                  className={getButtonClasses('outline')}
                 >
                   View Colour Library
                 </button>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 import SEO from "../../components/SEO";
 
 const sections = [

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../components/SEO";
 
@@ -112,7 +113,7 @@ export default function PaymentsGST() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {paymentMethods.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -128,7 +129,7 @@ export default function PaymentsGST() {
           <div className="grid gap-4 md:grid-cols-2">
             {pricingInfo.map((item) => (
               <div key={item.label || item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.label || item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.label || item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.value}</p>
               </div>
             ))}
@@ -157,7 +158,7 @@ export default function PaymentsGST() {
           <div className="grid gap-4 md:grid-cols-2">
             {taxDetails.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -184,7 +185,7 @@ export default function PaymentsGST() {
           <div className="grid gap-4 md:grid-cols-2">
             {invoiceFeatures.map((item) => (
               <div key={item.label} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.label}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.label}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.action}</p>
               </div>
             ))}
@@ -227,7 +228,7 @@ export default function PaymentsGST() {
           <div className="grid gap-6 md:grid-cols-3">
             {bulkOptions.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -238,7 +239,7 @@ export default function PaymentsGST() {
             </p>
             <button
               onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+              className={getButtonClasses('accent')}
             >
               Contact Us
             </button>

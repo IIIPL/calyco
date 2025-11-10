@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { getButtonClasses } from '../data/admin/typography';
 
 const ToolsAndResources = () => {
   const navigate = useNavigate();
@@ -261,7 +262,7 @@ const ToolsAndResources = () => {
 
                   {/* CTA Button */}
                   <button
-                    className="bg-[#532E8A] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#4A1F7A] hover:-translate-y-[1px] hover:shadow-md active:translate-y-0 transition-all duration-200 inline-flex items-center gap-2 w-fit group/btn"
+                    className={`${getButtonClasses('accent')} inline-flex items-center gap-2 w-fit group/btn`}
                     onClick={(e) => {
                       e.stopPropagation();
                       if (tool.action) {
@@ -497,7 +498,7 @@ const ToolsAndResources = () => {
                     <button
                       onClick={addToCart}
                       data-analytics="tools_calculator_addpacks"
-                      className="w-full bg-[#C8A951] text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-[#B89A4A] transition-colors duration-200"
+                      className={`w-full ${getButtonClasses('accent')}`}
                       disabled={result.packs.length === 0}
                     >
                       Add recommended packs

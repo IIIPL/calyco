@@ -86,14 +86,14 @@ const ColorPageWrapper = () => {
 }
 
 // Offer Banner Component
-const OfferBanner = ({ onClose, isVisible }) => {
+const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
   const navigate = useNavigate();
-  
+
   return (
-    <div className={`fixed top-0 left-0 w-full bg-gray-600 overflow-hidden z-[60] transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'}`}>
-      
-      
-              <div className="relative max-w-7xl mx-auto px-6 py-2">
+    <div className={`fixed top-0 left-0 w-full bg-gray-600 overflow-hidden transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'} ${menuOpen ? 'z-[45]' : 'z-[60]'}`}>
+
+
+              <div className="relative max-w-7xl mx-auto px-4 py-2.5 sm:px-6">
           <div className="flex items-center justify-between">
             {/* Centered Text */}
             <div className="flex-1"></div>
@@ -118,19 +118,20 @@ const OfferBanner = ({ onClose, isVisible }) => {
 
 function App() {
   const [bannerVisible, setBannerVisible] = useState(true);
-  
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <CartProvider>
       <ColorProvider>
         <ColorVisualizationProvider>
         <div className='font-poppins overflow-x-hidden'>
           {/* Offer Banner - Above Header */}
-          <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} />
-          
+          <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />
+
           {/* This is your app. */}
-          <Navbar bannerVisible={bannerVisible} />
+          <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
           {/* Add top margin to account for fixed navbar + offer banner */}
-          <div className={`transition-all duration-300 ${bannerVisible ? 'pt-20 md:pt-16' : 'pt-0'}`}>
+          <div className={`transition-all duration-300 ${bannerVisible ? 'pt-[108px] md:pt-[124px]' : 'pt-16 md:pt-20'}`}>
             <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
           <Routes>
               <Route path='/' element={<Home/>}/>

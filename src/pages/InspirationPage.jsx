@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getButtonClasses } from "../data/admin/typography";
 
 const ROOMS = [
   { title: "Kitchen", category: "Kitchen", designs: 22, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.jpg" },
@@ -151,9 +152,9 @@ export default function InspirationPage() {
               Explore our complete collection of colors and get expert advice on creating the perfect atmosphere for your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => navigate('/colors')}
-                className="px-8 py-4 bg-white text-[#493657] rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className={getButtonClasses('accent')}
               >
                 Browse Color Collection
               </button>

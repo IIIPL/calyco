@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../components/SEO";
 
@@ -45,7 +46,7 @@ export default function ReturnsRefunds() {
             </p>
             <button
               onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+              className={getButtonClasses('accent')}
             >
               Start a Return Request
             </button>
@@ -465,7 +466,7 @@ export default function ReturnsRefunds() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
                 href="https://wa.me/918826733064"
-                className="inline-block rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+                className={getButtonClasses('accent')}
                 target="_blank"
                 rel="noopener noreferrer"
               >

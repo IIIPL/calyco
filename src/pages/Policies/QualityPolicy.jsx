@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 import { useNavigate } from "react-router-dom";
 import SEO from "../../components/SEO";
 
@@ -134,7 +135,7 @@ export default function QualityPolicy() {
           <div className="grid gap-4 sm:grid-cols-2">
             {qualityCommitments.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -147,7 +148,7 @@ export default function QualityPolicy() {
           <div className="grid gap-4 md:grid-cols-2">
             {testingStandards.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -163,7 +164,7 @@ export default function QualityPolicy() {
           <div className="grid gap-4 md:grid-cols-2">
             {certifications.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}

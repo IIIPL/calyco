@@ -1,4 +1,5 @@
 import React from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 
 const TONE_MAP = {
   plum: {

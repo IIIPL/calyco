@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
+import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 
 
@@ -248,10 +249,10 @@ export const FAQs = () => {
             <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
               Frequently Asked Questions
             </span>
-            <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
+            <h1 className={`${getTypographyClasses('h1')} text-white`}>
               Answers to Your Most Common Queries
             </h1>
-            <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
+            <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
               Browse topics or search for quick solutions. If you can't find what you need, our support team is ready to help.
             </p>
             
@@ -294,7 +295,7 @@ export const FAQs = () => {
 
             <button
               onClick={() => navigate("/contact")}
-              className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg transition hover:bg-[#bb9831]"
+              className={getButtonClasses('accent')}
             >
               Contact Support
             </button>
@@ -307,7 +308,7 @@ export const FAQs = () => {
         {/* Categories */}
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-2xl font-bold text-[#4B007D] text-center mb-6">Browse by Category</h2>
+            <h2 className={`${getTypographyClasses('h3')} text-center text-[#4B007D]`}>Browse by Category</h2>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {categories.map((category) => {
                 const isActive = category.id === activeCategory;
@@ -335,13 +336,13 @@ export const FAQs = () => {
         {/* FAQ Accordions */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-8 text-center">
+            <h2 className={`${getTypographyClasses('h2')} text-[#4B007D] text-center`}>
               {activeCategory === "all" ? "All Questions" : categories.find(c => c.id === activeCategory)?.label}
             </h2>
             
             {filteredFaqs.length === 0 ? (
               <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-12 text-center shadow-sm">
-                <h3 className="text-2xl font-bold text-[#4B007D] mb-3">No Results Found</h3>
+                <h3 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>No Results Found</h3>
                 <p className="text-base text-[#31274B]/80 mb-6">
                   Try adjusting your search keywords or browse different categories.
                 </p>
@@ -367,7 +368,7 @@ export const FAQs = () => {
                         aria-expanded={isOpen}
                       >
                         <h3
-                          className="text-lg font-semibold text-[#4B007D] flex-1"
+                          className={`${getTypographyClasses('h4')} text-[#4B007D] flex-1`}
                           dangerouslySetInnerHTML={{ __html: highlightedText(faq.question) }}
                         />
                         <span
@@ -385,7 +386,7 @@ export const FAQs = () => {
                       >
                         <div className="px-6 pb-6">
                           <p
-                            className="text-base text-[#31274B]/85 leading-relaxed"
+                            className={`${getTypographyClasses('body')} text-[#31274B]/85`}
                             dangerouslySetInnerHTML={{ __html: highlightedText(faq.answer) }}
                           />
                           <div className="mt-4 flex items-center gap-3 text-xs text-[#31274B]/60">
@@ -415,14 +416,14 @@ export const FAQs = () => {
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Technical Questions */}
               <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-[#4B007D] mb-4">Technical Resources</h2>
+                <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Technical Resources</h2>
                 <p className="text-sm text-[#31274B]/80 mb-6">
                   Access detailed specifications for compliance documentation and tender submissions.
                 </p>
                 <ul className="space-y-4">
                   {technicalHighlights.map((item) => (
                     <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className="text-base font-bold text-[#4B007D] mb-2">{item.title}</h3>
+                      <h3 className={`${getTypographyClasses('h4')} text-[#4B007D]`}>{item.title}</h3>
                       <p className="text-sm text-[#31274B]/80">{item.description}</p>
                       {item.link && (
                         <button
@@ -441,14 +442,14 @@ export const FAQs = () => {
 
               {/* Maintenance Tips */}
               <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-[#4B007D] mb-4">Maintenance Tips</h2>
+                <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Maintenance Tips</h2>
                 <p className="text-sm text-[#31274B]/80 mb-6">
                   Keep your CALYCO finishes looking fresh with proactive care and climate-aware planning.
                 </p>
                 <ul className="space-y-4">
                   {maintenanceTips.map((item) => (
                     <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className="text-base font-bold text-[#4B007D] mb-2">{item.title}</h3>
+                      <h3 className={`${getTypographyClasses('h4')} text-[#4B007D]`}>{item.title}</h3>
                       <p className="text-sm text-[#31274B]/80">{item.detail}</p>
                     </li>
                   ))}
@@ -464,7 +465,7 @@ export const FAQs = () => {
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-3xl px-6 md:px-10 lg:px-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-[#4B007D] mb-3">Still Need Help?</h2>
+              <h2 className={`${getTypographyClasses('h2')} text-[#4B007D]`}>Still Need Help?</h2>
               <p className="text-base text-[#31274B]/85">
                 Submit your question and our support team will reply within 24 business hours.
               </p>
@@ -512,7 +513,7 @@ export const FAQs = () => {
                 </p>
                 <button
                   type="submit"
-                  className="rounded-xl bg-[#D4AF37] px-8 py-3 text-sm font-semibold text-[#0F1221] shadow-sm transition hover:bg-[#bb9831]"
+                  className={getButtonClasses('accent')}
                 >
                   Send Message
                 </button>
@@ -527,7 +528,7 @@ export const FAQs = () => {
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-[#4B007D] mb-6">Popular Questions</h2>
+              <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Popular Questions</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <button

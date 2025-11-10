@@ -16,6 +16,7 @@ import StickyCTA from "../components/ProductDetail/StickyCTA";
 import SEO from "../components/SEO";
 import CartPopup from "../components/CartPopup";
 import { useCart } from "../context/CartContext";
+import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 const INTERIOR_LATEX_VARIANT_MAP = {
   '1L-Low Sheen': 'gid://shopify/ProductVariant/42619088371830',

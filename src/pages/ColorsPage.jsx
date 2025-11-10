@@ -380,16 +380,15 @@ const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index
           className="w-full aspect-square relative rounded-t-2xl"
           style={{ backgroundColor: actualHexColor }}
         >
-          {/* Eco Badge */}
-          <div className="absolute top-3 left-3">
-            <SparklesIcon className={`w-5 h-5 ${textColorClass === 'text-white' ? 'text-white' : 'text-gray-900'} drop-shadow-md`} />
-          </div>
         </div>
 
         {/* Color Info */}
         <div className="p-4">
           <h3 className="text-base font-bold text-gray-900 mb-2 uppercase tracking-wide line-clamp-2">{color.name}</h3>
-          <p className="text-sm text-gray-600 font-mono">{actualHexColor}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-600 font-mono">{actualHexColor}</p>
+            <span className="text-sm text-gray-500 capitalize">{color.tone || 'Neutral'}</span>
+          </div>
         </div>
       </div>
     </motion.div>

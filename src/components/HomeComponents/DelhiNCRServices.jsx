@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaCircleCheck, FaPaintRoller, FaPhone, FaCalendarDays } from "react-icons/fa6";
+import { getButtonClasses } from "../../data/admin/typography";
 
 const DelhiNCRServices = () => {
   const features = [
@@ -80,7 +81,7 @@ const DelhiNCRServices = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#493657] to-[#5a4067] text-white rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className={`${getButtonClasses('accent')} inline-flex items-center gap-2`}
               >
                 <FaPhone />
                 Book Free Consultation

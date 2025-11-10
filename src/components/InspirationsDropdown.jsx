@@ -1,6 +1,7 @@
 // ✅ Unified InspirationsDropdown with mobile & desktop logic
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MobileChevron from "./MobileChevron";
 
 const inspirationMenu = [
   { key: "living", label: "LIVING ROOM" },
@@ -43,10 +44,10 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
       <div className="w-full flex flex-col items-start">
         <button
           onClick={() => setOpen(!open)}
-          className="text-[#493657] hover:text-[#F0C85A] flex justify-between w-full"
+          className="text-[#493657] hover:text-[#F0C85A] flex justify-between items-center w-full"
         >
           <span>Inspirations</span>
-          <span className={`transform transition-transform ${open ? "rotate-90" : ""}`}>▶</span>
+          <MobileChevron open={open} />
         </button>
         <div
           className={`transition-all duration-300 ease-in-out overflow-hidden ${

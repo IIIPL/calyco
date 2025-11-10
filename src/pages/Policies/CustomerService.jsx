@@ -231,7 +231,7 @@ export default function CustomerService() {
             <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
               <button
                 type="button"
-                className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000024] transition hover:bg-[#bb9831]"
+                className={getButtonClasses('accent')}
               >
                 Visit Help Centre
               </button>
@@ -299,7 +299,7 @@ export default function CustomerService() {
                 <h2 className="text-3xl font-semibold text-[#4B007D] md:text-4xl">
                   Live Chat & Expert Consultation
                 </h2>
-                <p className="text-base text-[#31274B]/85 md:text-lg">
+                <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>
                   Connect instantly with our specialists from 9 AM to 9 PM IST or schedule a video consultation for personalised advice.
                 </p>
                 <div className="rounded-3xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
@@ -328,7 +328,7 @@ export default function CustomerService() {
                   </p>
                   <button
                     type="button"
-                    className="mt-auto rounded-xl bg-[#D4AF37] px-5 py-2 text-sm font-semibold text-[#0F1221] shadow-sm transition hover:bg-[#bb9831]"
+                    className={`mt-auto ${getButtonClasses('accent')}`}
                   >
                     Chat now
                   </button>
@@ -586,7 +586,7 @@ export default function CustomerService() {
               Subscribe for colour launches, application webinars, and technical deep dives. Share your support experience so we can keep improving.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <button className="rounded-xl bg-[#D4AF37] px-8 py-3 text-base font-semibold text-[#0F1221] shadow-lg shadow-[#00000014] transition hover:bg-[#bb9831]">
+              <button className={getButtonClasses('accent')}>
                 Subscribe & Download
               </button>
               <button className="rounded-xl border-2 border-[#D4AF37] px-8 py-3 text-base font-semibold text-[#D4AF37] transition hover:bg-[#D4AF37]/10">

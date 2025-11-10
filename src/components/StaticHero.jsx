@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { getTypographyClasses, getButtonClasses } from '../data/admin/typography';
 
 const StaticHero = () => {
   return (
-    <section className="relative w-full h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden">
+    <section className="relative w-full h-[80vh] sm:h-[70vh] md:h-[85vh] lg:h-[85vh] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -27,35 +28,27 @@ const StaticHero = () => {
             </div>
 
             {/* Main Title */}
-            <h1
-              className="hidden md:block text-3xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-2 sm:mb-3 md:mb-4 leading-[1.25] sm:leading-[1.25] md:leading-[1.25] text-white tracking-normal"
-              style={{ letterSpacing: '0.01em' }}
-            >
+            <h1 className={`${getTypographyClasses('h1')} text-white`}>
               Colors That Transform Homes Into Havens
-            </h1>
-            <h1 className="md:hidden text-[28px] font-bold mb-3 leading-tight text-white">
-              Transform Your Space With Color
             </h1>
 
             {/* Subtitle */}
-            <p className="hidden md:block text-base sm:text-base md:text-lg mb-4 sm:mb-5 md:mb-6 text-white/90 font-normal leading-[1.55] sm:leading-[1.55] md:leading-[1.6] max-w-2xl">
-              Tired of overpriced paint that underdelivers? We're changing that with Premium quality paint at prices that make sense.
-            </p>
-            <p className="md:hidden text-base mb-4 text-white/90 leading-relaxed">
-              Premium finishes that look better, last longer, and don’t break the budget.
+            <p className={`${getTypographyClasses('bodyLarge')} text-white/90 max-w-2xl`}>
+              Premium finishes that look better, last longer, <br className="hidden md:block" />
+              and don't break the budget.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 to="/colors"
-                className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className={getButtonClasses('primary')}
               >
                 Discover Your Perfect Shade
               </Link>
               <Link
                 to="/products"
-                className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-transparent text-white border-2 border-white/50 rounded-lg font-semibold text-base sm:text-sm hover:bg-white/10 hover:border-white transition-all duration-300"
+                className={getButtonClasses('secondary')}
               >
                 Products
               </Link>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 import SEO from "../../components/SEO";
 
 const dataCollection = [
@@ -134,7 +135,7 @@ export default function Privacy() {
           <div className="grid gap-6 sm:grid-cols-2">
             {dataCollection.map((item) => (
               <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm hover:shadow transition">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -147,7 +148,7 @@ export default function Privacy() {
           <div className="grid gap-6 md:grid-cols-2">
             {useOfData.map((item) => (
               <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] p-7 shadow-sm hover:shadow transition">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -163,7 +164,7 @@ export default function Privacy() {
           <div className="grid gap-6 md:grid-cols-2">
             {dataSharing.map((item) => (
               <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-white p-7 shadow-sm hover:shadow transition">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -220,7 +221,7 @@ export default function Privacy() {
           <div className="grid gap-6 md:grid-cols-2 mb-12">
             {userRights.map((item) => (
               <div key={item.title} className="rounded-xl border border-[#0F1221]/15 bg-[#FBF9F6] p-7 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#0F1221]">{item.title}</h3>
+                <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                 <p className="mt-2 text-sm text-[#23263a]">{item.details}</p>
               </div>
             ))}
@@ -267,7 +268,7 @@ export default function Privacy() {
               </label>
               <button
                 type="submit"
-                className="mx-auto block rounded-lg bg-[#D4AF37] px-8 py-2 text-sm font-semibold text-[#0F1221] shadow-md hover:bg-[#bb9831] transition border-0"
+                className={getButtonClasses('accent')}
               >
                 Submit Request
               </button>

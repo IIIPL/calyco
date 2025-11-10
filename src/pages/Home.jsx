@@ -11,7 +11,6 @@ import StaticHero from '../components/StaticHero';
 import ColorSlider from '../components/ColorSlider';
 import PopularColorsSlider from '../components/PopularColorsSlider';
 import ShopByColour from '../components/ShopByColour';
-import HowItWorks from '../components/HowItWorks.tsx';
 import NavigationArrows from '../components/NavigationArrows';
 import TrustBar from '../components/HomeComponents/TrustBar';
 import PaintingServices from '../components/HomeComponents/PaintingServices';
@@ -20,6 +19,7 @@ import MarqueeStrip from '../components/HomeComponents/MarqueeStrip';
 import WhyCalycoShowcase from '../components/HomeComponents/WhyCalycoShowcase';
 import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCTA';
 import ProductShowcase from '../components/HomeComponents/ProductShowcase';
+import FeatureCards from '../components/HomeComponents/FeatureCards';
 
 
 const Home = () => {
@@ -260,8 +260,7 @@ const Home = () => {
               </h2>
 
               <p className="text-base md:text-lg text-[#4A4A4A] leading-relaxed max-w-xl drop-shadow-sm">
-                We believe premium quality shouldn't come with a premium price tag. That's why we manufacture in-house,
-                cut out middlemen, and deliver professional-grade paints directly to your doorstep.
+                Quality paints without the markup. We craft in-house and deliver pro-grade finishes straight to you.
               </p>
             </motion.div>
           </div>
@@ -338,7 +337,9 @@ const Home = () => {
       </section>
 
       <ShopByColour />
-      <HowItWorks />
+
+      {/* Feature Cards Section */}
+      <FeatureCards />
 
       {/* Why Calyco Showcase */}
       <WhyCalycoShowcase />

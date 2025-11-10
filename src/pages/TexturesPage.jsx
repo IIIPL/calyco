@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import textures, { getTextureCategories } from '../data/textures';
+import { getTypographyClasses } from '../data/admin/typography';
 
 const TexturesPage = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const TexturesPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-4 sm:mb-6 drop-shadow-2xl"
+              className={`${getTypographyClasses('h1')} font-light drop-shadow-2xl`}
               style={{ textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}
             >
               Premium Textures
@@ -65,7 +66,7 @@ const TexturesPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl font-light opacity-95 drop-shadow-lg px-4"
+              className={`${getTypographyClasses('bodyLarge')} font-light opacity-95 drop-shadow-lg px-4`}
               style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
             >
               Transform your walls with our exclusive range of textured finishes
@@ -122,10 +123,10 @@ const TexturesPage = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-8">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-2">
+            <h2 className={`${getTypographyClasses('h2')} text-gray-900`}>
               Showing {filteredTextures.length} {filteredTextures.length === 1 ? 'Texture' : 'Textures'}
             </h2>
-            <p className="text-gray-600">
+            <p className={`${getTypographyClasses('body')} text-gray-600`}>
               Discover our premium collection of wall textures
             </p>
           </div>
@@ -156,7 +157,7 @@ const TexturesPage = () => {
 
                   {/* Texture Info */}
                   <div className="p-5">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#5E3A98] transition-colors">
+                    <h3 className={`${getTypographyClasses('h4')} text-gray-900 group-hover:text-[#5E3A98] transition-colors`}>
                       {texture.name}
                     </h3>
                     <div className="flex items-center justify-between">
