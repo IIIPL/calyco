@@ -83,8 +83,8 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300"
-      style={{ top: bannerVisible && !menuOpen ? '44px' : '0px' }}
+      className="fixed left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300"
+      style={{ top: bannerVisible && !menuOpen ? (isMobileView ? '48px' : '40px') : '0px' }}
     >
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center justify-between px-10 lg:px-16 h-20">
@@ -183,18 +183,21 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
             <img src="/Logo.png" className="h-10 object-contain" alt="Calyco Logo" />
           </Link>
-          <button
-            className="text-[#493657] text-2xl font-light"
-            onClick={() => handleMenuToggle(false)}
-            aria-label="Close mobile menu"
-          >
-            &times;
-          </button>
+          <div className="flex items-center gap-4">
+            <CartIcon />
+            <button
+              className="text-[#493657] text-2xl font-light"
+              onClick={() => handleMenuToggle(false)}
+              aria-label="Close mobile menu"
+            >
+              &times;
+            </button>
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 py-8">
           <nav className="flex flex-col gap-5 text-lg font-medium text-[#493657]">
-            <div className="border-b border-[#e5e0d8] pb-5">
+            <div>
               <p className="text-xs tracking-[0.3em] uppercase text-[#8c7b96] mb-4">
                 Browse
               </p>
@@ -205,18 +208,21 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
               </div>
             </div>
 
-            <div className="border-b border-[#e5e0d8] pb-5">
-              <div className="flex flex-col gap-4">
-                <Link
-                  to="/textures"
-                  className="hover:text-[#F0C85A] transition-colors"
-                  onClick={() => handleMenuToggle(false)}
-                >
-                  Textures
-                </Link>
-                <VisualizeDropdown isMobile={true} />
-              </div>
-            </div>
+            <Link
+              to="/textures"
+              className="hover:text-[#F0C85A] transition-colors"
+              onClick={() => handleMenuToggle(false)}
+            >
+              Textures
+            </Link>
+
+            <Link
+              to="/room-visualization"
+              className="hover:text-[#F0C85A] transition-colors"
+              onClick={() => handleMenuToggle(false)}
+            >
+              Visualize
+            </Link>
 
             <div className="pt-2 flex flex-col gap-4 text-base uppercase tracking-wide text-[#916e9f]">
               <Link

@@ -20,7 +20,7 @@ const FeatureCards = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* First Row - Full Width Card */}
         <div className="relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 mb-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 md:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 p-4 md:p-8 lg:p-12">
 
             {/* Left Side - Image */}
             <div className="relative h-64 md:h-80 lg:h-full rounded-2xl overflow-hidden">
@@ -33,10 +33,12 @@ const FeatureCards = () => {
 
             {/* Right Side - Content */}
             <div className="flex flex-col justify-center">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                <span className="text-[#0F1221]">Access a Range of</span><br />
-                <span className="text-[#B8935F]">Eco-Premium Paints</span><br />
-                <span className="text-[#0F1221]">& Coatings</span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-[#0F1221]">Access a Range of</span>
+                <br className="hidden md:block" />
+                <span className="text-[#998850]"> Eco-Premium Paints</span>
+                <br className="hidden md:block" />
+                <span className="text-[#0F1221]"> & Coatings</span>
               </h3>
               <p className="text-[#5A5A5A] mb-6 leading-relaxed text-lg">
                 Low-VOC, high performance chemistry engineered for Indian climates. Choose palettes curated by designers and tested by professionals.
@@ -89,7 +91,7 @@ const FeatureCards = () => {
             <div className="p-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-2">
                 <span className="text-[#432452]">Moving in the</span><br />
-                <span className="text-[#B8935F]">Right Direction</span>
+                <span className="text-[#998850]">Right Direction</span>
               </h3>
               <p className="text-[#5A5A5A] mb-6 leading-relaxed">
                 Personalised plans that keep your project moving with confidence.
@@ -115,7 +117,7 @@ const FeatureCards = () => {
             <div className="p-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-2">
                 <span className="text-[#432452]">Paint Smarter,</span><br />
-                <span className="text-[#B8935F]">Last Longer</span>
+                <span className="text-[#998850]">Last Longer</span>
               </h3>
               <p className="text-[#5A5A5A] mb-6 leading-relaxed">
                 Premium, durable paints engineered to protect every surface.

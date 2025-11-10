@@ -172,8 +172,8 @@ export const typography = {
       weight: "font-semibold",
       rounded: "rounded-lg",
       base: "inline-flex items-center justify-center",
-      colors: "bg-[#B8935F] text-white",
-      hover: "hover:bg-[#A17F4E]",
+      colors: "bg-[#998850] text-white",
+      hover: "hover:bg-[#856f34]",
       effects: "transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
     },
     outline: {
@@ -194,8 +194,8 @@ export const typography = {
       weight: "font-semibold",
       rounded: "rounded-lg",
       base: "inline-flex items-center justify-center",
-      colors: "bg-[#B8935F] text-white",
-      hover: "hover:bg-[#A17F4E]",
+      colors: "bg-[#998850] text-white",
+      hover: "hover:bg-[#856f34]",
       effects: "transition-all duration-300"
     }
   },
