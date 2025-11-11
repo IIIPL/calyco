@@ -10,7 +10,7 @@ const BudgetCalculatorCTA = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,500px)] gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -42,9 +42,9 @@ const BudgetCalculatorCTA = () => {
             className="flex justify-center lg:justify-end"
           >
             <img
-              src="/Assets/budget.png"
+              src="/Assets/Texture Images/calyco-family.png"
               alt="Family happily planning paint budget"
-              className="w-full max-w-sm sm:max-w-md lg:max-w-[460px] object-contain drop-shadow-2xl"
+              className="w-full max-w-sm sm:max-w-md lg:max-w-[520px] object-contain drop-shadow-2xl rounded-2xl"
             />
           </motion.div>
         </div>

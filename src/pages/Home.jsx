@@ -16,8 +16,10 @@ import TrustBar from '../components/HomeComponents/TrustBar';
 import PaintingServices from '../components/HomeComponents/PaintingServices';
 import PremiumTextureSplit from '../components/HomeComponents/PremiumTextureSplit';
 import MarqueeStrip from '../components/HomeComponents/MarqueeStrip';
+import TextureShowcase from '../components/HomeComponents/TextureShowcase';
 import WhyCalycoShowcase from '../components/HomeComponents/WhyCalycoShowcase';
 import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCTA';
+import SiteInspectionCTA from '../components/HomeComponents/SiteInspectionCTA';
 import ProductShowcase from '../components/HomeComponents/ProductShowcase';
 import FeatureCards from '../components/HomeComponents/FeatureCards';
 
@@ -234,7 +236,7 @@ const Home = () => {
       <section className="relative w-full h-[85vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/Assets/Texture Images/quality2.png"
+            src="/Assets/Texture Images/tex2.png"
             alt="Living room showcasing premium textured wall finish"
             className="w-full h-full object-cover object-center"
           />
@@ -246,26 +248,33 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="max-w-xl md:max-w-2xl space-y-5 text-left"
+              className="max-w-xl md:max-w-2xl"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B007D]/10 text-[#4B007D] text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-                <span>Our Promise to You</span>
-              </span>
+              <div className="backdrop-blur-md bg-white/70 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/30">
+                <div className="space-y-5 text-left">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B007D]/10 text-[#4B007D] text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Our Promise to You</span>
+                  </span>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1C1A16] leading-tight drop-shadow-sm">
-                Quality You Can Trust, <span className="text-[#998850]">Colors You'll Love</span>
-              </h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1C1A16] leading-tight">
+                    Quality You Can Trust, <span className="text-[#998850]">Colors You'll Love</span>
+                  </h2>
 
-              <p className="text-base md:text-lg text-[#4A4A4A] leading-relaxed max-w-xl drop-shadow-sm">
-                Quality paints without the markup. We craft in-house and deliver pro-grade finishes straight to you.
-              </p>
+                  <p className="text-base md:text-lg text-[#4A4A4A] leading-relaxed max-w-xl">
+                    Quality paints without the markup. We craft in-house and deliver pro-grade finishes straight to you.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Texture Showcase Slider */}
+      <TextureShowcase />
 
       {/* Trust Bar - Key Value Props */}
       <TrustBar />
@@ -340,6 +349,9 @@ const Home = () => {
 
       {/* Feature Cards Section */}
       <FeatureCards />
+
+      {/* Site Inspection CTA */}
+      <SiteInspectionCTA />
 
       {/* Why Calyco Showcase */}
       <WhyCalycoShowcase />
