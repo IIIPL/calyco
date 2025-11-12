@@ -246,26 +246,7 @@ export const waterproofingSealerDetail = {
     { name: "Terracotta Roof", hex: "#A64E24", slug: "terracotta-roof" },
     { name: "Tropical Green", hex: "#3D6A5B", slug: "tropical-green" },
   ],
-  relatedProducts: [
-    {
-      id: "primedefense-primer",
-      name: "PrimeDefense Multi-Surface Primer",
-      image: "/Assets/DefensePrimer/NoBg.png",
-      price: 375,
-    },
-    {
-      id: "exterior-latex",
-      name: "Calyco Exterior Latex Paint",
-      image: "/Assets/Exterior Latex Paint/Main.png",
-      price: 700,
-    },
-    {
-      id: "thermacool-topcoat",
-      name: "ThermaCool Reflective Topcoat",
-      image: "/Assets/ThermaCool/NoBg.png",
-      price: 820,
-    },
-  ],
+  relatedProducts: [],
   warranty: "5-year waterproofing guarantee when applied as per TDS.",
   
   // 🔧 UPDATED: Added sample variants in correct order

@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(do sed -i 's/className=\"\"rounded-xl bg-\\[#D4AF37\\] px-6 py-3 text-sm font-semibold text-\\[#0F1221\\] shadow-sm transition hover:bg-\\[#bb9831\\]\"\"/className={getButtonClasses(''''accent'''')}/g' \"$file\")",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

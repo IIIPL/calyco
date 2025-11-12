@@ -1,0 +1,29 @@
+# Calyco Paints - Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cart
+Disallow: /temp
+
+# Allow search engines to access important resources
+Allow: /Assets/
+Allow: /public/
+
+# Crawl delay (optional, for polite crawling)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://calycopaints.com/sitemap.xml
+
+# Specific rules for popular search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

@@ -22,14 +22,6 @@ const heroData = [
     productName: "WoodGuard",
     productImage: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142463/NoBg_yrymef.png",
   },
-  {
-    productName: "Thermacool",
-    productImage: "https://res.cloudinary.com/dr98axi2n/image/upload/v1754142461/NoBg_cb0amu.png",
-  },
-  {
-    productName: "LustroLite",
-    productImage: "/Assets/LustroLite/inhouse.png",
-  },
 ];
 
 export const HeroSlider = () => {

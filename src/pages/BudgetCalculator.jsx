@@ -626,7 +626,7 @@ const BudgetCalculator = () => {
                         {results.packSelection.selection.map((pack, index) => (
                           <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
                             <div className="flex items-center gap-3">
-                              <img src={results.product.image} alt="" className="w-12 h-12 object-contain" />
+                              <img src={results.product.image} alt={results.product.name} className="w-12 h-12 object-contain" />
                               <div>
                                 <p className="font-medium text-gray-900">{pack.size}L Pack</p>
                                 <p className="text-sm text-gray-600">Quantity: {pack.qty}</p>
