@@ -236,7 +236,7 @@ const Home = () => {
       <section className="relative w-full h-[85vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/Assets/Texture Images/tex2.png"
+            src="/Assets/Texture Images/tex2.webp"
             alt="Living room showcasing premium textured wall finish"
             className="w-full h-full object-cover object-center"
           />

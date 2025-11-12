@@ -78,7 +78,7 @@ export const exteriorLatexPaintDetail = {
   id: "Luxury-Exterior-Emulsion",
   slug: "Luxury-Exterior-Emulsion",
   name: "Calyco Luxury Exterior Emulsion",
-  image: "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
+  image: "/Assets/Product Images/Luxury Exterior Emulsion/1.webp",
   brand: "Calyco",
   category: "Exterior",
   rating: 4.7,
@@ -229,8 +229,8 @@ export const exteriorLatexPaintDetail = {
     "SamplePot 200ml"
   ],
 
-  bucketImage: "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
-  images: ["/Assets/Product Images/Luxury Exterior Emulsion/1.png"],
+  bucketImage: "/Assets/Product Images/Luxury Exterior Emulsion/1.webp",
+  images: ["/Assets/Product Images/Luxury Exterior Emulsion/1.webp"],
 
   seo: {
     title: "Luxury Exterior Emulsion (High Sheen) | Calyco",

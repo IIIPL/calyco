@@ -10,7 +10,7 @@ export default function HowItWorks() {
           <div className="rounded-3xl bg-white shadow-xl overflow-hidden flex flex-col">
             <div className="relative w-full h-52 sm:h-64 overflow-hidden">
               <img
-                src="/Assets/Texture Images/left.png"
+                src="/Assets/Texture Images/left.webp"
                 alt="Textured wall finish"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -37,7 +37,7 @@ export default function HowItWorks() {
           <div className="rounded-3xl bg-white shadow-xl overflow-hidden flex flex-col">
             <div className="relative w-full h-52 sm:h-64 overflow-hidden">
               <img
-                src="/Assets/Texture Images/right.png"
+                src="/Assets/Texture Images/right.webp"
                 alt="Durable paint finish"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />

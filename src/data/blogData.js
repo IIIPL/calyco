@@ -378,7 +378,7 @@ export const BLOG_POSTS = [
     category_slug: 'products-finish',
     title: 'Inside the Science of Nova Silk Touch',
     summary: 'Take a peek into the lab where Nova Silk Touch earns its velvety profile. Understand the resin blend that keeps walls wipeable and rich in color.',
-    image_path: '/Assets/Product Images/Premium Interior Emulsion/1.png',
+    image_path: '/Assets/Product Images/Premium Interior Emulsion/1.webp',
     read_time: '6 MIN READ'
   },
   {
@@ -386,7 +386,7 @@ export const BLOG_POSTS = [
     category_slug: 'products-finish',
     title: 'Choosing the Right Exterior Shield',
     summary: 'Match your climate challenges to the right Calyco exterior formulation. From coastal humidity to urban grime, we map finishes that defend every facade.',
-    image_path: '/Assets/Product Images/Premium Exterior Emulsion/1.png',
+    image_path: '/Assets/Product Images/Premium Exterior Emulsion/1.webp',
     read_time: '9 MIN READ'
   },
   {

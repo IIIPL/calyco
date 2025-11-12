@@ -40,7 +40,7 @@ const WhyCalycoShowcase = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/Assets/Texture Images/why-calyco.png"
+            src="/Assets/Texture Images/why-calyco.webp"
             alt="Modern living room with premium wall finish"
             className="w-full h-full object-cover"
           />

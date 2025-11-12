@@ -42,7 +42,7 @@ const BudgetCalculatorCTA = () => {
             className="flex justify-center lg:justify-end"
           >
             <img
-              src="/Assets/Texture Images/calyco-family.png"
+              src="/Assets/Texture Images/calyco-family.webp"
               alt="Family happily planning paint budget"
               className="w-full max-w-sm sm:max-w-md lg:max-w-[520px] object-contain drop-shadow-2xl rounded-2xl"
             />

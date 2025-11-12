@@ -14,7 +14,7 @@ const PremiumTextureSplit = () => {
         className="relative h-[85vh] sm:h-[65vh] md:h-[70vh] lg:h-[72vh]"
       >
         <img
-          src="/Assets/Texture Images/tex6.png"
+          src="/Assets/Texture Images/tex6.webp"
           alt="Premium textured living room"
           className="absolute inset-0 h-full w-full object-cover object-[25%_center] scale-[1.18] md:object-center md:scale-100"
         />

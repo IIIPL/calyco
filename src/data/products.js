@@ -4,7 +4,7 @@ export const products = [
     "slug": "Premium-Interior-Emulsion",
     "url": "https://calycopaints.com/product/Premium-Interior-Emulsion",
     "name": "Premium Interior Emulsion",
-    "image": "/Assets/Product Images/Premium Interior Emulsion/1.png",
+    "image": "/Assets/Product Images/Premium Interior Emulsion/1.webp",
     "description": "Ultra premium interior paint, the only choice for unparalleled color and stunning beauty that lasts.",
     "short-description": "Vibrant, high-pigment colour. Ultra-low VOC. Water-based for safer, smarter living.",
     "category": "interior",
@@ -14,14 +14,14 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Low Sheen",
     "defaultFinish": "Low Sheen",
-    "images": ["/Assets/Product Images/Premium Interior Emulsion/1.png"]
+    "images": ["/Assets/Product Images/Premium Interior Emulsion/1.webp"]
   },
   {
     "id": "LuxuryInteriorEmulsion",
     "slug": "Interior-Latex-Paint",
     "url": "https://calycopaints.com/product/Interior-Latex-Paint",
     "name": "Luxury Interior Emulsion",
-    "image": "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+    "image": "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
     "description": "Luxury interior emulsion with pearl finish - where elegance meets excellence for extraordinary interiors.",
     "short-description": "Premium pearl finish emulsion. Ultra-low VOC. Water-based luxury for sophisticated living.",
     "category": "interior",
@@ -31,14 +31,14 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Pearl",
     "defaultFinish": "Pearl",
-    "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.png"]
+    "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.webp"]
   },
   {
     "id": "PremiumExteriorEmulsion",
     "slug": "Premium-Exterior-Emulsion",
     "url": "https://calycopaints.com/product/Premium-Exterior-Emulsion",
     "name": "Premium Exterior Emulsion",
-    "image": "/Assets/Product Images/Premium Exterior Emulsion/1.png",
+    "image": "/Assets/Product Images/Premium Exterior Emulsion/1.webp",
     "description": "Premium exterior emulsion with sophisticated matte finish - engineered for superior weather resistance and lasting beauty.",
     "short-description": "Premium matte finish exterior emulsion. UV-resistant, weather-proof barrier for enduring protection.",
     "category": "exterior",
@@ -48,14 +48,14 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Matte Finish",
     "defaultFinish": "Matte Finish",
-    "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.png"]
+    "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.webp"]
   },
   {
     "id": "LuxuryExteriorEmulsion",
     "slug": "Luxury-Exterior-Emulsion",
     "url": "https://calycopaints.com/product/Luxury-Exterior-Emulsion",
     "name": "Luxury Exterior Emulsion",
-    "image": "/Assets/Product Images/Luxury Exterior Emulsion/1.png",
+    "image": "/Assets/Product Images/Luxury Exterior Emulsion/1.webp",
     "description": "Luxury high-sheen exterior emulsion - brilliant façades, weather after weather.",
     "short-description": "High sheen, UV-shielded luxury exterior emulsion engineered for lasting brilliance and protection.",
     "category": "exterior",
@@ -65,14 +65,14 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "High Sheen Finish",
     "defaultFinish": "High Sheen Finish",
-    "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.png"]
+    "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.webp"]
   },
   {
     "id": "WaterproofingSealer",
     "slug": "waterproofing-sealer",
     "url": "https://calycopaints.com/product/waterproofing-sealer",
     "name": "Waterproofing Sealer",
-    "image": "/Assets/Product Images/Waterproof Sealer/1.png",
+    "image": "/Assets/Product Images/Waterproof Sealer/1.webp",
     "description": "Breathable, crack-bridging waterproof membrane engineered for terraces, façades, planter boxes, and high-moisture interiors.",
     "short-description": "Flexible, breathable waterproofing membrane that locks out moisture while resisting UV degradation and fungal growth.",
     "category": "sealer",
@@ -82,6 +82,6 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Matte Finish",
     "defaultFinish": "Matte Finish",
-    "images": ["/Assets/Product Images/Waterproof Sealer/1.png"]
+    "images": ["/Assets/Product Images/Waterproof Sealer/1.webp"]
   }
 ];

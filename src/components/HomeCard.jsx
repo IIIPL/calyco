@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 const paintData = {
   "Interior": {
-    img: "/Assets/Product Images/Premium Interior Emulsion/1.png",
+    img: "/Assets/Product Images/Premium Interior Emulsion/1.webp",
     desc: "Bright white finish with durable indoor protection.",
     link: "product",
     bgCol: "[#493657]"

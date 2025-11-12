@@ -35,7 +35,7 @@ const TrustSection = () => {
       id: 4,
       title: "Eco-certified, safe formulas",
       description: "Water-based, eco-friendly paints with global sustainability standards.",
-      image: "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+      image: "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
       alt: "CALYCO paint bucket with green leaf logo on wooden surface",
       cta: "Learn More",
       link: "/about"

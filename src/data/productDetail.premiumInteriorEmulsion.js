@@ -76,7 +76,7 @@ export const premiumInteriorEmulsionDetail = {
   id: "Premium-Interior-Emulsion",
   slug: "Premium-Interior-Emulsion",
   name: "Calyco Premium Interior Emulsion",
-  image: "/Assets/Product Images/Premium Interior Emulsion/1.png",
+  image: "/Assets/Product Images/Premium Interior Emulsion/1.webp",
   brand: "Calyco",
   category: "Interior",
   rating: 4.9,
@@ -215,9 +215,9 @@ export const premiumInteriorEmulsionDetail = {
     "SamplePot 200ml"
   ],
   
-  bucketImage: "/Assets/Product Images/Premium Interior Emulsion/1.png",
+  bucketImage: "/Assets/Product Images/Premium Interior Emulsion/1.webp",
   images: [
-    "/Assets/Product Images/Premium Interior Emulsion/1.png",
+    "/Assets/Product Images/Premium Interior Emulsion/1.webp",
     "/Assets/Nova/1.png",
     "/Assets/Nova/2.png",
     "/Assets/Nova/3.png",

@@ -77,7 +77,7 @@ export const interiorLatexPaintDetail = {
   id: "Interior-Latex-Paint",
   slug: "Interior-Latex-Paint",
   name: "Calyco Luxury Interior Emulsion", // 🎨 RENAMED
-  image: "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+  image: "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
   brand: "Calyco",
   category: "Interior",
   rating: 4.9,
@@ -213,9 +213,9 @@ export const interiorLatexPaintDetail = {
     "SamplePot 200ml"
   ],
   
-  bucketImage: "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+  bucketImage: "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
   images: [
-    "/Assets/Product Images/Luxury Interior Emulsion/1.png",
+    "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
     "/Assets/Nova/1.png", 
     "/Assets/Nova/2.png",
     "/Assets/Nova/3.png",

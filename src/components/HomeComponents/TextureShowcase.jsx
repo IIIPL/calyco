@@ -8,8 +8,8 @@ const TextureShowcase = () => {
   const [direction, setDirection] = useState(0);
 
   const textureImages = [
-    '/Assets/Texture Images/tex10.png',
-    '/Assets/Texture Images/tex20.png'
+    '/Assets/Texture Images/tex10.webp',
+    '/Assets/Texture Images/tex20.webp'
   ];
 
   useEffect(() => {

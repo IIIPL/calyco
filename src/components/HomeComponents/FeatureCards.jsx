@@ -25,7 +25,7 @@ const FeatureCards = () => {
             {/* Left Side - Image */}
             <div className="relative h-64 md:h-80 lg:h-full rounded-2xl overflow-hidden">
               <img
-                src="/Assets/Texture Images/quality2.png"
+                src="/Assets/Texture Images/quality2.webp"
                 alt="Eco-Premium Paints"
                 className="w-full h-full object-cover"
               />
@@ -109,7 +109,7 @@ const FeatureCards = () => {
           <div className="relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="h-64 md:h-72">
               <img
-                src="/Assets/Texture Images/GPT_Image_1_Sophisticated_living_room_corner_with_textured_acc_0.png"
+                src="/Assets/Texture Images/GPT_Image_1_Sophisticated_living_room_corner_with_textured_acc_0.webp"
                 alt="Bedroom"
                 className="w-full h-full object-cover"
               />
