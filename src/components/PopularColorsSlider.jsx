@@ -50,6 +50,9 @@ const PopularColorsSlider = () => {
   };
 
   const handleColorClick = (color) => {
+    // Don't navigate if user is dragging
+    if (isDragging) return;
+
     // Convert color family to URL-friendly format
     const family = color.colorFamily
       .toLowerCase()
@@ -120,20 +123,35 @@ const PopularColorsSlider = () => {
               </div>
               
               {/* Slider Container - Responsive width */}
-              <div 
+              <div
                 ref={sliderRef}
                 className="w-full overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                <div 
-                  className="flex gap-4 transition-transform duration-500 ease-out"
-                  style={{ 
+                <motion.div
+                  className="flex gap-4"
+                  style={{
                     width: `${totalWidth}px`,
                     minWidth: `${totalWidth}px`,
                     maxWidth: `${totalWidth}px`,
-                    transform: `translateX(-${currentIndex * slideDistance}px)`
                   }}
+                  animate={{
+                    x: -currentIndex * slideDistance
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30
+                  }}
+                  drag="x"
+                  dragConstraints={{
+                    left: -(popularColors.length - visibleCards) * slideDistance,
+                    right: 0
+                  }}
+                  dragElastic={0.1}
+                  onDragStart={() => setIsDragging(true)}
+                  onDragEnd={handleDragEnd}
                 >
                   {popularColors.map((color, index) => (
                     <div
@@ -178,7 +196,7 @@ const PopularColorsSlider = () => {
                       </div>
                     </div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
