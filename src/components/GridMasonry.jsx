@@ -4,11 +4,12 @@ import NavigationArrows from './NavigationArrows';
 
 const GridMasonry = ({ images = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const visibleItems = 4; // Number of items visible at once
   const cardWidth = 400; // Width of each card
   const gap = 24; // Gap between cards (6 * 4 = 24px)
   const slideDistance = cardWidth + gap; // Total distance to move per slide
-  
+
   if (!Array.isArray(images) || images.length === 0) return null;
 
   const nextSlide = () => {
@@ -18,11 +19,23 @@ const GridMasonry = ({ images = [] }) => {
   };
 
   const prevSlide = () => {
-    setCurrentIndex(prev => 
+    setCurrentIndex(prev =>
       prev <= 0 ? images.length - visibleItems : prev - 1
     );
   };
-  
+
+  const handleDragEnd = (event, info) => {
+    const threshold = 50;
+
+    if (info.offset.x > threshold && currentIndex > 0) {
+      prevSlide();
+    } else if (info.offset.x < -threshold && currentIndex < images.length - visibleItems) {
+      nextSlide();
+    }
+
+    setIsDragging(false);
+  };
+
   // Function to get meaningful inspiration names
   const getInspirationName = (index) => {
     const inspirationNames = [
@@ -54,30 +67,44 @@ const GridMasonry = ({ images = [] }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex-1"></div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Inspiration Gallery
-            </h2>
-            <div className="flex-1 flex justify-end">
-              <NavigationArrows
-                onPrevious={prevSlide}
-                onNext={nextSlide}
-                showPrevious={currentIndex > 0}
-                showNext={currentIndex < images.length - visibleItems}
-                size="md"
-              />
-            </div>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Inspiration Gallery
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6">
             Discover beautiful spaces transformed with Calyco paints
           </p>
+          <div className="flex justify-end max-w-7xl mx-auto">
+            <NavigationArrows
+              onPrevious={prevSlide}
+              onNext={nextSlide}
+              showPrevious={currentIndex > 0}
+              showNext={currentIndex < images.length - visibleItems}
+              size="md"
+            />
+          </div>
         </motion.div>
 
         {/* Full-width horizontal scrollable slider */}
         <div className="w-full overflow-hidden">
-          <div className="flex flex-nowrap gap-6 transition-transform duration-500 ease-out"
-               style={{ transform: `translateX(-${currentIndex * slideDistance}px)` }}>
+          <motion.div
+            className="flex flex-nowrap gap-6"
+            animate={{
+              x: -currentIndex * slideDistance
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30
+            }}
+            drag="x"
+            dragConstraints={{
+              left: -(images.length - visibleItems) * slideDistance,
+              right: 0
+            }}
+            dragElastic={0.1}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={handleDragEnd}
+          >
             {images.map((src, idx) => (
               <motion.div
                 key={idx}
@@ -100,7 +127,7 @@ const GridMasonry = ({ images = [] }) => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

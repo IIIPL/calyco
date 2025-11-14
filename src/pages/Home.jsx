@@ -30,6 +30,7 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomIndex, setRoomIndex] = useState(0);
   const [visibleRooms, setVisibleRooms] = useState(4);
+  const [isRoomDragging, setIsRoomDragging] = useState(false);
 
   const closeColorModal = () => {
     setIsModalOpen(false);
@@ -99,9 +100,21 @@ const Home = () => {
   };
 
   const prevRoom = () => {
-    setRoomIndex(prev => 
+    setRoomIndex(prev =>
       prev <= 0 ? roomData.length - visibleRooms : prev - 1
     );
+  };
+
+  const handleRoomDragEnd = (event, info) => {
+    const threshold = 50;
+
+    if (info.offset.x > threshold && roomIndex > 0) {
+      prevRoom();
+    } else if (info.offset.x < -threshold && roomIndex < roomData.length - visibleRooms) {
+      nextRoom();
+    }
+
+    setIsRoomDragging(false);
   };
 
   const nextInspiration = () => {
@@ -291,8 +304,8 @@ const Home = () => {
       {/* Shop by Room Gallery */}
       <section className="py-8 bg-white">
         <div className="w-full px-4">
-          <div className="flex items-center justify-between mb-4">
-            <motion.h2 
+          <div className="flex flex-col gap-3 mb-4">
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -300,21 +313,40 @@ const Home = () => {
             >
               Shop by room
             </motion.h2>
-            
+
             {(roomData.length > visibleRooms) && (
-              <NavigationArrows
-                onPrevious={prevRoom}
-                onNext={nextRoom}
-                showPrevious={roomIndex > 0}
-                showNext={roomIndex < roomData.length - visibleRooms}
-                size="md"
-              />
+              <div className="flex justify-end">
+                <NavigationArrows
+                  onPrevious={prevRoom}
+                  onNext={nextRoom}
+                  showPrevious={roomIndex > 0}
+                  showNext={roomIndex < roomData.length - visibleRooms}
+                  size="md"
+                />
+              </div>
             )}
           </div>
-          
+
           <div className="relative overflow-hidden">
-            <div className={`flex gap-4 transition-transform duration-500 ease-out`}
-                 style={{ transform: roomData.length > visibleRooms ? `translateX(-${roomIndex * roomSlideDistance}px)` : undefined }}>
+            <motion.div
+              className="flex gap-4"
+              animate={{
+                x: roomData.length > visibleRooms ? -roomIndex * roomSlideDistance : 0
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+              drag="x"
+              dragConstraints={{
+                left: roomData.length > visibleRooms ? -(roomData.length - visibleRooms) * roomSlideDistance : 0,
+                right: 0
+              }}
+              dragElastic={0.1}
+              onDragStart={() => setIsRoomDragging(true)}
+              onDragEnd={handleRoomDragEnd}
+            >
               {roomData.map((room, index) => (
                 <motion.div
                   key={room.name}
@@ -322,7 +354,7 @@ const Home = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="flex-shrink-0 w-[280px] group cursor-pointer"
-                  onClick={() => navigate(room.route)}
+                  onClick={() => !isRoomDragging && navigate(room.route)}
                 >
                   <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:scale-105 transform">
                     <div className="aspect-square relative rounded-t-lg overflow-hidden">
@@ -340,7 +372,7 @@ const Home = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
