@@ -21,7 +21,7 @@ const PopularColorsSlider = () => {
     hex: color.hex.startsWith('#') ? color.hex : `#${color.hex}`,
     code: color.code || color.ralCode,
     isBestSeller: color.popularity === "High" || color.name === "Linen",
-    roomImage: "/Assets/Rooms/LivingRoom/base.jpg",
+    roomImage: "/Assets/Rooms/LivingRoom/base.webp",
     roomType: color.interiorUse?.split(',')[0] || "Living Room",
     colorFamily: color.colorFamily,
     temperature: color.temperature || color.colorTemperature,

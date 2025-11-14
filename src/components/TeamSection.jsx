@@ -9,7 +9,7 @@ const TeamSection = ({ members = [], founder = null }) => {
     {
       name: "Armaan Kothary",
       role: "Founder & CEO",
-      image: "/Assets/color-banner.png",
+      image: "/Assets/color-banner.webp",
       description: "A young environmental entrepreneur who launched Calyco Paints at the age of 15 with a vision to build smarter solutions for sustainable home living.",
       socials: {
         linkedin: "#",
@@ -20,7 +20,7 @@ const TeamSection = ({ members = [], founder = null }) => {
     {
       name: "Sarah Chen",
       role: "Head of R&D",
-      image: "/Assets/color-banner.png",
+      image: "/Assets/color-banner.webp",
       description: "Leading our research and development efforts to create innovative, sustainable paint formulations.",
       socials: {
         linkedin: "#",
@@ -30,7 +30,7 @@ const TeamSection = ({ members = [], founder = null }) => {
     {
       name: "Rajesh Kumar",
       role: "Operations Director",
-      image: "/Assets/color-banner.png",
+      image: "/Assets/color-banner.webp",
       description: "Overseeing our manufacturing processes and ensuring quality control across all products.",
       socials: {
         linkedin: "#",
@@ -42,7 +42,7 @@ const TeamSection = ({ members = [], founder = null }) => {
   const defaultFounder = {
     name: "Armaan Kothary",
     role: "Founder & Innovator",
-    image: "/Assets/color-banner.png",
+    image: "/Assets/color-banner.webp",
     description: "A young environmental entrepreneur who launched Calyco Paints at the age of 15 with a vision to build smarter solutions for sustainable home living. His goal was to create a brand that combines environmental responsibility with design excellence—while offering safer and more breathable paints and coatings to Indian households and builders.",
     age: "15 at founding",
     achievements: [

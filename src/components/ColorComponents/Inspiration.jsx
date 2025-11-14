@@ -7,7 +7,7 @@ export const InspirationCard = ({ colorName }) => {
   const color = flatColors.find(c => c.name === colorName);
   const colorCode = color?.hex || "#d9d3de";
   const familyName = color?.color_family?.toLowerCase() || "unknown";
-  const colorImage = color?.image || "/Assets/chair.png";
+  const colorImage = color?.image || "/Assets/chair.webp";
   
   // Convert color code to actual hex color
   const getActualHexColor = (colorValue) => {

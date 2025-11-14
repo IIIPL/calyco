@@ -111,7 +111,7 @@ const ProductShowcase = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/Assets/bg-image.png"
+          src="/Assets/bg-image.webp"
           alt="Background"
           className="w-full h-full object-cover"
         />
@@ -120,7 +120,7 @@ const ProductShowcase = () => {
       {/* Texture Overlay */}
       <div className="absolute inset-0 z-[1]">
         <img
-          src="/Assets/background-texture.png"
+          src="/Assets/background-texture.webp"
           alt="Texture"
           className="w-full h-full object-cover mix-blend-overlay"
         />

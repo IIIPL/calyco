@@ -23,7 +23,7 @@ const productCatalog = [
     shortName: "Premium Interior",
     description: "Premium interior paint with low sheen finish, perfect for living spaces",
     category: "Interior Paints",
-    image: "/Assets/Interior/1-main.png",
+    image: "/Assets/Interior/1-main.webp",
     finish: "Low Sheen",
     coverage: "10-11 sq.ft./Ltr",
     sizes: ["1L", "4L", "10L", "20L"],
@@ -39,7 +39,7 @@ const productCatalog = [
     shortName: "Luxury Interior",
     description: "Luxury interior paint with pearl finish for elegant interiors",
     category: "Interior Paints",
-    image: "/Assets/Interior/luxury-main.png",
+    image: "/Assets/Interior/luxury-main.webp",
     finish: "Pearl",
     coverage: "10-11 sq.ft./Ltr",
     sizes: ["1L", "4L", "10L", "20L"],
@@ -55,7 +55,7 @@ const productCatalog = [
     shortName: "Premium Exterior",
     description: "Weather-resistant exterior paint with matte finish",
     category: "Exterior Paints",
-    image: "/Assets/Exterior/1-main.png",
+    image: "/Assets/Exterior/1-main.webp",
     finish: "Matte",
     coverage: "10-11 sq.ft./Ltr",
     sizes: ["1L", "4L", "10L", "20L"],
@@ -71,7 +71,7 @@ const productCatalog = [
     shortName: "Luxury Exterior",
     description: "High-performance exterior paint with high sheen finish",
     category: "Exterior Paints",
-    image: "/Assets/Exterior/luxury-main.png",
+    image: "/Assets/Exterior/luxury-main.webp",
     finish: "High Sheen",
     coverage: "10-11 sq.ft./Ltr", 
     sizes: ["1L", "4L", "10L", "20L"],
@@ -87,7 +87,7 @@ const productCatalog = [
     shortName: "Waterproof Sealer", 
     description: "Multi-surface protection & sealing with chocolate brown finish",
     category: "Specialty Coatings",
-    image: "/Assets/Nova/1-main.png",
+    image: "/Assets/Nova/1-main.webp",
     finish: "Matte",
     coverage: "85-110 sq.ft./Ltr",
     sizes: ["1L", "4L", "10L"],
@@ -260,7 +260,7 @@ const ProductsPage = () => {
                           alt={product.name}
                           className="w-full h-40 object-contain drop-shadow-xl"
                           onError={(e) => {
-                            e.target.src = "/Assets/Nova/1-main.png"; // Fallback image
+                            e.target.src = "/Assets/Nova/1-main.webp"; // Fallback image
                           }}
                         />
                         {/* Discount Badge */}

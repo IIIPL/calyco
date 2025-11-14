@@ -107,7 +107,7 @@ const normaliseHeroProduct = ({ id, tag, title, detail }) => {
     title,
     category: tag || detail?.category || "General",
     description: detail?.shortDescription || detail?.description || "",
-    image: detail?.image || detail?.bucketImage || "/Assets/Nova/1-main.png",
+    image: detail?.image || detail?.bucketImage || "/Assets/Nova/1-main.webp",
     slug: detail?.slug || detail?.id || id,
     finish,
     size,
@@ -321,7 +321,7 @@ export const Products = () => {
                         alt={product.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
-                          e.target.src = "/Assets/Nova/1-main.png";
+                          e.target.src = "/Assets/Nova/1-main.webp";
                         }}
                       />
                     </div>

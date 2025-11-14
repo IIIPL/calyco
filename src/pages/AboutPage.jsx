@@ -214,7 +214,7 @@ export default function AboutPage() {
         <section className="relative flex h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
+              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
               alt="Modern Indian home exterior finished with CALYCO paints"
               className="h-full w-full scale-105 object-cover"
               loading="lazy"
@@ -264,7 +264,7 @@ export default function AboutPage() {
               </div>
               <div className="animate-on-scroll overflow-hidden rounded-[36px] border border-white/70 shadow-[0_45px_70px_-50px_rgba(15,18,33,0.65)]">
                 <img
-                  src="/Assets/about-us.png"
+                  src="/Assets/about-us.webp"
                   alt="CALYCO team collaborating on colour development"
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -342,7 +342,7 @@ export default function AboutPage() {
             <div className="animate-on-scroll grid gap-10 rounded-[44px] border border-black/5 bg-white/95 p-6 shadow-[0_40px_80px_-60px_rgba(15,18,33,0.55)] md:grid-cols-[1.05fr_1fr] md:p-12">
               <div className="relative flex min-h-[340px] items-end overflow-hidden rounded-[36px] md:min-h-[480px]">
                 <img
-                  src="/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.png"
+                  src="/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.webp"
                   alt="Inside CALYCO's automated manufacturing facility"
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"

@@ -189,7 +189,7 @@ const ColorPage = () => {
                       name: currentColor.name,
                       display_name: currentColor.name,
                       price: 499, // Default price for colors
-                      image: "/Assets/chair.png" // Use a simple image for now
+                      image: "/Assets/chair.webp" // Use a simple image for now
                     };
                     
                     console.log('Product for cart:', productForCart);

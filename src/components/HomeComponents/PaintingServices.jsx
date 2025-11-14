@@ -81,7 +81,7 @@ const PaintingServices = () => {
             {/* Main Image Container */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
               <img
-                src="/Assets/Paint services/Calyco5.png"
+                src="/Assets/Paint services/Calyco5.webp"
                 alt="Professional Painters at Work"
                 className="w-full h-full object-cover"
               />

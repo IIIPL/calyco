@@ -14,12 +14,12 @@ const inspirationMenu = [
 
 const roomThumbnails = {
   // Use room-specific images already used on respective pages
-  living: "/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.png", // updated per user
-  bedroom: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.jpg",
-  dining: "/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.png", // updated per user
-  bathroom: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.jpg",
-  hallway: "/Assets/InteriorInspiratoin/living-room.png", // different from bedroom
-  kitchen: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.png", // kitchen-specific image
+  living: "/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.webp", // updated per user
+  bedroom: "/Assets/InteriorInspiratoin/header-inspiration-bedroom-b-mobile.webp",
+  dining: "/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.webp", // updated per user
+  bathroom: "/Assets/InteriorInspiratoin/header-inspiration-bathroom-c-mobile.webp",
+  hallway: "/Assets/InteriorInspiratoin/living-room.webp", // different from bedroom
+  kitchen: "/Assets/yellowstone5477_editorial_style_photo_dark_blue_kitchen_cabinet_ac53ae07-8832-42d4-bc89-91de80d0c940.webp", // kitchen-specific image
 };
 
 const InspirationsDropdown = ({ onSelect, isMobile = false }) => {

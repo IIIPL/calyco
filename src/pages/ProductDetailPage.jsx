@@ -229,17 +229,17 @@ const sampleProduct = {
     { name: "Linen", hex: "#EFE8DA", slug: "linen" }
   ],
   relatedProducts: [
-    { id: "nova-primer", name: "Nova Primer", image: "/Assets/DefensePrimer/NoBg.png", price: 299 },
-    { id: "nova-undercoat", name: "Nova Undercoat", image: "/Assets/DefensePrimer/NoBg.png", price: 349 },
-    { id: "nova-exterior", name: "Nova Exterior", image: "/Assets/RegalXterior/NoBg.png", price: 599 },
-    { id: "waterproofing", name: "Waterproofing Solution", image: "/Assets/DampShield/NoBg.png", price: 799 }
+    { id: "nova-primer", name: "Nova Primer", image: "/Assets/DefensePrimer/NoBg.webp", price: 299 },
+    { id: "nova-undercoat", name: "Nova Undercoat", image: "/Assets/DefensePrimer/NoBg.webp", price: 349 },
+    { id: "nova-exterior", name: "Nova Exterior", image: "/Assets/RegalXterior/NoBg.webp", price: 599 },
+    { id: "waterproofing", name: "Waterproofing Solution", image: "/Assets/DampShield/NoBg.webp", price: 799 }
   ],
   images: [
-    "/Assets/Nova/NoBg.png",
-    "/Assets/Nova/inuse.png",
-    "/Assets/Nova/ontable.png"
+    "/Assets/Nova/NoBg.webp",
+    "/Assets/Nova/inuse.webp",
+    "/Assets/Nova/ontable.webp"
   ],
-  bucketImage: "/Assets/Nova/ontable.png",
+  bucketImage: "/Assets/Nova/ontable.webp",
   seo: {
     title: "Nova Premium Interior Paint - Low VOC, High Coverage | Calyco",
     description: "Premium interior paint with low VOC, excellent coverage, and washable finish. Available in Matte, Satin, and Gloss. Safe for kids and pets.",
@@ -360,7 +360,7 @@ export default function ProductDetailPage({ productData }) {
       image:
         product.image ||
         (Array.isArray(product.images) ? product.images[0] : undefined) ||
-        "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.png",
+        "/Assets/home-hero/u3817594935_Facebook_coverLuxury_wall_art_mockup_in_a_minimalis_67136d5f-eeb0-49ba-9fa2-5532ed4aa054.webp",
     };
 
     const attributes = {

@@ -33,7 +33,7 @@ const HeroShowcase = () => {
             <video className="w-full h-full object-cover" autoPlay muted loop playsInline preload="metadata" aria-label="Premium paint lifestyle visuals">
               <source src="/hero.mp4" type="video/mp4" />
             </video>
-            <img src="/Assets/home.png" loading="lazy" alt="Calyco premium interior" className="w-full h-full object-cover" />
+            <img src="/Assets/home.webp" loading="lazy" alt="Calyco premium interior" className="w-full h-full object-cover" />
           </div>
         </motion.div>
       </div>

@@ -7,28 +7,28 @@ const cards = [
     title: "Colors that fit",
     highlight: "your lifestyle",
     description: "Personalised shade recommendations for every room and style—designed to match your home perfectly.",
-    image: "/Assets/card1-trust.png",
+    image: "/Assets/card1-trust.webp",
   },
   {
     id: 2,
     title: "Premium eco-friendly",
     highlight: "paints",
     description: "Low-VOC, non-toxic paints tested for long-lasting finishes and safe for kids and pets.",
-    image: "/Assets/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d.png",
+    image: "/Assets/myth62340277_46978_A_modern_and_minimalist_living_room_with_bei_cd304044-6f5d-43ee-a38b-519f4a16a63d.webp",
   },
   {
     id: 3,
     title: "Recommended by",
     highlight: "design experts",
     description: "Professional advice and curated palettes to help you choose the right paints for lasting beauty.",
-    image: "/Assets/piotrekf_A_minimalistic_Scandinavian-style_interior_with_soft_n_89b15a3a-fb0e-4751-a060-037b2ec6493f.png",
+    image: "/Assets/piotrekf_A_minimalistic_Scandinavian-style_interior_with_soft_n_89b15a3a-fb0e-4751-a060-037b2ec6493f.webp",
   },
   {
     id: 4,
     title: "Certified & trusted",
     highlight: "delivery",
     description: "Paints are dispatched fresh from our certified facilities with reliable, trackable shipping to your door.",
-    image: "/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.png",
+    image: "/Assets/mastergrain_73120_Modern_luxury_home_entrance_in_soft_diffused__9014453c-84fd-49cb-ae8f-9a8ed9477c63.webp",
   },
 ];
 

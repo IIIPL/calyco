@@ -7,7 +7,7 @@ const StaticHero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/Assets/home-hero/full-page.png"
+          src="/Assets/home-hero/full-page.webp"
           alt="Beautiful transformed home interior"
           className="w-full h-full object-cover object-[15%_center] md:object-[65%_center] scale-[1.25] md:scale-110"
         />

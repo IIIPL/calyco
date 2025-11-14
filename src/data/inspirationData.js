@@ -2,7 +2,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Kitchen",
     description: "Transform your kitchen with colors that inspire cooking and gathering",
-    image: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0043.webp",
     designs: 22,
     colors: ["#F5F5DC", "#8B4513", "#2F4F4F"],
     route: "kitchen"
@@ -10,7 +10,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Bedroom",
     description: "Create peaceful retreats with calming and sophisticated color palettes",
-    image: "/Assets/Inspiration/bedroom.jpg",
+    image: "/Assets/Inspiration/bedroom.webp",
     designs: 111,
     colors: ["#F0F8FF", "#DDA0DD", "#4682B4"],
     route: "bedroom"
@@ -18,7 +18,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Living Room",
     description: "Make your living room the heart of your home with warm, inviting colors",
-    image: "/Assets/Inspiration/living.jpg",
+    image: "/Assets/Inspiration/living.webp",
     designs: 118,
     colors: ["#DEB887", "#556B2F", "#8B4513"],
     route: "livingroom"
@@ -26,7 +26,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Bathroom",
     description: "Refresh your bathroom with clean, spa-like color combinations",
-    image: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0041.webp",
     designs: 45,
     colors: ["#F0F8FF", "#20B2AA", "#F5F5F5"],
     route: "bathroom"
@@ -34,7 +34,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Dining Room",
     description: "Set the perfect mood for memorable meals with elegant dining room colors",
-    image: "/Assets/Inspiration/dining.jpg",
+    image: "/Assets/Inspiration/dining.webp",
     designs: 40,
     colors: ["#F5DEB3", "#8B7355", "#2F4F4F"],
     route: "dining"
@@ -42,7 +42,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Hallway",
     description: "Connect your spaces with thoughtful hallway color choices",
-    image: "/Assets/Inspiration/IMG-20250718-WA0042.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0042.webp",
     designs: 28,
     colors: ["#F5F5F5", "#696969", "#D3D3D3"],
     route: "hallway"
@@ -50,7 +50,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Office",
     description: "Boost productivity with focused and inspiring office color schemes",
-    image: "/Assets/Inspiration/IMG-20250718-WA0044.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0044.webp",
     designs: 48,
     colors: ["#F8F8FF", "#4A4A4A", "#87CEEB"],
     route: "office"
@@ -58,7 +58,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "Kids Room",
     description: "Spark imagination with playful and vibrant children's room colors",
-    image: "/Assets/Inspiration/IMG-20250718-WA0045.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0045.webp",
     designs: 6,
     colors: ["#FFB6C1", "#98FB98", "#87CEEB"],
     route: "kids"
@@ -66,7 +66,7 @@ export const ROOM_CATEGORIES = [
   {
     title: "House Exterior",
     description: "Make a lasting first impression with stunning exterior color combinations",
-    image: "/Assets/Inspiration/IMG-20250718-WA0045.jpg",
+    image: "/Assets/Inspiration/IMG-20250718-WA0045.webp",
     designs: 88,
     colors: ["#F5F5DC", "#8B4513", "#2F4F4F"],
     route: "exterior"
@@ -77,19 +77,19 @@ export const COLOR_ADVICE_SECTIONS = [
   {
     title: "Color Studio",
     description: "Expert tips and trends from our color specialists",
-    image: "/Assets/color-banner.png",
+    image: "/Assets/color-banner.webp",
     link: "/colors"
   },
   {
     title: "2026 Color Trends",
     description: "Discover the hottest colors for the upcoming year",
-    image: "/Assets/inspiration.png",
+    image: "/Assets/inspiration.webp",
     link: "/trends"
   },
   {
     title: "Designer Stories",
     description: "Real projects from talented interior designers",
-    image: "/Assets/inspiration2.png",
+    image: "/Assets/inspiration2.webp",
     link: "/designers"
   }
 ];

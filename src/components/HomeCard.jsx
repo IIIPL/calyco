@@ -10,7 +10,7 @@ const paintData = {
     bgCol: "[#493657]"
   },
   "Waterproofing Sealer": {
-    img: "/Assets/Defense/NoBg.png",
+    img: "/Assets/Defense/NoBg.webp",
     desc: "Waterproof, UV-stable protection for any surface.",
     link: "product/waterproofing-sealer",
     bgCol: "[#493657]"

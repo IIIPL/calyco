@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { getButtonClasses } from "../data/admin/typography";
 
 const ROOMS = [
-  { title: "Kitchen", category: "Kitchen", designs: 22, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.jpg" },
-  { title: "Bedroom", category: "Bedroom", designs: 111, thumbnail: "/Assets/Inspiration/bedroom.jpg" },
-  { title: "Living Room", category: "Living Room", designs: 118, thumbnail: "/Assets/Inspiration/living.jpg" },
-  { title: "Bathroom", category: "Bathroom", designs: 1, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0041.jpg" },
-  { title: "Dining Room", category: "Dining Room", designs: 40, thumbnail: "/Assets/Inspiration/dining.jpg" },
-  { title: "Hallway", category: "Hallway", designs: 28, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0042.jpg" },
+  { title: "Kitchen", category: "Kitchen", designs: 22, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.webp" },
+  { title: "Bedroom", category: "Bedroom", designs: 111, thumbnail: "/Assets/Inspiration/bedroom.webp" },
+  { title: "Living Room", category: "Living Room", designs: 118, thumbnail: "/Assets/Inspiration/living.webp" },
+  { title: "Bathroom", category: "Bathroom", designs: 1, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0041.webp" },
+  { title: "Dining Room", category: "Dining Room", designs: 40, thumbnail: "/Assets/Inspiration/dining.webp" },
+  { title: "Hallway", category: "Hallway", designs: 28, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0042.webp" },
 ];
 
 const SECTION_ORDER = ["Kitchen", "Bedroom", "Living Room", "Bathroom", "Dining Room", "Hallway"];

@@ -57,7 +57,7 @@ const Hero = () => (
   <section className="relative isolate h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden">
     <div className="absolute inset-0">
       <img
-        src="/Assets/InteriorInspiratoin/living-room.png"
+        src="/Assets/InteriorInspiratoin/living-room.webp"
         alt="Modern interior with CALYCO paint"
         className="h-full w-full object-cover"
         loading="lazy"
@@ -168,7 +168,7 @@ const ContactSection = () => {
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#2b0f55] via-[#13042c] to-[#05000f]">
       <img
-        src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
+        src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
         alt="Modern architectural facade with moody lighting"
         className="absolute inset-0 h-full w-full object-cover opacity-30"
         loading="lazy"

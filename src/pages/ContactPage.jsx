@@ -213,7 +213,7 @@ export default function ContactPage() {
         <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[var(--calyco-ink)] text-white">
           <div className="absolute inset-0">
             <img
-              src="/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.png"
+              src="/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.webp"
               alt="Calyco consultation lounge welcoming visitors"
               className="h-full w-full object-cover"
               loading="lazy"
@@ -442,7 +442,7 @@ export default function ContactPage() {
               <div className="animate-on-scroll flex items-stretch">
                 <div className="w-full overflow-hidden rounded-[32px] border border-white/60 shadow-[0_35px_65px_-50px_rgba(15,18,33,0.65)]">
                   <img
-                    src="/Assets/jonestown___a_head_on_front_facing_view_of_a_computer_monitor_o_8ce9e327-7643-4fe4-8216-dfd87bf574cd.png"
+                    src="/Assets/jonestown___a_head_on_front_facing_view_of_a_computer_monitor_o_8ce9e327-7643-4fe4-8216-dfd87bf574cd.webp"
                     alt="Calyco customer service team providing on-call assistance"
                     className="h-full w-full object-cover"
                     loading="lazy"

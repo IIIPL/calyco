@@ -156,7 +156,7 @@ const ColorsPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/Assets/Inspiration/IMG-20250718-WA0008.jpg" 
+            src="/Assets/Inspiration/IMG-20250718-WA0008.webp" 
             alt="Beautiful home with Calyco paints" 
             className="w-full h-full object-cover"
           />

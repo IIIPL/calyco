@@ -218,13 +218,13 @@ export const premiumInteriorEmulsionDetail = {
   bucketImage: "/Assets/Product Images/Premium Interior Emulsion/1.webp",
   images: [
     "/Assets/Product Images/Premium Interior Emulsion/1.webp",
-    "/Assets/Nova/1.png",
-    "/Assets/Nova/2.png",
-    "/Assets/Nova/3.png",
-    "/Assets/Nova/4.png",
-    "/Assets/Nova/5.png",
-    "/Assets/Nova/6.png",
-    "/Assets/Nova/7.png"
+    "/Assets/Nova/1.webp",
+    "/Assets/Nova/2.webp",
+    "/Assets/Nova/3.webp",
+    "/Assets/Nova/4.webp",
+    "/Assets/Nova/5.webp",
+    "/Assets/Nova/6.webp",
+    "/Assets/Nova/7.webp"
   ],
   seo: {
     title: "Premium Interior Emulsion | Premium Interior Wall Paint | Calyco",

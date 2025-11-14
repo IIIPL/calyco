@@ -8,7 +8,7 @@ const ProductCategoriesSection = () => {
       id: 1,
       title: "Interior Paints",
       description: "Eco-premium colors and finishes for every room.",
-      image: "/Assets/Inspiration/living.jpg",
+      image: "/Assets/Inspiration/living.webp",
       alt: "Modern living room wall",
       link: "/products"
     },
@@ -16,7 +16,7 @@ const ProductCategoriesSection = () => {
       id: 2,
       title: "Exterior Paints",
       description: "Durability, weatherproofing, and bold looks for outside walls.",
-      image: "/Assets/Inspiration/IMG-20250718-WA0043.jpg",
+      image: "/Assets/Inspiration/IMG-20250718-WA0043.webp",
       alt: "Villa or exterior wall facade",
       link: "/products"
     },
@@ -24,7 +24,7 @@ const ProductCategoriesSection = () => {
       id: 3,
       title: "Stains & Sealers",
       description: "Protective coatings for wood, metal, and concrete surfaces.",
-      image: "/Assets/Inspiration/IMG-20250718-WA0041.jpg",
+      image: "/Assets/Inspiration/IMG-20250718-WA0041.webp",
       alt: "Painter applying stain/sealer on wood or metal",
       link: "/products"
     }

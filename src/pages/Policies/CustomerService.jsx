@@ -93,17 +93,17 @@ const videoTutorials = [
   {
     title: "Perfect interior finish in three coats",
     duration: "8:45",
-    thumbnail: "/Assets/about-us.png",
+    thumbnail: "/Assets/about-us.webp",
   },
   {
     title: "Moisture sealing for monsoon readiness",
     duration: "6:12",
-    thumbnail: "/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.png",
+    thumbnail: "/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.webp",
   },
   {
     title: "Choosing the right applicator",
     duration: "5:03",
-    thumbnail: "/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png",
+    thumbnail: "/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp",
   },
 ];
 
@@ -178,7 +178,7 @@ export default function CustomerService() {
         <section className="relative overflow-hidden pt-24 pb-16 md:pt-28">
           <div className="absolute inset-0">
             <img
-              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.png"
+              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
               alt="Support representative assisting with CALYCO paints"
               className="h-full w-full object-cover"
               loading="lazy"

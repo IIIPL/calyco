@@ -8,7 +8,7 @@ const TrustSection = () => {
       id: 1,
       title: "Paint that fits your project schedule",
       description: "Fast-drying, one-coat coverage for contractors and developers on timelines.",
-      image: "/Assets/Inspiration/bedroom.jpg",
+      image: "/Assets/Inspiration/bedroom.webp",
       alt: "Man in hard hat painting a white wall with roller",
       cta: "Get Started",
       link: "/product"
@@ -17,7 +17,7 @@ const TrustSection = () => {
       id: 2,
       title: "Trusted by builders & developers",
       description: "Proven by large residential and commercial projects across India.",
-      image: "/Assets/Inspiration/living.jpg",
+      image: "/Assets/Inspiration/living.webp",
       alt: "Man in hard hat with blueprints and building background",
       cta: "Request a Quote",
       link: "/contact"
@@ -26,7 +26,7 @@ const TrustSection = () => {
       id: 3,
       title: "Durability you can count on",
       description: "Low-VOC, scrub-resistant paints engineered to last 10+ years indoors.",
-      image: "/Assets/Inspiration/dining.jpg",
+      image: "/Assets/Inspiration/dining.webp",
       alt: "Close-up of smooth matte purple painted surface",
       cta: "Explore Finishes",
       link: "/product"

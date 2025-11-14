@@ -83,7 +83,7 @@ const FeatureCards = () => {
           <div className="relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="h-64 md:h-72">
               <img
-                src="/Assets/InteriorInspiratoin/living-room.png"
+                src="/Assets/InteriorInspiratoin/living-room.webp"
                 alt="Living room"
                 className="w-full h-full object-cover"
               />
