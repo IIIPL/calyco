@@ -39,10 +39,10 @@ export default function ReturnsRefunds() {
               Returns & Refunds Policy
             </span>
             <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
-              Hassle-Free Returns. We Stand Behind Every CALYCO Product.
+              Returns & Refunds
             </h1>
             <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
-              Understand eligibility, timelines, and how to initiate a return or exchange. We make it right when things don't go as planned.
+              30-day return window for unopened products
             </p>
             <button
               onClick={() => navigate("/contact")}

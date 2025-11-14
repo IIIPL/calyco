@@ -35,10 +35,10 @@ export default function ShippingDelivery() {
               Shipping & Delivery Policy
             </span>
             <h1 className="text-3xl font-bold text-white md:text-5xl mb-4">
-              Fast, Reliable, and Eco-Conscious Delivery for Your CALYCO Order
+              Shipping & Delivery
             </h1>
             <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
-              At CALYCO, we are committed to delivering premium paints and sealers to you quickly, safely, and with care for both your home and the environment.
+              Fast and reliable delivery across India
             </p>
             <button
               onClick={() => navigate("/contact")}

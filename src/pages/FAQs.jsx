@@ -250,10 +250,10 @@ export const FAQs = () => {
               Frequently Asked Questions
             </span>
             <h1 className={`${getTypographyClasses('h1')} text-white`}>
-              Answers to Your Most Common Queries
+              FAQ
             </h1>
             <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
-              Browse topics or search for quick solutions. If you can't find what you need, our support team is ready to help.
+              Quick answers to common questions
             </p>
             
             {/* Search Box */}
