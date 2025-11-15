@@ -1,8 +1,38 @@
-import { useState } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calculator, Info, Phone, Mail, User, X, ShoppingCart, ArrowRight } from 'lucide-react';
+import { Calculator, Info, Phone, Mail, User, X, ShoppingCart, ArrowRight, ChevronDown, Check } from 'lucide-react';
+import { useCart } from '../context/CartContext';
+import ColorSelectorModal from '../components/ColorSelectorModal';
+import CartPopup from '../components/CartPopup';
+import { products as catalogProducts } from '../data/products.js';
+import texturesData from '../data/textures';
 
 const BudgetCalculator = () => {
+  const navigate = useNavigate();
+  const { addToCart, goToCheckout } = useCart();
+
+  const textureOptions = useMemo(
+    () =>
+      texturesData.map((texture) => ({
+        slug: texture.slug,
+        name: texture.name,
+        description: texture.description,
+        image: texture.image,
+        category: texture.category,
+        application: texture.application
+      })),
+    []
+  );
+
+  const textureMap = useMemo(() => {
+    const map = {};
+    textureOptions.forEach((texture) => {
+      map[texture.slug] = texture;
+    });
+    return map;
+  }, [textureOptions]);
+
   // Calculator type state
   const [calculatorType, setCalculatorType] = useState('paint'); // 'paint' or 'texture'
 
@@ -13,13 +43,16 @@ const BudgetCalculator = () => {
 
   // Texture calculator state
   const [paintableArea, setPaintableArea] = useState('');
-  const [selectedTexture, setSelectedTexture] = useState('stone-finish');
+  const [selectedTexture, setSelectedTexture] = useState(textureOptions[0]?.slug || '');
+  const [isTextureDropdownOpen, setIsTextureDropdownOpen] = useState(false);
 
   // Common state
   const [results, setResults] = useState(null);
   const [isCalculating, setIsCalculating] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showColorModal, setShowColorModal] = useState(false);
+  const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
 
   // Booking form state
   const [bookingData, setBookingData] = useState({
@@ -27,6 +60,23 @@ const BudgetCalculator = () => {
     phone: '',
     email: ''
   });
+
+  const textureDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (textureDropdownRef.current && !textureDropdownRef.current.contains(event.target)) {
+        setIsTextureDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const selectedTextureDetails = textureMap[selectedTexture] || textureOptions[0];
 
   // Paint products data
   const paintProducts = {
@@ -88,36 +138,73 @@ const BudgetCalculator = () => {
     }
   };
 
-  // Texture products data
-  const textureProducts = {
-    'stone-finish': {
-      name: 'Stone Finish',
-      description: 'Premium stone texture with natural look',
-      image: '/Assets/Texture Images/quality.png',
-      variants: ['Stone 01', 'Stone 02', 'Stone 03', 'Stone 04', 'Stone 05', 'Stone 06', 'Stone 07', 'Stone 10', 'Stone 95', 'Stone 99']
-    },
-    'rustik': {
-      name: 'Rustik Texture',
-      description: 'Elegant rustic finish for modern homes',
-      image: '/Assets/Texture Images/terracotta.png',
-      variants: ['Rustik Fine', 'Rustik Regular']
-    },
-    'fine-texture': {
-      name: 'Fine Texture',
-      description: 'Smooth fine texture for sophisticated walls',
-      image: '/Assets/Texture Images/quality.png',
-      variants: ['Fine White', 'Perlina Fine']
-    },
-    'spray-coat': {
-      name: 'Spray Coat',
-      description: 'Modern spray texture patterns',
-      image: '/Assets/Texture Images/quality.png',
-      variants: ['Spray Compact', 'Spray Bubbles']
-    }
-  };
-
   const TEXTURE_PRICE_PER_SQFT = 60;
   const BOOKING_AMOUNT = 499;
+
+  // Helper function to find Shopify variant ID from catalog
+  const findVariantId = (productSlug, size, finish) => {
+    try {
+      // Map budget calculator product types to catalog product slugs
+      // Budget Calculator Logic:
+      // - interior.premium = "Premium Interior Emulsion" (Low Sheen) → Premium-Interior-Emulsion
+      // - interior.luxury = "Luxury Interior Emulsion" (Pearl) → Interior-Latex-Paint (Pearl)
+      // - exterior.premium = "Premium Exterior Emulsion" (Matte) → Premium-Exterior-Emulsion
+      // - exterior.luxury = "Luxury Exterior Emulsion" (High Sheen) → Exterior-Latex-Paint (High Sheen)
+      const productMap = {
+        'interior-premium': 'Premium-Interior-Emulsion',
+        'interior-luxury': 'Interior-Latex-Paint',
+        'exterior-premium': 'Premium-Exterior-Emulsion',
+        'exterior-luxury': 'Exterior-Latex-Paint'
+      };
+
+      const catalogSlug = productMap[productSlug];
+      if (!catalogSlug) {
+        console.warn('[BudgetCalculator] No catalog mapping for:', productSlug);
+        return null;
+      }
+
+      const product = catalogProducts.find(p => p.slug === catalogSlug || p.id === catalogSlug);
+      if (!product) {
+        console.warn('[BudgetCalculator] Product not found in catalog:', catalogSlug);
+        return null;
+      }
+
+      // Normalize size (remove 'L' suffix if present)
+      const normalizedSize = size.toString().replace('L', '').trim() + 'L';
+
+      // Normalize finish - handle different finish name formats
+      let normalizedFinish = finish;
+      if (finish === 'Low Sheen') {
+        normalizedFinish = 'Low Sheen';
+      } else if (finish === 'Pearl' || finish.includes('Pearl')) {
+        normalizedFinish = 'Pearl';
+      } else if (finish === 'Matte' || finish.includes('Matte')) {
+        normalizedFinish = 'Matte Finish';
+      } else if (finish === 'High Sheen' || finish.includes('High Sheen')) {
+        normalizedFinish = 'High Sheen Finish';
+      }
+
+      // Look up variant ID in priceByFinish structure
+      const variantData = product.priceByFinish?.[normalizedFinish]?.[normalizedSize];
+      const variantId = variantData?.variantId || variantData?.variantID;
+
+      if (!variantId) {
+        console.warn('[BudgetCalculator] Variant ID not found for:', {
+          productSlug: productSlug,
+          catalogSlug: catalogSlug,
+          size: normalizedSize,
+          finish: normalizedFinish,
+          availableFinishes: Object.keys(product.priceByFinish || {}),
+          availableSizes: product.priceByFinish?.[normalizedFinish] ? Object.keys(product.priceByFinish[normalizedFinish]) : []
+        });
+      }
+
+      return variantId || null;
+    } catch (error) {
+      console.error('[BudgetCalculator] Error finding variant ID:', error);
+      return null;
+    }
+  };
 
   // Optimize pack selection for paint
   const optimizePacks = (litresNeeded, packs) => {
@@ -196,7 +283,12 @@ const BudgetCalculator = () => {
     setTimeout(() => {
       const areaNum = parseFloat(paintableArea);
       const totalCost = areaNum * TEXTURE_PRICE_PER_SQFT;
-      const selectedProduct = textureProducts[selectedTexture];
+      const selectedProduct = textureMap[selectedTexture] || textureOptions[0];
+
+      if (!selectedProduct) {
+        setIsCalculating(false);
+        return;
+      }
 
       setResults({
         type: 'texture',
@@ -255,6 +347,137 @@ const BudgetCalculator = () => {
       setShowConfirmation(false);
       setBookingData({ name: '', phone: '', email: '' });
     }, 5000);
+  };
+
+  // Handle Buy Now button click for paint
+  const handleBuyNow = () => {
+    setShowColorModal(true);
+  };
+
+  // Cart popup handlers
+  const closeCartPopup = () => {
+    setCartPopup({ isVisible: false, item: null });
+  };
+
+  const handleContinueShopping = () => {
+    setCartPopup({ isVisible: false, item: null });
+    // Stay on current page
+  };
+
+  const handleCheckout = async () => {
+    setCartPopup({ isVisible: false, item: null });
+    await goToCheckout();
+  };
+
+  // Handle color selection and add to cart
+  const handleColorSelect = async (selectedColor) => {
+    if (!results || !results.packSelection) {
+      alert('Error: No pack selection found');
+      return;
+    }
+
+    try {
+      // Add each pack to cart with selected color
+      for (const pack of results.packSelection.selection) {
+        const product = results.product;
+
+        // Create product object for cart
+        const cartProduct = {
+          id: `${paintCategory}-${paintProductType}`,
+          name: product.name,
+          display_name: product.name,
+          slug: `${paintCategory}-${paintProductType}`,
+          image: product.image,
+          bucketImage: product.image,
+          price: pack.price
+        };
+
+        // Determine sheen/finish based on product
+        let sheen = product.tagline || '';
+        if (product.tagline.includes('Low Sheen')) {
+          sheen = 'Low Sheen';
+        } else if (product.tagline.includes('Pearl')) {
+          sheen = 'Pearl';
+        } else if (product.tagline.includes('Matte')) {
+          sheen = 'Matte';
+        } else if (product.tagline.includes('High Sheen')) {
+          sheen = 'High Sheen';
+        }
+
+        // Find Shopify variant ID for this specific size and finish
+        console.log('[BudgetCalculator] Before findVariantId:', {
+          paintCategory,
+          paintProductType,
+          productSlug: `${paintCategory}-${paintProductType}`,
+          packSize: pack.size,
+          sizeWithL: `${pack.size}L`,
+          sheen: sheen,
+          productTagline: product.tagline
+        });
+
+        const variantId = findVariantId(
+          `${paintCategory}-${paintProductType}`,
+          `${pack.size}L`,
+          sheen
+        );
+
+        console.log('[BudgetCalculator] After findVariantId:', {
+          product: `${paintCategory}-${paintProductType}`,
+          size: `${pack.size}L`,
+          finish: sheen,
+          variantId: variantId,
+          color: selectedColor
+        });
+
+        if (!variantId) {
+          console.error('[BudgetCalculator] No variant ID found for pack:', {
+            category: paintCategory,
+            type: paintProductType,
+            size: `${pack.size}L`,
+            finish: sheen
+          });
+          alert(`Unable to add ${pack.size}L pack to cart. Missing product variant. Please contact support.`);
+          continue; // Skip this pack but continue with others
+        }
+
+        // Add to cart with proper color data and variant ID
+        await addToCart(
+          cartProduct,
+          sheen,
+          `${pack.size}L`,
+          pack.qty,
+          pack.price,
+          {
+            name: selectedColor.name,
+            hex: selectedColor.hex,
+            code: selectedColor.code, // Fixed: use actual color code, not hex
+            family: selectedColor.family
+          },
+          'paint',
+          {
+            variantId: variantId
+          }
+        );
+      }
+
+      // Close color selector modal
+      setShowColorModal(false);
+
+      // Show cart popup with the first added item
+      const firstPack = results.packSelection.selection[0];
+      setCartPopup({
+        isVisible: true,
+        item: {
+          name: results.product?.name,
+          hex: selectedColor.hex,
+          colorName: selectedColor.name,
+          price: `₹${firstPack.price}`
+        }
+      });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert('Error adding items to cart. Please try again.');
+    }
   };
 
   return (
@@ -519,54 +742,104 @@ const BudgetCalculator = () => {
 
                   {/* Texture Selection */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Choose Your Texture Finish
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {Object.entries(textureProducts).map(([key, product]) => (
-                        <button
-                          key={key}
-                          type="button"
-                          onClick={() => setSelectedTexture(key)}
-                          className={`relative p-4 rounded-lg border-2 transition-all text-left ${
-                            selectedTexture === key
-                              ? 'border-purple-600 bg-purple-50'
-                              : 'border-gray-200 bg-white hover:border-gray-300'
-                          }`}
-                        >
-                          <div className="flex items-start gap-3">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="w-16 h-16 object-cover rounded"
-                            />
-                            <div className="flex-1">
-                              <p className={`font-semibold text-sm ${selectedTexture === key ? 'text-purple-600' : 'text-gray-700'}`}>
-                                {product.name}
-                              </p>
-                              <p className="text-xs text-gray-500 mt-1">{product.description}</p>
-                            </div>
+                    <p className="text-xs text-gray-500 mb-3">
+                      Browse our premium catalog and pick the finish you love. Every option uses the same all-inclusive ₹60/sqft rate.
+                    </p>
+                    <div className="relative" ref={textureDropdownRef}>
+                      <button
+                        type="button"
+                        onClick={() => setIsTextureDropdownOpen((prev) => !prev)}
+                        className="w-full text-left rounded-2xl border border-gray-200 bg-white shadow-sm px-4 py-3 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="h-14 w-14 rounded-xl border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-50">
+                            {selectedTextureDetails ? (
+                              <img
+                                src={selectedTextureDetails.image}
+                                alt={selectedTextureDetails.name}
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              <div className="h-full w-full bg-gray-100" />
+                            )}
                           </div>
-                          {selectedTexture === key && (
-                            <div className="absolute top-2 right-2 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
-                              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                          )}
-                        </button>
-                      ))}
+                          <div className="flex-1">
+                            <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-1">Selected Texture</p>
+                            <p className="text-lg font-semibold text-gray-900">
+                              {selectedTextureDetails ? selectedTextureDetails.name : 'Choose a texture'}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {selectedTextureDetails
+                                ? `${selectedTextureDetails.category} | ${selectedTextureDetails.application}`
+                                : 'Select a finish to continue'}
+                            </p>
+                          </div>
+                          <ChevronDown
+                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
+                              isTextureDropdownOpen ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </div>
+                      </button>
+                      <div
+                        className={`absolute left-0 right-0 mt-3 rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 origin-top z-20 ${
+                          isTextureDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+                        }`}
+                      >
+                        <div className="max-h-72 overflow-y-auto bg-white rounded-2xl">
+                          {textureOptions.map((texture) => {
+                            const isSelected = selectedTexture === texture.slug;
+                            return (
+                              <button
+                                type="button"
+                                key={texture.slug}
+                                onClick={() => {
+                                  setSelectedTexture(texture.slug);
+                                  setIsTextureDropdownOpen(false);
+                                }}
+                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${
+                                  isSelected ? 'bg-white ring-1 ring-purple-200' : 'hover:bg-gray-50'
+                                }`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <div className="h-12 w-12 rounded-lg overflow-hidden border border-gray-200 flex-shrink-0 bg-gray-50">
+                                    <img
+                                      src={texture.image}
+                                      alt={texture.name}
+                                      className="h-full w-full object-cover"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                  <p className="text-sm font-semibold text-gray-900">{texture.name}</p>
+                                </div>
+                                {isSelected && (
+                                  <span className="text-purple-600">
+                                    <Check className="w-4 h-4" />
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
                   {/* Selected Texture Info */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5">
                     <div className="flex items-start gap-3">
-                      <Info className="text-blue-600 flex-shrink-0 mt-0.5" size={20} />
+                      <Info className="text-blue-600 flex-shrink-0 mt-1" size={22} />
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-blue-900 mb-1">Selected: {textureProducts[selectedTexture].name}</p>
-                        <p className="text-xs text-blue-700">Available variants: {textureProducts[selectedTexture].variants.join(', ')}</p>
-                        <p className="text-sm font-bold text-blue-900 mt-2">₹{TEXTURE_PRICE_PER_SQFT}/sqft (complete solution)</p>
+                        <p className="text-sm text-blue-900 leading-relaxed">
+                          {selectedTextureDetails?.description ||
+                            'Once you pick a texture, we will hold your place in the schedule and a consultant will confirm the exact finish.'}
+                        </p>
+                        <p className="text-sm font-bold text-blue-900 mt-3">
+                          ₹{TEXTURE_PRICE_PER_SQFT}/sqft (complete solution)
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -649,11 +922,11 @@ const BudgetCalculator = () => {
                       </div>
                       <p className="text-xs text-white/80">Total Paint: {results.totalLitres}L (includes 10% wastage)</p>
                       <button
-                        onClick={() => window.location.href = '/products'}
+                        onClick={handleBuyNow}
                         className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
                       >
                         <ShoppingCart size={18} />
-                        Shop Now
+                        Buy Now
                       </button>
                     </div>
                   </>
@@ -833,50 +1106,28 @@ const BudgetCalculator = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white"
+          className="mt-8 rounded-2xl px-5 py-6 text-white"
+          style={{
+            background: 'linear-gradient(135deg, #1A0B21 0%, #432553 55%, #5B2F7A 100%)'
+          }}
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="flex-shrink-0">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-6 text-center md:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 flex-1">
+              <div className="w-14 h-14 bg-white/15 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">Free Site Inspection in Delhi NCR</h3>
-              <p className="text-white/90 mb-4">
-                Get accurate measurements and professional recommendations from our experts. Book a site visit for just ₹{BOOKING_AMOUNT} and get precise estimates for your painting project.
+              <p className="text-lg md:text-xl font-semibold leading-tight text-white/95">
+                Book a site visit for ₹{BOOKING_AMOUNT} and get precise estimates for your painting project.
               </p>
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm">Professional Assessment</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm">Detailed Quotation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm">Color Consultation</span>
-                </div>
-              </div>
             </div>
-            <div className="flex-shrink-0">
-              <button
-                onClick={handleBookNow}
-                className="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                Book Site Visit
-              </button>
-            </div>
+            <button
+              onClick={handleBookNow}
+              className="w-full md:w-auto bg-white text-[#432553] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              Book Site Visit
+            </button>
           </div>
         </motion.div>
 
@@ -1305,6 +1556,26 @@ const BudgetCalculator = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Color Selector Modal */}
+      <ColorSelectorModal
+        isOpen={showColorModal}
+        onClose={() => setShowColorModal(false)}
+        onColorSelect={handleColorSelect}
+        productInfo={results ? {
+          name: results.product?.name,
+          totalCost: results.totalCost
+        } : null}
+      />
+
+      {/* Cart Popup */}
+      <CartPopup
+        isVisible={cartPopup.isVisible}
+        onClose={closeCartPopup}
+        item={cartPopup.item}
+        onContinueShopping={handleContinueShopping}
+        onCheckout={handleCheckout}
+      />
     </div>
   );
 };

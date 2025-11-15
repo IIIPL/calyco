@@ -53,7 +53,7 @@ export const CartModal = ({ isOpen, onClose }) => {
 
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto max-h-[60vh]">
-              {items.length === 0 ? (
+              {(!items || items.length === 0) ? (
                 <div className="p-6 sm:p-8 text-center">
                   <div className="text-6xl mb-4">🛒</div>
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">Your cart is empty</h3>
@@ -129,7 +129,7 @@ export const CartModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Footer */}
-            {items.length > 0 && (
+            {items && items.length > 0 && (
               <div className="border-t border-gray-200 p-4 sm:p-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-base sm:text-lg font-semibold text-[#493657]">Total:</span>

@@ -87,7 +87,7 @@ const faqs = [
   {
     question: "Which payment methods are accepted?",
     answer:
-      "We support UPI, wallets, credit/debit cards, net banking, and EMI on orders above ₹5,000. Cash on delivery is available up to ₹10,000 in select PIN codes with a ₹50 service fee.",
+      "We support UPI, wallets, credit/debit cards, net banking, and EMI on all orders. For your convenience, we accept all major payment methods without any minimum order value restrictions.",
     category: "payments",
   },
   {
@@ -245,9 +245,6 @@ export const FAQs = () => {
               <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
                 Quick answers to common questions
               </p>
-              <p className="mt-8 text-xs text-white/75 tracking-[0.3em] uppercase">
-                Updated 30 October 2025
-              </p>
             </div>
           </div>
         </section>
@@ -316,10 +313,10 @@ export const FAQs = () => {
                         onClick={() => setOpenQuestion(isOpen ? null : faq.question)}
                         aria-expanded={isOpen}
                       >
-                        <h3
-                          className={`${getTypographyClasses('h4')} text-[#0F1221] flex-1`}
-                          dangerouslySetInnerHTML={{ __html: highlightedText(faq.question) }}
-                        />
+              <h3
+                className="text-lg font-semibold text-[#0F1221] flex-1"
+                dangerouslySetInnerHTML={{ __html: highlightedText(faq.question) }}
+              />
                         <span
                           className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#0F1221]/10 text-xl font-bold text-[#0F1221] transition ${
                             isOpen ? "rotate-45" : ""

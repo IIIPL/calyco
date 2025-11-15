@@ -62,6 +62,54 @@
     }
   },
   {
+    "id": "Premium-Interior-Emulsion",
+    "slug": "Premium-Interior-Emulsion",
+    "name": "Calyco Premium Interior Emulsion",
+    "availableForColors": "all",
+    "defaultFinish": "Low Sheen",
+    "finishes": [
+      "Low Sheen"
+    ],
+    "sizes": [
+      { "label": "1L" },
+      { "label": "4L" },
+      { "label": "10L" },
+      { "label": "20L" }
+    ],
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663690600566" },
+        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663690666102" },
+        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663690731638" },
+        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663690797174" }
+      }
+    }
+  },
+  {
+    "id": "Premium-Exterior-Emulsion",
+    "slug": "Premium-Exterior-Emulsion",
+    "name": "Calyco Premium Exterior Emulsion",
+    "availableForColors": "all",
+    "defaultFinish": "Matte Finish",
+    "finishes": [
+      "Matte Finish"
+    ],
+    "sizes": [
+      { "label": "1L" },
+      { "label": "4L" },
+      { "label": "10L" },
+      { "label": "20L" }
+    ],
+    "priceByFinish": {
+      "Matte Finish": {
+        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663725006966" },
+        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663725072502" },
+        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663725138038" },
+        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663725203574" }
+      }
+    }
+  },
+  {
     "id": "WaterproofingSealer",
     "slug": "waterproofing-sealer",
     "name": "Waterproofing Sealer",

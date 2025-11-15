@@ -14,7 +14,15 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Low Sheen",
     "defaultFinish": "Low Sheen",
-    "images": ["/Assets/Product Images/Premium Interior Emulsion/1.webp"]
+    "images": ["/Assets/Product Images/Premium Interior Emulsion/1.webp"],
+    "priceByFinish": {
+      "Low Sheen": {
+        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663690600566" },
+        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663690666102" },
+        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663690731638" },
+        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663690797174" }
+      }
+    }
   },
   {
     "id": "LuxuryInteriorEmulsion",
@@ -31,7 +39,15 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Pearl",
     "defaultFinish": "Pearl",
-    "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.webp"]
+    "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.webp"],
+    "priceByFinish": {
+      "Pearl": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42619088339062" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42619088404598" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42619088470134" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42619088535670" }
+      }
+    }
   },
   {
     "id": "PremiumExteriorEmulsion",
@@ -48,12 +64,20 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "Matte Finish",
     "defaultFinish": "Matte Finish",
-    "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.webp"]
+    "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.webp"],
+    "priceByFinish": {
+      "Matte Finish": {
+        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663725006966" },
+        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663725072502" },
+        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663725138038" },
+        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663725203574" }
+      }
+    }
   },
   {
     "id": "LuxuryExteriorEmulsion",
-    "slug": "Luxury-Exterior-Emulsion",
-    "url": "https://calycopaints.com/product/Luxury-Exterior-Emulsion",
+    "slug": "Exterior-Latex-Paint",
+    "url": "https://calycopaints.com/product/Exterior-Latex-Paint",
     "name": "Luxury Exterior Emulsion",
     "image": "/Assets/Product Images/Luxury Exterior Emulsion/1.webp",
     "description": "Luxury high-sheen exterior emulsion - brilliant façades, weather after weather.",
@@ -65,7 +89,15 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L", "Swatch Card", "SamplePot 200ml"],
     "default_finish": "High Sheen Finish",
     "defaultFinish": "High Sheen Finish",
-    "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.webp"]
+    "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.webp"],
+    "priceByFinish": {
+      "High Sheen Finish": {
+        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42637669433462" },
+        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42637669498998" },
+        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42637669564534" },
+        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42637669630070" }
+      }
+    }
   },
   {
     "id": "WaterproofingSealer",

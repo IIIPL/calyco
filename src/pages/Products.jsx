@@ -1,9 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiSearch, FiShoppingCart, FiEye } from "react-icons/fi";
+import { FiSearch, FiEye } from "react-icons/fi";
 import SEO from "../components/SEO";
-import { useCart } from "../context/CartContext";
 
 import interiorLuxuryDetail from "../data/productDetail.interiorLatexPaint";
 import premiumInteriorDetail from "../data/productDetail.premiumInteriorEmulsion";
@@ -118,13 +117,8 @@ const normaliseHeroProduct = ({ id, tag, title, detail }) => {
 };
 
 export const Products = () => {
-  const { addToCart } = useCart();
-
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [addingId, setAddingId] = useState(null);
-  const [lastAddedId, setLastAddedId] = useState(null);
-  const [errorId, setErrorId] = useState(null);
 
   const catalog = useMemo(
     () => HERO_PRODUCTS.map(normaliseHeroProduct),
@@ -152,35 +146,6 @@ export const Products = () => {
       return matchesCategory && matchesTerm;
     });
   }, [catalog, selectedCategory, searchTerm]);
-
-  const handleAddToCart = async (item) => {
-    const productKey = item.slug || item.id;
-    setAddingId(productKey);
-    setErrorId(null);
-
-    try {
-      const variantId = getVariantId(item.detail, item.size, item.finish);
-      await addToCart(
-        item.detail,
-        item.finish,
-        item.size,
-        1,
-        item.price,
-        null,
-        "paint",
-        variantId ? { variantId, productType: "paint" } : { productType: "paint" }
-      );
-      setLastAddedId(productKey);
-      setTimeout(() => {
-        setLastAddedId((current) => (current === productKey ? null : current));
-      }, 2500);
-    } catch (error) {
-      console.error("[Products] addToCart failed", error);
-      setErrorId(productKey);
-    } finally {
-      setAddingId(null);
-    }
-  };
 
   return (
     <>
@@ -290,9 +255,6 @@ export const Products = () => {
             >
               {filteredProducts.map((product, index) => {
                 const productKey = product.slug || product.id || String(index);
-                const busy = addingId === productKey;
-                const added = lastAddedId === productKey;
-                const errored = errorId === productKey;
 
                 return (
                   <motion.div
@@ -339,40 +301,18 @@ export const Products = () => {
                         </p>
                       </div>
 
-                      {/* 
-                        🎯 TWO ACTION BUTTONS - Side by side, no pricing
+                      {/*
+                        🎯 VIEW DETAILS BUTTON - Users need to select colors first
                       */}
-                      <div className="grid grid-cols-2 gap-2 mt-4">
+                      <div className="mt-4">
                         <Link
                           to={`/product/${product.slug}`}
-                          className="inline-flex items-center justify-center gap-1 bg-white border-2 border-[#493657] text-[#493657] px-3 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300"
+                          className="w-full inline-flex items-center justify-center gap-2 bg-[#493657] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300"
                         >
                           <FiEye className="w-4 h-4" />
-                          Details
+                          View Details
                         </Link>
-                        <button
-                          type="button"
-                          onClick={() => handleAddToCart(product)}
-                          disabled={busy}
-                          className={`inline-flex items-center justify-center gap-1 px-3 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                            busy
-                              ? "bg-[#493657]/60 text-white cursor-not-allowed"
-                              : added
-                              ? "bg-green-500 text-white"
-                              : "bg-[#493657] text-white hover:bg-[#F0C85A] hover:text-[#493657]"
-                          }`}
-                        >
-                          <FiShoppingCart className="w-4 h-4" />
-                          {busy ? "Adding..." : added ? "Added!" : "Add to Cart"}
-                        </button>
                       </div>
-                      
-                      {/* Error message */}
-                      {errored && (
-                        <p className="text-xs text-red-500 mt-2 text-center">
-                          Unable to add to cart. Please try again.
-                        </p>
-                      )}
                     </div>
                   </motion.div>
                 );
