@@ -40,12 +40,6 @@ export default function ShippingDelivery() {
             <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
               Fast and reliable delivery across India
             </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className={getButtonClasses('accent')}
-            >
-              Contact Support Team
-            </button>
             <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p></div></div>
         </section>
 
@@ -53,7 +47,7 @@ export default function ShippingDelivery() {
         {/* Overview */}
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Shipping Policy Overview</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-6">Shipping Policy Overview</h2>
             <p className="text-lg text-[#31274B]/85 mb-6">
               CALYCO is dedicated to providing fast, reliable, and eco-conscious delivery services across India. We partner with leading logistics providers to ensure your premium paint products reach you in perfect condition.
             </p>
@@ -63,17 +57,17 @@ export default function ShippingDelivery() {
             <div className="grid gap-4 md:grid-cols-3 mt-8">
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">🇮🇳</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">Pan-India Coverage</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">Pan-India Coverage</h3>
                 <p className="text-sm text-[#31274B]/80">Delivering to 29 states and 8 union territories</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">📦</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">Secure Packaging</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">Secure Packaging</h3>
                 <p className="text-sm text-[#31274B]/80">Eco-friendly materials with spill-proof protection</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">🚚</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">Trusted Partners</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">Trusted Partners</h3>
                 <p className="text-sm text-[#31274B]/80">Working with India's leading courier services</p>
               </div>
             </div>
@@ -83,16 +77,16 @@ export default function ShippingDelivery() {
         {/* Coverage & Timelines */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Delivery Coverage & Timelines</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Delivery Coverage & Timelines</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               We deliver CALYCO products across India with precision and reliability. All delivery timelines mentioned are business days (Monday to Saturday, excluding public holidays).
             </p>
 
             <div className="mb-10">
-              <h3 className="text-xl font-semibold text-[#4B007D] mb-4">Serviceable Areas</h3>
+              <h3 className="text-xl font-semibold text-[#0F1221] mb-4">Serviceable Areas</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="rounded-xl bg-white p-6 shadow-sm">
-                  <h4 className="font-semibold text-[#4B007D] mb-2">✓ Urban Coverage</h4>
+                  <h4 className="font-semibold text-[#0F1221] mb-2">✓ Urban Coverage</h4>
                   <ul className="space-y-2 text-sm text-[#31274B]/85">
                     <li>• All major metro cities (Mumbai, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, Pune, Ahmedabad)</li>
                     <li>• Tier 2 cities and state capitals</li>
@@ -100,7 +94,7 @@ export default function ShippingDelivery() {
                   </ul>
                 </div>
                 <div className="rounded-xl bg-white p-6 shadow-sm">
-                  <h4 className="font-semibold text-[#4B007D] mb-2">✓ Extended Reach</h4>
+                  <h4 className="font-semibold text-[#0F1221] mb-2">✓ Extended Reach</h4>
                   <ul className="space-y-2 text-sm text-[#31274B]/85">
                     <li>• Tier 3 cities and towns</li>
                     <li>• Rural areas (via India Post and regional partners)</li>
@@ -111,10 +105,10 @@ export default function ShippingDelivery() {
             </div>
 
             <div className="mb-10">
-              <h3 className="text-xl font-semibold text-[#4B007D] mb-4">Standard Delivery Timelines</h3>
+              <h3 className="text-xl font-semibold text-[#0F1221] mb-4">Standard Delivery Timelines</h3>
               <div className="overflow-x-auto rounded-xl shadow-sm">
                 <table className="min-w-full border-collapse">
-                  <thead className="bg-[#4B007D] text-white">
+                  <thead className="bg-[#0F1221] text-white">
                     <tr>
                       <th className="px-6 py-4 text-left font-semibold">Location Type</th>
                       <th className="px-6 py-4 text-left font-semibold">Estimated Delivery</th>
@@ -123,22 +117,22 @@ export default function ShippingDelivery() {
                   </thead>
                   <tbody className="bg-white">
                     <tr className="border-b border-[#0F1221]/10">
-                      <td className="px-6 py-4 font-semibold text-[#4B007D]">Metro Cities</td>
+                      <td className="px-6 py-4 font-semibold text-[#0F1221]">Metro Cities</td>
                       <td className="px-6 py-4 text-[#31274B]/85">2–3 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Express delivery available for select pin codes</td>
                     </tr>
                     <tr className="border-b border-[#0F1221]/10">
-                      <td className="px-6 py-4 font-semibold text-[#4B007D]">Tier 2 Cities</td>
+                      <td className="px-6 py-4 font-semibold text-[#0F1221]">Tier 2 Cities</td>
                       <td className="px-6 py-4 text-[#31274B]/85">3–5 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">State capitals and major towns</td>
                     </tr>
                     <tr className="border-b border-[#0F1221]/10">
-                      <td className="px-6 py-4 font-semibold text-[#4B007D]">Tier 3 Cities</td>
+                      <td className="px-6 py-4 font-semibold text-[#0F1221]">Tier 3 Cities</td>
                       <td className="px-6 py-4 text-[#31274B]/85">4–6 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Smaller towns and district headquarters</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 font-semibold text-[#4B007D]">Remote Areas</td>
+                      <td className="px-6 py-4 font-semibold text-[#0F1221]">Remote Areas</td>
                       <td className="px-6 py-4 text-[#31274B]/85">5–7 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Rural and hard-to-reach locations</td>
                     </tr>
@@ -151,7 +145,7 @@ export default function ShippingDelivery() {
             </div>
 
             <div className="rounded-xl bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-[#4B007D] mb-3">Order Processing Time</h3>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-3">Order Processing Time</h3>
               <p className="text-[#31274B]/85 mb-3">
                 Orders are typically processed within 24-48 hours of confirmation. Orders placed before 2:00 PM IST on business days are usually processed the same day.
               </p>
@@ -167,7 +161,7 @@ export default function ShippingDelivery() {
         {/* Delivery Charges */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Delivery Charges & Shipping Options</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Delivery Charges & Shipping Options</h2>
             <p className="text-lg text-[#31274B]/85 mb-10">
               We offer transparent, competitive shipping rates with free delivery on qualifying orders. Choose the shipping option that best suits your project timeline and budget.
             </p>
@@ -176,7 +170,7 @@ export default function ShippingDelivery() {
               {/* Free Delivery */}
               <div className="rounded-2xl bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/5 p-6 shadow-sm border-l-4 border-[#D4AF37]">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-[#4B007D]">🎉 Free Standard Delivery</h3>
+                  <h3 className="text-xl font-bold text-[#0F1221]">🎉 Free Standard Delivery</h3>
                   <span className="rounded-full bg-[#D4AF37] px-3 py-1 text-xs font-bold text-white">MOST POPULAR</span>
                 </div>
                 <p className="text-[#31274B]/85 mb-3 text-lg">
@@ -184,7 +178,7 @@ export default function ShippingDelivery() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 mt-4">
                   <div>
-                    <h4 className="font-semibold text-[#4B007D] text-sm mb-2">What's Included:</h4>
+                    <h4 className="font-semibold text-[#0F1221] text-sm mb-2">What's Included:</h4>
                     <ul className="space-y-1 text-sm text-[#31274B]/80">
                       <li>✓ No hidden charges or surprise fees</li>
                       <li>✓ Eco-friendly, recyclable packaging materials</li>
@@ -193,7 +187,7 @@ export default function ShippingDelivery() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#4B007D] text-sm mb-2">Delivery Timeline:</h4>
+                    <h4 className="font-semibold text-[#0F1221] text-sm mb-2">Delivery Timeline:</h4>
                     <ul className="space-y-1 text-sm text-[#31274B]/80">
                       <li>• Metro cities: 2-3 business days</li>
                       <li>• Tier 2/3 cities: 3-6 business days</li>
@@ -204,10 +198,10 @@ export default function ShippingDelivery() {
               </div>
 
               {/* Standard Delivery */}
-              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#4B007D]">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">📦 Standard Delivery (Paid)</h3>
+              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#0F1221]">
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">📦 Standard Delivery (Paid)</h3>
                 <p className="text-[#31274B]/85 mb-3">
-                  <span className="font-bold text-[#4B007D]">Flat ₹150 delivery charge</span> for orders below ₹2,500 to all standard serviceable locations.
+                  <span className="font-bold text-[#0F1221]">Flat ₹150 delivery charge</span> for orders below ₹2,500 to all standard serviceable locations.
                 </p>
                 <ul className="space-y-2 text-sm text-[#31274B]/80">
                   <li>✓ Same packaging and handling standards as free delivery</li>
@@ -219,13 +213,13 @@ export default function ShippingDelivery() {
               </div>
 
               {/* Express Delivery */}
-              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#4B007D]">
+              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#0F1221]">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-[#4B007D]">⚡ Express Delivery</h3>
-                  <span className="rounded-full bg-[#4B007D] px-3 py-1 text-xs font-bold text-white">METRO ONLY</span>
+                  <h3 className="text-xl font-bold text-[#0F1221]">⚡ Express Delivery</h3>
+                  <span className="rounded-full bg-[#0F1221] px-3 py-1 text-xs font-bold text-white">METRO ONLY</span>
                 </div>
                 <p className="text-[#31274B]/85 mb-3">
-                  <span className="font-bold text-[#4B007D]">Next-day or same-day delivery</span> available for select pin codes in major metro cities. Additional charges apply based on location.
+                  <span className="font-bold text-[#0F1221]">Next-day or same-day delivery</span> available for select pin codes in major metro cities. Additional charges apply based on location.
                 </p>
                 <ul className="space-y-2 text-sm text-[#31274B]/80">
                   <li>✓ Available in: Mumbai, Delhi NCR, Bangalore, Chennai, Hyderabad, Pune</li>
@@ -238,7 +232,7 @@ export default function ShippingDelivery() {
 
               {/* Remote Areas */}
               <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#D4AF37]">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">🏔️ Remote Area Delivery</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🏔️ Remote Area Delivery</h3>
                 <p className="text-[#31274B]/85 mb-3">
                   <span className="font-bold text-[#D4AF37]">Additional ₹300 surcharge</span> for deliveries to remote, hilly, island, or hard-to-reach locations.
                 </p>
@@ -253,7 +247,7 @@ export default function ShippingDelivery() {
 
               {/* Bulk Orders */}
               <div className="rounded-2xl bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">🏗️ Bulk & Commercial Orders</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🏗️ Bulk & Commercial Orders</h3>
                 <p className="text-[#31274B]/85 mb-3">
                   For large-scale projects, commercial orders, or dealer shipments, we offer customized freight solutions with negotiated rates.
                 </p>
@@ -262,7 +256,7 @@ export default function ShippingDelivery() {
                   <li>✓ Dedicated account manager for coordination</li>
                   <li>✓ Flexible delivery scheduling (including weekends)</li>
                   <li>✓ Volume discounts on shipping costs</li>
-                  <li>✓ Contact our corporate sales team at <a href="mailto:sales@calycopaints.com" className="text-[#4B007D] underline">sales@calycopaints.com</a></li>
+                  <li>✓ Contact our corporate sales team at <a href="mailto:sales@calycopaints.com" className="text-[#0F1221] underline">sales@calycopaints.com</a></li>
                 </ul>
               </div>
             </div>
@@ -272,7 +266,7 @@ export default function ShippingDelivery() {
         {/* Order Notifications */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Order Tracking & Notifications</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Order Tracking & Notifications</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               Stay informed at every step with proactive notifications from our courier partners.
             </p>
@@ -280,8 +274,8 @@ export default function ShippingDelivery() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">1</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Order Confirmation</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">1</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Order Confirmation</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm">
                   Immediately after placing your order, you'll receive a confirmation email with your order number, items purchased, and estimated delivery date.
@@ -290,8 +284,8 @@ export default function ShippingDelivery() {
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">2</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Dispatch Notification</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">2</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Dispatch Notification</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm">
                   Once your order is dispatched, you'll receive an email and SMS with your tracking number and courier partner details. This typically happens within 24-48 hours.
@@ -300,8 +294,8 @@ export default function ShippingDelivery() {
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">3</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Tracking Updates</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">3</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Tracking Updates</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm">
                   Use the tracking number provided to monitor your package on the courier partner's website. You'll also receive SMS updates at key milestones.
@@ -310,8 +304,8 @@ export default function ShippingDelivery() {
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">4</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Delivery Notification</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">4</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Delivery Notification</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm">
                   On the day of delivery, you'll receive a notification when your package is out for delivery. The delivery partner may call to confirm your availability.
@@ -324,14 +318,14 @@ export default function ShippingDelivery() {
         {/* Handling Delays */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Delivery Delays & Exceptions</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Delivery Delays & Exceptions</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               While we strive for on-time deliveries, there may be rare delays due to factors beyond our control. Here's how we handle such situations:
             </p>
 
             <div className="space-y-4">
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#D4AF37]">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-2">🌧️ Weather & Natural Disasters</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🌧️ Weather & Natural Disasters</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Extreme weather conditions (heavy rains, floods, cyclones, snowfall) or natural disasters may cause temporary suspension or delay in courier services.
                 </p>
@@ -340,8 +334,8 @@ export default function ShippingDelivery() {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#4B007D]">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-2">🏠 Address & Contact Issues</h3>
+              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🏠 Address & Contact Issues</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Incorrect or incomplete address, unreachable phone number, or unavailability at delivery time can cause delivery failures.
                 </p>
@@ -350,8 +344,8 @@ export default function ShippingDelivery() {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#4B007D]">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-2">🎄 Festive & Peak Season Delays</h3>
+              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🎄 Festive & Peak Season Delays</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   During major festivals (Diwali, Holi, Eid), courier services experience high volumes that may add 1-3 business days to delivery timelines.
                 </p>
@@ -360,8 +354,8 @@ export default function ShippingDelivery() {
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#4B007D]">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-2">🚧 Regional Disruptions</h3>
+              <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🚧 Regional Disruptions</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Local strikes, political unrest, road blockages, or restricted zones can temporarily affect delivery operations in specific areas.
                 </p>
@@ -371,7 +365,7 @@ export default function ShippingDelivery() {
               </div>
             </div>
 
-            <div className="mt-8 rounded-xl bg-[#4B007D] p-6 text-white">
+            <div className="mt-8 rounded-xl bg-[#0F1221] p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">🤝 Our Commitment to You</h3>
               <p className="text-white/90 text-sm mb-2">
                 If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team via <a href="https://wa.me/918826733064" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
@@ -386,7 +380,7 @@ export default function ShippingDelivery() {
         {/* Packaging & Safety */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Packaging, Safety & Environmental Standards</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Packaging, Safety & Environmental Standards</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               Your CALYCO products are packaged with the highest standards of safety, protection, and environmental responsibility.
             </p>
@@ -394,7 +388,7 @@ export default function ShippingDelivery() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">📦</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Multi-Layer Protection</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Multi-Layer Protection</h3>
                 <p className="text-sm text-[#31274B]/85">
                   Every paint container is individually sealed with tamper-proof lids, wrapped in bubble wrap or foam inserts, and placed in sturdy corrugated cartons.
                 </p>
@@ -402,7 +396,7 @@ export default function ShippingDelivery() {
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">♻️</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Eco-Friendly Materials</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Eco-Friendly Materials</h3>
                 <p className="text-sm text-[#31274B]/85">
                   We use recyclable corrugated boxes, biodegradable fillers, and minimal plastic packaging. Our materials are FSC-certified and sustainably sourced.
                 </p>
@@ -410,7 +404,7 @@ export default function ShippingDelivery() {
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">✅</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Safety Compliance</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Safety Compliance</h3>
                 <p className="text-sm text-[#31274B]/85">
                   All shipments comply with hazardous material transport regulations. Water-based and low-VOC products are packed according to safety guidelines.
                 </p>
@@ -422,38 +416,38 @@ export default function ShippingDelivery() {
         {/* Safe, Timely, and Trusted */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4 text-center">Your CALYCO Order is Safe, Timely, and Handled with Care</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4 text-center">Your CALYCO Order is Safe, Timely, and Handled with Care</h2>
             <p className="text-lg text-[#31274B]/85 mb-10 text-center max-w-3xl mx-auto">
               We understand that your paint project is important. That's why we go the extra mile to ensure your CALYCO products arrive in perfect condition, on time, and with the care they deserve.
             </p>
 
             <div className="grid gap-6 md:grid-cols-3 mb-10">
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#4B007D] text-white text-2xl">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0F1221] text-white text-2xl">
                   📦
                 </div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Safe Handling</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Safe Handling</h3>
                 <p className="text-sm text-[#31274B]/85">Specialized packaging designed for liquid paint products to prevent leaks, spills, and breakage during transit.</p>
               </div>
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D4AF37] text-white text-2xl">
                   ⏱️
                 </div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">On-Time Delivery</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">On-Time Delivery</h3>
                 <p className="text-sm text-[#31274B]/85">Trusted logistics partners ensure reliable delivery within promised timelines—98% on-time delivery rate.</p>
               </div>
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#4B007D] text-white text-2xl">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0F1221] text-white text-2xl">
                   💬
                 </div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Dedicated Support</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Dedicated Support</h3>
                 <p className="text-sm text-[#31274B]/85">Responsive customer service team available for any order or delivery questions—reach us 7 days a week.</p>
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="rounded-xl bg-[#FBF9F6] p-6">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">🛡️ Insurance & Protection</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">🛡️ Insurance & Protection</h3>
                 <p className="text-sm text-[#31274B]/85 mb-2">
                   All shipments are insured against loss or damage during transit up to the full order value. In the rare event of damage, we process replacements or refunds within 48 hours.
                 </p>
@@ -463,7 +457,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-xl bg-[#FBF9F6] p-6">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">📝 Proof of Delivery</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">📝 Proof of Delivery</h3>
                 <p className="text-sm text-[#31274B]/85 mb-2">
                   Signed proof of delivery (POD) is captured digitally by our courier partners. For contactless deliveries, a photo of the delivered package is taken.
                 </p>
@@ -476,7 +470,7 @@ export default function ShippingDelivery() {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#4B007D] to-[#2E0053]">
+        <section className="py-20 bg-gradient-to-br from-[#0F1221] to-[#2E0053]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">Need Help With Your Delivery?</h2>
             <p className="text-lg text-white/90 mb-8 max-w-3xl mx-auto">
@@ -518,3 +512,4 @@ export default function ShippingDelivery() {
     </div>
   );
 }
+

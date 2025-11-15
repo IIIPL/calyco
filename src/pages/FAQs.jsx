@@ -203,16 +203,6 @@ export const FAQs = () => {
 
 
 
-  const suggestions = useMemo(() => {
-    if (!searchTerm) return [];
-    const term = searchTerm.toLowerCase();
-    return faqs
-      .filter((faq) => faq.question.toLowerCase().includes(term))
-      .map((faq) => faq.question)
-      .slice(0, 5);
-  }, [searchTerm]);
-
-
 
   const highlightedText = (text) => {
     if (!searchTerm) return text;
@@ -246,69 +236,28 @@ export const FAQs = () => {
             <div className="absolute inset-0 bg-black/25" />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-10 lg:px-12 flex items-center justify-center h-full"><div>
-            <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
-              Frequently Asked Questions
-            </span>
-            <h1 className={`${getTypographyClasses('h1')} text-white`}>
-              FAQ
-            </h1>
-            <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
-              Quick answers to common questions
-            </p>
-            
-            {/* Search Box */}
-            <div className="mx-auto w-full max-w-2xl mb-8">
-              <div className="relative">
-                <input
-                  id="faq-search"
-                  type="search"
-                  value={searchTerm}
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                  placeholder='Try "coverage" or "delivery"...'
-                  className="w-full rounded-xl border border-white/25 bg-white/15 px-5 py-4 text-base text-white placeholder-white/60 shadow-lg outline-none transition focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 backdrop-blur"
-                />
-                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/50 text-sm">🔍</span>
-              </div>
-              
-              {/* Search Suggestions */}
-              {suggestions.length > 0 && (
-                <ul className="mt-3 space-y-2 rounded-xl border border-white/10 bg-white/10 p-4 text-sm text-white/90 backdrop-blur">
-                  {suggestions.map((suggestion) => (
-                    <li key={suggestion}>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSearchTerm(suggestion);
-                          setOpenQuestion(suggestion);
-                        }}
-                        className="w-full text-left transition hover:text-[#D4AF37]"
-                      >
-                        → {suggestion}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-
-
-            <button
-              onClick={() => navigate("/contact")}
-              className={getButtonClasses('accent')}
-            >
-              Contact Support
-            </button>
-          </div>
+              <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
+                Frequently Asked Questions
+              </span>
+              <h1 className={`${getTypographyClasses('h1')} text-white`}>
+                FAQ
+              </h1>
+              <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
+                Quick answers to common questions
+              </p>
+              <p className="mt-8 text-xs text-white/75 tracking-[0.3em] uppercase">
+                Updated 30 October 2025
+              </p>
+            </div>
           </div>
-        </section>
+        </section>
 
 
 
         {/* Categories */}
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className={`${getTypographyClasses('h3')} text-center text-[#4B007D]`}>Browse by Category</h2>
+            <h2 className={`${getTypographyClasses('h3')} text-center text-[#0F1221]`}>Browse by Category</h2>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {categories.map((category) => {
                 const isActive = category.id === activeCategory;
@@ -319,8 +268,8 @@ export const FAQs = () => {
                     onClick={() => setActiveCategory(category.id)}
                     className={`rounded-full px-6 py-2.5 text-sm font-semibold transition ${
                       isActive
-                        ? "bg-[#4B007D] text-white shadow-sm"
-                        : "border-2 border-[#4B007D]/30 bg-white text-[#4B007D] hover:border-[#4B007D] hover:bg-[#4B007D]/5"
+                        ? "bg-[#0F1221] text-white shadow-sm"
+                        : "border-2 border-[#0F1221]/30 bg-white text-[#0F1221] hover:border-[#0F1221] hover:bg-[#0F1221]/5"
                     }`}
                   >
                     {category.label}
@@ -336,19 +285,19 @@ export const FAQs = () => {
         {/* FAQ Accordions */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className={`${getTypographyClasses('h2')} text-[#4B007D] text-center`}>
+            <h2 className={`${getTypographyClasses('h2')} text-[#0F1221] text-center`}>
               {activeCategory === "all" ? "All Questions" : categories.find(c => c.id === activeCategory)?.label}
             </h2>
             
             {filteredFaqs.length === 0 ? (
               <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-12 text-center shadow-sm">
-                <h3 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>No Results Found</h3>
+                <h3 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>No Results Found</h3>
                 <p className="text-base text-[#31274B]/80 mb-6">
                   Try adjusting your search keywords or browse different categories.
                 </p>
                 <button
                   onClick={() => navigate("/contact")}
-                  className="rounded-xl bg-[#4B007D] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3a0061]"
+                className="rounded-xl bg-[#0F1221] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0F1221]/90"
                 >
                   Contact Support Team
                 </button>
@@ -368,11 +317,11 @@ export const FAQs = () => {
                         aria-expanded={isOpen}
                       >
                         <h3
-                          className={`${getTypographyClasses('h4')} text-[#4B007D] flex-1`}
+                          className={`${getTypographyClasses('h4')} text-[#0F1221] flex-1`}
                           dangerouslySetInnerHTML={{ __html: highlightedText(faq.question) }}
                         />
                         <span
-                          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#4B007D]/10 text-xl font-bold text-[#4B007D] transition ${
+                          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#0F1221]/10 text-xl font-bold text-[#0F1221] transition ${
                             isOpen ? "rotate-45" : ""
                           }`}
                         >
@@ -391,10 +340,10 @@ export const FAQs = () => {
                           />
                           <div className="mt-4 flex items-center gap-3 text-xs text-[#31274B]/60">
                             <span>Was this helpful?</span>
-                            <button className="rounded-full border border-[#4B007D]/30 px-4 py-1.5 text-[#4B007D] font-medium transition hover:bg-[#4B007D]/10">
+                            <button className="rounded-full border border-[#0F1221]/30 px-4 py-1.5 text-[#0F1221] font-medium transition hover:bg-[#0F1221]/10">
                               Yes
                             </button>
-                            <button className="rounded-full border border-[#4B007D]/30 px-4 py-1.5 text-[#4B007D] font-medium transition hover:bg-[#4B007D]/10">
+                            <button className="rounded-full border border-[#0F1221]/30 px-4 py-1.5 text-[#0F1221] font-medium transition hover:bg-[#0F1221]/10">
                               No
                             </button>
                           </div>
@@ -416,19 +365,19 @@ export const FAQs = () => {
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Technical Questions */}
               <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Technical Resources</h2>
+                <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Technical Resources</h2>
                 <p className="text-sm text-[#31274B]/80 mb-6">
                   Access detailed specifications for compliance documentation and tender submissions.
                 </p>
                 <ul className="space-y-4">
                   {technicalHighlights.map((item) => (
                     <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className={`${getTypographyClasses('h4')} text-[#4B007D]`}>{item.title}</h3>
+                      <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                       <p className="text-sm text-[#31274B]/80">{item.description}</p>
                       {item.link && (
                         <button
                           onClick={() => navigate(item.link)}
-                          className="mt-3 text-sm font-semibold text-[#4B007D] hover:underline"
+                          className="mt-3 text-sm font-semibold text-[#0F1221] hover:underline"
                         >
                           View Resources →
                         </button>
@@ -442,14 +391,14 @@ export const FAQs = () => {
 
               {/* Maintenance Tips */}
               <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Maintenance Tips</h2>
+                <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Maintenance Tips</h2>
                 <p className="text-sm text-[#31274B]/80 mb-6">
                   Keep your CALYCO finishes looking fresh with proactive care and climate-aware planning.
                 </p>
                 <ul className="space-y-4">
                   {maintenanceTips.map((item) => (
                     <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className={`${getTypographyClasses('h4')} text-[#4B007D]`}>{item.title}</h3>
+                      <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                       <p className="text-sm text-[#31274B]/80">{item.detail}</p>
                     </li>
                   ))}
@@ -465,7 +414,7 @@ export const FAQs = () => {
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-3xl px-6 md:px-10 lg:px-12">
             <div className="text-center mb-8">
-              <h2 className={`${getTypographyClasses('h2')} text-[#4B007D]`}>Still Need Help?</h2>
+              <h2 className={`${getTypographyClasses('h2')} text-[#0F1221]`}>Still Need Help?</h2>
               <p className="text-base text-[#31274B]/85">
                 Submit your question and our support team will reply within 24 business hours.
               </p>
@@ -476,27 +425,27 @@ export const FAQs = () => {
             <form className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm space-y-5">
               <div className="grid md:grid-cols-2 gap-5">
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-semibold text-[#4B007D]">Name</span>
+                  <span className="text-sm font-semibold text-[#0F1221]">Name</span>
                   <input
                     type="text"
-                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
                     placeholder="Your name"
                   />
                 </label>
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-semibold text-[#4B007D]">Email</span>
+                  <span className="text-sm font-semibold text-[#0F1221]">Email</span>
                   <input
                     type="email"
-                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
                     placeholder="you@example.com"
                   />
                 </label>
               </div>
               <label className="flex flex-col gap-2">
-                <span className="text-sm font-semibold text-[#4B007D]">Your Question</span>
+                <span className="text-sm font-semibold text-[#0F1221]">Your Question</span>
                 <textarea
                   rows={5}
-                  className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#4B007D] focus:ring-2 focus:ring-[#4B007D]/20"
+                  className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
                   placeholder="Share details about your project or query..."
                 />
               </label>
@@ -506,7 +455,7 @@ export const FAQs = () => {
                   <button
                     type="button"
                     onClick={() => navigate("/policies/privacy")}
-                    className="font-semibold text-[#4B007D] hover:underline"
+                    className="font-semibold text-[#0F1221] hover:underline"
                   >
                     Privacy Policy
                   </button>
@@ -528,7 +477,7 @@ export const FAQs = () => {
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
-              <h2 className={`${getTypographyClasses('h3')} text-[#4B007D]`}>Popular Questions</h2>
+              <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Popular Questions</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <button
@@ -542,7 +491,7 @@ export const FAQs = () => {
                   >
                     <div className="flex items-start gap-2">
                       <span className="mt-1 text-[#D4AF37]">•</span>
-                      <span className="text-[#4B007D] font-medium hover:underline">
+                      <span className="text-[#0F1221] font-medium hover:underline">
                         How much area does one litre cover?
                       </span>
                     </div>
@@ -558,7 +507,7 @@ export const FAQs = () => {
                   >
                     <div className="flex items-start gap-2">
                       <span className="mt-1 text-[#D4AF37]">•</span>
-                      <span className="text-[#4B007D] font-medium hover:underline">
+                      <span className="text-[#0F1221] font-medium hover:underline">
                         Do CALYCO paints have any odour?
                       </span>
                     </div>
@@ -574,7 +523,7 @@ export const FAQs = () => {
                   >
                     <div className="flex items-start gap-2">
                       <span className="mt-1 text-[#D4AF37]">•</span>
-                      <span className="text-[#4B007D] font-medium hover:underline">
+                      <span className="text-[#0F1221] font-medium hover:underline">
                         How do I calculate how much paint I need?
                       </span>
                     </div>
@@ -592,7 +541,7 @@ export const FAQs = () => {
                   >
                     <div className="flex items-start gap-2">
                       <span className="mt-1 text-[#D4AF37]">•</span>
-                      <span className="text-[#4B007D] font-medium hover:underline">
+                      <span className="text-[#0F1221] font-medium hover:underline">
                         What is the difference between matte and satin finishes?
                       </span>
                     </div>
@@ -608,7 +557,7 @@ export const FAQs = () => {
                   >
                     <div className="flex items-start gap-2">
                       <span className="mt-1 text-[#D4AF37]">•</span>
-                      <span className="text-[#4B007D] font-medium hover:underline">
+                      <span className="text-[#0F1221] font-medium hover:underline">
                         Can I change my delivery address after ordering?
                       </span>
                     </div>
@@ -626,4 +575,5 @@ export const FAQs = () => {
 
 
 export default FAQs;
+
 

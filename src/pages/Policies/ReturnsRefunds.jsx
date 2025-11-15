@@ -44,12 +44,6 @@ export default function ReturnsRefunds() {
             <p className="mx-auto max-w-3xl text-base text-white/90 md:text-lg mb-8">
               30-day return window for unopened products
             </p>
-            <button
-              onClick={() => navigate("/contact")}
-              className={getButtonClasses('accent')}
-            >
-              Start a Return Request
-            </button>
             <p className="mt-6 text-xs text-white/70">Last updated: 30 October 2025</p></div></div>
         </section>
 
@@ -57,7 +51,7 @@ export default function ReturnsRefunds() {
         {/* Overview */}
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-6">Return Policy Overview</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-6">Return Policy Overview</h2>
             <p className="text-lg text-[#31274B]/85 mb-6">
               At CALYCO, customer satisfaction is our priority. If you're not completely satisfied with your purchase, we're here to help with returns, exchanges, and refunds.
             </p>
@@ -67,17 +61,17 @@ export default function ReturnsRefunds() {
             <div className="grid gap-4 md:grid-cols-3 mt-8">
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">📅</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">30-Day Return Window</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">30-Day Return Window</h3>
                 <p className="text-sm text-[#31274B]/80">Returns accepted within 30 days of delivery</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">📦</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">Original Packaging</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">Original Packaging</h3>
                 <p className="text-sm text-[#31274B]/80">Items must be unopened and in original condition</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
                 <div className="text-2xl mb-2">✅</div>
-                <h3 className="font-semibold text-[#4B007D] mb-1">Quality Guaranteed</h3>
+                <h3 className="font-semibold text-[#0F1221] mb-1">Quality Guaranteed</h3>
                 <p className="text-sm text-[#31274B]/80">Full support for defects and quality issues</p>
               </div>
             </div>
@@ -88,7 +82,7 @@ export default function ReturnsRefunds() {
         {/* Eligibility Criteria */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Eligibility Criteria</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Eligibility Criteria</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               To ensure a smooth return process, please review the following eligibility requirements:
             </p>
@@ -96,7 +90,7 @@ export default function ReturnsRefunds() {
 
             <div className="space-y-6">
               <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#D4AF37]">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">✓ Eligible for Return</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">✓ Eligible for Return</h3>
                 <ul className="space-y-2 text-sm text-[#31274B]/85">
                   <li className="flex items-start">
                     <span className="text-[#D4AF37] mr-2">•</span>
@@ -122,34 +116,34 @@ export default function ReturnsRefunds() {
               </div>
 
 
-              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#4B007D]">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">✗ Not Eligible for Return</h3>
+              <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#0F1221]">
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">✗ Not Eligible for Return</h3>
                 <ul className="space-y-2 text-sm text-[#31274B]/85">
                   <li className="flex items-start">
-                    <span className="text-[#4B007D] mr-2">•</span>
+                    <span className="text-[#0F1221] mr-2">•</span>
                     <span><strong>Custom-Tinted Products:</strong> Made-to-order or custom-mixed colors (unless defective or wrong shade delivered)</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#4B007D] mr-2">•</span>
+                    <span className="text-[#0F1221] mr-2">•</span>
                     <span><strong>Opened/Used Products:</strong> Items that have been opened, used, or partially consumed</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#4B007D] mr-2">•</span>
+                    <span className="text-[#0F1221] mr-2">•</span>
                     <span><strong>Damaged Packaging Only:</strong> Outer carton damage without product damage doesn't qualify</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#4B007D] mr-2">•</span>
+                    <span className="text-[#0F1221] mr-2">•</span>
                     <span><strong>After 30 Days:</strong> Return requests made after the 30-day window from delivery</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#4B007D] mr-2">•</span>
+                    <span className="text-[#0F1221] mr-2">•</span>
                     <span><strong>Clearance/Sale Items:</strong> Products marked as final sale or clearance (unless defective)</span>
                   </li>
                 </ul>
               </div>
 
 
-              <div className="rounded-xl bg-[#4B007D] p-6 text-white">
+              <div className="rounded-xl bg-[#0F1221] p-6 text-white">
                 <h3 className="text-lg font-semibold mb-2">💡 Important Note</h3>
                 <p className="text-white/90 text-sm">
                   All return requests require proof of purchase (order ID or invoice) and supporting documentation (photos/videos for defects or damage). Our quality team reviews each case individually to ensure fair and prompt resolution.
@@ -164,7 +158,7 @@ export default function ReturnsRefunds() {
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold text-[#4B007D] mb-4">How to Initiate a Return</h2>
+              <h2 className="text-3xl font-bold text-[#0F1221] mb-4">How to Initiate a Return</h2>
               <p className="mx-auto max-w-3xl text-lg text-[#31274B]/85">
                 Follow these simple steps for a smooth return experience. We'll guide you through every step of the process.
               </p>
@@ -174,8 +168,8 @@ export default function ReturnsRefunds() {
             <div className="grid md:grid-cols-2 gap-6 mb-10">
               <div className="rounded-2xl bg-[#FBF9F6] p-6">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">1</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Submit Return Request</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">1</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Submit Return Request</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm mb-3">
                   Contact our customer support team within 30 days of delivery with your order ID, reason for return, and supporting photos or videos (for defects/damage).
@@ -190,8 +184,8 @@ export default function ReturnsRefunds() {
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">2</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Verification & Approval</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">2</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Verification & Approval</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm mb-3">
                   Our support team will review your request within 2 business days and verify eligibility based on our return policy criteria.
@@ -206,8 +200,8 @@ export default function ReturnsRefunds() {
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">3</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Pickup or Drop-Off</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">3</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Pickup or Drop-Off</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm mb-3">
                   Once approved, we'll schedule a courier pickup from your address or provide the nearest drop-off location for self-return.
@@ -222,8 +216,8 @@ export default function ReturnsRefunds() {
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6">
                 <div className="flex items-center mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4B007D] text-white font-bold mr-3">4</div>
-                  <h3 className="text-lg font-semibold text-[#4B007D]">Quality Check & Resolution</h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0F1221] text-white font-bold mr-3">4</div>
+                  <h3 className="text-lg font-semibold text-[#0F1221]">Quality Check & Resolution</h3>
                 </div>
                 <p className="text-[#31274B]/85 text-sm mb-3">
                   Our quality team inspects returned items to confirm condition and eligibility. Once verified, we process your refund or send replacement.
@@ -238,18 +232,18 @@ export default function ReturnsRefunds() {
 
 
             <div className="rounded-xl bg-white p-6 shadow-sm border border-[#0F1221]/10">
-              <h3 className="text-lg font-semibold text-[#4B007D] mb-3">⏱️ Processing Timelines</h3>
+              <h3 className="text-lg font-semibold text-[#0F1221] mb-3">⏱️ Processing Timelines</h3>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <span className="font-semibold text-[#4B007D]">Request Acknowledgment:</span>
+                  <span className="font-semibold text-[#0F1221]">Request Acknowledgment:</span>
                   <p className="text-[#31274B]/80">Instant (within 1 hour)</p>
                 </div>
                 <div>
-                  <span className="font-semibold text-[#4B007D]">Approval Decision:</span>
+                  <span className="font-semibold text-[#0F1221]">Approval Decision:</span>
                   <p className="text-[#31274B]/80">Within 2 business days</p>
                 </div>
                 <div>
-                  <span className="font-semibold text-[#4B007D]">Refund Processing:</span>
+                  <span className="font-semibold text-[#0F1221]">Refund Processing:</span>
                   <p className="text-[#31274B]/80">3-7 days after inspection</p>
                 </div>
               </div>
@@ -261,7 +255,7 @@ export default function ReturnsRefunds() {
         {/* Refund Timelines */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Refund Methods & Timelines</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Refund Methods & Timelines</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               Refunds are issued to the original payment method once our quality check is complete. We keep you notified via email at every stage.
             </p>
@@ -269,7 +263,7 @@ export default function ReturnsRefunds() {
 
             <div className="overflow-x-auto rounded-xl shadow-sm mb-6">
               <table className="min-w-full border-collapse">
-                <thead className="bg-[#4B007D] text-white">
+                <thead className="bg-[#0F1221] text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Payment Method</th>
                     <th className="px-6 py-4 text-left font-semibold">Refund Timeline</th>
@@ -278,22 +272,22 @@ export default function ReturnsRefunds() {
                 </thead>
                 <tbody className="bg-white">
                   <tr className="border-b border-[#0F1221]/10">
-                    <td className="px-6 py-4 font-semibold text-[#4B007D]">UPI / Digital Wallets</td>
+                    <td className="px-6 py-4 font-semibold text-[#0F1221]">UPI / Digital Wallets</td>
                     <td className="px-6 py-4 text-[#31274B]/85">3-5 business days</td>
                     <td className="px-6 py-4 text-sm text-[#31274B]/80">Refund processed to original UPI ID or wallet account</td>
                   </tr>
                   <tr className="border-b border-[#0F1221]/10">
-                    <td className="px-6 py-4 font-semibold text-[#4B007D]">Credit / Debit Card</td>
+                    <td className="px-6 py-4 font-semibold text-[#0F1221]">Credit / Debit Card</td>
                     <td className="px-6 py-4 text-[#31274B]/85">4-7 business days</td>
                     <td className="px-6 py-4 text-sm text-[#31274B]/80">Reflected in 1-2 billing cycles depending on bank</td>
                   </tr>
                   <tr className="border-b border-[#0F1221]/10">
-                    <td className="px-6 py-4 font-semibold text-[#4B007D]">Net Banking</td>
+                    <td className="px-6 py-4 font-semibold text-[#0F1221]">Net Banking</td>
                     <td className="px-6 py-4 text-[#31274B]/85">3-5 business days</td>
                     <td className="px-6 py-4 text-sm text-[#31274B]/80">Direct credit to originating bank account</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-semibold text-[#4B007D]">Bulk / B2B Orders</td>
+                    <td className="px-6 py-4 font-semibold text-[#0F1221]">Bulk / B2B Orders</td>
                     <td className="px-6 py-4 text-[#31274B]/85">Within 7 business days</td>
                     <td className="px-6 py-4 text-sm text-[#31274B]/80">Credit note or account adjustment as per agreement</td>
                   </tr>
@@ -304,7 +298,7 @@ export default function ReturnsRefunds() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="rounded-xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">💰 Refund Amount</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">💰 Refund Amount</h3>
                 <ul className="space-y-2 text-sm text-[#31274B]/85">
                   <li>• Full product price refunded for quality issues or wrong items</li>
                   <li>• Original shipping charges refunded if error was ours</li>
@@ -315,7 +309,7 @@ export default function ReturnsRefunds() {
 
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-[#4B007D] mb-3">📧 Notifications</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">📧 Notifications</h3>
                 <ul className="space-y-2 text-sm text-[#31274B]/85">
                   <li>• Return request received confirmation</li>
                   <li>• Approval/rejection notification</li>
@@ -337,15 +331,15 @@ export default function ReturnsRefunds() {
         {/* Shipping Costs */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-8">Return Shipping & Exchange Policy</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-8">Return Shipping & Exchange Policy</h2>
 
 
             <div className="space-y-6">
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#D4AF37]">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">🚚 Who Pays for Return Shipping?</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🚚 Who Pays for Return Shipping?</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="font-semibold text-[#4B007D] text-sm mb-2">CALYCO Covers Shipping When:</h4>
+                    <h4 className="font-semibold text-[#0F1221] text-sm mb-2">CALYCO Covers Shipping When:</h4>
                     <ul className="space-y-1 text-sm text-[#31274B]/80">
                       <li>✓ Product is defective or damaged</li>
                       <li>✓ Wrong item/shade was delivered</li>
@@ -354,7 +348,7 @@ export default function ReturnsRefunds() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#4B007D] text-sm mb-2">Customer Pays Shipping When:</h4>
+                    <h4 className="font-semibold text-[#0F1221] text-sm mb-2">Customer Pays Shipping When:</h4>
                     <ul className="space-y-1 text-sm text-[#31274B]/80">
                       <li>• Change of mind or preference</li>
                       <li>• Ordered wrong product by mistake</li>
@@ -367,7 +361,7 @@ export default function ReturnsRefunds() {
 
 
               <div className="rounded-2xl bg-white p-6 shadow-sm border border-[#0F1221]/10">
-                <h3 className="text-xl font-bold text-[#4B007D] mb-3">🔄 Exchange Policy</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🔄 Exchange Policy</h3>
                 <ul className="space-y-2 text-sm text-[#31274B]/85">
                   <li className="flex items-start">
                     <span className="text-[#D4AF37] mr-2">•</span>
@@ -395,7 +389,7 @@ export default function ReturnsRefunds() {
         {/* Quality Issues */}
         <section className="py-20 bg-[#FBF9F6]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className="text-3xl font-bold text-[#4B007D] mb-4">Quality & Color Issues</h2>
+            <h2 className="text-3xl font-bold text-[#0F1221] mb-4">Quality & Color Issues</h2>
             <p className="text-lg text-[#31274B]/85 mb-8">
               We prioritize quick resolution for product defects, transit damage, or shade variances. Here's how we handle specific issues:
             </p>
@@ -404,7 +398,7 @@ export default function ReturnsRefunds() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">🛠️</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Defective Products</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Defective Products</h3>
                 <p className="text-sm text-[#31274B]/85 mb-3">
                   Manufacturing defects, damaged containers, leaks, or performance failures qualify for immediate free pickup and full refund or replacement.
                 </p>
@@ -416,7 +410,7 @@ export default function ReturnsRefunds() {
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">🎨</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Color Mismatch</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Color Mismatch</h3>
                 <p className="text-sm text-[#31274B]/85 mb-3">
                   If the delivered color differs significantly from the approved sample or swatch, we'll provide a one-time free shade correction.
                 </p>
@@ -428,7 +422,7 @@ export default function ReturnsRefunds() {
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
                 <div className="text-3xl mb-3">📦</div>
-                <h3 className="text-lg font-bold text-[#4B007D] mb-2">Shipping Damage</h3>
+                <h3 className="text-lg font-bold text-[#0F1221] mb-2">Shipping Damage</h3>
                 <p className="text-sm text-[#31274B]/85 mb-3">
                   Damage during transit must be reported within 48 hours with unboxing photos. We arrange immediate replacement at no cost to you.
                 </p>
@@ -439,7 +433,7 @@ export default function ReturnsRefunds() {
             </div>
 
 
-            <div className="rounded-xl bg-[#4B007D] p-6 text-white">
+            <div className="rounded-xl bg-[#0F1221] p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">📸 Documentation for Faster Approval</h3>
               <p className="text-white/90 text-sm mb-3">
                 To expedite your return/refund request, please provide:
@@ -456,7 +450,7 @@ export default function ReturnsRefunds() {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-20 bg-gradient-to-br from-[#4B007D] to-[#2E0053]">
+        <section className="py-20 bg-gradient-to-br from-[#0F1221] to-[#2E0053]">
           <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">Ready to Initiate a Return or Need Help?</h2>
             <p className="text-lg text-white/90 mb-8 max-w-3xl mx-auto">
@@ -499,3 +493,4 @@ export default function ReturnsRefunds() {
     </div>
   );
 }
+

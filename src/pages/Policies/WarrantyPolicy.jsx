@@ -1,5 +1,4 @@
 import React from "react";
-import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 
 const TONE_MAP = {
   plum: {
@@ -22,8 +21,8 @@ const TONE_MAP = {
     ),
   },
   canvas: {
-    section: "bg-[#fff7ec] text-[#4B007D]",
-    title: "text-[#4B007D]",
+    section: "bg-[#fff7ec] text-[#0F1221]",
+    title: "text-[#0F1221]",
     subtitle: "text-[#54306d]",
     kicker: "text-[#7c3aed]",
     kickerBg: "bg-[#f8d35e]/20",
@@ -69,7 +68,7 @@ const Hero = () => (
 
     <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10">
       <div className="max-w-3xl">
-        <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#4B007D]">
+        <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#0F1221]">
           Calyco Warranty Care
         </span>
         <h1 className="mt-6 text-4xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -128,7 +127,7 @@ const Card = ({ icon, title, children, className = "", iconClassName = "" }) => 
   >
     <div className="mb-5 flex items-center gap-4">
       <span
-        className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-bold text-[#4B007D] ${iconClassName}`}
+        className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-bold text-[#0F1221] ${iconClassName}`}
       >
         {icon}
       </span>
@@ -166,7 +165,7 @@ const ContactSection = () => {
   const labelClasses = "mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-white/70";
 
   return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#4B007D] to-[#2E0053]">
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#0F1221] to-[#2E0053]">
       <img
         src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
         alt="Modern architectural facade with moody lighting"
@@ -179,7 +178,7 @@ const ContactSection = () => {
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 md:flex-row md:items-center md:py-24">
         <div className="w-full md:w-5/12">
-          <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#4B007D]">
+          <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#0F1221]">
             Talk To A Specialist
           </span>
           <h2 className="mt-6 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
@@ -277,7 +276,7 @@ const ContactSection = () => {
 
           <button
             type="submit"
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-6 py-4 text-base font-semibold uppercase tracking-wide text-[#4B007D] shadow-[0_18px_45px_-20px_rgba(248,211,94,0.9)] transition hover:shadow-[0_25px_55px_-20px_rgba(248,211,94,0.9)]"
+            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-6 py-4 text-base font-semibold uppercase tracking-wide text-[#0F1221] shadow-[0_18px_45px_-20px_rgba(248,211,94,0.9)] transition hover:shadow-[0_25px_55px_-20px_rgba(248,211,94,0.9)]"
           >
             Submit
           </button>
@@ -299,13 +298,13 @@ export default function WarrantyPolicy() {
         kicker="Protected Coverage"
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card icon="🎨" title="Manufacturing Defects" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#4B007D] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
+          <Card icon="🎨" title="Manufacturing Defects" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Covers defects arising from manufacturing processes that affect performance or appearance under normal use.
           </Card>
-          <Card icon="🛡️" title="What is Included" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#4B007D] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
+          <Card icon="🛡️" title="What is Included" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Peeling, flaking, blistering, or premature fading when applied as per CALYCO system guidelines.
           </Card>
-          <Card icon="⚠️" title="What is Excluded" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#4B007D] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
+          <Card icon="⚠️" title="What is Excluded" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
             Surface movement, water ingress, structural cracks, contamination, mishandling, or non-recommended usage.
           </Card>
         </div>
@@ -324,7 +323,7 @@ export default function WarrantyPolicy() {
               className="flex h-full flex-col justify-between gap-6 rounded-[28px] border-2 border-[#d8c7ff] bg-white p-6 shadow-[0_18px_45px_-28px_rgba(67,19,110,0.35)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_rgba(67,19,110,0.45)]"
             >
               <div>
-                <h3 className="text-xl font-semibold text-[#4B007D]">{doc.name}</h3>
+                <h3 className="text-xl font-semibold text-[#0F1221]">{doc.name}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#4f2c6a]">
                   Download the full warranty statement and coverage checklist for this product line.
                 </p>
@@ -332,7 +331,7 @@ export default function WarrantyPolicy() {
               <a
                 href={doc.href}
                 download
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#4B007D] shadow-[0_12px_35px_-18px_rgba(248,211,94,0.7)] transition hover:shadow-[0_16px_45px_-16px_rgba(248,211,94,0.7)]"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#0F1221] shadow-[0_12px_35px_-18px_rgba(248,211,94,0.7)] transition hover:shadow-[0_16px_45px_-16px_rgba(248,211,94,0.7)]"
               >
                 Download PDF
               </a>
@@ -349,10 +348,10 @@ export default function WarrantyPolicy() {
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-[28px] border-2 border-white/60 bg-white/80 p-8 shadow-[0_20px_55px_-28px_rgba(78,22,131,0.45)] backdrop-blur-md">
-            <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-[#f8d35e] px-4 py-2 text-sm font-semibold text-[#4B007D]">
+            <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-[#f8d35e] px-4 py-2 text-sm font-semibold text-[#0F1221]">
               <span aria-hidden>📝</span> Inspection &amp; Documentation
             </div>
-            <p className="text-base leading-7 text-[#4B007D]">
+            <p className="text-base leading-7 text-[#0F1221]">
               Share order details, batch numbers, photographs or videos, and a brief description. Our technical team may inspect the site to validate conditions.
             </p>
           </div>
@@ -360,7 +359,7 @@ export default function WarrantyPolicy() {
             <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-[#a855f7] px-4 py-2 text-sm font-semibold text-white">
               <span aria-hidden>🔄</span> Remedy
             </div>
-            <p className="text-base leading-7 text-[#4B007D]">
+            <p className="text-base leading-7 text-[#0F1221]">
               Upon validation, CALYCO may repair, replace, or offer store credit for the affected product as appropriate to keep your project on schedule.
             </p>
           </div>
@@ -371,3 +370,4 @@ export default function WarrantyPolicy() {
     </Page>
   );
 }
+
