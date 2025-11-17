@@ -136,7 +136,7 @@ const ColorSlider = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] xl:h-screen">
       {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -145,12 +145,12 @@ const ColorSlider = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="relative w-full"
+          className="absolute inset-0"
         >
           {slides[currentSlide].type === 'video' ? (
             <video
               ref={videoRef}
-              className="w-full h-auto block"
+              className="w-full h-full object-cover"
               autoPlay
               muted
               loop={false}
@@ -164,17 +164,17 @@ const ColorSlider = () => {
             <img
               src={slides[currentSlide].src}
               alt={slides[currentSlide].alt}
-              className="w-full h-auto block"
+              className="w-full h-full object-cover"
             />
           )}
         </motion.div>
       </AnimatePresence>
 
       {/* Subtle dark overlay for readability while keeping imagery vibrant */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/25" />
 
       {/* Content Overlay */}
-      <div className="absolute inset-0 flex items-start sm:items-center pt-24 sm:pt-0">
+      <div className="absolute inset-0 flex items-start md:items-center justify-start pt-20 md:pt-0">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
           <motion.div
             key={`content-${currentSlide}`}
@@ -189,9 +189,9 @@ const ColorSlider = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-block mb-6 sm:mb-8"
+              className="inline-block mb-3 sm:mb-4 md:mb-6"
             >
-              <span className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
+              <span className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-[8px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider shadow-lg">
                 {slides[currentSlide].badge}
               </span>
             </motion.div>
@@ -201,7 +201,7 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold mb-5 sm:mb-7 leading-[1.5] text-white tracking-normal max-w-4xl"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-white tracking-normal max-w-4xl"
               style={{ letterSpacing: '0.01em' }}
             >
               {slides[currentSlide].title}
@@ -212,7 +212,7 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 text-white/90 font-normal leading-[1.7] max-w-2xl"
+              className="text-xs sm:text-sm md:text-base lg:text-lg mb-4 sm:mb-6 md:mb-8 text-white/90 font-normal leading-relaxed max-w-2xl"
             >
               {slides[currentSlide].subtitle}
             </motion.p>
@@ -222,14 +222,14 @@ const ColorSlider = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-24 sm:mb-0"
+              className="flex flex-col sm:flex-row gap-3"
             >
               <Link
                 to={slides[currentSlide].ctaLink}
-                className="group inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-xs sm:text-sm whitespace-nowrap hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                {slides[currentSlide].ctaText}
-                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="truncate">{slides[currentSlide].ctaText}</span>
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-2 flex-shrink-0 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -239,28 +239,28 @@ const ColorSlider = () => {
       </div>
 
       {/* Slide Navigation */}
-      <div className="absolute bottom-4 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 flex items-center space-x-3 sm:space-x-4 md:space-x-6 z-30">
+      <div className="absolute bottom-3 sm:bottom-6 md:bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-6 z-30">
         {/* Left Arrow */}
         <button
           onClick={prevSlide}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
+          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
           aria-label="Previous slide"
         >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
         {/* Dots */}
-        <div className="flex space-x-2 sm:space-x-3">
+        <div className="flex space-x-1.5 sm:space-x-2 md:space-x-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === currentSlide
-                  ? 'w-8 sm:w-12 h-2.5 sm:h-3.5 bg-white shadow-lg'
-                  : 'w-2.5 sm:w-3.5 h-2.5 sm:h-3.5 bg-white/40 hover:bg-white/70 hover:scale-125 border border-white/30'
+                  ? 'w-6 sm:w-8 md:w-10 lg:w-12 h-2 sm:h-2.5 md:h-3 lg:h-3.5 bg-white shadow-lg'
+                  : 'w-2 sm:w-2.5 md:w-3 lg:w-3.5 h-2 sm:h-2.5 md:h-3 lg:h-3.5 bg-white/40 hover:bg-white/70 hover:scale-125 border border-white/30'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -270,10 +270,10 @@ const ColorSlider = () => {
         {/* Right Arrow */}
         <button
           onClick={nextSlide}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
+          className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/15 backdrop-blur-md hover:bg-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white border border-white/30 hover:border-white/60 shadow-lg hover:shadow-2xl"
           aria-label="Next slide"
         >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
