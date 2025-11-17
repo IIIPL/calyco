@@ -6,26 +6,27 @@ import { getTypographyClasses, getButtonClasses } from "../data/admin/typography
 
 const contactChannels = [
   {
-    title: "Contact Us via WhatsApp",
+    title: "WhatsApp Support",
     detail: contactData.contact.whatsapp.displayText,
-    subDetail: contactData.contact.workingHours.days + ", " + contactData.contact.workingHours.time,
-    description: "Message us directly on WhatsApp",
+    description: "Message our team instantly.",
+    subDetail: contactData.contact.workingHours.days + " - " + contactData.contact.workingHours.time,
     icon: "📱",
     href: contactData.contact.whatsapp.link,
+    newTab: true,
   },
   {
-    title: "Email Us",
+    title: "Email Support",
     detail: contactData.contact.email.support,
-    subDetail: contactData.contact.supportAvailability,
-    description: "Get detailed responses quickly",
+    description: "Send us a note and we'll reply within a day.",
+    subDetail: "Replies within 24 hours",
     icon: "✉️",
     href: "mailto:" + contactData.contact.email.support,
   },
   {
-    title: "Visit Us",
+    title: "Visit Our HQ",
     detail: contactData.contact.address.full,
+    description: "Meet us at our headquarters.",
     subDetail: "By appointment only",
-    description: "Our headquarters",
     icon: "🏢",
   },
 ];
@@ -248,42 +249,46 @@ export default function ContactPage() {
                 Choose the most convenient way to get in touch with our expert team.
               </p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {contactChannels.map((channel) => (
-                <article
-                  key={channel.title}
-                  className="animate-on-scroll group flex h-full flex-col gap-4 rounded-[28px] border border-black/6 bg-white p-6 shadow-[0_20px_40px_-35px_rgba(15,18,33,0.55)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_28px_55px_-35px_rgba(15,18,33,0.55)]"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-2xl text-[var(--calyco-ink)]">
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              {contactChannels.map((channel) => {
+                const isLink = Boolean(channel.href);
+                const Wrapper = isLink ? 'a' : 'article';
+                const wrapperProps = isLink
+                  ? {
+                      href: channel.href,
+                      target: channel.newTab ? "_blank" : undefined,
+                      rel: channel.newTab ? "noreferrer" : undefined,
+                    }
+                  : {};
+
+                return (
+                  <Wrapper
+                    key={channel.title}
+                    {...wrapperProps}
+                    className={`animate-on-scroll flex h-full flex-col items-center gap-4 rounded-[28px] border border-black/6 bg-white/95 p-6 text-center shadow-[0_24px_45px_-40px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_40px_60px_-38px_rgba(15,18,33,0.55)] ${isLink ? 'cursor-pointer' : ''}`}
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-2xl text-[var(--calyco-ink)]">
                       <span role="img" aria-label={`${channel.title} icon`}>
                         {channel.icon}
                       </span>
-                    </span>
-                    <div>
+                    </div>
+                    <div className="space-y-2">
                       <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>
                         {channel.title}
                       </h3>
-                      <p className={`${getTypographyClasses('body')} text-[#31274B]/70`}>{channel.description}</p>
+                      <p className={`${getTypographyClasses('body')} text-[#31274B]/70`}>
+                        {channel.description}
+                      </p>
                     </div>
-                  </div>
-                  {channel.href ? (
-                    <a
-                      href={channel.href}
-                      className="text-base font-medium text-[var(--calyco-ink)] underline-offset-4 transition hover:text-[var(--calyco-plum)] hover:underline"
-                    >
+                    <div className="text-base font-semibold text-[var(--calyco-ink)]">
                       {channel.detail}
-                    </a>
-                  ) : (
-                    <p className="text-base font-medium text-[var(--calyco-ink)]">
-                      {channel.detail}
-                    </p>
-                  )}
-                  {channel.subDetail && (
-                    <p className="text-sm text-[#31274B]/70">{channel.subDetail}</p>
-                  )}
-                </article>
-              ))}
+                    </div>
+                    {channel.subDetail && (
+                      <p className="text-sm text-[#31274B]/70">{channel.subDetail}</p>
+                    )}
+                  </Wrapper>
+                );
+              })}
             </div>
           </div>
         </section>

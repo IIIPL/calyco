@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext';
 const CartPage = () => {
   const { items, removeFromCart, updateQuantity, getCartTotal, goToCheckout } = useCart();
   return (
-    <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="pt-20 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
         title="Cart — Calyco"
         description="Your shopping cart with Calyco paints."
@@ -37,7 +37,7 @@ const CartPage = () => {
         </div>
         <div className="rounded-2xl bg-white border border-[#e5e0d8] p-4">
           <div className="font-semibold text-[#342347]">Summary</div>
-          <div className="mt-2 text-sm text-gray-600">GST number can be added during checkout. // TODO:</div>
+          <div className="mt-2 text-sm text-gray-600">GST number can be added during checkout.</div>
           <div className="mt-4 font-bold">Total: ₹{getCartTotal()}</div>
           <button
             onClick={goToCheckout}

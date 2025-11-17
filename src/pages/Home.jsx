@@ -271,7 +271,7 @@ const Home = () => {
                   <span>Our Promise to You</span>
                 </span>
 
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-lg">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
                   Quality You Can Trust, <span className="text-white">Colors You'll Love</span>
                 </h2>
               </div>

@@ -3,45 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiSearch, FiEye } from "react-icons/fi";
 import SEO from "../components/SEO";
-
-import interiorLuxuryDetail from "../data/productDetail.interiorLatexPaint";
-import premiumInteriorDetail from "../data/productDetail.premiumInteriorEmulsion";
-import exteriorLuxuryDetail from "../data/productDetail.exteriorLatexPaint";
-import premiumExteriorDetail from "../data/productDetail.premiumExteriorEmulsion";
-import waterproofingSealerDetail from "../data/productDetail.waterproofingSealer";
-
-const HERO_PRODUCTS = [
-  {
-    id: "Luxury-Interior-Emulsion",
-    tag: "Interior",
-    title: "Luxury Interior Emulsion",
-    detail: interiorLuxuryDetail,
-  },
-  {
-    id: "Premium-Interior-Emulsion",
-    tag: "Interior", 
-    title: "Premium Interior Emulsion",
-    detail: premiumInteriorDetail,
-  },
-  {
-    id: "Luxury-Exterior-Emulsion",
-    tag: "Exterior",
-    title: "Luxury Exterior Emulsion",
-    detail: exteriorLuxuryDetail,
-  },
-  {
-    id: "Premium-Exterior-Emulsion",
-    tag: "Exterior",
-    title: "Premium Exterior Emulsion",
-    detail: premiumExteriorDetail,
-  },
-  {
-    id: "WaterproofingSealer",
-    tag: "Stain & sealer",
-    title: "Waterproofing Sealer",
-    detail: waterproofingSealerDetail,
-  },
-];
+import { products } from "../data/products";
 
 const formatINR = (value) =>
   value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹—";
@@ -98,21 +60,21 @@ const getVariantId = (detail, size, finish) => {
   return null;
 };
 
-const normaliseHeroProduct = ({ id, tag, title, detail }) => {
-  const finish = pickDefaultFinish(detail);
-  const size = pickDefaultSize(detail);
+const normaliseProduct = (product) => {
+  const finish = pickDefaultFinish(product);
+  const size = pickDefaultSize(product);
   return {
-    id,
-    title,
-    category: tag || detail?.category || "General",
-    description: detail?.shortDescription || detail?.description || "",
-    image: detail?.image || detail?.bucketImage || "/Assets/Nova/1-main.webp",
-    slug: detail?.slug || detail?.id || id,
+    id: product.id,
+    title: product.name,
+    category: product.category || "General",
+    description: product["short-description"] || product.description || "",
+    image: product.image || "/Assets/Nova/1-main.webp",
+    slug: product.slug,
     finish,
     size,
-    price: getPriceForSelection(detail, finish, size),
-    coverage: detail?.coverage || detail?.coveragePerLitre || "",
-    detail,
+    price: getPriceForSelection(product, finish, size),
+    coverage: product.coverage || "",
+    detail: product,
   };
 };
 
@@ -121,21 +83,27 @@ export const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const catalog = useMemo(
-    () => HERO_PRODUCTS.map(normaliseHeroProduct),
+    () => products.map(normaliseProduct),
     []
   );
 
-  // Fixed categories as requested
-  const categories = ["All", "Interior", "Exterior", "Stain & sealer"];
+  // Generate categories from products
+  const categories = useMemo(() => {
+    const cats = new Set(["All"]);
+    products.forEach(p => {
+      if (p.category) {
+        cats.add(p.category.charAt(0).toUpperCase() + p.category.slice(1));
+      }
+    });
+    return Array.from(cats);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
     return catalog.filter((product) => {
       const matchesCategory =
         selectedCategory === "All" ||
-        (selectedCategory === "Interior" && (product.category === "Interior" || product.title.toLowerCase().includes("interior"))) ||
-        (selectedCategory === "Exterior" && (product.category === "Exterior" || product.title.toLowerCase().includes("exterior"))) ||
-        (selectedCategory === "Stain & sealer" && (product.category === "Stain & sealer" || product.title.toLowerCase().includes("sealer") || product.title.toLowerCase().includes("waterproof")));
+        product.category.toLowerCase() === selectedCategory.toLowerCase();
 
       const matchesTerm =
         !term ||

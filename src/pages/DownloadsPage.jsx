@@ -11,7 +11,7 @@ const DownloadsPage = () => {
   }, [q]);
 
   return (
-    <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="pt-20 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
         title="Downloads — Calyco"
         description="Technical data sheets, safety data sheets, and warranties."
