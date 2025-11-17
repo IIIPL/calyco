@@ -136,7 +136,7 @@ const ColorSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -145,12 +145,12 @@ const ColorSlider = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0"
+          className="relative w-full"
         >
           {slides[currentSlide].type === 'video' ? (
             <video
               ref={videoRef}
-              className="w-full h-full object-cover"
+              className="w-full h-auto block"
               autoPlay
               muted
               loop={false}
@@ -164,8 +164,7 @@ const ColorSlider = () => {
             <img
               src={slides[currentSlide].src}
               alt={slides[currentSlide].alt}
-              className="w-full h-full object-cover"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              className="w-full h-auto block"
             />
           )}
         </motion.div>
