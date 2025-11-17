@@ -136,7 +136,7 @@ const ColorSlider = () => {
   };
 
   return (
-    <div className="relative w-full min-h-[80vh] md:min-h-[85vh] lg:min-h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -175,7 +175,7 @@ const ColorSlider = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/20" />
 
       {/* Content Overlay */}
-      <div className="absolute inset-0 flex items-start sm:items-center pt-16 sm:pt-0">
+      <div className="absolute inset-0 flex items-start sm:items-center pt-24 sm:pt-0">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
           <motion.div
             key={`content-${currentSlide}`}

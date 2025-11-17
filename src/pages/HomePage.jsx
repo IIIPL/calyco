@@ -46,7 +46,7 @@ export const HomePage = () => {
     };
 
     return (
-        <div className="pt-20">
+        <div>
             {/* Hero Slider - Cleaner, More Professional */}
             <section className="relative overflow-hidden">
                 <ColorSlider />
