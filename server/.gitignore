@@ -1,0 +1,35 @@
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+
+# Data files (contains order information)
+data/*.json
+
+# Keep the data directory but ignore contents
+!data/.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build files
+dist/
+build/

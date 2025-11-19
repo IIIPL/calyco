@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 
-const RazorpayPayment = ({ 
-  amount, 
-  currency = 'INR', 
-  customerDetails, 
-  onSuccess, 
-  onError, 
-  onClose 
+const RazorpayPayment = ({
+  amount,
+  currency = 'INR',
+  orderId,
+  customerDetails,
+  onSuccess,
+  onError,
+  onClose
 }) => {
   useEffect(() => {
     // Load Razorpay script
@@ -43,17 +44,18 @@ const RazorpayPayment = ({
           return;
         }
 
-        // Create a simple payment without order_id for testing
+        // Create Razorpay payment options
         console.log('Payment amount received:', amount);
         console.log('Amount in paise:', amount * 100);
-        
+        console.log('Razorpay Order ID:', orderId);
+
         const options = {
           key: razorpayKey,
           amount: amount * 100, // Amount in paise (multiply by 100)
           currency: currency,
           name: 'Calyco Paints',
           description: `Paint Purchase - ₹${amount}`,
-          // Remove order_id for direct payment
+          order_id: orderId, // Razorpay order ID from backend
           handler: function (response) {
             console.log('Payment successful:', response);
             onSuccess(response);
@@ -93,7 +95,7 @@ const RazorpayPayment = ({
     };
 
     initializePayment();
-  }, [amount, currency, customerDetails, onSuccess, onError, onClose]);
+  }, [amount, currency, orderId, customerDetails, onSuccess, onError, onClose]);
 
   return null; // This component doesn't render anything
 };

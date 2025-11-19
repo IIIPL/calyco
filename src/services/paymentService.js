@@ -2,82 +2,142 @@
 export class PaymentService {
   constructor() {
     this.razorpayId = import.meta.env.VITE_RAZORPAY_ID;
-    this.razorpaySecret = import.meta.env.VITE_RAZORPAY_SECRET;
-    this.paymentLink = import.meta.env.VITE_RAZORPAY_PAYMENT_LINK;
-    
+    this.apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
     // Validate configuration
     if (!this.razorpayId || this.razorpayId === 'your_razorpay_key_id_here') {
       console.warn('Razorpay Key ID not configured. Please add VITE_RAZORPAY_ID to your .env file.');
     }
   }
 
-  // Create order on your backend (you'll need to implement this)
-  async createOrder(amount, currency = 'INR', receipt = null) {
+  /**
+   * Create Razorpay order via backend API
+   */
+  async createOrder(amount, currency = 'INR', receipt = null, notes = {}) {
     try {
-      // For now, we'll use a simple approach
-      // In production, you should create orders on your backend
-      const orderData = {
-        amount: amount * 100, // Convert to paise
-        currency: currency,
-        receipt: receipt || `receipt_${Date.now()}`,
-      };
+      const response = await fetch(`${this.apiUrl}/api/payments/create-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount,
+          currency,
+          receipt,
+          notes
+        }),
+      });
 
-      // If you have a backend API, make the request here
-      // const response = await fetch('/api/create-order', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(orderData),
-      // });
-      // return await response.json();
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create order');
+      }
 
-      // For now, return a mock order ID
-      return {
-        id: `order_${Date.now()}`,
-        amount: orderData.amount,
-        currency: orderData.currency,
-        receipt: orderData.receipt,
-      };
+      const data = await response.json();
+      return data.order;
     } catch (error) {
       console.error('Error creating order:', error);
       throw new Error('Failed to create order');
     }
   }
 
-  // Verify payment signature (you'll need to implement this on your backend)
+  /**
+   * Verify payment signature via backend API
+   */
   async verifyPayment(paymentData) {
     try {
-      // In production, you should verify the payment signature on your backend
-      // const response = await fetch('/api/verify-payment', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(paymentData),
-      // });
-      // return await response.json();
+      const response = await fetch(`${this.apiUrl}/api/payments/verify`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData),
+      });
 
-      // For now, return success
-      return { success: true, verified: true };
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Payment verification failed');
+      }
+
+      return await response.json();
     } catch (error) {
       console.error('Error verifying payment:', error);
       throw new Error('Failed to verify payment');
     }
   }
 
-  // Get payment link for direct payment
-  getPaymentLink(amount, customerDetails) {
-    const params = new URLSearchParams({
-      amount: amount * 100, // Convert to paise
-      currency: 'INR',
-      name: `${customerDetails.firstName} ${customerDetails.lastName}`,
-      email: customerDetails.email,
-      contact: customerDetails.phone,
-      description: 'Paint Purchase from Calyco',
-    });
+  /**
+   * Create order in database
+   */
+  async createOrderRecord(orderData) {
+    try {
+      const response = await fetch(`${this.apiUrl}/api/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
 
-    return `${this.paymentLink}?${params.toString()}`;
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create order record');
+      }
+
+      const data = await response.json();
+      return data.order;
+    } catch (error) {
+      console.error('Error creating order record:', error);
+      throw new Error('Failed to create order record');
+    }
+  }
+
+  /**
+   * Update order status
+   */
+  async updateOrderStatus(orderId, status, paymentDetails = {}) {
+    try {
+      const response = await fetch(`${this.apiUrl}/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status,
+          payment: paymentDetails
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update order');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error updating order:', error);
+      throw new Error('Failed to update order');
+    }
+  }
+
+  /**
+   * Get order by ID
+   */
+  async getOrder(orderId) {
+    try {
+      const response = await fetch(`${this.apiUrl}/api/orders/${orderId}`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to fetch order');
+      }
+
+      const data = await response.json();
+      return data.order;
+    } catch (error) {
+      console.error('Error fetching order:', error);
+      throw new Error('Failed to fetch order');
+    }
   }
 }
 

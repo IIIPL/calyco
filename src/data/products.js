@@ -127,11 +127,19 @@ export const products = [
     "category": "primer",
     "finish_type_sheen": ["Matte"],
     "finishes": ["Matte"],
-    "price": 400,
+    "price": 425,
     "packaging": ["1L", "4L", "10L", "20L"],
     "default_finish": "Matte",
     "defaultFinish": "Matte",
     "images": ["/Assets/Product Images/Primer/interior-primer.webp"],
+    "priceByFinish": {
+      "Matte": {
+        "1L": { "price": 425, "variantId": "gid://shopify/ProductVariant/TBD001" },
+        "4L": { "price": 1550, "variantId": "gid://shopify/ProductVariant/TBD002" },
+        "10L": { "price": 3700, "variantId": "gid://shopify/ProductVariant/TBD003" },
+        "20L": { "price": 7200, "variantId": "gid://shopify/ProductVariant/TBD004" }
+      }
+    },
     "coverage": "140–150 sq ft/litre",
     "drying_time": "30 min",
     "recoat_time": "2 hrs"
@@ -152,6 +160,14 @@ export const products = [
     "default_finish": "Matte",
     "defaultFinish": "Matte",
     "images": ["/Assets/Product Images/Primer/exterior-primer.webp"],
+    "priceByFinish": {
+      "Matte": {
+        "1L": { "price": 450, "variantId": "gid://shopify/ProductVariant/TBD005" },
+        "4L": { "price": 1600, "variantId": "gid://shopify/ProductVariant/TBD006" },
+        "10L": { "price": 3800, "variantId": "gid://shopify/ProductVariant/TBD007" },
+        "20L": { "price": 7500, "variantId": "gid://shopify/ProductVariant/TBD008" }
+      }
+    },
     "coverage": "130–150 sq ft/litre",
     "recoat_time": "4 hrs"
   },
@@ -166,11 +182,17 @@ export const products = [
     "category": "putty",
     "finish_type_sheen": ["Smooth"],
     "finishes": ["Smooth"],
-    "price": 350,
+    "price": 375,
     "packaging": ["5kg", "20kg"],
     "default_finish": "Smooth",
     "defaultFinish": "Smooth",
     "images": ["/Assets/Product Images/Putty/putty.webp"],
+    "priceByFinish": {
+      "Smooth": {
+        "5kg": { "price": 375, "variantId": "gid://shopify/ProductVariant/TBD009" },
+        "20kg": { "price": 1400, "variantId": "gid://shopify/ProductVariant/TBD010" }
+      }
+    },
     "coverage": "20–22 sq ft/kg for 2 coats",
     "drying_time": "6–8 hrs per coat"
   },
