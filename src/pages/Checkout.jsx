@@ -87,10 +87,17 @@ const Checkout = () => {
         return;
       }
 
+      // Validate cart has items
+      if (!items || items.length === 0) {
+        setPaymentError("Your cart is empty");
+        setIsProcessingPayment(false);
+        return;
+      }
+
       // Check if Razorpay is configured
       const razorpayKey = import.meta.env.VITE_RAZORPAY_ID;
       console.log('Environment check - Razorpay Key:', razorpayKey);
-      
+
       if (!razorpayKey || razorpayKey === 'your_razorpay_key_id_here') {
         // Fallback to dummy payment for testing
         setPaymentError("Razorpay not configured. Using test payment mode.");
@@ -99,12 +106,65 @@ const Checkout = () => {
         return;
       }
 
-      // Direct Razorpay payment without order creation
-      console.log('Checkout total amount:', total);
-      console.log('Subtotal:', subtotal, 'Tax:', tax, 'Shipping:', shipping);
+      // Step 1: Create order record in database
+      console.log('[Checkout] Creating order record...');
+      const orderRecord = await paymentService.createOrderRecord({
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          selectedSheen: item.selectedSheen,
+          selectedSize: item.selectedSize,
+          selectedColor: item.selectedColor,
+          image: item.image
+        })),
+        customer: {
+          email: user.email,
+          firstName: address.firstName,
+          lastName: address.lastName,
+          phone: address.phone,
+          address: address.address,
+          apartment: address.apartment,
+          city: address.city,
+          postcode: address.postcode,
+          country: address.country
+        },
+        subtotal,
+        tax,
+        shipping,
+        total,
+        currency: 'INR'
+      });
+
+      console.log('[Checkout] Order record created:', orderRecord.id);
+      setOrderId(orderRecord.id);
+
+      // Step 2: Create Razorpay order
+      console.log('[Checkout] Creating Razorpay order...');
+      const razorpayOrder = await paymentService.createOrder(
+        total,
+        'INR',
+        orderRecord.id,
+        {
+          customer_name: `${address.firstName} ${address.lastName}`,
+          customer_email: user.email,
+          order_id: orderRecord.id
+        }
+      );
+
+      console.log('[Checkout] Razorpay order created:', razorpayOrder.id);
+
+      // Step 3: Update order with Razorpay order ID
+      await paymentService.updateOrderStatus(orderRecord.id, 'pending', {
+        razorpayOrderId: razorpayOrder.id
+      });
+
+      // Step 4: Show Razorpay payment modal
       setShowRazorpayPayment(true);
     } catch (error) {
-      setPaymentError("Failed to initialize payment. Please try again.");
+      console.error('[Checkout] Error initializing payment:', error);
+      setPaymentError(`Failed to initialize payment: ${error.message}`);
       setIsProcessingPayment(false);
     }
   };
@@ -119,20 +179,55 @@ const Checkout = () => {
 
   const handleRazorpaySuccess = async (response) => {
     try {
-      // Verify payment
+      console.log('[Checkout] Payment successful, verifying...', response);
+
+      // Verify payment signature
       const verification = await paymentService.verifyPayment(response);
-      if (verification.success) {
+
+      if (verification.success && verification.verified) {
+        console.log('[Checkout] Payment verified successfully');
+
+        // Update order status to paid
+        if (orderId) {
+          await paymentService.updateOrderStatus(orderId, 'paid', {
+            status: 'paid',
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature
+          });
+          console.log('[Checkout] Order status updated to paid');
+        }
+
+        // Clear cart and show invoice
         setShowRazorpayPayment(false);
         setIsProcessingPayment(false);
         setShowInvoice(true);
-        clearCart(); // Clear cart after successful payment
+        clearCart();
       } else {
+        console.error('[Checkout] Payment verification failed');
         setPaymentError("Payment verification failed. Please contact support.");
         setIsProcessingPayment(false);
+
+        // Update order status to failed
+        if (orderId) {
+          await paymentService.updateOrderStatus(orderId, 'failed', {
+            status: 'failed',
+            error: 'Payment verification failed'
+          });
+        }
       }
     } catch (error) {
-      setPaymentError("Payment verification failed. Please contact support.");
+      console.error('[Checkout] Error during payment verification:', error);
+      setPaymentError(`Payment verification failed: ${error.message}`);
       setIsProcessingPayment(false);
+
+      // Update order status to failed
+      if (orderId) {
+        await paymentService.updateOrderStatus(orderId, 'failed', {
+          status: 'failed',
+          error: error.message
+        });
+      }
     }
   };
 
@@ -389,10 +484,11 @@ const Checkout = () => {
       </div>
 
       {/* Razorpay Payment Component */}
-      {showRazorpayPayment && (
+      {showRazorpayPayment && orderId && (
         <RazorpayPayment
           amount={total}
           currency="INR"
+          orderId={orderId}
           customerDetails={{
             firstName: address.firstName,
             lastName: address.lastName,
