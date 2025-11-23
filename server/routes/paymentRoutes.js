@@ -4,11 +4,20 @@ import crypto from 'crypto';
 
 const router = express.Router();
 
-// Initialize Razorpay instance
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
+// Lazy initialize Razorpay instance
+let razorpay = null;
+const getRazorpay = () => {
+  if (!razorpay) {
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      throw new Error('Razorpay credentials not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in .env file');
+    }
+    razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET
+    });
+  }
+  return razorpay;
+};
 
 /**
  * Create Razorpay order
@@ -29,7 +38,7 @@ router.post('/create-order', async (req, res) => {
       notes: notes || {}
     };
 
-    const order = await razorpay.orders.create(options);
+    const order = await getRazorpay().orders.create(options);
 
     res.json({
       success: true,
@@ -103,7 +112,7 @@ router.post('/verify', async (req, res) => {
 router.get('/:paymentId', async (req, res) => {
   try {
     const { paymentId } = req.params;
-    const payment = await razorpay.payments.fetch(paymentId);
+    const payment = await getRazorpay().payments.fetch(paymentId);
 
     res.json({
       success: true,
