@@ -55,6 +55,7 @@ import IndividualColorPage from './pages/Colors/IndividualColorPage'
 import ColorDetailPage from './pages/ColorDetailPage'
 const TexturesPage = React.lazy(() => import('./pages/TexturesPage.jsx'))
 const TextureDetailPage = React.lazy(() => import('./pages/TextureDetailPage.jsx'))
+const CityLandingPage = React.lazy(() => import('./pages/CityLandingPage.jsx'))
 
 
 // Import new providers and pages
@@ -91,27 +92,25 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
 
   return (
     <div className={`fixed top-0 left-0 w-full bg-gray-600 overflow-hidden transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'} ${menuOpen ? 'z-[45]' : 'z-[60]'}`}>
-
-
-              <div className="relative max-w-7xl mx-auto px-4 py-2.5 sm:px-6">
-          <div className="flex items-center justify-between">
-            {/* Centered Text */}
-            <div className="flex-1"></div>
-            <div className="text-center text-white text-sm">
-              🎨 Transform your space with eco-premium paints! Free delivery on orders above ₹2000.
-            </div>
-            <div className="flex-1 flex justify-end">
-              <button 
-                onClick={onClose}
-                className="text-white hover:text-gray-300 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
+      <div className="relative max-w-7xl mx-auto px-4 py-2.5 sm:px-6">
+        <div className="flex items-center justify-between">
+          {/* Centered Text */}
+          <div className="flex-1"></div>
+          <div className="text-center text-white text-sm">
+            🎨 Transform your space with eco-premium paints! Free delivery on orders above ₹2000.
+          </div>
+          <div className="flex-1 flex justify-end">
+            <button 
+              onClick={onClose}
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
         </div>
+      </div>
     </div>
   );
 };
@@ -124,121 +123,127 @@ function App() {
     <CartProvider>
       <ColorProvider>
         <ColorVisualizationProvider>
-        <div className='font-poppins overflow-x-hidden'>
-          {/* Offer Banner - Above Header */}
-          <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />
+          <div className='font-poppins overflow-x-hidden'>
+            {/* Offer Banner - Above Header */}
+            <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />
 
-          {/* This is your app. */}
-          <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
-          {/* Add top margin to account for fixed navbar + offer banner */}
-          <div className={`transition-all duration-300 ${bannerVisible ? 'pt-[108px] md:pt-[124px]' : 'pt-16 md:pt-20'}`}>
-            <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
-          <Routes>
-              <Route path='/' element={<Home/>}/>
-              {/* New premium visual-first routes */}
-              <Route path='/colors' element={<ColorsPage/>}/>
-              <Route path='/visualizer' element={<VisualizerPage/>}/>
-              <Route path='/budget-calculator' element={<BudgetCalculator/>}/>
-              <Route path='/products' element={<Products/>}/>
-              <Route path='/products/:slug' element={<ProductDetailPage/>}/>
-              {/* PREMIUM PRODUCTS */}
-              <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion/>}/>
-              <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />}/>
-              <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion/>}/>
-              <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />}/>
+            {/* This is your app. */}
+            <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
+            {/* Add top margin to account for fixed navbar + offer banner */}
+            <div className={`transition-all duration-300 ${bannerVisible ? 'pt-[108px] md:pt-[124px]' : 'pt-16 md:pt-20'}`}>
+              <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
+                <Routes>
+                  <Route path='/' element={<Home/>}/>
+                  
+                  {/* New premium visual-first routes */}
+                  <Route path='/colors' element={<ColorsPage/>}/>
+                  <Route path='/visualizer' element={<VisualizerPage/>}/>
+                  <Route path='/budget-calculator' element={<BudgetCalculator/>}/>
+                  <Route path='/products' element={<Products/>}/>
+                  <Route path='/products/:slug' element={<ProductDetailPage/>}/>
+                  
+                  {/* PREMIUM PRODUCTS */}
+                  <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion/>}/>
+                  <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />}/>
+                  <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion/>}/>
+                  <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />}/>
 
-              {/* LUXURY PRODUCTS - UPDATED URLS */}
-              <Route path='/product/Luxury-Interior-Emulsion' element={<InteriorLatexPaint/>}/>
-              <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-              <Route path='/product/Luxury-Exterior-Emulsion' element={<ExteriorLatexPaint/>}/>
-              <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  {/* LUXURY PRODUCTS - UPDATED URLS */}
+                  <Route path='/product/Luxury-Interior-Emulsion' element={<InteriorLatexPaint/>}/>
+                  <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+                  <Route path='/product/Luxury-Exterior-Emulsion' element={<ExteriorLatexPaint/>}/>
+                  <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
 
-              {/* OLD URLS - Redirect to new Luxury URLs for backward compatibility */}
-              <Route path='/product/Interior-Latex-Paint' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-              <Route path='/product/Nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-              <Route path='/product/nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-              <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-              <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-              <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-              <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-              <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
-              <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
-              <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
-              <Route path='/contractors' element={<ContractorsPage/>}/>
-              <Route path='/government' element={<GovernmentPage/>}/>
-              <Route path='/downloads' element={<DownloadsPage/>}/>
-              <Route path='/about' element={<AboutPage/>}/>
-              <Route path='/sustainability' element={<SustainabilityPage/>}/>
-              <Route path='/contact' element={<ContactPage/>}/>
-              <Route path='/cart' element={<CartPage/>}/>
-              <Route path='/product/:productId' element={<DynamicProductPage/>}/>
-              <Route path='/temp' element={<Temp/>}/>
-              <Route path='/faq' element={<FAQs/>}/>
-              <Route path='/test-page-codex' element={<TestPageCodex/>}/>
-              <Route path='/pages/product-finder' element={<ProductFinder/>}/>
-              <Route path='/blogs' element={<BlogIndexPage/>}/>
-              <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
-              <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>
-              <Route path='/blogs/:slug' element={<BlogPostPage/>}/>
-              {/* Colors new routes (existing retained) */}
-              <Route path='/colors' element={<ColorsPage/>}/>
-              <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
-              <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
-              <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
-              <Route path='/inspirations' element={<InspirationPage/>}/>
-              <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
-              <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
-              <Route path='/inspirations/hallway' element={<HallwayInspiration/>}/>
-              <Route path='/inspirations/living' element={<LivingInspiration/>}/>
-              <Route path='/inspirations/livingroom' element={<EnhancedLivingRoomInspiration/>}/>
-              <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
-              <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
-              <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
-              
-              <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
-              <Route path="/room/:roomName" element={<IndividualRoomPage />} />
+                  {/* OLD URLS - Redirect to new Luxury URLs for backward compatibility */}
+                  <Route path='/product/Interior-Latex-Paint' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+                  <Route path='/product/Nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+                  <Route path='/product/nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
+                  <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
+                  <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+                  <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+                  
+                  <Route path='/contractors' element={<ContractorsPage/>}/>
+                  <Route path='/government' element={<GovernmentPage/>}/>
+                  <Route path='/downloads' element={<DownloadsPage/>}/>
+                  <Route path='/about' element={<AboutPage/>}/>
+                  <Route path='/sustainability' element={<SustainabilityPage/>}/>
+                  <Route path='/contact' element={<ContactPage/>}/>
+                  <Route path='/cart' element={<CartPage/>}/>
+                  <Route path='/product/:productId' element={<DynamicProductPage/>}/>
+                  <Route path='/temp' element={<Temp/>}/>
+                  <Route path='/faq' element={<FAQs/>}/>
+                  <Route path='/test-page-codex' element={<TestPageCodex/>}/>
+                  <Route path='/pages/product-finder' element={<ProductFinder/>}/>
+                  
+                  {/* Blog Routes */}
+                  <Route path='/blogs' element={<BlogIndexPage/>}/>
+                  <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
+                  <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>
+                  <Route path='/blogs/:slug' element={<BlogPostPage/>}/>
+                  
+                  {/* Colors Routes */}
+                  <Route path='/colors' element={<ColorsPage/>}/>
+                  <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
+                  <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
+                  <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
+                  
+                  {/* Inspiration Routes */}
+                  <Route path='/inspirations' element={<InspirationPage/>}/>
+                  <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
+                  <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
+                  <Route path='/inspirations/hallway' element={<HallwayInspiration/>}/>
+                  <Route path='/inspirations/living' element={<LivingInspiration/>}/>
+                  <Route path='/inspirations/livingroom' element={<EnhancedLivingRoomInspiration/>}/>
+                  <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
+                  <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
+                  <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
+                  <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
+                  <Route path="/room/:roomName" element={<IndividualRoomPage />} />
 
-              {/* Texture Routes */}
-              <Route path='/textures' element={<TexturesPage/>}/>
-              <Route path='/textures/:textureSlug' element={<TextureDetailPage/>}/>
+                  {/* Texture Routes */}
+                  <Route path='/textures' element={<TexturesPage/>}/>
+                  <Route path='/textures/:textureSlug' element={<TextureDetailPage/>}/>
 
-              {/* Visualization Routes */}
-              <Route path='/room-visualization' element={<RoomVisualizerPage/>} />
-              <Route path='/room-visualization/bedroom' element={<RoomVisualizer/>} />
-              <Route path='/room-visualization/livingroom' element={<RoomVisualizer/>} />
-              <Route path='/room-visualization/diningroom' element={<RoomVisualizer/>} />
-              <Route path='/room-visualization/personalVisual' element={<RoomVisualizer/>} />
+                  {/* Visualization Routes */}
+                  <Route path='/room-visualization' element={<RoomVisualizerPage/>} />
+                  <Route path='/room-visualization/bedroom' element={<RoomVisualizer/>} />
+                  <Route path='/room-visualization/livingroom' element={<RoomVisualizer/>} />
+                  <Route path='/room-visualization/diningroom' element={<RoomVisualizer/>} />
+                  <Route path='/room-visualization/personalVisual' element={<RoomVisualizer/>} />
 
+                  {/* Policy Routes */}
+                  <Route path="/policies" element={<PoliciesIndex />} />
+                  <Route path="/policies/privacy" element={<Privacy />} />
+                  <Route path="/policies/terms" element={<TermsAndConditions />} />
+                  <Route path="/policies/payments-gst" element={<PaymentsGst />} />
+                  <Route path="/policies/quality" element={<QualityPolicy />} />
+                  <Route path="/policies/environmental-sustainability" element={<EnvironmentalSustainability />} />
+                  <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
+                  <Route path="/policies/shipping" element={<ShippingDelivery />} />
+                  <Route path="/policies/returns" element={<ReturnsRefunds />} />
+                  <Route path="/policies/warranty" element={<WarrantyPolicy />} />
+                  <Route path="/customer-service" element={<CustomerService />} />
 
-              {/* Policy Routes */}
-              <Route path="/policies" element={<PoliciesIndex />} />
-              <Route path="/policies/privacy" element={<Privacy />} />
-              <Route path="/policies/terms" element={<TermsAndConditions />} />
-              <Route path="/policies/payments-gst" element={<PaymentsGst />} />
-              <Route path="/policies/quality" element={<QualityPolicy />} />
-              <Route path="/policies/environmental-sustainability" element={<EnvironmentalSustainability />} />
-              <Route path="/policies/disclaimer" element={<ProductColorDisclaimer />} />
-              <Route path="/policies/shipping" element={<ShippingDelivery />} />
-              <Route path="/policies/returns" element={<ReturnsRefunds />} />
-              <Route path="/policies/warranty" element={<WarrantyPolicy />} />
-              <Route path="/customer-service" element={<CustomerService />} />
+                  {/* City Landing Pages - Must be near the end to avoid conflicts */}
+                  <Route path="/:citySlug" element={<CityLandingPage/>}/>
 
-              {/* 404 Fallback Route */}
-              <Route path="*" element={<NotFound/>}/>
-            </Routes>
-            </React.Suspense>
-            <Footer/>
+                  {/* 404 Fallback Route - MUST BE LAST */}
+                  <Route path="*" element={<NotFound/>}/>
+                </Routes>
+              </React.Suspense>
+              <Footer/>
+            </div>
           </div>
-        </div>
         </ColorVisualizationProvider>
-        </ColorProvider>
-      </CartProvider>
+      </ColorProvider>
+    </CartProvider>
   )
 }
-export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
+
+export default App;
+// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
 // Force new deployment - Thu Aug 21 00:54:55 IST 2025
-
-
-
-
-
