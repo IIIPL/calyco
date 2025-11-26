@@ -7,45 +7,64 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Order Service - Handles order management
- * Using JSON file storage for simplicity. Replace with actual database in production.
+ * Using in-memory storage for Vercel compatibility (serverless has read-only filesystem)
+ * TODO: Replace with actual database in production (MongoDB/PostgreSQL/Supabase)
  */
 export class OrderService {
   constructor() {
+    // Use in-memory storage for Vercel serverless compatibility
+    if (!OrderService.orders) {
+      OrderService.orders = [];
+    }
     this.ordersFile = path.join(__dirname, '../data/orders.json');
-    this.ensureDataDirectory();
+
+    // Try to load existing orders on first init (for local dev only)
+    if (OrderService.orders.length === 0) {
+      this.loadExistingOrders();
+    }
+  }
+
+  async loadExistingOrders() {
+    try {
+      const data = await fs.readFile(this.ordersFile, 'utf-8');
+      OrderService.orders = JSON.parse(data);
+      console.log(`Loaded ${OrderService.orders.length} existing orders from file`);
+    } catch (error) {
+      // File doesn't exist or can't be read (normal for Vercel), start fresh
+      OrderService.orders = [];
+      console.log('Starting with empty order list (file not found or on serverless)');
+    }
   }
 
   async ensureDataDirectory() {
+    // Not needed for in-memory storage, but keep for local dev
     const dataDir = path.join(__dirname, '../data');
     try {
       await fs.access(dataDir);
     } catch {
-      await fs.mkdir(dataDir, { recursive: true });
-    }
-
-    try {
-      await fs.access(this.ordersFile);
-    } catch {
-      await fs.writeFile(this.ordersFile, JSON.stringify([], null, 2));
+      try {
+        await fs.mkdir(dataDir, { recursive: true });
+      } catch (err) {
+        // Ignore errors on serverless (read-only filesystem)
+      }
     }
   }
 
   async readOrders() {
-    try {
-      const data = await fs.readFile(this.ordersFile, 'utf-8');
-      return JSON.parse(data);
-    } catch (error) {
-      console.error('Error reading orders:', error);
-      return [];
-    }
+    return OrderService.orders;
   }
 
   async writeOrders(orders) {
+    OrderService.orders = orders;
+
+    // Try to persist to file for local dev (will fail silently on Vercel)
     try {
+      await this.ensureDataDirectory();
       await fs.writeFile(this.ordersFile, JSON.stringify(orders, null, 2));
+      console.log('Orders saved to file (local dev mode)');
     } catch (error) {
-      console.error('Error writing orders:', error);
-      throw new Error('Failed to save orders');
+      // Ignore file write errors on serverless
+      console.log('File write skipped (running on serverless platform)');
     }
   }
 
