@@ -32,6 +32,7 @@ const Checkout = () => {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [showRazorpayPayment, setShowRazorpayPayment] = useState(false);
   const [orderId, setOrderId] = useState(null);
+  const [razorpayOrderId, setRazorpayOrderId] = useState(null);
   const [shopifyDebugInfo, setShopifyDebugInfo] = useState(null);
 
   useEffect(() => {
@@ -160,7 +161,8 @@ const Checkout = () => {
         razorpayOrderId: razorpayOrder.id
       });
 
-      // Step 4: Show Razorpay payment modal
+      // Step 4: Store Razorpay order ID and show payment modal
+      setRazorpayOrderId(razorpayOrder.id);
       setShowRazorpayPayment(true);
     } catch (error) {
       console.error('[Checkout] Error initializing payment:', error);
@@ -484,11 +486,11 @@ const Checkout = () => {
       </div>
 
       {/* Razorpay Payment Component */}
-      {showRazorpayPayment && orderId && (
+      {showRazorpayPayment && razorpayOrderId && (
         <RazorpayPayment
           amount={total}
           currency="INR"
-          orderId={orderId}
+          orderId={razorpayOrderId}
           customerDetails={{
             firstName: address.firstName,
             lastName: address.lastName,
