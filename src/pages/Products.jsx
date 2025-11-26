@@ -143,7 +143,7 @@ export const Products = () => {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-6xl font-bold"
+                className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight md:leading-[1.1]"
               >
                 Professional-Grade Paint Systems
               </motion.h1>
@@ -177,7 +177,7 @@ export const Products = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-wrap justify-center gap-4 pb-6"
+              className="flex flex-nowrap gap-3 pb-6 overflow-x-auto px-2 md:px-0 justify-start md:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {categories.map((category) => (
                 <button

@@ -475,6 +475,14 @@ const TextureDetailPage = () => {
               </motion.div>
             ))}
           </div>
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => navigate('/textures')}
+              className="px-6 py-3 border border-[#5E3A98] text-[#5E3A98] rounded-full font-semibold hover:bg-[#5E3A98] hover:text-white transition-colors"
+            >
+              View All
+            </button>
+          </div>
         </div>
       </section>
     </div>

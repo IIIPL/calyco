@@ -29,28 +29,28 @@ export const textures = [
   },
   {
     id: 'bsc-rock',
-    name: 'BSC Rock',
+    name: 'Calyco Rock',
     slug: 'bsc-rock',
     image: '/Assets/Textures/BSC-Rock.webp',
-    description: 'Embrace the raw beauty of natural stone with BSC Rock texture. This rugged finish replicates the authentic look and feel of natural rock formations, bringing an organic, earthy aesthetic to your walls with its bold, textured surface.',
+    description: 'Embrace the raw beauty of natural stone with Calyco Rock texture. This rugged finish replicates the authentic look and feel of natural rock formations, bringing an organic, earthy aesthetic to your walls with its bold, textured surface.',
     category: 'Stone',
     application: 'Interior & Exterior',
     faqs: [
       {
-        question: "Is BSC Rock texture suitable for exterior walls in monsoon regions?",
-        answer: "Absolutely. BSC Rock is specifically formulated to withstand heavy monsoon rains common in North India. It provides excellent water resistance and prevents algae growth on exterior walls."
+        question: "Is Calyco Rock texture suitable for exterior walls in monsoon regions?",
+        answer: "Absolutely. Calyco Rock is specifically formulated to withstand heavy monsoon rains common in North India. It provides excellent water resistance and prevents algae growth on exterior walls."
       },
       {
-        question: "How long does BSC Rock texture last on building facades?",
-        answer: "With proper application, BSC Rock maintains its appearance for 7-10 years on exterior walls, even in harsh Delhi NCR weather conditions including dust storms and extreme temperatures."
+        question: "How long does Calyco Rock texture last on building facades?",
+        answer: "With proper application, Calyco Rock maintains its appearance for 7-10 years on exterior walls, even in harsh Delhi NCR weather conditions including dust storms and extreme temperatures."
       },
       {
-        question: "Can contractors apply BSC Rock texture themselves?",
-        answer: "Yes. BSC Rock is contractor-friendly and can be applied with standard plastering tools. We provide application training and technical support for contractors in Ghaziabad, Noida, and Greater Noida."
+        question: "Can contractors apply Calyco Rock texture themselves?",
+        answer: "Yes. Calyco Rock is contractor-friendly and can be applied with standard plastering tools. We provide application training and technical support for contractors in Ghaziabad, Noida, and Greater Noida."
       },
       {
-        question: "What is the texture depth of BSC Rock finish?",
-        answer: "BSC Rock creates a 3-5mm texture depth, providing authentic stone appearance while maintaining durability. This depth effectively hides minor wall imperfections common in new constructions."
+        question: "What is the texture depth of Calyco Rock finish?",
+        answer: "Calyco Rock creates a 3-5mm texture depth, providing authentic stone appearance while maintaining durability. This depth effectively hides minor wall imperfections common in new constructions."
       }
     ]
   },
