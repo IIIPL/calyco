@@ -4,12 +4,6 @@ import { InvoiceGenerator } from "../components/InvoiceGenerator";
 import RazorpayPayment from "../components/RazorpayPayment";
 import { paymentService } from "../services/paymentService";
 
-const expressPayments = [
-  { name: "Shop Pay", color: "bg-[#5a31f4]", text: "text-white" },
-  { name: "PayPal", color: "bg-[#ffc439]", text: "text-black" },
-  { name: "G Pay", color: "bg-black", text: "text-white" },
-];
-
 const Checkout = () => {
   const { items, getCartTotal, removeFromCart, clearCart } = useCart();
   const [user, setUser] = useState({ email: "", subscribe: true });
@@ -59,7 +53,15 @@ const Checkout = () => {
 
   const rawSubtotal = getCartTotal();
   const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
-  const shipping = 0; // Placeholder
+
+  // Shipping calculation based on address
+  const [selectedShipping, setSelectedShipping] = useState('standard');
+  const shippingRates = {
+    standard: subtotal >= 2000 ? 0 : 250, // Free shipping above ₹2000
+    express: 500
+  };
+  const shipping = shippingRates[selectedShipping];
+
   const tax = Math.round(subtotal * 0.18);
   const total = subtotal + shipping + tax;
 
@@ -267,20 +269,6 @@ const Checkout = () => {
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
         {/* LEFT: Checkout Form */}
         <div className="p-8 flex flex-col gap-8">
-          {/* Express Checkout */}
-          <div>
-            <div className="text-center font-semibold mb-2">Express checkout</div>
-            <div className="flex gap-4 justify-center mb-4">
-              {expressPayments.map((p) => (
-                <button key={p.name} className={`flex-1 py-3 rounded-lg font-bold text-lg ${p.color} ${p.text}`}>{p.name}</button>
-              ))}
-            </div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex-1 border-t" />
-              <span className="text-gray-400 text-sm">OR</span>
-              <div className="flex-1 border-t" />
-            </div>
-          </div>
           {/* Contact */}
           <div>
             <div className="font-bold text-lg mb-2">Contact</div>
@@ -327,7 +315,59 @@ const Checkout = () => {
           {/* Shipping Method */}
           <div>
             <div className="font-bold text-lg mb-2">Shipping method</div>
-            <div className="bg-gray-100 p-4 rounded text-gray-500 text-sm">Enter your shipping address to view available shipping methods.</div>
+            {address.address && address.city && address.postcode ? (
+              <div className="space-y-3">
+                {/* Standard Shipping */}
+                <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'standard' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      name="shipping"
+                      value="standard"
+                      checked={selectedShipping === 'standard'}
+                      onChange={(e) => setSelectedShipping(e.target.value)}
+                      className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
+                    />
+                    <div>
+                      <div className="font-semibold text-gray-900">Standard Shipping</div>
+                      <div className="text-sm text-gray-600">5-7 business days</div>
+                    </div>
+                  </div>
+                  <div className="font-bold text-[#493657]">
+                    {subtotal >= 2000 ? 'FREE' : '₹250'}
+                  </div>
+                </label>
+
+                {/* Express Shipping */}
+                <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'express' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      name="shipping"
+                      value="express"
+                      checked={selectedShipping === 'express'}
+                      onChange={(e) => setSelectedShipping(e.target.value)}
+                      className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
+                    />
+                    <div>
+                      <div className="font-semibold text-gray-900">Express Shipping</div>
+                      <div className="text-sm text-gray-600">2-3 business days</div>
+                    </div>
+                  </div>
+                  <div className="font-bold text-[#493657]">₹500</div>
+                </label>
+
+                {subtotal < 2000 && (
+                  <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                    💡 Add ₹{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="bg-gray-100 p-4 rounded text-gray-500 text-sm">
+                Please enter your complete shipping address to view available shipping methods.
+              </div>
+            )}
           </div>
         </div>
         {/* RIGHT: Cart Summary */}
@@ -432,7 +472,11 @@ const Checkout = () => {
                 </div>
                 <div className="flex justify-between text-gray-700">
                   <span>Shipping</span>
-                  <span className="text-sm">Enter shipping address</span>
+                  <span className="font-semibold">
+                    {address.address && address.city && address.postcode
+                      ? `₹${shipping}`
+                      : 'Enter shipping address'}
+                  </span>
                 </div>
                 <div className="flex justify-between font-bold text-lg mt-2">
                   <span>Total</span>
@@ -449,6 +493,25 @@ const Checkout = () => {
                 >
                   {isProcessingPayment ? "Processing..." : "Pay Now"}
                 </button>
+
+                {/* Payment Methods Strip */}
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-700">100% Secure Payment</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-3 flex-wrap">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMxQTFGNzEiLz48cGF0aCBkPSJNMTAgMTJoMjAiIHN0cm9rZT0iI0ZGOUIwMCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTE1IDhsMTAgNCIgc3Ryb2tlPSIjRkY5QjAwIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=" alt="Visa" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiNFQjAwMUIiLz48Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+PGNpcmNsZSBjeD0iMjUiIGN5PSIxMiIgcj0iNiIgZmlsbD0iI0ZGOUIwMCIgb3BhY2l0eT0iMC43Ii8+PC9zdmc+" alt="Mastercard" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMDNkNzUiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5SVVBhWTwvdGV4dD48L3N2Zz4=" alt="RuPay" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMDJjNmMiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5VUEk8L3RleHQ+PC9zdmc+" alt="UPI" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMGJhZjIiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBheXRtPC90ZXh0Pjwvc3ZnPg==" alt="Paytm" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiM0Mjg1RjQiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRUE0MzM1Ii8+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iNCIgZmlsbD0iI0ZCQkMwNSIvPjxjaXJjbGUgY3g9IjI4IiBjeT0iMTIiIHI9IjQiIGZpbGw9IiMzNEE4NTMiLz48L3N2Zz4=" alt="GPay" className="h-8" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiM1ZjI1OWYiLz48Y2lyY2xlIGN4PSIyMCIgY3k9IjEyIiByPSI0IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="PhonePe" className="h-8" />
+                  </div>
+                </div>
               </form>
             </>
           )}
