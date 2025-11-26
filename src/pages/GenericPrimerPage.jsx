@@ -42,7 +42,7 @@ const getProductBySlugOrId = (identifier) => {
   return found;
 };
 
-const GenericPrimerPage = () => {
+const GenericPrimerPage = ({ productSlug }) => {
     const { productId } = useParams();
     const location = useLocation();
     const [product, setProduct] = useState(null);
@@ -69,8 +69,8 @@ const GenericPrimerPage = () => {
     };
 
     useEffect(() => {
-        // Extract slug from URL path (e.g., "/product/calyco-water-primer-interior" -> "calyco-water-primer-interior")
-        const slug = productId || location.pathname.split('/').pop();
+        // Prefer explicit slug prop, then route param, then path tail
+        const slug = (productSlug || productId || location.pathname.split('/').pop() || "").toString();
         console.log('[GenericPrimerPage] Loading product with ID:', productId, 'Slug from path:', slug);
         const foundProduct = getProductBySlugOrId(slug);
         console.log('[GenericPrimerPage] Found product:', foundProduct);
@@ -452,9 +452,9 @@ const GenericPrimerPage = () => {
 
                     {/* Product Details Section */}
                     <motion.div className="mt-32">
-                        <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-8">
                             <div className="w-full">
-                                <h2 className="text-5xl font-bold text-[#493657]">Product Details</h2>
+                                <h2 className="text-4xl md:text-5xl font-bold text-[#493657] leading-tight break-words">Product Details</h2>
                             </div>
                             <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                                 {/* About This Product Card */}
@@ -493,8 +493,8 @@ const GenericPrimerPage = () => {
                     </motion.div>
 
                     {/* Specifications Section */}
-                    <div className="my-20 bg-gradient-to-br from-[#493657] to-[#301A44] rounded-3xl p-12 text-white shadow-2xl">
-                        <h2 className="text-5xl font-bold mb-10">Specifications</h2>
+                    <div className="my-20 bg-gradient-to-br from-[#493657] to-[#301A44] rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-8 md:mb-10 leading-tight break-words">Specifications</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                             {product.category && (
                                 <div className="flex items-start gap-4 bg-white/10 rounded-xl p-6 backdrop-blur-sm">
@@ -547,8 +547,8 @@ const GenericPrimerPage = () => {
                     <hr className="border-t-2 border-[#493657]/20 w-full mt-12 mb-4" />
 
                     {/* Technical Specifications */}
-                    <div className="my-20 bg-gradient-to-br from-[#493657] to-[#301A44] rounded-3xl p-12 text-white shadow-2xl">
-                        <h2 className="text-5xl font-bold mb-10">Technical Specifications</h2>
+                    <div className="my-20 bg-gradient-to-br from-[#493657] to-[#301A44] rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-8 md:mb-10 leading-tight break-words">Technical Specifications</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                             {(product.product_code || product.technical_specs?.product_code) && (
                                 <div className="flex items-start gap-4 bg-white/10 rounded-xl p-6 backdrop-blur-sm">
@@ -611,7 +611,7 @@ const GenericPrimerPage = () => {
 
                     {/* Download Documents */}
                     <div className="my-20">
-                        <h2 className="text-5xl font-bold text-[#493657] mb-12 text-center">Download Documents</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-10 md:mb-12 text-center leading-tight break-words">Download Documents</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                             {/* TDS Document */}
                             <div className="bg-white rounded-2xl border-2 border-[#493657]/20 p-8 hover:border-[#F0C85A] hover:shadow-2xl transition-all duration-300">
@@ -661,7 +661,7 @@ const GenericPrimerPage = () => {
 
                     {/* Premium Features */}
                     <div className="my-20 text-center">
-                        <h2 className="text-5xl font-bold text-[#493657] mb-4">Premium Features</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#493657] mb-4 leading-tight break-words">Premium Features</h2>
                         <p className="text-xl text-[#493657]/70 mb-12">Experience the difference with professional-grade quality</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
