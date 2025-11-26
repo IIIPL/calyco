@@ -15,20 +15,20 @@ const exteriorPrimerDetail = {
   id: "calyco-weather-primer-exterior",
   name: "Calyco Weather Primer (Exterior)",
   slug: "calyco-weather-primer-exterior",
-  image: "/Assets/Product Images/Dummy/exterior-weather-primer-dummy.jpg",
-  images: ["/Assets/Product Images/Dummy/exterior-weather-primer-dummy.jpg"],
+  image: "/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png",
+  images: ["/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png"],
   description: "High-performance water-based exterior wall primer with superior adhesion, alkali resistance, and weather protection properties.",
   tagline: "The ultimate foundation for lasting exterior protection.",
   details: "Calyco Weather Primer (Exterior) is a specially formulated acrylic primer designed to protect exterior walls. It penetrates deeply to seal the surface, resists alkali and efflorescence, and provides a strong bond for the topcoat, ensuring your exterior paint lasts longer in harsh weather conditions.",
-  finish_type_sheen: ["Low Sheen"],
-  defaultFinish: "Low Sheen",
+  finish_type_sheen: ["Smooth"],
+  defaultFinish: "Smooth",
   packaging: ["1L", "4L", "10L", "20L"],
   priceByFinish: {
-    "Low Sheen": {
-      "1L": 700,
-      "4L": 2700,
-      "10L": 6500,
-      "20L": 12800,
+    "Smooth": {
+      "1L": 310,
+      "4L": 1150,
+      "10L": 3100,
+      "20L": 5800,
     }
   },
   features: [
@@ -48,7 +48,7 @@ const exteriorPrimerDetail = {
   recommended_uses: ["Concrete", "Plaster", "Brickwork", "Asbestos"],
   substrate: ["Cement Plaster", "Concrete", "Brick", "Masonry"],
   coats_required: "1 coat",
-  coverage: "130-150 sq.ft./L",
+  coverage: "150-180 sq.ft./L",
   technicalSpecs: {
     product_code: "CAL-PRI-WB-EXT-002",
     base_type: "100% Acrylic Latex",
@@ -74,15 +74,16 @@ const exteriorPrimerDetail = {
 
 // MRP pricing for Weather Primer (Exterior)
 const EXTERIOR_PRIMER_MRP = {
-  'Low Sheen': {
-    '1L': 700,
-    '4L': 2700,
-    '10L': 6500,
-    '20L': 12800,
+  'Smooth': {
+    '1L': 388,
+    '4L': 1438,
+    '10L': 3875,
+    '20L': 7250,
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
+const ALLOW_COLOR_MIXING = false;
 
 const slugify = (value) =>
   value
@@ -833,13 +834,14 @@ const CalycoWeatherPrimerExterior = () => {
                           </div>
                         )}
 
-                            {/* Color Mixing Option */}
-                            <div className="mb-4">
-                              <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
-                                Color Mixing Option
-                                <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full w-fit">
-                                  Professional Choice
-                                </span>
+                        {/* Color Mixing Option */}
+                        {ALLOW_COLOR_MIXING && (
+                        <div className="mb-4">
+                          <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
+                            Color Mixing Option
+                            <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full w-fit">
+                              Professional Choice
+                            </span>
                               </h3>
                               <div className="grid grid-cols-1 gap-3">
                                 <button
@@ -863,11 +865,11 @@ const CalycoWeatherPrimerExterior = () => {
                                     </div>
                                     <div className="flex-1">
                                       <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
-                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Factory standard bright white primer.
-                                      </p>
-                                      <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
-                                        ✓ Factory Fresh
+                                  <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                    Factory standard bright white primer.
+                                  </p>
+                                  <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
+                                    ✓ Factory Fresh
                                       </span>
                                     </div>
                                   </div>
@@ -894,17 +896,18 @@ const CalycoWeatherPrimerExterior = () => {
                                     </div>
                                     <div className="flex-1">
                                       <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Tint-able</h4>
-                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Suitable for tinting with universal stainers.
-                                      </p>
-                                      <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                                        ✓ Custom Mixed
+                                  <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                    Suitable for tinting with universal stainers.
+                                  </p>
+                                  <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                                    ✓ Custom Mixed
                                       </span>
                                     </div>
                                   </div>
                                 </button>
                               </div>
-                            </div>
+                        </div>
+                        )}
 
                             {/* Quantity & Add to Cart */}
                             <div className="mb-6">

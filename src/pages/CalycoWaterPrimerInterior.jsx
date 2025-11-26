@@ -75,14 +75,15 @@ const interiorPrimerDetail = {
 // MRP pricing for Interior Water Primer
 const PRIMER_MRP = {
   'Matte': {
-    '1L': 285, // Assuming MRP is same as price for now based on source, or slightly higher
-    '4L': 1100,
-    '10L': 2700,
-    '20L': 5100,
+    '1L': 356,
+    '4L': 1375,
+    '10L': 3375,
+    '20L': 6375,
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
+const ALLOW_COLOR_MIXING = false;
 
 const slugify = (value) =>
   value
@@ -835,13 +836,14 @@ const CalycoWaterPrimerInterior = () => {
                           </div>
                         )}
 
-                            {/* Color Mixing Option */}
-                            <div className="mb-4">
-                              <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
-                                Color Mixing Option
-                                <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full w-fit">
-                                  Professional Choice
-                                </span>
+                        {/* Color Mixing Option */}
+                        {ALLOW_COLOR_MIXING && (
+                        <div className="mb-4">
+                          <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
+                            Color Mixing Option
+                            <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full w-fit">
+                              Professional Choice
+                            </span>
                               </h3>
                               <div className="grid grid-cols-1 gap-3">
                                 <button
@@ -864,11 +866,11 @@ const CalycoWaterPrimerInterior = () => {
                                       )}
                                     </div>
                                     <div className="flex-1">
-                                      <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
-                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Factory standard bright white primer.
-                                      </p>
-                                      <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
+                                  <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
+                                  <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                    Factory standard bright white primer.
+                                  </p>
+                                  <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
                                         ✓ Factory Fresh
                                       </span>
                                     </div>
@@ -896,17 +898,18 @@ const CalycoWaterPrimerInterior = () => {
                                     </div>
                                     <div className="flex-1">
                                       <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Tint-able</h4>
-                                      <p className="text-xs text-[#493657]/70 leading-relaxed">
-                                        Suitable for tinting with universal stainers.
-                                      </p>
-                                      <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                                        ✓ Custom Mixed
-                                      </span>
+                                  <p className="text-xs text-[#493657]/70 leading-relaxed">
+                                    Suitable for tinting with universal stainers.
+                                  </p>
+                                  <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                                    ✓ Custom Mixed
+                                  </span>
                                     </div>
                                   </div>
                                 </button>
                               </div>
-                            </div>
+                        </div>
+                        )}
 
                             {/* Quantity & Add to Cart */}
                             <div className="mb-6">

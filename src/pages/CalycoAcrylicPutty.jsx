@@ -16,20 +16,20 @@ const acrylicPuttyDetail = {
   id: "calyco-acrylic-wall-putty",
   name: "Calyco Acrylic Wall Putty",
   slug: "calyco-acrylic-wall-putty",
-  image: "/Assets/Product Images/Dummy/acrylic-wall-putty-dummy.jpg",
-  images: ["/Assets/Product Images/Dummy/acrylic-wall-putty-dummy.jpg"],
+  image: "/Assets/Product Images/Dummy/Acrylic-putty-dummy.png",
+  images: ["/Assets/Product Images/Dummy/Acrylic-putty-dummy.png"],
   description: "Premium water-based acrylic wall putty for leveling and smoothing interior masonry surfaces before painting.",
   tagline: "The perfect smooth foundation for a flawless finish.",
   details: "Calyco Acrylic Wall Putty is a water-based, ready-to-use putty that provides a superior smooth finish to interior walls. It fills fine pores and dents, providing a white, feather-smooth surface that ensures the topcoat paint looks rich and uniform. It has excellent whiteness and high adhesive strength.",
   finish_type_sheen: ["Smooth"],
   defaultFinish: "Smooth",
-  packaging: ["1 kg", "5 kg", "20 kg", "35 kg"],
+  packaging: ["1kg", "5kg", "10kg", "20kg"],
   priceByFinish: {
     "Smooth": {
-      "1 kg": 95,
-      "5 kg": 450,
-      "20 kg": 1600,
-      "35 kg": 2700,
+      "1kg": 65,
+      "5kg": 275,
+      "10kg": 600,
+      "20kg": 1100,
     }
   },
   features: [
@@ -49,13 +49,13 @@ const acrylicPuttyDetail = {
   recommended_uses: ["Cement plaster", "Concrete", "Gypsum board", "Asbestos sheets"],
   substrate: ["Plaster", "Concrete", "Masonry"],
   coats_required: "2 coats",
-  coverage: "10-15 sq.ft./kg (2 coats)",
+  coverage: "28-35 sq.ft./kg",
   technicalSpecs: {
-    product_code: "CAL-PUT-ACR-INT-003",
-    base_type: "Acrylic Emulsion",
-    voc_content: "< 25 g/L",
-    dryingTime: "4-6 hours",
-    recoatTime: "6-8 hours",
+    product_code: "CAL-PUT-ACR-003",
+    base_type: "Water-based acrylic putty",
+    voc_content: "Low VOC",
+    dryingTime: "30 minutes",
+    recoatTime: "4 hours",
     application_instructions: "Apply with putty knife or trowel. Sand with grit 180-220 paper after drying.",
     shelf_life: "2 Years",
     storage_temp: "Cool, dry place",
@@ -76,14 +76,15 @@ const acrylicPuttyDetail = {
 // MRP pricing for Acrylic Wall Putty
 const PUTTY_MRP = {
   'Smooth': {
-    '1 kg': 110,
-    '5 kg': 520,
-    '20 kg': 1800,
-    '35 kg': 2950,
+    '1kg': 81,
+    '5kg': 344,
+    '10kg': 750,
+    '20kg': 1375,
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
+const ALLOW_COLOR_MIXING = false;
 
 const CalycoAcrylicPutty = () => {
     // Putty typically has no color families (it's white), so we leave this empty
@@ -801,6 +802,7 @@ const CalycoAcrylicPutty = () => {
                         )}
 
                             {/* Color Mixing Option - Modified for Putty */}
+                            {ALLOW_COLOR_MIXING && (
                             <div className="mb-4">
                               <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
                                 Product Type
@@ -841,6 +843,7 @@ const CalycoAcrylicPutty = () => {
                                 </button>
                               </div>
                             </div>
+                            )}
 
                             {/* Quantity & Add to Cart */}
                             <div className="mb-6">
