@@ -37,12 +37,9 @@ import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
-import CalycoWaterPrimerInterior from './pages/CalycoWaterPrimerInterior.jsx'
-import CalycoWeatherPrimerExterior from './pages/CalycoWeatherPrimerExterior.jsx'
-import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty.jsx'
-import CalycoSolventPrimerInterior from './pages/CalycoSolventPrimerInterior.jsx'
-import CalycoDampGuardPrimer from './pages/CalycoDampGuardPrimer.jsx'
-import CalycoUniversalPrimer from './pages/CalycoUniversalPrimer.jsx'
+import CalycoWaterPrimerInterior from './pages/CalycoWaterPrimerInterior'
+import CalycoWeatherPrimerExterior from './pages/CalycoWeatherPrimerExterior'
+import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -172,14 +169,11 @@ function App() {
                   <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
                   <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
                   <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
-                  
-                  {/* NEW PRIMER & PUTTY PRODUCTS - dedicated pages */}
+
+                  {/* New primer/putty pages using Premium template */}
                   <Route path='/product/calyco-water-primer-interior' element={<CalycoWaterPrimerInterior/>}/>
                   <Route path='/product/calyco-weather-primer-exterior' element={<CalycoWeatherPrimerExterior/>}/>
-                  <Route path='/product/calyco-acrylic-putty' element={<CalycoAcrylicPutty/>}/>
-                  <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior/>}/>
-                  <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer/>}/>
-                  <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer/>}/>
+                  <Route path='/product/calyco-acrylic-wall-putty' element={<CalycoAcrylicPutty/>}/>
                   
                   <Route path='/contractors' element={<ContractorsPage/>}/>
                   <Route path='/government' element={<GovernmentPage/>}/>

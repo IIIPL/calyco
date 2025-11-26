@@ -158,14 +158,14 @@ export const Products = () => {
               transition={{ delay: 0.2 }}
               className="mb-10 flex justify-center"
             >
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 w-full max-w-2xl">
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 w-full max-w-2xl min-w-0">
                 <FiSearch className="w-5 h-5 text-white/80" />
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search products by name, category, or keywords..."
-                  className="flex-1 bg-transparent py-4 outline-none text-white placeholder:text-white/60 text-lg"
+                  className="flex-1 min-w-0 bg-transparent py-4 outline-none text-white placeholder:text-white/60 text-lg overflow-hidden text-ellipsis whitespace-nowrap"
                 />
               </div>
             </motion.div>

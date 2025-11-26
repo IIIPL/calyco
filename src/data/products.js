@@ -124,35 +124,6 @@ export const products = [
     "image": "/Assets/Product Images/Dummy/interior-water-primer-dummy.jpg",
     "description": "Premium water-based acrylic primer for interior walls and ceilings with high opacity and excellent sealing.",
     "short-description": "High-opacity primer for superior coverage and adhesion on interior walls.",
-    "tagline": "Seals and brightens your walls for a perfect paint finish.",
-    "microCopy": "High Opacity • Seals Pores • Fast Drying",
-    "keyBenefits": [
-      "Superior whiteness and opacity",
-      "Excellent adhesion improves topcoat durability",
-      "Alkali & moisture resistance",
-      "Low VOC for healthier indoor air"
-    ],
-    "features": [
-      "Water-based acrylic emulsion",
-      "Seals porous surfaces & improves coverage",
-      "Quick drying & easy application",
-      "Compatible with putty, plaster, drywall"
-    ],
-    "advantages": [
-      "Improves topcoat coverage, reducing paint consumption",
-      "Strong adhesion prevents peeling",
-      "Resists alkali & efflorescence",
-      "Ultra-low VOC for safer indoor air",
-      "Quick drying for faster recoating"
-    ],
-    "recommendedUses": [
-      "Interior walls",
-      "Ceilings",
-      "Plaster",
-      "Putty surfaces",
-      "Drywall"
-    ],
-    "substrate": ["Plaster", "Putty", "Drywall", "Cement", "Masonry"],
     "category": "primer",
     "finish_type_sheen": ["Matte"],
     "finishes": ["Matte"],
@@ -163,10 +134,10 @@ export const products = [
     "images": ["/Assets/Product Images/Dummy/interior-water-primer-dummy.jpg"],
     "priceByFinish": {
       "Matte": {
-        "1L": { "price": 285, "variantId": "gid://shopify/ProductVariant/TBD021" },
-        "4L": { "price": 1100, "variantId": "gid://shopify/ProductVariant/TBD022" },
-        "10L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/TBD023" },
-        "20L": { "price": 5100, "variantId": "gid://shopify/ProductVariant/TBD024" }
+        "1L": { "price": 285 },
+        "4L": { "price": 1100 },
+        "10L": { "price": 2700 },
+        "20L": { "price": 5100 }
       }
     },
     "coverage": "180-200 sq.ft./L",
@@ -175,7 +146,15 @@ export const products = [
     "voc_content": "< 30 g/L",
     "base_type": "Water-based acrylic emulsion",
     "warranty": "5 years",
-    "product_code": "CAL-PRI-WB-INT-001"
+    "product_code": "CAL-PRI-WB-INT-001",
+    "recommendedUses": [
+      "Interior walls",
+      "Ceilings",
+      "Plaster",
+      "Putty surfaces",
+      "Drywall"
+    ],
+    "substrate": ["Plaster", "Putty", "Drywall", "Cement", "Masonry"]
   },
   {
     "id": "CalycoWeatherPrimerExterior",
@@ -185,35 +164,6 @@ export const products = [
     "image": "/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png",
     "description": "High-opacity exterior wall primer designed to protect masonry from harsh weather and provide superior adhesion.",
     "short-description": "Weather-resistant primer for long-lasting exterior walls.",
-    "tagline": "Defend your exteriors with a primer that withstands sun, rain and wind.",
-    "microCopy": "High Opacity • Weather & Alkali Resistant • Strong Adhesion",
-    "keyBenefits": [
-      "Superior whiteness & opacity enhances topcoat colour",
-      "Moisture & alkali resistance prevents efflorescence",
-      "Excellent adhesion and film flexibility",
-      "Quick drying & easy brushability"
-    ],
-    "features": [
-      "Water-thinnable acrylic formula",
-      "High opacity for better coverage",
-      "Resists chalking, moisture and UV",
-      "Enhances topcoat adhesion & durability"
-    ],
-    "advantages": [
-      "Provides strong foundation for topcoat",
-      "Resists moisture & efflorescence",
-      "Enhances durability of finishing paints",
-      "Superior coverage reduces paint usage",
-      "UV-resistant for longer colour life"
-    ],
-    "recommendedUses": [
-      "Exterior walls",
-      "Cement plaster",
-      "Concrete",
-      "Brickwork",
-      "Fibre cement boards"
-    ],
-    "substrate": ["Cement plaster", "Concrete", "Brick", "Masonry"],
     "category": "primer",
     "finish_type_sheen": ["Smooth"],
     "finishes": ["Smooth"],
@@ -224,10 +174,10 @@ export const products = [
     "images": ["/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png"],
     "priceByFinish": {
       "Smooth": {
-        "1L": { "price": 310, "variantId": "gid://shopify/ProductVariant/TBD025" },
-        "4L": { "price": 1150, "variantId": "gid://shopify/ProductVariant/TBD026" },
-        "10L": { "price": 3100, "variantId": "gid://shopify/ProductVariant/TBD027" },
-        "20L": { "price": 5800, "variantId": "gid://shopify/ProductVariant/TBD028" }
+        "1L": { "price": 310 },
+        "4L": { "price": 1150 },
+        "10L": { "price": 3100 },
+        "20L": { "price": 5800 }
       }
     },
     "coverage": "150-180 sq.ft./L",
@@ -236,44 +186,24 @@ export const products = [
     "voc_content": "< 35 g/L",
     "base_type": "Water-based acrylic emulsion",
     "warranty": "5 years",
-    "product_code": "CAL-PRI-WB-EXT-002"
+    "product_code": "CAL-PRI-WB-EXT-002",
+    "recommendedUses": [
+      "Exterior walls",
+      "Cement plaster",
+      "Concrete",
+      "Brickwork",
+      "Fibre cement boards"
+    ],
+    "substrate": ["Cement plaster", "Concrete", "Brick", "Masonry"]
   },
   {
-    "id": "CalycoAcrylicPutty",
-    "slug": "calyco-acrylic-putty",
-    "url": "https://calycopaints.com/product/calyco-acrylic-putty",
-    "name": "Calyco Acrylic Putty",
+    "id": "CalycoAcrylicWallPutty",
+    "slug": "calyco-acrylic-wall-putty",
+    "url": "https://calycopaints.com/product/calyco-acrylic-wall-putty",
+    "name": "Calyco Acrylic Wall Putty",
     "image": "/Assets/Product Images/Dummy/Acrylic-putty-dummy.png",
     "description": "Acrylic-based wall putty that delivers an exceptionally smooth, white surface and strong foundation for paint.",
     "short-description": "Premium putty for flawless walls and superior topcoat finish.",
-    "tagline": "Smoothness you can feel; strength you can trust.",
-    "microCopy": "Ultra Smooth Finish • Strong Adhesion • Fast Drying",
-    "keyBenefits": [
-      "Provides butter-smooth, crack-free surface",
-      "Excellent adhesion to plaster and concrete",
-      "Superior whiteness enhances paint shades",
-      "Alkali resistance improves durability"
-    ],
-    "features": [
-      "Acrylic polymer-based putty",
-      "Fills pores & surface imperfections",
-      "Easy sanding and quick drying",
-      "Breathable and moisture resistant"
-    ],
-    "advantages": [
-      "Exceptional smoothness reduces sanding",
-      "Superior adhesion prevents flaking",
-      "Enhances paint colour & coverage",
-      "Quick drying speeds up painting",
-      "Alkali & moisture resistance for durability"
-    ],
-    "recommendedUses": [
-      "Interior & exterior walls",
-      "Plaster",
-      "Concrete",
-      "Ceilings"
-    ],
-    "substrate": ["Cement plaster", "Concrete", "Brick", "Gypsum board"],
     "category": "putty",
     "finish_type_sheen": ["Smooth"],
     "finishes": ["Smooth"],
@@ -284,10 +214,10 @@ export const products = [
     "images": ["/Assets/Product Images/Dummy/Acrylic-putty-dummy.png"],
     "priceByFinish": {
       "Smooth": {
-        "1kg": { "price": 65, "variantId": "gid://shopify/ProductVariant/TBD029" },
-        "5kg": { "price": 275, "variantId": "gid://shopify/ProductVariant/TBD030" },
-        "10kg": { "price": 600, "variantId": "gid://shopify/ProductVariant/TBD031" },
-        "20kg": { "price": 1100, "variantId": "gid://shopify/ProductVariant/TBD032" }
+        "1kg": { "price": 65 },
+        "5kg": { "price": 275 },
+        "10kg": { "price": 600 },
+        "20kg": { "price": 1100 }
       }
     },
     "coverage": "28-35 sq.ft./kg",
@@ -296,188 +226,13 @@ export const products = [
     "voc_content": "Low VOC",
     "base_type": "Water-based acrylic putty",
     "warranty": "8 years",
-    "product_code": "CAL-PUT-ACR-003"
-  },
-  {
-    "id": "CalycoSolventPrimerInterior",
-    "slug": "calyco-solvent-primer-interior",
-    "url": "https://calycopaints.com/product/calyco-solvent-primer-interior",
-    "name": "Calyco Solvent Primer (Interior)",
-    "image": "/Assets/Product Images/Dummy/solvent-primer-interior-dummy.png",
-    "description": "Solvent-based alkyd primer for interior masonry, wood and metal surfaces; provides superior adhesion and high opacity.",
-    "short-description": "High-performance solvent primer for interior multi-substrate surfaces.",
-    "tagline": "Bond, seal and protect with our versatile interior primer.",
-    "microCopy": "Alkyd Resin • High Opacity • Multi-Surface Adhesion",
-    "keyBenefits": [
-      "Excellent adhesion to plaster, wood & metal",
-      "Seals porous surfaces and enhances topcoat coverage",
-      "Superior whiteness & opacity",
-      "Quick drying & low VOC"
-    ],
-    "features": [
-      "Solvent-based alkyd formula",
-      "High penetration for better bonding",
-      "Smooth matte finish",
-      "Resistant to alkali and efflorescence"
-    ],
-    "advantages": [
-      "Multi-surface adhesion reduces product inventory",
-      "High opacity reduces topcoat consumption",
-      "Seals and protects porous surfaces",
-      "Quick drying for faster project completion",
-      "Resistant to alkali & efflorescence"
-    ],
+    "product_code": "CAL-PUT-ACR-003",
     "recommendedUses": [
-      "Interior masonry",
-      "Wood & metal surfaces",
+      "Interior & exterior walls",
       "Plaster",
-      "Gypsum boards"
+      "Concrete",
+      "Ceilings"
     ],
-    "substrate": ["Plaster", "Concrete", "Wood", "Metal"],
-    "category": "primer",
-    "finish_type_sheen": ["Matt"],
-    "finishes": ["Matt"],
-    "price": 280,
-    "packaging": ["1L", "4L", "10L", "20L"],
-    "default_finish": "Matt",
-    "defaultFinish": "Matt",
-    "images": ["/Assets/Product Images/Dummy/solvent-primer-interior-dummy.png"],
-    "priceByFinish": {
-      "Matt": {
-        "1L": { "price": 280, "variantId": "gid://shopify/ProductVariant/TBD033" },
-        "4L": { "price": 1050, "variantId": "gid://shopify/ProductVariant/TBD034" },
-        "10L": { "price": 2500, "variantId": "gid://shopify/ProductVariant/TBD035" },
-        "20L": { "price": 4800, "variantId": "gid://shopify/ProductVariant/TBD036" }
-      }
-    },
-    "coverage": "140-160 sq.ft./L",
-    "drying_time": "1 hour",
-    "recoat_time": "6 hours",
-    "voc_content": "< 200 g/L",
-    "base_type": "Solvent-based alkyd",
-    "warranty": "5 years",
-    "product_code": "CAL-PRI-ST-INT-004"
-  },
-  {
-    "id": "CalycoDampGuardPrimer",
-    "slug": "calyco-damp-guard-primer",
-    "url": "https://calycopaints.com/product/calyco-damp-guard-primer",
-    "name": "Calyco Damp Guard Primer",
-    "image": "/Assets/Product Images/Dummy/damp-guard-primer-dummy.png",
-    "description": "Advanced waterproofing primer that forms a flexible, breathable barrier to resist dampness, efflorescence and hairline cracks on interior and exterior surfaces.",
-    "short-description": "High-performance primer for damp and water-prone areas.",
-    "tagline": "Keep walls dry and protected with our reliable damp-proof base.",
-    "microCopy": "Waterproof Barrier • Crack Bridging • High Flexibility",
-    "keyBenefits": [
-      "Provides long-term waterproofing & damp resistance",
-      "Bridges hairline cracks & resists efflorescence",
-      "Excellent adhesion to multiple substrates",
-      "Breathable film allows moisture vapour to escape"
-    ],
-    "features": [
-      "Acrylic elastomeric emulsion",
-      "Forms flexible waterproof membrane",
-      "Alkali & salt resistant",
-      "Low VOC & lead-free"
-    ],
-    "advantages": [
-      "Long-lasting waterproofing & damp proofing",
-      "Flexible film accommodates thermal movements",
-      "Prevents salt leaching and efflorescence",
-      "Improves adhesion of topcoats",
-      "Low VOC for safer application"
-    ],
-    "recommendedUses": [
-      "Bathrooms",
-      "Kitchens",
-      "Basements",
-      "Roof slabs",
-      "Exterior walls"
-    ],
-    "substrate": ["Cement plaster", "Concrete", "Brick", "Asbestos sheet"],
-    "category": "primer",
-    "finish_type_sheen": ["Matt"],
-    "finishes": ["Matt"],
-    "price": 400,
-    "packaging": ["1L", "4L", "10L", "20L"],
-    "default_finish": "Matt",
-    "defaultFinish": "Matt",
-    "images": ["/Assets/Product Images/Dummy/damp-guard-primer-dummy.png"],
-    "priceByFinish": {
-      "Matt": {
-        "1L": { "price": 400, "variantId": "gid://shopify/ProductVariant/TBD037" },
-        "4L": { "price": 1500, "variantId": "gid://shopify/ProductVariant/TBD038" },
-        "10L": { "price": 3600, "variantId": "gid://shopify/ProductVariant/TBD039" },
-        "20L": { "price": 6800, "variantId": "gid://shopify/ProductVariant/TBD040" }
-      }
-    },
-    "coverage": "90-110 sq.ft./L",
-    "drying_time": "45 minutes",
-    "recoat_time": "5 hours",
-    "voc_content": "< 50 g/L",
-    "base_type": "Water-based acrylic elastomeric",
-    "warranty": "7 years",
-    "product_code": "CAL-PRI-WP-005"
-  },
-  {
-    "id": "CalycoUniversalPrimer",
-    "slug": "calyco-universal-primer",
-    "url": "https://calycopaints.com/product/calyco-universal-primer",
-    "name": "Calyco Universal Primer",
-    "image": "/Assets/Product Images/Dummy/universal-primer-dummy.png",
-    "description": "Solvent-based universal primer designed to deliver superior adhesion and corrosion protection on metal, wood and masonry surfaces.",
-    "short-description": "One primer for all surfaces — metal, wood, masonry.",
-    "tagline": "Versatility meets performance in a single powerful primer.",
-    "microCopy": "Multi-Surface Adhesion • Corrosion Protection • Quick Drying",
-    "keyBenefits": [
-      "Excellent adhesion across metal, wood & masonry",
-      "High opacity and corrosion resistance",
-      "Seals porous substrates and prevents rust",
-      "Fast drying for quicker recoating"
-    ],
-    "features": [
-      "Solvent-based alkyd resin",
-      "Strong penetration & bonding",
-      "Suitable for interior and exterior use",
-      "Free from heavy metals"
-    ],
-    "advantages": [
-      "All-in-one primer reduces inventory",
-      "Protects against corrosion & moisture",
-      "Provides strong foundation for topcoat on any surface",
-      "High coverage saves time and material",
-      "Easy sanding for smooth finish"
-    ],
-    "recommendedUses": [
-      "Metal gates & railings",
-      "Wooden furniture & doors",
-      "Masonry walls",
-      "GI sheet roofing",
-      "Fibre cement boards"
-    ],
-    "substrate": ["Metal", "Wood", "Cement plaster", "Concrete", "Gypsum"],
-    "category": "primer",
-    "finish_type_sheen": ["Matt"],
-    "finishes": ["Matt"],
-    "price": 360,
-    "packaging": ["1L", "4L", "10L", "20L"],
-    "default_finish": "Matt",
-    "defaultFinish": "Matt",
-    "images": ["/Assets/Product Images/Dummy/universal-primer-dummy.png"],
-    "priceByFinish": {
-      "Matt": {
-        "1L": { "price": 360, "variantId": "gid://shopify/ProductVariant/TBD041" },
-        "4L": { "price": 1350, "variantId": "gid://shopify/ProductVariant/TBD042" },
-        "10L": { "price": 3200, "variantId": "gid://shopify/ProductVariant/TBD043" },
-        "20L": { "price": 6100, "variantId": "gid://shopify/ProductVariant/TBD044" }
-      }
-    },
-    "coverage": "140-150 sq.ft./L",
-    "drying_time": "1 hour",
-    "recoat_time": "8 hours",
-    "voc_content": "< 250 g/L",
-    "base_type": "Solvent-based alkyd",
-    "warranty": "5 years",
-    "product_code": "CAL-PRI-UNI-006"
+    "substrate": ["Cement plaster", "Concrete", "Brick", "Gypsum board"]
   }
 ];
