@@ -17,6 +17,16 @@ import SEO from "../components/SEO";
 import CartPopup from "../components/CartPopup";
 import { useCart } from "../context/CartContext";
 import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
+import GenericPrimerPage from "./GenericPrimerPage";
+
+const PRIMER_SLUGS = new Set([
+  "calyco-water-primer-interior",
+  "calyco-weather-primer-exterior",
+  "calyco-acrylic-putty",
+  "calyco-solvent-primer-interior",
+  "calyco-damp-guard-primer",
+  "calyco-universal-primer",
+]);
 
 const INTERIOR_LATEX_VARIANT_MAP = {
   '1L-Low Sheen': 'gid://shopify/ProductVariant/42619088371830',
@@ -250,6 +260,10 @@ const sampleProduct = {
 export default function ProductDetailPage({ productData }) {
   const { slug } = useParams();
   const navigate = useNavigate();
+
+  if (slug && PRIMER_SLUGS.has(slug.toLowerCase())) {
+    return <GenericPrimerPage />;
+  }
   const [product, setProduct] = useState(productData || sampleProduct);
   const [selectedFinish, setSelectedFinish] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);

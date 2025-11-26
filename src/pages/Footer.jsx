@@ -1,5 +1,6 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { cities } from "../data/cities"; // <--- NEW IMPORT
 
 const GoldenDots = ({ count = 10 }) => {
   const dots = Array.from({ length: count }, (_, i) => ({
@@ -63,8 +64,10 @@ export const Footer = () => (
 
     {/* TOP GRID */}
     <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pt-12 pb-10">
-      <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Brand */}
+      {/* UPDATED: Changed grid-cols-4 to grid-cols-5 to fit the new column */}
+      <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+        
+        {/* Column 1: Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img src="/Logo.png" alt="CALYCO" className="w-12 h-12 object-contain" />
@@ -88,7 +91,7 @@ export const Footer = () => (
           </div>
         </div>
 
-        {/* Calyco */}
+        {/* Column 2: Calyco */}
         <Col title="Calyco">
           <Item to="/about">About Us</Item>
           <Item to="/contact">Contact Us</Item>
@@ -97,7 +100,7 @@ export const Footer = () => (
           <Item to="/room-visualization">Room Visualizer</Item>
         </Col>
 
-        {/* Customer Service */}
+        {/* Column 3: Customer Service */}
         <Col title="Customer Service">
           <Item to="/contact">Support &amp; Queries</Item>
           <Item to="/policies/shipping">Shipping &amp; Delivery</Item>
@@ -106,30 +109,35 @@ export const Footer = () => (
           <Item to="/faq">FAQ</Item>
         </Col>
 
-        {/* Policies */}
+        {/* Column 4: Policies */}
         <Col title="Policies">
           <Item to="/policies/privacy">Privacy Policy</Item>
           <Item to="/policies/terms">Terms &amp; Conditions</Item>
-          <Item to="/policies/payments-gst">Payment, Pricing &amp; GST/Invoices</Item>
+          <Item to="/policies/payments-gst">Payment, Pricing &amp; GST</Item>
           <Item to="/policies/quality">Quality Policy</Item>
-          <Item to="/policies/environmental-sustainability">Environmental &amp; Sustainability</Item>
-          <Item to="/policies/disclaimer">Product/Color Disclaimer</Item>
+          <Item to="/policies/environmental-sustainability">Sustainability</Item>
+          <Item to="/policies/disclaimer">Disclaimer</Item>
         </Col>
+
+        {/* Column 5: Service Areas (NEW SEO COLUMN) */}
+        <Col title="Service Areas">
+          {cities && cities.length > 0 ? (
+            cities.map((city) => (
+              <Item key={city.id} to={`/${city.slug}`}>
+                Painters in {city.name}
+              </Item>
+            ))
+          ) : (
+            // Fallback if data isn't loaded yet
+            <>
+              <Item to="/painters-in-noida">Painters in Noida</Item>
+              <Item to="/painters-in-gurgaon">Painters in Gurgaon</Item>
+            </>
+          )}
+        </Col>
+
       </div>
     </div>
-
-    {/* BOTTOM BAR
-    <div className="relative z-10 border-t border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#e5e0d8]/70">
-        <p>© {new Date().getFullYear()} CALYCO Paints. All rights reserved.</p>
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link to="/policies/privacy" className="hover:text-[#F0C85A]">Privacy</Link>
-          <Link to="/policies/terms" className="hover:text-[#F0C85A]">Terms</Link>
-          <Link to="/accessibility" className="hover:text-[#F0C85A]">Accessibility</Link>
-          <Link to="/policies" className="hover:text-[#F0C85A]">All Policies</Link>
-        </div>
-      </div>
-    </div> */}
   </footer>
 );
 

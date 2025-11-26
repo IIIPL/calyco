@@ -10,8 +10,18 @@ import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
+import GenericPrimerPage from "./GenericPrimerPage";
 
 import variantMapInterior from '../data/variantMap.interior.json';
+
+const PRIMER_SLUGS = new Set([
+  "calyco-water-primer-interior",
+  "calyco-weather-primer-exterior",
+  "calyco-acrylic-putty",
+  "calyco-solvent-primer-interior",
+  "calyco-damp-guard-primer",
+  "calyco-universal-primer",
+]);
 
 const EXTERIOR_LATEX_VARIANTS = {
   'Matte Finish': {
@@ -137,6 +147,11 @@ const getSizeMultiplier = (size) => {
 
 export const DynamicProductPage = () => {
     const { productId } = useParams();
+
+    if (productId && PRIMER_SLUGS.has(productId.toLowerCase())) {
+        return <GenericPrimerPage />;
+    }
+
     const [product, setProduct] = useState(null);
 
     const colorFamilies = useMemo(() => {
