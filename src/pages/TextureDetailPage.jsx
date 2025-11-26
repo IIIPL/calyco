@@ -89,6 +89,7 @@ const TextureDetailPage = () => {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
         "priceCurrency": "INR"
+        "price": "499"
       }
     };
   };
