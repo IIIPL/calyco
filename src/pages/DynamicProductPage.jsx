@@ -1420,34 +1420,48 @@ export const DynamicProductPage = () => {
                 <div className="mt-16 mb-12">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
-                      <span className="text-[#493657]/80 text-lg">{product.category || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.application) ? product.application.join(', ') : (product.application || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.recommended_uses) ? product.recommended_uses.join(', ') : (product.recommended_uses || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.finish_type_sheen) ? product.finish_type_sheen.join(', ') : (product.finish_type_sheen || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
-                      <span className="text-[#493657]/80 text-lg">{Array.isArray(product.substrate) ? product.substrate.join(', ') : (product.substrate || 'N/A')}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
-                      <span className="text-[#493657]/80 text-lg">{product.coats_required || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiBox className="w-5 h-5 text-[#493657]" />Coverage</span>
-                      <span className="text-[#493657]/80 text-lg">{product.coverage || 'N/A'}</span>
-                    </div>
+                    {product.category && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Category</span>
+                        <span className="text-[#493657]/80 text-lg">{product.category}</span>
+                      </div>
+                    )}
+                    {(product.application || (Array.isArray(product.application) && product.application.length > 0)) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Areas</span>
+                        <span className="text-[#493657]/80 text-lg">{Array.isArray(product.application) ? product.application.join(', ') : product.application}</span>
+                      </div>
+                    )}
+                    {(Array.isArray(product.recommended_uses) && product.recommended_uses.length > 0) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiList className="w-5 h-5 text-[#493657]" />Recommended Uses</span>
+                        <span className="text-[#493657]/80 text-lg">{product.recommended_uses.join(', ')}</span>
+                      </div>
+                    )}
+                    {(Array.isArray(product.finish_type_sheen) && product.finish_type_sheen.length > 0) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Finish / Sheen</span>
+                        <span className="text-[#493657]/80 text-lg">{product.finish_type_sheen.join(', ')}</span>
+                      </div>
+                    )}
+                    {(Array.isArray(product.substrate) && product.substrate.length > 0) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiLayers className="w-5 h-5 text-[#493657]" />Surface Compatibility</span>
+                        <span className="text-[#493657]/80 text-lg">{product.substrate.join(', ')}</span>
+                      </div>
+                    )}
+                    {product.coats_required && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCheckCircle className="w-5 h-5 text-[#493657]" />Coats Required</span>
+                        <span className="text-[#493657]/80 text-lg">{product.coats_required}</span>
+                      </div>
+                    )}
+                    {product.coverage && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiBox className="w-5 h-5 text-[#493657]" />Coverage</span>
+                        <span className="text-[#493657]/80 text-lg">{product.coverage}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -1457,26 +1471,30 @@ export const DynamicProductPage = () => {
                 <div className="mb-20 mt-16">
                   <h2 className="text-5xl font-bold text-[#493657] mb-8">Technical Specifications</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    {product.technical_specs?.product_code && (
+                    {(product.product_code || product.technical_specs?.product_code) && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiTag className="w-5 h-5 text-[#493657]" />Product Code</span>
-                        <span className="text-[#493657]/80 text-lg">{product.technical_specs.product_code}</span>
+                        <span className="text-[#493657]/80 text-lg">{product.product_code || product.technical_specs.product_code}</span>
                       </div>
                     )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
-                      <span className="text-[#493657]/80 text-lg">{product.base_type || (product.technical_specs && product.technical_specs.base_type) || 'N/A'}</span>
-                    </div>
+                    {(product.base_type || product.technical_specs?.base_type) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Base Type</span>
+                        <span className="text-[#493657]/80 text-lg">{product.base_type || product.technical_specs.base_type}</span>
+                      </div>
+                    )}
                     {product.technical_specs?.vehicle_type && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Vehicle Type</span>
                         <span className="text-[#493657]/80 text-lg">{product.technical_specs.vehicle_type}</span>
                       </div>
                     )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
-                      <span className="text-[#493657]/80 text-lg">{product.voc_content || (product.technical_specs && product.technical_specs.voc_content) || 'N/A'}</span>
-                    </div>
+                    {(product.voc_content || product.technical_specs?.voc_content) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />VOC Content</span>
+                        <span className="text-[#493657]/80 text-lg">{product.voc_content || product.technical_specs.voc_content}</span>
+                      </div>
+                    )}
                     {product.technical_specs?.volume_solids && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2">Volume Solids</span>
@@ -1495,18 +1513,24 @@ export const DynamicProductPage = () => {
                         <span className="text-[#493657]/80 text-lg">{product.technical_specs.weight_per_volume}</span>
                       </div>
                     )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.application_instructions || (product.technical_specs && product.technical_specs.application_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClock className="w-5 h-5 text-[#493657]" />Drying Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.drying_time || (product.technical_specs && product.technical_specs.drying_time) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
-                      <span className="text-[#493657]/80 text-lg">{product.recoat_time || (product.technical_specs && product.technical_specs.recoat_time) || 'N/A'}</span>
-                    </div>
+                    {(product.application_instructions || product.technical_specs?.application_instructions) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClipboard className="w-5 h-5 text-[#493657]" />Application Instructions</span>
+                        <span className="text-[#493657]/80 text-lg">{product.application_instructions || product.technical_specs.application_instructions}</span>
+                      </div>
+                    )}
+                    {(product.drying_time || product.technical_specs?.drying_time) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiClock className="w-5 h-5 text-[#493657]" />Drying Time</span>
+                        <span className="text-[#493657]/80 text-lg">{product.drying_time || product.technical_specs.drying_time}</span>
+                      </div>
+                    )}
+                    {(product.recoat_time || product.technical_specs?.recoat_time) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiRepeat className="w-5 h-5 text-[#493657]" />Recoat Time</span>
+                        <span className="text-[#493657]/80 text-lg">{product.recoat_time || product.technical_specs.recoat_time}</span>
+                      </div>
+                    )}
                     {product.technical_specs?.shelf_life && (
                       <div>
                         <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiCalendar className="w-5 h-5 text-[#493657]" />Shelf Life</span>
@@ -1519,30 +1543,42 @@ export const DynamicProductPage = () => {
                         <span className="text-[#493657]/80 text-lg">{product.technical_specs.storage_temp}</span>
                       </div>
                     )}
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
-                      <span className="text-[#493657]/80 text-lg">{product.cleanup || (product.technical_specs && product.technical_specs.cleanup) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Temperature Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.temperature_range || (product.technical_specs && product.technical_specs.temperature_range) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Humidity Range</span>
-                      <span className="text-[#493657]/80 text-lg">{product.humidity_range || (product.technical_specs && product.technical_specs.humidity_range) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiInfo className="w-5 h-5 text-[#493657]" />Surface Preparation</span>
-                      <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || (product.technical_specs && product.technical_specs.preparation_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
-                      <span className="text-[#493657]/80 text-lg">{product.storage_instructions || (product.technical_specs && product.technical_specs.storage_instructions) || 'N/A'}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
-                      <span className="text-[#493657]/80 text-lg">{product.warranty || (product.technical_specs && product.technical_specs.warranty) || 'N/A'}</span>
-                    </div>
+                    {(product.cleanup || product.technical_specs?.cleanup) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiArchive className="w-5 h-5 text-[#493657]" />Cleanup</span>
+                        <span className="text-[#493657]/80 text-lg">{product.cleanup || product.technical_specs.cleanup}</span>
+                      </div>
+                    )}
+                    {(product.temperature_range || product.technical_specs?.temperature_range) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiThermometer className="w-5 h-5 text-[#493657]" />Temperature Range</span>
+                        <span className="text-[#493657]/80 text-lg">{product.temperature_range || product.technical_specs.temperature_range}</span>
+                      </div>
+                    )}
+                    {(product.humidity_range || product.technical_specs?.humidity_range) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiDroplet className="w-5 h-5 text-[#493657]" />Humidity Range</span>
+                        <span className="text-[#493657]/80 text-lg">{product.humidity_range || product.technical_specs.humidity_range}</span>
+                      </div>
+                    )}
+                    {(product.preparation_instructions || product.technical_specs?.preparation_instructions) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiInfo className="w-5 h-5 text-[#493657]" />Surface Preparation</span>
+                        <span className="text-[#493657]/80 text-lg">{product.preparation_instructions || product.technical_specs.preparation_instructions}</span>
+                      </div>
+                    )}
+                    {(product.storage_instructions || product.technical_specs?.storage_instructions) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiPackage className="w-5 h-5 text-[#493657]" />Storage Instructions</span>
+                        <span className="text-[#493657]/80 text-lg">{product.storage_instructions || product.technical_specs.storage_instructions}</span>
+                      </div>
+                    )}
+                    {(product.warranty || product.technical_specs?.warranty) && (
+                      <div>
+                        <span className="font-semibold text-[#493657] text-lg mb-1 flex items-center gap-2"><FiShield className="w-5 h-5 text-[#493657]" />Warranty</span>
+                        <span className="text-[#493657]/80 text-lg">{product.warranty || product.technical_specs.warranty}</span>
+                      </div>
+                    )}
 
                     {product.technical_specs?.ingredients && product.technical_specs.ingredients.length > 0 && (
                       <div className="md:col-span-2">

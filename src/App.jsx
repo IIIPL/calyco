@@ -36,6 +36,7 @@ import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
+import GenericPrimerPage from './pages/GenericPrimerPage'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -164,6 +165,15 @@ function App() {
               <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
               <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
               <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+
+              {/* NEW PRIMER & PUTTY PRODUCTS - MUST BE BEFORE CATCH-ALL ROUTE */}
+              <Route path='/product/calyco-water-primer-interior' element={<GenericPrimerPage/>}/>
+              <Route path='/product/calyco-weather-primer-exterior' element={<GenericPrimerPage/>}/>
+              <Route path='/product/calyco-acrylic-putty' element={<GenericPrimerPage/>}/>
+              <Route path='/product/calyco-solvent-primer-interior' element={<GenericPrimerPage/>}/>
+              <Route path='/product/calyco-damp-guard-primer' element={<GenericPrimerPage/>}/>
+              <Route path='/product/calyco-universal-primer' element={<GenericPrimerPage/>}/>
+
               <Route path='/contractors' element={<ContractorsPage/>}/>
               <Route path='/government' element={<GovernmentPage/>}/>
               <Route path='/downloads' element={<DownloadsPage/>}/>
@@ -237,7 +247,6 @@ function App() {
 }
 export default App;// Deployment trigger - Wed Aug 20 22:53:10 IST 2025
 // Force new deployment - Thu Aug 21 00:54:55 IST 2025
-
 
 
 

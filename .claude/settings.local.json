@@ -12,7 +12,10 @@
       "Bash(find:*)",
       "Bash(git push:*)",
       "Bash(cat:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(timeout 3 sleep:*)"
     ],
     "deny": [],
     "ask": []
