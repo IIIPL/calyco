@@ -15,6 +15,7 @@ const AboutPage = React.lazy(() => import('./pages/AboutPage.jsx'))
 const SustainabilityPage = React.lazy(() => import('./pages/SustainabilityPage.jsx'))
 const ContactPage = React.lazy(() => import('./pages/ContactPage.jsx'))
 const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
+const Checkout = React.lazy(() => import('./pages/Checkout.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 const BlogIndexPage = React.lazy(() => import('./pages/blogs/index.jsx'))
@@ -36,6 +37,12 @@ import { Nova } from './pages/Nova'
 import { Defense } from './pages/Defense'
 import { Products } from './pages/Products'
 import { DynamicProductPage } from './pages/DynamicProductPage'
+import CalycoWaterPrimerInterior from './pages/CalycoWaterPrimerInterior'
+import CalycoWeatherPrimerExterior from './pages/CalycoWeatherPrimerExterior'
+import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty'
+import CalycoSolventPrimerInterior from './pages/CalycoSolventPrimerInterior'
+import CalycoDampGuardPrimer from './pages/CalycoDampGuardPrimer'
+import CalycoUniversalPrimer from './pages/CalycoUniversalPrimer'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -166,6 +173,14 @@ function App() {
                   <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
                   <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
                   
+                  {/* NEW PRIMER & PUTTY PRODUCTS - dedicated pages */}
+                  <Route path='/product/calyco-water-primer-interior' element={<CalycoWaterPrimerInterior/>}/>
+                  <Route path='/product/calyco-weather-primer-exterior' element={<CalycoWeatherPrimerExterior/>}/>
+                  <Route path='/product/calyco-acrylic-putty' element={<CalycoAcrylicPutty/>}/>
+                  <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior/>}/>
+                  <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer/>}/>
+                  <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer/>}/>
+                  
                   <Route path='/contractors' element={<ContractorsPage/>}/>
                   <Route path='/government' element={<GovernmentPage/>}/>
                   <Route path='/downloads' element={<DownloadsPage/>}/>
@@ -173,6 +188,7 @@ function App() {
                   <Route path='/sustainability' element={<SustainabilityPage/>}/>
                   <Route path='/contact' element={<ContactPage/>}/>
                   <Route path='/cart' element={<CartPage/>}/>
+                  <Route path='/checkout' element={<Checkout/>}/>
                   <Route path='/product/:productId' element={<DynamicProductPage/>}/>
                   <Route path='/temp' element={<Temp/>}/>
                   <Route path='/faq' element={<FAQs/>}/>
