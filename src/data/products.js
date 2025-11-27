@@ -121,7 +121,7 @@ export const products = [
     "slug": "calyco-water-primer-interior",
     "url": "https://calycopaints.com/product/calyco-water-primer-interior",
     "name": "Calyco Water Primer (Interior)",
-    "image": "/Assets/Product Images/Dummy/interior-water-primer-dummy.jpg",
+    "image": "/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp",
     "description": "Premium water-based acrylic primer for interior walls and ceilings with high opacity and excellent sealing.",
     "short-description": "High-opacity primer for superior coverage and adhesion on interior walls.",
     "category": "primer",
@@ -131,7 +131,7 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L"],
     "default_finish": "Matte",
     "defaultFinish": "Matte",
-    "images": ["/Assets/Product Images/Dummy/interior-water-primer-dummy.jpg"],
+    "images": ["/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp"],
     "priceByFinish": {
       "Matte": {
         "1L": { "price": 285 },
@@ -161,7 +161,7 @@ export const products = [
     "slug": "calyco-weather-primer-exterior",
     "url": "https://calycopaints.com/product/calyco-weather-primer-exterior",
     "name": "Calyco Weather Primer (Exterior)",
-    "image": "/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png",
+    "image": "/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp",
     "description": "High-opacity exterior wall primer designed to protect masonry from harsh weather and provide superior adhesion.",
     "short-description": "Weather-resistant primer for long-lasting exterior walls.",
     "category": "primer",
@@ -171,7 +171,7 @@ export const products = [
     "packaging": ["1L", "4L", "10L", "20L"],
     "default_finish": "Smooth",
     "defaultFinish": "Smooth",
-    "images": ["/Assets/Product Images/Dummy/exterior-weather-primer-dummy.png"],
+    "images": ["/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp"],
     "priceByFinish": {
       "Smooth": {
         "1L": { "price": 310 },
@@ -201,7 +201,7 @@ export const products = [
     "slug": "calyco-acrylic-wall-putty",
     "url": "https://calycopaints.com/product/calyco-acrylic-wall-putty",
     "name": "Calyco Acrylic Wall Putty",
-    "image": "/Assets/Product Images/Dummy/Acrylic-putty-dummy.png",
+    "image": "/Assets/Product Images/Calyco Acrylic Putty/calyco-acrylic-putty.webp",
     "description": "Acrylic-based wall putty that delivers an exceptionally smooth, white surface and strong foundation for paint.",
     "short-description": "Premium putty for flawless walls and superior topcoat finish.",
     "category": "putty",
@@ -211,7 +211,7 @@ export const products = [
     "packaging": ["1kg", "5kg", "10kg", "20kg"],
     "default_finish": "Smooth",
     "defaultFinish": "Smooth",
-    "images": ["/Assets/Product Images/Dummy/Acrylic-putty-dummy.png"],
+    "images": ["/Assets/Product Images/Calyco Acrylic Putty/calyco-acrylic-putty.webp"],
     "priceByFinish": {
       "Smooth": {
         "1kg": { "price": 65 },

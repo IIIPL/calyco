@@ -7,10 +7,10 @@ import { getProductPath } from "../utils/productHelpers";
 import MobileChevron from "./MobileChevron";
 
 const leftMenu = [
-  { key: "Interior", label: "INTERIOR" },
-  { key: "Exterior", label: "EXTERIOR" },
-  { key: "WaterproofingSealer", label: "WATERPROOFING SEALER" },
-  { key: "All", label: "SHOW ALL PRODUCTS" },
+  { key: "Interior", label: "Interior" },
+  { key: "Exterior", label: "Exterior" },
+  { key: "WaterproofingSealer", label: "Waterproofing Sealer" },
+  { key: "All", label: "Show All Products" },
 ];
 
 // Only show these specific products in the dropdown
@@ -19,16 +19,28 @@ const allowedProducts = [
   "Premium Interior Emulsion",
   "Luxury Exterior Emulsion",
   "Premium Exterior Emulsion",
-  "Waterproofing Sealer"
+  "Waterproofing Sealer",
+  "Calyco Water Primer (Interior)",
+  "Calyco Acrylic Wall Putty",
+  "Calyco Weather Primer (Exterior)",
 ];
+
+const interiorSlugs = ["calyco-water-primer-interior", "calyco-acrylic-wall-putty"];
+const exteriorSlugs = ["calyco-weather-primer-exterior"];
 
 const grouped = {
   Interior: allProducts.filter((p) =>
-    p.category?.toLowerCase() === "interior" &&
+    (
+      p.category?.toLowerCase() === "interior" ||
+      interiorSlugs.includes(p.slug)
+    ) &&
     allowedProducts.includes(p.name)
   ),
   Exterior: allProducts.filter((p) =>
-    p.category?.toLowerCase() === "exterior" &&
+    (
+      p.category?.toLowerCase() === "exterior" ||
+      exteriorSlugs.includes(p.slug)
+    ) &&
     allowedProducts.includes(p.name)
   ),
   WaterproofingSealer: allProducts.filter((p) => {
@@ -189,7 +201,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           {leftMenu.map((item) => (
             <button
               key={item.key}
-              className={`text-left font-bold uppercase
+              className={`text-left font-bold
                           text-sm sm:text-base lg:text-lg
                           py-1.5 md:py-2 px-0 mb-1 border-b-2
                           ${
