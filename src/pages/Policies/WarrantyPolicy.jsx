@@ -1,373 +1,354 @@
-import React from "react";
-
-const TONE_MAP = {
-  plum: {
-    section: "bg-gradient-to-br from-[#0F1221] to-[#0F1221] text-white",
-    title: "text-white",
-    subtitle: "text-white/70",
-    kicker: "text-[#f8d35e]",
-    kickerBg: "bg-white/10",
-    decor: (
-      <>
-        <div
-          className="pointer-events-none absolute -left-12 top-16 h-60 w-60 rounded-full bg-[#f8d35e]/20 blur-3xl sm:-left-24 sm:h-72 sm:w-72"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 translate-x-1/3 rounded-full bg-[#7c3aed]/25 blur-3xl sm:-right-24 sm:h-80 sm:w-80"
-          aria-hidden
-        />
-      </>
-    ),
-  },
-  canvas: {
-    section: "bg-[#fff7ec] text-[#0F1221]",
-    title: "text-[#0F1221]",
-    subtitle: "text-[#54306d]",
-    kicker: "text-[#7c3aed]",
-    kickerBg: "bg-[#f8d35e]/20",
-  },
-  lilac: {
-    section: "bg-gradient-to-br from-[#e8dbff] via-[#f4ecff] to-[#fbf7ff] text-[#271245]",
-    title: "text-[#271245]",
-    subtitle: "text-[#4c2d74]",
-    kicker: "text-[#a855f7]",
-    kickerBg: "bg-white/60",
-    decor: (
-      <>
-        <div
-          className="pointer-events-none absolute -top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#f8d35e]/30 blur-3xl sm:h-72 sm:w-72"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-16 -right-10 h-52 w-52 rounded-full bg-[#d6bbff]/60 blur-3xl"
-          aria-hidden
-        />
-      </>
-    ),
-  },
-};
-
-const Page = ({ children }) => (
-  <main className="bg-[#090014] text-white antialiased">{children}</main>
-);
-
-const Hero = () => (
-  <section className="relative isolate h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden">
-    <div className="absolute inset-0">
-      <img
-        src="/Assets/InteriorInspiratoin/living-room.webp"
-        alt="Modern interior with CALYCO paint"
-        className="h-full w-full object-cover"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-black/25" />
-      <div className="pointer-events-none absolute -left-16 bottom-12 h-56 w-56 rounded-full bg-[#f8d35e]/25 blur-3xl sm:-left-24 sm:h-72 sm:w-72" aria-hidden />
-      <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 translate-x-1/3 rounded-full bg-[#8b5cf6]/30 blur-3xl sm:h-80 sm:w-80" aria-hidden />
-    </div>
-
-    <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6 md:px-10">
-      <div className="max-w-3xl">
-        <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#0F1221]">
-          Calyco Warranty Care
-        </span>
-        <h1 className="mt-6 text-4xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
-          Warranty Policy
-        </h1>
-        <p className="mt-6 text-lg leading-relaxed text-white/80 md:text-xl">
-          We design coatings that last, so your spaces glow longer. Explore what is protected, how to make a claim, and the paperwork you need—all in one vibrant hub.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4 text-sm font-semibold uppercase text-white/80">
-          <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
-            <span aria-hidden>🎨</span> Premium Finishes
-          </span>
-          <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
-            <span aria-hidden>🛡️</span> Low-VOC Commitment
-          </span>
-          <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
-            <span aria-hidden>⚡</span> Fast Support
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Section = ({ title, subtitle, children, tone = "canvas", kicker }) => {
-  const toneStyles = TONE_MAP[tone] ?? TONE_MAP.canvas;
-
-  return (
-    <section className={`relative overflow-hidden ${toneStyles.section}`}>
-      {toneStyles.decor ?? null}
-      <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20 md:py-24">
-        <header className="mb-10 flex flex-col gap-3">
-          {kicker && (
-            <span className={`inline-flex max-w-max items-center gap-2 rounded-full ${toneStyles.kickerBg} px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] ${toneStyles.kicker}`}>
-              {kicker}
-            </span>
-          )}
-          <h2 className={`text-3xl font-black uppercase tracking-tight md:text-4xl ${toneStyles.title}`}>
-            {title}
-          </h2>
-          {subtitle && (
-            <p className={`max-w-3xl text-base leading-7 md:text-lg ${toneStyles.subtitle}`}>
-              {subtitle}
-            </p>
-          )}
-        </header>
-        {children}
-      </div>
-    </section>
-  );
-};
-
-const Card = ({ icon, title, children, className = "", iconClassName = "" }) => (
-  <div
-    className={`group rounded-3xl border-2 border-white/10 bg-white/5 p-8 shadow-[0_24px_60px_-30px_rgba(20,0,40,0.9)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_-28px_rgba(20,0,40,0.8)] ${className}`}
-  >
-    <div className="mb-5 flex items-center gap-4">
-      <span
-        className={`flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-bold text-[#0F1221] ${iconClassName}`}
-      >
-        {icon}
-      </span>
-      <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
-    </div>
-    <p className="text-base leading-7 text-white/80 group-hover:text-white/95">{children}</p>
-  </div>
-);
+import React, { useEffect, useRef } from "react";
+// FIXED: Added an extra '../' to go up two levels to find the components folder
+import SEO from "../../components/SEO"; 
+// FIXED: Added an extra '../' to find the data folder
+import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 
 const documentLinks = [
   {
     name: "Premium Interior Emulsion",
+    desc: "Warranty coverage for luxury interior finishes.",
     href: "/Assets/docs/premium-interior-warranty.pdf",
+    icon: "🏠"
   },
   {
     name: "Premium Exterior Emulsion",
+    desc: "Protection against weather, algae, and fading.",
     href: "/Assets/docs/premium-exterior-warranty.pdf",
+    icon: "🌦️"
   },
   {
     name: "Exterior Latex Paint",
+    desc: "Standard coverage for exterior latex systems.",
     href: "/Assets/docs/exterior-latex-warranty.pdf",
+    icon: "🧱"
   },
   {
     name: "Interior Latex Paint",
+    desc: "Coverage for standard interior wall solutions.",
     href: "/Assets/docs/interior-latex-warranty.pdf",
+    icon: "🛋️"
   },
   {
     name: "Waterproofing Sealer",
+    desc: "Guarantee against water ingress and dampness.",
     href: "/Assets/docs/waterproof-sealer-warranty.pdf",
+    icon: "💧"
   },
 ];
 
-const ContactSection = () => {
-  const inputClasses = "w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-base text-white placeholder-white/60 shadow-[0_12px_25px_-18px_rgba(8,0,24,0.9)] focus:border-[#f8d35e] focus:outline-none focus:ring-2 focus:ring-[#f8d35e]/60";
-  const labelClasses = "mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-white/70";
-
-  return (
-    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#0F1221] to-[#2E0053]">
-      <img
-        src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
-        alt="Modern architectural facade with moody lighting"
-        className="absolute inset-0 h-full w-full object-cover opacity-30"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/25" />
-      <div className="pointer-events-none absolute -left-12 top-8 h-56 w-56 rounded-full bg-[#f8d35e]/30 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 rounded-full bg-[#7c3aed]/35 blur-3xl" aria-hidden />
-
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 md:flex-row md:items-center md:py-24">
-        <div className="w-full md:w-5/12">
-          <span className="inline-flex items-center rounded-full bg-[#f8d35e] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#0F1221]">
-            Talk To A Specialist
-          </span>
-          <h2 className="mt-6 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
-            Questions? Let’s Connect
-          </h2>
-          <p className="mt-4 text-base leading-7 text-white/80">
-            Fill this quick form and one of our coating consultants will reach out with the right system, shade, and warranty details for your project.
-          </p>
-        </div>
-
-        <form className="w-full rounded-[32px] bg-white/10 p-6 shadow-[0_24px_70px_-32px_rgba(8,0,24,0.8)] backdrop-blur-xl md:w-7/12 md:p-8" noValidate>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="md:col-span-2">
-              <label className={labelClasses} htmlFor="warranty-topic">
-                How can we help you?
-              </label>
-              <select
-                id="warranty-topic"
-                className="w-full appearance-none rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-base font-semibold text-white shadow-[0_12px_25px_-18px_rgba(8,0,24,0.9)] focus:border-[#f8d35e] focus:outline-none focus:ring-2 focus:ring-[#f8d35e]/60"
-                defaultValue=""
-              >
-                <option value="" disabled hidden className="text-neutral-500">
-                  Select an option
-                </option>
-                <option value="product-support" className="text-neutral-900">Product support</option>
-                <option value="warranty-claim" className="text-neutral-900">Warranty claim</option>
-                <option value="technical-advice" className="text-neutral-900">Technical advice</option>
-              </select>
-            </div>
-
-            <div>
-              <label className={labelClasses} htmlFor="warranty-name">
-                Name
-              </label>
-              <input
-                id="warranty-name"
-                type="text"
-                autoComplete="name"
-                placeholder="Enter your full name"
-                className={inputClasses}
-              />
-            </div>
-
-            <div>
-              <label className={labelClasses} htmlFor="warranty-email">
-                Email ID
-              </label>
-              <input
-                id="warranty-email"
-                type="email"
-                autoComplete="email"
-                placeholder="you@company.com"
-                className={inputClasses}
-              />
-            </div>
-
-            <div>
-              <label className={labelClasses} htmlFor="warranty-phone">
-                Phone Number
-              </label>
-              <input
-                id="warranty-phone"
-                type="tel"
-                autoComplete="tel"
-                placeholder="+91 90000 00000"
-                className={inputClasses}
-              />
-            </div>
-
-            <div>
-              <label className={labelClasses} htmlFor="warranty-pincode">
-                Pincode
-              </label>
-              <input
-                id="warranty-pincode"
-                type="text"
-                inputMode="numeric"
-                autoComplete="postal-code"
-                placeholder="Enter pincode"
-                className={inputClasses}
-              />
-            </div>
-
-<div className="mt-2 flex items-start gap-3 md:col-span-2">
-              <input
-                id="warranty-consent"
-                type="checkbox"
-                className="mt-1 h-5 w-5 cursor-pointer rounded border-white/40 bg-transparent accent-[#f8d35e] focus:ring-[#f8d35e]"
-              />
-              <label htmlFor="warranty-consent" className="text-sm leading-6 text-white/80">
-                I have read and agree to the <a href="#" className="text-[#f8d35e] underline decoration-transparent transition hover:decoration-[#f8d35e]">terms &amp; conditions</a> and the <a href="#" className="text-[#f8d35e] underline decoration-transparent transition hover:decoration-[#f8d35e]">privacy policy</a>.
-              </label>
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-6 py-4 text-base font-semibold uppercase tracking-wide text-[#0F1221] shadow-[0_18px_45px_-20px_rgba(248,211,94,0.9)] transition hover:shadow-[0_25px_55px_-20px_rgba(248,211,94,0.9)]"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-};
-
 export default function WarrantyPolicy() {
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    
+    // --- STYLES INJECTION (From About Page) ---
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      :root {
+        --calyco-ink: #0F1221;
+        --calyco-plum: #4B007D;
+        --calyco-gold: #D4AF37;
+        --calyco-cream: #F6F3EE;
+      }
+      .animate-fadeInUp {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      .glass-effect {
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .float-animation {
+        animation: float 3.5s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // --- INTERSECTION OBSERVER ---
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fadeInUp");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => {
+      observerRef.current?.disconnect();
+      if (styleSheet.parentNode) {
+        styleSheet.parentNode.removeChild(styleSheet);
+      }
+    };
+  }, []);
+
+  // Form Input Styles (Light Theme)
+  const inputClasses = "w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[var(--calyco-ink)] placeholder-gray-400 shadow-sm focus:border-[var(--calyco-gold)] focus:outline-none focus:ring-2 focus:ring-[var(--calyco-gold)]/20 transition-all";
+  const labelClasses = "mb-2 block text-xs font-bold uppercase tracking-[0.15em] text-[var(--calyco-plum)]";
+
   return (
-    <Page>
-      <Hero />
+    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins overflow-x-hidden">
+      <SEO
+        title="Warranty Policy | CALYCO Paints"
+        description="Explore Calyco's warranty coverage, make a claim, and download policy documents."
+      />
 
-      <Section
-        title="Coverage"
-        subtitle="Manufacturing defects; what is included and excluded."
-        tone="plum"
-        kicker="Protected Coverage"
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card icon="🎨" title="Manufacturing Defects" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
-            Covers defects arising from manufacturing processes that affect performance or appearance under normal use.
-          </Card>
-          <Card icon="🛡️" title="What is Included" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
-            Peeling, flaking, blistering, or premature fading when applied as per CALYCO system guidelines.
-          </Card>
-          <Card icon="⚠️" title="What is Excluded" iconClassName="bg-gradient-to-br from-[#f8d35e] via-[#fce6a4] to-[#fff7d6] text-[#0F1221] shadow-[0_12px_30px_-20px_rgba(248,211,94,0.8)]">
-            Surface movement, water ingress, structural cracks, contamination, mishandling, or non-recommended usage.
-          </Card>
-        </div>
-      </Section>
+      <main>
+        {/* --- HERO SECTION --- */}
+        <section className="relative flex h-[70vh] items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img
+              src="/Assets/InteriorInspiratoin/living-room.webp"
+              alt="Modern interior with CALYCO paint"
+              className="h-full w-full scale-105 object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
 
-      <Section
-        title="Warranty Documents"
-        subtitle="Access the latest warranty coverage and claim guidance for our flagship systems."
-        tone="canvas"
-        kicker="Download Centre"
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {documentLinks.map((doc) => (
-            <div
-              key={doc.name}
-              className="flex h-full flex-col justify-between gap-6 rounded-[28px] border-2 border-[#d8c7ff] bg-white p-6 shadow-[0_18px_45px_-28px_rgba(67,19,110,0.35)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_rgba(67,19,110,0.45)]"
-            >
-              <div>
-                <h3 className="text-xl font-semibold text-[#0F1221]">{doc.name}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#4f2c6a]">
-                  Download the full warranty statement and coverage checklist for this product line.
-                </p>
+          {/* Floating Orbs (From About Page) */}
+          <div className="absolute top-24 left-10 h-40 w-40 rounded-full bg-[var(--calyco-gold)]/20 blur-3xl float-animation" />
+          <div className="absolute bottom-24 right-14 h-44 w-44 rounded-full bg-white/10 blur-3xl float-animation" style={{ animationDelay: "1.25s" }} />
+
+          {/* Content */}
+          <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
+            <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90 md:text-xs">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
+              Calyco Warranty Care
+            </span>
+            <h1 className={`${getTypographyClasses('h1')} animate-on-scroll text-white mt-6`}>
+              Warranty Policy
+            </h1>
+            <p className={`${getTypographyClasses('bodyLarge')} animate-on-scroll mx-auto max-w-2xl text-white/90 mt-4`}>
+              We design coatings that last, so your spaces glow longer. Explore coverage, claims, and documentation.
+            </p>
+          </div>
+        </section>
+
+        {/* --- COVERAGE SECTION (Replaces 'Plum') --- */}
+        <section className="bg-[var(--calyco-cream)] py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll text-center mb-16">
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Protected Coverage</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/80 mt-4`}>
+                Manufacturing defects; what is included and excluded.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* Card 1 */}
+              <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
+                  🎨
+                </div>
+                <div>
+                  <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>Manufacturing Defects</h3>
+                  <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
+                    Covers defects arising from manufacturing processes that affect performance or appearance under normal use.
+                  </p>
+                </div>
               </div>
-              <a
-                href={doc.href}
-                download
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#f8d35e] via-[#f3b74f] to-[#a855f7] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[#0F1221] shadow-[0_12px_35px_-18px_rgba(248,211,94,0.7)] transition hover:shadow-[0_16px_45px_-16px_rgba(248,211,94,0.7)]"
+
+              {/* Card 2 */}
+              <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
+                  🛡️
+                </div>
+                <div>
+                  <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>What is Included</h3>
+                  <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
+                    Peeling, flaking, blistering, or premature fading when applied as per CALYCO system guidelines.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
+                  ⚠️
+                </div>
+                <div>
+                  <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>What is Excluded</h3>
+                  <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
+                    Surface movement, water ingress, structural cracks, contamination, mishandling, or non-recommended usage.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- DOCUMENTS SECTION (Replaces 'Canvas') --- */}
+        <section className="bg-white py-20 md:py-24 relative overflow-hidden">
+           {/* Subtle background grain or pattern could go here */}
+           <div className="absolute inset-0 bg-[radial-gradient(#d4af3711_1px,transparent_1px)] [background-size:20px_20px] opacity-50" />
+           
+          <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10 relative z-10">
+            <div className="animate-on-scroll mb-12">
+               <span className="inline-flex items-center rounded-full border border-black/10 bg-[var(--calyco-cream)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]/70">
+                  Download Centre
+               </span>
+               <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)] mt-4`}>Warranty Documents</h2>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {documentLinks.map((doc) => (
+                <a
+                  key={doc.name}
+                  href={doc.href}
+                  download
+                  className="animate-on-scroll group flex items-start gap-4 rounded-[28px] border border-black/6 bg-[var(--calyco-cream)]/50 px-6 py-6 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_50px_-20px_rgba(15,18,33,0.2)]"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-2xl shadow-sm group-hover:scale-110 transition-transform">
+                    {doc.icon}
+                  </div>
+                  <div>
+                    <h3 className={`${getTypographyClasses('h4')} text-base text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]`}>
+                      {doc.name}
+                    </h3>
+                    <p className="mt-2 text-xs leading-5 text-[#31274B]/70">{doc.desc}</p>
+                    <span className="mt-4 inline-flex items-center text-xs font-bold uppercase tracking-wider text-[var(--calyco-gold)] group-hover:underline">
+                      Download PDF →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- CLAIMS SECTION (Replaces 'Lilac') --- */}
+        <section className="bg-[var(--calyco-cream)] py-20 md:py-24">
+          <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
+            <div className="animate-on-scroll rounded-[40px] bg-white border border-black/5 p-8 md:p-12 shadow-[0_32px_65px_-50px_rgba(13,15,28,0.35)]">
+              <div className="text-center mb-10">
+                <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--calyco-gold)]">
+                  Support Journey
+                </span>
+                <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)] mt-2`}>Claims Process</h2>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                <div className="flex gap-5">
+                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--calyco-plum)] text-white text-xl shadow-lg">1</div>
+                   <div>
+                      <h4 className="text-lg font-bold text-[var(--calyco-ink)]">Inspection & Documentation</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#31274B]/80">
+                        Share order details, batch numbers, photographs or videos, and a brief description. Our technical team may inspect the site to validate conditions.
+                      </p>
+                   </div>
+                </div>
+                <div className="flex gap-5">
+                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--calyco-gold)] text-white text-xl shadow-lg">2</div>
+                   <div>
+                      <h4 className="text-lg font-bold text-[var(--calyco-ink)]">Remedy & Resolution</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#31274B]/80">
+                        Upon validation, CALYCO may repair, replace, or offer store credit for the affected product as appropriate to keep your project on schedule.
+                      </p>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- CONTACT FORM SECTION (Styled for Light Theme) --- */}
+        <section className="relative overflow-hidden py-20 md:py-24">
+          <div className="absolute inset-0 bg-[#0F1221]" /> {/* Dark background for contrast at footer */}
+          <div className="absolute inset-0 bg-[url('/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp')] opacity-20 bg-cover bg-center mix-blend-overlay" />
+          
+          <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row md:items-start">
+            {/* Left Text */}
+            <div className="w-full md:w-5/12 pt-8">
+              <span className="inline-flex items-center rounded-full bg-[var(--calyco-gold)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#0F1221]">
+                Talk To A Specialist
+              </span>
+              <h2 className="mt-6 text-3xl font-black uppercase tracking-tight text-white md:text-4xl leading-tight">
+                Questions? <br/>Let’s Connect
+              </h2>
+              <p className="mt-6 text-base leading-7 text-white/80">
+                Fill this quick form and one of our coating consultants will reach out with the right system, shade, and warranty details for your project.
+              </p>
+            </div>
+
+            {/* Form Container - Light Card on Dark Background */}
+            <form className="animate-on-scroll w-full rounded-[32px] bg-white p-6 shadow-[0_24px_70px_-32px_rgba(0,0,0,0.5)] md:w-7/12 md:p-10" noValidate>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="md:col-span-2">
+                  <label className={labelClasses} htmlFor="warranty-topic">
+                    How can we help you?
+                  </label>
+                  <select
+                    id="warranty-topic"
+                    className={`${inputClasses} appearance-none cursor-pointer`}
+                    defaultValue=""
+                  >
+                    <option value="" disabled hidden>Select an option</option>
+                    <option value="product-support">Product support</option>
+                    <option value="warranty-claim">Warranty claim</option>
+                    <option value="technical-advice">Technical advice</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelClasses} htmlFor="warranty-name">Name</label>
+                  <input id="warranty-name" type="text" autoComplete="name" placeholder="Full name" className={inputClasses} />
+                </div>
+
+                <div>
+                  <label className={labelClasses} htmlFor="warranty-email">Email ID</label>
+                  <input id="warranty-email" type="email" autoComplete="email" placeholder="you@company.com" className={inputClasses} />
+                </div>
+
+                <div>
+                  <label className={labelClasses} htmlFor="warranty-phone">Phone Number</label>
+                  <input id="warranty-phone" type="tel" autoComplete="tel" placeholder="+91 90000 00000" className={inputClasses} />
+                </div>
+
+                <div>
+                  <label className={labelClasses} htmlFor="warranty-pincode">Pincode</label>
+                  <input id="warranty-pincode" type="text" inputMode="numeric" autoComplete="postal-code" placeholder="Enter pincode" className={inputClasses} />
+                </div>
+
+                <div className="mt-2 flex items-start gap-3 md:col-span-2">
+                  <input
+                    id="warranty-consent"
+                    type="checkbox"
+                    className="mt-1 h-5 w-5 cursor-pointer rounded border-gray-300 bg-gray-100 text-[var(--calyco-gold)] focus:ring-[var(--calyco-gold)]"
+                  />
+                  <label htmlFor="warranty-consent" className="text-xs leading-5 text-gray-500">
+                    I have read and agree to the <a href="#" className="text-[var(--calyco-plum)] underline">terms &amp; conditions</a> and <a href="#" className="text-[var(--calyco-plum)] underline">privacy policy</a>.
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="mt-8 w-full rounded-full bg-[var(--calyco-ink)] py-4 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[var(--calyco-plum)] hover:shadow-lg"
               >
-                Download PDF
-              </a>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        title="Claims"
-        subtitle="Inspection, documentation, remedy (repair, replace, or credit)."
-        tone="lilac"
-        kicker="Support Journey"
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-[28px] border-2 border-white/60 bg-white/80 p-8 shadow-[0_20px_55px_-28px_rgba(78,22,131,0.45)] backdrop-blur-md">
-            <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-[#f8d35e] px-4 py-2 text-sm font-semibold text-[#0F1221]">
-              <span aria-hidden>📝</span> Inspection &amp; Documentation
-            </div>
-            <p className="text-base leading-7 text-[#0F1221]">
-              Share order details, batch numbers, photographs or videos, and a brief description. Our technical team may inspect the site to validate conditions.
-            </p>
+                Submit Request
+              </button>
+            </form>
           </div>
-          <div className="rounded-[28px] border-2 border-white/60 bg-white/80 p-8 shadow-[0_20px_55px_-28px_rgba(78,22,131,0.45)] backdrop-blur-md">
-            <div className="mb-4 inline-flex items-center gap-3 rounded-full bg-[#a855f7] px-4 py-2 text-sm font-semibold text-white">
-              <span aria-hidden>🔄</span> Remedy
-            </div>
-            <p className="text-base leading-7 text-[#0F1221]">
-              Upon validation, CALYCO may repair, replace, or offer store credit for the affected product as appropriate to keep your project on schedule.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      <ContactSection />
-    </Page>
+        </section>
+      </main>
+    </div>
   );
 }
-
