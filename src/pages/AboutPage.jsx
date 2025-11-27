@@ -462,11 +462,11 @@ export default function AboutPage() {
           }}
         >
           <div className="absolute inset-0 bg-white/93 backdrop-blur-sm" />
-          <div className="relative mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
-            <div className="animate-on-scroll text-center">
-              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Sustainability & Responsibility</h2>
-              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
-                Responsible chemistry and transparent reporting guide every decision—today and for the future.
+            <div className="relative mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
+              <div className="animate-on-scroll text-center">
+              <h2 className={`${getTypographyClasses('h2')} text-white`}>Sustainability & Responsibility</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-white`}>
+                Responsible chemistry and transparent reporting guide every decision-today and for the future.
               </p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -527,4 +527,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

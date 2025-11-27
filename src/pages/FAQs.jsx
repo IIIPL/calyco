@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "@formspree/react";
 import SEO from "../components/SEO";
 import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
@@ -176,10 +177,11 @@ const faqSchema = {
 
 
 export const FAQs = () => {
-  const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [openQuestion, setOpenQuestion] = useState(null);
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [openQuestion, setOpenQuestion] = useState(null);
+  const [formState, handleSubmit] = useForm("xnnbaygb");
 
 
 
@@ -412,33 +414,40 @@ export const FAQs = () => {
 
 
 
-            <form className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm space-y-5">
-              <div className="grid md:grid-cols-2 gap-5">
-                <label className="flex flex-col gap-2">
-                  <span className="text-sm font-semibold text-[#0F1221]">Name</span>
+        <form className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm space-y-5"
+              onSubmit={handleSubmit}>
+          <div className="grid md:grid-cols-2 gap-5">
+            <label className="flex flex-col gap-2">
+              <span className="text-sm font-semibold text-[#0F1221]">Name</span>
               <input
+                name="name"
                 type="text"
                 className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
                 placeholder="Your name"
+                required
               />
-                </label>
-                <label className="flex flex-col gap-2">
-                  <span className="text-sm font-semibold text-[#0F1221]">Email</span>
+            </label>
+            <label className="flex flex-col gap-2">
+              <span className="text-sm font-semibold text-[#0F1221]">Email</span>
               <input
+                name="email"
                 type="email"
                 className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
                 placeholder="you@example.com"
+                required
               />
-                </label>
-              </div>
-              <label className="flex flex-col gap-2">
-                <span className="text-sm font-semibold text-[#0F1221]">Your Question</span>
+            </label>
+          </div>
+          <label className="flex flex-col gap-2">
+            <span className="text-sm font-semibold text-[#0F1221]">Your Question</span>
             <textarea
+              name="message"
               rows={5}
               className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
               placeholder="Share details about your project or query..."
+              required
             />
-              </label>
+          </label>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <p className="text-xs text-[#31274B]/70">
                   By submitting, you agree to our{" "}
@@ -450,15 +459,19 @@ export const FAQs = () => {
                     Privacy Policy
                   </button>
                 </p>
-                <button
-                  type="submit"
-                  className={getButtonClasses('accent')}
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className={getButtonClasses('accent')}
+              disabled={formState.submitting}
+            >
+              {formState.submitting ? "Sending..." : "Send Message"}
+            </button>
+          </div>
+          {formState.succeeded && (
+            <p className="text-sm text-green-600">Thanks! Your message has been sent.</p>
+          )}
+        </form>
+      </div>
         </section>
 
 

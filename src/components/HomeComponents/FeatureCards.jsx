@@ -25,7 +25,7 @@ const FeatureCards = () => {
             {/* Left Side - Image */}
             <div className="relative h-64 md:h-80 lg:h-full rounded-2xl overflow-hidden">
               <img
-                src="/Assets/Texture Images/quality2.webp"
+                src="/Assets/Texture Images/tex21.webp"
                 alt="Eco-Premium Paints"
                 className="w-full h-full object-cover"
               />

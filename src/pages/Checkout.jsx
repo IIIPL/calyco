@@ -503,13 +503,13 @@ const Checkout = () => {
                     <span className="text-sm font-medium text-gray-700">100% Secure Payment</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 flex-wrap">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMxQTFGNzEiLz48cGF0aCBkPSJNMTAgMTJoMjAiIHN0cm9rZT0iI0ZGOUIwMCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTE1IDhsMTAgNCIgc3Ryb2tlPSIjRkY5QjAwIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=" alt="Visa" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiNFQjAwMUIiLz48Y2lyY2xlIGN4PSIxNSIgY3k9IjEyIiByPSI2IiBmaWxsPSIjRkY1RjAwIi8+PGNpcmNsZSBjeD0iMjUiIGN5PSIxMiIgcj0iNiIgZmlsbD0iI0ZGOUIwMCIgb3BhY2l0eT0iMC43Ii8+PC9zdmc+" alt="Mastercard" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMDNkNzUiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5SVVBhWTwvdGV4dD48L3N2Zz4=" alt="RuPay" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMDJjNmMiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5VUEk8L3RleHQ+PC9zdmc+" alt="UPI" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiMwMGJhZjIiLz48dGV4dCB4PSIyMCIgeT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlBheXRtPC90ZXh0Pjwvc3ZnPg==" alt="Paytm" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiM0Mjg1RjQiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRUE0MzM1Ii8+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iNCIgZmlsbD0iI0ZCQkMwNSIvPjxjaXJjbGUgY3g9IjI4IiBjeT0iMTIiIHI9IjQiIGZpbGw9IiMzNEE4NTMiLz48L3N2Zz4=" alt="GPay" className="h-8" />
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA0MCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMjQiIGZpbGw9IiM1ZjI1OWYiLz48Y2lyY2xlIGN4PSIyMCIgY3k9IjEyIiByPSI0IiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="PhonePe" className="h-8" />
+                    <img src="/Assets/Payment Logos/visa.png" alt="Visa" className="h-3" />
+                    <img src="/Assets/Payment Logos/mastercard.png" alt="Mastercard" className="h-3" />
+                    <img src="/Assets/Payment Logos/rupay.png" alt="RuPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/1280px-UPI-Logo-vector.svg.png" alt="UPI" className="h-3" />
+                    <img src="/Assets/Payment Logos/Paytm_logo.png" alt="Paytm" className="h-3" />
+                    <img src="/Assets/Payment Logos/gpay.png" alt="GPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/PhonePe.png" alt="PhonePe" className="h-3" />
                   </div>
                 </div>
               </form>
