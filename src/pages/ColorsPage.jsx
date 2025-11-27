@@ -190,9 +190,9 @@ const ColorsPage = () => {
       {/* Controls Bar - Sticky */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm w-full">
         <div className="w-full max-w-none mx-auto px-6 py-4">
-          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+            <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
             {/* Search */}
-            <div className="flex-1 relative">
+            <div className="flex-1 relative min-w-[240px]">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
@@ -202,14 +202,14 @@ const ColorsPage = () => {
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
               />
               </div>
-              
+            
             {/* Filters */}
-                      <div className="flex flex-wrap gap-2">
+            <div className="flex flex-nowrap gap-2 overflow-x-auto px-1 md:px-0 w-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {/* Family Filter */}
               <select
                 value={selectedFamily}
                 onChange={(e) => setSelectedFamily(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
               >
                 <option value="">All Families</option>
                 {COLOR_FAMILIES.map(family => (
@@ -221,7 +221,7 @@ const ColorsPage = () => {
               <select
                 value={selectedTonality}
                 onChange={(e) => setSelectedTonality(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
               >
                 <option value="">All Tonalities</option>
                 {TONALITY_OPTIONS.map(option => (
@@ -233,7 +233,7 @@ const ColorsPage = () => {
               <select
                 value={selectedSuitability}
                 onChange={(e) => setSelectedSuitability(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
               >
                 <option value="">All Uses</option>
                 {SUITABILITY_OPTIONS.map(option => (
@@ -245,7 +245,7 @@ const ColorsPage = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
               >
                 <option value="name">A-Z</option>
                 <option value="light-dark">Light → Dark</option>
@@ -561,4 +561,3 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
 };
 
 export default ColorsPage;
-
