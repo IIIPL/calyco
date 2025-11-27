@@ -253,22 +253,22 @@ export const FAQs = () => {
 
         {/* Categories */}
         <section className="py-16 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <h2 className={`${getTypographyClasses('h3')} text-center text-[#0F1221]`}>Browse by Category</h2>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {categories.map((category) => {
-                const isActive = category.id === activeCategory;
-                return (
-                  <button
-                    key={category.id}
-                    type="button"
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`rounded-full px-6 py-2.5 text-sm font-semibold transition ${
-                      isActive
-                        ? "bg-[#0F1221] text-white shadow-sm"
-                        : "border-2 border-[#0F1221]/30 bg-white text-[#0F1221] hover:border-[#0F1221] hover:bg-[#0F1221]/5"
-                    }`}
-                  >
+      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+        <h2 className={`${getTypographyClasses('h3')} text-center text-[#0F1221]`}>Browse by Category</h2>
+        <div className="flex flex-nowrap items-center gap-3 overflow-x-auto px-2 md:px-0 justify-start md:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {categories.map((category) => {
+            const isActive = category.id === activeCategory;
+            return (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => setActiveCategory(category.id)}
+                className={`rounded-full px-6 py-2.5 text-sm font-semibold transition whitespace-nowrap w-auto flex-shrink-0 ${
+                  isActive
+                    ? "bg-[#0F1221] text-white shadow-sm"
+                    : "border-2 border-[#0F1221]/30 bg-white text-[#0F1221] hover:border-[#0F1221] hover:bg-[#0F1221]/5"
+                }`}
+              >
                     {category.label}
                   </button>
                 );
@@ -371,14 +371,7 @@ export const FAQs = () => {
                     <li key={item.title} className="rounded-xl bg-white p-5">
                       <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
                       <p className="text-sm text-[#31274B]/80">{item.description}</p>
-                      {item.link && (
-                        <button
-                          onClick={() => navigate(item.link)}
-                          className="mt-3 text-sm font-semibold text-[#0F1221] hover:underline"
-                        >
-                          View Resources →
-                        </button>
-                      )}
+                {/* Removed View Resources button as requested */}
                     </li>
                   ))}
                 </ul>
@@ -423,28 +416,28 @@ export const FAQs = () => {
               <div className="grid md:grid-cols-2 gap-5">
                 <label className="flex flex-col gap-2">
                   <span className="text-sm font-semibold text-[#0F1221]">Name</span>
-                  <input
-                    type="text"
-                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
-                    placeholder="Your name"
-                  />
+              <input
+                type="text"
+                className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
+                placeholder="Your name"
+              />
                 </label>
                 <label className="flex flex-col gap-2">
                   <span className="text-sm font-semibold text-[#0F1221]">Email</span>
-                  <input
-                    type="email"
-                    className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
-                    placeholder="you@example.com"
-                  />
+              <input
+                type="email"
+                className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
+                placeholder="you@example.com"
+              />
                 </label>
               </div>
               <label className="flex flex-col gap-2">
                 <span className="text-sm font-semibold text-[#0F1221]">Your Question</span>
-                <textarea
-                  rows={5}
-                  className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20"
-                  placeholder="Share details about your project or query..."
-                />
+            <textarea
+              rows={5}
+              className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
+              placeholder="Share details about your project or query..."
+            />
               </label>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <p className="text-xs text-[#31274B]/70">
