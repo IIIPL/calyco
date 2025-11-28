@@ -128,68 +128,90 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
           </div>
         )}
 
-        {/* Reviews List */}
-        <div className="space-y-4">
-          {sortedReviews.map((review, index) => (
-            <motion.div
-              key={review.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-            >
-              {/* Review Header */}
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h4 className="font-semibold text-gray-900">{review.author}</h4>
-                    {review.verified && (
-                      <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
-                        <FaCheckCircle className="text-xs" />
-                        Verified Purchase
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {renderStars(review.rating)}
-                    <span className="text-sm text-gray-500">{formatDate(review.date)}</span>
+        {/* Reviews List or Empty State */}
+        {reviews.length === 0 ? (
+          /* Empty State - No Reviews Yet */
+          <div className="bg-white rounded-lg shadow-md p-12 text-center mb-8">
+            <div className="max-w-md mx-auto">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#493657]/10 mb-4">
+                <FaStar className="text-4xl text-[#F0C85A]" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#493657] mb-2">No Reviews Yet</h3>
+              <p className="text-gray-600 mb-6">
+                Be the first to share your experience with {productName}!
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowForm(true)}
+                className="px-8 py-3 bg-[#493657] text-white font-semibold rounded-lg hover:bg-[#301A44] transition-colors inline-flex items-center gap-2"
+              >
+                <FaStar className="text-lg" />
+                Write the First Review
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* Reviews List */
+          <div className="space-y-4">
+            {sortedReviews.map((review, index) => (
+              <motion.div
+                key={review.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+              >
+                {/* Review Header */}
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h4 className="font-semibold text-gray-900">{review.author}</h4>
+                      {review.verified && (
+                        <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                          <FaCheckCircle className="text-xs" />
+                          Verified Purchase
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {renderStars(review.rating)}
+                      <span className="text-sm text-gray-500">{formatDate(review.date)}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Review Text */}
-              <p className="text-gray-700 leading-relaxed">{review.review}</p>
+                {/* Review Text */}
+                <p className="text-gray-700 leading-relaxed">{review.review}</p>
 
-              {/* Helpful Actions (Optional - can add later) */}
-              {/* <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-4">
-                <button className="text-sm text-gray-600 hover:text-gray-900">
-                  Was this helpful?
-                </button>
-                <button className="text-sm text-gray-600 hover:text-gray-900">
-                  👍 Yes (0)
-                </button>
-                <button className="text-sm text-gray-600 hover:text-gray-900">
-                  👎 No (0)
-                </button>
-              </div> */}
-            </motion.div>
-        ))}
-        </div>
+                {/* Helpful Actions (Optional - can add later) */}
+                {/* <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-4">
+                  <button className="text-sm text-gray-600 hover:text-gray-900">
+                    Was this helpful?
+                  </button>
+                  <button className="text-sm text-gray-600 hover:text-gray-900">
+                    👍 Yes (0)
+                  </button>
+                  <button className="text-sm text-gray-600 hover:text-gray-900">
+                    👎 No (0)
+                  </button>
+                </div> */}
+              </motion.div>
+            ))}
+          </div>
+        )}
 
-        {/* Call to Action */}
-        <div className="mt-8 text-center space-y-4">
-          {reviews.length === 0 && (
-            <p className="text-gray-600">
-              No reviews yet. Be the first to share your thoughts!
-            </p>
-          )}
-          <button
-            type="button"
-            onClick={() => setShowForm(true)}
-            className="px-6 py-3 bg-[#493657] text-white font-semibold rounded-lg hover:bg-[#301A44] transition-colors"
-          >
-            Write a Review
-          </button>
+        {/* Write a Review Button - Only shown if there are existing reviews */}
+        {reviews.length > 0 && (
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              onClick={() => setShowForm(true)}
+              className="px-6 py-3 bg-[#493657] text-white font-semibold rounded-lg hover:bg-[#301A44] transition-colors"
+            >
+              Write a Review
+            </button>
+          </div>
+        )}
 
           {showForm && (
             <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 text-left border border-gray-100">
@@ -233,7 +255,6 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
               </div>
             </div>
           )}
-        </div>
       </div>
     </section>
   );

@@ -104,11 +104,6 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
-          >Inspirations</button>
-
-          <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
           >Colors</button>
 
@@ -121,7 +116,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           <button
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
-          >Visualize</button>
+          >Visualizer</button>
+
+          <button
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
+          >Inspirations</button>
+
           <Link
             to="/about"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
@@ -203,26 +204,24 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
               </p>
               <div className="flex flex-col gap-4">
                 <ProductsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
-                <InspirationsDropdown isMobile={true} />
                 <ColorsDropdown isMobile={true} />
+                <Link
+                  to="/textures"
+                  className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+                  onClick={() => handleMenuToggle(false)}
+                >
+                  Textures
+                </Link>
+                <Link
+                  to="/room-visualization"
+                  className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+                  onClick={() => handleMenuToggle(false)}
+                >
+                  Visualizer
+                </Link>
+                <InspirationsDropdown isMobile={true} />
               </div>
             </div>
-
-            <Link
-              to="/textures"
-              className="hover:text-[#F0C85A] transition-colors"
-              onClick={() => handleMenuToggle(false)}
-            >
-              Textures
-            </Link>
-
-            <Link
-              to="/room-visualization"
-              className="hover:text-[#F0C85A] transition-colors"
-              onClick={() => handleMenuToggle(false)}
-            >
-              Visualize
-            </Link>
 
             <div className="pt-2 flex flex-col gap-4 text-base uppercase tracking-wide text-[#916e9f]">
               <Link

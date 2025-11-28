@@ -242,10 +242,10 @@ export const Products = () => {
                       </span>
                     </div>
 
-                    {/* 
-                      🎯 3:4 ASPECT RATIO PRODUCT IMAGE - No white space, no borders
+                    {/*
+                      🎯 3:4 ASPECT RATIO PRODUCT IMAGE - No white space, no borders - Clickable to navigate to product detail
                     */}
-                    <div className="relative w-full aspect-[3/4] overflow-hidden">
+                    <Link to={`/product/${product.slug}`} className="relative w-full aspect-[3/4] overflow-hidden cursor-pointer">
                       <img
                         src={product.image}
                         alt={product.title}
@@ -254,7 +254,7 @@ export const Products = () => {
                           e.target.src = "/Assets/Nova/1-main.webp";
                         }}
                       />
-                    </div>
+                    </Link>
 
                     {/* 
                       🎯 PRODUCT DETAILS - Clean layout without unnecessary badges

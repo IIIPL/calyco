@@ -53,12 +53,24 @@ const CityLandingPage = () => {
 
   const handleBookSiteVisit = async () => {
     try {
+      // Create SVG icon as data URL for site visit
+      const siteVisitIcon = `data:image/svg+xml,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <rect width="100" height="100" fill="#5E3A98"/>
+          <path d="M30 20h40v10H30z" fill="white"/>
+          <rect x="25" y="30" width="50" height="50" rx="4" fill="white"/>
+          <path d="M35 45h10v10H35zm15 0h10v10H50zm15 0h10v10H65z" fill="#5E3A98"/>
+          <circle cx="50" cy="50" r="8" fill="#F0C85A"/>
+          <path d="M50 45v10m-5-5h10" stroke="white" stroke-width="2"/>
+        </svg>
+      `)}`;
+
       const siteVisitProduct = {
         id: `site-visit-${city.slug}`,
         name: `Site Visit - ${city.name}`,
         display_name: `Site Visit Consultation in ${city.name}`,
         price: 499,
-        image: '/images/site-visit-placeholder.jpg',
+        image: siteVisitIcon,
         requiresShipping: false,
         productType: 'service',
       };

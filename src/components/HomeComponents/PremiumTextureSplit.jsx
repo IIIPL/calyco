@@ -40,7 +40,7 @@ const PremiumTextureSplit = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center md:justify-end">
                 <button
                   type="button"
-                  onClick={() => navigate('/products?category=premium-textures')}
+                  onClick={() => navigate('/textures')}
                   className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-full max-w-xs mx-auto md:w-auto md:mx-0"
                 >
                   Explore Textures

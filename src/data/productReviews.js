@@ -196,6 +196,135 @@ const premiumExteriorReviews = [
   },
 ];
 
+const waterPrimerInteriorReviews = [
+  {
+    id: 1,
+    author: "Rajesh Kumar",
+    rating: 5,
+    date: "2024-11-15",
+    review: "Very good product. Our painter bhaiya reccomended this primer for interior walls. Coverage is excelent - 1 litre covered almost 150 sqft. No bad smell also which is important as my wife has asthma. Price is much less than asian paints primer but quality is same same. Applied in bedroom and hall both. Paint is sticking very nicely. Paisa vasool product 👍",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Anita Sharma",
+    rating: 4,
+    date: "2024-10-28",
+    review: "We did painting before diwali and contractor suggested calyco primer. I was worried about quality as never heared this brand before but results are superb. Walls are looking so smooth and paint color is coming very bright. Only small problem was it took little longer to dry in bathroom area due to humidity. But overall very nice product and price also reasonable. Highly recomend for interior work.",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Amit Singh",
+    rating: 5,
+    date: "2024-11-02",
+    review: "Bst primer in this price range!!! Applied on my new flat walls. My painter said this primer is giving better adhesion than other big brands. 4 litre was enough for 2bhk flat. No chemical smell at all so we shifted in house after just 2 days. My kids were playing in house while painting was going on - that much safe it is. Worth every rupee spent. Will buy again for sure.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Sneha Patel",
+    rating: 5,
+    date: "2024-09-20",
+    review: "Marriage was coming in house next month so had to do painting urgently. Painter bhaiya brought this primer and I was tensed about result. But after application walls became so nice and smooth. Paint is not peeling at all even after 2 months. Coverage is also good value for money. One coat was sufficient for most walls. Smell was very less compared to previous primer we used 5 years ago. Happy with purchase 😊",
+    verified: true,
+  },
+  {
+    id: 5,
+    author: "Mr. Vikram Gupta",
+    rating: 4,
+    date: "2024-10-15",
+    review: "Good quality primer at affordable rate. We had lot of wall cracks after monsoon so applied putty first then this primer. Painter said calyco primer is water based so very easy to apply and clean brushes also. Coverage is excellent - 1L tin covered more than 12x10 feet wall easily. Paint is sticking properly no peeling problem. Only minus point is availability - not easily available in small shops. But online ordering was smooth. Recomended for interior painting works.",
+    verified: true,
+  },
+];
+
+const weatherPrimerExteriorReviews = [
+  {
+    id: 1,
+    author: "Suresh Reddy",
+    rating: 5,
+    date: "2024-10-10",
+    review: "Applied on exterior walls before monsoon. Previous paint was peeling very badly due to rain water. Contractor suggested weather primer is must for exterior. This calyco primer is very strong - after 2 months of heavy rain not a single place has peeling problem. Terrace wall which was most affected is now looking like new. Price is half of berger weather coat but quality seems better. Paisa vasool product for exterior work 💯",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Kavita Desai",
+    rating: 5,
+    date: "2024-09-25",
+    review: "Superb primer for outside walls!!! Our building exterior was looking very bad with all peeling and fading. Society decided to use this primer on painters advice. Results are amazing - walls are looking fresh and paint color is not fading even in direct sunlight. Waterproofing is also very good. During last weeks heavy rains no water seeped inside. Coverage is also excellent compared to price. Whole society is happy with decision. Highly recomend 👌",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Ramesh Iyer",
+    rating: 4,
+    date: "2024-11-08",
+    review: "Very good for exterior walls exposed to weather. Applied on balcony and terrace parapet walls. Painter bhaiya said this primer will protect from sun and rain both. After application paint is sticking much better than before. Previous paint used to peel every 2 years but this time hoping it will last longer. Smooth finish also. Only thing is drying time is little more in humid weather. But quality wise no complains. Value for money product.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Harish Malhotra",
+    rating: 5,
+    date: "2024-08-30",
+    review: "Excelent primer for exterior work. We applied on our independent house outer walls which face direct sunlight whole day. After 3 months paint is still looking fresh not faded at all. Earlier we used local primer and paint used to fade within 6 months. This calyco weather primer has very good weather resistance. Monsoon also passed no dampness no peeling. Painter also happy as easy to apply. Bit expensive than normal primer but worth it for exterior. Recomended 100%",
+    verified: false,
+  },
+  {
+    id: 5,
+    author: "Prakash Joshi",
+    rating: 5,
+    date: "2024-10-20",
+    review: "Best exterior primer I have used till now. Our terrace wall had major seepage problem every monsoon. This time applied waterproofing then this weather primer then paint. Not a single drop of water came inside this rainy season. Sunlight protection is also very good - south facing wall which used to fade quickly is still looking good. Coverage per litre is decent. Price is reasonable compared to quality. My contractor now uses only this primer for all exterior projects. Paisa vasool hai bilkul ✅",
+    verified: true,
+  },
+];
+
+const acrylicPuttyReviews = [
+  {
+    id: 1,
+    author: "Anil Verma",
+    rating: 5,
+    date: "2024-11-12",
+    review: "Makhan jaisa smooth finish!!! Applied this putty on bedroom and living room walls. Painter bhaiya said this is one of the best putties he has worked with. Very easy to apply and spreads evenly. After sanding walls became so plain and smooth like glass. Whiteness is also very good. We saved on primer because this putty itself gives nice white base. Two coats were enough even though walls had lot of uneveness. Excelent product at this price point. Highly recomended 👍",
+    verified: true,
+  },
+  {
+    id: 2,
+    author: "Mrs. Priya Nair",
+    rating: 5,
+    date: "2024-10-05",
+    review: "Very nice putty. Our new flat walls were very rough with lot of small holes and cracks. Contractor suggested 2 coats of this acrylic putty. After application and sanding walls became superb smooth. Painting became so easy after that. Color is also coming very uniform and bright. Putty is not cracking at all even after 1 month. Painter said consistency is very good easy to mix and apply. Coverage is also decent - 20kg covered 2bhk flat with 2 coats. Price wise better than birla white putty. Happy with results 😊",
+    verified: true,
+  },
+  {
+    id: 3,
+    author: "Sanjay Chopra",
+    rating: 4,
+    date: "2024-09-18",
+    review: "Good quality wall putty at affordable rate. Applied in my daughters room which had very uneven walls. This putty filled all gaps and gave smooth finish. Whiteness is excellent - much better than previous putty we used. Painter bhaiya was happy as easy to work with not too thick or thin. After sanding wall surface became very plain. Paint is looking very professional because of this base. Only small minus is it takes slightly longer to dry in monsoon season. But overall very good product worth the money. Will use in other rooms also.",
+    verified: true,
+  },
+  {
+    id: 4,
+    author: "Deepak Kumar",
+    rating: 5,
+    date: "2024-11-01",
+    review: "Bst putty in this price range believe me. We renovated our 15 year old house walls were in very bad condition. This acrylic putty worked like magic. Smoothness is superb - like hotel walls 😄 Painter said adhesion is also very strong will not peel off easily. After 2 coats all minor cracks and holes were completely hidden. White base coat effect is also there so primer became optional. My relatives who came for diwali were asking which brand paint we used - walls are that smooth! Coverage is also good value for money. Paisa vasool product highly recomend 💯",
+    verified: true,
+  },
+  {
+    id: 5,
+    author: "Mrs. Sunita Singh",
+    rating: 5,
+    date: "2024-08-22",
+    review: "Excelent putty for interior walls. Painter bhaiya bought this for our house renovation work. I was not sure about brand as never heared before but results are amazing. Walls became so smooth and white. Putty is not falling off or cracking like our previous putty did. Easy to sand also according to painter. Coverage was good - 40kg was enough for 3bhk flat with double coat. Paint finish on top of this putty is looking very premium. Many people asking me which putty brand we used. Price is much less than jk or birla but quality wise same. Very happy with purchase. Recomended for anyone doing painting work 👌",
+    verified: false,
+  },
+];
+
 export const productReviews = {
   "interior-latex-paint": interiorLatexReviews,
   "exterior-latex-paint": luxuryExteriorReviews,
@@ -203,6 +332,9 @@ export const productReviews = {
   "waterproofing-sealer": waterproofingSealerReviews,
   "premium-interior-emulsion": premiumInteriorReviews,
   "premium-exterior-emulsion": premiumExteriorReviews,
+  "calyco-water-primer-interior": waterPrimerInteriorReviews,
+  "calyco-weather-primer-exterior": weatherPrimerExteriorReviews,
+  "calyco-acrylic-wall-putty": acrylicPuttyReviews,
 };
 
 // Rest of the functions remain the same...
