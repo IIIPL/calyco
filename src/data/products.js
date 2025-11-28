@@ -234,5 +234,19 @@ export const products = [
       "Ceilings"
     ],
     "substrate": ["Cement plaster", "Concrete", "Brick", "Gypsum board"]
+  },
+  {
+    "id": "BookSiteVisit",
+    "slug": "book-site-visit",
+    "url": "https://calycopaints.com/services/book-site-visit",
+    "name": "Book Site Visit",
+    "display_name": "Professional Site Visit Consultation",
+    "image": "/Assets/site-visit-consultation.jpg",
+    "description": "Professional consultation at your location. Our experts will assess your space, provide color recommendations, and give you accurate project estimates.",
+    "short-description": "Expert guidance on texture selection and application at your doorstep.",
+    "category": "service",
+    "price": 499,
+    "requiresShipping": false,
+    "productType": "service"
   }
 ];

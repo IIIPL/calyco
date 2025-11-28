@@ -253,12 +253,16 @@ const ProductsPage = () => {
                     </div>
 
                     {/* Product Image */}
-                    <div className="relative pt-16 pb-6 px-6">
+                    <Link
+                      to={`/product/${product.slug}`}
+                      className="block relative pt-16 pb-6 px-6 cursor-pointer"
+                      aria-label={`View ${product.name}`}
+                    >
                       <div className="relative bg-gradient-to-br from-[#f8f6f2] to-[#f4f1f8] rounded-2xl p-8 group-hover:scale-105 transition-transform duration-500">
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-40 object-contain drop-shadow-xl"
+                          className="w-full h-40 object-contain drop-shadow-xl cursor-pointer"
                           onError={(e) => {
                             e.target.src = "/Assets/Nova/1-main.webp"; // Fallback image
                           }}
@@ -270,7 +274,7 @@ const ProductsPage = () => {
                           </div>
                         )}
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Product Details */}
                     <div className="px-6 pb-6">

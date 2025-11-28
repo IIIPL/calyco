@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CartContext = createContext(undefined);
@@ -24,7 +24,7 @@ const localItemKey = (item) => {
   return [item.id, item.selectedSheen || '', item.selectedSize || '', colour.name || ''].join('|');
 };
 
-const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType }) => {
+const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType, mixingMode }) => {
   const normalisedColor = normaliseColor(color);
   return {
     id: product?.id || product?.slug || product?.name || Math.random().toString(36).slice(2),
@@ -36,6 +36,9 @@ const createLocalCartItem = ({ product, price, finish, size, quantity, color, pr
     quantity: Math.max(1, parseInt(quantity, 10) || 1),
     image: product?.image || product?.bucketImage || '/Assets/chair.png',
     selectedColor: normalisedColor,
+    requiresShipping: product?.requiresShipping !== false, // Default to true unless explicitly false
+    productType: product?.productType || productType || 'paint',
+    mixingMode: mixingMode || null, // Store mixing mode (ready-mixed or tint-on-demand)
   };
 };
 
@@ -45,6 +48,7 @@ export const CartProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [initialised, setInitialised] = useState(false);
+  const itemsRef = useRef(items);
 
   // Load cart from localStorage on mount
   const loadLocalCart = useCallback(() => {
@@ -76,6 +80,8 @@ export const CartProvider = ({ children }) => {
     if (initialised && typeof window !== 'undefined') {
       window.localStorage.setItem(LOCAL_CART_STORAGE_KEY, JSON.stringify({ items }));
     }
+    // Update ref to always have current items
+    itemsRef.current = items;
   }, [items, initialised]);
 
   const addToCart = useCallback(
@@ -93,6 +99,7 @@ export const CartProvider = ({ children }) => {
       const colour = normaliseColor(selectedColor || {});
       const basePrice = priceOverride !== undefined ? priceOverride : product?.price;
       const productType = options.productType || selectedColorType || 'paint';
+      const mixingMode = options.mixingMode || selectedColorType; // Use mixingMode from options, or fall back to selectedColorType for backward compatibility
 
       const localItem = createLocalCartItem({
         product,
@@ -102,6 +109,7 @@ export const CartProvider = ({ children }) => {
         quantity: normalisedQuantity,
         color: colour,
         productType,
+        mixingMode,
       });
 
       setItems((prev) => {
@@ -170,7 +178,11 @@ export const CartProvider = ({ children }) => {
   const goToCheckout = useCallback(() => {
     console.log('[CALYCO] Navigating to checkout page');
 
-    if (!items || items.length === 0) {
+    // Use ref to get the most current items, not the closure value
+    const currentItems = itemsRef.current;
+    console.log('[CALYCO] Current items in cart:', currentItems);
+
+    if (!currentItems || currentItems.length === 0) {
       console.error('[CALYCO] Cart is empty!');
       alert('Your cart is empty. Please add items before checkout.');
       return null;
@@ -178,7 +190,7 @@ export const CartProvider = ({ children }) => {
 
     // Navigate to checkout page
     navigate('/checkout');
-  }, [items, navigate]);
+  }, [navigate]);
 
   const value = {
     items,

@@ -95,7 +95,7 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={`fixed top-0 left-0 w-full bg-gray-600 overflow-hidden transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'} ${menuOpen ? 'z-[45]' : 'z-[60]'}`}>
+    <div className={`w-full bg-gray-600 overflow-hidden transition-all duration-300 ${isVisible ? 'h-auto' : 'h-0'} ${menuOpen ? 'z-[45]' : 'z-[60]'} relative`}>
       <div className="relative max-w-7xl mx-auto px-4 py-2.5 sm:px-6">
         <div className="flex items-center justify-between">
           {/* Centered Text */}
@@ -133,8 +133,7 @@ function App() {
 
             {/* This is your app. */}
             <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
-            {/* Add top margin to account for fixed navbar + offer banner */}
-            <div className={`transition-all duration-300 ${bannerVisible ? 'pt-[108px] md:pt-[124px]' : 'pt-16 md:pt-20'}`}>
+            <div className="transition-all duration-300">
               <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
                 <Routes>
                   <Route path='/' element={<Home/>}/>

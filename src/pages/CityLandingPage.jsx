@@ -59,14 +59,18 @@ const CityLandingPage = () => {
         display_name: `Site Visit Consultation in ${city.name}`,
         price: 499,
         image: '/images/site-visit-placeholder.jpg',
+        requiresShipping: false,
+        productType: 'service',
       };
 
-      addToCart(siteVisitProduct, 'Service', 'One-time', 1, 499, {
+      await addToCart(siteVisitProduct, 'Service', 'One-time', 1, 499, {
         cityName: city.name,
         citySlug: city.slug,
         serviceType: 'Site Visit Consultation',
       });
 
+      // Wait longer for cart state to fully update before navigating (500ms to ensure React state settles)
+      await new Promise(resolve => setTimeout(resolve, 500));
       await goToCheckout();
     } catch (error) {
       console.error('Error booking site visit:', error);

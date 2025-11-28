@@ -83,7 +83,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   return (
     <header
       ref={navRef}
-      className="fixed left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300"
+      className="sticky top-0 left-0 w-full bg-[#f9f6f2] border-b border-[#e5e0d8] z-50 shadow-sm transition-all duration-300"
       style={{ top: bannerVisible && !menuOpen ? (isMobileView ? '48px' : '40px') : '0px' }}
     >
       {/* Desktop Navigation */}

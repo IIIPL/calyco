@@ -378,8 +378,11 @@ const ExteriorLatexPaint = () => {
             quantity,
             calculatePrice(selectedSize),
             colorInfo,
-            selectedColorType,
-            variantId ? { variantId } : {}
+            'paint', // productType
+            {
+                variantId,
+                mixingMode: selectedColorType, // Pass mixing mode (ready-mixed or tint-on-demand)
+            }
         );
 
         setCartPopup({

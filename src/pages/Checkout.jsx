@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { InvoiceGenerator } from "../components/InvoiceGenerator";
 import RazorpayPayment from "../components/RazorpayPayment";
 import { paymentService } from "../services/paymentService";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const { items, getCartTotal, removeFromCart, clearCart } = useCart();
   const [user, setUser] = useState({ email: "", subscribe: true });
   const [address, setAddress] = useState({
@@ -54,22 +56,79 @@ const Checkout = () => {
   const rawSubtotal = getCartTotal();
   const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
 
+  // Check if cart requires shipping (contains physical products)
+  // Name-based fallback to handle cases where requiresShipping flag is lost in localStorage
+  const cartRequiresShipping = items.some(item => {
+    // First check: If requiresShipping flag exists and is explicitly false, it's a service
+    if (item.requiresShipping === false) {
+      return false; // This item does NOT require shipping
+    }
+
+    // Second check: If flag is true, it requires shipping
+    if (item.requiresShipping === true) {
+      return true; // This item DOES require shipping
+    }
+
+    // Fallback: Check product name/type for service indicators
+    const name = (item.name || "").toLowerCase();
+    const displayName = (item.display_name || "").toLowerCase();
+    const productType = (item.productType || "").toLowerCase();
+    const selectedColorType = (item.selectedColorType || "").toLowerCase();
+    const selectedSheen = (item.selectedSheen || "").toLowerCase();
+    const selectedSize = (item.selectedSize || "").toLowerCase();
+
+    // Check if it's a service based on name or type
+    const isService =
+      name.includes("site visit") ||
+      name.includes("consultation") ||
+      name.includes("book site") ||
+      displayName.includes("site visit") ||
+      displayName.includes("consultation") ||
+      displayName.includes("book site") ||
+      productType === "service" ||
+      selectedColorType === "service" ||
+      selectedSheen === "service" ||
+      selectedSize.includes("one-time");
+
+    return !isService; // Return true if shipping IS required (not a service)
+  });
+
   // Shipping calculation based on address
   const [selectedShipping, setSelectedShipping] = useState('standard');
   const shippingRates = {
     standard: subtotal >= 2000 ? 0 : 250, // Free shipping above ₹2000
     express: 500
   };
-  const shipping = shippingRates[selectedShipping];
+  const shipping = cartRequiresShipping ? shippingRates[selectedShipping] : 0;
 
   const tax = Math.round(subtotal * 0.18);
   const total = subtotal + shipping + tax;
 
   // Debug logging
+  console.log('=== CHECKOUT DEBUG ===');
   console.log('Cart items:', items);
-  console.log('Subtotal calculation:', subtotal);
-  console.log('Tax calculation:', tax);
-  console.log('Total calculation:', total);
+  console.log('Cart requires shipping:', cartRequiresShipping);
+  items.forEach((item, index) => {
+    console.log(`Item ${index + 1}:`, {
+      name: item.name,
+      display_name: item.display_name,
+      image: item.image,
+      textureImage: item.textureImage,
+      productImage: item.productImage,
+      requiresShipping: item.requiresShipping,
+      productType: item.productType,
+      selectedColorType: item.selectedColorType,
+      selectedSheen: item.selectedSheen,
+      selectedSize: item.selectedSize,
+      selectedColor: item.selectedColor,
+      price: item.price
+    });
+  });
+  console.log('Subtotal:', subtotal);
+  console.log('Shipping:', shipping);
+  console.log('Tax:', tax);
+  console.log('Total:', total);
+  console.log('======================');
 
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
@@ -83,8 +142,8 @@ const Checkout = () => {
     setIsProcessingPayment(true);
 
     try {
-      // Validate required fields
-      if (!user.email || !address.firstName || !address.lastName || !address.address || !address.city || !address.postcode || !address.phone) {
+      // Validate required fields - address is always required (for service location or delivery)
+      if (!user.email || !address.firstName || !address.lastName || !address.phone || !address.address || !address.city || !address.postcode) {
         setPaymentError("Please fill in all required fields");
         setIsProcessingPayment(false);
         return;
@@ -286,9 +345,9 @@ const Checkout = () => {
               Email me with news and offers
             </label>
           </div>
-          {/* Delivery */}
+          {/* Address Information - Always shown, label changes based on service/delivery */}
           <div>
-            <div className="font-bold text-lg mb-2">Delivery</div>
+            <div className="font-bold text-lg mb-2">{cartRequiresShipping ? 'Delivery' : 'Service Location'}</div>
             <select name="country" value={address.country} onChange={handleAddressChange} className="w-full border p-2 rounded mb-2">
               <option>India</option>
               <option>United States</option>
@@ -312,63 +371,65 @@ const Checkout = () => {
               Text me with news and offers
             </label>
           </div>
-          {/* Shipping Method */}
-          <div>
-            <div className="font-bold text-lg mb-2">Shipping method</div>
-            {address.address && address.city && address.postcode ? (
-              <div className="space-y-3">
-                {/* Standard Shipping */}
-                <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'standard' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="radio"
-                      name="shipping"
-                      value="standard"
-                      checked={selectedShipping === 'standard'}
-                      onChange={(e) => setSelectedShipping(e.target.value)}
-                      className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
-                    />
-                    <div>
-                      <div className="font-semibold text-gray-900">Standard Shipping</div>
-                      <div className="text-sm text-gray-600">5-7 business days</div>
+          {/* Shipping Method - Only show if cart requires shipping */}
+          {cartRequiresShipping && (
+            <div>
+              <div className="font-bold text-lg mb-2">Shipping method</div>
+              {address.address && address.city && address.postcode ? (
+                <div className="space-y-3">
+                  {/* Standard Shipping */}
+                  <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'standard' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value="standard"
+                        checked={selectedShipping === 'standard'}
+                        onChange={(e) => setSelectedShipping(e.target.value)}
+                        className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
+                      />
+                      <div>
+                        <div className="font-semibold text-gray-900">Standard Shipping</div>
+                        <div className="text-sm text-gray-600">5-7 business days</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="font-bold text-[#493657]">
-                    {subtotal >= 2000 ? 'FREE' : '₹250'}
-                  </div>
-                </label>
-
-                {/* Express Shipping */}
-                <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'express' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="radio"
-                      name="shipping"
-                      value="express"
-                      checked={selectedShipping === 'express'}
-                      onChange={(e) => setSelectedShipping(e.target.value)}
-                      className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
-                    />
-                    <div>
-                      <div className="font-semibold text-gray-900">Express Shipping</div>
-                      <div className="text-sm text-gray-600">2-3 business days</div>
+                    <div className="font-bold text-[#493657]">
+                      {subtotal >= 2000 ? 'FREE' : '₹250'}
                     </div>
-                  </div>
-                  <div className="font-bold text-[#493657]">₹500</div>
-                </label>
+                  </label>
 
-                {subtotal < 2000 && (
-                  <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-                    💡 Add ₹{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="bg-gray-100 p-4 rounded text-gray-500 text-sm">
-                Please enter your complete shipping address to view available shipping methods.
-              </div>
-            )}
-          </div>
+                  {/* Express Shipping */}
+                  <label className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer transition-all ${selectedShipping === 'express' ? 'border-[#493657] bg-purple-50' : 'border-gray-300 hover:border-gray-400'}`}>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value="express"
+                        checked={selectedShipping === 'express'}
+                        onChange={(e) => setSelectedShipping(e.target.value)}
+                        className="w-4 h-4 text-[#493657] focus:ring-[#493657]"
+                      />
+                      <div>
+                        <div className="font-semibold text-gray-900">Express Shipping</div>
+                        <div className="text-sm text-gray-600">2-3 business days</div>
+                      </div>
+                    </div>
+                    <div className="font-bold text-[#493657]">₹500</div>
+                  </label>
+
+                  {subtotal < 2000 && (
+                    <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                      💡 Add ₹{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="bg-gray-100 p-4 rounded text-gray-500 text-sm">
+                  Please enter your complete shipping address to view available shipping methods.
+                </div>
+              )}
+            </div>
+          )}
         </div>
         {/* RIGHT: Cart Summary */}
         <div className="bg-gray-50 p-8 flex flex-col gap-6 min-h-full">
@@ -391,62 +452,130 @@ const Checkout = () => {
           
           <div className="flex flex-col gap-4">
             {items.length > 0 ? (
-              items.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4 border-b pb-4 last:border-b-0 relative">
-                  {/* Product Image - Generate SVG for colors or use existing image */}
-                  <div className="w-14 h-14 rounded border overflow-hidden flex-shrink-0">
-                    {item.selectedColor?.hex ? (
-                      // Generate SVG for color swatches (same as product page)
-                      <img 
-                        src={`data:image/svg+xml;base64,${btoa(`
-                          <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="56" height="56" fill="${item.selectedColor.hex}"/>
-                          </svg>
-                        `)}`}
+              items.map((item, idx) => {
+                // Check if item is a service
+                const isService = item.productType === 'service' ||
+                                  item.requiresShipping === false ||
+                                  item.name?.toLowerCase().includes('site visit') ||
+                                  item.name?.toLowerCase().includes('consultation');
+
+                // Determine display image with robust fallback hierarchy
+                let displayImage = '/Assets/placeholder-product.jpg';
+
+                if (isService) {
+                  // Services: use service-specific image or fallback
+                  displayImage = item.image || item.serviceImage || '/Assets/site-visit-consultation.jpg';
+                } else if (item.textureImage) {
+                  // Textures: use texture-specific image
+                  displayImage = item.textureImage;
+                } else if (item.image) {
+                  // Standard products: use product image (paint bucket, etc.)
+                  displayImage = item.image;
+                } else if (item.productImage) {
+                  // Alternative property name
+                  displayImage = item.productImage;
+                }
+
+                return (
+                  <div key={idx} className="flex items-center gap-4 border-b pb-4 last:border-b-0 relative">
+                    {/* Product Image - Always show product image, not color swatch */}
+                    <div className="w-14 h-14 rounded border overflow-hidden flex-shrink-0">
+                      <img
+                        src={displayImage}
                         alt={item.name}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback if image fails to load
+                          e.target.src = '/Assets/placeholder-product.jpg';
+                        }}
                       />
-                    ) : (
-                      // Use existing image for non-color products
-                      <img 
-                        src={item.image} 
-                        alt={item.name} 
-                        className="w-full h-full object-cover"
-                      />
-                    )}
+                    </div>
+
+                    {/* Product Details */}
+                    <div className="flex-1">
+                      <div className="font-semibold text-[#493657]">{item.name}</div>
+                      <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
+
+                      {/* Only show color for non-service items that have a real color selection (not white/default for primers/putty) */}
+                      {!isService && item.selectedColor?.name &&
+                       item.selectedColor.name !== 'Serene Ivory' &&
+                       item.selectedColor.name !== 'Custom Color' &&
+                       item.selectedColor.name !== 'Pure White' &&
+                       item.selectedColor.name !== 'White' && (
+                        <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
+                      )}
+
+                      {/* Display mixing mode only for products that have color mixing options (ready-mixed or tint-on-demand) */}
+                      {!isService && item.mixingMode &&
+                       (item.mixingMode === 'ready-mixed' || item.mixingMode === 'tint-on-demand') && (
+                        <div className="text-xs text-gray-500">
+                          Type: {item.mixingMode === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand'}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Price */}
+                    <div className="font-bold text-[#493657]">₹{item.price}</div>
+
+                    {/* Delete Button */}
+                    <button
+                      onClick={() => removeFromCart(item)}
+                      className="ml-2 p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+                      title="Remove item"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    </button>
                   </div>
-                  
-                  {/* Product Details */}
-                  <div className="flex-1">
-                    <div className="font-semibold text-[#493657]">{item.name}</div>
-                    <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
-                    {item.selectedColor?.name && (
-                      <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
-                    )}
-                  </div>
-                  
-                  {/* Price */}
-                  <div className="font-bold text-[#493657]">₹{item.price}</div>
-                  
-                  {/* Delete Button */}
-                  <button
-                    onClick={() => removeFromCart(item)}
-                    className="ml-2 p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
-                    title="Remove item"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="text-center py-8 text-gray-500">
                 <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <p className="text-lg font-medium mb-2">Your cart is empty</p>
-                <p className="text-sm">Add some products to get started</p>
+                <p className="text-sm mb-6">Add some products to get started</p>
+
+                {/* Continue Shopping Section */}
+                <div className="mt-8">
+                  <h3 className="text-base font-semibold text-gray-900 mb-4">Continue Shopping</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {/* Shop Products Card */}
+                    <button
+                      onClick={() => navigate('/products')}
+                      className="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-lg hover:border-[#493657] hover:bg-purple-50 transition-all duration-200 group"
+                    >
+                      <svg className="w-8 h-8 mb-2 text-gray-400 group-hover:text-[#493657] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      </svg>
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#493657]">Shop Products</span>
+                    </button>
+
+                    {/* Browse Colors Card */}
+                    <button
+                      onClick={() => navigate('/colors')}
+                      className="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-lg hover:border-[#493657] hover:bg-purple-50 transition-all duration-200 group"
+                    >
+                      <svg className="w-8 h-8 mb-2 text-gray-400 group-hover:text-[#493657] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                      </svg>
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#493657]">Browse Colors</span>
+                    </button>
+
+                    {/* Explore Textures Card */}
+                    <button
+                      onClick={() => navigate('/textures')}
+                      className="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-lg hover:border-[#493657] hover:bg-purple-50 transition-all duration-200 group"
+                    >
+                      <svg className="w-8 h-8 mb-2 text-gray-400 group-hover:text-[#493657] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#493657]">Explore Textures</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -470,14 +599,16 @@ const Checkout = () => {
                   <span>Subtotal</span>
                   <span>₹{subtotal}</span>
                 </div>
-                <div className="flex justify-between text-gray-700">
-                  <span>Shipping</span>
-                  <span className="font-semibold">
-                    {address.address && address.city && address.postcode
-                      ? `₹${shipping}`
-                      : 'Enter shipping address'}
-                  </span>
-                </div>
+                {cartRequiresShipping && (
+                  <div className="flex justify-between text-gray-700">
+                    <span>Shipping</span>
+                    <span className="font-semibold">
+                      {address.address && address.city && address.postcode
+                        ? `₹${shipping}`
+                        : 'Enter shipping address'}
+                    </span>
+                  </div>
+                )}
                 <div className="flex justify-between font-bold text-lg mt-2">
                   <span>Total</span>
                   <span>₹{total}</span>

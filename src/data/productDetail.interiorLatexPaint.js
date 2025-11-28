@@ -215,14 +215,7 @@ export const interiorLatexPaintDetail = {
   
   bucketImage: "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
   images: [
-    "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
-    "/Assets/Nova/1.webp", 
-    "/Assets/Nova/2.webp",
-    "/Assets/Nova/3.webp",
-    "/Assets/Nova/4.webp",
-    "/Assets/Nova/5.webp",
-    "/Assets/Nova/6.webp",
-    "/Assets/Nova/7.webp"
+    "/Assets/Product Images/Luxury Interior Emulsion/1.webp"
   ],
   seo: {
     title: "Luxury Interior Emulsion | Pearl Finish Wall Paint | Calyco",

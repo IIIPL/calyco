@@ -128,20 +128,27 @@ const TextureDetailPage = () => {
 
   const handleBookSiteVisit = async () => {
     try {
+      // Create unique ID based on texture name to prevent merging different texture site visits
+      const uniqueId = `site-visit-${texture.name.replace(/\s+/g, '-').toLowerCase()}`;
+
       const siteVisitProduct = {
-        id: 'site-visit-texture',
+        id: uniqueId,
         name: `Site Visit - ${texture.name} Texture`,
-        display_name: `Site Visit Consultation`,
+        display_name: `Site Visit Consultation - ${texture.name}`,
         price: 499,
         image: texture.image,
+        requiresShipping: false,
+        productType: 'service',
       };
 
-      addToCart(siteVisitProduct, 'Service', 'One-time', 1, 499, {
+      await addToCart(siteVisitProduct, 'Service', 'One-time', 1, 499, {
         textureName: texture.name,
         textureSlug: texture.slug,
         serviceType: 'Site Visit Consultation',
       });
 
+      // Wait longer for cart state to fully update before navigating (500ms to ensure React state settles)
+      await new Promise(resolve => setTimeout(resolve, 500));
       await goToCheckout();
     } catch (error) {
       console.error('Error booking site visit:', error);

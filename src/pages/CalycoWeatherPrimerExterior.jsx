@@ -435,8 +435,11 @@ const CalycoWeatherPrimerExterior = () => {
             quantity,
             calculatePrice(selectedSize),
             colorInfo,
-            selectedColorType,
-            variantId ? { variantId } : {}
+            'paint', // productType
+            {
+                variantId,
+                // Don't pass mixingMode for primers - they don't have color mixing options
+            }
         );
         setCartPopup({
             isVisible: true,

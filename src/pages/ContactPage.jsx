@@ -20,7 +20,8 @@ const contactChannels = [
     description: "Send us a note and we'll reply within a day.",
     subDetail: "Replies within 24 hours",
     icon: "✉️",
-    href: "mailto:" + contactData.contact.email.support,
+    href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactData.contact.email.support)}`,
+    newTab: true,
   },
   {
     title: "Visit Our HQ",

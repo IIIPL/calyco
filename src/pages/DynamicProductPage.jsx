@@ -638,8 +638,11 @@ export const DynamicProductPage = () => {
             quantity,
             calculatePrice(selectedSize),
             colorInfo,
-            selectedColorType,
-            variantId ? { variantId } : {}
+            'paint', // productType
+            {
+                variantId,
+                mixingMode: selectedColorType, // Pass mixing mode (ready-mixed or tint-on-demand)
+            }
         );
 
         setCartPopup({
@@ -723,6 +726,7 @@ export const DynamicProductPage = () => {
                     variantId,
                     productType: 'Luxury Exterior Emulsion',
                     attributes: customAttributes,
+                    mixingMode: selectedColorType, // Pass mixing mode (ready-mixed or tint-on-demand)
                 },
             );
 
