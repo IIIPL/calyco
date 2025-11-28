@@ -199,8 +199,8 @@ export const premiumExteriorEmulsionDetail = {
   },
   safety_precautions: "Wear premium protective gloves, goggles, and long sleeves during application. Work in well-ventilated areas.",
   documents: {
-    tds: "/Assets/docs/premium-exterior-emulsion-tds.pdf",
-    sds: "/Assets/docs/premium-exterior-emulsion-sds.pdf",
+    tds: "/Assets/docs/html-templates/premium-exterior-emulsion-tds.html",
+    sds: "/Assets/docs/html-templates/premium-exterior-emulsion-sds.html",
     warranty: "/Assets/docs/premium-exterior-emulsion-warranty.pdf",
   },
   warranty: "7 years",

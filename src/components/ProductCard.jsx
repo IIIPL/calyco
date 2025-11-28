@@ -30,8 +30,8 @@ const ProductCard = ({
 
   return (
     <div className="p-0 w-full max-w-xs mx-auto flex flex-col items-start bg-transparent border-none shadow-none">
-      <Link to={target} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2">
-        <img src={image} alt={name} className="w-56 h-56 object-contain drop-shadow-lg ml-0 mr-auto" />
+      <Link to={target} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2 h-64">
+        <img src={image} alt={name} className="w-full h-full object-contain drop-shadow-lg mix-blend-multiply" />
       </Link>
       <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{wordBreak: 'break-word'}}>{name}</div>
       {/* Price prominently displayed */}

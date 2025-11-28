@@ -199,8 +199,8 @@ export const premiumInteriorEmulsionDetail = {
   },
   safety_precautions: "Gloves recommended, ventilated area. Wear protective gloves and eye protection during application.",
   documents: {
-    tds: "/Assets/docs/premium-interior-emulsion-tds.pdf",
-    sds: "/Assets/docs/premium-interior-emulsion-sds.pdf",
+    tds: "/Assets/docs/html-templates/premium-interior-emulsion-tds.html",
+    sds: "/Assets/docs/html-templates/premium-interior-emulsion-sds.html",
     warranty: "/Assets/docs/premium-interior-emulsion-warranty.pdf",
   },
   warranty: "5 years",

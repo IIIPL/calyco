@@ -7,33 +7,51 @@ import { getTypographyClasses, getButtonClasses } from "../../data/admin/typogra
 const documentLinks = [
   {
     name: "Premium Interior Emulsion",
-    desc: "Warranty coverage for luxury interior finishes.",
-    href: "/Assets/docs/premium-interior-warranty.pdf",
+    desc: "Warranty coverage for premium interior finishes.",
+    href: "/Assets/docs/warranty_Premium-Interior-Emulsion.html",
     icon: "🏠"
   },
   {
     name: "Premium Exterior Emulsion",
     desc: "Protection against weather, algae, and fading.",
-    href: "/Assets/docs/premium-exterior-warranty.pdf",
-    icon: "🌦️"
+    href: "/Assets/docs/warranty_Premium-Exterior-Emulsion.html",
+    icon: "🏡"
   },
   {
-    name: "Exterior Latex Paint",
-    desc: "Standard coverage for exterior latex systems.",
-    href: "/Assets/docs/exterior-latex-warranty.pdf",
+    name: "Luxury Interior Emulsion",
+    desc: "Warranty coverage for luxury interior finishes.",
+    href: "/Assets/docs/warranty_Interior-Latex-Paint.html",
     icon: "🧱"
   },
   {
-    name: "Interior Latex Paint",
-    desc: "Coverage for standard interior wall solutions.",
-    href: "/Assets/docs/interior-latex-warranty.pdf",
-    icon: "🛋️"
+    name: "Luxury Exterior Emulsion",
+    desc: "Warranty coverage for luxury exterior finishes.",
+    href: "/Assets/docs/warranty_Exterior-Latex-Paint.html",
+    icon: "🏞️"
   },
   {
     name: "Waterproofing Sealer",
     desc: "Guarantee against water ingress and dampness.",
-    href: "/Assets/docs/waterproof-sealer-warranty.pdf",
+    href: "/Assets/docs/warranty_waterproofing-sealer.html",
     icon: "💧"
+  },
+  {
+    name: "Calyco Water Primer (Interior)",
+    desc: "Warranty coverage for interior water-based primer.",
+    href: "/Assets/docs/warranty_calyco-water-primer-interior.html",
+    icon: "🧪"
+  },
+  {
+    name: "Calyco Weather Primer (Exterior)",
+    desc: "Warranty coverage for exterior weather primer.",
+    href: "/Assets/docs/warranty_calyco-weather-primer-exterior.html",
+    icon: "🌦️"
+  },
+  {
+    name: "Calyco Acrylic Wall Putty",
+    desc: "Warranty coverage for acrylic wall putty applications.",
+    href: "/Assets/docs/warranty_calyco-acrylic-wall-putty.html",
+    icon: "🧰"
   },
 ];
 
@@ -225,7 +243,7 @@ export default function WarrantyPolicy() {
                     </h3>
                     <p className="mt-2 text-xs leading-5 text-[#31274B]/70">{doc.desc}</p>
                     <span className="mt-4 inline-flex items-center text-xs font-bold uppercase tracking-wider text-[var(--calyco-gold)] group-hover:underline">
-                      Download PDF →
+                      Download File →
                     </span>
                   </div>
                 </a>

@@ -1,0 +1,186 @@
+import fs from 'fs';
+import path from 'path';
+
+const docsDir = path.resolve('public/Assets/docs');
+fs.mkdirSync(docsDir, { recursive: true });
+
+const company = {
+  name: 'Calyco Paints Private Limited',
+  address: 'Nagpur, Maharashtra, India',
+  phone: '+91 8826733064',
+  email: 'warranty@calycopaints.com',
+  site: 'https://calycopaints.com/warranty',
+};
+
+const products = [
+  {
+    name: 'Premium Interior Emulsion',
+    slug: 'Premium-Interior-Emulsion',
+    surfaces: 'properly prepared interior walls and ceilings (plaster, gypsum board, concrete, brick, fibre-cement, wood, masonry)',
+    warrantyYears: 8,
+    highTrafficYears: 5,
+  },
+  {
+    name: 'Luxury Interior Emulsion',
+    slug: 'Interior-Latex-Paint',
+    surfaces: 'properly prepared interior walls and ceilings (plaster, gypsum board, concrete, brick, fibre-cement, wood, masonry)',
+    warrantyYears: 8,
+    highTrafficYears: 5,
+  },
+  {
+    name: 'Premium Exterior Emulsion',
+    slug: 'Premium-Exterior-Emulsion',
+    surfaces: 'properly prepared exterior masonry, plaster, concrete, and fibre-cement substrates',
+    warrantyYears: 7,
+    highTrafficYears: 4,
+  },
+  {
+    name: 'Luxury Exterior Emulsion',
+    slug: 'Exterior-Latex-Paint',
+    surfaces: 'properly prepared exterior masonry, plaster, concrete, and fibre-cement substrates',
+    warrantyYears: 7,
+    highTrafficYears: 4,
+  },
+  {
+    name: 'Calyco Water Primer (Interior)',
+    slug: 'calyco-water-primer-interior',
+    surfaces: 'properly prepared interior plaster, putty, drywall, and cementitious substrates',
+    warrantyYears: 5,
+    highTrafficYears: 3,
+  },
+  {
+    name: 'Calyco Weather Primer (Exterior)',
+    slug: 'calyco-weather-primer-exterior',
+    surfaces: 'properly prepared exterior cement plaster, concrete, brick, and masonry',
+    warrantyYears: 5,
+    highTrafficYears: 3,
+  },
+  {
+    name: 'Calyco Acrylic Wall Putty',
+    slug: 'calyco-acrylic-wall-putty',
+    surfaces: 'properly prepared interior or exterior plaster, concrete, and masonry surfaces prior to priming or topcoating',
+    warrantyYears: 8,
+    highTrafficYears: 5,
+  },
+  {
+    name: 'Waterproofing Sealer',
+    slug: 'waterproofing-sealer',
+    surfaces: 'properly prepared terraces, parapets, wet walls, planter boxes, and masonry requiring waterproof protection',
+    warrantyYears: 6,
+    highTrafficYears: 4,
+  },
+];
+
+const introParagraph = `
+Thank you for choosing a Calyco paint or coating. Calyco is committed to producing high-performance, environmentally responsible products that deliver long-lasting beauty. This limited warranty explains what is covered, how long it lasts, conditions to obtain service, exclusions, and how to make a claim. Please read carefully and retain a copy with your proof of purchase.
+`;
+
+function buildWarrantyHtml(product) {
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${product.name} | Limited Warranty | Calyco</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; color: #0f1221; margin: 0; padding: 32px; background: #f7f5f1; }
+    main { max-width: 960px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 28px 60px -45px rgba(13, 15, 28, 0.25); }
+    h1 { font-size: 28px; margin: 0 0 12px; }
+    h2 { font-size: 20px; margin: 28px 0 12px; }
+    p { line-height: 1.6; margin: 10px 0; }
+    ul { padding-left: 18px; margin: 8px 0 12px; }
+    li { margin-bottom: 6px; }
+    .meta { font-size: 13px; color: #4a4660; }
+    .callout { background: #f6f3ee; border: 1px solid rgba(0,0,0,0.05); padding: 12px 14px; border-radius: 12px; }
+    .footer { border-top: 1px solid #ece7dd; margin-top: 28px; padding-top: 16px; font-size: 13px; color: #4a4660; }
+    strong { color: #0f1221; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="meta">CALYCO LIMITED WARRANTY</div>
+    <h1>${product.name}</h1>
+    <p class="callout">${introParagraph.trim()}</p>
+
+    <h2>Warranty Coverage</h2>
+    <ul>
+      <li><strong>Products covered:</strong> This warranty applies to ${product.name} when used on ${product.surfaces}.</li>
+      <li><strong>Warranty period:</strong> ${product.warrantyYears} years from purchase for residential or light-commercial use. ${product.highTrafficYears} years for institutional or high-traffic areas (schools, hospitals, retail). Starts on purchase date for the original purchaser.</li>
+      <li><strong>What we promise:</strong>
+        <ul>
+          <li>Adheres tightly to properly prepared and primed surfaces without peeling or blistering.</li>
+          <li>Resists cracking and flaking under normal substrate movement.</li>
+          <li>Maintains colour within acceptable tolerances without excessive fading or discolouration.</li>
+          <li>Remains washable and stain resistant when cleaned per Calyco care instructions.</li>
+          <li>Resists surface mould and fungi when used under normal humidity and ventilation.</li>
+        </ul>
+      </li>
+      <li>If the coating fails as warranted, Calyco will provide replacement product for the affected area or refund the purchase price of the defective product. Labour costs are not covered.</li>
+    </ul>
+
+    <h2>Conditions for Warranty Validity</h2>
+    <ul>
+      <li><strong>Surface suitability:</strong> Substrates must be sound, dry, clean, and free from contaminants. New masonry must cure at least 28 days and be below 15% moisture.</li>
+      <li><strong>Surface preparation:</strong> Follow the applicable Calyco technical data sheet. Remove loose coatings; clean with mild detergent; treat fungus/algae; de-gloss shiny surfaces; apply the recommended Calyco primer or sealer.</li>
+      <li><strong>Application conditions:</strong> Apply between 10&deg;C and 40&deg;C with relative humidity below 80%. Do not paint if rain or condensation is expected within four hours.</li>
+      <li><strong>Application method:</strong> Use brush, roller, or airless spray suitable for water-borne coatings. Stir well. Use only clean water for dilution per product data sheet. Apply at least two full coats at the recommended spread rate; allow 3–4 hours between coats.</li>
+      <li><strong>Maintenance and care:</strong> Avoid cleaning for two weeks post-application. Clean gently with mild soapy water; avoid abrasives or solvents. Maintain ventilation and manage moisture to prevent condensation or fungal growth.</li>
+      <li><strong>Evidence of purchase and compliance:</strong> Retain invoice and batch numbers. Calyco may request photos, preparation records, or inspection reports during claim review.</li>
+    </ul>
+
+    <h2>What the Warranty Does Not Cover</h2>
+    <ul>
+      <li>Improper substrate or preparation, including damp or uncured masonry.</li>
+      <li>Structural or mechanical defects, movement, leaks, efflorescence, rising damp, or hydrostatic pressure.</li>
+      <li>Excess moisture or condensation leading to mould/mildew from poor ventilation or leaks.</li>
+      <li>Surface contact or abrasion damage, chemicals, graffiti, smoke, or abrasive cleaners.</li>
+      <li>External causes such as fire, flood, natural disasters, vandalism, or aggressive fumes.</li>
+      <li>Non-residential chemical exposure (strong acids, alkalis, solvents, bleaches).</li>
+      <li>Misuse or neglect, improper storage, over-dilution, or use of non-recommended tools.</li>
+      <li>Colour or sheen variations due to batch differences, application method, or lighting.</li>
+      <li>Normal ageing after the warranty period.</li>
+      <li>Incidental or consequential damages (labour, equipment, scaffolding, loss of use/revenue).</li>
+    </ul>
+
+    <h2>Warranty Remedy and Limitations</h2>
+    <ul>
+      <li><strong>Replacement:</strong> Calyco provides enough replacement product (or nearest equivalent) to recoat the affected area.</li>
+      <li><strong>Refund:</strong> Calyco may refund the original purchase price of the defective product upon return of the unused portion and proof of purchase.</li>
+      <li>Remedies do not extend or renew the original warranty period. Replacement product is covered only for the remaining term.</li>
+      <li>Except as stated, Calyco makes no other warranties, express or implied. Liability is limited to the purchase price of the product, subject to applicable law.</li>
+    </ul>
+
+    <h2>How to Make a Warranty Claim</h2>
+    <ul>
+      <li><strong>Notify promptly:</strong> Inspect surfaces periodically. Notify Calyco within 30 days of discovering a defect.</li>
+      <li><strong>Provide documentation:</strong> Send a written claim with invoice, product name, batch number, colour, photos, description, surface prep details, primer used, coat count, dilution, and environmental conditions.</li>
+      <li><strong>Allow inspection:</strong> Calyco may inspect the site. If covered, Calyco will arrange the remedy; if not, we will explain the reason.</li>
+      <li><strong>Other rights:</strong> This warranty gives specific legal rights; other rights may vary by jurisdiction.</li>
+    </ul>
+
+    <h2>Transferability</h2>
+    <p>This warranty is non-transferable and applies only to the original purchaser and the original property.</p>
+
+    <h2>Governing Law and Dispute Resolution</h2>
+    <p>This warranty is governed by the laws of the place of purchase. Disputes will be resolved by good-faith negotiation, and if unresolved, by binding arbitration in the purchase jurisdiction.</p>
+
+    <div class="footer">
+      <div><strong>Contact</strong></div>
+      <div>${company.name}</div>
+      <div>${company.address}</div>
+      <div>Phone: ${company.phone} | Email: ${company.email}</div>
+      <div>Website: ${company.site}</div>
+    </div>
+  </main>
+</body>
+</html>`;
+  return html;
+}
+
+products.forEach((product) => {
+  const html = buildWarrantyHtml(product);
+  const filePath = path.join(docsDir, `warranty_${product.slug}.html`);
+  fs.writeFileSync(filePath, html, 'utf8');
+  console.log(`Generated warranty document: ${filePath}`);
+});
+

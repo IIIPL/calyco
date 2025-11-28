@@ -212,8 +212,8 @@ export const exteriorLatexPaintDetail = {
     "Wear gloves, goggles, and long sleeves. Mask adjacent surfaces. Maintain ventilation.",
 
   documents: {
-    tds: "/Assets/docs/luxury-exterior-emulsion-tds.pdf",
-    sds: "/Assets/docs/luxury-exterior-emulsion-sds.pdf",
+    tds: "/Assets/docs/html-templates/luxury-exterior-emulsion-tds.html",
+    sds: "/Assets/docs/html-templates/luxury-exterior-emulsion-sds.html",
     warranty: "/Assets/docs/luxury-exterior-emulsion-warranty.pdf",
   },
 

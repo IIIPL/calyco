@@ -15,6 +15,10 @@ export const products = [
     "default_finish": "Low Sheen",
     "defaultFinish": "Low Sheen",
     "images": ["/Assets/Product Images/Premium Interior Emulsion/1.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/premium-interior-emulsion-sds.html",
+      "tds": "/Assets/docs/html-templates/premium-interior-emulsion-tds.html"
+    },
     "priceByFinish": {
       "Low Sheen": {
         "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663690600566" },
@@ -40,6 +44,10 @@ export const products = [
     "default_finish": "Pearl",
     "defaultFinish": "Pearl",
     "images": ["/Assets/Product Images/Luxury Interior Emulsion/1.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/luxury-interior-emulsion-sds.html",
+      "tds": "/Assets/docs/html-templates/luxury-interior-emulsion-tds.html"
+    },
     "priceByFinish": {
       "Pearl": {
         "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42619088339062" },
@@ -65,6 +73,10 @@ export const products = [
     "default_finish": "Matte Finish",
     "defaultFinish": "Matte Finish",
     "images": ["/Assets/Product Images/Premium Exterior Emulsion/1.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/premium-exterior-emulsion-sds.html",
+      "tds": "/Assets/docs/html-templates/premium-exterior-emulsion-tds.html"
+    },
     "priceByFinish": {
       "Matte Finish": {
         "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663725006966" },
@@ -90,6 +102,10 @@ export const products = [
     "default_finish": "High Sheen Finish",
     "defaultFinish": "High Sheen Finish",
     "images": ["/Assets/Product Images/Luxury Exterior Emulsion/1.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/luxury-exterior-emulsion-sds.html",
+      "tds": "/Assets/docs/html-templates/luxury-exterior-emulsion-tds.html"
+    },
     "priceByFinish": {
       "High Sheen Finish": {
         "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42637669433462" },
@@ -132,6 +148,10 @@ export const products = [
     "default_finish": "Matte",
     "defaultFinish": "Matte",
     "images": ["/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-water-primer-interior-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-water-primer-interior-tds.html"
+    },
     "priceByFinish": {
       "Matte": {
         "1L": { "price": 285 },
@@ -172,6 +192,10 @@ export const products = [
     "default_finish": "Smooth",
     "defaultFinish": "Smooth",
     "images": ["/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-weather-primer-exterior-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-weather-primer-exterior-tds.html"
+    },
     "priceByFinish": {
       "Smooth": {
         "1L": { "price": 310 },
@@ -212,6 +236,10 @@ export const products = [
     "default_finish": "Smooth",
     "defaultFinish": "Smooth",
     "images": ["/Assets/Product Images/Calyco Acrylic Putty/calyco-acrylic-putty.webp"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-acrylic-wall-putty-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-acrylic-wall-putty-tds.html"
+    },
     "priceByFinish": {
       "Smooth": {
         "1kg": { "price": 65 },

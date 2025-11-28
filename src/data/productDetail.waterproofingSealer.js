@@ -199,8 +199,8 @@ export const waterproofingSealerDetail = {
   },
   safety_precautions: "Wear nitrile gloves, safety goggles, and long sleeves during application. Provide local exhaust ventilation for enclosed areas. Do not ingest product.",
   documents: {
-    tds: "/Assets/docs/waterproofing-sealer-tds.pdf",
-    sds: "/Assets/docs/waterproofing-sealer-sds.pdf",
+    tds: "/Assets/docs/html-templates/waterproofing-sealer-tds.html",
+    sds: "/Assets/docs/html-templates/waterproofing-sealer-sds.html",
     warranty: "/Assets/docs/waterproof-sealer-warranty.pdf",
   },
   specs: {

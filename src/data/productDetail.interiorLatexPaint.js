@@ -197,8 +197,8 @@ export const interiorLatexPaintDetail = {
   },
   safety_precautions: "Premium gloves recommended, well-ventilated area. Wear protective gloves and eye protection during application.",
   documents: {
-    tds: "/Assets/docs/luxury-interior-emulsion-tds.pdf",
-    sds: "/Assets/docs/luxury-interior-emulsion-sds.pdf", 
+    tds: "/Assets/docs/html-templates/luxury-interior-emulsion-tds.html",
+    sds: "/Assets/docs/html-templates/luxury-interior-emulsion-sds.html",
     warranty: "/Assets/docs/luxury-interior-emulsion-warranty.pdf",
   },
   warranty: "5 years",
