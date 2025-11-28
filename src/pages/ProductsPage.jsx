@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiSearch, FiHeart, FiShoppingBag, FiLayers, FiDroplet } from "react-icons/fi";
 import SEO from "../components/SEO";
@@ -99,6 +99,7 @@ const productCatalog = [
 ];
 
 const ProductsPage = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -257,6 +258,16 @@ const ProductsPage = () => {
                       to={`/product/${product.slug}`}
                       className="block relative pt-16 pb-6 px-6 cursor-pointer"
                       aria-label={`View ${product.name}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/product/${product.slug}`);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          navigate(`/product/${product.slug}`);
+                        }
+                      }}
                     >
                       <div className="relative bg-gradient-to-br from-[#f8f6f2] to-[#f4f1f8] rounded-2xl p-8 group-hover:scale-105 transition-transform duration-500">
                         <img
