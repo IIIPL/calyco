@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { CartModal } from './CartModal';
 
-export const CartIcon = () => {
+export const CartIcon = ({ onCartOpen }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { getCartItemCount } = useCart();
   const itemCount = getCartItemCount();
+
+  // Close any open mega menus when cart opens
+  useEffect(() => {
+    if (isModalOpen && onCartOpen) {
+      onCartOpen();
+    }
+  }, [isModalOpen, onCartOpen]);
 
   return (
     <>
@@ -21,7 +28,7 @@ export const CartIcon = () => {
           </span>
         )}
       </button>
-      
+
       <CartModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );

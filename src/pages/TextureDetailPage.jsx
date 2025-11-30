@@ -141,11 +141,21 @@ const TextureDetailPage = () => {
         productType: 'service',
       };
 
-      await addToCart(siteVisitProduct, 'Service', 'One-time', 1, 499, {
-        textureName: texture.name,
-        textureSlug: texture.slug,
-        serviceType: 'Site Visit Consultation',
-      });
+      await addToCart(
+        siteVisitProduct,
+        'Service',
+        'One-time',
+        1,
+        499,
+        null, // No color for services
+        'service', // productType
+        {
+          productType: 'service', // Explicitly set product type
+          textureName: texture.name,
+          textureSlug: texture.slug,
+          serviceType: 'Site Visit Consultation',
+        }
+      );
 
       // Wait longer for cart state to fully update before navigating (500ms to ensure React state settles)
       await new Promise(resolve => setTimeout(resolve, 500));

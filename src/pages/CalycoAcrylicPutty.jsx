@@ -401,10 +401,11 @@ const CalycoAcrylicPutty = () => {
             selectedSize,
             quantity,
             calculatePrice(selectedSize),
-            colorInfo,
-            'paint', // productType
+            null, // No color for putty - it's always white
+            'putty', // productType
             {
                 variantId,
+                productType: 'putty', // Explicitly set product type
                 // Don't pass mixingMode for putty - it doesn't have color mixing options
             }
         );

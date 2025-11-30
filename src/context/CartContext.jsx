@@ -12,20 +12,34 @@ const DEFAULT_COLOR = {
   family: '',
 };
 
-const normaliseColor = (color = {}) => ({
-  name: color.name || color.colorName || DEFAULT_COLOR.name,
-  hex: color.hex || color.colorHex || DEFAULT_COLOR.hex,
-  code: color.code || color.tintCode || color.colorCode || DEFAULT_COLOR.code,
-  family: color.family || color.colorFamily || DEFAULT_COLOR.family,
-});
+const normaliseColor = (color = {}, productType = 'paint') => {
+  // Only apply default color for paint products
+  // Products like putty, primer, service don't need color info
+  const isPaintProduct = productType === 'paint' || productType === 'ready-mixed' || productType === 'tint-on-demand';
+
+  if (!isPaintProduct) {
+    // For non-paint products, only return color if explicitly provided
+    if (!color || (!color.name && !color.colorName && !color.hex && !color.colorHex)) {
+      return null;
+    }
+  }
+
+  return {
+    name: color.name || color.colorName || (isPaintProduct ? DEFAULT_COLOR.name : ''),
+    hex: color.hex || color.colorHex || (isPaintProduct ? DEFAULT_COLOR.hex : ''),
+    code: color.code || color.tintCode || color.colorCode || DEFAULT_COLOR.code,
+    family: color.family || color.colorFamily || DEFAULT_COLOR.family,
+  };
+};
 
 const localItemKey = (item) => {
-  const colour = normaliseColor(item.selectedColor);
-  return [item.id, item.selectedSheen || '', item.selectedSize || '', colour.name || ''].join('|');
+  const colour = normaliseColor(item.selectedColor, item.productType);
+  return [item.id, item.selectedSheen || '', item.selectedSize || '', colour?.name || ''].join('|');
 };
 
 const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType, mixingMode }) => {
-  const normalisedColor = normaliseColor(color);
+  const actualProductType = product?.productType || productType || 'paint';
+  const normalisedColor = normaliseColor(color, actualProductType);
   return {
     id: product?.id || product?.slug || product?.name || Math.random().toString(36).slice(2),
     name: product?.display_name || product?.name || 'Calyco Paint',
@@ -37,7 +51,7 @@ const createLocalCartItem = ({ product, price, finish, size, quantity, color, pr
     image: product?.image || product?.bucketImage || '/Assets/chair.png',
     selectedColor: normalisedColor,
     requiresShipping: product?.requiresShipping !== false, // Default to true unless explicitly false
-    productType: product?.productType || productType || 'paint',
+    productType: actualProductType,
     mixingMode: mixingMode || null, // Store mixing mode (ready-mixed or tint-on-demand)
   };
 };
@@ -61,7 +75,23 @@ export const CartProvider = ({ children }) => {
       if (raw) {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed?.items)) {
-          setItems(parsed.items);
+          // Migrate existing cart items to fix color data for non-paint products
+          const migratedItems = parsed.items.map(item => {
+            const itemProductType = item.productType || 'paint';
+            const isPaintProduct = itemProductType === 'paint' || itemProductType === 'ready-mixed' || itemProductType === 'tint-on-demand';
+
+            // If it's not a paint product, remove color data
+            if (!isPaintProduct && item.selectedColor) {
+              return {
+                ...item,
+                selectedColor: null,
+              };
+            }
+
+            return item;
+          });
+
+          setItems(migratedItems);
         }
       }
     } catch (err) {
@@ -96,9 +126,9 @@ export const CartProvider = ({ children }) => {
       options = {},
     ) => {
       const normalisedQuantity = Math.max(1, parseInt(quantity, 10) || 1);
-      const colour = normaliseColor(selectedColor || {});
-      const basePrice = priceOverride !== undefined ? priceOverride : product?.price;
       const productType = options.productType || selectedColorType || 'paint';
+      const colour = normaliseColor(selectedColor || {}, productType);
+      const basePrice = priceOverride !== undefined ? priceOverride : product?.price;
       const mixingMode = options.mixingMode || selectedColorType; // Use mixingMode from options, or fall back to selectedColorType for backward compatibility
 
       const localItem = createLocalCartItem({

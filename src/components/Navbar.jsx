@@ -137,7 +137,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
         </nav>
 
         <div className="flex items-center">
-          <CartIcon />
+          <CartIcon onCartOpen={() => setDropdownOpen(null)} />
         </div>
       </div>
 
@@ -152,7 +152,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
         </Link>
 
         <div className="flex items-center gap-2">
-          <CartIcon />
+          <CartIcon onCartOpen={() => setDropdownOpen(null)} />
           <button
             className="text-[#493657] text-2xl"
             onClick={() => handleMenuToggle(!menuOpen)}
@@ -185,7 +185,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             <img src="/Logo.png" className="h-10 object-contain" alt="Calyco Logo" />
           </Link>
           <div className="flex items-center gap-4">
-            <CartIcon />
+            <CartIcon onCartOpen={() => setDropdownOpen(null)} />
             <button
               className="text-[#493657] text-2xl font-light"
               onClick={() => handleMenuToggle(false)}

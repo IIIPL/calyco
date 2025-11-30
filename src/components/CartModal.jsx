@@ -23,7 +23,7 @@ export const CartModal = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-2 sm:px-4">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center px-2 sm:px-4">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -83,16 +83,18 @@ export const CartModal = ({ isOpen, onClose }) => {
                         <p className="text-xs sm:text-sm text-gray-600">
                           {item.selectedSheen} • {item.selectedSize}
                         </p>
-                        {/* ✅ Show selected color */}
-                        <div className="flex items-center gap-2 mt-1">
-                          <div 
-                            className="w-4 h-4 rounded-full border"
-                            style={{ backgroundColor: item.selectedColor?.hex || '#F8F4E3' }}
-                          />
-                          <p className="text-sm text-gray-600">
-                            {item.selectedColor?.name || "Serene Ivory"}
-                          </p>
-                        </div>
+                        {/* Only show color for paint products */}
+                        {item.selectedColor && item.selectedColor.name && (
+                          <div className="flex items-center gap-2 mt-1">
+                            <div
+                              className="w-4 h-4 rounded-full border"
+                              style={{ backgroundColor: item.selectedColor.hex }}
+                            />
+                            <p className="text-sm text-gray-600">
+                              {item.selectedColor.name}
+                            </p>
+                          </div>
+                        )}
                         <p className="text-base sm:text-lg font-bold text-[#F0C85A]">
                           {formatPrice(item.price)}
                         </p>

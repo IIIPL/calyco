@@ -20,9 +20,9 @@ const allowedProducts = [
   "Luxury Exterior Emulsion",
   "Premium Exterior Emulsion",
   "Waterproofing Sealer",
-  "Calyco Water Primer (Interior)",
-  "Calyco Acrylic Wall Putty",
-  "Calyco Weather Primer (Exterior)",
+  "Water Primer (Interior)",
+  "Acrylic Wall Putty",
+  "Weather Primer (Exterior)",
 ];
 
 const interiorSlugs = ["calyco-water-primer-interior", "calyco-acrylic-wall-putty"];

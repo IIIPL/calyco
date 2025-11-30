@@ -437,9 +437,10 @@ const CalycoWaterPrimerInterior = () => {
             quantity,
             calculatePrice(selectedSize),
             colorInfo,
-            'paint', // productType
+            'primer', // productType
             {
                 variantId,
+                productType: 'primer', // Explicitly set product type
                 // Don't pass mixingMode for primers - they don't have color mixing options
             }
         );
