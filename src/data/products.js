@@ -136,7 +136,7 @@ export const products = [
     "id": "CalycoWaterPrimerInterior",
     "slug": "calyco-water-primer-interior",
     "url": "https://calycopaints.com/product/calyco-water-primer-interior",
-    "name": "Water Primer (Interior)",
+    "name": "Interior Water-Based Primer",
     "image": "/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp",
     "description": "Premium water-based acrylic primer for interior walls and ceilings with high opacity and excellent sealing.",
     "short-description": "High-opacity primer for superior coverage and adhesion on interior walls.",
@@ -180,7 +180,7 @@ export const products = [
     "id": "CalycoWeatherPrimerExterior",
     "slug": "calyco-weather-primer-exterior",
     "url": "https://calycopaints.com/product/calyco-weather-primer-exterior",
-    "name": "Weather Primer (Exterior)",
+    "name": "Exterior Weather Primer",
     "image": "/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp",
     "description": "High-opacity exterior wall primer designed to protect masonry from harsh weather and provide superior adhesion.",
     "short-description": "Weather-resistant primer for long-lasting exterior walls.",
@@ -219,6 +219,287 @@ export const products = [
       "Fibre cement boards"
     ],
     "substrate": ["Cement plaster", "Concrete", "Brick", "Masonry"]
+  },
+  {
+    "id": "CalycoSolventPrimerInterior",
+    "slug": "calyco-solvent-primer-interior",
+    "url": "https://calycopaints.com/product/calyco-solvent-primer-interior",
+    "name": "Interior Solvent Primer",
+    "image": "/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp",
+    "description": "Solvent-based alkyd primer for interior masonry, wood, and metal surfaces; provides superior adhesion and high opacity.",
+    "short-description": "Bond, seal, and protect with a versatile interior alkyd primer.",
+    "category": "primer",
+    "finish_type_sheen": ["Matte"],
+    "finishes": ["Matte"],
+    "price": 280,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Matte",
+    "defaultFinish": "Matte",
+    "images": ["/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp"],
+    "priceByFinish": {
+      "Matte": {
+        "1L": { "price": 280 },
+        "4L": { "price": 1050 },
+        "10L": { "price": 2500 },
+        "20L": { "price": 4800 }
+      }
+    },
+    "coverage": "140-160 sq.ft./L",
+    "drying_time": "1 hour (touch dry)",
+    "recoat_time": "6 hours",
+    "voc_content": "< 200 g/L",
+    "base_type": "Solvent-based alkyd",
+    "warranty": "5 years",
+    "product_code": "CAL-PRI-ST-INT-004",
+    "recommendedUses": [
+      "Interior masonry",
+      "Wood surfaces",
+      "Metal surfaces",
+      "Plaster",
+      "Gypsum boards"
+    ],
+    "substrate": ["Plaster", "Wood", "Metal", "Gypsum board", "Concrete"]
+  },
+  {
+    "id": "CalycoDampGuardPrimer",
+    "slug": "calyco-damp-guard-primer",
+    "url": "https://calycopaints.com/product/calyco-damp-guard-primer",
+    "name": "Damp Guard Primer",
+    "image": "/Assets/Product Images/Damp Guard Primer/damp-guard-primer.webp",
+    "description": "Waterproofing primer forming a flexible, breathable barrier to resist dampness, efflorescence, and hairline cracks on interior and exterior surfaces.",
+    "short-description": "Keep walls dry and protected with a damp-proof base.",
+    "category": "primer",
+    "finish_type_sheen": ["Matte"],
+    "finishes": ["Matte"],
+    "price": 400,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Matte",
+    "defaultFinish": "Matte",
+    "images": ["/Assets/Product Images/Damp Guard Primer/damp-guard-primer.webp"],
+    "priceByFinish": {
+      "Matte": {
+        "1L": { "price": 400 },
+        "4L": { "price": 1500 },
+        "10L": { "price": 3600 },
+        "20L": { "price": 6800 }
+      }
+    },
+    "coverage": "90-110 sq.ft./L per coat",
+    "drying_time": "45 minutes (surface dry)",
+    "recoat_time": "5 hours",
+    "voc_content": "< 50 g/L",
+    "base_type": "Water-based acrylic elastomeric",
+    "warranty": "7 years",
+    "product_code": "CAL-PRI-WP-005",
+    "recommendedUses": [
+      "Bathrooms",
+      "Kitchens",
+      "Basements",
+      "Roof slabs",
+      "Exterior walls"
+    ],
+    "substrate": ["Cement plaster", "Concrete", "Brick", "Masonry", "Fibre cement board"]
+  },
+  {
+    "id": "CalycoUniversalPrimer",
+    "slug": "calyco-universal-primer",
+    "url": "https://calycopaints.com/product/calyco-universal-primer",
+    "name": "Universal Primer",
+    "image": "/Assets/Product Images/Universal Primer/universal-primer.webp",
+    "description": "Solvent-based universal primer that delivers superior adhesion and corrosion protection on metal, wood, and masonry surfaces.",
+    "short-description": "Versatility meets performance in a single powerful primer.",
+    "category": "primer",
+    "finish_type_sheen": ["Matte"],
+    "finishes": ["Matte"],
+    "price": 360,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Matte",
+    "defaultFinish": "Matte",
+    "images": ["/Assets/Product Images/Universal Primer/universal-primer.webp"],
+    "priceByFinish": {
+      "Matte": {
+        "1L": { "price": 360 },
+        "4L": { "price": 1350 },
+        "10L": { "price": 3200 },
+        "20L": { "price": 6100 }
+      }
+    },
+    "coverage": "140-150 sq.ft./L",
+    "drying_time": "1 hour (touch dry)",
+    "recoat_time": "8 hours",
+    "voc_content": "< 250 g/L",
+    "base_type": "Solvent-based alkyd",
+    "warranty": "5 years",
+    "product_code": "CAL-PRI-UNI-006",
+    "recommendedUses": [
+      "Metal gates & railings",
+      "Wooden furniture & doors",
+      "Masonry walls",
+      "GI sheet roofing",
+      "Fibre cement boards"
+    ],
+    "substrate": ["Metal", "Wood", "Masonry", "GI sheet", "Fibre cement board"]
+  },
+  {
+    "id": "CalycoAmrellaEnamel",
+    "slug": "calyco-amrella-enamel",
+    "url": "https://calycopaints.com/product/calyco-amrella-enamel",
+    "name": "Dura-Shield Enamel",
+    "image": "/Assets/Product Images/Dura-Shield Enamel/dura-shield-enamel.webp",
+    "description": "Modified-alkyd enamel providing a high-gloss finish for wood, metal, and masonry with rust protection and moisture resistance.",
+    "short-description": "High-gloss enamel with weather shield and rust protection.",
+    "category": "enamel",
+    "finish_type_sheen": ["High Gloss"],
+    "finishes": ["High Gloss"],
+    "price": 450,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "High Gloss",
+    "defaultFinish": "High Gloss",
+    "images": [],
+    "priceByFinish": {
+      "High Gloss": {
+        "1L": { "price": 450 },
+        "4L": { "price": 1600 },
+        "10L": { "price": 3500 },
+        "20L": { "price": 6500 }
+      }
+    },
+    "coverage": "100-140 sq.ft./L",
+    "drying_time": "1-2 hours (surface dry)",
+    "recoat_time": "6-8 hours",
+    "voc_content": "≤ 300 g/L",
+    "base_type": "Modified alkyd resin",
+    "warranty": "5 years",
+    "product_code": "CAL-ENL-HG-001",
+    "recommendedUses": [
+      "Interior & exterior wood",
+      "Metal surfaces",
+      "Masonry",
+      "Plaster"
+    ],
+    "substrate": ["Wood", "Metal", "Masonry", "Plaster"]
+  },
+  {
+    "id": "CalycoPUWoodCoating",
+    "slug": "calyco-pu-wood-coating",
+    "url": "https://calycopaints.com/product/calyco-pu-wood-coating",
+    "name": "PU Wood Coating",
+    "image": "/Assets/Product Images/PU Wood Coating/pu-wood-coating.webp",
+    "description": "Two-component polyurethane clear coat delivering non-yellowing high gloss with superior scratch, stain, and heat resistance for wood surfaces.",
+    "short-description": "Clear, durable PU high-gloss protection for wood.",
+    "category": "wood",
+    "finish_type_sheen": ["High Gloss"],
+    "finishes": ["High Gloss"],
+    "price": 550,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "High Gloss",
+    "defaultFinish": "High Gloss",
+    "images": ["/Assets/Product Images/PU Wood Coating/pu-wood-coating.webp"],
+    "priceByFinish": {
+      "High Gloss": {
+        "1L": { "price": 550 },
+        "4L": { "price": 2000 },
+        "10L": { "price": 4800 },
+        "20L": { "price": 9200 }
+      }
+    },
+    "coverage": "80-100 sq.ft./L",
+    "drying_time": "1-2 hours (touch dry)",
+    "recoat_time": "6 hours",
+    "voc_content": "≤ 350 g/L",
+    "base_type": "Acrylic polyurethane (2-component)",
+    "warranty": "5 years",
+    "product_code": "CAL-WOOD-PU-002",
+    "recommendedUses": [
+      "Wood furniture",
+      "Doors & windows",
+      "MDF surfaces",
+      "Veneer",
+      "Wooden flooring"
+    ],
+    "substrate": ["Wood", "MDF", "Veneer"]
+  },
+  {
+    "id": "CalycoAcrylicWashableDistemper",
+    "slug": "calyco-acrylic-washable-distemper",
+    "url": "https://calycopaints.com/product/calyco-acrylic-washable-distemper",
+    "name": "Acrylic Washable Distemper",
+    "image": "/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp",
+    "description": "Economical water-based distemper with smooth matt finish, good washability, and fast drying for everyday interior walls and ceilings.",
+    "short-description": "Smooth, washable matt finish for interiors.",
+    "category": "interior",
+    "finish_type_sheen": ["Matt"],
+    "finishes": ["Matt"],
+    "price": 80,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Matt",
+    "defaultFinish": "Matt",
+    "images": ["/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp"],
+    "priceByFinish": {
+      "Matt": {
+        "1L": { "price": 80 },
+        "4L": { "price": 300 },
+        "10L": { "price": 600 },
+        "20L": { "price": 1000 }
+      }
+    },
+    "coverage": "35-40 sq.ft./L (2 coats)",
+    "drying_time": "30 minutes (touch dry)",
+    "recoat_time": "4-6 hours",
+    "voc_content": "≤ 50 g/L",
+    "base_type": "Acrylic copolymer emulsion",
+    "warranty": "2 years",
+    "product_code": "CAL-DIST-WB-003",
+    "recommendedUses": [
+      "Interior walls",
+      "Ceilings",
+      "Plaster surfaces",
+      "Concrete",
+      "False ceilings",
+      "Asbestos sheets"
+    ],
+    "substrate": ["Plaster", "Concrete", "Asbestos sheet", "False ceiling"]
+  },
+  {
+    "id": "CalycoAllSurfaceCoating",
+    "slug": "calyco-all-surface-coating",
+    "url": "https://calycopaints.com/product/calyco-all-surface-coating",
+    "name": "All Surface Coating",
+    "image": "/Assets/Product Images/All Surface Coating/all-surface-coating.webp",
+    "description": "Multi-surface acrylic-alkyd hybrid with built-in primer delivering semi-gloss/satin finish and weather protection for wood, metal, plastic, masonry, and walls.",
+    "short-description": "One paint for every surface—strong adhesion and weather resistance.",
+    "category": "multi-surface",
+    "finish_type_sheen": ["Semi-Gloss/Satin"],
+    "finishes": ["Semi-Gloss/Satin"],
+    "price": 450,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Semi-Gloss/Satin",
+    "defaultFinish": "Semi-Gloss/Satin",
+    "images": ["/Assets/Product Images/All Surface Coating/all-surface-coating.webp"],
+    "priceByFinish": {
+      "Semi-Gloss/Satin": {
+        "1L": { "price": 450 },
+        "4L": { "price": 1700 },
+        "10L": { "price": 3800 },
+        "20L": { "price": 7200 }
+      }
+    },
+    "coverage": "80-120 sq.ft./L",
+    "drying_time": "1 hour (touch dry)",
+    "recoat_time": "4 hours",
+    "voc_content": "≤ 100 g/L",
+    "base_type": "Acrylic-alkyd hybrid",
+    "warranty": "3 years",
+    "product_code": "CAL-AS-COAT-004",
+    "recommendedUses": [
+      "Wood surfaces",
+      "Metal surfaces",
+      "Plastic",
+      "Masonry",
+      "Concrete",
+      "Interior & exterior walls"
+    ],
+    "substrate": ["Wood", "Metal", "Plastic", "Masonry", "Concrete"]
   },
   {
     "id": "CalycoAcrylicWallPutty",

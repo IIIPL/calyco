@@ -36,13 +36,13 @@ const documentLinks = [
     icon: "💧"
   },
   {
-    name: "Calyco Water Primer (Interior)",
+    name: "Interior Water-Based Primer",
     desc: "Warranty coverage for interior water-based primer.",
     href: "/Assets/docs/warranty_calyco-water-primer-interior.html",
     icon: "🧪"
   },
   {
-    name: "Calyco Weather Primer (Exterior)",
+    name: "Exterior Weather Primer",
     desc: "Warranty coverage for exterior weather primer.",
     href: "/Assets/docs/warranty_calyco-weather-primer-exterior.html",
     icon: "🌦️"

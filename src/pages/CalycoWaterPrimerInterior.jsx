@@ -13,13 +13,13 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 // --- DATA DEFINITION FOR PRIMER (Embedded for self-containment) ---
 const interiorPrimerDetail = {
   id: "calyco-water-primer-interior",
-  name: "Calyco Water Primer (Interior)",
+  name: "Interior Water-Based Primer",
   slug: "calyco-water-primer-interior",
   image: "/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp",
   images: ["/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp"],
   description: "Premium water-based acrylic primer for interior walls and ceilings with high opacity and excellent sealing properties.",
   tagline: "Seals and brightens your walls for a perfect paint finish.",
-  details: "Calyco Water Primer (Interior) is a water-based acrylic emulsion designed to seal porous surfaces and improve the adherence of topcoats. It provides excellent whiteness and opacity, ensuring that your finish coats look rich and vibrant while extending their coverage.",
+  details: "Interior Water-Based Primer is a water-based acrylic emulsion designed to seal porous surfaces and improve the adherence of topcoats. It provides excellent whiteness and opacity, ensuring that your finish coats look rich and vibrant while extending their coverage.",
   finish_type_sheen: ["Matte"],
   defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],

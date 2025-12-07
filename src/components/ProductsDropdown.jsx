@@ -7,52 +7,64 @@ import { getProductPath } from "../utils/productHelpers";
 import MobileChevron from "./MobileChevron";
 
 const leftMenu = [
-  { key: "Interior", label: "Interior" },
-  { key: "Exterior", label: "Exterior" },
-  { key: "WaterproofingSealer", label: "Waterproofing Sealer" },
+  { key: "Interior", label: "Interior (Wall Paints)" },
+  { key: "Exterior", label: "Exterior (Wall Paints)" },
+  { key: "WoodMetal", label: "Wood & Metal (Enamels & Coatings)" },
+  { key: "PrimersSeal", label: "Primers & Sealers" },
+  { key: "Waterproofing", label: "Waterproofing" },
   { key: "All", label: "Show All Products" },
 ];
 
-// Only show these specific products in the dropdown
-const allowedProducts = [
-  "Luxury Interior Emulsion",
-  "Premium Interior Emulsion",
-  "Luxury Exterior Emulsion",
-  "Premium Exterior Emulsion",
-  "Waterproofing Sealer",
-  "Water Primer (Interior)",
-  "Acrylic Wall Putty",
-  "Weather Primer (Exterior)",
-];
-
-const interiorSlugs = ["calyco-water-primer-interior", "calyco-acrylic-wall-putty"];
-const exteriorSlugs = ["calyco-weather-primer-exterior"];
-
-const grouped = {
-  Interior: allProducts.filter((p) =>
-    (
-      p.category?.toLowerCase() === "interior" ||
-      interiorSlugs.includes(p.slug)
-    ) &&
-    allowedProducts.includes(p.name)
-  ),
-  Exterior: allProducts.filter((p) =>
-    (
-      p.category?.toLowerCase() === "exterior" ||
-      exteriorSlugs.includes(p.slug)
-    ) &&
-    allowedProducts.includes(p.name)
-  ),
-  WaterproofingSealer: allProducts.filter((p) => {
-    const c = p.category?.toLowerCase() || "";
-    return c.includes("stain") || c.includes("sealer"); // matches "stain & sealer"
-  }),
-  All: allProducts.filter((p) =>
-    allowedProducts.includes(p.name) ||
-    p.category?.toLowerCase().includes("stain") ||
-    p.category?.toLowerCase().includes("sealer")
-  ),
+// Explicit grouping by category and order
+const groups = {
+  Interior: [
+    { slug: "Premium-Interior-Emulsion", name: "Premium Interior Emulsion" },
+    { slug: "Interior-Latex-Paint", name: "Luxury Interior Emulsion" },
+    { slug: "calyco-acrylic-washable-distemper", name: "Acrylic Washable Distemper" },
+  ],
+  Exterior: [
+    { slug: "Premium-Exterior-Emulsion", name: "Premium Exterior Emulsion" },
+    { slug: "Exterior-Latex-Paint", name: "Luxury Exterior Emulsion" },
+    { slug: "calyco-all-surface-coating", name: "All Surface Coating" },
+  ],
+  WoodMetal: [
+    { slug: "calyco-amrella-enamel", name: "Dura-Shield Enamel" },
+    { slug: "calyco-pu-wood-coating", name: "PU Wood Coating" },
+  ],
+  PrimersSeal: [
+    { slug: "calyco-water-primer-interior", name: "Interior Water-Based Primer" },
+    { slug: "calyco-weather-primer-exterior", name: "Exterior Weather Primer" },
+    { slug: "calyco-solvent-primer-interior", name: "Interior Solvent Primer" },
+    { slug: "calyco-universal-primer", name: "Universal Primer" },
+    { slug: "calyco-acrylic-wall-putty", name: "Acrylic Wall Putty" },
+  ],
+  Waterproofing: [
+    { slug: "waterproofing-sealer", name: "Waterproofing Sealer" },
+    { slug: "calyco-damp-guard-primer", name: "Damp Guard Primer" },
+  ],
 };
+
+const findProductBySlug = (slug) =>
+  allProducts.find((p) => p.slug === slug) ||
+  allProducts.find((p) => (p.url || "").endsWith(slug)) ||
+  allProducts.find((p) => (p.id || "").toLowerCase() === slug.toLowerCase());
+
+const grouped = Object.fromEntries(
+  Object.entries(groups).map(([key, items]) => {
+    const list = items
+      .map((item) => {
+        if (item.divider) return item;
+        const product = findProductBySlug(item.slug);
+        if (!product) return null;
+        return {
+          ...product,
+          display_name: item.name || product.name,
+        };
+      })
+      .filter(Boolean);
+    return [key, list];
+  })
+);
 
 // Fallback: first interior product (used when visible list is empty but we still need one entry)
 const interiorPrimary = allProducts.find(
@@ -69,18 +81,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [submenuOpen, setSubmenuOpen] = useState(null);
   const navigate = useNavigate();
 
-  const getProductsForMenu = (menuKey) => {
-    const list = grouped[menuKey] || [];
-    if (menuKey === "Interior") {
-      if (list.length) return list;
-      return interiorPrimary ? [interiorPrimary] : [];
-    }
-    if (menuKey === "Exterior") {
-      if (list.length) return list;
-      return exteriorPrimary ? [exteriorPrimary] : [];
-    }
-    return list;
-  };
+  const getProductsForMenu = (menuKey) => grouped[menuKey] || [];
 
   // Use centralized product path helper
   const buildProductPath = (product) => getProductPath(product);
@@ -88,9 +89,9 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   useEffect(() => {
     const productsForMenu = getProductsForMenu(selectedMenu);
     if (productsForMenu.length) {
-      setHovered(productsForMenu[0]);
-    } else if (selectedMenu === "All" && grouped.All?.length) {
-      setHovered(grouped.All[0]);
+      // Skip dividers when picking default hovered item
+      const firstProduct = productsForMenu.find((p) => !p.divider);
+      setHovered(firstProduct || null);
     } else {
       setHovered(null);
     }
@@ -146,7 +147,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                     } pl-4`}
                   >
                     {(() => {
-                      const menuProducts = getProductsForMenu(item.key);
+                      const menuProducts = getProductsForMenu(item.key).filter((p) => !p.divider);
                       if (!menuProducts.length) return null;
                       return menuProducts.map((product) => (
                         <Link
@@ -190,12 +191,12 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         <div
           className="
             flex flex-col
-            min-w-[120px] max-w-[140px]
-            sm:min-w-[140px] sm:max-w-[160px]
-            md:min-w-[180px] md:max-w-[200px]
-            lg:min-w-[200px] lg:max-w-[220px]
+            min-w-[180px] max-w-[220px]
+            sm:min-w-[200px] sm:max-w-[240px]
+            md:min-w-[220px] md:max-w-[260px]
+            lg:min-w-[220px] lg:max-w-[260px]
             border-r border-[#e5e0d8]
-            pr-2 sm:pr-3 md:pr-6 lg:pr-10
+            pr-4 sm:pr-5 md:pr-6 lg:pr-10
           "
         >
           {leftMenu.map((item) => (

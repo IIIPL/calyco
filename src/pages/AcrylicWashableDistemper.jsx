@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle, FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiStar, FiWind, FiDownload, FiSun } from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiDollarSign, FiType, FiThermometer, FiRepeat, FiClock, FiShield, FiArchive, FiAlertCircle, FiInfo, FiHash, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiStar, FiWind, FiDownload } from 'react-icons/fi';
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
@@ -10,75 +10,74 @@ import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
-// --- DATA DEFINITION FOR WEATHER PRIMER (Embedded for self-containment) ---
-const exteriorPrimerDetail = {
-  id: "calyco-weather-primer-exterior",
-  name: "Exterior Weather Primer",
-  slug: "calyco-weather-primer-exterior",
-  image: "/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp",
-  images: ["/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp"],
-  description: "High-performance water-based exterior wall primer with superior adhesion, alkali resistance, and weather protection properties.",
-  tagline: "The ultimate foundation for lasting exterior protection.",
-  details: "Exterior Weather Primer is a specially formulated acrylic primer designed to protect exterior walls. It penetrates deeply to seal the surface, resists alkali and efflorescence, and provides a strong bond for the topcoat, ensuring your exterior paint lasts longer in harsh weather conditions.",
-  finish_type_sheen: ["Smooth"],
-  defaultFinish: "Smooth",
+// --- DATA DEFINITION FOR DISTEMPER (Embedded for self-containment) ---
+const distemperDetail = {
+  id: "calyco-acrylic-washable-distemper",
+  name: "Acrylic Washable Distemper",
+  slug: "calyco-acrylic-washable-distemper",
+  image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
+  images: [],
+  description: "Economical, water-based distemper providing smooth, matt interiors with good washability and quick drying—ideal for everyday living.",
+  tagline: "Affordable washable finish for everyday living.",
+  details: "Acrylic Washable Distemper delivers a micro-smooth matt look with bright colours, fast drying, and good washability at an accessible price. Great for interior walls, ceilings, plaster, concrete, and false ceilings.",
+  finish_type_sheen: ["Matt"],
+  defaultFinish: "Matt",
   packaging: ["1L", "4L", "10L", "20L"],
   priceByFinish: {
-    "Smooth": {
-      "1L": 310,
-      "4L": 1150,
-      "10L": 3100,
-      "20L": 5800,
+    "Matt": {
+      "1L": 80,
+      "4L": 300,
+      "10L": 600,
+      "20L": 1000,
     }
   },
   features: [
-    "Advanced acrylic polymer formula",
-    "Superior alkali and efflorescence resistance",
-    "Excellent adhesion to exterior masonry",
-    "Enhances topcoat coverage and durability",
+    "Smooth matt finish",
+    "Washable and fast drying",
+    "Low VOC",
+    "Economical interior solution",
   ],
   advantages: [
-    "Prevents peeling and flaking of topcoat",
-    "Resists severe weather conditions",
-    "Anti-algal and anti-fungal properties",
-    "Breathable film allows moisture to escape",
-    "Reduces topcoat consumption",
+    "Micro-smooth finish for elegant interiors",
+    "Good washability for easy maintenance",
+    "Fast drying for time savings",
+    "Budget-friendly with low VOC",
   ],
-  application: ["Exterior walls", "Parapets", "Compound walls"],
-  recommended_uses: ["Concrete", "Plaster", "Brickwork", "Asbestos"],
-  substrate: ["Cement Plaster", "Concrete", "Brick", "Masonry"],
-  coats_required: "1 coat",
-  coverage: "150-180 sq.ft./L",
+  application: ["Interior walls", "Ceilings", "Plaster", "Concrete", "False ceilings", "Asbestos sheets"],
+  recommended_uses: ["Interior walls", "Ceilings", "Plaster", "Concrete", "False ceilings", "Asbestos sheets"],
+  substrate: ["Plaster", "Concrete", "Asbestos sheet", "False ceiling"],
+  coats_required: "2 coats",
+  coverage: "35-40 sq.ft./L (2 coats)",
   technicalSpecs: {
-    product_code: "CAL-PRI-WB-EXT-002",
-    base_type: "100% Acrylic Latex",
-    voc_content: "< 50 g/L",
-    dryingTime: "30-45 minutes (Surface Dry)",
+    product_code: "CAL-DIST-WB-003",
+    base_type: "Acrylic copolymer emulsion",
+    voc_content: "≤ 50 g/L",
+    dryingTime: "30 minutes (touch dry)",
     recoatTime: "4-6 hours",
-    application_instructions: "Dilute up to 15% with clean water. Apply with brush, roller or spray.",
+    application_instructions: "Stir well. First coat diluted 60-70% water; second coat 40-50% water. Apply evenly by brush/roller. Avoid very hot or humid conditions.",
     shelf_life: "3 Years",
-    storage_temp: "Cool, dry place away from direct sunlight",
+    storage_temp: "Cool, dry place; protect from freezing and sunlight",
     cleanup: "Clean water",
   },
   safety_warnings: {
-    hazard_statements: ["Harmful to aquatic life with long lasting effects if poured in drains."],
-    precautionary_statements: ["Avoid release to the environment.", "Wear protective gloves/clothing.", "Use in well-ventilated areas."],
+    hazard_statements: ["May cause mild skin/eye irritation."],
+    precautionary_statements: ["Keep out of reach of children.", "Avoid contact with eyes and skin.", "Use in well-ventilated area.", "Do not freeze.", "Store in cool, dry place."],
     first_aid: {
-        inhalation: "Move to fresh air. Keep warm and at rest.",
-        skin_contact: "Remove contaminated clothing. Wash skin thoroughly with soap and water.",
-        eye_contact: "Rinse cautiously with water for several minutes. Remove contact lenses if present.",
-        ingestion: "If swallowed, seek medical advice immediately."
+        inhalation: "Move to fresh air. Seek medical attention if symptoms persist.",
+        skin_contact: "Wash with soap and water.",
+        eye_contact: "Rinse cautiously with water for several minutes.",
+        ingestion: "Do not induce vomiting. Seek medical attention immediately."
     }
   }
 };
 
-// MRP pricing for Weather Primer (Exterior)
-const EXTERIOR_PRIMER_MRP = {
-  'Smooth': {
-    '1L': 388,
-    '4L': 1438,
-    '10L': 3875,
-    '20L': 7250,
+// MRP pricing
+const DISTEMPER_MRP = {
+  'Matt': {
+    '1L': 80,
+    '4L': 300,
+    '10L': 600,
+    '20L': 1000,
   },
 };
 
@@ -90,8 +89,9 @@ const slugify = (value) =>
     ? value.toString().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
     : "";
 
-const CalycoWeatherPrimerExterior = () => {
-    // Logic for colors (Standard template structure, though primers are usually white)
+const AcrylicWashableDistemper = () => {
+    // Note: Primers often don't have color families, but we keep the logic to match the template structure.
+    // If colorData is empty or irrelevant for primer, this section effectively hides itself via checks later.
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -106,7 +106,7 @@ const CalycoWeatherPrimerExterior = () => {
             .filter((family) => family.code && family.colors.length > 0);
     }, []);
 
-    const [selectedSheen, setSelectedSheen] = useState("Low Sheen");
+    const [selectedSheen, setSelectedSheen] = useState("Matte");
     const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
@@ -126,6 +126,7 @@ const CalycoWeatherPrimerExterior = () => {
     const rightColumnRef = useRef(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
+    // For primer, usually availableColors is empty, so the color section will naturally not render
     const availableColors = product?.availableColors || []; 
 
     // Get reviews data
@@ -342,7 +343,7 @@ const CalycoWeatherPrimerExterior = () => {
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
 
-    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Low Sheen";
+    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matte";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
@@ -376,9 +377,9 @@ const CalycoWeatherPrimerExterior = () => {
 
     const displayPriceValue = calculatePrice(selectedSize);
 
-    // Calculate MRP for Weather Primer (Exterior)
+    // Calculate MRP for Interior Water Primer
     const calculateMRP = (sizeLabel) => {
-        const mrpData = EXTERIOR_PRIMER_MRP[normalizedSelectedSheen];
+        const mrpData = DISTEMPER_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
         return mrpData[sizeLabel] || null;
     };
@@ -400,29 +401,29 @@ const CalycoWeatherPrimerExterior = () => {
     }, [activeFinishPricing, product?.packaging]);
 
     useEffect(() => {
-        setProduct(exteriorPrimerDetail);
-        setSelectedSheen(exteriorPrimerDetail.defaultFinish || "Low Sheen");
+        setProduct(distemperDetail);
+        setSelectedSheen(distemperDetail.defaultFinish || "Matt");
 
-        const finishPricing = (exteriorPrimerDetail.priceByFinish || exteriorPrimerDetail.price_by_finish || {})["Low Sheen"];
+        const finishPricing = (distemperDetail.priceByFinish || distemperDetail.price_by_finish || {})["Matt"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {
                 setSelectedSize(sizeKeys[0]);
-            } else if (exteriorPrimerDetail.packaging && exteriorPrimerDetail.packaging.length > 0) {
-                setSelectedSize(exteriorPrimerDetail.packaging[0]);
+            } else if (distemperDetail.packaging && distemperDetail.packaging.length > 0) {
+                setSelectedSize(distemperDetail.packaging[0]);
             }
-        } else if (exteriorPrimerDetail.packaging && exteriorPrimerDetail.packaging.length > 0) {
-            setSelectedSize(exteriorPrimerDetail.packaging[0]);
+        } else if (distemperDetail.packaging && distemperDetail.packaging.length > 0) {
+            setSelectedSize(distemperDetail.packaging[0]);
         }
 
-        if (Array.isArray(exteriorPrimerDetail.images) && exteriorPrimerDetail.images.length > 0) {
-            setSelectedImage(exteriorPrimerDetail.images[0]);
+        if (Array.isArray(distemperDetail.images) && distemperDetail.images.length > 0) {
+            setSelectedImage(distemperDetail.images[0]);
             setSelectedImageIndex(0);
         } else {
-            setSelectedImage(exteriorPrimerDetail.image);
+            setSelectedImage(distemperDetail.image);
             setSelectedImageIndex(0);
         }
-        document.title = exteriorPrimerDetail.name;
+        document.title = distemperDetail.name;
         setLoading(false);
     }, []);
 
@@ -446,7 +447,7 @@ const CalycoWeatherPrimerExterior = () => {
             isVisible: true,
             item: {
                 name: product.name,
-                hex: (colorInfo && colorInfo.hex) || "#FFFFFF",
+                hex: (colorInfo && colorInfo.hex) || "#FFFFFF", // Primers default to white/transparent
                 colorName: colorInfo ? colorInfo.name : "White/Base",
                 colorFamily: colorInfo ? colorInfo.family : undefined,
                 selectedSheen,
@@ -721,28 +722,28 @@ const CalycoWeatherPrimerExterior = () => {
                           </div>
                         )}
 
-                        {/* 3 Feature Cards - Weather Primer Specific */}
+                        {/* 3 Feature Cards - Primer Specific */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-3">
                           <div className="bg-[#00BCD4] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiSun className="w-6 h-6 sm:w-7 sm:h-7 text-[#00BCD4]" />
+                              <FiStar className="w-6 h-6 sm:w-7 sm:h-7 text-[#00BCD4]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Weather Guard</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">All-season protection</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">High Opacity</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Excellent coverage</p>
                           </div>
                           <div className="bg-[#FF9500] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
                               <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF9500]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Alkali Resist</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Prevents degradation</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Superior Adhesion</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Seals surfaces</p>
                           </div>
                           <div className="bg-[#34C759] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiLayers className="w-6 h-6 sm:w-7 sm:h-7 text-[#34C759]" />
+                              <FiClock className="w-6 h-6 sm:w-7 sm:h-7 text-[#34C759]" />
                             </div>
-                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">High Opacity</h4>
-                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Excellent coverage</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Fast Drying</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">30 min dry time</p>
                           </div>
                         </div>
 
@@ -868,12 +869,12 @@ const CalycoWeatherPrimerExterior = () => {
                                       )}
                                     </div>
                                     <div className="flex-1">
-                                      <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
+                                  <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
                                   <p className="text-xs text-[#493657]/70 leading-relaxed">
                                     Factory standard bright white primer.
                                   </p>
                                   <span className="inline-block mt-2 text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded">
-                                    ✓ Factory Fresh
+                                        ✓ Factory Fresh
                                       </span>
                                     </div>
                                   </div>
@@ -905,7 +906,7 @@ const CalycoWeatherPrimerExterior = () => {
                                   </p>
                                   <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">
                                     ✓ Custom Mixed
-                                      </span>
+                                  </span>
                                     </div>
                                   </div>
                                 </button>
@@ -1202,7 +1203,7 @@ const CalycoWeatherPrimerExterior = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/html-templates/calyco-weather-primer-exterior-tds.html"
+                                    href="/Assets/docs/html-templates/calyco-water-primer-interior-tds.html"
                                     download
                                     className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
@@ -1223,7 +1224,7 @@ const CalycoWeatherPrimerExterior = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/html-templates/calyco-weather-primer-exterior-sds.html"
+                                    href="/Assets/docs/html-templates/calyco-water-primer-interior-sds.html"
                                     download
                                     className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
@@ -1235,7 +1236,7 @@ const CalycoWeatherPrimerExterior = () => {
                     </div>
                 </div>
 
-                {/* ENHANCED Features Section - Adapted for Exterior Primer */}
+                {/* ENHANCED Features Section - Adapted for Primer */}
                 <motion.div
                     className="mt-8 sm:mt-12 lg:mt-16"
                     variants={itemVariants}
@@ -1248,46 +1249,46 @@ const CalycoWeatherPrimerExterior = () => {
 
                         <div className="relative z-10">
                             <h2 className="text-3xl sm:text-4xl font-bold text-[#493657] mb-3 sm:mb-4 text-center">Premium Features</h2>
-                            <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">The perfect foundation for exterior durability</p>
+                            <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">Experience the perfect foundation for your walls</p>
 
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 sm:gap-8">
-                                {/* Feature 1: Extreme Adhesion */}
+                                {/* Feature 1: Excellent Whiteness */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFC107] via-[#FFD54F] to-[#FFEB3B] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                                        <FiStar className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Extreme Adhesion</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Bonds powerfully to masonry and concrete, preventing peeling and flaking.</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Excellent Whiteness</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Provides a bright white base that enhances the true color of your topcoat.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#FFC107] to-[#FFC107]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 2: Alkali Shield */}
+                                {/* Feature 2: Superior Adhesion */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#673AB7] via-[#7E57C2] to-[#9575CD] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiShield className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                                        <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Alkali Shield</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Superior resistance to alkali attack and efflorescence from cement surfaces.</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Superior Adhesion</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Creates a strong bond between the surface and the paint, preventing peeling.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#673AB7] to-[#673AB7]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 3: Weather Protection */}
+                                {/* Feature 3: Sealing Properties */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#4CAF50] via-[#66BB6A] to-[#81C784] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiSun className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                                        <FiCheckCircle className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Weather Protection</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Engineered to withstand harsh sunlight, rain, and temperature fluctuations.</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Seals Porous Surfaces</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Effective sealing of porous walls ensuring uniform finish and reduced paint usage.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 4: Anti-Algal */}
+                                {/* Feature 4: Ultra-Low VOC */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiWind className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Anti-Algal</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Resists fungal and algal growth, keeping exterior walls clean and fresh.</p>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Ultra-Low VOC</h3>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Safe for family and environment with minimal odor and emissions.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
                             </div>
@@ -1306,7 +1307,7 @@ const CalycoWeatherPrimerExterior = () => {
                         <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-10 md:flex-row md:items-center md:justify-between">
                             <div>
                                 <h2 className="text-2xl sm:text-3xl font-bold text-[#493657]">You might also like</h2>
-                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Pair your exterior primer with top-tier finish coats.</p>
+                                <p className="text-sm md:text-base text-[#493657]/70 mt-2">Pair your interior makeover with exterior protection and multi-surface sealing.</p>
                             </div>
                             <div className="flex items-center gap-2 text-xs font-medium text-[#493657]/60 uppercase tracking-[0.2em] w-fit">
                                 <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />
@@ -1427,4 +1428,4 @@ const CalycoWeatherPrimerExterior = () => {
     );
 };
 
-export default CalycoWeatherPrimerExterior;
+export default AcrylicWashableDistemper;

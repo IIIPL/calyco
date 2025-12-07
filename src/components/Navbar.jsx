@@ -62,6 +62,20 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  // Close any open dropdown on scroll (megamenu should disappear once user scrolls)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (dropdownOpen) {
+        setDropdownOpen(null);
+      }
+      if (menuOpen) {
+        handleMenuToggle(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dropdownOpen, menuOpen]);
   const  navRef = useRef(null);
   useEffect(() => {
     const handleClickOutsideDropdown = (event) => {

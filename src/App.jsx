@@ -40,6 +40,13 @@ import { DynamicProductPage } from './pages/DynamicProductPage'
 import CalycoWaterPrimerInterior from './pages/CalycoWaterPrimerInterior'
 import CalycoWeatherPrimerExterior from './pages/CalycoWeatherPrimerExterior'
 import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty'
+import CalycoSolventPrimerInterior from './pages/CalycoSolventPrimerInterior'
+import CalycoDampGuardPrimer from './pages/CalycoDampGuardPrimer'
+import CalycoUniversalPrimer from './pages/CalycoUniversalPrimer'
+import AmrellaEnamel from './pages/AmrellaEnamel'
+import PUWoodCoating from './pages/PUWoodCoating'
+import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
+import AllSurfaceCoating from './pages/AllSurfaceCoating'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -173,6 +180,13 @@ function App() {
                   <Route path='/product/calyco-water-primer-interior' element={<CalycoWaterPrimerInterior/>}/>
                   <Route path='/product/calyco-weather-primer-exterior' element={<CalycoWeatherPrimerExterior/>}/>
                   <Route path='/product/calyco-acrylic-wall-putty' element={<CalycoAcrylicPutty/>}/>
+                  <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior/>}/>
+                  <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer/>}/>
+                  <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer/>}/>
+                  <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel/>}/>
+                  <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating/>}/>
+                  <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper/>}/>
+                  <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating/>}/>
                   
                   <Route path='/contractors' element={<ContractorsPage/>}/>
                   <Route path='/government' element={<GovernmentPage/>}/>
