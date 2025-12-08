@@ -4,7 +4,7 @@ import {
   CATEGORIES,
   getCategoryBySlug,
   getPostsByCategory
-} from '../../../data/blogData';
+} from '../../../data/blogData2';
 
 const GOLD_ACCENT = '#FFD700';
 
