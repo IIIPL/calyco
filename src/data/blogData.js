@@ -1,4 +1,4 @@
-export const blogPosts = [
+const blogContentArray = [
   // --- Posts from Today (Dec 8, 2025) ---
   {
     id: 9,
@@ -1007,30 +1007,19 @@ export const blogPosts = [
       <p>Thoroughly clean the crack to remove all loose debris and dust. Apply the sealant deeply into the fissure using a specialized nozzle or putty knife. Once cured, apply a protective final layer of damp-proof primer or paint over the repaired area to blend it seamlessly with the rest of the wall.</p>
     `
   }
-];
-
-// --- ADD THIS CODE TO THE END OF src/data/blogData.js (before the default export) ---
-
-// --- In src/data/blogData.js ---
-
-// --- In src/data/blogData.js ---
-
-// 1. Define blogPosts array (NO 'export' keyword here)
-const blogPosts = [
-    // ... all 30 posts content ...
 ]; 
 
-// 2. Define and Export Helper Functions (Using blogPosts array)
-export const CATEGORIES = ['All', ...new Set(blogPosts.map(post => post.category))].sort();
+// 2. UPDATE THE HELPER FUNCTIONS TO USE THE NEW NAME:
+export const CATEGORIES = ['All', ...new Set(blogContentArray.map(post => post.category))].sort();
 
 export const getCategoryBySlug = (slug) => {
     return CATEGORIES.find(cat => cat.toLowerCase().replace(/\s/g, '-') === slug);
 };
 
 export const getPostsByCategory = (category) => {
-    if (category === 'All') return blogPosts;
-    return blogPosts.filter(post => post.category === category);
+    if (category === 'All') return blogContentArray; // Use new name here
+    return blogContentArray.filter(post => post.category === category); // Use new name here
 };
 
-// 3. Export the blogPosts array as the DEFAULT export
-export default blogPosts;
+// 3. SET THE DEFAULT EXPORT TO THE NEW NAME:
+export default blogContentArray; // Export the new name a

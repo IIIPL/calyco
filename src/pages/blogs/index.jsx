@@ -5,6 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 // Corrected import path for repository consistency
 import blogPosts from '../../data/blogData'; 
 import SEO from '../../components/SEO'; // Assuming you have this component
+import blogPosts from '../../data/blogData';
 
 const BlogCard = ({ post }) => {
   return (
