@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BLOG_POSTS, getCategoryBySlug } from '../../data/blogData';
+import { BLOG_POSTS, getCategoryBySlug } from '../../data/blogData2';
 
 const RelatedPosts = ({ currentPostId, currentCategorySlug, limit = 3 }) => {
   const getRelatedPosts = () => {

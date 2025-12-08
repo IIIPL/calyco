@@ -18,6 +18,7 @@ const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 const Checkout = React.lazy(() => import('./pages/Checkout.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
+// Blog imports are already correctly set up:
 const BlogIndexPage = React.lazy(() => import('./pages/blogs/index.jsx'))
 const BlogCategoryPage = React.lazy(() => import('./pages/blogs/categories/[slug].jsx'))
 const BlogPostPage = React.lazy(() => import('./pages/blogs/[slug].jsx'))
