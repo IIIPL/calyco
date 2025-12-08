@@ -1011,17 +1011,26 @@ export const blogPosts = [
 
 // --- ADD THIS CODE TO THE END OF src/data/blogData.js (before the default export) ---
 
-// 1. Define CATEGORIES (extracts unique categories from the blog list)
-export const CATEGORIES = [...new Set(blogPosts.map(post => post.category)), 'All'].sort();
-// 2. Define getCategoryBySlug (Finds a category based on a URL slug)
+// --- In src/data/blogData.js ---
+
+// --- In src/data/blogData.js ---
+
+// 1. Define blogPosts array (NO 'export' keyword here)
+const blogPosts = [
+    // ... all 30 posts content ...
+]; 
+
+// 2. Define and Export Helper Functions (Using blogPosts array)
+export const CATEGORIES = ['All', ...new Set(blogPosts.map(post => post.category))].sort();
+
 export const getCategoryBySlug = (slug) => {
     return CATEGORIES.find(cat => cat.toLowerCase().replace(/\s/g, '-') === slug);
 };
 
-// 3. Define getPostsByCategory (Filters the posts)
 export const getPostsByCategory = (category) => {
     if (category === 'All') return blogPosts;
     return blogPosts.filter(post => post.category === category);
 };
-// --- END OF NEW CODE ---
+
+// 3. Export the blogPosts array as the DEFAULT export
 export default blogPosts;
