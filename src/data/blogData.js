@@ -1012,8 +1012,7 @@ export const blogPosts = [
 // --- ADD THIS CODE TO THE END OF src/data/blogData.js (before the default export) ---
 
 // 1. Define CATEGORIES (extracts unique categories from the blog list)
-export const CATEGORIES = ['All', ...new Set(blogPosts.map(post => post.category))].sort();
-
+export const CATEGORIES = [...new Set(blogPosts.map(post => post.category)), 'All'].sort();
 // 2. Define getCategoryBySlug (Finds a category based on a URL slug)
 export const getCategoryBySlug = (slug) => {
     return CATEGORIES.find(cat => cat.toLowerCase().replace(/\s/g, '-') === slug);
