@@ -12,6 +12,7 @@ const leftMenu = [
   { key: "WoodMetal", label: "Wood & Metal (Enamels & Coatings)" },
   { key: "PrimersSeal", label: "Primers & Sealers" },
   { key: "Waterproofing", label: "Waterproofing" },
+  { key: "Texture", label: "Texture Paints" },
   { key: "All", label: "Show All Products" },
 ];
 
@@ -41,6 +42,9 @@ const groups = {
   Waterproofing: [
     { slug: "waterproofing-sealer", name: "Waterproofing Sealer" },
     { slug: "calyco-damp-guard-primer", name: "Damp Guard Primer" },
+  ],
+  Texture: [
+    { slug: "calyco-texture-paint", name: "Calyco Texture Paint" },
   ],
 };
 

@@ -15,14 +15,15 @@ const dampGuardDetail = {
   id: "calyco-damp-guard-primer",
   name: "Damp Guard Primer",
   slug: "calyco-damp-guard-primer",
-  image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
-  images: [],
+  image: "/Assets/Product Images/Damp Guard Primer/damp-guard-primer.webp",
+  images: ["/Assets/Product Images/Damp Guard Primer/damp-guard-primer.webp"],
   description: "Advanced waterproofing primer forming a flexible, breathable barrier to resist dampness, efflorescence, and hairline cracks on interior and exterior surfaces.",
   tagline: "Keep walls dry and protected with a reliable damp-proof base.",
   details: "Calyco Damp Guard Primer is a high-performance elastomeric primer that blocks dampness, bridges hairline cracks, and resists efflorescence. Its breathable film lets moisture vapour escape while safeguarding against water damage on bathrooms, kitchens, basements, roof slabs, and exterior walls.",
   finish_type_sheen: ["Matte"],
   defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],
+  // Selling Prices
   priceByFinish: {
     "Matte": {
       "1L": 400,
@@ -71,15 +72,60 @@ const dampGuardDetail = {
   }
 };
 
-// MRP pricing
+// MRP pricing (Higher than selling price to show discount)
 const DAMP_GUARD_MRP = {
   'Matte': {
-    '1L': 400,
-    '4L': 1500,
-    '10L': 3600,
-    '20L': 6800,
+    '1L': 550,   // Selling at 400
+    '4L': 1850,  // Selling at 1500
+    '10L': 4500, // Selling at 3600
+    '20L': 8200, // Selling at 6800
   },
 };
+
+// Custom Reviews Data (Manual Override)
+// Keys 'text' and 'review' ensured for compatibility
+const MANUAL_REVIEWS = [
+  {
+    id: 1,
+    author: "Rajesh Kumar",
+    rating: 5,
+    date: "12 Nov 2025",
+    text: "My bathroom wall was peeling paint always. Painter bhaiya told put this Damp Guard. Now 2 months no problem. Very good waterproofing primer. Paisa vasool hai 👍👍",
+    review: "My bathroom wall was peeling paint always. Painter bhaiya told put this Damp Guard. Now 2 months no problem. Very good waterproofing primer. Paisa vasool hai 👍👍"
+  },
+  {
+    id: 2,
+    author: "Sunita Menon",
+    rating: 5,
+    date: "28 Oct 2025",
+    text: "Used in kitchen area where sink pipe leak was there. After fixing pipe we apply this. Dry very fast and no smell. Wall looks fresh now. Happy with result 😊",
+    review: "Used in kitchen area where sink pipe leak was there. After fixing pipe we apply this. Dry very fast and no smell. Wall looks fresh now. Happy with result 😊"
+  },
+  {
+    id: 3,
+    author: "Vikram Patil",
+    rating: 4,
+    date: "05 Dec 2025",
+    text: "Best for ground floor walls. In rainy season dampness come but this time I paint before rain. No chip-chip, wall is dry. Price is little high but quality is A1 💯. Must buy.",
+    review: "Best for ground floor walls. In rainy season dampness come but this time I paint before rain. No chip-chip, wall is dry. Price is little high but quality is A1 💯. Must buy."
+  },
+  {
+    id: 4,
+    author: "Mrs. Gupta",
+    rating: 5,
+    date: "15 Jan 2026",
+    text: "Good product Calyco. My house is old construction so cracks coming. This primer fill small cracks nicely. Paint shining better on top. Delivery was also fast 🚚",
+    review: "Good product Calyco. My house is old construction so cracks coming. This primer fill small cracks nicely. Paint shining better on top. Delivery was also fast 🚚"
+  },
+  {
+    id: 5,
+    author: "Imran Khan",
+    rating: 5,
+    date: "20 Nov 2025",
+    text: "Applied on roof ceiling. Prevent water mark nicely. Easy to use, I mixed with little water as written. Very strong bonding 👌. Don't think, just buy for damp walls.",
+    review: "Applied on roof ceiling. Prevent water mark nicely. Easy to use, I mixed with little water as written. Very strong bonding 👌. Don't think, just buy for damp walls."
+  }
+];
 
 const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false;
@@ -90,8 +136,6 @@ const slugify = (value) =>
     : "";
 
 const CalycoDampGuardPrimer = () => {
-    // Note: Primers often don't have color families, but we keep the logic to match the template structure.
-    // If colorData is empty or irrelevant for primer, this section effectively hides itself via checks later.
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -126,13 +170,12 @@ const CalycoDampGuardPrimer = () => {
     const rightColumnRef = useRef(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
-    // For primer, usually availableColors is empty, so the color section will naturally not render
     const availableColors = product?.availableColors || []; 
 
-    // Get reviews data
-    const productReviews = product ? getProductReviews(product.id) : [];
-    const averageRating = product ? getAverageRating(product.id) : 0;
-    const totalReviews = product ? getTotalReviews(product.id) : 0;
+    // USE MANUAL REVIEWS INSTEAD OF FETCHED DATA
+    const productReviews = MANUAL_REVIEWS;
+    const totalReviews = MANUAL_REVIEWS.length;
+    const averageRating = MANUAL_REVIEWS.reduce((acc, review) => acc + review.rating, 0) / totalReviews;
 
     // Scroll to reviews
     const scrollToReviews = () => {
@@ -565,7 +608,7 @@ const CalycoDampGuardPrimer = () => {
 
                                 {product.images && product.images.length > 1 && (
                                     <>
-                                        <button
+                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
                                             className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
@@ -625,7 +668,7 @@ const CalycoDampGuardPrimer = () => {
                                 transform: `translateX(-${Math.max(0, (selectedImageIndex - 1) * (80 + 8))}px)`
                               }}
                             >
-                                  {product.images.map((img, idx) => (
+                              {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
                                   onClick={() => {
@@ -774,7 +817,7 @@ const CalycoDampGuardPrimer = () => {
 
                             {/* Size Selection */}
                             {displaySizes.length > 0 && (
-                              <div className="mb-4">
+                                <div className="mb-4">
                                   <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Size</h3>
                                   <div className="flex flex-wrap gap-2">
                                     {displaySizes.map((size) => (
@@ -829,7 +872,7 @@ const CalycoDampGuardPrimer = () => {
                                         )}
                                       </button>
                                     );
-                                })}
+                                  })}
                                 </div>
                                 {selectedColor && (
                                   <p className="text-xs sm:text-sm text-[#493657]/80 mt-3">
@@ -869,7 +912,7 @@ const CalycoDampGuardPrimer = () => {
                                       )}
                                     </div>
                                     <div className="flex-1">
-                                  <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
+                                      <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
                                   <p className="text-xs text-[#493657]/70 leading-relaxed">
                                     Factory standard bright white primer.
                                   </p>
@@ -1405,7 +1448,7 @@ const CalycoDampGuardPrimer = () => {
 
             </motion.section>
 
-            {/* Reviews Section - MOBILE RESPONSIVE */}
+            {/* Reviews Section - Displaying Manual Reviews */}
             {productReviews.length > 0 && (
                 <div className="mt-6 sm:mt-8">
                     <ReviewsSection

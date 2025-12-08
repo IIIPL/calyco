@@ -458,6 +458,8 @@ const Checkout = () => {
                                   item.requiresShipping === false ||
                                   item.name?.toLowerCase().includes('site visit') ||
                                   item.name?.toLowerCase().includes('consultation');
+                const type = (item.productType || '').toLowerCase();
+                const isPaintProduct = type === 'paint' || type === 'ready-mixed' || type === 'tint-on-demand';
 
                 // Determine display image with robust fallback hierarchy
                 let displayImage = '/Assets/placeholder-product.jpg';
@@ -496,17 +498,19 @@ const Checkout = () => {
                       <div className="font-semibold text-[#493657]">{item.name}</div>
                       <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
 
-                      {/* Only show color for non-service items that have a real color selection (not white/default for primers/putty) */}
-                      {!isService && item.selectedColor?.name &&
-                       item.selectedColor.name !== 'Serene Ivory' &&
-                       item.selectedColor.name !== 'Custom Color' &&
-                       item.selectedColor.name !== 'Pure White' &&
-                       item.selectedColor.name !== 'White' && (
-                        <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
-                      )}
+                      {/* Only show color for paint items with an explicit color selection */}
+                      {isPaintProduct &&
+                        !isService &&
+                        item.selectedColor?.name &&
+                        item.selectedColor.name !== 'Serene Ivory' &&
+                        item.selectedColor.name !== 'Custom Color' &&
+                        item.selectedColor.name !== 'Pure White' &&
+                        item.selectedColor.name !== 'White' && (
+                          <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
+                        )}
 
                       {/* Display mixing mode only for products that have color mixing options (ready-mixed or tint-on-demand) */}
-                      {!isService && item.mixingMode &&
+                      {!isService && isPaintProduct && item.mixingMode &&
                        (item.mixingMode === 'ready-mixed' || item.mixingMode === 'tint-on-demand') && (
                         <div className="text-xs text-gray-500">
                           Type: {item.mixingMode === 'ready-mixed' ? 'Ready-Mixed Color' : 'Tint-on-Demand'}

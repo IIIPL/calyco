@@ -502,6 +502,47 @@ export const products = [
     "substrate": ["Wood", "Metal", "Plastic", "Masonry", "Concrete"]
   },
   {
+    "id": "CalycoTexturePaint",
+    "slug": "calyco-texture-paint",
+    "url": "https://calycopaints.com/product/calyco-texture-paint",
+    "name": "Calyco Texture Paint",
+    "image": "/Assets/Product Images/Texture Paints/texture-paints.webp",
+    "description": "Premium decorative cement-based texture coating that transforms plain walls into artistic, weather-resistant surfaces while hiding undulations and hairline cracks.",
+    "short-description": "Decorative wall finish with weather resistance, crack hiding, and anti-algae protection for interior & exterior surfaces.",
+    "category": "texture",
+    "finish_type_sheen": ["Matt / Rustic Texture"],
+    "finishes": ["Matt / Rustic Texture"],
+    "price": 1150,
+    "packaging": ["30 kg"],
+    "default_finish": "Matt / Rustic Texture",
+    "defaultFinish": "Matt / Rustic Texture",
+    "images": ["/Assets/Product Images/Texture Paints/texture-paints.webp"],
+    "priceByFinish": {
+      "Matt / Rustic Texture": {
+        "30 kg": { "price": 1150 }
+      }
+    },
+    "coverage": "3.5 - 4.5 sq.ft./kg (varies by texture depth)",
+    "drying_time": "Touch Dry: 1-2 hours; Hard Dry: 24 hours",
+    "recoat_time": "Patterning window: 10-15 minutes while wet",
+    "voc_content": "Low VOC",
+    "base_type": "Cement-based texture coating",
+    "warranty": "N/A",
+    "product_code": "CAL-TXT-CEM-001",
+    "recommendedUses": [
+      "Exterior facades",
+      "Feature walls",
+      "Boundary walls",
+      "Commercial spaces",
+      "Uneven surfaces"
+    ],
+    "substrate": ["Plaster", "Concrete", "Masonry"],
+    "documents": {
+      "sds": "",
+      "tds": ""
+    }
+  },
+  {
     "id": "CalycoAcrylicWallPutty",
     "slug": "calyco-acrylic-wall-putty",
     "url": "https://calycopaints.com/product/calyco-acrylic-wall-putty",

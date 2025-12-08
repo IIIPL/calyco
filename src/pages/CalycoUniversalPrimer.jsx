@@ -15,14 +15,15 @@ const universalPrimerDetail = {
   id: "calyco-universal-primer",
   name: "Universal Primer",
   slug: "calyco-universal-primer",
-  image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
-  images: [],
+  image: "/Assets/Product Images/Universal Primer/universal-primer.webp",
+  images: ["/Assets/Product Images/Universal Primer/universal-primer.webp"],
   description: "Solvent-based universal primer delivering superior adhesion and corrosion protection on metal, wood, and masonry surfaces.",
   tagline: "Versatility meets performance in one powerful primer.",
   details: "Calyco Universal Primer is an alkyd-based, solvent-borne primer engineered for multi-surface use. It bonds strongly to metal, wood, and masonry, sealing porous substrates while providing corrosion resistance and high opacity for faster topcoat coverage.",
   finish_type_sheen: ["Matte"],
   defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],
+  // Selling Price
   priceByFinish: {
     "Matte": {
       "1L": 360,
@@ -76,15 +77,60 @@ const universalPrimerDetail = {
   }
 };
 
-// MRP pricing
+// MRP pricing (Higher than selling price to show discount)
 const UNIVERSAL_PRIMER_MRP = {
   'Matte': {
-    '1L': 360,
-    '4L': 1350,
-    '10L': 3200,
-    '20L': 6100,
+    '1L': 480,   // Selling at 360
+    '4L': 1700,  // Selling at 1350
+    '10L': 4000, // Selling at 3200
+    '20L': 7500, // Selling at 6100
   },
 };
+
+// Custom Reviews Data (Manual Override)
+// Keys 'text' and 'review' ensured for compatibility
+const MANUAL_REVIEWS = [
+  {
+    id: 1,
+    author: "Rohan Das",
+    rating: 5,
+    date: "18 Nov 2025",
+    text: "Painted my main gate grill. Rust was coming, painter said use this. Very strong smell but finish is hard. Good shining after top coat. Value for money product 👍👍",
+    review: "Painted my main gate grill. Rust was coming, painter said use this. Very strong smell but finish is hard. Good shining after top coat. Value for money product 👍👍"
+  },
+  {
+    id: 2,
+    author: "Anjali Mehta",
+    rating: 4,
+    date: "05 Dec 2025",
+    text: "Used for old wooden almirah. It covers scratches nicely. Drying time is fast, within 1 hour it was ready. Smell is there so open windows. Overall happy 😊",
+    review: "Used for old wooden almirah. It covers scratches nicely. Drying time is fast, within 1 hour it was ready. Smell is there so open windows. Overall happy 😊"
+  },
+  {
+    id: 3,
+    author: "Suresh Babu",
+    rating: 5,
+    date: "22 Jan 2026",
+    text: "Calyco primer is best. Price is less than market big brands but quality same. My contractor also happy with coverage. One tin cover lot of area. Paisa vasool 💰💰",
+    review: "Calyco primer is best. Price is less than market big brands but quality same. My contractor also happy with coverage. One tin cover lot of area. Paisa vasool 💰💰"
+  },
+  {
+    id: 4,
+    author: "Deepak Singh",
+    rating: 4,
+    date: "30 Oct 2025",
+    text: "Very thick primer. Mix turpentine properly otherwise brush mark coming. I applied on balcony railing. Rust protection seems good. Delivery boy came late but product ok 🚚",
+    review: "Very thick primer. Mix turpentine properly otherwise brush mark coming. I applied on balcony railing. Rust protection seems good. Delivery boy came late but product ok 🚚"
+  },
+  {
+    id: 5,
+    author: "Meera K.",
+    rating: 5,
+    date: "12 Nov 2025",
+    text: "Nice product for metal and wood both. I used on window frame. Smooth finish. No tension of rust now. Highly recommend for home use 🏠✨",
+    review: "Nice product for metal and wood both. I used on window frame. Smooth finish. No tension of rust now. Highly recommend for home use 🏠✨"
+  }
+];
 
 const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false;
@@ -96,7 +142,6 @@ const slugify = (value) =>
 
 const CalycoUniversalPrimer = () => {
     // Note: Primers often don't have color families, but we keep the logic to match the template structure.
-    // If colorData is empty or irrelevant for primer, this section effectively hides itself via checks later.
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -131,13 +176,12 @@ const CalycoUniversalPrimer = () => {
     const rightColumnRef = useRef(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
-    // For primer, usually availableColors is empty, so the color section will naturally not render
     const availableColors = product?.availableColors || []; 
 
-    // Get reviews data
-    const productReviews = product ? getProductReviews(product.id) : [];
-    const averageRating = product ? getAverageRating(product.id) : 0;
-    const totalReviews = product ? getTotalReviews(product.id) : 0;
+    // USE MANUAL REVIEWS INSTEAD OF FETCHED DATA
+    const productReviews = MANUAL_REVIEWS;
+    const totalReviews = MANUAL_REVIEWS.length;
+    const averageRating = MANUAL_REVIEWS.reduce((acc, review) => acc + review.rating, 0) / totalReviews;
 
     // Scroll to reviews
     const scrollToReviews = () => {
@@ -382,7 +426,7 @@ const CalycoUniversalPrimer = () => {
 
     const displayPriceValue = calculatePrice(selectedSize);
 
-    // Calculate MRP for Interior Water Primer
+    // Calculate MRP for Universal Primer
     const calculateMRP = (sizeLabel) => {
         const mrpData = UNIVERSAL_PRIMER_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
@@ -570,7 +614,7 @@ const CalycoUniversalPrimer = () => {
 
                                 {product.images && product.images.length > 1 && (
                                     <>
-                                        <button
+                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
                                             className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
@@ -630,7 +674,7 @@ const CalycoUniversalPrimer = () => {
                                 transform: `translateX(-${Math.max(0, (selectedImageIndex - 1) * (80 + 8))}px)`
                               }}
                             >
-                                  {product.images.map((img, idx) => (
+                              {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
                                   onClick={() => {
@@ -668,7 +712,7 @@ const CalycoUniversalPrimer = () => {
                         {/* Product Title */}
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657] leading-tight">{product.name}</h1>
 
-                        {/* Reviews - New Style */}
+                        {/* Reviews - New Style (Using Manual Reviews) */}
                         {totalReviews > 0 && (
                           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
@@ -714,7 +758,7 @@ const CalycoUniversalPrimer = () => {
                         {/* Bullet Points in Card */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
                           <div className="my-2">
-                            <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
+                              <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
                               <ul className="space-y-2 sm:space-y-3">
                                 {product.features.map((feature, idx) => (
                                   <li key={idx} className="flex items-start gap-3">
@@ -779,7 +823,7 @@ const CalycoUniversalPrimer = () => {
 
                             {/* Size Selection */}
                             {displaySizes.length > 0 && (
-                              <div className="mb-4">
+                                <div className="mb-4">
                                   <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Size</h3>
                                   <div className="flex flex-wrap gap-2">
                                     {displaySizes.map((size) => (
@@ -834,7 +878,7 @@ const CalycoUniversalPrimer = () => {
                                         )}
                                       </button>
                                     );
-                                })}
+                                  })}
                                 </div>
                                 {selectedColor && (
                                   <p className="text-xs sm:text-sm text-[#493657]/80 mt-3">
@@ -874,7 +918,7 @@ const CalycoUniversalPrimer = () => {
                                       )}
                                     </div>
                                     <div className="flex-1">
-                                  <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
+                                      <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
                                   <p className="text-xs text-[#493657]/70 leading-relaxed">
                                     Factory standard bright white primer.
                                   </p>
@@ -1410,7 +1454,7 @@ const CalycoUniversalPrimer = () => {
 
             </motion.section>
 
-            {/* Reviews Section - MOBILE RESPONSIVE */}
+            {/* Reviews Section - Displaying Manual Reviews */}
             {productReviews.length > 0 && (
                 <div className="mt-6 sm:mt-8">
                     <ReviewsSection

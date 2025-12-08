@@ -12,10 +12,11 @@ const DEFAULT_COLOR = {
   family: '',
 };
 
+const isPaintProductType = (productType = 'paint') =>
+  productType === 'paint' || productType === 'ready-mixed' || productType === 'tint-on-demand';
+
 const normaliseColor = (color = {}, productType = 'paint') => {
-  // Only apply default color for paint products
-  // Products like putty, primer, service don't need color info
-  const isPaintProduct = productType === 'paint' || productType === 'ready-mixed' || productType === 'tint-on-demand';
+  const isPaintProduct = isPaintProductType(productType);
 
   if (!isPaintProduct) {
     // For non-paint products, only return color if explicitly provided
@@ -39,7 +40,8 @@ const localItemKey = (item) => {
 
 const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType, mixingMode }) => {
   const actualProductType = product?.productType || productType || 'paint';
-  const normalisedColor = normaliseColor(color, actualProductType);
+  const isPaintProduct = isPaintProductType(actualProductType);
+  const normalisedColor = isPaintProduct ? normaliseColor(color, actualProductType) : null;
   return {
     id: product?.id || product?.slug || product?.name || Math.random().toString(36).slice(2),
     name: product?.display_name || product?.name || 'Calyco Paint',

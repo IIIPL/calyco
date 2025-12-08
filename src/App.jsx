@@ -47,6 +47,7 @@ import AmrellaEnamel from './pages/AmrellaEnamel'
 import PUWoodCoating from './pages/PUWoodCoating'
 import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
 import AllSurfaceCoating from './pages/AllSurfaceCoating'
+import TexturePaints from './pages/TexturePaints'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -187,6 +188,7 @@ function App() {
                   <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating/>}/>
                   <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper/>}/>
                   <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating/>}/>
+                  <Route path='/product/calyco-texture-paint' element={<TexturePaints/>}/>
                   
                   <Route path='/contractors' element={<ContractorsPage/>}/>
                   <Route path='/government' element={<GovernmentPage/>}/>
