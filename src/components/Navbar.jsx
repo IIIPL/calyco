@@ -76,7 +76,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [dropdownOpen, menuOpen]);
-  const  navRef = useRef(null);
+  const navRef = useRef(null);
   useEffect(() => {
     const handleClickOutsideDropdown = (event) => {
       if (
@@ -136,6 +136,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
           >Inspirations</button>
+          
+          {/* NEW BLOG LINK - DESKTOP */}
+          <Link
+            to="/blogs"
+            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            onClick={() => setDropdownOpen(null)}
+          >Blog</Link>
 
           <Link
             to="/about"
@@ -238,6 +245,14 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             </div>
 
             <div className="pt-2 flex flex-col gap-4 text-base uppercase tracking-wide text-[#916e9f]">
+              {/* NEW BLOG LINK - MOBILE */}
+              <Link
+                to="/blogs"
+                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
+                onClick={() => handleMenuToggle(false)}
+              >
+                Blog
+              </Link>
               <Link
                 to="/about"
                 className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"

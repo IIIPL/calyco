@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import {
-  CATEGORIES,
-  getCategoryBySlug,
-  getPostsByCategory
-} from '../../../data/blogData';
+import blogPosts, { CATEGORIES, getPostsByCategory, getCategoryBySlug } from '../../../data/blogData';
 
 const GOLD_ACCENT = '#FFD700';
 

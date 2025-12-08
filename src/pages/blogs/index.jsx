@@ -1,236 +1,233 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BLOG_POSTS, CATEGORIES, getCategoryBySlug } from '../../data/blogData';
+import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
+import { Calendar, Clock, Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import blogPosts from '../../data/blogData';
+import SEO from '../../components/SEO'; // Assuming you have this component
 
-const GOLD_ACCENT = '#FFD700';
-
-const BlogIndexPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  // Get featured post (first post with full content)
-  const featuredPost = useMemo(() => {
-    return BLOG_POSTS.find(post => post.content) || BLOG_POSTS[0];
-  }, []);
-
-  // Filter posts based on selected category
-  const displayPosts = useMemo(() => {
-    const posts = selectedCategory === 'all'
-      ? BLOG_POSTS.filter(post => post.id !== featuredPost.id)
-      : BLOG_POSTS.filter(post =>
-          post.category_slug === selectedCategory && post.id !== featuredPost.id
-        );
-    return posts.slice(0, 12); // Show up to 12 posts
-  }, [selectedCategory, featuredPost]);
-
-  const featuredCategory = getCategoryBySlug(featuredPost.category_slug);
-
+const BlogCard = ({ post }) => {
   return (
-    <div className="bg-white text-gray-900">
-      {/* Hero Section */}
-      <section className="relative flex items-center justify-center px-6 py-24 text-center overflow-hidden bg-gradient-to-br from-yellow-50 via-white to-gray-50">
-        <div className="relative max-w-4xl">
-          <span className="uppercase tracking-[0.35em] text-xs text-gray-700">
-            Calyco Paint Blog
-          </span>
-          <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight text-gray-900">
-            Color Inspiration & Expert Advice
-          </h1>
-          <p className="mt-5 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Discover design trends, DIY tutorials, color psychology insights, and professional painting techniques from the Calyco team.
-          </p>
-        </div>
-      </section>
+    <Link
+      to={`/blogs/${post.slug}`}
+      className="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group h-full flex flex-col"
+    >
+      {/* Image Container */}
+      <div className="relative h-56 overflow-hidden">
+        <img
+          src={post.image}
+          alt={post.title}
+          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+      </div>
 
-      {/* Featured Post */}
-      {featuredPost && (
-        <section className="max-w-7xl mx-auto px-6 py-16">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-semibold tracking-wider uppercase text-yellow-700">
-              Featured Article
-            </span>
-            <div className="flex-1 h-px bg-gray-200" />
-          </div>
+      {/* Content */}
+      <div className="p-5 flex flex-col flex-grow">
+        <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2">
+          {post.category}
+        </span>
+        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300 line-clamp-2 mb-3">
+          {post.title}
+        </h3>
 
-          <Link
-            to={featuredPost.slug ? `/blogs/${featuredPost.slug}` : '#'}
-            className="group grid md:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-yellow-400 hover:shadow-xl transition-all duration-300"
-          >
-            <div className="relative overflow-hidden aspect-[4/3]">
-              <img
-                src={featuredPost.image_path}
-                alt={featuredPost.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+        <p className="text-gray-600 line-clamp-3 leading-relaxed text-sm mb-4 flex-grow">
+          {post.summary}
+        </p>
+
+        {/* Meta Information */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+          <div className="flex items-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-1.5" aria-label="Date Published">
+              <Calendar className="w-4 h-4" />
+              <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
             </div>
-
-            <div className="p-8 md:p-12 flex flex-col justify-center">
-              {featuredCategory && (
-                <span
-                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 w-fit"
-                  style={{ backgroundColor: GOLD_ACCENT, color: '#1a1a1a' }}
-                >
-                  {featuredCategory.name}
-                </span>
-              )}
-
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-yellow-700 transition-colors">
-                {featuredPost.title}
-              </h2>
-
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {featuredPost.summary}
-              </p>
-
-              <div className="flex items-center gap-3 text-sm text-gray-500 mb-6">
-                <span>{featuredPost.read_time}</span>
-                {featuredPost.publish_date && (
-                  <>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <time dateTime={featuredPost.publish_date}>
-                      {new Date(featuredPost.publish_date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  </>
-                )}
-              </div>
-
-              <div className="text-yellow-600 font-semibold text-sm uppercase tracking-wide group-hover:underline">
-                Read Full Article →
-              </div>
+            <div className="flex items-center gap-1.5" aria-label="Reading Time">
+              <Clock className="w-4 h-4" />
+              <span>{post.readTime}</span>
             </div>
-          </Link>
-        </section>
-      )}
-
-      {/* Category Filter */}
-      <nav className="sticky top-[72px] z-20 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-3 overflow-x-auto">
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`whitespace-nowrap rounded-full border px-5 py-2.5 text-sm transition-colors duration-200 ${
-                selectedCategory === 'all'
-                  ? 'shadow-sm text-gray-900'
-                  : 'border-gray-200 text-gray-600 hover:text-gray-900'
-              }`}
-              style={
-                selectedCategory === 'all'
-                  ? { backgroundColor: GOLD_ACCENT, borderColor: GOLD_ACCENT }
-                  : undefined
-              }
-            >
-              All Articles
-            </button>
-
-            {CATEGORIES.map((category) => (
-              <button
-                key={category.slug}
-                onClick={() => setSelectedCategory(category.slug)}
-                className={`whitespace-nowrap rounded-full border px-5 py-2.5 text-sm transition-colors duration-200 ${
-                  selectedCategory === category.slug
-                    ? 'shadow-sm text-gray-900'
-                    : 'border-gray-200 text-gray-600 hover:text-gray-900'
-                }`}
-                style={
-                  selectedCategory === category.slug
-                    ? { backgroundColor: GOLD_ACCENT, borderColor: GOLD_ACCENT }
-                    : undefined
-                }
-              >
-                {category.name}
-              </button>
-            ))}
           </div>
         </div>
-      </nav>
-
-      {/* Posts Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post) => {
-            const category = getCategoryBySlug(post.category_slug);
-
-            return (
-              <Link
-                key={post.id}
-                to={post.slug ? `/blogs/${post.slug}` : '#'}
-                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-yellow-400 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="relative overflow-hidden aspect-[3/2]">
-                  <img
-                    src={post.image_path}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-yellow-600 mb-3">
-                    <span>{category?.name}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <span>{post.read_time}</span>
-                  </div>
-
-                  <h3 className="text-xl font-semibold text-gray-900 leading-snug group-hover:text-yellow-700 transition-colors mb-3">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {post.summary}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {displayPosts.length === 0 && (
-          <div className="py-20 text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
-              No articles found in this category
-            </p>
-          </div>
-        )}
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Never Miss an Update
-          </h2>
-          <p className="text-gray-300 mb-8">
-            Get expert color advice, DIY tips, and exclusive offers delivered to your inbox weekly
-          </p>
-
-          <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
-              style={{ backgroundColor: GOLD_ACCENT, color: '#1a1a1a' }}
-            >
-              Subscribe
-            </button>
-          </form>
-
-          <p className="text-xs text-gray-400 mt-4">
-            By subscribing, you agree to our{' '}
-            <Link to="/policies/privacy" className="underline hover:text-white">
-              Privacy Policy
-            </Link>
-          </p>
-        </div>
-      </section>
-    </div>
+      </div>
+    </Link>
   );
 };
 
-export default BlogIndexPage;
+const BlogsPage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [sortBy, setSortBy] = useState('New');
+  const [isCategoryOpen, setIsCategoryOpen] = useState(true);
+
+  // Extract categories dynamically and memoize the result
+  const categories = useMemo(() => {
+    return ['All', ...new Set(blogPosts.map(post => post.category))].sort();
+  }, []);
+
+  const filteredAndSortedPosts = useMemo(() => {
+    let filtered = blogPosts.filter(post => {
+      const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           post.summary.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+
+    if (sortBy === 'New') {
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    // Add logic for 'Popular' if needed
+
+    return filtered;
+  }, [searchTerm, selectedCategory, sortBy]);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  }
+
+
+  return (
+    <>
+      <SEO
+        title="Calyco Expert Guides & Blog | Interior & Exterior Coating Solutions"
+        description="Get inspiring ideas for interior home design, explore latest home decor ideas & trends, waterproofing solutions, and technical coating advice from Calyco experts."
+        canonicalUrl={window.location.origin + "/blogs"}
+      />
+      
+      <div className="min-h-screen bg-white">
+        {/* Simple Header/Hero Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="pt-24 pb-12 px-6 border-b border-gray-100"
+        >
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-2">
+              Calyco Blogs
+            </h1>
+            <p className="text-lg text-gray-600 max-w-3xl">
+              Get inspiring ideas for interior home design, explore latest home decor ideas & trends and more.
+            </p>
+          </div>
+        </motion.section>
+
+        {/* Main Content: Filters + Grid */}
+        <div className="max-w-7xl mx-auto px-6 py-12 flex gap-12">
+          
+          {/* Left Sidebar Filters */}
+          <aside className="hidden lg:block w-72 flex-shrink-0">
+            <div className="sticky top-24 space-y-8">
+              <h3 className="text-lg font-bold text-gray-800 uppercase tracking-wider mb-4 border-b pb-2">
+                Filters
+              </h3>
+
+              {/* Search Bar */}
+              <div className="relative mb-8">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 outline-none transition-all"
+                  aria-label="Search blog articles"
+                />
+              </div>
+
+              {/* Category Filter Group */}
+              <motion.div
+                className="border border-gray-200 rounded-lg p-4 bg-gray-50"
+                initial={false}
+                animate={{ height: isCategoryOpen ? 'auto' : '52px' }}
+                transition={{ duration: 0.3 }}
+                style={{ overflow: 'hidden' }}
+              >
+                <button
+                  onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                  className="flex justify-between items-center w-full text-lg font-semibold text-gray-800 pb-2 focus:outline-none"
+                  aria-expanded={isCategoryOpen}
+                  aria-controls="category-list"
+                >
+                  Category
+                  {isCategoryOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
+                
+                {/* Category Options */}
+                <div id="category-list" className="space-y-2 pt-3">
+                  {categories.map((category) => (
+                    <label 
+                        key={category} 
+                        className="flex items-center text-gray-700 cursor-pointer hover:text-blue-600 transition-colors"
+                        aria-label={`Filter by ${category}`}
+                    >
+                      <input
+                        type="radio"
+                        name="category"
+                        value={category}
+                        checked={selectedCategory === category}
+                        onChange={() => handleCategoryClick(category)}
+                        className="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                      />
+                      <span className="ml-3 text-sm">{category}</span>
+                    </label>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </aside>
+
+          {/* Main Grid Content */}
+          <div className="flex-1 min-w-0">
+            
+            {/* Top Bar: Sort By */}
+            <div className="flex justify-end items-center mb-8">
+              <div className="flex items-center gap-2 text-sm text-gray-700">
+                <span className="uppercase font-medium tracking-wider">Sort By</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="p-1.5 border border-gray-300 rounded-lg cursor-pointer appearance-none bg-white"
+                  aria-label="Sort articles by"
+                >
+                  <option value="New">New</option>
+                  <option value="Popular">Popular</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Blog Grid */}
+            {filteredAndSortedPosts.length === 0 ? (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20 bg-gray-50 rounded-xl"
+              >
+                <p className="text-xl text-gray-500">No articles found matching your criteria.</p>
+                <button 
+                  onClick={() => {setSearchTerm(''); setSelectedCategory('All');}}
+                  className="mt-4 text-blue-600 hover:text-blue-800 transition-colors font-medium"
+                >
+                  Clear Filters
+                </button>
+              </motion.div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredAndSortedPosts.map((post, index) => (
+                  <motion.div
+                    key={post.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                  >
+                    <BlogCard post={post} />
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default BlogsPage;
