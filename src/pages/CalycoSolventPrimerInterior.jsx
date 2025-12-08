@@ -15,8 +15,6 @@ const solventPrimerDetail = {
   id: "calyco-solvent-primer-interior",
   name: "Interior Solvent Primer",
   slug: "calyco-solvent-primer-interior",
-  image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
-  images: [],
   description: "Solvent-based alkyd primer for interior masonry, wood, and metal surfaces with superior adhesion and high opacity.",
   tagline: "Bond, seal, and protect with versatile interior priming.",
   details: "Interior Solvent Primer is an alkyd resin-based primer that penetrates and seals porous substrates while delivering strong adhesion on wood, metal, and masonry. Its high opacity improves topcoat coverage across varied interior substrates.",
