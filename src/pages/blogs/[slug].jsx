@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowLeft, Calendar, Clock, Share2, Heart, Facebook, Twitter, Linkedin, Link2, Check, Star, Send, User } from 'lucide-react';
-import blogPosts from '../../data/blogData2'; // Corrected import path
+import blogPosts from '../../data/blogData'; // Corrected import path
 import SEO from '../../components/SEO'; // Assuming SEO component handles script injection
 
 // Helper component to generate Article Schema JSON-LD

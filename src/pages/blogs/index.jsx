@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, useMemo, useEffect } from 'react';
 // Corrected import path for repository consistency
-import blogPosts from '../../data/blogData2'; 
+import blogPosts from '../../data/blogData'; 
 import SEO from '../../components/SEO'; // Assuming you have this component
 
 const BlogCard = ({ post }) => {
