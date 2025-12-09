@@ -5,54 +5,22 @@ import SEO from "../../components/SEO";
 import { getTypographyClasses, getButtonClasses } from "../../data/admin/typography";
 
 const documentLinks = [
-  {
-    name: "Premium Interior Emulsion",
-    desc: "Warranty coverage for premium interior finishes.",
-    href: "/Assets/docs/warranty_Premium-Interior-Emulsion.html",
-    icon: "🏠"
-  },
-  {
-    name: "Premium Exterior Emulsion",
-    desc: "Protection against weather, algae, and fading.",
-    href: "/Assets/docs/warranty_Premium-Exterior-Emulsion.html",
-    icon: "🏡"
-  },
-  {
-    name: "Luxury Interior Emulsion",
-    desc: "Warranty coverage for luxury interior finishes.",
-    href: "/Assets/docs/warranty_Interior-Latex-Paint.html",
-    icon: "🧱"
-  },
-  {
-    name: "Luxury Exterior Emulsion",
-    desc: "Warranty coverage for luxury exterior finishes.",
-    href: "/Assets/docs/warranty_Exterior-Latex-Paint.html",
-    icon: "🏞️"
-  },
-  {
-    name: "Waterproofing Sealer",
-    desc: "Guarantee against water ingress and dampness.",
-    href: "/Assets/docs/warranty_waterproofing-sealer.html",
-    icon: "💧"
-  },
-  {
-    name: "Interior Water-Based Primer",
-    desc: "Warranty coverage for interior water-based primer.",
-    href: "/Assets/docs/warranty_calyco-water-primer-interior.html",
-    icon: "🧪"
-  },
-  {
-    name: "Exterior Weather Primer",
-    desc: "Warranty coverage for exterior weather primer.",
-    href: "/Assets/docs/warranty_calyco-weather-primer-exterior.html",
-    icon: "🌦️"
-  },
-  {
-    name: "Calyco Acrylic Wall Putty",
-    desc: "Warranty coverage for acrylic wall putty applications.",
-    href: "/Assets/docs/warranty_calyco-acrylic-wall-putty.html",
-    icon: "🧰"
-  },
+  { name: "Premium Interior Emulsion", desc: "Warranty coverage for premium interior finishes.", href: "/Assets/docs/warranty_Premium-Interior-Emulsion.html", icon: "??" },
+  { name: "Premium Exterior Emulsion", desc: "Protection against weather, algae, and fading.", href: "/Assets/docs/warranty_Premium-Exterior-Emulsion.html", icon: "??" },
+  { name: "Luxury Interior Emulsion", desc: "Warranty coverage for luxury interior finishes.", href: "/Assets/docs/warranty_Interior-Latex-Paint.html", icon: "??" },
+  { name: "Luxury Exterior Emulsion", desc: "Warranty coverage for luxury exterior finishes.", href: "/Assets/docs/warranty_Exterior-Latex-Paint.html", icon: "???" },
+  { name: "Waterproofing Sealer", desc: "Guarantee against water ingress and dampness.", href: "/Assets/docs/warranty_waterproofing-sealer.html", icon: "??" },
+  { name: "Interior Water-Based Primer", desc: "Warranty coverage for interior water-based primer.", href: "/Assets/docs/warranty_calyco-water-primer-interior.html", icon: "??" },
+  { name: "Exterior Weather Primer", desc: "Warranty coverage for exterior weather primer.", href: "/Assets/docs/warranty_calyco-weather-primer-exterior.html", icon: "???" },
+  { name: "Calyco Acrylic Wall Putty", desc: "Warranty coverage for acrylic wall putty applications.", href: "/Assets/docs/warranty_calyco-acrylic-wall-putty.html", icon: "??" },
+  { name: "Interior Solvent Primer", desc: "Warranty coverage for interior solvent-based primer.", href: "/Assets/docs/warranty_calyco-solvent-primer-interior.html", icon: "??" },
+  { name: "Damp Guard Primer", desc: "Warranty coverage for damp-proof primer systems.", href: "/Assets/docs/warranty_calyco-damp-guard-primer.html", icon: "??" },
+  { name: "Universal Primer", desc: "Warranty coverage for multi-surface universal primer.", href: "/Assets/docs/warranty_calyco-universal-primer.html", icon: "??" },
+  { name: "Dura-Shield Enamel", desc: "Warranty coverage for high-gloss enamel on wood and metal.", href: "/Assets/docs/warranty_calyco-amrella-enamel.html", icon: "??" },
+  { name: "PU Wood Coating", desc: "Warranty coverage for clear PU wood finishes.", href: "/Assets/docs/warranty_calyco-pu-wood-coating.html", icon: "??" },
+  { name: "Acrylic Washable Distemper", desc: "Warranty coverage for washable interior distemper.", href: "/Assets/docs/warranty_calyco-acrylic-washable-distemper.html", icon: "??" },
+  { name: "All Surface Coating", desc: "Warranty coverage for multi-surface acrylic-alkyd coating.", href: "/Assets/docs/warranty_calyco-all-surface-coating.html", icon: "??" },
+  { name: "Calyco Texture Paint", desc: "Warranty coverage for decorative texture finishes.", href: "/Assets/docs/warranty_calyco-texture-paint.html", icon: "??" },
 ];
 
 export default function WarrantyPolicy() {
@@ -370,3 +338,4 @@ export default function WarrantyPolicy() {
     </div>
   );
 }
+

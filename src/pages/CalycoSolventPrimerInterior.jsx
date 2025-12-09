@@ -1231,7 +1231,7 @@ const CalycoSolventPrimerInterior = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/html-templates/calyco-water-primer-interior-tds.html"
+                                    href="/Assets/docs/html-templates/calyco-solvent-primer-interior-tds.html"
                                     download
                                     className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
@@ -1252,7 +1252,7 @@ const CalycoSolventPrimerInterior = () => {
                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/html-templates/calyco-water-primer-interior-sds.html"
+                                    href="/Assets/docs/html-templates/calyco-solvent-primer-interior-sds.html"
                                     download
                                     className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
