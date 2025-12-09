@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Navbar } from './components/Navbar'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const Home = React.lazy(() => import('./pages/Home.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
@@ -130,6 +130,23 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
 function App() {
   const [bannerVisible, setBannerVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // ---------- GA4 SPA page_view tracking ----------
+  const location = useLocation();
+  useEffect(() => {
+    // measurement id: G-NF7PGTZ3F6
+    if (typeof window !== 'undefined' && window.gtag) {
+      try {
+        window.gtag('config', 'G-NF7PGTZ3F6', {
+          page_path: location.pathname + location.search,
+        });
+      } catch (e) {
+        // fail silently in case gtag isn't ready yet
+        // console.debug('gtag error', e);
+      }
+    }
+  }, [location]);
+  // ------------------------------------------------
 
   return (
     <CartProvider>
