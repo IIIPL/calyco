@@ -253,6 +253,9 @@ export default function ProductDetailPage({ productData }) {
   const [product, setProduct] = useState(productData || sampleProduct);
   const [selectedFinish, setSelectedFinish] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
+  const [selectedColor, setSelectedColor] = useState(
+    productData?.selectedColor || (Array.isArray(productData?.colors) ? productData.colors[0] : null)
+  );
   const [quantity, setQuantity] = useState(1);
   const [coverageData, setCoverageData] = useState({
     area: "",
@@ -281,6 +284,7 @@ export default function ProductDetailPage({ productData }) {
     const sizeIndex = resolveDefaultSizeIndex(data, finishName);
     setSelectedSize(sizeIndex);
     setQuantity(1);
+    setSelectedColor(data.selectedColor || (Array.isArray(data.colors) ? data.colors[0] : null));
     setCoverageData((prev) => ({
       ...prev,
       coats: data.defaultCoats || data.default_coats || 2,
@@ -345,12 +349,15 @@ export default function ProductDetailPage({ productData }) {
       variantMap[`${normaliseSizeLabel(sizeLabel)}-${selectedFinishName}`] ||
       null;
 
-    const selectedColor = product.selectedColor || {
-      name: "Custom Color",
-      hex: "#F8F4E3",
-      code: "",
-      family: "",
-    };
+    const selectedColorResolved =
+      selectedColor ||
+      product.selectedColor ||
+      (Array.isArray(product.colors) ? product.colors[0] : null) || {
+        name: "Custom Color",
+        hex: "#F8F4E3",
+        code: "",
+        family: "",
+      };
 
     const productForCart = {
       id: variantId || `${product.id || product.slug || "product"}-${variantKey}`,
@@ -364,22 +371,24 @@ export default function ProductDetailPage({ productData }) {
     };
 
     const attributes = {
-      "Color Code": selectedColor.code || "",
-      "Color Name": selectedColor.name || "Custom Color",
-      "Color Family": selectedColor.family || "",
-      "Color Hex": selectedColor.hex || "#F8F4E3",
+      "Color Code": selectedColorResolved.code || "",
+      "Color Name": selectedColorResolved.name || "Custom Color",
+      "Color Family": selectedColorResolved.family || "",
+      "Color Hex": selectedColorResolved.hex || "#F8F4E3",
       Finish: selectedFinishName,
       Size: sizeLabel,
       "Product Type": product.name,
     };
 
+    const safeQuantity = quantity || 1;
+
     addToCart(
       productForCart,
       selectedFinishName,
       sizeLabel,
-      quantity,
+      safeQuantity,
       currentPrice,
-      selectedColor,
+      selectedColorResolved,
       "paint",
       {
         variantId,
@@ -392,13 +401,13 @@ export default function ProductDetailPage({ productData }) {
       isVisible: true,
       item: {
         name: product.name,
-        hex: selectedColor.hex || "#F8F4E3",
-        colorName: selectedColor.name || "Custom Color",
-        colorFamily: selectedColor.family || "",
+        hex: selectedColorResolved.hex || "#F8F4E3",
+        colorName: selectedColorResolved.name || "Custom Color",
+        colorFamily: selectedColorResolved.family || "",
         selectedFinish: selectedFinishName,
         selectedSize: sizeLabel,
-        quantity,
-        price: formatCurrency(currentPrice * quantity),
+        quantity: safeQuantity,
+        price: formatCurrency(currentPrice * safeQuantity),
       },
     });
 

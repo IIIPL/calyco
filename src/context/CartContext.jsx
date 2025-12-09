@@ -23,6 +23,12 @@ const normaliseColor = (color = {}, productType = 'paint') => {
     if (!color || (!color.name && !color.colorName && !color.hex && !color.colorHex)) {
       return null;
     }
+    return {
+      name: color.name || color.colorName || '',
+      hex: color.hex || color.colorHex || '',
+      code: color.code || color.colorCode || color.tintCode || '',
+      family: color.family || color.colorFamily || '',
+    };
   }
 
   return {
@@ -41,7 +47,7 @@ const localItemKey = (item) => {
 const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType, mixingMode }) => {
   const actualProductType = product?.productType || productType || 'paint';
   const isPaintProduct = isPaintProductType(actualProductType);
-  const normalisedColor = isPaintProduct ? normaliseColor(color, actualProductType) : null;
+  const normalisedColor = normaliseColor(color, actualProductType);
   return {
     id: product?.id || product?.slug || product?.name || Math.random().toString(36).slice(2),
     name: product?.display_name || product?.name || 'Calyco Paint',

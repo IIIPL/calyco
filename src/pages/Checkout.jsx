@@ -496,18 +496,17 @@ const Checkout = () => {
                     {/* Product Details */}
                     <div className="flex-1">
                       <div className="font-semibold text-[#493657]">{item.name}</div>
-                      <div className="text-xs text-gray-600">{item.selectedSheen} / {item.selectedSize}</div>
+                      <div className="text-xs text-gray-600">
+                        {item.selectedSheen} / {item.selectedSize}
+                      </div>
+                      <div className="text-xs text-gray-500">Qty: {item.quantity || 1}</div>
 
-                      {/* Only show color for paint items with an explicit color selection */}
-                      {isPaintProduct &&
-                        !isService &&
-                        item.selectedColor?.name &&
-                        item.selectedColor.name !== 'Serene Ivory' &&
-                        item.selectedColor.name !== 'Custom Color' &&
-                        item.selectedColor.name !== 'Pure White' &&
-                        item.selectedColor.name !== 'White' && (
-                          <div className="text-xs text-gray-500">Color: {item.selectedColor.name}</div>
-                        )}
+                      {/* Show selected color/texture when present */}
+                      {!isService && item.selectedColor?.name && (
+                        <div className="text-xs text-gray-500">
+                          {item.productType === 'texture' ? 'Texture' : 'Color'}: {item.selectedColor.name}
+                        </div>
+                      )}
 
                       {/* Display mixing mode only for products that have color mixing options (ready-mixed or tint-on-demand) */}
                       {!isService && isPaintProduct && item.mixingMode &&

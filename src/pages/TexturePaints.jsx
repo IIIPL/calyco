@@ -341,7 +341,7 @@ const TexturePaints = () => {
             selectedSize,
             quantity,
             displayPriceValue,
-            null, // no color payload to avoid "Color:" label in checkout
+            selectedColor || null, // capture selected texture pattern
             'texture', // productType
             {} // No mixing mode for texture paints
         );
@@ -350,8 +350,8 @@ const TexturePaints = () => {
             item: {
                 name: product.name,
                 hex: "#cccccc",
-                colorName: null,
-                colorFamily: null,
+                colorName: selectedColor?.name || null,
+                colorFamily: selectedColor?.family || null,
                 selectedSheen,
                 selectedSize,
                 quantity,
