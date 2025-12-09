@@ -6,16 +6,12 @@ import { getTypographyClasses, getButtonClasses } from "../../data/admin/typogra
 
 const documentLinks = [
   // Wall paints grouped like the menu
-  { name: "Interior Wall Paints", desc: "Warranty coverage for premium & luxury interior emulsions.", href: "/Assets/docs/warranty_Premium-Interior-Emulsion.html", icon: "🎨" },
-  { name: "Exterior Wall Paints", desc: "Warranty coverage for premium & luxury exterior emulsions.", href: "/Assets/docs/warranty_Premium-Exterior-Emulsion.html", icon: "🏡" },
-  // Wood & Metal
-  { name: "Wood & Metal (Enamels/Coatings)", desc: "Warranty coverage for enamels and PU coatings on wood/metal.", href: "/Assets/docs/warranty_calyco-amrella-enamel.html", icon: "🪵" },
-  // Primers & Sealers
-  { name: "Primers & Sealers", desc: "Warranty coverage for interior/exterior primers and sealers.", href: "/Assets/docs/warranty_calyco-universal-primer.html", icon: "🛡️" },
-  // Putty, Waterproofing, Texture
-  { name: "Calyco Acrylic Wall Putty", desc: "Warranty coverage for acrylic wall putty applications.", href: "/Assets/docs/warranty_calyco-acrylic-wall-putty.html", icon: "🧱" },
-  { name: "Waterproofing Sealer", desc: "Guarantee against water ingress and dampness.", href: "/Assets/docs/warranty_waterproofing-sealer.html", icon: "💧" },
-  { name: "Calyco Texture Paint", desc: "Warranty coverage for decorative texture finishes.", href: "/Assets/docs/warranty_calyco-texture-paint.html", icon: "🧩" },
+  { name: "Interior Wall Paints", desc: "Premium & Luxury Interior Emulsion, Acrylic Washable Distemper.", href: "/Assets/docs/warranty_Interior-Wall-Paints.html", icon: "🎨" },
+  { name: "Exterior Wall Paints", desc: "Premium & Luxury Exterior Emulsion, All Surface Coating.", href: "/Assets/docs/warranty_Exterior-Wall-Paints.html", icon: "🏡" },
+  { name: "Wood & Metal (Enamels/Coatings)", desc: "Dura-Shield Enamel, PU Wood Coating.", href: "/Assets/docs/warranty_Wood-Metal.html", icon: "🪵" },
+  { name: "Primers & Sealers", desc: "Interior/Exterior primers, solvent, universal, and wall putty.", href: "/Assets/docs/warranty_Primers-Sealers.html", icon: "🛡️" },
+  { name: "Waterproofing", desc: "Waterproofing Sealer, Damp Guard Primer.", href: "/Assets/docs/warranty_Waterproofing.html", icon: "💧" },
+  { name: "Texture Paints", desc: "Calyco Texture Paint.", href: "/Assets/docs/warranty_calyco-texture-paint.html", icon: "🧩" },
 ];
 
 export default function WarrantyPolicy() {
