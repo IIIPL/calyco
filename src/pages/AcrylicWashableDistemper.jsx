@@ -74,10 +74,10 @@ const distemperDetail = {
 // MRP pricing
 const DISTEMPER_MRP = {
   'Matt': {
-    '1L': 80,
-    '4L': 300,
-    '10L': 600,
-    '20L': 1000,
+    '1L': 95,
+    '4L': 340,
+    '10L': 680,
+    '20L': 1100,
   },
 };
 

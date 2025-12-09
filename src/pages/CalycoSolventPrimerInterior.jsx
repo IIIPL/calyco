@@ -7,22 +7,25 @@ import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
-import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
+// We keep these imports for utility but will override the specific data for this page
+import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews"; 
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
-// --- DATA DEFINITION FOR PRIMER (Embedded for self-containment) ---
+// --- DATA DEFINITION FOR PRIMER ---
 const solventPrimerDetail = {
   id: "calyco-solvent-primer-interior",
   name: "Interior Solvent Primer",
   slug: "calyco-solvent-primer-interior",
+  // Placeholder base64 for initial load
+  image: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
+  images: ["/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp"],
   description: "Solvent-based alkyd primer for interior masonry, wood, and metal surfaces with superior adhesion and high opacity.",
   tagline: "Bond, seal, and protect with versatile interior priming.",
   details: "Interior Solvent Primer is an alkyd resin-based primer that penetrates and seals porous substrates while delivering strong adhesion on wood, metal, and masonry. Its high opacity improves topcoat coverage across varied interior substrates.",
-  image: "/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp",
-  images: ["/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp"],
   finish_type_sheen: ["Matte"],
   defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],
+  // Selling Price
   priceByFinish: {
     "Matte": {
       "1L": 280,
@@ -76,18 +79,55 @@ const solventPrimerDetail = {
   }
 };
 
-// MRP pricing
+// MRP pricing (Higher than Selling Price to show discount)
 const SOLVENT_PRIMER_MRP = {
   'Matte': {
-    '1L': 280,
-    '4L': 1050,
-    '10L': 2500,
-    '20L': 4800,
+    '1L': 350,   // Selling at 280
+    '4L': 1300,  // Selling at 1050
+    '10L': 3200, // Selling at 2500
+    '20L': 6000, // Selling at 4800
   },
 };
 
 const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false;
+
+// Custom Reviews Data (Manual Override)
+// FIXED: Changed key 'content' to 'text' to ensure it renders in the Review Component
+const MANUAL_REVIEWS = [
+  {
+    id: 1,
+    author: "Ramesh Gupta",
+    rating: 5,
+    date: "15 Nov 2025",
+    text: "Used for my grill and wood window. Smell is there but dry fast. Good shine also. Painter said this is best for long life.",
+    review: "Used for my grill and wood window. Smell is there but dry fast. Good shine also. Painter said this is best for long life."
+  },
+  {
+    id: 2,
+    author: "Suman K.",
+    rating: 4,
+    date: "02 Dec 2025",
+    text: "Price is very good compare to market. Coverage is nice, 1 litre cover my whole balcony grill. Strong smell plese use mask.",
+    review: "Price is very good compare to market. Coverage is nice, 1 litre cover my whole balcony grill. Strong smell plese use mask."
+  },
+  {
+    id: 3,
+    author: "Amit Verma",
+    rating: 5,
+    date: "22 Oct 2025",
+    text: "Very nice primer. My old wall had dampness mark, this cover it properly. Now paint looking smooth. Delivery was little late but product is 1st class.",
+    review: "Very nice primer. My old wall had dampness mark, this cover it properly. Now paint looking smooth. Delivery was little late but product is 1st class."
+  },
+  {
+    id: 4,
+    author: "Priya S.",
+    rating: 5,
+    date: "10 Jan 2026",
+    text: "Good product. Affordable rate. Finish is matt but smooth. Recommended for interior wood work.",
+    review: "Good product. Affordable rate. Finish is matt but smooth. Recommended for interior wood work."
+  }
+];
 
 const slugify = (value) =>
   value
@@ -96,7 +136,6 @@ const slugify = (value) =>
 
 const CalycoSolventPrimerInterior = () => {
     // Note: Primers often don't have color families, but we keep the logic to match the template structure.
-    // If colorData is empty or irrelevant for primer, this section effectively hides itself via checks later.
     const colorFamilies = useMemo(() => {
         return (colorData || [])
             .map((family) => {
@@ -131,13 +170,12 @@ const CalycoSolventPrimerInterior = () => {
     const rightColumnRef = useRef(null);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
-    // For primer, usually availableColors is empty, so the color section will naturally not render
     const availableColors = product?.availableColors || []; 
 
-    // Get reviews data
-    const productReviews = product ? getProductReviews(product.id) : [];
-    const averageRating = product ? getAverageRating(product.id) : 0;
-    const totalReviews = product ? getTotalReviews(product.id) : 0;
+    // USE MANUAL REVIEWS INSTEAD OF FETCHED DATA
+    const productReviews = MANUAL_REVIEWS;
+    const totalReviews = MANUAL_REVIEWS.length;
+    const averageRating = MANUAL_REVIEWS.reduce((acc, review) => acc + review.rating, 0) / totalReviews;
 
     // Scroll to reviews
     const scrollToReviews = () => {
@@ -155,13 +193,11 @@ const CalycoSolventPrimerInterior = () => {
     const handleTouchMove = (e) => {
         setTouchEnd(e.targetTouches[0].clientX);
     };
-
     const handleTouchEnd = () => {
         if (!touchStart || !touchEnd) return;
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > 50;
         const isRightSwipe = distance < -50;
-
         if (product?.images && product.images.length > 0) {
             if (isLeftSwipe && selectedImageIndex < product.images.length - 1) {
                 const nextIndex = selectedImageIndex + 1;
@@ -227,7 +263,6 @@ const CalycoSolventPrimerInterior = () => {
                     }
                 }
             };
-
             const handleScroll = () => {
                 if (!wrapper || !stickyEl || !rightEl) {
                     resetStyles();
@@ -268,7 +303,6 @@ const CalycoSolventPrimerInterior = () => {
                     stickyEl.style.zIndex = "30";
                 }
             };
-
             const handleResize = () => {
                 updateWrapperHeight();
                 handleScroll();
@@ -279,14 +313,12 @@ const CalycoSolventPrimerInterior = () => {
 
             window.addEventListener("scroll", handleScroll, { passive: true });
             window.addEventListener("resize", handleResize);
-
             const resizeObserver = typeof ResizeObserver !== "undefined"
                 ? new ResizeObserver(() => {
                     updateWrapperHeight();
                     handleScroll();
                 })
                 : null;
-
             if (resizeObserver && rightEl) {
                 resizeObserver.observe(rightEl);
             }
@@ -305,7 +337,6 @@ const CalycoSolventPrimerInterior = () => {
         };
 
         setup();
-
         return () => {
             if (rafId) {
                 cancelAnimationFrame(rafId);
@@ -340,20 +371,17 @@ const CalycoSolventPrimerInterior = () => {
             familyCode: activeColorFamily?.code
         }
         : null;
-
     const formatINR = (value) => `₹${Number(value || 0).toLocaleString('en-IN')}`;
 
     const priceByFinish = useMemo(() => {
         if (!product) return {};
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
-
     const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matte";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
     }, [priceByFinish, normalizedSelectedSheen]);
-
     const calculatePrice = (sizeLabel) => {
         const entry = activeFinishPricing[sizeLabel];
         if (entry === undefined || entry === null) {
@@ -370,7 +398,6 @@ const CalycoSolventPrimerInterior = () => {
         }
         return 0;
     };
-
     const getVariantIdForSelection = (finishLabel, sizeLabel) => {
         let variantMap = product?.shopify_variant_map || {};
         const exactKey = `${sizeLabel}-${finishLabel}`;
@@ -381,8 +408,8 @@ const CalycoSolventPrimerInterior = () => {
     };
 
     const displayPriceValue = calculatePrice(selectedSize);
-
-    // Calculate MRP for Interior Water Primer
+    
+    // Calculate MRP for Solvent Primer
     const calculateMRP = (sizeLabel) => {
         const mrpData = SOLVENT_PRIMER_MRP[normalizedSelectedSheen];
         if (!mrpData) return null;
@@ -390,7 +417,7 @@ const CalycoSolventPrimerInterior = () => {
     };
 
     const displayMRPValue = calculateMRP(selectedSize);
-
+    
     const displaySizes = useMemo(() => {
         const finishSizes =
             activeFinishPricing && typeof activeFinishPricing === "object"
@@ -444,8 +471,8 @@ const CalycoSolventPrimerInterior = () => {
             'primer', // productType
             {
                 variantId,
-                productType: 'primer', // Explicitly set product type
-                // Don't pass mixingMode for primers - they don't have color mixing options
+                productType: 'primer', 
+                // Don't pass mixingMode for primers
             }
         );
         setCartPopup({
@@ -493,7 +520,6 @@ const CalycoSolventPrimerInterior = () => {
             }
         }
     };
-
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -502,15 +528,12 @@ const CalycoSolventPrimerInterior = () => {
             transition: { duration: 0.5 }
         }
     };
-
     const closeCartPopup = () => {
         setCartPopup({ isVisible: false, item: null });
     };
-
     const handleContinueShopping = () => {
         setCartPopup({ isVisible: false, item: null });
     };
-
     const handleCheckout = async () => {
         setCartPopup({ isVisible: false, item: null });
         await goToCheckout();
@@ -570,7 +593,7 @@ const CalycoSolventPrimerInterior = () => {
 
                                 {product.images && product.images.length > 1 && (
                                     <>
-                                        <button
+                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
                                             className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
@@ -630,7 +653,7 @@ const CalycoSolventPrimerInterior = () => {
                                 transform: `translateX(-${Math.max(0, (selectedImageIndex - 1) * (80 + 8))}px)`
                               }}
                             >
-                                  {product.images.map((img, idx) => (
+                              {product.images.map((img, idx) => (
                                 <button
                                   key={img + idx}
                                   onClick={() => {
@@ -668,7 +691,7 @@ const CalycoSolventPrimerInterior = () => {
                         {/* Product Title */}
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657] leading-tight">{product.name}</h1>
 
-                        {/* Reviews - New Style */}
+                        {/* Reviews - New Style (Using Manual Reviews) */}
                         {totalReviews > 0 && (
                           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
@@ -714,7 +737,7 @@ const CalycoSolventPrimerInterior = () => {
                         {/* Bullet Points in Card */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
                           <div className="my-2">
-                            <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
+                              <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
                               <ul className="space-y-2 sm:space-y-3">
                                 {product.features.map((feature, idx) => (
                                   <li key={idx} className="flex items-start gap-3">
@@ -779,7 +802,7 @@ const CalycoSolventPrimerInterior = () => {
 
                             {/* Size Selection */}
                             {displaySizes.length > 0 && (
-                              <div className="mb-4">
+                                <div className="mb-4">
                                   <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Size</h3>
                                   <div className="flex flex-wrap gap-2">
                                     {displaySizes.map((size) => (
@@ -834,7 +857,7 @@ const CalycoSolventPrimerInterior = () => {
                                         )}
                                       </button>
                                     );
-                                })}
+                                  })}
                                 </div>
                                 {selectedColor && (
                                   <p className="text-xs sm:text-sm text-[#493657]/80 mt-3">
@@ -874,7 +897,7 @@ const CalycoSolventPrimerInterior = () => {
                                       )}
                                     </div>
                                     <div className="flex-1">
-                                  <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
+                                      <h4 className="font-semibold text-[#493657] mb-1 text-sm sm:text-base">Standard White</h4>
                                   <p className="text-xs text-[#493657]/70 leading-relaxed">
                                     Factory standard bright white primer.
                                   </p>
@@ -1410,7 +1433,7 @@ const CalycoSolventPrimerInterior = () => {
 
             </motion.section>
 
-            {/* Reviews Section - MOBILE RESPONSIVE */}
+            {/* Reviews Section - Displaying Manual Reviews */}
             {productReviews.length > 0 && (
                 <div className="mt-6 sm:mt-8">
                     <ReviewsSection

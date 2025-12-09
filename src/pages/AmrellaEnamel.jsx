@@ -79,10 +79,10 @@ const amrellaEnamelDetail = {
 // MRP pricing
 const ENAMEL_MRP = {
   'High Gloss': {
-    '1L': 450,
-    '4L': 1600,
-    '10L': 3500,
-    '20L': 6500,
+    '1L': 520,
+    '4L': 1750,
+    '10L': 3800,
+    '20L': 7000,
   },
 };
 

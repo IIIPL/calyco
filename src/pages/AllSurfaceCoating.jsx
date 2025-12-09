@@ -74,10 +74,10 @@ const allSurfaceDetail = {
 // MRP pricing
 const ALL_SURFACE_MRP = {
   'Semi-Gloss/Satin': {
-    '1L': 450,
-    '4L': 1700,
-    '10L': 3800,
-    '20L': 7200,
+    '1L': 500,
+    '4L': 1900,
+    '10L': 4200,
+    '20L': 7700,
   },
 };
 

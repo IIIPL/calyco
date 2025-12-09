@@ -80,10 +80,10 @@ const puWoodCoatingDetail = {
 // MRP pricing
 const PU_WOOD_MRP = {
   'High Gloss': {
-    '1L': 550,
-    '4L': 2000,
-    '10L': 4800,
-    '20L': 9200,
+    '1L': 620,
+    '4L': 2200,
+    '10L': 5200,
+    '20L': 9800,
   },
 };
 

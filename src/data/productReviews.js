@@ -325,6 +325,37 @@ const acrylicPuttyReviews = [
   },
 ];
 
+const duraShieldEnamelReviews = [
+  { id: 1, author: "Sandeep Kulkarni", rating: 5, date: "2025-01-12", review: "Used on main door and window grills. Finish is shiny like showroom and not yellowing. Painter bhai said flow is smooth. Little smell while applying but gone next day. Family is impressed.", verified: true },
+  { id: 2, author: "Megha Chatterjee", rating: 4, date: "2024-12-28", review: "Wanted strong enamel for balcony railing, this worked well. Two coats covered rust marks. Price is ok for quality. Only typo on tin sticker but product is fine.", verified: false },
+  { id: 3, author: "Arun & Jyoti Sharma", rating: 5, date: "2024-12-10", review: "Good for metal gate and some wood furniture touchup. Gloss is uniform and dries quick. Even my father said looks like new gate now. Worth the money.", verified: true },
+  { id: 4, author: "Prakash Dhawan", rating: 4, date: "2024-11-25", review: "Applied on staircase railing in society. Adhesion is strong and colour not fading. Slightly thick so added thinner. Overall satisfied middle class budget option.", verified: true },
+  { id: 5, author: "Lata Iyer", rating: 5, date: "2024-11-05", review: "Painted my sons study table and window grill. No rust spots showing, surface looks bright. Simple to apply even for diy. Value for money enamel.", verified: true },
+];
+
+const puWoodCoatingReviews = [
+  { id: 1, author: "Rohit Menon", rating: 5, date: "2025-01-08", review: "Clear coat makes wood grains pop nicely. Did dining table at home, finish is glossy and tough. Little mixing effort but results superb. Wife happy with shine.", verified: true },
+  { id: 2, author: "Seema Gupta", rating: 4, date: "2024-12-18", review: "Used on wardrobe shutters. Non yellow look even near window sunlight. Smell present during spraying but fades. Scratch resistance seems good till now.", verified: true },
+  { id: 3, author: "Manish Tiwari", rating: 5, date: "2024-12-02", review: "Applied on teak door with painter bhai. Flow is smooth and hardness after curing is solid. Good for middle class homes wanting premium look without overspend.", verified: false },
+  { id: 4, author: "Kavitha R", rating: 4, date: "2024-11-20", review: "Did TV unit veneer. Coating looks crystal clear, no yellowing. Needed to sand lightly between coats but finish is mirror like. Price ok compared to big brands.", verified: true },
+  { id: 5, author: "Ashish Patange", rating: 5, date: "2024-11-04", review: "Best PU tried so far. My carpenter said pot life is decent and spreads even. Dining chairs feel smooth and easy to wipe food stains. Happy with purchase.", verified: true },
+];
+
+const distemperReviews = [
+  { id: 1, author: "Poonam Verma", rating: 4, date: "2025-01-05", review: "Budget paint for kids room. Smooth matt finish, hides old marks decently. Need two coats but coverage ok. Smell very low so kids could sleep same night.", verified: true },
+  { id: 2, author: "Rahul & Neha Joshi", rating: 5, date: "2024-12-15", review: "For our 2BHK hall this worked fine. Colour looks brighter than expected. Easy to clean small stains with damp cloth. Good choice for middle class pocket.", verified: true },
+  { id: 3, author: "Mahesh Patil", rating: 4, date: "2024-12-01", review: "Cheap and decent quality. Applied with roller myself. Drying fast even in winter. Little patchy first coat but second coat smooth. Worth it for rent house.", verified: false },
+  { id: 4, author: "Anita Kulshreshtha", rating: 5, date: "2024-11-16", review: "Used on ceiling and it came very even. No heavy smell. Painter bhai said dilution is easy. For low budget repaint this is perfect.", verified: true },
+];
+
+const allSurfaceCoatingReviews = [
+  { id: 1, author: "Girish Nair", rating: 5, date: "2025-01-09", review: "Painted metal gate and also bedroom door with same tin, stuck well on both. Semi gloss look is nice not too shiny. Saved primer step so labour cost less.", verified: true },
+  { id: 2, author: "Savita Mishra", rating: 4, date: "2024-12-20", review: "Tried on balcony railing and plastic chairs. Adhesion surprisingly strong. Took little longer to dry in cold weather but finish is neat. Good for multipurpose use.", verified: true },
+  { id: 3, author: "Nitin Karkare", rating: 5, date: "2024-12-03", review: "One paint for everything claim is true. I did kitchen door, window grill and a cement planter. All covered well with two coats. Smell low, wife ok with it.", verified: false },
+  { id: 4, author: "Rekha S", rating: 4, date: "2024-11-22", review: "Used on interior wall patch and metal cupboard. Finish is uniform and colour depth good. For middle class family it saves buying different primers.", verified: true },
+  { id: 5, author: "Vikram Rao", rating: 5, date: "2024-11-06", review: "Needed quick job before Diwali. This paint dried fast and stuck to old paint without problem. Semi gloss sheen looks classy. Paisa vasool.", verified: true },
+];
+
 export const productReviews = {
   "interior-latex-paint": interiorLatexReviews,
   "exterior-latex-paint": luxuryExteriorReviews,
@@ -335,6 +366,10 @@ export const productReviews = {
   "calyco-water-primer-interior": waterPrimerInteriorReviews,
   "calyco-weather-primer-exterior": weatherPrimerExteriorReviews,
   "calyco-acrylic-wall-putty": acrylicPuttyReviews,
+  "calyco-amrella-enamel": duraShieldEnamelReviews,
+  "calyco-pu-wood-coating": puWoodCoatingReviews,
+  "calyco-acrylic-washable-distemper": distemperReviews,
+  "calyco-all-surface-coating": allSurfaceCoatingReviews,
 };
 
 // Rest of the functions remain the same...
