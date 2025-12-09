@@ -501,8 +501,8 @@ const Checkout = () => {
                       </div>
                       <div className="text-xs text-gray-500">Qty: {item.quantity || 1}</div>
 
-                      {/* Show selected color/texture when present */}
-                      {!isService && item.selectedColor?.name && (
+                      {/* Show selected color/texture only if item supports it */}
+                      {!isService && item.supportsColor && item.selectedColor?.name && (
                         <div className="text-xs text-gray-500">
                           {item.productType === 'texture' ? 'Texture' : 'Color'}: {item.selectedColor.name}
                         </div>

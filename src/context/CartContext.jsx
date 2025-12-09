@@ -15,6 +15,21 @@ const DEFAULT_COLOR = {
 const isPaintProductType = (productType = 'paint') =>
   productType === 'paint' || productType === 'ready-mixed' || productType === 'tint-on-demand';
 
+const isColorProduct = (product = {}) => {
+  const category = (product.category || '').toLowerCase();
+  const name = (product.name || '').toLowerCase();
+  const type = (product.productType || '').toLowerCase();
+
+  // Textures always show texture selection
+  if (type === 'texture' || category.includes('texture') || name.includes('texture')) return true;
+
+  // Emulsions and waterproofing sealer should show color/finish selection
+  if (category.includes('emulsion') || name.includes('emulsion')) return true;
+  if (category.includes('waterproof') || name.includes('waterproof')) return true;
+
+  return false;
+};
+
 const normaliseColor = (color = {}, productType = 'paint') => {
   const isPaintProduct = isPaintProductType(productType);
 
@@ -47,7 +62,8 @@ const localItemKey = (item) => {
 const createLocalCartItem = ({ product, price, finish, size, quantity, color, productType, mixingMode }) => {
   const actualProductType = product?.productType || productType || 'paint';
   const isPaintProduct = isPaintProductType(actualProductType);
-  const normalisedColor = normaliseColor(color, actualProductType);
+  const supportsColor = isColorProduct(product);
+  const normalisedColor = supportsColor ? normaliseColor(color, actualProductType) : null;
   return {
     id: product?.id || product?.slug || product?.name || Math.random().toString(36).slice(2),
     name: product?.display_name || product?.name || 'Calyco Paint',
@@ -61,6 +77,7 @@ const createLocalCartItem = ({ product, price, finish, size, quantity, color, pr
     requiresShipping: product?.requiresShipping !== false, // Default to true unless explicitly false
     productType: actualProductType,
     mixingMode: mixingMode || null, // Store mixing mode (ready-mixed or tint-on-demand)
+    supportsColor,
   };
 };
 

@@ -25,10 +25,16 @@ const texturePaintDetail = {
   ],
   tagline: "Transform your spaces with timeless artistry and unmatched durability.",
   description: "A premium decorative cement-based texture coating specially formulated to transform plain walls into artistic surfaces. Enriched with high-quality mineral aggregates and polymers, it provides a tough, weather-resistant shield that effectively hides surface undulations and hairline cracks. This durable finish adds rich depth, character, and dimension to your spaces while offering superior protection against algae and harsh weather.",
-  finish_type_sheen: ["Matt / Rustic Texture"],
-  defaultFinish: "Matt / Rustic Texture",
-  packaging: ["30 kg"],
-  price: 1150,
+  finish_type_sheen: ["Decorative Wall Finish"],
+  defaultFinish: "Decorative Wall Finish",
+  packaging: ["5 kg (Sample)", "20 kg", "30 kg", "40 kg"],
+  sizes: [
+    { size: "5 kg (Sample)", price: 190, mrp: 300 },
+    { size: "20 kg", price: 650, mrp: 900 },
+    { size: "30 kg", price: 950, mrp: 1350 },
+    { size: "40 kg", price: 1250, mrp: 1750 },
+  ],
+  price: 190,
   features: [
     "Weather proof",
     "Hides cracks & surface undulations",
@@ -100,8 +106,8 @@ const TexturePaints = () => {
         }];
     }, []);
 
-    const [selectedSheen, setSelectedSheen] = useState("Matt / Rustic Texture");
-    const [selectedSize, setSelectedSize] = useState("30 kg");
+    const [selectedSheen, setSelectedSheen] = useState("Decorative Wall Finish");
+    const [selectedSize, setSelectedSize] = useState("5 kg (Sample)");
     
     // Quantity & Product State
     const [quantity, setQuantity] = useState(1);
@@ -329,8 +335,11 @@ const TexturePaints = () => {
     }, [activeTextureFamily, selectedColor]);
 
     // Pricing Logic (Fixed for Texture)
-    const displayPriceValue = texturePaintDetail.price; 
-    const displayMRPValue = 1350;
+    const currentSizeObj =
+        (texturePaintDetail.sizes || []).find((s) => s.size === selectedSize) ||
+        (texturePaintDetail.sizes || [])[0];
+    const displayPriceValue = currentSizeObj?.price ?? texturePaintDetail.price; 
+    const displayMRPValue = currentSizeObj?.mrp ?? 0;
     const formatINR = (value) => `₹${Number(value || 0).toLocaleString('en-IN')}`;
 
     // Add to Cart
@@ -572,9 +581,23 @@ const TexturePaints = () => {
                             <div className="mb-4">
                                 <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Size</h3>
                                 <div className="flex flex-wrap gap-2">
-                                    <button className="px-3 sm:px-4 py-2 rounded-lg border border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] text-sm sm:text-base">
-                                        30 kg
-                                    </button>
+                                    {(product?.sizes || []).map((sizeObj) => {
+                                        const isActive = selectedSize === sizeObj.size;
+                                        return (
+                                            <button
+                                                key={sizeObj.size}
+                                                type="button"
+                                                onClick={() => setSelectedSize(sizeObj.size)}
+                                                className={`px-3 sm:px-4 py-2 rounded-lg border text-sm sm:text-base transition ${
+                                                    isActive
+                                                        ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
+                                                        : "border-[#493657]/20 text-[#493657] hover:border-[#493657]/40"
+                                                }`}
+                                            >
+                                                {sizeObj.size}
+                                            </button>
+                                        );
+                                    })}
                                 </div>
                             </div>
 
