@@ -1,15 +1,67 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout }) => {
-  const { getCartItemCount } = useCart();
+  const { getCartItemCount, items } = useCart();
   const cartItemCount = getCartItemCount();
-  
-  console.log('CartPopup props:', { isVisible, item, cartItemCount });
-  
+
+  console.log("CartPopup props:", { isVisible, item, cartItemCount });
+
   if (!isVisible || !item) return null;
+
+  // Try to find a matching cart item for a fallback image and supportsColor
+  let matchingCartItem = null;
+  if (Array.isArray(items)) {
+    for (let i = items.length - 1; i >= 0; i -= 1) {
+      const cartIt = items[i];
+      if (
+        cartIt?.name === item.name &&
+        (!item.selectedSize || cartIt?.selectedSize === item.selectedSize) &&
+        (!item.selectedFinish || cartIt?.selectedSheen === item.selectedFinish)
+      ) {
+        matchingCartItem = cartIt;
+        break;
+      }
+    }
+  }
+
+  const inferredSupportsColor = (() => {
+    const n = (item.name || "").toLowerCase();
+    if (n.includes("texture")) return true;
+    if (n.includes("emulsion")) return true;
+    if (n.includes("sealer")) return true;
+    if (n.includes("waterproof")) return true;
+    return false;
+  })();
+
+  const popupSupportsColor =
+    item.supportsColor !== undefined
+      ? item.supportsColor
+      : (matchingCartItem?.supportsColor !== undefined
+        ? matchingCartItem.supportsColor
+        : inferredSupportsColor);
+
+  const displayImage =
+    item.image ||
+    item.bucketImage ||
+    item.thumbnail ||
+    item.productImage ||
+    matchingCartItem?.image ||
+    matchingCartItem?.bucketImage ||
+    null;
+
+  const quantity = item.quantity || 1;
+  const price = item.price || "";
+  const detailLines = [
+    item.selectedFinish,
+    item.selectedSize,
+    popupSupportsColor && item.colorName && item.colorFamily
+      ? `${item.colorName} • ${item.colorFamily}`
+      : popupSupportsColor ? (item.colorName || item.colorFamily) : null,
+    item.typeLabel,
+  ].filter(Boolean);
 
   return (
     <AnimatePresence>
@@ -35,24 +87,38 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
           {/* Product item */}
           <div className="p-4">
             <div className="flex items-center gap-6">
-              {/* Color Swatch */}
-              <div 
-                className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0"
-                style={{ backgroundColor: item.hex }}
-              />
-              
+              {/* Product image or color swatch */}
+              {displayImage ? (
+                <img
+                  src={displayImage}
+                  alt={item.name}
+                  className="w-16 h-16 rounded-lg object-contain border border-gray-200 flex-shrink-0 bg-white"
+                />
+              ) : popupSupportsColor ? (
+                <div
+                  className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0"
+                  style={{ backgroundColor: item.hex || "#f3f4f6" }}
+                />
+              ) : (
+                <div className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0 bg-white" />
+              )}
+
               {/* Product details */}
               <div className="flex-1 min-w-0">
                 <p className="text-lg font-semibold text-gray-900 truncate">
                   {item.name}
                 </p>
-                <p className="text-base text-gray-500 mt-1">Sample • Sample</p>
-                <p className="text-sm text-gray-600 mt-1">Quantity: 1</p>
+                {detailLines.length > 0 && (
+                  <p className="text-sm text-gray-600 mt-1 truncate">
+                    {detailLines.join(" • ")}
+                  </p>
+                )}
+                <p className="text-sm text-gray-600 mt-1">Quantity: {quantity}</p>
               </div>
-              
+
               {/* Price */}
               <div className="text-right">
-                <p className="text-lg font-bold text-gray-900">{item.price}</p>
+                <p className="text-lg font-bold text-gray-900">{price}</p>
               </div>
             </div>
           </div>
