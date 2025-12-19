@@ -6,7 +6,7 @@ const blogContentArray = [
     slug: "mastering-monochromatic-schemes",
     category: "Design",
     author: "Rohan Varma",
-    date: "2025-12-08",
+    date: "2025-12-09",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Mastering Monochromatic Schemes Elegance in Simplicity.jpg",
     summary: "How to use varying shades of a single color to create depth, sophistication, and balance in modern interiors.",
@@ -27,7 +27,7 @@ const blogContentArray = [
     slug: "choosing-right-primer",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-08",
+    date: "2025-12-09",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Choosing the Right Primer Water-Based vs. Solvent-Based.jpg",
     summary: "A technical comparison of primer types: when to use water-based acrylics and when to rely on traditional solvent formulas for maximum performance.",
@@ -51,7 +51,7 @@ const blogContentArray = [
     slug: "protecting-interior-woodwork",
     category: "Interior Solutions",
     author: "Arjun Malhotra",
-    date: "2025-12-08",
+    date: "2025-12-09",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Protecting Wood Coatings Durability for Interior Woodwork.jpg",
     summary: "Selecting and applying high-performance Polyurethane (PU) and Melamine finishes to ensure interior wooden elements remain protected, scratch-resistant, and vibrant.",
@@ -77,7 +77,7 @@ const blogContentArray = [
     slug: "decoding-paint-jargon",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-07",
+    date: "2025-12-09",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Decoding Paint Jargon Gloss, Sheen, and Flat Finishes Explained.jpg",
     summary: "A simple guide to choosing the perfect paint sheen (flat, matte, eggshell, satin, semi-gloss, and high-gloss) for every room in your home.",
@@ -101,7 +101,7 @@ const blogContentArray = [
     slug: "choosing-perfect-accent-wall",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-12-07",
+    date: "2025-12-09",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Choosing the Perfect Accent Wall A Design Strategy.jpg",
     summary: "How to identify the best wall in any room for an accent color or texture to maximize visual impact and define the space without overwhelming it.",
@@ -122,7 +122,7 @@ const blogContentArray = [
     slug: "solving-common-wall-problems",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-12-07",
+    date: "2025-12-10",
     readTime: "9 min read",
     image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.jpg",
     summary: "Expert advice on diagnosing and permanently repairing the three most common paint failure issues on exterior walls to ensure long-term paint life.",
@@ -148,7 +148,7 @@ const blogContentArray = [
     slug: "warm-neutrals-winter-palette",
     category: "Interior Trends",
     author: "Rohan Varma",
-    date: "2025-11-28",
+    date: "2025-12-10",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Warm Neutrals The Palette for Cozy Indian Homes This Winter.jpg",
     summary: "Discover the beige, taupe, and off-white shades that add warmth and comfort to interiors during the colder months, replacing stark cool grays.",
@@ -169,7 +169,7 @@ const blogContentArray = [
     slug: "wood-stains-vs-paints",
     category: "Technical",
     author: "Rajesh Kumar",
-    date: "2025-11-25",
+    date: "2025-12-10",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.jpg",
     summary: "Detailed look at the difference between wood stains (which penetrate) and wood paints (which cover) for various interior and exterior wood applications.",
@@ -190,7 +190,7 @@ const blogContentArray = [
     slug: "role-damp-guard-primers",
     category: "Waterproofing",
     author: "Priya Sharma",
-    date: "2025-11-22",
+    date: "2025-12-10",
     readTime: "7 min read",
     image: "/Assets/BlogImages/The Role of Damp Guard Primers in Monsoon Preparation.jpg",
     summary: "How specialized damp-proof primers actively resist moisture ingress and prevent the formation of mold, mildew, and efflorescence on walls.",
@@ -211,7 +211,7 @@ const blogContentArray = [
     slug: "beginners-guide-color-palette",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-11-20",
+    date: "2025-12-10",
     readTime: "5 min read",
     image: "/Assets/BlogImages/A Beginner's Guide to Choosing Your Color Palette.jpg",
     summary: "Simple steps to move from color inspiration (mood boards) to a final, balanced color scheme using the professional 60-30-10 ratio.",
@@ -232,7 +232,7 @@ const blogContentArray = [
     slug: "ultimate-guide-exterior-prep",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-11-18",
+    date: "2025-12-10",
     readTime: "8 min read",
     image: "/Assets/BlogImages/The Ultimate Guide to Exterior Wall Preparation.jpg",
     summary: "Step-by-step instructions for cleaning, repairing, and priming exterior walls to ensure maximum paint longevity in harsh Indian climates.",
@@ -253,7 +253,7 @@ const blogContentArray = [
     slug: "maximizing-space-light-colors",
     category: "Interior Trends",
     author: "Rohan Varma",
-    date: "2025-11-15",
+    date: "2025-12-10",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Maximizing Space with Light Colors in Small Rooms.jpg",
     summary: "Design psychology tips: Using cool blues, pale greens, and off-whites to make small bedrooms and living spaces feel larger and airier.",
@@ -274,7 +274,7 @@ const blogContentArray = [
     slug: "elastomeric-coatings-cracks",
     category: "Waterproofing",
     author: "Priya Sharma",
-    date: "2025-11-12",
+    date: "2025-12-11",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Elastomeric Coatings The Flexible Solution for Concrete Cracks.jpg",
     summary: "A deep dive into highly elastic coatings that stretch and contract, bridging existing hairline cracks and preventing future water damage.",
@@ -295,7 +295,7 @@ const blogContentArray = [
     slug: "professional-smooth-finish-guide",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-11-08",
+    date: "2025-12-11",
     readTime: "5 min read",
     image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.jpg",
     summary: "The step-by-step process of using acrylic putty, sanding, and priming to achieve a flawless, mirror-like base for luxury emulsions.",
@@ -316,7 +316,7 @@ const blogContentArray = [
     slug: "layered-lighting-and-paint-color",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-11-05",
+    date: "2025-12-11",
     readTime: "6 min read",
     image: "/Assets/BlogImages/sunlight on interior wall.jpg",
     summary: "Guide to understanding how different light sources (natural daylight, warm LED, cool white) impact paint color perception throughout the day.",
@@ -337,7 +337,7 @@ const blogContentArray = [
     slug: "anti-algal-fungal-coatings",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-11-02",
+    date: "2025-12-11",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Anti-Algal & Anti-Fungal Coatings Keeping Walls Clean.jpg",
     summary: "How specialized biocidal additives in modern exterior paints inhibit the growth of black algae, fungus, and moss, preserving the building's aesthetic appeal.",
@@ -358,7 +358,7 @@ const blogContentArray = [
     slug: "ultimate-guide-cabinet-painting",
     category: "Interior Solutions",
     author: "Arjun Malhotra",
-    date: "2025-11-01",
+    date: "2025-12-11",
     readTime: "8 min read",
     image: "/Assets/BlogImages/The Ultimate Guide to Kitchen Cabinet Painting (PUEnamel).jpg",
     summary: "Achieving durable, factory-finish results on kitchen cabinets using high-performance PU (Polyurethane) or specialized water-based enamel paints.",
@@ -373,7 +373,7 @@ const blogContentArray = [
       <p>The key to a factory finish is preparation: Remove all doors and hardware. Clean all surfaces thoroughly with a degreaser to remove hidden kitchen grease. Sand the existing finish to dull the surface (de-glossing). Apply a specialized bonding primer before painting the topcoat.</p>
     `
   },
-  
+
   // --- November 2025 filler posts (Content Expanded & Unique Image Allocation) ---
   {
     id: 26,
@@ -381,7 +381,7 @@ const blogContentArray = [
     slug: "colors-for-home-office",
     category: "Design",
     author: "Rohan Varma",
-    date: "2025-11-29",
+    date: "2025-12-11",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Designing the Perfect Home Office Colors for Focus and Calm.jpg", // UNIQUE
     summary: "Using colors like pale blue and serene green to enhance concentration, reduce stress, and boost productivity in your work-from-home space.",
@@ -402,7 +402,7 @@ const blogContentArray = [
     slug: "industrial-epoxy-floors",
     category: "Industrial Solutions",
     author: "Rajesh Kumar",
-    date: "2025-11-27",
+    date: "2025-12-11",
     readTime: "9 min read",
     image: "/Assets/BlogImages/Protecting Industrial Floors with High-Performance Epoxy Coatings.jpg", // UNIQUE
     summary: "Guide to chemical-resistant, high-traffic epoxy systems for factories, warehouses, and commercial kitchens that demand extreme durability.",
@@ -423,7 +423,7 @@ const blogContentArray = [
     slug: "stylish-ceiling-colors",
     category: "Interior Trends",
     author: "Arjun Malhotra",
-    date: "2025-11-24",
+    date: "2025-12-12",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Beyond White Stylish Ceiling Colors to Transform Your Room.jpg", // UNIQUE
     summary: "Tips for using dark or matching ceiling colors to create a cozy 'cocooning' effect or lower a high ceiling visually for better proportions.",
@@ -444,7 +444,7 @@ const blogContentArray = [
     slug: "primer-for-dark-colors",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-11-23",
+    date: "2025-12-12",
     readTime: "6 min read",
     image: "/Assets/BlogImages/The Importance of Primer in Achieving Dark Colors.jpg", // UNIQUE
     summary: "How using a tinted grey primer eliminates the need for 3-4 topcoats when switching from a light wall to a deep shade like navy or charcoal, saving time and cost.",
@@ -465,7 +465,7 @@ const blogContentArray = [
     slug: "waterproofing-terrace-gardens",
     category: "Waterproofing",
     author: "Priya Sharma",
-    date: "2025-11-19",
+    date: "2025-12-12",
     readTime: "8 min read",
     image: "/Assets/BlogImages/Protecting Terrace Gardens Waterproofing Under Soil.jpg", // UNIQUE
     summary: "Essential guidelines for multi-layer waterproofing systems designed to withstand constant moisture, drainage issues, and aggressive root intrusion in rooftop gardens.",
@@ -486,7 +486,7 @@ const blogContentArray = [
     slug: "interior-wall-textures-guide",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-11-17",
+    date: "2025-12-12",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Texture Coatings.jpg", // UNIQUE
     summary: "Exploring different interior texture techniques—such as sponge, ragging, and metallic effects—and how to apply them for artistic depth and character.",
@@ -507,7 +507,7 @@ const blogContentArray = [
     slug: "calyco-sustainable-packaging",
     category: "Sustainability",
     author: "Meera Desai",
-    date: "2025-11-14",
+    date: "2025-12-12",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Sustainable Coating Solutions Low-VOC Without Compromise.jpg", // UNIQUE
     summary: "Detailing the use of recycled materials in paint cans and the company's initiatives to reduce plastic waste and promote recycling in the supply chain.",
@@ -528,7 +528,7 @@ const blogContentArray = [
     slug: "exterior-trim-colors",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-11-11",
+    date: "2025-12-12",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Exterior Protection Defending Against Harsh Indian Climates.jpg", // UNIQUE
     summary: "Guidelines for selecting trim colors (windows, doors, accents) that either pop against the main facade or blend seamlessly for an elegant, unified look.",
@@ -549,7 +549,7 @@ const blogContentArray = [
     slug: "color-retention-science",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-11-09",
+    date: "2025-12-12",
     readTime: "7 min read",
     image: "/Assets/BlogImages/The Science of One-Coat Coverage Myth vs Reality.jpg", // UNIQUE
     summary: "Explaining how specialized inorganic pigments and UV absorbers prevent fading and chalking over years of intense sun exposure.",
@@ -570,7 +570,7 @@ const blogContentArray = [
     slug: "creating-bohemian-look",
     category: "Interior Trends",
     author: "Rohan Varma",
-    date: "2025-11-07",
+    date: "2025-12-13",
     readTime: "5 min read",
     image: "/Assets/BlogImages/2025 Interior Color Trends From Bold to Minimalist.jpg", // UNIQUE
     summary: "Using earthy tones, subtle textures, and bold accent colors to capture the free-spirited, eclectic Bohemian style in your living space.",
@@ -591,7 +591,7 @@ const blogContentArray = [
     slug: "diy-vs-professional-painting",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-11-04",
+    date: "2025-12-13",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.jpg", // UNIQUE
     summary: "Analyzing the cost, time, and quality difference between painting yourself and hiring certified Calyco professionals, focusing on exterior longevity.",
@@ -612,7 +612,7 @@ const blogContentArray = [
     slug: "protecting-swimming-pools",
     category: "Industrial Solutions",
     author: "Vikram Singh",
-    date: "2025-11-03",
+    date: "2025-12-13",
     readTime: "9 min read",
     image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.jpg", // UNIQUE
     summary: "Guide to high-grade epoxy and chlorinated rubber coatings that withstand constant water immersion, chemical attack, and strong UV rays in pools.",
@@ -633,7 +633,7 @@ const blogContentArray = [
     slug: "limewash-look-mineral-paints",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-11-10",
+    date: "2025-12-13",
     readTime: "5 min read",
     image: "/Assets/BlogImages/Choosing the Perfect Accent Wall A Design Strategy.jpg", // UNIQUE
     summary: "How to get the soft, mottled, matte finish of traditional limewash using modern, breathable, and highly durable mineral-based coatings.",
@@ -654,7 +654,7 @@ const blogContentArray = [
     slug: "infrastructure-corrosion-protection",
     category: "Infrastructure",
     author: "Vikram Singh",
-    date: "2025-11-21",
+    date: "2025-12-13",
     readTime: "10 min read",
     image: "/Assets/BlogImages/Concrete Sealing Protection for Modern Infrastructure.jpg", // UNIQUE
     summary: "Detailed look at ultra-high build epoxy and polyurethane systems used to protect critical concrete and steel infrastructure assets from harsh weathering.",
@@ -675,7 +675,7 @@ const blogContentArray = [
     slug: "zero-vs-low-voc",
     category: "Sustainability",
     author: "Meera Desai",
-    date: "2025-11-26",
+    date: "2025-12-13",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Sustainable Coating Solutions Low-VOC Without Compromise.jpg", // UNIQUE
     summary: "Clarifying the labeling differences between Zero-VOC and Low-VOC paints and what they truly mean for indoor air quality and green building certification.",
@@ -696,7 +696,7 @@ const blogContentArray = [
     slug: "preventing-efflorescence",
     category: "Waterproofing",
     author: "Priya Sharma",
-    date: "2025-11-27",
+    date: "2025-12-13",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Complete Guide to Roof Waterproofing in 2025.jpg", // UNIQUE
     summary: "Technical guide to stopping the formation of salt deposits (efflorescence) on masonry walls by managing moisture and using specialized sealers.",
@@ -717,7 +717,7 @@ const blogContentArray = [
     slug: "complementary-colors-impact",
     category: "Interior Trends",
     author: "Arjun Malhotra",
-    date: "2025-11-20",
+    date: "2025-12-14",
     readTime: "5 min read",
     image: "/Assets/BlogImages/2025 Interior Color Trends From Bold to Minimalist.jpg", // UNIQUE
     summary: "How to pair colors from opposite sides of the color wheel (e.g., blue/orange) for high-energy, vibrant, and eye-catching spaces that pop.",
@@ -738,7 +738,7 @@ const blogContentArray = [
     slug: "anti-dust-paints",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-11-13",
+    date: "2025-12-14",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Choosing the Right Primer Water-Based vs. Solvent-Based.jpg", // UNIQUE
     summary: "The science behind low-static paints that repel dust particles, reducing cleaning frequency and improving long-term indoor air quality.",
@@ -759,7 +759,7 @@ const blogContentArray = [
     slug: "wabi-sabi-design-trend",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-11-16",
+    date: "2025-12-14",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Designing the Perfect Home Office Colors for Focus and Calm.jpg", // UNIQUE
     summary: "Using muted colors, natural textures, and a philosophy of rustic minimalism to bring the calming Wabi-Sabi aesthetic to your modern home.",
@@ -780,7 +780,7 @@ const blogContentArray = [
     slug: "future-of-smart-paints",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-11-30",
+    date: "2025-12-14",
     readTime: "8 min read",
     image: "/Assets/BlogImages/The Science of One-Coat Coverage Myth vs Reality.jpg", // DUPLICATE FIX: ID 63 image is now used by ID 45
     summary: "Exploring photocatalytic and hydrophobic paints that self-clean, remove air pollutants, and offer thermal regulation for energy efficiency.",
@@ -795,7 +795,7 @@ const blogContentArray = [
       <p>Thermal or energy-saving paints integrate phase-change materials (PCMs) or specialized ceramic microspheres that effectively absorb and release heat, helping to stabilize the wall's core temperature. This technology significantly aids in reducing the load on HVAC systems, particularly in extreme climates, improving building energy efficiency.</p>
     `
   },
-  
+
   // --- Posts from December 2025 (Recap/New) ---
   {
     id: 46,
@@ -803,7 +803,7 @@ const blogContentArray = [
     slug: "year-in-review-product-launches",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-05",
+    date: "2025-12-14",
     readTime: "7 min read",
     image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.jpg", // DUPLICATE FIX: ID 22 image is now used by ID 46
     summary: "A breakdown of Calyco's most innovative coatings released this year, focusing on new waterproofing and extreme durability features.",
@@ -824,7 +824,7 @@ const blogContentArray = [
     slug: "durable-wood-finishes-monsoon",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-12-04",
+    date: "2025-12-14",
     readTime: "6 min read",
     image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.jpg", // UNIQUE
     summary: "Expert selection guide for choosing stains and clear coats that resist high humidity, water swelling, and fungal growth in coastal and monsoon regions.",
@@ -845,7 +845,7 @@ const blogContentArray = [
     slug: "interior-trends-2026-maximalism",
     category: "Interior Trends",
     author: "Arjun Malhotra",
-    date: "2025-12-03",
+    date: "2025-12-14",
     readTime: "5 min read",
     image: "/Assets/BlogImages/2025 Interior Color Trends From Bold to Minimalist.jpg", // DUPLICATE FIX: ID 2 image is now used by ID 48
     summary: "Get an early look at next year's maximalist movement: bold patterns, rich jewel tones, and layers of texture replacing minimalist serenity.",
@@ -866,7 +866,7 @@ const blogContentArray = [
     slug: "essential-diy-paint-tools",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-02",
+    date: "2025-12-15",
     readTime: "4 min read",
     image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.jpg", // DUPLICATE FIX: ID 22 image is now used by ID 49
     summary: "The essential brushes, rollers, trays, and tapes every homeowner needs to ensure a professional-looking finish without expensive contractor equipment.",
@@ -887,7 +887,7 @@ const blogContentArray = [
     slug: "power-of-matte-finish",
     category: "Design",
     author: "Anjali Nair",
-    date: "2025-12-01",
+    date: "2025-12-15",
     readTime: "5 min read",
     image: "/Assets/BlogImages/sunlight on interior wall.jpg", // DUPLICATE FIX: ID 23 image is now used by ID 50
     summary: "Why matte and ultra-flat finishes are the choice for modern luxury, absorbing light to create a sense of deep, sophisticated color and zero reflection.",
@@ -908,7 +908,7 @@ const blogContentArray = [
     slug: "painting-over-oil-based",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-06",
+    date: "2025-12-15",
     readTime: "7 min read",
     image: "/Assets/BlogImages/The Science of One-Coat Coverage Myth vs Reality.jpg", // DUPLICATE FIX: ID 63 image is now used by ID 51
     summary: "The correct preparation steps and primer needed to safely apply water-based acrylics over old, glossy oil-based enamel without peeling or bubbling.",
@@ -929,7 +929,7 @@ const blogContentArray = [
     slug: "depth-with-dark-colors",
     category: "Interior Trends",
     author: "Rohan Varma",
-    date: "2025-12-04",
+    date: "2025-12-15",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Maximizing Space with Light Colors in Small Rooms.jpg", // DUPLICATE FIX: ID 20 image is now used by ID 52
     summary: "Using charcoal, deep green, or navy blue to make large, open-plan spaces feel intimate, dramatic, and well-defined, balancing vastness with cozy luxury.",
@@ -950,7 +950,7 @@ const blogContentArray = [
     slug: "historic-buildings-paint",
     category: "Exterior Solutions",
     author: "Kavita Reddy",
-    date: "2025-12-02",
+    date: "2025-12-15",
     readTime: "8 min read",
     image: "/Assets/BlogImages/The Ultimate Guide to Exterior Wall Preparation.jpg", // DUPLICATE FIX: ID 19 image is now used by ID 53
     summary: "Why traditional masonry requires highly breathable, mineral-based paints to prevent trapped moisture, bubbling, and structural damage.",
@@ -971,7 +971,7 @@ const blogContentArray = [
     slug: "understanding-adhesion",
     category: "Technical",
     author: "Dr. Suresh Menon",
-    date: "2025-12-01",
+    date: "2025-12-15",
     readTime: "6 min read",
     image: "/Assets/BlogImages/The Importance of Primer in Achieving Dark Colors.jpg", // DUPLICATE FIX: ID 29 image is now used by ID 54
     summary: "A scientific look at paint bonding mechanisms: chemical, mechanical, and electrostatic adhesion, and why proper primer selection is key to prevention.",
@@ -992,7 +992,7 @@ const blogContentArray = [
     slug: "quick-fixes-small-cracks",
     category: "Waterproofing",
     author: "Priya Sharma",
-    date: "2025-12-05",
+    date: "2025-12-15",
     readTime: "4 min read",
     image: "/Assets/BlogImages/Elastomeric Coatings The Flexible Solution for Concrete Cracks.jpg", // DUPLICATE FIX: ID 21 image is now used by ID 55
     summary: "Using flexible acrylic crack fillers and sealants for minor fissures to prevent them from becoming major leak points during heavy rains and structural movement.",
@@ -1006,19 +1006,635 @@ const blogContentArray = [
       <h2>Application Technique</h2>
       <p>Thoroughly clean the crack to remove all loose debris and dust. Apply the sealant deeply into the fissure using a specialized nozzle or putty knife. Once cured, apply a protective final layer of damp-proof primer or paint over the repaired area to blend it seamlessly with the rest of the wall.</p>
     `
+  },
+  {
+    id: 56,
+    title: "Earthy Interior Colors for 2025 Indian Homes",
+    slug: "earthy-interior-colors-2025-indian-homes",
+    category: "Color Trends",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Earthy Interior Colors for 2025 Indian Homes (Terracotta, Olive, Mocha.png",
+    summary: "Discover why Terracotta, Olive, and Mocha are becoming the go-to shades for grounding modern Indian apartments.",
+    content: `
+      <h2>Returning to Roots with Warm Tones</h2>
+      <p>In 2025, Indian interiors are moving away from stark whites and greys, embracing the warmth of the earth. Shades like baked Terracotta, deep Olive Green, and rich Mocha are dominating living spaces. These colors resonate with the Indian landscape and provide a sense of stability and comfort in bustling urban environments.</p>
+      
+      <h2>How to Style Earthy Hues</h2>
+      <p>The key to these colors is matte finishes. A textured terracotta feature wall pairs beautifully with beige upholstery and wooden accents. For a bolder look, olive green cabinetry in the kitchen brings nature indoors without overwhelming the senses. These shades work particularly well in Indian homes, complementing traditional brass decor and warm lighting.</p>
+      <h2>Complementary Textures</h2>
+      <p>To maximize the effect of earthy tones, layer differing textures. Rough-hewn wood, jute rugs, and unpolished brass hardware add dimension that prevents these colors from feeling flat. Avoid high-gloss synthetics, which can clash with the organic feel.</p>
+      <h2>Lighting Considerations</h2>
+      <p>Earthy colors absorb light more than whites. Ensure your lighting plan includes warm-dimmable LEDs (2700K) to maintain the cozy atmosphere in the evening, rather than washing it out with cool daylight bulbs.</p>
+    `
+  },
+  {
+    id: 57,
+    title: "Jewel-Tone Accent Walls: Emerald, Sapphire and Burgundy",
+    slug: "jewel-tone-accent-walls",
+    category: "Color Trends",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/Jewel Tone Accent Walls Emerald, Sapphire and Burgundy Ideas for Living Rooms.jpg",
+    summary: "How to introduce luxury and drama into your living room using deep, saturated jewel tones.",
+    content: `
+      <h2>The Allure of Luxury</h2>
+      <p>Jewel tones are making a massive comeback for those seeking drama and opulence. Emerald Green, Sapphire Blue, and deep Burgundy act as perfect backdrops for metallic accents. In an Indian context, these colors echo the vibrancy of festive attire and traditional silks, making the home feel celebratory year-round.</p>
+      
+      <h2>Balancing the Boldness</h2>
+      <p>When using such strong colors, balance is crucial. If you paint a wall in Sapphire Blue, keep the floor and ceiling neutral. Use mustard yellow or gold accessories to create a striking contrast. These colors are excellent for creating a focal point behind a TV unit or a sofa in the drawing room.</p>
+      <h2>Metallics and Shine</h2>
+      <p>Jewel tones pair exquisitely with metallics. Gold frames against Emerald green, or silver mirrors against Sapphire blue, create a regal look. Reflected light prevents the dark wall from acting like a visual 'black hole'.</p>
+      <h2>Artwork Selection</h2>
+      <p>When using a dark jewel tone, choose artwork with wide white matting. This creates a gallery-like effect where the art pops significantly against the deep background, adding sophistication to the living space.</p>
+    `
+  },
+  {
+    id: 58,
+    title: "Pastel Palettes for Calm Bedrooms",
+    slug: "pastel-palettes-for-calm-bedrooms",
+    category: "Color Trends",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Pastel Palettes for Calm Bedrooms.jpg",
+    summary: "Sage Green, Blush, and Sky Blue combinations to create a serene sanctuary.",
+    content: `
+      <h2>Soft Hues for Mental Peace</h2>
+      <p>The bedroom should be a sanctuary, and 2025 is all about soft, whispering colors. Sage Green offers a restorative vibe, while Blush Pink adds warmth without being overly feminine. These pastels reflect light beautifully, making smaller Indian bedrooms feel more spacious and airy.</p>
+      
+      <h2>Layering Pastels</h2>
+      <p>Avoid the 'nursery look' by pairing pastels with grown-up textures. Combine sky blue walls with a grey upholstered headboard or walnut wood side tables. The contrast between the soft paint and the solid furniture grounds the room, ensuring it looks sophisticated rather than childish.</p>
+      <h2>Contrast is Key</h2>
+      <p>To prevent the room from looking like a nursery, ground the pastels with dark elements. A charcoal grey throw blanket, black metal lamp fixtures, or dark wood flooring provide the necessary visual weight to make the pastels look elegant and adult.</p>
+      <h2>Longevity of Style</h2>
+      <p>Pastels are timeless. Unlike trendy neon accents, a soft sage or blush wall will likely stay in style for a decade. They are also easy to repaint over if you decide to change the scheme later, unlike dark reds or blues.</p>
+    `
+  },
+  {
+    id: 59,
+    title: "Indian Home Color Combinations 2025",
+    slug: "indian-home-color-combinations-2025",
+    category: "Color Trends",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/Indian Home Color Combinations 2025 Top Two  and Three Color Wall Ideas.png",
+    summary: "Top two- and three-color wall ideas tailored for Indian lighting and aesthetics.",
+    content: `
+      <h2>Harmonizing Trios</h2>
+      <p>The trend for 2025 is the '60-30-10' rule applied with Indian sensibilities. A popular trio this year is Cream (60%), Teal (30%), and Coral (10%). This combination offers a neutral base, a cooling secondary color perfect for hot climates, and a pop of warmth that feels inviting.</p>
+      
+      <h2>The Two-Tone Effect</h2>
+      <p>For a simpler approach, two-tone walls are gaining traction. Imagine a wall divided horizontally: a dark charcoal on the bottom half to hide scuffs and marks (practical for Indian households), and a crisp white on top to reflect light and heighten the ceiling appearance.</p>
+      <h2>Adapting to Climate</h2>
+      <p>In hotter regions like Rajasthan or Tamil Nadu, cool color combinations (Teals, Whites, Greys) are psychologically refreshing. In cooler northern hill stations, warm palettes (Creams, Ochres, Corals) make the interior feel cozy and protected.</p>
+      <h2>Visual Flow</h2>
+      <p>Ensure the color palette flows from room to room. If your living room is Teal and Cream, carry the Cream color into the hallway and use Teal as an accent in the adjacent dining room to create a cohesive home experience.</p>
+    `
+  },
+  {
+    id: 60,
+    title: "Using Red the Right Way in 2025",
+    slug: "using-red-the-right-way",
+    category: "Color Trends",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Using Red the Right Way How to Work 2025s Bold Reds into Modern Interiors.jpg",
+    summary: "Red is bold and auspicious. Here is how to work 2025’s muted reds into modern interiors without overwhelming the space.",
+    content: `
+      <h2>From Fire Engine to Rust</h2>
+      <p>Red has always been an auspicious color in India, but the 2025 trend shifts from bright fire-engine red to muted, sophisticated tones like Rust, Brick, and Venetian Red. These shades bring energy to a room without causing visual fatigue.</p>
+      
+      <h2>Where to Apply Red</h2>
+      <p>The best place for these bold reds is in high-energy areas like the dining room or the entryway. Avoid using red in the bedroom as it can be too stimulating. Instead, a rust-colored accent wall in the dining area stimulates appetite and conversation during family meals.</p>
+      <h2>Psychological Impact</h2>
+      <p>Red raises energy levels and stimulates conversation, which is why it's great for social areas. However, it can also induce hunger—making it a favorite for dining rooms—but potentially restless in bedrooms or study areas where calm is needed.</p>
+      <h2>The 10% Rule</h2>
+      <p>If you love red but fear its intensity, apply the 10% rule. Keep 90% of the room neutral (off-whites, beiges) and use red only for 10% of the visual space—perhaps a single niche, a painted arch, or just the door frame.</p>
+    `
+  },
+  {
+    id: 61,
+    title: "Complete Guide to Eco-Friendly Paints in India",
+    slug: "guide-to-eco-friendly-paints-india",
+    category: "Eco-Friendly",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "7 min read",
+    image: "/Assets/BlogImages/Complete Guide to Eco-Friendly Paints in India Low-VOC, ZeroVOC and Odourless Options.png",
+    summary: "Understanding Low-VOC, Zero-VOC, and Odourless options for a safer home.",
+    content: `
+      <h2>The VOC Concern</h2>
+      <p>Volatile Organic Compounds (VOCs) are chemicals that off-gas from paint for years, affecting air quality. With rising awareness in India, manufacturers are shifting toward water-based, Low-VOC formulations. These are essential for homes with poor ventilation or air conditioning, where trapped air can become toxic.</p>
+      
+      <h2>Performance vs. Ecology</h2>
+      <p>A common myth is that eco-friendly paints are less durable. In 2025, technology has bridged this gap. Modern zero-VOC paints offer excellent washability and stain resistance, making them perfect for active Indian households that deal with dust and humidity.</p>
+      <h2>Long-Term Cost Benefits</h2>
+      <p>While eco-friendly paints might have a slightly higher upfront cost, their superior coverage and durability often mean you buy less paint and repaint less often. Additionally, the health benefits of reduced chemical exposure are invaluable.</p>
+      <h2>Disposal Integrity</h2>
+      <p>Eco-friendly brands often have better disposal protocols. Since the paint is water-based and less toxic, cleaning brushes and rollers releases fewer harmful pollutants into the water system compared to traditional oil-based solvents.</p>
+    `
+  },
+  {
+    id: 62,
+    title: "Why Indoor Air Quality Matters",
+    slug: "why-indoor-air-quality-matters",
+    category: "Health",
+    author: "Rohan Varma",
+    date: "2025-12-16",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Why Indoor Air Quality Matters Choosing Healthy Wall Paints for Kids and Seniors.png",
+    summary: "Choosing healthy wall paints specifically for kids and seniors in the family.",
+    content: `
+      <h2>The Invisible Health Hazard</h2>
+      <p>In metros like Delhi and Mumbai, we worry about outdoor pollution, but indoor air can be five times more polluted. Wall paints contribute significantly to this. For vulnerable groups like children and seniors, choosing paints that absorb formaldehyde or are strictly non-toxic is a health necessity, not a luxury.</p>
+      
+      <h2>Anti-Bacterial Properties</h2>
+      <p>Beyond air quality, new health-focused paints come with anti-bacterial and anti-fungal properties. In humid Indian climates, this prevents mold growth on walls, which is a major trigger for asthma and allergies in seniors.</p>
+      <h2>Ventilation Synergy</h2>
+      <p>Healthy paint works best in a well-ventilated home. While the paint itself emits fewer toxins, opening windows daily allows any residual VOCs to escape and fresh air to circulate, maximizing the benefits of your non-toxic wall choice.</p>
+      <h2>Ideal for Nurseries</h2>
+      <p>Babies breathe more rapidly than adults, inhaling more air relative to their body weight. Using Zero-VOC paint in a nursery significantly reduces their exposure to chemical off-gassing during their most critical developmental stages.</p>
+    `
+  },
+  {
+    id: 63,
+    title: "Bio-Based and Natural Paint Ingredients",
+    slug: "bio-based-and-natural-paint-ingredients",
+    category: "Eco-Friendly",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/BioBased and Natural Paint Ingredients What Indian Homeowners Should Know.png",
+    summary: "What Indian homeowners should know about clay, lime, and milk paints.",
+    content: `
+      <h2>Going Truly Natural</h2>
+      <p>Bio-based paints are derived from plant extracts, clay, and minerals rather than petrochemicals. Ingredients like lime and milk casein have been used in traditional Indian construction for centuries and are seeing a revival. They are breathable, meaning they allow moisture to escape walls, preventing dampness.</p>
+      
+      <h2>The Aesthetic of Nature</h2>
+      <p>These paints offer a distinct aesthetic—a chalky, soft finish that synthetic paints cannot replicate. While they may require more care during application, the result is a non-toxic, visually soothing environment that feels organic and grounded.</p>
+      <h2>Durability Expectations</h2>
+      <p>It is important to note that natural clay or lime paints cure differently than latex. They become harder over time but may be less resistant to scrubbing with harsh chemicals. They are best cleaned with a dry cloth or mild water sponge.</p>
+      <h2>A Living Finish</h2>
+      <p>Natural paints often patina beautifully over time, changing slightly with humidity and light. This 'living' quality is part of their charm, adding a layer of depth and story to your walls that flat plastic-based paints cannot achieve.</p>
+    `
+  },
+  {
+    id: 64,
+    title: "How to Read Green Certifications on Paint Cans",
+    slug: "how-to-read-green-certifications",
+    category: "Eco-Friendly",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/How to Read Green Certifications on Paint Cans in India (Green Seal, Eco Label, etc.).png",
+    summary: "Deciphering Green Seal, Eco Label, and GRIHA ratings for informed buying.",
+    content: `
+      <h2>Look Beyond the Label</h2>
+      <p>Many brands use the term 'Green' loosely. To ensure you are buying a genuinely eco-friendly product, look for certifications like Green Seal, GRIHA (Green Rating for Integrated Habitat Assessment), or the Indian Green Building Council (IGBC) stamp. These certify that the product meets strict emission standards.</p>
+      
+      <h2>Understanding the Ratings</h2>
+      <p>Check for the VOC content number on the can. Ideally, it should be less than 50g/L for low-VOC and less than 5g/L for zero-VOC. Understanding these metrics empowers you to make choices that protect your family's health and the environment.</p>
+      <h2>Avoiding Greenwashing</h2>
+      <p>Be wary of vague terms like 'Eco-Safe' or 'Nature-Friendly' that lack certification. Always look for the specific standard code on the bucket. Genuine certifications require rigorous third-party testing of the chemical formula.</p>
+      <h2>Ask for the MSDS</h2>
+      <p>For large projects, you can ask the dealer for the Material Safety Data Sheet (MSDS). This document lists all chemical ingredients and safety hazards, providing total transparency about what you are bringing into your home.</p>
+    `
+  },
+  {
+    id: 65,
+    title: "Textured Wall Finishes Trending in 2025",
+    slug: "textured-wall-finishes-trending-2025",
+    category: "Design Trends",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Textured Wall Finishes Trending in 2025 Lime Wash Clay and Rustic Plasters for Indian Homes.png",
+    summary: "Lime Wash, Clay, and Rustic Plasters: Bringing tactile beauty to Indian homes.",
+    content: `
+      <h2>The Imperfect Look</h2>
+      <p>Sleek, glossy walls are taking a backseat to textured finishes like Lime Wash and Venetian Plaster. These finishes add depth and movement to the walls. In Indian homes, where natural light can be harsh, these textures diffuse light softly, creating a cozy, cave-like atmosphere.</p>
+      
+      <h2>Rustic Luxury</h2>
+      <p>This trend aligns with the 'Wabi-Sabi' philosophy—finding beauty in imperfection. A rustic clay plaster wall in the living room acts as art in itself, eliminating the need for expensive paintings or wallpaper. It pairs exceptionally well with cane furniture and jute rugs.</p>
+      <h2>Lighting for Texture</h2>
+      <p>Texture relies on shadow to be seen. To get the most out of a Limewash or Venetian plaster wall, wash it with light from an angle (wall-washer lights or sconces). Flat, frontal lighting will hide the texture and make the wall look unevenly painted.</p>
+      <h2>Patching Considerations</h2>
+      <p>Textured finishes are difficult to invisibly patch if damaged. Unlike flat paint where you can touch up a spot, textured walls often require repainting the entire section from corner to corner to blend the repair seamlessly.</p>
+    `
+  },
+  {
+    id: 66,
+    title: "Bold Feature Walls vs. All-Over Color",
+    slug: "bold-feature-walls-vs-all-over-color",
+    category: "Design Trends",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Bold Feature Walls vs. AllOver Color When to Use Each in Small Indian Apartments.png",
+    summary: "Deciding when to use accent walls versus color-drenching in small Indian apartments.",
+    content: `
+      <h2>The Case for Color Drenching</h2>
+      <p>Color drenching—painting walls, trim, and even the ceiling the same color—is a rising trend for 2025. Surprisingly, this works well in small apartments. By removing visual breaks between the wall and ceiling, the room actually feels larger and more cohesive.</p>
+      
+      <h2>When to Stick to Feature Walls</h2>
+      <p>However, if your room is long and narrow (common in many Indian layouts), a dark feature wall at the far end can visually 'shorten' the space, making it feel more proportional. Use feature walls to highlight architectural elements like niches or columns.</p>
+      <h2>Optical Illusions</h2>
+      <p>A dark feature wall pushes the surface visually backward, adding depth. Conversely, a warm, bright feature wall comes forward, making a large, cavernous room feel more intimate. Use this to correct the proportions of your room.</p>
+      <h2>Architectural Features</h2>
+      <p>Don't force a feature wall where there is no focal point. The best walls for accents are those with a fireplace, a large window, or behind the bed. Avoid highlighting walls with asymmetrical door placements or clutter.</p>
+    `
+  },
+  {
+    id: 67,
+    title: "Colour-Blocking Ideas for Modern Living Rooms",
+    slug: "colour-blocking-ideas-modern-living-rooms",
+    category: "Design Trends",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.png",
+    summary: "Geometric shapes and contrasting sections to define zones in open-plan homes.",
+    content: `
+      <h2>Zoning Without Walls</h2>
+      <p>With open floor plans being common, colour-blocking is a smart way to define spaces without physical partitions. Use a distinct arch of color painted on the wall to define a 'Work from Home' corner within a living room, or a geometric block to frame the TV unit.</p>
+      
+      <h2>Playful Kids' Rooms</h2>
+      <p>Colour-blocking shines in kids' rooms. Instead of painting the whole room pink or blue, paint mountains, arches, or abstract shapes. It’s modern, playful, and easier to change as the child grows compared to full-wall themes.</p>
+      <h2>Tools for Success</h2>
+      <p>Crisp lines are the secret to colour blocking. Invest in high-quality painter's tape (like FrogTape) and remove it while the paint is still slightly wet to avoid peeling. Use a laser level to ensure your geometric shapes are perfectly straight.</p>
+      <h2>Ceiling Continuation</h2>
+      <p>For a bold, immersive effect, continue the color block from the wall up onto a section of the ceiling. This creates a 'canopy' effect that can define a reading nook or a sleeping area without any physical structure.</p>
+    `
+  },
+  {
+    id: 68,
+    title: "Ceiling Design Trends 2025",
+    slug: "ceiling-design-trends-2025",
+    category: "Design Trends",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Ceiling Design Trends 2025 TwoTone Ceilings, Borders and Soft Color Washes.png",
+    summary: "Two-Tone Ceilings, Borders, and Soft Color Washes to looking up.",
+    content: `
+      <h2>The Fifth Wall</h2>
+      <p>The ceiling is often ignored in Indian interior design, usually left plain white. 2025 changes that. Painting the ceiling a soft color (like a pale blue or sage) draws the eye upward and adds a layer of surprise. For high ceilings, a darker color can bring the height down to a cozier level.</p>
+      
+      <h2>Painted Borders</h2>
+      <p>If a full colored ceiling is too bold, consider a painted border that extends from the cornice onto the ceiling. This adds a heritage, colonial-inspired look that fits beautifully in renovated older homes or classic apartments.</p>
+      <h2>Height Perception</h2>
+      <p>A general rule: light ceilings feel higher, dark ceilings feel lower. If you have a standard apartment height (9-10ft), stick to lighter shades. If you have a double-height villa living room, a charcoal ceiling can dramatically humanize the scale.</p>
+      <h2>The Finish Matters</h2>
+      <p>Always use a flat or matte finish for ceilings. Ceilings often have minor plaster waves or imperfections; gloss or satin paint will reflect light and highlight every flaw. Matte paint hides these issues perfectly.</p>
+    `
+  },
+  {
+    id: 69,
+    title: "Best Living Room Paint Colors for Indian Families",
+    slug: "best-living-room-paint-colors-2025",
+    category: "Room Specific",
+    author: "Rohan Varma",
+    date: "2025-12-17",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/Best Living Room Paint Colors for Indian Families in 2025 (By Light, Size and Style).png",
+    summary: "Choosing colors based on natural light, room size, and maintenance needs.",
+    content: `
+      <h2>Warm Neutrals for Gatherings</h2>
+      <p>The living room is the heart of the Indian home. Warm neutrals like Beige, Greige (Grey+Beige), and Warm White are timeless because they provide a flexible backdrop for colorful festivals, changing decor, and vibrant artwork.</p>
+      
+      <h2>Handling Natural Light</h2>
+      <p>If your living room faces north and lacks sun, avoid cool greys; they will look gloomy. Opt for warm yellows or creams. Conversely, for a sun-drenched south-facing room, cool blues and teals can balance the heat and glare, making the room feel cooler.</p>
+      <h2>Furniture Coordination</h2>
+      <p>Don't pick a wall color in isolation. Consider your sofa and rug first. It is much easier to match a paint color to a specific fabric shade than to find a sofa that matches a whimsical wall color you already painted.</p>
+      <h2>Testing Patches</h2>
+      <p>Always test large 2ft x 2ft patches on two different walls (one facing light, one in shadow). Live with the color for 24 hours to see how it shifts from morning sunlight to artificial evening light before committing.</p>
+    `
+  },
+  {
+    id: 70,
+    title: "Kitchen Wall and Cabinet Color Ideas",
+    slug: "kitchen-wall-and-cabinet-color-ideas",
+    category: "Room Specific",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Kitchen Wall and Cabinet Color Ideas That Resist Stains and Look Premium.png",
+    summary: "Colors that resist turmeric stains and look premium in Indian kitchens.",
+    content: `
+      <h2>The Turmeric Test</h2>
+      <p>In Indian kitchens, staining is a real concern. While white kitchens are trendy, they are high maintenance. In 2025, we are seeing a shift toward darker lower cabinets in Navy Blue, Charcoal, or Forest Green. These hide splashes and scuffs effectively while looking ultra-modern.</p>
+      
+      <h2>Two-Tone Kitchens</h2>
+      <p>Keep the upper cabinets light (off-white or light grey) to maintain an airy feel, while grounding the space with dark lower cabinets. Use semi-gloss or high-gloss finishes for walls and cabinets to ensure easy wipe-ability of oil and spice residues.</p>
+      <h2>Grease Resistance</h2>
+      <p>For Indian cooking, which involves tadka and frying, oil vapors settle on all vertical surfaces. Ensure your kitchen paint has a high scrub-rating (Class 1 Scrub Resistance). This allows you to use stronger degreasers without dulling the finish.</p>
+      <h2>Ceiling Protection</h2>
+      <p>Don't forget the kitchen ceiling! It collects smoke and steam. Use a moisture-resistant, mold-resistant emulsion for the kitchen ceiling, ideally in a satin finish that can be wiped down occasionally.</p>
+    `
+  },
+  {
+    id: 71,
+    title: "Home Office Wall Colors for Productivity",
+    slug: "home-office-wall-colors-productivity",
+    category: "Room Specific",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Home Office Wall Colors for Productivity in 2025 From Calm Greens to Focused Blues.png",
+    summary: "From calm greens to focused blues: optimizing your WFH space.",
+    content: `
+      <h2>Blue for Focus</h2>
+      <p>Color psychology suggests that blue stimulates the mind. A deep, calming blue wall behind your monitor can help maintain focus during long work calls. It contrasts well with white desks and black tech equipment, creating a professional Zoom background.</p>
+      
+      <h2>Green for Creativity</h2>
+      <p>If your work is creative, Green is the better choice. It reduces eye strain and anxiety. A soft sage green or a vibrant leaf green can keep energy levels up without the aggression of red or orange. Pair with plants for a biophilic boost.</p>
+      <h2>Video Call Backgrounds</h2>
+      <p>Your wall is now your professional backdrop. A mid-tone blue, grey, or sage reads well on camera. Avoid complex wallpapers or bright whites (which can cause camera exposure issues) directly behind your chair.</p>
+      <h2>Glare Reduction</h2>
+      <p>In a home office, avoid glossy paints. They reflect monitor glare and lighting, which causes eye strain over time. A washable matte or eggshell finish provides a soft, non-reflective surface that is easy on the eyes.</p>
+    `
+  },
+  {
+    id: 72,
+    title: "Kid-Friendly Paint Ideas: Washable & Playful",
+    slug: "kid-friendly-paint-ideas",
+    category: "Room Specific",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/Kid-Friendly Paint Ideas Washable, Low-VOC and Playful Color Schemes.png",
+    summary: "Creating a safe and durable environment for the little ones.",
+    content: `
+      <h2>The Importance of 'Easy Clean'</h2>
+      <p>For kids' rooms, the finish is just as important as the color. Always opt for 'Easy Clean' or washable emulsions. These form a cross-linked protective film that allows you to wipe off crayon marks and muddy handprints without removing the paint.</p>
+      
+      <h2>Stimulating but Sleep-Friendly</h2>
+      <p>Use bright colors in play zones but keep the sleeping area neutral. A popular 2025 trend is the 'sunset' theme—warm oranges and pinks—which feels energetic but transitions well into evening warmth. Ensure all paints are Zero-VOC to protect developing lungs.</p>
+      <h2>The Scrubbability Test</h2>
+      <p>When buying paint for a kid's room, ask the dealer to demonstrate the 'scrub test'. Good quality washable paints can withstand over 5,000 scrub cycles. This means you can attack that crayon masterpiece with a sponge without worry.</p>
+      <h2>Future Proofing</h2>
+      <p>Kids' tastes change fast. Instead of specialized 'kid themes', choose a versatile base color and add themes through decals or artwork. High-quality paint can last 7 years—longer than your child's obsession with dinosaurs.</p>
+    `
+  },
+  {
+    id: 73,
+    title: "Smart and Functional Paints in India",
+    slug: "smart-and-functional-paints-india",
+    category: "Technology",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/Smart and Functional Paints in India Heat-Reflective, Air-Purifying and Self-Cleaning Coatings.png",
+    summary: "Heat-Reflective, Air-Purifying, and Self-Cleaning coatings explaining the tech.",
+    content: `
+      <h2>Beyond Color</h2>
+      <p>Paint is becoming a technology product. Heat-reflective paints for terraces and exterior walls can lower indoor temperatures by up to 5 degrees—a blessing during the Indian summer. These paints contain microspheres that reflect IR radiation.</p>
+      
+      <h2>Air Purifying Walls</h2>
+      <p>Some premium interior paints now come with activated carbon technology that neutralizes indoor smells and formaldehyde. For homes in congested cities, this passive air purification contributes significantly to a healthier living environment.</p>
+      <h2>Cost vs. Benefit</h2>
+      <p>Smart paints are significantly more expensive per liter. However, the energy savings from heat-reflective paint (lower AC bills) or the health savings from air-purifying paint often provide a return on investment within 2-3 years.</p>
+      <h2>Proper Application</h2>
+      <p>These technical paints require strict adherence to application guides. For example, heat-reflective paint must be applied in specific thickness to work. Do not dilute these paints excessively, or you destroy their functional properties.</p>
+    `
+  },
+  {
+    id: 74,
+    title: "Long-Lasting Exterior Paint for Indian Weather",
+    slug: "long-lasting-exterior-paint-indian-weather",
+    category: "Technology",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Long-Lasting Exterior Paint Systems for Harsh Indian Weather in 2025.png",
+    summary: "Battling the monsoon and the heatwave with the right exterior systems.",
+    content: `
+      <h2>The Elasticity Factor</h2>
+      <p>Indian exteriors face extreme expansion (summer) and contraction (winter), leading to hairline cracks. High-stretch, elastomeric paints are essential. They stretch with the wall, bridging cracks and preventing rainwater from seeping in during the heavy monsoon season.</p>
+      
+      <h2>Anti-Algal Protection</h2>
+      <p>In coastal or high-rainfall areas, black algal patches are a common eyesore. Modern exterior emulsions come with enhanced bio-block technology that guarantees algal resistance for 5-7 years, keeping the building looking fresh despite the humidity.</p>
+      <h2>UV Protection</h2>
+      <p>India's UV index is very high. Standard external paints chalk and fade within 3 years. Look for paints with 'Anti-Fading' guarantees, which use inorganic pigments that resist breaking down under harsh sunlight.</p>
+      <h2>Film Thickness</h2>
+      <p>For exterior protection, the thickness of the film (DFT) matters. Ensure your painter applies the recommended 2-3 coats. A thin wash of exterior paint will look good for a month but will fail to bridge cracks during the first summer heatwave.</p>
+    `
+  },
+  {
+    id: 75,
+    title: "The Rise of Premium Easy-to-Clean Paints",
+    slug: "rise-of-premium-easy-to-clean-paints",
+    category: "Market Trends",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/The Rise of Premium, Easy-to-Clean Interior Paints in Indian Cities.png",
+    summary: "Why Indian homeowners are investing more in high-performance finishes.",
+    content: `
+      <h2>Investing in Longevity</h2>
+      <p>The mindset of the Indian consumer is shifting from 'cheapest option' to 'value for money'. Homeowners realize that repainting is a hassle involving moving furniture and dust. Therefore, investing in premium, Teflon-coated or high-cross-linking paints that last 7-8 years is becoming the norm.</p>
+      
+      <h2>Stain Resistance is Key</h2>
+      <p>In a culture that loves heavy cooking and joint families, walls take a beating. The demand for paints that repel hydrophobic (oil-based) and hydrophilic (water-based) stains is skyrocketing in urban centers, driving market innovation.</p>
+      <h2>Cross-Linking Technology</h2>
+      <p>Premium easy-clean paints use polymers that cross-link tightly as they dry, creating a barrier so dense that stains sit on top rather than soaking in. This is why you can wipe ketchup off them even 24 hours later.</p>
+      <h2>Where to Use</h2>
+      <p>You don't need this expensive paint everywhere. Prioritize 'high-traffic zones': hallways, staircases, dining rooms, and lower halves of walls in living areas. Ceilings and spare bedrooms can use standard emulsions to save cost.</p>
+    `
+  },
+  {
+    id: 76,
+    title: "How Sustainability Is Changing the Indian Paint Market",
+    slug: "sustainability-changing-indian-paint-market",
+    category: "Market Trends",
+    author: "Rohan Varma",
+    date: "2025-12-18",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/How Sustainability Is Changing the Indian Paint Market (2025–2030 Outlook).png",
+    summary: "Outlook for 2025–2030: Recycled packaging and water conservation.",
+    content: `
+      <h2>The Green Manufacturing Push</h2>
+      <p>It's not just what's in the can, but how it's made. Major Indian paint companies are moving toward water-neutral factories and using recycled plastic for paint buckets. Consumers are increasingly favoring brands that demonstrate corporate responsibility.</p>
+      
+      <h2>The Future is Water-Based</h2>
+      <p>Solvent-based enamels (oil paints) are rapidly disappearing, replaced by water-based enamels for doors and windows. This shift eliminates strong odors and reduces the carbon footprint of the painting process, aligning with global environmental goals.</p>
+      <h2>Recycling Paint Cans</h2>
+      <p>Metal paint cans are 100% recyclable, but plastic buckets often end up in landfills. Calyco is pioneering a take-back program for buckets. Check with your local dealer if they accept clean, empty buckets for industrial recycling.</p>
+      <h2>Water Conservation</h2>
+      <p>Newer water-based paints are formulated to require less water for thinning and less water for tool cleanup. Given India's water scarcity, choosing water-wise products and conscious application methods is a small but vital contribution.</p>
+    `
+  },
+  {
+    id: 77,
+    title: "Vertical Gardens & Living Walls in Apartments",
+    slug: "vertical-gardens-living-walls",
+    category: "Biophilic Design",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/Vertical Gardens & Living Walls How to Bring the 'Jungle Vibe' into Indian Apartments.png",
+    summary: "How to bring the 'Jungle Vibe' into Indian apartments to combat pollution.",
+    content: `
+      <h2>Green Lungs for Your Home</h2>
+      <p>With pollution levels rising in metros like Delhi and Mumbai, the 'Vertical Garden' is no longer just for office lobbies. Homeowners are installing living walls on balconies and even in living rooms. These act as natural air purifiers and reduce ambient temperature.</p>
+      
+      <h2>Maintenance Made Easy</h2>
+      <p>The fear of maintenance is vanishing thanks to automated drip-irrigation kits designed for small balconies. Plants like Pothos, Ferns, and Syngoniums thrive in vertical setups and require minimal soil, making them perfect for apartment living.</p>
+      <h2>Strict Moisture Protection</h2>
+      <p>Before installing a vertical garden, the wall behind it must be treated like a bathroom floor. Apply a heavy-duty flexible waterproof membrane. Standard exterior paint is NOT enough to withstand the constant dampness of soil bags against the wall.</p>
+      <h2>Air Gap Strategy</h2>
+      <p>Ideally, mount the vertical garden frame on spacers, leaving a 1-inch air gap between the plants and the wall. This allows air to circulate, keeping the wall dry and preventing fungal growth that leads to sick building syndrome.</p>
+    `
+  },
+  {
+    id: 78,
+    title: "The Rattan & Cane Revival",
+    slug: "rattan-and-cane-revival",
+    category: "Furniture Trends",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/The Rattan & Cane Revival Styling Traditional Indian Furniture in Modern Luxury Homes.png",
+    summary: "Styling traditional Indian furniture in modern luxury homes.",
+    content: `
+      <h2>Nostalgia Meets Modernity</h2>
+      <p>There is a massive wave of nostalgia sweeping Indian interiors. We are seeing a return to 'Jaali' work and cane weaving, reminiscent of our grandparents' homes, but with a twist. Designers are pairing these traditional textures with sleek black metal frames or velvet upholstery.</p>
+      
+      <h2>Light and Airy</h2>
+      <p>Cane furniture is visually light, making it ideal for compact modern apartments. It allows light to pass through, unlike heavy wooden sofas. A rattan accent chair or a cane-fronted sideboard adds a touch of organic warmth to a contemporary minimal space.</p>
+      <h2>Sage and Terracotta Pairings</h2>
+      <p>Rattan's warm, honey tones look exceptional against muted greens (Sage, Olive) and earthy reds (Terracotta, Rust). These combinations evoke a tropical, resort-like feel that is perfectly suited to the Indian climate.</p>
+      <h2>Mixing Wood Tones</h2>
+      <p>Don't worry about matching your cane furniture exactly to your flooring. The beauty of natural materials lies in variety. A light cane chair sits happily on a dark walnut floor; the contrast highlights the intricate weaving detail.</p>
+    `
+  },
+  {
+    id: 79,
+    title: "The 'Flex-Room' Revolution",
+    slug: "flex-room-revolution-2025",
+    category: "Lifestyle",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "5 min read",
+    image: "/Assets/BlogImages/The 'Flex-Room' Revolution Designing Multi-Purpose Spaces for Hybrid Work in 2025.png",
+    summary: "Designing multi-purpose spaces for hybrid work and guests.",
+    content: `
+      <h2>Adaptable Real Estate</h2>
+      <p>With real estate prices soaring, dedicating a room solely for guests is a luxury few can afford. The trend for 2025 is the 'Flex-Room'—a space that works as a home office by day and a guest room by night.</p>
+      
+      <h2>Smart Furniture Solutions</h2>
+      <p>This trend is powered by innovative furniture: Murphy beds that fold into the wall to reveal a desk, or partition shelves that can wheel away. The decor in these rooms tends to be neutral and uncluttered to facilitate quick transitions between functions.</p>
+      <h2>Neutral Base for Transition</h2>
+      <p>For a Flex-Room, keep the permanent elements (walls, large furniture) neutral. This allows the room to shift identity easily. A neutral grey room can be a professional office one minute and a warm guest bedroom the next with just a change of lighting and bedding.</p>
+      <h2>Acoustic Considerations</h2>
+      <p>If the room is for work and sleep, invest in soft furnishings (heavy curtains, plush rugs) to dampen sound. This improves audio quality for video calls and creates a quieter, more restful environment for guests.</p>
+    `
+  },
+  {
+    id: 80,
+    title: "Dopamine Decor: Joyful Colors",
+    slug: "dopamine-decor-joyful-colors",
+    category: "Decor Psychology",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "4 min read",
+    image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.png",
+    summary: "Using bright pops of yellow and kitschy art to boost mood at home.",
+    content: `
+      <h2>Happiness by Design</h2>
+      <p>Moving away from the 'sad beige' trend, Dopamine Decor is all about what makes <i>you</i> happy. It involves using vibrant colors like sunshine yellow, electric blue, and hot pink. It's an anti-trend that encourages personal expression over catalog perfection.</p>
+      
+      <h2>Personal Museums</h2>
+      <p>This style encourages displaying family heirlooms, travel souvenirs, and quirky art that triggers happy memories. In an Indian context, this could mean framing colorful textile patches or displaying a collection of painted wooden toys on a modern floating shelf.</p>
+      <h2>Moderation is Sustainable</h2>
+      <p>Dopamine decor is high energy. To keep it livable long-term, ensure you have 'visual resting spots'—areas of solid, neutral color where the eye can relax. A white ceiling or a plain wood floor balances the vibrant walls and accessories.</p>
+      <h2>Changing Tastes</h2>
+      <p>Because this style is so personal, it evolves with you. Use paint for the bold color blocks rather than expensive tiles or wallpapers. Paint is the easiest and cheapest thing to change when your source of 'dopamine' shifts from Yellow to Blue.</p>
+    `
+  },
+  {
+    id: 81,
+    title: "Layered Lighting Trends 2025",
+    slug: "layered-lighting-trends-2025",
+    category: "Lighting",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/Layered Lighting Trends 2025 From Hidden Profile LEDs to Statement Chandeliers.png",
+    summary: "From hidden profile LEDs to statement chandeliers: setting the mood.",
+    content: `
+      <h2>Beyond the Tube Light</h2>
+      <p>The era of a single bright tube light on the wall is over. 2025 is about 'Layered Lighting'—combining ambient, task, and accent lights. Profile LEDs hidden in false ceilings or behind mirrors provide a soft glow that feels luxurious and reduces glare.</p>
+      
+      <h2>The Statement Piece</h2>
+      <p>While general lighting is becoming invisible (recessed), decorative lighting is getting bolder. A large, sculptural chandelier or an oversized floor lamp acts as the jewelry of the room. Warm white (3000K) is the preferred temperature for Indian homes to create a cozy evening vibe.</p>
+      <h2>The Dimmer Switch Upgrade</h2>
+      <p>The single best upgrade for your home's ambiance is installing dimmer switches. Being able to dim your cove lights or chandelier to 20% intensity instantly transforms a bright utility space into a moody, sophisticated lounge for entertaining.</p>
+      <h2>Color Temperature Consistency</h2>
+      <p>Ensure all your light layers share a consistent color temperature. Mixing 6000K (bluish) tube lights with 3000K (warm) lamps looks chaotic. For homes, a unified 3000K-3500K warm white is the gold standard for a welcoming vibe.</p>
+    `
+  },
+  {
+    id: 82,
+    title: "Beyond Alexa: Invisible Smart Homes",
+    slug: "beyond-alexa-invisible-smart-homes",
+    category: "Smart Home",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "7 min read",
+    image: "/Assets/BlogImages/Beyond Alexa The Rise of 'Invisible' Smart Homes & AI-Predictive Comfort in 2026 Indian Apartments.png",
+    summary: "AI-predictive comfort and automated environments in 2026 Indian apartments.",
+    content: `
+      <h2>Predictive Comfort</h2>
+      <p>The next generation of smart homes isn't about voice commands; it's about anticipation. Sensors detect when you enter a room and adjust the lighting and AC temperature based on the time of day and your past preferences, without you saying a word.</p>
+      
+      <h2>Integration with Design</h2>
+      <p>Tech is becoming invisible. Smart switches are now designed to look like premium glass panels, and speakers are hidden behind artwork or within ceilings. The goal is to have the convenience of technology without the visual clutter of wires and gadgets.</p>
+      <h2>Voice Control Integration</h2>
+      <p>Invisible tech often relies on voice. Ensure your wall finishes in main hubs don't interfere with acoustics. While hard surfaces reflect sound (causing echo for voice assistants), adding curtains and textured wall panels improves voice command recognition accuracy.</p>
+      <h2>Future-Proof Wiring</h2>
+      <p>Even if you go wireless, ensure you have neutral wires in your switchboards. Most premium smart switches require a neutral wire for power. Consulting an electrician before painting saves you from chipping walls later to run new cables.</p>
+    `
+  },
+  {
+    id: 83,
+    title: "The Return of 'Soulful' Heritage",
+    slug: "return-of-soulful-heritage",
+    category: "Heritage",
+    author: "Rohan Varma",
+    date: "2025-12-19",
+    readTime: "6 min read",
+    image: "/Assets/BlogImages/The Return of 'Soulful' Heritage Mixing 1970s Retro Cane with 2026’s Deep Burgundy & Mocha Tones.png",
+    summary: "Mixing 1970s retro cane with 2026’s deep burgundy & mocha tones.",
+    content: `
+      <h2>Retro-Modern Fusion</h2>
+      <p>There is a beautiful merging of eras happening in 2026. We are seeing the structural simplicity of the 1970s—low-slung sofas, cane backs, and terrazzo floors—mixed with the rich, moody color palette of today (Burgundy, Mocha, Forest Green).</p>
+      
+      <h2>Craftsmanship over Mass Production</h2>
+      <p>This trend celebrates the 'hand-made'. Hand-woven rugs, hand-block printed cushions, and artisan pottery are preferred over factory-finish items. It gives the home a 'soul' and a story, grounding modern living in traditional craftsmanship.</p>
+      <h2>Restoration vs. Replication</h2>
+      <p>If you have original terrazzo or mosaic flooring, restore it rather than covering it. Polish it to a matte finish. Pair these authentic heritage base layers with fresh, modern wall colors to achieve the 'Soulful Heritage' look without it feeling like a clear museum.</p>
+      <h2>Upcycling Consistency</h2>
+      <p>Unify mismatched heritage furniture pieces with a consistent polish tone or upholstery fabric. A 1970s cane chair and a 1990s teak table can look like a set if they share the same matte melamine finish or are upholstered in the same deep burgundy velvet.</p>
+    `
   }
-]; 
+];
 
 // 2. UPDATE THE HELPER FUNCTIONS TO USE THE NEW NAME:
 export const CATEGORIES = ['All', ...new Set(blogContentArray.map(post => post.category))].sort();
 
 export const getCategoryBySlug = (slug) => {
-    return CATEGORIES.find(cat => cat.toLowerCase().replace(/\s/g, '-') === slug);
+  return CATEGORIES.find(cat => cat.toLowerCase().replace(/\s/g, '-') === slug);
 };
 
 export const getPostsByCategory = (category) => {
-    if (category === 'All') return blogContentArray; // Use new name here
-    return blogContentArray.filter(post => post.category === category); // Use new name here
+  if (category === 'All') return blogContentArray; // Use new name here
+  return blogContentArray.filter(post => post.category === category); // Use new name here
 };
 
 // 3. SET THE DEFAULT EXPORT TO THE NEW NAME:
