@@ -9,7 +9,7 @@ import blogPosts from '../../data/blogData'; // Adjust this import if you rename
 const AnimatedHeading = ({ children, id }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-  
+
   return (
     <motion.h2
       ref={ref}
@@ -70,7 +70,7 @@ const BlogPost = () => {
   const [activeSection, setActiveSection] = useState('');
   const contentRef = useRef(null);
   const post = blogPosts.find(p => p.slug === slug);
-  
+
   // Review System State
   const [reviews, setReviews] = useState([]);
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -89,6 +89,10 @@ const BlogPost = () => {
       const storedReviews = localStorage.getItem(`blog-reviews-${post.slug}`);
       if (storedReviews) {
         setReviews(JSON.parse(storedReviews));
+      } else {
+        // Use reviews from the post object
+        const initialReviews = post.reviews || [];
+        setReviews(initialReviews);
       }
     }
     window.scrollTo(0, 0);
@@ -99,7 +103,7 @@ const BlogPost = () => {
     if (!post || !contentRef.current) return;
 
     const headings = contentRef.current.querySelectorAll('h2');
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -195,13 +199,13 @@ const BlogPost = () => {
     tableOfContents.forEach((item, index) => {
       // Replace the standard <h2> tag with a custom placeholder
       contentHtml = contentHtml.replace(
-        item.safeHtml.replace('div', 'h2'), 
+        item.safeHtml.replace('div', 'h2'),
         `<div data-animated-heading-id="${item.id}" data-text="${item.text}"></div>`
       );
     });
     return contentHtml;
   };
-  
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -256,13 +260,13 @@ const BlogPost = () => {
                   </span>
                 </div>
 
-                <motion.h1 
-                    className="text-6xl md:text-8xl font-black mb-8 leading-tight drop-shadow-lg"
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1, type: "spring", stiffness: 100 }}
+                <motion.h1
+                  className="text-6xl md:text-8xl font-black mb-8 leading-tight drop-shadow-lg"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 1, type: "spring", stiffness: 100 }}
                 >
-                    {post.title}
+                  {post.title}
                 </motion.h1>
 
                 <div className="flex flex-wrap items-center gap-8 text-white/90 font-medium">
@@ -290,7 +294,7 @@ const BlogPost = () => {
         {/* Main Content Area */}
         <div className="relative max-w-7xl mx-auto px-6 py-16">
           <div className="flex gap-16">
-            
+
             {/* Sticky Sidebar: TOC and Social */}
             <aside className="hidden lg:block w-72 flex-shrink-0">
               <div className="sticky top-24 space-y-10">
@@ -304,11 +308,10 @@ const BlogPost = () => {
                       <a
                         key={item.id}
                         href={`#${item.id}`}
-                        className={`block text-sm transition-all duration-300 transform ${
-                          activeSection === item.id
+                        className={`block text-sm transition-all duration-300 transform ${activeSection === item.id
                             ? 'text-blue-600 font-bold border-l-4 border-blue-600 pl-3 -ml-3'
                             : 'text-gray-600 hover:text-gray-900 border-l-4 border-transparent pl-3'
-                        }`}
+                          }`}
                       >
                         {item.text}
                       </a>
@@ -318,33 +321,32 @@ const BlogPost = () => {
 
                 {/* Social Share (Sticky) */}
                 <div className="p-4 bg-gray-50 rounded-xl shadow-inner">
-                    <h4 className="text-sm font-black text-gray-700 uppercase mb-3">Share This</h4>
-                    <div className="flex gap-3">
-                        {['facebook', 'twitter', 'linkedin'].map(platform => (
-                            <motion.button
-                                key={platform}
-                                whileHover={{ scale: 1.1, rotate: 5 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={() => handleShare(platform)}
-                                className={`w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md ${
-                                    platform === 'facebook' ? 'bg-blue-700' : 
-                                    platform === 'twitter' ? 'bg-sky-500' : 
-                                    'bg-blue-800'
-                                }`}
-                            >
-                                {/* Placeholder icons - replace with actual social icons if available */}
-                                {platform.slice(0, 1).toUpperCase()}
-                            </motion.button>
-                        ))}
-                         <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => handleShare('copy')}
-                            className="w-10 h-10 rounded-full bg-gray-200 text-gray-700 shadow-md flex items-center justify-center"
-                          >
-                            {copied ? <Check className="w-5 h-5 text-green-600" /> : <Link2 className="w-5 h-5" />}
-                          </motion.button>
-                    </div>
+                  <h4 className="text-sm font-black text-gray-700 uppercase mb-3">Share This</h4>
+                  <div className="flex gap-3">
+                    {['facebook', 'twitter', 'linkedin'].map(platform => (
+                      <motion.button
+                        key={platform}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handleShare(platform)}
+                        className={`w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md ${platform === 'facebook' ? 'bg-blue-700' :
+                            platform === 'twitter' ? 'bg-sky-500' :
+                              'bg-blue-800'
+                          }`}
+                      >
+                        {/* Placeholder icons - replace with actual social icons if available */}
+                        {platform.slice(0, 1).toUpperCase()}
+                      </motion.button>
+                    ))}
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => handleShare('copy')}
+                      className="w-10 h-10 rounded-full bg-gray-200 text-gray-700 shadow-md flex items-center justify-center"
+                    >
+                      {copied ? <Check className="w-5 h-5 text-green-600" /> : <Link2 className="w-5 h-5" />}
+                    </motion.button>
+                  </div>
                 </div>
 
               </div>
@@ -370,7 +372,7 @@ const BlogPost = () => {
                     const headingText = parts[0];
                     const remainingContent = parts.slice(1).join('</h2>');
                     const headingId = `section-${index - 1}`;
-                    
+
                     return (
                       <React.Fragment key={index}>
                         <AnimatedHeading id={headingId}>{headingText}</AnimatedHeading>
@@ -390,227 +392,225 @@ const BlogPost = () => {
                 className="mt-16 p-8 bg-blue-50 border-l-4 border-blue-600 rounded-2xl shadow-lg flex items-center gap-6"
               >
                 <div className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
-                    <User className="w-10 h-10 text-white" />
+                  <User className="w-10 h-10 text-white" />
                 </div>
                 <div>
-                    <h3 className="text-2xl font-bold mb-1 text-gray-900">{post.author}</h3>
-                    <p className="text-blue-700 font-semibold mb-2">Calyco Expert in {post.category}</p>
-                    <p className="text-gray-700">
-                        Specializing in {post.category.toLowerCase()} solutions and advanced coating technologies, {post.author.split(' ')[0]} provides actionable, researched advice.
-                    </p>
+                  <h3 className="text-2xl font-bold mb-1 text-gray-900">{post.author}</h3>
+                  <p className="text-blue-700 font-semibold mb-2">Calyco Expert in {post.category}</p>
+                  <p className="text-gray-700">
+                    Specializing in {post.category.toLowerCase()} solutions and advanced coating technologies, {post.author.split(' ')[0]} provides actionable, researched advice.
+                  </p>
                 </div>
               </motion.div>
-              
+
               {/* Reviews Section (Keeping it animated and interactive) */}
               {/* ... (Reviews section remains similar to your original implementation, ensuring framer-motion is used) ... */}
               <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="mt-16"
-                >
-                  <div className="flex items-center justify-between mb-8">
-                    <div>
-                      <h3 className="text-3xl font-bold">Reader Reviews</h3>
-                      {reviews.length > 0 && (
-                        <div className="flex items-center gap-3 mt-2">
-                          <div className="flex items-center">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star
-                                key={star}
-                                className={`w-5 h-5 ${
-                                  star <= Math.round(averageRating)
-                                    ? 'fill-yellow-400 text-yellow-400'
-                                    : 'text-gray-300'
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mt-16"
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <h3 className="text-3xl font-bold">Reader Reviews</h3>
+                    {reviews.length > 0 && (
+                      <div className="flex items-center gap-3 mt-2">
+                        <div className="flex items-center">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className={`w-5 h-5 ${star <= Math.round(averageRating)
+                                  ? 'fill-yellow-400 text-yellow-400'
+                                  : 'text-gray-300'
                                 }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="text-gray-600">
-                            {averageRating} out of 5 ({reviews.length} {reviews.length === 1 ? 'review' : 'reviews'})
-                          </span>
+                            />
+                          ))}
                         </div>
-                      )}
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setShowReviewForm(!showReviewForm)}
-                      className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                    >
-                      Write a Review
-                    </motion.button>
+                        <span className="text-gray-600">
+                          {averageRating} out of 5 ({reviews.length} {reviews.length === 1 ? 'review' : 'reviews'})
+                        </span>
+                      </div>
+                    )}
                   </div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowReviewForm(!showReviewForm)}
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  >
+                    Write a Review
+                  </motion.button>
+                </div>
 
-                  {/* Review Form */}
-                  <AnimatePresence>
-                    {showReviewForm && (
-                      <motion.form
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        onSubmit={handleSubmitReview}
-                        className="mb-8 p-6 bg-gray-50 rounded-xl overflow-hidden"
-                      >
-                        <h4 className="text-xl font-bold mb-4">Share Your Thoughts</h4>
-                        
-                        <div className="space-y-4">
-                          {/* Form fields here */}
-                          <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
-                            <div className="relative">
-                              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                              <input
-                                type="text"
-                                value={newReview.name}
-                                onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-                                placeholder="Enter your name"
-                                required
-                              />
-                            </div>
-                          </div>
+                {/* Review Form */}
+                <AnimatePresence>
+                  {showReviewForm && (
+                    <motion.form
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      onSubmit={handleSubmitReview}
+                      className="mb-8 p-6 bg-gray-50 rounded-xl overflow-hidden"
+                    >
+                      <h4 className="text-xl font-bold mb-4">Share Your Thoughts</h4>
 
-                          <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Rating *</label>
-                            <div className="flex gap-2">
-                              {[1, 2, 3, 4, 5].map((star) => (
-                                <button
-                                  key={star}
-                                  type="button"
-                                  onClick={() => setNewReview({ ...newReview, rating: star })}
-                                  className="focus:outline-none"
-                                >
-                                  <Star
-                                    className={`w-8 h-8 cursor-pointer transition-colors ${
-                                      star <= newReview.rating
-                                        ? 'fill-yellow-400 text-yellow-400'
-                                        : 'text-gray-300 hover:text-yellow-300'
-                                    }`}
-                                  />
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Your Review *</label>
-                            <textarea
-                              value={newReview.comment}
-                              onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-                              rows="4"
-                              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
-                              placeholder="Share your thoughts about this article..."
+                      <div className="space-y-4">
+                        {/* Form fields here */}
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <input
+                              type="text"
+                              value={newReview.name}
+                              onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                              placeholder="Enter your name"
                               required
                             />
                           </div>
+                        </div>
 
-                          <div className="flex gap-3">
-                            <motion.button
-                              type="submit"
-                              whileHover={{ y: -2 }}
-                              whileTap={{ scale: 0.98 }}
-                              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                            >
-                              <Send className="w-4 h-4" />
-                              Submit Review
-                            </motion.button>
-                            <button
-                              type="button"
-                              onClick={() => setShowReviewForm(false)}
-                              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-                            >
-                              Cancel
-                            </button>
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Rating *</label>
+                          <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <button
+                                key={star}
+                                type="button"
+                                onClick={() => setNewReview({ ...newReview, rating: star })}
+                                className="focus:outline-none"
+                              >
+                                <Star
+                                  className={`w-8 h-8 cursor-pointer transition-colors ${star <= newReview.rating
+                                      ? 'fill-yellow-400 text-yellow-400'
+                                      : 'text-gray-300 hover:text-yellow-300'
+                                    }`}
+                                />
+                              </button>
+                            ))}
                           </div>
                         </div>
-                      </motion.form>
-                    )}
-                  </AnimatePresence>
 
-                  {/* Reviews List */}
-                  <div className="space-y-6">
-                    {reviews.length === 0 ? (
-                      <div className="text-center py-12 bg-gray-50 rounded-xl">
-                        <p className="text-gray-600">No reviews yet. Be the first to share your thoughts!</p>
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-700 mb-2">Your Review *</label>
+                          <textarea
+                            value={newReview.comment}
+                            onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
+                            rows="4"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                            placeholder="Share your thoughts about this article..."
+                            required
+                          />
+                        </div>
+
+                        <div className="flex gap-3">
+                          <motion.button
+                            type="submit"
+                            whileHover={{ y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                          >
+                            <Send className="w-4 h-4" />
+                            Submit Review
+                          </motion.button>
+                          <button
+                            type="button"
+                            onClick={() => setShowReviewForm(false)}
+                            className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                          >
+                            Cancel
+                          </button>
+                        </div>
                       </div>
-                    ) : (
-                      reviews.map((review) => (
-                        <motion.div
-                          key={review.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5 }}
-                          className="p-6 bg-white border border-gray-200 rounded-xl shadow-md"
-                        >
-                          <div className="flex items-start justify-between mb-3">
-                            <div>
-                              <h4 className="font-bold text-lg">{review.name}</h4>
-                              <div className="flex items-center gap-1 mt-1">
-                                {/* Stars here */}
-                              </div>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+
+                {/* Reviews List */}
+                <div className="space-y-6">
+                  {reviews.length === 0 ? (
+                    <div className="text-center py-12 bg-gray-50 rounded-xl">
+                      <p className="text-gray-600">No reviews yet. Be the first to share your thoughts!</p>
+                    </div>
+                  ) : (
+                    reviews.map((review) => (
+                      <motion.div
+                        key={review.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="p-6 bg-white border border-gray-200 rounded-xl shadow-md"
+                      >
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h4 className="font-bold text-lg">{review.name}</h4>
+                            <div className="flex items-center gap-1 mt-1">
+                              {/* Stars here */}
                             </div>
-                            <span className="text-sm text-gray-500">
-                              {new Date(review.date).toLocaleDateString('en-US', {
-                                month: 'short',
-                                day: 'numeric',
-                                year: 'numeric'
-                              })}
-                            </span>
                           </div>
-                          <p className="text-gray-700 leading-relaxed">{review.comment}</p>
-                        </motion.div>
-                      ))
-                    )}
+                          <span className="text-sm text-gray-500">
+                            {new Date(review.date).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric'
+                            })}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{review.comment}</p>
+                      </motion.div>
+                    ))
+                  )}
+                </div>
+              </motion.div>
+
+
+              {/* Related Articles (Keeping it animated) */}
+              {relatedPosts.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="mt-20"
+                >
+                  <h2 className="text-4xl font-extrabold mb-8 text-gray-900">More Insights</h2>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {relatedPosts.map((relatedPost, index) => (
+                      <motion.div
+                        key={relatedPost.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        whileHover={{ y: -8, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+                        className="rounded-xl overflow-hidden shadow-lg transition-all duration-300"
+                      >
+                        <Link
+                          to={`/blogs/${relatedPost.slug}`}
+                          className="block group bg-white"
+                        >
+                          <div className="relative h-48 overflow-hidden">
+                            <img
+                              src={relatedPost.image}
+                              alt={relatedPost.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h3 className="font-bold text-lg mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                              {relatedPost.title}
+                            </h3>
+                            <p className="text-sm text-gray-600">{relatedPost.readTime} | {relatedPost.category}</p>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
                   </div>
                 </motion.div>
-
-
-                {/* Related Articles (Keeping it animated) */}
-                {relatedPosts.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="mt-20"
-                  >
-                    <h2 className="text-4xl font-extrabold mb-8 text-gray-900">More Insights</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      {relatedPosts.map((relatedPost, index) => (
-                        <motion.div
-                          key={relatedPost.id}
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
-                          whileHover={{ y: -8, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
-                          className="rounded-xl overflow-hidden shadow-lg transition-all duration-300"
-                        >
-                          <Link
-                            to={`/blogs/${relatedPost.slug}`}
-                            className="block group bg-white"
-                          >
-                            <div className="relative h-48 overflow-hidden">
-                              <img
-                                src={relatedPost.image}
-                                alt={relatedPost.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              />
-                            </div>
-                            <div className="p-4">
-                                <h3 className="font-bold text-lg mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                {relatedPost.title}
-                                </h3>
-                                <p className="text-sm text-gray-600">{relatedPost.readTime} | {relatedPost.category}</p>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+              )}
             </article>
           </div>
         </div>
@@ -626,15 +626,14 @@ const BlogPost = () => {
           >
             <ChevronUp className="w-6 h-6" />
           </motion.button>
-          
+
           {/* Like Button */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsLiked(!isLiked)}
-            className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-colors ${
-              isLiked ? 'bg-red-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
-            }`}
+            className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-colors ${isLiked ? 'bg-red-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+              }`}
           >
             <Heart className={`w-6 h-6 ${isLiked ? 'fill-current' : ''}`} />
           </motion.button>

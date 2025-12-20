@@ -1,3 +1,6 @@
+/* Typography Imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,55 +8,59 @@
 /* Prevent horizontal scrolling globally */
 html {
   overflow-x: hidden;
-}
-
-/* CALYCO Brand Colors (v1.0) */
-:root {
-  /* Core Brand Colors */
-  --calyco-purple: #4B007D;
-  --calyco-gold: #D4AF37;
-  --ink: #0F1221;
-  --cream: #F6F3EE;
-  --warm: #FBF9F6;
-  --line: rgba(15, 18, 33, 0.08);
-
-  /* Neutrals (backward compatibility) */
-  --grey-mist: #EDEDED;
-  --grey-thunder: #4A5568;
-  --linen-white: #F6F3EE;
-  --charcoal-black: #0F1221;
-
-  /* Supporting Natural Tones */
-  --sage-green: #68D391;
-  --barn-red: #C53030;
-  --lavender: #B794F4;
-  --lilac: #D6BCFA;
-
-  /* Usage Variables */
-  --primary-bg: var(--cream);
-  --secondary-bg: var(--warm);
-  --text-primary: var(--ink);
-  --text-secondary: rgba(15, 18, 33, 0.7);
-  --brand-primary: var(--calyco-purple);
-  --brand-accent: var(--calyco-gold);
-  --eco-accent: var(--sage-green);
-}
-
-/* Global Styles */
-body {
-  background-color: var(--cream);
-  color: var(--ink);
-  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Typography helpers */
-.h-font {
-  font-family: 'Poppins', 'Inter', sans-serif;
+.font-serif {
+  font-family: 'Playfair Display', serif;
 }
 
-.body-font {
-  font-family: 'Poppins', 'Inter', sans-serif;
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Prose Styles for Blog */
+.prose-calyco h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #111827;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.prose-calyco h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  color: #374151;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.prose-calyco p {
+  font-family: 'Inter', sans-serif;
+  color: #4B5563;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.prose-calyco ul,
+.prose-calyco ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  color: #4B5563;
+}
+
+.prose-calyco li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-calyco strong {
+  color: #111827;
+  font-weight: 600;
 }
 
 /* Custom utility classes */
@@ -318,6 +325,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-33.33%);
   }
@@ -397,4 +405,3 @@ body {
     font-size: 14px;
   }
 }
-
