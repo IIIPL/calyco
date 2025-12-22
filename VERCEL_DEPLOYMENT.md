@@ -1,8 +1,23 @@
-# Vercel Deployment Guide
+# Vercel & Backend Deployment Guide
 
 ## Overview
 
-Your frontend is deployed on Vercel. Here's how to configure it to work with the new Razorpay checkout system.
+Your project consists of two parts:
+1.  **Frontend (UI)**: Can be deployed on **Vercel** (Global CDN, fast).
+2.  **Backend (API)**: MUST be deployed on **Railway, Render, or a VPS**.
+
+
+> ⚠️ **CRITICAL FOR BLOG SYSTEM**: The "Magic Upload" feature saves images to disk. Vercel is "Read-Only". You have two options:
+>
+> **Option 1 (Recommended for Ease): Local Generation** (What you asked for!)
+> 1. Run server locally (`npm run server`).
+> 2. Generate blog posts on your machine.
+> 3. The system saves new posts to `blog/data/posts.json` and images to `public/blog-images`.
+> 4. `git push` these changes.
+> 5. Vercel deploys the **Static Site** with the new content automatically.
+>
+> **Option 2: Cloud Backend**
+> 1. Deploy backend to Render/Railway for online generation.
 
 ---
 
@@ -18,8 +33,8 @@ Go to: **Vercel Dashboard** → **Your Project** → **Settings** → **Environm
 # Razorpay Configuration
 VITE_RAZORPAY_ID=rzp_live_RDuFvuUpRHpLsF
 
-# Backend API URL
-VITE_API_URL=https://your-backend-api-url.com
+# Backend API URL (The URL of your Railway/Render backend)
+VITE_API_BASE_URL=https://your-backend-api-url.com
 ```
 
 ### Variables to Remove

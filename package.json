@@ -13,7 +13,8 @@
     "generate:pdfs": "node scripts/generate_pdfs.js",
     "generate:warranty": "node scripts/generate_warranty_html.js",
     "sync-admin": "node scripts/sync-admin-data.js",
-    "publish-changes": "npm run sync-admin && git add src/data && git commit -m \"Admin: Updated data\" && git push"
+    "publish-changes": "npm run sync-admin && git add src/data && git commit -m \"Admin: Updated data\" && git push",
+    "server": "cd server && npm run dev"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

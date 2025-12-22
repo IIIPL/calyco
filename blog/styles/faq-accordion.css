@@ -1,0 +1,236 @@
+/* FAQ Accordion Styles */
+.faq-section {
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.faq-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #5E2E85;
+    box-shadow: 0 4px 12px rgba(94, 46, 133, 0.1);
+}
+
+.faq-item.active {
+    border-color: #5E2E85;
+    box-shadow: 0 4px 20px rgba(94, 46, 133, 0.15);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9fafb;
+}
+
+.faq-item.active .faq-question {
+    background-color: #f3e8ff;
+    color: #5E2E85;
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: #5E2E85;
+}
+
+.faq-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer.open {
+    max-height: 500px;
+}
+
+.faq-answer-content {
+    padding: 0 24px 24px 24px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.faq-answer-content a.product-link {
+    color: #5E2E85;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.faq-answer-content a.product-link:hover {
+    border-bottom-color: #5E2E85;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Trending Tags as Pills */
+.trend-tag {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.trend-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+}
+
+/* Product Ad Card Improvements */
+.product-ad-card {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px;
+    margin: 48px 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.product-ad-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: #5E2E85;
+}
+
+.product-ad-card h3 {
+    margin: 0 0 12px 0;
+}
+
+.product-ad-card a {
+    display: inline-block;
+    background: linear-gradient(135deg, #5E2E85 0%, #7a3fa8 100%);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(94, 46, 133, 0.3);
+}
+
+.product-ad-card a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(94, 46, 133, 0.4);
+}
+
+/* TOC Sticky Styling */
+.toc-wrapper {
+    position: sticky;
+    top: 100px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 30px 0;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.toc-wrapper:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+    border-color: #5E2E85;
+}
+
+.toc-links a {
+    scroll-behavior: smooth;
+    transition: color 0.2s ease;
+}
+
+.toc-links a:hover {
+    color: #5E2E85;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .blog-profile-info h1 {
+        font-size: 32px;
+    }
+
+    .article-body-text h2 {
+        font-size: 24px;
+        margin-top: 40px;
+    }
+
+    .article-body-text p {
+        font-size: 16px;
+    }
+
+    .toc-wrapper {
+        position: static;
+    }
+
+    .product-ad-card {
+        padding: 24px;
+    }
+
+    .product-ad-card .flex {
+        flex-direction: column;
+    }
+
+    .faq-question {
+        font-size: 16px;
+        padding: 16px 20px;
+    }
+
+    .faq-answer-content {
+        padding: 0 20px 20px 20px;
+        font-size: 15px;
+    }
+}

@@ -5,12 +5,16 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
+import ErrorBoundary from './components/ErrorBoundary';
+
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <StrictMode>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </StrictMode>
-  </BrowserRouter>
+  <ErrorBoundary>
+    <BrowserRouter>
+      <StrictMode>
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
+      </StrictMode>
+    </BrowserRouter>
+  </ErrorBoundary>
 )

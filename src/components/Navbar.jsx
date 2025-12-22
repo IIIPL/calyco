@@ -26,7 +26,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
     setDropdownOpen(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
-  
+
   useEffect(() => {
     const handleResize = () => {
       const nowMobile = window.innerWidth < 768;
@@ -53,7 +53,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [menuOpen]);
-  
+
   useEffect(() => {
     const handlePopState = () => {
       handleMenuToggle(false);
@@ -87,13 +87,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
         setDropdownOpen(null);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutsideDropdown);
     return () => {
       document.removeEventListener("mousedown", handleClickOutsideDropdown);
     };
   }, [dropdownOpen]);
-  
+
   return (
     <header
       ref={navRef}
@@ -136,10 +136,12 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
           >Inspirations</button>
-          
-          {/* NEW BLOG LINK - DESKTOP */}
+
+
+
+
           <Link
-            to="/blogs"
+            to="/blog"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >Blog</Link>
@@ -149,7 +151,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
           >About</Link>
-          
+
           <Link
             to="/contact"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
@@ -181,7 +183,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           >☰</button>
         </div>
       </div>
-      
+
       {/* Dropdowns (desktop only) */}
       {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'inspirations' && <InspirationsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
@@ -197,9 +199,8 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       {/* Mobile Menu */}
       <div
         ref={drawerRef}
-        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-[#f9f6f2] z-[70] transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-[#f9f6f2] z-[70] transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e0d8]/80">
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
@@ -245,9 +246,10 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             </div>
 
             <div className="pt-2 flex flex-col gap-4 text-base uppercase tracking-wide text-[#916e9f]">
-              {/* NEW BLOG LINK - MOBILE */}
+
+
               <Link
-                to="/blogs"
+                to="/blog"
                 className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
                 onClick={() => handleMenuToggle(false)}
               >
