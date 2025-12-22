@@ -4,17 +4,19 @@ import { Heart, ChevronDown } from 'lucide-react';
 import postsData from '../data/posts.json';
 import '../styles/asian-paints-blog.css';
 
-const FilterOption = ({ label, count, checked, onChange }) => (
-    <label className="flex items-center gap-3 cursor-pointer group mb-5">
-        <div className={`w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center transition-colors ${checked ? 'border-brand-purple' : 'group-hover:border-brand-purple'}`}>
-            {checked && <div className="w-3 h-3 rounded-full bg-brand-purple" />}
+const FilterOption = ({ label, count, checked, onClick }) => (
+    <div
+        onClick={onClick}
+        className="flex items-center gap-3 cursor-pointer group mb-5"
+    >
+        <div className={`w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center transition-colors ${checked ? 'border-[#4B007D]' : 'group-hover:border-[#4B007D]'}`}>
+            {checked && <div className="w-3 h-3 rounded-full bg-[#4B007D]" />}
         </div>
         <span className="text-[13px] flex items-center gap-2">
-            <span className={`${checked ? 'text-brand-purple font-semibold' : 'text-gray-600'}`}>{label}</span>
-            <span className={`${checked ? 'text-brand-purple' : 'text-gray-400'} text-sm`}>({count})</span>
+            <span className={`${checked ? 'text-[#4B007D] font-semibold' : 'text-gray-600'}`}>{label}</span>
+            <span className={`${checked ? 'text-[#4B007D]' : 'text-gray-400'} text-sm`}>({count})</span>
         </span>
-        <input type="radio" className="hidden" checked={checked} onChange={onChange} />
-    </label>
+    </div>
 );
 
 
@@ -35,6 +37,9 @@ const FilterSection = ({ title, isOpen, onToggle, children }) => (
 
 const BlogIndex = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedWaterproofing, setSelectedWaterproofing] = useState(null);
+    const [selectedArea, setSelectedArea] = useState(null);
+    const [selectedSurface, setSelectedSurface] = useState(null);
     const [sortOrder, setSortOrder] = useState('NEW');
     const [isSortOpen, setIsSortOpen] = useState(false);
 
@@ -135,7 +140,21 @@ const BlogIndex = () => {
     });
 
     // Apply category filter
-    const filteredPosts = sortedPosts.filter(post => selectedCategory === 'All' || post.category === selectedCategory);
+    const filteredPosts = sortedPosts.filter(post => {
+        const categoryMatch = selectedCategory === 'All' || post.category === selectedCategory;
+        const waterproofingMatch = !selectedWaterproofing || post.waterproofingIssue === selectedWaterproofing;
+        const areaMatch = !selectedArea || (Array.isArray(post.areas) && post.areas.includes(selectedArea));
+        const surfaceMatch = !selectedSurface || (Array.isArray(post.surfaces) && post.surfaces.includes(selectedSurface));
+
+        return categoryMatch && waterproofingMatch && areaMatch && surfaceMatch;
+    });
+
+    const clearAllFilters = () => {
+        setSelectedCategory('All');
+        setSelectedWaterproofing(null);
+        setSelectedArea(null);
+        setSelectedSurface(null);
+    };
 
     return (
         <div className="calyco-blog-system">
@@ -158,7 +177,7 @@ const BlogIndex = () => {
                 <aside className="wallpaper-left-pane sticky top-28 self-start">
                     <div className="filter-header">
                         <h3>FILTERS</h3>
-                        <button className="clear-btn" onClick={() => setSelectedCategory('All')}>CLEAR</button>
+                        <button className="clear-btn" onClick={clearAllFilters}>CLEAR</button>
                     </div>
 
                     <div>
@@ -173,7 +192,7 @@ const BlogIndex = () => {
                                     label="All"
                                     count={posts.length}
                                     checked={selectedCategory === 'All'}
-                                    onChange={() => setSelectedCategory('All')}
+                                    onClick={() => setSelectedCategory('All')}
                                 />
                                 {categories.map(cat => (
                                     <FilterOption
@@ -181,7 +200,7 @@ const BlogIndex = () => {
                                         label={cat.name}
                                         count={cat.count}
                                         checked={selectedCategory === cat.name}
-                                        onChange={() => setSelectedCategory(cat.name)}
+                                        onClick={() => setSelectedCategory(prev => prev === cat.name ? 'All' : cat.name)}
                                     />
                                 ))}
                             </div>
@@ -195,10 +214,13 @@ const BlogIndex = () => {
                         >
                             <div className="flex flex-col pt-2">
                                 {waterproofingFilters.map(item => (
-                                    <label key={item.name} className="flex items-center gap-3 cursor-pointer group mb-5">
-                                        <div className="w-4 h-4 rounded-full border border-gray-300 group-hover:border-brand-purple transition-colors"></div>
-                                        <span className="text-[13px] text-gray-600 group-hover:text-brand-purple">{item.name} ({item.count})</span>
-                                    </label>
+                                    <FilterOption
+                                        key={item.name}
+                                        label={item.name}
+                                        count={item.count}
+                                        checked={selectedWaterproofing === item.name}
+                                        onClick={() => setSelectedWaterproofing(prev => prev === item.name ? null : item.name)}
+                                    />
                                 ))}
                             </div>
                         </FilterSection>
@@ -211,10 +233,13 @@ const BlogIndex = () => {
                         >
                             <div className="flex flex-col pt-2">
                                 {areaFilters.map(item => (
-                                    <label key={item.name} className="flex items-center gap-3 cursor-pointer group mb-5">
-                                        <div className="w-4 h-4 rounded-full border border-gray-300 group-hover:border-brand-purple transition-colors"></div>
-                                        <span className="text-[13px] text-gray-600 group-hover:text-brand-purple">{item.name} ({item.count})</span>
-                                    </label>
+                                    <FilterOption
+                                        key={item.name}
+                                        label={item.name}
+                                        count={item.count}
+                                        checked={selectedArea === item.name}
+                                        onClick={() => setSelectedArea(prev => prev === item.name ? null : item.name)}
+                                    />
                                 ))}
                             </div>
                         </FilterSection>
@@ -227,10 +252,13 @@ const BlogIndex = () => {
                         >
                             <div className="flex flex-col pt-2">
                                 {surfaceFilters.map(item => (
-                                    <label key={item.name} className="flex items-center gap-3 cursor-pointer group mb-5">
-                                        <div className="w-4 h-4 rounded-full border border-gray-300 group-hover:border-brand-purple transition-colors"></div>
-                                        <span className="text-[13px] text-gray-600 group-hover:text-brand-purple">{item.name} ({item.count})</span>
-                                    </label>
+                                    <FilterOption
+                                        key={item.name}
+                                        label={item.name}
+                                        count={item.count}
+                                        checked={selectedSurface === item.name}
+                                        onClick={() => setSelectedSurface(prev => prev === item.name ? null : item.name)}
+                                    />
                                 ))}
                             </div>
                         </FilterSection>
