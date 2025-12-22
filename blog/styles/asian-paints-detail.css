@@ -61,11 +61,16 @@
 
 /* Blog Profile Info */
 .blog-profile-info h1 {
-    font-size: 48px;
+    font-size: 42px;
+    /* Updated: 36px-42px range */
     line-height: 1.2;
     font-weight: 800;
-    color: #222;
+    /* Updated: ExtraBold */
+    color: #000000;
+    /* Updated: Black */
     margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    /* Updated: Tight letter spacing */
     animation: fadeInUp 0.6s ease-out;
 }
 
@@ -80,11 +85,16 @@
 /* Article Body Typography */
 .article-body-text h2 {
     font-size: 32px;
+    /* Updated: 24px-32px range */
     font-weight: 700;
-    margin-top: 30px;
-    margin-bottom: 12px;
-    color: #222;
+    /* Updated: Bold */
+    margin-top: 40px;
+    /* Updated: Small margin above */
+    margin-bottom: 16px;
+    color: #000000;
+    /* Updated: Black */
     animation: fadeInUp 0.6s ease-out;
+    scroll-margin-top: 120px;
 }
 
 .article-body-text h3 {
@@ -97,9 +107,12 @@
 
 .article-body-text p {
     font-size: 18px;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 16px;
+    /* Updated: 16px-18px range */
+    line-height: 1.6;
+    /* Updated: 1.6 line-height */
+    color: #232426;
+    /* Updated: Dark Grey */
+    margin-bottom: 24px;
 }
 
 .article-body-text ul,
@@ -108,11 +121,22 @@
     padding-left: 24px;
 }
 
+.article-body-text ul {
+    list-style-type: disc;
+}
+
+.article-body-text ol {
+    list-style-type: decimal;
+}
+
 .article-body-text li {
     font-size: 18px;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 8px;
+    line-height: 1.6;
+    /* Updated: Match Manrope body specs */
+    color: #232426;
+    /* Updated: Match Manrope body specs */
+    margin-bottom: 6px;
+    /* Updated: Reduced further to 6px */
 }
 
 .article-body-text img {
@@ -137,64 +161,72 @@
     border-bottom-color: #5E2E85;
 }
 
-/* Table of Contents Box */
-.toc-wrapper {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin: 24px 0;
+/* --- Table of Contents (User Provided Design) --- */
+
+/* Container Box */
+.toc-container {
+    background-color: #E6E4DC;
+    /* UPDATED: Darker Cream Color */
+    padding: 25px 30px;
+    font-family: 'Manrope', sans-serif;
+    color: #111;
+    margin-bottom: 30px;
     border-radius: 4px;
+    /* Keeping slight radius for polish */
 }
 
+/* Header Section (Title + Hide Button) */
 .toc-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: none;
+    /* Ensure no border from previous styles */
+    padding-bottom: 0;
 }
 
-.toc-header h4 {
+/* "IN THIS ARTICLE" Title */
+.toc-title {
     font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin: 0;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #000;
 }
 
-.toc-hide-btn {
-    color: #5E2E85;
-    font-weight: 700;
+/* "HIDE" Button */
+.toc-toggle-btn {
     background: none;
     border: none;
-    cursor: pointer;
-    font-size: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border-bottom: 2px solid #5e2494;
+    /* Purple underline */
+    padding-bottom: 2px;
+    line-height: 1;
 }
 
-.toc-hide-btn:hover {
-    text-decoration: underline;
+.toc-toggle-btn:hover {
+    opacity: 0.8;
 }
 
-.toc-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.toc-links li {
-    margin-bottom: 12px;
-}
-
-.toc-links a {
+/* The List Links */
+.toc-list a {
+    display: block;
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    font-size: 15px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 14px;
+    line-height: 1.5;
 }
 
-.toc-links a:hover {
-    color: #5E2E85;
+.toc-list a:hover {
     text-decoration: underline;
 }
 
