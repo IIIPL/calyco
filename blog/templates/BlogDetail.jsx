@@ -85,51 +85,112 @@ const BlogDetail = ({ post, allPosts = [] }) => {
     const extractFAQ = () => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(processedContent, 'text/html');
-        const faqSection = doc.querySelector('#faq, section#faq');
 
-        if (!faqSection) return { faqs: [], contentWithoutFAQ: processedContent };
+        // Try to find FAQ section by ID first
+        let faqSection = doc.querySelector('#faq, section#faq');
 
-        const h3Elements = faqSection.querySelectorAll('h3');
-        const faqs = [];
-
-        h3Elements.forEach((h3) => {
-            const question = h3.textContent;
-            let answer = '';
-            let nextElement = h3.nextElementSibling;
-
-            while (nextElement && nextElement.tagName !== 'H3') {
-                answer += nextElement.outerHTML;
-                nextElement = nextElement.nextElementSibling;
+        // If not found by ID, look for H2 with "FAQ" or "FAQs"
+        let faqH2 = null;
+        if (!faqSection) {
+            const h2s = doc.querySelectorAll('h2');
+            for (const h2 of h2s) {
+                if (h2.textContent.trim().toUpperCase().includes('FAQ') ||
+                    h2.textContent.trim().toUpperCase().includes('FREQUENTLY ASKED QUESTIONS')) {
+                    faqH2 = h2;
+                    break;
+                }
             }
-
-            faqs.push({ question, answer });
-        });
-
-        // Remove FAQ section from content
-        const contentDiv = doc.createElement('div');
-        contentDiv.innerHTML = processedContent;
-        const faqToRemove = contentDiv.querySelector('#faq, section#faq');
-        if (faqToRemove) {
-            faqToRemove.remove();
         }
 
-        return { faqs, contentWithoutFAQ: contentDiv.innerHTML };
+        const faqs = [];
+
+        if (faqSection) {
+            // Existing logic: Extract from container
+            const h3Elements = faqSection.querySelectorAll('h3');
+            h3Elements.forEach((h3) => {
+                const question = h3.textContent;
+                let answer = '';
+                let nextElement = h3.nextElementSibling;
+
+                while (nextElement && nextElement.tagName !== 'H3') {
+                    answer += nextElement.outerHTML;
+                    nextElement = nextElement.nextElementSibling;
+                }
+
+                faqs.push({ question, answer });
+            });
+            faqSection.remove();
+        } else if (faqH2) {
+            // New logic: Extract from H2 onwards
+            let currentElement = faqH2.nextElementSibling;
+            let currentQuestion = null;
+            let currentAnswer = '';
+            const nodesToRemove = [faqH2];
+
+            while (currentElement) {
+                // Stop if we hit another major section (H2)
+                if (currentElement.tagName === 'H2') {
+                    break;
+                }
+
+                if (currentElement.tagName === 'H3') {
+                    // Save previous question if exists
+                    if (currentQuestion) {
+                        faqs.push({ question: currentQuestion, answer: currentAnswer });
+                    }
+                    // Start new question
+                    currentQuestion = currentElement.textContent;
+                    currentAnswer = '';
+                } else {
+                    // Accumulate answer content
+                    if (currentQuestion) {
+                        currentAnswer += currentElement.outerHTML;
+                    }
+                }
+
+                const next = currentElement.nextElementSibling;
+                nodesToRemove.push(currentElement);
+                currentElement = next;
+            }
+
+            // Push the last extracted question
+            if (currentQuestion) {
+                faqs.push({ question: currentQuestion, answer: currentAnswer });
+            }
+
+            // Remove extracted nodes from content
+            nodesToRemove.forEach(node => node.remove());
+        }
+
+        return { faqs, contentWithoutFAQ: doc.body.innerHTML };
     };
 
     const { faqs, contentWithoutFAQ } = extractFAQ();
 
-    // Generate TOC from content h2 tags
-    const generateTOC = () => {
+    // Generate TOC and inject IDs into content
+    const processContentForTOC = () => {
+        if (!contentWithoutFAQ) return { items: [], processedHtml: '' };
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(contentWithoutFAQ, 'text/html');
         const headings = doc.querySelectorAll('h2');
-        return Array.from(headings).map((h, index) => ({
-            id: `section${index + 1}`,
-            text: h.textContent
-        }));
+
+        const items = Array.from(headings).map((h, index) => {
+            const id = `section-${index + 1}`;
+            h.id = id; // Inject ID into the H2 element
+            return {
+                id,
+                text: h.textContent
+            };
+        });
+
+        return {
+            items,
+            processedHtml: doc.body.innerHTML
+        };
     };
 
-    const tocItems = generateTOC();
+    const { items: tocItems, processedHtml: articleBody } = processContentForTOC();
 
     // SEO Schema
     const schemaData = {
@@ -157,7 +218,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                             <img
                                 src={heroImage}
                                 alt={title}
-                                className="w-full h-auto max-h-[85vh] object-contain rounded-xl shadow-sm"
+                                className="w-full h-auto max-h-[60vh] object-cover rounded-xl shadow-sm"
                             />
                         </div>
                     </div>
@@ -238,27 +299,34 @@ const BlogDetail = ({ post, allPosts = [] }) => {
 
                         {/* Table of Contents */}
                         {tocItems.length > 0 && (
-                            <div className="toc-wrapper">
+                            <div className="toc-container">
                                 <div className="toc-header">
-                                    <h4>IN THIS ARTICLE</h4>
-                                    <button className="toc-hide-btn" onClick={() => setTocOpen(!tocOpen)}>
+                                    <span className="toc-title">IN THIS ARTICLE</span>
+                                    <button
+                                        className="toc-toggle-btn"
+                                        onClick={() => setTocOpen(!tocOpen)}
+                                    >
                                         {tocOpen ? 'HIDE' : 'SHOW'}
                                     </button>
                                 </div>
                                 {tocOpen && (
-                                    <ul className="toc-links">
+                                    <div className="toc-list">
                                         {tocItems.map((item, index) => (
-                                            <li key={index}>
-                                                <a href={`#${item.id}`}>{item.text}</a>
-                                            </li>
+                                            <a
+                                                key={item.id}
+                                                href={`#${item.id}`}
+                                                className={index === tocItems.length - 1 ? 'toc-last-item' : ''}
+                                            >
+                                                {index + 1}. {item.text}
+                                            </a>
                                         ))}
-                                    </ul>
+                                    </div>
                                 )}
                             </div>
                         )}
 
                         {/* Article Body */}
-                        <div className="article-body-text" dangerouslySetInnerHTML={{ __html: contentWithoutFAQ }} />
+                        <div className="article-body-text" dangerouslySetInnerHTML={{ __html: articleBody }} />
 
                         {/* Like/Dislike Section */}
                         <div className="blog-like-dislike">
