@@ -152,9 +152,12 @@ const BlogDetail = ({ post, allPosts = [] }) => {
             <div className="calyco-blog-detail-scope">
                 {/* Full Width Hero Image */}
                 {heroImage && (
-                    <div className="w-full h-[40vh] min-h-[300px] relative">
-                        <img src={heroImage} alt={title} className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="w-full relative bg-gray-50 flex justify-center">
+                        <img 
+                            src={heroImage} 
+                            alt={title} 
+                            className="w-full h-auto max-h-[85vh] object-contain" 
+                        />
                     </div>
                 )}
 
