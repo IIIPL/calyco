@@ -22,6 +22,7 @@ import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCT
 import SiteInspectionCTA from '../components/HomeComponents/SiteInspectionCTA';
 import ProductShowcase from '../components/HomeComponents/ProductShowcase';
 import FeatureCards from '../components/HomeComponents/FeatureCards';
+import LatestInsights from '../components/HomeComponents/LatestInsights';
 
 
 const Home = () => {
@@ -94,7 +95,7 @@ const Home = () => {
   }, []);
 
   const nextRoom = () => {
-    setRoomIndex(prev => 
+    setRoomIndex(prev =>
       prev >= roomData.length - visibleRooms ? 0 : prev + 1
     );
   };
@@ -118,13 +119,13 @@ const Home = () => {
   };
 
   const nextInspiration = () => {
-    setInspirationIndex(prev => 
+    setInspirationIndex(prev =>
       prev >= galleryImages.length - visibleInspirations ? 0 : prev + 1
     );
   };
 
   const prevInspiration = () => {
-    setInspirationIndex(prev => 
+    setInspirationIndex(prev =>
       prev <= 0 ? galleryImages.length - visibleInspirations : prev - 1
     );
   };
@@ -225,7 +226,7 @@ const Home = () => {
 
   return (
     <div className="font-poppins bg-white min-h-screen">
-      <SEO 
+      <SEO
         title="Calyco Paints - Eco-premium paints"
         description="Eco-premium paints with low VOC and water-based formulations."
         ogType="website"
@@ -446,6 +447,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Latest Insights Section */}
+      <LatestInsights />
 
       {/* Call to Action */}
       <CallToAction />

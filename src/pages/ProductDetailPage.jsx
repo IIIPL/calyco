@@ -13,6 +13,7 @@ import AssuranceStrip from "../components/ProductDetail/AssuranceStrip";
 import Reviews from "../components/ProductDetail/Reviews";
 import RelatedProducts from "../components/ProductDetail/RelatedProducts";
 import StickyCTA from "../components/ProductDetail/StickyCTA";
+import RelatedArticles from "../components/ProductDetail/RelatedArticles";
 import SEO from "../components/SEO";
 import CartPopup from "../components/CartPopup";
 import { useCart } from "../context/CartContext";
@@ -122,7 +123,7 @@ const sampleProduct = {
   selectedFinish: 0,
   keyBenefits: [
     "Low-VOC",
-    "Great coverage", 
+    "Great coverage",
     "Washable"
   ],
   microCopy: "Low-VOC • Safe for kids • Water-based",
@@ -181,7 +182,7 @@ const sampleProduct = {
   efficiency: 0.9, // 90% efficiency
   features: [
     "Low VOC",
-    "Washable", 
+    "Washable",
     "UV Resistant",
     "Fast Drying"
   ],
@@ -193,7 +194,7 @@ const sampleProduct = {
   },
   documents: {
     tds: "/public/docs/nova-tds.pdf",
-    sds: "/public/docs/nova-sds.pdf", 
+    sds: "/public/docs/nova-sds.pdf",
     warranty: "/public/docs/nova-warranty.pdf"
   },
   specs: {
@@ -465,18 +466,18 @@ export default function ProductDetailPage({ productData }) {
     const area = parseFloat(coverageData.area) || 0;
     const totalArea = area + (coverageData.doors * 2) + (coverageData.windows * 1.5);
     const totalLitres = (totalArea / product.coveragePerLitre) * coverageData.coats / coverageData.efficiency;
-    
+
     // Find best pack combination
     let recommendedPacks = [];
     let remainingLitres = totalLitres;
-    
+
     // Start with largest packs
     const sortedSizes = [...product.sizes].sort((a, b) => {
       const aLitres = parseInt(a.size);
       const bLitres = parseInt(b.size);
       return bLitres - aLitres;
     });
-    
+
     sortedSizes.forEach(size => {
       const sizeLitres = parseInt(size.size);
       if (remainingLitres >= sizeLitres) {
@@ -488,7 +489,7 @@ export default function ProductDetailPage({ productData }) {
         }
       }
     });
-    
+
     // Add to cart
     recommendedPacks.forEach(pack => {
       console.log(`Adding ${pack.packs} • ${pack.size} to cart`);
@@ -553,12 +554,12 @@ export default function ProductDetailPage({ productData }) {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={product.seo.title}
         description={product.seo.description}
         keywords={product.seo.keywords}
       />
-      
+
       <div className="min-h-screen bg-linen-white pt-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <Link
@@ -643,7 +644,7 @@ export default function ProductDetailPage({ productData }) {
         {/* Technical Downloads */}
         <section className="py-16 lg:py-24 bg-grey-mist">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <TechDownloads 
+            <TechDownloads
               documents={product.documents}
               specs={product.technicalSpecs}
             />
@@ -667,7 +668,7 @@ export default function ProductDetailPage({ productData }) {
         {/* Reviews */}
         <section className="py-16 lg:py-24 bg-linen-white">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <Reviews 
+            <Reviews
               rating={product.rating}
               reviewCount={product.reviewCount}
             />
@@ -680,6 +681,9 @@ export default function ProductDetailPage({ productData }) {
             <RelatedProducts products={product.relatedProducts} />
           </div>
         </section>
+
+        {/* Related Articles */}
+        <RelatedArticles currentProductSlug={product.slug} productTags={product.category} />
 
         {/* Sticky CTA (Mobile Only) */}
         <StickyCTA
@@ -723,7 +727,7 @@ export default function ProductDetailPage({ productData }) {
             })
           }}
         />
-        
+
         {/* Cart Popup (Toast Notification) */}
         <CartPopup
           isVisible={cartPopup.isVisible}

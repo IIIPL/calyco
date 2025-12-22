@@ -18,11 +18,10 @@ const CartPage = React.lazy(() => import('./pages/CartPage.jsx'))
 const Checkout = React.lazy(() => import('./pages/Checkout.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
-// Blog imports are already correctly set up:
-const BlogIndexPage = React.lazy(() => import('./pages/blogs/index.jsx'))
-const BlogCategoryPage = React.lazy(() => import('./pages/blogs/categories/[slug].jsx'))
-const BlogPostPage = React.lazy(() => import('./pages/blogs/[slug].jsx'))
-import { Temp } from './pages/Temp'
+
+const BlogIndex = React.lazy(() => import('../blog/pages/BlogIndex.jsx'));
+const BlogPost = React.lazy(() => import('../blog/pages/BlogPost.jsx'));
+const MagicUpload = React.lazy(() => import('../blog/admin/MagicUpload.jsx'));
 import AboutUs from './pages/AboutUs'
 import { Footer } from './pages/Footer'
 import { FAQs } from './pages/FAQs'
@@ -113,7 +112,7 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
             🎨 Transform your space with eco-premium paints! Free delivery on orders above ₹2000.
           </div>
           <div className="flex-1 flex justify-end">
-            <button 
+            <button
               onClick={onClose}
               className="text-white hover:text-gray-300 transition-colors"
             >
@@ -162,101 +161,102 @@ function App() {
             <div className="transition-all duration-300">
               <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
                 <Routes>
-                  <Route path='/' element={<Home/>}/>
-                  
+                  <Route path='/' element={<Home />} />
+
                   {/* New premium visual-first routes */}
-                  <Route path='/colors' element={<ColorsPage/>}/>
-                  <Route path='/visualizer' element={<VisualizerPage/>}/>
-                  <Route path='/budget-calculator' element={<BudgetCalculator/>}/>
-                  <Route path='/products' element={<Products/>}/>
-                  <Route path='/products/:slug' element={<ProductDetailPage/>}/>
-                  
+                  <Route path='/colors' element={<ColorsPage />} />
+                  <Route path='/visualizer' element={<VisualizerPage />} />
+                  <Route path='/budget-calculator' element={<BudgetCalculator />} />
+                  <Route path='/products' element={<Products />} />
+                  <Route path='/products/:slug' element={<ProductDetailPage />} />
+
                   {/* PREMIUM PRODUCTS */}
-                  <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion/>}/>
-                  <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />}/>
-                  <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion/>}/>
-                  <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/Premium-Interior-Emulsion' element={<PremiumInteriorEmulsion />} />
+                  <Route path='/product/premium-interior-emulsion' element={<Navigate to='/product/Premium-Interior-Emulsion' replace />} />
+                  <Route path='/product/Premium-Exterior-Emulsion' element={<PremiumExteriorEmulsion />} />
+                  <Route path='/product/premium-exterior-emulsion' element={<Navigate to='/product/Premium-Exterior-Emulsion' replace />} />
 
                   {/* LUXURY PRODUCTS - UPDATED URLS */}
-                  <Route path='/product/Luxury-Interior-Emulsion' element={<InteriorLatexPaint/>}/>
-                  <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-                  <Route path='/product/Luxury-Exterior-Emulsion' element={<ExteriorLatexPaint/>}/>
-                  <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
+                  <Route path='/product/Luxury-Interior-Emulsion' element={<InteriorLatexPaint />} />
+                  <Route path='/product/luxury-interior-emulsion' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />} />
+                  <Route path='/product/Luxury-Exterior-Emulsion' element={<ExteriorLatexPaint />} />
+                  <Route path='/product/luxury-exterior-emulsion' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />} />
 
                   {/* OLD URLS - Redirect to new Luxury URLs for backward compatibility */}
-                  <Route path='/product/Interior-Latex-Paint' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-                  <Route path='/product/Nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-                  <Route path='/product/nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />}/>
-                  <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-                  <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-                  <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-                  <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />}/>
-                  <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer/>}/>
-                  <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
-                  <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />}/>
+                  <Route path='/product/Interior-Latex-Paint' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />} />
+                  <Route path='/product/Nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />} />
+                  <Route path='/product/nova' element={<Navigate to='/product/Luxury-Interior-Emulsion' replace />} />
+                  <Route path='/product/Exterior-Latex-Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />} />
+                  <Route path='/product/exterior-latex-paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />} />
+                  <Route path='/product/Calyco Exterior Latex Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />} />
+                  <Route path='/product/Calyco%20Exterior%20Latex%20Paint' element={<Navigate to='/product/Luxury-Exterior-Emulsion' replace />} />
+                  <Route path='/product/waterproofing-sealer' element={<WaterproofingSealer />} />
+                  <Route path='/product/Stain%20&%20Sealer' element={<Navigate to='/product/waterproofing-sealer' replace />} />
+                  <Route path='/stain-sealer' element={<Navigate to='/product/waterproofing-sealer' replace />} />
 
                   {/* New primer/putty pages using Premium template */}
-                  <Route path='/product/calyco-water-primer-interior' element={<CalycoWaterPrimerInterior/>}/>
-                  <Route path='/product/calyco-weather-primer-exterior' element={<CalycoWeatherPrimerExterior/>}/>
-                  <Route path='/product/calyco-acrylic-wall-putty' element={<CalycoAcrylicPutty/>}/>
-                  <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior/>}/>
-                  <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer/>}/>
-                  <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer/>}/>
-                  <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel/>}/>
-                  <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating/>}/>
-                  <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper/>}/>
-                  <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating/>}/>
-                  <Route path='/product/calyco-texture-paint' element={<TexturePaints/>}/>
-                  
-                  <Route path='/contractors' element={<ContractorsPage/>}/>
-                  <Route path='/government' element={<GovernmentPage/>}/>
-                  <Route path='/downloads' element={<DownloadsPage/>}/>
-                  <Route path='/about' element={<AboutPage/>}/>
-                  <Route path='/sustainability' element={<SustainabilityPage/>}/>
-                  <Route path='/contact' element={<ContactPage/>}/>
-                  <Route path='/cart' element={<CartPage/>}/>
-                  <Route path='/checkout' element={<Checkout/>}/>
-                  <Route path='/product/:productId' element={<DynamicProductPage/>}/>
-                  <Route path='/temp' element={<Temp/>}/>
-                  <Route path='/faq' element={<FAQs/>}/>
-                  <Route path='/test-page-codex' element={<TestPageCodex/>}/>
-                  <Route path='/pages/product-finder' element={<ProductFinder/>}/>
-                  
-                  {/* Blog Routes */}
-                  <Route path='/blogs' element={<BlogIndexPage/>}/>
-                  <Route path='/blogs/categories' element={<Navigate to='/blogs/categories/design-trends' replace />} />
-                  <Route path='/blogs/categories/:slug' element={<BlogCategoryPage/>}/>
-                  <Route path='/blogs/:slug' element={<BlogPostPage/>}/>
-                  
+                  <Route path='/product/calyco-water-primer-interior' element={<CalycoWaterPrimerInterior />} />
+                  <Route path='/product/calyco-weather-primer-exterior' element={<CalycoWeatherPrimerExterior />} />
+                  <Route path='/product/calyco-acrylic-wall-putty' element={<CalycoAcrylicPutty />} />
+                  <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior />} />
+                  <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer />} />
+                  <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer />} />
+                  <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel />} />
+                  <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating />} />
+                  <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper />} />
+                  <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating />} />
+                  <Route path='/product/calyco-texture-paint' element={<TexturePaints />} />
+
+                  <Route path='/contractors' element={<ContractorsPage />} />
+                  <Route path='/government' element={<GovernmentPage />} />
+                  <Route path='/downloads' element={<DownloadsPage />} />
+                  <Route path='/about' element={<AboutPage />} />
+                  <Route path='/sustainability' element={<SustainabilityPage />} />
+                  <Route path='/contact' element={<ContactPage />} />
+                  <Route path='/cart' element={<CartPage />} />
+                  <Route path='/checkout' element={<Checkout />} />
+                  <Route path='/product/:productId' element={<DynamicProductPage />} />
+                  <Route path='/faq' element={<FAQs />} />
+                  <Route path='/test-page-codex' element={<TestPageCodex />} />
+                  <Route path='/pages/product-finder' element={<ProductFinder />} />
+
+
+
+
+                  {/* NEW BLOG SYSTEM */}
+                  <Route path='/blog' element={<BlogIndex />} />
+                  <Route path='/blog/:slug' element={<BlogPost />} />
+                  <Route path='/admin/magic-upload' element={<MagicUpload />} />
+
                   {/* Colors Routes */}
-                  <Route path='/colors' element={<ColorsPage/>}/>
-                  <Route path="/colors/family/:familyName" element={<FamilyColorGroup/>} />
+                  <Route path='/colors' element={<ColorsPage />} />
+                  <Route path="/colors/family/:familyName" element={<FamilyColorGroup />} />
                   <Route path="/colors/family/:familyName/:colorName" element={<ColorDetailPage />} />
                   <Route path="/colors/:colorName" element={<ColorPageWrapper />} />
-                  
+
                   {/* Inspiration Routes */}
-                  <Route path='/inspirations' element={<InspirationPage/>}/>
-                  <Route path='/inspirations/kitchen' element={<KitchenInspiration/>}/>
-                  <Route path='/inspirations/bedroom' element={<BedroomInspiration/>}/>
-                  <Route path='/inspirations/hallway' element={<HallwayInspiration/>}/>
-                  <Route path='/inspirations/living' element={<LivingInspiration/>}/>
-                  <Route path='/inspirations/livingroom' element={<EnhancedLivingRoomInspiration/>}/>
-                  <Route path='/inspirations/bathroom' element={<BathroomInspiration/>}/>
-                  <Route path='/inspirations/dining' element={<DiningInspiration/>}/>
-                  <Route path='/inspirations/office' element={<OfficeInspiration/>}/>
-                  <Route path='/inspirations/exterior' element={<ExteriorInspiration/>}/>
+                  <Route path='/inspirations' element={<InspirationPage />} />
+                  <Route path='/inspirations/kitchen' element={<KitchenInspiration />} />
+                  <Route path='/inspirations/bedroom' element={<BedroomInspiration />} />
+                  <Route path='/inspirations/hallway' element={<HallwayInspiration />} />
+                  <Route path='/inspirations/living' element={<LivingInspiration />} />
+                  <Route path='/inspirations/livingroom' element={<EnhancedLivingRoomInspiration />} />
+                  <Route path='/inspirations/bathroom' element={<BathroomInspiration />} />
+                  <Route path='/inspirations/dining' element={<DiningInspiration />} />
+                  <Route path='/inspirations/office' element={<OfficeInspiration />} />
+                  <Route path='/inspirations/exterior' element={<ExteriorInspiration />} />
                   <Route path="/room/:roomName" element={<IndividualRoomPage />} />
 
                   {/* Texture Routes */}
-                  <Route path='/textures' element={<TexturesPage/>}/>
-                  <Route path='/textures/:textureSlug' element={<TextureDetailPage/>}/>
+                  <Route path='/textures' element={<TexturesPage />} />
+                  <Route path='/textures/:textureSlug' element={<TextureDetailPage />} />
 
                   {/* Visualization Routes */}
-                  <Route path='/room-visualization' element={<RoomVisualizerPage/>} />
-                  <Route path='/room-visualization/bedroom' element={<RoomVisualizer/>} />
-                  <Route path='/room-visualization/livingroom' element={<RoomVisualizer/>} />
-                  <Route path='/room-visualization/diningroom' element={<RoomVisualizer/>} />
-                  <Route path='/room-visualization/personalVisual' element={<RoomVisualizer/>} />
+                  <Route path='/room-visualization' element={<RoomVisualizerPage />} />
+                  <Route path='/room-visualization/bedroom' element={<RoomVisualizer />} />
+                  <Route path='/room-visualization/livingroom' element={<RoomVisualizer />} />
+                  <Route path='/room-visualization/diningroom' element={<RoomVisualizer />} />
+                  <Route path='/room-visualization/personalVisual' element={<RoomVisualizer />} />
 
                   {/* Policy Routes */}
                   <Route path="/policies" element={<PoliciesIndex />} />
@@ -272,13 +272,13 @@ function App() {
                   <Route path="/customer-service" element={<CustomerService />} />
 
                   {/* City Landing Pages - Must be near the end to avoid conflicts */}
-                  <Route path="/:citySlug" element={<CityLandingPage/>}/>
+                  <Route path="/:citySlug" element={<CityLandingPage />} />
 
                   {/* 404 Fallback Route - MUST BE LAST */}
-                  <Route path="*" element={<NotFound/>}/>
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </React.Suspense>
-              <Footer/>
+              <Footer />
             </div>
           </div>
         </ColorVisualizationProvider>

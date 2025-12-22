@@ -1,0 +1,126 @@
+/* Social Share Buttons */
+.blog-social-share {
+    margin: 40px 0;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Compact Share (Top Placement) */
+.blog-social-share.compact-share {
+    margin: 20px 0 30px 0;
+    padding: 0;
+    background: transparent;
+    text-align: left;
+}
+
+.blog-social-share.compact-share .share-buttons {
+    justify-content: flex-start;
+}
+
+.blog-social-share h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    /* No gap needed for icon only */
+    padding: 0;
+    border-radius: 50%;
+    /* Circle */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+    min-width: auto;
+    /* Remove min-width */
+    width: 40px;
+    /* Fixed width */
+    height: 40px;
+    /* Fixed height */
+}
+
+/* Hide text labels globally */
+.share-btn span {
+    display: none;
+}
+
+.share-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.share-btn.facebook {
+    background: #1877f2;
+}
+
+.share-btn.facebook:hover {
+    background: #145dbf;
+    transform: translateY(-2px);
+}
+
+.share-btn.twitter {
+    background: #000000;
+}
+
+.share-btn.twitter:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.share-btn.pinterest {
+    background: #e60023;
+}
+
+.share-btn.pinterest:hover {
+    background: #bd001c;
+    transform: translateY(-2px);
+}
+
+.share-btn.email {
+    background: #7c3aed;
+    /* Purple, or use generic blue #1877f2 if preferred */
+}
+
+.share-btn.email:hover {
+    background: #6d28d9;
+    transform: translateY(-2px);
+}
+
+.share-btn.sms {
+    background: #8b5cf6;
+}
+
+.share-btn.sms:hover {
+    background: #7c3aed;
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .share-buttons {
+        flex-direction: row;
+        /* Keep row on mobile for icons */
+        flex-wrap: wrap;
+    }
+
+    .blog-social-share.compact-share .share-buttons {
+        justify-content: flex-start;
+    }
+}

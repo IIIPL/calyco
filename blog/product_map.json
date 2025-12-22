@@ -1,0 +1,491 @@
+{
+    "products": [
+        {
+            "name": "Premium Interior Emulsion",
+            "url": "/product/Premium-Interior-Emulsion",
+            "image": "/Assets/Product Images/Premium Interior Emulsion/premium-interior-bucket-transparent.webp",
+            "category": "Interior Paint",
+            "description": "Premium quality interior emulsion with excellent coverage and smooth finish",
+            "features": [
+                "Washable",
+                "Low VOC",
+                "Smooth finish",
+                "Excellent coverage"
+            ],
+            "bestFor": [
+                "Living rooms",
+                "Bedrooms",
+                "Dining rooms"
+            ],
+            "finishes": [
+                "Matte",
+                "Silk",
+                "Eggshell"
+            ],
+            "keywords": [
+                "interior",
+                "emulsion",
+                "paint",
+                "premium",
+                "washable"
+            ]
+        },
+        {
+            "name": "Premium Exterior Emulsion",
+            "url": "/product/Premium-Exterior-Emulsion",
+            "image": "/Assets/Product Images/Premium Exterior Emulsion/premium-exterior-bucket-transparent.webp",
+            "category": "Exterior Paint",
+            "description": "Weather-resistant exterior emulsion for long-lasting protection",
+            "features": [
+                "Weather resistant",
+                "UV protection",
+                "Anti-fungal",
+                "Durable"
+            ],
+            "bestFor": [
+                "Exterior walls",
+                "Facades",
+                "Balconies"
+            ],
+            "finishes": [
+                "Matte",
+                "Satin"
+            ],
+            "keywords": [
+                "exterior",
+                "emulsion",
+                "paint",
+                "premium",
+                "weather"
+            ]
+        },
+        {
+            "name": "Luxury Interior Emulsion",
+            "url": "/product/Luxury-Interior-Emulsion",
+            "image": "/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp",
+            "category": "Interior Paint",
+            "description": "Luxury latex emulsion with superior finish and durability",
+            "features": [
+                "Stain resistant",
+                "Washable",
+                "Premium finish",
+                "Low odor"
+            ],
+            "bestFor": [
+                "High-traffic areas",
+                "Living rooms",
+                "Offices"
+            ],
+            "finishes": [
+                "Silk",
+                "Velvet",
+                "Satin"
+            ],
+            "keywords": [
+                "luxury",
+                "interior",
+                "latex",
+                "premium"
+            ]
+        },
+        {
+            "name": "Luxury Exterior Emulsion",
+            "url": "/product/Luxury-Exterior-Emulsion",
+            "image": "/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp",
+            "category": "Exterior Paint",
+            "description": "Premium exterior latex emulsion for superior protection",
+            "features": [
+                "Extreme weather protection",
+                "Crack resistance",
+                "Color retention",
+                "Anti-algae"
+            ],
+            "bestFor": [
+                "Exterior walls",
+                "Facades",
+                "Coastal areas"
+            ],
+            "finishes": [
+                "Matte",
+                "Satin",
+                "Gloss"
+            ],
+            "keywords": [
+                "luxury",
+                "exterior",
+                "latex",
+                "weather"
+            ]
+        },
+        {
+            "name": "Calyco Water Primer Interior",
+            "url": "/product/calyco-water-primer-interior",
+            "image": "/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp",
+            "category": "Primer",
+            "description": "Water-based primer for interior walls ensuring better paint adhesion",
+            "features": [
+                "Quick drying",
+                "Low odor",
+                "Seals porous surfaces",
+                "Eco-friendly"
+            ],
+            "bestFor": [
+                "New walls",
+                "Plaster",
+                "Cement surfaces"
+            ],
+            "keywords": [
+                "primer",
+                "water",
+                "interior",
+                "base coat"
+            ]
+        },
+        {
+            "name": "Calyco Weather Primer Exterior",
+            "url": "/product/calyco-weather-primer-exterior",
+            "image": "/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp",
+            "category": "Primer",
+            "description": "Weather-resistant primer for exterior surfaces",
+            "features": [
+                "Weather protection",
+                "Alkali resistant",
+                "Anti-fungal",
+                "Durable"
+            ],
+            "bestFor": [
+                "Exterior walls",
+                "Concrete",
+                "Masonry"
+            ],
+            "keywords": [
+                "primer",
+                "weather",
+                "exterior",
+                "protection"
+            ]
+        },
+        {
+            "name": "Calyco Acrylic Wall Putty",
+            "url": "/product/calyco-acrylic-wall-putty",
+            "image": "/Assets/Product Images/Calyco Acrylic Putty/calyco-acrylic-putty.webp",
+            "category": "Wall Preparation",
+            "description": "Acrylic-based wall putty for smooth, even wall surfaces",
+            "features": [
+                "Fills cracks",
+                "Smooth finish",
+                "Easy application",
+                "Water resistant"
+            ],
+            "bestFor": [
+                "Interior walls",
+                "Ceiling",
+                "Wall repair"
+            ],
+            "keywords": [
+                "putty",
+                "wall",
+                "acrylic",
+                "smooth",
+                "filler"
+            ]
+        },
+        {
+            "name": "Calyco Solvent Primer Interior",
+            "url": "/product/calyco-solvent-primer-interior",
+            "image": "/Assets/Product Images/Interior Solvent Primer/interior-solvent-primer.webp",
+            "category": "Primer",
+            "description": "Solvent-based primer for superior adhesion on interior surfaces",
+            "features": [
+                "Strong adhesion",
+                "Stain blocking",
+                "Seals surfaces",
+                "Quick drying"
+            ],
+            "bestFor": [
+                "Wood",
+                "Metal",
+                "Previously painted surfaces"
+            ],
+            "keywords": [
+                "solvent",
+                "primer",
+                "interior",
+                "adhesion"
+            ]
+        },
+        {
+            "name": "Calyco Damp Guard Primer",
+            "url": "/product/calyco-damp-guard-primer",
+            "image": "/Assets/Product Images/Damp Guard Primer/damp-guard-primer.webp",
+            "category": "Waterproofing",
+            "description": "Specialized primer for damp and moisture-prone areas",
+            "features": [
+                "Waterproof",
+                "Anti-fungal",
+                "Prevents dampness",
+                "Long-lasting"
+            ],
+            "bestFor": [
+                "Bathrooms",
+                "Kitchens",
+                "Basements",
+                "Damp walls"
+            ],
+            "keywords": [
+                "damp",
+                "guard",
+                "primer",
+                "waterproof",
+                "moisture"
+            ]
+        },
+        {
+            "name": "Calyco Universal Primer",
+            "url": "/product/calyco-universal-primer",
+            "image": "/Assets/Product Images/Universal Primer/universal-primer.webp",
+            "category": "Primer",
+            "description": "All-purpose primer suitable for multiple surfaces",
+            "features": [
+                "Multi-surface",
+                "Versatile",
+                "Good adhesion",
+                "Cost-effective"
+            ],
+            "bestFor": [
+                "All surfaces",
+                "Mixed materials",
+                "General use"
+            ],
+            "keywords": [
+                "universal",
+                "primer",
+                "all-purpose",
+                "versatile"
+            ]
+        },
+        {
+            "name": "Amrella Enamel",
+            "url": "/product/calyco-amrella-enamel",
+            "image": "/Assets/Product Images/Dura-Shield Enamel/dura-shield-enamel.webp",
+            "category": "Enamel Paint",
+            "description": "High-gloss enamel paint for wood and metal surfaces",
+            "features": [
+                "High gloss",
+                "Durable",
+                "Scratch resistant",
+                "Smooth finish"
+            ],
+            "bestFor": [
+                "Doors",
+                "Windows",
+                "Metal railings",
+                "Furniture"
+            ],
+            "finishes": [
+                "Gloss",
+                "Semi-gloss"
+            ],
+            "keywords": [
+                "enamel",
+                "amrella",
+                "gloss",
+                "wood",
+                "metal"
+            ]
+        },
+        {
+            "name": "PU Wood Coating",
+            "url": "/product/calyco-pu-wood-coating",
+            "image": "/Assets/Product Images/PU Wood Coating/pu-wood-coating.webp",
+            "category": "Wood Finish",
+            "description": "Polyurethane wood coating for superior protection and finish",
+            "features": [
+                "Scratch resistant",
+                "Water resistant",
+                "UV protection",
+                "Natural wood look"
+            ],
+            "bestFor": [
+                "Wooden furniture",
+                "Doors",
+                "Flooring",
+                "Cabinets"
+            ],
+            "finishes": [
+                "Matte",
+                "Satin",
+                "Gloss"
+            ],
+            "keywords": [
+                "wood",
+                "coating",
+                "pu",
+                "polyurethane",
+                "furniture"
+            ]
+        },
+        {
+            "name": "Acrylic Washable Distemper",
+            "url": "/product/calyco-acrylic-washable-distemper",
+            "image": "/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp",
+            "category": "Interior Paint",
+            "description": "Budget-friendly washable distemper for interior walls",
+            "features": [
+                "Washable",
+                "Affordable",
+                "Good coverage",
+                "Quick drying"
+            ],
+            "bestFor": [
+                "Bedrooms",
+                "Living rooms",
+                "Budget projects"
+            ],
+            "keywords": [
+                "distemper",
+                "washable",
+                "acrylic",
+                "budget",
+                "interior"
+            ]
+        },
+        {
+            "name": "All Surface Coating",
+            "url": "/product/calyco-all-surface-coating",
+            "image": "/Assets/Product Images/All Surface Coating/all-surface-coating.webp",
+            "category": "Multi-Purpose",
+            "description": "Versatile coating suitable for all types of surfaces",
+            "features": [
+                "Multi-surface",
+                "Durable",
+                "Weather resistant",
+                "Versatile"
+            ],
+            "bestFor": [
+                "Wood",
+                "Metal",
+                "Concrete",
+                "Plaster"
+            ],
+            "keywords": [
+                "all surface",
+                "coating",
+                "versatile",
+                "multi-purpose"
+            ]
+        },
+        {
+            "name": "Texture Paints",
+            "url": "/product/calyco-texture-paint",
+            "image": "/Assets/Product Images/Texture Paints/texture-paints.webp",
+            "category": "Decorative",
+            "description": "Decorative texture paints for creating unique wall finishes",
+            "features": [
+                "3D effects",
+                "Unique patterns",
+                "Designer finish",
+                "Durable"
+            ],
+            "bestFor": [
+                "Accent walls",
+                "Living rooms",
+                "Commercial spaces"
+            ],
+            "textures": [
+                "Rustic",
+                "Sand",
+                "Stone",
+                "Metallic",
+                "Venetian"
+            ],
+            "keywords": [
+                "texture",
+                "paint",
+                "decorative",
+                "3D",
+                "designer"
+            ]
+        }
+    ],
+    "popularColors": [
+        "Warm Neutrals (Beige, Taupe, Cream)",
+        "Cool Greys (Light Grey, Charcoal)",
+        "Earth Tones (Terracotta, Ochre, Brown)",
+        "Pastels (Soft Pink, Mint, Lavender)",
+        "Bold Accents (Teal, Navy, Burgundy)",
+        "Classic Whites (Pure White, Off-White, Ivory)"
+    ],
+    "colorTrends2025": [
+        "Warm Neutrals with Bold Accents",
+        "Earthy Terracotta and Clay Tones",
+        "Soft Sage and Olive Greens",
+        "Deep Navy and Midnight Blues",
+        "Muted Pastels for Calm Spaces"
+    ],
+    "textureTypes": [
+        {
+            "name": "Rustic Texture",
+            "description": "Natural, rough finish for traditional look",
+            "bestFor": [
+                "Living rooms",
+                "Dining areas",
+                "Traditional homes"
+            ]
+        },
+        {
+            "name": "Sand Texture",
+            "description": "Fine grain texture for subtle elegance",
+            "bestFor": [
+                "Bedrooms",
+                "Offices",
+                "Modern spaces"
+            ]
+        },
+        {
+            "name": "Stone Texture",
+            "description": "Bold, rugged finish mimicking natural stone",
+            "bestFor": [
+                "Accent walls",
+                "Exteriors",
+                "Feature walls"
+            ]
+        },
+        {
+            "name": "Metallic Texture",
+            "description": "Shimmer and shine for luxury appeal",
+            "bestFor": [
+                "Feature walls",
+                "Commercial spaces",
+                "Modern interiors"
+            ]
+        },
+        {
+            "name": "Venetian Texture",
+            "description": "Smooth, polished finish with depth",
+            "bestFor": [
+                "Luxury homes",
+                "Living rooms",
+                "Dining rooms"
+            ]
+        }
+    ],
+    "websitePages": {
+        "products": {
+            "url": "/products",
+            "description": "Complete catalog of paints, primers, and coatings"
+        },
+        "colourVisualizer": {
+            "url": "/colour-visualizer",
+            "description": "AI-powered tool to visualize colors in your space"
+        },
+        "inspiration": {
+            "url": "/inspiration",
+            "description": "Design ideas and color combination gallery"
+        },
+        "about": {
+            "url": "/about",
+            "description": "Learn about Calyco Paints quality and commitment"
+        }
+    }
+}
