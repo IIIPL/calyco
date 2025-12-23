@@ -48,6 +48,14 @@ import PUWoodCoating from './pages/PUWoodCoating'
 import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
 import AllSurfaceCoating from './pages/AllSurfaceCoating'
 import TexturePaints from './pages/TexturePaints'
+import CalycoPinkPrimer from './pages/CalycoPinkPrimer'
+import CalycoYellowMetalPrimer from './pages/CalycoYellowMetalPrimer'
+import CalycoMelaminePolish from './pages/CalycoMelaminePolish'
+import CalycoFireRetardantPaint from './pages/CalycoFireRetardantPaint'
+import CalycoAnticorrosiveBitumastic from './pages/CalycoAnticorrosiveBitumastic'
+import CalycoEpoxyPaint from './pages/CalycoEpoxyPaint'
+import CalycoWoodPrimer from './pages/CalycoWoodPrimer'
+import CalycoRedOxideZincChromate from './pages/CalycoRedOxideZincChromate'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -206,6 +214,14 @@ function App() {
                   <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper />} />
                   <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating />} />
                   <Route path='/product/calyco-texture-paint' element={<TexturePaints />} />
+                  <Route path='/product/calyco-pink-primer' element={<CalycoPinkPrimer />} />
+                  <Route path='/product/calyco-yellow-metal-primer' element={<CalycoYellowMetalPrimer />} />
+                  <Route path='/product/calyco-melamine-polish' element={<CalycoMelaminePolish />} />
+                  <Route path='/product/calyco-fire-retardant-paint' element={<CalycoFireRetardantPaint />} />
+                  <Route path='/product/calyco-anticorrosive-bitumastic' element={<CalycoAnticorrosiveBitumastic />} />
+                  <Route path='/product/calyco-epoxy-paint' element={<CalycoEpoxyPaint />} />
+                  <Route path='/product/calyco-wood-primer' element={<CalycoWoodPrimer />} />
+                  <Route path='/product/calyco-red-oxide-zinc-chromate' element={<CalycoRedOxideZincChromate />} />
 
                   <Route path='/contractors' element={<ContractorsPage />} />
                   <Route path='/government' element={<GovernmentPage />} />
