@@ -221,6 +221,231 @@ export const products = [
     "substrate": ["Cement plaster", "Concrete", "Brick", "Masonry"]
   },
   {
+    "id": "calyco-pink-primer",
+    "slug": "calyco-pink-primer",
+    "url": "https://calycopaints.com/product/calyco-pink-primer",
+    "name": "Calyco Pink Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Alkyd-based wood primer that seals knots, blocks stains, and delivers strong adhesion for topcoats on interior and exterior wood.",
+    "short-description": "Fast-drying, low VOC wood primer for sealing knots and boosting adhesion.",
+    "category": "primers",
+    "finish_type_sheen": ["Flat"],
+    "finish_type": ["Flat"],
+    "price": 240,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "Flat",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-pink-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-pink-primer-tds.html"
+    },
+    "priceByFinish": {
+      "Flat": {
+        "1L": { "price": 240 },
+        "4L": { "price": 880 },
+        "10L": { "price": 2000 },
+        "20L": { "price": 3760 }
+      }
+    }
+  },
+  {
+    "id": "calyco-yellow-metal-primer",
+    "slug": "calyco-yellow-metal-primer",
+    "url": "https://calycopaints.com/product/calyco-yellow-metal-primer",
+    "name": "Calyco Yellow Metal Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Red oxide zinc chromate metal primer offering superior anti-corrosive protection for ferrous and galvanized metals.",
+    "short-description": "Industrial-grade rust protection with strong adhesion and heat resistance.",
+    "category": "primers",
+    "finish_type_sheen": ["Flat"],
+    "finish_type": ["Flat"],
+    "price": 320,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "Flat",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-yellow-metal-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-yellow-metal-primer-tds.html"
+    },
+    "priceByFinish": {
+      "Flat": {
+        "1L": { "price": 320 },
+        "4L": { "price": 1200 },
+        "10L": { "price": 2800 },
+        "20L": { "price": 5280 }
+      }
+    }
+  },
+  {
+    "id": "calyco-melamine-polish",
+    "slug": "calyco-melamine-polish",
+    "url": "https://calycopaints.com/product/calyco-melamine-polish",
+    "name": "Calyco Melamine Polish",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Premium melamine-based wood coating with high-gloss, scratch and heat resistance for furniture and interior wood.",
+    "short-description": "Mirror-smooth melamine finish with strong durability for furniture.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["High Gloss"],
+    "finish_type": ["High Gloss"],
+    "price": 480,
+    "packaging": ["500ml", "1L", "4L", "10L"],
+    "defaultFinish": "High Gloss",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-melamine-polish-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-melamine-polish-tds.html"
+    },
+    "priceByFinish": {
+      "High Gloss": {
+        "500ml": { "price": 280 },
+        "1L": { "price": 480 },
+        "4L": { "price": 1760 },
+        "10L": { "price": 4160 }
+      }
+    }
+  },
+  {
+    "id": "calyco-fire-retardant-paint",
+    "slug": "calyco-fire-retardant-paint",
+    "url": "https://calycopaints.com/product/calyco-fire-retardant-paint",
+    "name": "Calyco Fire Retardant Paint",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Intumescent fire-retardant coating that swells to protect steel and wood structures, delaying flame spread.",
+    "short-description": "Advanced intumescent protection up to 2-hour rating for structural safety.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["Matt"],
+    "finish_type": ["Matt"],
+    "price": 640,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "Matt",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-fire-retardant-paint-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-fire-retardant-paint-tds.html"
+    },
+    "priceByFinish": {
+      "Matt": {
+        "1L": { "price": 640 },
+        "4L": { "price": 2400 },
+        "10L": { "price": 5600 },
+        "20L": { "price": 10560 }
+      }
+    }
+  },
+  {
+    "id": "calyco-anticorrosive-bitumastic",
+    "slug": "calyco-anticorrosive-bitumastic",
+    "url": "https://calycopaints.com/product/calyco-anticorrosive-bitumastic",
+    "name": "Calyco Anticorrosive Bitumastic Paint",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Heavy-duty bitumen-based anti-corrosive coating for ferrous metals in industrial and marine environments.",
+    "short-description": "High-build waterproof, chemical-resistant barrier for steel and pipelines.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["Semi-Gloss"],
+    "finish_type": ["Semi-Gloss"],
+    "price": 160,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "Semi-Gloss",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-anticorrosive-bitumastic-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-anticorrosive-bitumastic-tds.html"
+    },
+    "priceByFinish": {
+      "Semi-Gloss": {
+        "1L": { "price": 160 },
+        "4L": { "price": 600 },
+        "10L": { "price": 1400 },
+        "20L": { "price": 2640 }
+      }
+    }
+  },
+  {
+    "id": "calyco-epoxy-paint",
+    "slug": "calyco-epoxy-paint",
+    "url": "https://calycopaints.com/product/calyco-epoxy-paint",
+    "name": "Calyco Epoxy Paint",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Two-component epoxy coating delivering chemical, abrasion, and water resistance for industrial floors, tanks, and equipment.",
+    "short-description": "Ultra-durable, chemical-resistant epoxy system for demanding environments.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["High Gloss"],
+    "finish_type": ["High Gloss"],
+    "price": 640,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "High Gloss",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-epoxy-paint-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-epoxy-paint-tds.html"
+    },
+    "priceByFinish": {
+      "High Gloss": {
+        "1L": { "price": 640 },
+        "4L": { "price": 2400 },
+        "10L": { "price": 5600 },
+        "20L": { "price": 10560 }
+      }
+    }
+  },
+  {
+    "id": "calyco-wood-primer",
+    "slug": "calyco-wood-primer",
+    "url": "https://calycopaints.com/product/calyco-wood-primer",
+    "name": "Calyco Wood Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Solvent-based alkyd wood primer that penetrates, seals, and improves adhesion of finish coats while resisting moisture and resin bleed.",
+    "short-description": "Deep-penetrating wood sealer for flawless enamel/varnish adhesion.",
+    "category": "primers",
+    "finish_type_sheen": ["Matt"],
+    "finish_type": ["Matt"],
+    "price": 520,
+    "packaging": ["500ml", "1L", "4L", "10L", "20L"],
+    "defaultFinish": "Matt",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-wood-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-wood-primer-tds.html"
+    },
+    "priceByFinish": {
+      "Matt": {
+        "500ml": { "price": 280 },
+        "1L": { "price": 520 },
+        "4L": { "price": 1920 },
+        "10L": { "price": 4480 },
+        "20L": { "price": 8480 }
+      }
+    }
+  },
+  {
+    "id": "calyco-red-oxide-zinc-chromate",
+    "slug": "calyco-red-oxide-zinc-chromate",
+    "url": "https://calycopaints.com/product/calyco-red-oxide-zinc-chromate",
+    "name": "Calyco Red Oxide Zinc Chromate Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Solvent-based dual-pigment metal primer combining red oxide and zinc chromate for robust rust protection.",
+    "short-description": "Heavy-duty rust guard with strong bond and weather resistance.",
+    "category": "primers",
+    "finish_type_sheen": ["Matt"],
+    "finish_type": ["Matt"],
+    "price": 240,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "defaultFinish": "Matt",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/calyco-red-oxide-zinc-chromate-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-red-oxide-zinc-chromate-tds.html"
+    },
+    "priceByFinish": {
+      "Matt": {
+        "1L": { "price": 240 },
+        "4L": { "price": 880 },
+        "10L": { "price": 2000 },
+        "20L": { "price": 3680 }
+      }
+    }
+  },
+  {
     "id": "CalycoSolventPrimerInterior",
     "slug": "calyco-solvent-primer-interior",
     "url": "https://calycopaints.com/product/calyco-solvent-primer-interior",

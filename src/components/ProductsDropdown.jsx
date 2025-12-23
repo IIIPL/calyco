@@ -31,6 +31,10 @@ const groups = {
   WoodMetal: [
     { slug: "calyco-amrella-enamel", name: "Dura-Shield Enamel" },
     { slug: "calyco-pu-wood-coating", name: "PU Wood Coating" },
+    { slug: "calyco-melamine-polish", name: "Melamine Polish" },
+    { slug: "calyco-fire-retardant-paint", name: "Fire Retardant Paint" },
+    { slug: "calyco-anticorrosive-bitumastic", name: "Anticorrosive Bitumastic Paint" },
+    { slug: "calyco-epoxy-paint", name: "Epoxy Paint" },
   ],
   PrimersSeal: [
     { slug: "calyco-water-primer-interior", name: "Interior Water-Based Primer" },
@@ -38,6 +42,10 @@ const groups = {
     { slug: "calyco-solvent-primer-interior", name: "Interior Solvent Primer" },
     { slug: "calyco-universal-primer", name: "Universal Primer" },
     { slug: "calyco-acrylic-wall-putty", name: "Acrylic Wall Putty" },
+    { slug: "calyco-pink-primer", name: "Pink Primer" },
+    { slug: "calyco-yellow-metal-primer", name: "Yellow Metal Primer" },
+    { slug: "calyco-wood-primer", name: "Wood Primer" },
+    { slug: "calyco-red-oxide-zinc-chromate", name: "Red Oxide Zinc Chromate Primer" },
   ],
   Waterproofing: [
     { slug: "waterproofing-sealer", name: "Waterproofing Sealer" },
