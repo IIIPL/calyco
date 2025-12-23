@@ -227,7 +227,9 @@
 }
 
 .toc-list a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #5E2E85;
+    /* Optional: Change color instead of underline to indicate interaction */
 }
 
 /* Like/Dislike Section */

@@ -173,16 +173,27 @@ const BlogDetail = ({ post, allPosts = [] }) => {
 
         const parser = new DOMParser();
         const doc = parser.parseFromString(contentWithoutFAQ, 'text/html');
-        const headings = doc.querySelectorAll('h2');
+        // Select h2 and h3 to increase number of links in TOC
+        const headings = doc.querySelectorAll('h2, h3');
 
         const items = Array.from(headings).map((h, index) => {
             const id = `section-${index + 1}`;
-            h.id = id; // Inject ID into the H2 element
+            h.id = id; // Inject ID into the element
+            // Strip leading numbers from the text (e.g. "1. Designing" -> "Designing")
+            const cleanText = h.textContent.replace(/^\s*\d+\.\s*/, '').trim();
             return {
                 id,
-                text: h.textContent
+                text: cleanText
             };
         });
+
+        // Add FAQ section to TOC if it exists
+        if (faqs && faqs.length > 0) {
+            items.push({
+                id: 'faq-section',
+                text: 'Frequently Asked Questions'
+            });
+        }
 
         return {
             items,
@@ -316,8 +327,10 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                                 key={item.id}
                                                 href={`#${item.id}`}
                                                 className={index === tocItems.length - 1 ? 'toc-last-item' : ''}
+                                                style={{ display: 'flex', alignItems: 'baseline' }}
                                             >
-                                                {index + 1}. {item.text}
+                                                <span style={{ marginRight: '10px', fontSize: '1.2em', lineHeight: '1' }}>•</span>
+                                                <span>{item.text}</span>
                                             </a>
                                         ))}
                                     </div>
@@ -473,7 +486,11 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                             )}
 
                         {/* FAQ Accordion */}
-                        {faqs && faqs.length > 0 && <FAQAccordion faqs={faqs} />}
+                        {faqs && faqs.length > 0 && (
+                            <div id="faq-section">
+                                <FAQAccordion faqs={faqs} />
+                            </div>
+                        )}
                     </article>
 
                     {/* Right Sidebar (34%) */}

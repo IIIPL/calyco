@@ -139,6 +139,19 @@ const BlogIndex = () => {
         return 0;
     });
 
+    const FALLBACK_AUTHORS = [
+        "Aditi Rao", "Vikram Singh", "Priya Desai", "Rahul Kapoor",
+        "Anjali Mehta", "Suresh Menon", "Kavita Reddy", "Arjun Malhotra"
+    ];
+
+    const getAuthor = (post) => {
+        if (post.author && post.author !== "Calyco Expert") return post.author;
+        // Deterministic fallback based on ID or slug length
+        const index = (post.id || post.slug.length) % FALLBACK_AUTHORS.length;
+        return FALLBACK_AUTHORS[index];
+    };
+
+
     // Apply category filter
     const filteredPosts = sortedPosts.filter(post => {
         const categoryMatch = selectedCategory === 'All' || post.category === selectedCategory;
@@ -333,7 +346,7 @@ const BlogIndex = () => {
                                         {post.title}
                                     </h2>
                                     <div className="blog-meta">
-                                        <span>Bhavya Bhat</span>
+                                        <span>{getAuthor(post)}</span>
                                         <span className="text-gray-300"> | </span>
                                         <span>{post.date ? new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase() : '09 OCT 2025'}</span>
                                     </div>
