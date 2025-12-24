@@ -130,19 +130,34 @@ const MagicUpload = () => {
     };
 
     const handleImageAdd = async (e) => {
-        if (e.target.files && e.target.files[0]) {
-            if (images.length >= 10) {
+        if (e.target.files && e.target.files.length > 0) {
+            const selectedFiles = Array.from(e.target.files);
+            const remainingSlots = 10 - images.length;
+
+            if (remainingSlots <= 0) {
                 alert('Maximum 10 images allowed');
                 return;
             }
 
-            try {
-                const compressedImage = await compressImage(e.target.files[0]);
-                setImages(prev => [...prev, compressedImage]);
-            } catch (error) {
-                console.error('Error compressing image:', error);
-                alert('Failed to process image');
+            // Limit files to available slots
+            const filesToProcess = selectedFiles.slice(0, remainingSlots);
+            if (selectedFiles.length > remainingSlots) {
+                alert(`Added first ${remainingSlots} images to meet the 10 image limit.`);
             }
+
+            try {
+                // Process in parallel
+                const newImages = await Promise.all(
+                    filesToProcess.map(file => compressImage(file))
+                );
+                setImages(prev => [...prev, ...newImages]);
+            } catch (error) {
+                console.error('Error compressing images:', error);
+                alert('Failed to process some images');
+            }
+
+            // Reset input
+            e.target.value = '';
         }
     };
 
@@ -288,7 +303,28 @@ const MagicUpload = () => {
                                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-purple outline-none"
                                 placeholder="e.g., 5 Ways to Waterproof Your Roof"
                                 value={title}
-                                onChange={(e) => setTitle(e.target.value)}
+                                onChange={(e) => {
+                                    const newTitle = e.target.value;
+                                    setTitle(newTitle);
+
+                                    // Auto-select category based on keywords
+                                    const lowerTitle = newTitle.toLowerCase();
+                                    const categoryKeywords = {
+                                        'Waterproofing Guides': ['waterproof', 'leak', 'seepage', 'damp', 'moisture', 'roof', 'terrace', 'crack'],
+                                        'Wood & Metal Finishes': ['wood', 'metal', 'furniture', 'finish', 'polish', 'varnish', 'rust', 'iron', 'gate'],
+                                        'Exterior Care': ['exterior', 'outside', 'facade', 'weather', 'rain', 'protection'],
+                                        'DIY & How-To': ['how to', 'diy', 'guide', 'tips', 'hack', 'step'],
+                                        'Product Spotlights': ['product', 'review', 'spotlight', 'launch'],
+                                        'Colour Trends & Decor': ['colour', 'color', 'trend', 'decor', 'interior', 'paint', 'shade', 'palette', 'design', 'style', 'room']
+                                    };
+
+                                    for (const [cat, keywords] of Object.entries(categoryKeywords)) {
+                                        if (keywords.some(k => lowerTitle.includes(k))) {
+                                            setCategory(cat);
+                                            break; // Stop at first match (priority order depends on object traversal, usually insertion order or define specifically if critical)
+                                        }
+                                    }
+                                }}
                             />
                         </div>
 
@@ -307,15 +343,13 @@ const MagicUpload = () => {
                         {/* Category Selection */}
                         <div>
                             <label className="block text-[14px] font-bold text-gray-700 mb-3 uppercase tracking-wider">Category</label>
-                            <select
+                            <input
+                                type="text"
                                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-purple outline-none text-[13px]"
+                                placeholder="e.g. Colour Trends & Decor"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                            >
-                                {CATEGORIES.map(cat => (
-                                    <option key={cat} value={cat}>{cat}</option>
-                                ))}
-                            </select>
+                            />
                         </div>
 
                         {/* Waterproofing Issue */}
@@ -409,6 +443,7 @@ const MagicUpload = () => {
                                         <input
                                             type="file"
                                             accept="image/*"
+                                            multiple
                                             onChange={handleImageAdd}
                                             className="hidden"
                                             id="image-upload"

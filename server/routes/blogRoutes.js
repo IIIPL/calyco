@@ -153,11 +153,11 @@ CONTENT STRUCTURE RULES (Strict HTML Output):
    - Write 4-5 paragraphs with expert advice
    - Include pro tips, common mistakes to avoid, and maintenance advice
 
-3. Smart Linking (STRICT LIMITS):
-   - **Product Links**: Link to a MAXIMUM of 4 different products total across the ENTIRE article (body + FAQs combined)
+3. Smart Linking (MANDATORY REQUIREMENTS):
+   - **Product Links**: You MUST link to 3 or 4 different products total across the article.
    - Format: <a href='/products/wall-putty' class='product-link'><strong>Calyco Wall Putty</strong></a>
-   - Each product should be linked only ONCE in the article
-   - Choose the most relevant products for the topic
+   - **CRITICAL**: The article MUST contain at least 3 clickable product links. Do not output plain text for product names if they are in the provided list.
+   - Choose the most relevant products for the topic from the provided list.
    
    - **Internal Page Links**: Intelligently suggest relevant website sections:
      * <a href='/products'>Browse All Products</a> - Product catalog
@@ -182,8 +182,8 @@ CONTENT STRUCTURE RULES (Strict HTML Output):
    - Include exactly 4 Frequently Asked Questions related to the topic
    - FAQ answers should be detailed and helpful (4-5 sentences each)
    - Provide comprehensive, expert-level answers
-   - Link to products in FAQs ONLY if already linked in main content (count towards 4 max limit)
-   - Format: <h3>Question?</h3> <p>Detailed answer here...</p>
+   - **Linking in FAQs**: You ARE ENCOURAGED to include product links in FAQ answers where relevant.
+   - Format: <h3>Question?</h3> <p>Detailed answer here with relevant <a href="...">product link</a>...</p>
 
 7. Tone: Helpful, authoritative, encouraging. Use 'We' and 'You'.
 
