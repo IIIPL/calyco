@@ -356,56 +356,6 @@ const allSurfaceCoatingReviews = [
   { id: 5, author: "Vikram Rao", rating: 5, date: "2024-11-06", review: "Needed quick job before Diwali. This paint dried fast and stuck to old paint without problem. Semi gloss sheen looks classy. Paisa vasool.", verified: true },
 ];
 
-const pinkPrimerReviews = [
-  { id: 1, author: "Vikas Sharma", rating: 5, date: "2025-01-04", review: "Good pink primer for wood doors. Seals knots and dries quick, smell manageable. Painter bhai happy with adhesion.", verified: true },
-  { id: 2, author: "Neelam Joshi", rating: 4, date: "2024-12-18", review: "Used on window frames. Blocks stains nicely. Needed slight thinner for smooth brush flow. Overall paisa vasool.", verified: true },
-  { id: 3, author: "Rahul Patil", rating: 5, date: "2024-12-02", review: "Applied on plywood wardrobe before enamel. No tannin bleed, finish came uniform. Good for DIY also.", verified: false },
-  { id: 4, author: "Suman Verma", rating: 4, date: "2024-11-15", review: "Fast drying helped finish in one day. Coverage decent. Mild smell only. Will reuse for next project.", verified: true },
-];
-
-const yellowMetalPrimerReviews = [
-  { id: 1, author: "Anand Kulkarni", rating: 5, date: "2025-01-06", review: "Used on iron gate and grill. Rust blocked well, dries fast. Nice adhesion for topcoat.", verified: true },
-  { id: 2, author: "Priya Mehra", rating: 4, date: "2024-12-22", review: "Industrial type primer, bit strong smell but rust protection looks solid. Two coats gave full coverage.", verified: true },
-  { id: 3, author: "Suresh Nair", rating: 5, date: "2024-12-05", review: "Applied on steel beams. Good flow with thinner 10%. Heat resistance also fine. Happy so far.", verified: false },
-  { id: 4, author: "Ritika Sen", rating: 4, date: "2024-11-12", review: "Chromate primer works well on my metal roofing sheets. Quick drying helped in winter.", verified: true },
-];
-
-const melaminePolishReviews = [
-  { id: 1, author: "Deepak Rao", rating: 5, date: "2025-01-03", review: "Furniture shine is like showroom. Scratch resistant so far. Smell strong but fades quickly.", verified: true },
-  { id: 2, author: "Meena Iyer", rating: 4, date: "2024-12-20", review: "Used on cabinets. Self leveling nice. Needed sanding between coats but final gloss is superb.", verified: true },
-  { id: 3, author: "Alok Gupta", rating: 5, date: "2024-12-08", review: "Brilliant finish on teak table. Heat and stain resistance seems good with hot cups also.", verified: false },
-];
-
-const fireRetardantReviews = [
-  { id: 1, author: "Harish Menon", rating: 5, date: "2025-01-07", review: "Applied on steel columns in warehouse. Builds intumescent layer well. Drying slower but expected for fire coat.", verified: true },
-  { id: 2, author: "Savita Kulkarni", rating: 4, date: "2024-12-19", review: "Used for wooden partition. Needed multiple thin coats but finish ok. Gives peace of mind for fire safety.", verified: true },
-  { id: 3, author: "Ravi Chawla", rating: 5, date: "2024-11-29", review: "Engineer satisfied with specs. Application by spray was smooth. Good for compliance needs.", verified: false },
-];
-
-const bitumasticReviews = [
-  { id: 1, author: "Mukesh Yadav", rating: 5, date: "2025-01-02", review: "Coated underground pipes. Thick film, very water proof. Needs good ventilation, smell strong.", verified: true },
-  { id: 2, author: "Anju R", rating: 4, date: "2024-12-14", review: "Used on storage tank bottom. Flexible film, no cracks. Dry time long but protection looks solid.", verified: true },
-  { id: 3, author: "Ganesh Pawar", rating: 5, date: "2024-11-30", review: "Marine use on metal beams near coast. High build and chemical resistance. Worth price.", verified: false },
-];
-
-const epoxyPaintReviews = [
-  { id: 1, author: "Sunil Patankar", rating: 5, date: "2025-01-05", review: "Epoxy floor in workshop looks tough. Chemical spills cleaning easy. Pot life ok for small crew.", verified: true },
-  { id: 2, author: "Kiran Deshmukh", rating: 4, date: "2024-12-16", review: "Mixed 2:1 ratio, induction time important. Glossy hard surface after cure. Slight smell while applying.", verified: true },
-  { id: 3, author: "Farhan Ali", rating: 5, date: "2024-12-01", review: "Parking area coated, no tyre marks yet. Good coverage with roller. Will see long term.", verified: false },
-];
-
-const woodPrimerReviews = [
-  { id: 1, author: "Sanjay Batra", rating: 5, date: "2025-01-01", review: "Seals plywood nicely, no resin bleed. Enamel topcoat stuck great. Dries fairly quick.", verified: true },
-  { id: 2, author: "Pranita Kale", rating: 4, date: "2024-12-13", review: "Simple wood primer, lead-free. Needed two coats on rough timber. Good adhesion overall.", verified: true },
-  { id: 3, author: "Vivek Singh", rating: 5, date: "2024-11-27", review: "Used on outdoor window frames. Moisture sealing seems good after first rain. Happy customer.", verified: false },
-];
-
-const redOxideReviews = [
-  { id: 1, author: "Mahesh Iyer", rating: 5, date: "2025-01-03", review: "Strong red oxide chromate primer, perfect for steel gates. Bonding excellent.", verified: true },
-  { id: 2, author: "Shweta Arora", rating: 4, date: "2024-12-11", review: "Used on machinery parts. Coverage good, dries slower but rust guard is strong.", verified: true },
-  { id: 3, author: "Nitin Rane", rating: 5, date: "2024-11-20", review: "Dual pigment protection gives confidence for industrial site. Needs proper PPE.", verified: false },
-];
-
 export const productReviews = {
   "interior-latex-paint": interiorLatexReviews,
   "exterior-latex-paint": luxuryExteriorReviews,
@@ -420,14 +370,6 @@ export const productReviews = {
   "calyco-pu-wood-coating": puWoodCoatingReviews,
   "calyco-acrylic-washable-distemper": distemperReviews,
   "calyco-all-surface-coating": allSurfaceCoatingReviews,
-  "calyco-pink-primer": pinkPrimerReviews,
-  "calyco-yellow-metal-primer": yellowMetalPrimerReviews,
-  "calyco-melamine-polish": melaminePolishReviews,
-  "calyco-fire-retardant-paint": fireRetardantReviews,
-  "calyco-anticorrosive-bitumastic": bitumasticReviews,
-  "calyco-epoxy-paint": epoxyPaintReviews,
-  "calyco-wood-primer": woodPrimerReviews,
-  "calyco-red-oxide-zinc-chromate": redOxideReviews,
 };
 
 // Rest of the functions remain the same...
@@ -446,3 +388,4 @@ export const getAverageRating = (productId) => {
 export const getTotalReviews = (productId) => {
   return getProductReviews(productId).length;
 };
+

@@ -43,19 +43,15 @@ import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty'
 import CalycoSolventPrimerInterior from './pages/CalycoSolventPrimerInterior'
 import CalycoDampGuardPrimer from './pages/CalycoDampGuardPrimer'
 import CalycoUniversalPrimer from './pages/CalycoUniversalPrimer'
+import PinkPrimer from './pages/PinkPrimer'
+import YellowMetalPrimer from './pages/YellowMetalPrimer'
+import MelaminePolish from './pages/MelaminePolish'
+import FireRetardantPaint from './pages/FireRetardantPaint'
 import AmrellaEnamel from './pages/AmrellaEnamel'
 import PUWoodCoating from './pages/PUWoodCoating'
 import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
 import AllSurfaceCoating from './pages/AllSurfaceCoating'
 import TexturePaints from './pages/TexturePaints'
-import CalycoPinkPrimer from './pages/CalycoPinkPrimer'
-import CalycoYellowMetalPrimer from './pages/CalycoYellowMetalPrimer'
-import CalycoMelaminePolish from './pages/CalycoMelaminePolish'
-import CalycoFireRetardantPaint from './pages/CalycoFireRetardantPaint'
-import CalycoAnticorrosiveBitumastic from './pages/CalycoAnticorrosiveBitumastic'
-import CalycoEpoxyPaint from './pages/CalycoEpoxyPaint'
-import CalycoWoodPrimer from './pages/CalycoWoodPrimer'
-import CalycoRedOxideZincChromate from './pages/CalycoRedOxideZincChromate'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import { ColorsPage, InspirationPage } from './pages'
@@ -209,19 +205,15 @@ function App() {
                   <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior />} />
                   <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer />} />
                   <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer />} />
+                  <Route path='/product/pink-primer' element={<PinkPrimer />} />
+                  <Route path='/product/yellow-metal-primer' element={<YellowMetalPrimer />} />
+                  <Route path='/product/melamine-polish' element={<MelaminePolish />} />
+                  <Route path='/product/fire-retardant-paint' element={<FireRetardantPaint />} />
                   <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel />} />
                   <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating />} />
                   <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper />} />
                   <Route path='/product/calyco-all-surface-coating' element={<AllSurfaceCoating />} />
                   <Route path='/product/calyco-texture-paint' element={<TexturePaints />} />
-                  <Route path='/product/calyco-pink-primer' element={<CalycoPinkPrimer />} />
-                  <Route path='/product/calyco-yellow-metal-primer' element={<CalycoYellowMetalPrimer />} />
-                  <Route path='/product/calyco-melamine-polish' element={<CalycoMelaminePolish />} />
-                  <Route path='/product/calyco-fire-retardant-paint' element={<CalycoFireRetardantPaint />} />
-                  <Route path='/product/calyco-anticorrosive-bitumastic' element={<CalycoAnticorrosiveBitumastic />} />
-                  <Route path='/product/calyco-epoxy-paint' element={<CalycoEpoxyPaint />} />
-                  <Route path='/product/calyco-wood-primer' element={<CalycoWoodPrimer />} />
-                  <Route path='/product/calyco-red-oxide-zinc-chromate' element={<CalycoRedOxideZincChromate />} />
 
                   <Route path='/contractors' element={<ContractorsPage />} />
                   <Route path='/government' element={<GovernmentPage />} />
