@@ -81,6 +81,19 @@ const BlogDetail = ({ post, allPosts = [] }) => {
 
     const processedContent = cleanContent(content);
 
+    // Dynamic Author Logic (Matches BlogIndex)
+    const FALLBACK_AUTHORS = [
+        "Aditi Rao", "Vikram Singh", "Priya Desai", "Rahul Kapoor",
+        "Anjali Mehta", "Suresh Menon", "Kavita Reddy", "Arjun Malhotra"
+    ];
+
+    const getAuthor = () => {
+        if (post.author && post.author !== "Calyco Expert") return post.author;
+        const seed = post.id || (post.slug ? post.slug.length : title.length);
+        const index = seed % FALLBACK_AUTHORS.length;
+        return FALLBACK_AUTHORS[index];
+    };
+
     // Extract FAQ from content
     const extractFAQ = () => {
         const parser = new DOMParser();
@@ -208,16 +221,34 @@ const BlogDetail = ({ post, allPosts = [] }) => {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": title,
-        "datePublished": date,
-        "image": heroImage,
-        "author": { "@type": "Person", "name": "Calyco Experts" }
+        "datePublished": date ? new Date(date).toISOString() : new Date().toISOString(),
+        "dateModified": date ? new Date(date).toISOString() : new Date().toISOString(),
+        "image": heroImage ? (heroImage.startsWith('http') ? heroImage : `https://calycopaints.com${heroImage}`) : undefined,
+        "author": {
+            "@type": "Person",
+            "name": getAuthor()
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Calyco Paints",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://calycopaints.com/Logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://calycopaints.com/blog/${post.slug}`
+        }
     };
 
     return (
         <>
             <Helmet>
+                <html lang="en-IN" />
                 <title>{title} | Calyco Blogs</title>
                 <meta name="description" content={title} />
+                <link rel="canonical" href={`https://calycopaints.com/blog/${post.slug}`} />
                 <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
             </Helmet>
 
@@ -351,14 +382,16 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                 <button
                                     className={`thumb-btn ${likeStatus === 'like' ? 'active' : ''}`}
                                     onClick={() => setLikeStatus(likeStatus === 'like' ? null : 'like')}
+                                    aria-label="Like this article"
                                 >
-                                    <span className="icon-up">👍</span>
+                                    <span className="icon-up" aria-hidden="true">👍</span>
                                 </button>
                                 <button
                                     className={`thumb-btn ${likeStatus === 'dislike' ? 'active' : ''}`}
                                     onClick={() => setLikeStatus(likeStatus === 'dislike' ? null : 'dislike')}
+                                    aria-label="Dislike this article"
                                 >
-                                    <span className="icon-down">👎</span>
+                                    <span className="icon-down" aria-hidden="true">👎</span>
                                 </button>
                             </div>
                         </div>
@@ -510,16 +543,20 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                 <p className="form-desc">Fill the form below to book an appointment with an expert.</p>
                                 <form className="asian-paints-form" onSubmit={handleFormSubmit}>
                                     <div className="input-group">
-                                        <input type="text" name="name" placeholder="Name*" value={formData.name} onChange={handleFormChange} required />
+                                        <label htmlFor="name" className="sr-only">Name</label>
+                                        <input type="text" id="name" name="name" placeholder="Name*" value={formData.name} onChange={handleFormChange} required aria-required="true" />
                                     </div>
                                     <div className="input-group">
-                                        <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleFormChange} required />
+                                        <label htmlFor="email" className="sr-only">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="Email*" value={formData.email} onChange={handleFormChange} required aria-required="true" />
                                     </div>
                                     <div className="input-group">
-                                        <input type="tel" name="mobile" placeholder="Mobile Number*" value={formData.mobile} onChange={handleFormChange} required />
+                                        <label htmlFor="mobile" className="sr-only">Mobile Number</label>
+                                        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number*" value={formData.mobile} onChange={handleFormChange} required aria-required="true" />
                                     </div>
                                     <div className="input-group">
-                                        <input type="text" name="pincode" placeholder="Pincode*" value={formData.pincode} onChange={handleFormChange} required />
+                                        <label htmlFor="pincode" className="sr-only">Pincode</label>
+                                        <input type="text" id="pincode" name="pincode" placeholder="Pincode*" value={formData.pincode} onChange={handleFormChange} required aria-required="true" />
                                     </div>
                                     <button type="submit" className="submit-btn">ENQUIRE NOW</button>
                                 </form>
