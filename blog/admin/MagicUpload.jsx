@@ -310,12 +310,12 @@ const MagicUpload = () => {
                                     // Auto-select category based on keywords
                                     const lowerTitle = newTitle.toLowerCase();
                                     const categoryKeywords = {
-                                        'Waterproofing Guides': ['waterproof', 'leak', 'seepage', 'damp', 'moisture', 'roof', 'terrace', 'crack'],
-                                        'Wood & Metal Finishes': ['wood', 'metal', 'furniture', 'finish', 'polish', 'varnish', 'rust', 'iron', 'gate'],
-                                        'Exterior Care': ['exterior', 'outside', 'facade', 'weather', 'rain', 'protection'],
-                                        'DIY & How-To': ['how to', 'diy', 'guide', 'tips', 'hack', 'step'],
-                                        'Product Spotlights': ['product', 'review', 'spotlight', 'launch'],
-                                        'Colour Trends & Decor': ['colour', 'color', 'trend', 'decor', 'interior', 'paint', 'shade', 'palette', 'design', 'style', 'room']
+                                        'Waterproofing Guides': ['waterproof', 'leak', 'seepage', 'damp', 'moisture', 'roof', 'terrace', 'crack', 'rain', 'fungal', 'algae', 'repair', 'patch', 'sealant'],
+                                        'Wood & Metal Finishes': ['wood', 'metal', 'furniture', 'finish', 'polish', 'varnish', 'rust', 'iron', 'gate', 'enamel', 'cabinet', 'door', 'window', 'grill'],
+                                        'Exterior Care': ['exterior', 'outside', 'facade', 'weather', 'rain', 'protection', 'sun', 'dust', 'climate', 'masonry'],
+                                        'DIY & How-To': ['how to', 'diy', 'guide', 'tips', 'hack', 'step', 'tutorial', 'paint yourself', 'beginners'],
+                                        'Product Spotlights': ['product', 'review', 'spotlight', 'launch', 'new', 'hero', 'best paint', 'comparison'],
+                                        'Colour Trends & Decor': ['colour', 'color', 'trend', 'decor', 'interior', 'paint', 'shade', 'palette', 'design', 'style', 'room', 'living', 'bedroom', 'kitchen', 'hall', 'space', 'modern', 'classic']
                                     };
 
                                     for (const [cat, keywords] of Object.entries(categoryKeywords)) {

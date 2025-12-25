@@ -20,6 +20,9 @@ export default defineConfig(({ mode }) => {
       'import.meta.env.VITE_SHOPIFY_STOREFRONT_DOMAIN': JSON.stringify(shopifyDomain),
       'import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN': JSON.stringify(shopifyToken),
     },
+    build: {
+      sourcemap: true,
+    },
   }
 })
 

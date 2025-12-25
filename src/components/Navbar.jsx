@@ -144,6 +144,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             to="/blog"
             className="text-[#493657] hover:text-[#F0C85A] transition-colors"
             onClick={() => setDropdownOpen(null)}
+            aria-current={location.pathname === '/blog' ? 'page' : undefined}
           >Blog</Link>
 
           <Link
@@ -252,6 +253,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
                 to="/blog"
                 className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
                 onClick={() => handleMenuToggle(false)}
+                aria-current={location.pathname === '/blog' ? 'page' : undefined}
               >
                 Blog
               </Link>
