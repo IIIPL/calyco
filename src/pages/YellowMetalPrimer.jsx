@@ -20,8 +20,8 @@ const yellowMetalPrimerDetail = {
   id: "calyco-yellow-metal-primer",
   name: "Calyco Yellow Metal Primer",
   slug: "yellow-metal-primer",
-  image: "/Assets/Product Images/Yellow Metal Primer/calyco-yellow-metal-primer.webp", 
-  images: ["/Assets/Product Images/Yellow Metal Primer/calyco-yellow-metal-primer.webp"],
+  image: "/Assets/Product%20Images/Yellow%20Metal%20Primer/yellow-metal-primer.webp", 
+  images: ["/Assets/Product%20Images/Yellow%20Metal%20Primer/yellow-metal-primer.webp"],
   description: "High-performance red oxide zinc chromate primer offering superior anti-corrosive protection for ferrous and non-ferrous metals. Formulated with rust-inhibitive pigments that create a protective barrier against moisture, chemicals, and atmospheric corrosion.",
   tagline: "Maximum corrosion protection for metal surfaces.",
   details: "Calyco Yellow Metal Primer is an industrial-grade shield for your metal assets. Enriched with zinc chromate, it provides active rust inhibition and heat resistance up to 120°C. It forms a tough, durable base that prevents oxidation and ensures your topcoat bonds securely to gates, grills, and machinery.",
@@ -1164,7 +1164,7 @@ const YellowMetalPrimer = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
+                                                src="/Assets/Product%20Images/Luxury%20Exterior%20Emulsion/luxury-exterior-bucket-transparent.png"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1200,7 +1200,7 @@ const YellowMetalPrimer = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
+                                                src="/Assets/Product%20Images/Waterproof%20Sealer/waterproof-bucket-png.png"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />

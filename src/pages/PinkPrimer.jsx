@@ -21,8 +21,8 @@ const pinkPrimerDetail = {
   name: "Calyco Pink Primer",
   slug: "pink-primer",
   // Note: Ensure this image exists or update the path
-  image: "/Assets/Product Images/Pink Primer/calyco-pink-primer.webp", 
-  images: ["/Assets/Product Images/Pink Primer/calyco-pink-primer.webp"],
+  image: "/Assets/Product%20Images/Pink%20Primer/pink-primer.webp", 
+  images: ["/Assets/Product%20Images/Pink%20Primer/pink-primer.webp"],
   description: "Premium alkyd-based wood primer designed to seal knots, prevent tannin bleeding, and provide excellent adhesion for topcoats. Creates a smooth, uniform base that enhances finish coat appearance and durability on all wood surfaces.",
   tagline: "Superior sealing and adhesion for wood surfaces.",
   details: "Calyco Pink Primer is the ultimate foundation for wood. Its specialized alkyd formula penetrates deep to seal porous surfaces and lock in knots, preventing resin bleed-through. It ensures your topcoat adheres perfectly and lasts longer, whether used on interior furniture or exterior window frames.",
@@ -1179,7 +1179,7 @@ const PinkPrimer = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
+                                                src="/Assets/Product%20Images/Luxury%20Exterior%20Emulsion/luxury-exterior-bucket-transparent.png"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1215,7 +1215,7 @@ const PinkPrimer = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
+                                                src="/Assets/Product%20Images/Waterproof%20Sealer/waterproof-bucket-png.png"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />

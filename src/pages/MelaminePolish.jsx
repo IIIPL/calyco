@@ -20,8 +20,8 @@ const melaminePolishDetail = {
   id: "calyco-melamine-polish",
   name: "Calyco Melamine Polish",
   slug: "melamine-polish",
-  image: "/Assets/Product Images/Melamine Polish/calyco-melamine-polish.webp", 
-  images: ["/Assets/Product Images/Melamine Polish/calyco-melamine-polish.webp"],
+  image: "/Assets/Product%20Images/Melamine%20Polish/melamine-polish.webp", 
+  images: ["/Assets/Product%20Images/Melamine%20Polish/melamine-polish.webp"],
   description: "Premium melamine-based wood coating offering exceptional hardness, scratch resistance, and a brilliant high-gloss finish. Its fast-drying formulation creates a mirror-smooth surface that resists stains, heat, and daily wear.",
   tagline: "Premium furniture finish with lasting brilliance.",
   details: "Calyco Melamine Polish is the professional's choice for interior woodwork. It provides a tough, durable barrier that protects against hot spills and scratches while enhancing the natural beauty of the wood grain. Perfect for tabletops, dining sets, and cabinetry requiring a glass-like finish.",
@@ -1171,7 +1171,7 @@ const MelaminePolish = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
+                                                src="/Assets/Product%20Images/Luxury%20Exterior%20Emulsion/luxury-exterior-bucket-transparent.png"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1207,7 +1207,7 @@ const MelaminePolish = () => {
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
+                                                src="/Assets/Product%20Images/Waterproof%20Sealer/waterproof-bucket-png.png"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
