@@ -1316,4 +1316,367 @@ export const products = [
       "tds": "/Assets/docs/html-templates/fire-retardant-paint-tds.html"
     }
   }
+  ,
+  {
+    "id": "anticorrosive-bitumastic",
+    "slug": "anticorrosive-bitumastic",
+    "url": "https://calycopaints.com/product/anticorrosive-bitumastic",
+    "name": "Anticorrosive Bitumastic Paint",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Heavy-duty bitumen-based anti-corrosive coating providing exceptional protection for ferrous metals against corrosion, chemicals, and moisture.",
+    "short-description": "High-build bitumen coating for pipelines, tanks, and structural steel.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["Semi-Gloss"],
+    "finishes": ["Semi-Gloss"],
+    "price": 160,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Semi-Gloss",
+    "defaultFinish": "Semi-Gloss",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "features": [
+      "Anti-corrosive",
+      "Waterproof",
+      "Industrial grade",
+      "High build",
+      "Chemical resistant"
+    ],
+    "keyBenefits": [
+      "Superior corrosion barrier for ferrous metals",
+      "Excellent waterproofing and chemical resistance",
+      "Flexible film handles thermal expansion",
+      "High-build coating for harsh environments",
+      "Suitable for underground and marine use"
+    ],
+    "rating": 0,
+    "reviewCount": 0,
+    "coveragePerLitre": 45,
+    "coverage": "40-50 sq.ft. per litre per coat",
+    "drying_time": "12-18 hours (touch dry)",
+    "recoat_time": "24-48 hours",
+    "voc_content": "≤ 350 g/L",
+    "base_type": "Bitumen modified with rubber/resin",
+    "warranty": "5 years",
+    "product_code": "CAL-BIT-010",
+    "recommendedUses": [
+      "Underground pipelines",
+      "Storage tanks",
+      "Structural steel",
+      "Metal bridges",
+      "Marine structures",
+      "Industrial equipment"
+    ],
+    "substrate": [
+      "Steel",
+      "Cast iron",
+      "Concrete (primed)"
+    ],
+    "defaultCoats": 2,
+    "coatsOptions": [2, 3],
+    "compatibleColors": [],
+    "relatedProducts": [],
+    "specs": [],
+    "brand": "Calyco",
+    "seo": {
+      "title": "Anticorrosive Bitumastic Paint | Heavy-Duty Protection",
+      "description": "Bitumen-based anti-corrosive coating for pipelines, tanks, and steel with strong chemical and moisture resistance.",
+      "keywords": ["bitumastic paint", "anti-corrosive coating", "bitumen paint", "pipeline coating"]
+    },
+    "technicalSpecs": {
+      "base": "Bitumen modified with rubber/resin",
+      "dryingTime": "12-18 hours (touch dry)",
+      "recoatTime": "24-48 hours",
+      "coverage": "40-50 sq.ft. per litre per coat",
+      "fullCure": "7 days"
+    },
+    "priceByFinish": {
+      "Semi-Gloss": {
+        "1L": { "price": 160, "mrp": 200 },
+        "4L": { "price": 600, "mrp": 720 },
+        "10L": { "price": 1400, "mrp": 1700 },
+        "20L": { "price": 2640, "mrp": 3100 }
+      }
+    },
+    "sizes": [
+      { "size": "1L", "priceByFinish": { "Semi-Gloss": 160 }, "originalPrice": 200 },
+      { "size": "4L", "priceByFinish": { "Semi-Gloss": 600 }, "originalPrice": 720 },
+      { "size": "10L", "priceByFinish": { "Semi-Gloss": 1400 }, "originalPrice": 1700 },
+      { "size": "20L", "priceByFinish": { "Semi-Gloss": 2640 }, "originalPrice": 3100 }
+    ],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/anticorrosive-bitumastic-sds.html",
+      "tds": "/Assets/docs/html-templates/anticorrosive-bitumastic-tds.html"
+    }
+  },
+  {
+    "id": "epoxy-paint",
+    "slug": "epoxy-paint",
+    "url": "https://calycopaints.com/product/epoxy-paint",
+    "name": "Epoxy Paint",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Two-component epoxy coating system providing exceptional durability, chemical resistance, and abrasion resistance for industrial floors, tanks, and equipment.",
+    "short-description": "Ultra-durable epoxy for floors and equipment with high chemical resistance.",
+    "category": "woodmetal",
+    "finish_type_sheen": ["High Gloss"],
+    "finishes": ["High Gloss"],
+    "price": 640,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "High Gloss",
+    "defaultFinish": "High Gloss",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "features": [
+      "Ultra durable",
+      "Chemical resistant",
+      "High strength",
+      "Industrial grade",
+      "Waterproof"
+    ],
+    "keyBenefits": [
+      "Exceptional resistance to chemicals and solvents",
+      "Superior abrasion and impact resistance",
+      "Impermeable, glossy, easy-to-clean surface",
+      "Long-lasting in harsh industrial environments",
+      "Suitable for floors, tanks, and equipment"
+    ],
+    "rating": 0,
+    "reviewCount": 0,
+    "coveragePerLitre": 100,
+    "coverage": "80-120 sq.ft. per litre at 100 microns DFT",
+    "drying_time": "8-12 hours (touch dry)",
+    "recoat_time": "12-24 hours",
+    "voc_content": "≤ 250 g/L",
+    "base_type": "Epoxy resin (2-component)",
+    "warranty": "5 years",
+    "product_code": "CAL-EPX-012",
+    "recommendedUses": [
+      "Industrial floors",
+      "Warehouse floors",
+      "Chemical storage areas",
+      "Parking garages",
+      "Storage tanks",
+      "Processing equipment"
+    ],
+    "substrate": [
+      "Concrete",
+      "Steel",
+      "Primed metal"
+    ],
+    "defaultCoats": 2,
+    "coatsOptions": [2, 3],
+    "compatibleColors": [],
+    "relatedProducts": [],
+    "specs": [],
+    "brand": "Calyco",
+    "seo": {
+      "title": "Epoxy Paint | Industrial Strength Floor & Equipment Coating",
+      "description": "Two-component epoxy paint delivering high gloss, chemical resistance, and abrasion resistance for industrial floors and tanks.",
+      "keywords": ["epoxy paint", "industrial epoxy", "epoxy floor coating", "epoxy tank coating"]
+    },
+    "technicalSpecs": {
+      "base": "Epoxy resin (2-component)",
+      "dryingTime": "8-12 hours (touch dry)",
+      "recoatTime": "12-24 hours",
+      "coverage": "80-120 sq.ft. per litre at 100 microns DFT",
+      "fullCure": "7 days"
+    },
+    "priceByFinish": {
+      "High Gloss": {
+        "1L": { "price": 640, "mrp": 750 },
+        "4L": { "price": 2400, "mrp": 2800 },
+        "10L": { "price": 5600, "mrp": 6200 },
+        "20L": { "price": 10560, "mrp": 11800 }
+      }
+    },
+    "sizes": [
+      { "size": "1L", "priceByFinish": { "High Gloss": 640 }, "originalPrice": 750 },
+      { "size": "4L", "priceByFinish": { "High Gloss": 2400 }, "originalPrice": 2800 },
+      { "size": "10L", "priceByFinish": { "High Gloss": 5600 }, "originalPrice": 6200 },
+      { "size": "20L", "priceByFinish": { "High Gloss": 10560 }, "originalPrice": 11800 }
+    ],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/epoxy-paint-sds.html",
+      "tds": "/Assets/docs/html-templates/epoxy-paint-tds.html"
+    }
+  },
+  {
+    "id": "wood-primer",
+    "slug": "wood-primer",
+    "url": "https://calycopaints.com/product/wood-primer",
+    "name": "Wood Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Solvent-based alkyd wood primer that penetrates and seals wooden surfaces, preventing moisture ingress and resin bleed.",
+    "short-description": "Lead-free alkyd wood primer for smooth adhesion and moisture protection.",
+    "category": "primer",
+    "finish_type_sheen": ["Matt"],
+    "finishes": ["Matt"],
+    "price": 520,
+    "packaging": ["500ml", "1L", "4L", "10L", "20L"],
+    "default_finish": "Matt",
+    "defaultFinish": "Matt",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "features": [
+      "Wood sealer",
+      "Moisture proof",
+      "Smooth base",
+      "Strong adhesion",
+      "Heavy-metal free"
+    ],
+    "keyBenefits": [
+      "Deeply penetrates and seals wood",
+      "Prevents moisture ingress and resin bleed",
+      "Improves adhesion of enamel and varnish",
+      "Dries quickly to a matt base",
+      "Lead-free, safe for interior and exterior"
+    ],
+    "rating": 0,
+    "reviewCount": 0,
+    "coveragePerLitre": 140,
+    "coverage": "130-150 sq.ft./L",
+    "drying_time": "30 minutes (touch dry)",
+    "recoat_time": "10-12 hours",
+    "voc_content": "≈ 300 g/L",
+    "base_type": "Alkyd resin",
+    "warranty": "3 years",
+    "product_code": "CAL-PRM-015",
+    "recommendedUses": [
+      "Wooden doors and windows",
+      "Furniture",
+      "Plywood and MDF",
+      "Exterior trim",
+      "Wooden frames",
+      "Interior woodwork"
+    ],
+    "substrate": [
+      "Wood",
+      "MDF",
+      "Plywood"
+    ],
+    "defaultCoats": 2,
+    "coatsOptions": [1, 2],
+    "compatibleColors": [],
+    "relatedProducts": [],
+    "specs": [],
+    "brand": "Calyco",
+    "seo": {
+      "title": "Wood Primer | Moisture-Proof Alkyd Sealer",
+      "description": "Alkyd wood primer that seals wood, prevents resin bleed, and improves adhesion for enamel and varnish finishes.",
+      "keywords": ["wood primer", "alkyd wood sealer", "moisture proof primer"]
+    },
+    "technicalSpecs": {
+      "base": "Alkyd resin",
+      "dryingTime": "30 minutes (touch dry)",
+      "recoatTime": "10-12 hours",
+      "coverage": "130-150 sq.ft./L",
+      "fullCure": "24 hours"
+    },
+    "priceByFinish": {
+      "Matt": {
+        "500ml": { "price": 280, "mrp": 320 },
+        "1L": { "price": 520, "mrp": 600 },
+        "4L": { "price": 1920, "mrp": 2200 },
+        "10L": { "price": 4480, "mrp": 5000 },
+        "20L": { "price": 8480, "mrp": 9500 }
+      }
+    },
+    "sizes": [
+      { "size": "500ml", "priceByFinish": { "Matt": 280 }, "originalPrice": 320 },
+      { "size": "1L", "priceByFinish": { "Matt": 520 }, "originalPrice": 600 },
+      { "size": "4L", "priceByFinish": { "Matt": 1920 }, "originalPrice": 2200 },
+      { "size": "10L", "priceByFinish": { "Matt": 4480 }, "originalPrice": 5000 },
+      { "size": "20L", "priceByFinish": { "Matt": 8480 }, "originalPrice": 9500 }
+    ],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/wood-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/wood-primer-tds.html"
+    }
+  },
+  {
+    "id": "red-oxide-zinc-chromate",
+    "slug": "red-oxide-zinc-chromate",
+    "url": "https://calycopaints.com/product/red-oxide-zinc-chromate",
+    "name": "Red Oxide Zinc Chromate Primer",
+    "image": "/Assets/placeholder-product.jpg",
+    "description": "Solvent-based metal primer combining red oxide and zinc chromate pigments to prevent rust on iron and steel surfaces.",
+    "short-description": "Dual-pigment rust guard for industrial metal protection.",
+    "category": "primer",
+    "finish_type_sheen": ["Matt"],
+    "finishes": ["Matt"],
+    "price": 240,
+    "packaging": ["1L", "4L", "10L", "20L"],
+    "default_finish": "Matt",
+    "defaultFinish": "Matt",
+    "images": ["/Assets/placeholder-product.jpg"],
+    "features": [
+      "Rust guard",
+      "Strong bond",
+      "Matt finish",
+      "Weather resistant",
+      "Heavy duty"
+    ],
+    "keyBenefits": [
+      "Powerful anti-corrosive dual pigments",
+      "Excellent adhesion on metal surfaces",
+      "Durable, weather resistant film",
+      "Compatible with multiple topcoats",
+      "Built for harsh environments"
+    ],
+    "rating": 0,
+    "reviewCount": 0,
+    "coveragePerLitre": 130,
+    "coverage": "120-140 sq.ft./L",
+    "drying_time": "4 hours (touch dry)",
+    "recoat_time": "8 hours",
+    "voc_content": "≈ 450 g/L",
+    "base_type": "Alkyd resin with red oxide & zinc chromate",
+    "warranty": "3 years",
+    "product_code": "CAL-PRM-016",
+    "recommendedUses": [
+      "Steel structures",
+      "Pipelines",
+      "Metal fabrications",
+      "Equipment and machinery",
+      "Iron railings",
+      "Industrial metalwork"
+    ],
+    "substrate": [
+      "Steel",
+      "Iron",
+      "Primed metal"
+    ],
+    "defaultCoats": 2,
+    "coatsOptions": [1, 2],
+    "compatibleColors": [],
+    "relatedProducts": [],
+    "specs": [],
+    "brand": "Calyco",
+    "seo": {
+      "title": "Red Oxide Zinc Chromate Primer | Heavy Duty Metal Protection",
+      "description": "Dual-pigment rust protection primer for steel and iron, providing durable adhesion and weather resistance.",
+      "keywords": ["red oxide primer", "zinc chromate primer", "metal primer", "rust guard"]
+    },
+    "technicalSpecs": {
+      "base": "Alkyd resin with red oxide & zinc chromate",
+      "dryingTime": "4 hours (touch dry)",
+      "recoatTime": "8 hours",
+      "coverage": "120-140 sq.ft./L",
+      "fullCure": "24 hours"
+    },
+    "priceByFinish": {
+      "Matt": {
+        "1L": { "price": 240, "mrp": 300 },
+        "4L": { "price": 880, "mrp": 1020 },
+        "10L": { "price": 2000, "mrp": 2300 },
+        "20L": { "price": 3680, "mrp": 4200 }
+      }
+    },
+    "sizes": [
+      { "size": "1L", "priceByFinish": { "Matt": 240 }, "originalPrice": 300 },
+      { "size": "4L", "priceByFinish": { "Matt": 880 }, "originalPrice": 1020 },
+      { "size": "10L", "priceByFinish": { "Matt": 2000 }, "originalPrice": 2300 },
+      { "size": "20L", "priceByFinish": { "Matt": 3680 }, "originalPrice": 4200 }
+    ],
+    "documents": {
+      "sds": "/Assets/docs/html-templates/red-oxide-zinc-chromate-sds.html",
+      "tds": "/Assets/docs/html-templates/red-oxide-zinc-chromate-tds.html"
+    }
+  }
 ]

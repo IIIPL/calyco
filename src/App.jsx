@@ -47,6 +47,10 @@ import PinkPrimer from './pages/PinkPrimer'
 import YellowMetalPrimer from './pages/YellowMetalPrimer'
 import MelaminePolish from './pages/MelaminePolish'
 import FireRetardantPaint from './pages/FireRetardantPaint'
+import AnticorrosiveBitumastic from './pages/AnticorrosiveBitumastic'
+import EpoxyPaint from './pages/EpoxyPaint'
+import WoodPrimer from './pages/WoodPrimer'
+import RedOxideZincChromate from './pages/RedOxideZincChromate'
 import AmrellaEnamel from './pages/AmrellaEnamel'
 import PUWoodCoating from './pages/PUWoodCoating'
 import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
@@ -209,6 +213,10 @@ function App() {
                   <Route path='/product/yellow-metal-primer' element={<YellowMetalPrimer />} />
                   <Route path='/product/melamine-polish' element={<MelaminePolish />} />
                   <Route path='/product/fire-retardant-paint' element={<FireRetardantPaint />} />
+                  <Route path='/product/anticorrosive-bitumastic' element={<AnticorrosiveBitumastic />} />
+                  <Route path='/product/epoxy-paint' element={<EpoxyPaint />} />
+                  <Route path='/product/wood-primer' element={<WoodPrimer />} />
+                  <Route path='/product/red-oxide-zinc-chromate' element={<RedOxideZincChromate />} />
                   <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel />} />
                   <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating />} />
                   <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper />} />

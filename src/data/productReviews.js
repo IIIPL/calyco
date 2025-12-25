@@ -46,6 +46,42 @@ const interiorLatexReviews = [
     review: "Durability is very good. After 6 months walls still look fresh and stains can be wiped easily. My mother-in-law also liked the colour and finish. Will definitely buy again for other rooms.",
     verified: true,
   },
+  {
+    productId: "anticorrosive-bitumastic",
+    reviews: [
+      { name: "Ramesh Pawar", rating: 4.6, title: "Rust stopped on my gate", comment: "Used on old iron gate, rust not coming back yet. Smell bit strong but drying ok." },
+      { name: "Kalpana Iyer", rating: 4.8, title: "Good for water tank pipes", comment: "Applied two coats on pipes, nice thick finish, feels waterproof now." },
+      { name: "Sanjay Thakur", rating: 4.4, title: "Thick coating", comment: "High build, needed thinner for spray. Protection looks solid for workshop beams." },
+      { name: "Meena Shukla", rating: 4.7, title: "Worth the money", comment: "Bitumen smell but works. Using near coastal area, holding well so far." }
+    ]
+  },
+  {
+    productId: "epoxy-paint",
+    reviews: [
+      { name: "Pritesh Mistry", rating: 4.9, title: "Floor looks premium", comment: "Used in my small factory floor, glossy finish and easy to mop." },
+      { name: "Anita Kulkarni", rating: 4.7, title: "Strong coating", comment: "Mixed as instructed, no bubbles. Chemical spills wiped clean fast." },
+      { name: "Devendra Rao", rating: 4.5, title: "Tough layer", comment: "Applied 2 coats, cured in a week. Handles trolley traffic without scratches." },
+      { name: "Savita Jha", rating: 4.8, title: "Good shine", comment: "High gloss and durable. Smell during application but settles later." }
+    ]
+  },
+  {
+    productId: "wood-primer",
+    reviews: [
+      { name: "Mahesh Patel", rating: 4.6, title: "Nice sealing", comment: "Filled grains well on MDF door, topcoat stuck nicely." },
+      { name: "Kiran Naik", rating: 4.7, title: "No more resin bleed", comment: "Used on pine frames, no yellow stains after enamel." },
+      { name: "Shalini B", rating: 4.5, title: "Smooth base", comment: "Sands easy, dries in half hour. Good for quick jobs." },
+      { name: "Ravi Deshmukh", rating: 4.6, title: "Worth", comment: "Lead free, less smell. Using for both interior and exterior trim." }
+    ]
+  },
+  {
+    productId: "red-oxide-zinc-chromate",
+    reviews: [
+      { name: "Prakash Mane", rating: 4.8, title: "Strong rust guard", comment: "Applied on old railing, adhesion is solid after sanding." },
+      { name: "Neha Saxena", rating: 4.6, title: "Industrial feel", comment: "We used on machine parts, good bond and dries to hard film." },
+      { name: "Suresh Bhat", rating: 4.7, title: "Weather holding", comment: "Outdoor gate survived first monsoon, happy with it." },
+      { name: "Anjali T", rating: 4.5, title: "Good coverage", comment: "Covers well, color uniform. Need proper ventilation due to smell." }
+    ]
+  }
 ];
 
 const luxuryExteriorReviews = [
