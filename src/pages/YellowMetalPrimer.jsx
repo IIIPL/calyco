@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR YELLOW METAL PRIMER ---
 const yellowMetalPrimerDetail = {
-  id: "calyco-yellow-metal-primer",
+  id: "yellow-metal-primer",
   name: "Calyco Yellow Metal Primer",
   slug: "yellow-metal-primer",
   image: "/Assets/Product%20Images/Yellow%20Metal%20Primer/yellow-metal-primer.webp", 
@@ -101,7 +101,7 @@ const YELLOW_PRIMER_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; 
 
 const slugify = (value) =>

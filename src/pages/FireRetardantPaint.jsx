@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR FIRE RETARDANT PAINT ---
 const fireRetardantDetail = {
-  id: "calyco-fire-retardant-paint",
+  id: "fire-retardant-paint",
   name: "Calyco Fire Retardant Paint",
   slug: "fire-retardant-paint",
   image: "/Assets/Product%20Images/Fire%20Retardant%20Paint/fire-retardant-paint.webp", 
@@ -102,7 +102,7 @@ const FIRE_PAINT_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; // Usually white or limited colors for fire paint
 
 const slugify = (value) =>

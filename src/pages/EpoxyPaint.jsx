@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR EPOXY PAINT ---
 const epoxyPaintDetail = {
-  id: "calyco-epoxy-paint",
+  id: "epoxy-paint",
   name: "Calyco Epoxy Paint",
   slug: "epoxy-paint",
   image: "/Assets/Product%20Images/Epoxy%20Paint/epoxy-paint.webp", 
@@ -102,7 +102,7 @@ const EPOXY_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = true; // Epoxy often comes in colors (Grey, Green, etc)
 
 const slugify = (value) =>

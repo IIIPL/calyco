@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR RED OXIDE ZINC CHROMATE ---
 const redOxideDetail = {
-  id: "calyco-red-oxide-zinc-chromate",
+  id: "red-oxide-zinc-chromate",
   name: "Calyco Red Oxide Zinc Chromate Primer",
   slug: "red-oxide-zinc-chromate",
   image: "/Assets/Product Images/Red Oxide Zinc Chromate/calyco-red-oxide-zinc.webp", 
@@ -102,7 +102,7 @@ const RED_OXIDE_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; // Red Oxide is always Red/Brown
 
 const slugify = (value) =>

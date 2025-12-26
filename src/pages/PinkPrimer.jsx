@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR PINK PRIMER ---
 const pinkPrimerDetail = {
-  id: "calyco-pink-primer",
+  id: "pink-primer",
   name: "Calyco Pink Primer",
   slug: "pink-primer",
   // Note: Ensure this image exists or update the path
@@ -102,7 +102,7 @@ const PINK_PRIMER_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; // Primers usually standard pink/white
 
 const slugify = (value) =>

@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR MELAMINE POLISH ---
 const melaminePolishDetail = {
-  id: "calyco-melamine-polish",
+  id: "melamine-polish",
   name: "Calyco Melamine Polish",
   slug: "melamine-polish",
   image: "/Assets/Product%20Images/Melamine%20Polish/melamine-polish.webp", 
@@ -101,7 +101,7 @@ const MELAMINE_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; 
 
 const slugify = (value) =>

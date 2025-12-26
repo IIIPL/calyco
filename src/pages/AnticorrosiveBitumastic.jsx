@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR BITUMASTIC PAINT ---
 const bitumasticDetail = {
-  id: "calyco-anticorrosive-bitumastic",
+  id: "anticorrosive-bitumastic",
   name: "Calyco Anticorrosive Bitumastic Paint",
   slug: "anticorrosive-bitumastic",
   image: "/Assets/Product%20Images/Anti-Corrosive%20Bitumastic%20Paint/anti-corrosive-bitumastic-paint.webp", 
@@ -101,7 +101,7 @@ const BITUMASTIC_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; 
 
 const slugify = (value) =>

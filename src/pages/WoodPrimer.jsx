@@ -17,7 +17,7 @@ import { calycoColors as colorData } from "../data/calycoColors.js";
 
 // --- DATA DEFINITION FOR WOOD PRIMER ---
 const woodPrimerDetail = {
-  id: "calyco-wood-primer",
+  id: "wood-primer",
   name: "Calyco Wood Primer",
   slug: "wood-primer",
   image: "/Assets/Product%20Images/Wood%20Primer/wood-primer.webp", 
@@ -103,7 +103,7 @@ const WOOD_PRIMER_MRP = {
   },
 };
 
-const SHOW_SAFETY_SECTION = true;
+const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; // Wood primer is typically white/pinkish base
 
 const slugify = (value) =>
