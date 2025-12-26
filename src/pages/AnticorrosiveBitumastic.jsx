@@ -20,8 +20,8 @@ const bitumasticDetail = {
   id: "calyco-anticorrosive-bitumastic",
   name: "Calyco Anticorrosive Bitumastic Paint",
   slug: "anticorrosive-bitumastic",
-  image: "/Assets/Product Images/Bitumastic Paint/calyco-bitumastic-paint.webp", 
-  images: ["/Assets/Product Images/Bitumastic Paint/calyco-bitumastic-paint.webp"],
+  image: "/Assets/Product%20Images/Anti-Corrosive%20Bitumastic%20Paint/anti-corrosive-bitumastic-paint.webp", 
+  images: ["/Assets/Product%20Images/Anti-Corrosive%20Bitumastic%20Paint/anti-corrosive-bitumastic-paint.webp"],
   description: "Heavy-duty bitumen-based anti-corrosive coating providing exceptional protection for ferrous metals against corrosion, chemicals, and moisture. Its high-build formulation creates a tough, flexible barrier that withstands harsh industrial and marine environments.",
   tagline: "Superior anti-corrosive protection for metal structures.",
   details: "Calyco Anticorrosive Bitumastic is an industrial-grade shield. Designed for the toughest environments, it is ideal for underground pipelines, storage tanks, and marine structures. The bitumen-modified rubber resin creates a thick, waterproof film that accommodates thermal expansion while blocking out corrosive elements.",
@@ -1235,3 +1235,4 @@ const AnticorrosiveBitumastic = () => {
 };
 
 export default AnticorrosiveBitumastic;
+
