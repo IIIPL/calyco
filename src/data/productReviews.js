@@ -15,6 +15,42 @@ const interiorLatexReviews = [
     verified: true,
   },
   {
+    productId: "pink-primer",
+    reviews: [
+      { name: "Suresh Kale", rating: 4.6, title: "Knots sealed well", comment: "Used on old teak door, stains stopped coming. Smell ok after drying." },
+      { name: "Jyoti Sharma", rating: 4.7, title: "Smooth base", comment: "Sands nicely next day, enamel sat even. Price bhi theek hai." },
+      { name: "Rohit Gupta", rating: 4.5, title: "Good adhesion", comment: "Applied on MDF cabinets, topcoat grabbed strong, no peeling." },
+      { name: "Poonam Verma", rating: 4.6, title: "Fast drying", comment: "Touch dry in 1 hour in Delhi winter, two coats covered knots fully." }
+    ]
+  },
+  {
+    productId: "yellow-metal-primer",
+    reviews: [
+      { name: "Deepak Malhotra", rating: 4.7, title: "Rust stopped", comment: "Wire brushed gate and put 2 coats, no fresh rust after rains." },
+      { name: "Anjali Desai", rating: 4.5, title: "Sticks to GI", comment: "Light sanding on GI sheets, primer bonded well, top enamel smooth." },
+      { name: "Vikram Patil", rating: 4.6, title: "Quick set", comment: "Touch dry in 90 min, could recoat same evening, nice hiding." },
+      { name: "Neeraj Chandra", rating: 4.7, title: "Heat resistant", comment: "Used on tank stand, no issues in sun heat. Good coverage also." }
+    ]
+  },
+  {
+    productId: "melamine-polish",
+    reviews: [
+      { name: "Kavita Rao", rating: 4.8, title: "Furniture shine", comment: "Dining table looks like showroom. High gloss, no swirl marks." },
+      { name: "Amit Sengar", rating: 4.6, title: "Hard finish", comment: "Resists scratches from kids toys, cured smooth in 2 days." },
+      { name: "Prerna Nair", rating: 4.7, title: "Flows nicely", comment: "Self leveling finish, just sanded between coats, gloss is mast." },
+      { name: "Naresh Tiwari", rating: 4.5, title: "Heat & stain safe", comment: "Kept hot cups, no rings. Smell thoda hai but goes off." }
+    ]
+  },
+  {
+    productId: "fire-retardant-paint",
+    reviews: [
+      { name: "Sahil Kohli", rating: 4.7, title: "Peace of mind", comment: "Applied on wooden staircase, coating solid, feels safer now." },
+      { name: "Renu Kulkarni", rating: 4.6, title: "Low smoke claim", comment: "Tested small patch, little smoke only. Needs multiple coats." },
+      { name: "Harish Bhatt", rating: 4.5, title: "Good spread", comment: "Coverage as stated, thick film builds nicely with 3 coats." },
+      { name: "Manju Singh", rating: 4.6, title: "Worth cost", comment: "For factory beams, intumescent layer swells in heat test, satisfied." }
+    ]
+  },
+  {
     id: 2,
     author: "Amit Kumar Verma",
     rating: 5,

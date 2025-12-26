@@ -1041,8 +1041,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Flat": 3760 }, "originalPrice": 4200 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/pink-primer-sds.html",
-      "tds": "/Assets/docs/html-templates/pink-primer-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-pink-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-pink-primer-tds.html"
     }
   },
   {
@@ -1132,8 +1132,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Flat": 5280 }, "originalPrice": 6000 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/yellow-metal-primer-sds.html",
-      "tds": "/Assets/docs/html-templates/yellow-metal-primer-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-yellow-metal-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-yellow-metal-primer-tds.html"
     }
   },
   {
@@ -1222,8 +1222,8 @@ export const products = [
       { "size": "10L", "priceByFinish": { "High Gloss": 4160 }, "originalPrice": 4700 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/melamine-polish-sds.html",
-      "tds": "/Assets/docs/html-templates/melamine-polish-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-melamine-polish-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-melamine-polish-tds.html"
     }
   },
   {
@@ -1312,8 +1312,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Matt": 10560 }, "originalPrice": 11800 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/fire-retardant-paint-sds.html",
-      "tds": "/Assets/docs/html-templates/fire-retardant-paint-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-fire-retardant-paint-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-fire-retardant-paint-tds.html"
     }
   }
   ,
@@ -1403,8 +1403,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Semi-Gloss": 2640 }, "originalPrice": 3100 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/anticorrosive-bitumastic-sds.html",
-      "tds": "/Assets/docs/html-templates/anticorrosive-bitumastic-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-anticorrosive-bitumastic-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-anticorrosive-bitumastic-tds.html"
     }
   },
   {
@@ -1493,8 +1493,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "High Gloss": 10560 }, "originalPrice": 11800 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/epoxy-paint-sds.html",
-      "tds": "/Assets/docs/html-templates/epoxy-paint-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-epoxy-paint-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-epoxy-paint-tds.html"
     }
   },
   {
@@ -1585,8 +1585,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Matt": 8480 }, "originalPrice": 9500 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/wood-primer-sds.html",
-      "tds": "/Assets/docs/html-templates/wood-primer-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-wood-primer-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-wood-primer-tds.html"
     }
   },
   {
@@ -1675,8 +1675,8 @@ export const products = [
       { "size": "20L", "priceByFinish": { "Matt": 3680 }, "originalPrice": 4200 }
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/red-oxide-zinc-chromate-sds.html",
-      "tds": "/Assets/docs/html-templates/red-oxide-zinc-chromate-tds.html"
+      "sds": "/Assets/docs/html-templates/calyco-red-oxide-zinc-chromate-sds.html",
+      "tds": "/Assets/docs/html-templates/calyco-red-oxide-zinc-chromate-tds.html"
     }
   }
 ]
