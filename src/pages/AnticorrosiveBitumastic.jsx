@@ -901,7 +901,7 @@ const AnticorrosiveBitumastic = () => {
                 {SHOW_SAFETY_SECTION && product.safety_warnings && (
                     <div className="mt-8 sm:mt-12 lg:mt-16">
                         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
-                            <div className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
+                            <div className="bg-gradient-to-r from-[#5B2C87] to-[#2D1B69] text-white p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
                                 <FiAlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
                                 <div>
                                     <h2 className="text-2xl sm:text-3xl font-bold">Safety Information</h2>
@@ -915,13 +915,13 @@ const AnticorrosiveBitumastic = () => {
                                     {product.safety_warnings.hazard_statements && (
                                         <div>
                                             <h3 className="font-bold text-[#493657] text-lg sm:text-xl mb-4 flex items-center gap-3">
-                                                <FiAlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#f59e0b]" />
+                                                <FiAlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B2C87]" />
                                                 Hazard Statements
                                             </h3>
                                             <div className="space-y-2">
                                                 {product.safety_warnings.hazard_statements.map((statement, idx) => (
-                                                    <div key={idx} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-[#fef3c7] border-l-4 border-[#f59e0b] rounded-r-lg">
-                                                        <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#f59e0b] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <div key={idx} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-[#fef3c7] border-l-4 border-[#5B2C87] rounded-r-lg">
+                                                        <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#5B2C87] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                                                             <span className="text-white text-xs font-bold">!</span>
                                                         </div>
                                                         <span className="text-[#92400e] font-medium text-xs sm:text-sm">{statement}</span>
@@ -1033,7 +1033,7 @@ const AnticorrosiveBitumastic = () => {
                             {/* SDS Document */}
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] to-[#2D1B69] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                         <FiShield className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                                     </div>
                                     <div className="flex-1">
@@ -1044,7 +1044,7 @@ const AnticorrosiveBitumastic = () => {
                                 <a
                                     href="/Assets/docs/html-templates/calyco-bitumastic-sds.html"
                                     download
-                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
+                                    className="w-full bg-gradient-to-r from-[#5B2C87] to-[#2D1B69] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
                                     <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
                                     Download SDS
@@ -1102,12 +1102,12 @@ const AnticorrosiveBitumastic = () => {
 
                                 {/* Feature 4: Underground */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#1f2937] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#059669] via-[#10b981] to-[#34d399] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] via-[#10b981] to-[#34d399] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiAnchor className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Underground</h3>
                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Ideal for buried pipelines and tanks, providing long-term soil protection.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#059669] to-[#059669]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#5B2C87] to-[#5B2C87]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
                             </div>
                         </div>
