@@ -665,8 +665,8 @@ const AnticorrosiveBitumastic = () => {
 
                         {/* Pricing */}
                         <div>
-                            <div className="inline-block bg-[#1f2937] text-white px-3 py-1 text-sm font-semibold rounded mb-2">
-                                Industrial Grade
+                            <div className="inline-block bg-[#dc2626] text-white px-3 py-1 text-sm font-semibold rounded mb-2">
+                                Sale is Live
                             </div>
                             {displayMRPValue ? (
                               <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
@@ -768,7 +768,7 @@ const AnticorrosiveBitumastic = () => {
                               </div>
                               <motion.button
                                 onClick={handleAddToCart}
-                                className="w-full bg-gradient-to-r from-[#1f2937] via-[#374151] to-[#111827] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#1f2937]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4 text-sm sm:text-base"
+                                className="w-full bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#2D1B69]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4 text-sm sm:text-base"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >

@@ -665,8 +665,8 @@ const RedOxideZincChromate = () => {
 
                         {/* Pricing */}
                         <div>
-                            <div className="inline-block bg-[#7F2B2B] text-white px-3 py-1 text-sm font-semibold rounded mb-2">
-                                Heavy Duty
+                            <div className="inline-block bg-[#dc2626] text-white px-3 py-1 text-sm font-semibold rounded mb-2">
+                                Sale is Live
                             </div>
                             {displayMRPValue ? (
                               <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
@@ -768,7 +768,7 @@ const RedOxideZincChromate = () => {
                               </div>
                               <motion.button
                                 onClick={handleAddToCart}
-                                className="w-full bg-gradient-to-r from-[#7F2B2B] via-[#991b1b] to-[#450a0a] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#7F2B2B]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4 text-sm sm:text-base"
+                                className="w-full bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#2D1B69]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4 text-sm sm:text-base"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
