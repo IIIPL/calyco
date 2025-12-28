@@ -712,7 +712,7 @@ const CalycoDampGuardPrimer = () => {
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
                               <RatingStars
                                 rating={averageRating}
-                                totalReviews={0}
+                                totalReviews={totalReviews}
                                 onClick={scrollToReviews}
                                 size="md"
                               />

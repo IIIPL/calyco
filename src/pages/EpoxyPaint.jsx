@@ -6,7 +6,7 @@ import {
   FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, 
   FiPackage, FiShield, FiArchive, FiAlertCircle, FiInfo, FiCalendar, 
   FiHeart, FiChevronLeft, FiChevronRight, FiWind, FiDownload, FiClock, 
-  FiActivity, FiAlertTriangle, FiHexagon, FiZap 
+  FiActivity, FiAlertTriangle, FiHexagon, FiZap, FiAnchor, FiThermometer
 } from 'react-icons/fi';
 import { useCart } from "../context/CartContext"; 
 import CartPopup from "../components/CartPopup"; 
@@ -645,7 +645,7 @@ const EpoxyPaint = () => {
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
                               <RatingStars
                                 rating={averageRating}
-                                totalReviews={0}
+                                totalReviews={totalReviews}
                                 onClick={scrollToReviews}
                                 size="md"
                               />
@@ -682,10 +682,10 @@ const EpoxyPaint = () => {
                             )}
                         </div>
 
-                        {/* Bullet Points */}
+                        {/* Bullet Points - Updated to GOLD check */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
                           <div className="my-2">
-                            <div className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] rounded-xl border border-[#493657]/10 p-4 sm:p-6 shadow-md">
+                            <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
                               <ul className="space-y-2 sm:space-y-3">
                                 {product.features.map((feature, idx) => (
                                   <li key={idx} className="flex items-start gap-3">
@@ -698,32 +698,32 @@ const EpoxyPaint = () => {
                           </div>
                         )}
 
-                        {/* 3 Feature Cards - Epoxy Specific (Industrial/Chemical Theme) */}
+                        {/* 3 Feature Cards - Updated to Vibrant Colors (Orange, Red, Green) */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-3">
-                          <div className="bg-white rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/15 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiHexagon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                          <div className="bg-[#FF9500] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
+                              <FiHexagon className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF9500]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-sm sm:text-base mb-1">High Strength</h4>
-                            <p className="text-xs sm:text-sm text-[#493657]/80 font-medium">Heavy Duty</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">High Strength</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Heavy Duty</p>
                           </div>
-                          <div className="bg-white rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/15 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                          <div className="bg-[#ef4444] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
+                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#ef4444]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-sm sm:text-base mb-1">Chemical Safe</h4>
-                            <p className="text-xs sm:text-sm text-[#493657]/80 font-medium">Acid Resistant</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Chemical Safe</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Acid Resistant</p>
                           </div>
-                          <div className="bg-white rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/15 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiDroplet className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                          <div className="bg-[#34C759] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
+                              <FiDroplet className="w-6 h-6 sm:w-7 sm:h-7 text-[#34C759]" />
                             </div>
-                            <h4 className="font-bold text-[#493657] text-sm sm:text-base mb-1">Waterproof</h4>
-                            <p className="text-xs sm:text-sm text-[#493657]/80 font-medium">Impermeable</p>
+                            <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Waterproof</h4>
+                            <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Impermeable</p>
                           </div>
                         </div>
 
-                        {/* Product Selectors */}
+                        {/* Product Selectors - Updated Borders to GOLD */}
                         <div className="space-y-4 sm:space-y-6">
                             {/* Color Mixing for Epoxy */}
                             {ALLOW_COLOR_MIXING && (
@@ -735,7 +735,6 @@ const EpoxyPaint = () => {
                                   </span>
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
-                                  {/* Dummy buttons to simulate color options since no color data provided for epoxy */}
                                    <button type="button" className={`px-3 py-2 rounded-lg border border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] text-sm`}>Standard Grey</button>
                                    <button type="button" className={`px-3 py-2 rounded-lg border border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40 text-sm`}>Dark Green</button>
                                    <button type="button" className={`px-3 py-2 rounded-lg border border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40 text-sm`}>Tile Red</button>
@@ -798,7 +797,7 @@ const EpoxyPaint = () => {
                     </motion.div>
                 </div>
 
-                {/* ENHANCED Product Details Section */}
+                {/* ENHANCED Product Details Section - Updated to Green/Blue Gradients */}
                 <motion.div
                     className="mt-8 sm:mt-12 lg:mt-16"
                     variants={itemVariants}
@@ -822,7 +821,7 @@ const EpoxyPaint = () => {
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md border border-[#493657]/10">
                                 <div className="flex flex-col">
                                     <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#F0C85A] to-[#5B2C87] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#22c55e] to-[#16a34a] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
                                             <FiCheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                         </div>
                                         <h3 className="font-bold text-[#493657] text-base sm:text-lg">Key Benefits</h3>
@@ -831,8 +830,8 @@ const EpoxyPaint = () => {
                                     <div className="space-y-3 sm:space-y-4">
                                         {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
                                             product.advantages.map((adv, idx) => (
-                                                <div key={idx} className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#F0C85A]">
-                                                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#F0C85A] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <div key={idx} className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                                                         <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                                                     </div>
                                                     <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">{adv}</span>
@@ -853,7 +852,7 @@ const EpoxyPaint = () => {
                     </div>
                 </motion.div>
 
-                {/* ENHANCED Specifications Section */}
+                {/* ENHANCED Specifications Section - Updated to Purple Gradient & Indigo Icons */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
                         <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-4 sm:p-6 relative overflow-hidden">
@@ -872,7 +871,7 @@ const EpoxyPaint = () => {
                             ].map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
                                     <div className="flex items-center gap-3">
-                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B2C87]" />
+                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#6366f1]" />
                                         <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
                                     </div>
                                     <span className="text-sm sm:text-base text-[#6b7280] font-medium text-left sm:text-right sm:max-w-xs">{spec.value}</span>
@@ -882,7 +881,7 @@ const EpoxyPaint = () => {
                     </div>
                 </div>
 
-                {/* ENHANCED Technical Specifications */}
+                {/* ENHANCED Technical Specifications - Updated to Purple Gradient & Indigo Icons */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
                         <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-4 sm:p-6 text-center relative overflow-hidden">
@@ -906,7 +905,7 @@ const EpoxyPaint = () => {
                             ].filter(spec => spec.value && spec.value !== 'N/A').map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
                                     <div className="flex items-center gap-3">
-                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B2C87]" />
+                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#6366f1]" />
                                         <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
                                     </div>
                                     <span className="text-sm sm:text-base text-[#6b7280] font-medium text-left sm:text-right sm:max-w-xs">{spec.value}</span>
@@ -1023,7 +1022,7 @@ const EpoxyPaint = () => {
                     </div>
                 )}
 
-                {/* ENHANCED Download Documents - Placeholder Links */}
+                {/* ENHANCED Download Documents - Updated Colors */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-[#493657]/10">
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#493657] mb-6 sm:mb-8 text-center">Download Documents</h2>
@@ -1052,7 +1051,7 @@ const EpoxyPaint = () => {
                             {/* SDS Document */}
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] to-[#2D1B69] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                         <FiShield className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                                     </div>
                                     <div className="flex-1">
@@ -1063,7 +1062,7 @@ const EpoxyPaint = () => {
                                 <a
                                     href="/Assets/docs/html-templates/calyco-epoxy-paint-sds.html"
                                     download
-                                    className="w-full bg-gradient-to-r from-[#5B2C87] to-[#2D1B69] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
+                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
                                     <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
                                     Download SDS
@@ -1073,60 +1072,60 @@ const EpoxyPaint = () => {
                     </div>
                 </div>
 
-                {/* ENHANCED Features Section - Adapted for Epoxy Paint */}
+                {/* ENHANCED Features Section - Updated Colors to Gold/Purple/Green/Cyan */}
                 <motion.div
                     className="mt-8 sm:mt-12 lg:mt-16"
                     variants={itemVariants}
                 >
-                    <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#F0C85A]/5 via-white to-[#5B2C87]/5 p-6 sm:p-8 md:p-12 shadow-2xl overflow-hidden border border-[#493657]/10">
-                        {/* Premium Background Effects - Cyan/Blue Tones */}
+                    <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#493657]/5 via-white to-[#F0C85A]/5 p-6 sm:p-8 md:p-12 shadow-2xl overflow-hidden border border-[#493657]/10">
+                        {/* Premium Background Effects */}
                         <div className="pointer-events-none absolute -top-24 -right-12 w-96 h-96 bg-gradient-to-br from-[#F0C85A]/20 to-[#493657]/10 blur-3xl rounded-full" />
-                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-80 h-80 bg-gradient-to-tr from-[#5B2C87]/15 to-[#F0C85A]/10 blur-3xl rounded-full" />
-                        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#5B2C87]/10 to-[#1e3a8a]/10 blur-2xl rounded-full" />
+                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-80 h-80 bg-gradient-to-tr from-[#493657]/15 to-[#F0C85A]/10 blur-3xl rounded-full" />
+                        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#667eea]/10 to-[#764ba2]/10 blur-2xl rounded-full" />
 
                         <div className="relative z-10">
                             <h2 className="text-3xl sm:text-4xl font-bold text-[#493657] mb-3 sm:mb-4 text-center">Engineered Toughness</h2>
                             <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">Professional grade performance for industrial needs</p>
 
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 sm:gap-8">
-                                {/* Feature 1: Chemical Resistance */}
+                                {/* Feature 1: Chemical Resistance (Gold) */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#F0C85A] via-[#22d3ee] to-[#67e8f9] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFC107] via-[#FFD54F] to-[#FFEB3B] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiShield className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Chemical Resist</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Impervious to oils, solvents, and industrial chemicals that would damage standard paints.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Resists attack from acids, alkalis, and industrial chemicals.</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#FFC107] to-[#FFC107]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 2: Abrasion Resistance */}
+                                {/* Feature 2: High Strength (Purple) */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] via-[#6366f1] to-[#818cf8] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#673AB7] via-[#7E57C2] to-[#9575CD] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiHexagon className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">High Strength</h3>
                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Designed for high-traffic areas, resisting wear from forklifts, cars, and heavy machinery.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#5B2C87] to-[#5B2C87]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#673AB7] to-[#673AB7]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 3: 2-Component */}
+                                {/* Feature 3: 2-Part System (Green) */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] via-[#2D1B69] to-[#1E1B4B] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#4CAF50] via-[#66BB6A] to-[#81C784] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">2-Part System</h3>
                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Resin and hardener combine to create a cross-linked polymer bond far stronger than 1-part paints.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#5B2C87] to-[#5B2C87]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 4: High Gloss */}
+                                {/* Feature 4: High Gloss (Cyan) */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] via-[#10b981] to-[#34d399] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiZap className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">High Gloss</h3>
                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Provides a bright, professional finish that reflects light and is incredibly easy to clean.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#5B2C87] to-[#5B2C87]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
                             </div>
                         </div>

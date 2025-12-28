@@ -496,7 +496,7 @@ const TexturePaints = () => {
                         {/* Reviews Summary */}
                         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
-                                <RatingStars rating={averageRating} totalReviews={0} onClick={scrollToReviews} size="md" />
+                                <RatingStars rating={averageRating} totalReviews={totalReviews} onClick={scrollToReviews} size="md" />
                             </div>
                             <span className="text-sm sm:text-base text-[#493657] font-medium cursor-pointer hover:text-[#F0C85A]" onClick={scrollToReviews}>
                                 {averageRating.toFixed(1)}/5 ({totalReviews} reviews)

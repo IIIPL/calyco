@@ -11,7 +11,7 @@ import {
 import { useCart } from "../context/CartContext"; 
 import CartPopup from "../components/CartPopup"; 
 import RatingStars from "../components/RatingStars"; 
-import ReviewsSection from "../components/ReviewsSection"; 
+import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 import { calycoColors as colorData } from "../data/calycoColors.js";
 
@@ -169,13 +169,11 @@ const FireRetardantPaint = () => {
     const handleTouchMove = (e) => {
         setTouchEnd(e.targetTouches[0].clientX);
     };
-
     const handleTouchEnd = () => {
         if (!touchStart || !touchEnd) return;
         const distance = touchStart - touchEnd;
         const isLeftSwipe = distance > 50;
         const isRightSwipe = distance < -50;
-
         if (product?.images && product.images.length > 0) {
             if (isLeftSwipe && selectedImageIndex < product.images.length - 1) {
                 const nextIndex = selectedImageIndex + 1;
@@ -242,7 +240,6 @@ const FireRetardantPaint = () => {
                     }
                 }
             };
-
             const handleScroll = () => {
                 if (!wrapper || !stickyEl || !rightEl) {
                     resetStyles();
@@ -283,7 +280,6 @@ const FireRetardantPaint = () => {
                     stickyEl.style.zIndex = "30";
                 }
             };
-
             const handleResize = () => {
                 updateWrapperHeight();
                 handleScroll();
@@ -294,14 +290,12 @@ const FireRetardantPaint = () => {
 
             window.addEventListener("scroll", handleScroll, { passive: true });
             window.addEventListener("resize", handleResize);
-            
             const resizeObserver = typeof ResizeObserver !== "undefined"
                 ? new ResizeObserver(() => {
                     updateWrapperHeight();
                     handleScroll();
                 })
                 : null;
-            
             if (resizeObserver && rightEl) {
                 resizeObserver.observe(rightEl);
             }
@@ -355,14 +349,12 @@ const FireRetardantPaint = () => {
             familyCode: activeColorFamily?.code
         }
         : null;
-
     const formatINR = (value) => `₹${Number(value || 0).toLocaleString('en-IN')}`;
 
     const priceByFinish = useMemo(() => {
         if (!product) return {};
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
-
     const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matt";
 
     const activeFinishPricing = useMemo(() => {
@@ -385,7 +377,6 @@ const FireRetardantPaint = () => {
         }
         return 0;
     };
-
     const getVariantIdForSelection = (finishLabel, sizeLabel) => {
         let variantMap = product?.shopify_variant_map || {};
         const exactKey = `${sizeLabel}-${finishLabel}`;
@@ -396,7 +387,6 @@ const FireRetardantPaint = () => {
     };
 
     const displayPriceValue = calculatePrice(selectedSize);
-
     // Calculate MRP
     const calculateMRP = (sizeLabel) => {
         const mrpData = FIRE_PAINT_MRP[normalizedSelectedSheen];
@@ -405,7 +395,6 @@ const FireRetardantPaint = () => {
     };
 
     const displayMRPValue = calculateMRP(selectedSize);
-
     const displaySizes = useMemo(() => {
         const finishSizes =
             activeFinishPricing && typeof activeFinishPricing === "object"
@@ -507,7 +496,6 @@ const FireRetardantPaint = () => {
             }
         }
     };
-
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -516,15 +504,12 @@ const FireRetardantPaint = () => {
             transition: { duration: 0.5 }
         }
     };
-
     const closeCartPopup = () => {
         setCartPopup({ isVisible: false, item: null });
     };
-
     const handleContinueShopping = () => {
         setCartPopup({ isVisible: false, item: null });
     };
-
     const handleCheckout = async () => {
         setCartPopup({ isVisible: false, item: null });
         await goToCheckout();
@@ -584,11 +569,11 @@ const FireRetardantPaint = () => {
 
                                 {product.images && product.images.length > 1 && (
                                     <>
-                                        <button
+                                         <button
                                             onClick={handlePrevImage}
                                             disabled={selectedImageIndex === 0}
                                             className={`absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-200 hover:bg-[#F0C85A]/10 hover:shadow-xl ${
-                                                selectedImageIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-100'
+                                                 selectedImageIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-100'
                                             }`}
                                             aria-label="Previous image"
                                         >
@@ -643,13 +628,13 @@ const FireRetardantPaint = () => {
                         {/* Reviews */}
                         {totalReviews > 0 && (
                           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-                            <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
+                              <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
                               <RatingStars
                                 rating={averageRating}
-                                totalReviews={0}
+                                totalReviews={totalReviews}
                                 onClick={scrollToReviews}
                                 size="md"
-                              />
+                                />
                             </div>
                             <span className="text-sm sm:text-base text-[#493657] font-medium cursor-pointer hover:text-[#F0C85A]" onClick={scrollToReviews}>
                               {averageRating.toFixed(1)}/5 ({totalReviews} {totalReviews === 1 ? 'review' : 'reviews'})
@@ -686,11 +671,11 @@ const FireRetardantPaint = () => {
                         {/* Bullet Points */}
                         {Array.isArray(product.features) && product.features.length > 0 && (
                           <div className="my-2">
-                            <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
+                              <div className="bg-gradient-to-br from-[#F0C85A]/10 to-[#493657]/5 rounded-xl border-2 border-[#493657]/20 p-4 sm:p-6 shadow-md">
                               <ul className="space-y-2 sm:space-y-3">
                                 {product.features.map((feature, idx) => (
                                   <li key={idx} className="flex items-start gap-3">
-                                    <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B2C87] mt-0.5 flex-shrink-0" />
+                                    <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#F0C85A] mt-0.5 flex-shrink-0" />
                                     <span className="text-sm sm:text-base font-bold text-[#493657]">{feature}</span>
                                   </li>
                                 ))}
@@ -699,11 +684,11 @@ const FireRetardantPaint = () => {
                           </div>
                         )}
 
-                        {/* 3 Feature Cards - Fire Paint Specific */}
+                        {/* 3 Feature Cards - Fire Paint Specific (Updated to Vibrant Colors) */}
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 my-3">
-                          <div className="bg-[#5B2C87] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiMaximize className="w-6 h-6 sm:w-7 sm:h-7 text-[#5B2C87]" />
+                          <div className="bg-[#FF9500] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
+                              <FiMaximize className="w-6 h-6 sm:w-7 sm:h-7 text-[#FF9500]" />
                             </div>
                             <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Intumescent</h4>
                             <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Swells in heat</p>
@@ -715,9 +700,9 @@ const FireRetardantPaint = () => {
                             <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">120 Minutes</h4>
                             <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Fire rating</p>
                           </div>
-                          <div className="bg-[#4b5563] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                          <div className="bg-[#34C759] rounded-xl p-4 sm:p-5 text-center shadow-lg border border-[#493657]/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 shadow-md">
-                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#4b5563]" />
+                              <FiShield className="w-6 h-6 sm:w-7 sm:h-7 text-[#34C759]" />
                             </div>
                             <h4 className="font-bold text-white text-sm sm:text-base mb-1 drop-shadow-sm">Certified</h4>
                             <p className="text-xs sm:text-sm text-white/90 font-medium drop-shadow-sm">Safety Standard</p>
@@ -738,42 +723,42 @@ const FireRetardantPaint = () => {
                                         onClick={() => setSelectedSize(size)}
                                         className={`px-3 sm:px-4 py-2 rounded-lg border transition-all text-sm sm:text-base ${
                                           selectedSize === size
-                                            ? "border-[#5B2C87] bg-[#5B2C87]/10 text-[#493657]"
+                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
                                             : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
                                         }`}
-                                      >
+                                       >
                                         {size}
                                       </button>
                                     ))}
                                   </div>
-                              </div>
+                               </div>
                             )}
 
                             {/* Quantity & Add to Cart */}
                             <div className="mb-6">
-                              <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Quantity</h3>
+                               <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Quantity</h3>
                               <div className="flex items-center gap-4">
                                 <button
                                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5 text-lg font-bold"
-                                >
+                                 >
                                   -
                                 </button>
-                                <span className="text-lg sm:text-xl font-semibold text-[#493657] min-w-[3rem] text-center">{quantity}</span>
+                                 <span className="text-lg sm:text-xl font-semibold text-[#493657] min-w-[3rem] text-center">{quantity}</span>
                                 <button
                                   onClick={() => setQuantity(quantity + 1)}
-                                  className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5 text-lg font-bold"
+                                   className="w-10 h-10 rounded-lg border border-[#493657]/20 flex items-center justify-center hover:bg-[#493657]/5 text-lg font-bold"
                                 >
                                   +
-                                </button>
+                                 </button>
                               </div>
                               <motion.button
-                                onClick={handleAddToCart}
+                                 onClick={handleAddToCart}
                                 className="w-full bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white font-semibold py-3 sm:py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#2D1B69]/30 transition-all duration-500 transform hover:-translate-y-1 flex items-center justify-center gap-2 mt-4 text-sm sm:text-base"
-                                whileHover={{ scale: 1.02 }}
+                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                               >
-                                <FaShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                                 <FaShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                                 Add to Cart - {formatINR(displayPriceValue * quantity)}
                               </motion.button>
                             </div>
@@ -781,7 +766,7 @@ const FireRetardantPaint = () => {
                     </motion.div>
                 </div>
 
-                {/* ENHANCED Product Details Section */}
+                {/* ENHANCED Product Details Section (Key Benefits Colors Updated) */}
                 <motion.div
                     className="mt-8 sm:mt-12 lg:mt-16"
                     variants={itemVariants}
@@ -792,12 +777,12 @@ const FireRetardantPaint = () => {
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md border border-[#493657]/10">
                                 <div className="flex items-start gap-3 sm:gap-4 mb-4">
                                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <FiInfo className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                                         <FiInfo className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-[#493657] text-base sm:text-lg mb-2">About This Product</h3>
+                                         <h3 className="font-bold text-[#493657] text-base sm:text-lg mb-2">About This Product</h3>
                                         <p className="text-sm sm:text-base text-[#493657]/80 leading-relaxed">
-                                            {product.details || product.description}
+                                             {product.details || product.description}
                                         </p>
                                     </div>
                                 </div>
@@ -805,42 +790,42 @@ const FireRetardantPaint = () => {
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md border border-[#493657]/10">
                                 <div className="flex flex-col">
                                     <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#5B2C87] to-[#f97316] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#22c55e] to-[#16a34a] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
                                             <FiCheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                         </div>
-                                        <h3 className="font-bold text-[#493657] text-base sm:text-lg">Key Benefits</h3>
+                                         <h3 className="font-bold text-[#493657] text-base sm:text-lg">Key Benefits</h3>
                                     </div>
                                     
                                     <div className="space-y-3 sm:space-y-4">
                                         {Array.isArray(product.advantages) && product.advantages.length > 0 ? (
                                             product.advantages.map((adv, idx) => (
-                                                <div key={idx} className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#5B2C87]">
-                                                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#5B2C87] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                        <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                                                <div key={idx} className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                         <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                                                     </div>
-                                                    <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">{adv}</span>
+                                                     <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">{adv}</span>
                                                 </div>
-                                            ))
+                                             ))
                                         ) : (
-                                            <div className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
+                                             <div className="flex items-start gap-3 p-3 sm:p-4 bg-[#f8fafc] rounded-lg border-l-4 border-[#6366f1]">
                                                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#6366f1] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                    <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                                                      <FiCheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                                                 </div>
-                                                <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">No key advantages listed.</span>
+                                                 <span className="text-sm sm:text-base text-[#493657] font-medium leading-relaxed text-left">No key advantages listed.</span>
                                             </div>
-                                        )}
+                                         )}
                                     </div>
-                                </div>
+                               </div>
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* ENHANCED Specifications Section */}
+                {/* ENHANCED Specifications Section (Colors Updated) */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
-                        <div className="bg-gradient-to-r from-[#5B2C87] via-[#2D1B69] to-[#7c2d12] text-white p-4 sm:p-6 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/20"></div>
+                        <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-4 sm:p-6 relative overflow-hidden">
+                             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/20"></div>
                             <h2 className="text-2xl sm:text-3xl font-bold text-center relative z-10 text-white drop-shadow-lg">Specifications</h2>
                         </div>
                         <div className="grid grid-cols-1 gap-px bg-[#e2e8f0]">
@@ -855,21 +840,21 @@ const FireRetardantPaint = () => {
                                 { label: "Coverage", value: product.coverage || 'N/A', icon: FiBox }
                             ].map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
-                                    <div className="flex items-center gap-3">
-                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B2C87]" />
-                                        <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
+                                     <div className="flex items-center gap-3">
+                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#6366f1]" />
+                                         <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
                                     </div>
                                     <span className="text-sm sm:text-base text-[#6b7280] font-medium text-left sm:text-right sm:max-w-xs">{spec.value}</span>
-                                </div>
+                                 </div>
                             ))}
                         </div>
                     </div>
-                </div>
+                 </div>
 
-                {/* ENHANCED Technical Specifications */}
+                {/* ENHANCED Technical Specifications (Colors Updated) */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
-                        <div className="bg-gradient-to-r from-[#5B2C87] via-[#2D1B69] to-[#7c2d12] text-white p-4 sm:p-6 text-center relative overflow-hidden">
+                        <div className="bg-gradient-to-r from-[#2D1B69] via-[#5B2C87] to-[#1E1B4B] text-white p-4 sm:p-6 text-center relative overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-black/20"></div>
                             <h2 className="text-2xl sm:text-3xl font-bold relative z-10 text-white drop-shadow-lg">Technical Specifications</h2>
                         </div>
@@ -886,14 +871,14 @@ const FireRetardantPaint = () => {
                                 { label: "Cleanup", value: product.technicalSpecs?.cleanup, icon: FiArchive },
                                 { label: "Application Instructions", value: product.technicalSpecs?.application_instructions, icon: FiClipboard },
                                 { label: "Surface Preparation", value: product.technicalSpecs?.preparation_instructions, icon: FiInfo }
-                            ].filter(spec => spec.value && spec.value !== 'N/A').map((spec, idx) => (
+                             ].filter(spec => spec.value && spec.value !== 'N/A').map((spec, idx) => (
                                 <div key={idx} className="bg-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 hover:bg-[#f8fafc] transition-colors">
-                                    <div className="flex items-center gap-3">
-                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B2C87]" />
-                                        <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
+                                     <div className="flex items-center gap-3">
+                                        <spec.icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#6366f1]" />
+                                         <span className="font-semibold text-sm sm:text-base text-[#374151]">{spec.label}</span>
                                     </div>
                                     <span className="text-sm sm:text-base text-[#6b7280] font-medium text-left sm:text-right sm:max-w-xs">{spec.value}</span>
-                                </div>
+                                 </div>
                             ))}
                         </div>
                     </div>
@@ -905,108 +890,108 @@ const FireRetardantPaint = () => {
                         <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-[#493657]/10 overflow-hidden">
                             <div className="bg-gradient-to-r from-[#5B2C87] to-[#2D1B69] text-white p-4 sm:p-6 flex items-center gap-3 sm:gap-4">
                                 <FiAlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
-                                <div>
+                                 <div>
                                     <h2 className="text-2xl sm:text-3xl font-bold">Safety Information</h2>
                                     <p className="text-orange-100 mt-1 text-sm sm:text-base">Please read all safety information before use</p>
-                                </div>
+                                 </div>
                             </div>
 
                             <div className="p-4 sm:p-6 lg:p-8">
-                                <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
+                                 <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
                                     {/* Hazard Statements */}
                                     {product.safety_warnings.hazard_statements && (
                                         <div>
                                             <h3 className="font-bold text-[#493657] text-lg sm:text-xl mb-4 flex items-center gap-3">
                                                 <FiAlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B2C87]" />
                                                 Hazard Statements
-                                            </h3>
+                                             </h3>
                                             <div className="space-y-2">
-                                                {product.safety_warnings.hazard_statements.map((statement, idx) => (
+                                                 {product.safety_warnings.hazard_statements.map((statement, idx) => (
                                                     <div key={idx} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-[#fef3c7] border-l-4 border-[#5B2C87] rounded-r-lg">
-                                                        <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#5B2C87] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                            <span className="text-white text-xs font-bold">!</span>
+                                                          <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#5B2C87] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                             <span className="text-white text-xs font-bold">!</span>
                                                         </div>
-                                                        <span className="text-[#92400e] font-medium text-xs sm:text-sm">{statement}</span>
+                                                         <span className="text-[#92400e] font-medium text-xs sm:text-sm">{statement}</span>
                                                     </div>
-                                                ))}
+                                                 ))}
                                             </div>
-                                        </div>
+                                         </div>
                                     )}
 
                                     {/* Precautionary Statements */}
                                     {product.safety_warnings.precautionary_statements && (
                                         <div>
-                                            <h3 className="font-bold text-[#493657] text-lg sm:text-xl mb-4 flex items-center gap-3">
+                                             <h3 className="font-bold text-[#493657] text-lg sm:text-xl mb-4 flex items-center gap-3">
                                                 <FiShield className="w-5 h-5 sm:w-6 sm:h-6 text-[#2563eb]" />
-                                                Precautionary Statements
+                                                 Precautionary Statements
                                             </h3>
-                                            <div className="space-y-2">
+                                             <div className="space-y-2">
                                                 {product.safety_warnings.precautionary_statements.map((statement, idx) => (
-                                                    <div key={idx} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-[#dbeafe] border-l-4 border-[#60a5fa] rounded-r-lg">
+                                                     <div key={idx} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-[#dbeafe] border-l-4 border-[#60a5fa] rounded-r-lg">
                                                         <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#2563eb] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                                                             <FiShield className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
-                                                        </div>
+                                                         </div>
                                                         <span className="text-[#1e40af] font-medium text-xs sm:text-sm">{statement}</span>
-                                                    </div>
+                                                     </div>
                                                 ))}
-                                            </div>
+                                             </div>
                                         </div>
-                                    )}
+                                     )}
                                 </div>
 
                                 {/* First Aid Measures */}
                                 {product.safety_warnings.first_aid && (
                                     <div className="mt-6 sm:mt-8">
                                         <h3 className="font-bold text-[#493657] text-lg sm:text-xl mb-4 sm:mb-6 flex items-center gap-3">
-                                            <FiHeart className="w-5 h-5 sm:w-6 sm:h-6 text-[#22c55e]" />
+                                             <FiHeart className="w-5 h-5 sm:w-6 sm:h-6 text-[#22c55e]" />
                                             First Aid Measures
-                                        </h3>
+                                         </h3>
                                         <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
-                                            {product.safety_warnings.first_aid.inhalation && (
+                                             {product.safety_warnings.first_aid.inhalation && (
                                                 <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-4 sm:p-5">
-                                                    <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
+                                                     <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
                                                         <FiWind className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                        Inhalation
-                                                    </h4>
+                                                          Inhalation
+                                                      </h4>
                                                     <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.inhalation}</p>
-                                                </div>
+                                                 </div>
                                             )}
                                             {product.safety_warnings.first_aid.skin_contact && (
                                                 <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-4 sm:p-5">
-                                                    <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
+                                                     <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
                                                         <FiShield className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                        Skin Contact
+                                                         Skin Contact
                                                     </h4>
-                                                    <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.skin_contact}</p>
+                                                     <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.skin_contact}</p>
                                                 </div>
-                                            )}
+                                             )}
                                             {product.safety_warnings.first_aid.eye_contact && (
                                                 <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-4 sm:p-5">
                                                     <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
-                                                        <FiInfo className="w-4 h-4 sm:w-5 sm:h-5" />
-                                                        Eye Contact
+                                                         <FiInfo className="w-4 h-4 sm:w-5 sm:h-5" />
+                                                         Eye Contact
                                                     </h4>
-                                                    <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.eye_contact}</p>
+                                                     <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.eye_contact}</p>
                                                 </div>
-                                            )}
+                                             )}
                                             {product.safety_warnings.first_aid.ingestion && (
                                                 <div className="bg-[#f0fdf4] border-l-4 border-[#22c55e] rounded-r-xl p-4 sm:p-5">
                                                     <h4 className="font-bold text-[#166534] mb-2 sm:mb-3 flex items-center gap-2">
-                                                        <FiAlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                                                         <FiAlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                                                         Ingestion
-                                                    </h4>
+                                                     </h4>
                                                     <p className="text-[#166534] text-xs sm:text-sm">{product.safety_warnings.first_aid.ingestion}</p>
-                                                </div>
+                                                 </div>
                                             )}
-                                        </div>
+                                         </div>
                                     </div>
                                 )}
-                            </div>
+                             </div>
                         </div>
                     </div>
                 )}
 
-                {/* ENHANCED Download Documents - Placeholder Links */}
+                {/* ENHANCED Download Documents - Placeholder Links (Colors Updated for SDS) */}
                 <div className="mt-8 sm:mt-12 lg:mt-16">
                     <div className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-[#493657]/10">
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#493657] mb-6 sm:mb-8 text-center">Download Documents</h2>
@@ -1015,102 +1000,102 @@ const FireRetardantPaint = () => {
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
                                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                                        <FiClipboard className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                                         <FiClipboard className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="font-bold text-[#493657] text-base sm:text-xl mb-1 sm:mb-2">Technical Data Sheet</h3>
+                                         <h3 className="font-bold text-[#493657] text-base sm:text-xl mb-1 sm:mb-2">Technical Data Sheet</h3>
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Product specifications and application details</p>
-                                    </div>
+                                     </div>
                                 </div>
                                 <a
-                                    href="/Assets/docs/html-templates/calyco-fire-retardant-tds.html"
+                                     href="/Assets/docs/html-templates/calyco-fire-retardant-tds.html"
                                     download
                                     className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
                                 >
                                     <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    Download TDS
+                                     Download TDS
                                 </a>
                             </div>
 
                             {/* SDS Document */}
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
-                                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] to-[#2D1B69] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                         <FiShield className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                                    </div>
+                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="font-bold text-[#493657] text-base sm:text-xl mb-1 sm:mb-2">Safety Data Sheet</h3>
+                                         <h3 className="font-bold text-[#493657] text-base sm:text-xl mb-1 sm:mb-2">Safety Data Sheet</h3>
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Health and safety information</p>
                                     </div>
-                                </div>
+                                 </div>
                                 <a
                                     href="/Assets/docs/html-templates/calyco-fire-retardant-sds.html"
-                                    download
-                                    className="w-full bg-gradient-to-r from-[#5B2C87] to-[#2D1B69] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
-                                >
+                                     download
+                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
+                                 >
                                     <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
                                     Download SDS
-                                </a>
+                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* ENHANCED Features Section - Adapted for Fire Paint */}
+                {/* ENHANCED Features Section - Adapted for Fire Paint (Consistent Colors) */}
                 <motion.div
                     className="mt-8 sm:mt-12 lg:mt-16"
                     variants={itemVariants}
-                >
+                 >
                     <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#493657]/5 via-white to-[#F0C85A]/5 p-6 sm:p-8 md:p-12 shadow-2xl overflow-hidden border border-[#493657]/10">
-                        {/* Premium Background Effects - Warmer Tones for Fire Paint */}
-                        <div className="pointer-events-none absolute -top-24 -right-12 w-96 h-96 bg-gradient-to-br from-[#5B2C87]/20 to-[#493657]/10 blur-3xl rounded-full" />
-                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-80 h-80 bg-gradient-to-tr from-[#493657]/15 to-[#5B2C87]/10 blur-3xl rounded-full" />
-                        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#f97316]/10 to-[#9a3412]/10 blur-2xl rounded-full" />
+                        {/* Premium Background Effects - Matched to Primer */}
+                        <div className="pointer-events-none absolute -top-24 -right-12 w-96 h-96 bg-gradient-to-br from-[#F0C85A]/20 to-[#493657]/10 blur-3xl rounded-full" />
+                        <div className="pointer-events-none absolute -bottom-32 -left-10 w-80 h-80 bg-gradient-to-tr from-[#493657]/15 to-[#F0C85A]/10 blur-3xl rounded-full" />
+                        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#667eea]/10 to-[#764ba2]/10 blur-2xl rounded-full" />
 
-                        <div className="relative z-10">
+                         <div className="relative z-10">
                             <h2 className="text-3xl sm:text-4xl font-bold text-[#493657] mb-3 sm:mb-4 text-center">Structural Fire Safety</h2>
                             <p className="text-center text-[#493657]/70 mb-8 sm:mb-12 text-base sm:text-lg">Critical protection for when it matters most</p>
 
-                            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 sm:gap-8">
-                                {/* Feature 1: Intumescent Action */}
-                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#5B2C87] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#5B2C87] via-[#f97316] to-[#fb923c] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiMaximize className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 sm:gap-8">
+                                {/* Feature 1: Intumescent Action (Gold/Yellow theme) */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#FFC107] via-[#FFD54F] to-[#FFEB3B] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                         <FiMaximize className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Swells in Heat</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Forms a thick insulating char layer when exposed to flames, shielding the substrate.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#5B2C87] to-[#5B2C87]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
-                                </div>
+                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Forms a thick insulating char layer when exposed to flames, shielding the substrate.</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#FFC107] to-[#FFC107]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                 </div>
 
-                                {/* Feature 2: 2 Hour Rating */}
-                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#5B2C87] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#ef4444] via-[#f87171] to-[#fca5a5] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                {/* Feature 2: 2 Hour Rating (Purple theme) */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#673AB7] via-[#7E57C2] to-[#9575CD] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiClock className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">120 Minutes</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Provides up to 2 hours of protection, granting crucial time for safe evacuation.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#ef4444] to-[#ef4444]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
-                                </div>
+                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Provides up to 2 hours of protection, granting crucial time for safe evacuation.</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#673AB7] to-[#673AB7]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                 </div>
 
-                                {/* Feature 3: Structural Integrity */}
-                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#5B2C87] transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#4b5563] via-[#6b7280] to-[#9ca3af] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                        <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
+                                {/* Feature 3: Structural Integrity (Green theme) */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#4CAF50] via-[#66BB6A] to-[#81C784] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                         <FiLayers className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Structural Safety</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Prevents steel from buckling and wood from burning through during intense heat.</p>
-                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4b5563] to-[#4b5563]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
-                                </div>
+                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Prevents steel from buckling and wood from burning through during intense heat.</p>
+                                    <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
+                                 </div>
 
-                                {/* Feature 4: Low Smoke */}
-                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#5B2C87] transition-all duration-500 hover:-translate-y-2">
+                                {/* Feature 4: Low Smoke (Cyan theme) */}
+                                <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiWind className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Low Smoke</h3>
-                                    <p className="text-sm text-[#493657]/70 leading-relaxed">Formulated to emit minimal smoke during combustion, aiding visibility for exit.</p>
+                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Formulated to emit minimal smoke during combustion, aiding visibility for exit.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
-                                </div>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -1125,12 +1110,12 @@ const FireRetardantPaint = () => {
 
                     <div className="relative max-w-6xl mx-auto rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-md border border-white/70 shadow-2xl px-4 py-6 sm:px-6 sm:py-10 md:px-10">
                         <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-10 md:flex-row md:items-center md:justify-between">
-                            <div>
+                             <div>
                                 <h2 className="text-2xl sm:text-3xl font-bold text-[#493657]">You might also like</h2>
                                 <p className="text-sm md:text-base text-[#493657]/70 mt-2">Specialty products for specific needs.</p>
                             </div>
                             <div className="flex items-center gap-2 text-xs font-medium text-[#493657]/60 uppercase tracking-[0.2em] w-fit">
-                                <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />
+                                 <span className="w-2 h-2 rounded-full bg-[#F0C85A]" />
                                 Calyco picks
                             </div>
                         </div>
@@ -1140,73 +1125,73 @@ const FireRetardantPaint = () => {
                             <Link to="/product/Luxury-Exterior-Emulsion" className="group h-full">
                                 <div className="relative h-full rounded-xl sm:rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
-                                    <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
+                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
-                                            <img
+                                             <img
                                                 src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
-                                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
+                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
                                                 <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md w-fit mx-auto sm:mx-0">
                                                     <FiShield className="w-3 h-3" />
-                                                    Climate ready
+                                                     Climate ready
                                                 </span>
-                                                <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium w-fit mx-auto sm:mx-0">
+                                                 <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium w-fit mx-auto sm:mx-0">
                                                     <FiHeart className="w-4 h-4" />
-                                                    Favourite
+                                                     Favourite
                                                 </button>
-                                            </div>
+                                             </div>
                                             <h3 className="text-lg sm:text-xl font-semibold text-[#493657] mb-2">Luxury Exterior Emulsion</h3>
-                                            <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">High-performance exterior emulsion designed for maximum UV and rain defence.</p>
+                                             <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">High-performance exterior emulsion designed for maximum UV and rain defence.</p>
                                             <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
-                                            <div className="flex flex-wrap items-baseline justify-center sm:justify-start gap-x-3 gap-y-1">
+                                             <div className="flex flex-wrap items-baseline justify-center sm:justify-start gap-x-3 gap-y-1">
                                                 <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
-                                                <span className="text-base line-through text-gray-400">₹850</span>
+                                                 <span className="text-base line-through text-gray-400">₹850</span>
                                                 <span className="text-xl sm:text-2xl font-bold text-[#493657]">₹700</span>
-                                            </div>
+                                             </div>
                                         </div>
-                                    </div>
+                                     </div>
                                 </div>
                             </Link>
 
                             {/* Waterproofing Sealer Card */}
-                            <Link to="/product/waterproofing-sealer" className="group h-full">
+                             <Link to="/product/waterproofing-sealer" className="group h-full">
                                 <div className="relative h-full rounded-xl sm:rounded-2xl bg-white shadow-lg border border-[#493657]/15 overflow-hidden transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl">
-                                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
+                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
-                                        <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
+                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
                                                 src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
                                         </div>
-                                        <div className="flex-1 text-center sm:text-left">
+                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
-                                                <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md w-fit mx-auto sm:mx-0">
+                                                 <span className="inline-flex items-center gap-2 bg-[#493657] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md w-fit mx-auto sm:mx-0">
                                                     <FiShield className="w-3 h-3" />
-                                                    Surface guard
+                                                      Surface guard
                                                 </span>
-                                                <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium w-fit mx-auto sm:mx-0">
-                                                    <FiHeart className="w-4 h-4" />
+                                                 <button className="flex items-center gap-2 text-[#493657] hover:text-[#F0C85A] transition-colors text-sm font-medium w-fit mx-auto sm:mx-0">
+                                                     <FiHeart className="w-4 h-4" />
                                                     Favourite
-                                                </button>
+                                                 </button>
                                             </div>
                                             <h3 className="text-lg sm:text-xl font-semibold text-[#493657] mb-2">Waterproofing Sealer</h3>
                                             <p className="text-sm text-[#493657]/70 leading-relaxed mb-3">Flexible, breathable membrane that keeps moisture out on every surface.</p>
-                                            <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
+                                             <p className="text-xs text-[#493657]/55 mb-3">Pack sizes: 1 L, 4 L, 10 L, 20 L</p>
                                             <div className="flex flex-wrap items-baseline justify-center sm:justify-start gap-x-3 gap-y-1">
-                                                <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
+                                                 <span className="text-xs uppercase tracking-wide text-[#493657]/60">Starts at</span>
                                                 <span className="text-base line-through text-gray-400">₹850</span>
-                                                <span className="text-xl sm:text-2xl font-bold text-[#493657]">₹700</span>
+                                                 <span className="text-xl sm:text-2xl font-bold text-[#493657]">₹700</span>
                                             </div>
-                                        </div>
+                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                             </Link>
                         </div>
                     </div>
                 </motion.div>
@@ -1219,7 +1204,7 @@ const FireRetardantPaint = () => {
                     <ReviewsSection
                         reviews={productReviews}
                         productName={product.name}
-                    />
+                     />
                 </div>
             )}
         </div>
