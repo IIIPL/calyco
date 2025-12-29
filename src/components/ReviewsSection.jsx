@@ -14,13 +14,14 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
   const [showForm, setShowForm] = useState(false);
 
   // Calculate average rating
-  const averageRating = reviews.length > 0
-    ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
+  const averageRatingValue = reviews.length > 0
+    ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
     : 0;
+  const averageRating = averageRatingValue.toFixed(1);
 
   // Calculate rating distribution
   const ratingDistribution = [5, 4, 3, 2, 1].map((stars) => {
-    const count = reviews.filter((r) => Math.round(r.rating) === stars).length;
+    const count = reviews.filter((r) => Math.floor(r.rating) === stars).length;
     const percentage =
       reviews.length > 0 ? ((count / reviews.length) * 100).toFixed(0) : 0;
     return { stars, count, percentage };
@@ -82,7 +83,7 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <FaStar
                       key={star}
-                      className={`text-2xl ${star <= Math.round(averageRating) ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
+                      className={`text-2xl ${star <= averageRatingValue ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
                     />
                   ))}
                 </div>
