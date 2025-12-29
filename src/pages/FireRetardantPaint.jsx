@@ -711,6 +711,29 @@ const FireRetardantPaint = () => {
 
                         {/* Product Selectors */}
                         <div className="space-y-4 sm:space-y-6">
+                            {/* Sheen / Finish */}
+                            {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
+                                <div className="mb-4">
+                                  <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Choose Finish Type</h3>
+                                  <div className="flex flex-wrap gap-2">
+                                    {product.finish_type_sheen.map((sheen) => (
+                                      <button
+                                        key={sheen}
+                                        type="button"
+                                        onClick={() => setSelectedSheen(sheen)}
+                                        className={`px-3 sm:px-4 py-2 rounded-lg border transition-all text-sm sm:text-base ${
+                                            selectedSheen === sheen
+                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
+                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
+                                        }`}
+                                      >
+                                        {sheen}
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+                            )}
+
                             {/* Size Selection */}
                             {displaySizes.length > 0 && (
                               <div className="mb-4">

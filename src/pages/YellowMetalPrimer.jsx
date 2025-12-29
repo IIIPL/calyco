@@ -25,12 +25,12 @@ const yellowMetalPrimerDetail = {
   description: "High-performance red oxide zinc chromate primer offering superior anti-corrosive protection for ferrous and non-ferrous metals. Formulated with rust-inhibitive pigments that create a protective barrier against moisture, chemicals, and atmospheric corrosion.",
   tagline: "Maximum corrosion protection for metal surfaces.",
   details: "Calyco Yellow Metal Primer is an industrial-grade shield for your metal assets. Enriched with zinc chromate, it provides active rust inhibition and heat resistance up to 120°C. It forms a tough, durable base that prevents oxidation and ensures your topcoat bonds securely to gates, grills, and machinery.",
-  finish_type_sheen: ["Flat"],
-  defaultFinish: "Flat",
+  finish_type_sheen: ["Matte"],
+  defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],
   // Selling Price (based on provided MRP)
   priceByFinish: {
-    "Flat": {
+    "Matte": {
       "1L": 320,
       "4L": 1200,
       "10L": 2800,
@@ -93,13 +93,13 @@ const yellowMetalPrimerDetail = {
 
 // Simulated Higher "Market Price" for the Crossed-Out Effect (+ ~15%)
 const YELLOW_PRIMER_MRP = {
-  'Flat': {
-    '1L': 385,
-    '4L': 1450,
-    '10L': 3350,
-    '20L': 6350,
-  },
-};
+    'Matte': {
+      '1L': 385,
+      '4L': 1450,
+      '10L': 3350,
+      '20L': 6350,
+    },
+  };
 
 const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = false; 
@@ -125,7 +125,7 @@ const YellowMetalPrimer = () => {
             .filter((family) => family.code && family.colors.length > 0);
     }, []);
 
-    const [selectedSheen, setSelectedSheen] = useState("Flat");
+    const [selectedSheen, setSelectedSheen] = useState("Matte");
     const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
@@ -362,7 +362,7 @@ const YellowMetalPrimer = () => {
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
 
-    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Flat";
+    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matte";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
@@ -421,9 +421,9 @@ const YellowMetalPrimer = () => {
 
     useEffect(() => {
         setProduct(yellowMetalPrimerDetail);
-        setSelectedSheen(yellowMetalPrimerDetail.defaultFinish || "Flat");
+        setSelectedSheen(yellowMetalPrimerDetail.defaultFinish || "Matte");
 
-        const finishPricing = (yellowMetalPrimerDetail.priceByFinish || yellowMetalPrimerDetail.price_by_finish || {})["Flat"];
+        const finishPricing = (yellowMetalPrimerDetail.priceByFinish || yellowMetalPrimerDetail.price_by_finish || {})["Matte"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {

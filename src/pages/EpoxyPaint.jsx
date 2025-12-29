@@ -27,14 +27,14 @@ const epoxyPaintDetail = {
   details: "Calyco Epoxy Paint is a professional-grade, 2-component system designed for floors, tanks, and machinery. It creates a seamless, non-porous surface that repels oils, acids, and water. Ideal for factories and garages, it offers superior hardness that resists tire marks, impacts, and heavy foot traffic.",
   finish_type_sheen: ["High Gloss"],
   defaultFinish: "High Gloss",
-  packaging: ["1L Kit", "4L Kit", "10L Kit", "20L Kit"],
+  packaging: ["1L", "4L", "10L", "20L"],
   // Selling Price (based on provided MRP)
   priceByFinish: {
     "High Gloss": {
-      "1L Kit": 640,
-      "4L Kit": 2400,
-      "10L Kit": 5600,
-      "20L Kit": 10560,
+      "1L": 640,
+      "4L": 2400,
+      "10L": 5600,
+      "20L": 10560,
     }
   },
   features: [
@@ -94,13 +94,13 @@ const epoxyPaintDetail = {
 
 // Simulated Higher "Market Price" (~15-20% markup)
 const EPOXY_MRP = {
-  'High Gloss': {
-    '1L Kit': 770,
-    '4L Kit': 2900,
-    '10L Kit': 6750,
-    '20L Kit': 12700,
-  },
-};
+    'High Gloss': {
+      '1L': 770,
+      '4L': 2900,
+      '10L': 6750,
+      '20L': 12700,
+    },
+  };
 
 const SHOW_SAFETY_SECTION = false;
 const ALLOW_COLOR_MIXING = true; // Epoxy often comes in colors (Grey, Green, etc)
@@ -127,7 +127,7 @@ const EpoxyPaint = () => {
     }, []);
 
     const [selectedSheen, setSelectedSheen] = useState("High Gloss");
-    const [selectedSize, setSelectedSize] = useState("1L Kit");
+    const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState(null);
@@ -672,12 +672,12 @@ const EpoxyPaint = () => {
                               <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
                                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
                                 <span className="text-lg sm:text-xl text-[#dc2626] line-through">{formatINR(displayMRPValue)}</span>
-                                <span className="text-xs sm:text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L Kit'}</span>
+                                <span className="text-xs sm:text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
                               </div>
                             ) : (
                               <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
                                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
-                                <span className="text-xs sm:text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L Kit'}</span>
+                                <span className="text-xs sm:text-sm text-[#493657]/60">per {selectedSize || displaySizes[0] || '1L'}</span>
                               </div>
                             )}
                         </div>
@@ -725,27 +725,33 @@ const EpoxyPaint = () => {
 
                         {/* Product Selectors - Updated Borders to GOLD */}
                         <div className="space-y-4 sm:space-y-6">
-                            {/* Color Mixing for Epoxy */}
-                            {ALLOW_COLOR_MIXING && (
-                              <div className="mb-4">
-                                <h3 className="font-semibold text-[#493657] mb-2 flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
-                                  Standard Colors
-                                  <span className="text-xs font-normal text-[#493657]/60 bg-[#F0C85A]/10 px-2 py-0.5 rounded-full w-fit">
-                                    Industrial Shades
-                                  </span>
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                   <button type="button" className={`px-3 py-2 rounded-lg border border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657] text-sm`}>Standard Grey</button>
-                                   <button type="button" className={`px-3 py-2 rounded-lg border border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40 text-sm`}>Dark Green</button>
-                                   <button type="button" className={`px-3 py-2 rounded-lg border border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40 text-sm`}>Tile Red</button>
+                            {/* Sheen / Finish */}
+                            {product.finish_type_sheen && product.finish_type_sheen.length > 0 && (
+                                <div className="mb-4">
+                                  <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Choose Finish Type</h3>
+                                  <div className="flex flex-wrap gap-2">
+                                    {product.finish_type_sheen.map((sheen) => (
+                                      <button
+                                        key={sheen}
+                                        type="button"
+                                        onClick={() => setSelectedSheen(sheen)}
+                                        className={`px-3 sm:px-4 py-2 rounded-lg border transition-all text-sm sm:text-base ${
+                                            selectedSheen === sheen
+                                            ? "border-[#F0C85A] bg-[#F0C85A]/10 text-[#493657]"
+                                            : "border-[#493657]/20 text-[#493657]/70 hover:border-[#493657]/40"
+                                        }`}
+                                      >
+                                        {sheen}
+                                      </button>
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
                             )}
 
                             {/* Size Selection */}
                             {displaySizes.length > 0 && (
                               <div className="mb-4">
-                                  <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Pack Size (Kit)</h3>
+                                  <h3 className="font-semibold text-[#493657] mb-2 text-sm sm:text-base">Size</h3>
                                   <div className="flex flex-wrap gap-2">
                                     {displaySizes.map((size) => (
                                       <button

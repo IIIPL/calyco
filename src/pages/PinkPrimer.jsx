@@ -26,12 +26,12 @@ const pinkPrimerDetail = {
   description: "Premium alkyd-based wood primer designed to seal knots, prevent tannin bleeding, and provide excellent adhesion for topcoats. Creates a smooth, uniform base that enhances finish coat appearance and durability on all wood surfaces.",
   tagline: "Superior sealing and adhesion for wood surfaces.",
   details: "Calyco Pink Primer is the ultimate foundation for wood. Its specialized alkyd formula penetrates deep to seal porous surfaces and lock in knots, preventing resin bleed-through. It ensures your topcoat adheres perfectly and lasts longer, whether used on interior furniture or exterior window frames.",
-  finish_type_sheen: ["Flat"],
-  defaultFinish: "Flat",
+  finish_type_sheen: ["Matte"],
+  defaultFinish: "Matte",
   packaging: ["1L", "4L", "10L", "20L"],
   // Using provided MRP as the active selling price
   priceByFinish: {
-    "Flat": {
+    "Matte": {
       "1L": 240,
       "4L": 880,
       "10L": 2000,
@@ -94,7 +94,7 @@ const pinkPrimerDetail = {
 // Simulated Higher MRP for "Crossed Out" price (approx +15-20% of selling price)
 // giving the user the feeling of a deal on the prices provided in the prompt.
 const PINK_PRIMER_MRP = {
-  'Flat': {
+  'Matte': {
     '1L': 290,
     '4L': 1050,
     '10L': 2400,
@@ -126,7 +126,7 @@ const PinkPrimer = () => {
             .filter((family) => family.code && family.colors.length > 0);
     }, []);
 
-    const [selectedSheen, setSelectedSheen] = useState("Flat");
+    const [selectedSheen, setSelectedSheen] = useState("Matte");
     const [selectedSize, setSelectedSize] = useState("1L");
     const [selectedColorType, setSelectedColorType] = useState("ready-mixed");
     const [quantity, setQuantity] = useState(1);
@@ -363,7 +363,7 @@ const PinkPrimer = () => {
         return product.priceByFinish || product.price_by_finish || {};
     }, [product]);
 
-    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Flat";
+    const normalizedSelectedSheen = selectedSheen || product?.defaultFinish || "Matte";
 
     const activeFinishPricing = useMemo(() => {
         return priceByFinish?.[normalizedSelectedSheen] || {};
@@ -422,9 +422,9 @@ const PinkPrimer = () => {
 
     useEffect(() => {
         setProduct(pinkPrimerDetail);
-        setSelectedSheen(pinkPrimerDetail.defaultFinish || "Flat");
+        setSelectedSheen(pinkPrimerDetail.defaultFinish || "Matte");
 
-        const finishPricing = (pinkPrimerDetail.priceByFinish || pinkPrimerDetail.price_by_finish || {})["Flat"];
+        const finishPricing = (pinkPrimerDetail.priceByFinish || pinkPrimerDetail.price_by_finish || {})["Matte"];
         if (finishPricing && typeof finishPricing === "object") {
             const sizeKeys = Object.keys(finishPricing);
             if (sizeKeys.length > 0) {
@@ -1138,12 +1138,12 @@ const PinkPrimer = () => {
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#4CAF50] to-[#4CAF50]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
 
-                                {/* Feature 4: Flat Finish */}
+                                {/* Feature 4: Matte Finish */}
                                 <div className="group bg-white/80 backdrop-blur-lg rounded-xl sm:rounded-2xl border border-[#493657]/20 p-6 sm:p-8 hover:shadow-2xl hover:border-[#F0C85A] transition-all duration-500 hover:-translate-y-2">
                                     <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-[#00BCD4] via-[#26C6DA] to-[#4DD0E1] rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                         <FiDroplet className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-sm" />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Flat Finish</h3>
+                                    <h3 className="text-lg sm:text-xl font-bold text-[#493657] mb-2 sm:mb-3">Matte Finish</h3>
                                     <p className="text-sm text-[#493657]/70 leading-relaxed">Provides a uniform, low-sheen surface that is easy to sand and paint over.</p>
                                     <div className="mt-3 sm:mt-4 h-1 w-10 sm:w-12 bg-gradient-to-r from-[#00BCD4] to-[#00BCD4]/40 rounded-full group-hover:w-14 sm:group-hover:w-16 transition-all duration-300"></div>
                                 </div>
