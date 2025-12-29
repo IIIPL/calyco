@@ -19,13 +19,12 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
     : 0;
 
   // Calculate rating distribution
-  const ratingDistribution = [5, 4, 3, 2, 1].map(stars => ({
-    stars,
-    count: reviews.filter(r => r.rating === stars).length,
-    percentage: reviews.length > 0
-      ? ((reviews.filter(r => r.rating === stars).length / reviews.length) * 100).toFixed(0)
-      : 0
-  }));
+  const ratingDistribution = [5, 4, 3, 2, 1].map((stars) => {
+    const count = reviews.filter((r) => Math.round(r.rating) === stars).length;
+    const percentage =
+      reviews.length > 0 ? ((count / reviews.length) * 100).toFixed(0) : 0;
+    return { stars, count, percentage };
+  });
 
   // Sort reviews
   const sortedReviews = [...reviews].sort((a, b) => {

@@ -49,59 +49,59 @@ const interiorLatexReviews = [
 ];
 
 const pinkPrimerReviews = [
-  { id: 1, author: "Suresh Kale", rating: 4.6, date: "2025-12-10", review: "Knots sealed well on old teak door, stains stopped coming. Smell ok after drying." },
-  { id: 2, author: "Jyoti Sharma", rating: 4.7, date: "2025-12-02", review: "Smooth base, sands nicely next day, enamel sat even. Price bhi theek hai." },
-  { id: 3, author: "Rohit Gupta", rating: 4.5, date: "2025-11-26", review: "Good adhesion on MDF cabinets, topcoat grabbed strong, no peeling." },
-  { id: 4, author: "Poonam Verma", rating: 4.6, date: "2025-11-18", review: "Fast drying in Delhi winter, two coats covered knots fully." },
+  { id: 1, author: "Suresh Kale", rating: 4.6, date: "2025-12-10", review: "Knots sealed well on old teak door, stains stopped coming. Smell ok after drying.", verified: true },
+  { id: 2, author: "Jyoti Sharma", rating: 4.7, date: "2025-12-02", review: "Smooth base, sands nicely next day, enamel sat even. Price bhi theek hai.", verified: false },
+  { id: 3, author: "Rohit Gupta", rating: 4.5, date: "2025-11-26", review: "Good adhesion on MDF cabinets, topcoat grabbed strong, no peeling.", verified: true },
+  { id: 4, author: "Poonam Verma", rating: 4.6, date: "2025-11-18", review: "Fast drying in Delhi winter, two coats covered knots fully.", verified: false },
 ];
 
 const yellowMetalPrimerReviews = [
-  { id: 1, author: "Deepak Malhotra", rating: 4.7, date: "2025-12-08", review: "Rust stopped on gate after 2 coats, even post rains." },
-  { id: 2, author: "Anjali Desai", rating: 4.5, date: "2025-12-01", review: "Sticks to GI after light sanding, enamel finish was smooth." },
-  { id: 3, author: "Vikram Patil", rating: 4.6, date: "2025-11-22", review: "Quick set, recoated same evening, hiding is nice." },
-  { id: 4, author: "Neeraj Chandra", rating: 4.7, date: "2025-11-15", review: "Heat resistant on tank stand, coverage is good." },
+  { id: 1, author: "Deepak Malhotra", rating: 4.7, date: "2025-12-08", review: "Rust stopped on gate after 2 coats, even post rains.", verified: true },
+  { id: 2, author: "Anjali Desai", rating: 4.5, date: "2025-12-01", review: "Sticks to GI after light sanding, enamel finish was smooth.", verified: false },
+  { id: 3, author: "Vikram Patil", rating: 4.6, date: "2025-11-22", review: "Quick set, recoated same evening, hiding is nice.", verified: true },
+  { id: 4, author: "Neeraj Chandra", rating: 4.7, date: "2025-11-15", review: "Heat resistant on tank stand, coverage is good.", verified: true },
 ];
 
 const melaminePolishReviews = [
-  { id: 1, author: "Kavita Rao", rating: 4.8, date: "2025-12-05", review: "Furniture shine like showroom, high gloss with no swirl marks." },
-  { id: 2, author: "Amit Sengar", rating: 4.6, date: "2025-11-29", review: "Hard finish, resists scratches, cured smooth in 2 days." },
-  { id: 3, author: "Prerna Nair", rating: 4.7, date: "2025-11-20", review: "Flows and levels nicely, simple sanding between coats, gloss mast." },
-  { id: 4, author: "Naresh Tiwari", rating: 4.5, date: "2025-11-12", review: "Heat & stain safe, hot cups left no rings. Smell fades fast." },
+  { id: 1, author: "Kavita Rao", rating: 4.8, date: "2025-12-05", review: "Furniture shine like showroom, high gloss with no swirl marks.", verified: true },
+  { id: 2, author: "Amit Sengar", rating: 4.6, date: "2025-11-29", review: "Hard finish, resists scratches, cured smooth in 2 days.", verified: false },
+  { id: 3, author: "Prerna Nair", rating: 4.7, date: "2025-11-20", review: "Flows and levels nicely, simple sanding between coats, gloss mast.", verified: true },
+  { id: 4, author: "Naresh Tiwari", rating: 4.5, date: "2025-11-12", review: "Heat & stain safe, hot cups left no rings. Smell fades fast.", verified: true },
 ];
 
 const fireRetardantPaintReviews = [
-  { id: 1, author: "Sahil Kohli", rating: 4.7, date: "2025-12-06", review: "Peace of mind on wooden staircase, coating feels solid." },
-  { id: 2, author: "Renu Kulkarni", rating: 4.6, date: "2025-11-27", review: "Low smoke in patch test, needs multiple coats for rating." },
-  { id: 3, author: "Harish Bhatt", rating: 4.5, date: "2025-11-19", review: "Good spread and stated coverage, thick film with 3 coats." },
-  { id: 4, author: "Manju Singh", rating: 4.6, date: "2025-11-10", review: "Worth the cost for factory beams; intumescent layer swells in heat test." },
+  { id: 1, author: "Sahil Kohli", rating: 4.7, date: "2025-12-06", review: "Peace of mind on wooden staircase, coating feels solid.", verified: true },
+  { id: 2, author: "Renu Kulkarni", rating: 4.6, date: "2025-11-27", review: "Low smoke in patch test, needs multiple coats for rating.", verified: false },
+  { id: 3, author: "Harish Bhatt", rating: 4.5, date: "2025-11-19", review: "Good spread and stated coverage, thick film with 3 coats.", verified: true },
+  { id: 4, author: "Manju Singh", rating: 4.6, date: "2025-11-10", review: "Worth the cost for factory beams; intumescent layer swells in heat test.", verified: true },
 ];
 
 const anticorrosiveBitumasticReviews = [
-  { id: 1, author: "Ramesh Pawar", rating: 4.6, date: "2025-12-04", review: "Rust stopped on old iron gate, smell strong but drying ok." },
-  { id: 2, author: "Kalpana Iyer", rating: 4.8, date: "2025-11-25", review: "Great for water tank pipes, thick finish feels waterproof." },
-  { id: 3, author: "Sanjay Thakur", rating: 4.4, date: "2025-11-17", review: "High build, needed thinner for spray; solid protection for beams." },
-  { id: 4, author: "Meena Shukla", rating: 4.7, date: "2025-11-08", review: "Worth the money; holding well in coastal air despite bitumen smell." },
+  { id: 1, author: "Ramesh Pawar", rating: 4.6, date: "2025-12-04", review: "Rust stopped on old iron gate, smell strong but drying ok.", verified: true },
+  { id: 2, author: "Kalpana Iyer", rating: 4.8, date: "2025-11-25", review: "Great for water tank pipes, thick finish feels waterproof.", verified: false },
+  { id: 3, author: "Sanjay Thakur", rating: 4.4, date: "2025-11-17", review: "High build, needed thinner for spray; solid protection for beams.", verified: true },
+  { id: 4, author: "Meena Shukla", rating: 4.7, date: "2025-11-08", review: "Worth the money; holding well in coastal air despite bitumen smell.", verified: true },
 ];
 
 const epoxyPaintReviews = [
-  { id: 1, author: "Pritesh Mistry", rating: 4.9, date: "2025-12-03", review: "Factory floor looks premium, glossy and easy to mop." },
-  { id: 2, author: "Anita Kulkarni", rating: 4.7, date: "2025-11-24", review: "Strong coating, no bubbles, chemical spills wiped clean." },
-  { id: 3, author: "Devendra Rao", rating: 4.5, date: "2025-11-14", review: "Tough layer after 2 coats, handles trolley traffic well." },
-  { id: 4, author: "Savita Jha", rating: 4.8, date: "2025-11-05", review: "High gloss and durable; smell during application but settles." },
+  { id: 1, author: "Pritesh Mistry", rating: 4.9, date: "2025-12-03", review: "Factory floor looks premium, glossy and easy to mop.", verified: true },
+  { id: 2, author: "Anita Kulkarni", rating: 4.7, date: "2025-11-24", review: "Strong coating, no bubbles, chemical spills wiped clean.", verified: false },
+  { id: 3, author: "Devendra Rao", rating: 4.5, date: "2025-11-14", review: "Tough layer after 2 coats, handles trolley traffic well.", verified: true },
+  { id: 4, author: "Savita Jha", rating: 4.8, date: "2025-11-05", review: "High gloss and durable; smell during application but settles.", verified: true },
 ];
 
 const woodPrimerReviews = [
-  { id: 1, author: "Mahesh Patel", rating: 4.6, date: "2025-12-02", review: "Nice sealing on MDF door, topcoat stuck nicely." },
-  { id: 2, author: "Kiran Naik", rating: 4.7, date: "2025-11-23", review: "No more resin bleed on pine frames after enamel." },
-  { id: 3, author: "Shalini B", rating: 4.5, date: "2025-11-16", review: "Smooth base, sands easy, dries fast for quick jobs." },
-  { id: 4, author: "Ravi Deshmukh", rating: 4.6, date: "2025-11-07", review: "Lead free, less smell; using for interior and exterior trim." },
+  { id: 1, author: "Mahesh Patel", rating: 4.6, date: "2025-12-02", review: "Nice sealing on MDF door, topcoat stuck nicely.", verified: true },
+  { id: 2, author: "Kiran Naik", rating: 4.7, date: "2025-11-23", review: "No more resin bleed on pine frames after enamel.", verified: false },
+  { id: 3, author: "Shalini B", rating: 4.5, date: "2025-11-16", review: "Smooth base, sands easy, dries fast for quick jobs.", verified: true },
+  { id: 4, author: "Ravi Deshmukh", rating: 4.6, date: "2025-11-07", review: "Lead free, less smell; using for interior and exterior trim.", verified: true },
 ];
 
 const redOxideZincChromateReviews = [
-  { id: 1, author: "Prakash Mane", rating: 4.8, date: "2025-12-01", review: "Strong rust guard on railing, adhesion solid after sanding." },
-  { id: 2, author: "Neha Saxena", rating: 4.6, date: "2025-11-21", review: "Industrial feel on machine parts, dries to hard film." },
-  { id: 3, author: "Suresh Bhat", rating: 4.7, date: "2025-11-13", review: "Weather holding; outdoor gate survived first monsoon." },
-  { id: 4, author: "Anjali T", rating: 4.5, date: "2025-11-04", review: "Good coverage and uniform color; ensure ventilation for smell." },
+  { id: 1, author: "Prakash Mane", rating: 4.8, date: "2025-12-01", review: "Strong rust guard on railing, adhesion solid after sanding.", verified: true },
+  { id: 2, author: "Neha Saxena", rating: 4.6, date: "2025-11-21", review: "Industrial feel on machine parts, dries to hard film.", verified: false },
+  { id: 3, author: "Suresh Bhat", rating: 4.7, date: "2025-11-13", review: "Weather holding; outdoor gate survived first monsoon.", verified: true },
+  { id: 4, author: "Anjali T", rating: 4.5, date: "2025-11-04", review: "Good coverage and uniform color; ensure ventilation for smell.", verified: true },
 ];
 
 const luxuryExteriorReviews = [
