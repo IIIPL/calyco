@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import FAQ from '../components/FAQ';
 import FAQAccordion from '../components/FAQAccordion';
@@ -10,6 +10,7 @@ import '../styles/responsive-fixes.css';
 import '../styles/social-share.css';
 
 const BlogDetail = ({ post, allPosts = [] }) => {
+    const [currentUrl, setCurrentUrl] = useState('');
     const [tocOpen, setTocOpen] = useState(true);
     const [likeStatus, setLikeStatus] = useState(null); // null, 'like', or 'dislike'
     const [formVisible, setFormVisible] = useState(true); // Control form visibility
@@ -20,12 +21,25 @@ const BlogDetail = ({ post, allPosts = [] }) => {
         pincode: ''
     });
 
+    useEffect(() => {
+        setCurrentUrl(window.location.href);
+    }, []);
+
     const handleFormChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
+
+    // ... (keep handleFormSubmit and other logic) ...
+
+    // Clean content - remove code fences and parse HTML
+    // ...
+
+    // ... (rendering part) ...
+
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -295,7 +309,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                         <div className="blog-social-share compact-share">
                             <div className="share-buttons">
                                 <a
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl || '')}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn facebook"
@@ -306,7 +320,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     </svg>
                                 </a>
                                 <a
-                                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(heroImage)}&description=${encodeURIComponent(title)}`}
+                                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl || '')}&media=${encodeURIComponent(heroImage)}&description=${encodeURIComponent(title)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn pinterest"
@@ -317,7 +331,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     </svg>
                                 </a>
                                 <a
-                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(title)}`}
+                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl || '')}&text=${encodeURIComponent(title)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn twitter"
@@ -328,14 +342,17 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     </svg>
                                 </a>
                                 <a
-                                    href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this article: ' + window.location.href)}`}
+                                    href={currentUrl ? `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this article: ' + currentUrl)}` : '#'}
                                     className="share-btn email"
                                     aria-label="Share via Email"
+                                    onClick={(e) => !currentUrl && e.preventDefault()}
                                 >
                                     <svg viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                     </svg>
+                                    <span>Mail</span>
                                 </a>
+
                             </div>
                         </div>
 
@@ -396,12 +413,12 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                             </div>
                         </div>
 
-                        {/* Social Share Buttons */}
+                        {/* Social Share Buttons (Bottom) */}
                         <div className="blog-social-share">
                             <h4>SHARE THIS ARTICLE</h4>
                             <div className="share-buttons">
                                 <a
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl || '')}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn facebook"
@@ -413,7 +430,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     <span>Facebook</span>
                                 </a>
                                 <a
-                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(title)}`}
+                                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl || '')}&text=${encodeURIComponent(title)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn twitter"
@@ -425,7 +442,7 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     <span>X</span>
                                 </a>
                                 <a
-                                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(window.location.href)}&media=${encodeURIComponent(heroImage)}&description=${encodeURIComponent(title)}`}
+                                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl || '')}&media=${encodeURIComponent(heroImage)}&description=${encodeURIComponent(title)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="share-btn pinterest"
@@ -437,25 +454,21 @@ const BlogDetail = ({ post, allPosts = [] }) => {
                                     <span>Pinterest</span>
                                 </a>
                                 <a
-                                    href={`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this article: ' + window.location.href)}`}
+                                    href="#"
                                     className="share-btn email"
                                     aria-label="Share via Email"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        const url = window.location.href;
+                                        window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this article: ' + url)}`;
+                                    }}
                                 >
                                     <svg viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                                     </svg>
                                     <span>Mail</span>
                                 </a>
-                                <a
-                                    href={`sms:?&body=${encodeURIComponent(title + ' - ' + window.location.href)}`}
-                                    className="share-btn sms"
-                                    aria-label="Share via SMS"
-                                >
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z" />
-                                    </svg>
-                                    <span>SMS</span>
-                                </a>
+
                             </div>
                         </div>
 
