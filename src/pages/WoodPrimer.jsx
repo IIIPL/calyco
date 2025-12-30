@@ -2,12 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaShoppingCart } from "react-icons/fa";
-import { 
-  FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, 
-  FiPackage, FiShield, FiArchive, FiAlertCircle, FiInfo, FiCalendar, 
-  FiHeart, FiChevronLeft, FiChevronRight, FiWind, FiDownload, FiClock, 
-  FiThermometer, FiAlertTriangle, FiAnchor, FiFeather, FiMaximize
-} from 'react-icons/fi';
+import { FiTag, FiList, FiCheckCircle, FiDroplet, FiClipboard, FiLayers, FiBox, FiPackage, FiShield, FiArchive, FiAlertCircle, FiInfo, FiCalendar, FiHeart, FiChevronLeft, FiChevronRight, FiWind, FiDownload, FiClock, FiThermometer, FiAlertTriangle, FiAnchor, FiFeather, FiMaximize, FiExternalLink } from 'react-icons/fi';
 import { useCart } from "../context/CartContext"; 
 import CartPopup from "../components/CartPopup"; 
 import RatingStars from "../components/RatingStars"; 
@@ -1051,14 +1046,16 @@ const WoodPrimer = () => {
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Product specifications and application details</p>
                                     </div>
                                 </div>
-                                <a
-                                    href="/Assets/docs/html-templates/calyco-wood-primer-tds.html"
-                                    download
-                                    className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
-                                >
-                                    <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    Download TDS
-                                </a>
+                                                                <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                                    <a href="/Assets/docs/html-templates/calyco-wood-primer-tds.html" download className="flex-1 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        Download TDS
+                                    </a>
+                                    <a href="/Assets/docs/html-templates/calyco-wood-primer-tds.html" target="_blank" rel="noopener noreferrer" className="flex-1 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        View TDS
+                                    </a>
+                                </div>
                             </div>
 
                             {/* SDS Document */}
@@ -1072,14 +1069,16 @@ const WoodPrimer = () => {
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Health and safety information</p>
                                     </div>
                                 </div>
-                                <a
-                                    href="/Assets/docs/html-templates/calyco-wood-primer-sds.html"
-                                    download
-                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
-                                >
-                                    <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    Download SDS
-                                </a>
+                                                                <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                                    <a href="/Assets/docs/html-templates/calyco-wood-primer-sds.html" download className="flex-1 bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        Download SDS
+                                    </a>
+                                    <a href="/Assets/docs/html-templates/calyco-wood-primer-sds.html" target="_blank" rel="noopener noreferrer" className="flex-1 bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        View SDS
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

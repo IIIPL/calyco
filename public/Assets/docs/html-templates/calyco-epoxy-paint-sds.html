@@ -1,60 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calyco Epoxy Paint - Safety Data Sheet</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 210mm; margin: 0 auto; padding: 20mm; }
-    h1 { font-size: 24px; margin-bottom: 6px; }
-    h2 { font-size: 16px; margin: 18px 0 8px; border-bottom: 2px solid #493657; padding-bottom: 4px; }
-    p, li { font-size: 13px; }
-    ul { margin-left: 18px; }
-    .meta { font-size: 12px; color: #555; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calyco Epoxy Paint - Safety Data Sheet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', 'Helvetica', sans-serif; line-height: 1.6; color: #333; max-width: 210mm; margin: 0 auto; padding: 20mm; background: #fff; }
+        .header { border-bottom: 4px solid #493657; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .logo { font-size: 32px; font-weight: bold; color: #493657; letter-spacing: 2px; }
+        .doc-type { text-align: right; color: #493657; }
+        .doc-type h2 { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
+        .doc-type p { font-size: 12px; color: #666; }
+        .product-title { background: linear-gradient(135deg, #493657 0%, #5B2C87 100%); color: white; padding: 20px; margin-bottom: 25px; border-radius: 8px; }
+        .product-title h1 { font-size: 26px; margin-bottom: 8px; }
+        .product-title p { font-size: 13px; opacity: 0.95; }
+        .section { margin-bottom: 25px; page-break-inside: avoid; }
+        .section-header { background-color: #493657; color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; margin-bottom: 12px; border-radius: 4px; display: flex; align-items: center; }
+        .section-number { background: #F0C85A; color: #493657; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; }
+        .section-content { padding: 0 15px; }
+        .spec-row { display: flex; padding: 8px 0; border-bottom: 1px solid #e5e5e5; }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { font-weight: bold; color: #493657; min-width: 180px; flex-shrink: 0; }
+        .spec-value { color: #555; }
+        .bullet-list { list-style: none; padding-left: 0; }
+        .bullet-list li { padding-left: 25px; position: relative; margin-bottom: 8px; color: #555; }
+        .bullet-list li:before { content: "•"; color: #F0C85A; font-weight: bold; font-size: 18px; position: absolute; left: 5px; }
+        .warning-box { background: #FFF9E6; border-left: 4px solid #EAB308; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .warning-box h4 { color: #854D0E; margin-bottom: 8px; font-size: 13px; font-weight: bold; }
+        .warning-box p { font-size: 12px; line-height: 1.6; color: #555; }
+        .footer { margin-top: 30px; padding-top: 15px; border-top: 2px solid #493657; font-size: 10px; color: #666; text-align: center; }
+        .footer p { margin-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th { background-color: #493657; color: white; padding: 8px; text-align: left; font-size: 13px; }
+        td { padding: 8px; border-bottom: 1px solid #ddd; font-size: 12px; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        @media print { body { padding: 10mm; } .section { page-break-inside: avoid; } }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Calyco Epoxy Paint</h1>
-    <p class="meta">Safety Data Sheet | Issued: 30 Nov 2025</p>
-    <p class="meta">CALYCO PRODUCTS PRIVATE LIMITED, Plot 45, MIDC Hingna, Nagpur, MH 440016</p>
-  </div>
-  <h2>1. Identification</h2>
-  <p>Product: Calyco Epoxy Paint | Recommended use: As per product datasheet.</p>
-  <h2>2. Hazard Identification</h2>
-  <p>Classified based on product class. Avoid ingestion and prolonged skin/eye contact. For solvent systems, keep away from ignition sources.</p>
-  <h2>3. Composition/Information</h2>
-  <p>Proprietary formulation. See label for resin/solvent details for solvent/2K products.</p>
-  <h2>4. First Aid Measures</h2>
-  <ul>
-    <li>Inhalation: Move to fresh air; seek medical attention if symptoms persist.</li>
-    <li>Skin: Wash with soap and water.</li>
-    <li>Eyes: Rinse cautiously with water for several minutes.</li>
-    <li>Ingestion: Do not induce vomiting; seek immediate medical advice.</li>
-  </ul>
-  <h2>5. Fire Fighting Measures</h2>
-  <p>Use foam, CO2, dry powder for solvent/PU/alkyd types; water spray for water-based. Wear self-contained breathing apparatus.</p>
-  <h2>6. Accidental Release Measures</h2>
-  <p>Contain/absorb with inert material. Prevent entry to drains. Use PPE.</p>
-  <h2>7. Handling and Storage</h2>
-  <p>Store cool, dry, ventilated. Keep container closed. Keep away from heat/ignition for solvent systems.</p>
-  <h2>8. Exposure Controls / PPE</h2>
-  <p>Provide ventilation. Use gloves/eye protection; respirator when spraying solvent/2K products.</p>
-  <h2>9. Physical and Chemical Properties</h2>
-  <p>Appearance: As supplied. Odour: Characteristic. VOC/flash point: see pack/tds.</p>
-  <h2>10. Stability and Reactivity</h2>
-  <p>Stable under normal conditions. Avoid extreme heat and incompatible materials.</p>
-  <h2>11. Toxicological Information</h2>
-  <p>No significant hazards when used as directed. Avoid prolonged/repeated exposure.</p>
-  <h2>12. Ecological Information</h2>
-  <p>Do not discharge to drains/waterways.</p>
-  <h2>13. Disposal Considerations</h2>
-  <p>Dispose per local regulations. Do not pour into drains.</p>
-  <h2>14. Transport Information</h2>
-  <p>Check pack. Solvent/2K types may be classified as flammable/hazardous.</p>
-  <h2>15. Regulatory Information</h2>
-  <p>Complies with applicable coatings regulations in India.</p>
-  <h2>16. Other Information</h2>
-  <p>Information is provided in good faith; no warranty expressed or implied. Users must determine suitability.</p>
+    <div class="header">
+        <div class="logo">CALYCO</div>
+        <div class="doc-type">
+            <h2>SAFETY DATA SHEET (SDS)</h2>
+            <p>Revision Date: January 2025 | Version 1.0</p>
+        </div>
+    </div>
+
+    <div class="product-title">
+        <h1>Calyco Epoxy Paint</h1>
+        <p>Epoxy resin (2-component)</p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">1</span>PRODUCT & COMPANY IDENTIFICATION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Product Name:</div><div class="spec-value">Calyco Epoxy Paint</div></div>
+            <div class="spec-row"><div class="spec-label">Product Code:</div><div class="spec-value">CAL-EPX-012</div></div>
+            <div class="spec-row"><div class="spec-label">Product Type:</div><div class="spec-value">Epoxy resin (2-component)</div></div>
+            <div class="spec-row"><div class="spec-label">Recommended Use:</div><div class="spec-value">Industrial floors and warehouses</div></div>
+            <div class="spec-row"><div class="spec-label">Manufacturer:</div><div class="spec-value">Calyco Paints Private Limited</div></div>
+            <div class="spec-row"><div class="spec-label">Address:</div><div class="spec-value">India</div></div>
+            <div class="spec-row"><div class="spec-label">Website:</div><div class="spec-value">www.calycopaints.com</div></div>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">2</span>HAZARDS IDENTIFICATION</div>
+        <div class="section-content">
+            <p style="margin-bottom: 10px;"><strong>GHS Classification:</strong></p>
+            <ul class="bullet-list">
+                <li>DANGER: HARMFUL if swallowed or inhaled.</li>
+                <li>Causes skin irritation and may cause allergic skin reaction.</li>
+                <li>Causes serious eye damage.</li>
+            </ul>
+            <div class="warning-box">
+                <h4>⚠ WARNING</h4>
+                <p><strong>Precautionary Statements:</strong><br>
+                P261 - Avoid breathing mist or spray. Use only with adequate ventilation.<br>
+                P264 - Wash hands thoroughly after handling.<br>
+                P280 - Wear protective gloves and eye protection.<br>
+                P312 - Call a POISON CENTER or doctor if you feel unwell.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">3</span>COMPOSITION / INFORMATION ON INGREDIENTS</div>
+        <div class="section-content">
+            <table>
+                <tr><th>Component</th><th>CAS Number</th><th>Concentration</th></tr>
+                <tr><td>Acrylic polymer dispersion</td><td>Proprietary</td><td>30-50%</td></tr>
+                <tr><td>Titanium dioxide (if white/tinted)</td><td>13463-67-7</td><td>5-15%</td></tr>
+                <tr><td>Water</td><td>7732-18-5</td><td>30-50%</td></tr>
+                <tr><td>Additives and fillers</td><td>Proprietary</td><td>5-20%</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">4</span>FIRST AID MEASURES</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Eye Contact:</div><div class="spec-value">Rinse cautiously with water for several minutes. Remove contact lenses if present. Continue rinsing. Seek medical attention if irritation persists.</div></div>
+            <div class="spec-row"><div class="spec-label">Skin Contact:</div><div class="spec-value">Wash with soap and water. Remove contaminated clothing. Seek medical attention if irritation develops.</div></div>
+            <div class="spec-row"><div class="spec-label">Inhalation:</div><div class="spec-value">Move to fresh air. Keep at rest in comfortable position. Seek medical advice if symptoms occur.</div></div>
+            <div class="spec-row"><div class="spec-label">Ingestion:</div><div class="spec-value">Rinse mouth. Do NOT induce vomiting. Seek medical attention immediately.</div></div>
+        </div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">5</span>FIRE-FIGHTING MEASURES</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Suitable Extinguishing Media:</div><div class="spec-value">Water spray, foam, dry powder, carbon dioxide</div></div>
+            <div class="spec-row"><div class="spec-label">Unsuitable Media:</div><div class="spec-value">None known</div></div>
+            <div class="spec-row"><div class="spec-label">Special Hazards:</div><div class="spec-value">May release toxic fumes when heated</div></div>
+            <div class="spec-row"><div class="spec-label">Protection for Firefighters:</div><div class="spec-value">Wear self-contained breathing apparatus and protective gear</div></div>
+        </div>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">6</span>ACCIDENTAL RELEASE MEASURES</div>
+        <div class="section-content">
+            <ul class="bullet-list">
+                <li>Eliminate all ignition sources</li>
+                <li>Ventilate area</li>
+                <li>Contain spill with inert absorbent material</li>
+                <li>Collect and place in suitable container for disposal</li>
+                <li>Clean contaminated area with water</li>
+                <li>Prevent entry into drains and waterways</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">7</span>HANDLING & STORAGE</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Handling:</div><div class="spec-value">Avoid contact with eyes and skin. Use in well-ventilated areas. Wear protective equipment.</div></div>
+            <div class="spec-row"><div class="spec-label">Storage:</div><div class="spec-value">Store in cool, dry place (Cool, dry place (store components separately)). Keep container tightly closed. Protect from freezing.</div></div>
+        </div>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">8</span>EXPOSURE CONTROLS / PERSONAL PROTECTION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Exposure Limits:</div><div class="spec-value">VOC: <= 250 g/L</div></div>
+            <div class="spec-row"><div class="spec-label">Eye Protection:</div><div class="spec-value">Safety goggles</div></div>
+            <div class="spec-row"><div class="spec-label">Hand Protection:</div><div class="spec-value">Nitrile or latex gloves</div></div>
+            <div class="spec-row"><div class="spec-label">Respiratory Protection:</div><div class="spec-value">Not normally required with adequate ventilation</div></div>
+            <div class="spec-row"><div class="spec-label">Skin Protection:</div><div class="spec-value">Long sleeves and protective clothing</div></div>
+        </div>
+    </div>
+
+    <!-- Section 9 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">9</span>PHYSICAL & CHEMICAL PROPERTIES</div>
+        <div class="section-content">
+            <table>
+                <tr><td>Appearance:</td><td>Liquid</td></tr>
+                <tr><td>Colour:</td><td>Variable (as per tint)</td></tr>
+                <tr><td>Odour:</td><td>Mild, characteristic</td></tr>
+                <tr><td>pH:</td><td>8.0 - 9.5</td></tr>
+                <tr><td>Flash Point:</td><td>Non-flammable</td></tr>
+                <tr><td>Specific Gravity:</td><td>1.3 - 1.5</td></tr>
+                <tr><td>VOC Content:</td><td><= 250 g/L</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Section 10 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">10</span>STABILITY & REACTIVITY</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Chemical Stability:</div><div class="spec-value">Stable under normal conditions</div></div>
+            <div class="spec-row"><div class="spec-label">Conditions to Avoid:</div><div class="spec-value">Freezing temperatures, excessive heat</div></div>
+            <div class="spec-row"><div class="spec-label">Incompatible Materials:</div><div class="spec-value">Strong oxidizing agents</div></div>
+            <div class="spec-row"><div class="spec-label">Hazardous Decomposition:</div><div class="spec-value">Carbon oxides when heated to decomposition</div></div>
+        </div>
+    </div>
+
+    <!-- Section 11 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">11</span>TOXICOLOGICAL INFORMATION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Acute Toxicity:</div><div class="spec-value">Low toxicity by all exposure routes</div></div>
+            <div class="spec-row"><div class="spec-label">Skin Corrosion/Irritation:</div><div class="spec-value">May cause mild skin irritation</div></div>
+            <div class="spec-row"><div class="spec-label">Eye Damage/Irritation:</div><div class="spec-value">May cause eye irritation</div></div>
+            <div class="spec-row"><div class="spec-label">Sensitization:</div><div class="spec-value">Not classified as a sensitizer</div></div>
+        </div>
+    </div>
+
+    <!-- Section 12 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">12</span>ECOLOGICAL INFORMATION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Ecotoxicity:</div><div class="spec-value">Low aquatic toxicity</div></div>
+            <div class="spec-row"><div class="spec-label">Persistence:</div><div class="spec-value">Not readily biodegradable</div></div>
+            <div class="spec-row"><div class="spec-label">Mobility:</div><div class="spec-value">Low mobility in soil</div></div>
+            <div class="spec-row"><div class="spec-label">Environmental Precautions:</div><div class="spec-value">Prevent entry into drains and waterways</div></div>
+        </div>
+    </div>
+
+    <!-- Section 13 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">13</span>DISPOSAL CONSIDERATIONS</div>
+        <div class="section-content">
+            <ul class="bullet-list">
+                <li>Dispose in accordance with local environmental regulations</li>
+                <li>Do not discharge to drains or waterways</li>
+                <li>Empty containers should be recycled or disposed of properly</li>
+                <li>Allow liquid waste to solidify before disposal if permitted</li>
+                <li>Consult local waste management authority for proper disposal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 14 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">14</span>TRANSPORT INFORMATION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">UN Number:</div><div class="spec-value">Not classified as dangerous goods</div></div>
+            <div class="spec-row"><div class="spec-label">Transport Hazard Class:</div><div class="spec-value">Not applicable</div></div>
+            <div class="spec-row"><div class="spec-label">Packing Group:</div><div class="spec-value">Not applicable</div></div>
+            <div class="spec-row"><div class="spec-label">Special Precautions:</div><div class="spec-value">Protect from freezing during transport</div></div>
+        </div>
+    </div>
+
+    <!-- Section 15 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">15</span>REGULATORY INFORMATION</div>
+        <div class="section-content">
+            <div class="spec-row"><div class="spec-label">Classification:</div><div class="spec-value">Classified according to GHS standards</div></div>
+            <div class="spec-row"><div class="spec-label">VOC Compliance:</div><div class="spec-value"><= 250 g/L</div></div>
+            <div class="spec-row"><div class="spec-label">Standards:</div><div class="spec-value">Complies with applicable Indian and international standards</div></div>
+        </div>
+    </div>
+
+    <!-- Section 16 -->
+    <div class="section">
+        <div class="section-header"><span class="section-number">16</span>OTHER INFORMATION</div>
+        <div class="section-content">
+            <p><strong>Revision Date:</strong> January 2025</p>
+            <p><strong>Version:</strong> 1.0</p>
+            <p style="margin-top: 10px;">This Safety Data Sheet provides information based on current knowledge. Users should evaluate and use this product safely based on their own specific applications and conditions.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>CALYCO PAINTS</strong> | Premium Coating Solutions</p>
+        <p>For technical information, please refer to the Technical Data Sheet (TDS)</p>
+        <p>Technical Support: support@calycopaints.com | www.calycopaints.com</p>
+        <p style="margin-top: 10px;">Disclaimer: The information provided is accurate to the best of our knowledge. However, no warranty is expressed or implied regarding the accuracy of the data or the results obtained from the use thereof.</p>
+    </div>
 </body>
 </html>
