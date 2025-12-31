@@ -430,6 +430,9 @@ const TexturePaints = () => {
                                     <img
                                         src={selectedImage || product.image}
                                         alt={`${product.name} - Image ${selectedImageIndex + 1}`}
+                                        width="800"
+                                        height="800"
+                                        loading="eager"
                                         className="w-full h-auto max-h-[400px] sm:max-h-[500px] lg:max-h-[700px] object-contain rounded-lg sm:rounded-xl"
                                     />
                                     {product.images && product.images.length > 1 && (
