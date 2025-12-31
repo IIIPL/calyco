@@ -509,14 +509,16 @@ const TexturePaints = () => {
                             <span className="inline-flex items-center rounded-md bg-red-600 text-white text-xs font-bold px-2 py-1 uppercase tracking-wide">
                                 Sale is Live
                             </span>
-                            <div className="flex items-baseline gap-2 sm:gap-3">
+                            <div className="flex items-baseline gap-2 sm:gap-3 flex-wrap">
                                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
                                 {displayMRPValue && (
                                     <span className="text-base sm:text-lg text-red-500 line-through">
                                         {formatINR(displayMRPValue)}
                                     </span>
                                 )}
-                                <span className="text-xs sm:text-sm text-[#493657]/60">per 30 kg</span>
+                                <span className="text-xs sm:text-sm text-[#493657]/60">
+                                    per {selectedSize || product?.sizes?.[0]?.size || "unit"}
+                                </span>
                             </div>
                         </div>
 
