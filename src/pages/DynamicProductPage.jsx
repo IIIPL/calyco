@@ -10,6 +10,7 @@ import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
+import SEO from "../components/SEO";
 
 import variantMapInterior from '../data/variantMap.interior.json';
 
@@ -185,6 +186,59 @@ export const DynamicProductPage = () => {
     const leftColumnWrapperRef = useRef(null);
     const stickyImageRef = useRef(null);
     const rightColumnRef = useRef(null);
+
+    const canonicalUrl = product
+        ? `https://calycopaints.com/product/${product.slug || productId}`
+        : `https://calycopaints.com/product/${productId || ""}`;
+
+    const seoMeta = useMemo(() => {
+        if (!product) return null;
+        const desc =
+            product.description ||
+            product.short_description ||
+            (product.features && product.features.slice(0, 3).join(" · ")) ||
+            `${product.name} by Calyco Paints.`;
+        const image =
+            (product.images && product.images[0]) ||
+            product.image ||
+            "https://calycopaints.com/Assets/Product%20Images/Premium%20Interior%20Emulsion/1.webp";
+        return {
+            title: `${product.display_name || product.name} | Calyco Paints`,
+            description: desc,
+            image: image.startsWith("http") ? image : `https://calycopaints.com${image}`,
+            canonicalUrl,
+        };
+    }, [product, canonicalUrl]);
+
+    const productSchema = useMemo(() => {
+        if (!product) return null;
+        const priceValue = calculatePrice(selectedSize) || product.price || product.sale_price;
+        const availability = product.in_stock === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock";
+        const image =
+            (product.images && product.images[0]) ||
+            product.image ||
+            "https://calycopaints.com/Assets/Product%20Images/Premium%20Interior%20Emulsion/1.webp";
+        return {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.display_name || product.name,
+            description: product.description || product.short_description || "",
+            image: image.startsWith("http") ? image : `https://calycopaints.com${image}`,
+            sku: product.sku || product.id || product.slug || productId || "SKU",
+            brand: {
+                "@type": "Brand",
+                name: "Calyco Paints",
+            },
+            offers: {
+                "@type": "Offer",
+                url: canonicalUrl,
+                priceCurrency: "INR",
+                price: priceValue ? String(priceValue) : undefined,
+                availability,
+                itemCondition: "https://schema.org/NewCondition",
+            },
+        };
+    }, [product, selectedSize, canonicalUrl, productId, calculatePrice]);
 
     const activeColorFamily = colorFamilies.find((family) => family.code === selectedColorFamily);
 
@@ -837,6 +891,15 @@ export const DynamicProductPage = () => {
 
     return (
         <>
+        {seoMeta && (
+            <SEO
+                title={seoMeta.title}
+                description={seoMeta.description}
+                image={seoMeta.image}
+                canonicalUrl={seoMeta.canonicalUrl}
+                schemaMarkup={productSchema}
+            />
+        )}
         <div className="min-h-screen bg-white px-2 md:px-6 xl:px-10">
             <motion.section
                 className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"

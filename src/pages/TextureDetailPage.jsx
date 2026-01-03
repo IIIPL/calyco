@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getTextureBySlug, getRandomTextures } from '../data/textures';
 import contactData from '../data/admin/contact.json';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 
 const TextureDetailPage = () => {
   const { textureSlug } = useParams();
@@ -13,6 +14,10 @@ const TextureDetailPage = () => {
 
   const texture = getTextureBySlug(textureSlug);
   const recommendations = getRandomTextures(textureSlug, 4);
+  const canonicalUrl = `https://calycopaints.com/textures/${textureSlug}`;
+  const seoTitle = texture ? `${texture.name} Texture Finish | Calyco Paints` : 'Calyco Texture Finish';
+  const seoDescription = texture?.description || 'Premium texture finishes from Calyco with rich surface effects and durable performance.';
+  const seoImage = texture?.image ? `https://calycopaints.com${texture.image}` : 'https://calycopaints.com/Assets/Texture%20Images/texture-main.webp';
 
   // --- SEO LOGIC START ---
   useEffect(() => {
@@ -172,14 +177,13 @@ const TextureDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 pt-20">
-      
-      {/* --- INJECTED SCHEMA --- */}
-      {schemaData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-      )}
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        image={seoImage}
+        canonicalUrl={canonicalUrl}
+        schemaMarkup={schemaData}
+      />
 
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

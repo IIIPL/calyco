@@ -101,6 +101,7 @@ import CustomerService from "./pages/Policies/CustomerService";
 
 
 import { useNavigate } from "react-router-dom";
+import AutoSEO from './components/AutoSEO';
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
@@ -161,6 +162,7 @@ function App() {
       <ColorProvider>
         <ColorVisualizationProvider>
           <div className='font-poppins overflow-x-hidden'>
+            <AutoSEO />
             {/* Offer Banner - Above Header */}
             <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />
 
