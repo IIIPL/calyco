@@ -42,7 +42,7 @@ const TexturesPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/Assets/Texture Images/GPT_Image_1_Sophisticated_living_room_corner_with_textured_acc_0.webp"
+            src="/Assets/Texture Images/texture-main.webp"
             alt="Premium textured wall finishes"
             className="w-full h-full object-cover object-center"
           />
