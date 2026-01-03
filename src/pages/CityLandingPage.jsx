@@ -16,6 +16,13 @@ const CityLandingPage = () => {
   const city = getCityBySlug(citySlug);
   const topTextures = getRandomTextures(null, 4);
 
+  const canonicalUrl = `https://calycopaints.com/${citySlug}`;
+  const seoTitle = city?.metaTitle || `${city?.name || 'City'} Paints & Services | Calyco`;
+  const seoDescription =
+    city?.metaDescription ||
+    `Calyco premium paints, primers, textures, and services available in ${city?.name || 'your city'}. Get expert guidance and fast delivery.`;
+  const seoImage = city?.heroImage || 'https://calycopaints.com/Assets/Texture%20Images/texture-main.webp';
+
   // SEO: Update page title
   useEffect(() => {
     if (city) {
@@ -109,6 +116,12 @@ const CityLandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        image={seoImage}
+        canonicalUrl={canonicalUrl}
+      />
       {/* JSON-LD Schema for SEO */}
       <script
         type="application/ld+json"
