@@ -462,11 +462,11 @@ const Checkout = () => {
                 const isPaintProduct = type === 'paint' || type === 'ready-mixed' || type === 'tint-on-demand';
 
                 // Determine display image with robust fallback hierarchy
-                let displayImage = '/Assets/placeholder-product.jpg';
+                let displayImage = '/Assets/placeholder-product.webp';
 
                 if (isService) {
                   // Services: use service-specific image or fallback
-                  displayImage = item.image || item.serviceImage || '/Assets/site-visit-consultation.jpg';
+                  displayImage = item.image || item.serviceImage || '/Assets/site-visit-consultation.webp';
                 } else if (item.textureImage) {
                   // Textures: use texture-specific image
                   displayImage = item.textureImage;
@@ -488,7 +488,7 @@ const Checkout = () => {
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           // Fallback if image fails to load
-                          e.target.src = '/Assets/placeholder-product.jpg';
+                          e.target.src = '/Assets/placeholder-product.webp';
                         }}
                       />
                     </div>
@@ -637,13 +637,13 @@ const Checkout = () => {
                     <span className="text-sm font-medium text-gray-700">100% Secure Payment</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 flex-wrap">
-                    <img src="/Assets/Payment Logos/visa.png" alt="Visa" className="h-3" />
-                    <img src="/Assets/Payment Logos/mastercard.png" alt="Mastercard" className="h-3" />
-                    <img src="/Assets/Payment Logos/rupay.png" alt="RuPay" className="h-3" />
-                    <img src="/Assets/Payment Logos/1280px-UPI-Logo-vector.svg.png" alt="UPI" className="h-3" />
-                    <img src="/Assets/Payment Logos/Paytm_logo.png" alt="Paytm" className="h-3" />
-                    <img src="/Assets/Payment Logos/gpay.png" alt="GPay" className="h-3" />
-                    <img src="/Assets/Payment Logos/PhonePe.png" alt="PhonePe" className="h-3" />
+                    <img src="/Assets/Payment Logos/visa.webp" alt="Visa" className="h-3" />
+                    <img src="/Assets/Payment Logos/mastercard.webp" alt="Mastercard" className="h-3" />
+                    <img src="/Assets/Payment Logos/rupay.webp" alt="RuPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/1280px-UPI-Logo-vector.svg.webp" alt="UPI" className="h-3" />
+                    <img src="/Assets/Payment Logos/Paytm_logo.webp" alt="Paytm" className="h-3" />
+                    <img src="/Assets/Payment Logos/gpay.webp" alt="GPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/PhonePe.webp" alt="PhonePe" className="h-3" />
                   </div>
                 </div>
               </form>

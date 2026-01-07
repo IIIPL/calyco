@@ -10,7 +10,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-09",
     readTime: "8 min read", // Updated read time
-    image: "/Assets/BlogImages/Mastering Monochromatic Schemes Elegance in Simplicity.jpg",
+    image: "/Assets/BlogImages/Mastering Monochromatic Schemes Elegance in Simplicity.webp",
     summary: "How to use varying shades of a single color to create depth, sophistication, and balance in modern interiors.",
     content: `
       <h2>The Philosophy of Monochromatic Design</h2>
@@ -81,7 +81,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-09",
     readTime: "10 min read", // Updated read time
-    image: "/Assets/BlogImages/Choosing the Right Primer Water-Based vs. Solvent-Based.jpg",
+    image: "/Assets/BlogImages/Choosing the Right Primer Water-Based vs. Solvent-Based.webp",
     summary: "A technical comparison of primer types: when to use water-based acrylics and when to rely on traditional solvent formulas for maximum performance.",
     content: `
       <h2>The Indispensable Role of Primer</h2>
@@ -173,7 +173,7 @@ const blogContentArray = [
     author: "Arjun Malhotra",
     date: "2025-12-09",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Protecting Wood Coatings Durability for Interior Woodwork.jpg",
+    image: "/Assets/BlogImages/Protecting Wood Coatings Durability for Interior Woodwork.webp",
     summary: "Selecting and applying high-performance Polyurethane (PU) and Melamine finishes to ensure interior wooden elements remain protected, scratch-resistant, and vibrant.",
     content: `
       <h2>The Demand for High-Performance Wood Finishes</h2>
@@ -264,7 +264,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-09",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Decoding Paint Jargon Gloss, Sheen, and Flat Finishes Explained.jpg",
+    image: "/Assets/BlogImages/Decoding Paint Jargon Gloss, Sheen, and Flat Finishes Explained.webp",
     summary: "A simple guide to choosing the perfect paint sheen (flat, matte, eggshell, satin, semi-gloss, and high-gloss) for every room in your home.",
     content: `
       <h2>Understanding Paint Sheen</h2>
@@ -329,7 +329,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-09",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Choosing the Perfect Accent Wall A Design Strategy.jpg",
+    image: "/Assets/BlogImages/Choosing the Perfect Accent Wall A Design Strategy.webp",
     summary: "How to identify the best wall in any room for an accent color or texture to maximize visual impact and define the space without overwhelming it.",
     content: `
       <h2>The Focal Point Principle</h2>
@@ -393,7 +393,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-10",
     readTime: "11 min read",
-    image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.jpg",
+    image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.webp",
     summary: "Expert advice on diagnosing and permanently repairing the three most common paint failure issues on exterior walls to ensure long-term paint life.",
     content: `
       <h2>Diagnosis is Half the Cure</h2>
@@ -458,7 +458,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-10",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Warm Neutrals The Palette for Cozy Indian Homes This Winter.jpg",
+    image: "/Assets/BlogImages/Warm Neutrals The Palette for Cozy Indian Homes This Winter.webp",
     summary: "Discover the beige, taupe, and off-white shades that add warmth and comfort to interiors during the colder months, replacing stark cool grays.",
     content: `
       <h2>The Shift to Cozy Interiors</h2>
@@ -520,7 +520,7 @@ const blogContentArray = [
     author: "Rajesh Kumar",
     date: "2025-12-10",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.jpg",
+    image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.webp",
     summary: "Detailed look at the difference between wood stains (which penetrate) and wood paints (which cover) for various interior and exterior wood applications.",
     content: `
       <h2>The Fundamental Difference</h2>
@@ -578,7 +578,7 @@ const blogContentArray = [
     author: "Priya Sharma",
     date: "2025-12-10",
     readTime: "10 min read",
-    image: "/Assets/BlogImages/The Role of Damp Guard Primers in Monsoon Preparation.jpg",
+    image: "/Assets/BlogImages/The Role of Damp Guard Primers in Monsoon Preparation.webp",
     summary: "How specialized damp-proof primers actively resist moisture ingress and prevent the formation of mold, mildew, and efflorescence on walls.",
     content: `
       <h2>The Problem of Wall Dampness</h2>
@@ -694,7 +694,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-10",
     readTime: "11 min read",
-    image: "/Assets/BlogImages/The Ultimate Guide to Exterior Wall Preparation.jpg",
+    image: "/Assets/BlogImages/The Ultimate Guide to Exterior Wall Preparation.webp",
     summary: "Step-by-step instructions for cleaning, repairing, and priming exterior walls to ensure maximum paint longevity in harsh Indian climates.",
     content: `
       <h2>The 80/20 Rule of Painting</h2>
@@ -756,7 +756,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-10",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Maximizing Space with Light Colors in Small Rooms.jpg",
+    image: "/Assets/BlogImages/Maximizing Space with Light Colors in Small Rooms.webp",
     summary: "Design psychology tips: Using cool blues, pale greens, and off-whites to make small bedrooms and living spaces feel larger and airier.",
     content: `
       <h2>The Psychological Effect of Color</h2>
@@ -815,7 +815,7 @@ const blogContentArray = [
     author: "Priya Sharma",
     date: "2025-12-11",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Elastomeric Coatings The Flexible Solution for Concrete Cracks.jpg",
+    image: "/Assets/BlogImages/Elastomeric Coatings The Flexible Solution for Concrete Cracks.webp",
     summary: "A deep dive into highly elastic coatings that stretch and contract, bridging existing hairline cracks and preventing future water damage.",
     content: `
       <h2>Why Traditional Paint Fails on Concrete</h2>
@@ -875,7 +875,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-11",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.jpg",
+    image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.webp",
     summary: "The step-by-step process of using acrylic putty, sanding, and priming to achieve a flawless, mirror-like base for luxury emulsions.",
     content: `
       <h2>The Foundation of Luxury</h2>
@@ -928,7 +928,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-11",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/sunlight on interior wall.jpg",
+    image: "/Assets/BlogImages/sunlight on interior wall.webp",
     summary: "Guide to understanding how different light sources (natural daylight, warm LED, cool white) impact paint color perception throughout the day.",
     content: `
       <h2>Color is Defined by Light</h2>
@@ -976,7 +976,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-11",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Anti-Algal & Anti-Fungal Coatings Keeping Walls Clean.jpg",
+    image: "/Assets/BlogImages/Anti-Algal & Anti-Fungal Coatings Keeping Walls Clean.webp",
     summary: "How specialized biocidal additives in modern exterior paints inhibit the growth of black algae, fungus, and moss, preserving the building's aesthetic appeal.",
     content: `
       <h2>The Green/Black Menace</h2>
@@ -1081,7 +1081,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-11",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Designing the Perfect Home Office Colors for Focus and Calm.jpg",
+    image: "/Assets/BlogImages/Designing the Perfect Home Office Colors for Focus and Calm.webp",
     summary: "Using colors like pale blue and serene green to enhance concentration, reduce stress, and boost productivity in your work-from-home space.",
     content: `
       <h2>The Psychology of the Workspace</h2>
@@ -1127,7 +1127,7 @@ const blogContentArray = [
     author: "Rajesh Kumar",
     date: "2025-12-11",
     readTime: "10 min read",
-    image: "/Assets/BlogImages/Protecting Industrial Floors with High-Performance Epoxy Coatings.jpg",
+    image: "/Assets/BlogImages/Protecting Industrial Floors with High-Performance Epoxy Coatings.webp",
     summary: "Guide to chemical-resistant, high-traffic epoxy systems for factories, warehouses, and commercial kitchens that demand extreme durability.",
     content: `
       <h2>Why Concrete Isn't Enough</h2>
@@ -1181,7 +1181,7 @@ const blogContentArray = [
     author: "Arjun Malhotra",
     date: "2025-12-12",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Beyond White Stylish Ceiling Colors to Transform Your Room.jpg",
+    image: "/Assets/BlogImages/Beyond White Stylish Ceiling Colors to Transform Your Room.webp",
     summary: "Tips for using dark or matching ceiling colors to create a cozy 'cocooning' effect or lower a high ceiling visually for better proportions.",
     content: `
       <h2>The Fifth Wall Theory</h2>
@@ -1241,7 +1241,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-12",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/The Importance of Primer in Achieving Dark Colors.jpg",
+    image: "/Assets/BlogImages/The Importance of Primer in Achieving Dark Colors.webp",
     summary: "How using a tinted grey primer eliminates the need for 3-4 topcoats when switching from a light wall to a deep shade like navy or charcoal, saving time and cost.",
     content: `
       <h2>The "Coverage" Myth</h2>
@@ -1298,7 +1298,7 @@ const blogContentArray = [
     author: "Priya Sharma",
     date: "2025-12-12",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Protecting Terrace Gardens Waterproofing Under Soil.jpg",
+    image: "/Assets/BlogImages/Protecting Terrace Gardens Waterproofing Under Soil.webp",
     summary: "Essential guidelines for multi-layer waterproofing systems designed to withstand constant moisture, drainage issues, and aggressive root intrusion in rooftop gardens.",
     content: `
       <h2>The Unique Challenge of Soil on Roofs</h2>
@@ -1356,7 +1356,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-12",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Texture Coatings.jpg",
+    image: "/Assets/BlogImages/Texture Coatings.webp",
     summary: "Exploring different interior texture techniques—such as sponge, ragging, and metallic effects—and how to apply them for artistic depth and character.",
     content: `
       <h2>Why Choose Texture Over Flat Paint?</h2>
@@ -1418,7 +1418,7 @@ const blogContentArray = [
     author: "Meera Desai",
     date: "2025-12-12",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/Sustainable Coating Solutions Low-VOC Without Compromise.jpg",
+    image: "/Assets/BlogImages/Sustainable Coating Solutions Low-VOC Without Compromise.webp",
     summary: "Detailing the use of recycled materials in paint cans and the company's initiatives to reduce plastic waste and promote recycling in the supply chain.",
     content: `
       <h2>The Paint Industry's Waste Challenge</h2>
@@ -1467,7 +1467,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-12",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Exterior Protection Defending Against Harsh Indian Climates.jpg",
+    image: "/Assets/BlogImages/Exterior Protection Defending Against Harsh Indian Climates.webp",
     summary: "Guidelines for selecting trim colors (windows, doors, accents) that either pop against the main facade or blend seamlessly for an elegant, unified look.",
     content: `
       <h2>The Function of Exterior Trim</h2>
@@ -1521,7 +1521,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-12",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Long-Lasting Exterior Paint Systems for Harsh Indian Weather in 2025.png",
+    image: "/Assets/BlogImages/Long-Lasting Exterior Paint Systems for Harsh Indian Weather in 2025.webp",
     summary: "Explaining how specialized inorganic pigments and UV absorbers prevent fading and chalking over years of intense sun exposure.",
     content: `
       <h2>The Enemy: UV Radiation</h2>
@@ -1568,7 +1568,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-13",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Jewel Tone Accent Walls Emerald, Sapphire and Burgundy Ideas for Living Rooms.jpg",
+    image: "/Assets/BlogImages/Jewel Tone Accent Walls Emerald, Sapphire and Burgundy Ideas for Living Rooms.webp",
     summary: "Using earthy tones, subtle textures, and bold accent colors to capture the free-spirited, eclectic Bohemian style in your living space.",
     content: `
       <h2>The Bohemian Color Foundation</h2>
@@ -1676,7 +1676,7 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-13",
     readTime: "10 min read",
-    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.jpg",
+    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.webp",
     summary: "Guide to high-grade epoxy and chlorinated rubber coatings that withstand constant water immersion, chemical attack, and strong UV rays in pools.",
     content: `
       <h2>The Extreme Pool Environment</h2>
@@ -1731,7 +1731,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-13",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Textured Wall Finishes Trending in 2025 Lime Wash Clay and Rustic Plasters for Indian Homes.png",
+    image: "/Assets/BlogImages/Textured Wall Finishes Trending in 2025 Lime Wash Clay and Rustic Plasters for Indian Homes.webp",
     summary: "How to get the soft, mottled, matte finish of traditional limewash using modern, breathable, and highly durable mineral-based coatings.",
     content: `
       <h2>The Appeal of Limewash</h2>
@@ -1784,7 +1784,7 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-13",
     readTime: "11 min read",
-    image: "/Assets/BlogImages/Concrete Sealing Protection for Modern Infrastructure.jpg",
+    image: "/Assets/BlogImages/Concrete Sealing Protection for Modern Infrastructure.webp",
     summary: "Detailed look at ultra-high build epoxy and polyurethane systems used to protect critical concrete and steel infrastructure assets from harsh weathering.",
     content: `
       <h2>The Multi-Billion Dollar Problem</h2>
@@ -1834,7 +1834,7 @@ const blogContentArray = [
     author: "Meera Desai",
     date: "2025-12-13",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Complete Guide to Eco-Friendly Paints in India Low-VOC, ZeroVOC and Odourless Options.png",
+    image: "/Assets/BlogImages/Complete Guide to Eco-Friendly Paints in India Low-VOC, ZeroVOC and Odourless Options.webp",
     summary: "Clarifying the labeling differences between Zero-VOC and Low-VOC paints and what they truly mean for indoor air quality and green building certification.",
     content: `
       <h2>Defining Volatile Organic Compounds (VOCs)</h2>
@@ -1882,7 +1882,7 @@ const blogContentArray = [
     author: "Priya Sharma",
     date: "2025-12-13",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Complete Guide to Roof Waterproofing in 2025.jpg",
+    image: "/Assets/BlogImages/Complete Guide to Roof Waterproofing in 2025.webp",
     summary: "Technical guide to stopping the formation of salt deposits (efflorescence) on masonry walls by managing moisture and using specialized sealers.",
     content: `
       <h2>What Exactly is Efflorescence?</h2>
@@ -1932,7 +1932,7 @@ const blogContentArray = [
     author: "Arjun Malhotra",
     date: "2025-12-14",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Using Red the Right Way How to Work 2025s Bold Reds into Modern Interiors.jpg",
+    image: "/Assets/BlogImages/Using Red the Right Way How to Work 2025s Bold Reds into Modern Interiors.webp",
     summary: "How to pair colors from opposite sides of the color wheel (e.g., blue/orange) for high-energy, vibrant, and eye-catching spaces that pop.",
     content: `
       <h2>The Law of Opposites</h2>
@@ -1989,7 +1989,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-14",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/The Rise of Premium, Easy-to-Clean Interior Paints in Indian Cities.png",
+    image: "/Assets/BlogImages/The Rise of Premium, Easy-to-Clean Interior Paints in Indian Cities.webp",
     summary: "The science behind low-static paints that repel dust particles, reducing cleaning frequency and improving long-term indoor air quality.",
     content: `
       <h2>The Physics of Dusty Walls</h2>
@@ -2040,7 +2040,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-14",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/Earthy Interior Colors for 2025 Indian Homes (Terracotta, Olive, Mocha.png",
+    image: "/Assets/BlogImages/Earthy Interior Colors for 2025 Indian Homes (Terracotta, Olive, Mocha.webp",
     summary: "Using muted colors, natural textures, and a philosophy of rustic minimalism to bring the calming Wabi-Sabi aesthetic to your modern home.",
     content: `
       <h2>Wabi-Sabi: The Beauty of the Imperfect</h2>
@@ -2089,7 +2089,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-14",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Smart and Functional Paints in India Heat-Reflective, Air-Purifying and Self-Cleaning Coatings.png",
+    image: "/Assets/BlogImages/Smart and Functional Paints in India Heat-Reflective, Air-Purifying and Self-Cleaning Coatings.webp",
     summary: "Exploring photocatalytic and hydrophobic paints that self-clean, remove air pollutants, and offer thermal regulation for energy efficiency.",
     content: `
       <h2>Coatings as Active Technology</h2>
@@ -2140,7 +2140,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-14",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/2025 Interior Color Trends From Bold to Minimalist.jpg",
+    image: "/Assets/BlogImages/2025 Interior Color Trends From Bold to Minimalist.webp",
     summary: "A breakdown of Calyco's most innovative coatings released this year, focusing on new waterproofing and extreme durability features.",
     content: `
       <h2>Innovation Driving 2025</h2>
@@ -2194,7 +2194,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-14",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.jpg",
+    image: "/Assets/BlogImages/Wood Stains vs. Wood Paints Making the Right Choice.webp",
     summary: "Expert selection guide for choosing stains and clear coats that resist high humidity, water swelling, and fungal growth in coastal and monsoon regions.",
     content: `
       <h2>The Physics of Wood and Water</h2>
@@ -2246,7 +2246,7 @@ const blogContentArray = [
     author: "Arjun Malhotra",
     date: "2025-12-14",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Bold Feature Walls vs. AllOver Color When to Use Each in Small Indian Apartments.png",
+    image: "/Assets/BlogImages/Bold Feature Walls vs. AllOver Color When to Use Each in Small Indian Apartments.webp",
     summary: "Get an early look at next year's maximalist movement: bold patterns, rich jewel tones, and layers of texture replacing minimalist serenity.",
     content: `
       <h2>Goodbye "Sad Beige", Hello Personality</h2>
@@ -2299,7 +2299,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-15",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Concrete Sealing Protection for Modern Infrastructure.jpg",
+    image: "/Assets/BlogImages/Concrete Sealing Protection for Modern Infrastructure.webp",
     summary: "Why painting new concrete too soon leads to 'Alkali Burnout,' causing color bleaching and peeling, and how to test and treat the surface properly.",
     content: `
       <h2>Concrete is chemically Active</h2>
@@ -2393,7 +2393,7 @@ const blogContentArray = [
     author: "Meera Desai",
     date: "2025-12-15",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Kid-Friendly Paint Ideas Washable, Low-VOC and Playful Color Schemes.png",
+    image: "/Assets/BlogImages/Kid-Friendly Paint Ideas Washable, Low-VOC and Playful Color Schemes.webp",
     summary: "A parent's guide to choosing non-toxic, Zero-VOC, and highly washable paints to ensure a safe and durable environment for children.",
     content: `
       <h2>The Air Quality Priority</h2>
@@ -2439,7 +2439,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-15",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/sunlight on interior wall.jpg",
+    image: "/Assets/BlogImages/sunlight on interior wall.webp",
     summary: "Deciphering the LRV number on the back of your paint chip: how it predicts brightness, energy efficiency, and color changes.",
     content: `
       <h2>The Most Important Number You Ignore</h2>
@@ -2528,7 +2528,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-15",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.png",
+    image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.webp",
     summary: "A breakdown of the emotional impact of major color families—Red, Blue, Yellow, and Green—and where to use them in your home.",
     content: `
       <h2>Paint is Emotion</h2>
@@ -2577,7 +2577,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-15",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/The Science of One-Coat Coverage Myth vs Reality.jpg",
+    image: "/Assets/BlogImages/The Science of One-Coat Coverage Myth vs Reality.webp",
     summary: "Analyzing marketing claims vs. reality: when one coat is sufficient, and why two coats are almost always better for durability and sheen uniformity.",
     content: `
       <h2>The Marketing Dream</h2>
@@ -2630,7 +2630,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-16",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Pastel Palettes for Calm Bedrooms.jpg",
+    image: "/Assets/BlogImages/Pastel Palettes for Calm Bedrooms.webp",
     summary: "Quick and impactful ways to transition your home decor for the hot season using cooling colors, light fabrics, and heat-reducing paint tips.",
     content: `
       <h2>The Shift to "Cool" Living</h2>
@@ -2678,7 +2678,7 @@ const blogContentArray = [
     author: "Meera Desai",
     date: "2025-12-16",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/BioBased and Natural Paint Ingredients What Indian Homeowners Should Know.png",
+    image: "/Assets/BlogImages/BioBased and Natural Paint Ingredients What Indian Homeowners Should Know.webp",
     summary: "A practical guide on how to store, reuse, donate, or safely solidify leftover paint to keep liquid chemicals out of landfills and waterways.",
     content: `
       <h2>The Liquid Waste Problem</h2>
@@ -2723,7 +2723,7 @@ const blogContentArray = [
     author: "Dr. Suresh Menon",
     date: "2025-12-16",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.jpg",
+    image: "/Assets/BlogImages/How to Achieve a Professional Smooth Finish with Putty and Primer.webp",
     summary: "Comparing Airless Sprayers vs. Traditional Rolling: analyzing speed, finish quality, paint wastage, and setup time for different project types.",
     content: `
       <h2>The Great Debate</h2>
@@ -2776,7 +2776,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-16",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Decoding Paint Jargon Gloss, Sheen, and Flat Finishes Explained.jpg",
+    image: "/Assets/BlogImages/Decoding Paint Jargon Gloss, Sheen, and Flat Finishes Explained.webp",
     summary: "A practical breakdown of sheen percentages (from 2% Matte to 85% Gloss) and how light reflection alters the perception of color depth.",
     content: `
       <h2>It's Not Just "Shiny" or "Dull"</h2>
@@ -2834,7 +2834,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-16",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.jpg",
+    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.webp",
     summary: "Step-by-step guide to restoring rusty gates and grills: wire brushing, using zinc-phosphate primers, and applying high-gloss enamels.",
     content: `
       <h2>Rust Never Sleeps</h2>
@@ -2887,7 +2887,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-16",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.png",
+    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.webp",
     summary: "A DIY guide to using masking tape (FrogTape) to create crisp triangles, honeycombs, or mountain shapes for a modern, budget-friendly accent wall.",
     content: `
       <h2>Geometry is Modern Art</h2>
@@ -2982,7 +2982,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-17",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Texture Coatings.jpg",
+    image: "/Assets/BlogImages/Texture Coatings.webp",
     summary: "How to use reusable stencils to mimic the look of expensive damask or geometric wallpaper, with tips for preventing paint bleed.",
     content: `
       <h2>Why Stencil Instead of Wallpaper?</h2>
@@ -3027,7 +3027,7 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-17",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.jpg",
+    image: "/Assets/BlogImages/Anti-Corrosive Coatings for Industrial Applications.webp",
     summary: "Understanding the chemistry of heat-resistant coatings that can withstand temperatures up to 600°C without peeling or discoloring.",
     content: `
       <h2>Why Standard Paint Fails on Hot Surfaces</h2>
@@ -3073,7 +3073,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-17",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Indian Home Color Combinations 2025 Top Two  and Three Color Wall Ideas.png",
+    image: "/Assets/BlogImages/Indian Home Color Combinations 2025 Top Two  and Three Color Wall Ideas.webp",
     summary: "A guide to selecting auspicious colors for each room direction (North, South, East, West) according to ancient Indian Vastu principles.",
     content: `
       <h2>Color as Energy</h2>
@@ -3124,7 +3124,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-17",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.png",
+    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.webp",
     summary: "Step-by-step DIY tutorial for blending three paint colors on a wall to create a seamless, dreamy fade from dark to light.",
     content: `
       <h2>The Gradient Trend</h2>
@@ -3173,7 +3173,7 @@ const blogContentArray = [
     author: "Kavita Reddy",
     date: "2025-12-17",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/wall-crack-repair.png",
+    image: "/Assets/BlogImages/wall-crack-repair.webp",
     summary: "How to strip stubborn wallpaper without damaging the plaster underneath using scoring tools, steamers, and enzymatic strippers.",
     content: `
       <h2>The Horror of Wallpaper Removal</h2>
@@ -3221,7 +3221,7 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-17",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Exterior Protection Defending Against Harsh Indian Climates.jpg",
+    image: "/Assets/BlogImages/Exterior Protection Defending Against Harsh Indian Climates.webp",
     summary: "Revitalizing faded white plastic window frames with specialized flexible multi-surface paints instead of replacing them.",
     content: `
       <h2>The Yellowing Problem</h2>
@@ -3268,7 +3268,7 @@ const blogContentArray = [
     author: "Rajesh Kumar",
     date: "2025-12-17",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Protecting Industrial Floors with High-Performance Epoxy Coatings.jpg",
+    image: "/Assets/BlogImages/Protecting Industrial Floors with High-Performance Epoxy Coatings.webp",
     summary: "Comparing Epoxy, Polyurea, and Concrete Stains for garage flooring. Which offers the best resistance to hot tires and oil spills?",
     content: `
       <h2>The Hot Tire Pickup Issue</h2>
@@ -3316,7 +3316,7 @@ const blogContentArray = [
     author: "Anjali Nair",
     date: "2025-12-17",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/Earthy Interior Colors for 2025 Indian Homes (Terracotta, Olive, Mocha.png",
+    image: "/Assets/BlogImages/Earthy Interior Colors for 2025 Indian Homes (Terracotta, Olive, Mocha.webp",
     summary: "Unveiling our headline shade for 2026: A complex, calming grey-green that embodies resilience, renewal, and the quiet beauty of rain.",
     content: `
       <h2>The Inspiration</h2>
@@ -3360,7 +3360,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/Home Office Wall Colors for Productivity in 2025 From Calm Greens to Focused Blues.png",
+    image: "/Assets/BlogImages/Home Office Wall Colors for Productivity in 2025 From Calm Greens to Focused Blues.webp",
     summary: "From calm greens to focused blues: optimizing your WFH space for concentration and video calls.",
     content: `
       <h2>Blue for Focus</h2>
@@ -3403,7 +3403,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "4 min read",
-    image: "/Assets/BlogImages/Kid-Friendly Paint Ideas Washable, Low-VOC and Playful Color Schemes.png",
+    image: "/Assets/BlogImages/Kid-Friendly Paint Ideas Washable, Low-VOC and Playful Color Schemes.webp",
     summary: "Creating a safe and durable environment for the little ones with low-VOC, scrubbable paints.",
     content: `
       <h2>The Importance of 'Easy Clean'</h2>
@@ -3443,7 +3443,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Smart and Functional Paints in India Heat-Reflective, Air-Purifying and Self-Cleaning Coatings.png",
+    image: "/Assets/BlogImages/Smart and Functional Paints in India Heat-Reflective, Air-Purifying and Self-Cleaning Coatings.webp",
     summary: "Heat-Reflective, Air-Purifying, and Self-Cleaning coatings: explaining the tech behind the paint.",
     content: `
       <h2>Beyond Color</h2>
@@ -3483,7 +3483,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/Long-Lasting Exterior Paint Systems for Harsh Indian Weather in 2025.png",
+    image: "/Assets/BlogImages/Long-Lasting Exterior Paint Systems for Harsh Indian Weather in 2025.webp",
     summary: "Battling the monsoon and the heatwave with high-elasticity exterior systems.",
     content: `
       <h2>The Elasticity Factor</h2>
@@ -3523,7 +3523,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "4 min read",
-    image: "/Assets/BlogImages/The Rise of Premium, Easy-to-Clean Interior Paints in Indian Cities.png",
+    image: "/Assets/BlogImages/The Rise of Premium, Easy-to-Clean Interior Paints in Indian Cities.webp",
     summary: "Why Indian homeowners are investing more in high-performance, stain-resistant finishes.",
     content: `
       <h2>Investing in Longevity</h2>
@@ -3643,7 +3643,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-19",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/The Rattan & Cane Revival Styling Traditional Indian Furniture in Modern Luxury Homes.png",
+    image: "/Assets/BlogImages/The Rattan & Cane Revival Styling Traditional Indian Furniture in Modern Luxury Homes.webp",
     summary: "Styling traditional Indian furniture in modern luxury homes for a nostalgic yet chic look.",
     content: `
       <h2>Nostalgia Meets Modernity</h2>
@@ -3723,7 +3723,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-19",
     readTime: "4 min read",
-    image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.png",
+    image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.webp",
     summary: "Using bright pops of yellow and kitschy art to boost mood and happiness at home.",
     content: `
       <h2>Happiness by Design</h2>
@@ -3763,7 +3763,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-19",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/Layered Lighting Trends 2025 From Hidden Profile LEDs to Statement Chandeliers.png",
+    image: "/Assets/BlogImages/Layered Lighting Trends 2025 From Hidden Profile LEDs to Statement Chandeliers.webp",
     summary: "From hidden profile LEDs to statement chandeliers: setting the mood effectively.",
     content: `
       <h2>Beyond the Tube Light</h2>
@@ -3883,7 +3883,7 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-20",
     readTime: "12 min read",
-    image: "/Assets/BlogImages/wall-crack-repair.png",
+    image: "/Assets/BlogImages/wall-crack-repair.webp",
     summary: "A comprehensive guide to identifying and fixing wall cracks. Learn about hairline, shrinkage, and structural cracks, and get a step-by-step repair tutorial using Calyco products.",
     content: `
       <h2>Types of Wall Cracks</h2>
@@ -3994,7 +3994,7 @@ const blogContentArray = [
     author: "Meera Patel",
     date: "2025-12-22",
     readTime: "8 min read",
-    image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.jpg",
+    image: "/Assets/BlogImages/Solving Common Wall Problems Chalking, Peeling, and Blistering.webp",
     summary: "Identify early signs of wall dampness and learn effective long-term waterproofing solutions using Calyco products to protect your home.",
     content: `
       <h2>Recognizing the Signs of Damage</h2>

@@ -45,21 +45,21 @@ export const RoomVisualizerPage = () => {
       id: 1,
       name: 'Bedroom',
       icon: FaBed,
-      image: '/Assets/Rooms/Bedroom/base.jpg',
+      image: '/Assets/Rooms/Bedroom/base.webp',
       description: 'Transform your bedroom with calming colors'
     },
     {
       id: 2,
       name: 'Living Room',
       icon: FaCouch,
-      image: '/Assets/Rooms/LivingRoom/base.jpg',
+      image: '/Assets/Rooms/LivingRoom/base.webp',
       description: 'Create a welcoming living space'
     },
     {
       id: 3,
       name: 'Dining Room',
       icon: FaUtensils,
-      image: '/Assets/Rooms/DiningRoom/base.jpg',
+      image: '/Assets/Rooms/DiningRoom/base.webp',
       description: 'Design an elegant dining area'
     }
   ];

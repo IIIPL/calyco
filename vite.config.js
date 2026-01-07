@@ -22,6 +22,16 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            'framer-motion': ['framer-motion'],
+            'icons': ['lucide-react', 'react-icons'],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 1000,
     },
   }
 })

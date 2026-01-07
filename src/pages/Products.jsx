@@ -327,6 +327,9 @@ export const Products = () => {
                         src={product.image}
                         alt={product.title}
                         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                        width="400"
+                        height="400"
                         onError={(e) => {
                           e.target.src = "/Assets/Nova/1-main.webp";
                         }}

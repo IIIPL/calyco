@@ -890,7 +890,7 @@ const TexturePaints = () => {
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
-                                            <img src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png" alt="Luxury Exterior Emulsion" className="w-full h-full object-contain drop-shadow-lg" />
+                                            <img src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp" alt="Luxury Exterior Emulsion" className="w-full h-full object-contain drop-shadow-lg" />
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
@@ -920,7 +920,7 @@ const TexturePaints = () => {
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
-                                            <img src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png" alt="Waterproofing Sealer" className="w-full h-full object-contain drop-shadow-lg" />
+                                            <img src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp" alt="Waterproofing Sealer" className="w-full h-full object-contain drop-shadow-lg" />
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">

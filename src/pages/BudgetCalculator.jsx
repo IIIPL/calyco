@@ -86,7 +86,7 @@ const BudgetCalculator = () => {
         tagline: 'Low Sheen Finish',
         pricePerLitre: 600,
         coverage: 160,
-        image: '/Assets/Product Images/Premium Interior Emulsion/premium-interior-bucket-transparent.png',
+        image: '/Assets/Product Images/Premium Interior Emulsion/premium-interior-bucket-transparent.webp',
         packs: [
           { size: 1, price: 600 },
           { size: 4, price: 1700 },
@@ -99,7 +99,7 @@ const BudgetCalculator = () => {
         tagline: 'Pearl Finish',
         pricePerLitre: 800,
         coverage: 160,
-        image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.png',
+        image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp',
         packs: [
           { size: 1, price: 800 },
           { size: 4, price: 2200 },
@@ -114,7 +114,7 @@ const BudgetCalculator = () => {
         tagline: 'Matte Finish',
         pricePerLitre: 600,
         coverage: 140,
-        image: '/Assets/Product Images/Premium Exterior Emulsion/premium-exterior-bucket-transparent.png',
+        image: '/Assets/Product Images/Premium Exterior Emulsion/premium-exterior-bucket-transparent.webp',
         packs: [
           { size: 1, price: 600 },
           { size: 4, price: 1700 },
@@ -127,7 +127,7 @@ const BudgetCalculator = () => {
         tagline: 'High Sheen Finish',
         pricePerLitre: 800,
         coverage: 140,
-        image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png',
+        image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp',
         packs: [
           { size: 1, price: 800 },
           { size: 4, price: 2200 },

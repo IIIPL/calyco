@@ -18,7 +18,7 @@ const ProductShowcase = () => {
         'Low VOC Formula',
         'Stain Resistant Technology'
       ],
-      image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.png',
+      image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp',
       link: '/product/Luxury-Interior-Emulsion',
       price: '₹800/L'
     },
@@ -32,7 +32,7 @@ const ProductShowcase = () => {
         'UV Resistant',
         'Mildew & Algae Guard'
       ],
-      image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png',
+      image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp',
       link: '/product/Luxury-Exterior-Emulsion',
       price: '₹800/L'
     },
@@ -46,7 +46,7 @@ const ProductShowcase = () => {
         'Flexible Barrier',
         'Interior & Exterior Use'
       ],
-      image: '/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png',
+      image: '/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp',
       link: '/product/Waterproofing-Sealer',
       price: '₹599/L'
     }

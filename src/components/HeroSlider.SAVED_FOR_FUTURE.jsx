@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
-    image: '/Assets/home-hero/full-page.png',
+    image: '/Assets/home-hero/full-page.webp',
     badge: 'TRUSTED NATIONWIDE',
     title: 'Colors That Transform Homes Into Havens',
     subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
@@ -11,7 +11,7 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero2.png',
+    image: '/Assets/HERO/hero2.webp',
     badge: 'GUARANTEED EXCELLENCE',
     title: 'A Decade of Beauty, Guaranteed',
     subtitle: "We stand behind every brush stroke with India's strongest 10-year warranty. Your walls deserve nothing less.",
@@ -19,7 +19,7 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
+    image: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.webp',
     badge: '2,000+ SHADES',
     title: 'Every Mood. Every Room. Every Dream.',
     subtitle: 'From calming neutrals to bold statements—explore our curated collections designed for the way you live.',
@@ -27,7 +27,7 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
+    image: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp',
     badge: 'MADE IN INDIA',
     title: 'Factory-Direct Quality. Family-Friendly Prices.',
     subtitle: 'By cutting out middlemen, we deliver premium paint at 20% less than competitors—without compromising an ounce of quality.',

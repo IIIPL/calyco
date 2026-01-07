@@ -763,7 +763,7 @@ export const DynamicProductPage = () => {
                     name: `${product.display_name || product.name} - ${selectedColor.name}`,
                     display_name: `${product.display_name || product.name} - ${selectedColor.name}`,
                     price: variantData.price,
-                    image: product.image || product.images?.[0] || '/Assets/chair.png',
+                    image: product.image || product.images?.[0] || '/Assets/chair.webp',
                 },
                 selectedSheen,
                 selectedSize,

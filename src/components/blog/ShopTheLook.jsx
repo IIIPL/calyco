@@ -13,7 +13,7 @@ const SAMPLE_PRODUCTS = [
     undertones: 'Deep charcoal with subtle warm undertones',
     price: '₹1,299',
     size: '2.5L',
-    image: '/Assets/Products/black-paint.jpg',
+    image: '/Assets/Products/black-paint.webp',
     url: '/products/black-01-matt'
   },
   {
@@ -25,7 +25,7 @@ const SAMPLE_PRODUCTS = [
     undertones: 'Soft green with gray undertones for calm spaces',
     price: '₹1,299',
     size: '2.5L',
-    image: '/Assets/Products/sage-green.jpg',
+    image: '/Assets/Products/sage-green.webp',
     url: '/products/sage-green-silk'
   },
   {
@@ -37,7 +37,7 @@ const SAMPLE_PRODUCTS = [
     undertones: 'Universal primer for all surfaces',
     price: '₹899',
     size: '1L',
-    image: '/Assets/Products/stain-sealer.jpg',
+    image: '/Assets/Products/stain-sealer.webp',
     url: '/product/waterproofing-sealer'
   },
   {
@@ -49,7 +49,7 @@ const SAMPLE_PRODUCTS = [
     undertones: 'Warm earth tone with orange-red base',
     price: '₹1,299',
     size: '2.5L',
-    image: '/Assets/Products/terracotta.jpg',
+    image: '/Assets/Products/terracotta.webp',
     url: '/products/terracotta-silk'
   },
   {
@@ -61,7 +61,7 @@ const SAMPLE_PRODUCTS = [
     undertones: 'Soft blue with slight gray for tranquility',
     price: '₹1,299',
     size: '2.5L',
-    image: '/Assets/Products/powder-blue.jpg',
+    image: '/Assets/Products/powder-blue.webp',
     url: '/products/powder-blue-matt'
   }
 ];

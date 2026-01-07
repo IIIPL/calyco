@@ -5,9 +5,9 @@ import { getAllColors } from '../data/calycoColors.js';
 const flatColors = getAllColors();
 
 const sampleRooms = [
-  { key: 'living', base: '/Assets/Rooms/LivingRoom/base.jpg', mask: '/Assets/Rooms/LivingRoom/mask-walls.jpg' },
-  { key: 'dining', base: '/Assets/Rooms/DiningRoom/base.jpg', mask: '/Assets/Rooms/DiningRoom/mask-walls.jpg' },
-  { key: 'bedroom', base: '/Assets/Rooms/Bedroom/base.jpg', mask: '/Assets/Rooms/Bedroom/mask-walls.jpg' },
+  { key: 'living', base: '/Assets/Rooms/LivingRoom/base.webp', mask: '/Assets/Rooms/LivingRoom/mask-walls.webp' },
+  { key: 'dining', base: '/Assets/Rooms/DiningRoom/base.webp', mask: '/Assets/Rooms/DiningRoom/mask-walls.webp' },
+  { key: 'bedroom', base: '/Assets/Rooms/Bedroom/base.webp', mask: '/Assets/Rooms/Bedroom/mask-walls.webp' },
 ];
 
 function hexToRgb(hex) {

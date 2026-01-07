@@ -1357,7 +1357,7 @@ const CalycoSolventPrimerInterior = () => {
                                         {/* Product Image */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png"
+                                                src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp"
                                                 alt="Luxury Exterior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1399,7 +1399,7 @@ const CalycoSolventPrimerInterior = () => {
                                         {/* Product Image */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
+                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />

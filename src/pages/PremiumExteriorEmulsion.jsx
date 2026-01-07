@@ -1291,7 +1291,7 @@ const PremiumExteriorEmulsion = () => {
                                         {/* Product Image - Left Side */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.png"
+                                                src="/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp"
                                                 alt="Luxury Interior Emulsion"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
@@ -1333,7 +1333,7 @@ const PremiumExteriorEmulsion = () => {
                                         {/* Product Image - Left Side */}
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
                                             <img
-                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png"
+                                                src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp"
                                                 alt="Waterproofing Sealer"
                                                 className="w-full h-full object-contain drop-shadow-lg"
                                             />
