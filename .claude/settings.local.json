@@ -26,7 +26,10 @@
       "Bash(npx sharp-cli:*)",
       "Bash(node -e:*)",
       "Bash(git config:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git count-objects:*)",
+      "Bash(gh:*)",
+      "Bash(node scripts/create-mobile-hero.js:*)"
     ],
     "deny": [],
     "ask": []
