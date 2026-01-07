@@ -220,7 +220,7 @@ export default function ContactPage() {
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative mx-auto w-full max-w-5xl px-4 text-center flex items-center justify-center h-full">
             <div>

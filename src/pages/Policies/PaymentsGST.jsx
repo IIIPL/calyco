@@ -82,7 +82,7 @@ export default function PaymentsGST() {
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full"><div>
             <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">

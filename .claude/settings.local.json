@@ -18,7 +18,8 @@
       "Bash(timeout 3 sleep:*)",
       "Bash(node scripts/generate-product-docs.js:*)",
       "Bash(node scripts/update-product-docs-links.js:*)",
-      "Bash(node scripts/update-page-docs-links.js:*)"
+      "Bash(node scripts/update-page-docs-links.js:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []

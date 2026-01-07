@@ -97,7 +97,7 @@ export default function WarrantyPolicy() {
               className="h-full w-full scale-105 object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
 
           {/* Floating Orbs (From About Page) */}

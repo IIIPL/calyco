@@ -708,7 +708,7 @@ export const products = [
     "name": "Acrylic Washable Distemper",
     "image": "/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp",
     "description": "Economical water-based distemper with smooth matt finish, good washability, and fast drying for everyday interior walls and ceilings.",
-    "short-description": "Smooth, washable matt finish for interiors.",
+    "short-description": "Smooth, washable matt finish for interior walls with good coverage and durability.",
     "category": "interior",
     "finish_type_sheen": [
       "Matt"

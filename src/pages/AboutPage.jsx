@@ -219,7 +219,7 @@ export default function AboutPage() {
               className="h-full w-full scale-105 object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="absolute top-24 left-10 h-40 w-40 rounded-full bg-[var(--calyco-gold)]/12 blur-3xl float-animation" />
           <div
@@ -301,7 +301,7 @@ export default function AboutPage() {
         >
           <div className="absolute inset-0 bg-white/88 backdrop-blur-[2px]" />
           <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
-            <div className="animate-on-scroll text-center">
+            <div className="text-center">
               <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Leadership & Culture</h2>
               <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
                 A multidisciplinary leadership group with deep experience drives CALYCO's roadmap—powered by an expert network that keeps performance and people at the center.
@@ -396,7 +396,7 @@ export default function AboutPage() {
         {/* EcoMax™ Technology: innovation layered like a brochure highlight */}
         <section className="bg-gradient-to-br from-[var(--calyco-cream)] via-white to-[#F2ECF9] py-20 md:py-24">
           <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
-            <div className="animate-on-scroll text-center">
+            <div className="text-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-[var(--calyco-gold)]/40 bg-[var(--calyco-gold)]/10 px-5 py-2 text-xs font-semibold text-[var(--calyco-plum)] md:text-sm">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
                 Revolutionary Innovation
@@ -417,7 +417,7 @@ export default function AboutPage() {
               {ecoMaxFeatures.map((feature) => (
                 <article
                   key={feature.title}
-                  className="animate-on-scroll group relative flex h-full flex-col gap-5 overflow-hidden rounded-[28px] border border-black/6 bg-white/95 p-7 shadow-[0_26px_45px_-38px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.6)]"
+                  className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-[28px] border border-black/6 bg-white/95 p-7 shadow-[0_26px_45px_-38px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.6)]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--calyco-plum)]/8 to-[var(--calyco-gold)]/8 opacity-0 transition duration-300 group-hover:opacity-100" />
                   <div className="relative flex items-center justify-between">
@@ -435,7 +435,7 @@ export default function AboutPage() {
                 </article>
               ))}
             </div>
-            <div className="animate-on-scroll mt-16 rounded-[32px] bg-gradient-to-r from-[var(--calyco-plum)] to-[var(--calyco-gold)] px-8 py-10 text-center text-white md:px-10 md:py-14">
+            <div className="mt-16 rounded-[32px] bg-gradient-to-r from-[var(--calyco-plum)] to-[var(--calyco-gold)] px-8 py-10 text-center text-white md:px-10 md:py-14">
               <h3 className={`${getTypographyClasses('h3')} text-white`}>Experience the EcoMax™ Difference</h3>
               <p className={`${getTypographyClasses('body')} mx-auto max-w-2xl text-white/90`}>
                 Discover how our revolutionary colorant technology delivers superior performance while protecting your family and the environment.

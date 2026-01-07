@@ -128,7 +128,7 @@ export const ContactUs = () => {
         <div className="pt-20 min-h-screen">
             {/* Hero */}
             <div className="relative h-80 bg-gradient-to-r from-[#493657] to-[#F0C85A] overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute inset-0 bg-black/40"></div>
                 <div className="relative z-10 text-center text-white px-6">
                     <motion.h1
                         className="text-6xl font-bold mb-4"

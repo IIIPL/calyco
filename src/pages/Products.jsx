@@ -307,57 +307,53 @@ export const Products = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + index * 0.05 }}
-                    className="group relative rounded-3xl bg-white border border-[#493657]/12 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-[520px]"
+                    className="group relative rounded-3xl bg-white border border-[#493657]/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
                   >
                     {/* Top gradient bar */}
                     <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A]" />
-                    
+
                     {/* Category badge only - overlapping the image */}
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#493657]/90 text-white backdrop-blur-sm">
+                      <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-[#493657] text-white shadow-lg">
                         {product.category}
                       </span>
                     </div>
 
                     {/*
-                      🎯 3:4 ASPECT RATIO PRODUCT IMAGE - No white space, no borders - Clickable to navigate to product detail
+                      🎯 SQUARE ASPECT RATIO PRODUCT IMAGE - Clickable to navigate to product detail
                     */}
-                    <Link to={`/product/${product.slug}`} className="relative w-full aspect-[3/4] overflow-hidden cursor-pointer">
+                    <Link to={`/product/${product.slug}`} className="relative w-full aspect-square overflow-hidden cursor-pointer">
                       <img
                         src={product.image}
                         alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           e.target.src = "/Assets/Nova/1-main.webp";
                         }}
                       />
                     </Link>
 
-                    {/* 
-                      🎯 PRODUCT DETAILS - Clean layout without unnecessary badges
+                    {/*
+                      🎯 PRODUCT DETAILS - Fixed height layout with 2-line descriptions
                     */}
-                    <div className="flex-1 flex flex-col justify-between p-6">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#493657] mb-2 group-hover:text-[#F0C85A] transition-colors">
-                          {product.title}
-                        </h3>
-                        <p className="text-sm text-[#493657]/70 leading-relaxed">
-                          {product.description}
-                        </p>
-                      </div>
+                    <div className="flex flex-col p-5">
+                      <h3 className="text-lg md:text-[18px] lg:text-[19px] font-bold text-[#493657] group-hover:text-[#F0C85A] transition-colors line-clamp-2 md:line-clamp-1 mb-2">
+                        {product.title}
+                      </h3>
+                      <p className="text-sm text-[#493657]/70 leading-relaxed line-clamp-2 mb-4 min-h-[2.8rem]">
+                        {product.description}
+                      </p>
 
                       {/*
-                        🎯 VIEW DETAILS BUTTON - Users need to select colors first
+                        🎯 VIEW DETAILS BUTTON
                       */}
-                      <div className="mt-4">
-                        <Link
-                          to={`/product/${product.slug}`}
-                          className="w-full inline-flex items-center justify-center gap-2 bg-[#493657] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300"
-                        >
-                          <FiEye className="w-4 h-4" />
-                          View Details
-                        </Link>
-                      </div>
+                      <Link
+                        to={`/product/${product.slug}`}
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#493657] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300 shadow-sm"
+                      >
+                        <FiEye className="w-4 h-4" />
+                        View Details
+                      </Link>
                     </div>
                   </motion.div>
                 );
