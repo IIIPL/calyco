@@ -28,6 +28,9 @@ const FeatureCards = () => {
                 src="/Assets/Texture Images/tex21.webp"
                 alt="Eco-Premium Paints"
                 className="w-full h-full object-cover"
+                width="672"
+                height="448"
+                loading="lazy"
               />
             </div>
 

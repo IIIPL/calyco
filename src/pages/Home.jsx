@@ -253,6 +253,9 @@ const Home = () => {
             src="/Assets/Texture Images/tex2.webp"
             alt="Living room showcasing premium textured wall finish"
             className="w-full h-full object-cover object-center"
+            width="1920"
+            height="1280"
+            loading="lazy"
           />
         </div>
         <div className="absolute inset-0 flex items-start sm:items-center pt-16 sm:pt-0">

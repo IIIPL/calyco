@@ -20,10 +20,11 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const CONFIG = {
-  quality: 85, // WebP quality (0-100)
+  quality: 70, // WebP quality (0-100) - Optimized for performance
   baseDir: path.join(__dirname, '..', 'public', 'Assets'), // Starting directory
   extensions: ['.png', '.jpg', '.jpeg'], // File types to convert
   skipFolders: [], // Folders to skip (add folder names here if needed)
+  forceRecompress: false, // Set to true to recompress existing WebP files
 };
 
 // Statistics
@@ -45,9 +46,9 @@ function shouldConvert(filePath) {
     return false;
   }
 
-  // Skip if WebP version already exists
+  // Skip if WebP version already exists (unless force recompression is enabled)
   const webpPath = filePath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-  if (fs.existsSync(webpPath)) {
+  if (fs.existsSync(webpPath) && !CONFIG.forceRecompress) {
     console.log(`⏭️  Skipped (WebP exists): ${path.basename(filePath)}`);
     stats.skipped++;
     return false;

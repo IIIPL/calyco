@@ -45,6 +45,9 @@ const BudgetCalculatorCTA = () => {
               src="/Assets/Texture Images/calyco-family.webp"
               alt="Family happily planning paint budget"
               className="w-full max-w-sm sm:max-w-md lg:max-w-[520px] object-contain drop-shadow-2xl rounded-2xl"
+              width="637"
+              height="358"
+              loading="lazy"
             />
           </motion.div>
         </div>

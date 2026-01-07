@@ -21,7 +21,12 @@
       "Bash(node scripts/update-page-docs-links.js:*)",
       "Bash(grep:*)",
       "Bash(ls:*)",
-      "Bash(node scripts/update-to-webp.js:*)"
+      "Bash(node scripts/update-to-webp.js:*)",
+      "Bash(node scripts/recompress-webp.js:*)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(node -e:*)",
+      "Bash(git config:*)",
+      "Bash(git reset:*)"
     ],
     "deny": [],
     "ask": []

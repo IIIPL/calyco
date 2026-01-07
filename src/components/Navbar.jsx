@@ -107,7 +107,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-3"
         >
-          <img src="/Logo.png" className="object-contain h-16" alt="Calyco Logo" />
+          <img src="/Logo.webp" className="object-contain h-16" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         <nav className="flex gap-8 text-base font-medium items-center">
@@ -182,7 +182,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2"
         >
-          <img src="/Logo.png" className="h-12 object-contain" alt="Calyco Logo" />
+          <img src="/Logo.webp" className="h-12 object-contain" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         <div className="flex items-center gap-2">
@@ -215,7 +215,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e0d8]/80">
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
-            <img src="/Logo.png" className="h-10 object-contain" alt="Calyco Logo" />
+            <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
           </Link>
           <div className="flex items-center gap-4">
             <CartIcon onCartOpen={() => setDropdownOpen(null)} />
