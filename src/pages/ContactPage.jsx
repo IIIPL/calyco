@@ -215,10 +215,11 @@ export default function ContactPage() {
         <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[var(--calyco-ink)] text-white">
           <div className="absolute inset-0">
             <img
-              src="/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.webp"
-              alt="Calyco consultation lounge welcoming visitors"
+              src="/Assets/updated hero images/2.webp"
+              alt="Modern painted interior space - Calyco Paints customer support and consultation center"
+              title="Contact Calyco Paints - Premium Paint Consultation"
               className="h-full w-full object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-black/40" />
           </div>

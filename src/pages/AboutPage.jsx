@@ -215,9 +215,10 @@ export default function AboutPage() {
           <div className="absolute inset-0">
             <img
               src="/Assets/updated hero images/1.webp"
-              alt="Modern Indian home exterior finished with CALYCO paints"
+              alt="Premium painted interior showcasing Calyco's manufacturing excellence and quality paint finishes"
+              title="About Calyco Paints - Manufacturing Excellence & Innovation"
               className="h-full w-full scale-105 object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-black/40" />
           </div>

@@ -131,7 +131,8 @@ export const ContactUs = () => {
                 <div className="absolute inset-0">
                     <img
                         src="/Assets/updated hero images/2.webp"
-                        alt="Contact Calyco"
+                        alt="Beautifully painted modern interior - Contact Calyco Paints for premium paint consultation and support"
+                        title="Contact Calyco Paints - Get Expert Paint Advice & Support"
                         className="w-full h-full object-cover"
                         loading="eager"
                     />
