@@ -7,61 +7,64 @@ const Crumb = ({ children }) => (
 
 // Map policy titles to hero images with SEO-optimized alt text and titles
 const getHeroDataForPolicy = (title) => {
+  // Cache busting timestamp
+  const v = "?v=20260108";
+
   const dataMap = {
     "Privacy Policy": {
-      src: "/Assets/updated hero images/3.webp",
+      src: `/Assets/updated hero images/3.webp${v}`,
       alt: "Secure professional office interior - Calyco Paints Privacy Policy and data protection",
       title: "Privacy Policy - Calyco Paints Data Protection & Security"
     },
     "Terms and Conditions": {
-      src: "/Assets/updated hero images/4.webp",
+      src: `/Assets/updated hero images/4.webp${v}`,
       alt: "Professional legal office with painted walls - Calyco Paints Terms and Conditions",
       title: "Terms & Conditions - Calyco Paints Legal Agreement"
     },
     "Shipping & Delivery": {
-      src: "/Assets/updated hero images/5.webp",
+      src: `/Assets/updated hero images/5.webp${v}`,
       alt: "Modern warehouse with organized paint inventory - Calyco Paints Shipping & Delivery",
       title: "Shipping & Delivery Policy - Calyco Paints Nationwide Distribution"
     },
     "Returns & Refunds": {
-      src: "/Assets/updated hero images/6.webp",
+      src: `/Assets/updated hero images/6.webp${v}`,
       alt: "Customer-friendly retail space - Calyco Paints Returns and Refunds Policy",
       title: "Returns & Refunds Policy - Calyco Paints Customer Satisfaction"
     },
     "Warranty Policy": {
-      src: "/Assets/updated hero images/7.webp",
+      src: `/Assets/updated hero images/7.webp${v}`,
       alt: "Premium painted living room showcasing durability - Calyco Paints 10-Year Warranty",
       title: "Warranty Policy - Calyco Paints 10-Year Quality Guarantee"
     },
     "Quality Policy": {
-      src: "/Assets/updated hero images/8.webp",
+      src: `/Assets/updated hero images/8.webp${v}`,
       alt: "Quality control laboratory with paint testing equipment - Calyco Paints Quality Assurance",
       title: "Quality Policy - Calyco Paints Manufacturing Excellence"
     },
     "Environmental Sustainability": {
-      src: "/Assets/updated hero images/9.webp",
+      src: `/Assets/updated hero images/9.webp${v}`,
       alt: "Eco-friendly green architecture with sustainable paint - Calyco Paints Environmental Commitment",
       title: "Environmental Sustainability - Calyco Paints Green & Low-VOC Solutions"
     },
     "Payments & GST": {
-      src: "/Assets/updated hero images/10.webp",
+      src: `/Assets/updated hero images/10.webp${v}`,
       alt: "Modern payment counter with premium finishes - Calyco Paints Payment and GST Information",
       title: "Payments & GST Policy - Calyco Paints Transparent Pricing"
     },
     "Product Color Disclaimer": {
-      src: "/Assets/updated hero images/11.webp",
+      src: `/Assets/updated hero images/11.webp${v}`,
       alt: "Color-accurate painted wall showcase - Calyco Paints Product Color Information",
       title: "Product Color Disclaimer - Calyco Paints Color Accuracy Guide"
     },
     "Customer Service": {
-      src: "/Assets/updated hero images/12.webp",
+      src: `/Assets/updated hero images/12.webp${v}`,
       alt: "Welcoming customer support center - Calyco Paints Customer Service Excellence",
       title: "Customer Service - Calyco Paints Support & Assistance"
     },
   };
 
   return dataMap[title] || {
-    src: "/Assets/updated hero images/13.webp",
+    src: `/Assets/updated hero images/13.webp${v}`,
     alt: "Premium painted interior space - Calyco Paints Policy Information",
     title: `${title} - Calyco Paints`
   };
