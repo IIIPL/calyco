@@ -214,7 +214,7 @@ export default function AboutPage() {
         <section className="relative flex h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
+              src="/Assets/updated hero images/1.webp"
               alt="Modern Indian home exterior finished with CALYCO paints"
               className="h-full w-full scale-105 object-cover"
               loading="lazy"
