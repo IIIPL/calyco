@@ -19,7 +19,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1024);
   // Auto-close mobile menu when route changes
   useEffect(() => {
     handleMenuToggle(false);
@@ -29,7 +29,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const nowMobile = window.innerWidth < 768;
+      const nowMobile = window.innerWidth < 1024;
       if (nowMobile !== isMobileView) {
         setDropdownOpen(null);
         handleMenuToggle(false);
@@ -101,7 +101,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       style={{ top: bannerVisible && !menuOpen ? (isMobileView ? '48px' : '40px') : '0px' }}
     >
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center justify-between px-10 lg:px-16 h-20">
+      <div className="hidden lg:flex items-center justify-between px-10 lg:px-16 h-20">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -163,7 +163,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
         <div className="flex items-center gap-4">
           <Link
             to="/budget-calculator"
-            className="inline-flex items-center gap-2 bg-[#F0C85A] text-[#493657] px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300 shadow-sm"
+            className="inline-flex items-center gap-2 bg-[#F0C85A] text-[#493657] px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap"
             onClick={() => setDropdownOpen(null)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,7 +176,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       </div>
 
       {/* Mobile top bar */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3">
+      <div className="lg:hidden flex items-center justify-between px-4 py-3">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

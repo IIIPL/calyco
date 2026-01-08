@@ -7,8 +7,8 @@ const Crumb = ({ children }) => (
 
 // Map policy titles to hero images with SEO-optimized alt text and titles
 const getHeroDataForPolicy = (title) => {
-  // Cache busting timestamp
-  const v = "?v=20260108";
+  // Cache busting timestamp - increment this to force browser refresh
+  const v = "?v=20260108-002";
 
   const dataMap = {
     "Privacy Policy": {

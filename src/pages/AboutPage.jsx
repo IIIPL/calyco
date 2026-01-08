@@ -214,10 +214,10 @@ export default function AboutPage() {
         <section className="relative flex h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/Assets/updated hero images/1.webp"
+              src="/Assets/updated hero images/1.webp?v=20260108-002"
               alt="Premium painted interior showcasing Calyco's manufacturing excellence and quality paint finishes"
               title="About Calyco Paints - Manufacturing Excellence & Innovation"
-              className="h-full w-full scale-105 object-cover"
+              className="h-full w-full scale-105 object-cover brightness-75"
               loading="eager"
             />
             <div className="absolute inset-0 bg-black/40" />

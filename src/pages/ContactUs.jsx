@@ -130,7 +130,7 @@ export const ContactUs = () => {
             <div className="relative h-80 overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0">
                     <img
-                        src="/Assets/updated hero images/2.webp"
+                        src="/Assets/updated hero images/2.webp?v=20260108-002"
                         alt="Beautifully painted modern interior - Contact Calyco Paints for premium paint consultation and support"
                         title="Contact Calyco Paints - Get Expert Paint Advice & Support"
                         className="w-full h-full object-cover"

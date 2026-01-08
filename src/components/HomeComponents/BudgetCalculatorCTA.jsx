@@ -28,9 +28,22 @@ const BudgetCalculatorCTA = () => {
 
             <Link
               to="/budget-calculator"
-              className="inline-flex items-center justify-center px-6 py-3.5 sm:px-6 sm:py-3 bg-white text-[#0F1221] rounded-lg font-semibold text-base sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-[#998850] text-white rounded-full font-semibold hover:bg-[#856f34] transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Calculate Budget
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </Link>
           </motion.div>
 

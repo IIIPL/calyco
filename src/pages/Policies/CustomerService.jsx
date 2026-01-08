@@ -178,9 +178,9 @@ export default function CustomerService() {
         <section className="relative overflow-hidden pt-24 pb-16 md:pt-28">
           <div className="absolute inset-0">
             <img
-              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
+              src="/Assets/updated hero images/10.webp"
               alt="Support representative assisting with CALYCO paints"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#4B007D]/92 via-[#4B007D]/88 to-[#2E0053]/85" />

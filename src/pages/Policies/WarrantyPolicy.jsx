@@ -92,9 +92,9 @@ export default function WarrantyPolicy() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="/Assets/InteriorInspiratoin/living-room.webp"
+              src="/Assets/updated hero images/5.webp"
               alt="Modern interior with CALYCO paint"
-              className="h-full w-full scale-105 object-cover"
+              className="h-full w-full scale-105 object-cover brightness-75"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-black/40" />
