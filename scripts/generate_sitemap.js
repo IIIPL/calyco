@@ -115,6 +115,15 @@ function getChangeFreq(path) {
     return priority >= 0.9 ? 'weekly' : 'monthly';
 }
 
+// XML Escaping helper
+function escapeXml(unsafe) {
+    return unsafe.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
 function generateSitemap() {
     console.log('Generating sitemap...');
     const routes = extractRoutesFromApp();
@@ -143,7 +152,7 @@ function generateSitemap() {
         }
 
         xml += '  <url>\n';
-        xml += `    <loc>${fullUrl}</loc>\n`;
+        xml += `    <loc>${escapeXml(fullUrl)}</loc>\n`;
         xml += `    <lastmod>${formatDate(new Date())}</lastmod>\n`;
         xml += `    <changefreq>${changefreq}</changefreq>\n`;
         xml += `    <priority>${priority}</priority>\n`;
@@ -155,7 +164,7 @@ function generateSitemap() {
         const fullUrl = safeJoin(DOMAIN, `/blog/${post.slug}`);
 
         xml += '  <url>\n';
-        xml += `    <loc>${fullUrl}</loc>\n`;
+        xml += `    <loc>${escapeXml(fullUrl)}</loc>\n`;
 
         // Freshness Injection: Force date to 2026-01-09 for "Fresh Content" verification
         const freshDate = '2026-01-09';
@@ -166,7 +175,7 @@ function generateSitemap() {
         if (post.image) {
             xml += '    <image:image>\n';
             const imageUrl = post.image.startsWith('http') ? post.image : safeJoin(DOMAIN, post.image);
-            xml += `      <image:loc>${imageUrl}</image:loc>\n`;
+            xml += `      <image:loc>${escapeXml(imageUrl)}</image:loc>\n`;
             xml += '    </image:image>\n';
         }
         xml += '  </url>\n';
