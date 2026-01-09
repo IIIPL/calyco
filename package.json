@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run generate:sitemap && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate:colors": "node scripts/generateColors.js",
     "generate:products": "node scripts/generateProducts.js",
     "generate:pdfs": "node scripts/generate_pdfs.js",
     "generate:warranty": "node scripts/generate_warranty_html.js",
+    "generate:sitemap": "node scripts/generate_sitemap.js",
     "sync-admin": "node scripts/sync-admin-data.js",
     "publish-changes": "npm run sync-admin && git add src/data && git commit -m \"Admin: Updated data\" && git push",
     "server": "cd server && npm run dev"

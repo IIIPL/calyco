@@ -1,275 +1,598 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- Homepage -->
   <url>
-    <loc>https://calycopaints.com/</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>1</priority>
   </url>
-
-  <!-- Main Pages -->
-  <url>
-    <loc>https://calycopaints.com/about</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/contact</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/sustainability</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Products -->
-  <url>
-    <loc>https://calycopaints.com/products</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/product/Premium-Interior-Emulsion</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/product/Luxury-Interior-Emulsion</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/product/Premium-Exterior-Emulsion</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/product/Luxury-Exterior-Emulsion</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://calycopaints.com/product/waterproofing-sealer</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Colors -->
   <url>
     <loc>https://calycopaints.com/colors</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Textures -->
-  <url>
-    <loc>https://calycopaints.com/textures</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Tools -->
   <url>
     <loc>https://calycopaints.com/visualizer</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/budget-calculator</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/room-visualization</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Inspirations -->
-  <url>
-    <loc>https://calycopaints.com/inspirations</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/products</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/kitchen</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/Premium-Interior-Emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/bedroom</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/premium-interior-emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/living</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/Premium-Exterior-Emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/bathroom</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/premium-exterior-emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/dining</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/Luxury-Interior-Emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/office</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/luxury-interior-emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/hallway</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/Luxury-Exterior-Emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/inspirations/exterior</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://calycopaints.com/product/luxury-exterior-emulsion</loc>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Blogs -->
   <url>
-    <loc>https://calycopaints.com/blogs</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://calycopaints.com/product/Interior-Latex-Paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://calycopaints.com/blogs/categories/design-trends</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://calycopaints.com/product/Nova</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
-  <!-- B2B Pages -->
+  <url>
+    <loc>https://calycopaints.com/product/nova</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/Exterior-Latex-Paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/exterior-latex-paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/Calyco Exterior Latex Paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/Calyco%20Exterior%20Latex%20Paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/waterproofing-sealer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/Stain%20&%20Sealer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/stain-sealer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-water-primer-interior</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-weather-primer-exterior</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-acrylic-wall-putty</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-solvent-primer-interior</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-damp-guard-primer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-universal-primer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-amrella-enamel</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-pu-wood-coating</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-acrylic-washable-distemper</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-all-surface-coating</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/product/calyco-texture-paint</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://calycopaints.com/contractors</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/government</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Resources -->
   <url>
     <loc>https://calycopaints.com/downloads</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://calycopaints.com/about</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/sustainability</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/contact</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://calycopaints.com/faq</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Policies -->
+  <url>
+    <loc>https://calycopaints.com/pages/product-finder</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/kitchen</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/bedroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/hallway</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/living</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/livingroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/bathroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/dining</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/office</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/inspirations/exterior</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/textures</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/room-visualization</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/room-visualization/bedroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/room-visualization/livingroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/room-visualization/diningroom</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://calycopaints.com/policies</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/policies/privacy</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/policies/terms</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://calycopaints.com/policies/payments-gst</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/policies/quality</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/policies/environmental-sustainability</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/policies/disclaimer</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://calycopaints.com/policies/shipping</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/policies/returns</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/policies/warranty</loc>
-    <lastmod>2025-11-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://calycopaints.com/customer-service</loc>
-    <lastmod>2025-11-13</lastmod>
+    <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://calycopaints.com/blog/2026-trending-wall-colours-for-eco-friendly-indian-homes-calyco-s-new-year-palette-guide</loc>
+    <lastmod>2025-12-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/2026-trending-wall-colours-for-eco-friendly-indian-homes-calyco-s-new-year-palette-guide-0-1767176737565.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/smart-home-resolutions-2026-switch-from-toxic-paints-to-eco-safe-calyco-finishes</loc>
+    <lastmod>2025-12-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/smart-home-resolutions-2026-switch-from-toxic-paints-to-eco-safe-calyco-finishes-0-1767176611200.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/kickstart-2026-with-healthier-low-voc-walls-calyco-s-easy-new-year-paint-upgrade</loc>
+    <lastmod>2025-12-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/kickstart-2026-with-healthier-low-voc-walls-calyco-s-easy-new-year-paint-upgrade-0-1767176358495.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/how-to-use-deep-browns-and-charcoal-walls-without-making-your-room-feel-smaller</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/how-to-use-deep-browns-and-charcoal-walls-without-making-your-room-feel-smaller-0-1766828948407.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/smart-paint-and-decor-ideas-for-studio-and-1bhk-apartments-in-indian-cities</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/smart-paint-and-decor-ideas-for-studio-and-1bhk-apartments-in-indian-cities-0-1766828844332.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/popular-interior-styles-in-india-and-the-wall-colours-that-suit-each</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/popular-interior-styles-in-india-and-the-wall-colours-that-suit-each-0-1766828682133.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/work-from-home-colour-palettes-that-boost-focus-and-productivity</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/work-from-home-colour-palettes-that-boost-focus-and-productivity-0-1766653289548.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/decluttering-christmas-a-guide-to-organizing-for-a-fresh-2026-start</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/decluttering-christmas-a-guide-to-organizing-for-a-fresh-2026-start-0-1766652956089.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/small-room-big-impact-colours-that-make-compact-flats-look-larger</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/small-room-big-impact-colours-that-make-compact-flats-look-larger-0-1766569146376.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/2026-colour-trends-earthy-neutrals-and-nature-inspired-tones</loc>
+    <lastmod>2025-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/2026-colour-trends-earthy-neutrals-and-nature-inspired-tones-0-1766468899736.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/paint-without-the-headache-the-benefits-of-odourless-interior-paint</loc>
+    <lastmod>2025-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/paint-without-the-headache-the-benefits-of-odourless-interior-paint-0-1766468064170.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/why-low-voc-paint-matters-for-your-family-and-your-air-quality</loc>
+    <lastmod>2025-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/why-low-voc-paint-matters-for-your-family-and-your-air-quality-0-1766467581405.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/stain-resistant-kitchen-colour-ideas-for-indian-cooking-conditions</loc>
+    <lastmod>2025-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/stain-resistant-kitchen-colour-ideas-for-indian-cooking-conditions-0-1766467028152.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/sleep-better-calming-bedroom-colour-palettes-for-busy-urban-homes</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/sleep-better-calming-bedroom-colour-palettes-for-busy-urban-homes-0-1766405815027.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/minimalist-vs-eclectic-how-to-choose-the-right-layout-for-your-living-space</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/minimalist-vs-eclectic-how-to-choose-the-right-layout-for-your-living-space-0-1766405050037.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/wall-dampness-seepage-causes-signs-and-long-term-waterproofing-solutions-for-indian-homes</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/wall-dampness-seepage-causes-signs-and-long-term-waterproofing-solutions-for-indian-homes-0-1766385828204.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/wall-cracks-explained-types-causes-the-right-repair-solutions-for-indian-homes</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/wall-cracks-explained-types-causes-the-right-repair-solutions-for-indian-homes-0-1766384797089.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/luxury-matte-vs-soft-sheen-paints-what-works-best-for-modern-homes</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/luxury-matte-vs-soft-sheen-paints-what-works-best-for-modern-homes-hero-1766379978903.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/best-budget-paint-combinations-for-middle-class-indian-homes</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/best-budget-paint-combinations-for-middle-class-indian-homes-hero-1766378065240.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/blog/textured-paint-vs-wallpaper-which-is-better-for-indian-walls</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://calycopaints.com/blog-images/textured-paint-vs-wallpaper-which-is-better-for-indian-walls-hero-1766375295170.png</image:loc>
+    </image:image>
+  </url>
 </urlset>
