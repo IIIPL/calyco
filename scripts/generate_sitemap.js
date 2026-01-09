@@ -27,12 +27,12 @@ const EXCLUDED_ROUTES = [
 // Routes with specific priorities
 const PRIORITY_MAP = {
     '/': 1.0,
-    '/products': 0.9,
+    '/products': 0.7,
     '/colors': 0.9,
     '/visualizer': 0.9,
     '/about': 0.8,
     '/contact': 0.8,
-    '/blog': 0.8
+    '/blog': 0.9
 };
 
 function formatDate(date) {
