@@ -7,6 +7,7 @@ import { getCityBySlug } from '../data/cities';
 import { getRandomTextures } from '../data/textures';
 import contactData from '../data/admin/contact.json';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 
 const CityLandingPage = () => {
   const { citySlug } = useParams();
