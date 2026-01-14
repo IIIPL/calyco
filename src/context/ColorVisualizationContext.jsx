@@ -22,7 +22,9 @@ export const ColorVisualizationProvider = ({ children }) => {
   };
 
   const addToComparison = (color) => {
-    if (!comparisonColors.some(c => c.name === color.name)) {
+    if (!color || typeof color !== 'object') return;
+    const colorName = String(color.name || color.calycoName || '');
+    if (!comparisonColors.some(c => String(c.name || c.calycoName || '') === colorName)) {
       setComparisonColors([...comparisonColors, color]);
     }
   };

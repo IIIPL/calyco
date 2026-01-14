@@ -113,7 +113,7 @@ export const RoomVisualizerPage = () => {
                   
                   {/* Fallback if image fails to load */}
                   <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 items-center justify-center hidden">
-                    <room.icon className="text-4xl text-gray-400" />
+                    {React.createElement(room.icon, { className: "text-4xl text-gray-400" })}
                   </div>
                   
                   {/* Hover Overlay */}
