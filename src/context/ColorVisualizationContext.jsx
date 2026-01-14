@@ -1,5 +1,5 @@
 // src/context/ColorVisualizationContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 const ColorVisualizationContext = createContext();
 
@@ -51,23 +51,25 @@ export const ColorVisualizationProvider = ({ children }) => {
     setMatchedColors(colors);
   };
 
+  const value = useMemo(() => ({
+    selectedColor,
+    harmonyType,
+    comparisonColors,
+    roomScene,
+    uploadedImage,
+    matchedColors,
+    selectColor,
+    changeHarmonyType,
+    addToComparison,
+    removeFromComparison,
+    clearComparison,
+    selectRoomScene,
+    handleImageUpload,
+    setMatchedColorsFromImage
+  }), [selectedColor, harmonyType, comparisonColors, roomScene, uploadedImage, matchedColors]);
+
   return (
-    <ColorVisualizationContext.Provider value={{
-      selectedColor,
-      harmonyType,
-      comparisonColors,
-      roomScene,
-      uploadedImage,
-      matchedColors,
-      selectColor,
-      changeHarmonyType,
-      addToComparison,
-      removeFromComparison,
-      clearComparison,
-      selectRoomScene,
-      handleImageUpload,
-      setMatchedColorsFromImage
-    }}>
+    <ColorVisualizationContext.Provider value={value}>
       {children}
     </ColorVisualizationContext.Provider>
   );

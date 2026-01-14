@@ -179,3 +179,5 @@ export const RoomVisualizerPage = () => {
     );
 };
 
+export default RoomVisualizerPage;
+
