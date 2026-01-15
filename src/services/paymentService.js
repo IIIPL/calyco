@@ -2,7 +2,10 @@
 export class PaymentService {
   constructor() {
     this.razorpayId = import.meta.env.VITE_RAZORPAY_ID;
-    this.apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const fallbackApiUrl = import.meta.env.PROD
+      ? 'https://api.calycopaints.com'
+      : 'http://localhost:3001';
+    this.apiUrl = import.meta.env.VITE_API_URL || fallbackApiUrl;
 
     // Validate configuration
     if (!this.razorpayId || this.razorpayId === 'your_razorpay_key_id_here') {

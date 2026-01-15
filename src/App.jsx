@@ -163,6 +163,28 @@ function App() {
   }, [location]);
   // ------------------------------------------------
 
+  useEffect(() => {
+    // Clean up invalid svg auto sizing that triggers console errors.
+    const cleanSvgAutoSize = () => {
+      document.querySelectorAll('svg[height="auto"], svg[width="auto"]').forEach((svg) => {
+        if (svg.getAttribute('height') === 'auto') svg.removeAttribute('height');
+        if (svg.getAttribute('width') === 'auto') svg.removeAttribute('width');
+      });
+    };
+
+    cleanSvgAutoSize();
+
+    const observer = new MutationObserver(cleanSvgAutoSize);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['height', 'width']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <CartProvider>
       <ColorProvider>
