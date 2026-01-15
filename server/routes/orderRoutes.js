@@ -1,6 +1,6 @@
 import express from 'express';
 import { OrderService } from '../services/OrderService.js';
-import { sendOrderConfirmationEmail } from '../services/emailService.js';
+import { sendAdminOrderEmail, sendOrderConfirmationEmail } from '../services/emailService.js';
 
 const router = express.Router();
 const orderService = new OrderService();
@@ -35,6 +35,7 @@ router.post('/', async (req, res) => {
     const order = await orderService.createOrder(orderData);
 
     let emailStatus = null;
+    let adminEmailStatus = null;
     const isPaid = order.status === 'paid' || order?.payment?.status === 'paid';
 
     if (isPaid && !order?.notifications?.orderConfirmationSent) {
@@ -49,11 +50,7 @@ router.post('/', async (req, res) => {
             }
           });
           emailStatus = { sent: true, messageId: emailResult.messageId };
-          return res.status(201).json({
-            success: true,
-            order: updated,
-            emailStatus
-          });
+          order = updated;
         }
         emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
       } catch (emailError) {
@@ -62,10 +59,25 @@ router.post('/', async (req, res) => {
       }
     }
 
+    if (isPaid) {
+      try {
+        const adminResult = await sendAdminOrderEmail(order);
+        if (!adminResult?.skipped) {
+          adminEmailStatus = { sent: true, messageId: adminResult.messageId };
+        } else {
+          adminEmailStatus = { sent: false, skipped: true, reason: adminResult?.reason || 'not_sent' };
+        }
+      } catch (adminError) {
+        console.error('Admin order email failed:', adminError);
+        adminEmailStatus = { sent: false, error: adminError.message };
+      }
+    }
+
     res.status(201).json({
       success: true,
       order,
-      emailStatus
+      emailStatus,
+      adminEmailStatus
     });
   } catch (error) {
     console.error('Error creating order:', error);
@@ -137,11 +149,7 @@ router.patch('/:orderId', async (req, res) => {
             }
           });
           emailStatus = { sent: true, messageId: emailResult.messageId };
-          return res.json({
-            success: true,
-            order: updated,
-            emailStatus
-          });
+          order = updated;
         }
         emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
       } catch (emailError) {
