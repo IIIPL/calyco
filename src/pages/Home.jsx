@@ -60,13 +60,13 @@ const Home = () => {
       name: "Priya S.",
       location: "Gurgaon",
       initials: "PS",
-      quote: "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
+      quote: "The finish looks premium and the wall texture came out super smooth. Dust control during painting was a big plus, and cleanup was done the same day."
     },
     {
       name: "Amit K.",
       location: "Noida",
       initials: "AK",
-      quote: "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
+      quote: "We did the exterior and it has held up through rain and sun. Colors still look fresh, and the waterproofing advice actually worked."
     }
   ];
 
