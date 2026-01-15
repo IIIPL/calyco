@@ -168,61 +168,22 @@ const Checkout = () => {
         return;
       }
 
-      // Step 1: Create order record in database
-      console.log('[Checkout] Creating order record...');
-      const orderRecord = await paymentService.createOrderRecord({
-        items: items.map(item => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          selectedSheen: item.selectedSheen,
-          selectedSize: item.selectedSize,
-          selectedColor: item.selectedColor,
-          image: item.image
-        })),
-        customer: {
-          email: user.email,
-          firstName: address.firstName,
-          lastName: address.lastName,
-          phone: address.phone,
-          address: address.address,
-          apartment: address.apartment,
-          city: address.city,
-          postcode: address.postcode,
-          country: address.country
-        },
-        subtotal,
-        tax,
-        shipping,
-        total,
-        currency: 'INR'
-      });
-
-      console.log('[Checkout] Order record created:', orderRecord.id);
-      setOrderId(orderRecord.id);
-
-      // Step 2: Create Razorpay order
+      // Step 1: Create Razorpay order
       console.log('[Checkout] Creating Razorpay order...');
       const razorpayOrder = await paymentService.createOrder(
         total,
         'INR',
-        orderRecord.id,
+        `receipt_${Date.now()}`,
         {
           customer_name: `${address.firstName} ${address.lastName}`,
           customer_email: user.email,
-          order_id: orderRecord.id
+          cart_total: total
         }
       );
 
       console.log('[Checkout] Razorpay order created:', razorpayOrder.id);
 
-      // Step 3: Update order with Razorpay order ID
-      await paymentService.updateOrderStatus(orderRecord.id, 'pending', {
-        razorpayOrderId: razorpayOrder.id
-      });
-
-      // Step 4: Store Razorpay order ID and show payment modal
+      // Step 2: Store Razorpay order ID and show payment modal
       setRazorpayOrderId(razorpayOrder.id);
       setShowRazorpayPayment(true);
     } catch (error) {
@@ -250,16 +211,42 @@ const Checkout = () => {
       if (verification.success && verification.verified) {
         console.log('[Checkout] Payment verified successfully');
 
-        // Update order status to paid
-        if (orderId) {
-          await paymentService.updateOrderStatus(orderId, 'paid', {
-            status: 'paid',
-            razorpayPaymentId: response.razorpay_payment_id,
-            razorpayOrderId: response.razorpay_order_id,
-            razorpaySignature: response.razorpay_signature
-          });
-          console.log('[Checkout] Order status updated to paid');
-        }
+        // Create order record after successful payment
+        const orderRecord = await paymentService.createOrderRecord({
+          items: items.map(item => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            selectedSheen: item.selectedSheen,
+            selectedSize: item.selectedSize,
+            selectedColor: item.selectedColor,
+            image: item.image
+          })),
+          customer: {
+            email: user.email,
+            firstName: address.firstName,
+            lastName: address.lastName,
+            phone: address.phone,
+            address: address.address,
+            apartment: address.apartment,
+            city: address.city,
+            postcode: address.postcode,
+            country: address.country
+          },
+          subtotal,
+          tax,
+          shipping,
+          total,
+          currency: 'INR',
+          status: 'paid',
+          paymentStatus: 'paid',
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpayOrderId: response.razorpay_order_id
+        });
+
+        console.log('[Checkout] Order record created:', orderRecord.id);
+        setOrderId(orderRecord.id);
 
         // Clear cart and show invoice
         setShowRazorpayPayment(false);
@@ -271,26 +258,14 @@ const Checkout = () => {
         setPaymentError("Payment verification failed. Please contact support.");
         setIsProcessingPayment(false);
 
-        // Update order status to failed
-        if (orderId) {
-          await paymentService.updateOrderStatus(orderId, 'failed', {
-            status: 'failed',
-            error: 'Payment verification failed'
-          });
-        }
+      // No order record is created until payment succeeds.
       }
     } catch (error) {
       console.error('[Checkout] Error during payment verification:', error);
       setPaymentError(`Payment verification failed: ${error.message}`);
       setIsProcessingPayment(false);
 
-      // Update order status to failed
-      if (orderId) {
-        await paymentService.updateOrderStatus(orderId, 'failed', {
-          status: 'failed',
-          error: error.message
-        });
-      }
+      // No order record is created until payment succeeds.
     }
   };
 

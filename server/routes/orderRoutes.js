@@ -1,5 +1,6 @@
 import express from 'express';
 import { OrderService } from '../services/OrderService.js';
+import { sendOrderConfirmationEmail } from '../services/emailService.js';
 
 const router = express.Router();
 const orderService = new OrderService();
@@ -33,9 +34,38 @@ router.post('/', async (req, res) => {
     // Create order
     const order = await orderService.createOrder(orderData);
 
+    let emailStatus = null;
+    const isPaid = order.status === 'paid' || order?.payment?.status === 'paid';
+
+    if (isPaid && !order?.notifications?.orderConfirmationSent) {
+      try {
+        const emailResult = await sendOrderConfirmationEmail(order);
+        if (!emailResult?.skipped) {
+          const updated = await orderService.updateOrder(order.id, {
+            notifications: {
+              ...(order.notifications || {}),
+              orderConfirmationSent: true,
+              orderConfirmationSentAt: new Date().toISOString()
+            }
+          });
+          emailStatus = { sent: true, messageId: emailResult.messageId };
+          return res.status(201).json({
+            success: true,
+            order: updated,
+            emailStatus
+          });
+        }
+        emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
+      } catch (emailError) {
+        console.error('Order confirmation email failed:', emailError);
+        emailStatus = { sent: false, error: emailError.message };
+      }
+    }
+
     res.status(201).json({
       success: true,
-      order
+      order,
+      emailStatus
     });
   } catch (error) {
     console.error('Error creating order:', error);
@@ -91,9 +121,39 @@ router.patch('/:orderId', async (req, res) => {
       });
     }
 
+    let emailStatus = null;
+    const isPaid = order.status === 'paid' || order?.payment?.status === 'paid';
+    const alreadySent = order?.notifications?.orderConfirmationSent;
+
+    if (isPaid && !alreadySent) {
+      try {
+        const emailResult = await sendOrderConfirmationEmail(order);
+        if (!emailResult?.skipped) {
+          const updated = await orderService.updateOrder(orderId, {
+            notifications: {
+              ...(order.notifications || {}),
+              orderConfirmationSent: true,
+              orderConfirmationSentAt: new Date().toISOString()
+            }
+          });
+          emailStatus = { sent: true, messageId: emailResult.messageId };
+          return res.json({
+            success: true,
+            order: updated,
+            emailStatus
+          });
+        }
+        emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
+      } catch (emailError) {
+        console.error('Order confirmation email failed:', emailError);
+        emailStatus = { sent: false, error: emailError.message };
+      }
+    }
+
     res.json({
       success: true,
-      order
+      order,
+      emailStatus
     });
   } catch (error) {
     console.error('Error updating order:', error);

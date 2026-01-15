@@ -76,6 +76,8 @@ export class OrderService {
 
   async createOrder(orderData) {
     const orders = await this.readOrders();
+    const status = orderData.status || 'pending';
+    const paymentStatus = orderData.paymentStatus || (status === 'paid' ? 'paid' : 'pending');
 
     const order = {
       id: this.generateOrderId(),
@@ -95,7 +97,7 @@ export class OrderService {
         }
       },
       payment: {
-        status: 'pending',
+        status: paymentStatus,
         method: 'razorpay',
         razorpayOrderId: orderData.razorpayOrderId || null,
         razorpayPaymentId: orderData.razorpayPaymentId || null,
@@ -109,8 +111,12 @@ export class OrderService {
         discount: orderData.discount || 0,
         total: orderData.total
       },
-      status: 'pending',
+      status,
       notes: orderData.notes || '',
+      notifications: {
+        orderConfirmationSent: false,
+        orderConfirmationSentAt: null
+      },
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
