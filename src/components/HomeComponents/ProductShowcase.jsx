@@ -234,7 +234,7 @@ const ProductShowcase = () => {
               </div>
 
               {/* Features */}
-              <div className="space-y-3 md:space-y-4 flex flex-col items-center lg:items-start">
+              <div className="space-y-3 md:space-y-4 flex flex-col items-start px-8 lg:px-0">
                 {currentProduct.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-3 md:gap-4">
                     <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#998850] flex items-center justify-center">
