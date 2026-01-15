@@ -250,8 +250,8 @@ const Home = () => {
       <section className="relative w-full h-[65vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/Assets/updated hero images/13.webp"
-            alt="Living room showcasing premium textured wall finish"
+            src="/Assets/updated hero images/8.webp"
+            alt="Beautifully painted interior walls showcasing Calyco's premium paint quality"
             className="w-full h-full object-cover object-center"
             width="1920"
             height="1280"

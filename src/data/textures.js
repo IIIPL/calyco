@@ -744,7 +744,7 @@ export const textures = [
       },
       {
         question: "Is Super Granule suitable for luxury villa exteriors in Gurgaon?",
-        answer: "Absolutely. Super Granule is our premium exterior finish for luxury villas and high-end residences across Gurgaon, Chattarpur, and South Delhi farmhouse areas."
+        answer: "Absolutely. Super Granule is our premium exterior finish for luxury villas and high-end residences across Gurgaon, Chattarpur, and Delhi farmhouse areas."
       },
       {
         question: "Can Super Granule be customized with specific granite colors?",
