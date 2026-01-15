@@ -125,3 +125,56 @@ export const sendOrderConfirmationEmail = async (order) => {
 
   return { skipped: false, messageId: info.messageId };
 };
+
+export const sendAdminOrderEmail = async (order) => {
+  const transporter = buildTransporter();
+  if (!transporter) {
+    return { skipped: true, reason: 'SMTP not configured' };
+  }
+
+  const adminEmail = getRequiredEnv('ADMIN_ORDER_EMAIL');
+  if (!adminEmail) {
+    return { skipped: true, reason: 'Admin email missing' };
+  }
+
+  const fromName = getRequiredEnv('FROM_NAME') || 'Calyco Paints';
+  const fromEmail = getRequiredEnv('FROM_EMAIL') || getRequiredEnv('SMTP_USER');
+  const replyTo = getRequiredEnv('REPLY_TO_EMAIL') || fromEmail;
+  const currency = order?.payment?.currency || order?.pricing?.currency || 'INR';
+  const total = formatCurrency(order?.pricing?.total, currency);
+
+  const itemsTable = buildItemsTable(order?.items, currency);
+  const customerName = `${order?.customer?.firstName || ''} ${order?.customer?.lastName || ''}`.trim();
+  const customerEmail = order?.customer?.email || '';
+  const customerPhone = order?.customer?.phone || '';
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#111827;line-height:1.6;">
+      <h2 style="margin-bottom:4px;">New order received</h2>
+      <p style="margin-top:0;">Order ID: <strong>${order.id}</strong></p>
+      <p><strong>Customer:</strong> ${customerName || 'N/A'} (${customerEmail || 'N/A'})</p>
+      <p><strong>Phone:</strong> ${customerPhone || 'N/A'}</p>
+      ${itemsTable}
+      <p style="margin-top:16px;"><strong>Total:</strong> ${total}</p>
+    </div>
+  `;
+
+  const text = [
+    `New order received.`,
+    `Order ID: ${order.id}`,
+    `Customer: ${customerName || 'N/A'} (${customerEmail || 'N/A'})`,
+    `Phone: ${customerPhone || 'N/A'}`,
+    `Total: ${total}`
+  ].join('\n');
+
+  const info = await transporter.sendMail({
+    from: `${fromName} <${fromEmail}>`,
+    to: adminEmail,
+    replyTo,
+    subject: `New order - ${order.id}`,
+    html,
+    text
+  });
+
+  return { skipped: false, messageId: info.messageId };
+};
