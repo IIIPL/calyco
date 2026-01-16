@@ -138,22 +138,30 @@ const Checkout = () => {
     setAddress({ ...address, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
   };
 
-  const buildInvoiceSnapshot = (invoiceNumber) => ({
-    invoiceNumber: invoiceNumber || `CAL-${Date.now()}`,
-    customer: {
-      name: `${address.firstName} ${address.lastName}`.trim(),
-      email: user.email,
-      phone: address.phone,
-      address: address.address,
-      city: address.city,
-      postcode: address.postcode
-    },
-    items,
-    subtotal,
-    shipping,
-    tax,
-    total
-  });
+  const buildInvoiceSnapshot = ({ orderId: orderIdValue, payment } = {}) => {
+    const year = new Date().getFullYear();
+    const invoiceNumber = `INV-${year}-${Date.now().toString().slice(-5)}`;
+
+    return {
+      invoiceNumber,
+      orderId: orderIdValue || '',
+      invoiceDate: new Date().toISOString(),
+      customer: {
+        name: `${address.firstName} ${address.lastName}`.trim(),
+        email: user.email,
+        phone: address.phone,
+        addressLine1: address.address,
+        addressLine2: `${address.city} ${address.postcode}`.trim(),
+        country: address.country
+      },
+      payment,
+      items,
+      subtotal,
+      shipping,
+      tax,
+      total
+    };
+  };
   const handlePayment = async (e) => {
     e.preventDefault();
     setPaymentError("");
@@ -213,7 +221,14 @@ const Checkout = () => {
   const handleDummyPayment = (success) => {
     setShowDummyModal(false);
     if (success) {
-      setInvoiceSnapshot(buildInvoiceSnapshot());
+      setInvoiceSnapshot(buildInvoiceSnapshot({
+        payment: {
+          mode: 'Test',
+          status: 'PAID',
+          transactionId: `TEST-${Date.now()}`,
+          paymentDate: new Date().toISOString()
+        }
+      }));
       setShowInvoice(true);
     } else {
       setPaymentError("Payment failed. Please try again.");
@@ -270,7 +285,15 @@ const Checkout = () => {
         // Clear cart and show invoice
         setShowRazorpayPayment(false);
         setIsProcessingPayment(false);
-        setInvoiceSnapshot(buildInvoiceSnapshot(orderRecord.id));
+        setInvoiceSnapshot(buildInvoiceSnapshot({
+          orderId: orderRecord.id,
+          payment: {
+            mode: 'Razorpay',
+            status: 'PAID',
+            transactionId: response.razorpay_payment_id,
+            paymentDate: new Date().toISOString()
+          }
+        }));
         setShowInvoice(true);
         clearCart();
       } else {

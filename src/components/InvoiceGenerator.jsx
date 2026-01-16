@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { FaDownload, FaSpinner } from 'react-icons/fa';
 
+const SELLER_GSTIN = '27AAKCC9776C1Z9';
+const SELLER_STATE_CODE = '27';
+const GST_RATE = 0.18;
+
 export const InvoiceGenerator = ({
   items = [],
   subtotal = 0,
@@ -19,7 +23,27 @@ export const InvoiceGenerator = ({
     }).format(number);
   };
 
+  const formatDate = (value) => {
+    if (!value) return new Date().toLocaleDateString('en-IN');
+    try {
+      return new Date(value).toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      });
+    } catch (error) {
+      return value;
+    }
+  };
+
   const formatLabel = (value) => (value ? String(value).trim() : '');
+
+  const resolveHsn = (item) => {
+    if (item?.hsn) return item.hsn;
+    const type = String(item?.productType || '').toLowerCase();
+    if (type === 'service' || type.includes('service')) return '9983';
+    return '3209';
+  };
 
   const buildDescription = (item) => {
     if (item?.description) return item.description;
@@ -51,11 +75,14 @@ export const InvoiceGenerator = ({
       const quantity = Number(item?.quantity || 1);
       const price = Number(item?.price || item?.unitPrice || 0);
       const lineTotal = Number(item?.total || price * quantity);
+      const lineTax = Number(item?.tax ?? lineTotal * GST_RATE);
       return {
         name: item?.name || 'Product',
+        hsn: resolveHsn(item),
         description: buildDescription(item),
         quantity,
         price,
+        tax: lineTax,
         total: lineTotal
       };
     });
@@ -71,26 +98,33 @@ export const InvoiceGenerator = ({
       const resolvedTax =
         invoiceData?.tax !== undefined && invoiceData?.tax !== null
           ? Number(invoiceData.tax)
-          : Number(tax ?? Math.round(resolvedSubtotal * 0.18));
+          : Number(tax ?? Math.round(resolvedSubtotal * GST_RATE));
       const resolvedTotal =
         invoiceData?.total !== undefined && invoiceData?.total !== null
           ? Number(invoiceData.total)
           : resolvedSubtotal + resolvedShipping + resolvedTax;
+      const taxableAmount = resolvedSubtotal;
 
       const resolvedInvoiceData = {
-        invoiceNumber: invoiceData?.invoiceNumber || `CAL-${Date.now()}`,
-        date: invoiceData?.date || new Date().toLocaleDateString('en-IN'),
+        invoiceNumber: invoiceData?.invoiceNumber || `INV-${new Date().getFullYear()}-${Date.now().toString().slice(-5)}`,
+        orderId: invoiceData?.orderId || '',
+        invoiceDate: invoiceData?.invoiceDate || new Date().toISOString(),
         company: invoiceData?.company || {
           name: 'Calyco Paints',
-          address: 'B37, Sector 1, Noida, NCR',
+          addressLine1: 'B37, Sector 1',
+          addressLine2: 'Noida, Uttar Pradesh - 201301',
+          country: 'India',
           phone: '+91 8826733064 (WhatsApp - Messages only)',
           email: 'info@calycopaints.com',
-          website: 'calycopaints.com'
+          website: 'calycopaints.com',
+          gstin: SELLER_GSTIN
         },
         customer: invoiceData?.customer || null,
+        payment: invoiceData?.payment || null,
         items: resolvedItems,
         subtotal: resolvedSubtotal,
         shipping: resolvedShipping,
+        taxableAmount,
         tax: resolvedTax,
         total: resolvedTotal
       };
@@ -110,25 +144,29 @@ export const InvoiceGenerator = ({
   };
 
   const generatePDFContent = (data) => {
+    const isInterState = Boolean(
+      data.customer?.stateCode &&
+        data.customer.stateCode !== SELLER_STATE_CODE
+    );
+    const cgst = isInterState ? 0 : data.tax / 2;
+    const sgst = isInterState ? 0 : data.tax / 2;
+    const igst = isInterState ? data.tax : 0;
+
     const itemsHTML = data.items
       .map(
         (item) => `
       <tr>
         <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${item.name}</td>
+        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.hsn}</td>
         <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
         <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 500;">${item.quantity}</td>
         <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.price)}</td>
+        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.tax)}</td>
         <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600; color: #493657;">&#8377;${formatNumber(item.total)}</td>
       </tr>
     `
       )
       .join('');
-
-    const currentDate = new Date().toLocaleDateString('en-IN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
 
     const customerHTML = data.customer
       ? `
@@ -136,12 +174,26 @@ export const InvoiceGenerator = ({
           <div class="customer-title">Bill To</div>
           <div class="customer-name">${data.customer.name || 'Customer'}</div>
           <div class="customer-address">
-            ${data.customer.address || ''}
-            ${data.customer.city ? `<br>${data.customer.city}` : ''}
-            ${data.customer.postcode ? ` ${data.customer.postcode}` : ''}
+            ${data.customer.addressLine1 || ''}
+            ${data.customer.addressLine2 ? `<br>${data.customer.addressLine2}` : ''}
+            ${data.customer.country ? `<br>${data.customer.country}` : ''}
           </div>
           ${data.customer.phone ? `<div class="contact-item"><strong>Phone:</strong> ${data.customer.phone}</div>` : ''}
           ${data.customer.email ? `<div class="contact-item"><strong>Email:</strong> ${data.customer.email}</div>` : ''}
+        </div>
+      `
+      : '';
+
+    const paymentHTML = data.payment
+      ? `
+        <div class="payment-details">
+          <div class="payment-title">Payment Details</div>
+          <div class="payment-grid">
+            <div><strong>Payment Mode:</strong> ${data.payment.mode || 'Razorpay'}</div>
+            <div><strong>Status:</strong> ${data.payment.status || 'PAID'}</div>
+            <div><strong>Transaction ID:</strong> ${data.payment.transactionId || '-'}</div>
+            <div><strong>Payment Date:</strong> ${formatDate(data.payment.paymentDate)}</div>
+          </div>
         </div>
       `
       : '';
@@ -165,7 +217,7 @@ export const InvoiceGenerator = ({
             }
 
             .invoice-container {
-              max-width: 800px;
+              max-width: 820px;
               margin: 0 auto;
               padding: 40px;
               background: #ffffff;
@@ -175,8 +227,8 @@ export const InvoiceGenerator = ({
               display: flex;
               justify-content: space-between;
               align-items: flex-start;
-              margin-bottom: 40px;
-              padding-bottom: 30px;
+              margin-bottom: 30px;
+              padding-bottom: 24px;
               border-bottom: 2px solid #f3f4f6;
               gap: 20px;
             }
@@ -186,21 +238,21 @@ export const InvoiceGenerator = ({
             }
 
             .logo-title {
-              font-size: 32px;
+              font-size: 30px;
               font-weight: 700;
               color: #493657;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
             }
 
             .logo-subtitle {
-              font-size: 16px;
+              font-size: 14px;
               color: #F0C85A;
               font-weight: 600;
-              margin-bottom: 4px;
+              margin-bottom: 2px;
             }
 
             .logo-tagline {
-              font-size: 14px;
+              font-size: 13px;
               color: #6b7280;
               font-weight: 400;
             }
@@ -210,15 +262,29 @@ export const InvoiceGenerator = ({
               flex: 1;
             }
 
-            .invoice-number {
-              font-size: 24px;
+            .invoice-label {
+              font-size: 12px;
               font-weight: 700;
               color: #493657;
-              margin-bottom: 8px;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+            }
+
+            .invoice-sub-label {
+              font-size: 11px;
+              color: #6b7280;
+              margin-bottom: 10px;
+            }
+
+            .invoice-number {
+              font-size: 18px;
+              font-weight: 600;
+              color: #493657;
+              margin-bottom: 4px;
             }
 
             .invoice-date {
-              font-size: 14px;
+              font-size: 13px;
               color: #6b7280;
               margin-bottom: 4px;
             }
@@ -229,7 +295,7 @@ export const InvoiceGenerator = ({
               color: white;
               padding: 4px 12px;
               border-radius: 20px;
-              font-size: 12px;
+              font-size: 11px;
               font-weight: 600;
             }
 
@@ -237,37 +303,40 @@ export const InvoiceGenerator = ({
               display: grid;
               grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
               gap: 16px;
-              margin-bottom: 40px;
-              padding: 30px;
+              margin-bottom: 30px;
+              padding: 24px;
               background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
               border-radius: 12px;
               border: 1px solid #e2e8f0;
             }
 
-            .company-info {
+            .company-info,
+            .contact-info,
+            .customer-info {
               min-width: 0;
             }
 
             .company-name {
-              font-size: 18px;
+              font-size: 16px;
               font-weight: 600;
               color: #493657;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
             }
 
-            .company-address {
-              font-size: 14px;
+            .company-address,
+            .customer-address {
+              font-size: 13px;
               color: #6b7280;
               line-height: 1.5;
+              margin-bottom: 6px;
             }
 
             .contact-info {
-              min-width: 0;
               text-align: right;
             }
 
             .contact-item {
-              font-size: 14px;
+              font-size: 13px;
               color: #6b7280;
               margin-bottom: 4px;
             }
@@ -277,12 +346,8 @@ export const InvoiceGenerator = ({
               font-weight: 600;
             }
 
-            .customer-info {
-              min-width: 0;
-            }
-
             .customer-title {
-              font-size: 14px;
+              font-size: 12px;
               text-transform: uppercase;
               letter-spacing: 0.06em;
               color: #6b7280;
@@ -291,23 +356,16 @@ export const InvoiceGenerator = ({
             }
 
             .customer-name {
-              font-size: 16px;
+              font-size: 15px;
               font-weight: 600;
               color: #493657;
-              margin-bottom: 6px;
-            }
-
-            .customer-address {
-              font-size: 14px;
-              color: #6b7280;
-              line-height: 1.5;
               margin-bottom: 6px;
             }
 
             .items-table {
               width: 100%;
               border-collapse: collapse;
-              margin-bottom: 30px;
+              margin-bottom: 24px;
               background: white;
               border-radius: 8px;
               overflow: hidden;
@@ -317,25 +375,31 @@ export const InvoiceGenerator = ({
             .items-table th {
               background: linear-gradient(135deg, #493657 0%, #5a4067 100%);
               color: white;
-              padding: 16px 12px;
+              padding: 14px 10px;
               text-align: left;
               font-weight: 600;
-              font-size: 14px;
+              font-size: 13px;
             }
 
-            .items-table th:last-child,
-            .items-table td:last-child {
-              text-align: right;
-            }
-
-            .items-table th:nth-child(3),
-            .items-table td:nth-child(3) {
+            .items-table th:nth-child(4),
+            .items-table td:nth-child(4) {
               text-align: center;
             }
 
+            .items-table th:nth-child(5),
+            .items-table th:nth-child(6),
+            .items-table th:nth-child(7),
+            .items-table td:nth-child(5),
+            .items-table td:nth-child(6),
+            .items-table td:nth-child(7) {
+              text-align: right;
+            }
+
             .totals-section {
-              background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-              padding: 30px;
+              margin-left: auto;
+              max-width: 320px;
+              background: #f8fafc;
+              padding: 20px;
               border-radius: 12px;
               border: 1px solid #e2e8f0;
             }
@@ -344,15 +408,15 @@ export const InvoiceGenerator = ({
               display: flex;
               justify-content: space-between;
               align-items: center;
-              margin-bottom: 12px;
-              font-size: 16px;
+              margin-bottom: 8px;
+              font-size: 14px;
             }
 
             .total-row:last-child {
               margin-bottom: 0;
-              padding-top: 16px;
-              border-top: 2px solid #e5e7eb;
-              font-size: 20px;
+              padding-top: 10px;
+              border-top: 1px dashed #cbd5f5;
+              font-size: 16px;
               font-weight: 700;
               color: #493657;
             }
@@ -367,59 +431,44 @@ export const InvoiceGenerator = ({
               color: #493657;
             }
 
-            .total-value.final {
-              color: #F0C85A;
-              font-size: 24px;
+            .payment-details {
+              margin-top: 24px;
+              padding: 18px;
+              border-radius: 10px;
+              border: 1px solid #e5e7eb;
+              background: #fafafa;
             }
 
-            .footer {
-              margin-top: 40px;
-              padding: 30px;
-              background: linear-gradient(135deg, #493657 0%, #5a4067 100%);
-              border-radius: 12px;
-              color: white;
+            .payment-title {
+              font-size: 14px;
+              font-weight: 600;
+              color: #493657;
+              margin-bottom: 10px;
+            }
+
+            .payment-grid {
+              display: grid;
+              gap: 6px;
+              font-size: 13px;
+              color: #6b7280;
+            }
+
+            .system-note {
+              margin-top: 24px;
+              font-size: 12px;
+              color: #6b7280;
               text-align: center;
             }
 
-            .footer-title {
-              font-size: 18px;
-              font-weight: 600;
-              margin-bottom: 12px;
-            }
-
-            .footer-text {
-              font-size: 14px;
-              opacity: 0.9;
-              margin-bottom: 8px;
-            }
-
-            .footer-contact {
-              font-size: 14px;
-              opacity: 0.8;
-            }
-
-            .terms {
-              margin-top: 30px;
-              padding: 20px;
-              background: #f9fafb;
-              border-radius: 8px;
-              border: 1px solid #e5e7eb;
-            }
-
-            .terms-title {
-              font-size: 16px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 12px;
-            }
-
-            .terms-list {
-              font-size: 12px;
+            .footer {
+              margin-top: 18px;
+              padding-top: 12px;
+              border-top: 1px solid #e5e7eb;
+              font-size: 11px;
               color: #6b7280;
-              line-height: 1.5;
             }
 
-            .terms-list li {
+            .footer li {
               margin-bottom: 4px;
             }
 
@@ -438,19 +487,25 @@ export const InvoiceGenerator = ({
                 <div class="logo-tagline">Transforming spaces with innovation</div>
               </div>
               <div class="invoice-info">
-                <div class="invoice-number">${data.invoiceNumber}</div>
-                <div class="invoice-date">${currentDate}</div>
+                <div class="invoice-label">Tax Invoice</div>
+                <div class="invoice-sub-label">(Original for Recipient)</div>
+                <div class="invoice-number">Invoice No: ${data.invoiceNumber}</div>
+                ${data.orderId ? `<div class="invoice-date">Order ID: ${data.orderId}</div>` : ''}
+                <div class="invoice-date">Invoice Date: ${formatDate(data.invoiceDate)}</div>
                 <div class="invoice-status">PAID</div>
               </div>
             </div>
 
             <div class="company-details">
               <div class="company-info">
+                <div class="customer-title">Sold By</div>
                 <div class="company-name">${data.company?.name || 'Calyco Paints'}</div>
                 <div class="company-address">
-                  ${data.company?.address || 'B37, Sector 1, Noida, NCR'}<br>
-                  Uttar Pradesh, India
+                  ${data.company?.addressLine1 || 'B37, Sector 1'}<br>
+                  ${data.company?.addressLine2 || 'Noida, Uttar Pradesh - 201301'}<br>
+                  ${data.company?.country || 'India'}
                 </div>
+                <div class="contact-item"><strong>GSTIN:</strong> ${data.company?.gstin || SELLER_GSTIN}</div>
               </div>
               <div class="contact-info">
                 <div class="contact-item"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8826733064 (Messages only)'}</div>
@@ -464,9 +519,11 @@ export const InvoiceGenerator = ({
               <thead>
                 <tr>
                   <th>Product</th>
+                  <th>HSN</th>
                   <th>Specifications</th>
                   <th>Qty</th>
                   <th>Unit Price</th>
+                  <th>Tax</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -485,31 +542,45 @@ export const InvoiceGenerator = ({
                 <span class="total-value">&#8377;${formatNumber(data.shipping)}</span>
               </div>
               <div class="total-row">
-                <span class="total-label">GST (18%)</span>
-                <span class="total-value">&#8377;${formatNumber(data.tax)}</span>
+                <span class="total-label">Taxable Amount</span>
+                <span class="total-value">&#8377;${formatNumber(data.taxableAmount)}</span>
+              </div>
+              ${
+                isInterState
+                  ? `
+              <div class="total-row">
+                <span class="total-label">IGST (18%)</span>
+                <span class="total-value">&#8377;${formatNumber(igst)}</span>
+              </div>
+              `
+                  : `
+              <div class="total-row">
+                <span class="total-label">CGST (9%)</span>
+                <span class="total-value">&#8377;${formatNumber(cgst)}</span>
               </div>
               <div class="total-row">
-                <span class="total-label">Total Amount</span>
-                <span class="total-value final">&#8377;${formatNumber(data.total)}</span>
+                <span class="total-label">SGST (9%)</span>
+                <span class="total-value">&#8377;${formatNumber(sgst)}</span>
+              </div>
+              `
+              }
+              <div class="total-row">
+                <span class="total-label">Grand Total</span>
+                <span class="total-value">&#8377;${formatNumber(data.total)}</span>
               </div>
             </div>
 
-            <div class="footer">
-              <div class="footer-title">Thank you for choosing Calyco Paints!</div>
-              <div class="footer-text">Your satisfaction is our priority</div>
-              <div class="footer-contact">For any queries, contact us at info@calycopaints.com</div>
+            ${paymentHTML}
+
+            <div class="system-note">
+              This is a system generated invoice and does not require a signature.
             </div>
 
-            <div class="terms">
-              <div class="terms-title">Terms & Conditions</div>
-              <ul class="terms-list">
-                <li>- All prices are inclusive of GST</li>
-                <li>- Payment is due upon receipt of this invoice</li>
-                <li>- Products are covered under manufacturer warranty</li>
-                <li>- Returns accepted within 30 days of purchase</li>
-                <li>- Free delivery on orders above &#8377;5000</li>
-              </ul>
-            </div>
+            <ul class="footer">
+              <li>- Goods once sold will not be taken back.</li>
+              <li>- Subject to Maharashtra jurisdiction.</li>
+              <li>- For support: support@calycopaints.com</li>
+            </ul>
           </div>
         </body>
       </html>
