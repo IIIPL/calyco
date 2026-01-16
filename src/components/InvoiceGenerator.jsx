@@ -156,13 +156,13 @@ export const InvoiceGenerator = ({
       .map(
         (item) => `
       <tr>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${item.name}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.hsn}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 500;">${item.quantity}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.price)}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.tax)}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600; color: #493657;">&#8377;${formatNumber(item.total)}</td>
+        <td data-label="Product" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${item.name}</td>
+        <td data-label="HSN" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.hsn}</td>
+        <td data-label="Specifications" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
+        <td data-label="Qty" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 500;">${item.quantity}</td>
+        <td data-label="Unit Price" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.price)}</td>
+        <td data-label="Tax" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.tax)}</td>
+        <td data-label="Total" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600; color: #493657;">&#8377;${formatNumber(item.total)}</td>
       </tr>
     `
       )
@@ -216,6 +216,25 @@ export const InvoiceGenerator = ({
               background: #ffffff;
             }
 
+            .invoice {
+              word-break: break-word;
+              overflow-wrap: anywhere;
+              white-space: normal;
+            }
+
+            .invoice * ,
+            .invoice-table td,
+            .invoice-details div,
+            .payment-details div {
+              word-break: break-word;
+              overflow-wrap: anywhere;
+              white-space: normal;
+            }
+
+            .invoice-details div {
+              display: block;
+            }
+
             .invoice-container {
               max-width: 820px;
               margin: 0 auto;
@@ -224,13 +243,13 @@ export const InvoiceGenerator = ({
             }
 
             .header {
-              display: flex;
-              justify-content: space-between;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 20px;
               align-items: flex-start;
               margin-bottom: 30px;
               padding-bottom: 24px;
               border-bottom: 2px solid #f3f4f6;
-              gap: 20px;
             }
 
             .logo-section {
@@ -297,6 +316,13 @@ export const InvoiceGenerator = ({
               border-radius: 20px;
               font-size: 11px;
               font-weight: 600;
+            }
+
+            .invoice-meta {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+              align-items: flex-end;
             }
 
             .company-details {
@@ -370,6 +396,10 @@ export const InvoiceGenerator = ({
               border-radius: 8px;
               overflow: hidden;
               box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+
+            .invoice-table td {
+              font-size: 13px;
             }
 
             .items-table th {
@@ -476,11 +506,55 @@ export const InvoiceGenerator = ({
               body { margin: 0; }
               .invoice-container { padding: 20px; }
             }
+
+            @media (max-width: 640px) {
+              .invoice-header,
+              .seller-buyer-grid {
+                grid-template-columns: 1fr !important;
+              }
+
+              .invoice-info {
+                text-align: left;
+              }
+
+              .invoice-meta {
+                align-items: flex-start;
+              }
+
+              .items-table thead {
+                display: none;
+              }
+
+              .items-table tr {
+                display: block;
+                margin-bottom: 12px;
+                border-bottom: 1px solid #e5e7eb;
+              }
+
+              .items-table td {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: none;
+              }
+
+              .items-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #555;
+              }
+
+              .totals-section {
+                width: 100%;
+                max-width: none;
+              }
+            }
           </style>
         </head>
         <body>
-          <div class="invoice-container">
-            <div class="header">
+          <div class="invoice invoice-container">
+            <div class="header invoice-header">
               <div class="logo-section">
                 <div class="logo-title">Calyco Paints</div>
                 <div class="logo-subtitle">Premium Paint Solutions</div>
@@ -489,14 +563,16 @@ export const InvoiceGenerator = ({
               <div class="invoice-info">
                 <div class="invoice-label">Tax Invoice</div>
                 <div class="invoice-sub-label">(Original for Recipient)</div>
-                <div class="invoice-number">Invoice No: ${data.invoiceNumber}</div>
-                ${data.orderId ? `<div class="invoice-date">Order ID: ${data.orderId}</div>` : ''}
-                <div class="invoice-date">Invoice Date: ${formatDate(data.invoiceDate)}</div>
-                <div class="invoice-status">PAID</div>
+                <div class="invoice-meta">
+                  <div class="invoice-number">Invoice No: ${data.invoiceNumber}</div>
+                  ${data.orderId ? `<div class="invoice-date">Order ID: ${data.orderId}</div>` : ''}
+                  <div class="invoice-date">Invoice Date: ${formatDate(data.invoiceDate)}</div>
+                  <div class="invoice-status">PAID</div>
+                </div>
               </div>
             </div>
 
-            <div class="company-details">
+            <div class="company-details seller-buyer-grid invoice-details">
               <div class="company-info">
                 <div class="customer-title">Sold By</div>
                 <div class="company-name">${data.company?.name || 'Calyco Paints'}</div>
@@ -515,7 +591,7 @@ export const InvoiceGenerator = ({
               ${customerHTML}
             </div>
 
-            <table class="items-table">
+            <table class="items-table invoice-table">
               <thead>
                 <tr>
                   <th>Product</th>
