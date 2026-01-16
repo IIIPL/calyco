@@ -23,6 +23,7 @@ const Checkout = () => {
   });
   const [discount, setDiscount] = useState("");
   const [showInvoice, setShowInvoice] = useState(false);
+  const [invoiceSnapshot, setInvoiceSnapshot] = useState(null);
   const [showDummyModal, setShowDummyModal] = useState(false);
   const [paymentError, setPaymentError] = useState("");
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
@@ -136,6 +137,23 @@ const Checkout = () => {
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
   };
+
+  const buildInvoiceSnapshot = (invoiceNumber) => ({
+    invoiceNumber: invoiceNumber || `CAL-${Date.now()}`,
+    customer: {
+      name: `${address.firstName} ${address.lastName}`.trim(),
+      email: user.email,
+      phone: address.phone,
+      address: address.address,
+      city: address.city,
+      postcode: address.postcode
+    },
+    items,
+    subtotal,
+    shipping,
+    tax,
+    total
+  });
   const handlePayment = async (e) => {
     e.preventDefault();
     setPaymentError("");
@@ -195,6 +213,7 @@ const Checkout = () => {
   const handleDummyPayment = (success) => {
     setShowDummyModal(false);
     if (success) {
+      setInvoiceSnapshot(buildInvoiceSnapshot());
       setShowInvoice(true);
     } else {
       setPaymentError("Payment failed. Please try again.");
@@ -251,6 +270,7 @@ const Checkout = () => {
         // Clear cart and show invoice
         setShowRazorpayPayment(false);
         setIsProcessingPayment(false);
+        setInvoiceSnapshot(buildInvoiceSnapshot(orderRecord.id));
         setShowInvoice(true);
         clearCart();
       } else {
@@ -650,8 +670,26 @@ const Checkout = () => {
             </div>
           )}
           {showInvoice && (
-            <div className="mt-8">
-              <InvoiceGenerator items={items} total={total} onClose={() => setShowInvoice(false)} />
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+              <div className="w-full max-w-md rounded-2xl bg-white p-6 text-center shadow-2xl">
+                <h3 className="text-xl font-semibold text-[#0F1221]">Payment successful</h3>
+                <p className="mt-2 text-sm text-[#0F1221]/70">
+                  Download your invoice details below.
+                </p>
+                <div className="mt-6 flex flex-col gap-3">
+                  <InvoiceGenerator
+                    invoiceData={invoiceSnapshot}
+                    onClose={() => setShowInvoice(false)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowInvoice(false)}
+                    className="w-full rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-[#0F1221] hover:bg-gray-50"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
