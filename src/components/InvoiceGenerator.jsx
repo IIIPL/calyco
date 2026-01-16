@@ -75,10 +75,11 @@ export const InvoiceGenerator = ({
     return (sourceItems || []).map((item) => {
       const quantity = Number(item?.quantity || 1);
       const price = Number(item?.price || item?.unitPrice || 0);
-      const lineTotal = Number(item?.total || price * quantity);
-      const lineTax = Number(item?.tax ?? lineTotal * GST_RATE);
+      const baseTotal = Number(price * quantity);
+      const lineTax = Number(item?.tax ?? baseTotal * GST_RATE);
+      const lineTotal = Number(item?.total ?? baseTotal + lineTax);
       return {
-        name: item?.name || 'Product',
+        name: item?.display_name || item?.name || 'Product',
         hsn: resolveHsn(item),
         description: buildDescription(item),
         quantity,
@@ -474,7 +475,7 @@ export const InvoiceGenerator = ({
               padding-top: 10px;
               border-top: 1px dashed #cbd5f5;
               font-size: 16px;
-              font-weight: 700;
+              font-weight: 800;
               color: #493657;
             }
 
@@ -641,11 +642,11 @@ export const InvoiceGenerator = ({
                 <span class="total-value">&#8377;${formatNumber(data.subtotal)}</span>
               </div>
               <div class="total-row">
-                <span class="total-label">Shipping</span>
+                <span class="total-label">Shipping (Non-Taxable)</span>
                 <span class="total-value">&#8377;${formatNumber(data.shipping)}</span>
               </div>
               <div class="total-row">
-                <span class="total-label">Taxable Amount</span>
+                <span class="total-label">Taxable Amount (Products)</span>
                 <span class="total-value">&#8377;${formatNumber(data.taxableAmount)}</span>
               </div>
               ${
@@ -681,7 +682,7 @@ export const InvoiceGenerator = ({
 
             <ul class="footer">
               <li>- Goods once sold will not be taken back.</li>
-              <li>- Subject to Maharashtra jurisdiction.</li>
+              <li>- Subject to Uttar Pradesh jurisdiction.</li>
               <li>- For support: support@calycopaints.com</li>
             </ul>
           </div>
