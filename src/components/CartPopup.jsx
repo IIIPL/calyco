@@ -71,7 +71,7 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 300 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-24 right-4 z-[60] w-96 bg-white rounded-lg shadow-lg border border-gray-100"
+          className="fixed top-24 right-2 sm:right-4 z-[60] w-[calc(100%-1rem)] sm:w-96 max-w-md bg-white rounded-lg shadow-lg border border-gray-100"
         >
           {/* Header */}
           <div className="flex justify-between items-center p-4 border-b border-gray-50">
@@ -85,57 +85,57 @@ const CartPopup = ({ isVisible, onClose, item, onContinueShopping, onCheckout })
           </div>
 
           {/* Product item */}
-          <div className="p-4">
-            <div className="flex items-center gap-6">
+          <div className="p-3 sm:p-4">
+            <div className="flex items-center gap-3 sm:gap-6">
               {/* Product image or color swatch */}
               {displayImage ? (
                 <img
                   src={displayImage}
                   alt={item.name}
-                  className="w-16 h-16 rounded-lg object-contain border border-gray-200 flex-shrink-0 bg-white"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg object-contain border border-gray-200 flex-shrink-0 bg-white"
                 />
               ) : popupSupportsColor ? (
                 <div
-                  className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg border border-gray-200 flex-shrink-0"
                   style={{ backgroundColor: item.hex || "#f3f4f6" }}
                 />
               ) : (
-                <div className="w-16 h-16 rounded-lg border border-gray-200 flex-shrink-0 bg-white" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg border border-gray-200 flex-shrink-0 bg-white" />
               )}
 
               {/* Product details */}
               <div className="flex-1 min-w-0">
-                <p className="text-lg font-semibold text-gray-900 truncate">
+                <p className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
                   {item.name}
                 </p>
                 {detailLines.length > 0 && (
-                  <p className="text-sm text-gray-600 mt-1 truncate">
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1 truncate">
                     {detailLines.join(" • ")}
                   </p>
                 )}
-                <p className="text-sm text-gray-600 mt-1">Quantity: {quantity}</p>
+                <p className="text-xs sm:text-sm text-gray-600 mt-1">Qty: {quantity}</p>
               </div>
 
               {/* Price */}
-              <div className="text-right">
-                <p className="text-lg font-bold text-gray-900">{price}</p>
+              <div className="text-right flex-shrink-0">
+                <p className="text-sm sm:text-lg font-bold text-gray-900 whitespace-nowrap">{price}</p>
               </div>
             </div>
           </div>
 
           {/* Action buttons */}
-          <div className="p-4 border-t border-gray-50">
-            <div className="flex items-center">
+          <div className="p-3 sm:p-4 border-t border-gray-50">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0">
               <button
                 onClick={onContinueShopping}
-                className="flex-1 text-base text-gray-600 hover:text-gray-900 transition-colors font-medium text-center"
+                className="flex-1 text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors font-medium text-center py-2 sm:py-0"
               >
                 Continue Shopping
               </button>
-              <div className="w-px h-5 bg-gray-200 mx-3"></div>
+              <div className="hidden sm:block w-px h-5 bg-gray-200 mx-3"></div>
               <button
                 onClick={onCheckout}
-                className="flex-1 bg-gray-900 text-white py-3 px-4 rounded-lg text-base font-medium hover:bg-gray-800 transition-colors"
+                className="flex-1 bg-gray-900 text-white py-3 px-4 rounded-lg text-sm sm:text-base font-medium hover:bg-gray-800 transition-colors"
               >
                 Checkout
               </button>

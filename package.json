@@ -27,6 +27,7 @@
     "@tensorflow/tfjs-backend-webgl": "^3.21.0",
     "framer-motion": "^12.23.0",
     "gsap": "^3.13.0",
+    "html2pdf.js": "^0.14.0",
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.525.0",
     "pdfkit": "^0.17.2",

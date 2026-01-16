@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import html2pdf from 'html2pdf.js';
 import { FaDownload, FaSpinner } from 'react-icons/fa';
 
 const SELLER_GSTIN = '27AAKCC9776C1Z9';
@@ -90,6 +91,7 @@ export const InvoiceGenerator = ({
 
   const generateInvoice = async () => {
     setIsGenerating(true);
+    let wrapper = null;
 
     try {
       const resolvedItems = normalizeItems(invoiceData?.items || items);
@@ -130,7 +132,29 @@ export const InvoiceGenerator = ({
       };
 
       const pdfContent = generatePDFContent(resolvedInvoiceData);
-      await downloadPDF(pdfContent, `Calyco-Invoice-${resolvedInvoiceData.invoiceNumber}.pdf`);
+      const filename = `Calyco-Invoice-${resolvedInvoiceData.invoiceNumber}.pdf`;
+      wrapper = document.createElement('div');
+      wrapper.style.position = 'fixed';
+      wrapper.style.left = '-9999px';
+      wrapper.style.top = '0';
+      wrapper.innerHTML = pdfContent;
+      document.body.appendChild(wrapper);
+
+      const invoiceNode = wrapper.querySelector('.invoice');
+      if (!invoiceNode) {
+        throw new Error('Invoice template not found');
+      }
+
+      await html2pdf()
+        .set({
+          margin: [10, 10, 10, 10],
+          filename,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, allowTaint: true },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        })
+        .from(invoiceNode)
+        .save();
 
       setTimeout(() => {
         onClose?.();
@@ -139,6 +163,9 @@ export const InvoiceGenerator = ({
       console.error('Error generating invoice:', error);
       alert('Error generating invoice. Please try again.');
     } finally {
+      if (wrapper && wrapper.parentNode) {
+        wrapper.parentNode.removeChild(wrapper);
+      }
       setIsGenerating(false);
     }
   };
@@ -661,18 +688,6 @@ export const InvoiceGenerator = ({
         </body>
       </html>
     `;
-  };
-
-  const downloadPDF = async (htmlContent, filename) => {
-    const blob = new Blob([htmlContent], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   return (

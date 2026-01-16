@@ -604,15 +604,15 @@ const Checkout = () => {
           {items.length > 0 && (
             <>
               {/* Discount code */}
-              <div className="flex gap-2 mt-2">
+              <div className="flex flex-col sm:flex-row gap-2 mt-2">
                 <input
                   type="text"
                   placeholder="Discount code or gift card"
                   value={discount}
                   onChange={e => setDiscount(e.target.value)}
-                  className="flex-1 border p-2 rounded"
+                  className="flex-1 border p-2 rounded text-sm"
                 />
-                <button className="px-4 py-2 bg-gray-200 rounded font-semibold">Apply</button>
+                <button className="px-4 py-2 bg-gray-200 rounded font-semibold text-sm whitespace-nowrap">Apply</button>
               </div>
               {/* Subtotal, shipping, total */}
               <div className="mt-4 space-y-2">
