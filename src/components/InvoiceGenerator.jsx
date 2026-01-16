@@ -9,6 +9,7 @@ const GST_RATE = 0.18;
 export const InvoiceGenerator = ({
   items = [],
   subtotal = 0,
+  discount = 0,
   tax = 0,
   shipping = 0,
   total = 0,
@@ -98,6 +99,7 @@ export const InvoiceGenerator = ({
       const resolvedItems = normalizeItems(invoiceData?.items || items);
       const resolvedSubtotal = Number(invoiceData?.subtotal ?? subtotal ?? 0);
       const resolvedShipping = Number(invoiceData?.shipping ?? shipping ?? 0);
+      const resolvedDiscount = Number(invoiceData?.discount ?? discount ?? 0);
       const resolvedTax =
         invoiceData?.tax !== undefined && invoiceData?.tax !== null
           ? Number(invoiceData.tax)
@@ -105,8 +107,8 @@ export const InvoiceGenerator = ({
       const resolvedTotal =
         invoiceData?.total !== undefined && invoiceData?.total !== null
           ? Number(invoiceData.total)
-          : resolvedSubtotal + resolvedShipping + resolvedTax;
-      const taxableAmount = resolvedSubtotal;
+          : resolvedSubtotal - resolvedDiscount + resolvedShipping + resolvedTax;
+      const taxableAmount = Math.max(resolvedSubtotal - resolvedDiscount, 0);
 
       const resolvedInvoiceData = {
         invoiceNumber: invoiceData?.invoiceNumber || `INV-${new Date().getFullYear()}-${Date.now().toString().slice(-5)}`,
@@ -126,6 +128,7 @@ export const InvoiceGenerator = ({
         payment: invoiceData?.payment || null,
         items: resolvedItems,
         subtotal: resolvedSubtotal,
+        discount: resolvedDiscount,
         shipping: resolvedShipping,
         taxableAmount,
         tax: resolvedTax,
@@ -641,6 +644,16 @@ export const InvoiceGenerator = ({
                 <span class="total-label">Subtotal</span>
                 <span class="total-value">&#8377;${formatNumber(data.subtotal)}</span>
               </div>
+              ${
+                data.discount
+                  ? `
+              <div class="total-row">
+                <span class="total-label">Discount</span>
+                <span class="total-value">-&#8377;${formatNumber(data.discount)}</span>
+              </div>
+              `
+                  : ''
+              }
               <div class="total-row">
                 <span class="total-label">Shipping (Non-Taxable)</span>
                 <span class="total-value">&#8377;${formatNumber(data.shipping)}</span>

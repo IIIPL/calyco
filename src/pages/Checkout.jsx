@@ -22,6 +22,8 @@ const Checkout = () => {
     sms: false,
   });
   const [discount, setDiscount] = useState("");
+  const [discountApplied, setDiscountApplied] = useState(false);
+  const [discountMessage, setDiscountMessage] = useState("");
   const [showInvoice, setShowInvoice] = useState(false);
   const [invoiceSnapshot, setInvoiceSnapshot] = useState(null);
   const [showDummyModal, setShowDummyModal] = useState(false);
@@ -56,6 +58,7 @@ const Checkout = () => {
 
   const rawSubtotal = getCartTotal();
   const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
+  const currencySymbol = "\u20B9";
 
   // Check if cart requires shipping (contains physical products)
   // Name-based fallback to handle cases where requiresShipping flag is lost in localStorage
@@ -97,13 +100,16 @@ const Checkout = () => {
   // Shipping calculation based on address
   const [selectedShipping, setSelectedShipping] = useState('standard');
   const shippingRates = {
-    standard: subtotal >= 2000 ? 0 : 250, // Free shipping above ₹2000
+    standard: subtotal >= 2000 ? 0 : 250, // Free shipping above INR 2000
     express: 500
   };
   const shipping = cartRequiresShipping ? shippingRates[selectedShipping] : 0;
 
-  const tax = Math.round(subtotal * 0.18);
-  const total = subtotal + shipping + tax;
+  const discountRate = 0.2;
+  const discountAmount = discountApplied ? Math.round(subtotal * discountRate) : 0;
+  const discountedSubtotal = Math.max(subtotal - discountAmount, 0);
+  const tax = Math.round(discountedSubtotal * 0.18);
+  const total = discountedSubtotal + shipping + tax;
 
   // Debug logging
   console.log('=== CHECKOUT DEBUG ===');
@@ -126,6 +132,8 @@ const Checkout = () => {
     });
   });
   console.log('Subtotal:', subtotal);
+  console.log('Discount:', discountAmount);
+  console.log('Discounted Subtotal:', discountedSubtotal);
   console.log('Shipping:', shipping);
   console.log('Tax:', tax);
   console.log('Total:', total);
@@ -138,14 +146,54 @@ const Checkout = () => {
     setAddress({ ...address, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
   };
 
-  const buildInvoiceSnapshot = ({ orderId: orderIdValue, payment } = {}) => {
+  const handleApplyDiscount = () => {
+    const code = discount.trim().toUpperCase();
+    const emailKey = user.email ? user.email.trim().toLowerCase() : '';
+
+    if (!code) {
+      setDiscountMessage("Enter a discount code.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    if (code !== "CALYCO20") {
+      setDiscountMessage("Invalid discount code.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    if (!emailKey) {
+      setDiscountMessage("Enter your email to apply the discount.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    const usedKey = `calyco_discount_used_${emailKey}`;
+    if (localStorage.getItem(usedKey)) {
+      setDiscountMessage("This code has already been used.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    setDiscountApplied(true);
+    setDiscountMessage("Discount applied: 20% off.");
+  };
+
+  const buildInvoiceSnapshot = ({
+    orderId: orderIdValue,
+    payment,
+    invoiceNumber,
+    invoiceDate
+  } = {}) => {
     const year = new Date().getFullYear();
-    const invoiceNumber = `INV-${year}-${Date.now().toString().slice(-5)}`;
+    const resolvedInvoiceNumber =
+      invoiceNumber || `INV-${year}-${Date.now().toString().slice(-5)}`;
+    const resolvedInvoiceDate = invoiceDate || new Date().toISOString();
 
     return {
-      invoiceNumber,
+      invoiceNumber: resolvedInvoiceNumber,
       orderId: orderIdValue || '',
-      invoiceDate: new Date().toISOString(),
+      invoiceDate: resolvedInvoiceDate,
       customer: {
         name: `${address.firstName} ${address.lastName}`.trim(),
         email: user.email,
@@ -157,6 +205,7 @@ const Checkout = () => {
       payment,
       items,
       subtotal,
+      discount: discountAmount,
       shipping,
       tax,
       total
@@ -229,6 +278,9 @@ const Checkout = () => {
           paymentDate: new Date().toISOString()
         }
       }));
+      if (discountApplied && user.email) {
+        localStorage.setItem(`calyco_discount_used_${user.email.trim().toLowerCase()}`, 'true');
+      }
       setShowInvoice(true);
     } else {
       setPaymentError("Payment failed. Please try again.");
@@ -250,11 +302,14 @@ const Checkout = () => {
           items: items.map(item => ({
             id: item.id,
             name: item.name,
+            display_name: item.display_name,
             price: item.price,
             quantity: item.quantity,
             selectedSheen: item.selectedSheen,
             selectedSize: item.selectedSize,
-            selectedColor: item.selectedColor,
+            selectedColor: item.selectedColor?.name || item.selectedColor,
+            mixingMode: item.mixingMode,
+            productType: item.productType,
             image: item.image
           })),
           customer: {
@@ -269,6 +324,7 @@ const Checkout = () => {
             country: address.country
           },
           subtotal,
+          discount: discountAmount,
           tax,
           shipping,
           total,
@@ -287,6 +343,8 @@ const Checkout = () => {
         setIsProcessingPayment(false);
         setInvoiceSnapshot(buildInvoiceSnapshot({
           orderId: orderRecord.id,
+          invoiceNumber: orderRecord?.invoice?.number,
+          invoiceDate: orderRecord?.invoice?.date,
           payment: {
             mode: 'Razorpay',
             status: 'PAID',
@@ -294,6 +352,9 @@ const Checkout = () => {
             paymentDate: new Date().toISOString()
           }
         }));
+        if (discountApplied && user.email) {
+          localStorage.setItem(`calyco_discount_used_${user.email.trim().toLowerCase()}`, 'true');
+        }
         setShowInvoice(true);
         clearCart();
       } else {
@@ -412,7 +473,7 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="font-bold text-[#493657]">
-                      {subtotal >= 2000 ? 'FREE' : '₹250'}
+                      {subtotal >= 2000 ? 'FREE' : `${currencySymbol}250`}
                     </div>
                   </label>
 
@@ -432,12 +493,12 @@ const Checkout = () => {
                         <div className="text-sm text-gray-600">2-3 business days</div>
                       </div>
                     </div>
-                    <div className="font-bold text-[#493657]">₹500</div>
+                    <div className="font-bold text-[#493657]">{currencySymbol}500</div>
                   </label>
 
                   {subtotal < 2000 && (
                     <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-                      💡 Add ₹{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
+                      Add {currencySymbol}{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
                     </div>
                   )}
                 </div>
@@ -536,7 +597,7 @@ const Checkout = () => {
                     </div>
 
                     {/* Price */}
-                    <div className="font-bold text-[#493657]">₹{item.price}</div>
+                    <div className="font-bold text-[#493657]">{currencySymbol}{item.price}</div>
 
                     {/* Delete Button */}
                     <button
@@ -609,32 +670,55 @@ const Checkout = () => {
                   type="text"
                   placeholder="Discount code or gift card"
                   value={discount}
-                  onChange={e => setDiscount(e.target.value)}
+                  onChange={(e) => {
+                    setDiscount(e.target.value);
+                    if (discountApplied) {
+                      setDiscountApplied(false);
+                      setDiscountMessage('');
+                    }
+                  }}
                   className="flex-1 border p-2 rounded text-sm"
                 />
-                <button className="px-4 py-2 bg-gray-200 rounded font-semibold text-sm whitespace-nowrap">Apply</button>
+                <button
+                  type="button"
+                  onClick={handleApplyDiscount}
+                  className="px-4 py-2 bg-gray-200 rounded font-semibold text-sm whitespace-nowrap"
+                >
+                  Apply
+                </button>
               </div>
+              {discountMessage && (
+                <div className={discountApplied ? "mt-2 text-sm text-green-600" : "mt-2 text-sm text-red-600"}>
+                  {discountMessage}
+                </div>
+              )}
               {/* Subtotal, shipping, total */}
               <div className="mt-4 space-y-2">
                 <div className="flex justify-between text-gray-700">
                   <span>Subtotal</span>
-                  <span>₹{subtotal}</span>
+                  <span>{currencySymbol}{subtotal}</span>
                 </div>
+                {discountApplied && discountAmount > 0 && (
+                  <div className="flex justify-between text-gray-700">
+                    <span>Discount (CALYCO20)</span>
+                    <span>-{currencySymbol}{discountAmount}</span>
+                  </div>
+                )}
                 {cartRequiresShipping && (
                   <div className="flex justify-between text-gray-700">
                     <span>Shipping</span>
                     <span className="font-semibold">
                       {address.address && address.city && address.postcode
-                        ? `₹${shipping}`
+                        ? `${currencySymbol}${shipping}`
                         : 'Enter shipping address'}
                     </span>
                   </div>
                 )}
                 <div className="flex justify-between font-bold text-lg mt-2">
                   <span>Total</span>
-                  <span>₹{total}</span>
+                  <span>{currencySymbol}{total}</span>
                 </div>
-                <div className="text-xs text-gray-500">Including ₹{tax} in taxes</div>
+                <div className="text-xs text-gray-500">Including {currencySymbol}{tax} in taxes</div>
               </div>
               {/* Payment Button */}
               <form onSubmit={handlePayment} className="mt-4">
