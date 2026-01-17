@@ -5,6 +5,7 @@ import { FaDownload, FaSpinner } from 'react-icons/fa';
 const SELLER_GSTIN = '27AAKCC9776C1Z9';
 const SELLER_STATE_CODE = '27';
 const GST_RATE = 0.18;
+const LOGO_URL = 'https://calycopaints.com/Logo.webp';
 
 export const InvoiceGenerator = ({
   items = [],
@@ -40,6 +41,73 @@ export const InvoiceGenerator = ({
 
   const formatLabel = (value) => (value ? String(value).trim() : '');
 
+  const numberToWords = (value) => {
+    const number = Math.floor(Number(value || 0));
+    if (number <= 0) return 'Zero';
+
+    const ones = [
+      '',
+      'One',
+      'Two',
+      'Three',
+      'Four',
+      'Five',
+      'Six',
+      'Seven',
+      'Eight',
+      'Nine',
+      'Ten',
+      'Eleven',
+      'Twelve',
+      'Thirteen',
+      'Fourteen',
+      'Fifteen',
+      'Sixteen',
+      'Seventeen',
+      'Eighteen',
+      'Nineteen'
+    ];
+    const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+    const twoDigits = (num) => {
+      if (num < 20) return ones[num];
+      const ten = Math.floor(num / 10);
+      const unit = num % 10;
+      return `${tens[ten]}${unit ? ` ${ones[unit]}` : ''}`.trim();
+    };
+
+    const threeDigits = (num) => {
+      const hundred = Math.floor(num / 100);
+      const rest = num % 100;
+      const hundredText = hundred ? `${ones[hundred]} Hundred` : '';
+      const restText = rest ? twoDigits(rest) : '';
+      return `${hundredText}${hundredText && restText ? ' ' : ''}${restText}`.trim();
+    };
+
+    let n = number;
+    const parts = [];
+    const crore = Math.floor(n / 10000000);
+    if (crore) {
+      parts.push(`${threeDigits(crore)} Crore`);
+      n %= 10000000;
+    }
+    const lakh = Math.floor(n / 100000);
+    if (lakh) {
+      parts.push(`${threeDigits(lakh)} Lakh`);
+      n %= 100000;
+    }
+    const thousand = Math.floor(n / 1000);
+    if (thousand) {
+      parts.push(`${threeDigits(thousand)} Thousand`);
+      n %= 1000;
+    }
+    if (n) {
+      parts.push(threeDigits(n));
+    }
+
+    return parts.join(' ').replace(/\s+/g, ' ').trim();
+  };
+
   const resolveHsn = (item) => {
     if (item?.hsn) return item.hsn;
     const type = String(item?.productType || '').toLowerCase();
@@ -72,13 +140,18 @@ export const InvoiceGenerator = ({
     return parts.length ? parts.join(' | ') : 'Product';
   };
 
+  const getInclusiveTax = (amount) => {
+    const gross = Number(amount || 0);
+    const base = gross / (1 + GST_RATE);
+    return Math.max(gross - base, 0);
+  };
+
   const normalizeItems = (sourceItems) => {
     return (sourceItems || []).map((item) => {
       const quantity = Number(item?.quantity || 1);
       const price = Number(item?.price || item?.unitPrice || 0);
-      const baseTotal = Number(price * quantity);
-      const lineTax = Number(item?.tax ?? baseTotal * GST_RATE);
-      const lineTotal = Number(item?.total ?? baseTotal + lineTax);
+      const lineTotal = Number(item?.total ?? price * quantity);
+      const lineTax = Number(item?.tax ?? getInclusiveTax(lineTotal));
       return {
         name: item?.display_name || item?.name || 'Product',
         hsn: resolveHsn(item),
@@ -100,15 +173,17 @@ export const InvoiceGenerator = ({
       const resolvedSubtotal = Number(invoiceData?.subtotal ?? subtotal ?? 0);
       const resolvedShipping = Number(invoiceData?.shipping ?? shipping ?? 0);
       const resolvedDiscount = Number(invoiceData?.discount ?? discount ?? 0);
-      const resolvedTax =
-        invoiceData?.tax !== undefined && invoiceData?.tax !== null
-          ? Number(invoiceData.tax)
-          : Number(tax ?? Math.round(resolvedSubtotal * GST_RATE));
+      const netSubtotal = Math.max(resolvedSubtotal - resolvedDiscount, 0);
       const resolvedTotal =
         invoiceData?.total !== undefined && invoiceData?.total !== null
           ? Number(invoiceData.total)
-          : resolvedSubtotal - resolvedDiscount + resolvedShipping + resolvedTax;
-      const taxableAmount = Math.max(resolvedSubtotal - resolvedDiscount, 0);
+          : netSubtotal + resolvedShipping;
+      const effectiveSubtotal =
+        invoiceData?.total !== undefined && invoiceData?.total !== null
+          ? Math.max(resolvedTotal - resolvedShipping, 0)
+          : netSubtotal;
+      const resolvedTax = getInclusiveTax(effectiveSubtotal);
+      const taxableAmount = effectiveSubtotal;
 
       const resolvedInvoiceData = {
         invoiceNumber: invoiceData?.invoiceNumber || `INV-${new Date().getFullYear()}-${Date.now().toString().slice(-5)}`,
@@ -128,6 +203,7 @@ export const InvoiceGenerator = ({
         payment: invoiceData?.payment || null,
         items: resolvedItems,
         subtotal: resolvedSubtotal,
+        netSubtotal: effectiveSubtotal,
         discount: resolvedDiscount,
         shipping: resolvedShipping,
         taxableAmount,
@@ -185,15 +261,16 @@ export const InvoiceGenerator = ({
 
     const itemsHTML = data.items
       .map(
-        (item) => `
+        (item, index) => `
       <tr>
-        <td data-label="Product" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${item.name}</td>
-        <td data-label="HSN" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.hsn}</td>
-        <td data-label="Specifications" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
-        <td data-label="Qty" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 500;">${item.quantity}</td>
-        <td data-label="Unit Price" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.price)}</td>
-        <td data-label="Tax" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">&#8377;${formatNumber(item.tax)}</td>
-        <td data-label="Total" style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600; color: #493657;">&#8377;${formatNumber(item.total)}</td>
+        <td data-label="Sl" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: center;">${index + 1}</td>
+        <td data-label="Product" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 600;">${item.name}</td>
+        <td data-label="HSN" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb;">${item.hsn}</td>
+        <td data-label="Specifications" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
+        <td data-label="Qty" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: center;">${item.quantity}</td>
+        <td data-label="Unit Price (Incl. GST)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right;">&#8377;${formatNumber(item.price)}</td>
+        <td data-label="Tax (Included)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right;">&#8377;${formatNumber(item.tax)}</td>
+        <td data-label="Total (Incl. GST)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600;">&#8377;${formatNumber(item.total)}</td>
       </tr>
     `
       )
@@ -201,16 +278,21 @@ export const InvoiceGenerator = ({
 
     const customerHTML = data.customer
       ? `
-        <div class="customer-info">
-          <div class="customer-title">Bill To</div>
-          <div class="customer-name">${data.customer.name || 'Customer'}</div>
-          <div class="customer-address">
-            ${data.customer.addressLine1 || ''}
-            ${data.customer.addressLine2 ? `<br>${data.customer.addressLine2}` : ''}
-            ${data.customer.country ? `<br>${data.customer.country}` : ''}
+        <div class="address-block">
+          <div class="block-title">Bill To</div>
+          <div class="block-name">${data.customer.name || 'Customer'}</div>
+          <div class="block-text">
+            ${data.customer.addressLine1 || ''}${data.customer.addressLine2 ? `, ${data.customer.addressLine2}` : ''}<br>
+            ${data.customer.country || ''}
           </div>
-          ${data.customer.phone ? `<div class="contact-item"><strong>Phone:</strong> ${data.customer.phone}</div>` : ''}
-          ${data.customer.email ? `<div class="contact-item"><strong>Email:</strong> ${data.customer.email}</div>` : ''}
+          ${data.customer.phone ? `<div class="block-text"><strong>Phone:</strong> ${data.customer.phone}</div>` : ''}
+          ${data.customer.email ? `<div class="block-text"><strong>Email:</strong> ${data.customer.email}</div>` : ''}
+          <div class="block-title" style="margin-top:10px;">Shipping Address</div>
+          <div class="block-name">${data.customer.name || 'Customer'}</div>
+          <div class="block-text">
+            ${data.customer.addressLine1 || ''}${data.customer.addressLine2 ? `, ${data.customer.addressLine2}` : ''}<br>
+            ${data.customer.country || ''}
+          </div>
         </div>
       `
       : '';
@@ -228,6 +310,9 @@ export const InvoiceGenerator = ({
         </div>
       `
       : '';
+
+    const totalTaxIncluded = data.tax;
+    const amountInWords = `${numberToWords(Math.round(data.total))} Only`;
 
     return `
       <!DOCTYPE html>
@@ -269,268 +354,195 @@ export const InvoiceGenerator = ({
             .invoice-container {
               max-width: 820px;
               margin: 0 auto;
-              padding: 40px;
+              padding: 36px;
               background: #ffffff;
             }
 
             .header {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 20px;
+              display: flex;
+              justify-content: space-between;
               align-items: flex-start;
-              margin-bottom: 30px;
-              padding-bottom: 24px;
-              border-bottom: 2px solid #f3f4f6;
+              margin-bottom: 24px;
+              padding-bottom: 16px;
+              border-bottom: 1px solid #e5e7eb;
             }
 
-            .logo-section {
-              flex: 1;
+            .brand {
+              display: flex;
+              gap: 12px;
+              align-items: flex-start;
             }
 
-            .logo-title {
-              font-size: 30px;
+            .brand-logo {
+              width: 56px;
+              height: 56px;
+              object-fit: contain;
+            }
+
+            .brand-name {
+              font-size: 20px;
               font-weight: 700;
-              color: #493657;
-              margin-bottom: 6px;
+              color: #111827;
             }
 
-            .logo-subtitle {
-              font-size: 14px;
-              color: #F0C85A;
-              font-weight: 600;
-              margin-bottom: 2px;
-            }
-
-            .logo-tagline {
-              font-size: 13px;
-              color: #6b7280;
-              font-weight: 400;
-            }
-
-            .invoice-info {
-              text-align: right;
-              flex: 1;
-            }
-
-            .invoice-label {
+            .brand-subtitle {
               font-size: 12px;
-              font-weight: 700;
-              color: #493657;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
+              color: #6b7280;
             }
 
-            .invoice-sub-label {
+            .invoice-title {
+              margin-top: 6px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #111827;
+            }
+
+            .invoice-sub {
               font-size: 11px;
               color: #6b7280;
-              margin-bottom: 10px;
-            }
-
-            .invoice-number {
-              font-size: 18px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 4px;
-            }
-
-            .invoice-date {
-              font-size: 13px;
-              color: #6b7280;
-              margin-bottom: 4px;
-            }
-
-            .invoice-status {
-              display: inline-block;
-              background: #10b981;
-              color: white;
-              padding: 4px 12px;
-              border-radius: 20px;
-              font-size: 11px;
-              font-weight: 600;
             }
 
             .invoice-meta {
-              display: flex;
-              flex-direction: column;
-              gap: 4px;
-              align-items: flex-end;
+              text-align: right;
+              font-size: 12px;
+              color: #374151;
+              line-height: 1.6;
             }
 
-            .company-details {
+            .invoice-meta strong {
+              color: #111827;
+            }
+
+            .address-grid {
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              grid-template-columns: 1fr 1fr;
               gap: 16px;
-              margin-bottom: 30px;
-              padding: 24px;
-              background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-              border-radius: 12px;
-              border: 1px solid #e2e8f0;
+              margin-bottom: 20px;
+              border: 1px solid #e5e7eb;
+              padding: 16px;
+              background: #f9fafb;
             }
 
-            .company-info,
-            .contact-info,
-            .customer-info {
+            .address-block {
               min-width: 0;
             }
 
-            .company-name {
-              font-size: 16px;
+            .block-title {
+              font-size: 11px;
+              font-weight: 700;
+              color: #6b7280;
+              text-transform: uppercase;
+              margin-bottom: 6px;
+            }
+
+            .block-name {
+              font-size: 14px;
               font-weight: 600;
-              color: #493657;
-              margin-bottom: 6px;
-            }
-
-            .company-address,
-            .customer-address {
-              font-size: 13px;
-              color: #6b7280;
-              line-height: 1.5;
-              margin-bottom: 6px;
-            }
-
-            .contact-info {
-              text-align: right;
-            }
-
-            .contact-item {
-              font-size: 13px;
-              color: #6b7280;
+              color: #111827;
               margin-bottom: 4px;
             }
 
-            .contact-item strong {
-              color: #493657;
-              font-weight: 600;
-            }
-
-            .customer-title {
+            .block-text {
               font-size: 12px;
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
               color: #6b7280;
-              font-weight: 600;
-              margin-bottom: 6px;
-            }
-
-            .customer-name {
-              font-size: 15px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 6px;
+              line-height: 1.5;
+              margin-bottom: 4px;
             }
 
             .items-table {
               width: 100%;
               border-collapse: collapse;
-              margin-bottom: 24px;
+              margin-bottom: 20px;
               background: white;
-              border-radius: 8px;
-              overflow: hidden;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+              border: 1px solid #e5e7eb;
             }
 
             .invoice-table td {
-              font-size: 13px;
+              font-size: 12px;
             }
 
             .items-table th {
-              background: linear-gradient(135deg, #493657 0%, #5a4067 100%);
-              color: white;
-              padding: 14px 10px;
+              background: #f3f4f6;
+              color: #111827;
+              padding: 10px 8px;
               text-align: left;
               font-weight: 600;
-              font-size: 13px;
+              font-size: 12px;
+              border-bottom: 1px solid #e5e7eb;
             }
 
-            .items-table th:nth-child(4),
-            .items-table td:nth-child(4) {
+            .items-table th:nth-child(1),
+            .items-table td:nth-child(1),
+            .items-table th:nth-child(5),
+            .items-table td:nth-child(5) {
               text-align: center;
             }
 
-            .items-table th:nth-child(5),
             .items-table th:nth-child(6),
             .items-table th:nth-child(7),
-            .items-table td:nth-child(5),
+            .items-table th:nth-child(8),
             .items-table td:nth-child(6),
-            .items-table td:nth-child(7) {
+            .items-table td:nth-child(7),
+            .items-table td:nth-child(8) {
               text-align: right;
             }
 
             .totals-section {
               margin-left: auto;
               max-width: 320px;
-              background: #f8fafc;
-              padding: 20px;
-              border-radius: 12px;
-              border: 1px solid #e2e8f0;
+              border: 1px solid #e5e7eb;
+              padding: 12px;
+              background: #f9fafb;
+              font-size: 12px;
             }
 
             .total-row {
               display: flex;
               justify-content: space-between;
-              align-items: center;
-              margin-bottom: 8px;
-              font-size: 14px;
+              margin-bottom: 6px;
             }
 
             .total-row:last-child {
-              margin-bottom: 0;
-              padding-top: 10px;
-              border-top: 1px dashed #cbd5f5;
-              font-size: 16px;
-              font-weight: 800;
-              color: #493657;
+              margin-top: 6px;
+              padding-top: 6px;
+              border-top: 1px solid #e5e7eb;
+              font-weight: 700;
+              color: #111827;
             }
 
-            .total-label {
-              font-weight: 500;
-              color: #6b7280;
-            }
-
-            .total-value {
+            .amount-words {
+              margin-top: 12px;
+              font-size: 12px;
+              color: #111827;
               font-weight: 600;
-              color: #493657;
             }
 
             .payment-details {
-              margin-top: 24px;
-              padding: 18px;
-              border-radius: 10px;
+              margin-top: 16px;
+              padding: 12px;
               border: 1px solid #e5e7eb;
-              background: #fafafa;
+              background: #f9fafb;
+              font-size: 12px;
             }
 
             .payment-title {
-              font-size: 14px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 10px;
+              font-size: 12px;
+              font-weight: 700;
+              color: #111827;
+              margin-bottom: 6px;
             }
 
             .payment-grid {
               display: grid;
-              gap: 6px;
-              font-size: 13px;
+              gap: 4px;
               color: #6b7280;
             }
 
             .system-note {
-              margin-top: 24px;
-              font-size: 12px;
-              color: #6b7280;
-              text-align: center;
-            }
-
-            .footer {
-              margin-top: 18px;
-              padding-top: 12px;
-              border-top: 1px solid #e5e7eb;
+              margin-top: 16px;
               font-size: 11px;
               color: #6b7280;
-            }
-
-            .footer li {
-              margin-bottom: 4px;
+              text-align: center;
             }
 
             @media print {
@@ -544,12 +556,15 @@ export const InvoiceGenerator = ({
                 grid-template-columns: 1fr !important;
               }
 
-              .invoice-info {
-                text-align: left;
+              .invoice-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
               }
 
               .invoice-meta {
                 align-items: flex-start;
+                text-align: left;
               }
 
               .items-table thead {
@@ -586,38 +601,36 @@ export const InvoiceGenerator = ({
         <body>
           <div class="invoice invoice-container">
             <div class="header invoice-header">
-              <div class="logo-section">
-                <div class="logo-title">Calyco Paints</div>
-                <div class="logo-subtitle">Premium Paint Solutions</div>
-                <div class="logo-tagline">Transforming spaces with innovation</div>
-              </div>
-              <div class="invoice-info">
-                <div class="invoice-label">Tax Invoice</div>
-                <div class="invoice-sub-label">(Original for Recipient)</div>
-                <div class="invoice-meta">
-                  <div class="invoice-number">Invoice No: ${data.invoiceNumber}</div>
-                  ${data.orderId ? `<div class="invoice-date">Order ID: ${data.orderId}</div>` : ''}
-                  <div class="invoice-date">Invoice Date: ${formatDate(data.invoiceDate)}</div>
-                  <div class="invoice-status">PAID</div>
+              <div class="brand">
+                <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" />
+                <div>
+                  <div class="brand-name">Calyco Paints</div>
+                  <div class="brand-subtitle">Premium Paint Solutions</div>
+                  <div class="brand-subtitle">Transforming spaces with innovation</div>
+                  <div class="invoice-title">Tax Invoice / Bill of Supply</div>
+                  <div class="invoice-sub">(Original for Recipient)</div>
                 </div>
+              </div>
+              <div class="invoice-meta">
+                <div><strong>Invoice No:</strong> ${data.invoiceNumber}</div>
+                ${data.orderId ? `<div><strong>Order ID:</strong> ${data.orderId}</div>` : ''}
+                <div><strong>Invoice Date:</strong> ${formatDate(data.invoiceDate)}</div>
               </div>
             </div>
 
-            <div class="company-details seller-buyer-grid invoice-details">
-              <div class="company-info">
-                <div class="customer-title">Sold By</div>
-                <div class="company-name">${data.company?.name || 'Calyco Paints'}</div>
-                <div class="company-address">
+            <div class="address-grid seller-buyer-grid invoice-details">
+              <div class="address-block">
+                <div class="block-title">Sold By</div>
+                <div class="block-name">${data.company?.name || 'Calyco Paints'}</div>
+                <div class="block-text">
                   ${data.company?.addressLine1 || 'B37, Sector 1'}<br>
                   ${data.company?.addressLine2 || 'Noida, Uttar Pradesh - 201301'}<br>
                   ${data.company?.country || 'India'}
                 </div>
-                <div class="contact-item"><strong>GSTIN:</strong> ${data.company?.gstin || SELLER_GSTIN}</div>
-              </div>
-              <div class="contact-info">
-                <div class="contact-item"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8826733064 (Messages only)'}</div>
-                <div class="contact-item"><strong>Email:</strong> ${data.company?.email || 'info@calycopaints.com'}</div>
-                <div class="contact-item"><strong>Website:</strong> ${data.company?.website || 'calycopaints.com'}</div>
+                <div class="block-text"><strong>GSTIN:</strong> ${data.company?.gstin || SELLER_GSTIN}</div>
+                <div class="block-text"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8826733064 (Messages only)'}</div>
+                <div class="block-text"><strong>Email:</strong> ${data.company?.email || 'info@calycopaints.com'}</div>
+                <div class="block-text"><strong>Website:</strong> ${data.company?.website || 'calycopaints.com'}</div>
               </div>
               ${customerHTML}
             </div>
@@ -625,13 +638,14 @@ export const InvoiceGenerator = ({
             <table class="items-table invoice-table">
               <thead>
                 <tr>
+                  <th>Sl</th>
                   <th>Product</th>
                   <th>HSN</th>
                   <th>Specifications</th>
                   <th>Qty</th>
-                  <th>Unit Price</th>
-                  <th>Tax</th>
-                  <th>Total</th>
+                  <th>Unit Price (Incl. GST)</th>
+                  <th>Tax (Included)</th>
+                  <th>Total (Incl. GST)</th>
                 </tr>
               </thead>
               <tbody>
@@ -641,63 +655,59 @@ export const InvoiceGenerator = ({
 
             <div class="totals-section">
               <div class="total-row">
-                <span class="total-label">Subtotal</span>
-                <span class="total-value">&#8377;${formatNumber(data.subtotal)}</span>
+                <span>Item Subtotal (Incl. GST)</span>
+                <span>&#8377;${formatNumber(data.subtotal)}</span>
               </div>
               ${
                 data.discount
                   ? `
               <div class="total-row">
-                <span class="total-label">Discount</span>
-                <span class="total-value">-&#8377;${formatNumber(data.discount)}</span>
+                <span>Discount</span>
+                <span>-&#8377;${formatNumber(data.discount)}</span>
               </div>
               `
                   : ''
               }
               <div class="total-row">
-                <span class="total-label">Shipping (Non-Taxable)</span>
-                <span class="total-value">&#8377;${formatNumber(data.shipping)}</span>
-              </div>
-              <div class="total-row">
-                <span class="total-label">Taxable Amount (Products)</span>
-                <span class="total-value">&#8377;${formatNumber(data.taxableAmount)}</span>
+                <span>Shipping (Non-Taxable)</span>
+                <span>&#8377;${formatNumber(data.shipping)}</span>
               </div>
               ${
                 isInterState
                   ? `
               <div class="total-row">
-                <span class="total-label">IGST (18%)</span>
-                <span class="total-value">&#8377;${formatNumber(igst)}</span>
+                <span>IGST (18%) - Included</span>
+                <span>&#8377;${formatNumber(igst)}</span>
               </div>
               `
                   : `
               <div class="total-row">
-                <span class="total-label">CGST (9%)</span>
-                <span class="total-value">&#8377;${formatNumber(cgst)}</span>
+                <span>CGST (9%) - Included</span>
+                <span>&#8377;${formatNumber(cgst)}</span>
               </div>
               <div class="total-row">
-                <span class="total-label">SGST (9%)</span>
-                <span class="total-value">&#8377;${formatNumber(sgst)}</span>
+                <span>SGST (9%) - Included</span>
+                <span>&#8377;${formatNumber(sgst)}</span>
               </div>
               `
               }
               <div class="total-row">
-                <span class="total-label">Grand Total</span>
-                <span class="total-value">&#8377;${formatNumber(data.total)}</span>
+                <span>Total Tax (Included)</span>
+                <span>&#8377;${formatNumber(totalTaxIncluded)}</span>
+              </div>
+              <div class="total-row">
+                <span>Grand Total</span>
+                <span>&#8377;${formatNumber(data.total)}</span>
               </div>
             </div>
+
+            <div class="amount-words">Amount in Words: Rupees ${amountInWords}</div>
 
             ${paymentHTML}
 
             <div class="system-note">
               This is a system generated invoice and does not require a signature.
             </div>
-
-            <ul class="footer">
-              <li>- Goods once sold will not be taken back.</li>
-              <li>- Subject to Uttar Pradesh jurisdiction.</li>
-              <li>- For support: support@calycopaints.com</li>
-            </ul>
           </div>
         </body>
       </html>
