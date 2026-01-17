@@ -534,6 +534,11 @@ export const InvoiceGenerator = ({
               text-align: right;
             }
 
+            .summary-pad {
+              border: none !important;
+              background: transparent !important;
+            }
+
             .items-table th:nth-child(1),
             .items-table td:nth-child(1),
             .items-table th:nth-child(5),
@@ -680,56 +685,56 @@ export const InvoiceGenerator = ({
               <tbody>
                 ${itemsHTML}
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">Item Subtotal (Incl. GST)</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">Item Subtotal (Incl. GST)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
                 </tr>
                 ${
                   data.discount
                     ? `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">Discount</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">Discount</td>
                   <td class="col-right col-nowrap">-&#8377;${formatNumber(data.discount)}</td>
                 </tr>
                 `
                     : ''
                 }
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">Shipping (Non-Taxable)</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">Shipping (Non-Taxable)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.shipping)}</td>
                 </tr>
                 ${
                   isInterState
                     ? `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">IGST (18%) - Included</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">IGST (18%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(igst)}</td>
                 </tr>
                 `
                     : `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">CGST (9%) - Included</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">CGST (9%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(cgst)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">SGST (9%) - Included</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">SGST (9%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(sgst)}</td>
                 </tr>
                 `
                 }
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">Total Tax (Included)</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">Total Tax (Included)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(totalTaxIncluded)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-label">Grand Total</td>
-                  <td colspan="3"></td>
+                  <td colspan="4" class="summary-pad"></td>
+                  <td colspan="3" class="summary-label">Grand Total</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.total)}</td>
                 </tr>
               </tbody>
