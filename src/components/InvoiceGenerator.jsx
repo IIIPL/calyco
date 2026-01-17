@@ -263,14 +263,14 @@ export const InvoiceGenerator = ({
       .map(
         (item, index) => `
       <tr>
-        <td data-label="Sl" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: center;">${index + 1}</td>
-        <td data-label="Product" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 600;">${item.name}</td>
-        <td data-label="HSN" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb;">${item.hsn}</td>
-        <td data-label="Specifications" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
-        <td data-label="Qty" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: center;">${item.quantity}</td>
-        <td data-label="Unit Price (Incl. GST)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right;">&#8377;${formatNumber(item.price)}</td>
-        <td data-label="Tax (Included)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right;">&#8377;${formatNumber(item.tax)}</td>
-        <td data-label="Total (Incl. GST)" style="padding: 10px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600;">&#8377;${formatNumber(item.total)}</td>
+        <td data-label="Sl" class="col-center col-nowrap">${index + 1}</td>
+        <td data-label="Product" class="col-wrap col-strong">${item.name}</td>
+        <td data-label="HSN" class="col-center col-nowrap">${item.hsn}</td>
+        <td data-label="Specifications" class="col-wrap col-muted">${item.description}</td>
+        <td data-label="Qty" class="col-center col-nowrap">${item.quantity}</td>
+        <td data-label="Unit Price (Incl. GST)" class="col-right col-nowrap">&#8377;${formatNumber(item.price)}</td>
+        <td data-label="Tax (Included)" class="col-right col-nowrap">&#8377;${formatNumber(item.tax)}</td>
+        <td data-label="Total (Incl. GST)" class="col-right col-nowrap col-strong">&#8377;${formatNumber(item.total)}</td>
       </tr>
     `
       )
@@ -279,7 +279,7 @@ export const InvoiceGenerator = ({
     const customerHTML = data.customer
       ? `
         <div class="address-block">
-          <div class="block-title">Bill To</div>
+          <div class="block-title">Billing Address</div>
           <div class="block-name">${data.customer.name || 'Customer'}</div>
           <div class="block-text">
             ${data.customer.addressLine1 || ''}${data.customer.addressLine2 ? `, ${data.customer.addressLine2}` : ''}<br>
@@ -299,15 +299,14 @@ export const InvoiceGenerator = ({
 
     const paymentHTML = data.payment
       ? `
-        <div class="payment-details">
-          <div class="payment-title">Payment Details</div>
-          <div class="payment-grid">
-            <div><strong>Payment Mode:</strong> ${data.payment.mode || 'Razorpay'}</div>
-            <div><strong>Status:</strong> ${data.payment.status || 'PAID'}</div>
-            <div><strong>Transaction ID:</strong> ${data.payment.transactionId || '-'}</div>
-            <div><strong>Payment Date:</strong> ${formatDate(data.payment.paymentDate)}</div>
-          </div>
-        </div>
+        <table class="payment-details">
+          <tr>
+            <td><strong>Payment Transaction ID:</strong> ${data.payment.transactionId || '-'}</td>
+            <td><strong>Date:</strong> ${formatDate(data.payment.paymentDate)}</td>
+            <td><strong>Invoice Value:</strong> &#8377;${formatNumber(data.total)}</td>
+            <td><strong>Mode of Payment:</strong> ${data.payment.mode || 'Razorpay'}</td>
+          </tr>
+        </table>
       `
       : '';
 
@@ -352,9 +351,9 @@ export const InvoiceGenerator = ({
             }
 
             .invoice-container {
-              max-width: 820px;
+              max-width: 900px;
               margin: 0 auto;
-              padding: 36px;
+              padding: 30px;
               background: #ffffff;
             }
 
@@ -362,38 +361,26 @@ export const InvoiceGenerator = ({
               display: flex;
               justify-content: space-between;
               align-items: flex-start;
-              margin-bottom: 24px;
-              padding-bottom: 16px;
+              margin-bottom: 18px;
+              padding-bottom: 12px;
               border-bottom: 1px solid #e5e7eb;
             }
 
             .brand {
               display: flex;
-              gap: 12px;
-              align-items: flex-start;
+              flex-direction: column;
+              gap: 8px;
             }
 
             .brand-logo {
-              width: 56px;
-              height: 56px;
+              width: 72px;
+              height: 48px;
               object-fit: contain;
             }
 
-            .brand-name {
-              font-size: 20px;
-              font-weight: 700;
-              color: #111827;
-            }
-
-            .brand-subtitle {
-              font-size: 12px;
-              color: #6b7280;
-            }
-
             .invoice-title {
-              margin-top: 6px;
               font-size: 12px;
-              font-weight: 600;
+              font-weight: 700;
               color: #111827;
             }
 
@@ -405,7 +392,7 @@ export const InvoiceGenerator = ({
             .invoice-meta {
               text-align: right;
               font-size: 12px;
-              color: #374151;
+              color: #111827;
               line-height: 1.6;
             }
 
@@ -417,10 +404,10 @@ export const InvoiceGenerator = ({
               display: grid;
               grid-template-columns: 1fr 1fr;
               gap: 16px;
-              margin-bottom: 20px;
+              margin-bottom: 18px;
               border: 1px solid #e5e7eb;
-              padding: 16px;
-              background: #f9fafb;
+              padding: 12px;
+              background: #ffffff;
             }
 
             .address-block {
@@ -452,23 +439,99 @@ export const InvoiceGenerator = ({
             .items-table {
               width: 100%;
               border-collapse: collapse;
-              margin-bottom: 20px;
+              margin-bottom: 12px;
               background: white;
-              border: 1px solid #e5e7eb;
+              border: 1px solid #111827;
+              table-layout: fixed;
             }
 
-            .invoice-table td {
+            .invoice-table td,
+            .invoice-table th {
               font-size: 12px;
+              border: 1px solid #111827;
+              padding: 6px 6px;
+              vertical-align: top;
             }
 
             .items-table th {
               background: #f3f4f6;
               color: #111827;
-              padding: 10px 8px;
+              font-weight: 700;
               text-align: left;
+            }
+
+            .items-table th:nth-child(1),
+            .items-table td:nth-child(1) {
+              width: 4%;
+            }
+
+            .items-table th:nth-child(2),
+            .items-table td:nth-child(2) {
+              width: 22%;
+            }
+
+            .items-table th:nth-child(3),
+            .items-table td:nth-child(3) {
+              width: 8%;
+            }
+
+            .items-table th:nth-child(4),
+            .items-table td:nth-child(4) {
+              width: 28%;
+            }
+
+            .items-table th:nth-child(5),
+            .items-table td:nth-child(5) {
+              width: 6%;
+            }
+
+            .items-table th:nth-child(6),
+            .items-table td:nth-child(6) {
+              width: 12%;
+            }
+
+            .items-table th:nth-child(7),
+            .items-table td:nth-child(7) {
+              width: 10%;
+            }
+
+            .items-table th:nth-child(8),
+            .items-table td:nth-child(8) {
+              width: 10%;
+            }
+
+            .col-center {
+              text-align: center;
+            }
+
+            .col-right {
+              text-align: right;
+            }
+
+            .col-nowrap {
+              white-space: nowrap;
+            }
+
+            .col-wrap {
+              white-space: normal;
+              word-break: break-word;
+            }
+
+            .col-muted {
+              color: #6b7280;
+            }
+
+            .col-strong {
               font-weight: 600;
-              font-size: 12px;
-              border-bottom: 1px solid #e5e7eb;
+            }
+
+            .summary-row td {
+              font-weight: 600;
+              background: #fafafa;
+            }
+
+            .summary-label {
+              text-align: right;
             }
 
             .items-table th:nth-child(1),
@@ -487,60 +550,31 @@ export const InvoiceGenerator = ({
               text-align: right;
             }
 
-            .totals-section {
-              margin-left: auto;
-              max-width: 320px;
-              border: 1px solid #e5e7eb;
-              padding: 12px;
-              background: #f9fafb;
-              font-size: 12px;
-            }
-
-            .total-row {
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 6px;
-            }
-
-            .total-row:last-child {
-              margin-top: 6px;
-              padding-top: 6px;
-              border-top: 1px solid #e5e7eb;
-              font-weight: 700;
-              color: #111827;
-            }
-
             .amount-words {
-              margin-top: 12px;
+              margin-top: 6px;
               font-size: 12px;
-              color: #111827;
               font-weight: 600;
+              color: #111827;
             }
 
             .payment-details {
-              margin-top: 16px;
-              padding: 12px;
-              border: 1px solid #e5e7eb;
-              background: #f9fafb;
-              font-size: 12px;
-            }
-
-            .payment-title {
-              font-size: 12px;
-              font-weight: 700;
+              margin-top: 8px;
+              font-size: 11px;
               color: #111827;
-              margin-bottom: 6px;
+              border: 1px solid #111827;
+              border-collapse: collapse;
+              width: 100%;
             }
 
-            .payment-grid {
-              display: grid;
-              gap: 4px;
-              color: #6b7280;
+            .payment-details td {
+              border: 1px solid #111827;
+              padding: 6px;
+              white-space: nowrap;
             }
 
             .system-note {
-              margin-top: 16px;
-              font-size: 11px;
+              margin-top: 8px;
+              font-size: 10px;
               color: #6b7280;
               text-align: center;
             }
@@ -603,13 +637,8 @@ export const InvoiceGenerator = ({
             <div class="header invoice-header">
               <div class="brand">
                 <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" />
-                <div>
-                  <div class="brand-name">Calyco Paints</div>
-                  <div class="brand-subtitle">Premium Paint Solutions</div>
-                  <div class="brand-subtitle">Transforming spaces with innovation</div>
-                  <div class="invoice-title">Tax Invoice / Bill of Supply</div>
-                  <div class="invoice-sub">(Original for Recipient)</div>
-                </div>
+                <div class="invoice-title">Tax Invoice / Bill of Supply</div>
+                <div class="invoice-sub">(Original for Recipient)</div>
               </div>
               <div class="invoice-meta">
                 <div><strong>Invoice No:</strong> ${data.invoiceNumber}</div>
@@ -650,56 +679,53 @@ export const InvoiceGenerator = ({
               </thead>
               <tbody>
                 ${itemsHTML}
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">Item Subtotal (Incl. GST)</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
+                </tr>
+                ${
+                  data.discount
+                    ? `
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">Discount</td>
+                  <td colspan="2" class="col-right col-nowrap">-&#8377;${formatNumber(data.discount)}</td>
+                </tr>
+                `
+                    : ''
+                }
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">Shipping (Non-Taxable)</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(data.shipping)}</td>
+                </tr>
+                ${
+                  isInterState
+                    ? `
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">IGST (18%) - Included</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(igst)}</td>
+                </tr>
+                `
+                    : `
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">CGST (9%) - Included</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(cgst)}</td>
+                </tr>
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">SGST (9%) - Included</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(sgst)}</td>
+                </tr>
+                `
+                }
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">Total Tax (Included)</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(totalTaxIncluded)}</td>
+                </tr>
+                <tr class="summary-row">
+                  <td colspan="6" class="summary-label">Grand Total</td>
+                  <td colspan="2" class="col-right col-nowrap">&#8377;${formatNumber(data.total)}</td>
+                </tr>
               </tbody>
             </table>
-
-            <div class="totals-section">
-              <div class="total-row">
-                <span>Item Subtotal (Incl. GST)</span>
-                <span>&#8377;${formatNumber(data.subtotal)}</span>
-              </div>
-              ${
-                data.discount
-                  ? `
-              <div class="total-row">
-                <span>Discount</span>
-                <span>-&#8377;${formatNumber(data.discount)}</span>
-              </div>
-              `
-                  : ''
-              }
-              <div class="total-row">
-                <span>Shipping (Non-Taxable)</span>
-                <span>&#8377;${formatNumber(data.shipping)}</span>
-              </div>
-              ${
-                isInterState
-                  ? `
-              <div class="total-row">
-                <span>IGST (18%) - Included</span>
-                <span>&#8377;${formatNumber(igst)}</span>
-              </div>
-              `
-                  : `
-              <div class="total-row">
-                <span>CGST (9%) - Included</span>
-                <span>&#8377;${formatNumber(cgst)}</span>
-              </div>
-              <div class="total-row">
-                <span>SGST (9%) - Included</span>
-                <span>&#8377;${formatNumber(sgst)}</span>
-              </div>
-              `
-              }
-              <div class="total-row">
-                <span>Total Tax (Included)</span>
-                <span>&#8377;${formatNumber(totalTaxIncluded)}</span>
-              </div>
-              <div class="total-row">
-                <span>Grand Total</span>
-                <span>&#8377;${formatNumber(data.total)}</span>
-              </div>
-            </div>
 
             <div class="amount-words">Amount in Words: Rupees ${amountInWords}</div>
 

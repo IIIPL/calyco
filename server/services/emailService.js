@@ -185,7 +185,7 @@ const buildItemsTable = (items = [], currency) => {
   `;
 };
 
-const buildInvoiceItemsTable = (items = [], currency) => {
+const buildInvoiceItemsTable = (items = [], currency, summaryRows = '') => {
   if (!items.length) {
     return '<p>No items listed.</p>';
   }
@@ -200,35 +200,36 @@ const buildInvoiceItemsTable = (items = [], currency) => {
       const specs = buildItemSpecs(item);
       return `
         <tr>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:center;">${index + 1}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;">${name}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;">${resolveHsn(item)}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;color:#6b7280;">${specs}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:center;">${qty}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:right;">${formatCurrency(price, currency)}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:right;">${formatCurrency(lineTax, currency)}</td>
-          <td style="padding:8px;border-bottom:1px solid #e5e7eb;text-align:right;font-weight:600;">${formatCurrency(lineTotal, currency)}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:center;white-space:nowrap;">${index + 1}</td>
+          <td style="padding:6px;border:1px solid #111827;">${name}</td>
+          <td style="padding:6px;border:1px solid #111827;white-space:nowrap;text-align:center;">${resolveHsn(item)}</td>
+          <td style="padding:6px;border:1px solid #111827;color:#6b7280;word-break:break-word;">${specs}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:center;white-space:nowrap;">${qty}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;">${formatCurrency(price, currency)}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;">${formatCurrency(lineTax, currency)}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;font-weight:600;">${formatCurrency(lineTotal, currency)}</td>
         </tr>
       `;
     })
     .join('');
 
   return `
-    <table style="width:100%;border-collapse:collapse;border:1px solid #e5e7eb;">
+    <table style="width:100%;border-collapse:collapse;border:1px solid #111827;table-layout:fixed;">
       <thead>
         <tr style="background:#f3f4f6;color:#111827;">
-          <th style="padding:8px;text-align:center;">Sl</th>
-          <th style="padding:8px;text-align:left;">Product</th>
-          <th style="padding:8px;text-align:left;">HSN</th>
-          <th style="padding:8px;text-align:left;">Specifications</th>
-          <th style="padding:8px;text-align:center;">Qty</th>
-          <th style="padding:8px;text-align:right;">Unit Price (Incl. GST)</th>
-          <th style="padding:8px;text-align:right;">Tax (Included)</th>
-          <th style="padding:8px;text-align:right;">Total (Incl. GST)</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:center;">Sl</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:left;">Product</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:center;">HSN</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:left;">Specifications</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:center;">Qty</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:right;">Unit Price (Incl. GST)</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:right;">Tax (Included)</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:right;">Total (Incl. GST)</th>
         </tr>
       </thead>
       <tbody>
         ${rows}
+        ${summaryRows}
       </tbody>
     </table>
   `;
@@ -247,7 +248,40 @@ const buildInvoiceEmail = (order) => {
   const customer = order?.customer || {};
   const address = customer?.address || {};
 
-  const itemsTable = buildInvoiceItemsTable(order?.items || [], currency);
+  const summaryRows = `
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Item Subtotal (Incl. GST)</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(effectiveSubtotal, currency)}</td>
+    </tr>
+    ${discount ? `
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Discount</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">-${formatCurrency(discount, currency)}</td>
+    </tr>
+    ` : ''}
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Shipping (Non-Taxable)</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(shipping, currency)}</td>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">CGST (9%) - Included</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(cgst, currency)}</td>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">SGST (9%) - Included</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(sgst, currency)}</td>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Total Tax (Included)</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(totalTaxIncluded, currency)}</td>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:700;background:#fafafa;">Grand Total</td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:700;">${formatCurrency(total, currency)}</td>
+    </tr>
+  `;
+
+  const itemsTable = buildInvoiceItemsTable(order?.items || [], currency, summaryRows);
   const cgst = totalTaxIncluded / 2;
   const sgst = totalTaxIncluded / 2;
   const amountInWords = `${numberToWords(Math.round(total))} Only`;
@@ -260,13 +294,10 @@ const buildInvoiceEmail = (order) => {
             <table style="border-collapse:collapse;">
               <tr>
                 <td style="padding-right:10px;vertical-align:top;">
-                  <img src="${LOGO_URL}" alt="Calyco Paints" style="width:56px;height:56px;object-fit:contain;" />
+                  <img src="${LOGO_URL}" alt="Calyco Paints" style="width:72px;height:48px;object-fit:contain;" />
                 </td>
                 <td style="vertical-align:top;">
-                  <div style="font-size:20px;font-weight:700;color:#111827;">${SELLER_INFO.name}</div>
-                  <div style="font-size:12px;color:#6b7280;">Premium Paint Solutions</div>
-                  <div style="font-size:12px;color:#6b7280;">Transforming spaces with innovation</div>
-                  <div style="font-size:12px;font-weight:600;color:#111827;margin-top:6px;">Tax Invoice / Bill of Supply</div>
+                  <div style="font-size:12px;font-weight:700;color:#111827;">Tax Invoice / Bill of Supply</div>
                   <div style="font-size:11px;color:#6b7280;">(Original for Recipient)</div>
                 </td>
               </tr>
@@ -296,7 +327,7 @@ const buildInvoiceEmail = (order) => {
             <div style="font-size:12px;color:#6b7280;"><strong>Website:</strong> ${SELLER_INFO.website}</div>
           </td>
           <td style="padding:12px;vertical-align:top;">
-            <div style="font-size:11px;text-transform:uppercase;color:#6b7280;font-weight:700;">Bill To</div>
+            <div style="font-size:11px;text-transform:uppercase;color:#6b7280;font-weight:700;">Billing Address</div>
             <div style="font-size:14px;font-weight:600;color:#111827;">${customer.firstName || ''} ${customer.lastName || ''}</div>
             <div style="font-size:12px;color:#6b7280;">
               ${address.street || ''}${address.apartment ? `, ${address.apartment}` : ''}<br>
@@ -318,54 +349,18 @@ const buildInvoiceEmail = (order) => {
 
       ${itemsTable}
 
-      <table style="width:100%;border-collapse:collapse;margin-top:16px;">
-        <tr>
-          <td></td>
-          <td style="width:280px;background:#f9fafb;border:1px solid #e5e7eb;padding:12px;font-size:12px;color:#374151;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>Item Subtotal (Incl. GST)</span>
-              <span>${formatCurrency(subtotal, currency)}</span>
-            </div>
-            ${discount ? `
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>Discount</span>
-              <span>-${formatCurrency(discount, currency)}</span>
-            </div>` : ''}
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>Shipping (Non-Taxable)</span>
-              <span>${formatCurrency(shipping, currency)}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>CGST (9%) - Included</span>
-              <span>${formatCurrency(cgst, currency)}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>SGST (9%) - Included</span>
-              <span>${formatCurrency(sgst, currency)}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-              <span>Total Tax (Included)</span>
-              <span>${formatCurrency(totalTaxIncluded, currency)}</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid #e5e7eb;padding-top:6px;">
-              <span>Grand Total</span>
-              <span>${formatCurrency(total, currency)}</span>
-            </div>
-          </td>
-        </tr>
-      </table>
-
-      <div style="margin-top:10px;font-size:12px;font-weight:600;color:#111827;">
+      <div style="margin-top:6px;font-size:12px;font-weight:600;color:#111827;">
         Amount in Words: Rupees ${amountInWords}
       </div>
 
-      <div style="margin-top:16px;border:1px solid #e5e7eb;padding:12px;background:#f9fafb;">
-        <div style="font-size:12px;font-weight:700;color:#111827;margin-bottom:6px;">Payment Details</div>
-        <div style="font-size:12px;color:#6b7280;"><strong>Payment Mode:</strong> ${order?.payment?.method || 'Razorpay'}</div>
-        <div style="font-size:12px;color:#6b7280;"><strong>Status:</strong> ${order?.payment?.status || 'PAID'}</div>
-        <div style="font-size:12px;color:#6b7280;"><strong>Transaction ID:</strong> ${order?.payment?.razorpayPaymentId || '-'}</div>
-        <div style="font-size:12px;color:#6b7280;"><strong>Payment Date:</strong> ${new Date(order?.createdAt || Date.now()).toLocaleDateString('en-IN')}</div>
-      </div>
+      <table style="width:100%;border-collapse:collapse;margin-top:6px;border:1px solid #111827;font-size:11px;">
+        <tr>
+          <td style="border:1px solid #111827;padding:6px;white-space:nowrap;"><strong>Payment Transaction ID:</strong> ${order?.payment?.razorpayPaymentId || '-'}</td>
+          <td style="border:1px solid #111827;padding:6px;white-space:nowrap;"><strong>Date & Time:</strong> ${new Date(order?.createdAt || Date.now()).toLocaleString('en-IN')}</td>
+          <td style="border:1px solid #111827;padding:6px;white-space:nowrap;"><strong>Invoice Value:</strong> ${formatCurrency(total, currency)}</td>
+          <td style="border:1px solid #111827;padding:6px;white-space:nowrap;"><strong>Mode of Payment:</strong> ${order?.payment?.method || 'Razorpay'}</td>
+        </tr>
+      </table>
 
       <div style="margin-top:12px;font-size:11px;color:#6b7280;text-align:center;">
         This is a system generated invoice and does not require a signature.
