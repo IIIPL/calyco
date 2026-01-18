@@ -579,7 +579,7 @@ export const InvoiceGenerator = ({
             .payment-details td {
               border: 1px solid #111827;
               padding: 6px;
-              white-space: nowrap;
+              white-space: normal;
             }
 
             .system-note {
@@ -590,7 +590,8 @@ export const InvoiceGenerator = ({
             }
 
             .invoice.pdf-mode {
-              width: 900px;
+              width: 760px;
+              padding: 20px;
             }
 
             .invoice.pdf-mode .items-table thead {
@@ -719,56 +720,56 @@ export const InvoiceGenerator = ({
               <tbody>
                 ${itemsHTML}
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">Item Subtotal (Incl. GST)</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">Item Subtotal (Incl. GST)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
                 </tr>
                 ${
                   data.discount
                     ? `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">Discount</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">Discount</td>
                   <td class="col-right col-nowrap">-&#8377;${formatNumber(data.discount)}</td>
                 </tr>
                 `
                     : ''
                 }
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">Shipping (Non-Taxable)</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">Shipping (Non-Taxable)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.shipping)}</td>
                 </tr>
                 ${
                   isInterState
                     ? `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">IGST (18%) - Included</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">IGST (18%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(igst)}</td>
                 </tr>
                 `
                     : `
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">CGST (9%) - Included</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">CGST (9%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(cgst)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">SGST (9%) - Included</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">SGST (9%) - Included</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(sgst)}</td>
                 </tr>
                 `
                 }
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">Total Tax (Included)</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">Total Tax (Included)</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(totalTaxIncluded)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="4" class="summary-pad"></td>
-                  <td colspan="3" class="summary-label">Grand Total</td>
+                  <td colspan="5" class="summary-pad"></td>
+                  <td colspan="2" class="summary-label col-nowrap">Grand Total</td>
                   <td class="col-right col-nowrap">&#8377;${formatNumber(data.total)}</td>
                 </tr>
               </tbody>

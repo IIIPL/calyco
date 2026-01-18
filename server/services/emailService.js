@@ -253,40 +253,40 @@ const buildInvoiceEmail = (order) => {
 
   const summaryRows = `
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Item Subtotal (Incl. GST)</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Item Subtotal (Incl. GST)</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(effectiveSubtotal, currency)}</td>
     </tr>
     ${discount ? `
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Discount</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Discount</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">-${formatCurrency(discount, currency)}</td>
     </tr>
     ` : ''}
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Shipping (Non-Taxable)</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Shipping (Non-Taxable)</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(shipping, currency)}</td>
     </tr>
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">CGST (9%) - Included</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">CGST (9%) - Included</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(cgst, currency)}</td>
     </tr>
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">SGST (9%) - Included</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">SGST (9%) - Included</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(sgst, currency)}</td>
     </tr>
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;">Total Tax (Included)</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Total Tax (Included)</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(totalTaxIncluded, currency)}</td>
     </tr>
     <tr>
-      <td colspan="4" style="padding:6px;border:none;"></td>
-      <td colspan="3" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:700;background:#fafafa;">Grand Total</td>
+      <td colspan="5" style="padding:6px;border:none;"></td>
+      <td colspan="2" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:700;background:#fafafa;white-space:nowrap;">Grand Total</td>
       <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:700;">${formatCurrency(total, currency)}</td>
     </tr>
   `;
