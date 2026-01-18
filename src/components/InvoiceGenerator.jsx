@@ -537,11 +537,12 @@ export const InvoiceGenerator = ({
 
             .summary-label {
               text-align: right;
+              white-space: nowrap;
             }
 
-            .summary-pad {
-              border: none !important;
-              background: transparent !important;
+            .summary-value {
+              text-align: right;
+              white-space: nowrap;
             }
 
             .items-table th:nth-child(1),
@@ -720,57 +721,49 @@ export const InvoiceGenerator = ({
               <tbody>
                 ${itemsHTML}
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">Item Subtotal (Incl. GST)</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
+                  <td colspan="7" class="summary-label">Item Subtotal (Incl. GST)</td>
+                  <td class="summary-value">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
                 </tr>
                 ${
                   data.discount
                     ? `
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">Discount</td>
-                  <td class="col-right col-nowrap">-&#8377;${formatNumber(data.discount)}</td>
+                  <td colspan="7" class="summary-label">Discount</td>
+                  <td class="summary-value">-&#8377;${formatNumber(data.discount)}</td>
                 </tr>
                 `
                     : ''
                 }
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">Shipping (Non-Taxable)</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(data.shipping)}</td>
+                  <td colspan="7" class="summary-label">Shipping (Non-Taxable)</td>
+                  <td class="summary-value">&#8377;${formatNumber(data.shipping)}</td>
                 </tr>
                 ${
                   isInterState
                     ? `
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">IGST (18%) - Included</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(igst)}</td>
+                  <td colspan="7" class="summary-label">IGST (18%) - Included</td>
+                  <td class="summary-value">&#8377;${formatNumber(igst)}</td>
                 </tr>
                 `
                     : `
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">CGST (9%) - Included</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(cgst)}</td>
+                  <td colspan="7" class="summary-label">CGST (9%) - Included</td>
+                  <td class="summary-value">&#8377;${formatNumber(cgst)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">SGST (9%) - Included</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(sgst)}</td>
+                  <td colspan="7" class="summary-label">SGST (9%) - Included</td>
+                  <td class="summary-value">&#8377;${formatNumber(sgst)}</td>
                 </tr>
                 `
                 }
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">Total Tax (Included)</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(totalTaxIncluded)}</td>
+                  <td colspan="7" class="summary-label">Total Tax (Included)</td>
+                  <td class="summary-value">&#8377;${formatNumber(totalTaxIncluded)}</td>
                 </tr>
                 <tr class="summary-row">
-                  <td colspan="5" class="summary-pad"></td>
-                  <td colspan="2" class="summary-label col-nowrap">Grand Total</td>
-                  <td class="col-right col-nowrap">&#8377;${formatNumber(data.total)}</td>
+                  <td colspan="7" class="summary-label">Grand Total</td>
+                  <td class="summary-value">&#8377;${formatNumber(data.total)}</td>
                 </tr>
               </tbody>
             </table>
