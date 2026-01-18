@@ -233,7 +233,8 @@ export const InvoiceGenerator = ({
           html2canvas: {
             scale: 2,
             useCORS: true,
-            allowTaint: true,
+            allowTaint: false,
+            imageTimeout: 15000,
             windowWidth: 1200
           },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -709,7 +710,7 @@ export const InvoiceGenerator = ({
           <div class="invoice invoice-container pdf-mode">
             <div class="header invoice-header">
               <div class="brand">
-                <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" />
+                <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" crossorigin="anonymous" />
                 <div class="invoice-title">Tax Invoice / Bill of Supply</div>
                 <div class="invoice-sub">(Original for Recipient)</div>
               </div>
