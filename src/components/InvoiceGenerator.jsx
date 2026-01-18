@@ -217,6 +217,7 @@ export const InvoiceGenerator = ({
       wrapper.style.position = 'fixed';
       wrapper.style.left = '-9999px';
       wrapper.style.top = '0';
+      wrapper.style.width = '900px';
       wrapper.innerHTML = pdfContent;
       document.body.appendChild(wrapper);
 
@@ -552,6 +553,7 @@ export const InvoiceGenerator = ({
               margin-top: 6px;
               border: 1px solid #111827;
               font-size: 12px;
+              table-layout: fixed;
             }
 
             .invoice-summary td {
@@ -565,6 +567,7 @@ export const InvoiceGenerator = ({
               font-weight: 600;
               background: #fafafa;
               white-space: normal;
+              width: 70%;
             }
 
             .invoice-summary .value {
@@ -572,6 +575,7 @@ export const InvoiceGenerator = ({
               white-space: nowrap;
               background: #fafafa;
               font-weight: 600;
+              width: 30%;
             }
 
             .invoice-summary .total {
@@ -624,8 +628,13 @@ export const InvoiceGenerator = ({
             }
 
             .invoice.pdf-mode {
-              width: 760px;
-              padding: 20px;
+              width: 700px;
+              padding: 18px;
+            }
+
+            .invoice.pdf-mode .invoice-meta {
+              max-width: 240px;
+              white-space: normal;
             }
 
             .invoice.pdf-mode .items-table thead {
