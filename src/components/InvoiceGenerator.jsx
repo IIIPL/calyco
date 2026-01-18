@@ -217,7 +217,6 @@ export const InvoiceGenerator = ({
       wrapper.style.position = 'fixed';
       wrapper.style.left = '-9999px';
       wrapper.style.top = '0';
-      wrapper.style.width = '900px';
       wrapper.innerHTML = pdfContent;
       document.body.appendChild(wrapper);
 
@@ -225,6 +224,9 @@ export const InvoiceGenerator = ({
       if (!invoiceNode) {
         throw new Error('Invoice template not found');
       }
+
+      const invoiceWidth = Math.ceil(invoiceNode.scrollWidth);
+      const invoiceHeight = Math.ceil(invoiceNode.scrollHeight);
 
       await html2pdf()
         .set({
@@ -236,7 +238,8 @@ export const InvoiceGenerator = ({
             useCORS: true,
             allowTaint: false,
             imageTimeout: 15000,
-            windowWidth: 1200
+            windowWidth: invoiceWidth,
+            windowHeight: invoiceHeight
           },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         })
@@ -628,7 +631,8 @@ export const InvoiceGenerator = ({
             }
 
             .invoice.pdf-mode {
-              width: 700px;
+              width: 100%;
+              max-width: 720px;
               padding: 18px;
             }
 
