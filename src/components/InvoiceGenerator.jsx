@@ -230,7 +230,12 @@ export const InvoiceGenerator = ({
           margin: [10, 10, 10, 10],
           filename,
           image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true, allowTaint: true },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            windowWidth: 1200
+          },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         })
         .from(invoiceNode)
@@ -584,6 +589,35 @@ export const InvoiceGenerator = ({
               text-align: center;
             }
 
+            .invoice.pdf-mode {
+              width: 900px;
+            }
+
+            .invoice.pdf-mode .items-table thead {
+              display: table-header-group !important;
+            }
+
+            .invoice.pdf-mode .items-table tr {
+              display: table-row !important;
+              margin-bottom: 0 !important;
+              border-bottom: none !important;
+            }
+
+            .invoice.pdf-mode .items-table td {
+              display: table-cell !important;
+              padding: 6px !important;
+              border: 1px solid #111827 !important;
+            }
+
+            .invoice.pdf-mode .items-table td::before {
+              content: none !important;
+            }
+
+            .invoice.pdf-mode .invoice-header,
+            .invoice.pdf-mode .seller-buyer-grid {
+              grid-template-columns: 1fr 1fr !important;
+            }
+
             @media print {
               body { margin: 0; }
               .invoice-container { padding: 20px; }
@@ -638,7 +672,7 @@ export const InvoiceGenerator = ({
           </style>
         </head>
         <body>
-          <div class="invoice invoice-container">
+          <div class="invoice invoice-container pdf-mode">
             <div class="header invoice-header">
               <div class="brand">
                 <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" />
