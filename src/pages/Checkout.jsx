@@ -108,8 +108,8 @@ const Checkout = () => {
   const discountRate = 0.2;
   const discountAmount = discountApplied ? Math.round(subtotal * discountRate) : 0;
   const discountedSubtotal = Math.max(subtotal - discountAmount, 0);
-  const tax = Math.round(discountedSubtotal * 0.18);
-  const total = discountedSubtotal + shipping + tax;
+  const taxIncluded = Math.round(discountedSubtotal - (discountedSubtotal / 1.18));
+  const total = discountedSubtotal + shipping;
 
   // Debug logging
   console.log('=== CHECKOUT DEBUG ===');
@@ -135,7 +135,7 @@ const Checkout = () => {
   console.log('Discount:', discountAmount);
   console.log('Discounted Subtotal:', discountedSubtotal);
   console.log('Shipping:', shipping);
-  console.log('Tax:', tax);
+  console.log('Tax (included):', taxIncluded);
   console.log('Total:', total);
   console.log('======================');
 
@@ -207,7 +207,7 @@ const Checkout = () => {
       subtotal,
       discount: discountAmount,
       shipping,
-      tax,
+      tax: taxIncluded,
       total
     };
   };
@@ -325,7 +325,7 @@ const Checkout = () => {
           },
           subtotal,
           discount: discountAmount,
-          tax,
+          tax: taxIncluded,
           shipping,
           total,
           currency: 'INR',
@@ -718,7 +718,7 @@ const Checkout = () => {
                   <span>Total</span>
                   <span>{currencySymbol}{total}</span>
                 </div>
-                <div className="text-xs text-gray-500">Including {currencySymbol}{tax} in taxes</div>
+                <div className="text-xs text-gray-500">Including {currencySymbol}{taxIncluded} in taxes</div>
               </div>
               {/* Payment Button */}
               <form onSubmit={handlePayment} className="mt-4">
