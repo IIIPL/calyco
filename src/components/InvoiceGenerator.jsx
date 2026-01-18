@@ -545,6 +545,38 @@ export const InvoiceGenerator = ({
               white-space: nowrap;
             }
 
+            .invoice-summary {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 6px;
+              border: 1px solid #111827;
+              font-size: 12px;
+            }
+
+            .invoice-summary td {
+              padding: 6px;
+              border: 1px solid #111827;
+              vertical-align: top;
+            }
+
+            .invoice-summary .label {
+              text-align: left;
+              font-weight: 600;
+              background: #fafafa;
+              white-space: normal;
+            }
+
+            .invoice-summary .value {
+              text-align: right;
+              white-space: nowrap;
+              background: #fafafa;
+              font-weight: 600;
+            }
+
+            .invoice-summary .total {
+              font-weight: 700;
+            }
+
             .items-table th:nth-child(1),
             .items-table td:nth-child(1),
             .items-table th:nth-child(5),
@@ -720,52 +752,55 @@ export const InvoiceGenerator = ({
               </thead>
               <tbody>
                 ${itemsHTML}
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">Item Subtotal (Incl. GST)</td>
-                  <td class="summary-value">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
-                </tr>
-                ${
-                  data.discount
-                    ? `
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">Discount</td>
-                  <td class="summary-value">-&#8377;${formatNumber(data.discount)}</td>
-                </tr>
-                `
-                    : ''
-                }
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">Shipping (Non-Taxable)</td>
-                  <td class="summary-value">&#8377;${formatNumber(data.shipping)}</td>
-                </tr>
-                ${
-                  isInterState
-                    ? `
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">IGST (18%) - Included</td>
-                  <td class="summary-value">&#8377;${formatNumber(igst)}</td>
-                </tr>
-                `
-                    : `
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">CGST (9%) - Included</td>
-                  <td class="summary-value">&#8377;${formatNumber(cgst)}</td>
-                </tr>
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">SGST (9%) - Included</td>
-                  <td class="summary-value">&#8377;${formatNumber(sgst)}</td>
-                </tr>
-                `
-                }
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">Total Tax (Included)</td>
-                  <td class="summary-value">&#8377;${formatNumber(totalTaxIncluded)}</td>
-                </tr>
-                <tr class="summary-row">
-                  <td colspan="7" class="summary-label">Grand Total</td>
-                  <td class="summary-value">&#8377;${formatNumber(data.total)}</td>
-                </tr>
               </tbody>
+            </table>
+
+            <table class="invoice-summary">
+              <tr>
+                <td class="label">Item Subtotal (Incl. GST)</td>
+                <td class="value">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
+              </tr>
+              ${
+                data.discount
+                  ? `
+              <tr>
+                <td class="label">Discount</td>
+                <td class="value">-&#8377;${formatNumber(data.discount)}</td>
+              </tr>
+              `
+                  : ''
+              }
+              <tr>
+                <td class="label">Shipping (Non-Taxable)</td>
+                <td class="value">&#8377;${formatNumber(data.shipping)}</td>
+              </tr>
+              ${
+                isInterState
+                  ? `
+              <tr>
+                <td class="label">IGST (18%) - Included</td>
+                <td class="value">&#8377;${formatNumber(igst)}</td>
+              </tr>
+              `
+                  : `
+              <tr>
+                <td class="label">CGST (9%) - Included</td>
+                <td class="value">&#8377;${formatNumber(cgst)}</td>
+              </tr>
+              <tr>
+                <td class="label">SGST (9%) - Included</td>
+                <td class="value">&#8377;${formatNumber(sgst)}</td>
+              </tr>
+              `
+              }
+              <tr>
+                <td class="label">Total Tax (Included)</td>
+                <td class="value">&#8377;${formatNumber(totalTaxIncluded)}</td>
+              </tr>
+              <tr>
+                <td class="label total">Grand Total</td>
+                <td class="value total">&#8377;${formatNumber(data.total)}</td>
+              </tr>
             </table>
 
             <div class="amount-words">Amount in Words: Rupees ${amountInWords}</div>

@@ -251,40 +251,42 @@ const buildInvoiceEmail = (order) => {
   const cgst = totalTaxIncluded / 2;
   const sgst = totalTaxIncluded / 2;
 
-  const summaryRows = `
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Item Subtotal (Incl. GST)</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(effectiveSubtotal, currency)}</td>
-    </tr>
-    ${discount ? `
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Discount</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">-${formatCurrency(discount, currency)}</td>
-    </tr>
-    ` : ''}
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Shipping (Non-Taxable)</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(shipping, currency)}</td>
-    </tr>
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">CGST (9%) - Included</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(cgst, currency)}</td>
-    </tr>
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">SGST (9%) - Included</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(sgst, currency)}</td>
-    </tr>
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:600;background:#fafafa;white-space:nowrap;">Total Tax (Included)</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;">${formatCurrency(totalTaxIncluded, currency)}</td>
-    </tr>
-    <tr>
-      <td colspan="7" style="padding:6px;border:1px solid #111827;text-align:right;font-weight:700;background:#fafafa;white-space:nowrap;">Grand Total</td>
-      <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:700;">${formatCurrency(total, currency)}</td>
-    </tr>
+  const summaryTable = `
+    <table style="width:100%;border-collapse:collapse;margin-top:6px;border:1px solid #111827;font-size:12px;">
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Item Subtotal (Incl. GST)</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(effectiveSubtotal, currency)}</td>
+      </tr>
+      ${discount ? `
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Discount</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">-${formatCurrency(discount, currency)}</td>
+      </tr>
+      ` : ''}
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Shipping (Non-Taxable)</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(shipping, currency)}</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">CGST (9%) - Included</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(cgst, currency)}</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">SGST (9%) - Included</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(sgst, currency)}</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Total Tax (Included)</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(totalTaxIncluded, currency)}</td>
+      </tr>
+      <tr>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:700;white-space:normal;">Grand Total</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:700;">${formatCurrency(total, currency)}</td>
+      </tr>
+    </table>
   `;
 
-  const itemsTable = buildInvoiceItemsTable(order?.items || [], currency, summaryRows);
+  const itemsTable = buildInvoiceItemsTable(order?.items || [], currency);
   const amountInWords = `${numberToWords(Math.round(total))} Only`;
 
   return `
@@ -349,6 +351,7 @@ const buildInvoiceEmail = (order) => {
       </table>
 
       ${itemsTable}
+      ${summaryTable}
 
       <div style="margin-top:6px;font-size:12px;font-weight:600;color:#111827;">
         Amount in Words: Rupees ${amountInWords}
