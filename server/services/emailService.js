@@ -194,9 +194,11 @@ const buildInvoiceItemsTable = (items = [], currency, summaryRows = '') => {
     .map((item, index) => {
       const name = item.display_name || item.name || 'Item';
       const qty = Number(item.quantity || 1);
-      const price = Number(item.price || 0);
-      const lineTotal = price * qty;
+      const priceInclusive = Number(item.price || 0);
+      const lineTotal = Number(item.total ?? priceInclusive * qty);
       const lineTax = getInclusiveTax(lineTotal);
+      const lineBase = Math.max(lineTotal - lineTax, 0);
+      const unitBase = qty ? lineBase / qty : 0;
       const specs = buildItemSpecs(item);
       return `
         <tr>
@@ -205,7 +207,7 @@ const buildInvoiceItemsTable = (items = [], currency, summaryRows = '') => {
           <td style="padding:6px;border:1px solid #111827;white-space:nowrap;text-align:center;">${resolveHsn(item)}</td>
           <td style="padding:6px;border:1px solid #111827;color:#6b7280;word-break:break-word;">${specs}</td>
           <td style="padding:6px;border:1px solid #111827;text-align:center;white-space:nowrap;">${qty}</td>
-          <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;">${formatCurrency(price, currency)}</td>
+          <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;">${formatCurrency(unitBase, currency)}</td>
           <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;">${formatCurrency(lineTax, currency)}</td>
           <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;font-weight:600;">${formatCurrency(lineTotal, currency)}</td>
         </tr>
@@ -222,7 +224,7 @@ const buildInvoiceItemsTable = (items = [], currency, summaryRows = '') => {
           <th style="padding:6px;border:1px solid #111827;text-align:center;">HSN</th>
           <th style="padding:6px;border:1px solid #111827;text-align:left;">Specifications</th>
           <th style="padding:6px;border:1px solid #111827;text-align:center;">Qty</th>
-          <th style="padding:6px;border:1px solid #111827;text-align:right;">Unit Price (Incl. GST)</th>
+          <th style="padding:6px;border:1px solid #111827;text-align:right;">Unit Price (Excl. GST)</th>
           <th style="padding:6px;border:1px solid #111827;text-align:right;">Tax (Included)</th>
           <th style="padding:6px;border:1px solid #111827;text-align:right;">Total (Incl. GST)</th>
         </tr>
@@ -245,6 +247,7 @@ const buildInvoiceEmail = (order) => {
   const effectiveSubtotal = Math.max(subtotal - discount, 0);
   const total = order?.pricing?.total !== undefined ? Number(order.pricing.total) : effectiveSubtotal + shipping;
   const totalTaxIncluded = getInclusiveTax(effectiveSubtotal);
+  const baseSubtotal = Math.max(effectiveSubtotal - totalTaxIncluded, 0);
   const customer = order?.customer || {};
   const address = customer?.address || {};
 
@@ -254,8 +257,8 @@ const buildInvoiceEmail = (order) => {
   const summaryTable = `
     <table style="width:100%;border-collapse:collapse;margin-top:6px;border:1px solid #111827;font-size:12px;">
       <tr>
-        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Item Subtotal (Incl. GST)</td>
-        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(effectiveSubtotal, currency)}</td>
+        <td style="padding:6px;border:1px solid #111827;background:#fafafa;font-weight:600;white-space:normal;">Item Subtotal (Excl. GST)</td>
+        <td style="padding:6px;border:1px solid #111827;text-align:right;white-space:nowrap;background:#fafafa;font-weight:600;">${formatCurrency(baseSubtotal, currency)}</td>
       </tr>
       ${discount ? `
       <tr>

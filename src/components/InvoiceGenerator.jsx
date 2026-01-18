@@ -149,15 +149,17 @@ export const InvoiceGenerator = ({
   const normalizeItems = (sourceItems) => {
     return (sourceItems || []).map((item) => {
       const quantity = Number(item?.quantity || 1);
-      const price = Number(item?.price || item?.unitPrice || 0);
-      const lineTotal = Number(item?.total ?? price * quantity);
-      const lineTax = Number(item?.tax ?? getInclusiveTax(lineTotal));
+      const priceInclusive = Number(item?.price || item?.unitPrice || 0);
+      const lineTotal = Number(item?.total ?? priceInclusive * quantity);
+      const lineTax = getInclusiveTax(lineTotal);
+      const lineBase = Math.max(lineTotal - lineTax, 0);
+      const unitBase = quantity ? lineBase / quantity : 0;
       return {
         name: item?.display_name || item?.name || 'Product',
         hsn: resolveHsn(item),
         description: buildDescription(item),
         quantity,
-        price,
+        price: unitBase,
         tax: lineTax,
         total: lineTotal
       };
@@ -183,6 +185,7 @@ export const InvoiceGenerator = ({
           ? Math.max(resolvedTotal - resolvedShipping, 0)
           : netSubtotal;
       const resolvedTax = getInclusiveTax(effectiveSubtotal);
+      const baseSubtotal = Math.max(effectiveSubtotal - resolvedTax, 0);
       const taxableAmount = effectiveSubtotal;
 
       const resolvedInvoiceData = {
@@ -203,7 +206,7 @@ export const InvoiceGenerator = ({
         payment: invoiceData?.payment || null,
         items: resolvedItems,
         subtotal: resolvedSubtotal,
-        netSubtotal: effectiveSubtotal,
+        netSubtotal: baseSubtotal,
         discount: resolvedDiscount,
         shipping: resolvedShipping,
         taxableAmount,
@@ -278,7 +281,7 @@ export const InvoiceGenerator = ({
         <td data-label="HSN" class="col-center col-nowrap">${item.hsn}</td>
         <td data-label="Specifications" class="col-wrap col-muted">${item.description}</td>
         <td data-label="Qty" class="col-center col-nowrap">${item.quantity}</td>
-        <td data-label="Unit Price (Incl. GST)" class="col-right col-nowrap">&#8377;${formatNumber(item.price)}</td>
+        <td data-label="Unit Price (Excl. GST)" class="col-right col-nowrap">&#8377;${formatNumber(item.price)}</td>
         <td data-label="Tax (Included)" class="col-right col-nowrap">&#8377;${formatNumber(item.tax)}</td>
         <td data-label="Total (Incl. GST)" class="col-right col-nowrap col-strong">&#8377;${formatNumber(item.total)}</td>
       </tr>
@@ -759,7 +762,7 @@ export const InvoiceGenerator = ({
                   <th>HSN</th>
                   <th>Specifications</th>
                   <th>Qty</th>
-                  <th>Unit Price (Incl. GST)</th>
+                  <th>Unit Price (Excl. GST)</th>
                   <th>Tax (Included)</th>
                   <th>Total (Incl. GST)</th>
                 </tr>
@@ -771,7 +774,7 @@ export const InvoiceGenerator = ({
 
             <table class="invoice-summary">
               <tr>
-                <td class="label">Item Subtotal (Incl. GST)</td>
+                <td class="label">Item Subtotal (Excl. GST)</td>
                 <td class="value">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
               </tr>
               ${
