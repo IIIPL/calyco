@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../../src/components/SEO';
 import FAQ from '../components/FAQ';
 import FAQAccordion from '../components/FAQAccordion';
 import '../styles/blog-custom.css';
@@ -258,13 +258,14 @@ const BlogDetail = ({ post, allPosts = [] }) => {
 
     return (
         <>
-            <Helmet>
-                <html lang="en-IN" />
-                <title>{title} | Calyco Blogs</title>
-                <meta name="description" content={title} />
-                <link rel="canonical" href={`https://calycopaints.com/blog/${post.slug}`} />
-                <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
-            </Helmet>
+            <SEO
+                title={`${title} | Calyco Blogs`}
+                description={title}
+                url={`https://calycopaints.com/blog/${post.slug}`}
+                image={heroImage ? (heroImage.startsWith('http') ? heroImage : `https://calycopaints.com${heroImage}`) : undefined}
+                ogType="article"
+                schemaMarkup={schemaData}
+            />
 
             <div className="calyco-blog-detail-scope">
                 {/* Full Width Hero Image */}

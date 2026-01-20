@@ -7,6 +7,7 @@ import ColorSelectorModal from '../components/ColorSelectorModal';
 import CartPopup from '../components/CartPopup';
 import { products as catalogProducts } from '../data/products.js';
 import texturesData from '../data/textures';
+import SEO from '../components/SEO';
 
 const BudgetCalculator = () => {
   const navigate = useNavigate();
@@ -482,6 +483,11 @@ const BudgetCalculator = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
+      <SEO
+        title="Paint Budget Calculator - Calyco Paints"
+        description="Estimate your painting costs accurately with the Calyco Budget Calculator. Get quotes for interior, exterior, and textured finishes."
+        url="https://calycopaints.com/budget-calculator"
+      />
       {/* Header Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#F7F5FF] via-[#EFE9FC] to-[#F5F0FB]" />
@@ -516,11 +522,10 @@ const BudgetCalculator = () => {
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('paint')}
-                className={`relative p-6 rounded-lg border-2 transition-all ${
-                  calculatorType === 'paint'
-                    ? 'border-purple-600 bg-purple-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
+                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'paint'
+                  ? 'border-purple-600 bg-purple-50'
+                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  }`}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">🎨</div>
@@ -543,11 +548,10 @@ const BudgetCalculator = () => {
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('texture')}
-                className={`relative p-6 rounded-lg border-2 transition-all ${
-                  calculatorType === 'texture'
-                    ? 'border-purple-600 bg-purple-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
+                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'texture'
+                  ? 'border-purple-600 bg-purple-50'
+                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  }`}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">🏗️</div>
@@ -612,11 +616,10 @@ const BudgetCalculator = () => {
                       <button
                         type="button"
                         onClick={() => setPaintCategory('interior')}
-                        className={`relative p-4 rounded-lg border-2 transition-all ${
-                          paintCategory === 'interior'
-                            ? 'border-purple-600 bg-purple-50'
-                            : 'border-gray-200 bg-white hover:border-gray-300'
-                        }`}
+                        className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'interior'
+                          ? 'border-purple-600 bg-purple-50'
+                          : 'border-gray-200 bg-white hover:border-gray-300'
+                          }`}
                       >
                         <div className="text-center">
                           <div className="text-3xl mb-2">🏠</div>
@@ -636,11 +639,10 @@ const BudgetCalculator = () => {
                       <button
                         type="button"
                         onClick={() => setPaintCategory('exterior')}
-                        className={`relative p-4 rounded-lg border-2 transition-all ${
-                          paintCategory === 'exterior'
-                            ? 'border-purple-600 bg-purple-50'
-                            : 'border-gray-200 bg-white hover:border-gray-300'
-                        }`}
+                        className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'exterior'
+                          ? 'border-purple-600 bg-purple-50'
+                          : 'border-gray-200 bg-white hover:border-gray-300'
+                          }`}
                       >
                         <div className="text-center">
                           <div className="text-3xl mb-2">🌆</div>
@@ -670,11 +672,10 @@ const BudgetCalculator = () => {
                           key={key}
                           type="button"
                           onClick={() => setPaintProductType(key)}
-                          className={`relative p-4 rounded-lg border-2 transition-all ${
-                            paintProductType === key
-                              ? 'border-purple-600 bg-purple-50'
-                              : 'border-gray-200 bg-white hover:border-gray-300'
-                          }`}
+                          className={`relative p-4 rounded-lg border-2 transition-all ${paintProductType === key
+                            ? 'border-purple-600 bg-purple-50'
+                            : 'border-gray-200 bg-white hover:border-gray-300'
+                            }`}
                         >
                           <div className="flex flex-col items-center">
                             <img
@@ -778,16 +779,14 @@ const BudgetCalculator = () => {
                             </p>
                           </div>
                           <ChevronDown
-                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
-                              isTextureDropdownOpen ? 'rotate-180' : ''
-                            }`}
+                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isTextureDropdownOpen ? 'rotate-180' : ''
+                              }`}
                           />
                         </div>
                       </button>
                       <div
-                        className={`absolute left-0 right-0 mt-3 rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 origin-top z-20 ${
-                          isTextureDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
-                        }`}
+                        className={`absolute left-0 right-0 mt-3 rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 origin-top z-20 ${isTextureDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+                          }`}
                       >
                         <div className="max-h-72 overflow-y-auto bg-white rounded-2xl">
                           {textureOptions.map((texture) => {
@@ -800,9 +799,8 @@ const BudgetCalculator = () => {
                                   setSelectedTexture(texture.slug);
                                   setIsTextureDropdownOpen(false);
                                 }}
-                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${
-                                  isSelected ? 'bg-white ring-1 ring-purple-200' : 'hover:bg-gray-50'
-                                }`}
+                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${isSelected ? 'bg-white ring-1 ring-purple-200' : 'hover:bg-gray-50'
+                                  }`}
                               >
                                 <div className="flex items-center gap-3">
                                   <div className="h-12 w-12 rounded-lg overflow-hidden border border-gray-200 flex-shrink-0 bg-gray-50">

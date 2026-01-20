@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUpload, FaBed, FaCouch, FaUtensils } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 export const RoomVisualizerPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -12,7 +13,7 @@ export const RoomVisualizerPage = () => {
     if (file) {
       setSelectedFile(file);
       // Navigate to personal visualization route
-      navigate('/room-visualization/personalVisual', { 
+      navigate('/room-visualization/personalVisual', {
         state: { uploadedImage: file }
       });
     }
@@ -25,7 +26,7 @@ export const RoomVisualizerPage = () => {
   const handleRoomSelect = (room) => {
     console.log('Room selected:', room);
     console.log('Navigating to:', `/room-visualization/${room.name.toLowerCase().replace(/\s+/g, '')}`);
-    
+
     // Create a clean room object without the icon function
     const cleanRoom = {
       id: room.id,
@@ -33,7 +34,7 @@ export const RoomVisualizerPage = () => {
       image: room.image,
       description: room.description
     };
-    
+
     // Navigate to specific room visualization route
     navigate(`/room-visualization/${room.name.toLowerCase().replace(/\s+/g, '')}`, {
       state: { selectedRoom: cleanRoom }
@@ -64,8 +65,13 @@ export const RoomVisualizerPage = () => {
     }
   ];
 
-    return (
-      <div className="min-h-screen bg-gray-50 mt-20">
+  return (
+    <div className="min-h-screen bg-gray-50 mt-20">
+      <SEO
+        title="Room Visualizer - Calyco Paints"
+        description="Visualize Calyco paint colors in your own room or use our sample rooms. Upload a photo and see the transformation instantly."
+        url="https://calycopaints.com/room-visualization"
+      />
       <div className="container mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -86,7 +92,7 @@ export const RoomVisualizerPage = () => {
               Explore our curated room designs
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Sample Room Cards */}
             {sampleRooms.map((room) => (
@@ -110,12 +116,12 @@ export const RoomVisualizerPage = () => {
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
-                  
+
                   {/* Fallback if image fails to load */}
                   <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 items-center justify-center hidden">
                     {React.createElement(room.icon, { className: "text-4xl text-gray-400" })}
                   </div>
-                  
+
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                     <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-lg">
@@ -123,7 +129,7 @@ export const RoomVisualizerPage = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
                     {room.name}
@@ -140,7 +146,7 @@ export const RoomVisualizerPage = () => {
 
         {/* Upload Section removed as requested */}
 
-        
+
         {/* Additional Info Section */}
         <div className="mt-16 text-center">
           <div className="max-w-3xl mx-auto">
@@ -155,7 +161,7 @@ export const RoomVisualizerPage = () => {
                 <h3 className="font-medium text-gray-800 mb-2">Choose Your Room</h3>
                 <p className="text-sm text-gray-600">Select from our sample rooms or upload your own photo</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-indigo-600 font-bold text-lg">2</span>
@@ -163,7 +169,7 @@ export const RoomVisualizerPage = () => {
                 <h3 className="font-medium text-gray-800 mb-2">Select Colors</h3>
                 <p className="text-sm text-gray-600">Browse our color palette and choose your favorites</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-indigo-600 font-bold text-lg">3</span>
@@ -174,9 +180,9 @@ export const RoomVisualizerPage = () => {
             </div>
           </div>
         </div>
-        </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default RoomVisualizerPage;

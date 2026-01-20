@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../../src/components/SEO';
 import { Heart, ChevronDown } from 'lucide-react';
 import postsData from '../data/posts.json';
 import '../styles/asian-paints-blog.css';
@@ -198,15 +198,12 @@ const BlogIndex = () => {
 
     return (
         <div className="calyco-blog-system">
-            <Helmet>
-                <html lang="en-IN" />
-                <title>Expert Home Decor & Waterproofing Blogs | Calyco Paints</title>
-                <meta name="description" content="Read expert tips on home decor, waterproofing solutions, and colour trends from Calyco Paints." />
-                <link rel="canonical" href="https://calycopaints.com/blog" />
-                <script type="application/ld+json">
-                    {JSON.stringify(schema)}
-                </script>
-            </Helmet>
+            <SEO
+                title="Expert Home Decor & Waterproofing Blogs | Calyco Paints"
+                description="Read expert tips on home decor, waterproofing solutions, and colour trends from Calyco Paints."
+                url="https://calycopaints.com/blog"
+                schemaMarkup={schema}
+            />
 
             {/* Compact Hero Section */}
             <div className="bg-white pt-24 pb-8">
