@@ -13,10 +13,17 @@ class ErrorBoundary extends React.Component {
     componentDidCatch(error, errorInfo) {
         this.setState({ error, errorInfo });
         console.error("Uncaught error:", error, errorInfo);
+        // Prevent 'Something went wrong' from being indexed as the title
+        if (typeof document !== 'undefined') {
+            document.title = 'Error - Calyco Paints';
+        }
     }
 
     render() {
         if (this.state.hasError) {
+            if (typeof document !== 'undefined') {
+                document.title = 'Error - Calyco Paints';
+            }
             return (
                 <div className="p-8 bg-red-50 text-red-900 font-mono">
                     <h1 className="text-2xl font-bold mb-4">Something went wrong.</h1>

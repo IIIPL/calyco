@@ -1,10 +1,11 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  MagnifyingGlassIcon, 
-  FunnelIcon, 
-  Squares2X2Icon, 
+import SEO from '../components/SEO';
+import {
+  MagnifyingGlassIcon,
+  FunnelIcon,
+  Squares2X2Icon,
   PhotoIcon,
   EyeIcon,
   ShoppingCartIcon,
@@ -151,30 +152,35 @@ const ColorsPage = () => {
 
   return (
     <div className="min-h-screen bg-white w-full">
+      <SEO
+        title="Calyco Colors - 150+ Premium Eco-Friendly Shades"
+        description="Explore Calyco's extensive palette of over 150 low-VOC, eco-friendly paint colors. Find the perfect shade for your interior and exterior spaces."
+        url="https://calycopaints.com/colors"
+      />
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src="/Assets/Inspiration/IMG-20250718-WA0008.webp" 
-            alt="Beautiful home with Calyco paints" 
+          <img
+            src="/Assets/Inspiration/IMG-20250718-WA0008.webp"
+            alt="Beautiful home with Calyco paints"
             className="w-full h-full object-cover"
           />
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
-        
+
         {/* Hero Content */}
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="w-full max-w-none mx-auto text-center px-6">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-6xl font-bold text-white mb-6"
             >
               Discover the Calyco Color Palette
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -183,14 +189,14 @@ const ColorsPage = () => {
               150+ low-VOC shades built for modern living and professional durability.
             </motion.p>
 
-              </div>
-            </div>
+          </div>
+        </div>
       </section>
 
       {/* Controls Bar - Sticky */}
       <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm w-full">
         <div className="w-full max-w-none mx-auto px-6 py-4">
-            <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
             {/* Search */}
             <div className="flex-1 relative min-w-[240px]">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -201,8 +207,8 @@ const ColorsPage = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
               />
-              </div>
-            
+            </div>
+
             {/* Filters */}
             <div className="flex flex-nowrap gap-2 overflow-x-auto px-1 md:px-0 w-full [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {/* Family Filter */}
@@ -251,7 +257,7 @@ const ColorsPage = () => {
                 <option value="light-dark">Light → Dark</option>
                 <option value="dark-light">Dark → Light</option>
               </select>
-              
+
 
               {/* Clear Filters */}
               {(searchTerm || selectedFamily || selectedTonality || selectedSuitability) && (
@@ -272,7 +278,7 @@ const ColorsPage = () => {
         </div>
       </div>
 
-            {/* Color Families Grid */}
+      {/* Color Families Grid */}
       <section className="w-full max-w-none mx-auto px-4 sm:px-6 py-12">
         {viewMode === 'grid' ? (
           <div className="space-y-12">
@@ -281,7 +287,7 @@ const ColorsPage = () => {
                 {/* Family Header */}
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-gray-900">{familyName.toUpperCase()}</h2>
-              <button
+                  <button
                     onClick={() => navigate(`/colors/family/${familyName.toLowerCase().replace(/\s+/g, '-')}`)}
                     className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-2"
                   >
@@ -291,7 +297,7 @@ const ColorsPage = () => {
                     </svg>
                   </button>
                 </div>
-                
+
                 {/* Color Swatches - Responsive grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
                   {colors.slice(0, 7).map((color, index) => (
@@ -303,9 +309,9 @@ const ColorsPage = () => {
                       onColorClick={handleColorClick}
                       index={index}
                     />
-            ))}
-          </div>
-        </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         ) : (
@@ -315,7 +321,7 @@ const ColorsPage = () => {
                 {/* Family Header */}
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold text-gray-900">{familyName.toUpperCase()}</h2>
-                  <button 
+                  <button
                     onClick={() => navigate(`/colors/family/${familyName.toLowerCase().replace(/\s+/g, '-')}`)}
                     className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-2"
                   >
@@ -325,7 +331,7 @@ const ColorsPage = () => {
                     </svg>
                   </button>
                 </div>
-                
+
                 {/* Lifestyle Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
                   {colors.slice(0, 5).map((color, index) => (
@@ -400,7 +406,7 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
   const actualHexColor = getActualHexColor(color.hex);
 
   return (
-          <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
@@ -413,18 +419,18 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
           <div className="text-gray-400 text-center">
             <PhotoIcon className="w-12 h-12 mx-auto mb-2" />
             <p className="text-sm">Lifestyle Preview</p>
-                        </div>
-                      </div>
+          </div>
+        </div>
         {/* Color Accent */}
         <div
           className="absolute bottom-4 right-4 w-16 h-16 rounded-lg shadow-lg"
           style={{ backgroundColor: actualHexColor }}
         />
-            </div>
+      </div>
 
       {/* Content */}
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-900 mb-1">{color.name}</h3>
+      <div className="p-4">
+        <h3 className="font-semibold text-gray-900 mb-1">{color.name}</h3>
         <p className="text-sm text-gray-600 mb-3">{color.colorFamily}</p>
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono text-gray-500">{color.hex}</span>
@@ -446,8 +452,8 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
   const textColor = getTextColor(color.hex);
 
   const handleProductToggle = (productId) => {
-    setSelectedProducts(prev => 
-      prev.includes(productId) 
+    setSelectedProducts(prev =>
+      prev.includes(productId)
         ? prev.filter(id => id !== productId)
         : [...prev, productId]
     );
@@ -459,13 +465,13 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">
             <h2 className="text-2xl font-bold text-gray-900">{color.name}</h2>
-                          <button
+            <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600"
             >
               Ô£ò
-                          </button>
-                        </div>
+            </button>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Color Info */}
@@ -493,7 +499,7 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
                     <div>
                       <span className="text-gray-600">Temperature:</span>
                       <span className="ml-2">{color.temperature || 'N/A'}</span>
-                      </div>
+                    </div>
                     <div>
                       <span className="text-gray-600">Undertone:</span>
                       <span className="ml-2">{color.undertone || 'N/A'}</span>
@@ -550,10 +556,10 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
                   <button className="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
                     Add to Cart
                   </button>
+                </div>
+              )}
+            </div>
           </div>
-          )}
-        </div>
-      </div>
         </div>
       </div>
     </div>

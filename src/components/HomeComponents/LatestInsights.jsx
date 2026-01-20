@@ -11,6 +11,19 @@ const LatestInsights = () => {
 
     if (latestPosts.length === 0) return null;
 
+    const getExcerpt = (content) => {
+        if (!content) return '';
+        // Try to get intro-text
+        const match = content.match(/<p class=['"]intro-text['"]>(.*?)<\/p>/);
+        if (match && match[1]) {
+            // Decode HTML entities if needed, but for now just strip tags
+            return match[1].replace(/<[^>]+>/g, '');
+        }
+        // Fallback: strip all tags and take first 150 chars
+        const text = content.replace(/<[^>]+>/g, ' ');
+        return text.substring(0, 120).trim() + '...';
+    };
+
     return (
         <section className="py-16 sm:py-20 bg-warm">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -38,7 +51,7 @@ const LatestInsights = () => {
                                 {post.title}
                             </h3>
                             <p className="text-gray-600 text-sm line-clamp-2">
-                                {post.metaDescription}
+                                {getExcerpt(post.content)}
                             </p>
                             <div className="mt-3 text-brand-gold font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                                 Read More <span>→</span>
