@@ -17,6 +17,9 @@ const PremiumTextureSplit = () => {
           src="/Assets/Texture Images/tex1.webp"
           alt="Premium textured living room"
           className="absolute inset-0 h-full w-full object-cover object-[25%_center] scale-[1.18] md:object-center md:scale-100"
+          width="1920"
+          height="1280"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/35 to-black/5" />
 

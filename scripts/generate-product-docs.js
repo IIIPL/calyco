@@ -314,6 +314,648 @@ const products = [
   }
 ];
 
+const industrialProducts = [
+  {
+    slug: 'calyco-anticorrosive-bitumastic',
+    name: 'Calyco Anticorrosive Bitumastic Paint',
+    subtitle: 'Superior anti-corrosive protection for metal structures.',
+    description: 'Heavy-duty bitumen-based anti-corrosive coating providing exceptional protection for ferrous metals against corrosion, chemicals, and moisture. Its high-build formulation creates a tough, flexible barrier that withstands harsh industrial and marine environments.',
+    details: 'Calyco Anticorrosive Bitumastic is an industrial-grade shield. Designed for the toughest environments, it is ideal for underground pipelines, storage tanks, and marine structures. The bitumen-modified rubber resin creates a thick, waterproof film that accommodates thermal expansion while blocking out corrosive elements.',
+    productCode: 'CAL-BIT-010',
+    baseType: 'Bitumen modified with rubber/resin',
+    finish: 'Semi-Gloss',
+    vocContent: '<= 350 g/L',
+    coverage: '40-50 sq. ft. per litre per coat',
+    coats: '2-3 coats (150-200 microns)',
+    dryingTime: 'Touch dry: 12-18 hours | Recoat: 24-48 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '5 years in unopened container',
+    storage: 'Cool, dry place (away from ignition sources)',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Heavy-Duty Corrosion Protection',
+      'High Build & Waterproof',
+      'Chemical & Acid Resistant',
+      'Flexible Thermal Expansion',
+      'Ideal for Underground Use'
+    ],
+    applications: [
+      'Underground pipelines',
+      'Storage tanks',
+      'Structural steel',
+      'Metal bridges',
+      'Marine structures',
+      'Industrial foundations'
+    ],
+    hazards: [
+      'WARNING: FLAMMABLE & HARMFUL.',
+      'Causes skin irritation and serious eye irritation.',
+      'May cause drowsiness or dizziness (hydrocarbon vapours).'
+    ],
+    category: 'woodmetal',
+    warranty: '5-year warranty'
+  },
+  {
+    slug: 'calyco-epoxy-paint',
+    name: 'Calyco Epoxy Paint',
+    subtitle: 'Industrial-strength protection for demanding environments.',
+    description: 'Two-component industrial epoxy coating system providing exceptional durability, chemical resistance, and abrasion resistance. Forms a hard, high-gloss impermeable film designed to withstand harsh chemicals, heavy traffic, and moisture in demanding environments.',
+    details: 'Calyco Epoxy Paint is a professional-grade, 2-component system designed for floors, tanks, and machinery. It creates a seamless, non-porous surface that repels oils, acids, and water. Ideal for factories and garages, it offers superior hardness that resists tire marks, impacts, and heavy foot traffic.',
+    productCode: 'CAL-EPX-012',
+    baseType: 'Epoxy resin (2-component)',
+    finish: 'High Gloss',
+    vocContent: '<= 250 g/L',
+    coverage: '80-120 sq. ft. per litre at 100 microns',
+    coats: '2-3 coats (200-300 microns DFT)',
+    dryingTime: 'Touch dry: 8-12 hours | Recoat: 12-24 hours | Full cure: 7 days',
+    tempRange: '10-35 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '5 years in sealed packs',
+    storage: 'Cool, dry place (store components separately)',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      '2-Component System (Resin + Hardener)',
+      'Ultra Durable & High Strength',
+      'Chemical & Solvent Resistant',
+      'Waterproof & Impermeable',
+      'High Gloss Finish'
+    ],
+    applications: [
+      'Industrial floors and warehouses',
+      'Chemical storage and processing areas',
+      'Parking garages and workshops',
+      'Storage tanks and equipment'
+    ],
+    hazards: [
+      'DANGER: HARMFUL if swallowed or inhaled.',
+      'Causes skin irritation and may cause allergic skin reaction.',
+      'Causes serious eye damage.'
+    ],
+    category: 'industrial',
+    warranty: '5-year warranty'
+  },
+  {
+    slug: 'calyco-fire-retardant-paint',
+    name: 'Calyco Fire Retardant Paint',
+    subtitle: 'Advanced fire protection for critical structures.',
+    description: 'Advanced intumescent fire-retardant coating that swells when exposed to heat, forming an insulating char layer. It delays fire spread, reduces flame propagation, and provides up to 2 hours of crucial evacuation time for critical structures.',
+    details: 'Calyco Fire Retardant Paint is a water-based intumescent acrylic coating designed for life safety. When exposed to extreme heat, the paint expands to create a thick, insulating foam barrier. This layer protects the structural integrity of steel and wood, delaying collapse and preventing the rapid spread of flames.',
+    productCode: 'CAL-FRP-009',
+    baseType: 'Water-based intumescent acrylic',
+    finish: 'Matt',
+    vocContent: '<= 80 g/L',
+    coverage: '4-6 sq. ft. per litre per mm DFT',
+    coats: '2-3 coats (per DFT calculation)',
+    dryingTime: 'Touch dry: 6-8 hours | Recoat: 12-24 hours | Full cure: 7 days',
+    tempRange: '5-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '5 years in unopened container',
+    storage: 'Cool, dry place (protect from freezing)',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Intumescent (swells in heat)',
+      'Up to 2-hour fire rating',
+      'Delays flame spread',
+      'Low smoke emission',
+      'Structural integrity protection'
+    ],
+    applications: [
+      'Steel structures',
+      'Wooden structures',
+      'Commercial buildings',
+      'Industrial facilities'
+    ],
+    hazards: [
+      'WARNING: Eye and skin irritant.',
+      'May cause respiratory irritation if inhaled in enclosed spaces.',
+      'Harmful to aquatic life if liquid paint enters drains.'
+    ],
+    category: 'woodmetal',
+    warranty: '5-year warranty'
+  },
+  {
+    slug: 'calyco-melamine-polish',
+    name: 'Calyco Melamine Polish',
+    subtitle: 'Premium furniture finish with lasting brilliance.',
+    description: 'Premium melamine-based wood coating offering exceptional hardness, scratch resistance, and a brilliant high-gloss finish. Its fast-drying formulation creates a mirror-smooth surface that resists stains, heat, and daily wear.',
+    details: 'Calyco Melamine Polish is the professional choice for interior woodwork. It provides a tough, durable barrier that protects against hot spills and scratches while enhancing the natural beauty of the wood grain. Perfect for tabletops, dining sets, and cabinetry requiring a glass-like finish.',
+    productCode: 'CAL-MEL-008',
+    baseType: 'Melamine resin',
+    finish: 'High Gloss',
+    vocContent: '<= 300 g/L',
+    coverage: '100-120 sq. ft. per litre',
+    coats: '2-3 coats',
+    dryingTime: 'Touch dry: 30-45 minutes | Recoat: 4-6 hours | Full cure: 24-48 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place',
+    packaging: '500ml, 1L, 4L, 10L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Brilliant high gloss finish',
+      'Superior scratch resistance',
+      'Heat resistant formula',
+      'Fast drying',
+      'Stain resistant protection'
+    ],
+    applications: [
+      'Wooden furniture and cabinetry',
+      'Kitchen cabinets and interior woodwork',
+      'Dining tables and paneling',
+      'Doors, frames, and wardrobes'
+    ],
+    hazards: [
+      'DANGER: Highly flammable liquid and vapour.',
+      'Causes serious eye irritation.',
+      'May cause drowsiness or dizziness.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-pink-primer',
+    name: 'Calyco Pink Primer',
+    subtitle: 'Superior sealing and adhesion for wood surfaces.',
+    description: 'Premium alkyd-based wood primer designed to seal knots, prevent tannin bleeding, and provide excellent adhesion for topcoats. Creates a smooth, uniform base that enhances finish coat appearance and durability on all wood surfaces.',
+    details: 'Calyco Pink Primer is the ultimate foundation for wood. Its specialized alkyd formula penetrates deep to seal porous surfaces and lock in knots, preventing resin bleed-through. It ensures your topcoat adheres perfectly and lasts longer, whether used on interior furniture or exterior window frames.',
+    productCode: 'CAL-PRM-001',
+    baseType: 'Alkyd resin',
+    finish: 'Matte',
+    vocContent: '<= 200 g/L',
+    coverage: '100-120 sq. ft. per litre',
+    coats: '1-2 coats',
+    dryingTime: 'Touch dry: 1-2 hours | Recoat: 4-6 hours | Full cure: 24 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place away from direct sunlight',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'High opacity and coverage',
+      'Fast drying formula',
+      'Seals knots effectively',
+      'Strong adhesion to wood',
+      'Low VOC content'
+    ],
+    applications: [
+      'Doors and window frames',
+      'Wooden furniture',
+      'Plywood and MDF',
+      'New and bare wood'
+    ],
+    hazards: [
+      'FLAMMABLE: Keep away from heat, sparks, and open flames.',
+      'Harmful if swallowed or inhaled.',
+      'Causes skin and eye irritation.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-red-oxide-zinc-chromate',
+    name: 'Calyco Red Oxide Zinc Chromate Primer',
+    subtitle: 'Dual-pigment defence for metal longevity.',
+    description: 'A solvent-based metal primer that harnesses the combined protection of red oxide and zinc chromate pigments. It provides powerful dual-action anti-corrosive protection for industrial, marine, and architectural metal applications.',
+    details: 'Calyco Red Oxide Zinc Chromate Primer is the heavy-duty choice for iron and steel. By combining the barrier protection of red oxide with the active corrosion-inhibiting properties of zinc chromate, it ensures a bond that withstands harsh weather and industrial environments far better than standard primers.',
+    productCode: 'CAL-PRM-016',
+    baseType: 'Alkyd resin (Red Oxide & Zinc Chromate)',
+    finish: 'Matt',
+    vocContent: '~ 450 g/L',
+    coverage: '120-140 sq. ft. per litre',
+    coats: '2 coats',
+    dryingTime: 'Touch dry: 4 hours | Recoat: 8 hours | Full cure: 24 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place (flammable)',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Dual pigment (red oxide + zinc)',
+      'Superior rust guard',
+      'Strong mechanical bond',
+      'Weather resistant',
+      'Heavy duty industrial grade'
+    ],
+    applications: [
+      'Steel structures and pipelines',
+      'Metal fabrications and railings',
+      'Industrial equipment and machinery',
+      'Marine and coastal applications'
+    ],
+    hazards: [
+      'DANGER: Contains chromate pigments (health hazard).',
+      'Highly flammable liquid and vapour.',
+      'May cause sensitization by skin contact.',
+      'Toxic to aquatic life.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-wood-primer',
+    name: 'Calyco Wood Primer',
+    subtitle: 'Seals wood for a flawless finish.',
+    description: 'A solvent-based alkyd wood primer that penetrates and seals wooden surfaces, ensuring smooth adhesion of finish coats. Its lead-free formulation protects against moisture and resin bleed, creating the perfect foundation for a flawless finish.',
+    details: 'Calyco Wood Primer penetrates deep into the grain, sealing pores and blocking resin bleed-through. It provides a uniform, smooth matte base that improves coverage and durability of topcoat enamels or varnishes.',
+    productCode: 'CAL-PRM-015',
+    baseType: 'Alkyd resin',
+    finish: 'Matt',
+    vocContent: '~ 300 g/L',
+    coverage: '130-150 sq. ft. per litre',
+    coats: '1-2 coats',
+    dryingTime: 'Touch dry: 30 minutes | Recoat: 10-12 hours | Full cure: 24 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place away from direct sunlight',
+    packaging: '500ml, 1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Deep penetrating sealer',
+      'Prevents moisture and resin bleed',
+      'Heavy-metal free (lead free)',
+      'Strong adhesion for topcoats',
+      'Fast drying matte finish'
+    ],
+    applications: [
+      'Wooden doors and windows',
+      'Furniture and cabinetry',
+      'Plywood and MDF',
+      'Exterior trim and joinery'
+    ],
+    hazards: [
+      'WARNING: Flammable liquid and vapour.',
+      'Harmful if inhaled.',
+      'Repeated exposure may cause skin dryness or cracking.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-yellow-metal-primer',
+    name: 'Calyco Yellow Metal Primer',
+    subtitle: 'Maximum corrosion protection for metal surfaces.',
+    description: 'High-performance yellow metal primer offering superior anti-corrosive protection for ferrous and non-ferrous metals. Formulated with rust-inhibitive pigments that create a protective barrier against moisture, chemicals, and atmospheric corrosion.',
+    details: 'Calyco Yellow Metal Primer is an industrial-grade shield for metal assets. Enriched with zinc chromate, it provides active rust inhibition and heat resistance. It forms a tough, durable base that prevents oxidation and ensures topcoats bond securely to gates, grills, and machinery.',
+    productCode: 'CAL-PRM-002',
+    baseType: 'Alkyd resin with zinc chromate',
+    finish: 'Matte',
+    vocContent: '<= 250 g/L',
+    coverage: '100-120 sq. ft. per litre',
+    coats: '2 coats (3 for severe environments)',
+    dryingTime: 'Touch dry: 1-2 hours | Recoat: 4-6 hours | Full cure: 48 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '4 years in unopened container',
+    storage: 'Cool, dry place away from direct sunlight',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Zinc chromate rust protection',
+      'Heat resistant up to 120 C',
+      'Quick drying (touch dry 1-2h)',
+      'Industrial grade durability',
+      'Strong adhesion to metal'
+    ],
+    applications: [
+      'Steel structures and railings',
+      'Metal gates and grills',
+      'Industrial equipment',
+      'Galvanized and ferrous metals'
+    ],
+    hazards: [
+      'FLAMMABLE & HARMFUL: Contains chromate compounds.',
+      'May cause cancer by inhalation.',
+      'Toxic to aquatic life with long lasting effects.'
+    ],
+    category: 'woodmetal',
+    warranty: '4-year warranty'
+  }
+];
+
+products.push(...industrialProducts);
+
+const additionalProducts = [
+  {
+    slug: 'calyco-solvent-primer-interior',
+    name: 'Interior Solvent Primer',
+    subtitle: 'Bond, seal, and protect with versatile interior priming.',
+    description: 'Solvent-based alkyd primer for interior masonry, wood, and metal surfaces with superior adhesion and high opacity.',
+    details: 'Interior Solvent Primer penetrates and seals porous substrates while delivering strong adhesion on wood, metal, and masonry. Its high opacity improves topcoat coverage across varied interior substrates.',
+    productCode: 'CAL-PRI-ST-INT-004',
+    baseType: 'Solvent-based alkyd',
+    finish: 'Matte',
+    vocContent: '< 200 g/L',
+    coverage: '140-160 sq. ft. per litre',
+    coats: '1-2 coats',
+    dryingTime: 'Touch dry: 1 hour | Recoat: 6 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place away from heat and flame',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Alkyd resin, solvent-based',
+      'High opacity and strong adhesion',
+      'Multi-surface: masonry, wood, metal',
+      'Quick drying for faster recoats'
+    ],
+    applications: [
+      'Interior masonry',
+      'Wood surfaces',
+      'Metal surfaces',
+      'Plaster',
+      'Gypsum boards'
+    ],
+    hazards: [
+      'Flammable liquid and vapour.',
+      'May cause skin irritation on prolonged contact.'
+    ],
+    category: 'primer',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-damp-guard-primer',
+    name: 'Damp Guard Primer',
+    subtitle: 'Keep walls dry and protected with a reliable damp-proof base.',
+    description: 'Advanced waterproofing primer forming a flexible, breathable barrier to resist dampness, efflorescence, and hairline cracks on interior and exterior surfaces.',
+    details: 'Calyco Damp Guard Primer is a high-performance elastomeric primer that blocks dampness, bridges hairline cracks, and resists efflorescence. Its breathable film lets moisture vapour escape while safeguarding against water damage on bathrooms, kitchens, basements, roof slabs, and exterior walls.',
+    productCode: 'CAL-PRI-WP-005',
+    baseType: 'Water-based acrylic elastomeric',
+    finish: 'Matte',
+    vocContent: '< 50 g/L',
+    coverage: '90-110 sq. ft. per litre per coat',
+    coats: '2-3 coats',
+    dryingTime: 'Touch dry: 45 minutes | Recoat: 5 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place; do not freeze',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Waterproof, crack-bridging barrier',
+      'Breathable elastomeric film',
+      'Resists dampness and efflorescence',
+      'Excellent adhesion to varied substrates'
+    ],
+    applications: [
+      'Bathrooms',
+      'Kitchens',
+      'Basements',
+      'Roof slabs',
+      'Exterior walls'
+    ],
+    hazards: [
+      'May cause mild skin/eye irritation on contact.'
+    ],
+    category: 'primer',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-universal-primer',
+    name: 'Universal Primer',
+    subtitle: 'Versatility meets performance in one powerful primer.',
+    description: 'Solvent-based universal primer delivering superior adhesion and corrosion protection on metal, wood, and masonry surfaces.',
+    details: 'Calyco Universal Primer is an alkyd-based, solvent-borne primer engineered for multi-surface use. It bonds strongly to metal, wood, and masonry, sealing porous substrates while providing corrosion resistance and high opacity for faster topcoat coverage.',
+    productCode: 'CAL-PRI-UNI-006',
+    baseType: 'Solvent-based alkyd',
+    finish: 'Matte',
+    vocContent: '< 250 g/L',
+    coverage: '140-150 sq. ft. per litre',
+    coats: '1-2 coats (2 on metal for rust protection)',
+    dryingTime: 'Touch dry: 1 hour | Recoat: 8 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry, well-ventilated area away from flame',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Multi-surface adhesion: metal, wood, masonry',
+      'Corrosion protection for metal substrates',
+      'High opacity and sealing power',
+      'Fast drying for quick recoating'
+    ],
+    applications: [
+      'Metal gates and railings',
+      'Wooden furniture and doors',
+      'Masonry walls',
+      'GI sheet roofing',
+      'Fibre cement boards'
+    ],
+    hazards: [
+      'Flammable liquid and vapour.',
+      'May cause skin/eye irritation.'
+    ],
+    category: 'primer',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-amrella-enamel',
+    name: 'Dura-Shield Enamel',
+    subtitle: 'Brilliant finish that stands the test of time.',
+    description: 'Premium modified-alkyd enamel providing a high-gloss, mirror-like finish for wood, metal, and masonry. Tough film resists stains and moisture with excellent adhesion and rust protection.',
+    details: 'Dura-Shield Enamel delivers a mirror-like gloss and durable protection on multiple substrates. The modified alkyd resin provides weather and UV resistance, strong adhesion, and quick drying for long-lasting beauty indoors or out.',
+    productCode: 'CAL-ENL-HG-001',
+    baseType: 'Modified alkyd resin (solvent-based)',
+    finish: 'High Gloss',
+    vocContent: '= 300 g/L',
+    coverage: '100-140 sq. ft. per litre',
+    coats: '2 coats',
+    dryingTime: 'Surface dry: 1-2 hours | Recoat: 6-8 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place away from heat and flame',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'High gloss modified alkyd enamel',
+      'Weather and UV resistance',
+      'Anti-rust protection for metal',
+      'Quick drying, multi-surface adhesion'
+    ],
+    applications: [
+      'Interior and exterior wood',
+      'Metal surfaces',
+      'Masonry',
+      'Plaster'
+    ],
+    hazards: [
+      'Flammable liquid and vapour.',
+      'May cause skin/eye irritation.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-pu-wood-coating',
+    name: 'PU Wood Coating',
+    subtitle: 'Enhance and protect your wood surfaces.',
+    description: 'Two-component polyurethane clear coat that enhances natural wood while delivering superior scratch, stain, and heat resistance with a non-yellowing, high-gloss finish.',
+    details: 'PU Wood Coating is a crystal-clear, non-yellowing 2K polyurethane system that highlights wood grain and forms a tough, glossy film. It offers outstanding resistance to scratches, stains, heat, and fungi—ideal for furniture, doors, veneer, MDF, and flooring.',
+    productCode: 'CAL-WOOD-PU-002',
+    baseType: 'Acrylic polyurethane (2-component)',
+    finish: 'High Gloss',
+    vocContent: '= 350 g/L',
+    coverage: '80-100 sq. ft. per litre',
+    coats: '2-3 coats',
+    dryingTime: 'Touch dry: 1-2 hours | Recoat: 6 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place; keep components sealed',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Two-component PU clear coat',
+      'Non-yellowing high gloss',
+      'Scratch, stain, and heat resistant',
+      'Anti-fungal protection'
+    ],
+    applications: [
+      'Wood furniture',
+      'Doors and windows',
+      'MDF surfaces',
+      'Veneer',
+      'Wooden flooring'
+    ],
+    hazards: [
+      'Flammable and harmful vapours.',
+      'May cause skin/eye irritation.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-acrylic-washable-distemper',
+    name: 'Acrylic Washable Distemper',
+    subtitle: 'Affordable washable finish for everyday living.',
+    description: 'Economical, water-based distemper providing smooth, matt interiors with good washability and quick drying—ideal for everyday living.',
+    details: 'Acrylic Washable Distemper delivers a micro-smooth matt look with bright colours, fast drying, and good washability at an accessible price. Great for interior walls, ceilings, plaster, concrete, and false ceilings.',
+    productCode: 'CAL-DIST-WB-003',
+    baseType: 'Acrylic copolymer emulsion',
+    finish: 'Matt',
+    vocContent: '= 50 g/L',
+    coverage: '35-40 sq. ft. per litre (2 coats)',
+    coats: '2 coats',
+    dryingTime: 'Touch dry: 30 minutes | Recoat: 4-6 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place; protect from freezing and sunlight',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Smooth matt finish',
+      'Washable and fast drying',
+      'Low VOC',
+      'Economical interior solution'
+    ],
+    applications: [
+      'Interior walls',
+      'Ceilings',
+      'Plaster and concrete',
+      'False ceilings',
+      'Asbestos sheets'
+    ],
+    hazards: [
+      'May cause mild skin/eye irritation.'
+    ],
+    category: 'interior',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-all-surface-coating',
+    name: 'All Surface Coating',
+    subtitle: 'One paint for every surface.',
+    description: 'Versatile multi-surface paint with built-in primer and semi-gloss/satin finish for wood, metal, plastic, masonry, and walls. Weather-resistant with strong adhesion and low odour.',
+    details: 'All Surface Coating is an acrylic-alkyd hybrid that bonds to wood, metal, plastic, masonry, and interior/exterior walls. It offers weather and UV protection, quick drying, and low odour while eliminating the need for separate primers on most surfaces.',
+    productCode: 'CAL-AS-COAT-004',
+    baseType: 'Acrylic-alkyd hybrid',
+    finish: 'Semi-Gloss/Satin',
+    vocContent: '= 100 g/L',
+    coverage: '80-120 sq. ft. per litre',
+    coats: '2 coats',
+    dryingTime: 'Touch dry: 1 hour | Recoat: 4 hours',
+    tempRange: '10-40 C',
+    humidity: 'Below 85% RH',
+    shelfLife: '3 years in unopened container',
+    storage: 'Cool, dry place; avoid freezing or extreme heat',
+    packaging: '1L, 4L, 10L, 20L',
+    sampleSizes: null,
+    keyFeatures: [
+      'Built-in primer, multi-surface adhesion',
+      'Weather and UV resistant',
+      'Low odour, low VOC',
+      'Quick drying semi-gloss/satin'
+    ],
+    applications: [
+      'Wood surfaces',
+      'Metal surfaces',
+      'Plastic',
+      'Masonry and concrete',
+      'Interior and exterior walls'
+    ],
+    hazards: [
+      'May cause skin/eye irritation.'
+    ],
+    category: 'woodmetal',
+    warranty: '3-year warranty'
+  },
+  {
+    slug: 'calyco-texture-paint',
+    name: 'Calyco Texture Paint',
+    subtitle: 'Transform your spaces with timeless artistry and durability.',
+    description: 'A premium decorative cement-based texture coating that transforms plain walls into artistic surfaces while providing a tough, weather-resistant shield.',
+    details: 'Enriched with high-quality mineral aggregates and polymers, this texture finish hides surface undulations and hairline cracks, adding depth and dimension while resisting algae and harsh weather on interior and exterior facades.',
+    productCode: 'CAL-TXT-CEM-001',
+    baseType: 'Cement-based texture coating',
+    finish: 'Decorative Wall Finish',
+    vocContent: 'Low VOC',
+    coverage: '3.5 - 4.5 sq. ft. per kg (varies by texture depth)',
+    coats: '1-2 coats depending on pattern depth',
+    dryingTime: 'Touch dry: 1-2 hours | Patterning window: 10-15 minutes while wet',
+    tempRange: '10-40 C',
+    humidity: 'Below 80% RH',
+    shelfLife: '12 months in unopened bag',
+    storage: 'Cool, dry place',
+    packaging: '5 kg (Sample), 20 kg, 30 kg, 40 kg',
+    sampleSizes: '5 kg sample bag',
+    keyFeatures: [
+      'Weather proof',
+      'Hides cracks and surface undulations',
+      'Strong adhesion to mineral substrates',
+      'Anti-algae protection',
+      'Interior and exterior use'
+    ],
+    applications: [
+      'Interior walls',
+      'Exterior facades',
+      'Feature walls',
+      'Boundary walls',
+      'Commercial spaces'
+    ],
+    hazards: [
+      'Cement-based powder: avoid inhalation of dust.',
+      'May cause skin/eye irritation.'
+    ],
+    category: 'texture',
+    warranty: '2-year warranty'
+  }
+];
+
+products.push(...additionalProducts);
+
 // TDS Template Function
 function generateTDS(product) {
   return `<!DOCTYPE html>

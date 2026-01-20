@@ -127,8 +127,17 @@ export const ContactUs = () => {
     return (
         <div className="pt-20 min-h-screen">
             {/* Hero */}
-            <div className="relative h-80 bg-gradient-to-r from-[#493657] to-[#F0C85A] overflow-hidden flex items-center justify-center">
-                <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative h-80 overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0">
+                    <img
+                        src="/Assets/updated hero images/2.webp?v=20260108-002"
+                        alt="Beautifully painted modern interior - Contact Calyco Paints for premium paint consultation and support"
+                        title="Contact Calyco Paints - Get Expert Paint Advice & Support"
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                    />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#493657]/60 to-[#F0C85A]/40"></div>
                 <div className="relative z-10 text-center text-white px-6">
                     <motion.h1
                         className="text-6xl font-bold mb-4"

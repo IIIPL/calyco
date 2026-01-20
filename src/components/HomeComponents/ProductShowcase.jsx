@@ -18,7 +18,7 @@ const ProductShowcase = () => {
         'Low VOC Formula',
         'Stain Resistant Technology'
       ],
-      image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.png',
+      image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp',
       link: '/product/Luxury-Interior-Emulsion',
       price: '₹800/L'
     },
@@ -32,7 +32,7 @@ const ProductShowcase = () => {
         'UV Resistant',
         'Mildew & Algae Guard'
       ],
-      image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png',
+      image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp',
       link: '/product/Luxury-Exterior-Emulsion',
       price: '₹800/L'
     },
@@ -46,7 +46,7 @@ const ProductShowcase = () => {
         'Flexible Barrier',
         'Interior & Exterior Use'
       ],
-      image: '/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png',
+      image: '/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp',
       link: '/product/Waterproofing-Sealer',
       price: '₹599/L'
     }
@@ -234,7 +234,7 @@ const ProductShowcase = () => {
               </div>
 
               {/* Features */}
-              <div className="space-y-3 md:space-y-4 flex flex-col items-center lg:items-start">
+              <div className="space-y-3 md:space-y-4 flex flex-col items-start px-8 lg:px-0">
                 {currentProduct.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-3 md:gap-4">
                     <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#998850] flex items-center justify-center">

@@ -29,10 +29,10 @@ export const cities = [
   },
   {
     id: 3,
-    name: "South Delhi",
-    slug: "painters-in-south-delhi",
-    metaTitle: "Premium Wall Texture Painters in South Delhi | Calyco Paints",
-    description: "Discover exceptional wall texture painting services in South Delhi. Our skilled craftsmen specialize in luxury residential projects, heritage properties, and upscale commercial spaces with eco-conscious, high-performance coatings.",
+    name: "Delhi",
+    slug: "painters-in-delhi",
+    metaTitle: "Premium Wall Texture Painters in Delhi | Calyco Paints",
+    description: "Discover exceptional wall texture painting services in Delhi. Our skilled craftsmen specialize in luxury residential projects, heritage properties, and upscale commercial spaces with eco-conscious, high-performance coatings.",
     landmarks: [
       "Hauz Khas",
       "Greater Kailash",

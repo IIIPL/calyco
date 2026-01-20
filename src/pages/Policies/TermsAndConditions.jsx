@@ -132,12 +132,12 @@ export default function TermsAndConditions() {
         <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
-              src="/Assets/canal.health.hacks_Realistic_photo_of_a_modern_house_in_dark_gr_9200c95a-bf7d-42e8-b335-37b3695167c4.webp"
+              src="/Assets/updated hero images/6.webp"
               alt="Architectural space finished with CALYCO coatings"
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full"><div>
             <h1 className="text-4xl font-semibold text-white leading-tight md:text-5xl">

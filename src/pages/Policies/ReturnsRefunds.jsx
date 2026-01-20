@@ -27,12 +27,12 @@ export default function ReturnsRefunds() {
         <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
-              src="/Assets/InteriorInspiratoin/living-room.webp"
+              src="/Assets/updated hero images/9.webp"
               alt="CALYCO paints returns and refunds"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-10 lg:px-12 flex items-center justify-center h-full"><div>
             <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">

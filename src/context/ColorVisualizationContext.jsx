@@ -1,5 +1,5 @@
 // src/context/ColorVisualizationContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 const ColorVisualizationContext = createContext();
 
@@ -22,7 +22,9 @@ export const ColorVisualizationProvider = ({ children }) => {
   };
 
   const addToComparison = (color) => {
-    if (!comparisonColors.some(c => c.name === color.name)) {
+    if (!color || typeof color !== 'object') return;
+    const colorName = String(color.name || color.calycoName || '');
+    if (!comparisonColors.some(c => String(c.name || c.calycoName || '') === colorName)) {
       setComparisonColors([...comparisonColors, color]);
     }
   };
@@ -49,23 +51,25 @@ export const ColorVisualizationProvider = ({ children }) => {
     setMatchedColors(colors);
   };
 
+  const value = useMemo(() => ({
+    selectedColor,
+    harmonyType,
+    comparisonColors,
+    roomScene,
+    uploadedImage,
+    matchedColors,
+    selectColor,
+    changeHarmonyType,
+    addToComparison,
+    removeFromComparison,
+    clearComparison,
+    selectRoomScene,
+    handleImageUpload,
+    setMatchedColorsFromImage
+  }), [selectedColor, harmonyType, comparisonColors, roomScene, uploadedImage, matchedColors]);
+
   return (
-    <ColorVisualizationContext.Provider value={{
-      selectedColor,
-      harmonyType,
-      comparisonColors,
-      roomScene,
-      uploadedImage,
-      matchedColors,
-      selectColor,
-      changeHarmonyType,
-      addToComparison,
-      removeFromComparison,
-      clearComparison,
-      selectRoomScene,
-      handleImageUpload,
-      setMatchedColorsFromImage
-    }}>
+    <ColorVisualizationContext.Provider value={value}>
       {children}
     </ColorVisualizationContext.Provider>
   );

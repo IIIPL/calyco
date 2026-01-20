@@ -9,7 +9,7 @@ import premiumExteriorEmulsionDetail from '../../data/productDetail.premiumExter
 import exteriorLatexPaintDetail from '../../data/productDetail.exteriorLatexPaint';
 import waterproofingSealerDetail from '../../data/productDetail.waterproofingSealer';
 
-const fallbackImage = '/Assets/chair.png';
+const fallbackImage = '/Assets/chair.webp';
 const PAINT_COLOR_PRODUCT_NAME = 'Paint Color';
 const DEFAULT_FINISH = 'Standard Finish';
 

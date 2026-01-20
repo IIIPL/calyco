@@ -1,78 +1,330 @@
 import { useState } from 'react';
+import html2pdf from 'html2pdf.js';
 import { FaDownload, FaSpinner } from 'react-icons/fa';
 
-export const InvoiceGenerator = ({ items, total, onClose }) => {
+const SELLER_GSTIN = '27AAKCC9776C1Z9';
+const SELLER_STATE_CODE = '27';
+const GST_RATE = 0.18;
+const LOGO_URL = 'https://calycopaints.com/Logo.webp';
+
+export const InvoiceGenerator = ({
+  items = [],
+  subtotal = 0,
+  discount = 0,
+  tax = 0,
+  shipping = 0,
+  total = 0,
+  invoiceData = null,
+  onClose
+}) => {
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const formatPrice = (price) => {
+  const formatNumber = (value) => {
+    const number = Number(value || 0);
     return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 0
-    }).format(price);
+      maximumFractionDigits: 0
+    }).format(number);
+  };
+
+  const formatDate = (value) => {
+    if (!value) return new Date().toLocaleDateString('en-IN');
+    try {
+      return new Date(value).toLocaleDateString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      });
+    } catch (error) {
+      return value;
+    }
+  };
+
+  const formatLabel = (value) => (value ? String(value).trim() : '');
+
+  const numberToWords = (value) => {
+    const number = Math.floor(Number(value || 0));
+    if (number <= 0) return 'Zero';
+
+    const ones = [
+      '',
+      'One',
+      'Two',
+      'Three',
+      'Four',
+      'Five',
+      'Six',
+      'Seven',
+      'Eight',
+      'Nine',
+      'Ten',
+      'Eleven',
+      'Twelve',
+      'Thirteen',
+      'Fourteen',
+      'Fifteen',
+      'Sixteen',
+      'Seventeen',
+      'Eighteen',
+      'Nineteen'
+    ];
+    const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+    const twoDigits = (num) => {
+      if (num < 20) return ones[num];
+      const ten = Math.floor(num / 10);
+      const unit = num % 10;
+      return `${tens[ten]}${unit ? ` ${ones[unit]}` : ''}`.trim();
+    };
+
+    const threeDigits = (num) => {
+      const hundred = Math.floor(num / 100);
+      const rest = num % 100;
+      const hundredText = hundred ? `${ones[hundred]} Hundred` : '';
+      const restText = rest ? twoDigits(rest) : '';
+      return `${hundredText}${hundredText && restText ? ' ' : ''}${restText}`.trim();
+    };
+
+    let n = number;
+    const parts = [];
+    const crore = Math.floor(n / 10000000);
+    if (crore) {
+      parts.push(`${threeDigits(crore)} Crore`);
+      n %= 10000000;
+    }
+    const lakh = Math.floor(n / 100000);
+    if (lakh) {
+      parts.push(`${threeDigits(lakh)} Lakh`);
+      n %= 100000;
+    }
+    const thousand = Math.floor(n / 1000);
+    if (thousand) {
+      parts.push(`${threeDigits(thousand)} Thousand`);
+      n %= 1000;
+    }
+    if (n) {
+      parts.push(threeDigits(n));
+    }
+
+    return parts.join(' ').replace(/\s+/g, ' ').trim();
+  };
+
+  const resolveHsn = (item) => {
+    if (item?.hsn) return item.hsn;
+    const type = String(item?.productType || '').toLowerCase();
+    if (type === 'service' || type.includes('service')) return '9983';
+    return '3209';
+  };
+
+  const buildDescription = (item) => {
+    if (item?.description) return item.description;
+
+    const parts = [
+      formatLabel(item?.selectedSheen),
+      formatLabel(item?.selectedSize)
+    ].filter(Boolean);
+
+    if (item?.selectedColor?.name) {
+      parts.push(`Color: ${item.selectedColor.name}`);
+    }
+
+    if (item?.mixingMode) {
+      const mode =
+        item.mixingMode === 'ready-mixed'
+          ? 'Ready-Mixed Color'
+          : item.mixingMode === 'tint-on-demand'
+            ? 'Tint-on-Demand'
+            : item.mixingMode;
+      parts.push(`Type: ${mode}`);
+    }
+
+    return parts.length ? parts.join(' | ') : 'Product';
+  };
+
+  const getInclusiveTax = (amount) => {
+    const gross = Number(amount || 0);
+    const base = gross / (1 + GST_RATE);
+    return Math.max(gross - base, 0);
+  };
+
+  const normalizeItems = (sourceItems) => {
+    return (sourceItems || []).map((item) => {
+      const quantity = Number(item?.quantity || 1);
+      const priceInclusive = Number(item?.price || item?.unitPrice || 0);
+      const lineTotal = Number(item?.total ?? priceInclusive * quantity);
+      const lineTax = getInclusiveTax(lineTotal);
+      const lineBase = Math.max(lineTotal - lineTax, 0);
+      const unitBase = quantity ? lineBase / quantity : 0;
+      return {
+        name: item?.display_name || item?.name || 'Product',
+        hsn: resolveHsn(item),
+        description: buildDescription(item),
+        quantity,
+        price: unitBase,
+        tax: lineTax,
+        total: lineTotal
+      };
+    });
   };
 
   const generateInvoice = async () => {
     setIsGenerating(true);
-    
+    let wrapper = null;
+
     try {
-      // Create invoice data
-      const invoiceData = {
-        invoiceNumber: `CAL-${Date.now()}`,
-        date: new Date().toLocaleDateString('en-IN'),
-        company: {
+      const resolvedItems = normalizeItems(invoiceData?.items || items);
+      const resolvedSubtotal = Number(invoiceData?.subtotal ?? subtotal ?? 0);
+      const resolvedShipping = Number(invoiceData?.shipping ?? shipping ?? 0);
+      const resolvedDiscount = Number(invoiceData?.discount ?? discount ?? 0);
+      const netSubtotal = Math.max(resolvedSubtotal - resolvedDiscount, 0);
+      const resolvedTotal =
+        invoiceData?.total !== undefined && invoiceData?.total !== null
+          ? Number(invoiceData.total)
+          : netSubtotal + resolvedShipping;
+      const effectiveSubtotal =
+        invoiceData?.total !== undefined && invoiceData?.total !== null
+          ? Math.max(resolvedTotal - resolvedShipping, 0)
+          : netSubtotal;
+      const resolvedTax = getInclusiveTax(effectiveSubtotal);
+      const baseSubtotal = Math.max(effectiveSubtotal - resolvedTax, 0);
+      const taxableAmount = effectiveSubtotal;
+
+      const resolvedInvoiceData = {
+        invoiceNumber: invoiceData?.invoiceNumber || `INV-${new Date().getFullYear()}-${Date.now().toString().slice(-5)}`,
+        orderId: invoiceData?.orderId || '',
+        invoiceDate: invoiceData?.invoiceDate || new Date().toISOString(),
+        company: invoiceData?.company || {
           name: 'Calyco Paints',
-          address: 'B37, Sector 1, Noida, NCR',
+          addressLine1: 'B37, Sector 1',
+          addressLine2: 'Noida, Uttar Pradesh - 201301',
+          country: 'India',
           phone: '+91 8826733064 (WhatsApp - Messages only)',
-          email: 'info@calycopaints.com'
+          email: 'info@calycopaints.com',
+          website: 'calycopaints.com',
+          gstin: SELLER_GSTIN
         },
-        items: items.map(item => ({
-          name: item.name,
-          description: `${item.selectedSheen} • ${item.selectedSize}`,
-          quantity: item.quantity,
-          price: item.price,
-          total: item.price * item.quantity
-        })),
-        subtotal: total,
-        tax: total * 0.18, // 18% GST
-        total: total + (total * 0.18)
+        customer: invoiceData?.customer || null,
+        payment: invoiceData?.payment || null,
+        items: resolvedItems,
+        subtotal: resolvedSubtotal,
+        netSubtotal: baseSubtotal,
+        discount: resolvedDiscount,
+        shipping: resolvedShipping,
+        taxableAmount,
+        tax: resolvedTax,
+        total: resolvedTotal
       };
 
-      // Generate PDF content
-      const pdfContent = generatePDFContent(invoiceData);
-      
-      // Create and download PDF
-      await downloadPDF(pdfContent, `Calyco-Invoice-${invoiceData.invoiceNumber}.pdf`);
-      
-      // Close modal after successful generation
+      const pdfContent = generatePDFContent(resolvedInvoiceData);
+      const filename = `Calyco-Invoice-${resolvedInvoiceData.invoiceNumber}.pdf`;
+      wrapper = document.createElement('div');
+      wrapper.style.position = 'fixed';
+      wrapper.style.left = '-9999px';
+      wrapper.style.top = '0';
+      wrapper.innerHTML = pdfContent;
+      document.body.appendChild(wrapper);
+
+      const invoiceNode = wrapper.querySelector('.invoice');
+      if (!invoiceNode) {
+        throw new Error('Invoice template not found');
+      }
+
+      const invoiceWidth = Math.ceil(invoiceNode.scrollWidth);
+      const invoiceHeight = Math.ceil(invoiceNode.scrollHeight);
+
+      await html2pdf()
+        .set({
+          margin: [10, 10, 10, 10],
+          filename,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            allowTaint: false,
+            imageTimeout: 15000,
+            windowWidth: invoiceWidth,
+            windowHeight: invoiceHeight
+          },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        })
+        .from(invoiceNode)
+        .save();
+
       setTimeout(() => {
-        onClose();
+        onClose?.();
       }, 1000);
-      
     } catch (error) {
       console.error('Error generating invoice:', error);
       alert('Error generating invoice. Please try again.');
     } finally {
+      if (wrapper && wrapper.parentNode) {
+        wrapper.parentNode.removeChild(wrapper);
+      }
       setIsGenerating(false);
     }
   };
 
   const generatePDFContent = (data) => {
-    const itemsHTML = data.items.map(item => `
-      <tr>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${item.name}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">${item.description}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 500;">${item.quantity}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 500;">₹${item.price.toLocaleString()}</td>
-        <td style="padding: 12px 8px; border-bottom: 1px solid #e5e7eb; text-align: right; font-weight: 600; color: #493657;">₹${item.total.toLocaleString()}</td>
-      </tr>
-    `).join('');
+    const isInterState = Boolean(
+      data.customer?.stateCode &&
+        data.customer.stateCode !== SELLER_STATE_CODE
+    );
+    const cgst = isInterState ? 0 : data.tax / 2;
+    const sgst = isInterState ? 0 : data.tax / 2;
+    const igst = isInterState ? data.tax : 0;
 
-    const currentDate = new Date().toLocaleDateString('en-IN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const itemsHTML = data.items
+      .map(
+        (item, index) => `
+      <tr>
+        <td data-label="Sl" class="col-center col-nowrap">${index + 1}</td>
+        <td data-label="Product" class="col-wrap col-strong">${item.name}</td>
+        <td data-label="HSN" class="col-center col-nowrap">${item.hsn}</td>
+        <td data-label="Specifications" class="col-wrap col-muted">${item.description}</td>
+        <td data-label="Qty" class="col-center col-nowrap">${item.quantity}</td>
+        <td data-label="Unit Price (Excl. GST)" class="col-right col-nowrap">&#8377;${formatNumber(item.price)}</td>
+        <td data-label="Tax (Included)" class="col-right col-nowrap">&#8377;${formatNumber(item.tax)}</td>
+        <td data-label="Total (Incl. GST)" class="col-right col-nowrap col-strong">&#8377;${formatNumber(item.total)}</td>
+      </tr>
+    `
+      )
+      .join('');
+
+    const customerHTML = data.customer
+      ? `
+        <div class="address-block">
+          <div class="block-title">Billing Address</div>
+          <div class="block-name">${data.customer.name || 'Customer'}</div>
+          <div class="block-text">
+            ${data.customer.addressLine1 || ''}${data.customer.addressLine2 ? `, ${data.customer.addressLine2}` : ''}<br>
+            ${data.customer.country || ''}
+          </div>
+          ${data.customer.phone ? `<div class="block-text"><strong>Phone:</strong> ${data.customer.phone}</div>` : ''}
+          ${data.customer.email ? `<div class="block-text"><strong>Email:</strong> ${data.customer.email}</div>` : ''}
+          <div class="block-title" style="margin-top:10px;">Shipping Address</div>
+          <div class="block-name">${data.customer.name || 'Customer'}</div>
+          <div class="block-text">
+            ${data.customer.addressLine1 || ''}${data.customer.addressLine2 ? `, ${data.customer.addressLine2}` : ''}<br>
+            ${data.customer.country || ''}
+          </div>
+        </div>
+      `
+      : '';
+
+    const paymentHTML = data.payment
+      ? `
+        <table class="payment-details">
+          <tr>
+            <td><strong>Payment Transaction ID:</strong> ${data.payment.transactionId || '-'}</td>
+            <td><strong>Date:</strong> ${formatDate(data.payment.paymentDate)}</td>
+            <td><strong>Invoice Value:</strong> &#8377;${formatNumber(data.total)}</td>
+            <td><strong>Mode of Payment:</strong> ${data.payment.mode || 'Razorpay'}</td>
+          </tr>
+        </table>
+      `
+      : '';
+
+    const totalTaxIncluded = data.tax;
+    const amountInWords = `${numberToWords(Math.round(data.total))} Only`;
 
     return `
       <!DOCTYPE html>
@@ -82,333 +334,498 @@ export const InvoiceGenerator = ({ items, total, onClose }) => {
           <title>Calyco Paints Invoice</title>
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-            
+
             * { margin: 0; padding: 0; box-sizing: border-box; }
-            
-            body { 
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-              line-height: 1.6; 
-              color: #1f2937; 
+
+            body {
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              line-height: 1.6;
+              color: #1f2937;
               background: #ffffff;
             }
-            
+
+            .invoice {
+              word-break: break-word;
+              overflow-wrap: anywhere;
+              white-space: normal;
+            }
+
+            .invoice * ,
+            .invoice-table td,
+            .invoice-details div,
+            .payment-details div {
+              word-break: break-word;
+              overflow-wrap: anywhere;
+              white-space: normal;
+            }
+
+            .invoice-details div {
+              display: block;
+            }
+
             .invoice-container {
-              max-width: 800px;
+              max-width: 900px;
               margin: 0 auto;
-              padding: 40px;
+              padding: 30px;
               background: #ffffff;
             }
-            
+
             .header {
               display: flex;
               justify-content: space-between;
               align-items: flex-start;
-              margin-bottom: 40px;
-              padding-bottom: 30px;
-              border-bottom: 2px solid #f3f4f6;
+              margin-bottom: 18px;
+              padding-bottom: 12px;
+              border-bottom: 1px solid #e5e7eb;
             }
-            
-            .logo-section {
-              flex: 1;
-            }
-            
-            .logo-title {
-              font-size: 32px;
-              font-weight: 700;
-              color: #493657;
-              margin-bottom: 8px;
-            }
-            
-            .logo-subtitle {
-              font-size: 16px;
-              color: #F0C85A;
-              font-weight: 600;
-              margin-bottom: 4px;
-            }
-            
-            .logo-tagline {
-              font-size: 14px;
-              color: #6b7280;
-              font-weight: 400;
-            }
-            
-            .invoice-info {
-              text-align: right;
-              flex: 1;
-            }
-            
-            .invoice-number {
-              font-size: 24px;
-              font-weight: 700;
-              color: #493657;
-              margin-bottom: 8px;
-            }
-            
-            .invoice-date {
-              font-size: 14px;
-              color: #6b7280;
-              margin-bottom: 4px;
-            }
-            
-            .invoice-status {
-              display: inline-block;
-              background: #10b981;
-              color: white;
-              padding: 4px 12px;
-              border-radius: 20px;
-              font-size: 12px;
-              font-weight: 600;
-            }
-            
-            .company-details {
+
+            .brand {
               display: flex;
-              justify-content: space-between;
-              margin-bottom: 40px;
-              padding: 30px;
-              background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-              border-radius: 12px;
-              border: 1px solid #e2e8f0;
+              flex-direction: column;
+              gap: 8px;
             }
-            
-            .company-info {
-              flex: 1;
+
+            .brand-logo {
+              width: 110px;
+              height: 70px;
+              object-fit: contain;
             }
-            
-            .company-name {
-              font-size: 18px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 8px;
+
+            .invoice-title {
+              font-size: 12px;
+              font-weight: 700;
+              color: #111827;
             }
-            
-            .company-address {
+
+            .invoice-sub {
+              font-size: 11px;
+              color: #6b7280;
+            }
+
+            .invoice-meta {
+              text-align: right;
+              font-size: 12px;
+              color: #111827;
+              line-height: 1.6;
+            }
+
+            .invoice-meta strong {
+              color: #111827;
+            }
+
+            .address-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 16px;
+              margin-bottom: 18px;
+              border: 1px solid #e5e7eb;
+              padding: 12px;
+              background: #ffffff;
+            }
+
+            .address-block {
+              min-width: 0;
+            }
+
+            .block-title {
+              font-size: 11px;
+              font-weight: 700;
+              color: #6b7280;
+              text-transform: uppercase;
+              margin-bottom: 6px;
+            }
+
+            .block-name {
               font-size: 14px;
+              font-weight: 600;
+              color: #111827;
+              margin-bottom: 4px;
+            }
+
+            .block-text {
+              font-size: 12px;
               color: #6b7280;
               line-height: 1.5;
-            }
-            
-            .contact-info {
-              flex: 1;
-              text-align: right;
-            }
-            
-            .contact-item {
-              font-size: 14px;
-              color: #6b7280;
               margin-bottom: 4px;
             }
-            
-            .contact-item strong {
-              color: #493657;
-              font-weight: 600;
-            }
-            
+
             .items-table {
               width: 100%;
               border-collapse: collapse;
-              margin-bottom: 30px;
+              margin-bottom: 12px;
               background: white;
-              border-radius: 8px;
-              overflow: hidden;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+              border: 1px solid #111827;
+              table-layout: fixed;
             }
-            
+
+            .invoice-table td,
+            .invoice-table th {
+              font-size: 12px;
+              border: 1px solid #111827;
+              padding: 6px 6px;
+              vertical-align: top;
+            }
+
             .items-table th {
-              background: linear-gradient(135deg, #493657 0%, #5a4067 100%);
-              color: white;
-              padding: 16px 12px;
+              background: #f3f4f6;
+              color: #111827;
+              font-weight: 700;
               text-align: left;
-              font-weight: 600;
-              font-size: 14px;
             }
-            
-            .items-table th:last-child,
-            .items-table td:last-child {
-              text-align: right;
+
+            .items-table th:nth-child(1),
+            .items-table td:nth-child(1) {
+              width: 4%;
             }
-            
+
+            .items-table th:nth-child(2),
+            .items-table td:nth-child(2) {
+              width: 22%;
+            }
+
             .items-table th:nth-child(3),
             .items-table td:nth-child(3) {
+              width: 8%;
+            }
+
+            .items-table th:nth-child(4),
+            .items-table td:nth-child(4) {
+              width: 28%;
+            }
+
+            .items-table th:nth-child(5),
+            .items-table td:nth-child(5) {
+              width: 6%;
+            }
+
+            .items-table th:nth-child(6),
+            .items-table td:nth-child(6) {
+              width: 12%;
+            }
+
+            .items-table th:nth-child(7),
+            .items-table td:nth-child(7) {
+              width: 10%;
+            }
+
+            .items-table th:nth-child(8),
+            .items-table td:nth-child(8) {
+              width: 10%;
+            }
+
+            .col-center {
               text-align: center;
             }
-            
-            .totals-section {
-              background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-              padding: 30px;
-              border-radius: 12px;
-              border: 1px solid #e2e8f0;
+
+            .col-right {
+              text-align: right;
             }
-            
-            .total-row {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 12px;
-              font-size: 16px;
+
+            .col-nowrap {
+              white-space: nowrap;
             }
-            
-            .total-row:last-child {
-              margin-bottom: 0;
-              padding-top: 16px;
-              border-top: 2px solid #e5e7eb;
-              font-size: 20px;
-              font-weight: 700;
-              color: #493657;
+
+            .col-wrap {
+              white-space: normal;
+              word-break: break-word;
             }
-            
-            .total-label {
-              font-weight: 500;
+
+            .col-muted {
               color: #6b7280;
             }
-            
-            .total-value {
+
+            .col-strong {
               font-weight: 600;
-              color: #493657;
             }
-            
-            .total-value.final {
-              color: #F0C85A;
-              font-size: 24px;
-            }
-            
-            .footer {
-              margin-top: 40px;
-              padding: 30px;
-              background: linear-gradient(135deg, #493657 0%, #5a4067 100%);
-              border-radius: 12px;
-              color: white;
-              text-align: center;
-            }
-            
-            .footer-title {
-              font-size: 18px;
+
+            .summary-row td {
               font-weight: 600;
-              margin-bottom: 12px;
+              background: #fafafa;
             }
-            
-            .footer-text {
-              font-size: 14px;
-              opacity: 0.9;
-              margin-bottom: 8px;
+
+            .summary-label {
+              text-align: right;
+              white-space: nowrap;
             }
-            
-            .footer-contact {
-              font-size: 14px;
-              opacity: 0.8;
+
+            .summary-value {
+              text-align: right;
+              white-space: nowrap;
             }
-            
-            .terms {
-              margin-top: 30px;
-              padding: 20px;
-              background: #f9fafb;
-              border-radius: 8px;
-              border: 1px solid #e5e7eb;
-            }
-            
-            .terms-title {
-              font-size: 16px;
-              font-weight: 600;
-              color: #493657;
-              margin-bottom: 12px;
-            }
-            
-            .terms-list {
+
+            .invoice-summary {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 6px;
+              border: 1px solid #111827;
               font-size: 12px;
+              table-layout: fixed;
+            }
+
+            .invoice-summary td {
+              padding: 6px;
+              border: 1px solid #111827;
+              vertical-align: top;
+            }
+
+            .invoice-summary .label {
+              text-align: left;
+              font-weight: 600;
+              background: #fafafa;
+              white-space: normal;
+              width: 70%;
+            }
+
+            .invoice-summary .value {
+              text-align: right;
+              white-space: nowrap;
+              background: #fafafa;
+              font-weight: 600;
+              width: 30%;
+            }
+
+            .invoice-summary .total {
+              font-weight: 700;
+            }
+
+            .items-table th:nth-child(1),
+            .items-table td:nth-child(1),
+            .items-table th:nth-child(5),
+            .items-table td:nth-child(5) {
+              text-align: center;
+            }
+
+            .items-table th:nth-child(6),
+            .items-table th:nth-child(7),
+            .items-table th:nth-child(8),
+            .items-table td:nth-child(6),
+            .items-table td:nth-child(7),
+            .items-table td:nth-child(8) {
+              text-align: right;
+            }
+
+            .amount-words {
+              margin-top: 6px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #111827;
+            }
+
+            .payment-details {
+              margin-top: 8px;
+              font-size: 11px;
+              color: #111827;
+              border: 1px solid #111827;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            .payment-details td {
+              border: 1px solid #111827;
+              padding: 6px;
+              white-space: normal;
+            }
+
+            .system-note {
+              margin-top: 8px;
+              font-size: 10px;
               color: #6b7280;
-              line-height: 1.5;
+              text-align: center;
             }
-            
-            .terms-list li {
-              margin-bottom: 4px;
+
+            .invoice.pdf-mode {
+              width: 100%;
+              max-width: 720px;
+              padding: 18px;
             }
-            
+
+            .invoice.pdf-mode .invoice-meta {
+              max-width: 240px;
+              white-space: normal;
+            }
+
+            .invoice.pdf-mode .items-table thead {
+              display: table-header-group !important;
+            }
+
+            .invoice.pdf-mode .items-table tr {
+              display: table-row !important;
+              margin-bottom: 0 !important;
+              border-bottom: none !important;
+            }
+
+            .invoice.pdf-mode .items-table td {
+              display: table-cell !important;
+              padding: 6px !important;
+              border: 1px solid #111827 !important;
+            }
+
+            .invoice.pdf-mode .items-table td::before {
+              content: none !important;
+            }
+
+            .invoice.pdf-mode .invoice-header,
+            .invoice.pdf-mode .seller-buyer-grid {
+              grid-template-columns: 1fr 1fr !important;
+            }
+
             @media print {
               body { margin: 0; }
               .invoice-container { padding: 20px; }
             }
+
+            @media (max-width: 640px) {
+              .invoice-header,
+              .seller-buyer-grid {
+                grid-template-columns: 1fr !important;
+              }
+
+              .invoice-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+              }
+
+              .invoice-meta {
+                align-items: flex-start;
+                text-align: left;
+              }
+
+              .items-table thead {
+                display: none;
+              }
+
+              .items-table tr {
+                display: block;
+                margin-bottom: 12px;
+                border-bottom: 1px solid #e5e7eb;
+              }
+
+              .items-table td {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 6px 0;
+                border-bottom: none;
+              }
+
+              .items-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #555;
+              }
+
+              .totals-section {
+                width: 100%;
+                max-width: none;
+              }
+            }
           </style>
         </head>
         <body>
-          <div class="invoice-container">
-            <!-- Header -->
-            <div class="header">
-              <div class="logo-section">
-                <div class="logo-title">Calyco Paints</div>
-                <div class="logo-subtitle">Premium Paint Solutions</div>
-                <div class="logo-tagline">Transforming spaces with innovation</div>
+          <div class="invoice invoice-container pdf-mode">
+            <div class="header invoice-header">
+              <div class="brand">
+                <img src="${LOGO_URL}" alt="Calyco Paints" class="brand-logo" crossorigin="anonymous" />
+                <div class="invoice-title">Tax Invoice / Bill of Supply</div>
+                <div class="invoice-sub">(Original for Recipient)</div>
               </div>
-              <div class="invoice-info">
-                <div class="invoice-number">${data.invoiceNumber}</div>
-                <div class="invoice-date">${currentDate}</div>
-                <div class="invoice-status">PAID</div>
+              <div class="invoice-meta">
+                <div><strong>Invoice No:</strong> ${data.invoiceNumber}</div>
+                ${data.orderId ? `<div><strong>Order ID:</strong> ${data.orderId}</div>` : ''}
+                <div><strong>Invoice Date:</strong> ${formatDate(data.invoiceDate)}</div>
               </div>
             </div>
-            
-            <!-- Company Details -->
-            <div class="company-details">
-              <div class="company-info">
-                <div class="company-name">Calyco Paints</div>
-                <div class="company-address">
-                  B37, Sector 1, Noida, NCR<br>
-                  Uttar Pradesh, India
+
+            <div class="address-grid seller-buyer-grid invoice-details">
+              <div class="address-block">
+                <div class="block-title">Sold By</div>
+                <div class="block-name">${data.company?.name || 'Calyco Paints'}</div>
+                <div class="block-text">
+                  ${data.company?.addressLine1 || 'B37, Sector 1'}<br>
+                  ${data.company?.addressLine2 || 'Noida, Uttar Pradesh - 201301'}<br>
+                  ${data.company?.country || 'India'}
                 </div>
+                <div class="block-text"><strong>GSTIN:</strong> ${data.company?.gstin || SELLER_GSTIN}</div>
+                <div class="block-text"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8826733064 (Messages only)'}</div>
+                <div class="block-text"><strong>Email:</strong> ${data.company?.email || 'info@calycopaints.com'}</div>
+                <div class="block-text"><strong>Website:</strong> ${data.company?.website || 'calycopaints.com'}</div>
               </div>
-              <div class="contact-info">
-                <div class="contact-item"><strong>WhatsApp:</strong> +91 8826733064 (Messages only)</div>
-                <div class="contact-item"><strong>Email:</strong> info@calycopaints.com</div>
-                <div class="contact-item"><strong>Website:</strong> calycopaints.com</div>
-              </div>
+              ${customerHTML}
             </div>
-            
-            <!-- Items Table -->
-            <table class="items-table">
+
+            <table class="items-table invoice-table">
               <thead>
                 <tr>
+                  <th>Sl</th>
                   <th>Product</th>
+                  <th>HSN</th>
                   <th>Specifications</th>
                   <th>Qty</th>
-                  <th>Unit Price</th>
-                  <th>Total</th>
+                  <th>Unit Price (Excl. GST)</th>
+                  <th>Tax (Included)</th>
+                  <th>Total (Incl. GST)</th>
                 </tr>
               </thead>
               <tbody>
                 ${itemsHTML}
               </tbody>
             </table>
-            
-            <!-- Totals -->
-            <div class="totals-section">
-              <div class="total-row">
-                <span class="total-label">Subtotal</span>
-                <span class="total-value">₹${data.subtotal.toLocaleString()}</span>
-              </div>
-              <div class="total-row">
-                <span class="total-label">GST (18%)</span>
-                <span class="total-value">₹${data.tax.toFixed(0)}</span>
-              </div>
-              <div class="total-row">
-                <span class="total-label">Total Amount</span>
-                <span class="total-value final">₹${data.total.toFixed(0)}</span>
-              </div>
-            </div>
-            
-            <!-- Footer -->
-            <div class="footer">
-              <div class="footer-title">Thank you for choosing Calyco Paints!</div>
-              <div class="footer-text">Your satisfaction is our priority</div>
-              <div class="footer-contact">For any queries, contact us at info@calycopaints.com</div>
-            </div>
-            
-            <!-- Terms -->
-            <div class="terms">
-              <div class="terms-title">Terms & Conditions</div>
-              <ul class="terms-list">
-                <li>• All prices are inclusive of GST</li>
-                <li>• Payment is due upon receipt of this invoice</li>
-                <li>• Products are covered under manufacturer warranty</li>
-                <li>• Returns accepted within 30 days of purchase</li>
-                <li>• Free delivery on orders above ₹5000</li>
-              </ul>
+
+            <table class="invoice-summary">
+              <tr>
+                <td class="label">Item Subtotal (Excl. GST)</td>
+                <td class="value">&#8377;${formatNumber(data.netSubtotal ?? data.subtotal)}</td>
+              </tr>
+              ${
+                data.discount
+                  ? `
+              <tr>
+                <td class="label">Discount</td>
+                <td class="value">-&#8377;${formatNumber(data.discount)}</td>
+              </tr>
+              `
+                  : ''
+              }
+              <tr>
+                <td class="label">Shipping (Non-Taxable)</td>
+                <td class="value">&#8377;${formatNumber(data.shipping)}</td>
+              </tr>
+              ${
+                isInterState
+                  ? `
+              <tr>
+                <td class="label">IGST (18%) - Included</td>
+                <td class="value">&#8377;${formatNumber(igst)}</td>
+              </tr>
+              `
+                  : `
+              <tr>
+                <td class="label">CGST (9%) - Included</td>
+                <td class="value">&#8377;${formatNumber(cgst)}</td>
+              </tr>
+              <tr>
+                <td class="label">SGST (9%) - Included</td>
+                <td class="value">&#8377;${formatNumber(sgst)}</td>
+              </tr>
+              `
+              }
+              <tr>
+                <td class="label">Total Tax (Included)</td>
+                <td class="value">&#8377;${formatNumber(totalTaxIncluded)}</td>
+              </tr>
+              <tr>
+                <td class="label total">Grand Total</td>
+                <td class="value total">&#8377;${formatNumber(data.total)}</td>
+              </tr>
+            </table>
+
+            <div class="amount-words">Amount in Words: Rupees ${amountInWords}</div>
+
+            ${paymentHTML}
+
+            <div class="system-note">
+              This is a system generated invoice and does not require a signature.
             </div>
           </div>
         </body>
@@ -416,32 +833,11 @@ export const InvoiceGenerator = ({ items, total, onClose }) => {
     `;
   };
 
-  const downloadPDF = async (htmlContent, filename) => {
-    // Create a blob from the HTML content
-    const blob = new Blob([htmlContent], { type: 'text/html' });
-    
-    // Create a URL for the blob
-    const url = URL.createObjectURL(blob);
-    
-    // Create a temporary link element
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    
-    // Append to body, click, and remove
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    // Clean up the URL
-    URL.revokeObjectURL(url);
-  };
-
   return (
     <button
       onClick={generateInvoice}
       disabled={isGenerating}
-      className="flex-1 px-4 py-3 bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      className="w-full px-4 py-3 bg-gradient-to-r from-[#F0C85A] to-[#F0C85A]/80 text-[#493657] font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
     >
       {isGenerating ? (
         <>
@@ -456,4 +852,4 @@ export const InvoiceGenerator = ({ items, total, onClose }) => {
       )}
     </button>
   );
-}; 
+};

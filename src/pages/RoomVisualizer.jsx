@@ -46,21 +46,21 @@ export const RoomVisualizerPage = () => {
       id: 1,
       name: 'Bedroom',
       icon: FaBed,
-      image: '/Assets/Rooms/Bedroom/base.jpg',
+      image: '/Assets/Rooms/Bedroom/base.webp',
       description: 'Transform your bedroom with calming colors'
     },
     {
       id: 2,
       name: 'Living Room',
       icon: FaCouch,
-      image: '/Assets/Rooms/LivingRoom/base.jpg',
+      image: '/Assets/Rooms/LivingRoom/base.webp',
       description: 'Create a welcoming living space'
     },
     {
       id: 3,
       name: 'Dining Room',
       icon: FaUtensils,
-      image: '/Assets/Rooms/DiningRoom/base.jpg',
+      image: '/Assets/Rooms/DiningRoom/base.webp',
       description: 'Design an elegant dining area'
     }
   ];
@@ -119,7 +119,7 @@ export const RoomVisualizerPage = () => {
 
                   {/* Fallback if image fails to load */}
                   <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 items-center justify-center hidden">
-                    <room.icon className="text-4xl text-gray-400" />
+                    {React.createElement(room.icon, { className: "text-4xl text-gray-400" })}
                   </div>
 
                   {/* Hover Overlay */}
@@ -184,4 +184,6 @@ export const RoomVisualizerPage = () => {
     </div>
   );
 };
+
+export default RoomVisualizerPage;
 

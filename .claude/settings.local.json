@@ -18,7 +18,18 @@
       "Bash(timeout 3 sleep:*)",
       "Bash(node scripts/generate-product-docs.js:*)",
       "Bash(node scripts/update-product-docs-links.js:*)",
-      "Bash(node scripts/update-page-docs-links.js:*)"
+      "Bash(node scripts/update-page-docs-links.js:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(node scripts/update-to-webp.js:*)",
+      "Bash(node scripts/recompress-webp.js:*)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(node -e:*)",
+      "Bash(git config:*)",
+      "Bash(git reset:*)",
+      "Bash(git count-objects:*)",
+      "Bash(gh:*)",
+      "Bash(node scripts/create-mobile-hero.js:*)"
     ],
     "deny": [],
     "ask": []

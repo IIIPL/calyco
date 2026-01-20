@@ -261,7 +261,7 @@ const mapLineItemToCartItem = (lineItem) => {
 
   const priceAmount = merchandise.priceV2?.amount || 0;
 
-  const imageSrc = merchandise.product?.featuredImage?.url || '/Assets/chair.png';
+  const imageSrc = merchandise.product?.featuredImage?.url || '/Assets/chair.webp';
 
   return {
     lineItemId: lineItem.id,
@@ -289,7 +289,7 @@ const createLocalCartItem = ({ product, price, finish, size, quantity, color, pr
     selectedSize: size || '',
     selectedColorType: productType || 'paint',
     quantity: Math.max(1, parseInt(quantity, 10) || 1),
-    image: product?.image || product?.bucketImage || '/Assets/chair.png',
+    image: product?.image || product?.bucketImage || '/Assets/chair.webp',
     selectedColor: normalisedColor,
     variantId,
   };

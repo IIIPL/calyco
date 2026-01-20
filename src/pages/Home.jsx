@@ -60,13 +60,13 @@ const Home = () => {
       name: "Priya S.",
       location: "Gurgaon",
       initials: "PS",
-      quote: "WhatsApp-only communication was a relief. No pressure sales tactics. Team was professional and finished on time. Highly recommend!"
+      quote: "The finish looks premium and the wall texture came out super smooth. Dust control during painting was a big plus, and cleanup was done the same day."
     },
     {
       name: "Amit K.",
       location: "Noida",
       initials: "AK",
-      quote: "Saved ₹15,000 on my villa painting. NTPC-approved quality claim is real. Same paint used in government projects. Worth every rupee!"
+      quote: "We did the exterior and it has held up through rain and sun. Colors still look fresh, and the waterproofing advice actually worked."
     }
   ];
 
@@ -247,13 +247,17 @@ const Home = () => {
       <MarqueeStrip />
 
       {/* Quality You Can Trust Section */}
-      <section className="relative w-full h-[85vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
+      <section className="relative w-full h-[65vh] sm:h-[75vh] md:h-[80vh] lg:h-[83vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/Assets/Texture Images/tex2.webp"
-            alt="Living room showcasing premium textured wall finish"
+            src="/Assets/updated hero images/8.webp"
+            alt="Beautifully painted interior walls showcasing Calyco's premium paint quality"
             className="w-full h-full object-cover object-center"
+            width="1920"
+            height="1280"
+            loading="lazy"
           />
+          <div className="absolute inset-0 bg-black/25" />
         </div>
         <div className="absolute inset-0 flex items-start sm:items-center pt-16 sm:pt-0">
           <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
@@ -265,7 +269,7 @@ const Home = () => {
               className="max-w-xl md:max-w-2xl"
             >
               <div className="space-y-5 text-left">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#4B007D]/10 text-[#4B007D] text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
+                <span className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-xs sm:text-xs font-semibold uppercase tracking-wider shadow-lg">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>

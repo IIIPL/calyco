@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
-    image: '/Assets/home-hero/full-page.png',
+    image: '/Assets/home-hero/full-page.webp',
+    imageMobile: '/Assets/home-hero/full-page-mobile.webp',
     badge: 'TRUSTED NATIONWIDE',
     title: 'Colors That Transform Homes Into Havens',
     subtitle: "India's most trusted paint brand. Premium quality, affordable pricing, and a finish that lasts a decade.",
@@ -11,7 +12,8 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero2.png',
+    image: '/Assets/HERO/hero2.webp',
+    imageMobile: '/Assets/HERO/hero2-mobile.webp',
     badge: 'GUARANTEED EXCELLENCE',
     title: 'A Decade of Beauty, Guaranteed',
     subtitle: "We stand behind every brush stroke with India's strongest 10-year warranty. Your walls deserve nothing less.",
@@ -19,7 +21,8 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
+    image: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.webp',
+    imageMobile: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a-mobile.webp',
     badge: '2,000+ SHADES',
     title: 'Every Mood. Every Room. Every Dream.',
     subtitle: 'From calming neutrals to bold statements—explore our curated collections designed for the way you live.',
@@ -27,7 +30,8 @@ const SLIDES = [
     button2: { text: 'Products', link: '/products' }
   },
   {
-    image: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
+    image: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp',
+    imageMobile: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7-mobile.webp',
     badge: 'MADE IN INDIA',
     title: 'Factory-Direct Quality. Family-Friendly Prices.',
     subtitle: 'By cutting out middlemen, we deliver premium paint at 20% less than competitors—without compromising an ounce of quality.',
@@ -57,12 +61,29 @@ const HeroSlider = () => {
     <section className="relative w-full h-[80vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh] overflow-hidden">
       {/* Background Image - Quick transition */}
       <div className="absolute inset-0 transition-opacity duration-300">
-        <img
-          key={currentSlide}
-          src={slide.image}
-          alt={slide.title}
-          className="w-full h-full object-cover object-[65%_center] scale-110"
-        />
+        <picture key={currentSlide}>
+          <source
+            media="(max-width: 767px)"
+            srcSet={slide.imageMobile}
+            width="800"
+            height="600"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet={slide.image}
+            width="1920"
+            height="1080"
+          />
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="w-full h-full object-cover object-[65%_center] scale-110"
+            loading={currentSlide === 0 ? "eager" : "lazy"}
+            fetchpriority={currentSlide === 0 ? "high" : "auto"}
+            width="1920"
+            height="1080"
+          />
+        </picture>
       </div>
 
       {/* Dark overlay for readability */}

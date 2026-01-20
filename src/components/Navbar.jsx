@@ -19,7 +19,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1024);
   // Auto-close mobile menu when route changes
   useEffect(() => {
     handleMenuToggle(false);
@@ -29,7 +29,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const nowMobile = window.innerWidth < 768;
+      const nowMobile = window.innerWidth < 1024;
       if (nowMobile !== isMobileView) {
         setDropdownOpen(null);
         handleMenuToggle(false);
@@ -101,13 +101,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       style={{ top: bannerVisible && !menuOpen ? (isMobileView ? '48px' : '40px') : '0px' }}
     >
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center justify-between px-10 lg:px-16 h-20">
+      <div className="hidden lg:flex items-center justify-between px-10 lg:px-16 h-20">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-3"
         >
-          <img src="/Logo.png" className="object-contain h-16" alt="Calyco Logo" />
+          <img src="/Logo.webp" className="object-contain h-16" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         <nav className="flex gap-8 text-base font-medium items-center">
@@ -160,19 +160,29 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           >Contact</Link>
         </nav>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <Link
+            to="/budget-calculator"
+            className="inline-flex items-center gap-2 bg-[#F0C85A] text-[#493657] px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap"
+            onClick={() => setDropdownOpen(null)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            Calculate Budget
+          </Link>
           <CartIcon onCartOpen={() => setDropdownOpen(null)} />
         </div>
       </div>
 
       {/* Mobile top bar */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3">
+      <div className="lg:hidden flex items-center justify-between px-4 py-3">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2"
         >
-          <img src="/Logo.png" className="h-12 object-contain" alt="Calyco Logo" />
+          <img src="/Logo.webp" className="h-12 object-contain" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         <div className="flex items-center gap-2">
@@ -205,7 +215,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e0d8]/80">
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
-            <img src="/Logo.png" className="h-10 object-contain" alt="Calyco Logo" />
+            <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
           </Link>
           <div className="flex items-center gap-4">
             <CartIcon onCartOpen={() => setDropdownOpen(null)} />
@@ -270,6 +280,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
                 onClick={() => handleMenuToggle(false)}
               >
                 Contact Us
+              </Link>
+              <Link
+                to="/budget-calculator"
+                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
+                onClick={() => handleMenuToggle(false)}
+              >
+                Calculate Budget
               </Link>
             </div>
           </nav>

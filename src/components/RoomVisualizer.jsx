@@ -36,27 +36,27 @@ const RoomVisualizer = () => {
   // Sample room images with masks
   const roomImages = {
     'Bedroom': {
-      base: '/Assets/Rooms/Bedroom/base.jpg',
+      base: '/Assets/Rooms/Bedroom/base.webp',
       masks: {
-        walls: '/Assets/Rooms/Bedroom/mask-walls.jpg',
-        // ceiling: '/Assets/Rooms/Bedroom/mask-ceiling.jpg',
-        // floor: '/Assets/Rooms/Bedroom/mask-floor.jpg'
+        walls: '/Assets/Rooms/Bedroom/mask-walls.webp',
+        // ceiling: '/Assets/Rooms/Bedroom/mask-ceiling.webp',
+        // floor: '/Assets/Rooms/Bedroom/mask-floor.webp'
       }
     },
     'Living Room': {
-      base: '/Assets/Rooms/LivingRoom/base.jpg',
+      base: '/Assets/Rooms/LivingRoom/base.webp',
       masks: {
-        walls: '/Assets/Rooms/LivingRoom/mask-walls.jpg',
-        ceiling: '/Assets/Rooms/LivingRoom/mask-ceiling.jpg',
-        // floor: '/Assets/Rooms/LivingRoom/mask-floor.jpg'
+        walls: '/Assets/Rooms/LivingRoom/mask-walls.webp',
+        ceiling: '/Assets/Rooms/LivingRoom/mask-ceiling.webp',
+        // floor: '/Assets/Rooms/LivingRoom/mask-floor.webp'
       }
     },
     'Dining Room': {
-      base: '/Assets/Rooms/DiningRoom/base.jpg',
+      base: '/Assets/Rooms/DiningRoom/base.webp',
       masks: {
-        walls: '/Assets/Rooms/DiningRoom/mask-walls.jpg',
-        ceiling: '/Assets/Rooms/DiningRoom/mask-ceiling.jpg',
-        // floor: '/Assets/Rooms/DiningRoom/mask-wainscoting.jpg'
+        walls: '/Assets/Rooms/DiningRoom/mask-walls.webp',
+        ceiling: '/Assets/Rooms/DiningRoom/mask-ceiling.webp',
+        // floor: '/Assets/Rooms/DiningRoom/mask-wainscoting.webp'
       }
     }
   };

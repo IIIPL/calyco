@@ -8,8 +8,8 @@ const documentLinks = [
   // Wall paints grouped like the menu
   { name: "Interior Wall Paints", desc: "Premium & Luxury Interior Emulsion, Acrylic Washable Distemper.", href: "/Assets/docs/warranty_Interior-Wall-Paints.html", icon: "🎨" },
   { name: "Exterior Wall Paints", desc: "Premium & Luxury Exterior Emulsion, All Surface Coating.", href: "/Assets/docs/warranty_Exterior-Wall-Paints.html", icon: "🏡" },
-  { name: "Wood & Metal (Enamels/Coatings)", desc: "Dura-Shield Enamel, PU Wood Coating.", href: "/Assets/docs/warranty_Wood-Metal.html", icon: "🪵" },
-  { name: "Primers & Sealers", desc: "Interior/Exterior primers, solvent, universal, and wall putty.", href: "/Assets/docs/warranty_Primers-Sealers.html", icon: "🛡️" },
+  { name: "Wood & Metal (Enamels/Coatings)", desc: "Dura-Shield Enamel, PU Wood Coating, Melamine Polish, Epoxy Paint, Anticorrosive & Fire-Retardant coatings.", href: "/Assets/docs/warranty_Wood-Metal.html", icon: "🪵" },
+  { name: "Primers & Sealers", desc: "Interior/Exterior primers, solvent, universal, wall putty, wood & metal primers.", href: "/Assets/docs/warranty_Primers-Sealers.html", icon: "🛡️" },
   { name: "Waterproofing", desc: "Waterproofing Sealer, Damp Guard Primer.", href: "/Assets/docs/warranty_Waterproofing.html", icon: "💧" },
   { name: "Texture Paints", desc: "Calyco Texture Paint.", href: "/Assets/docs/warranty_calyco-texture-paint.html", icon: "🧩" },
 ];
@@ -92,12 +92,12 @@ export default function WarrantyPolicy() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="/Assets/InteriorInspiratoin/living-room.webp"
+              src="/Assets/updated hero images/5.webp"
               alt="Modern interior with CALYCO paint"
-              className="h-full w-full scale-105 object-cover"
+              className="h-full w-full scale-105 object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
 
           {/* Floating Orbs (From About Page) */}
@@ -329,4 +329,5 @@ export default function WarrantyPolicy() {
     </div>
   );
 }
+
 
