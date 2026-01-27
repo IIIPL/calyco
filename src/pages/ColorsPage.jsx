@@ -21,6 +21,7 @@ import {
 import { getAllColors, getColorFamilies } from '../data/calycoColors.js';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
+import SEO from '../components/SEO';
 
 // Get all 442 colors and families
 const ALL_COLORS = getAllColors();
@@ -153,8 +154,8 @@ const ColorsPage = () => {
   return (
     <div className="min-h-screen bg-white w-full">
       <SEO
-        title="Calyco Colors - 150+ Premium Eco-Friendly Shades"
-        description="Explore Calyco's extensive palette of over 150 low-VOC, eco-friendly paint colors. Find the perfect shade for your interior and exterior spaces."
+        title="Paint Colors & Palettes | Calyco Paints"
+        description="Explore Calyco’s curated paint colors, families, and palettes. Filter by tone, suitability, and finish to find the perfect shade for your space."
         url="https://calycopaints.com/colors"
       />
       {/* Hero Section */}
