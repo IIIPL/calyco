@@ -2,8 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const FeatureBadges = ({ features }) => {
+  const safeFeatures = Array.isArray(features) ? features : [];
+
   const getFeatureIcon = (feature) => {
-    const name = feature.toLowerCase();
+    const name = String(feature || "").toLowerCase();
     if (name.includes('voc') || name.includes('low-voc')) {
       return (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +51,7 @@ const FeatureBadges = ({ features }) => {
   };
 
   const getFeatureColor = (feature) => {
-    const name = feature.toLowerCase();
+    const name = String(feature || "").toLowerCase();
     if (name.includes('voc') || name.includes('eco') || name.includes('green')) {
       return "text-green-600 bg-green-50";
     } else if (name.includes('washable') || name.includes('cleanable')) {
@@ -74,7 +76,7 @@ const FeatureBadges = ({ features }) => {
       </p>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-        {features.map((feature, index) => {
+        {safeFeatures.map((feature, index) => {
           const colorClasses = getFeatureColor(feature);
           
           return (

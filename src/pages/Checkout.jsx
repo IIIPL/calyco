@@ -22,7 +22,10 @@ const Checkout = () => {
     sms: false,
   });
   const [discount, setDiscount] = useState("");
+  const [discountApplied, setDiscountApplied] = useState(false);
+  const [discountMessage, setDiscountMessage] = useState("");
   const [showInvoice, setShowInvoice] = useState(false);
+  const [invoiceSnapshot, setInvoiceSnapshot] = useState(null);
   const [showDummyModal, setShowDummyModal] = useState(false);
   const [paymentError, setPaymentError] = useState("");
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
@@ -55,6 +58,7 @@ const Checkout = () => {
 
   const rawSubtotal = getCartTotal();
   const subtotal = isNaN(rawSubtotal) ? 0 : rawSubtotal;
+  const currencySymbol = "\u20B9";
 
   // Check if cart requires shipping (contains physical products)
   // Name-based fallback to handle cases where requiresShipping flag is lost in localStorage
@@ -96,13 +100,16 @@ const Checkout = () => {
   // Shipping calculation based on address
   const [selectedShipping, setSelectedShipping] = useState('standard');
   const shippingRates = {
-    standard: subtotal >= 2000 ? 0 : 250, // Free shipping above ₹2000
+    standard: subtotal >= 2000 ? 0 : 250, // Free shipping above INR 2000
     express: 500
   };
   const shipping = cartRequiresShipping ? shippingRates[selectedShipping] : 0;
 
-  const tax = Math.round(subtotal * 0.18);
-  const total = subtotal + shipping + tax;
+  const discountRate = 0.2;
+  const discountAmount = discountApplied ? Math.round(subtotal * discountRate) : 0;
+  const discountedSubtotal = Math.max(subtotal - discountAmount, 0);
+  const taxIncluded = Math.round(discountedSubtotal - (discountedSubtotal / 1.18));
+  const total = discountedSubtotal + shipping;
 
   // Debug logging
   console.log('=== CHECKOUT DEBUG ===');
@@ -125,8 +132,10 @@ const Checkout = () => {
     });
   });
   console.log('Subtotal:', subtotal);
+  console.log('Discount:', discountAmount);
+  console.log('Discounted Subtotal:', discountedSubtotal);
   console.log('Shipping:', shipping);
-  console.log('Tax:', tax);
+  console.log('Tax (included):', taxIncluded);
   console.log('Total:', total);
   console.log('======================');
 
@@ -135,6 +144,72 @@ const Checkout = () => {
   };
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
+  };
+
+  const handleApplyDiscount = () => {
+    const code = discount.trim().toUpperCase();
+    const emailKey = user.email ? user.email.trim().toLowerCase() : '';
+
+    if (!code) {
+      setDiscountMessage("Enter a discount code.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    if (code !== "CALYCO20") {
+      setDiscountMessage("Invalid discount code.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    if (!emailKey) {
+      setDiscountMessage("Enter your email to apply the discount.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    const usedKey = `calyco_discount_used_${emailKey}`;
+    if (localStorage.getItem(usedKey)) {
+      setDiscountMessage("This code has already been used.");
+      setDiscountApplied(false);
+      return;
+    }
+
+    setDiscountApplied(true);
+    setDiscountMessage("Discount applied: 20% off.");
+  };
+
+  const buildInvoiceSnapshot = ({
+    orderId: orderIdValue,
+    payment,
+    invoiceNumber,
+    invoiceDate
+  } = {}) => {
+    const year = new Date().getFullYear();
+    const resolvedInvoiceNumber =
+      invoiceNumber || `INV-${year}-${Date.now().toString().slice(-5)}`;
+    const resolvedInvoiceDate = invoiceDate || new Date().toISOString();
+
+    return {
+      invoiceNumber: resolvedInvoiceNumber,
+      orderId: orderIdValue || '',
+      invoiceDate: resolvedInvoiceDate,
+      customer: {
+        name: `${address.firstName} ${address.lastName}`.trim(),
+        email: user.email,
+        phone: address.phone,
+        addressLine1: address.address,
+        addressLine2: `${address.city} ${address.postcode}`.trim(),
+        country: address.country
+      },
+      payment,
+      items,
+      subtotal,
+      discount: discountAmount,
+      shipping,
+      tax: taxIncluded,
+      total
+    };
   };
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -168,61 +243,22 @@ const Checkout = () => {
         return;
       }
 
-      // Step 1: Create order record in database
-      console.log('[Checkout] Creating order record...');
-      const orderRecord = await paymentService.createOrderRecord({
-        items: items.map(item => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          selectedSheen: item.selectedSheen,
-          selectedSize: item.selectedSize,
-          selectedColor: item.selectedColor,
-          image: item.image
-        })),
-        customer: {
-          email: user.email,
-          firstName: address.firstName,
-          lastName: address.lastName,
-          phone: address.phone,
-          address: address.address,
-          apartment: address.apartment,
-          city: address.city,
-          postcode: address.postcode,
-          country: address.country
-        },
-        subtotal,
-        tax,
-        shipping,
-        total,
-        currency: 'INR'
-      });
-
-      console.log('[Checkout] Order record created:', orderRecord.id);
-      setOrderId(orderRecord.id);
-
-      // Step 2: Create Razorpay order
+      // Step 1: Create Razorpay order
       console.log('[Checkout] Creating Razorpay order...');
       const razorpayOrder = await paymentService.createOrder(
         total,
         'INR',
-        orderRecord.id,
+        `receipt_${Date.now()}`,
         {
           customer_name: `${address.firstName} ${address.lastName}`,
           customer_email: user.email,
-          order_id: orderRecord.id
+          cart_total: total
         }
       );
 
       console.log('[Checkout] Razorpay order created:', razorpayOrder.id);
 
-      // Step 3: Update order with Razorpay order ID
-      await paymentService.updateOrderStatus(orderRecord.id, 'pending', {
-        razorpayOrderId: razorpayOrder.id
-      });
-
-      // Step 4: Store Razorpay order ID and show payment modal
+      // Step 2: Store Razorpay order ID and show payment modal
       setRazorpayOrderId(razorpayOrder.id);
       setShowRazorpayPayment(true);
     } catch (error) {
@@ -234,6 +270,17 @@ const Checkout = () => {
   const handleDummyPayment = (success) => {
     setShowDummyModal(false);
     if (success) {
+      setInvoiceSnapshot(buildInvoiceSnapshot({
+        payment: {
+          mode: 'Test',
+          status: 'PAID',
+          transactionId: `TEST-${Date.now()}`,
+          paymentDate: new Date().toISOString()
+        }
+      }));
+      if (discountApplied && user.email) {
+        localStorage.setItem(`calyco_discount_used_${user.email.trim().toLowerCase()}`, 'true');
+      }
       setShowInvoice(true);
     } else {
       setPaymentError("Payment failed. Please try again.");
@@ -250,20 +297,64 @@ const Checkout = () => {
       if (verification.success && verification.verified) {
         console.log('[Checkout] Payment verified successfully');
 
-        // Update order status to paid
-        if (orderId) {
-          await paymentService.updateOrderStatus(orderId, 'paid', {
-            status: 'paid',
-            razorpayPaymentId: response.razorpay_payment_id,
-            razorpayOrderId: response.razorpay_order_id,
-            razorpaySignature: response.razorpay_signature
-          });
-          console.log('[Checkout] Order status updated to paid');
-        }
+        // Create order record after successful payment
+        const orderRecord = await paymentService.createOrderRecord({
+          items: items.map(item => ({
+            id: item.id,
+            name: item.name,
+            display_name: item.display_name,
+            price: item.price,
+            quantity: item.quantity,
+            selectedSheen: item.selectedSheen,
+            selectedSize: item.selectedSize,
+            selectedColor: item.selectedColor?.name || item.selectedColor,
+            mixingMode: item.mixingMode,
+            productType: item.productType,
+            image: item.image
+          })),
+          customer: {
+            email: user.email,
+            firstName: address.firstName,
+            lastName: address.lastName,
+            phone: address.phone,
+            address: address.address,
+            apartment: address.apartment,
+            city: address.city,
+            postcode: address.postcode,
+            country: address.country
+          },
+          subtotal,
+          discount: discountAmount,
+          tax: taxIncluded,
+          shipping,
+          total,
+          currency: 'INR',
+          status: 'paid',
+          paymentStatus: 'paid',
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpayOrderId: response.razorpay_order_id
+        });
+
+        console.log('[Checkout] Order record created:', orderRecord.id);
+        setOrderId(orderRecord.id);
 
         // Clear cart and show invoice
         setShowRazorpayPayment(false);
         setIsProcessingPayment(false);
+        setInvoiceSnapshot(buildInvoiceSnapshot({
+          orderId: orderRecord.id,
+          invoiceNumber: orderRecord?.invoice?.number,
+          invoiceDate: orderRecord?.invoice?.date,
+          payment: {
+            mode: 'Razorpay',
+            status: 'PAID',
+            transactionId: response.razorpay_payment_id,
+            paymentDate: new Date().toISOString()
+          }
+        }));
+        if (discountApplied && user.email) {
+          localStorage.setItem(`calyco_discount_used_${user.email.trim().toLowerCase()}`, 'true');
+        }
         setShowInvoice(true);
         clearCart();
       } else {
@@ -271,26 +362,14 @@ const Checkout = () => {
         setPaymentError("Payment verification failed. Please contact support.");
         setIsProcessingPayment(false);
 
-        // Update order status to failed
-        if (orderId) {
-          await paymentService.updateOrderStatus(orderId, 'failed', {
-            status: 'failed',
-            error: 'Payment verification failed'
-          });
-        }
+      // No order record is created until payment succeeds.
       }
     } catch (error) {
       console.error('[Checkout] Error during payment verification:', error);
       setPaymentError(`Payment verification failed: ${error.message}`);
       setIsProcessingPayment(false);
 
-      // Update order status to failed
-      if (orderId) {
-        await paymentService.updateOrderStatus(orderId, 'failed', {
-          status: 'failed',
-          error: error.message
-        });
-      }
+      // No order record is created until payment succeeds.
     }
   };
 
@@ -394,7 +473,7 @@ const Checkout = () => {
                       </div>
                     </div>
                     <div className="font-bold text-[#493657]">
-                      {subtotal >= 2000 ? 'FREE' : '₹250'}
+                      {subtotal >= 2000 ? 'FREE' : `${currencySymbol}250`}
                     </div>
                   </label>
 
@@ -414,12 +493,12 @@ const Checkout = () => {
                         <div className="text-sm text-gray-600">2-3 business days</div>
                       </div>
                     </div>
-                    <div className="font-bold text-[#493657]">₹500</div>
+                    <div className="font-bold text-[#493657]">{currencySymbol}500</div>
                   </label>
 
                   {subtotal < 2000 && (
                     <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
-                      💡 Add ₹{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
+                      Add {currencySymbol}{2000 - subtotal} more to get <strong>FREE standard shipping</strong>!
                     </div>
                   )}
                 </div>
@@ -462,11 +541,11 @@ const Checkout = () => {
                 const isPaintProduct = type === 'paint' || type === 'ready-mixed' || type === 'tint-on-demand';
 
                 // Determine display image with robust fallback hierarchy
-                let displayImage = '/Assets/placeholder-product.jpg';
+                let displayImage = '/Assets/placeholder-product.webp';
 
                 if (isService) {
                   // Services: use service-specific image or fallback
-                  displayImage = item.image || item.serviceImage || '/Assets/site-visit-consultation.jpg';
+                  displayImage = item.image || item.serviceImage || '/Assets/site-visit-consultation.webp';
                 } else if (item.textureImage) {
                   // Textures: use texture-specific image
                   displayImage = item.textureImage;
@@ -488,7 +567,7 @@ const Checkout = () => {
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           // Fallback if image fails to load
-                          e.target.src = '/Assets/placeholder-product.jpg';
+                          e.target.src = '/Assets/placeholder-product.webp';
                         }}
                       />
                     </div>
@@ -518,7 +597,7 @@ const Checkout = () => {
                     </div>
 
                     {/* Price */}
-                    <div className="font-bold text-[#493657]">₹{item.price}</div>
+                    <div className="font-bold text-[#493657]">{currencySymbol}{item.price}</div>
 
                     {/* Delete Button */}
                     <button
@@ -586,37 +665,60 @@ const Checkout = () => {
           {items.length > 0 && (
             <>
               {/* Discount code */}
-              <div className="flex gap-2 mt-2">
+              <div className="flex flex-col sm:flex-row gap-2 mt-2">
                 <input
                   type="text"
                   placeholder="Discount code or gift card"
                   value={discount}
-                  onChange={e => setDiscount(e.target.value)}
-                  className="flex-1 border p-2 rounded"
+                  onChange={(e) => {
+                    setDiscount(e.target.value);
+                    if (discountApplied) {
+                      setDiscountApplied(false);
+                      setDiscountMessage('');
+                    }
+                  }}
+                  className="flex-1 border p-2 rounded text-sm"
                 />
-                <button className="px-4 py-2 bg-gray-200 rounded font-semibold">Apply</button>
+                <button
+                  type="button"
+                  onClick={handleApplyDiscount}
+                  className="px-4 py-2 bg-gray-200 rounded font-semibold text-sm whitespace-nowrap"
+                >
+                  Apply
+                </button>
               </div>
+              {discountMessage && (
+                <div className={discountApplied ? "mt-2 text-sm text-green-600" : "mt-2 text-sm text-red-600"}>
+                  {discountMessage}
+                </div>
+              )}
               {/* Subtotal, shipping, total */}
               <div className="mt-4 space-y-2">
                 <div className="flex justify-between text-gray-700">
                   <span>Subtotal</span>
-                  <span>₹{subtotal}</span>
+                  <span>{currencySymbol}{subtotal}</span>
                 </div>
+                {discountApplied && discountAmount > 0 && (
+                  <div className="flex justify-between text-gray-700">
+                    <span>Discount (CALYCO20)</span>
+                    <span>-{currencySymbol}{discountAmount}</span>
+                  </div>
+                )}
                 {cartRequiresShipping && (
                   <div className="flex justify-between text-gray-700">
                     <span>Shipping</span>
                     <span className="font-semibold">
                       {address.address && address.city && address.postcode
-                        ? `₹${shipping}`
+                        ? `${currencySymbol}${shipping}`
                         : 'Enter shipping address'}
                     </span>
                   </div>
                 )}
                 <div className="flex justify-between font-bold text-lg mt-2">
                   <span>Total</span>
-                  <span>₹{total}</span>
+                  <span>{currencySymbol}{total}</span>
                 </div>
-                <div className="text-xs text-gray-500">Including ₹{tax} in taxes</div>
+                <div className="text-xs text-gray-500">Including {currencySymbol}{taxIncluded} in taxes</div>
               </div>
               {/* Payment Button */}
               <form onSubmit={handlePayment} className="mt-4">
@@ -637,13 +739,13 @@ const Checkout = () => {
                     <span className="text-sm font-medium text-gray-700">100% Secure Payment</span>
                   </div>
                   <div className="flex items-center justify-center gap-3 flex-wrap">
-                    <img src="/Assets/Payment Logos/visa.png" alt="Visa" className="h-3" />
-                    <img src="/Assets/Payment Logos/mastercard.png" alt="Mastercard" className="h-3" />
-                    <img src="/Assets/Payment Logos/rupay.png" alt="RuPay" className="h-3" />
-                    <img src="/Assets/Payment Logos/1280px-UPI-Logo-vector.svg.png" alt="UPI" className="h-3" />
-                    <img src="/Assets/Payment Logos/Paytm_logo.png" alt="Paytm" className="h-3" />
-                    <img src="/Assets/Payment Logos/gpay.png" alt="GPay" className="h-3" />
-                    <img src="/Assets/Payment Logos/PhonePe.png" alt="PhonePe" className="h-3" />
+                    <img src="/Assets/Payment Logos/visa.webp" alt="Visa" className="h-3" />
+                    <img src="/Assets/Payment Logos/mastercard.webp" alt="Mastercard" className="h-3" />
+                    <img src="/Assets/Payment Logos/rupay.webp" alt="RuPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/1280px-UPI-Logo-vector.svg.webp" alt="UPI" className="h-3" />
+                    <img src="/Assets/Payment Logos/Paytm_logo.webp" alt="Paytm" className="h-3" />
+                    <img src="/Assets/Payment Logos/gpay.webp" alt="GPay" className="h-3" />
+                    <img src="/Assets/Payment Logos/PhonePe.webp" alt="PhonePe" className="h-3" />
                   </div>
                 </div>
               </form>
@@ -675,8 +777,26 @@ const Checkout = () => {
             </div>
           )}
           {showInvoice && (
-            <div className="mt-8">
-              <InvoiceGenerator items={items} total={total} onClose={() => setShowInvoice(false)} />
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+              <div className="w-full max-w-md rounded-2xl bg-white p-6 text-center shadow-2xl">
+                <h3 className="text-xl font-semibold text-[#0F1221]">Payment successful</h3>
+                <p className="mt-2 text-sm text-[#0F1221]/70">
+                  Download your invoice details below.
+                </p>
+                <div className="mt-6 flex flex-col gap-3">
+                  <InvoiceGenerator
+                    invoiceData={invoiceSnapshot}
+                    onClose={() => setShowInvoice(false)}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowInvoice(false)}
+                    className="w-full rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-[#0F1221] hover:bg-gray-50"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>

@@ -17,10 +17,10 @@ const ColorVisualizer = () => {
 
   // Sample rooms data
   const sampleRooms = [
-    { id: 1, name: 'Living Room', image: '/Assets/Rooms/LivingRoom/base.jpg', type: 'interior' },
-    { id: 2, name: 'Bedroom', image: '/Assets/Rooms/Bedroom/base.jpg', type: 'interior' },
-    { id: 3, name: 'Exterior', image: '/Assets/Rooms/DiningRoom/base.jpg', type: 'exterior' },
-    { id: 4, name: 'Kitchen', image: '/Assets/u7859757176_Modern_luxury_bathroom_with_high_clerestory_windo_4f1ad61e-d8af-4e9c-bb17-4066db021cef_2.png', type: 'interior' }
+    { id: 1, name: 'Living Room', image: '/Assets/Rooms/LivingRoom/base.webp', type: 'interior' },
+    { id: 2, name: 'Bedroom', image: '/Assets/Rooms/Bedroom/base.webp', type: 'interior' },
+    { id: 3, name: 'Exterior', image: '/Assets/Rooms/DiningRoom/base.webp', type: 'exterior' },
+    { id: 4, name: 'Kitchen', image: '/Assets/u7859757176_Modern_luxury_bathroom_with_high_clerestory_windo_4f1ad61e-d8af-4e9c-bb17-4066db021cef_2.webp', type: 'interior' }
   ];
 
   // Get a subset of colors for the visualizer

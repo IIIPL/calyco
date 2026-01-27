@@ -28,6 +28,9 @@ const FeatureCards = () => {
                 src="/Assets/Texture Images/tex21.webp"
                 alt="Eco-Premium Paints"
                 className="w-full h-full object-cover"
+                width="672"
+                height="448"
+                loading="lazy"
               />
             </div>
 
@@ -83,8 +86,8 @@ const FeatureCards = () => {
           <div className="relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="h-64 md:h-72">
               <img
-                src="/Assets/InteriorInspiratoin/living-room.webp"
-                alt="Living room"
+                src="/Assets/updated hero images/9.webp"
+                alt="Professionally painted living space with premium Calyco wall finishes"
                 className="w-full h-full object-cover"
               />
             </div>

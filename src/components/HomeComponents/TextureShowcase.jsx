@@ -58,6 +58,9 @@ const TextureShowcase = () => {
                   opacity: { duration: 0.6 }
                 }}
                 className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                width="735"
+                height="490"
+                loading="lazy"
               />
             </AnimatePresence>
 

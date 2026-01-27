@@ -10,7 +10,22 @@ const FinishSwatches = ({ finishes, selectedFinish, onChange }) => {
     }).format(price);
   };
 
-  const getFinishIcon = (finishName) => {
+  const normalizeFinish = (finish) => {
+    if (typeof finish === "string") {
+      return { name: finish, price: 0, description: "" };
+    }
+    if (!finish) {
+      return { name: "Standard", price: 0, description: "" };
+    }
+    return {
+      name: finish.name || String(finish || "Standard"),
+      price: finish.price ?? 0,
+      description: finish.description || "",
+      ...finish,
+    };
+  };
+
+  const getFinishIcon = (finishName = "") => {
     const name = finishName.toLowerCase();
     if (name.includes('matte') || name.includes('flat')) {
       return (
@@ -38,8 +53,8 @@ const FinishSwatches = ({ finishes, selectedFinish, onChange }) => {
     );
   };
 
-  const getFinishCharacteristics = (finishName) => {
-    const name = finishName.toLowerCase();
+  const getFinishCharacteristics = (finishName = "") => {
+    const name = String(finishName || "").toLowerCase();
     if (name.includes('matte') || name.includes('flat')) {
       return {
         durability: "Medium",
@@ -80,7 +95,8 @@ const FinishSwatches = ({ finishes, selectedFinish, onChange }) => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        {finishes.map((finish, index) => {
+        {finishes.map((finishRaw, index) => {
+          const finish = normalizeFinish(finishRaw);
           const isSelected = selectedFinish === index;
           const characteristics = getFinishCharacteristics(finish.name);
           

@@ -94,12 +94,12 @@ export default function EnvironmentalSustainability() {
         <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
           <div className="absolute inset-0">
             <img
-              src="/Assets/InteriorInspiratoin/living-room.webp"
+              src="/Assets/updated hero images/1.webp"
               alt="Eco-conscious CALYCO sustainable interior"
               className="h-full w-full object-cover brightness-75"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center flex items-center justify-center h-full">
             <div>

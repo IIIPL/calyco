@@ -1,5 +1,7 @@
 import express from 'express';
 import { OrderService } from '../services/OrderService.js';
+import { sendAdminOrderEmail, sendOrderConfirmationEmail } from '../services/emailService.js';
+import { shiprocketService } from '../services/ShiprocketService.js';
 
 const router = express.Router();
 const orderService = new OrderService();
@@ -31,11 +33,72 @@ router.post('/', async (req, res) => {
     }
 
     // Create order
-    const order = await orderService.createOrder(orderData);
+    let order = await orderService.createOrder(orderData);
+
+    let emailStatus = null;
+    let adminEmailStatus = null;
+    const isPaid = order.status === 'paid' || order?.payment?.status === 'paid';
+
+    if (isPaid && process.env.SHIPROCKET_EMAIL) {
+      try {
+        const shipmentResult = await shiprocketService.createOrder(order);
+        if (shipmentResult.success) {
+          order = await orderService.updateOrder(order.id, {
+            shiprocket: {
+              order_id: shipmentResult.shiprocket_order_id,
+              shipment_id: shipmentResult.shipment_id,
+              status: shipmentResult.status,
+              created_at: new Date().toISOString()
+            }
+          });
+        } else {
+          console.error('[Orders] Shiprocket shipment failed:', shipmentResult.error);
+        }
+      } catch (shipmentError) {
+        console.error('[Orders] Shiprocket integration error:', shipmentError);
+      }
+    }
+
+    if (isPaid && !order?.notifications?.orderConfirmationSent) {
+      try {
+        const emailResult = await sendOrderConfirmationEmail(order);
+        if (!emailResult?.skipped) {
+          const updated = await orderService.updateOrder(order.id, {
+            notifications: {
+              ...(order.notifications || {}),
+              orderConfirmationSent: true,
+              orderConfirmationSentAt: new Date().toISOString()
+            }
+          });
+          emailStatus = { sent: true, messageId: emailResult.messageId };
+          order = updated;
+        }
+        emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
+      } catch (emailError) {
+        console.error('Order confirmation email failed:', emailError);
+        emailStatus = { sent: false, error: emailError.message };
+      }
+    }
+
+    if (isPaid) {
+      try {
+        const adminResult = await sendAdminOrderEmail(order);
+        if (!adminResult?.skipped) {
+          adminEmailStatus = { sent: true, messageId: adminResult.messageId };
+        } else {
+          adminEmailStatus = { sent: false, skipped: true, reason: adminResult?.reason || 'not_sent' };
+        }
+      } catch (adminError) {
+        console.error('Admin order email failed:', adminError);
+        adminEmailStatus = { sent: false, error: adminError.message };
+      }
+    }
 
     res.status(201).json({
       success: true,
-      order
+      order,
+      emailStatus,
+      adminEmailStatus
     });
   } catch (error) {
     console.error('Error creating order:', error);
@@ -83,7 +146,7 @@ router.patch('/:orderId', async (req, res) => {
     const { orderId } = req.params;
     const updates = req.body;
 
-    const order = await orderService.updateOrder(orderId, updates);
+    let order = await orderService.updateOrder(orderId, updates);
 
     if (!order) {
       return res.status(404).json({
@@ -91,9 +154,55 @@ router.patch('/:orderId', async (req, res) => {
       });
     }
 
+    let emailStatus = null;
+    const isPaid = order.status === 'paid' || order?.payment?.status === 'paid';
+    const alreadySent = order?.notifications?.orderConfirmationSent;
+
+    if (isPaid && process.env.SHIPROCKET_EMAIL && !order?.shiprocket?.shipment_id) {
+      try {
+        const shipmentResult = await shiprocketService.createOrder(order);
+        if (shipmentResult.success) {
+          order = await orderService.updateOrder(orderId, {
+            shiprocket: {
+              order_id: shipmentResult.shiprocket_order_id,
+              shipment_id: shipmentResult.shipment_id,
+              status: shipmentResult.status,
+              created_at: new Date().toISOString()
+            }
+          });
+        } else {
+          console.error('[Orders] Shiprocket shipment failed:', shipmentResult.error);
+        }
+      } catch (shipmentError) {
+        console.error('[Orders] Shiprocket integration error:', shipmentError);
+      }
+    }
+
+    if (isPaid && !alreadySent) {
+      try {
+        const emailResult = await sendOrderConfirmationEmail(order);
+        if (!emailResult?.skipped) {
+          const updated = await orderService.updateOrder(orderId, {
+            notifications: {
+              ...(order.notifications || {}),
+              orderConfirmationSent: true,
+              orderConfirmationSentAt: new Date().toISOString()
+            }
+          });
+          emailStatus = { sent: true, messageId: emailResult.messageId };
+          order = updated;
+        }
+        emailStatus = { sent: false, skipped: true, reason: emailResult?.reason || 'not_sent' };
+      } catch (emailError) {
+        console.error('Order confirmation email failed:', emailError);
+        emailStatus = { sent: false, error: emailError.message };
+      }
+    }
+
     res.json({
       success: true,
-      order
+      order,
+      emailStatus
     });
   } catch (error) {
     console.error('Error updating order:', error);

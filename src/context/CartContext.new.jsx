@@ -34,7 +34,7 @@ const createLocalCartItem = ({ product, price, finish, size, quantity, color, pr
     selectedSize: size || '',
     selectedColorType: productType || 'paint',
     quantity: Math.max(1, parseInt(quantity, 10) || 1),
-    image: product?.image || product?.bucketImage || '/Assets/chair.png',
+    image: product?.image || product?.bucketImage || '/Assets/chair.webp',
     selectedColor: normalisedColor,
   };
 };

@@ -11,13 +11,13 @@ export const COMPLETE_ARTICLES = [
     meta_title: 'Biophilic Design with Paint: Bring Nature Indoors | Calyco Paints',
     meta_description: 'Transform your home with biophilic design principles using Calyco\'s nature-inspired paint colors. Create healthier, more connected living spaces.',
     summary: 'Discover how to harness biophilic design principles through strategic paint color selection, bringing the restorative power of nature into your home.',
-    image_path: '/Assets/Inspiration/IMG-20250718-WA0009.jpg',
+    image_path: '/Assets/Inspiration/IMG-20250718-WA0009.webp',
     read_time: '9 MIN READ',
     author: 'Calyco Editorial Team',
     publish_date: '2025-03-01',
     updated_date: '2025-03-01',
     featured_image: {
-      src: '/Assets/Inspiration/IMG-20250718-WA0009.jpg',
+      src: '/Assets/Inspiration/IMG-20250718-WA0009.webp',
       alt: 'Biophilic interior with nature-inspired green paint colors',
       width: 1200,
       height: 630
@@ -60,7 +60,7 @@ export const COMPLETE_ARTICLES = [
 <p>Natural stone colors—from light limestone to dark slate—offer sophisticated neutrality. These colors work beautifully in modern interiors while maintaining biophilic principles, referencing mountain faces, river rocks, and coastal cliffs.</p>`,
           images: [
             {
-              src: '/Assets/Inspiration/IMG-20250718-WA0024.jpg',
+              src: '/Assets/Inspiration/IMG-20250718-WA0024.webp',
               alt: 'Nature-inspired color palette samples',
               caption: 'Draw inspiration from your local natural environment'
             }

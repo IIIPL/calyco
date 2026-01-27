@@ -234,14 +234,14 @@ const ProductsPage = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50"
+                    className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden border border-[#493657]/20 flex flex-col"
                   >
                     {/* Premium Badge */}
                     <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#493657] via-[#F0C85A] to-[#493657]" />
-                    
+
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#493657]/90 text-white backdrop-blur-sm">
+                      <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-[#493657] text-white shadow-lg">
                         {product.category}
                       </span>
                     </div>
@@ -288,7 +288,7 @@ const ProductsPage = () => {
                     </Link>
 
                     {/* Product Details */}
-                    <div className="px-6 pb-6">
+                    <div className="px-6 pb-6 flex-grow flex flex-col">
                       <h3 className="text-xl font-bold text-[#493657] mb-2 group-hover:text-[#F0C85A] transition-colors">
                         {product.name}
                       </h3>
@@ -318,8 +318,8 @@ const ProductsPage = () => {
                       </div>
                     </div>
 
-                    {/* Price & CTA */}
-                    <div className="bg-gradient-to-r from-[#f8f6f2] to-white px-6 py-4 border-t border-[#493657]/10">
+                    {/* Price & CTA - Aligned at bottom */}
+                    <div className="bg-gradient-to-r from-[#f8f6f2] to-white px-6 py-4 border-t border-[#493657]/10 mt-auto">
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="flex items-center gap-2">
@@ -336,7 +336,7 @@ const ProductsPage = () => {
                         </div>
                         <Link
                           to={`/product/${product.slug}`}
-                          className="inline-flex items-center gap-2 bg-[#493657] hover:bg-[#F0C85A] text-white hover:text-[#493657] px-4 py-2 rounded-full font-semibold transition-all duration-300 group-hover:scale-105"
+                          className="inline-flex items-center gap-2 bg-[#493657] hover:bg-[#F0C85A] text-white hover:text-[#493657] px-4 py-2 rounded-full font-semibold transition-all duration-300 shadow-sm"
                         >
                           <FiShoppingBag className="w-4 h-4" />
                           View Details

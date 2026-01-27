@@ -22,77 +22,92 @@ const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 const BlogIndex = React.lazy(() => import('../blog/pages/BlogIndex.jsx'));
 const BlogPost = React.lazy(() => import('../blog/pages/BlogPost.jsx'));
 const MagicUpload = React.lazy(() => import('../blog/admin/MagicUpload.jsx'));
-import AboutUs from './pages/AboutUs'
+
+// Keep critical components as regular imports
 import { Footer } from './pages/Footer'
-import { FAQs } from './pages/FAQs'
 import ScrollToTop from './components/ScrollToTop'
-import { ContactUs } from './pages/ContactUs'
-import { Interior } from './pages/Interior'
-import WaterproofingSealer from './pages/WaterproofingSealer'
-import InteriorLatexPaint from './pages/InteriorLatexPaint'
-import ExteriorLatexPaint from './pages/ExteriorLatexPaint'
-import PremiumInteriorEmulsion from './pages/PremiumInteriorEmulsion'
-import PremiumExteriorEmulsion from './pages/PremiumExteriorEmulsion'
-import { Nova } from './pages/Nova'
-import { Defense } from './pages/Defense'
-import { Products } from './pages/Products'
-import { DynamicProductPage } from './pages/DynamicProductPage'
-import CalycoWaterPrimerInterior from './pages/CalycoWaterPrimerInterior'
-import CalycoWeatherPrimerExterior from './pages/CalycoWeatherPrimerExterior'
-import CalycoAcrylicPutty from './pages/CalycoAcrylicPutty'
-import CalycoSolventPrimerInterior from './pages/CalycoSolventPrimerInterior'
-import CalycoDampGuardPrimer from './pages/CalycoDampGuardPrimer'
-import CalycoUniversalPrimer from './pages/CalycoUniversalPrimer'
-import AmrellaEnamel from './pages/AmrellaEnamel'
-import PUWoodCoating from './pages/PUWoodCoating'
-import AcrylicWashableDistemper from './pages/AcrylicWashableDistemper'
-import AllSurfaceCoating from './pages/AllSurfaceCoating'
-import TexturePaints from './pages/TexturePaints'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
-import { ColorsPage, InspirationPage } from './pages'
-import KitchenInspiration from './pages/inspiration/Kitchen';
-import BedroomInspiration from './pages/inspiration/Bedroom';
-import HallwayInspiration from './pages/inspiration/Hallway';
-import LivingInspiration from './pages/inspiration/Living';
-import EnhancedLivingRoomInspiration from './pages/inspiration/EnhancedLiving';
-import BathroomInspiration from './pages/inspiration/Bathroom';
-import DiningInspiration from './pages/inspiration/Dining';
-import OfficeInspiration from './pages/inspiration/Office';
-import ExteriorInspiration from './pages/inspiration/Exterior';
-import NotFound from './pages/NotFound';
-import FullColorPage from './pages/Colors/FullColorPage'
-import FamilyColorGroup from './pages/FamilyPage'
-import IndividualColorPage from './pages/Colors/IndividualColorPage'
-import ColorDetailPage from './pages/ColorDetailPage'
+
+// Convert all page components to lazy loading for better performance
+const AboutUs = React.lazy(() => import('./pages/AboutUs'))
+const FAQs = React.lazy(() => import('./pages/FAQs'))
+const ContactUs = React.lazy(() => import('./pages/ContactUs'))
+const Interior = React.lazy(() => import('./pages/Interior'))
+const WaterproofingSealer = React.lazy(() => import('./pages/WaterproofingSealer'))
+const InteriorLatexPaint = React.lazy(() => import('./pages/InteriorLatexPaint'))
+const ExteriorLatexPaint = React.lazy(() => import('./pages/ExteriorLatexPaint'))
+const PremiumInteriorEmulsion = React.lazy(() => import('./pages/PremiumInteriorEmulsion'))
+const PremiumExteriorEmulsion = React.lazy(() => import('./pages/PremiumExteriorEmulsion'))
+const Nova = React.lazy(() => import('./pages/Nova'))
+const Defense = React.lazy(() => import('./pages/Defense'))
+const Products = React.lazy(() => import('./pages/Products'))
+const DynamicProductPage = React.lazy(() => import('./pages/DynamicProductPage'))
+const CalycoWaterPrimerInterior = React.lazy(() => import('./pages/CalycoWaterPrimerInterior'))
+const CalycoWeatherPrimerExterior = React.lazy(() => import('./pages/CalycoWeatherPrimerExterior'))
+const CalycoAcrylicPutty = React.lazy(() => import('./pages/CalycoAcrylicPutty'))
+const CalycoSolventPrimerInterior = React.lazy(() => import('./pages/CalycoSolventPrimerInterior'))
+const CalycoDampGuardPrimer = React.lazy(() => import('./pages/CalycoDampGuardPrimer'))
+const CalycoUniversalPrimer = React.lazy(() => import('./pages/CalycoUniversalPrimer'))
+const PinkPrimer = React.lazy(() => import('./pages/PinkPrimer'))
+const YellowMetalPrimer = React.lazy(() => import('./pages/YellowMetalPrimer'))
+const MelaminePolish = React.lazy(() => import('./pages/MelaminePolish'))
+const FireRetardantPaint = React.lazy(() => import('./pages/FireRetardantPaint'))
+const AnticorrosiveBitumastic = React.lazy(() => import('./pages/AnticorrosiveBitumastic'))
+const EpoxyPaint = React.lazy(() => import('./pages/EpoxyPaint'))
+const WoodPrimer = React.lazy(() => import('./pages/WoodPrimer'))
+const RedOxideZincChromate = React.lazy(() => import('./pages/RedOxideZincChromate'))
+const AmrellaEnamel = React.lazy(() => import('./pages/AmrellaEnamel'))
+const PUWoodCoating = React.lazy(() => import('./pages/PUWoodCoating'))
+const AcrylicWashableDistemper = React.lazy(() => import('./pages/AcrylicWashableDistemper'))
+const AllSurfaceCoating = React.lazy(() => import('./pages/AllSurfaceCoating'))
+const TexturePaints = React.lazy(() => import('./pages/TexturePaints'))
+const ColorsPage = React.lazy(() => import('./pages/ColorsPage'))
+const InspirationPage = React.lazy(() => import('./pages/InspirationPage'))
+const KitchenInspiration = React.lazy(() => import('./pages/inspiration/Kitchen'))
+const BedroomInspiration = React.lazy(() => import('./pages/inspiration/Bedroom'))
+const HallwayInspiration = React.lazy(() => import('./pages/inspiration/Hallway'))
+const LivingInspiration = React.lazy(() => import('./pages/inspiration/Living'))
+const EnhancedLivingRoomInspiration = React.lazy(() => import('./pages/inspiration/EnhancedLiving'))
+const BathroomInspiration = React.lazy(() => import('./pages/inspiration/Bathroom'))
+const DiningInspiration = React.lazy(() => import('./pages/inspiration/Dining'))
+const OfficeInspiration = React.lazy(() => import('./pages/inspiration/Office'))
+const ExteriorInspiration = React.lazy(() => import('./pages/inspiration/Exterior'))
+const NotFound = React.lazy(() => import('./pages/NotFound'))
+const FullColorPage = React.lazy(() => import('./pages/Colors/FullColorPage'))
+const FamilyColorGroup = React.lazy(() => import('./pages/FamilyPage'))
+const IndividualColorPage = React.lazy(() => import('./pages/Colors/IndividualColorPage'))
+const ColorDetailPage = React.lazy(() => import('./pages/ColorDetailPage'))
 const TexturesPage = React.lazy(() => import('./pages/TexturesPage.jsx'))
 const TextureDetailPage = React.lazy(() => import('./pages/TextureDetailPage.jsx'))
 const CityLandingPage = React.lazy(() => import('./pages/CityLandingPage.jsx'))
 
 
-// Import new providers and pages
+// Import providers
 import { ColorProvider } from './context/ColorContext';
 import { ColorVisualizationProvider } from './context/ColorVisualizationContext.jsx';
 
-import { RoomVisualizerPage } from './pages/RoomVisualizer.jsx';
-import RoomVisualizer from './components/RoomVisualizer.jsx';
-import IndividualRoomPage from './pages/Rooms/IndividualRoom.jsx'
+// Lazy load room visualizer pages
+const RoomVisualizerPage = React.lazy(() => import('./pages/RoomVisualizer.jsx'))
+const RoomVisualizer = React.lazy(() => import('./components/RoomVisualizer.jsx'))
+const IndividualRoomPage = React.lazy(() => import('./pages/Rooms/IndividualRoom.jsx'))
 
-// Policies: 
-import PoliciesIndex from "./pages/Policies/PoliciesIndex.jsx"
-import Privacy from "./pages/Policies/Privacy";
-import TermsAndConditions from "./pages/Policies/TermsAndConditions";
-import PaymentsGst from "./pages/Policies/PaymentsGST.jsx";
-import QualityPolicy from "./pages/Policies/QualityPolicy";
-import EnvironmentalSustainability from "./pages/Policies/EnvironmentalSustainability";
-import ProductColorDisclaimer from "./pages/Policies/ProductColorDisclaimer";
-import ShippingDelivery from "./pages/Policies/ShippingDelivery";
-import ReturnsRefunds from "./pages/Policies/ReturnsRefunds";
-import WarrantyPolicy from "./pages/Policies/WarrantyPolicy";
-import CustomerService from "./pages/Policies/CustomerService";
+// Lazy load policy pages
+const PoliciesIndex = React.lazy(() => import("./pages/Policies/PoliciesIndex.jsx"))
+const Privacy = React.lazy(() => import("./pages/Policies/Privacy"))
+const TermsAndConditions = React.lazy(() => import("./pages/Policies/TermsAndConditions"))
+const PaymentsGst = React.lazy(() => import("./pages/Policies/PaymentsGST.jsx"))
+const QualityPolicy = React.lazy(() => import("./pages/Policies/QualityPolicy"))
+const EnvironmentalSustainability = React.lazy(() => import("./pages/Policies/EnvironmentalSustainability"))
+const ProductColorDisclaimer = React.lazy(() => import("./pages/Policies/ProductColorDisclaimer"))
+const ShippingDelivery = React.lazy(() => import("./pages/Policies/ShippingDelivery"))
+const ReturnsRefunds = React.lazy(() => import("./pages/Policies/ReturnsRefunds"))
+const WarrantyPolicy = React.lazy(() => import("./pages/Policies/WarrantyPolicy"))
+const CustomerService = React.lazy(() => import("./pages/Policies/CustomerService"))
 
 
 import { useNavigate } from "react-router-dom";
+import AutoSEO from './components/AutoSEO';
 
 const ColorPageWrapper = () => {
   return <FullColorPage />;
@@ -148,11 +163,34 @@ function App() {
   }, [location]);
   // ------------------------------------------------
 
+  useEffect(() => {
+    // Clean up invalid svg auto sizing that triggers console errors.
+    const cleanSvgAutoSize = () => {
+      document.querySelectorAll('svg[height="auto"], svg[width="auto"]').forEach((svg) => {
+        if (svg.getAttribute('height') === 'auto') svg.removeAttribute('height');
+        if (svg.getAttribute('width') === 'auto') svg.removeAttribute('width');
+      });
+    };
+
+    cleanSvgAutoSize();
+
+    const observer = new MutationObserver(cleanSvgAutoSize);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['height', 'width']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <CartProvider>
       <ColorProvider>
         <ColorVisualizationProvider>
           <div className='font-poppins overflow-x-hidden'>
+            <AutoSEO />
             {/* Offer Banner - Above Header */}
             <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />
 
@@ -201,6 +239,14 @@ function App() {
                   <Route path='/product/calyco-solvent-primer-interior' element={<CalycoSolventPrimerInterior />} />
                   <Route path='/product/calyco-damp-guard-primer' element={<CalycoDampGuardPrimer />} />
                   <Route path='/product/calyco-universal-primer' element={<CalycoUniversalPrimer />} />
+                  <Route path='/product/pink-primer' element={<PinkPrimer />} />
+                  <Route path='/product/yellow-metal-primer' element={<YellowMetalPrimer />} />
+                  <Route path='/product/melamine-polish' element={<MelaminePolish />} />
+                  <Route path='/product/fire-retardant-paint' element={<FireRetardantPaint />} />
+                  <Route path='/product/anticorrosive-bitumastic' element={<AnticorrosiveBitumastic />} />
+                  <Route path='/product/epoxy-paint' element={<EpoxyPaint />} />
+                  <Route path='/product/wood-primer' element={<WoodPrimer />} />
+                  <Route path='/product/red-oxide-zinc-chromate' element={<RedOxideZincChromate />} />
                   <Route path='/product/calyco-amrella-enamel' element={<AmrellaEnamel />} />
                   <Route path='/product/calyco-pu-wood-coating' element={<PUWoodCoating />} />
                   <Route path='/product/calyco-acrylic-washable-distemper' element={<AcrylicWashableDistemper />} />
@@ -290,3 +336,4 @@ function App() {
 export default App;
 // Deployment trigger - Wed Aug 20 22:53:10 IST 2025
 // Force new deployment - Thu Aug 21 00:54:55 IST 2025
+// Force redeploy - Fri Jan 03 12:52:00 IST 2026

@@ -9,6 +9,7 @@ import ColorAttributes from '../components/ColorComponents/ColorAttributes';
 import ProductTypeSelector from '../components/ColorComponents/ProductTypeSelector';
 import NotFound from './NotFound';
 import colorsData from '../data/colors.json';
+import SEO from '../components/SEO';
 import {
   getColorBySlugs,
   getColorsForFamily,
@@ -168,6 +169,16 @@ const ColorDetailPage = () => {
   const actualHexColor = currentColor.actualHex || currentColor.hex || '#CCCCCC';
   const textColorClass = getTextColor(actualHexColor);
 
+  const canonicalUrl = `https://calycopaints.com/colors/family/${familySlug}/${colorSlug}`;
+  const seoTitle = `${currentColor.name} Paint Color | ${currentColor.colorFamily || 'Calyco'} by Calyco`;
+  const seoDescription =
+    currentColor.description ||
+    `${currentColor.name} (${actualHexColor}) from Calyco’s ${currentColor.colorFamily || 'Color'} collection. Explore combinations, finishes, and buy online.`;
+  const seoImage =
+    currentColor.image ||
+    currentColor.textureImage ||
+    'https://calycopaints.com/Assets/Texture%20Images/texture-main.webp';
+
   const products = useMemo(
     () => getProductOptionsForColor(currentColor.code || currentColor.tintCode),
     [currentColor],
@@ -261,6 +272,12 @@ const ColorDetailPage = () => {
   const familySlugForLink = currentColor.familySlug || slugify(familyDisplayName || '');
   return (
     <div className="min-h-screen bg-gray-50 pt-24 text-gray-900">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        image={seoImage}
+        canonicalUrl={canonicalUrl}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <nav className="text-sm text-gray-600 flex flex-wrap items-center gap-2">
           <Link to="/colors" className="hover:text-gray-900 transition">

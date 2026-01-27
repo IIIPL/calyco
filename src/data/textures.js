@@ -679,7 +679,7 @@ export const textures = [
     id: 'calyco-scratch',
     name: 'Calyco Scratch Finish',
     slug: 'calyco-scratch',
-    image: '/Assets/Textures/Calyco Scratch Finish.png',
+    image: '/Assets/Textures/Calyco Scratch Finish.webp',
     description: 'The standard for exterior protection. A premium heavy-duty texture with deep vertical grooves designed to hide hairline cracks and withstand extreme weather.',
     category: 'Textured',
     application: 'Exterior',
@@ -706,7 +706,7 @@ export const textures = [
     id: 'bubble-spray',
     name: 'Calyco Bubble Spray',
     slug: 'bubble-spray',
-    image: '/Assets/Textures/Calyco Bubble Spray.png',
+    image: '/Assets/Textures/Calyco Bubble Spray.webp',
     description: 'High-build protection coating. A thick, bubble-like spray coating that provides a rugged protective layer excellent for covering uneven plaster.',
     category: 'Special Effect',
     application: 'Exterior',
@@ -733,7 +733,7 @@ export const textures = [
     id: 'super-granule',
     name: 'Super Granule',
     slug: 'super-granule',
-    image: '/Assets/Textures/Super-Granule.png',
+    image: '/Assets/Textures/Super-Granule.webp',
     description: 'Natural Granite Aesthetic. An upgraded stone finish featuring larger, multi-colored natural chips that gives walls the premium look of solid granite.',
     category: 'Stone',
     application: 'Exterior',
@@ -744,7 +744,7 @@ export const textures = [
       },
       {
         question: "Is Super Granule suitable for luxury villa exteriors in Gurgaon?",
-        answer: "Absolutely. Super Granule is our premium exterior finish for luxury villas and high-end residences across Gurgaon, Chattarpur, and South Delhi farmhouse areas."
+        answer: "Absolutely. Super Granule is our premium exterior finish for luxury villas and high-end residences across Gurgaon, Chattarpur, and Delhi farmhouse areas."
       },
       {
         question: "Can Super Granule be customized with specific granite colors?",
@@ -841,7 +841,7 @@ export const textures = [
     id: 'venetian-mirror',
     name: 'Venetian Mirror',
     slug: 'venetian-mirror',
-    image: '/Assets/Textures/Venetian Stucco.png',
+    image: '/Assets/Textures/Venetian Stucco.webp',
     description: 'Italian Marble Perfection. Our most luxurious finish. A high-gloss, polished plaster that reflects light like a mirror.',
     category: 'Premium',
     application: 'Interior',

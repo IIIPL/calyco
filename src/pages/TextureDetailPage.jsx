@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getTextureBySlug, getRandomTextures } from '../data/textures';
 import contactData from '../data/admin/contact.json';
 import { useCart } from '../context/CartContext';
+import SEO from '../components/SEO';
 
 const TextureDetailPage = () => {
   const { textureSlug } = useParams();
@@ -13,6 +14,10 @@ const TextureDetailPage = () => {
 
   const texture = getTextureBySlug(textureSlug);
   const recommendations = getRandomTextures(textureSlug, 4);
+  const canonicalUrl = `https://calycopaints.com/textures/${textureSlug}`;
+  const seoTitle = texture ? `${texture.name} Texture Finish | Calyco Paints` : 'Calyco Texture Finish';
+  const seoDescription = texture?.description || 'Premium texture finishes from Calyco with rich surface effects and durable performance.';
+  const seoImage = texture?.image ? `https://calycopaints.com${texture.image}` : 'https://calycopaints.com/Assets/Texture%20Images/texture-main.webp';
 
   // --- SEO LOGIC START ---
   useEffect(() => {
@@ -172,14 +177,13 @@ const TextureDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 pt-20">
-      
-      {/* --- INJECTED SCHEMA --- */}
-      {schemaData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-        />
-      )}
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        image={seoImage}
+        canonicalUrl={canonicalUrl}
+        schemaMarkup={schemaData}
+      />
 
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -331,11 +335,11 @@ const TextureDetailPage = () => {
                     >
                       <button
                         onClick={() => toggleFAQ(index)}
-                        className="w-full text-left p-5 flex items-start justify-between gap-4 hover:bg-gray-50 transition-colors duration-200"
+                        className="w-full text-left p-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200"
                       >
-                        <div className="flex items-start gap-3 flex-1">
+                        <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0">
                           <span className="text-[#5E3A98] font-bold text-lg mt-0.5 flex-shrink-0">Q.</span>
-                          <h4 className="font-bold text-gray-900 pr-4 leading-relaxed">
+                          <h4 className="font-bold text-gray-900 leading-relaxed flex-1 pr-2 flex-shrink min-w-0">
                             {faq.question}
                           </h4>
                         </div>

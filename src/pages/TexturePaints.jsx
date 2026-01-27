@@ -1,11 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { 
-  FiCheckCircle, FiBox, FiPackage, FiClock, 
-  FiShield, FiWind, FiTag, FiClipboard, FiRepeat, FiList, FiDroplet, FiLayers,
-  FiCalendar, FiThermometer, FiArchive, FiInfo, FiDownload, FiHeart
-} from 'react-icons/fi';
+import { FiCheckCircle, FiBox, FiPackage, FiClock, FiShield, FiWind, FiTag, FiClipboard, FiRepeat, FiList, FiDroplet, FiLayers, FiCalendar, FiThermometer, FiArchive, FiInfo, FiDownload, FiHeart, FiExternalLink } from 'react-icons/fi';
 import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
@@ -434,6 +430,9 @@ const TexturePaints = () => {
                                     <img
                                         src={selectedImage || product.image}
                                         alt={`${product.name} - Image ${selectedImageIndex + 1}`}
+                                        width="800"
+                                        height="800"
+                                        loading="eager"
                                         className="w-full h-auto max-h-[400px] sm:max-h-[500px] lg:max-h-[700px] object-contain rounded-lg sm:rounded-xl"
                                     />
                                     {product.images && product.images.length > 1 && (
@@ -496,7 +495,7 @@ const TexturePaints = () => {
                         {/* Reviews Summary */}
                         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                             <div className="inline-flex items-center gap-2 bg-white border-2 border-[#493657]/20 rounded-lg px-3 sm:px-4 py-2 w-fit">
-                                <RatingStars rating={averageRating} totalReviews={0} onClick={scrollToReviews} size="md" />
+                                <RatingStars rating={averageRating} totalReviews={totalReviews} onClick={scrollToReviews} size="md" />
                             </div>
                             <span className="text-sm sm:text-base text-[#493657] font-medium cursor-pointer hover:text-[#F0C85A]" onClick={scrollToReviews}>
                                 {averageRating.toFixed(1)}/5 ({totalReviews} reviews)
@@ -513,14 +512,16 @@ const TexturePaints = () => {
                             <span className="inline-flex items-center rounded-md bg-red-600 text-white text-xs font-bold px-2 py-1 uppercase tracking-wide">
                                 Sale is Live
                             </span>
-                            <div className="flex items-baseline gap-2 sm:gap-3">
+                            <div className="flex items-baseline gap-2 sm:gap-3 flex-wrap">
                                 <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#493657]">{formatINR(displayPriceValue)}</span>
                                 {displayMRPValue && (
                                     <span className="text-base sm:text-lg text-red-500 line-through">
                                         {formatINR(displayMRPValue)}
                                     </span>
                                 )}
-                                <span className="text-xs sm:text-sm text-[#493657]/60">per 30 kg</span>
+                                <span className="text-xs sm:text-sm text-[#493657]/60">
+                                    per {selectedSize || product?.sizes?.[0]?.size || "unit"}
+                                </span>
                             </div>
                         </div>
 
@@ -785,14 +786,16 @@ const TexturePaints = () => {
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Product specifications and application details</p>
                                     </div>
                                 </div>
-                                <a
-                                    href="/Assets/docs/html-templates/calyco-texture-paint-tds.html"
-                                    download
-                                    className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
-                                >
-                                    <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    Download TDS
-                                </a>
+                                                                <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                                    <a href="/Assets/docs/html-templates/calyco-texture-paint-tds.html" download className="flex-1 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        Download TDS
+                                    </a>
+                                    <a href="/Assets/docs/html-templates/calyco-texture-paint-tds.html" target="_blank" rel="noopener noreferrer" className="flex-1 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        View TDS
+                                    </a>
+                                </div>
                             </div>
                             <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-[#493657]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4">
@@ -804,14 +807,16 @@ const TexturePaints = () => {
                                         <p className="text-[#493657]/70 text-xs sm:text-sm">Health and safety information</p>
                                     </div>
                                 </div>
-                                <a
-                                    href="/Assets/docs/html-templates/calyco-texture-paint-sds.html"
-                                    download
-                                    className="w-full bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold group-hover:scale-102 text-sm sm:text-base"
-                                >
-                                    <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    Download SDS
-                                </a>
+                                                                <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                                    <a href="/Assets/docs/html-templates/calyco-texture-paint-sds.html" download className="flex-1 bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        Download SDS
+                                    </a>
+                                    <a href="/Assets/docs/html-templates/calyco-texture-paint-sds.html" target="_blank" rel="noopener noreferrer" className="flex-1 bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 font-semibold text-sm sm:text-base">
+                                        <FiExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        View SDS
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -885,7 +890,7 @@ const TexturePaints = () => {
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#F0C85A] to-[#493657] opacity-90" />
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
-                                            <img src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.png" alt="Luxury Exterior Emulsion" className="w-full h-full object-contain drop-shadow-lg" />
+                                            <img src="/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp" alt="Luxury Exterior Emulsion" className="w-full h-full object-contain drop-shadow-lg" />
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">
@@ -915,7 +920,7 @@ const TexturePaints = () => {
                                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A] opacity-90" />
                                     <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-6">
                                         <div className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32">
-                                            <img src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.png" alt="Waterproofing Sealer" className="w-full h-full object-contain drop-shadow-lg" />
+                                            <img src="/Assets/Product Images/Waterproof Sealer/waterproof-bucket-png.webp" alt="Waterproofing Sealer" className="w-full h-full object-contain drop-shadow-lg" />
                                         </div>
                                         <div className="flex-1 text-center sm:text-left">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-3">

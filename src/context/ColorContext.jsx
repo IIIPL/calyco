@@ -49,12 +49,15 @@ export const ColorProvider = ({ children }) => {
     }
     
     if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
-      result = result.filter(color => 
-        color.name.toLowerCase().includes(searchLower) ||
-        color.description.toLowerCase().includes(searchLower) ||
-        color.color_family.toLowerCase().includes(searchLower)
-      );
+      const searchLower = String(filters.search).toLowerCase();
+      result = result.filter(color => {
+        const name = String(color.name || color.calycoName || '').toLowerCase();
+        const description = String(color.description || color.mood || '').toLowerCase();
+        const family = String(color.color_family || color.colorFamily || '').toLowerCase();
+        return name.includes(searchLower) ||
+               description.includes(searchLower) ||
+               family.includes(searchLower);
+      });
     }
     
     setFilteredColors(result);

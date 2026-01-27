@@ -13,19 +13,30 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
   const [sortBy, setSortBy] = useState('newest'); // 'newest', 'highest', 'lowest'
   const [showForm, setShowForm] = useState(false);
 
-  // Calculate average rating
-  const averageRating = reviews.length > 0
-    ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
-    : 0;
+  // Normalize ratings:
+  // - Coerce to number
+  // - Clamp between 0 and 5
+  // - Floor to keep the exact star chosen by the reviewer (e.g., 4.7 -> 4)
+  const normalizedRatings = reviews.map((r) => {
+    const n = Number(r.rating);
+    if (Number.isNaN(n)) return 0;
+    return Math.min(5, Math.max(0, Math.floor(n)));
+  });
+
+  // Calculate average rating based on normalized values
+  const averageRatingValue =
+    normalizedRatings.length > 0
+      ? normalizedRatings.reduce((sum, rating) => sum + rating, 0) / normalizedRatings.length
+      : 0;
+  const averageRating = Number.isNaN(averageRatingValue) ? 0 : averageRatingValue.toFixed(1);
 
   // Calculate rating distribution
-  const ratingDistribution = [5, 4, 3, 2, 1].map(stars => ({
-    stars,
-    count: reviews.filter(r => r.rating === stars).length,
-    percentage: reviews.length > 0
-      ? ((reviews.filter(r => r.rating === stars).length / reviews.length) * 100).toFixed(0)
-      : 0
-  }));
+  const ratingDistribution = [5, 4, 3, 2, 1].map((stars) => {
+    const count = normalizedRatings.filter((r) => r === stars).length;
+    const percentage =
+      reviews.length > 0 ? ((count / reviews.length) * 100).toFixed(0) : 0;
+    return { stars, count, percentage };
+  });
 
   // Sort reviews
   const sortedReviews = [...reviews].sort((a, b) => {
@@ -51,12 +62,13 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
 
   // Render stars for individual review
   const renderStars = (rating) => {
+      const value = Math.min(5, Math.max(0, Math.floor(Number(rating) || 0)));
     return (
       <div className="flex items-center gap-0.5">
         {[1, 2, 3, 4, 5].map((star) => (
           <FaStar
             key={star}
-            className={`text-sm ${star <= rating ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
+            className={`text-sm ${star <= value ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
           />
         ))}
       </div>
@@ -83,7 +95,7 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <FaStar
                       key={star}
-                      className={`text-2xl ${star <= Math.round(averageRating) ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
+                      className={`text-2xl ${star <= averageRatingValue ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
                     />
                   ))}
                 </div>
@@ -261,3 +273,8 @@ const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
 };
 
 export default ReviewsSection;
+
+
+
+
+

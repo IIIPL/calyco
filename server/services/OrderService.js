@@ -76,10 +76,19 @@ export class OrderService {
 
   async createOrder(orderData) {
     const orders = await this.readOrders();
+    const status = orderData.status || 'pending';
+    const paymentStatus = orderData.paymentStatus || (status === 'paid' ? 'paid' : 'pending');
+    const orderNumber = orders.length + 1;
+    const invoiceNumber = `INV-${new Date().getFullYear()}-${String(orderNumber).padStart(5, '0')}`;
+    const invoiceDate = new Date().toISOString();
 
     const order = {
       id: this.generateOrderId(),
-      orderNumber: orders.length + 1,
+      orderNumber,
+      invoice: {
+        number: invoiceNumber,
+        date: invoiceDate
+      },
       items: orderData.items,
       customer: {
         email: orderData.customer.email,
@@ -95,7 +104,7 @@ export class OrderService {
         }
       },
       payment: {
-        status: 'pending',
+        status: paymentStatus,
         method: 'razorpay',
         razorpayOrderId: orderData.razorpayOrderId || null,
         razorpayPaymentId: orderData.razorpayPaymentId || null,
@@ -109,8 +118,12 @@ export class OrderService {
         discount: orderData.discount || 0,
         total: orderData.total
       },
-      status: 'pending',
+      status,
       notes: orderData.notes || '',
+      notifications: {
+        orderConfirmationSent: false,
+        orderConfirmationSentAt: null
+      },
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };

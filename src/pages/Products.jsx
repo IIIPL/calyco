@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiSearch, FiEye } from "react-icons/fi";
@@ -61,12 +61,18 @@ const getVariantId = (detail, size, finish) => {
 };
 
 const normaliseProduct = (product) => {
+  const rawCategory = (product.category || "General").trim();
+  const normalizedCategory =
+    rawCategory.toLowerCase() === "woodmetal"
+      ? "Wood & Metal"
+      : rawCategory.charAt(0).toUpperCase() + rawCategory.slice(1);
+
   const finish = pickDefaultFinish(product);
   const size = pickDefaultSize(product);
   return {
     id: product.id,
     title: product.name,
-    category: product.category || "General",
+    category: normalizedCategory,
     description: product["short-description"] || product.description || "",
     image: product.image || "/Assets/Nova/1-main.webp",
     slug: product.slug,
@@ -81,18 +87,24 @@ const normaliseProduct = (product) => {
 export const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const filterRef = useRef(null);
 
   const catalog = useMemo(
     () => products.map(normaliseProduct),
     []
   );
 
-  // Generate categories from products
+  // Generate categories from products (normalize names and rename woodmetal)
   const categories = useMemo(() => {
     const cats = new Set(["All"]);
-    products.forEach(p => {
+    products.forEach((p) => {
       if (p.category) {
-        cats.add(p.category.charAt(0).toUpperCase() + p.category.slice(1));
+        const raw = p.category.trim().toLowerCase();
+        const label =
+          raw === "woodmetal"
+            ? "Wood & Metal"
+            : raw.charAt(0).toUpperCase() + raw.slice(1);
+        cats.add(label);
       }
     });
     return Array.from(cats);
@@ -114,6 +126,61 @@ export const Products = () => {
       return matchesCategory && matchesTerm;
     });
   }, [catalog, selectedCategory, searchTerm]);
+
+  // Enable wheel-to-horizontal scroll and drag-to-scroll on desktop for filters
+  useEffect(() => {
+    const el = filterRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      // Only apply when there is horizontal overflow
+      if (el.scrollWidth > el.clientWidth) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    const onMouseDown = (e) => {
+      isDown = true;
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+      el.style.cursor = "grabbing";
+    };
+    const onMouseLeave = () => {
+      isDown = false;
+      el.style.cursor = "grab";
+    };
+    const onMouseUp = () => {
+      isDown = false;
+      el.style.cursor = "grab";
+    };
+    const onMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - el.offsetLeft;
+      const walk = x - startX;
+      el.scrollLeft = scrollLeft - walk;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("mousedown", onMouseDown);
+    el.addEventListener("mouseleave", onMouseLeave);
+    el.addEventListener("mouseup", onMouseUp);
+    el.addEventListener("mousemove", onMouseMove);
+    el.style.cursor = "grab";
+
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("mousedown", onMouseDown);
+      el.removeEventListener("mouseleave", onMouseLeave);
+      el.removeEventListener("mouseup", onMouseUp);
+      el.removeEventListener("mousemove", onMouseMove);
+      el.style.cursor = "";
+    };
+  }, [categories]);
 
   return (
     <>
@@ -177,21 +244,31 @@ export const Products = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-nowrap gap-3 pb-6 overflow-x-auto px-2 md:px-0 justify-start md:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="relative w-full"
             >
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full transition-all duration-200 font-medium ${
-                    selectedCategory === category
-                      ? "bg-white text-[#493657] shadow-lg"
-                      : "bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
+              <div
+                className="flex flex-nowrap gap-3 pb-6 overflow-x-auto px-5 md:px-5 pr-8 justify-start [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth whitespace-nowrap"
+                style={{ WebkitOverflowScrolling: "touch" }}
+                ref={filterRef}
+              >
+                {categories.map((category) => {
+                  const isActive = selectedCategory === category;
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`shrink-0 whitespace-nowrap px-6 py-2.5 rounded-full border text-sm sm:text-base font-semibold transition-all duration-200 flex items-center justify-center ${
+                        isActive
+                          ? "bg-[#513579] text-white border-[#513579] shadow-md"
+                          : "bg-transparent text-gray-100 border-white/40 hover:border-[#513579] hover:text-white"
+                      }`}
+                      style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                      {category}
+                    </button>
+                  );
+                })}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -230,57 +307,56 @@ export const Products = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + index * 0.05 }}
-                    className="group relative rounded-3xl bg-white border border-[#493657]/12 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-[520px]"
+                    className="group relative rounded-3xl bg-white border border-[#493657]/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
                   >
                     {/* Top gradient bar */}
                     <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#493657] to-[#F0C85A]" />
-                    
+
                     {/* Category badge only - overlapping the image */}
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#493657]/90 text-white backdrop-blur-sm">
+                      <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-[#493657] text-white shadow-lg">
                         {product.category}
                       </span>
                     </div>
 
                     {/*
-                      🎯 3:4 ASPECT RATIO PRODUCT IMAGE - No white space, no borders - Clickable to navigate to product detail
+                      🎯 SQUARE ASPECT RATIO PRODUCT IMAGE - Clickable to navigate to product detail
                     */}
-                    <Link to={`/product/${product.slug}`} className="relative w-full aspect-[3/4] overflow-hidden cursor-pointer">
+                    <Link to={`/product/${product.slug}`} className="relative w-full aspect-square overflow-hidden cursor-pointer">
                       <img
                         src={product.image}
                         alt={product.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                        width="400"
+                        height="400"
                         onError={(e) => {
                           e.target.src = "/Assets/Nova/1-main.webp";
                         }}
                       />
                     </Link>
 
-                    {/* 
-                      🎯 PRODUCT DETAILS - Clean layout without unnecessary badges
+                    {/*
+                      🎯 PRODUCT DETAILS - Fixed height layout with 2-line descriptions
                     */}
-                    <div className="flex-1 flex flex-col justify-between p-6">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#493657] mb-2 group-hover:text-[#F0C85A] transition-colors">
-                          {product.title}
-                        </h3>
-                        <p className="text-sm text-[#493657]/70 leading-relaxed">
-                          {product.description}
-                        </p>
-                      </div>
+                    <div className="flex flex-col p-5">
+                      <h3 className="text-lg md:text-[18px] lg:text-[19px] font-bold text-[#493657] group-hover:text-[#F0C85A] transition-colors line-clamp-2 md:line-clamp-1 mb-2">
+                        {product.title}
+                      </h3>
+                      <p className="text-sm text-[#493657]/70 leading-relaxed line-clamp-2 mb-4 min-h-[2.8rem]">
+                        {product.description}
+                      </p>
 
                       {/*
-                        🎯 VIEW DETAILS BUTTON - Users need to select colors first
+                        🎯 VIEW DETAILS BUTTON
                       */}
-                      <div className="mt-4">
-                        <Link
-                          to={`/product/${product.slug}`}
-                          className="w-full inline-flex items-center justify-center gap-2 bg-[#493657] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300"
-                        >
-                          <FiEye className="w-4 h-4" />
-                          View Details
-                        </Link>
-                      </div>
+                      <Link
+                        to={`/product/${product.slug}`}
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#493657] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300 shadow-sm"
+                      >
+                        <FiEye className="w-4 h-4" />
+                        View Details
+                      </Link>
                     </div>
                   </motion.div>
                 );

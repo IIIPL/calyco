@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SLIDES = [
   {
     type: 'image',
-    src: '/Assets/home-hero/full-page.png',
+    src: '/Assets/home-hero/full-page.webp',
     alt: 'Beautiful transformed home interior',
     badge: 'TRUSTED NATIONWIDE',
     title: 'Colors That Transform Homes Into Havens',
@@ -15,7 +15,7 @@ const SLIDES = [
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero2.png',
+    src: '/Assets/HERO/hero2.webp',
     alt: 'Premium quality paint finish',
     badge: 'GUARANTEED EXCELLENCE',
     title: 'A Decade of Beauty, Guaranteed',
@@ -25,7 +25,7 @@ const SLIDES = [
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.png',
+    src: '/Assets/HERO/hero3_Modern_interior_wall_in_a_house_or_apartment_living_fc50ad6e-a99a-46d5-8608-8b3466c0eb0a.webp',
     alt: 'Wide range of color collections',
     badge: '2,000+ SHADES',
     title: 'Every Mood. Every Room. Every Dream.',
@@ -35,7 +35,7 @@ const SLIDES = [
   },
   {
     type: 'image',
-    src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.png',
+    src: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp',
     alt: 'Made in India manufacturing facility',
     badge: 'MADE IN INDIA',
     title: 'Factory-Direct Quality. Family-Friendly Prices.',
