@@ -21,7 +21,7 @@ import {
 import { getAllColors, getColorFamilies } from '../data/calycoColors.js';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
-import SEO from '../components/SEO';
+
 
 // Get all 442 colors and families
 const ALL_COLORS = getAllColors();
