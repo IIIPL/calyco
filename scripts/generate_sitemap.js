@@ -92,13 +92,20 @@ function extractBlogPosts() {
     }
 }
 
-// Safe join helper with strict lowercasing and cleaning
+// Safe join helper with cleaning + encoding
 function safeJoin(base, path) {
     const cleanBase = base.replace(/\/+$/, '');
     const cleanPath = path.startsWith('/') ? path : '/' + path;
     const url = cleanBase + cleanPath;
-    // Remove double slashes (except protocol) and force lowercase
-    return url.replace(/([^:]\/)\/+/g, '$1').toLowerCase();
+    // Remove double slashes (except protocol) and encode unsafe characters
+    return encodeURI(url.replace(/([^:]\/)\/+/g, '$1'));
+}
+
+function isInvalidRoute(route) {
+    if (!route) return true;
+    if (/\s/.test(route)) return true;
+    if (/%20/i.test(route)) return true;
+    return false;
 }
 
 function getPriority(path) {
@@ -134,9 +141,11 @@ function generateSitemap() {
     xml += '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
 
     // 1. App Routes
+    const seenUrls = new Set();
     routes.forEach(route => {
         // Skip root if already handled or empty
         if (route === '' && routes.includes('/')) return;
+        if (isInvalidRoute(route)) return;
 
         // Clean route logic moved to safeJoin but we need the route for logic
         const priority = getPriority(route);
@@ -144,6 +153,9 @@ function generateSitemap() {
 
         const cleanRoute = route === '/' ? '' : route.replace(/\/+$/, '');
         const fullUrl = safeJoin(DOMAIN, cleanRoute);
+        const canonicalKey = fullUrl.toLowerCase();
+        if (seenUrls.has(canonicalKey)) return;
+        seenUrls.add(canonicalKey);
 
         // Ensure no local paths check (basic check)
         if (fullUrl.includes('C:/') || fullUrl.includes('c:/')) {
@@ -162,6 +174,9 @@ function generateSitemap() {
     // 2. Blog Posts
     blogPosts.forEach(post => {
         const fullUrl = safeJoin(DOMAIN, `/blog/${post.slug}`);
+        const canonicalKey = fullUrl.toLowerCase();
+        if (seenUrls.has(canonicalKey)) return;
+        seenUrls.add(canonicalKey);
 
         xml += '  <url>\n';
         xml += `    <loc>${escapeXml(fullUrl)}</loc>\n`;

@@ -68,8 +68,8 @@ export const RoomVisualizerPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 mt-20">
       <SEO
-        title="Room Visualizer - Calyco Paints"
-        description="Visualize Calyco paint colors in your own room or use our sample rooms. Upload a photo and see the transformation instantly."
+        title="Room Visualization | Calyco Paints"
+        description="Preview Calyco colors in real rooms or upload your own photo to visualize paint shades before you buy."
         url="https://calycopaints.com/room-visualization"
       />
       <div className="container mx-auto px-4 py-12">

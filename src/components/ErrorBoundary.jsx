@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -47,9 +48,11 @@ class ErrorBoundary extends React.Component {
 
             return (
                 <div className="p-8 bg-red-50 text-red-900 font-mono">
-                    <h1 className="text-2xl font-bold mb-4">
-                        Something went wrong.
-                    </h1>
+                    <Helmet>
+                        <title>Something went wrong - Calyco Paints</title>
+                        <meta name="robots" content="noindex,nofollow" />
+                    </Helmet>
+                    <h1 className="text-2xl font-bold mb-4">Something went wrong.</h1>
                     <details className="whitespace-pre-wrap">
                         <summary>Error Details</summary>
                         <div>{errorMessage}</div>
