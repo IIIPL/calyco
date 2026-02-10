@@ -30,13 +30,13 @@ const ProductCard = ({
 
   return (
     <div className="p-0 w-full max-w-xs mx-auto flex flex-col items-start bg-transparent border-none shadow-none">
-      <Link to={target} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="w-full flex mb-2 h-64">
+      <Link to={target} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full flex mb-2 h-64">
         <img src={image} alt={name} className="w-full h-full object-contain drop-shadow-lg mix-blend-multiply" />
       </Link>
-      <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{wordBreak: 'break-word'}}>{name}</div>
+      <div className="mt-2 mb-1 text-[#493657] font-bold text-lg leading-tight uppercase text-left w-full" style={{ wordBreak: 'break-word' }}>{name}</div>
       {/* Price prominently displayed */}
       {displayPrice && (
-        <div className="text-[#493657] text-xl font-bold mb-1 w-full">₹{displayPrice} <span className="text-xs text-[#493657] font-medium">/ {displaySize || '1L'}</span></div>
+        <div className="text-[#493657] text-xl font-bold mb-1 w-full">₹{displayPrice} <span className="text-xs text-[#493657] font-medium">/ {displaySize || '10L'}</span></div>
       )}
       {/* Features */}
       <div className="flex flex-col gap-1 mb-2 w-full">
@@ -63,10 +63,10 @@ const ProductCard = ({
       </div>
       <div className="border-b border-[#e5e0d8] w-full my-2" />
       <div className="w-full flex justify-start">
-        <Link 
+        <Link
           to={target}
           className="mt-1 px-4 py-2 bg-[#493657] text-white text-sm rounded hover:bg-[#5a4067] transition duration-300 font-semibold"
-          onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           View Details
         </Link>

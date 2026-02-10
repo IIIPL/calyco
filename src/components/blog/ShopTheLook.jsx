@@ -36,7 +36,7 @@ const SAMPLE_PRODUCTS = [
     hex: '#E8E4D9',
     undertones: 'Universal primer for all surfaces',
     price: '₹899',
-    size: '1L',
+    size: '10L',
     image: '/Assets/Products/stain-sealer.webp',
     url: '/product/waterproofing-sealer'
   },

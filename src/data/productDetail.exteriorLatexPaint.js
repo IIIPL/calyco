@@ -1,8 +1,6 @@
 // ✅ Luxury Exterior Emulsion — High Sheen only + Swatch Card + Sample Pot
 
 const LUXURY_EXTERIOR_VARIANT_MAP = {
-  "1L-High Sheen Finish": "gid://shopify/ProductVariant/42637669433462",
-  "4L-High Sheen Finish": "gid://shopify/ProductVariant/42637669498998",
   "10L-High Sheen Finish": "gid://shopify/ProductVariant/42637669564534",
   "20L-High Sheen Finish": "gid://shopify/ProductVariant/42637669630070",
   "Swatch Card-High Sheen Finish": "gid://shopify/ProductVariant/42663730577526",
@@ -11,8 +9,6 @@ const LUXURY_EXTERIOR_VARIANT_MAP = {
 
 const priceByFinish = {
   "High Sheen Finish": {
-    "1L": 800,
-    "4L": 2200,
     "10L": 5200,
     "20L": 9700,
     "Swatch Card": 99,
@@ -22,22 +18,7 @@ const priceByFinish = {
 
 // Order: 1L, 4L, 10L, 20L, then samples
 const sizes = [
-  {
-    size: "1L",
-    priceByFinish: {
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["1L"]
-    },
-    price: priceByFinish["High Sheen Finish"]["1L"],
-    originalPrice: 900,
-  },
-  {
-    size: "4L",
-    priceByFinish: {
-      "High Sheen Finish": priceByFinish["High Sheen Finish"]["4L"]
-    },
-    price: priceByFinish["High Sheen Finish"]["4L"],
-    originalPrice: 3500,
-  },
+
   {
     size: "10L",
     priceByFinish: {
@@ -114,7 +95,7 @@ export const exteriorLatexPaintDetail = {
     {
       name: "High Sheen Finish",
       description: "Premium high sheen for luxury exteriors with superior durability and cleanability.",
-      price: priceByFinish["High Sheen Finish"]["1L"],
+      price: priceByFinish["High Sheen Finish"]["10L"],
     },
   ],
   defaultFinish: "High Sheen Finish",
@@ -221,8 +202,7 @@ export const exteriorLatexPaintDetail = {
 
   // Regular sizes first, then samples
   packaging: [
-    "1L",
-    "4L",
+
     "10L",
     "20L",
     "Swatch Card",

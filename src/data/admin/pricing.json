@@ -6,20 +6,6 @@
       "Low Sheen": {
         "sizes": [
           {
-            "label": "1L",
-            "current": 600,
-            "original": 700,
-            "variantId": "gid://shopify/ProductVariant/42663690600566",
-            "type": "standard"
-          },
-          {
-            "label": "4L",
-            "current": 1700,
-            "original": 2700,
-            "variantId": "gid://shopify/ProductVariant/42663690666102",
-            "type": "standard"
-          },
-          {
             "label": "10L",
             "current": 4100,
             "original": 6500,
@@ -57,20 +43,6 @@
     "finishes": {
       "Pearl": {
         "sizes": [
-          {
-            "label": "1L",
-            "current": 800,
-            "original": 900,
-            "variantId": "gid://shopify/ProductVariant/42619088339062",
-            "type": "standard"
-          },
-          {
-            "label": "4L",
-            "current": 2200,
-            "original": 3500,
-            "variantId": "gid://shopify/ProductVariant/42619088404598",
-            "type": "standard"
-          },
           {
             "label": "10L",
             "current": 5200,
@@ -110,20 +82,6 @@
       "Matte Finish": {
         "sizes": [
           {
-            "label": "1L",
-            "current": 600,
-            "original": 700,
-            "variantId": "gid://shopify/ProductVariant/42663725006966",
-            "type": "standard"
-          },
-          {
-            "label": "4L",
-            "current": 1700,
-            "original": 2700,
-            "variantId": "gid://shopify/ProductVariant/42663725072502",
-            "type": "standard"
-          },
-          {
             "label": "10L",
             "current": 4100,
             "original": 6500,
@@ -162,20 +120,6 @@
       "High Sheen Finish": {
         "sizes": [
           {
-            "label": "1L",
-            "current": 800,
-            "original": 900,
-            "variantId": "gid://shopify/ProductVariant/42637669433462",
-            "type": "standard"
-          },
-          {
-            "label": "4L",
-            "current": 2200,
-            "original": 3500,
-            "variantId": "gid://shopify/ProductVariant/42637669498998",
-            "type": "standard"
-          },
-          {
             "label": "10L",
             "current": 5200,
             "original": 8400,
@@ -213,20 +157,6 @@
     "finishes": {
       "Matte Finish": {
         "sizes": [
-          {
-            "label": "1L",
-            "current": 600,
-            "original": 700,
-            "variantId": "gid://shopify/ProductVariant/42638016217206",
-            "type": "standard"
-          },
-          {
-            "label": "4L",
-            "current": 2200,
-            "original": 2700,
-            "variantId": "gid://shopify/ProductVariant/42638016282742",
-            "type": "standard"
-          },
           {
             "label": "10L",
             "current": 4100,

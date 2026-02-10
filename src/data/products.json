@@ -10,23 +10,33 @@
       "Pearl"
     ],
     "sizes": [
-      { "label": "1L" },
-      { "label": "4L" },
-      { "label": "10L" },
-      { "label": "20L" }
+      {
+        "label": "10L"
+      },
+      {
+        "label": "20L"
+      }
     ],
     "priceByFinish": {
       "Low Sheen": {
-        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42619088371830" },
-        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42619088437366" },
-        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42619088502902" },
-        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42619088568438" }
+        "10L": {
+          "price": 6500,
+          "variantId": "gid://shopify/ProductVariant/42619088502902"
+        },
+        "20L": {
+          "price": 12800,
+          "variantId": "gid://shopify/ProductVariant/42619088568438"
+        }
       },
       "Pearl": {
-        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42619088339062" },
-        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42619088404598" },
-        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42619088470134" },
-        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42619088535670" }
+        "10L": {
+          "price": 8400,
+          "variantId": "gid://shopify/ProductVariant/42619088470134"
+        },
+        "20L": {
+          "price": 16000,
+          "variantId": "gid://shopify/ProductVariant/42619088535670"
+        }
       }
     }
   },
@@ -41,23 +51,33 @@
       "High Sheen Finish"
     ],
     "sizes": [
-      { "label": "1L" },
-      { "label": "4L" },
-      { "label": "10L" },
-      { "label": "20L" }
+      {
+        "label": "10L"
+      },
+      {
+        "label": "20L"
+      }
     ],
     "priceByFinish": {
       "Matte Finish": {
-        "1L": { "price": 700, "variantId": "gid://shopify/ProductVariant/42637669400694" },
-        "4L": { "price": 2700, "variantId": "gid://shopify/ProductVariant/42637669466230" },
-        "10L": { "price": 6500, "variantId": "gid://shopify/ProductVariant/42637669531766" },
-        "20L": { "price": 12800, "variantId": "gid://shopify/ProductVariant/42637669597302" }
+        "10L": {
+          "price": 6500,
+          "variantId": "gid://shopify/ProductVariant/42637669531766"
+        },
+        "20L": {
+          "price": 12800,
+          "variantId": "gid://shopify/ProductVariant/42637669597302"
+        }
       },
       "High Sheen Finish": {
-        "1L": { "price": 800, "variantId": "gid://shopify/ProductVariant/42637669433462" },
-        "4L": { "price": 3500, "variantId": "gid://shopify/ProductVariant/42637669498998" },
-        "10L": { "price": 8400, "variantId": "gid://shopify/ProductVariant/42637669564534" },
-        "20L": { "price": 16000, "variantId": "gid://shopify/ProductVariant/42637669630070" }
+        "10L": {
+          "price": 8400,
+          "variantId": "gid://shopify/ProductVariant/42637669564534"
+        },
+        "20L": {
+          "price": 16000,
+          "variantId": "gid://shopify/ProductVariant/42637669630070"
+        }
       }
     }
   },
@@ -71,17 +91,23 @@
       "Low Sheen"
     ],
     "sizes": [
-      { "label": "1L" },
-      { "label": "4L" },
-      { "label": "10L" },
-      { "label": "20L" }
+      {
+        "label": "10L"
+      },
+      {
+        "label": "20L"
+      }
     ],
     "priceByFinish": {
       "Low Sheen": {
-        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663690600566" },
-        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663690666102" },
-        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663690731638" },
-        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663690797174" }
+        "10L": {
+          "price": 4100,
+          "variantId": "gid://shopify/ProductVariant/42663690731638"
+        },
+        "20L": {
+          "price": 8000,
+          "variantId": "gid://shopify/ProductVariant/42663690797174"
+        }
       }
     }
   },
@@ -95,17 +121,23 @@
       "Matte Finish"
     ],
     "sizes": [
-      { "label": "1L" },
-      { "label": "4L" },
-      { "label": "10L" },
-      { "label": "20L" }
+      {
+        "label": "10L"
+      },
+      {
+        "label": "20L"
+      }
     ],
     "priceByFinish": {
       "Matte Finish": {
-        "1L": { "price": 600, "variantId": "gid://shopify/ProductVariant/42663725006966" },
-        "4L": { "price": 1700, "variantId": "gid://shopify/ProductVariant/42663725072502" },
-        "10L": { "price": 4100, "variantId": "gid://shopify/ProductVariant/42663725138038" },
-        "20L": { "price": 8000, "variantId": "gid://shopify/ProductVariant/42663725203574" }
+        "10L": {
+          "price": 4100,
+          "variantId": "gid://shopify/ProductVariant/42663725138038"
+        },
+        "20L": {
+          "price": 8000,
+          "variantId": "gid://shopify/ProductVariant/42663725203574"
+        }
       }
     }
   },
@@ -120,20 +152,22 @@
       "Protective"
     ],
     "sizes": [
-      { "label": "1L" },
-      { "label": "4L" },
-      { "label": "10L" }
+      {
+        "label": "10L"
+      }
     ],
     "priceByFinish": {
       "Clear": {
-        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
-        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
-        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
+        "10L": {
+          "price": 5499,
+          "variantId": "gid://shopify/ProductVariant/42638016348278"
+        }
       },
       "Protective": {
-        "1L": { "price": 599, "variantId": "gid://shopify/ProductVariant/42638016217206" },
-        "4L": { "price": 2299, "variantId": "gid://shopify/ProductVariant/42638016282742" },
-        "10L": { "price": 5499, "variantId": "gid://shopify/ProductVariant/42638016348278" }
+        "10L": {
+          "price": 5499,
+          "variantId": "gid://shopify/ProductVariant/42638016348278"
+        }
       }
     }
   }

@@ -1,7 +1,5 @@
 // 🏗️ UPDATED: Premium Exterior Emulsion with Matte Finish Only + Sample Variants
 const PREMIUM_EXTERIOR_VARIANT_MAP = {
-  "1L-Matte Finish": "gid://shopify/ProductVariant/42663725006966",
-  "4L-Matte Finish": "gid://shopify/ProductVariant/42663725072502",
   "10L-Matte Finish": "gid://shopify/ProductVariant/42663725138038",
   "20L-Matte Finish": "gid://shopify/ProductVariant/42663725203574",
   "Swatch Card-Matte Finish": "gid://shopify/ProductVariant/42663725596790",
@@ -10,8 +8,6 @@ const PREMIUM_EXTERIOR_VARIANT_MAP = {
 
 const priceByFinish = {
   "Matte Finish": {
-    "1L": 600,
-    "4L": 1700,
     "10L": 4100,
     "20L": 8000,
     "Swatch Card": 99,
@@ -21,22 +17,7 @@ const priceByFinish = {
 
 // 🏗️ UPDATED: Reordered sizes - Sample options AFTER regular sizes
 const sizes = [
-  {
-    size: "1L",
-    priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["1L"]
-    },
-    price: priceByFinish["Matte Finish"]["1L"],
-    originalPrice: 700,
-  },
-  {
-    size: "4L",
-    priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["4L"]
-    },
-    price: priceByFinish["Matte Finish"]["4L"],
-    originalPrice: 2700,
-  },
+
   {
     size: "10L",
     priceByFinish: {
@@ -107,7 +88,7 @@ export const premiumExteriorEmulsionDetail = {
       name: "Matte Finish",
       description:
         "Premium weather-resistant matte finish that provides sophisticated elegance with superior hiding power and durability.",
-      price: priceByFinish["Matte Finish"]["1L"],
+      price: priceByFinish["Matte Finish"]["10L"],
     },
   ],
   defaultFinish: "Matte Finish",
@@ -145,10 +126,10 @@ export const premiumExteriorEmulsionDetail = {
   preparation_instructions: "Surface must be clean, dry, and free from loose paint, dirt, mildew. Prime new surfaces for premium finish.",
   recommended_uses: ["Premium exterior façades, architectural features, and masonry requiring sophisticated matte elegance"],
   substrate: ["Stucco", "Concrete", "Brick", "Fiber cement", "Wood"],
-  
+
   // 🏗️ UPDATED: Only Matte Finish available
   finish_type_sheen: ["Matte Finish"],
-  
+
   advantages: [
     "Premium Matte Finish delivers sophisticated, non-reflective elegance that hides surface imperfections",
     "Advanced UV Protection technology prevents color fading, chalking, and degradation from sunlight",
@@ -204,17 +185,16 @@ export const premiumExteriorEmulsionDetail = {
     warranty: "/Assets/docs/premium-exterior-emulsion-warranty.pdf",
   },
   warranty: "7 years",
-  
+
   // 🏗️ UPDATED: Added sample variants in correct order
   packaging: [
-    "1L",
-    "4L",
+
     "10L",
     "20L",
     "Swatch Card",
     "SamplePot 200ml"
   ],
-  
+
   bucketImage: "/Assets/Product Images/Premium Exterior Emulsion/1.webp",
   images: [
     "/Assets/Product Images/Premium Exterior Emulsion/1.webp"

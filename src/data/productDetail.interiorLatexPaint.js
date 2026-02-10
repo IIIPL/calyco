@@ -1,7 +1,5 @@
 // 🎨 UPDATED: Luxury Interior Emulsion with Pearl Finish Only + Sample Variants
 const LUXURY_INTERIOR_VARIANT_MAP = {
-  "1L-Pearl": "gid://shopify/ProductVariant/42619088339062",
-  "4L-Pearl": "gid://shopify/ProductVariant/42619088404598",
   "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
   "20L-Pearl": "gid://shopify/ProductVariant/42619088535670",
   "Swatch Card-Pearl": "gid://shopify/ProductVariant/42663703085174",
@@ -10,8 +8,6 @@ const LUXURY_INTERIOR_VARIANT_MAP = {
 
 const priceByFinish = {
   "Pearl": {
-    "1L": 800,
-    "4L": 2200,
     "10L": 5200,
     "20L": 9700,
     "Swatch Card": 99,
@@ -21,22 +17,7 @@ const priceByFinish = {
 
 // 🎨 UPDATED: Reordered sizes - Sample options AFTER regular sizes
 const sizes = [
-  {
-    size: "1L",
-    priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["1L"]
-    },
-    price: priceByFinish["Pearl"]["1L"],
-    originalPrice: 900,
-  },
-  {
-    size: "4L",
-    priceByFinish: {
-      "Pearl": priceByFinish["Pearl"]["4L"]
-    },
-    price: priceByFinish["Pearl"]["4L"],
-    originalPrice: 3500,
-  },
+
   {
     size: "10L",
     priceByFinish: {
@@ -107,7 +88,7 @@ export const interiorLatexPaintDetail = {
       name: "Pearl",
       description:
         "Stunning pearl finish that adds sophisticated luster and depth to create luxurious interior spaces.",
-      price: priceByFinish["Pearl"]["1L"],
+      price: priceByFinish["Pearl"]["10L"],
     },
   ],
   defaultFinish: "Pearl",
@@ -202,17 +183,15 @@ export const interiorLatexPaintDetail = {
     warranty: "/Assets/docs/luxury-interior-emulsion-warranty.pdf",
   },
   warranty: "5 years",
-  
+
   // 🎨 UPDATED: Added sample variants in correct order
   packaging: [
-    "1L",
-    "4L",
     "10L",
     "20L",
     "Swatch Card",
     "SamplePot 200ml"
   ],
-  
+
   bucketImage: "/Assets/Product Images/Luxury Interior Emulsion/1.webp",
   images: [
     "/Assets/Product Images/Luxury Interior Emulsion/1.webp"

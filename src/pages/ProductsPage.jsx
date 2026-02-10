@@ -26,7 +26,7 @@ const productCatalog = [
     image: "/Assets/Interior/1-main.webp",
     finish: "Low Sheen",
     coverage: "10-11 sq.ft./Ltr",
-    sizes: ["1L", "4L", "10L", "20L"],
+    sizes: ["10L", "20L"],
     startingPrice: 700,
     originalPrice: 850,
     features: ["Low Sheen Finish", "Smooth Application", "Long-lasting"],
@@ -42,7 +42,7 @@ const productCatalog = [
     image: "/Assets/Interior/luxury-main.webp",
     finish: "Pearl",
     coverage: "10-11 sq.ft./Ltr",
-    sizes: ["1L", "4L", "10L", "20L"],
+    sizes: ["10L", "20L"],
     startingPrice: 800,
     originalPrice: 950,
     features: ["Pearl Finish", "Premium Quality", "Rich Texture"],
@@ -50,7 +50,7 @@ const productCatalog = [
   },
   {
     id: "premium-exterior-emulsion",
-    slug: "premium-exterior-emulsion", 
+    slug: "premium-exterior-emulsion",
     name: "Premium Exterior Emulsion",
     shortName: "Premium Exterior",
     description: "Weather-resistant exterior paint with matte finish",
@@ -58,7 +58,7 @@ const productCatalog = [
     image: "/Assets/Exterior/1-main.webp",
     finish: "Matte",
     coverage: "10-11 sq.ft./Ltr",
-    sizes: ["1L", "4L", "10L", "20L"],
+    sizes: ["10L", "20L"],
     startingPrice: 700,
     originalPrice: 850,
     features: ["Weather Resistant", "Matte Finish", "UV Protection"],
@@ -67,14 +67,14 @@ const productCatalog = [
   {
     id: "luxury-exterior-emulsion",
     slug: "luxury-exterior-emulsion",
-    name: "Luxury Exterior Emulsion", 
+    name: "Luxury Exterior Emulsion",
     shortName: "Luxury Exterior",
     description: "High-performance exterior paint with high sheen finish",
     category: "Exterior Paints",
     image: "/Assets/Exterior/luxury-main.webp",
     finish: "High Sheen",
-    coverage: "10-11 sq.ft./Ltr", 
-    sizes: ["1L", "4L", "10L", "20L"],
+    coverage: "10-11 sq.ft./Ltr",
+    sizes: ["10L", "20L"],
     startingPrice: 800,
     originalPrice: 950,
     features: ["High Sheen", "Superior Durability", "Self-Cleaning"],
@@ -84,13 +84,13 @@ const productCatalog = [
     id: "waterproofing-sealer",
     slug: "waterproofing-sealer",
     name: "Waterproofing Sealer",
-    shortName: "Waterproof Sealer", 
+    shortName: "Waterproof Sealer",
     description: "Multi-surface protection & sealing with chocolate brown finish",
     category: "Specialty Coatings",
     image: "/Assets/Nova/1-main.webp",
     finish: "Matte",
     coverage: "85-110 sq.ft./Ltr",
-    sizes: ["1L", "4L", "10L"],
+    sizes: ["10L"],
     startingPrice: 700,
     originalPrice: 760,
     features: ["Waterproof", "Multi-Surface", "Protective Coating"],
@@ -161,7 +161,7 @@ const ProductsPage = () => {
                 transition={{ delay: 0.2 }}
                 className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-white/90 leading-relaxed"
               >
-                Discover our complete range of professional-grade paints engineered for 
+                Discover our complete range of professional-grade paints engineered for
                 Indian conditions. From elegant interiors to weather-resistant exteriors.
               </motion.p>
             </motion.div>
@@ -197,11 +197,10 @@ const ProductsPage = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
-                      selectedCategory === category
+                    className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${selectedCategory === category
                         ? "bg-[#493657] text-white shadow-lg scale-105"
                         : "bg-white/70 text-[#493657]/70 hover:bg-white hover:text-[#493657] hover:shadow-md"
-                    }`}
+                      }`}
                   >
                     {category}
                   </button>

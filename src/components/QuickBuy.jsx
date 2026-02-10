@@ -4,7 +4,7 @@ import CartPopup from './CartPopup';
 
 const QuickBuy = ({ product, selectedColor }) => {
   const { addToCart, goToCheckout } = useCart();
-  const [size, setSize] = useState(product?.packaging?.[0] || '1L');
+  const [size, setSize] = useState(product?.packaging?.[0] || '10L');
   const [qty, setQty] = useState(1);
   const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
 
@@ -39,14 +39,16 @@ const QuickBuy = ({ product, selectedColor }) => {
           className="ml-auto px-4 py-2 rounded-lg bg-[#F0C85A] text-[#342347] font-semibold hover:bg-[#e5ba4f]"
           onClick={() => {
             addToCart(product, null, size, qty, undefined, selectedColor || null);
-            
+
             // Show cart popup (toast notification)
-            setCartPopup({ isVisible: true, item: {
-              name: product.display_name || product.name,
-              hex: selectedColor?.hex || "#CCCCCC",
-              price: `₹${product.price || 499}`
-            }});
-            
+            setCartPopup({
+              isVisible: true, item: {
+                name: product.display_name || product.name,
+                hex: selectedColor?.hex || "#CCCCCC",
+                price: `₹${product.price || 499}`
+              }
+            });
+
             // Auto-hide popup after 3 seconds
             setTimeout(() => {
               setCartPopup({ isVisible: false, item: null });
@@ -56,7 +58,7 @@ const QuickBuy = ({ product, selectedColor }) => {
           Add
         </button>
       </div>
-      
+
       {/* Cart Popup (Toast Notification) */}
       <CartPopup
         isVisible={cartPopup.isVisible}

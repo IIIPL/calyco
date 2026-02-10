@@ -14,7 +14,7 @@ const PAINT_COLOR_PRODUCT_NAME = 'Paint Color';
 const DEFAULT_FINISH = 'Standard Finish';
 
 const DEFAULT_PRODUCT_TYPE = 'Premium Interior Emulsion';
-const DEFAULT_SIZE_ORDER = ['1L', '4L', '10L', '20L', 'Swatch Card', 'SamplePot 200ml'];
+const DEFAULT_SIZE_ORDER = ['10L', '20L', 'Swatch Card', 'SamplePot 200ml'];
 
 const productDetailMap = {
   'Premium Interior Emulsion': premiumInteriorEmulsionDetail,
@@ -103,8 +103,8 @@ const buildVariantData = (detail) => {
   const sizeOrder =
     sizes.length > 0
       ? sizes
-          .map((entry) => (entry.size || '').replace(/\s+/g, ' ').trim())
-          .filter(Boolean)
+        .map((entry) => (entry.size || '').replace(/\s+/g, ' ').trim())
+        .filter(Boolean)
       : DEFAULT_SIZE_ORDER;
 
   const variants = {};
@@ -245,11 +245,11 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
     () =>
       sanitizeCode(
         colorMeta.ralCode ||
-          color?.code ||
-          color?.tintCode ||
-          color?.hex ||
-          colorMeta.name ||
-          '',
+        color?.code ||
+        color?.tintCode ||
+        color?.hex ||
+        colorMeta.name ||
+        '',
       ),
     [color, colorMeta],
   );
@@ -360,9 +360,8 @@ const ColorBuyBox = ({ color, products = [], selectedProductType, colorAttribute
               <button
                 key={label}
                 onClick={() => setSize(label)}
-                className={`px-3 py-2 rounded-lg border text-left transition ${
-                  isSelected ? 'bg-black text-white border-black' : 'bg-white text-gray-900 hover:border-black/40'
-                }`}
+                className={`px-3 py-2 rounded-lg border text-left transition ${isSelected ? 'bg-black text-white border-black' : 'bg-white text-gray-900 hover:border-black/40'
+                  }`}
               >
                 <div className="font-medium">{formatSizeLabel(label)}</div>
                 <div className={`text-xs ${isSelected ? 'text-white/80' : 'text-gray-500'}`}>

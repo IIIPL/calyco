@@ -16,8 +16,6 @@ export const products = [
     ],
     "price": 600,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L",
       "Swatch Card",
@@ -34,14 +32,6 @@ export const products = [
     },
     "priceByFinish": {
       "Low Sheen": {
-        "1L": {
-          "price": 600,
-          "variantId": "gid://shopify/ProductVariant/42663690600566"
-        },
-        "4L": {
-          "price": 1700,
-          "variantId": "gid://shopify/ProductVariant/42663690666102"
-        },
         "10L": {
           "price": 4100,
           "variantId": "gid://shopify/ProductVariant/42663690731638"
@@ -70,8 +60,6 @@ export const products = [
     ],
     "price": 800,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L",
       "Swatch Card",
@@ -88,14 +76,6 @@ export const products = [
     },
     "priceByFinish": {
       "Pearl": {
-        "1L": {
-          "price": 800,
-          "variantId": "gid://shopify/ProductVariant/42619088339062"
-        },
-        "4L": {
-          "price": 3500,
-          "variantId": "gid://shopify/ProductVariant/42619088404598"
-        },
         "10L": {
           "price": 8400,
           "variantId": "gid://shopify/ProductVariant/42619088470134"
@@ -124,8 +104,6 @@ export const products = [
     ],
     "price": 600,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L",
       "Swatch Card",
@@ -142,14 +120,6 @@ export const products = [
     },
     "priceByFinish": {
       "Matte Finish": {
-        "1L": {
-          "price": 600,
-          "variantId": "gid://shopify/ProductVariant/42663725006966"
-        },
-        "4L": {
-          "price": 1700,
-          "variantId": "gid://shopify/ProductVariant/42663725072502"
-        },
         "10L": {
           "price": 4100,
           "variantId": "gid://shopify/ProductVariant/42663725138038"
@@ -178,8 +148,6 @@ export const products = [
     ],
     "price": 800,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L",
       "Swatch Card",
@@ -196,14 +164,6 @@ export const products = [
     },
     "priceByFinish": {
       "High Sheen Finish": {
-        "1L": {
-          "price": 800,
-          "variantId": "gid://shopify/ProductVariant/42637669433462"
-        },
-        "4L": {
-          "price": 3500,
-          "variantId": "gid://shopify/ProductVariant/42637669498998"
-        },
         "10L": {
           "price": 8400,
           "variantId": "gid://shopify/ProductVariant/42637669564534"
@@ -232,8 +192,6 @@ export const products = [
     ],
     "price": 600,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L",
       "Swatch Card",
@@ -262,8 +220,6 @@ export const products = [
     ],
     "price": 285,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -278,12 +234,6 @@ export const products = [
     },
     "priceByFinish": {
       "Matte": {
-        "1L": {
-          "price": 285
-        },
-        "4L": {
-          "price": 1100
-        },
         "10L": {
           "price": 2700
         },
@@ -331,8 +281,6 @@ export const products = [
     ],
     "price": 310,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -347,12 +295,6 @@ export const products = [
     },
     "priceByFinish": {
       "Smooth": {
-        "1L": {
-          "price": 310
-        },
-        "4L": {
-          "price": 1150
-        },
         "10L": {
           "price": 3100
         },
@@ -399,8 +341,6 @@ export const products = [
     ],
     "price": 280,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -411,12 +351,6 @@ export const products = [
     ],
     "priceByFinish": {
       "Matte": {
-        "1L": {
-          "price": 280
-        },
-        "4L": {
-          "price": 1050
-        },
         "10L": {
           "price": 2500
         },
@@ -464,8 +398,6 @@ export const products = [
     ],
     "price": 400,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -476,12 +408,6 @@ export const products = [
     ],
     "priceByFinish": {
       "Matte": {
-        "1L": {
-          "price": 400
-        },
-        "4L": {
-          "price": 1500
-        },
         "10L": {
           "price": 3600
         },
@@ -529,8 +455,6 @@ export const products = [
     ],
     "price": 360,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -541,12 +465,6 @@ export const products = [
     ],
     "priceByFinish": {
       "Matte": {
-        "1L": {
-          "price": 360
-        },
-        "4L": {
-          "price": 1350
-        },
         "10L": {
           "price": 3200
         },
@@ -594,8 +512,6 @@ export const products = [
     ],
     "price": 450,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -604,12 +520,6 @@ export const products = [
     "images": [],
     "priceByFinish": {
       "High Gloss": {
-        "1L": {
-          "price": 450
-        },
-        "4L": {
-          "price": 1600
-        },
         "10L": {
           "price": 3500
         },
@@ -655,8 +565,6 @@ export const products = [
     ],
     "price": 550,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -667,12 +575,6 @@ export const products = [
     ],
     "priceByFinish": {
       "High Gloss": {
-        "1L": {
-          "price": 550
-        },
-        "4L": {
-          "price": 2000
-        },
         "10L": {
           "price": 4800
         },
@@ -718,8 +620,6 @@ export const products = [
     ],
     "price": 80,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -730,12 +630,6 @@ export const products = [
     ],
     "priceByFinish": {
       "Matt": {
-        "1L": {
-          "price": 80
-        },
-        "4L": {
-          "price": 300
-        },
         "10L": {
           "price": 600
         },
@@ -783,8 +677,6 @@ export const products = [
     ],
     "price": 450,
     "packaging": [
-      "1L",
-      "4L",
       "10L",
       "20L"
     ],
@@ -795,12 +687,6 @@ export const products = [
     ],
     "priceByFinish": {
       "Semi-Gloss/Satin": {
-        "1L": {
-          "price": 450
-        },
-        "4L": {
-          "price": 1700
-        },
         "10L": {
           "price": 3800
         },
@@ -966,7 +852,7 @@ export const products = [
     "finish_type_sheen": ["Flat"],
     "finishes": ["Flat"],
     "price": 240,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "Flat",
     "defaultFinish": "Flat",
     "images": ["/Assets/Product%20Images/Pink%20Primer/pink-primer.webp"],
@@ -1028,15 +914,13 @@ export const products = [
     },
     "priceByFinish": {
       "Flat": {
-        "1L": { "price": 240, "mrp": 300 },
-        "4L": { "price": 880, "mrp": 1020 },
+
         "10L": { "price": 2000, "mrp": 2300 },
         "20L": { "price": 3760, "mrp": 4200 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "Flat": 240 }, "originalPrice": 300 },
-      { "size": "4L", "priceByFinish": { "Flat": 880 }, "originalPrice": 1020 },
+
       { "size": "10L", "priceByFinish": { "Flat": 2000 }, "originalPrice": 2300 },
       { "size": "20L", "priceByFinish": { "Flat": 3760 }, "originalPrice": 4200 }
     ],
@@ -1057,7 +941,7 @@ export const products = [
     "finish_type_sheen": ["Flat"],
     "finishes": ["Flat"],
     "price": 320,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "Flat",
     "defaultFinish": "Flat",
     "images": ["/Assets/Product%20Images/Yellow%20Metal%20Primer/yellow-metal-primer.webp"],
@@ -1119,15 +1003,13 @@ export const products = [
     },
     "priceByFinish": {
       "Flat": {
-        "1L": { "price": 320, "mrp": 380 },
-        "4L": { "price": 1200, "mrp": 1400 },
+
         "10L": { "price": 2800, "mrp": 3200 },
         "20L": { "price": 5280, "mrp": 6000 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "Flat": 320 }, "originalPrice": 380 },
-      { "size": "4L", "priceByFinish": { "Flat": 1200 }, "originalPrice": 1400 },
+
       { "size": "10L", "priceByFinish": { "Flat": 2800 }, "originalPrice": 3200 },
       { "size": "20L", "priceByFinish": { "Flat": 5280 }, "originalPrice": 6000 }
     ],
@@ -1148,7 +1030,7 @@ export const products = [
     "finish_type_sheen": ["High Gloss"],
     "finishes": ["High Gloss"],
     "price": 480,
-    "packaging": ["500ml", "1L", "4L", "10L"],
+    "packaging": ["500ml", "10L"],
     "default_finish": "High Gloss",
     "defaultFinish": "High Gloss",
     "images": ["/Assets/Product%20Images/Melamine%20Polish/melamine-polish.webp"],
@@ -1210,15 +1092,13 @@ export const products = [
     "priceByFinish": {
       "High Gloss": {
         "500ml": { "price": 280, "mrp": 340 },
-        "1L": { "price": 480, "mrp": 560 },
-        "4L": { "price": 1760, "mrp": 2000 },
+
         "10L": { "price": 4160, "mrp": 4700 }
       }
     },
     "sizes": [
       { "size": "500ml", "priceByFinish": { "High Gloss": 280 }, "originalPrice": 340 },
-      { "size": "1L", "priceByFinish": { "High Gloss": 480 }, "originalPrice": 560 },
-      { "size": "4L", "priceByFinish": { "High Gloss": 1760 }, "originalPrice": 2000 },
+
       { "size": "10L", "priceByFinish": { "High Gloss": 4160 }, "originalPrice": 4700 }
     ],
     "documents": {
@@ -1238,7 +1118,7 @@ export const products = [
     "finish_type_sheen": ["Matt"],
     "finishes": ["Matt"],
     "price": 640,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "Matt",
     "defaultFinish": "Matt",
     "images": ["/Assets/Product%20Images/Fire%20Retardant%20Paint/fire-retardant-paint.webp"],
@@ -1299,15 +1179,13 @@ export const products = [
     },
     "priceByFinish": {
       "Matt": {
-        "1L": { "price": 640, "mrp": 750 },
-        "4L": { "price": 2400, "mrp": 2800 },
+
         "10L": { "price": 5600, "mrp": 6200 },
         "20L": { "price": 10560, "mrp": 11800 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "Matt": 640 }, "originalPrice": 750 },
-      { "size": "4L", "priceByFinish": { "Matt": 2400 }, "originalPrice": 2800 },
+
       { "size": "10L", "priceByFinish": { "Matt": 5600 }, "originalPrice": 6200 },
       { "size": "20L", "priceByFinish": { "Matt": 10560 }, "originalPrice": 11800 }
     ],
@@ -1329,7 +1207,7 @@ export const products = [
     "finish_type_sheen": ["Semi-Gloss"],
     "finishes": ["Semi-Gloss"],
     "price": 160,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "Semi-Gloss",
     "defaultFinish": "Semi-Gloss",
     "images": ["/Assets/Product%20Images/Anti-Corrosive%20Bitumastic%20Paint/anti-corrosive-bitumastic-paint.webp"],
@@ -1390,15 +1268,13 @@ export const products = [
     },
     "priceByFinish": {
       "Semi-Gloss": {
-        "1L": { "price": 160, "mrp": 200 },
-        "4L": { "price": 600, "mrp": 720 },
+
         "10L": { "price": 1400, "mrp": 1700 },
         "20L": { "price": 2640, "mrp": 3100 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "Semi-Gloss": 160 }, "originalPrice": 200 },
-      { "size": "4L", "priceByFinish": { "Semi-Gloss": 600 }, "originalPrice": 720 },
+
       { "size": "10L", "priceByFinish": { "Semi-Gloss": 1400 }, "originalPrice": 1700 },
       { "size": "20L", "priceByFinish": { "Semi-Gloss": 2640 }, "originalPrice": 3100 }
     ],
@@ -1419,7 +1295,7 @@ export const products = [
     "finish_type_sheen": ["High Gloss"],
     "finishes": ["High Gloss"],
     "price": 640,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "High Gloss",
     "defaultFinish": "High Gloss",
     "images": ["/Assets/Product%20Images/Epoxy%20Paint/epoxy-paint.webp"],
@@ -1480,15 +1356,13 @@ export const products = [
     },
     "priceByFinish": {
       "High Gloss": {
-        "1L": { "price": 640, "mrp": 750 },
-        "4L": { "price": 2400, "mrp": 2800 },
+
         "10L": { "price": 5600, "mrp": 6200 },
         "20L": { "price": 10560, "mrp": 11800 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "High Gloss": 640 }, "originalPrice": 750 },
-      { "size": "4L", "priceByFinish": { "High Gloss": 2400 }, "originalPrice": 2800 },
+
       { "size": "10L", "priceByFinish": { "High Gloss": 5600 }, "originalPrice": 6200 },
       { "size": "20L", "priceByFinish": { "High Gloss": 10560 }, "originalPrice": 11800 }
     ],
@@ -1509,7 +1383,7 @@ export const products = [
     "finish_type_sheen": ["Matt"],
     "finishes": ["Matt"],
     "price": 520,
-    "packaging": ["500ml", "1L", "4L", "10L", "20L"],
+    "packaging": ["500ml", "10L", "20L"],
     "default_finish": "Matt",
     "defaultFinish": "Matt",
     "images": ["/Assets/Product%20Images/Wood%20Primer/wood-primer.webp"],
@@ -1571,16 +1445,14 @@ export const products = [
     "priceByFinish": {
       "Matt": {
         "500ml": { "price": 280, "mrp": 320 },
-        "1L": { "price": 520, "mrp": 600 },
-        "4L": { "price": 1920, "mrp": 2200 },
+
         "10L": { "price": 4480, "mrp": 5000 },
         "20L": { "price": 8480, "mrp": 9500 }
       }
     },
     "sizes": [
       { "size": "500ml", "priceByFinish": { "Matt": 280 }, "originalPrice": 320 },
-      { "size": "1L", "priceByFinish": { "Matt": 520 }, "originalPrice": 600 },
-      { "size": "4L", "priceByFinish": { "Matt": 1920 }, "originalPrice": 2200 },
+
       { "size": "10L", "priceByFinish": { "Matt": 4480 }, "originalPrice": 5000 },
       { "size": "20L", "priceByFinish": { "Matt": 8480 }, "originalPrice": 9500 }
     ],
@@ -1601,7 +1473,7 @@ export const products = [
     "finish_type_sheen": ["Matt"],
     "finishes": ["Matt"],
     "price": 240,
-    "packaging": ["1L", "4L", "10L", "20L"],
+    "packaging": ["10L", "20L"],
     "default_finish": "Matt",
     "defaultFinish": "Matt",
     "images": ["/Assets/Product%20Images/Red%20Oxide%20Zinc%20Chromate%20Primer/red-oxide-zinc-chromate-primer.webp"],
@@ -1662,15 +1534,13 @@ export const products = [
     },
     "priceByFinish": {
       "Matt": {
-        "1L": { "price": 240, "mrp": 300 },
-        "4L": { "price": 880, "mrp": 1020 },
+
         "10L": { "price": 2000, "mrp": 2300 },
         "20L": { "price": 3680, "mrp": 4200 }
       }
     },
     "sizes": [
-      { "size": "1L", "priceByFinish": { "Matt": 240 }, "originalPrice": 300 },
-      { "size": "4L", "priceByFinish": { "Matt": 880 }, "originalPrice": 1020 },
+
       { "size": "10L", "priceByFinish": { "Matt": 2000 }, "originalPrice": 2300 },
       { "size": "20L", "priceByFinish": { "Matt": 3680 }, "originalPrice": 4200 }
     ],
