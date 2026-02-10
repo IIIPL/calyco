@@ -1,6 +1,4 @@
 const PREMIUM_INTERIOR_VARIANT_MAP = {
-  "1L-Low Sheen": "gid://shopify/ProductVariant/42663690600566",
-  "4L-Low Sheen": "gid://shopify/ProductVariant/42663690666102",
   "10L-Low Sheen": "gid://shopify/ProductVariant/42663690731638",
   "20L-Low Sheen": "gid://shopify/ProductVariant/42663690797174",
   "Swatch Card-Low Sheen": "gid://shopify/ProductVariant/42663691518070",
@@ -9,8 +7,6 @@ const PREMIUM_INTERIOR_VARIANT_MAP = {
 
 const priceByFinish = {
   "Low Sheen": {
-    "1L": 600,
-    "4L": 1700,
     "10L": 4100,
     "20L": 8000,
     "Swatch Card": 99,
@@ -20,22 +16,7 @@ const priceByFinish = {
 
 // 🔧 FIXED: Reordered sizes - Sample options AFTER regular sizes
 const sizes = [
-  {
-    size: "1L",
-    priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["1L"]
-    },
-    price: priceByFinish["Low Sheen"]["1L"],
-    originalPrice: 700,
-  },
-  {
-    size: "4L",
-    priceByFinish: {
-      "Low Sheen": priceByFinish["Low Sheen"]["4L"]
-    },
-    price: priceByFinish["Low Sheen"]["4L"],
-    originalPrice: 2700,
-  },
+
   {
     size: "10L",
     priceByFinish: {
@@ -106,7 +87,7 @@ export const premiumInteriorEmulsionDetail = {
       name: "Low Sheen",
       description:
         "Soft, elegant finish perfect for living spaces, bedrooms, and dining rooms.",
-      price: priceByFinish["Low Sheen"]["1L"],
+      price: priceByFinish["Low Sheen"]["10L"],
     },
   ],
   defaultFinish: "Low Sheen",
@@ -144,10 +125,10 @@ export const premiumInteriorEmulsionDetail = {
   preparation_instructions: "Clean dry surface, primed if needed. Remove dust, grease, and loose paint.",
   recommended_uses: ["Walls & Ceilings: Ideal for plaster, POP, and drywall surfaces"],
   substrate: ["Drywall", "Plaster", "Wood", "Masonry", "Metal"],
-  
+
   // 🔧 FIXED: Added more than one finish to show the selector
   finish_type_sheen: ["Low Sheen", "Matte"], // Adding Matte to show selector
-  
+
   advantages: [
     "High-Pigment Colour for stunning, vibrant results",
     "Superior Coverage reduces application time and costs",
@@ -204,17 +185,15 @@ export const premiumInteriorEmulsionDetail = {
     warranty: "/Assets/docs/premium-interior-emulsion-warranty.pdf",
   },
   warranty: "5 years",
-  
+
   // 🔧 FIXED: Reordered packaging array - samples AFTER regular sizes
   packaging: [
-    "1L",
-    "4L",
     "10L",
     "20L",
     "Swatch Card",
     "SamplePot 200ml"
   ],
-  
+
   bucketImage: "/Assets/Product Images/Premium Interior Emulsion/1.webp",
   images: [
     "/Assets/Product Images/Premium Interior Emulsion/1.webp"

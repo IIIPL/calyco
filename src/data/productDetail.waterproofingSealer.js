@@ -1,8 +1,6 @@
 // 🔧 UPDATED: Waterproofing Sealer with Swatch Card + Sample Pot variants
 
 const WATERPROOFING_SEALER_VARIANT_MAP = {
-  "1L-Matte Finish": "gid://shopify/ProductVariant/42638016217206",
-  "4L-Matte Finish": "gid://shopify/ProductVariant/42638016282742",
   "10L-Matte Finish": "gid://shopify/ProductVariant/42638016348278",
   "20L-Matte Finish": "gid://shopify/ProductVariant/42638016413814",
   "Swatch Card-Matte Finish": "gid://shopify/ProductVariant/42663763017846",
@@ -11,8 +9,6 @@ const WATERPROOFING_SEALER_VARIANT_MAP = {
 
 const priceByFinish = {
   "Matte Finish": {
-    "1L": 600,
-    "4L": 2200,
     "10L": 4100,
     "20L": 8000,
     "Swatch Card": 99,
@@ -22,22 +18,7 @@ const priceByFinish = {
 
 // 🔧 UPDATED: Sizes array with sample variants in correct order (after 20L)
 const sizes = [
-  {
-    size: "1L",
-    priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["1L"]
-    },
-    price: priceByFinish["Matte Finish"]["1L"],
-    originalPrice: 700,
-  },
-  {
-    size: "4L",
-    priceByFinish: {
-      "Matte Finish": priceByFinish["Matte Finish"]["4L"]
-    },
-    price: priceByFinish["Matte Finish"]["4L"],
-    originalPrice: 2700,
-  },
+
   {
     size: "10L",
     priceByFinish: {
@@ -107,7 +88,7 @@ export const waterproofingSealerDetail = {
       name: "Matte Finish",
       description:
         "Dead-flat breathable finish that accepts clear or tinted topcoats while maintaining a monolithic waterproof barrier.",
-      price: priceByFinish["Matte Finish"]["1L"],
+      price: priceByFinish["Matte Finish"]["10L"],
     },
   ],
   defaultFinish: "Matte Finish",
@@ -248,17 +229,16 @@ export const waterproofingSealerDetail = {
   ],
   relatedProducts: [],
   warranty: "5-year waterproofing guarantee when applied as per TDS.",
-  
+
   // 🔧 UPDATED: Added sample variants in correct order
   packaging: [
-    "1L",
-    "4L",
+
     "10L",
     "20L",
     "Swatch Card",
     "SamplePot 200ml"
   ],
-  
+
   bucketImage: "/Assets/Product Images/Waterproof Sealer/1.webp",
   images: [
     "/Assets/Product Images/Waterproof Sealer/1.webp"

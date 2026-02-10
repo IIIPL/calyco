@@ -18,27 +18,27 @@ const hexToRgb = (hex) => {
 const calculateLRV = (hex) => {
   const rgb = hexToRgb(hex);
   if (!rgb) return 45;
-  
+
   // Convert RGB to relative luminance
   const { r, g, b } = rgb;
   const rsRGB = r / 255;
   const gsRGB = g / 255;
   const bsRGB = b / 255;
-  
+
   const rLinear = rsRGB <= 0.03928 ? rsRGB / 12.92 : Math.pow((rsRGB + 0.055) / 1.055, 2.4);
   const gLinear = gsRGB <= 0.03928 ? gsRGB / 12.92 : Math.pow((gsRGB + 0.055) / 1.055, 2.4);
   const bLinear = bsRGB <= 0.03928 ? bsRGB / 12.92 : Math.pow((bsRGB + 0.055) / 1.055, 2.4);
-  
+
   const luminance = 0.2126 * rLinear + 0.7152 * gLinear + 0.0722 * bLinear;
-  
+
   // Convert to LRV (0-100 scale)
   return Math.round(luminance * 100);
 };
 
-const ColorDetailSidebar = ({ 
-  isOpen, 
-  onClose, 
-  selectedColor, 
+const ColorDetailSidebar = ({
+  isOpen,
+  onClose,
+  selectedColor,
   similarColors = [],
   onColorChange
 }) => {
@@ -47,12 +47,11 @@ const ColorDetailSidebar = ({
   const [selectedSize, setSelectedSize] = useState('1l');
   const [quantity, setQuantity] = useState(1);
   const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
-  
+
   if (!selectedColor) return null;
 
   const sizeOptions = [
-    { id: '1l', label: '1L', price: 699 },
-    { id: '4l', label: '4L', price: 2796 },
+
     { id: '10l', label: '10L', price: 6990 },
     { id: '20l', label: '20L', price: 13980 }
   ];
@@ -60,9 +59,9 @@ const ColorDetailSidebar = ({
   const handleAddToCart = () => {
     const selectedSizeOption = sizeOptions.find(size => size.id === selectedSize);
     const totalPrice = selectedSizeOption.price * quantity;
-    
+
     console.log(`Added ${selectedColor.name} to cart - ${selectedSizeOption.label} x${quantity}`);
-    
+
     // Create a product object for the cart
     const productForCart = {
       id: `color-${selectedColor.name.toLowerCase().replace(/\s+/g, '-')}-${selectedSize}`,
@@ -75,23 +74,25 @@ const ColorDetailSidebar = ({
         </svg>
       `)}`
     };
-    
+
     // Add to actual cart
     addToCart(productForCart, selectedSizeOption.label, selectedSizeOption.label, quantity, totalPrice, {
       name: selectedColor.name,
       hex: selectedColor.hex,
       size: selectedSizeOption.label
     });
-    
+
     // Show cart popup (toast notification) first
     console.log('Setting cart popup to visible with item:', selectedColor.name);
-    setCartPopup({ isVisible: true, item: {
-      name: `${selectedColor.name} - ${selectedSizeOption.label}`,
-      hex: selectedColor.hex,
-      price: `₹${totalPrice}`,
-      quantity: quantity
-    }});
-    
+    setCartPopup({
+      isVisible: true, item: {
+        name: `${selectedColor.name} - ${selectedSizeOption.label}`,
+        hex: selectedColor.hex,
+        price: `₹${totalPrice}`,
+        quantity: quantity
+      }
+    });
+
     // Auto-hide popup after 3 seconds and then close sidebar
     setTimeout(() => {
       console.log('Auto-hiding cart popup and closing sidebar');
@@ -144,7 +145,7 @@ const ColorDetailSidebar = ({
               className="fixed inset-0 bg-black/50 z-40"
               onClick={onClose}
             />
-            
+
             {/* Sidebar */}
             <motion.div
               initial={{ x: '100%' }}
@@ -170,7 +171,7 @@ const ColorDetailSidebar = ({
                   className="w-full h-32 rounded-lg shadow-md mb-6"
                   style={{ backgroundColor: selectedColor.hex }}
                 />
-                
+
                 {/* Color Info */}
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-[#393939] mb-2">
@@ -184,7 +185,7 @@ const ColorDetailSidebar = ({
                       <span className="text-xs font-bold text-white">C</span>
                     </div>
                   </div>
-                  
+
                   {/* Color Values */}
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center">
@@ -205,7 +206,7 @@ const ColorDetailSidebar = ({
                 {/* Description */}
                 <div className="mb-6">
                   <p className="text-gray-700 leading-relaxed">
-                    {selectedColor.description || 
+                    {selectedColor.description ||
                       `A beautiful ${selectedColor.name.toLowerCase()} color that brings warmth and character to any space. Perfect for creating a cozy and inviting atmosphere.`}
                   </p>
                 </div>
@@ -230,11 +231,10 @@ const ColorDetailSidebar = ({
                       <button
                         key={size.id}
                         onClick={() => setSelectedSize(size.id)}
-                        className={`p-3 rounded-lg border-2 transition-all text-left ${
-                          selectedSize === size.id
+                        className={`p-3 rounded-lg border-2 transition-all text-left ${selectedSize === size.id
                             ? 'border-[#1a1a2e] bg-gray-50'
                             : 'border-gray-200 hover:border-gray-300'
-                        }`}
+                          }`}
                       >
                         <div className="mb-1">
                           <span className="text-sm font-medium text-gray-900">{size.label}</span>
@@ -269,7 +269,7 @@ const ColorDetailSidebar = ({
 
                 {/* Action Button */}
                 <div className="mb-6">
-                  <button 
+                  <button
                     onClick={handleAddToCart}
                     className="w-full flex items-center justify-center gap-2 bg-[#1a1a2e] text-white font-semibold py-3 px-4 rounded-lg hover:bg-[#16213e] transition-colors border border-[#1a1a2e] hover:border-[#16213e]"
                   >
@@ -307,7 +307,7 @@ const ColorDetailSidebar = ({
           </>
         )}
       </AnimatePresence>
-      
+
       {/* Cart Popup (Toast Notification) - Outside AnimatePresence */}
       <CartPopup
         isVisible={cartPopup.isVisible}

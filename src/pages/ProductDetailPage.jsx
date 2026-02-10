@@ -20,26 +20,18 @@ import { useCart } from "../context/CartContext";
 import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 const INTERIOR_LATEX_VARIANT_MAP = {
-  '1L-Low Sheen': 'gid://shopify/ProductVariant/42619088371830',
-  '4L-Low Sheen': 'gid://shopify/ProductVariant/42619088437366',
   '10L-Low Sheen': 'gid://shopify/ProductVariant/42619088502902',
   '20L-Low Sheen': 'gid://shopify/ProductVariant/42619088568438',
-  '1L-Pearl': 'gid://shopify/ProductVariant/42619088339062',
-  '4L-Pearl': 'gid://shopify/ProductVariant/42619088404598',
   '10L-Pearl': 'gid://shopify/ProductVariant/42619088470134',
   '20L-Pearl': 'gid://shopify/ProductVariant/42619088535670',
 };
 
 const INTERIOR_LATEX_PRICING = {
   'Low Sheen': {
-    '1L': 700,
-    '4L': 2700,
     '10L': 6500,
     '20L': 12800,
   },
   'Pearl': {
-    '1L': 800,
-    '4L': 3500,
     '10L': 8400,
     '20L': 16000,
   },
@@ -47,14 +39,10 @@ const INTERIOR_LATEX_PRICING = {
 
 const INTERIOR_LATEX_MRP = {
   'Low Sheen': {
-    '1L': 850,
-    '4L': 3200,
     '10L': 7800,
     '20L': 15600,
   },
   'Pearl': {
-    '1L': 950,
-    '4L': 4200,
     '10L': 10100,
     '20L': 19200,
   },
@@ -128,16 +116,7 @@ const sampleProduct = {
   ],
   microCopy: "Low-VOC • Safe for kids • Water-based",
   sizes: [
-    {
-      size: "1L",
-      priceByFinish: { "Low Sheen": 700, "Pearl": 800 },
-      mrpByFinish: { "Low Sheen": 850, "Pearl": 950 },
-    },
-    {
-      size: "4L",
-      priceByFinish: { "Low Sheen": 2700, "Pearl": 3500 },
-      mrpByFinish: { "Low Sheen": 3200, "Pearl": 4200 },
-    },
+
     {
       size: "10L",
       priceByFinish: { "Low Sheen": 6500, "Pearl": 8400 },
@@ -152,25 +131,17 @@ const sampleProduct = {
 
   price_by_finish: {
     "Low Sheen": {
-      "1L": 700,
-      "4L": 2700,
       "10L": 6500,
       "20L": 12800
     },
     "Pearl": {
-      "1L": 800,
-      "4L": 3500,
       "10L": 8400,
       "20L": 16000
     }
   },
   shopify_variant_map: {
-    "1L-Low Sheen": "gid://shopify/ProductVariant/42619088371830",
-    "4L-Low Sheen": "gid://shopify/ProductVariant/42619088437366",
     "10L-Low Sheen": "gid://shopify/ProductVariant/42619088502902",
     "20L-Low Sheen": "gid://shopify/ProductVariant/42619088568438",
-    "1L-Pearl": "gid://shopify/ProductVariant/42619088339062",
-    "4L-Pearl": "gid://shopify/ProductVariant/42619088404598",
     "10L-Pearl": "gid://shopify/ProductVariant/42619088470134",
     "20L-Pearl": "gid://shopify/ProductVariant/42619088535670"
   },
@@ -332,7 +303,7 @@ export default function ProductDetailPage({ productData }) {
       return;
     }
 
-    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "1L";
+    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "10L";
     const sizeLabel = typeof sizeLabelRaw === "string" ? sizeLabelRaw : String(sizeLabelRaw);
     const priceMap = currentSize.priceByFinish || currentSize.price_by_finish || {};
     const currentPrice =
@@ -524,8 +495,8 @@ export default function ProductDetailPage({ productData }) {
     return currentSize.price || 0;
   })();
   const currentSizeLabel = currentSize
-    ? currentSize.size || currentSize.label || currentSize.name || "1L"
-    : "1L";
+    ? currentSize.size || currentSize.label || currentSize.name || "10L"
+    : "10L";
   const currentMrp = (() => {
     if (!currentSize) {
       return null;
@@ -537,7 +508,7 @@ export default function ProductDetailPage({ productData }) {
     if (typeof currentSize.originalPrice === "number") {
       return currentSize.originalPrice;
     }
-    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "1L";
+    const sizeLabelRaw = currentSize.size || currentSize.label || currentSize.name || "10L";
     const sizeLabel = typeof sizeLabelRaw === "string" ? sizeLabelRaw : String(sizeLabelRaw);
     const finishMrp = INTERIOR_LATEX_MRP[currentFinishName];
     if (finishMrp) {
