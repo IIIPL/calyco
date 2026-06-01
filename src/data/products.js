@@ -27,8 +27,9 @@ export const products = [
       "/Assets/Product Images/Premium Interior Emulsion/1.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/premium-interior-emulsion-sds.html",
-      "tds": "/Assets/docs/html-templates/premium-interior-emulsion-tds.html"
+      "sds": "/Assets/docs/sds_Premium-Interior-Emulsion.pdf",
+      "tds": "/Assets/docs/tds_Premium-Interior-Emulsion.pdf",
+      "warranty": "/Assets/docs/premium-interior-warranty.pdf"
     },
     "priceByFinish": {
       "Low Sheen": {
@@ -71,8 +72,9 @@ export const products = [
       "/Assets/Product Images/Luxury Interior Emulsion/1.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/luxury-interior-emulsion-sds.html",
-      "tds": "/Assets/docs/html-templates/luxury-interior-emulsion-tds.html"
+      "sds": "/Assets/docs/sds_Interior-Latex-Paint.pdf",
+      "tds": "/Assets/docs/tds_Interior-Latex-Paint.pdf",
+      "warranty": "/Assets/docs/interior-latex-warranty.pdf"
     },
     "priceByFinish": {
       "Pearl": {
@@ -115,8 +117,9 @@ export const products = [
       "/Assets/Product Images/Premium Exterior Emulsion/1.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/premium-exterior-emulsion-sds.html",
-      "tds": "/Assets/docs/html-templates/premium-exterior-emulsion-tds.html"
+      "sds": "/Assets/docs/sds_Premium-Exterior-Emulsion.pdf",
+      "tds": "/Assets/docs/tds_Premium-Exterior-Emulsion.pdf",
+      "warranty": "/Assets/docs/premium-exterior-warranty.pdf"
     },
     "priceByFinish": {
       "Matte Finish": {
@@ -159,8 +162,9 @@ export const products = [
       "/Assets/Product Images/Luxury Exterior Emulsion/1.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/luxury-exterior-emulsion-sds.html",
-      "tds": "/Assets/docs/html-templates/luxury-exterior-emulsion-tds.html"
+      "sds": "/Assets/docs/sds_Exterior-Latex-Paint.pdf",
+      "tds": "/Assets/docs/tds_Exterior-Latex-Paint.pdf",
+      "warranty": "/Assets/docs/exterior-latex-warranty.pdf"
     },
     "priceByFinish": {
       "High Sheen Finish": {
@@ -201,7 +205,12 @@ export const products = [
     "defaultFinish": "Matte Finish",
     "images": [
       "/Assets/Product Images/Waterproof Sealer/1.webp"
-    ]
+    ],
+    "documents": {
+      "sds": "/Assets/docs/waterproofing-sealer-sds.pdf",
+      "tds": "/Assets/docs/waterproofing-sealer-tds.pdf",
+      "warranty": "/Assets/docs/waterproof-sealer-warranty.pdf"
+    }
   },
   {
     "id": "CalycoWaterPrimerInterior",
@@ -229,8 +238,8 @@ export const products = [
       "/Assets/Product Images/Calyco Interior Water Primer/calyco-water-primer-interior.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/calyco-water-primer-interior-sds.html",
-      "tds": "/Assets/docs/html-templates/calyco-water-primer-interior-tds.html"
+      "sds": "/Assets/docs/sds_calyco-water-primer-interior.pdf",
+      "tds": "/Assets/docs/tds_calyco-water-primer-interior.pdf"
     },
     "priceByFinish": {
       "Matte": {
@@ -290,8 +299,9 @@ export const products = [
       "/Assets/Product Images/Calyco Exterior Weather Primer/calyco-exterior-weather-primer.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/calyco-weather-primer-exterior-sds.html",
-      "tds": "/Assets/docs/html-templates/calyco-weather-primer-exterior-tds.html"
+      "sds": "/Assets/docs/sds_calyco-weather-primer-exterior.pdf",
+      "tds": "/Assets/docs/tds_calyco-weather-primer-exterior.pdf",
+      "warranty": "/Assets/docs/exterior-weather-shield-warranty.pdf"
     },
     "priceByFinish": {
       "Smooth": {
@@ -801,8 +811,8 @@ export const products = [
       "/Assets/Product Images/Calyco Acrylic Putty/calyco-acrylic-putty.webp"
     ],
     "documents": {
-      "sds": "/Assets/docs/html-templates/calyco-acrylic-wall-putty-sds.html",
-      "tds": "/Assets/docs/html-templates/calyco-acrylic-wall-putty-tds.html"
+      "sds": "/Assets/docs/sds_calyco-acrylic-wall-putty.pdf",
+      "tds": "/Assets/docs/tds_calyco-acrylic-wall-putty.pdf"
     },
     "priceByFinish": {
       "Smooth": {

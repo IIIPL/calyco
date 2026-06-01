@@ -1,22 +1,23 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { cities } from "../data/cities"; // <--- NEW IMPORT
+import contactData from "../data/admin/contact.json";
 
-const GoldenDots = ({ count = 10 }) => {
+// Decorative Subtle Dots Background
+const SubtleDots = ({ count = 8 }) => {
   const dots = Array.from({ length: count }, (_, i) => ({
     id: i,
-    size: Math.random() * 8 + 4,
+    size: Math.random() * 6 + 3,
     x: Math.random() * 100,
     y: Math.random() * 100,
     delay: Math.random() * 3,
-    dur: Math.random() * 4 + 3,
+    dur: Math.random() * 5 + 4,
   }));
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {dots.map(d => (
         <div
           key={d.id}
-          className="absolute rounded-full bg-gradient-to-r from-[#F0C85A] to-[#ffd700] animate-pulse"
+          className="absolute rounded-full bg-gradient-to-r from-[#0F1221]/5 to-[#0F1221]/3 animate-pulse"
           style={{
             width: d.size,
             height: d.size,
@@ -24,7 +25,6 @@ const GoldenDots = ({ count = 10 }) => {
             top: `${d.y}%`,
             animationDelay: `${d.delay}s`,
             animationDuration: `${d.dur}s`,
-            boxShadow: `0 0 ${d.size * 2}px rgba(240,200,90,.35)`,
           }}
         />
       ))}
@@ -32,113 +32,149 @@ const GoldenDots = ({ count = 10 }) => {
   );
 };
 
+// Column Helper Component
 const Col = ({ title, children }) => (
   <div>
     {title && (
-      <h4 className="text-xs md:text-sm font-semibold tracking-[.12em] uppercase text-white/90 mb-3 md:mb-4">
+      <h4 className="text-xs md:text-sm font-medium tracking-[.15em] uppercase text-[#C4A962] mb-5 md:mb-6">
         {title}
       </h4>
     )}
-    <ul className="space-y-2.5 text-sm md:text-[15px]">{children}</ul>
+    <ul className="space-y-3.5 text-sm md:text-[15px]">{children}</ul>
   </div>
 );
 
-const Item = ({ to, children }) => (
-  <li>
-    <Link
-      to={to}
-      className="group inline-flex items-center gap-2 text-[#e5e0d8]/90 hover:text-[#F0C85A] transition-colors"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    >
-      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#F0C85A] opacity-0 group-hover:opacity-100 transition-opacity" />
-      <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-0 after:bg-[#F0C85A] group-hover:after:w-full after:transition-all">
+// Link Item Helper Component
+const Item = ({ to, children, isExternal = false }) => {
+  const content = (
+    <>
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C4A962] opacity-0 group-hover:opacity-100 transition-opacity" />
+      <span className="relative after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-0 after:bg-[#C4A962] group-hover:after:w-full after:transition-all">
         {children}
       </span>
-    </Link>
-  </li>
-);
+    </>
+  );
 
-export const Footer = () => (
-  <footer className="relative bg-[#1A1C24] text-white border-t border-[#493657]/30 overflow-hidden">
-    <GoldenDots />
+  return (
+    <li>
+      {isExternal ? (
+        <a
+          href={to}
+          target="_blank"
+          rel="noreferrer"
+          className="group inline-flex items-center gap-2 text-[#0F1221]/60 hover:text-[#0F1221] transition-colors duration-300"
+        >
+          {content}
+        </a>
+      ) : (
+        <Link
+          to={to}
+          className="group inline-flex items-center gap-2 text-[#0F1221]/60 hover:text-[#0F1221] transition-colors duration-300"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          {content}
+        </Link>
+      )}
+    </li>
+  );
+};
 
-    {/* TOP GRID */}
-    <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-24 pt-12 pb-10">
-      {/* UPDATED: Changed grid-cols-4 to grid-cols-5 to fit the new column */}
-      <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-        
-        {/* Column 1: Brand */}
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <img src="/Logo.png" alt="CALYCO" className="w-12 h-12 object-contain" />
+export const Footer = () => {
+  const { address, phone, email, workingHours, whatsapp } = contactData.contact;
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="relative bg-gradient-to-br from-[#F5F1E8] via-[#EDE8DC] to-[#E8E3D5] text-[#0F1221] border-t border-[#C4A962]/20 overflow-hidden font-poppins">
+      <SubtleDots />
+
+      {/* Main Content Info - More Generous Spacing */}
+      <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12 lg:px-16 xl:px-24 pt-24 pb-16">
+        <div className="grid gap-16 sm:gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* Column 1: Company Description */}
+          <div className="space-y-7">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <img src="/Logo.png" alt="CALYCO" className="w-16 h-auto object-contain" />
+            </Link>
+            <p className="text-sm text-[#3D3020]/70 leading-[1.7] max-w-xs font-light">
+              Calyco manufactures and supplies specification-grade interior, exterior, textured, and waterproofing coatings direct to professionals worldwide. Low-VOC, water-based acrylic formulations. Dedicated account support on every project.
+            </p>
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="text-[#C4A962] hover:text-[#3D3020] transition-colors duration-300">
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="text-[#C4A962] hover:text-[#3D3020] transition-colors duration-300">
+                <FaYoutube className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="text-[#C4A962] hover:text-[#3D3020] transition-colors duration-300">
+                <FaLinkedin className="w-5 h-5" />
+              </a>
+              <a href={whatsapp.link} target="_blank" rel="noreferrer" className="text-[#C4A962] hover:text-[#3D3020] transition-colors duration-300">
+                <FaWhatsapp className="w-5 h-5" />
+              </a>
+            </div>
           </div>
-          <p className="text-sm text-[#e5e0d8]/90 max-w-xs">
-            Premium paints for beautiful, lasting spaces. Low-VOC, high-performance finishes.
-          </p>
-          <div className="flex gap-4 mt-5">
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaInstagram className="w-5 h-5" />
-            </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaYoutube className="w-5 h-5" />
-            </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaLinkedin className="w-5 h-5" />
-            </a>
-            <a href="https://wa.me/" target="_blank" rel="noreferrer" className="hover:text-[#F0C85A]">
-              <FaWhatsapp className="w-5 h-5" />
-            </a>
+
+          {/* Column 2: Quick Links */}
+          <Col title="Quick Links">
+            <Item to="/products">Product Range</Item>
+            <Item to="/downloads">Technical Data Sheets</Item>
+            <Item to="/contact">Request Quote</Item>
+            <Item to="/about">About Calyco</Item>
+          </Col>
+
+          {/* Column 3: Resources */}
+          <Col title="Resources">
+            <Item to="/downloads">Specification Guides</Item>
+            <Item to="/colors">Colour Systems</Item>
+            <Item to="/budget-calculator">Coverage Calculator</Item>
+            <Item to="/faq">FAQs</Item>
+            <Item to="/policies/privacy">Privacy Policy</Item>
+            <Item to="/policies/terms">Terms & Conditions</Item>
+          </Col>
+
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="text-xs md:text-sm font-medium tracking-[.15em] uppercase text-[#C4A962] mb-5 md:mb-6">
+              Contact
+            </h4>
+            <div className="space-y-5 text-sm text-[#3D3020]/65">
+              {/* Email */}
+              <div className="flex items-start gap-3 group">
+                <span className="text-[#C4A962] mt-0.5">✉</span>
+                <a href={`mailto:${email.support}`} className="hover:text-[#3D3020] transition-colors duration-300 font-light">{email.support}</a>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start gap-3 group">
+                <span className="text-[#C4A962] mt-0.5">📍</span>
+                <p className="leading-[1.7] font-light">
+                  B-37, Sector-1, Noida NCR, India
+                </p>
+              </div>
+
+              {/* Hours */}
+              <div className="flex items-start gap-3 group">
+                <span className="text-[#C4A962] mt-0.5">🕒</span>
+                <div>
+                  <p className="font-medium text-[#3D3020]">Mon–Sat</p>
+                  <p className="text-[#3D3020]/60 text-xs font-light">10:00 AM – 6:00 PM IST</p>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
-
-        {/* Column 2: Calyco */}
-        <Col title="Calyco">
-          <Item to="/about">About Us</Item>
-          <Item to="/contact">Contact Us</Item>
-          <Item to="/colors">Calyco Palette</Item>
-          <Item to="/products">Shop Paints</Item>
-          <Item to="/room-visualization">Room Visualizer</Item>
-        </Col>
-
-        {/* Column 3: Customer Service */}
-        <Col title="Customer Service">
-          <Item to="/contact">Support &amp; Queries</Item>
-          <Item to="/policies/shipping">Shipping &amp; Delivery</Item>
-          <Item to="/policies/returns">Returns &amp; Refunds</Item>
-          <Item to="/policies/warranty">Warranty</Item>
-          <Item to="/faq">FAQ</Item>
-        </Col>
-
-        {/* Column 4: Policies */}
-        <Col title="Policies">
-          <Item to="/policies/privacy">Privacy Policy</Item>
-          <Item to="/policies/terms">Terms &amp; Conditions</Item>
-          <Item to="/policies/payments-gst">Payment, Pricing &amp; GST</Item>
-          <Item to="/policies/quality">Quality Policy</Item>
-          <Item to="/policies/environmental-sustainability">Sustainability</Item>
-          <Item to="/policies/disclaimer">Disclaimer</Item>
-        </Col>
-
-        {/* Column 5: Service Areas (NEW SEO COLUMN) */}
-        <Col title="Service Areas">
-          {cities && cities.length > 0 ? (
-            cities.map((city) => (
-              <Item key={city.id} to={`/${city.slug}`}>
-                Painters in {city.name}
-              </Item>
-            ))
-          ) : (
-            // Fallback if data isn't loaded yet
-            <>
-              <Item to="/painters-in-noida">Painters in Noida</Item>
-              <Item to="/painters-in-gurgaon">Painters in Gurgaon</Item>
-            </>
-          )}
-        </Col>
-
       </div>
-    </div>
-  </footer>
-);
+
+      {/* Bottom Bar: Copyright */}
+      <div className="relative z-10 border-t border-[#C4A962]/20">
+        <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 xl:px-24 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#3D3020]/50">
+          <p className="font-light">© {currentYear} Calyco Products Private Limited. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

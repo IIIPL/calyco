@@ -5,6 +5,7 @@ import DownloadCard from '../components/DownloadCard';
 
 const DownloadsPage = () => {
   const [q, setQ] = useState('');
+
   const list = useMemo(() => {
     const query = (q || '').toLowerCase();
     return products.filter(p => (p.display_name || p.name || '').toLowerCase().includes(query));
@@ -12,7 +13,7 @@ const DownloadsPage = () => {
 
   return (
     <div className="pt-20 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
-      <SEO 
+      <SEO
         title="Downloads — Calyco"
         description="Technical data sheets, safety data sheets, and warranties."
         ogType="website"
@@ -36,7 +37,6 @@ const DownloadsPage = () => {
     </div>
   );
 };
-
 export default DownloadsPage;
 
 
