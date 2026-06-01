@@ -6,51 +6,51 @@ const CallToAction: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-[#F9F6FF] via-white to-[#F6F4FF] py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-br from-[#FAFAFA] via-white to-[#F5F5F5] py-28 md:py-36 lg:py-40 overflow-hidden font-poppins border-t border-[#0F1221]/5">
       {/* Subtle gradient blurs for depth */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 left-16 w-48 h-48 bg-[#432452]/10 blur-[140px]" />
-        <div className="absolute bottom-0 right-24 w-56 h-56 bg-[#998850]/20 blur-[150px]" />
+        <div className="absolute top-1/4 left-16 w-96 h-96 bg-[#0F1221]/3 blur-[180px]" />
+        <div className="absolute bottom-1/4 right-24 w-96 h-96 bg-[#0F1221]/2 blur-[200px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
+      <div className="relative max-w-6xl mx-auto px-8 sm:px-12 md:px-16 lg:px-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center space-y-6 md:space-y-8"
+          className="text-center space-y-10 md:space-y-12"
         >
           {/* Badge */}
           <div className="inline-block">
-            <span className="inline-flex items-center px-5 py-2 bg-white/60 backdrop-blur-md text-[#432452] border border-[#432452]/20 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm">
-              Let's Transform Your Space
+            <span className="inline-flex items-center px-6 py-2.5 bg-[#0F1221]/5 backdrop-blur-md text-[#0F1221]/60 border border-[#0F1221]/10 rounded-full text-xs font-medium uppercase tracking-[0.2em]">
+              YOUR NEXT PROJECT
             </span>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-[46px] font-bold leading-tight text-[#0F1221] max-w-4xl mx-auto">
-            Ready to paint a better future with <span className="text-[#998850]">Calyco</span>?
+          {/* Heading - Lighter, More Elegant */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.12] text-[#0F1221] max-w-5xl mx-auto tracking-[-0.01em]">
+            You're Overpaying for Paint. <span className="text-[#0F1221]/40">We Both Know It.</span>
           </h2>
 
-          {/* Description */}
-          <p className="text-base sm:text-lg text-[#0F1221]/75 leading-relaxed max-w-3xl mx-auto">
-            From curated color palettes to expert-approved formulations, our experts help you plan, budget, and deliver designer-grade finishes without the premium markup.
+          {/* Description - Increased Line Height */}
+          <p className="text-lg sm:text-xl md:text-2xl text-[#0F1221]/60 leading-[1.7] max-w-4xl mx-auto font-light">
+            Send us your project scope — area, substrates, timeline — and we'll return a product recommendation, coverage estimate, and a delivered price that'll make you wonder why you didn't call sooner. You'll also get a direct line to the person managing your account. Not a chatbot. Not a queue. A person who already knows what you need.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <button
-              onClick={() => navigate('/products')}
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-[#432452] text-white rounded-lg font-semibold text-base sm:text-sm hover:bg-[#5a2f6e] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Explore Products
-            </button>
+          {/* Buttons - Softer, More Premium */}
+          <div className="flex flex-col sm:flex-row gap-5 justify-center pt-8">
             <button
               onClick={() => navigate('/contact')}
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-[#432452] border-2 border-[#432452] rounded-lg font-semibold text-base sm:text-sm hover:bg-[#432452] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-10 py-5 bg-[#0F1221] text-white rounded-xl font-medium text-base hover:bg-[#1a1f35] transition-all duration-500 shadow-lg hover:shadow-2xl tracking-[0.02em]"
             >
-              Contact Us
+              Talk to Our Team
+            </button>
+            <button
+              onClick={() => window.open('/Assets/Calyco-Product-Catalogue.pdf', '_blank')}
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-[#0F1221] border-2 border-[#0F1221]/15 rounded-xl font-medium text-base hover:bg-[#0F1221]/5 hover:border-[#0F1221]/25 transition-all duration-500 shadow-lg hover:shadow-2xl tracking-[0.02em]"
+            >
+              Download Product Catalogue
             </button>
           </div>
         </motion.div>

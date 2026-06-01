@@ -1,10 +1,13 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { CartIcon } from "./CartIcon";
-import InspirationsDropdown from './InspirationsDropdown';
-import ColorsDropdown from "./ColorsDropdown";
-import VisualizeDropdown from "./VisualizeDropdown";
 import { ProductsDropdown } from "./ProductsDropdown";
+import FinishesTexturesDropdown from "./FinishesTexturesDropdown";
+import ColourSystemsDropdown from "./ColourSystemsDropdown";
+import ProjectsDropdown from "./ProjectsDropdown";
+import TechnicalDocsDropdown from "./TechnicalDocsDropdown";
+import AboutDropdown from "./AboutDropdown";
+import ContactDropdown from "./ContactDropdown";
 
 export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -101,75 +104,61 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       style={{ top: bannerVisible && !menuOpen ? (isMobileView ? '48px' : '40px') : '0px' }}
     >
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center justify-between px-10 lg:px-16 h-20">
+      <div className="hidden lg:flex items-center justify-between px-10 lg:px-12 xl:px-16 h-20">
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 shrink-0"
         >
-          <img src="/Logo.webp" className="object-contain h-16" alt="Calyco Logo" width="137" height="84" />
+          <img src="/Logo.webp" className="object-contain h-14 xl:h-16" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
-        <nav className="flex gap-8 text-base font-medium items-center">
+        {/* Centered Nav Items */}
+        <nav className="flex gap-5 xl:gap-8 text-sm xl:text-base font-medium items-center">
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
+            className={`transition-colors ${dropdownOpen === 'products' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
             onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
           >Products</button>
 
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(dropdownOpen === 'colors' ? null : 'colors')}
-          >Colors</button>
-
-          <Link
-            to="/textures"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >Textures</Link>
+            className={`transition-colors ${dropdownOpen === 'finishes' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'finishes' ? null : 'finishes')}
+          >Finishes & Textures</button>
 
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(dropdownOpen === 'visualization' ? null : 'visualization')}
-          >Visualizer</button>
+            className={`transition-colors ${dropdownOpen === 'colours' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'colours' ? null : 'colours')}
+          >Colour Systems</button>
 
           <button
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(dropdownOpen === 'inspirations' ? null : 'inspirations')}
-          >Inspirations</button>
+            className={`transition-colors ${dropdownOpen === 'projects' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'projects' ? null : 'projects')}
+          >Projects</button>
 
+          <button
+            className={`transition-colors ${dropdownOpen === 'technical' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'technical' ? null : 'technical')}
+          >Technical Docs</button>
 
+          <button
+            className={`transition-colors ${dropdownOpen === 'about' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'about' ? null : 'about')}
+          >About</button>
 
-
-          <Link
-            to="/blog"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-            aria-current={location.pathname === '/blog' ? 'page' : undefined}
-          >Blog</Link>
-
-          <Link
-            to="/about"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >About</Link>
-
-          <Link
-            to="/contact"
-            className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-            onClick={() => setDropdownOpen(null)}
-          >Contact</Link>
+          <button
+            className={`transition-colors ${dropdownOpen === 'contact' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'contact' ? null : 'contact')}
+          >Contact</button>
         </nav>
 
-        <div className="flex items-center gap-4">
+        {/* Right Actions */}
+        <div className="flex items-center gap-4 shrink-0">
           <Link
-            to="/budget-calculator"
-            className="inline-flex items-center gap-2 bg-[#F0C85A] text-[#493657] px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#493657] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap"
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-[#493657] text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all duration-300 shadow-sm whitespace-nowrap"
             onClick={() => setDropdownOpen(null)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-            Calculate Budget
+            Request Quote
           </Link>
           <CartIcon onCartOpen={() => setDropdownOpen(null)} />
         </div>
@@ -182,10 +171,10 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2"
         >
-          <img src="/Logo.webp" className="h-12 object-contain" alt="Calyco Logo" width="137" height="84" />
+          <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <CartIcon onCartOpen={() => setDropdownOpen(null)} />
           <button
             className="text-[#493657] text-2xl"
@@ -197,9 +186,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
       {/* Dropdowns (desktop only) */}
       {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
-      {dropdownOpen === 'inspirations' && <InspirationsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
-      {dropdownOpen === 'colors' && <ColorsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
-      {dropdownOpen === 'visualization' && <VisualizeDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'finishes' && <FinishesTexturesDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'colours' && <ColourSystemsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'projects' && <ProjectsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'technical' && <TechnicalDocsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'about' && <AboutDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'contact' && <ContactDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+
 
       {/* Mobile Menu Backdrop */}
       <div
@@ -215,7 +208,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e0d8]/80">
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
-            <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
+            <img src="/Logo.webp" className="h-8 object-contain" alt="Calyco Logo" width="137" height="84" />
           </Link>
           <div className="flex items-center gap-4">
             <CartIcon onCartOpen={() => setDropdownOpen(null)} />
@@ -230,63 +223,29 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 py-8">
-          <nav className="flex flex-col gap-5 text-lg font-medium text-[#493657]">
+          <nav className="flex flex-col gap-6 text-lg font-medium text-[#493657]">
             <div>
               <p className="text-xs tracking-[0.3em] uppercase text-[#8c7b96] mb-4">
-                Browse
+                Menu
               </p>
               <div className="flex flex-col gap-4">
                 <ProductsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
-                <ColorsDropdown isMobile={true} />
-                <Link
-                  to="/textures"
-                  className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-                  onClick={() => handleMenuToggle(false)}
-                >
-                  Textures
-                </Link>
-                <Link
-                  to="/room-visualization"
-                  className="text-[#493657] hover:text-[#F0C85A] transition-colors"
-                  onClick={() => handleMenuToggle(false)}
-                >
-                  Visualizer
-                </Link>
-                <InspirationsDropdown isMobile={true} />
+                <FinishesTexturesDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <ColourSystemsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <ProjectsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <TechnicalDocsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <AboutDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <ContactDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
               </div>
             </div>
 
-            <div className="pt-2 flex flex-col gap-4 text-base uppercase tracking-wide text-[#916e9f]">
-
-
-              <Link
-                to="/blog"
-                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
-                onClick={() => handleMenuToggle(false)}
-                aria-current={location.pathname === '/blog' ? 'page' : undefined}
-              >
-                Blog
-              </Link>
-              <Link
-                to="/about"
-                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
-                onClick={() => handleMenuToggle(false)}
-              >
-                About Us
-              </Link>
+            <div className="pt-4 border-t border-[#e5e0d8]">
               <Link
                 to="/contact"
-                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
+                className="block w-full text-center bg-[#493657] text-white py-3 rounded-full font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all"
                 onClick={() => handleMenuToggle(false)}
               >
-                Contact Us
-              </Link>
-              <Link
-                to="/budget-calculator"
-                className="text-[#493657] hover:text-[#F0C85A] capitalize tracking-normal"
-                onClick={() => handleMenuToggle(false)}
-              >
-                Calculate Budget
+                Request Quote
               </Link>
             </div>
           </nav>

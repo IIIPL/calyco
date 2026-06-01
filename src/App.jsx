@@ -124,7 +124,7 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
           {/* Centered Text */}
           <div className="flex-1"></div>
           <div className="text-center text-white text-sm">
-            🎨 Transform your space with eco-premium paints! Free delivery on orders above ₹2000.
+            Same acrylic chemistry as the national brands. 15–20% less. One supplier for every surface. — Request a Quote
           </div>
           <div className="flex-1 flex justify-end">
             <button

@@ -78,14 +78,6 @@ const grouped = Object.fromEntries(
   })
 );
 
-// Fallback: first interior product (used when visible list is empty but we still need one entry)
-const interiorPrimary = allProducts.find(
-  (p) => p.category?.toLowerCase() === "interior"
-);
-const exteriorPrimary = allProducts.find(
-  (p) => p.category?.toLowerCase() === "exterior"
-);
-
 export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   const [selectedMenu, setSelectedMenu] = useState("Interior");
   const [hovered, setHovered] = useState(null);
@@ -95,13 +87,11 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
 
   const getProductsForMenu = (menuKey) => grouped[menuKey] || [];
 
-  // Use centralized product path helper
   const buildProductPath = (product) => getProductPath(product);
 
   useEffect(() => {
     const productsForMenu = getProductsForMenu(selectedMenu);
     if (productsForMenu.length) {
-      // Skip dividers when picking default hovered item
       const firstProduct = productsForMenu.find((p) => !p.divider);
       setHovered(firstProduct || null);
     } else {
@@ -121,28 +111,26 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
 
   const handleHover = (product) => setHovered(product);
 
-  // ---------- MOBILE (unchanged) ----------
   if (isMobile) {
     return (
-      <div className="w-full flex flex-col items-start">
+      <div className="w-full flex flex-col items-start border-b border-[#e5e0d8]/50">
         <button
           onClick={() => setOpen(!open)}
-          className="text-[#493657] hover:text-[#F0C85A] flex justify-between items-center w-full"
+          className="text-[#493657] hover:text-[#F0C85A] py-4 flex justify-between items-center w-full transition-colors duration-300"
         >
-          <span>Products</span>
+          <span className="text-lg font-medium">Products</span>
           <MobileChevron open={open} />
         </button>
         <div
-          className={`transition-all duration-300 ease-in-out overflow-hidden ${
-            open ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-          } w-full`}
+          className={`transition-all duration-500 ease-[bezier(0.4,0,0.2,1)] overflow-hidden ${open ? "max-h-[1000px] opacity-100 mb-4" : "max-h-0 opacity-0"
+            } w-full`}
         >
-          <div className="pl-4 py-2 flex flex-col gap-2">
+          <div className="pl-4 flex flex-col gap-2">
             {leftMenu.map((item) => (
               <div key={item.key} className="w-full">
                 <button
                   onClick={() => handleMenuClick(item)}
-                  className="text-left text-[#493657] hover:text-[#F0C85A] py-1 w-full flex justify-between items-center"
+                  className="text-left text-[#493657] hover:text-[#F0C85A] py-2 w-full flex justify-between items-center font-medium"
                 >
                   {item.label}
                   <MobileChevron
@@ -152,11 +140,10 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                 </button>
                 {item.key !== "All" && (
                   <div
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                      submenuOpen === item.key
-                        ? "max-h-[1000px] opacity-100"
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${submenuOpen === item.key
+                        ? "max-h-[1000px] opacity-100 mt-2"
                         : "max-h-0 opacity-0"
-                    } pl-4`}
+                      } pl-4 flex flex-col gap-2 border-l border-gray-100 ml-2`}
                   >
                     {(() => {
                       const menuProducts = getProductsForMenu(item.key).filter((p) => !p.divider);
@@ -172,7 +159,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                             setSubmenuOpen(null);
                             setHovered(product);
                           }}
-                          className="block text-left text-[#493657] hover:text-[#F0C85A] py-1 font-medium"
+                          className="block text-left text-gray-600 hover:text-[#F0C85A] py-1 text-sm transition-colors"
                         >
                           {product.display_name || product.name}
                         </Link>
@@ -187,41 +174,20 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
       </div>
     );
   }
-  // ---------- DESKTOP (shrunk left rail on smaller screens) ----------
+
   return (
-    <div className="fixed left-0 top-[6.5rem] w-full bg-white border-t border-b border-[#e5e0d8] shadow-lg z-50">
-      <div
-        className="
-          max-w-screen-xl mx-auto
-          px-4 sm:px-6 md:px-10 lg:px-24
-          py-8 md:py-12 lg:py-14
-          flex justify-between items-start
-          gap-0
-        "
-      >
-        {/* LEFT rail — narrower on small/medium */}
-        <div
-          className="
-            flex flex-col
-            min-w-[180px] max-w-[220px]
-            sm:min-w-[200px] sm:max-w-[240px]
-            md:min-w-[220px] md:max-w-[260px]
-            lg:min-w-[220px] lg:max-w-[260px]
-            border-r border-[#e5e0d8]
-            pr-4 sm:pr-5 md:pr-6 lg:pr-10
-          "
-        >
+    <div className="fixed left-0 top-[6.5rem] w-full bg-white/95 backdrop-blur-md border-t border-b border-[#e5e0d8] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] z-50 font-poppins transition-all duration-300">
+      <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-16 flex gap-12">
+        {/* LEFT rail */}
+        <div className="flex flex-col w-72 pr-8 border-r border-[#e5e0d8]/50">
+          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.25em] mb-6 pl-4">Categories</h3>
           {leftMenu.map((item) => (
             <button
               key={item.key}
-              className={`text-left font-bold
-                          text-sm sm:text-base lg:text-lg
-                          py-1.5 md:py-2 px-0 mb-1 border-b-2
-                          ${
-                            selectedMenu === item.key
-                              ? "border-[#493657] text-[#493657]"
-                              : "border-transparent text-[#495057] hover:text-[#F0C85A]"
-                          }`}
+              className={`text-left text-base lg:text-lg py-3 px-4 rounded-lg transition-all duration-300 ${selectedMenu === item.key
+                  ? "bg-[#F9F6FF] text-[#493657] font-bold shadow-sm translate-x-1"
+                  : "text-gray-500 hover:bg-gray-50 hover:text-[#493657]"
+                }`}
               onClick={() => handleMenuClick(item)}
             >
               {item.label}
@@ -229,27 +195,15 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           ))}
         </div>
 
-        {/* MIDDLE list — tiny left padding so it sits close to the rail */}
-        <div
-          className="
-            flex-1
-            pl-2 sm:pl-3 md:pl-4 lg:pl-12
-            pr-2 md:pr-4
-            max-h-[50vh] md:max-h-[400px] overflow-y-auto
-          "
-        >
-          
-          <ul className="space-y-2 text-[#493657]">
+        {/* MIDDLE list */}
+        <div className="flex-1 px-8 max-h-[500px] overflow-y-auto custom-scrollbar">
+          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.25em] mb-6">Values</h3>
+          <ul className="space-y-4">
             {(() => {
               const menuProducts = getProductsForMenu(selectedMenu);
               if (!menuProducts.length) return null;
               return menuProducts.map((product) => (
-                <li
-                  key={product.id || product.name}
-                  className={`font-medium cursor-pointer ${
-                    hovered?.name === product.name ? "font-semibold" : ""
-                  }`}
-                >
+                <li key={product.id || product.name}>
                   <Link
                     to={buildProductPath(product)}
                     onClick={() => {
@@ -257,9 +211,22 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                       if (onSelect) onSelect();
                     }}
                     onMouseEnter={() => handleHover(product)}
-                    className="hover:text-[#F0C85A]"
+                    className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${hovered?.name === product.name
+                        ? "bg-gray-50"
+                        : "hover:bg-gray-50"
+                      }`}
                   >
-                    {product.display_name || product.name}
+                    <span className={`text-xl transition-colors duration-300 ${hovered?.name === product.name
+                        ? "text-[#493657] font-bold"
+                        : "text-[#493657] font-medium"
+                      }`}>
+                      {product.display_name || product.name}
+                    </span>
+
+                    <span className={`transition-all duration-300 text-[#F0C85A] ${hovered?.name === product.name ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                      }`}>
+                      →
+                    </span>
                   </Link>
                 </li>
               ));
@@ -267,42 +234,36 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
           </ul>
         </div>
 
-        {/* RIGHT preview — responsive widths */}
-        <div
-          className="
-            flex flex-col items-center justify-center gap-3
-            min-w-[140px] max-w-[160px]
-            sm:min-w-[180px] sm:max-w-[200px]
-            md:min-w-[220px] md:max-w-[240px]
-            lg:min-w-[260px] lg:max-w-[280px]
-          "
-        >
+        {/* RIGHT preview */}
+        <div className="w-80 flex flex-col items-center justify-center">
           {hovered && (
-            <>
-              <LazyLoadImage
-                src={hovered.images?.[0] || hovered.image}
-                alt={hovered.name}
-                effect="blur"
-                className="object-contain w-full h-40 md:h-56 lg:h-64"
-              />
+            <div className="relative group w-full">
+              <div className="w-full h-64 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
+                <LazyLoadImage
+                  src={hovered.images?.[0] || hovered.image}
+                  alt={hovered.name}
+                  effect="blur"
+                  className="object-contain max-h-full max-w-full drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
 
-              <Link
-                to={buildProductPath(hovered)}
-                onClick={() => {
-                  window.scrollTo({ top: 0 });
-                  if (onSelect) onSelect();
-                }}
-                className="inline-flex items-center justify-center px-4 py-2 rounded-lg
-                          bg-[#493657] text-white text-sm font-medium
-                          hover:bg-[#F0C85A] hover:text-[#493657] transition-colors"
-              >
-                Explore more
-              </Link>
-            </>
+              <div className="mt-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <Link
+                  to={buildProductPath(hovered)}
+                  onClick={() => {
+                    window.scrollTo({ top: 0 });
+                    if (onSelect) onSelect();
+                  }}
+                  className="inline-flex items-center gap-2 text-[#493657] font-bold uppercase tracking-wider text-sm border-b-2 border-[#F0C85A] pb-1 hover:text-[#F0C85A] transition-colors"
+                >
+                  Explore Product <span className="text-lg">→</span>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
-
       </div>
     </div>
   );
 };
+

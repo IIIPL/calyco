@@ -1,90 +1,120 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllColors } from '../data/calycoColors.js';
-import { getBoldColors, getSoothingNeutralColors } from '../data/homepageColors.js';
+import { motion } from 'framer-motion';
 
-const flatColors = getAllColors();
-
-// Get colors from database
-const boldColorsFromDB = getBoldColors();
-const neutralColorsFromDB = getSoothingNeutralColors();
-
-// Create palettes using database colors - store full color objects
-const PALETTES = {
-  bold: boldColorsFromDB,
-  neutral: neutralColorsFromDB
-};
+// Curated list of premium colors
+const FEATURED_COLORS = [
+  { name: "Sage Green", code: "RAL 6011", hex: "#587246", family: "Greens", description: "Natural & Calming" },
+  { name: "Amber Honey", code: "RAL 1009", hex: "#E29000", family: "Beiges & Tans", description: "Luxe & Warm" }, // "Beiges & Tans" matches family in CalycoColors
+  { name: "Distant Blue", code: "RAL 5008", hex: "#26252D", family: "Blues", description: "Refined Navy" },
+  { name: "Modern Charcoal", code: "RAL 7015", hex: "#434750", family: "Grays", description: "Bold & Premium" },
+  { name: "Pearl White", code: "RAL 1013", hex: "#EAE3CD", family: "Whites", description: "Elegant Off-White" },
+  { name: "Blue Green", code: "RAL 6004", hex: "#1F3A3D", family: "Greens", description: "Sophisticated Teal" },
+  { name: "Linen", code: "RAL 1014", hex: "#DED3B6", family: "Whites", description: "Organic Beige" },
+  { name: "Silk Gray", code: "RAL 7044", hex: "#C5BBAE", family: "Grays", description: "Soft Editorial" }
+];
 
 const ShopByColour = () => {
   const navigate = useNavigate();
-  const [mode, setMode] = useState('bold');
 
-  // Function to navigate to color detail page
   const handleColorClick = (color) => {
     // Convert color family to URL-friendly format
-    const family = (color.colorFamily || color.color_family)
+    // Note: Ensuring fallback is handled if family name has spaces or ampersands
+    const familySlug = color.family
       .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[&]/g, '-');
+      .replace(/\s+&\s+/g, '-') // Replace " & " with "-"
+      .replace(/\s+/g, '-');    // Replace spaces with "-"
 
-    // Convert color name to URL-friendly format
-    const colorName = color.name
-      .toLowerCase()
-      .replace(/\s+/g, '-');
+    const colorSlug = color.name.toLowerCase().replace(/\s+/g, '-');
 
-    // Navigate to individual color detail page
-    navigate(`/colors/family/${family}/${colorName}`);
+    navigate(`/colors/${familySlug}/${colorSlug}`);
   };
 
   return (
-    <section className="w-full flex items-start bg-transparent pb-32 md:pb-40 mt-20">
-      <div className="w-full px-2 sm:px-4 md:px-6">
-        {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#1b1b1b] mb-2 md:mb-3 text-center">
-          How do you want to transform your space?
-        </h2>
+    <section className="py-24 bg-white">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 md:px-12">
 
-        {/* Segmented Control */}
-        <div className="flex justify-center mb-2 md:mb-3 py-4">
-          <div className="inline-grid grid-flow-col gap-2 rounded-full bg-[#ece7df] p-2 shadow-inner">
-          <button
-            onClick={() => setMode('bold')}
-            className={`px-4 py-1.5 rounded-full font-bold text-sm md:text-base tracking-[.2px] transition-all ${
-              mode === 'bold'
-                ? 'bg-gradient-to-b from-[#5c476a] to-[#7b6693] text-white shadow-[0_8px_18px_rgba(90,70,110,.35)]'
-                : 'text-[#3a2d1b] hover:bg-black/5'
-            }`}
+        {/* Header */}
+        <div className="text-center mb-16 space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#998850] font-bold tracking-[0.2em] uppercase text-sm"
           >
-            Bold Colors
-          </button>
-                      <button
-              onClick={() => setMode('neutral')}
-              className={`px-4 py-1.5 rounded-full font-bold text-sm md:text-base tracking-[.2px] transition-all ${
-                mode === 'neutral'
-                  ? 'bg-gradient-to-b from-[#caa04b] to-[#e0be6a] text-[#1b1b1b] shadow-[0_8px_18px_rgba(180,130,40,.35)]'
-                  : 'text-[#3a2d1b] hover:bg-black/5'
-              }`}
-            >
-              Soothing Neutrals
-            </button>
-          </div>
+            Curated Collection
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-[#0F1221]"
+          >
+            Colour Systems for Considered Spaces.
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-[#0F1221]/60 max-w-3xl mx-auto text-lg leading-relaxed"
+          >
+            Curated by interior designers for projects where the palette needs to feel intentional. Warm neutrals for large-scale residential. Bold accents for hospitality feature walls. Every shade available across the full range.
+          </motion.p>
         </div>
 
-        {/* Swatches Grid - 2 rows on mobile, 8 columns on desktop */}
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-3 md:gap-4">
-          {PALETTES[mode].map((color) => {
-            const hex = color.hex.startsWith('#') ? color.hex : `#${color.hex}`;
-            return (
-              <button
-                key={color.code || color.name}
-                title={`${color.name} - ${color.code || ''}`}
-                onClick={() => handleColorClick(color)}
-                className="aspect-square rounded-xl shadow-[0_8px_16px_rgba(0,0,0,.12)] ring-1 ring-white/40 focus:outline-none focus:ring-2 focus:ring-black/30 hover:scale-105 transition-transform duration-200"
-                style={{ backgroundColor: hex }}
-              />
-            );
-          })}
+        {/* Color Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {FEATURED_COLORS.map((color, index) => (
+            <motion.div
+              key={color.code}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="group cursor-pointer"
+              onClick={() => handleColorClick(color)}
+            >
+              {/* Swatch Card */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2 mb-4">
+                <div
+                  className="absolute inset-0 w-full h-full"
+                  style={{ backgroundColor: color.hex }}
+                />
+
+                {/* Subtle sheen reflection for realism */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/0 via-white/5 to-white/10 opacity-50" />
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Info */}
+              <div className="text-center group-hover:text-[#998850] transition-colors duration-300">
+                <h3 className="text-lg font-bold text-[#0F1221] group-hover:text-[#998850] transition-colors">
+                  {color.name}
+                </h3>
+                <div className="flex items-center justify-center gap-2 text-sm text-[#0F1221]/50 mt-1">
+                  <span>{color.code}</span>
+                  <span className="w-1 h-1 rounded-full bg-[#0F1221]/30" />
+                  <span>{color.description}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* View All Actions */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => navigate('/colors')}
+            className="text-[#0F1221] font-semibold border-b-2 border-[#0F1221] pb-1 hover:text-[#998850] hover:border-[#998850] transition-all"
+          >
+            View Full Palette
+          </button>
+        </div>
+
       </div>
     </section>
   );
