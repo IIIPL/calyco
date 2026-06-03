@@ -1,4 +1,4 @@
-// Shopify environment configuration — uses build-time env with runtime fallback
+// Shopify environment configuration -- uses build-time env with runtime fallback
 const DEFAULT_DOMAIN = 'calycopaints.myshopify.com';
 const DEFAULT_TOKEN = '81950262da6c235154f5de3277b6401c';
 

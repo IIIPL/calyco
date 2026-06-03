@@ -524,7 +524,7 @@ export const textures = [
     faqs: [
       {
         question: "How intense is the sparkle effect in Sparry Plast?",
-        answer: "Sparry Plast provides subtle, sophisticated sparkle—not overwhelming glitter. It adds gentle shimmer that enhances ambiance without being gaudy, perfect for luxury homes."
+        answer: "Sparry Plast provides subtle, sophisticated sparkle--not overwhelming glitter. It adds gentle shimmer that enhances ambiance without being gaudy, perfect for luxury homes."
       },
       {
         question: "Is Sparry Plast suitable for party halls and banquet areas?",

@@ -1,99 +1,87 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaPaintBrush } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Calculator, CalendarCheck, ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f9f6f2] to-white font-poppins flex items-center justify-center px-4 pt-32">
-      <motion.div 
+    <div className="min-h-screen bg-[#FBF9F6] font-poppins flex flex-col items-center justify-center px-5 py-12">
+      <motion.div
         className="max-w-2xl mx-auto text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        {/* 404 Number */}
-        <motion.h1 
-          className="text-8xl md:text-9xl font-bold text-[#493657]/20 mb-8"
-          variants={itemVariants}
-        >
+        {/* 404 */}
+        <h1 className="text-[120px] sm:text-[160px] font-bold text-[#493657]/12 leading-none select-none">
           404
-        </motion.h1>
+        </h1>
 
-        {/* 404 Illustration Image */}
-        <motion.div 
-          className="mb-8 flex justify-center"
-          variants={itemVariants}
-        >
-          <img 
-            src="/404.png" 
-            alt="Empty paint bucket - 404 not found" 
-            className="w-56 h-56 md:w-72 md:h-72 object-contain"
+        <div className="mb-6 -mt-4 flex justify-center">
+          <img
+            src="/404.png"
+            alt="Page not found"
+            className="w-48 h-48 sm:w-64 sm:h-64 object-contain"
             loading="lazy"
           />
-        </motion.div>
+        </div>
 
-        {/* Error Message */}
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-[#493657] mb-4"
-          variants={itemVariants}
-        >
-          Oops! Page Not Found
-        </motion.h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#493657]">
+          Page not found
+        </h2>
+        <p className="text-[#493657]/60 mt-3 mb-8 text-base sm:text-lg leading-relaxed max-w-md mx-auto">
+          The page you're looking for doesn't exist. It may have moved or been deleted.
+        </p>
 
-        <motion.p 
-          className="text-lg md:text-xl text-[#493657]/70 mb-8 leading-relaxed"
-          variants={itemVariants}
-        >
-          The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
-        </motion.p>
-
-        {/* Back to Home Button */}
-        <motion.div variants={itemVariants}>
-          <Link 
+        {/* Primary CTAs */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+          <Link
             to="/"
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#301A44] to-[#493657] text-white font-semibold py-4 px-8 rounded-2xl hover:shadow-2xl hover:shadow-[#301A44]/30 transition-all duration-500 transform hover:-translate-y-1"
+            onClick={() => window.scrollTo({ top: 0 })}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#493657] text-white px-6 py-3 font-semibold text-sm hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors"
           >
-            <FaHome className="w-5 h-5" />
             Back to Home
           </Link>
-        </motion.div>
+          <Link
+            to="/services"
+            onClick={() => window.scrollTo({ top: 0 })}
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#493657]/20 text-[#493657] px-6 py-3 font-semibold text-sm hover:border-[#493657] transition-colors"
+          >
+            Browse Services <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
-        {/* Additional Help */}
-        <motion.div 
-          className="mt-12 text-sm text-[#493657]/50"
-          variants={itemVariants}
-        >
-          <p>Need help? Try our <Link to="/product" className="underline hover:text-[#493657] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Products</Link> or <Link to="/inspiration" className="underline hover:text-[#493657] transition-colors" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Inspiration</Link> pages.</p>
-        </motion.div>
+        {/* Service quick-action cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto">
+          <Link
+            to="/calculators/service-cost-calculator"
+            onClick={() => window.scrollTo({ top: 0 })}
+            className="group rounded-2xl bg-white border border-[#e5e0d8] p-5 text-left hover:border-[#493657]/30 hover:shadow-md transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-[#493657]/8 flex items-center justify-center mb-3">
+              <Calculator className="w-5 h-5 text-[#493657]" />
+            </div>
+            <p className="font-bold text-[#0F1221] text-sm">Calculate Cost</p>
+            <p className="text-xs text-gray-500 mt-1">Transparent estimates for any service</p>
+          </Link>
+          <a
+            href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-2xl bg-white border border-[#e5e0d8] p-5 text-left hover:border-[#493657]/30 hover:shadow-md transition-all"
+          >
+            <div className="w-10 h-10 rounded-xl bg-[#F0C85A]/15 flex items-center justify-center mb-3">
+              <CalendarCheck className="w-5 h-5 text-[#493657]" />
+            </div>
+            <p className="font-bold text-[#0F1221] text-sm">Free Site Visit</p>
+            <p className="text-xs text-gray-500 mt-1">Book on WhatsApp, no charge</p>
+          </a>
+        </div>
       </motion.div>
     </div>
   );
-} 
+}

@@ -116,7 +116,7 @@ export default function MiniVisualizer() {
           {/* Optional tiny error badge */}
           {!isImageLoading && imgError && (
             <div className="absolute top-2 left-2 z-10 bg-red-50 text-red-700 text-xs px-2 py-1 rounded">
-              Couldn’t load image
+              Couldn't load image
             </div>
           )}
 

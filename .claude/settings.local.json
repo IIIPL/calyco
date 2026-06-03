@@ -29,7 +29,14 @@
       "Bash(git reset:*)",
       "Bash(git count-objects:*)",
       "Bash(gh:*)",
-      "Bash(node scripts/create-mobile-hero.js:*)"
+      "Bash(node scripts/create-mobile-hero.js:*)",
+      "mcp__Desktop_Commander__list_directory",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(pandoc --track-changes=all \"Website UX Analysis_ AapkaPainter.com and Livspace.com \\(Painting & Wall‑related Services\\).docx\" -o ux_analysis.md)",
+      "Bash(pandoc --track-changes=all \"Competitive Analysis_ AapkaPainter vs Livspace.docx\" -o competitive.md)",
+      "Bash(pandoc --track-changes=all \"Calyco Paints Website Reference Map.docx\" -o reference_map.md)",
+      "Bash(pandoc --track-changes=all \"claudeANALYSIS.docx\" -o claude_analysis.md)"
     ],
     "deny": [],
     "ask": []

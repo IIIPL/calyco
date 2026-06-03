@@ -91,7 +91,7 @@ export const ContactUs = () => {
                 publicKey: PUBLIC_KEY,
             });
 
-            // optional: user confirmation — only if that template exists in your EmailJS account
+            // optional: user confirmation -- only if that template exists in your EmailJS account
             try {
                 await emailjs.send(
                     SERVICE_ID,
@@ -103,7 +103,7 @@ export const ContactUs = () => {
                     { publicKey: PUBLIC_KEY }
                 );
             } catch (e) {
-                // Non-fatal — skip if template isn't configured
+                // Non-fatal -- skip if template isn't configured
                 console.warn("Confirmation email skipped:", e?.text || e);
             }
 
@@ -171,7 +171,7 @@ export const ContactUs = () => {
                                 <FaCheckCircle className="text-green-500 text-4xl" />
                                 <h3 className="text-2xl font-semibold text-gray-800">Message Sent!</h3>
                                 <p className="text-gray-600 max-w-prose">
-                                    Thanks for reaching out. We've received your message and will get back to you within 1–2 business days.
+                                    Thanks for reaching out. We've received your message and will get back to you within 1-2 business days.
                                 </p>
                                 <div className="text-center flex justify-center">
                                     <Button onClick={resetForm}>Send another message</Button>

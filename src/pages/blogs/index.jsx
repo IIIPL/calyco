@@ -98,7 +98,7 @@ const BlogsPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="pt-24 pb-12 px-6 border-b border-gray-100"
+          className="pt-6 pb-12 px-6 border-b border-gray-100"
         >
           <div className="max-w-7xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-2">

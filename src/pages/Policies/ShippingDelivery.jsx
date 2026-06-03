@@ -118,22 +118,22 @@ export default function ShippingDelivery() {
                   <tbody className="bg-white">
                     <tr className="border-b border-[#0F1221]/10">
                       <td className="px-6 py-4 font-semibold text-[#0F1221]">Metro Cities</td>
-                      <td className="px-6 py-4 text-[#31274B]/85">2–3 business days</td>
+                      <td className="px-6 py-4 text-[#31274B]/85">2-3 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Express delivery available for select pin codes</td>
                     </tr>
                     <tr className="border-b border-[#0F1221]/10">
                       <td className="px-6 py-4 font-semibold text-[#0F1221]">Tier 2 Cities</td>
-                      <td className="px-6 py-4 text-[#31274B]/85">3–5 business days</td>
+                      <td className="px-6 py-4 text-[#31274B]/85">3-5 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">State capitals and major towns</td>
                     </tr>
                     <tr className="border-b border-[#0F1221]/10">
                       <td className="px-6 py-4 font-semibold text-[#0F1221]">Tier 3 Cities</td>
-                      <td className="px-6 py-4 text-[#31274B]/85">4–6 business days</td>
+                      <td className="px-6 py-4 text-[#31274B]/85">4-6 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Smaller towns and district headquarters</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 font-semibold text-[#0F1221]">Remote Areas</td>
-                      <td className="px-6 py-4 text-[#31274B]/85">5–7 business days</td>
+                      <td className="px-6 py-4 text-[#31274B]/85">5-7 business days</td>
                       <td className="px-6 py-4 text-sm text-[#31274B]/80">Rural and hard-to-reach locations</td>
                     </tr>
                   </tbody>
@@ -222,7 +222,7 @@ export default function ShippingDelivery() {
                   <span className="font-bold text-[#0F1221]">Next-day or same-day delivery</span> available for select pin codes in major metro cities. Additional charges apply based on location.
                 </p>
                 <ul className="space-y-2 text-sm text-[#31274B]/80">
-                  <li>✓ Available in: Mumbai, Delhi NCR, Bangalore, Chennai, Hyderabad, Pune</li>
+                  <li>✓ Available in: Mumbai, Delhi, Gurgaon, Noida, Bengaluru, Chennai, Hyderabad, Pune, Kolkata, Ahmedabad and more</li>
                   <li>✓ Same-day delivery: Orders placed before 10:00 AM</li>
                   <li>✓ Next-day delivery: Orders placed before 5:00 PM</li>
                   <li>✓ Express charges: ₹300-₹500 (calculated at checkout)</li>
@@ -368,10 +368,10 @@ export default function ShippingDelivery() {
             <div className="mt-8 rounded-xl bg-[#0F1221] p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">🤝 Our Commitment to You</h3>
               <p className="text-white/90 text-sm mb-2">
-                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team via <a href="https://wa.me/918826733064" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
+                If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team via <a href="https://wa.me/918796777399" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
               </p>
               <p className="text-white/80 text-xs">
-                Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon–Sat, 10:00 AM – 6:00 PM IST)
+                Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon-Sat, 10:00 AM - 6:00 PM IST)
               </p>
             </div>
           </div>
@@ -434,14 +434,14 @@ export default function ShippingDelivery() {
                   ⏱️
                 </div>
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">On-Time Delivery</h3>
-                <p className="text-sm text-[#31274B]/85">Trusted logistics partners ensure reliable delivery within promised timelines—98% on-time delivery rate.</p>
+                <p className="text-sm text-[#31274B]/85">Trusted logistics partners ensure reliable delivery within promised timelines--98% on-time delivery rate.</p>
               </div>
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0F1221] text-white text-2xl">
                   💬
                 </div>
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Dedicated Support</h3>
-                <p className="text-sm text-[#31274B]/85">Responsive customer service team available for any order or delivery questions—reach us 7 days a week.</p>
+                <p className="text-sm text-[#31274B]/85">Responsive customer service team available for any order or delivery questions--reach us 7 days a week.</p>
               </div>
             </div>
 
@@ -479,7 +479,7 @@ export default function ShippingDelivery() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="https://wa.me/918826733064"
+                href="https://wa.me/918796777399"
                 className={getButtonClasses('accent')}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -504,7 +504,7 @@ export default function ShippingDelivery() {
             </div>
 
             <p className="mt-8 text-sm text-white/70 italic">
-              Choose CALYCO for safe, timely, and eco-conscious delivery—every order, every time.
+              Choose CALYCO for safe, timely, and eco-conscious delivery--every order, every time.
             </p>
           </div>
         </section>

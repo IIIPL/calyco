@@ -677,7 +677,7 @@ export const products = [
     "name": "All Surface Coating",
     "image": "/Assets/Product Images/All Surface Coating/all-surface-coating.webp",
     "description": "Multi-surface acrylic-alkyd hybrid with built-in primer delivering semi-gloss/satin finish and weather protection for wood, metal, plastic, masonry, and walls.",
-    "short-description": "One paint for every surface—strong adhesion and weather resistance.",
+    "short-description": "One paint for every surface--strong adhesion and weather resistance.",
     "category": "multi-surface",
     "finish_type_sheen": [
       "Semi-Gloss/Satin"

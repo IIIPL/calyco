@@ -258,7 +258,7 @@ export default function WarrantyPolicy() {
                 Talk To A Specialist
               </span>
               <h2 className="mt-6 text-3xl font-black uppercase tracking-tight text-white md:text-4xl leading-tight">
-                Questions? <br/>Let’s Connect
+                Questions? <br/>Let's Connect
               </h2>
               <p className="mt-6 text-base leading-7 text-white/80">
                 Fill this quick form and one of our coating consultants will reach out with the right system, shade, and warranty details for your project.

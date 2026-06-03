@@ -235,7 +235,7 @@ const BlogPost = () => {
         />
 
         {/* --- MAGAZINE HEADER LAYOUT --- */}
-        <header className="pt-32 pb-12 px-6 bg-white border-b border-gray-100">
+        <header className="pt-8 pb-12 px-6 bg-white border-b border-gray-100">
           <div className="max-w-4xl mx-auto text-center">
             {/* Breadcrumbs */}
             <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-6 font-medium">

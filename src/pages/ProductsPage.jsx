@@ -12,7 +12,7 @@ import { luxuryExteriorEmulsion } from "../data/productDetail.luxuryExteriorEmul
 import { waterproofingSealer } from "../data/productDetail.waterproofingSealer";
 
 const formatINR = (value) =>
-  value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹—";
+  value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹--";
 
 // Define your 5 products with proper data
 const productCatalog = [

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({
   title = 'Calyco Paints - Premium Eco-Friendly Paints | Ultra-Low VOC Interior & Exterior Emulsions',
   description = 'Eco-premium paints with low VOC and water-based formulations.',
-  keywords = 'calyco paints, premium paints india, eco-friendly paints, ultra-low voc paints, interior emulsion, exterior emulsion, waterproofing sealer, luxury paints delhi ncr, premium textures, paint visualizer, room color visualizer',
+  keywords = 'calyco paints, premium paints india, eco-friendly paints, ultra-low voc paints, interior emulsion, exterior emulsion, waterproofing sealer, luxury paints india, painting services india, premium textures, paint visualizer, room color visualizer',
   image = 'https://calycopaints.com/Assets/Product%20Images/Premium%20Interior%20Emulsion/1.webp',
   url = 'https://calycopaints.com',
   ogType = 'website',
@@ -47,7 +47,7 @@ const SEO = ({
       <meta name="author" content="Calyco Paints" />
       <meta name="language" content="English" />
       <meta name="geo.region" content="IN-DL" />
-      <meta name="geo.placename" content="Delhi NCR" />
+      <meta name="geo.placename" content="India" />
       <meta name="geo.position" content="28.6139;77.2090" />
       <meta name="ICBM" content="28.6139, 77.2090" />
 

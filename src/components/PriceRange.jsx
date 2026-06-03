@@ -30,7 +30,7 @@ export default function PriceRange({ min, max, value, applied, onChange, onApply
         max={value.max}
         onChange={handleMin}
       />
-      <span>–</span>
+      <span>-</span>
       <input
         type="number"
         className="w-24 border rounded px-2 py-1"

@@ -16,9 +16,9 @@ const links = [
 
 export default function PoliciesIndex() {
   return (
-    <PolicyLayout title="Policies" lastUpdated="—">
+    <PolicyLayout title="Policies" lastUpdated="--">
       <p className="mb-6">
-        Find Calyco’s customer service and policy documents in one place.
+        Find Calyco's customer service and policy documents in one place.
       </p>
       <ul className="grid sm:grid-cols-2 gap-3 m-0 list-none p-0">
         {links.map(x => (

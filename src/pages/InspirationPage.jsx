@@ -17,7 +17,7 @@ export default function InspirationPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="font-poppins bg-gradient-to-br from-gray-50 to-white min-h-screen pt-32 pb-16">
+    <div className="font-poppins bg-gradient-to-br from-gray-50 to-white min-h-screen pt-6 pb-16">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 mt-8">
         <div className="text-center">

@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calculator, Info, Phone, Mail, User, X, ShoppingCart, ArrowRight, ChevronDown, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -8,9 +8,11 @@ import CartPopup from '../components/CartPopup';
 import { products as catalogProducts } from '../data/products.js';
 import texturesData from '../data/textures';
 import SEO from '../components/SEO';
+import UniversalServiceCalculator from '../components/UniversalServiceCalculator';
 
 const BudgetCalculator = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { addToCart, goToCheckout } = useCart();
 
   const textureOptions = useMemo(
@@ -35,7 +37,9 @@ const BudgetCalculator = () => {
   }, [textureOptions]);
 
   // Calculator type state
-  const [calculatorType, setCalculatorType] = useState('paint'); // 'paint' or 'texture'
+  const [calculatorType, setCalculatorType] = useState(
+    location.pathname.includes('/calculators/service-cost-calculator') ? 'service' : 'paint'
+  ); // 'paint', 'texture', or 'service'
 
   // Paint calculator state
   const [carpetArea, setCarpetArea] = useState('');
@@ -140,7 +144,7 @@ const BudgetCalculator = () => {
   };
 
   const TEXTURE_PRICE_PER_SQFT = 60;
-  const BOOKING_AMOUNT = 499;
+  const BOOKING_AMOUNT = 99;
 
   // Helper function to find Shopify variant ID from catalog
   const findVariantId = (productSlug, size, finish) => {
@@ -332,22 +336,24 @@ const BudgetCalculator = () => {
       return;
     }
 
-    console.log('Booking Data:', {
-      ...bookingData,
-      calculatorType,
-      paintableArea: results.paintableArea,
-      texture: results.texture.name,
-      totalCost: results.totalCost,
-      bookingAmount: BOOKING_AMOUNT
-    });
+    /* Build WhatsApp message with booking details */
+    const msg = encodeURIComponent(
+      `Hi Calyco! I'd like to book a site visit.\n\n` +
+      `Name: ${bookingData.name}\n` +
+      `Phone: ${bookingData.phone}\n` +
+      `Email: ${bookingData.email}\n\n` +
+      `Booking amount: ₹${BOOKING_AMOUNT}\n` +
+      `Please arrange a call-back at your earliest.`
+    );
 
     setShowBookingModal(false);
     setShowConfirmation(true);
+    setBookingData({ name: '', phone: '', email: '' });
 
-    setTimeout(() => {
-      setShowConfirmation(false);
-      setBookingData({ name: '', phone: '', email: '' });
-    }, 5000);
+    /* Open WhatsApp with pre-filled message */
+    window.open(`https://wa.me/918796777399?text=${msg}`, '_blank');
+
+    setTimeout(() => setShowConfirmation(false), 5000);
   };
 
   // Handle Buy Now button click for paint
@@ -406,37 +412,13 @@ const BudgetCalculator = () => {
         }
 
         // Find Shopify variant ID for this specific size and finish
-        console.log('[BudgetCalculator] Before findVariantId:', {
-          paintCategory,
-          paintProductType,
-          productSlug: `${paintCategory}-${paintProductType}`,
-          packSize: pack.size,
-          sizeWithL: `${pack.size}L`,
-          sheen: sheen,
-          productTagline: product.tagline
-        });
-
         const variantId = findVariantId(
           `${paintCategory}-${paintProductType}`,
           `${pack.size}L`,
           sheen
         );
 
-        console.log('[BudgetCalculator] After findVariantId:', {
-          product: `${paintCategory}-${paintProductType}`,
-          size: `${pack.size}L`,
-          finish: sheen,
-          variantId: variantId,
-          color: selectedColor
-        });
-
         if (!variantId) {
-          console.error('[BudgetCalculator] No variant ID found for pack:', {
-            category: paintCategory,
-            type: paintProductType,
-            size: `${pack.size}L`,
-            finish: sheen
-          });
           alert(`Unable to add ${pack.size}L pack to cart. Missing product variant. Please contact support.`);
           continue; // Skip this pack but continue with others
         }
@@ -482,7 +464,7 @@ const BudgetCalculator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen">
       <SEO
         title="Paint Budget Calculator - Calyco Paints"
         description="Estimate your painting costs accurately with the Calyco Budget Calculator. Get quotes for interior, exterior, and textured finishes."
@@ -493,15 +475,17 @@ const BudgetCalculator = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#F7F5FF] via-[#EFE9FC] to-[#F5F0FB]" />
         <div className="absolute -top-16 -left-20 w-64 h-64 rounded-full bg-[#432452]/10 blur-3xl" />
         <div className="absolute top-24 right-10 w-48 h-48 rounded-full bg-[#998850]/15 blur-[140px]" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-18 text-center">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#0F1221]">
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#0F1221]/40">Calyco Tools</span>
+            <div className="mt-2 mb-5 h-[1px] w-12 bg-[#0F1221]/10 mx-auto" />
+            <h1 className="text-3xl md:text-4xl font-light tracking-[-0.01em] mb-4 text-[#0F1221]">
               <span className="text-[#998850]">Budget</span> Calculator
             </h1>
-            <p className="text-base sm:text-lg text-[#0F1221]/70 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-[#0F1221]/55 font-light max-w-3xl mx-auto leading-[1.75]">
               Get instant, accurate estimates for paint or texture services with Calyco&apos;s planning toolkit.
               Tailored to your space. Transparent by design.
             </p>
@@ -509,6 +493,7 @@ const BudgetCalculator = () => {
         </div>
       </div>
 
+      <div className="bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Calculator Type Selector */}
         <motion.div
@@ -516,20 +501,20 @@ const BudgetCalculator = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-6"
         >
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Choose Calculator Type</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('paint')}
                 className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'paint'
-                  ? 'border-purple-600 bg-purple-50'
+                  ? 'border-[#493657] bg-[#493657]/5'
                   : 'border-gray-200 bg-white hover:border-gray-300'
                   }`}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">🎨</div>
-                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'paint' ? 'text-purple-600' : 'text-gray-700'}`}>
+                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'paint' ? 'text-[#493657]' : 'text-gray-700'}`}>
                     Paint Calculator
                   </p>
                   <p className="text-sm text-gray-600">
@@ -537,7 +522,7 @@ const BudgetCalculator = () => {
                   </p>
                 </div>
                 {calculatorType === 'paint' && (
-                  <div className="absolute top-3 right-3 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -549,13 +534,13 @@ const BudgetCalculator = () => {
                 type="button"
                 onClick={() => handleCalculatorTypeChange('texture')}
                 className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'texture'
-                  ? 'border-purple-600 bg-purple-50'
+                  ? 'border-[#493657] bg-[#493657]/5'
                   : 'border-gray-200 bg-white hover:border-gray-300'
                   }`}
               >
                 <div className="text-center">
                   <div className="text-4xl mb-3">🏗️</div>
-                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'texture' ? 'text-purple-600' : 'text-gray-700'}`}>
+                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'texture' ? 'text-[#493657]' : 'text-gray-700'}`}>
                     Texture Calculator
                   </p>
                   <p className="text-sm text-gray-600">
@@ -563,7 +548,33 @@ const BudgetCalculator = () => {
                   </p>
                 </div>
                 {calculatorType === 'texture' && (
-                  <div className="absolute top-3 right-3 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleCalculatorTypeChange('service')}
+                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'service'
+                  ? 'border-[#493657] bg-[#493657]/5'
+                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  }`}
+              >
+                <div className="text-center">
+                  <Calculator className={`w-10 h-10 mx-auto mb-3 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-gray-500'}`} />
+                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-gray-700'}`}>
+                    Service Cost Calculator
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Painting, waterproofing, grouting and more
+                  </p>
+                </div>
+                {calculatorType === 'service' && (
+                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
@@ -584,7 +595,7 @@ const BudgetCalculator = () => {
                 key="paint-calculator"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
               >
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Paint Calculator</h2>
 
@@ -599,7 +610,7 @@ const BudgetCalculator = () => {
                       step="0.1"
                       value={carpetArea}
                       onChange={(e) => setCarpetArea(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent text-gray-900"
                       placeholder="Enter carpet area"
                     />
                     <p className="text-xs text-gray-500 mt-1">
@@ -617,18 +628,18 @@ const BudgetCalculator = () => {
                         type="button"
                         onClick={() => setPaintCategory('interior')}
                         className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'interior'
-                          ? 'border-purple-600 bg-purple-50'
+                          ? 'border-[#493657] bg-[#493657]/5'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                           }`}
                       >
                         <div className="text-center">
                           <div className="text-3xl mb-2">🏠</div>
-                          <p className={`font-semibold ${paintCategory === 'interior' ? 'text-purple-600' : 'text-gray-700'}`}>
+                          <p className={`font-semibold ${paintCategory === 'interior' ? 'text-[#493657]' : 'text-gray-700'}`}>
                             Interior
                           </p>
                         </div>
                         {paintCategory === 'interior' && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                          <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
@@ -640,18 +651,18 @@ const BudgetCalculator = () => {
                         type="button"
                         onClick={() => setPaintCategory('exterior')}
                         className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'exterior'
-                          ? 'border-purple-600 bg-purple-50'
+                          ? 'border-[#493657] bg-[#493657]/5'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                           }`}
                       >
                         <div className="text-center">
                           <div className="text-3xl mb-2">🌆</div>
-                          <p className={`font-semibold ${paintCategory === 'exterior' ? 'text-purple-600' : 'text-gray-700'}`}>
+                          <p className={`font-semibold ${paintCategory === 'exterior' ? 'text-[#493657]' : 'text-gray-700'}`}>
                             Exterior
                           </p>
                         </div>
                         {paintCategory === 'exterior' && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                          <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
@@ -673,7 +684,7 @@ const BudgetCalculator = () => {
                           type="button"
                           onClick={() => setPaintProductType(key)}
                           className={`relative p-4 rounded-lg border-2 transition-all ${paintProductType === key
-                            ? 'border-purple-600 bg-purple-50'
+                            ? 'border-[#493657] bg-[#493657]/5'
                             : 'border-gray-200 bg-white hover:border-gray-300'
                             }`}
                         >
@@ -683,14 +694,14 @@ const BudgetCalculator = () => {
                               alt={product.name}
                               className="w-20 h-20 object-contain mb-2"
                             />
-                            <p className={`font-semibold text-sm ${paintProductType === key ? 'text-purple-600' : 'text-gray-700'}`}>
+                            <p className={`font-semibold text-sm ${paintProductType === key ? 'text-[#493657]' : 'text-gray-700'}`}>
                               {key === 'premium' ? 'Premium' : 'Luxury'}
                             </p>
                             <p className="text-xs text-gray-500 mt-1">{product.tagline}</p>
                             <p className="text-sm font-bold text-gray-900 mt-2">₹{product.pricePerLitre}/L</p>
                           </div>
                           {paintProductType === key && (
-                            <div className="absolute top-2 right-2 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center">
+                            <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
                               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
@@ -705,12 +716,20 @@ const BudgetCalculator = () => {
                   <button
                     onClick={handleCalculate}
                     disabled={!carpetArea || isCalculating}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-purple-600 text-white text-base font-semibold rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#493657] text-white text-base font-semibold rounded-lg hover:bg-[#362040] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                   >
                     <Calculator size={20} />
                     {isCalculating ? 'Calculating...' : 'Calculate Budget'}
                   </button>
                 </div>
+              </motion.div>
+            ) : calculatorType === 'service' ? (
+              <motion.div
+                key="service-calculator"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <UniversalServiceCalculator />
               </motion.div>
             ) : (
               // TEXTURE CALCULATOR
@@ -718,7 +737,7 @@ const BudgetCalculator = () => {
                 key="texture-calculator"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
               >
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Texture Calculator</h2>
 
@@ -733,7 +752,7 @@ const BudgetCalculator = () => {
                       step="0.1"
                       value={paintableArea}
                       onChange={(e) => setPaintableArea(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent text-gray-900"
                       placeholder="Enter area to be textured"
                     />
                     <p className="text-xs text-gray-500 mt-1">
@@ -753,7 +772,7 @@ const BudgetCalculator = () => {
                       <button
                         type="button"
                         onClick={() => setIsTextureDropdownOpen((prev) => !prev)}
-                        className="w-full text-left rounded-2xl border border-gray-200 bg-white shadow-sm px-4 py-3 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                        className="w-full text-left rounded-2xl border border-gray-200 bg-white shadow-sm px-4 py-3 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#493657] transition"
                       >
                         <div className="flex items-center gap-4">
                           <div className="h-14 w-14 rounded-xl border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-50">
@@ -799,7 +818,7 @@ const BudgetCalculator = () => {
                                   setSelectedTexture(texture.slug);
                                   setIsTextureDropdownOpen(false);
                                 }}
-                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${isSelected ? 'bg-white ring-1 ring-purple-200' : 'hover:bg-gray-50'
+                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${isSelected ? 'bg-white ring-1 ring-[#493657]/20' : 'hover:bg-gray-50'
                                   }`}
                               >
                                 <div className="flex items-center gap-3">
@@ -814,7 +833,7 @@ const BudgetCalculator = () => {
                                   <p className="text-sm font-semibold text-gray-900">{texture.name}</p>
                                 </div>
                                 {isSelected && (
-                                  <span className="text-purple-600">
+                                  <span className="text-[#493657]">
                                     <Check className="w-4 h-4" />
                                   </span>
                                 )}
@@ -846,7 +865,7 @@ const BudgetCalculator = () => {
                   <button
                     onClick={handleCalculate}
                     disabled={!paintableArea || isCalculating}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-purple-600 text-white text-base font-semibold rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#493657] text-white text-base font-semibold rounded-lg hover:bg-[#362040] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                   >
                     <Calculator size={20} />
                     {isCalculating ? 'Calculating...' : 'Calculate Budget'}
@@ -860,7 +879,7 @@ const BudgetCalculator = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
               >
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Your Estimate</h2>
 
@@ -877,7 +896,7 @@ const BudgetCalculator = () => {
                       <div className="bg-purple-50 rounded-lg p-4">
                         <p className="text-xs text-purple-700 mb-1">Paintable Area</p>
                         <p className="text-2xl font-bold text-purple-900">{results.paintableArea.toFixed(0)}</p>
-                        <p className="text-xs text-purple-600">Sq.Ft (walls & ceiling)</p>
+                        <p className="text-xs text-[#493657]">Sq.Ft (walls & ceiling)</p>
                       </div>
                     </div>
 
@@ -913,7 +932,7 @@ const BudgetCalculator = () => {
                     </div>
 
                     {/* Total */}
-                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-6 text-white">
+                    <div className="bg-gradient-to-r from-[#1A0B21] via-[#493657] to-[#432553] rounded-lg p-6 text-white">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-lg font-semibold">Total Estimate</span>
                         <span className="text-3xl font-bold">₹{results.totalCost.toFixed(0)}</span>
@@ -921,7 +940,7 @@ const BudgetCalculator = () => {
                       <p className="text-xs text-white/80">Total Paint: {results.totalLitres}L (includes 10% wastage)</p>
                       <button
                         onClick={handleBuyNow}
-                        className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                        className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-white text-[#493657] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
                       >
                         <ShoppingCart size={18} />
                         Buy Now
@@ -935,7 +954,7 @@ const BudgetCalculator = () => {
                     <div className="bg-purple-50 rounded-lg p-4 mb-6">
                       <p className="text-xs text-purple-700 mb-1">Area to be Textured</p>
                       <p className="text-3xl font-bold text-purple-900">{results.paintableArea.toFixed(0)}</p>
-                      <p className="text-xs text-purple-600">Sq.Ft</p>
+                      <p className="text-xs text-[#493657]">Sq.Ft</p>
                     </div>
 
                     {/* Selected Texture */}
@@ -983,7 +1002,7 @@ const BudgetCalculator = () => {
                       Book Now for ₹{BOOKING_AMOUNT}
                     </button>
                     <p className="text-xs text-center text-gray-500 mt-2">
-                      Pay ₹{BOOKING_AMOUNT} to confirm. Our team will contact you shortly.
+                      Pay ₹{BOOKING_AMOUNT} to confirm your slot -- fully adjustable against your final project cost.
                     </p>
                   </>
                 )}
@@ -1021,7 +1040,7 @@ const BudgetCalculator = () => {
                   <div className="text-sm text-gray-600 space-y-2">
                     <p className="font-medium text-gray-900">Why 3.5x?</p>
                     <p className="leading-relaxed">
-                      The total paintable surface—including all walls and ceilings—is approximately 3.5 times your carpet area.
+                      The total paintable surface--including all walls and ceilings--is approximately 3.5 times your carpet area.
                     </p>
                   </div>
 
@@ -1039,6 +1058,46 @@ const BudgetCalculator = () => {
                       <li className="flex items-start gap-2">
                         <span className="text-green-500 mt-0.5">✓</span>
                         <span>Optimized pack selection</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              ) : calculatorType === 'service' ? (
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm text-gray-700 font-medium mb-2">Universal Formula:</p>
+                    <div className="bg-[#FBF9F6] rounded-lg p-3 border border-[#e5e0d8]">
+                      <p className="font-mono text-sm text-[#493657] font-semibold">
+                        Quantity x city rate x multipliers + 18% GST
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-sm text-gray-600 space-y-2">
+                    <p className="font-medium text-gray-900">Built for all services</p>
+                    <p className="leading-relaxed">
+                      Select city, service category, exact service, tier and quantity to see transparent min-max pricing.
+                    </p>
+                  </div>
+
+                  <div className="border-t border-gray-200 pt-4">
+                    <p className="text-sm font-medium text-gray-900 mb-2">Included in the flow:</p>
+                    <ul className="space-y-2 text-sm text-gray-600">
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>25 cities across India -- city multipliers applied automatically</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>GST breakdown shown separately</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>BHK helper for paintable area</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Free site inspection CTA</span>
                       </li>
                     </ul>
                   </div>
@@ -1146,7 +1205,7 @@ const BudgetCalculator = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-purple-50 rounded-lg p-6 border border-purple-100">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-[#493657] rounded-lg flex items-center justify-center">
                     <span className="text-xl">🎨</span>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900">Paint Calculator</h3>
@@ -1354,7 +1413,7 @@ const BudgetCalculator = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
@@ -1366,7 +1425,7 @@ const BudgetCalculator = () => {
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -1378,7 +1437,7 @@ const BudgetCalculator = () => {
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -1461,12 +1520,13 @@ const BudgetCalculator = () => {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="text-3xl">🤝</div>
                   <div>
-                    <p className="font-bold text-gray-900">Fix this price and arrange a call-back</p>
-                    <p className="text-sm text-gray-600">Your relationship manager will call you shortly</p>
+                    <p className="font-bold text-gray-900">Fix this price &amp; book via WhatsApp</p>
+                    <p className="text-sm text-gray-600">Our team will call you back within 30 minutes</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-3xl font-bold text-gray-900">₹{BOOKING_AMOUNT}.00</p>
+                  <p className="text-3xl font-bold text-gray-900">₹{BOOKING_AMOUNT}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Adjustable against final project cost</p>
                   <p className="text-xs text-gray-500">(Inc. All taxes)</p>
                 </div>
               </div>
@@ -1481,7 +1541,7 @@ const BudgetCalculator = () => {
                     type="text"
                     value={bookingData.name}
                     onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
                     placeholder="Enter your name"
                     required
                   />
@@ -1496,7 +1556,7 @@ const BudgetCalculator = () => {
                     type="tel"
                     value={bookingData.phone}
                     onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
                     placeholder="Enter your phone"
                     required
                   />
@@ -1511,7 +1571,7 @@ const BudgetCalculator = () => {
                     type="email"
                     value={bookingData.email}
                     onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
                     placeholder="Enter your email"
                     required
                   />
@@ -1519,9 +1579,12 @@ const BudgetCalculator = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-amber-500 text-white font-bold py-4 rounded-lg hover:bg-amber-600 transition-colors text-lg shadow-lg"
+                  className="w-full bg-[#25D366] text-white font-bold py-4 rounded-lg hover:bg-[#1ebe5d] transition-colors text-lg shadow-lg flex items-center justify-center gap-2"
                 >
-                  Book Now - ₹{BOOKING_AMOUNT}
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Book via WhatsApp — ₹{BOOKING_AMOUNT}
                 </button>
               </form>
             </motion.div>
@@ -1547,7 +1610,7 @@ const BudgetCalculator = () => {
               <div className="flex-1">
                 <h3 className="font-bold text-lg mb-1">Booking Confirmed!</h3>
                 <p className="text-sm text-white/90">
-                  Thank you for booking! Our relationship manager will contact you shortly to discuss your texture painting requirements.
+                  Booking confirmed! We've opened WhatsApp — our team will call you back within 30 minutes to confirm your site visit.
                 </p>
               </div>
             </div>
@@ -1574,6 +1637,7 @@ const BudgetCalculator = () => {
         onContinueShopping={handleContinueShopping}
         onCheckout={handleCheckout}
       />
+    </div>
     </div>
   );
 };

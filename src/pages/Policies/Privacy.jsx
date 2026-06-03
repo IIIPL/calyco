@@ -299,7 +299,7 @@ export default function Privacy() {
               <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Us</h3>
               <p className="text-sm text-[#23263a] mb-3">For grievances and urgent privacy concerns</p>
               <a
-                href="https://wa.me/918826733064"
+                href="https://wa.me/918796777399"
                 className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline block mb-2"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -312,7 +312,7 @@ export default function Privacy() {
               <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
                 Phone calls are not accepted on this number.
               </p>
-              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon-Sat, 10:00 AM - 6:00 PM IST)</p>
             </div>
           </div>
         </section>

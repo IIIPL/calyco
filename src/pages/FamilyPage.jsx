@@ -164,7 +164,7 @@ const FamilyColorPage = () => {
   }, []);
 
   if (!familyColors.length) {
-    return <div className="pt-32 text-center text-black">No colors found.</div>;
+    return <div className="pt-8 text-center text-black">No colors found.</div>;
   }
 
   useEffect(() => {
@@ -206,7 +206,7 @@ useEffect(() => {
 
 
   return (
-    <div className="pt-24 md:pt-32 pb-20 bg-white text-[#1a1a1a] min-h-screen">
+    <div className="pt-4 pb-20 bg-white text-[#1a1a1a] min-h-screen">
       {/* breadcrumb */}
       {/* Breadcrumb */}
       <nav
@@ -336,7 +336,7 @@ useEffect(() => {
 
       </div>
 
-      {/* Filter Modal — now reusing same options */}
+      {/* Filter Modal -- now reusing same options */}
       <Filter
         colors={familyColors}
         filterOptions={filterOptions} // <-- reuse

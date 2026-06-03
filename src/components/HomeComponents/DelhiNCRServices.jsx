@@ -47,7 +47,7 @@ const DelhiNCRServices = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-[#493657]/10 text-[#493657] px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <FaPaintRoller />
-              <span>Delhi NCR Exclusive</span>
+              <span>25 Cities Across India</span>
             </div>
 
             {/* Heading */}

@@ -8,6 +8,7 @@ import ProjectsDropdown from "./ProjectsDropdown";
 import TechnicalDocsDropdown from "./TechnicalDocsDropdown";
 import AboutDropdown from "./AboutDropdown";
 import ContactDropdown from "./ContactDropdown";
+import ServicesDropdown from "./ServicesDropdown";
 
 export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -110,7 +111,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-3 shrink-0"
         >
-          <img src="/Logo.webp" className="object-contain h-14 xl:h-16" alt="Calyco Logo" width="137" height="84" />
+          <img src="/Logo.webp" className="object-contain h-16 xl:h-[72px]" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         {/* Centered Nav Items */}
@@ -119,6 +120,11 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
             className={`transition-colors ${dropdownOpen === 'products' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
             onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')}
           >Products</button>
+
+          <button
+            className={`transition-colors ${dropdownOpen === 'services' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
+            onClick={() => setDropdownOpen(dropdownOpen === 'services' ? null : 'services')}
+          >Services</button>
 
           <button
             className={`transition-colors ${dropdownOpen === 'finishes' ? 'text-[#F0C85A]' : 'text-[#493657] hover:text-[#F0C85A]'}`}
@@ -171,7 +177,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2"
         >
-          <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
+          <img src="/Logo.webp" className="h-12 object-contain" alt="Calyco Logo" width="137" height="84" />
         </Link>
 
         <div className="flex items-center gap-4">
@@ -186,6 +192,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
       {/* Dropdowns (desktop only) */}
       {dropdownOpen === 'products' && <ProductsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
+      {dropdownOpen === 'services' && <ServicesDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'finishes' && <FinishesTexturesDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'colours' && <ColourSystemsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
       {dropdownOpen === 'projects' && <ProjectsDropdown onSelect={() => setDropdownOpen(null)} isMobile={false} />}
@@ -208,7 +215,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       >
         <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e0d8]/80">
           <Link to="/" onClick={() => handleMenuToggle(false)} className="flex items-center">
-            <img src="/Logo.webp" className="h-8 object-contain" alt="Calyco Logo" width="137" height="84" />
+            <img src="/Logo.webp" className="h-10 object-contain" alt="Calyco Logo" width="137" height="84" />
           </Link>
           <div className="flex items-center gap-4">
             <CartIcon onCartOpen={() => setDropdownOpen(null)} />
@@ -230,6 +237,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
               </p>
               <div className="flex flex-col gap-4">
                 <ProductsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
+                <ServicesDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
                 <FinishesTexturesDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
                 <ColourSystemsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
                 <ProjectsDropdown isMobile={true} onSelect={() => handleMenuToggle(false)} />
@@ -239,7 +247,14 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-[#e5e0d8]">
+            <div className="pt-4 border-t border-[#e5e0d8] flex flex-col gap-2">
+              <Link
+                to="/calculators/service-cost-calculator"
+                className="block w-full text-center bg-[#F0C85A] text-[#0F1221] py-3 rounded-full font-bold hover:bg-[#493657] hover:text-white transition-all"
+                onClick={() => handleMenuToggle(false)}
+              >
+                Calculate Cost
+              </Link>
               <Link
                 to="/contact"
                 className="block w-full text-center bg-[#493657] text-white py-3 rounded-full font-semibold hover:bg-[#F0C85A] hover:text-[#493657] transition-all"

@@ -6,7 +6,7 @@ const GovernmentPage = () => {
   return (
     <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
-        title="Government — Calyco"
+        title="Government -- Calyco"
         description="Tender readiness, compliance downloads, and GeM messaging."
         ogType="website"
       />

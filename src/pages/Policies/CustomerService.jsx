@@ -175,7 +175,7 @@ export default function CustomerService() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-24 pb-16 md:pt-28">
+        <section className="relative overflow-hidden pt-6 pb-16">
           <div className="absolute inset-0">
             <img
               src="/Assets/updated hero images/10.webp"
@@ -208,7 +208,7 @@ export default function CustomerService() {
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   className="w-full rounded-2xl border border-white/25 bg-white/15 px-5 py-3 text-sm text-white shadow-lg outline-none transition focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/40"
-                  placeholder="Try “coverage calculator” or “express delivery”"
+                  placeholder={`Try "coverage calculator" or "express delivery"`}
                 />
                 <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/70">⌘K</span>
               </div>

@@ -173,7 +173,7 @@ const ColorDetailPage = () => {
   const seoTitle = `${currentColor.name} Paint Color | ${currentColor.colorFamily || 'Calyco'} by Calyco`;
   const seoDescription =
     currentColor.description ||
-    `${currentColor.name} (${actualHexColor}) from Calyco’s ${currentColor.colorFamily || 'Color'} collection. Explore combinations, finishes, and buy online.`;
+    `${currentColor.name} (${actualHexColor}) from Calyco's ${currentColor.colorFamily || 'Color'} collection. Explore combinations, finishes, and buy online.`;
   const seoImage =
     currentColor.image ||
     currentColor.textureImage ||
@@ -271,7 +271,7 @@ const ColorDetailPage = () => {
   const familyDisplayName = mergedAttributes?.colorFamily || familyInfo?.name || currentColor.colorFamily;
   const familySlugForLink = currentColor.familySlug || slugify(familyDisplayName || '');
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 text-gray-900">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <SEO
         title={seoTitle}
         description={seoDescription}

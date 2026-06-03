@@ -50,14 +50,14 @@ const PremiumInquiryForm = () => {
                             viewport={{ once: true }}
                         >
                             <span className="text-[#998850] font-bold tracking-[0.2em] uppercase text-sm block mb-4">
-                                START YOUR PROJECT — CONTACT FORM SECTION
+                                START YOUR PROJECT -- CONTACT FORM SECTION
                             </span>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                                 Start With a Conversation. <br />
                                 <span className="text-white/40">Not a Contract.</span>
                             </h2>
                             <p className="text-white/70 text-lg leading-relaxed max-w-xl">
-                                Tell us what you’re working on. We’ll come back with product recommendations, coverage calculations, and a delivered price — usually within 48 hours. If the numbers work, we move forward together. If they don’t, no pressure. We’d rather earn a long-term partner than rush a single order.
+                                Tell us what you're working on. We'll come back with product recommendations, coverage calculations, and a delivered price -- usually within 48 hours. If the numbers work, we move forward together. If they don't, no pressure. We'd rather earn a long-term partner than rush a single order.
                             </p>
                         </motion.div>
 
@@ -76,7 +76,7 @@ const PremiumInquiryForm = () => {
                                 <div>
                                     <h4 className="font-bold text-white text-lg mb-1">Share your scope.</h4>
                                     <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-                                        Area, substrates, finish preferences, timeline. Upload a BOQ or floor plan if you have one — it helps us be precise.
+                                        Area, substrates, finish preferences, timeline. Upload a BOQ or floor plan if you have one -- it helps us be precise.
                                     </p>
                                 </div>
                             </div>
@@ -260,7 +260,7 @@ const PremiumInquiryForm = () => {
                                             <textarea
                                                 name="message"
                                                 rows="3"
-                                                placeholder="Tell us about your project — area, substrates, timeline. The more you share, the more useful our quote will be."
+                                                placeholder="Tell us about your project -- area, substrates, timeline. The more you share, the more useful our quote will be."
                                                 value={formData.message}
                                                 onChange={handleChange}
                                                 className={inputClasses}
@@ -274,7 +274,7 @@ const PremiumInquiryForm = () => {
                                                 type="submit"
                                                 className="w-full bg-[#998850] text-[#0F1221] py-5 rounded-xl font-bold uppercase tracking-[0.15em] hover:bg-[#B3A060] transition-colors shadow-lg flex items-center justify-center gap-3 group"
                                             >
-                                                Let’s Talk
+                                                Let's Talk
                                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                             </motion.button>
                                         </div>

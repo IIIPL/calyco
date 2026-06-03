@@ -6,7 +6,7 @@ import { getTypographyClasses } from '../../data/admin/typography';
 const TheSpecsThatMatter = () => {
     const specs = [
         {
-            value: "15–20%",
+            value: "15-20%",
             label: "Below national brand pricing",
             desc: "Same acrylic copolymer chemistry, direct-from-manufacturer.",
             color: "#059669" // Emerald
@@ -18,7 +18,7 @@ const TheSpecsThatMatter = () => {
             color: "#0891B2" // Cyan
         },
         {
-            value: "10–12 m²/L",
+            value: "10-12 m²/L",
             label: "Coverage per coat",
             desc: "Full hide in two coats on primed surfaces. Less product, less labour.",
             color: "#2563EB" // Blue
@@ -26,7 +26,7 @@ const TheSpecsThatMatter = () => {
         {
             value: "30 min",
             label: "Surface dry",
-            desc: "At 25°C / 50% RH. Recoat in 3–4 hours. Two coats in one day.",
+            desc: "At 25°C / 50% RH. Recoat in 3-4 hours. Two coats in one day.",
             color: "#D97706" // Amber
         },
         {
@@ -66,7 +66,7 @@ const TheSpecsThatMatter = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="block text-[#C4A962] text-xs font-medium tracking-[0.2em] uppercase mb-4"
+                        className="block text-[#998850] text-xs font-medium tracking-[0.2em] uppercase mb-4"
                     >
                         The Specs That Matter
                     </motion.span>
@@ -77,7 +77,7 @@ const TheSpecsThatMatter = () => {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-[52px] leading-[1.1] mb-6 font-serif font-light text-[#1a1a1a]"
                     >
-                        Don’t Trust the Marketing. <br /><span className="italic text-[#1a1a1a]/50 font-light">Trust the Data.</span>
+                        Don't Trust the Marketing. <br /><span className="italic text-[#1a1a1a]/50 font-light">Trust the Data.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
@@ -86,7 +86,7 @@ const TheSpecsThatMatter = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-[#1a1a1a]/70 text-lg leading-relaxed max-w-2xl font-light"
                     >
-                        Every claim on this page ties back to a test result, a spec sheet, or a project delivered. Here’s the data that matters when you’re making a procurement decision.
+                        Every claim on this page ties back to a test result, a spec sheet, or a project delivered. Here's the data that matters when you're making a procurement decision.
                     </motion.p>
                 </div>
 
@@ -126,15 +126,23 @@ const TheSpecsThatMatter = () => {
                         100% acrylic copolymer binder. UV-resistant pigments. Advanced cross-linking technology. Anti-fungal and anti-microbial as standard. Recyclable HDPE packaging.
                     </p>
 
-                    <Link
-                        to="/downloads"
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-[#1a1a1a] text-white text-sm font-bold tracking-widest uppercase hover:bg-[#998850] transition-colors duration-300 shadow-xl shadow-black/5 whitespace-nowrap"
-                    >
-                        <span>Download Technical Data</span>
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                    </Link>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <Link
+                            to="/downloads"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#1a1a1a] text-white text-sm font-bold tracking-widest uppercase hover:bg-[#998850] transition-colors duration-300 shadow-xl shadow-black/5 whitespace-nowrap"
+                        >
+                            <span>Download Technical Data</span>
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                        </Link>
+                        <Link
+                            to="/calculators/service-cost-calculator"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#493657] text-white text-sm font-bold tracking-widest uppercase hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors duration-300 shadow-xl shadow-black/5 whitespace-nowrap"
+                        >
+                            <span>Calculate Service Cost</span>
+                        </Link>
+                    </div>
                 </motion.div>
 
             </div>

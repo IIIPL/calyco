@@ -1,4 +1,4 @@
-// FIXED colorGroups.js — Replaced `&` with `and` in titles
+// FIXED colorGroups.js -- Replaced `&` with `and` in titles
 
 export const colorGroups = [
   {

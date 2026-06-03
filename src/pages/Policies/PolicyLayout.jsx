@@ -70,7 +70,7 @@ const getHeroDataForPolicy = (title) => {
   };
 };
 
-export default function PolicyLayout({ title, lastUpdated = "—", children }) {
+export default function PolicyLayout({ title, lastUpdated = "--", children }) {
   const heroData = getHeroDataForPolicy(title);
 
   return (

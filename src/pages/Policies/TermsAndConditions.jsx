@@ -183,12 +183,12 @@ export default function TermsAndConditions() {
               compliance@calycopaints.com
             </a>{" "}
             or{" "}
-            <a href="https://wa.me/918826733064" className="text-[#D4AF37] font-semibold underline" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/918796777399" className="text-[#D4AF37] font-semibold underline" target="_blank" rel="noopener noreferrer">
               WhatsApp Message
             </a>.
           </p>
           <p className="text-sm text-[#23263a]/80 mb-1">
-            Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon–Sat, 10:00 AM – 6:00 PM IST)
+            Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number. (Mon-Sat, 10:00 AM - 6:00 PM IST)
           </p>
           <p className="text-base text-[#23263a]">
             Business customers may request tailored agreements for enterprise projects.

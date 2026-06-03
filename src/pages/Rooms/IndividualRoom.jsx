@@ -183,7 +183,7 @@ export default function IndividualRoomPage() {
         {room.description}
       </p>
 
-      {/* COLOR COMBINATIONS SELECTOR — stays at bottom */}
+      {/* COLOR COMBINATIONS SELECTOR -- stays at bottom */}
       {room.shots?.length > 0 && (
         <motion.div
           className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mt-8 mb-12"

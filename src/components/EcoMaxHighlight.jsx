@@ -116,7 +116,7 @@ const EcoMaxHighlight = ({ swatches = [], showFounderQuote = true }) => {
                     "EcoMax makes our paint cleaner on the inside and truer on the outside, delivering sustainable performance that lasts for years."
                   </blockquote>
                   <p className="text-center text-sm font-medium text-[#5E3A98]">
-                    — ARMAAN KOTHARY, FOUNDER
+                    -- ARMAAN KOTHARY, FOUNDER
                   </p>
                 </motion.div>
               )}

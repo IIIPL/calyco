@@ -1,4 +1,4 @@
-// ✅ Luxury Exterior Emulsion — High Sheen only + Swatch Card + Sample Pot
+// ✅ Luxury Exterior Emulsion -- High Sheen only + Swatch Card + Sample Pot
 
 const LUXURY_EXTERIOR_VARIANT_MAP = {
   "10L-High Sheen Finish": "gid://shopify/ProductVariant/42637669564534",
@@ -73,7 +73,7 @@ export const exteriorLatexPaintDetail = {
   shortDescription:
     "High sheen, UV-shielded luxury exterior emulsion engineered for lasting brilliance and protection.",
   tagline:
-    "Luxury high-sheen exterior emulsion — brilliant façades, weather after weather.",
+    "Luxury high-sheen exterior emulsion -- brilliant façades, weather after weather.",
   microCopy: "High Sheen  UV Shield  Weatherproof",
 
   keyBenefits: [
@@ -118,15 +118,15 @@ export const exteriorLatexPaintDetail = {
 
   base_type: "Premium acrylic exterior emulsion",
   voc_content: "< 60 g/L (Low VOC)",
-  coverage: "120–160 sq.ft./L/coat",
+  coverage: "120-160 sq.ft./L/coat",
   coats_required: "2 coats",
   drying_time: "Touch dry: 45 minutes",
-  recoat_time: "4–6 hours",
-  temperature_range: "10°C–40°C",
+  recoat_time: "4-6 hours",
+  temperature_range: "10°C-40°C",
   humidity_range: "Below 85% RH",
   cleanup: "Soap and water",
 
-  storage_instructions: "Store between 5°C–40°C. Protect from freezing.",
+  storage_instructions: "Store between 5°C-40°C. Protect from freezing.",
   recommended_uses: ["Luxury façades, trims, architectural features needing high sheen and protection"],
   substrate: ["Stucco", "Concrete", "Brick", "Fiber cement", "Wood"],
 
@@ -145,20 +145,20 @@ export const exteriorLatexPaintDetail = {
     base: "Premium acrylic exterior emulsion",
     base_type: "Premium acrylic exterior emulsion",
     vehicle_type: "Water-based acrylic",
-    dryingTime: "Touch dry: 45 minutes | Recoat: 4–6 hours | Full cure: 7 days",
+    dryingTime: "Touch dry: 45 minutes | Recoat: 4-6 hours | Full cure: 7 days",
     thinning: "Up to 5% clean water for brush/roller",
-    recoatTime: "4–6 hours",
+    recoatTime: "4-6 hours",
     volume_solids: "Approx. 42%",
     voc_content: "< 60 g/L (Low VOC)",
-    pH: "8–9",
+    pH: "8-9",
     weight_per_volume: "~1.30 kg/L",
     shelf_life: "48 months (sealed)",
-    storage_temp: "5°C–40°C",
+    storage_temp: "5°C-40°C",
     application_instructions:
       "Use premium roller/brush/spray. Back-roll for uniform film. Avoid direct rain until surface is set.",
     preparation_instructions:
       "Pressure-wash where appropriate. Treat algae/mildew. Prime chalky or porous substrates.",
-    temperature_range: "10°C–40°C",
+    temperature_range: "10°C-40°C",
     humidity_range: "Below 85% RH",
     cleanup: "Soap and water immediately after use",
     storage_instructions: "Store in cool, dry place. Do not freeze.",
