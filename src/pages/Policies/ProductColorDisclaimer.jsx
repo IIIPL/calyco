@@ -148,7 +148,7 @@ export default function ColorDisclaimer() {
           <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm border border-[#0F1221]/10">
             <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Testing Tip</h3>
             <p className="text-sm text-[#23263a]">
-              Paint large sample swatches (at least 2ft x 2ft) on different walls and observe them throughout the day—morning sunlight, afternoon shade, evening artificial light, and nighttime lighting all reveal different aspects of the color.
+              Paint large sample swatches (at least 2ft x 2ft) on different walls and observe them throughout the day--morning sunlight, afternoon shade, evening artificial light, and nighttime lighting all reveal different aspects of the color.
             </p>
           </div>
         </section>
@@ -265,12 +265,12 @@ export default function ColorDisclaimer() {
             <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Customer Support</h3>
               <p className="text-sm text-[#23263a] mb-2">
-                <a href="https://wa.me/918826733064" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
+                <a href="https://wa.me/918796777399" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
               </p>
               <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
                 Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number.
               </p>
-              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon-Sat, 10:00 AM - 6:00 PM IST)</p>
             </div>
           </div>
         </section>

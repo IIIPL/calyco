@@ -893,7 +893,7 @@ export const DynamicProductPage = () => {
       )}
       <div className="min-h-screen bg-white px-2 md:px-6 xl:px-10">
         <motion.section
-          className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-32"
+          className="w-full max-w-[1400px] mx-auto px-4 py-10 pt-6"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

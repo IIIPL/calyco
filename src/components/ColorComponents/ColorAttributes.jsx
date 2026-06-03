@@ -1,6 +1,6 @@
 import React from 'react';
 
-const displayValue = (value) => (value && String(value).trim() ? value : '—');
+const displayValue = (value) => (value && String(value).trim() ? value : '--');
 
 const ColorAttributes = ({ attributes }) => {
   if (!attributes) {

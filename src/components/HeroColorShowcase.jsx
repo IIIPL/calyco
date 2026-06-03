@@ -8,7 +8,7 @@ import { getAllColors } from "../data/calycoColors.js";
 const flatColors = getAllColors();
 import { Link } from "react-router-dom";
 
-const FEATURED = ["Serene Ivory", "Sage Whisper", "Vintage Rose", "Indigo Twilight", "Teal Serenity"]; // pick any 3–5 you like
+const FEATURED = ["Serene Ivory", "Sage Whisper", "Vintage Rose", "Indigo Twilight", "Teal Serenity"]; // pick any 3-5 you like
 
 export default function HeroColorShowcase() {
   const colors = useMemo(
@@ -24,7 +24,7 @@ export default function HeroColorShowcase() {
     .filter(Boolean);
 
   return (
-    <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28">
+    <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#493657]">Trending Palettes</h2>
@@ -55,7 +55,7 @@ export default function HeroColorShowcase() {
         >
           {colors.map((c) => (
             <div key={c.name} className="w-full shrink-0 grid grid-cols-1 md:grid-cols-3 gap-6 p-4 md:p-8">
-              {/* 3 cards visible on desktop; the “hero” in the center is current color */}
+              {/* 3 cards visible on desktop; the "hero" in the center is current color */}
               <HeroColorCard color={c} comboColors={combos(c)} />
               <HeroColorCard color={combos(c)[0]} comboColors={combos(combos(c)[0])} />
               <HeroColorCard color={combos(c)[1]} comboColors={combos(combos(c)[1])} />

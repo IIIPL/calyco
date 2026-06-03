@@ -14,7 +14,7 @@ const DownloadsPage = () => {
   return (
     <div className="pt-20 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO
-        title="Downloads — Calyco"
+        title="Downloads -- Calyco"
         description="Technical data sheets, safety data sheets, and warranties."
         ogType="website"
       />

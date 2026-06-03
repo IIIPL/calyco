@@ -26,7 +26,7 @@ const leadershipPillars = [
     description:
       "Coatings technologists and material scientists advance resin chemistry, pigments, and additives tuned for India's humidity, dust, and monsoon cycles.",
     icon: "🧪",
-    gradient: "from-[#4B007D] to-[#6B46C1]",
+    gradient: "from-[#493657] to-[#6B4C80]",
   },
   {
     caption: "Operations & Scale",
@@ -42,13 +42,13 @@ const leadershipPillars = [
     description:
       "Design strategists and service teams translate field feedback into intuitive product systems and support for homeowners and specifiers.",
     icon: "💎",
-    gradient: "from-[#4B007D] to-[#8B5CF6]",
+    gradient: "from-[#493657] to-[#7B5E9A]",
   },
   {
     caption: "Partner Enablement",
     title: "Trade Enablement",
     description:
-      "Applicator trainers and technical advisors equip dealers, contractors, and architects with real-world application guidance.",  
+      "Applicator trainers and technical advisors equip dealers, contractors, and architects with real-world application guidance.",
     icon: "🏗️",
     gradient: "from-[#D4AF37] to-[#EAB308]",
   },
@@ -132,7 +132,7 @@ export default function AboutPage() {
       /* Calyco premium palette tokens */
       :root {
         --calyco-ink: #0F1221;
-        --calyco-plum: #4B007D;
+        --calyco-plum: #493657;
         --calyco-gold: #D4AF37;
         --calyco-cream: #F6F3EE;
         --calyco-warm-white: #FCFAF6;
@@ -205,7 +205,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins overflow-x-hidden">
       <SEO
         title="About CALYCO | Professional-Grade Paint Systems for India"
-        description="CALYCO delivers premium, low-/zero-VOC paint systems engineered for Indian conditions—combining durability, innovation, and sustainability."
+        description="CALYCO delivers premium, low-/zero-VOC paint systems engineered for Indian conditions--combining durability, innovation, and sustainability."
         ogType="website"
       />
 
@@ -290,106 +290,42 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership & Culture: editorial grid layered over subtle workplace imagery */}
-        <section
-          className="relative overflow-hidden py-20 md:py-24"
-          style={{
-            backgroundImage:
-              "url(/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-white/88 backdrop-blur-[2px]" />
+        {/* How Our Service Teams Work */}
+        <section className="bg-[#0F1221] py-20 md:py-24">
           <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-10">
-            <div className="text-center">
-              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Leadership & Culture</h2>
-              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/85`}>
-                A multidisciplinary leadership group with deep experience drives CALYCO's roadmap—powered by an expert network that keeps performance and people at the center.
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#F0C85A]/6 blur-[120px] pointer-events-none" />
+            <div className="relative text-center mb-12">
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#998850] block mb-4">Service Delivery</span>
+              <h2 className={`${getTypographyClasses('h2')} text-white`}>How our teams deliver.</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-2xl text-white/55`}>
+                Every Calyco service job runs the same quality system -- from the first site visit to the final handover.
               </p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
-              {leadershipPillars.map((pillar) => (
-                <article
-                  key={pillar.title}
-                  className="animate-on-scroll group relative flex h-full flex-col gap-5 overflow-hidden rounded-[28px] border border-black/6 bg-white/95 p-7 shadow-[0_26px_45px_-40px_rgba(15,18,33,0.55)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.6)]"
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 transition duration-300 group-hover:opacity-[0.08]`}
-                  />
-                  <div className="relative flex items-center gap-4">
-                    <div
-                      className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pillar.gradient} text-2xl text-white shadow-lg shadow-black/20`}
-                    >
-                      {pillar.icon}
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--calyco-gold)]">
-                        {pillar.caption}
-                      </span>
-                      <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>{pillar.title}</h3>
-                    </div>
-                  </div>
-                  <p className={`${getTypographyClasses('body')} relative text-[#31274B]/85`}>{pillar.description}</p>
-                </article>
+            <div className="relative grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { icon: '🔍', title: 'Background-verified painters', desc: 'Every applicator goes through identity and skill verification before joining a Calyco project team.' },
+                { icon: '📐', title: 'Laser measurement on-site', desc: 'Area is confirmed by laser measurement, not estimate. What you pay for matches what we paint.' },
+                { icon: '👷', title: 'Dedicated supervisor per job', desc: 'A named supervisor manages each project. You have their number from Day 1.' },
+                { icon: '📱', title: 'Daily WhatsApp photo updates', desc: 'One update per day with progress photos -- no need to be present to know what\'s happening.' },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/8 transition-colors">
+                  <span className="text-3xl block mb-4">{item.icon}</span>
+                  <h3 className="font-bold text-white text-base mb-2">{item.title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Manufacturing Excellence: atelier-inspired proof of craft */}
-        <section className="bg-[#FBF7F0] py-20 md:py-24">
-          <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
-            <div className="animate-on-scroll grid gap-10 rounded-[44px] border border-black/5 bg-white/95 p-6 shadow-[0_40px_80px_-60px_rgba(15,18,33,0.55)] md:grid-cols-[1.05fr_1fr] md:p-12">
-              <div className="relative flex min-h-[340px] items-end overflow-hidden rounded-[36px] md:min-h-[480px]">
-                <img
-                  src="/Assets/aekartdir_A_high-quality_ultra-wide_long_shot_photograph_taken__0d5534e1-a72e-4839-8b37-f99d91422e3c.webp"
-                  alt="Inside CALYCO's automated manufacturing facility"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]">
-                  <span className="h-2 w-2 rounded-full bg-[var(--calyco-gold)]" />
-                  Batch-to-bucket assurance
+            <div className="relative mt-10 grid gap-4 md:grid-cols-2">
+              {[
+                { icon: '📋', title: 'Fixed written quote before work starts', desc: 'After site inspection, we issue a written quote with line-item breakdown. Price does not change once accepted.' },
+                { icon: '🧹', title: 'Post-work cleanup included', desc: 'Furniture masking, floor protection and final cleanup are part of the job -- not an add-on.' },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-[#F0C85A]/20 bg-[#F0C85A]/5 p-6">
+                  <span className="text-3xl block mb-4">{item.icon}</span>
+                  <h3 className="font-bold text-[#F0C85A] text-base mb-2">{item.title}</h3>
+                  <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
                 </div>
-              </div>
-              <div className="flex flex-col justify-between">
-                <div className="space-y-5">
-                  <span className="inline-flex items-center rounded-full border border-black/10 bg-[var(--calyco-cream)] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--calyco-ink)]/70">
-                    Manufacturing excellence
-                  </span>
-                  <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
-                    Precision engineered, meticulously verified.
-                  </h2>
-                  <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>
-                    From resin design through finishing gloss, each Calyco batch advances through calibrated production cells, HEPA-filtered tinting, and layered quality gates built for India's humidity, dust, and UV extremes.
-                  </p>
-                </div>
-                <div className="mt-8 space-y-4">
-                  {manufacturingHighlights.map((highlight) => (
-                    <article
-                      key={highlight.title}
-                      className="group flex items-start gap-4 rounded-[28px] border border-black/6 bg-white px-5 py-5 shadow-[0_20px_35px_-30px_rgba(15,18,33,0.4)] transition duration-200 hover:-translate-y-[3px] hover:shadow-[0_32px_55px_-34px_rgba(15,18,33,0.45)]"
-                    >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-lg text-[var(--calyco-plum)]">
-                        {highlight.icon}
-                      </div>
-                      <div className="flex-1 space-y-2">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]`}>
-                            {highlight.title}
-                          </h3>
-                          <span className="rounded-full bg-[var(--calyco-gold)]/18 px-3 py-1 text-xs font-semibold text-[var(--calyco-ink)]">
-                            {highlight.metric}
-                          </span>
-                        </div>
-                        <p className={`${getTypographyClasses('body')} text-[#31274B]/75`}>{highlight.description}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -410,7 +346,7 @@ export default function AboutPage() {
                   Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
                 </p>
                 <p className={`${getTypographyClasses('body')}`}>
-                  What we created is a formula that's better, stronger, and cleaner—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
+                  What we created is a formula that's better, stronger, and cleaner--delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
                 </p>
               </div>
             </div>
@@ -465,9 +401,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-white/93 backdrop-blur-sm" />
             <div className="relative mx-auto max-w-6xl px-4 md:px-6 lg:px-10">
               <div className="animate-on-scroll text-center">
-              <h2 className={`${getTypographyClasses('h2')} text-white`}>Sustainability & Responsibility</h2>
-              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-white`}>
-                Responsible chemistry and transparent reporting guide every decision-today and for the future.
+              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>Sustainability & Responsibility</h2>
+              <p className={`${getTypographyClasses('body')} mx-auto max-w-3xl text-[#31274B]/80`}>
+                Responsible chemistry and transparent reporting guide every decision -- today and for the future.
               </p>
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">

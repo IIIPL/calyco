@@ -2,22 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-import {
-  MagnifyingGlassIcon,
-  FunnelIcon,
-  Squares2X2Icon,
-  PhotoIcon,
-  EyeIcon,
-  ShoppingCartIcon,
-  ClipboardDocumentIcon,
-  CalculatorIcon,
-  SwatchIcon,
-  ShieldCheckIcon,
-  HomeIcon,
-  UserGroupIcon,
-  WrenchScrewdriverIcon,
-  SparklesIcon
-} from '@heroicons/react/24/outline';
+import { Search, LayoutGrid, Image, Sparkles } from 'lucide-react';
 import { getAllColors, getColorFamilies } from '../data/calycoColors.js';
 import { reverseColorNameMapping } from '../data/colorNameMapping';
 import { getColorBrightness } from '../utils/colorHelpers';
@@ -33,11 +18,11 @@ const SUITABILITY_OPTIONS = ['Interior', 'Exterior', 'Waterproofing Sealer'];
 
 // Compatible Products
 const COMPATIBLE_PRODUCTS = [
-  { id: 'Nova', name: 'Nova Interior Emulsion', type: 'Interior' },
-  { id: 'SilkTouch', name: 'SilkTouch Premium Finish', type: 'Interior' },
-  { id: 'LustroLite', name: 'LustroLite Low Sheen', type: 'Interior' },
-  { id: 'PureTone', name: 'PureTone Matte', type: 'Interior' },
-  { id: 'CalmXterior', name: 'CalmXterior Weather Shield', type: 'Exterior' }
+  { id: 'premium-interior', name: 'Premium Interior Emulsion', type: 'Interior' },
+  { id: 'luxury-interior', name: 'Luxury Interior Emulsion', type: 'Interior' },
+  { id: 'premium-exterior', name: 'Premium Exterior Emulsion', type: 'Exterior' },
+  { id: 'luxury-exterior', name: 'Luxury Exterior Emulsion', type: 'Exterior' },
+  { id: 'waterproofing-sealer', name: 'Waterproofing Sealer', type: 'Waterproofing' },
 ];
 
 const ColorsPage = () => {
@@ -155,7 +140,7 @@ const ColorsPage = () => {
     <div className="min-h-screen bg-white w-full">
       <SEO
         title="Paint Colors & Palettes | Calyco Paints"
-        description="Explore Calyco’s curated paint colors, families, and palettes. Filter by tone, suitability, and finish to find the perfect shade for your space."
+        description="Explore Calyco's curated paint colors, families, and palettes. Filter by tone, suitability, and finish to find the perfect shade for your space."
         url="https://calycopaints.com/colors"
       />
       {/* Hero Section */}
@@ -167,8 +152,7 @@ const ColorsPage = () => {
             alt="Beautiful home with Calyco paints"
             className="w-full h-full object-cover"
           />
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-[#0F1221]/55"></div>
         </div>
 
         {/* Hero Content */}
@@ -200,13 +184,13 @@ const ColorsPage = () => {
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
             {/* Search */}
             <div className="flex-1 relative min-w-[240px]">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search colors by name, hex, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#493657] focus:border-transparent"
               />
             </div>
 
@@ -216,7 +200,7 @@ const ColorsPage = () => {
               <select
                 value={selectedFamily}
                 onChange={(e) => setSelectedFamily(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#493657] flex-shrink-0 w-auto"
               >
                 <option value="">All Families</option>
                 {COLOR_FAMILIES.map(family => (
@@ -228,7 +212,7 @@ const ColorsPage = () => {
               <select
                 value={selectedTonality}
                 onChange={(e) => setSelectedTonality(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#493657] flex-shrink-0 w-auto"
               >
                 <option value="">All Tonalities</option>
                 {TONALITY_OPTIONS.map(option => (
@@ -240,7 +224,7 @@ const ColorsPage = () => {
               <select
                 value={selectedSuitability}
                 onChange={(e) => setSelectedSuitability(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#493657] flex-shrink-0 w-auto"
               >
                 <option value="">All Uses</option>
                 {SUITABILITY_OPTIONS.map(option => (
@@ -252,7 +236,7 @@ const ColorsPage = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-900 flex-shrink-0 w-auto"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#493657] flex-shrink-0 w-auto"
               >
                 <option value="name">A-Z</option>
                 <option value="light-dark">Light → Dark</option>
@@ -264,7 +248,7 @@ const ColorsPage = () => {
               {(searchTerm || selectedFamily || selectedTonality || selectedSuitability) && (
                 <button
                   onClick={clearFilters}
-                  className="px-3 py-2 text-sm text-red-600 hover:text-red-800 underline"
+                  className="px-3 py-2 text-sm text-[#493657] hover:text-[#F0C85A] font-semibold transition-colors"
                 >
                   Clear All
                 </button>
@@ -381,7 +365,7 @@ const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index
       onClick={() => onColorClick(color)}
     >
       {/* Unified Card Layout - Same for mobile and desktop */}
-      <div className="bg-white shadow-sm border border-gray-200 overflow-hidden group-hover:shadow-md transition-all duration-200">
+      <div className="bg-white rounded-2xl shadow-sm border border-[#e5e0d8] overflow-hidden group-hover:shadow-[0_4px_18px_rgba(73,54,87,0.10)] transition-all duration-200">
         {/* Color Swatch */}
         <div
           className="w-full aspect-square relative rounded-t-2xl"
@@ -418,7 +402,7 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
       <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-gray-400 text-center">
-            <PhotoIcon className="w-12 h-12 mx-auto mb-2" />
+            <Image className="w-10 h-10 mx-auto mb-2" />
             <p className="text-sm">Lifestyle Preview</p>
           </div>
         </div>
@@ -435,7 +419,7 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
         <p className="text-sm text-gray-600 mb-3">{color.colorFamily}</p>
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono text-gray-500">{color.hex}</span>
-          <SparklesIcon className="w-4 h-4 text-green-600" />
+          <Sparkles className="w-4 h-4 text-[#998850]" />
         </div>
       </div>
     </motion.div>

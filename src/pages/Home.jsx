@@ -1,358 +1,281 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { HiMiniStar } from 'react-icons/hi2';
+﻿import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Calculator, CalendarCheck, ArrowRight, MapPin, CheckCircle2, ChevronDown } from 'lucide-react';
 import SEO from '../components/SEO';
-
-import GridMasonry from '../components/GridMasonry';
-import CallToAction from '../components/CallToAction';
 
 import StaticHero from '../components/StaticHero';
 import BenefitsSection from '../components/HomeComponents/BenefitsSection';
-import WhoWeWorkWith from '../components/HomeComponents/WhoWeWorkWith';
-import TheSpecsThatMatter from '../components/HomeComponents/TheSpecsThatMatter';
-import ColorSlider from '../components/ColorSlider';
-import PopularColorsSlider from '../components/PopularColorsSlider';
-import ShopByColour from '../components/ShopByColour';
-import NavigationArrows from '../components/NavigationArrows';
-
-
-import PremiumInquiryForm from '../components/HomeComponents/PremiumInquiryForm';
-import MarqueeStrip from '../components/HomeComponents/MarqueeStrip';
 import WhyCalycoShowcase from '../components/HomeComponents/WhyCalycoShowcase';
-import BudgetCalculatorCTA from '../components/HomeComponents/BudgetCalculatorCTA';
 import SiteInspectionCTA from '../components/HomeComponents/SiteInspectionCTA';
-
-
-import ProfessionalResources from '../components/HomeComponents/ProfessionalResources';
 import TestimonialsCarousel from '../components/HomeComponents/TestimonialsCarousel';
+import CallToAction from '../components/CallToAction';
+import WhyFiveStar from '../components/HomeComponents/WhyFiveStar';
+import ComparisonSection from '../components/HomeComponents/ComparisonSection';
+import { serviceHubCards } from '../data/servicePricing';
 
+const cityLinks = [
+  { name: 'Gurgaon', slug: 'painters-in-gurgaon' },
+  { name: 'Delhi', slug: 'painters-in-delhi' },
+  { name: 'Noida', slug: 'painters-in-noida' },
+  { name: 'Mumbai', slug: 'painters-in-mumbai' },
+  { name: 'Pune', slug: 'painters-in-pune' },
+  { name: 'Bengaluru', slug: 'painters-in-bengaluru' },
+  { name: 'Hyderabad', slug: 'painters-in-hyderabad' },
+  { name: 'Chennai', slug: 'painters-in-chennai' },
+  { name: 'Udaipur', slug: 'painters-in-udaipur' },
+  { name: 'Jaipur', slug: 'painters-in-jaipur' },
+];
+
+const trustNumbers = [
+  { value: '60+', label: 'Paint & coating solutions', sub: 'Interior to industrial' },
+  { value: '25', label: 'Cities being onboarded', sub: 'Partner network expanding' },
+  { value: '₹0', label: 'Hidden charges after quote', sub: 'Fixed price, no surprises' },
+  { value: '27', label: 'Quality checklist points', sub: 'Every project, every time' },
+];
+
+const serviceFaqs = [
+  {
+    q: 'Is the inspection really free?',
+    a: 'Yes. Calyco reviews your space, understands the wall condition, and gives you a clear scope before work begins -- with no charges and no obligation.',
+  },
+  {
+    q: 'Do I get a fixed quote?',
+    a: 'Yes. You receive a written quote with scope, area, material, labour, timeline, and exclusions. The price does not change after you accept it.',
+  },
+  {
+    q: 'Will your painters protect my furniture and floors?',
+    a: 'Yes. Floor covering, furniture protection, switchboard taping, and daily cleanup are part of the Calyco process.',
+  },
+  {
+    q: 'Can I track the work if I am not at home?',
+    a: 'Yes. Daily photo updates are shared on WhatsApp so you always know what is happening on site.',
+  },
+  {
+    q: 'Do you handle waterproofing also?',
+    a: 'Yes. Calyco provides terrace, roof, bathroom, basement, and damp-wall waterproofing depending on site condition.',
+  },
+  {
+    q: 'Which cities do you serve?',
+    a: 'Calyco is building a verified painting partner network across 25 selected Indian cities. Check your city availability when booking.',
+  },
+];
+
+const ServiceFAQ = () => {
+  const [open, setOpen] = useState(null);
+  return (
+    <section className="bg-[#F7F6F3] py-8 sm:py-10">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="mb-8">
+          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">Common Questions</span>
+          <div className="mt-2 mb-5 h-[1px] w-full bg-[#0F1221]/10" />
+          <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em]">Before You Book a Free Inspection.</h2>
+        </div>
+        <div className="space-y-2">
+          {serviceFaqs.map((faq, i) => (
+            <div key={i} className="bg-white/70 border border-[#0F1221]/8 rounded-2xl overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
+                aria-expanded={open === i}
+              >
+                <span className="font-medium text-[#0F1221] text-sm sm:text-base">{faq.q}</span>
+                <ChevronDown className={`w-4 h-4 text-[#0F1221]/40 flex-shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`transition-all duration-300 ${open === i ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                <p className="px-6 pb-5 text-sm text-[#0F1221]/60 leading-[1.75] font-light">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6">
+          <Link to="/faq" className="text-sm font-medium text-[#0F1221]/50 hover:text-[#0F1221] transition-colors tracking-[0.03em]">
+            See all FAQs →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [roomIndex, setRoomIndex] = useState(0);
-  const [visibleRooms, setVisibleRooms] = useState(4);
-  const [isRoomDragging, setIsRoomDragging] = useState(false);
-
-  const closeColorModal = () => {
-    setIsModalOpen(false);
-    setSelectedColor(null);
-    document.body.style.overflow = "auto";
-  };
-
-  // Application data for Browse by Application section
-  const applicationData = [
-    {
-      name: "Multi-Unit Residential",
-      desc: "Consistent interior finishes across units. Bulk supply keeps handover on schedule.",
-      image: "/Assets/Rooms/LivingRoom/base.webp", // Using Living Room base image as placeholder
-      route: "/inspirations/residential"
-    },
-    {
-      name: "Commercial & Office",
-      desc: "Low-odour, washable coatings for occupied environments.",
-      image: "/Assets/u7336851251_the_design_of_a_modern_psychological_officesubdued__c333b72d-13cb-4c09-8ef5-00f2e7aff4c9.webp", // Office image
-      route: "/inspirations/commercial"
-    },
-    {
-      name: "Hospitality & Hotels",
-      desc: "Feature-wall textures and durable corridor finishes that handle constant traffic.",
-      image: "/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.webp", // Dining/Hospitality image
-      route: "/inspirations/hospitality"
-    },
-    {
-      name: "Healthcare & Education",
-      desc: "Anti-microbial, anti-fungal formulations that support hygiene standards.",
-      image: "/Assets/InteriorInspiratoin/living-room.webp", // Hallway/Clean space image
-      route: "/inspirations/healthcare"
-    },
-    {
-      name: "Exterior & Weatherproofing",
-      desc: "Weather-resistant coatings and sealant systems for facades and exposed surfaces.",
-      image: "/Assets/ixacurtains_A_beautiful_bedroom_with_light_blue_walls_a_vintage_357585fa-b55a-406b-935f-805bfe23eff7.webp", // Placeholder (Bedroom has good light, acting as placeholder for now)
-      route: "/inspirations/exterior"
-    }
-  ];
-
-
-
-  const visibleInspirations = 6;
-  const cardWidth = 320; // Increased width for better text readability
-  const gap = 24;
-  const slideDistance = cardWidth + gap;
-
-  // Determine how many cards fit per viewport
-  React.useEffect(() => {
-    const computeVisibleCards = () => {
-      const w = window.innerWidth;
-      if (w < 640) return 1;
-      if (w < 1024) return 2;
-      if (w < 1280) return 3;
-      return 3; // Cap at 3 for better readability of descriptions
-    };
-    const apply = () => {
-      const v = computeVisibleCards();
-      setVisibleRooms(v); // Reusing state variable
-      setRoomIndex((prev) => Math.min(prev, Math.max(0, applicationData.length - v)));
-    };
-    apply();
-    window.addEventListener('resize', apply);
-    return () => window.removeEventListener('resize', apply);
-  }, []);
-
-  const nextApp = () => {
-    setRoomIndex(prev =>
-      prev >= applicationData.length - visibleRooms ? 0 : prev + 1
-    );
-  };
-
-  const prevApp = () => {
-    setRoomIndex(prev =>
-      prev <= 0 ? applicationData.length - visibleRooms : prev - 1
-    );
-  };
-
-  const handleAppDragEnd = (event, info) => {
-    const threshold = 50;
-
-    if (info.offset.x > threshold && roomIndex > 0) {
-      prevApp();
-    } else if (info.offset.x < -threshold && roomIndex < applicationData.length - visibleRooms) {
-      nextApp();
-    }
-
-    setIsRoomDragging(false);
-  };
-
-  const ColorModal = () => (
-    <AnimatePresence>
-      {isModalOpen && selectedColor && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={closeColorModal}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-6 border-b border-gray-100">
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold text-gray-900">{selectedColor.name}</h3>
-                <button
-                  onClick={closeColorModal}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <div className="mb-6">
-                <div
-                  className="w-full h-48 rounded-xl mb-4 shadow-lg"
-                  style={{ backgroundColor: selectedColor.hex }}
-                />
-                <div className="flex items-center gap-4">
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-600 mb-1">Hex Code</p>
-                    <p className="font-mono text-lg font-semibold">{selectedColor.hex}</p>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-600 mb-1">Family</p>
-                    <p className="font-semibold">{selectedColor.family}</p>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-600 mb-1">Mood</p>
-                    <p className="font-semibold">{selectedColor.mood}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-3">See it in your space</h4>
-                <div className="bg-gray-100 rounded-xl h-32 flex items-center justify-center">
-                  <p className="text-gray-500">Lifestyle preview coming soon</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <button
-                  onClick={() => {
-                    closeColorModal();
-                    navigate('/visualizer');
-                  }}
-                  className="flex-1 bg-purple-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-purple-700 transition-colors"
-                >
-                  Try in Visualizer
-                </button>
-                <button
-                  disabled
-                  className="flex-1 bg-gray-100 text-gray-400 py-3 px-6 rounded-xl font-semibold cursor-not-allowed"
-                >
-                  Buy Now
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-
   return (
     <div className="font-poppins bg-white min-h-screen">
       <SEO
-        title="Calyco Paints | 15–20% Below National Brands | Commercial Coatings Direct to Your Project"
-        description="Same acrylic chemistry, 15–20% less. Low-VOC interior, exterior, textured coatings for architects, developers & contractors. 10–12 m²/L coverage. 8-year warranty. Dedicated account management. Request a quote."
-        keywords="calyco paints, commercial coatings, specification-grade paint, low-voc paint, interior emulsion, exterior emulsion, waterproofing coatings, direct to project, professional paint supplier, architect paint, contractor paint, developer paint, india paint manufacturer"
+        title="Calyco Paints | Professional Painting & Waterproofing Services Across India"
+        description="Professional painting, waterproofing, wall design and surface care by Calyco -- transparent pricing, free site inspection, verified painters and fixed written quotes across 25 cities including Delhi, Gurgaon, Mumbai, Bengaluru, Hyderabad, Pune and more."
+        keywords="painting services india, painting services delhi, painting services mumbai, painting services bengaluru, waterproofing services, interior painting, exterior painting, wall texture painting, calyco paints"
         ogType="website"
       />
 
-      {/* Static Hero Section */}
+      {/* 1. Hero */}
       <StaticHero />
 
-      {/* Benefits Section */}
-      <BenefitsSection />
-
-      {/* Who We Work With Section */}
-      <WhoWeWorkWith />
-
-      {/* The Specs That Matter Section */}
-      <TheSpecsThatMatter />
-
-      {/* Premium Inquiry Form */}
-      <PremiumInquiryForm />
-
-      {/* Popular Shades Section */}
-      <PopularColorsSlider />
-
-      {/* Browse by Application Section */}
-      <section className="py-16 sm:py-20 bg-gray-50">
-        <div className="w-full px-4 md:px-8 lg:px-12 max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      {/* 2. Services */}
+      <section className="bg-[#F7F6F3] py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-[#998850] font-bold tracking-[0.2em] uppercase text-sm block mb-2"
-              >
-                Project Types
-              </motion.span>
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold text-[#0F1221]"
-              >
-                Explore by Application
-              </motion.h2>
+              <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">Our Services</span>
+              <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
+              <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] leading-[1.1] tracking-[-0.01em]">
+                Everything Your Property Needs.
+              </h2>
+              <p className="mt-3 text-sm text-[#0F1221]/50 font-light leading-[1.75] max-w-xl">
+                From interior repainting to waterproofing and surface protection, Calyco manages the full job with professional teams and transparent pricing.
+              </p>
             </div>
-
-            <div className="flex gap-4">
-              <NavigationArrows
-                onPrevious={prevApp}
-                onNext={nextApp}
-                showPrevious={roomIndex > 0}
-                showNext={roomIndex < applicationData.length - visibleRooms}
-                size="md"
-              />
-            </div>
+            <Link
+              to="/services"
+              className="flex-shrink-0 inline-flex items-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-5 py-2.5 text-sm font-medium hover:border-[#0F1221]/40 hover:text-[#0F1221] transition-colors whitespace-nowrap"
+            >
+              All services <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div className="relative overflow-hidden -mx-4 px-4 py-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
-            <motion.div
-              className="flex gap-6"
-              animate={{
-                x: -roomIndex * slideDistance
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30
-              }}
-              drag="x"
-              dragConstraints={{
-                left: -(applicationData.length - visibleRooms) * slideDistance,
-                right: 0
-              }}
-              dragElastic={0.1}
-              onDragStart={() => setIsRoomDragging(true)}
-              onDragEnd={handleAppDragEnd}
+          {/* Service image grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
+            {serviceHubCards.slice(0, 6).map((service) => (
+              <Link
+                key={service.slug}
+                to={`/services/${service.slug}`}
+                className="group relative rounded-2xl overflow-hidden bg-gray-100 aspect-[3/4] shadow-sm hover:shadow-[0_8px_28px_-6px_rgba(73,54,87,0.18)] transition-all duration-300"
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <p className="font-medium text-white text-xs leading-tight">{service.title}</p>
+                  <p className="text-[#F0C85A] text-[10px] font-medium mt-1 tracking-[0.05em]">from ₹{service.startingPrice}/sq ft</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-6 flex flex-row gap-3">
+            <Link
+              to="/calculators/service-cost-calculator"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-medium tracking-[0.03em] hover:bg-[#493657] transition-colors"
             >
-              {applicationData.map((app, index) => (
-                <motion.div
-                  key={app.name}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex-shrink-0 w-[320px] group cursor-pointer"
-                  onClick={() => !isRoomDragging && navigate(app.route)}
-                >
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col border border-gray-100">
-                    <div className="aspect-[4/3] relative overflow-hidden">
-                      <img
-                        src={app.image}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        alt={app.name}
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-xl font-bold text-white mb-1">{app.name}</h3>
-                      </div>
-                    </div>
-                    <div className="p-6 flex-1 flex flex-col justify-between bg-white">
-                      <p className="text-[#0F1221]/70 text-sm leading-relaxed mb-4">
-                        {app.desc}
-                      </p>
-                      <span className="text-[#998850] text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        View Solutions <span aria-hidden="true">→</span>
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+              <Calculator className="w-4 h-4" />
+              Calculate Cost
+            </Link>
+            <a
+              href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-6 py-3 text-sm font-medium hover:border-[#0F1221]/40 hover:text-[#0F1221] transition-colors"
+            >
+              <CalendarCheck className="w-4 h-4" />
+              Book Free Visit
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Designer Palettes Section */}
-      <ShopByColour />
+      {/* 3. Trust numbers + Cities */}
+      <section className="bg-[#0F1221] py-8 sm:py-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+          {/* Numbers */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 pb-7 border-b border-white/8">
+            {trustNumbers.map(({ value, label, sub }) => (
+              <div key={label} className="text-center sm:text-left">
+                <p className="text-3xl sm:text-4xl font-light text-[#F0C85A] leading-none tracking-[-0.01em]">{value}</p>
+                <p className="text-white/80 font-medium text-sm mt-2">{label}</p>
+                <p className="text-[10px] uppercase tracking-[0.12em] text-white/35 font-medium mt-0.5">{sub}</p>
+              </div>
+            ))}
+          </div>
+          {/* Cities */}
+          <div className="pt-5 flex flex-wrap items-center gap-2">
+            <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/30 uppercase tracking-[0.15em] mr-1">
+              <MapPin className="w-3 h-3" /> Now in
+            </span>
+            {cityLinks.map((city) => (
+              <Link
+                key={city.slug}
+                to={`/${city.slug}`}
+                className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-medium text-white/45 hover:border-white/25 hover:text-white/70 transition-colors"
+              >
+                {city.name}
+              </Link>
+            ))}
+            <Link
+              to="/services"
+              className="rounded-full border border-[#F0C85A]/25 px-3 py-1 text-[11px] font-medium text-[#F0C85A]/60 hover:text-[#F0C85A] transition-colors"
+            >
+              +15 more cities
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* Site Inspection CTA */}
-      <div className="px-6 sm:px-8 md:px-12 lg:px-16 py-10">
+      {/* 4. Why 5-Star */}
+      <WhyFiveStar />
+
+      {/* 6. Comparison */}
+      <ComparisonSection />
+
+      {/* 7. Why Homeowners Choose Calyco */}
+      <BenefitsSection />
+
+      {/* 8. How It Works */}
+      <section className="bg-[#0F1221] py-10 sm:py-14">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="mb-10">
+            <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#F0C85A]/60">Our Process</span>
+            <div className="mt-2 mb-5 h-[1px] w-10 bg-white/15" />
+            <h2 className="text-3xl sm:text-4xl font-light text-white tracking-[-0.01em]">
+              How Calyco Delivers 5-Star Painting.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { n: '01', t: 'Book Free Inspection', d: 'Tell us your location and requirement. No payment, no commitment.' },
+              { n: '02', t: 'Site Visit & Measurement', d: 'We inspect walls, dampness, cracks, area, and surface condition.' },
+              { n: '03', t: 'Fixed Written Quote', d: 'Clear pricing, scope, material, timeline, and exclusions in writing.' },
+              { n: '04', t: 'Verified Team Assigned', d: 'A Calyco-screened painting team is assigned to your project.' },
+              { n: '05', t: 'Daily Work Updates', d: 'Progress photos and notes shared on WhatsApp during execution.' },
+              { n: '06', t: 'Final Quality Check', d: 'Touch-ups, cleanup, and your approval before the team leaves.' },
+            ].map((step, i) => (
+              <div key={step.n} className="rounded-xl bg-white/5 border border-white/8 p-5 hover:bg-white/8 transition-all">
+                <span className="text-[10px] font-medium text-white/25 tracking-[0.1em] block mb-3">{step.n}</span>
+                <h3 className="text-sm sm:text-base font-medium text-white/85 mb-2">{step.t}</h3>
+                <p className="text-xs sm:text-sm text-white/40 font-light leading-[1.7]">{step.d}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-row gap-3">
+            <Link to="/how-it-works" className="inline-flex items-center gap-2 rounded-full border border-white/15 text-white/65 px-6 py-3 text-sm font-medium hover:border-white/35 hover:text-white transition-colors">
+              See Full Process →
+            </Link>
+            <Link to="/calculators/service-cost-calculator" className="inline-flex items-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 py-3 text-sm font-medium hover:bg-white transition-colors">
+              Get Fixed Quote
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Why Calyco */}
+      <WhyCalycoShowcase />
+
+      {/* 10. Testimonials */}
+      <TestimonialsCarousel />
+
+      {/* 11. FAQ */}
+      <ServiceFAQ />
+
+      {/* 12. Quote CTA */}
+      <div className="bg-[#F7F6F3] px-5 sm:px-8 md:px-12 lg:px-16 py-8">
         <SiteInspectionCTA />
       </div>
 
-      {/* Why Calyco Showcase */}
-      <WhyCalycoShowcase />
-
-      {/* Testimonials Section */}
-      <TestimonialsCarousel />
-
-      {/* Professional Resources Section */}
-      <ProfessionalResources />
-
-      {/* Call to Action */}
+      {/* 13. Final CTA */}
       <CallToAction />
-
-      {/* Color Modal */}
-      <ColorModal />
     </div>
   );
 };

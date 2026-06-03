@@ -23,7 +23,7 @@ const BudgetCalculatorCTA = () => {
             </h3>
 
             <p className="text-base sm:text-lg text-[#0F1221]/75 leading-relaxed max-w-xl">
-              Calculate exactly what you need with our intelligent budget planner. No surprises—just precise estimates tailored to your space.
+              Calculate exactly what you need with our intelligent budget planner. No surprises--just precise estimates tailored to your space.
             </p>
 
             <Link

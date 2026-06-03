@@ -6,7 +6,7 @@ const cards = [
     id: 1,
     title: "Colors that fit",
     highlight: "your lifestyle",
-    description: "Personalised shade recommendations for every room and style—designed to match your home perfectly.",
+    description: "Personalised shade recommendations for every room and style--designed to match your home perfectly.",
     image: "/Assets/card1-trust.webp",
   },
   {

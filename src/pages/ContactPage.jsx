@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+﻿import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "@formspree/react";
 import SEO from "../components/SEO";
 import contactData from "../data/admin/contact.json";
@@ -10,7 +10,7 @@ const contactChannels = [
     detail: contactData.contact.whatsapp.displayText,
     description: "Message our team instantly.",
     subDetail: contactData.contact.workingHours.days + " - " + contactData.contact.workingHours.time,
-    icon: "📱",
+    icon: "ðŸ"±",
     href: contactData.contact.whatsapp.link,
     newTab: true,
   },
@@ -19,7 +19,7 @@ const contactChannels = [
     detail: contactData.contact.email.support,
     description: "Send us a note and we'll reply within a day.",
     subDetail: "Replies within 24 hours",
-    icon: "✉️",
+    icon: "âœ‰ï¸",
     href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactData.contact.email.support)}`,
     newTab: true,
   },
@@ -28,7 +28,7 @@ const contactChannels = [
     detail: contactData.contact.address.full,
     description: "Meet us at our headquarters.",
     subDetail: "By appointment only",
-    icon: "🏢",
+    icon: "ðŸ¢",
   },
 ];
 
@@ -36,17 +36,17 @@ const businessSupport = [
   {
     title: "24h Response Time",
     description: "Our team will get back to you within 24 hours with personalized solutions.",
-    icon: "⏰",
+    icon: "â°",
   },
   {
     title: "Expert Support",
     description: "Connect with our technical specialists for detailed product guidance.",
-    icon: "🎯",
+    icon: "ðŸŽ¯",
   },
   {
     title: "Global Presence",
     description: "Local support and expertise across multiple countries and regions.",
-    icon: "🌍",
+    icon: "ðŸŒ",
   },
 ];
 
@@ -137,7 +137,7 @@ export default function ContactPage() {
     styleSheet.textContent = `
       :root {
         --calyco-ink: #0F1221;
-        --calyco-plum: #4B007D;
+        --calyco-plum: #493657;
         --calyco-gold: #D4AF37;
         --calyco-cream: #F6F3EE;
         --calyco-warm-white: #FCFAF6;
@@ -240,7 +240,7 @@ export default function ContactPage() {
         </section>
 
         {/* Multiple Ways to Reach Us */}
-        <section className="relative py-20 md:py-24">
+        <section className="relative py-10 md:py-12">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F8F4EC] to-white" />
           <div className="relative mx-auto max-w-5xl px-4 md:px-8 lg:px-10">
             <div className="animate-on-scroll text-center">
@@ -296,7 +296,7 @@ export default function ContactPage() {
         </section>
 
         {/* Send Us a Message */}
-        <section className="relative py-20 md:py-24" ref={formRef}>
+        <section className="relative py-10 md:py-12" ref={formRef}>
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[var(--calyco-cream)] to-white" />
           <div className="relative mx-auto max-w-6xl px-4 md:px-8 lg:px-10">
             <div className="animate-on-scroll text-center">
@@ -460,59 +460,60 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Business Support Features */}
-        <section className="py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-4 md:px-8 lg:px-10">
-            <div className="animate-on-scroll mb-10 text-center">
-              <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
-                Why Teams Choose Calyco Support
-              </h2>
+        {/* Quick service links */}
+        <section className="py-14 md:py-16 bg-[#FBF9F6]">
+          <div className="mx-auto max-w-5xl px-4 md:px-8 lg:px-10">
+            <div className="animate-on-scroll text-center mb-8">
+              <h2 className={`${getTypographyClasses('h3')} text-[var(--calyco-ink)]`}>Or go straight to a service</h2>
+              <p className="text-sm text-[#31274B]/70 mt-2">Browse transparent pricing and book a free site visit for any service.</p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {businessSupport.map((item) => (
-                <div
-                  key={item.title}
-                  className="animate-on-scroll flex flex-col items-center gap-4 rounded-[28px] border border-black/6 bg-white/95 p-6 text-center shadow-[0_24px_45px_-40px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_40px_60px_-38px_rgba(15,18,33,0.55)]"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-2xl text-[var(--calyco-ink)]">
-                    <span role="img" aria-label={`${item.title} icon`}>
-                      {item.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>
-                      {item.title}
-                    </h3>
-                    <p className={`${getTypographyClasses('body')} text-[#31274B]/85`}>{item.description}</p>
-                  </div>
-                </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { label: 'Interior Painting', path: '/services/interior-painting', price: '₹18+' },
+                { label: 'Exterior Painting', path: '/services/exterior-painting', price: '₹24+' },
+                { label: 'Waterproofing', path: '/services/terrace-waterproofing', price: '₹45+' },
+                { label: 'Texture Painting', path: '/services/texture-painting', price: '₹55+' },
+                { label: 'Wood Polish', path: '/services/wood-polish', price: '₹70+' },
+                { label: 'Tile Grouting', path: '/services/tile-grouting', price: '₹25+' },
+              ].map((s) => (
+                <a key={s.path} href={s.path} className="flex flex-col items-center gap-1.5 rounded-2xl bg-white border border-[#e5e0d8] px-3 py-4 text-center hover:border-[#493657]/40 hover:shadow-sm transition-all">
+                  <span className="font-bold text-xs text-[#0F1221] leading-tight">{s.label}</span>
+                  <span className="text-[11px] font-semibold text-[#998850]">{s.price}/sq ft</span>
+                </a>
               ))}
+            </div>
+            <div className="mt-5 text-center">
+              <a href="/calculators/service-cost-calculator" className="inline-flex items-center gap-2 rounded-full bg-[#493657] text-white px-6 py-3 text-sm font-bold hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors">
+                Calculate Service Cost â†'
+              </a>
             </div>
           </div>
         </section>
 
         {/* Footer CTA */}
-        <section className="bg-[#FBF9F6] py-20">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 text-center md:px-10 lg:px-12">
-            <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
-              Need specifications or color inspiration?
+        <section className="bg-[#0F1221] py-16">
+          <div className="mx-auto max-w-4xl px-6 md:px-10 text-center">
+            <p className="text-xs uppercase tracking-[0.28em] text-[#998850] font-semibold mb-4">Free site visit</p>
+            <h2 className={`${getTypographyClasses('h2')} text-white`}>
+              Book a free inspection. Get a fixed quote.
             </h2>
-            <p className={`${getTypographyClasses('body')} max-w-3xl text-[#31274B]/85`}>
-              Continue exploring CALYCO products or visit Support & FAQs for quick
-              answers to common questions.
+            <p className="text-white/55 max-w-xl mx-auto mt-4 mb-8 leading-relaxed">
+              Our team visits your site, measures with laser tools, and returns a written quote. No obligation, no charge.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <a
-                href="/products"
-                className={getButtonClasses('accent')}
+                href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
               >
-                Back to Products
+                Book Free Site Visit on WhatsApp
               </a>
               <a
                 href="/faq"
-                className={getButtonClasses('outline')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-7 py-3.5 font-semibold hover:bg-white/8 transition-colors"
               >
-                Support & FAQs
+                FAQs â†'
               </a>
             </div>
           </div>

@@ -9,7 +9,7 @@ export default function ActiveFilters({ selected, price, onRemove, onClearAll })
             <button key={`${g}-${v}`} className="px-3 py-1 bg-[#f0e9dc] text-[#493657] rounded-full text-sm hover:bg-[#e9dfcc]"
             onClick={() => onRemove(g, v)}>{g}: {v} ×</button>
         ))}
-        {hasPrice && <span className="px-3 py-1 bg-[#f0e9dc] text-[#493657] rounded-full text-sm">Price: {price.min}–{price.max}</span>}
+        {hasPrice && <span className="px-3 py-1 bg-[#f0e9dc] text-[#493657] rounded-full text-sm">Price: {price.min}-{price.max}</span>}
         {(chips.length||hasPrice) ? <button className="ml-2 underline text-[#493657]" onClick={onClearAll}>Clear All</button> : null}
         </div>
     );

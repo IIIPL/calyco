@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTruck, FaShieldAlt, FaUndo, FaCheck, FaInfoCircle } from "react-icons/fa";
 
-export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) => {
+export const Nova = ({ productName = "Calyco Nova - Interior Latex Paint" }) => {
     const [selectedSheen, setSelectedSheen] = useState("Matte");
     const [selectedSize, setSelectedSize] = useState("1 liter");
     const [quantity, setQuantity] = useState(1);
@@ -17,7 +17,7 @@ export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) =
 
     return (
         <div className="pt-20 min-h-screen bg-gradient-to-br from-white to-[#F0C85A]/5">
-            <section className="w-full max-w-7xl mx-auto px-4 py-10 pt-32">
+            <section className="w-full max-w-7xl mx-auto px-4 py-10 pt-4">
                 <div className="flex items-center gap-2 text-sm text-[#493657]/60 mb-8">
                     <Link to={`/`}>
                         Home
@@ -74,7 +74,7 @@ export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) =
                         <div>
                             <h3 className="text-2xl font-bold text-[#493657] mb-6">Product Details</h3>
                             <p className="text-[#493657]/80 text-lg mb-6 max-w-4xl leading-relaxed">
-                                Calyco NOVA is our ultra-premium interior latex paint engineered for effortless one-coat application and long-lasting color. With a rich matte finish and high hide, NOVA brings seamless walls to life—resistant to stains, humidity, and daily wear.
+                                Calyco NOVA is our ultra-premium interior latex paint engineered for effortless one-coat application and long-lasting color. With a rich matte finish and high hide, NOVA brings seamless walls to life--resistant to stains, humidity, and daily wear.
                             </p>
                         </div>
 
@@ -109,7 +109,7 @@ export const Nova = ({ productName = "Calyco Nova – Interior Latex Paint" }) =
                                 </div>
                                 <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
                                     <span className="font-medium text-[#493657]">Coverage</span>
-                                    <span className="text-[#493657]/70">120–140 sq. ft. per liter per coat</span>
+                                    <span className="text-[#493657]/70">120-140 sq. ft. per liter per coat</span>
                                 </div>
                                 <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-[#493657]/10">
                                     <span className="font-medium text-[#493657]">Dry Time</span>

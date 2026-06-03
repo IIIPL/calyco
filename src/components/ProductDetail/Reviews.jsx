@@ -144,7 +144,7 @@ const Reviews = ({ rating, reviewCount }) => {
               </p>
               
               <div className="text-sm font-medium text-gray-900">
-                — {review.author}
+                -- {review.author}
               </div>
             </motion.div>
           ))}

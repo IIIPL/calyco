@@ -114,10 +114,10 @@ export default function EnvironmentalSustainability() {
         <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
           <h2 className="text-3xl font-bold mb-3 text-[#0F1221]">Our Environmental Commitment</h2>
           <p className="text-lg max-w-3xl mx-auto leading-relaxed text-[#23263a] mb-1">
-            At CALYCO, we believe that premium quality and environmental responsibility go hand in hand. Our eco-premium paints are engineered to deliver exceptional performance while minimizing environmental impact at every stage—from raw material sourcing to manufacturing, packaging, application, and disposal.
+            At CALYCO, we believe that premium quality and environmental responsibility go hand in hand. Our eco-premium paints are engineered to deliver exceptional performance while minimizing environmental impact at every stage--from raw material sourcing to manufacturing, packaging, application, and disposal.
           </p>
           <p className="text-base max-w-3xl mx-auto text-[#23263a] mb-1">
-            We're not just meeting environmental standards—we're setting them. Our commitment to sustainability is embedded in our formulations, operations, and long-term vision for a greener future.
+            We're not just meeting environmental standards--we're setting them. Our commitment to sustainability is embedded in our formulations, operations, and long-term vision for a greener future.
           </p>
           <p className="text-base max-w-3xl mx-auto text-[#23263a]">
             This policy outlines our sustainability principles, environmental impact reduction strategies, certifications, recycling programs, and future goals.
@@ -175,7 +175,7 @@ export default function EnvironmentalSustainability() {
         <section className={`${sectionPadTight} bg-white max-w-6xl mx-auto px-6 md:px-10 lg:px-12`}>
           <h2 className="text-3xl font-bold text-[#0F1221] mb-3">Circular Economy: Packaging & Recycling</h2>
           <p className="text-lg text-[#23263a] mb-6">
-            CALYCO paint cans are designed for circularity—made from recycled materials and fully recyclable after use.
+            CALYCO paint cans are designed for circularity--made from recycled materials and fully recyclable after use.
           </p>
           <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm mb-8">
             <h3 className="text-lg font-semibold text-[#0F1221] mb-3">Our Packaging Initiatives</h3>
@@ -251,12 +251,12 @@ export default function EnvironmentalSustainability() {
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Sustainability Team</h3>
               <p className="text-sm text-[#23263a] mb-2">
-                <a href="https://wa.me/918826733064" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
+                <a href="https://wa.me/918796777399" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
               </p>
               <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
                 Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number.
               </p>
-              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon-Sat, 10:00 AM - 6:00 PM IST)</p>
             </div>
           </div>
         </section>

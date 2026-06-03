@@ -33,7 +33,7 @@ const AutoSEO = () => {
     if (pathname === '/textures') {
       return {
         title: 'Premium Wall Textures | Calyco Paints',
-        description: 'Browse Calyco’s exclusive range of designer wall textures with rich finishes for interiors and exteriors.',
+        description: "Browse Calyco's exclusive range of designer wall textures with rich finishes for interiors and exteriors.",
         canonicalUrl: canonical,
         image: DEFAULT_IMAGE,
       };
@@ -96,7 +96,7 @@ const AutoSEO = () => {
     return {
       title: 'Calyco Paints | Premium, Low-VOC Paints & Textures',
       description:
-        'Shop Calyco’s premium interior/exterior paints, primers, sealers, and designer textures. Low-VOC, durable finishes built for Indian weather.',
+        "Shop Calyco's premium interior/exterior paints, primers, sealers, and designer textures. Low-VOC, durable finishes built for Indian weather.",
       canonicalUrl: canonical,
       image: DEFAULT_IMAGE,
     };

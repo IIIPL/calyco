@@ -138,7 +138,7 @@ const Filter = ({ colors, onFilterChange, activeFilters, isOpen, onClose, scroll
           ))}
         </div>
 
-        {/* Removed footer Apply button — live apply is active */}
+        {/* Removed footer Apply button -- live apply is active */}
       </div>
     </div>
   );

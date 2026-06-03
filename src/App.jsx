@@ -6,6 +6,9 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 const Home = React.lazy(() => import('./pages/Home.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
 const BudgetCalculator = React.lazy(() => import('./pages/BudgetCalculator.jsx'))
+const ServicesPage = React.lazy(() => import('./pages/ServicesPage.jsx'))
+const AllServicesPage = React.lazy(() => import('./pages/AllServicesPage.jsx'))
+const ServiceDetailPage = React.lazy(() => import('./pages/services/ServiceDetailPage.jsx'))
 
 const ProductDetailPage = React.lazy(() => import('./pages/ProductDetailPage.jsx'))
 const ContractorsPage = React.lazy(() => import('./pages/ContractorsPage.jsx'))
@@ -19,6 +22,11 @@ const Checkout = React.lazy(() => import('./pages/Checkout.jsx'))
 const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.mdx'))
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 
+const HowItWorksPage = React.lazy(() => import('./pages/HowItWorksPage.jsx'));
+const TransparentPricingPage = React.lazy(() => import('./pages/TransparentPricingPage.jsx'));
+const GalleryPage = React.lazy(() => import('./pages/GalleryPage.jsx'));
+const GetQuotePage = React.lazy(() => import('./pages/GetQuotePage.jsx'));
+
 const BlogIndex = React.lazy(() => import('../blog/pages/BlogIndex.jsx'));
 const BlogPost = React.lazy(() => import('../blog/pages/BlogPost.jsx'));
 const MagicUpload = React.lazy(() => import('../blog/admin/MagicUpload.jsx'));
@@ -28,6 +36,7 @@ import { Footer } from './pages/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 // Convert all page components to lazy loading for better performance
 const AboutUs = React.lazy(() => import('./pages/AboutUs'))
@@ -123,8 +132,9 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
         <div className="flex items-center justify-between">
           {/* Centered Text */}
           <div className="flex-1"></div>
-          <div className="text-center text-white text-sm">
-            Same acrylic chemistry as the national brands. 15–20% less. One supplier for every surface. — Request a Quote
+          <div className="text-center text-white text-sm font-medium">
+            Now launching Calyco 5-Star Painting Service across selected Indian cities.{' '}
+            <button onClick={() => navigate('/services')} className="underline underline-offset-2 hover:text-[#F0C85A] transition-colors">Book a free inspection today →</button>
           </div>
           <div className="flex-1 flex justify-end">
             <button
@@ -196,8 +206,10 @@ function App() {
 
             {/* This is your app. */}
             <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
+            <WhatsAppFloat />
             <div className="transition-all duration-300">
-              <React.Suspense fallback={<div className="pt-24 text-center">Loading…</div>}>
+              <React.Suspense fallback={<div className="pt-24 text-center text-[#0F1221]/40 text-sm">Loading…</div>}>
+                <div key={location.pathname} className="page-enter">
                 <Routes>
                   <Route path='/' element={<Home />} />
 
@@ -205,6 +217,14 @@ function App() {
                   <Route path='/colors' element={<ColorsPage />} />
                   <Route path='/visualizer' element={<VisualizerPage />} />
                   <Route path='/budget-calculator' element={<BudgetCalculator />} />
+                  <Route path='/calculators/service-cost-calculator' element={<BudgetCalculator />} />
+                  <Route path='/services' element={<ServicesPage />} />
+                  <Route path='/services/all' element={<AllServicesPage />} />
+                  <Route path='/services/:serviceSlug' element={<ServiceDetailPage />} />
+                  <Route path='/how-it-works' element={<HowItWorksPage />} />
+                  <Route path='/transparent-pricing' element={<TransparentPricingPage />} />
+                  <Route path='/gallery' element={<GalleryPage />} />
+                  <Route path='/get-quote' element={<GetQuotePage />} />
                   <Route path='/products' element={<Products />} />
                   <Route path='/products/:slug' element={<ProductDetailPage />} />
 
@@ -323,6 +343,7 @@ function App() {
                   {/* 404 Fallback Route - MUST BE LAST */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
+                </div>
               </React.Suspense>
               <Footer />
             </div>

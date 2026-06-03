@@ -17,7 +17,7 @@ const distemperDetail = {
     slug: "calyco-acrylic-washable-distemper",
     image: "/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp",
     images: ["/Assets/Product Images/Acrylic Washable Distemper/acrykic-washable-distemper.webp"],
-    description: "Economical, water-based distemper providing smooth, matt interiors with good washability and quick drying—ideal for everyday living.",
+    description: "Economical, water-based distemper providing smooth, matt interiors with good washability and quick drying--ideal for everyday living.",
     tagline: "Affordable washable finish for everyday living.",
     details: "Acrylic Washable Distemper delivers a micro-smooth matt look with bright colours, fast drying, and good washability at an accessible price. Great for interior walls, ceilings, plaster, concrete, and false ceilings.",
     finish_type_sheen: ["Matt"],

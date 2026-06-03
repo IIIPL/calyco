@@ -297,10 +297,48 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* ============================================
+   CALYCO DESIGN SYSTEM — GLOBAL TOKENS
+   ============================================ */
+
+/* Page transition */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: page-enter 0.22s ease-out both;
+}
+
+/* Unified focus ring */
+:focus-visible {
+  outline: 2px solid #493657;
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Elevation system */
+.elevation-1 { box-shadow: 0 1px 6px rgba(15,18,33,0.06); }
+.elevation-2 { box-shadow: 0 4px 18px rgba(73,54,87,0.10); }
+.elevation-3 { box-shadow: 0 12px 40px rgba(73,54,87,0.16); }
+.elevation-hover { box-shadow: 0 8px 28px rgba(73,54,87,0.16); }
+
+/* Prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Coverage calculator styles */
 .coverage-input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  border-color: #493657;
+  box-shadow: 0 0 0 3px rgba(73, 54, 87, 0.12);
 }
 
 /* Sticky CTA animations */

@@ -8,7 +8,7 @@ const ContractorsPage = () => {
   return (
     <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
-        title="Contractors — Calyco"
+        title="Contractors -- Calyco"
         description="Quick-buy for contractors and bulk reorder support."
         ogType="website"
       />

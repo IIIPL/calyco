@@ -176,7 +176,7 @@ export default function ReturnsRefunds() {
                 </p>
                 <ul className="space-y-1 text-xs text-[#31274B]/70">
                   <li>✓ Email: support@calycopaints.com</li>
-                  <li>✓ <a href="https://wa.me/918826733064" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> (Phone calls not accepted. Mon–Sat, 10:00 AM – 6:00 PM IST)</li>
+                  <li>✓ <a href="https://wa.me/918796777399" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> (Phone calls not accepted. Mon-Sat, 10:00 AM - 6:00 PM IST)</li>
                   <li>✓ Include clear photos of product and packaging</li>
                 </ul>
               </div>
@@ -459,7 +459,7 @@ export default function ReturnsRefunds() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <a
-                href="https://wa.me/918826733064"
+                href="https://wa.me/918796777399"
                 className={getButtonClasses('accent')}
                 target="_blank"
                 rel="noopener noreferrer"

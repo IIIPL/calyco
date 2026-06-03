@@ -65,7 +65,7 @@ export default function AboutPage() {
           
           <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-3xl p-8 md:p-12 shadow-lg mb-12">
             <p className="text-xl leading-relaxed text-gray-700 mb-6">
-              At <strong className="text-emerald-700">Calyco Paints</strong>, we believe in doing things the right way. That's why we set out to make our paint the best it can be—combining cutting-edge sustainability with uncompromising performance.
+              At <strong className="text-emerald-700">Calyco Paints</strong>, we believe in doing things the right way. That's why we set out to make our paint the best it can be--combining cutting-edge sustainability with uncompromising performance.
             </p>
             <p className="text-xl leading-relaxed text-gray-700">
               Founded in 2023, we've developed our exclusive <strong className="text-emerald-700">EcoMax™ Technology</strong> that delivers gorgeous, vibrant hues with unsurpassed durability while maintaining zero-VOC formulations. It's the science behind Calyco's commitment to healthier living and environmental responsibility.
@@ -81,7 +81,7 @@ export default function AboutPage() {
                   Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
                 </p>
                 <p>
-                  What we created is a formula that's <strong className="text-emerald-700">better, stronger, and cleaner</strong>—delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
+                  What we created is a formula that's <strong className="text-emerald-700">better, stronger, and cleaner</strong>--delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
                 </p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   "EcoMax makes our paint cleaner on the inside and truer on the outside, delivering sustainable performance that lasts for years."
                 </p>
-                <p className="text-emerald-600 text-xs mt-3 font-medium">— ARMAAN KOTHARY, FOUNDER</p>
+                <p className="text-emerald-600 text-xs mt-3 font-medium">-- ARMAAN KOTHARY, FOUNDER</p>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                   solutions for sustainable home living.
                 </p>
                 <p>
-                  His goal was to create a brand that combines environmental responsibility with design excellence—while offering safer and more breathable paints and coatings to Indian households and builders.
+                  His goal was to create a brand that combines environmental responsibility with design excellence--while offering safer and more breathable paints and coatings to Indian households and builders.
                 </p>
                 <p>
                   From product development and sourcing to formulation, testing, and outreach, Armaan leads every step of Calyco's operations, pioneering a cleaner, smarter, and more responsible way to paint and protect the future.
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 </div>
                 <h4 className="text-xl font-bold text-gray-800 mb-3">Environmentally Responsible</h4>
                 <p className="text-gray-600">
-                  Zero-VOC waterborne tinting system ensures our low-VOC paints remain environmentally safe even after tinting—an innovation others can't replicate.
+                  Zero-VOC waterborne tinting system ensures our low-VOC paints remain environmentally safe even after tinting--an innovation others can't replicate.
                 </p>
               </div>
             </div>
@@ -306,10 +306,10 @@ export default function AboutPage() {
                 <span className="text-emerald-600 text-xl">📞</span>
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Contact Us</h4>
-              <a href="https://wa.me/918826733064" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors font-semibold underline block mb-2" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/918796777399" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors font-semibold underline block mb-2" target="_blank" rel="noopener noreferrer">
                 WhatsApp Message
               </a>
-              <p className="text-xs text-gray-600">Mon–Sat, 10:00 AM – 6:00 PM IST</p>
+              <p className="text-xs text-gray-600">Mon-Sat, 10:00 AM - 6:00 PM IST</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-md">

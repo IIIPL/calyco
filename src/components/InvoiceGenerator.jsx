@@ -197,7 +197,7 @@ export const InvoiceGenerator = ({
           addressLine1: 'B37, Sector 1',
           addressLine2: 'Noida, Uttar Pradesh - 201301',
           country: 'India',
-          phone: '+91 8826733064 (WhatsApp - Messages only)',
+          phone: '+91 8796777399 (WhatsApp - Messages only)',
           email: 'info@calycopaints.com',
           website: 'calycopaints.com',
           gstin: SELLER_GSTIN
@@ -747,7 +747,7 @@ export const InvoiceGenerator = ({
                   ${data.company?.country || 'India'}
                 </div>
                 <div class="block-text"><strong>GSTIN:</strong> ${data.company?.gstin || SELLER_GSTIN}</div>
-                <div class="block-text"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8826733064 (Messages only)'}</div>
+                <div class="block-text"><strong>WhatsApp:</strong> ${data.company?.phone || '+91 8796777399 (Messages only)'}</div>
                 <div class="block-text"><strong>Email:</strong> ${data.company?.email || 'info@calycopaints.com'}</div>
                 <div class="block-text"><strong>Website:</strong> ${data.company?.website || 'calycopaints.com'}</div>
               </div>

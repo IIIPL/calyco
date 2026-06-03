@@ -17,7 +17,7 @@ const blogContentArray = [
       <p>Monochromatic design is often misunderstood as simply "using one color." In reality, it involves using various tints, tones, and shades of a single color to create a serene yet sophisticated space. The absence of jarring contrast allows the eye to focus on texture, form, and architecture, fostering an atmosphere of calm and elegance that is difficult to achieve with high-contrast palettes.</p>
       
       <h2>Why Go Monochromatic?</h2>
-      <p>Beyond aesthetics, a monochromatic scheme makes a room feel larger. Without distinct color breaks to chop up the visual field, the boundaries of the room blur. It also simplifies the decorating process—you no longer have to worry if your rug clashes with your curtains, because they are all derived from the same base hue.</p>
+      <p>Beyond aesthetics, a monochromatic scheme makes a room feel larger. Without distinct color breaks to chop up the visual field, the boundaries of the room blur. It also simplifies the decorating process--you no longer have to worry if your rug clashes with your curtains, because they are all derived from the same base hue.</p>
 
       <h2>Layering Texture for Visual Interest</h2>
       <p>In a monochromatic room, texture becomes the primary element of interest. If everything is smooth and blue, the room will look flat and clinical. To prevent this:</p>
@@ -177,7 +177,7 @@ const blogContentArray = [
     summary: "Selecting and applying high-performance Polyurethane (PU) and Melamine finishes to ensure interior wooden elements remain protected, scratch-resistant, and vibrant.",
     content: `
       <h2>The Demand for High-Performance Wood Finishes</h2>
-      <p>Wood is a living material. Even after it is cut and shaped into furniture, it reacts to its environment. Interior woodwork—from kitchen cabinets to dining tables—is constantly exposed to wear, moisture, heat, and cleaning chemicals. A high-quality coating is necessary not just for shine, but to act as a shield against these degrading forces.</p>
+      <p>Wood is a living material. Even after it is cut and shaped into furniture, it reacts to its environment. Interior woodwork--from kitchen cabinets to dining tables--is constantly exposed to wear, moisture, heat, and cleaning chemicals. A high-quality coating is necessary not just for shine, but to act as a shield against these degrading forces.</p>
       
       <h2>Polyurethane (PU) Coatings: The Gold Standard</h2>
       <p>PU coatings are composed of polymers that cure into an extremely hard, long-lasting film. They are the premium choice for luxury furniture.</p>
@@ -268,7 +268,7 @@ const blogContentArray = [
     summary: "A simple guide to choosing the perfect paint sheen (flat, matte, eggshell, satin, semi-gloss, and high-gloss) for every room in your home.",
     content: `
       <h2>Understanding Paint Sheen</h2>
-      <p>Paint sheen, or finish, refers to the degree of light reflection from the dried paint film. It's the most important factor—aside from color—in determining durability, cleanability, and how the walls look. The sheen is determined by the ratio of resins (binders) to pigments in the paint. More resin equals more shine and durability.</p>
+      <p>Paint sheen, or finish, refers to the degree of light reflection from the dried paint film. It's the most important factor--aside from color--in determining durability, cleanability, and how the walls look. The sheen is determined by the ratio of resins (binders) to pigments in the paint. More resin equals more shine and durability.</p>
       
       <h2>1. Flat and Matte (0-5% Reflectivity)</h2>
       <p><strong>The Look:</strong> Velvety, non-reflective, soaking up light.</p>
@@ -333,7 +333,7 @@ const blogContentArray = [
     summary: "How to identify the best wall in any room for an accent color or texture to maximize visual impact and define the space without overwhelming it.",
     content: `
       <h2>The Focal Point Principle</h2>
-      <p>The accent wall should always be the natural focal point of the room—the wall that immediately draws the eye upon entry. This is typically:</p>
+      <p>The accent wall should always be the natural focal point of the room--the wall that immediately draws the eye upon entry. This is typically:</p>
       <ul>
         <li>The wall behind the headboard in a bedroom.</li>
         <li>The wall behind the TV or the main sofa in a living room.</li>
@@ -357,7 +357,7 @@ const blogContentArray = [
       </ul>
       
       <h2>The 60-30-10 Rule Adaptation</h2>
-      <p>When you add an accent wall, balance is key. Ensure the accent color is repeated elsewhere in the room—in rug patterns, throw pillows, or vases. If the wall is the <em>only</em> place that color exists, it will feel disconnected and random.</p>
+      <p>When you add an accent wall, balance is key. Ensure the accent color is repeated elsewhere in the room--in rug patterns, throw pillows, or vases. If the wall is the <em>only</em> place that color exists, it will feel disconnected and random.</p>
 
       <h2>Products and Tools Required</h2>
       <div style="background-color: #f9fafb; padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
@@ -405,7 +405,7 @@ const blogContentArray = [
       <p><strong>The Fix:</strong></p>
       <ol>
         <li><strong>Wash:</strong> Thoroughly pressure wash or scrub the surface to remove all loose powder.</li>
-        <li><strong>Bind:</strong> Apply a penetrating masonry primer. This is crucial—it acts like glue to bind any remaining microscopic dust.</li>
+        <li><strong>Bind:</strong> Apply a penetrating masonry primer. This is crucial--it acts like glue to bind any remaining microscopic dust.</li>
         <li><strong>Paint:</strong> Finish with a premium 100% acrylic exterior emulsion which is UV-resistant.</li>
       </ol>
 
@@ -462,7 +462,7 @@ const blogContentArray = [
     summary: "Discover the beige, taupe, and off-white shades that add warmth and comfort to interiors during the colder months, replacing stark cool grays.",
     content: `
       <h2>The Shift to Cozy Interiors</h2>
-      <p>For years, cool grays dominated interior design (the "Millennial Gray" era). However, trends are shifting. Stark, cool palettes can feel sterile and unwelcoming, especially in winter. Warm neutrals—taupe, creamy beige, mushroom gray, and oatmeal—are taking over. These shades reflect light warmly, making spaces feel inviting, intimate, and physically warmer.</p>
+      <p>For years, cool grays dominated interior design (the "Millennial Gray" era). However, trends are shifting. Stark, cool palettes can feel sterile and unwelcoming, especially in winter. Warm neutrals--taupe, creamy beige, mushroom gray, and oatmeal--are taking over. These shades reflect light warmly, making spaces feel inviting, intimate, and physically warmer.</p>
       
       <h2>Taupe: The Versatile Neutral</h2>
       <p>Taupe is the bridge between gray and brown. It offers the modern sophistication of gray but with a grounding, earthy warmth.</p>
@@ -802,7 +802,7 @@ const blogContentArray = [
 
       <h2>FAQs on Small Rooms</h2>
       <h3>Do dark colors always make a room look smaller?</h3>
-      <p>Usually, yes, they absorb light. However, painting a small powder room or library in deep charcoal creates a "jewel box" effect—it feels intentionally cozy and luxurious rather than cramped.</p>
+      <p>Usually, yes, they absorb light. However, painting a small powder room or library in deep charcoal creates a "jewel box" effect--it feels intentionally cozy and luxurious rather than cramped.</p>
       <h3>Should I use vertical stripes?</h3>
       <p>Yes! Vertical stripes draw the eye up, making ceilings feel higher. Horizontal stripes make the room feel wider.</p>
     `
@@ -980,7 +980,7 @@ const blogContentArray = [
     summary: "How specialized biocidal additives in modern exterior paints inhibit the growth of black algae, fungus, and moss, preserving the building's aesthetic appeal.",
     content: `
       <h2>The Green/Black Menace</h2>
-      <p>In high-humidity regions or areas with heavy monsoons, exterior walls often develop ugly black streaks or green patches. This isn't dirt—it's a living colony of algae, fungus, or moss. These organisms feed on the dust settled on the wall and the organic components of cheap paint, eventually eating into the plaster itself.</p>
+      <p>In high-humidity regions or areas with heavy monsoons, exterior walls often develop ugly black streaks or green patches. This isn't dirt--it's a living colony of algae, fungus, or moss. These organisms feed on the dust settled on the wall and the organic components of cheap paint, eventually eating into the plaster itself.</p>
       
       <h2>Biocidal Technology: The Defense System</h2>
       <p>Modern premium exterior paints are not just colored plastic; they are chemical shields. They contain <strong>Biocides and Fungicides</strong> (often encapsulated for slow release).
@@ -1185,10 +1185,10 @@ const blogContentArray = [
     summary: "Tips for using dark or matching ceiling colors to create a cozy 'cocooning' effect or lower a high ceiling visually for better proportions.",
     content: `
       <h2>The Fifth Wall Theory</h2>
-      <p>For decades, the "white ceiling" has been the default setting for almost every home. It's safe, it reflects light, and it's what we're used to. However, designers call the ceiling the "fifth wall" for a reason—it is a massive blank canvas (often the largest unobstructed surface in a room) that offers an incredible opportunity to alter the mood and perceived proportions of a space.</p>
+      <p>For decades, the "white ceiling" has been the default setting for almost every home. It's safe, it reflects light, and it's what we're used to. However, designers call the ceiling the "fifth wall" for a reason--it is a massive blank canvas (often the largest unobstructed surface in a room) that offers an incredible opportunity to alter the mood and perceived proportions of a space.</p>
       
       <h2>Strategy 1: The "Cocooning" Effect (Dark Ceilings)</h2>
-      <p>Painting a ceiling a dark color—charcoal, navy, forest green, or even black—instantly changes the room's psychology.
+      <p>Painting a ceiling a dark color--charcoal, navy, forest green, or even black--instantly changes the room's psychology.
       <br><strong>Where to use it:</strong> Large bedrooms, media rooms, or libraries.
       <br><strong>The Effect:</strong> It visually lowers the ceiling, making a cavernous room feel intimate and cozy. In a media room, a dark ceiling prevents light reflection from the screen, improving the viewing experience.</p>
       
@@ -1357,7 +1357,7 @@ const blogContentArray = [
     date: "2025-12-12",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Texture Coatings.webp",
-    summary: "Exploring different interior texture techniques—such as sponge, ragging, and metallic effects—and how to apply them for artistic depth and character.",
+    summary: "Exploring different interior texture techniques--such as sponge, ragging, and metallic effects--and how to apply them for artistic depth and character.",
     content: `
       <h2>Why Choose Texture Over Flat Paint?</h2>
       <p>Flat paint is safe, but texture is personality. Interior texture coatings allow you to introduce visual and tactile interest that a smooth painted wall cannot offer.
@@ -1471,7 +1471,7 @@ const blogContentArray = [
     summary: "Guidelines for selecting trim colors (windows, doors, accents) that either pop against the main facade or blend seamlessly for an elegant, unified look.",
     content: `
       <h2>The Function of Exterior Trim</h2>
-      <p>Trim defines the architectural features of a home—windows, doors, fascia boards, railings, and columns. It outlines the shape of the building. The color you choose for the trim determines whether you are highlighting these features or hiding them.</p>
+      <p>Trim defines the architectural features of a home--windows, doors, fascia boards, railings, and columns. It outlines the shape of the building. The color you choose for the trim determines whether you are highlighting these features or hiding them.</p>
       
       <h2>Approach 1: High Contrast (The Classic Look)</h2>
       <p><strong>The Strategy:</strong> Use a trim color that is drastically different from the body color.
@@ -1510,7 +1510,7 @@ const blogContentArray = [
       <h3>Should my garage door match the trim or the house?</h3>
       <p>If you want to hide it, match the house. If it's a beautiful custom door, match the trim or stain it natural wood.</p>
       <h3>Can I use wall paint on trim?</h3>
-      <p>For masonry trim, yes. For wood or metal trim, no—use an Enamel (oil or water-based) for hardness and scuff resistance.</p>
+      <p>For masonry trim, yes. For wood or metal trim, no--use an Enamel (oil or water-based) for hardness and scuff resistance.</p>
     `
   },
   {
@@ -1573,7 +1573,7 @@ const blogContentArray = [
     content: `
       <h2>The Bohemian Color Foundation</h2>
       <p>Bohemian (Boho) style is the antithesis of minimalism. It embraces a "more is more" philosophy, celebrating global influences, vintage finds, and organic comfort. However, to prevent the room from looking chaotic, the wall color must serve as a grounding force.
-      <br><strong>The Palette:</strong> The style is rooted in warm, earthy tones. Think of colors you’d find in a spice market or a desert sunset:
+      <br><strong>The Palette:</strong> The style is rooted in warm, earthy tones. Think of colors you'd find in a spice market or a desert sunset:
       <br>- <strong>Terracotta and Rust:</strong> The quintessential Boho base.
       <br>- <strong>Warm White/Cream:</strong> A clean backdrop for colorful textiles.
       <br>- <strong>Deep Forest Green:</strong> Brings the outdoors in, perfect for plant lovers.</p>
@@ -1584,7 +1584,7 @@ const blogContentArray = [
       <br><strong>Faux Finishes:</strong> Consider a "Limewash" effect or a color wash. By applying a glaze over your base coat with a sponge or rag, you create a mottled, cloudy appearance that mimics old plaster walls found in Mediterranean or Moroccan homes.</p>
       
       <h2>Accenting with Jewel Tones</h2>
-      <p>While the walls are earthy, the accents are rich. Introduce jewel tones—deep sapphire, ruby red, amethyst purple—through painted furniture, door frames, or niche interiors.
+      <p>While the walls are earthy, the accents are rich. Introduce jewel tones--deep sapphire, ruby red, amethyst purple--through painted furniture, door frames, or niche interiors.
       <br><em>Design Tip:</em> Paint an arch shape on a white wall in a deep burnt orange to create a visual headboard or a focal point for artwork. Arches are a hallmark of Boho architecture.</p>
 
       <h2>Products and Tools Required</h2>
@@ -2050,7 +2050,7 @@ const blogContentArray = [
       <br>- <strong>Walls:</strong> Textured, chalky, and earthy.</p>
       
       <h2>The Anti-Gloss Palette</h2>
-      <p>The Wabi-Sabi color palette is pulled directly from nature—not the bright nature of flowers, but the quiet nature of stones, dried leaves, and clay.
+      <p>The Wabi-Sabi color palette is pulled directly from nature--not the bright nature of flowers, but the quiet nature of stones, dried leaves, and clay.
       <br><strong>Key Colors:</strong> Oatmeal, Stone Grey, Dried Sage, Terracotta, and Charcoal.
       <br><strong>The Finish:</strong> Absolute Matte. Any shine ruins the effect. The walls should look like they have been there for 100 years.</p>
       
@@ -2198,7 +2198,7 @@ const blogContentArray = [
     summary: "Expert selection guide for choosing stains and clear coats that resist high humidity, water swelling, and fungal growth in coastal and monsoon regions.",
     content: `
       <h2>The Physics of Wood and Water</h2>
-      <p>Wood is hygroscopic—it absorbs water from the air. In monsoon climates, wood swells. In dry summers, it shrinks. This constant movement causes rigid coatings (like cheap varnish) to crack. Once cracked, water enters, gets trapped, and causes rot.
+      <p>Wood is hygroscopic--it absorbs water from the air. In monsoon climates, wood swells. In dry summers, it shrinks. This constant movement causes rigid coatings (like cheap varnish) to crack. Once cracked, water enters, gets trapped, and causes rot.
       <br><strong>The Goal:</strong> You need a finish that is either breathable or flexible.</p>
       
       <h2>Option 1: Penetrating Oil Stains (The Breathable Choice)</h2>
@@ -2485,11 +2485,11 @@ const blogContentArray = [
     author: "Vikram Singh",
     date: "2025-12-15",
     readTime: "9 min read",
-    image: "/Assets/BlogImages/The Return of 'Soulful' Heritage Mixing 1970s Retro Cane with 2026’s Deep Burgundy & Mocha Tones.png",
+    image: "/Assets/BlogImages/The Return of 'Soulful' Heritage Mixing 1970s Retro Cane with 2026's Deep Burgundy & Mocha Tones.png",
     summary: "Why you cannot use modern plastic paints on historic structures, and the importance of breathable Lime and Silicate coatings for old plaster.",
     content: `
       <h2>The "Plastic Bag" Effect</h2>
-      <p>Heritage buildings (built before the 1950s) were built with lime mortar and bricks that lack modern damp-proof courses. These walls manage moisture by breathing—absorbing rain and evaporating it out.
+      <p>Heritage buildings (built before the 1950s) were built with lime mortar and bricks that lack modern damp-proof courses. These walls manage moisture by breathing--absorbing rain and evaporating it out.
       <br><strong>The Error:</strong> If you cover this wall with modern Acrylic Emulsion, you wrap it in a plastic bag. Moisture gets trapped inside, causing the lime plaster to rot and the bricks to spall (crumble).</p>
       
       <h2>The Solution: Breathable Mineral Paints</h2>
@@ -2529,7 +2529,7 @@ const blogContentArray = [
     date: "2025-12-15",
     readTime: "7 min read",
     image: "/Assets/BlogImages/Dopamine Decor Using Joyful Colors and Nostalgic Art to Boost Mood at Home.webp",
-    summary: "A breakdown of the emotional impact of major color families—Red, Blue, Yellow, and Green—and where to use them in your home.",
+    summary: "A breakdown of the emotional impact of major color families--Red, Blue, Yellow, and Green--and where to use them in your home.",
     content: `
       <h2>Paint is Emotion</h2>
       <p>Colors are light waves, and when they hit our eyes, they trigger hormonal responses in the brain. Choosing a color is choosing a mood.</p>
@@ -2887,7 +2887,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-16",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.webp",
+    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids' Rooms in 2025.webp",
     summary: "A DIY guide to using masking tape (FrogTape) to create crisp triangles, honeycombs, or mountain shapes for a modern, budget-friendly accent wall.",
     content: `
       <h2>Geometry is Modern Art</h2>
@@ -3124,7 +3124,7 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-17",
     readTime: "7 min read",
-    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids’ Rooms in 2025.webp",
+    image: "/Assets/BlogImages/Colour-Blocking Ideas for Modern Living Rooms and Kids' Rooms in 2025.webp",
     summary: "Step-by-step DIY tutorial for blending three paint colors on a wall to create a seamless, dreamy fade from dark to light.",
     content: `
       <h2>The Gradient Trend</h2>
@@ -3143,7 +3143,7 @@ const blogContentArray = [
       <br>3. Paint the middle with the Medium color, leaving a 6-inch gap between the zones.</p>
       
       <h2>Step 3: The Blend (The Magic Part)</h2>
-      <p>While the paint is still wet, use a dry, clean brush or sponge. Mix the wet edges together on the wall using a crisscross "X" motion. Keep a spray bottle of water handy—if the paint dries, it won't blend. Mist it lightly to keep it workable.</p>
+      <p>While the paint is still wet, use a dry, clean brush or sponge. Mix the wet edges together on the wall using a crisscross "X" motion. Keep a spray bottle of water handy--if the paint dries, it won't blend. Mist it lightly to keep it workable.</p>
 
       <h2>Products and Tools Required</h2>
       <div style="background-color: #f9fafb; padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
@@ -3323,7 +3323,7 @@ const blogContentArray = [
       <p>After years of chaotic global events, the world is seeking sanctuary. Our trend forecasters analyzed fashion, architecture, and social moods to arrive at <strong>Monsoon Mist</strong>.</p>
       
       <h2>The Color</h2>
-      <p>It is not green, and it is not grey. It is a <em>Petrichor</em> shade—the color of wet earth and misty hills.
+      <p>It is not green, and it is not grey. It is a <em>Petrichor</em> shade--the color of wet earth and misty hills.
       <br><strong>Versatility:</strong> It acts as a neutral. In bright sun, it reads as a fresh sage. In low light, it deepens to a moody charcoal-green.</p>
       
       <h2>Pairing Palette</h2>
@@ -3410,7 +3410,7 @@ const blogContentArray = [
       <p>For kids' rooms, the finish is just as important as the color. Always opt for 'Easy Clean' or washable emulsions. These form a cross-linked protective film that allows you to wipe off crayon marks and muddy handprints without removing the paint.</p>
       
       <h2>Stimulating but Sleep-Friendly</h2>
-      <p>Use bright colors in play zones but keep the sleeping area neutral. A popular 2025 trend is the 'sunset' theme—warm oranges and pinks—which feels energetic but transitions well into evening warmth. Ensure all paints are Zero-VOC to protect developing lungs.</p>
+      <p>Use bright colors in play zones but keep the sleeping area neutral. A popular 2025 trend is the 'sunset' theme--warm oranges and pinks--which feels energetic but transitions well into evening warmth. Ensure all paints are Zero-VOC to protect developing lungs.</p>
       
       <h2>The Scrubbability Test</h2>
       <p>When buying paint for a kid's room, ask the dealer to demonstrate the 'scrub test'. Good quality washable paints can withstand over 5,000 scrub cycles. This means you can attack that crayon masterpiece with a sponge without worry.</p>
@@ -3447,7 +3447,7 @@ const blogContentArray = [
     summary: "Heat-Reflective, Air-Purifying, and Self-Cleaning coatings: explaining the tech behind the paint.",
     content: `
       <h2>Beyond Color</h2>
-      <p>Paint is becoming a technology product. Heat-reflective paints for terraces and exterior walls can lower indoor temperatures by up to 5 degrees—a blessing during the Indian summer. These paints contain microspheres that reflect IR radiation.</p>
+      <p>Paint is becoming a technology product. Heat-reflective paints for terraces and exterior walls can lower indoor temperatures by up to 5 degrees--a blessing during the Indian summer. These paints contain microspheres that reflect IR radiation.</p>
       
       <h2>Air Purifying Walls</h2>
       <p>Some premium interior paints now come with activated carbon technology that neutralizes indoor smells and formaldehyde. For homes in congested cities, this passive air purification contributes significantly to a healthier living environment.</p>
@@ -3563,8 +3563,8 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-18",
     readTime: "5 min read",
-    image: "/Assets/BlogImages/How Sustainability Is Changing the Indian Paint Market (2025–2030 Outlook).png",
-    summary: "Outlook for 2025–2030: Recycled packaging, water conservation, and zero-VOC shifts.",
+    image: "/Assets/BlogImages/How Sustainability Is Changing the Indian Paint Market (2025-2030 Outlook).png",
+    summary: "Outlook for 2025-2030: Recycled packaging, water conservation, and zero-VOC shifts.",
     content: `
       <h2>The Green Manufacturing Push</h2>
       <p>It's not just what's in the can, but how it's made. Major Indian paint companies are moving toward water-neutral factories and using recycled plastic for paint buckets. Consumers are increasingly favoring brands that demonstrate corporate responsibility.</p>
@@ -3687,7 +3687,7 @@ const blogContentArray = [
     summary: "Designing multi-purpose spaces that shift from office to guest room seamlessly.",
     content: `
       <h2>Adaptable Real Estate</h2>
-      <p>With real estate prices soaring, dedicating a room solely for guests is a luxury few can afford. The trend for 2025 is the 'Flex-Room'—a space that works as a home office by day and a guest room by night.</p>
+      <p>With real estate prices soaring, dedicating a room solely for guests is a luxury few can afford. The trend for 2025 is the 'Flex-Room'--a space that works as a home office by day and a guest room by night.</p>
       
       <h2>Smart Furniture Solutions</h2>
       <p>This trend is powered by innovative furniture: Murphy beds that fold into the wall to reveal a desk, or partition shelves that can wheel away. The decor in these rooms tends to be neutral and uncluttered to facilitate quick transitions between functions.</p>
@@ -3733,7 +3733,7 @@ const blogContentArray = [
       <p>This style encourages displaying family heirlooms, travel souvenirs, and quirky art that triggers happy memories. In an Indian context, this could mean framing colorful textile patches or displaying a collection of painted wooden toys on a modern floating shelf.</p>
       
       <h2>Moderation is Sustainable</h2>
-      <p>Dopamine decor is high energy. To keep it livable long-term, ensure you have 'visual resting spots'—areas of solid, neutral color where the eye can relax. A white ceiling or a plain wood floor balances the vibrant walls and accessories.</p>
+      <p>Dopamine decor is high energy. To keep it livable long-term, ensure you have 'visual resting spots'--areas of solid, neutral color where the eye can relax. A white ceiling or a plain wood floor balances the vibrant walls and accessories.</p>
 
       <h2>Products and Tools Required</h2>
       <div style="background-color: #f9fafb; padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
@@ -3767,7 +3767,7 @@ const blogContentArray = [
     summary: "From hidden profile LEDs to statement chandeliers: setting the mood effectively.",
     content: `
       <h2>Beyond the Tube Light</h2>
-      <p>The era of a single bright tube light on the wall is over. 2025 is about 'Layered Lighting'—combining ambient, task, and accent lights. Profile LEDs hidden in false ceilings or behind mirrors provide a soft glow that feels luxurious and reduces glare.</p>
+      <p>The era of a single bright tube light on the wall is over. 2025 is about 'Layered Lighting'--combining ambient, task, and accent lights. Profile LEDs hidden in false ceilings or behind mirrors provide a soft glow that feels luxurious and reduces glare.</p>
       
       <h2>The Statement Piece</h2>
       <p>While general lighting is becoming invisible (recessed), decorative lighting is getting bolder. A large, sculptural chandelier or an oversized floor lamp acts as the jewelry of the room. Warm white (3000K) is the preferred temperature for Indian homes to create a cozy evening vibe.</p>
@@ -3843,11 +3843,11 @@ const blogContentArray = [
     author: "Rohan Varma",
     date: "2025-12-19",
     readTime: "6 min read",
-    image: "/Assets/BlogImages/The Return of 'Soulful' Heritage Mixing 1970s Retro Cane with 2026’s Deep Burgundy & Mocha Tones.png",
-    summary: "Mixing 1970s retro cane with 2026’s deep burgundy & mocha tones for a neo-traditional look.",
+    image: "/Assets/BlogImages/The Return of 'Soulful' Heritage Mixing 1970s Retro Cane with 2026's Deep Burgundy & Mocha Tones.png",
+    summary: "Mixing 1970s retro cane with 2026's deep burgundy & mocha tones for a neo-traditional look.",
     content: `
       <h2>Retro-Modern Fusion</h2>
-      <p>There is a beautiful merging of eras happening in 2026. We are seeing the structural simplicity of the 1970s—low-slung sofas, cane backs, and terrazzo floors—mixed with the rich, moody color palette of today (Burgundy, Mocha, Forest Green).</p>
+      <p>There is a beautiful merging of eras happening in 2026. We are seeing the structural simplicity of the 1970s--low-slung sofas, cane backs, and terrazzo floors--mixed with the rich, moody color palette of today (Burgundy, Mocha, Forest Green).</p>
       
       <h2>Craftsmanship over Mass Production</h2>
       <p>This trend celebrates the 'hand-made'. Hand-woven rugs, hand-block printed cushions, and artisan pottery are preferred over factory-finish items. It gives the home a 'soul' and a story, grounding modern living in traditional craftsmanship.</p>
@@ -3887,7 +3887,7 @@ const blogContentArray = [
     summary: "A comprehensive guide to identifying and fixing wall cracks. Learn about hairline, shrinkage, and structural cracks, and get a step-by-step repair tutorial using Calyco products.",
     content: `
       <h2>Types of Wall Cracks</h2>
-      <p>It happens to every homeowner: you're enjoying a quiet evening when you spot a tiny crack on the wall. It wasn't there yesterday—or was it? While alarming, most wall cracks are manageable. Understanding the type of crack is the first step to a lasting repair.</p>
+      <p>It happens to every homeowner: you're enjoying a quiet evening when you spot a tiny crack on the wall. It wasn't there yesterday--or was it? While alarming, most wall cracks are manageable. Understanding the type of crack is the first step to a lasting repair.</p>
       
       <h3>Hairline Cracks</h3>
       <p>These are the most common and least worrying. They look like thin spiderwebs and usually appear due to minor settling or drying plaster. These are purely cosmetic and the easiest to fix.</p>

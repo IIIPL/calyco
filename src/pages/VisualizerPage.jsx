@@ -73,7 +73,7 @@ const VisualizerPage = () => {
   return (
     <div className="pt-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
-        title="Visualizer — Calyco"
+        title="Visualizer -- Calyco"
         description="Try colors on sample rooms or your own photo."
         ogType="website"
       />

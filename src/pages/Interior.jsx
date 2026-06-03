@@ -8,7 +8,7 @@ const interiorProducts = Object.values(allProducts).filter(p => p.category === "
 
 export const Interior = () => {
   return (
-    <div className="min-h-screen bg-[#f9f6f2] pt-32 pb-20 px-4 sm:px-8">
+    <div className="min-h-screen bg-[#f9f6f2] pt-6 pb-20 px-4 sm:px-8">
       <div className="max-w-5xl mx-auto mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-[#493657] mb-4">Interior Paints</h1>
         <p className="text-[#493657]/80 mb-6">

@@ -51,7 +51,7 @@ const TextureDetailPage = () => {
           "@type": "Offer",
           "url": `https://calycopaints.com/textures/${texture.slug}`,
           "priceCurrency": "INR",
-          "price": "499",
+          "price": "99",
           "priceValidUntil": priceValidUntil,
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
@@ -140,7 +140,7 @@ const TextureDetailPage = () => {
         id: uniqueId,
         name: `Site Visit - ${texture.name} Texture`,
         display_name: `Site Visit Consultation - ${texture.name}`,
-        price: 499,
+        price: 99,
         image: texture.image,
         requiresShipping: false,
         productType: 'service',
@@ -151,7 +151,7 @@ const TextureDetailPage = () => {
         'Service',
         'One-time',
         1,
-        499,
+        99,
         null, // No color for services
         'service', // productType
         {
@@ -411,7 +411,7 @@ const TextureDetailPage = () => {
                 <svg className="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="relative z-10">Book Site Visit - ₹499</span>
+                <span className="relative z-10">Book Site Visit - ₹99</span>
               </motion.button>
               <motion.p
                 initial={{ opacity: 0 }}

@@ -116,7 +116,7 @@ export default function QualityPolicy() {
         <section className={`${sectionPad} bg-white max-w-5xl mx-auto px-6 md:px-10 lg:px-12`}>
           <h2 className="text-3xl font-bold mb-3 text-[#0F1221]">Quality Policy Overview</h2>
           <p className="text-lg max-w-3xl mx-auto leading-relaxed text-[#23263a] mb-1">
-            At CALYCO Paints, quality is not just a standard—it's our promise. We are committed to manufacturing premium paints and coatings that deliver consistent performance, meet stringent regulatory requirements, and exceed customer expectations.
+            At CALYCO Paints, quality is not just a standard--it's our promise. We are committed to manufacturing premium paints and coatings that deliver consistent performance, meet stringent regulatory requirements, and exceed customer expectations.
           </p>
           <p className="text-base max-w-3xl mx-auto text-[#23263a] mb-1">
             Our quality policy is built on four foundational pillars: rigorous testing protocols, regulatory compliance, continuous improvement processes, and environmental responsibility.
@@ -266,12 +266,12 @@ export default function QualityPolicy() {
             <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Contact Quality Hotline</h3>
               <p className="text-sm text-[#23263a] mb-2">
-                <a href="https://wa.me/918826733064" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
+                <a href="https://wa.me/918796777399" className="text-[#D4AF37] hover:text-[#0F1221] font-semibold underline" target="_blank" rel="noopener noreferrer">WhatsApp Message</a>
               </p>
               <p className="text-xs text-[#23263a]/80 leading-relaxed mb-1">
                 Please contact us only via WhatsApp message for any grievance or urgent privacy concern. Phone calls are not accepted on this number.
               </p>
-              <p className="text-xs text-[#23263a]/70 mt-2">(Mon–Sat, 10:00 AM – 6:00 PM IST)</p>
+              <p className="text-xs text-[#23263a]/70 mt-2">(Mon-Sat, 10:00 AM - 6:00 PM IST)</p>
             </div>
           </div>
         </section>

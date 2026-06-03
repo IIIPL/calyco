@@ -96,7 +96,7 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
           gap-4 md:gap-6 lg:gap-8
         "
       >
-        {/* LEFT MENU — keep narrow, border, and small right padding */}
+        {/* LEFT MENU -- keep narrow, border, and small right padding */}
         <div
           className="
             flex flex-col
@@ -134,7 +134,7 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
           </button>
         </div>
 
-        {/* MIDDLE LIST — keep very close to left (small left padding) */}
+        {/* MIDDLE LIST -- keep very close to left (small left padding) */}
         <div
           className="
             flex flex-col flex-1
@@ -160,7 +160,7 @@ const InspirationsDropdown = ({ onSelect, isMobile = false }) => {
           </ul>
         </div>
 
-        {/* RIGHT PREVIEW — responsive width/height */}
+        {/* RIGHT PREVIEW -- responsive width/height */}
         <div
           className="
             flex items-center justify-center

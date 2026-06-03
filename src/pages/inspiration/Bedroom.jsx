@@ -19,7 +19,7 @@ export default function BedroomInspiration() {
 
   return (
     <div className="font-poppins bg-white min-h-screen pt-20">
-      {/* Top Banner Image — DO NOT TOUCH */}
+      {/* Top Banner Image -- DO NOT TOUCH */}
       <div className="w-full overflow-hidden">
         <img
           src="https://res.cloudinary.com/dr98axi2n/image/upload/v1754598790/bedroomHero_blfz2c.jpg"
@@ -67,7 +67,7 @@ export default function BedroomInspiration() {
             );
           })
         ) : (
-          <div className="max-w-4xl mx-auto pt-16 sm:pt-24 pb-10 sm:pb-12 px-4">
+          <div className="max-w-4xl mx-auto pt-6 pb-10 px-4">
             <p className="text-base sm:text-lg text-gray-700 text-center">
               Beautiful bedroom inspiration coming soon...
             </p>

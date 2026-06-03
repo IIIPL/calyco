@@ -19,7 +19,7 @@ const puWoodCoatingDetail = {
     images: ["/Assets/Product Images/PU Wood Coating/pu-wood-coating.webp"],
     description: "Two-component polyurethane clear coat that enhances natural wood while delivering superior scratch, stain, and heat resistance with a non-yellowing, high-gloss finish.",
     tagline: "Enhance & protect your wood surfaces.",
-    details: "PU Wood Coating is a crystal-clear, non-yellowing 2K polyurethane system that highlights wood grain and forms a tough, glossy film. It offers outstanding resistance to scratches, stains, heat, and fungi—ideal for furniture, doors, veneer, MDF, and flooring.",
+    details: "PU Wood Coating is a crystal-clear, non-yellowing 2K polyurethane system that highlights wood grain and forms a tough, glossy film. It offers outstanding resistance to scratches, stains, heat, and fungi--ideal for furniture, doors, veneer, MDF, and flooring.",
     finish_type_sheen: ["High Gloss"],
     defaultFinish: "High Gloss",
     packaging: ["10L", "20L"],

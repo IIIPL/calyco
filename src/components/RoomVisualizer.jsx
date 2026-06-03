@@ -540,7 +540,7 @@ const RoomVisualizer = () => {
   }, [originalImage, editedImage]);
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-20 sm:pt-24 lg:pt-24">
+    <div className="min-h-screen bg-gray-100 pt-4">
       {/* Top Header */}
       
       

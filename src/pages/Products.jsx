@@ -6,7 +6,7 @@ import SEO from "../components/SEO";
 import { products } from "../data/products";
 
 const formatINR = (value) =>
-  value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹—";
+  value ? `₹${Number(value || 0).toLocaleString("en-IN")}` : "₹--";
 
 const isSampleSize = (size = "") => /swatch|sample/i.test(size);
 
@@ -198,7 +198,7 @@ export const Products = () => {
           {/* Removed the round circle from right side */}
 
           {/* 🎯 MAIN CONTAINER PADDING: pt-24 = more top padding, pb-6 = minimal bottom */}
-          <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-6">
+          <div className="relative mx-auto max-w-6xl px-6 pt-6 pb-6">
             {/* 
               🎯 TITLE SPACING - Centered and improved
             */}

@@ -65,7 +65,7 @@ export default function ExteriorInspiration() {
             );
           })
         ) : (
-          <div className="max-w-4xl mx-auto pt-24 pb-12 px-4">
+          <div className="max-w-4xl mx-auto pt-6 pb-12 px-4">
             <p className="text-lg text-gray-700 text-center">
               Beautiful exterior inspiration coming soon...
             </p>

@@ -59,7 +59,7 @@ const AboutIntroStrip = ({ badges = [] }) => {
                 At Calyco Paints, we believe in doing things the right way. Our paints combine sustainability with uncompromising performance, delivering vibrant colors that last while protecting our environment.
               </p>
               <p className="text-lg leading-relaxed text-[#493657]/70 tracking-wide">
-                Founded in 2023, we created EcoMax Technology—delivering vibrant, long-lasting colors in zero-VOC formulations. It's our commitment to healthier living and a cleaner planet.
+                Founded in 2023, we created EcoMax Technology--delivering vibrant, long-lasting colors in zero-VOC formulations. It's our commitment to healthier living and a cleaner planet.
               </p>
             </motion.div>
           </motion.div>

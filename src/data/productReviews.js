@@ -67,7 +67,7 @@ const pinkPrimerReviews = [
     { id: 2, author: "Amit Sengar", rating: 4, date: "2025-11-29", review: "Hard finish, scratch se bach jaata hai. Needs proper thinner ratio warna brush marks aa sakte.", verified: false },
     { id: 3, author: "Prerna Nair", rating: 5, date: "2025-11-20", review: "Levels beautifully with spray, ek halka sanding and next coat looked factory made.", verified: true },
     { id: 4, author: "Naresh Tiwari", rating: 4, date: "2025-11-12", review: "Heat & chai stains did not leave rings. Thodi smell hai par 1 din mein gayab. 👍", verified: true },
-    { id: 5, author: "Harpreet Kaur", rating: 5, date: "2025-11-03", review: "Wardrobe shutters ka gloss amazing, customer ne bhi bola ‘showroom finish’.", verified: true },
+    { id: 5, author: "Harpreet Kaur", rating: 5, date: "2025-11-03", review: "Wardrobe shutters ka gloss amazing, customer ne bhi bola 'showroom finish'.", verified: true },
     { id: 6, author: "Vishal P.", rating: 4, date: "2025-10-28", review: "Good for MDF furniture, fast drying. Thoda fast pot life, mix small batches.", verified: false },
   ];
 
@@ -91,7 +91,7 @@ const pinkPrimerReviews = [
     { id: 2, author: "Anita Kulkarni", rating: 4, date: "2025-11-24", review: "No bubbles, chemical spills wiped off. Mixing ratio follow karo, warna pot life chhota ho jata.", verified: false },
     { id: 3, author: "Devendra Rao", rating: 4, date: "2025-11-14", review: "Two coats gave tough layer, trolley traffic handle kar raha hai. Slight odor during cure.", verified: true },
     { id: 4, author: "Savita Jha", rating: 4, date: "2025-11-05", review: "High gloss finish achha laga. Dry time theek, next day light use possible.", verified: true },
-    { id: 5, author: "Abhay More", rating: 5, date: "2025-10-30", review: "Machinery bases pe lagaaya, oil stains don’t stick. Color bhi even aaya.", verified: true },
+    { id: 5, author: "Abhay More", rating: 5, date: "2025-10-30", review: "Machinery bases pe lagaaya, oil stains don't stick. Color bhi even aaya.", verified: true },
   ];
 
   const woodPrimerReviews = [

@@ -23,7 +23,7 @@ export const WhyChooseCard = ({ index = 0 }) => {
     },
     {
       heading: "Expert Paint Services",
-      description: "Professional painters across Delhi NCR. From consultation to completion, we handle everything with care.",
+      description: "Professional painters across 25 cities in India. From consultation to completion, we handle everything with care.",
       icon: FaPaintRoller,
       color: "from-amber-500 to-amber-600"
     },

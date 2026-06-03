@@ -9,7 +9,7 @@ export default function CategoryNav() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <CategoryTile
           title="Decorative Paints"
-          subtitle="Walls, ceilings, trims — interior & exterior"
+          subtitle="Walls, ceilings, trims -- interior & exterior"
           to="/products?type=decorative"
           icon={FiHome}
           badges={[{label:"Interior Emulsions"},{label:"Exterior Acrylics"},{label:"Primers"}]}
