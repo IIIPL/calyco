@@ -23,6 +23,7 @@ const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 
 const HowItWorksPage = React.lazy(() => import('./pages/HowItWorksPage.jsx'));
+const PainterVerificationPage = React.lazy(() => import('./pages/PainterVerificationPage.jsx'));
 const TransparentPricingPage = React.lazy(() => import('./pages/TransparentPricingPage.jsx'));
 const GalleryPage = React.lazy(() => import('./pages/GalleryPage.jsx'));
 const GetQuotePage = React.lazy(() => import('./pages/GetQuotePage.jsx'));
@@ -37,6 +38,7 @@ import ScrollToTop from './components/ScrollToTop'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import StickyContactBar from './components/StickyContactBar'
 
 // Convert all page components to lazy loading for better performance
 const AboutUs = React.lazy(() => import('./pages/AboutUs'))
@@ -207,7 +209,8 @@ function App() {
             {/* This is your app. */}
             <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
             <WhatsAppFloat />
-            <div className="transition-all duration-300">
+            <StickyContactBar />
+            <div className="transition-all duration-300 pb-14 md:pb-0">
               <React.Suspense fallback={<div className="pt-24 text-center text-[#0F1221]/40 text-sm">Loading…</div>}>
                 <div key={location.pathname} className="page-enter">
                 <Routes>
@@ -222,6 +225,7 @@ function App() {
                   <Route path='/services/all' element={<AllServicesPage />} />
                   <Route path='/services/:serviceSlug' element={<ServiceDetailPage />} />
                   <Route path='/how-it-works' element={<HowItWorksPage />} />
+                  <Route path='/verified-painters' element={<PainterVerificationPage />} />
                   <Route path='/transparent-pricing' element={<TransparentPricingPage />} />
                   <Route path='/gallery' element={<GalleryPage />} />
                   <Route path='/get-quote' element={<GetQuotePage />} />
