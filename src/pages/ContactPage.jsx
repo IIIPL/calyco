@@ -10,7 +10,7 @@ const contactChannels = [
     detail: contactData.contact.whatsapp.displayText,
     description: "Message our team instantly.",
     subDetail: contactData.contact.workingHours.days + " - " + contactData.contact.workingHours.time,
-    icon: "ðŸ"±",
+    icon: "📱",
     href: contactData.contact.whatsapp.link,
     newTab: true,
   },
@@ -19,7 +19,7 @@ const contactChannels = [
     detail: contactData.contact.email.support,
     description: "Send us a note and we'll reply within a day.",
     subDetail: "Replies within 24 hours",
-    icon: "âœ‰ï¸",
+    icon: "✉️",
     href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactData.contact.email.support)}`,
     newTab: true,
   },
@@ -28,7 +28,7 @@ const contactChannels = [
     detail: contactData.contact.address.full,
     description: "Meet us at our headquarters.",
     subDetail: "By appointment only",
-    icon: "ðŸ¢",
+    icon: "🏢",
   },
 ];
 
@@ -36,17 +36,17 @@ const businessSupport = [
   {
     title: "24h Response Time",
     description: "Our team will get back to you within 24 hours with personalized solutions.",
-    icon: "â°",
+    icon: "⏰",
   },
   {
     title: "Expert Support",
     description: "Connect with our technical specialists for detailed product guidance.",
-    icon: "ðŸŽ¯",
+    icon: "🎯",
   },
   {
     title: "Global Presence",
     description: "Local support and expertise across multiple countries and regions.",
-    icon: "ðŸŒ",
+    icon: "🌍",
   },
 ];
 
@@ -484,7 +484,7 @@ export default function ContactPage() {
             </div>
             <div className="mt-5 text-center">
               <a href="/calculators/service-cost-calculator" className="inline-flex items-center gap-2 rounded-full bg-[#493657] text-white px-6 py-3 text-sm font-bold hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors">
-                Calculate Service Cost â†'
+                Calculate Service Cost →
               </a>
             </div>
           </div>
@@ -513,7 +513,7 @@ export default function ContactPage() {
                 href="/faq"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-7 py-3.5 font-semibold hover:bg-white/8 transition-colors"
               >
-                FAQs â†'
+                FAQs →
               </a>
             </div>
           </div>
