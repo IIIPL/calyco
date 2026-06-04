@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 import contactData from '../data/admin/contact.json';
 import { BRAND_NAME, POSITIONING_TAGLINE, WA_SITE_VISIT } from '../data/positioning';
@@ -147,18 +147,11 @@ const TRUST_LINE = ['Free inspection', 'Fixed written quote', 'Daily WhatsApp up
 const StaticHero = () => {
   const ref = useRef(null);
 
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const bgScrollY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
-  const orbScrollY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
-  const contentScrollY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
-
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sp  = { stiffness: 45, damping: 22, mass: 0.9 };
   const sp2 = { stiffness: 35, damping: 20, mass: 1.0 };
 
-  const bgX = useSpring(useTransform(mx, [-0.5, 0.5], [-14, 14]), sp);
-  const bgY = useSpring(useTransform(my, [-0.5, 0.5], [-10, 10]), sp);
   const orb1x = useSpring(useTransform(mx, [-0.5, 0.5], [-24, 24]), sp);
   const orb1y = useSpring(useTransform(my, [-0.5, 0.5], [-18, 18]), sp);
   const orb2x = useSpring(useTransform(mx, [-0.5, 0.5], [18, -18]), sp);
@@ -183,80 +176,49 @@ const StaticHero = () => {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      {/* Background texture */}
-      <motion.div className="absolute inset-[-8%] z-0" style={{ x: bgX, y: bgY }}>
-        <motion.img
-          src="/Assets/Textures/Urban%20Concrete%20(The%20Grey%20Cement%20Look).webp"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover object-center brightness-[1.05] contrast-[0.95]"
-          style={{ y: bgScrollY }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/25 to-white/80" />
-      </motion.div>
+      {/* Clean light background */}
+      <div className="absolute inset-0 z-0 bg-[#FAFAF8]" />
 
       {/* Glow orbs */}
-      <motion.div className="absolute top-[-5%] right-[10%] w-[460px] h-[460px] rounded-full bg-[#F0C85A]/10 blur-[130px] pointer-events-none z-[1]" style={{ x: orb1x, y: orb1y, translateY: orbScrollY }} />
-      <motion.div className="absolute bottom-[5%] left-[5%] w-[300px] h-[300px] rounded-full bg-[#493657]/10 blur-[100px] pointer-events-none z-[1]" style={{ x: orb2x, y: orb2y, translateY: orbScrollY }} />
+      <motion.div className="absolute top-[-5%] right-[10%] w-[460px] h-[460px] rounded-full bg-[#F0C85A]/10 blur-[130px] pointer-events-none z-[1]" style={{ x: orb1x, y: orb1y }} />
+      <motion.div className="absolute bottom-[5%] left-[5%] w-[300px] h-[300px] rounded-full bg-[#493657]/10 blur-[100px] pointer-events-none z-[1]" style={{ x: orb2x, y: orb2y }} />
 
       {/* Content */}
       <motion.div
         className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 py-8 sm:py-14 lg:py-20"
-        style={{ x: contentX, y: contentY2, translateY: contentScrollY }}
+        style={{ x: contentX, y: contentY2 }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-16 items-start">
 
           {/* ── LEFT: copy + CTAs ── */}
           <div>
-            {/* Brand pill — desktop only (too wide to show cleanly on mobile) */}
+            {/* Hero headline */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="mb-5 hidden sm:inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#0F1221]/10 bg-white/80 backdrop-blur-md shadow-sm"
+              className="mb-5"
             >
-              <span className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => <span key={i} className="text-[#F0C85A] text-[10px]">★</span>)}
-              </span>
-              <span className="w-px h-3 bg-[#0F1221]/15" />
-              <span className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#0F1221]">{BRAND_NAME}</span>
-              <span className="w-px h-3 bg-[#0F1221]/15" />
-              <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-[#0F1221]/50">25 Cities</span>
+              {/* Main headline */}
+              <h1 className="leading-[1.15] tracking-[-0.01em]">
+                <span className="block text-[2.8rem] sm:text-[3.6rem] lg:text-[4.6rem] xl:text-[5.2rem] font-light text-[#0F1221]">
+                  Calyco 5-Star
+                </span>
+                <span className="block text-[2.8rem] sm:text-[3.6rem] lg:text-[4.6rem] xl:text-[5.2rem] font-light text-[#493657]">
+                  Painting Service.
+                </span>
+              </h1>
             </motion.div>
 
-            {/* Mobile star badge — dark pill so gold stars are visible */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className="inline-flex sm:hidden items-center gap-2 mb-5 bg-[#0F1221] rounded-full px-4 py-2 shadow-sm"
-            >
-              <span className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => <span key={i} className="text-[#F0C85A] text-sm leading-none">★</span>)}
-              </span>
-              <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-white">Calyco 5-Star Service</span>
-            </motion.div>
-
-            {/* Headline — tighter size on mobile */}
-            <motion.h1
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.95, delay: 0.1, ease: 'easeOut' }}
-              className="text-[#0F1221] text-[2.1rem] sm:text-5xl lg:text-[58px] xl:text-[68px] leading-[1.08] tracking-[-0.025em] font-light mb-4"
-            >
-              Experience 5-Star Painting<br />
-              <span className="text-[#493657] font-medium">for Your Home.</span>
-            </motion.h1>
-
-            {/* Subheadline — shorter on mobile */}
+            {/* Subheadline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
-              className="text-[#0F1221]/65 text-sm sm:text-lg leading-[1.7] font-light mb-6 sm:mb-8 max-w-xl"
+              transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
+              className="text-[#0F1221]/60 text-base sm:text-lg leading-[1.7] font-normal mb-6 sm:mb-8 max-w-lg"
             >
-              <span className="sm:hidden">Verified painters, transparent pricing, and a warranty-backed finish.</span>
-              <span className="hidden sm:inline">Verified painters, transparent pricing, proper wall preparation, clean execution, and a warranty-backed finish — managed end-to-end by Calyco.</span>
+              Professional House Painters You Can Trust.<br />
+              Verified Teams. Fixed Quote. Warranty-Backed Finish.
             </motion.p>
 
             {/* Primary + Secondary CTAs — stacked on mobile */}
@@ -268,7 +230,7 @@ const StaticHero = () => {
             >
               <Link
                 to="/calculators/service-cost-calculator"
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-[#F0C85A] text-[#0F1221] rounded-full text-sm font-bold tracking-[0.03em] hover:bg-[#0F1221] hover:text-white transition-all duration-300 shadow-[0_4px_18px_rgba(240,200,90,0.42)]"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-[#0F1221] text-white rounded-2xl text-sm font-medium tracking-[0.06em] uppercase hover:bg-[#493657] transition-all duration-300 shadow-[0_4px_24px_rgba(15,18,33,0.18)]"
               >
                 Get My Painting Estimate
               </Link>
@@ -276,38 +238,13 @@ const StaticHero = () => {
                 href={waVisit}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-white/75 border border-[#0F1221]/15 text-[#0F1221] rounded-full text-sm font-medium hover:bg-white hover:border-[#0F1221]/30 transition-all duration-300 backdrop-blur-sm"
+                className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 bg-white border border-[#0F1221]/12 text-[#0F1221] rounded-2xl text-sm font-medium tracking-[0.06em] uppercase hover:border-[#0F1221]/30 hover:shadow-md transition-all duration-300"
               >
                 <WaIcon />
                 Book Free Site Visit
               </a>
             </motion.div>
 
-            {/* Trust line — hidden on mobile, sticky bar covers it */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.42, ease: 'easeOut' }}
-              className="hidden sm:flex flex-wrap gap-x-4 gap-y-1"
-            >
-              {TRUST_LINE.map((item, i) => (
-                <span key={item} className="flex items-center gap-1.5 text-[11px] text-[#0F1221]/55 font-medium">
-                  {i > 0 && <span className="w-1 h-1 rounded-full bg-[#0F1221]/20 inline-block" />}
-                  <span className="text-[#25D366]">✓</span>
-                  {item}
-                </span>
-              ))}
-            </motion.div>
-
-            {/* Tagline stamp — desktop only */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.55 }}
-              className="hidden lg:block mt-8 pt-6 border-t border-[#0F1221]/8 text-[10px] uppercase tracking-[0.18em] text-[#0F1221]/35 font-medium leading-[1.8]"
-            >
-              {POSITIONING_TAGLINE}
-            </motion.p>
           </div>
 
           {/* ── RIGHT: lead form card — hidden on mobile, shows on tablet+ ── */}

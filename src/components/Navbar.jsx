@@ -163,6 +163,60 @@ const MobileAccordion = ({ label, links, onSelect }) => {
   );
 };
 
+// ─── Version Switcher (demo only — remove when boss approves) ─────────────────
+const VERSIONS = [
+  { label: 'V1 — Current',      to: '/' },
+  { label: 'V2 — Dark Premium', to: '/home-v2' },
+  { label: 'V3 — Light Clean',  to: '/home-v3' },
+  { label: 'V4 — Dulux Style',  to: '/home-v4' },
+  { label: 'V5 — Asian Paints', to: '/home-v5' },
+];
+
+const VersionSwitcher = () => {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const ref = useRef(null);
+
+  const current = VERSIONS.find(v => v.to === location.pathname) || VERSIONS[0];
+
+  useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className="inline-flex items-center gap-1.5 bg-[#493657] text-white text-[11px] font-bold px-3 py-1.5 rounded-full hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors"
+      >
+        {current.label.split('—')[0].trim()}
+        <svg className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute top-full left-0 mt-1.5 z-[300] w-44 rounded-xl bg-white border border-[#0F1221]/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden">
+          <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#0F1221]/35 px-3 pt-3 pb-1">Demo Variants</p>
+          {VERSIONS.map((v) => (
+            <Link
+              key={v.to}
+              to={v.to}
+              onClick={() => setOpen(false)}
+              className={`flex items-center gap-2 px-3 py-2.5 text-xs font-semibold transition-colors ${location.pathname === v.to ? 'bg-[#493657]/8 text-[#493657]' : 'text-[#0F1221]/70 hover:bg-[#F7F6F3] hover:text-[#0F1221]'}`}
+            >
+              {location.pathname === v.to && <span className="w-1.5 h-1.5 rounded-full bg-[#493657] flex-shrink-0" />}
+              {v.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 // ─── Main Navbar ──────────────────────────────────────────────────────────────
 export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   const [menuOpen, setMenuOpen]     = useState(false);
@@ -230,10 +284,13 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       {/* ── Desktop ─────────────────────────────────────────────────────── */}
       <div className="hidden lg:flex items-center justify-between px-8 xl:px-12 h-18 gap-4" style={{ height: '72px' }}>
 
-        {/* Logo */}
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="shrink-0">
-          <img src="/Logo.webp" className="object-contain h-14 xl:h-16" alt="Calyco" width="137" height="84" />
-        </Link>
+        {/* Logo + Version Switcher */}
+        <div className="flex items-center gap-2 shrink-0">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img src="/Logo.webp" className="object-contain h-14 xl:h-16" alt="Calyco" width="137" height="84" />
+          </Link>
+          <VersionSwitcher />
+        </div>
 
         {/* Nav items */}
         <nav className="flex items-center gap-4 xl:gap-6">

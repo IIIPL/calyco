@@ -4,6 +4,10 @@ import { Navbar } from './components/Navbar'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const Home = React.lazy(() => import('./pages/Home.jsx'))
+const HomeV2 = React.lazy(() => import('./pages/HomeV2.jsx'))
+const HomeV3 = React.lazy(() => import('./pages/HomeV3.jsx'))
+const HomeV4 = React.lazy(() => import('./pages/HomeV4.jsx'))
+const HomeV5 = React.lazy(() => import('./pages/HomeV5.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
 const BudgetCalculator = React.lazy(() => import('./pages/BudgetCalculator.jsx'))
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage.jsx'))
@@ -213,6 +217,10 @@ function App() {
                 <div key={location.pathname} className="page-enter">
                 <Routes>
                   <Route path='/' element={<Home />} />
+                  <Route path='/home-v2' element={<HomeV2 />} />
+                  <Route path='/home-v3' element={<HomeV3 />} />
+                  <Route path='/home-v4' element={<HomeV4 />} />
+                  <Route path='/home-v5' element={<HomeV5 />} />
 
                   {/* New premium visual-first routes */}
                   <Route path='/colors' element={<ColorsPage />} />

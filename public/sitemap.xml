@@ -8,6 +8,30 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>https://calycopaints.com/home-v2</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/home-v3</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/home-v4</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calycopaints.com/home-v5</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://calycopaints.com/colors</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
