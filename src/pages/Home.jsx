@@ -75,48 +75,33 @@ const trustBadges = [
 ];
 
 const TrustBadges = () => (
-  <section className="bg-white border-b border-[#0F1221]/6 py-12 sm:py-16">
+  <section className="bg-white border-b border-[#0F1221]/6 py-8 sm:py-10">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
 
-      {/* 6 core badges */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        {trustBadges.map(({ icon, title, desc }) => (
-          <div
-            key={title}
-            className="flex flex-col items-start gap-3 rounded-2xl border border-[#0F1221]/7 bg-[#FAFAF8] px-4 py-4 hover:border-[#0F1221]/15 hover:bg-white transition-all"
-          >
-            <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-[#0F1221] text-white flex-shrink-0">
-              {icon}
+      {/* 3-column grid — always even */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-3 mb-6 max-w-2xl mx-auto">
+        {trustBadges.map(({ title }) => (
+          <div key={title} className="flex items-center gap-2">
+            <span className="w-4 h-4 rounded-full bg-[#0F1221] flex items-center justify-center flex-shrink-0">
+              <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
             </span>
-            <div>
-              <p className="text-sm font-semibold text-[#0F1221] leading-snug">{title}</p>
-              <p className="text-xs text-[#0F1221]/50 font-light mt-1 leading-[1.6]">{desc}</p>
-            </div>
+            <span className="text-sm font-medium text-[#0F1221]/65">{title}</span>
           </div>
         ))}
       </div>
 
-      {/* 7th badge — 2-Year Workmanship Warranty (highlighted strip) */}
-      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-[#F0C85A]/35 bg-gradient-to-r from-[#FFFBEF] to-[#FFF8E6] px-5 sm:px-7 py-4">
-        <div className="flex items-center gap-4">
-          <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#F0C85A] text-[#0F1221] flex-shrink-0">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
-          </span>
-          <div>
-            <div className="flex items-center gap-2 mb-0.5">
-              <p className="text-sm font-bold text-[#0F1221]">2-Year Workmanship Warranty</p>
-              <span className="text-[9px] font-bold uppercase tracking-[0.12em] px-2 py-0.5 rounded-full bg-[#F0C85A] text-[#0F1221]">Coming Soon</span>
-            </div>
-            <p className="text-xs text-[#0F1221]/60 font-light leading-[1.6]">Any defect that appears within 2 years of project completion will be repaired by Calyco at no cost. Being rolled out across all cities.</p>
-          </div>
-        </div>
+      {/* Warranty strip */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-[#0F1221]/8 bg-[#F7F6F3] px-5 sm:px-7 py-4">
+        <p className="text-sm font-medium text-[#0F1221]/70">
+          2-Year Workmanship Warranty — any defect within 2 years is fixed at zero cost.
+        </p>
         <Link
           to="/get-quote"
-          className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-2.5 text-xs font-bold hover:bg-[#493657] transition-colors whitespace-nowrap"
+          className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-2.5 text-xs font-medium tracking-[0.05em] uppercase hover:bg-[#493657] transition-colors whitespace-nowrap"
         >
-          Book Before Launch →
+          Book Free Inspection →
         </Link>
       </div>
 
@@ -620,13 +605,9 @@ const Home = () => (
     {/* 8 — Painter verification strip */}
     <div className="bg-white border-y border-[#0F1221]/6">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <span className="text-2xl flex-shrink-0">✅</span>
-          <div>
-            <p className="font-bold text-[#0F1221] text-sm">Every painter is background-checked, skill-tested, and rated by previous customers.</p>
-            <p className="text-xs text-[#0F1221]/45 font-light mt-0.5">Identity checked · Experience reviewed · Trained on the Calyco process · 6-monthly re-evaluation</p>
-          </div>
-        </div>
+        <p className="text-sm font-medium text-[#0F1221]/70">
+          Every painter is background-checked, skill-tested, and rated by previous customers.
+        </p>
         <Link to="/verified-painters" className="flex-shrink-0 text-sm font-bold text-[#493657] hover:text-[#F0C85A] transition-colors whitespace-nowrap">
           How we verify →
         </Link>
