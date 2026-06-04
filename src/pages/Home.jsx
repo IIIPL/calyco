@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Calculator, CalendarCheck, ArrowRight, MapPin, ChevronDown, Check } from 'lucide-react';
+import { Calculator, ArrowRight, MapPin, ChevronDown, Check } from 'lucide-react';
+import { IconLaserRuler, IconGSTReceipt, IconPriceLock, IconQualityCheck, IconWarrantyShield } from '../components/CalycoIcons';
 import SEO from '../components/SEO';
 
 import StaticHero from '../components/StaticHero';
-import BenefitsSection from '../components/HomeComponents/BenefitsSection';
 import SiteInspectionCTA from '../components/HomeComponents/SiteInspectionCTA';
 import ReviewsSection from '../components/ReviewsSection';
 import CallToAction from '../components/CallToAction';
 import WhyFiveStar from '../components/HomeComponents/WhyFiveStar';
-import ComparisonSection from '../components/HomeComponents/ComparisonSection';
-import PainterVerificationSection from '../components/PainterVerificationSection';
 import ProjectGallerySection from '../components/ProjectGallerySection';
 import { serviceHubCards, cityMultipliers } from '../data/servicePricing';
 import { BRAND_NAME, POSITIONING_TAGLINE, WA_SITE_VISIT } from '../data/positioning';
@@ -77,7 +75,7 @@ const trustBadges = [
 ];
 
 const TrustBadges = () => (
-  <section className="bg-white border-b border-[#0F1221]/6 py-10 sm:py-12">
+  <section className="bg-white border-b border-[#0F1221]/6 py-12 sm:py-16">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
 
       {/* 6 core badges */}
@@ -145,19 +143,20 @@ const SERVICE_BULLETS = {
 };
 
 const ServiceCards = () => (
-  <section className="bg-[#F7F6F3] py-10 sm:py-14">
+  <section className="bg-[#F7F6F3] py-16 sm:py-20 lg:py-24">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">Our Services</span>
-          <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
-          <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] leading-[1.1] tracking-[-0.01em]">
-            Everything Your Property Needs.
+          <div className="section-eyebrow">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#F0C85A]">Our Services</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] leading-[1.08] tracking-[-0.02em] mt-2">
+            Everything Your<br className="hidden sm:block" /> Property Needs.
           </h2>
-          <p className="mt-3 text-sm text-[#0F1221]/50 font-light leading-[1.75] max-w-xl">
-            Interior repainting, waterproofing, texture, wood polish, and more — managed end-to-end with transparent pricing.
+          <p className="mt-4 text-base text-[#0F1221]/50 font-light leading-[1.8] max-w-lg">
+            Interior, exterior, waterproofing, texture and wood — managed end-to-end with transparent pricing.
           </p>
         </div>
         <Link
@@ -168,42 +167,45 @@ const ServiceCards = () => (
         </Link>
       </div>
 
-      {/* Premium service cards — 3-column layout on desktop for breathing room */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Premium service cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {serviceHubCards.slice(0, 6).map((service) => {
           const bullets = SERVICE_BULLETS[service.slug] || [];
           return (
             <div
               key={service.slug}
-              className="group rounded-2xl bg-white border border-[#0F1221]/8 overflow-hidden hover:border-[#493657]/25 hover:shadow-[0_6px_28px_rgba(73,54,87,0.12)] transition-all duration-300 flex flex-col"
+              className="group card-premium flex flex-col overflow-hidden"
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden bg-gray-100 flex-shrink-0">
+              <div className="relative h-56 overflow-hidden bg-[#E8E4DF] flex-shrink-0">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                 />
-                {/* Price badge on image */}
+                {/* Subtle gradient for legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Price badge */}
                 <div className="absolute bottom-3 left-3">
-                  <span className="inline-flex items-center rounded-full bg-[#0F1221]/80 backdrop-blur-sm px-3 py-1 text-[11px] font-bold text-[#F0C85A]">
+                  <span className="inline-flex items-center rounded-full bg-[#0F1221]/75 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-[#F0C85A] shadow-sm">
                     From ₹{service.startingPrice}/sq ft
                   </span>
                 </div>
               </div>
 
               {/* Card body */}
-              <div className="flex flex-col flex-1 p-4">
-                <h3 className="font-semibold text-[#0F1221] text-base leading-snug mb-3 group-hover:text-[#493657] transition-colors">
+              <div className="flex flex-col flex-1 p-5">
+                <h3 className="font-bold text-[#0F1221] text-base leading-snug mb-3 group-hover:text-[#493657] transition-colors">
                   {service.title}
                 </h3>
 
                 {/* Trust bullets */}
                 {bullets.length > 0 && (
-                  <ul className="space-y-1.5 mb-4 flex-1">
+                  <ul className="space-y-2 mb-5 flex-1">
                     {bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-xs text-[#0F1221]/65">
+                      <li key={b} className="flex items-center gap-2.5 text-sm text-[#0F1221]/60">
                         <Check className="w-3.5 h-3.5 text-[#25D366] flex-shrink-0" />
                         {b}
                       </li>
@@ -214,9 +216,9 @@ const ServiceCards = () => (
                 {/* CTA */}
                 <Link
                   to={`/services/${service.slug}`}
-                  className="mt-auto block w-full text-center rounded-xl bg-[#0F1221] text-white py-2.5 text-xs font-bold hover:bg-[#493657] transition-colors group-hover:bg-[#493657]"
+                  className="mt-auto block w-full text-center rounded-xl bg-[#0F1221] text-white py-3 text-sm font-bold hover:bg-[#493657] transition-colors shadow-sm"
                 >
-                  Get Estimate
+                  Get Estimate →
                 </Link>
               </div>
             </div>
@@ -224,20 +226,19 @@ const ServiceCards = () => (
         })}
       </div>
 
-      <div className="mt-6 flex flex-row gap-3">
+      <div className="mt-8 flex flex-row gap-3">
         <Link
           to="/calculators/service-cost-calculator"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-semibold hover:bg-[#493657] transition-colors"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-7 py-3.5 text-sm font-bold hover:bg-[#493657] transition-colors shadow-sm"
         >
           <Calculator className="w-4 h-4" />
           Calculate Cost
         </Link>
         <Link
           to="/services"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-6 py-3 text-sm font-medium hover:border-[#0F1221]/40 hover:text-[#0F1221] transition-colors"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-7 py-3.5 text-sm font-medium hover:border-[#0F1221]/40 hover:text-[#0F1221] transition-colors"
         >
-          <ArrowRight className="w-4 h-4" />
-          All Services
+          All Services <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
     </div>
@@ -247,25 +248,28 @@ const ServiceCards = () => (
 // ─────────────────────────────────────────────
 // Section 4 — Calculator Teaser
 // ─────────────────────────────────────────────
+// ─── Calculator + Pricing section (merged) ────────────────────────────────────
+const pricingFacts = [
+  { Icon: IconLaserRuler,  bg: 'bg-[#0F1221]', label: 'Laser-measured area',    sub: 'Not a rough estimate' },
+  { Icon: IconQualityCheck, bg: 'bg-[#493657]', label: 'Itemised written quote', sub: 'Line-by-line scope + cost' },
+  { Icon: IconPriceLock,   bg: 'bg-[#1a4a8a]', label: 'Price locked on sign-off', sub: 'No changes after acceptance' },
+  { Icon: IconGSTReceipt,  bg: 'bg-[#998850]', label: 'GST shown separately',   sub: 'Compliant invoice provided' },
+];
+
 const CalculatorTeaser = () => (
-  <section className="bg-white py-10 sm:py-12 border-b border-[#0F1221]/6">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
+  <section className="bg-white py-14 sm:py-18 lg:py-20 border-b border-[#0F1221]/6">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 space-y-5">
+
+      {/* Dark calculator card */}
       <div className="rounded-2xl bg-gradient-to-r from-[#0F1221] via-[#1a0b21] to-[#432553] px-6 sm:px-10 py-8 sm:py-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div className="max-w-xl">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F0C85A]/70 mb-2 block">Transparent Pricing Calculator</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F0C85A]/70 mb-2 block">Transparent Pricing</span>
           <h2 className="text-2xl sm:text-3xl font-light text-white tracking-[-0.01em] leading-[1.2]">
-            Know your cost before the painter arrives.
+            Know your cost before<br className="hidden sm:block" /> the painter arrives.
           </h2>
           <p className="text-sm text-white/50 font-light mt-3 leading-[1.75]">
-            Enter your city, service, and area — see a complete rate breakdown with GST. No registration required.
+            Rates published online. Every quote itemised. The price you agree is the price you pay.
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {['60+ services', 'All cities', 'GST shown separately', 'Tier pricing'].map((t) => (
-              <span key={t} className="inline-flex items-center gap-1 rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/55 font-medium">
-                <Check className="w-3 h-3 text-[#F0C85A]" />{t}
-              </span>
-            ))}
-          </div>
         </div>
         <div className="flex flex-col gap-3 flex-shrink-0 w-full lg:w-auto">
           <Link
@@ -283,6 +287,25 @@ const CalculatorTeaser = () => (
           </Link>
         </div>
       </div>
+
+      {/* Pricing facts strip — replaces the standalone TransparentPricingSection */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {pricingFacts.map((f) => {
+          const { Icon } = f;
+          return (
+            <div key={f.label} className="rounded-2xl border border-[#0F1221]/8 bg-[#FAFAF8] px-4 py-4 flex items-start gap-3 hover:bg-white hover:border-[#0F1221]/15 transition-all">
+              <div className={`w-9 h-9 rounded-xl ${f.bg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                <Icon className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-[#0F1221] leading-snug">{f.label}</p>
+                <p className="text-[11px] text-[#0F1221]/45 font-light mt-0.5">{f.sub}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   </section>
 );
@@ -304,24 +327,26 @@ const howSteps = [
 ];
 
 const HowItWorksSection = () => (
-  <section className="bg-[#0F1221] py-10 sm:py-14">
+  <section className="bg-[#0F1221] py-16 sm:py-20 lg:py-24">
     <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-      <div className="mb-10">
-        <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#F0C85A]/60">Our Process</span>
-        <div className="mt-2 mb-5 h-[1px] w-10 bg-white/15" />
-        <h2 className="text-3xl sm:text-4xl font-light text-white tracking-[-0.01em]">
-          How Calyco Delivers 5-Star Painting.
+      <div className="mb-12">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="w-5 h-0.5 bg-[#F0C85A] rounded-full" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#F0C85A]">Our Process</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-[-0.02em] leading-[1.08]">
+          How Calyco Delivers<br className="hidden sm:block" /> 5-Star Painting.
         </h2>
-        <p className="mt-3 text-sm text-white/40 font-light max-w-xl leading-[1.75]">
-          Six structured steps — from first call to final handover. Every step documented, nothing left to chance.
+        <p className="mt-4 text-base text-white/40 font-light max-w-lg leading-[1.8]">
+          Six structured steps — from first call to final handover. Nothing left to chance.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {howSteps.map((step) => (
-          <div key={step.n} className="rounded-xl bg-white/5 border border-white/8 p-5 hover:bg-white/8 transition-all">
-            <span className="text-[10px] font-bold text-[#F0C85A]/50 tracking-[0.12em] block mb-3">{step.n}</span>
-            <h3 className="text-sm sm:text-base font-semibold text-white/85 mb-2">{step.t}</h3>
-            <p className="text-xs sm:text-sm text-white/40 font-light leading-[1.7]">{step.d}</p>
+          <div key={step.n} className="rounded-2xl bg-white/5 border border-white/10 p-6 hover:bg-white/8 hover:border-white/15 transition-all">
+            <span className="text-[11px] font-bold text-[#F0C85A] tracking-[0.12em] block mb-4">{step.n}</span>
+            <h3 className="text-sm sm:text-base font-semibold text-white/90 mb-2 leading-snug">{step.t}</h3>
+            <p className="text-xs sm:text-sm text-white/45 font-light leading-[1.75]">{step.d}</p>
           </div>
         ))}
       </div>
@@ -341,174 +366,35 @@ const HowItWorksSection = () => (
 // Section 8 — Painter Verification (imported)
 // ─────────────────────────────────────────────
 
-// ─────────────────────────────────────────────
-// Section 9 — Transparent Pricing Explanation
-// ─────────────────────────────────────────────
-const pricingPoints = [
-  { icon: '📏', title: 'Laser-measured area', desc: 'We measure paintable wall area with a laser tool — not a guess or a rough estimate.' },
-  { icon: '📋', title: 'Itemised written quote', desc: 'Scope, material, area, labour, and exclusions listed line by line. No vague totals.' },
-  { icon: '🔒', title: 'Price locked on acceptance', desc: 'Once you accept the quote, the price cannot change. No surprises on completion day.' },
-  { icon: '🧾', title: 'GST-inclusive billing', desc: 'All rates are quoted with or without GST clearly stated. Nothing hidden in the invoice.' },
-];
+// TransparentPricingSection merged into CalculatorTeaser below.
+// Pricing principles (laser measurement, itemised quote, price-lock, GST)
+// now appear inside the calculator section to avoid a standalone near-duplicate.
 
-const TransparentPricingSection = () => (
-  <section className="bg-[#F7F6F3] py-10 sm:py-14 border-y border-[#0F1221]/6">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-      <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+// ProductRecommendationSection removed from homepage.
+// Products are service-adjacent, not the homepage focus.
+// Products accessible via nav → Products or /products.
+
+// ─────────────────────────────────────────────
+// Section 11 — Warranty bar (compact — full detail in TrustBadges §2)
+// ─────────────────────────────────────────────
+const WarrantyBar = () => (
+  <div className="bg-[#FFFBEF] border-y border-[#F0C85A]/25">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="flex items-center gap-3">
+        <div className="w-9 h-9 rounded-xl bg-[#F0C85A] flex items-center justify-center flex-shrink-0"><IconWarrantyShield className="w-4.5 h-4.5 text-[#0F1221]" /></div>
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">No Hidden Costs</span>
-          <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
-          <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">
-            Transparent Pricing, Always.
-          </h2>
-          <p className="mt-3 text-sm text-[#0F1221]/50 font-light max-w-lg leading-[1.75]">
-            Calyco publishes rates online. Every quote is itemised. The price you agree to is the price you pay.
-          </p>
+          <p className="font-bold text-[#0F1221] text-sm leading-snug">1-Year Workmanship Warranty on every project.</p>
+          <p className="text-xs text-[#0F1221]/50 font-light mt-0.5">Any defect within 12 months is fixed at zero cost. Premium: 2 yrs · Luxury: 3 yrs.</p>
         </div>
-        <Link
-          to="/transparent-pricing"
-          className="flex-shrink-0 inline-flex items-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-5 py-2.5 text-sm font-medium hover:border-[#0F1221]/35 hover:text-[#0F1221] transition-colors whitespace-nowrap"
-        >
-          Full pricing breakdown <ArrowRight className="w-4 h-4" />
-        </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {pricingPoints.map((pt) => (
-          <div key={pt.title} className="rounded-2xl border border-[#0F1221]/8 bg-white px-5 py-5">
-            <span className="text-2xl block mb-3">{pt.icon}</span>
-            <p className="font-semibold text-[#0F1221] text-sm mb-1.5">{pt.title}</p>
-            <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7]">{pt.desc}</p>
-          </div>
-        ))}
-      </div>
-      {/* Comparison teaser */}
-      <div className="mt-6">
-        <ComparisonSection />
-      </div>
+      <Link
+        to="/get-quote"
+        className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-2.5 text-xs font-bold hover:bg-[#493657] transition-colors whitespace-nowrap"
+      >
+        Book Free Inspection →
+      </Link>
     </div>
-  </section>
-);
-
-// ─────────────────────────────────────────────
-// Section 10 — Product Recommendation
-// ─────────────────────────────────────────────
-const productRecs = [
-  {
-    tag: 'Interior',
-    name: 'Luxury Interior Emulsion',
-    desc: 'Washable, anti-fungal, 5000-scrub resistance. Ideal for living rooms and bedrooms.',
-    slug: '/product/Luxury-Interior-Emulsion',
-    accent: 'bg-[#EEF2FF]',
-    badge: 'Most popular',
-  },
-  {
-    tag: 'Exterior',
-    name: 'Premium Exterior Emulsion',
-    desc: 'UV-stable, waterproof film, 7-year warranty. Designed for harsh Indian weather.',
-    slug: '/product/Premium-Exterior-Emulsion',
-    accent: 'bg-[#F0FDF4]',
-    badge: 'Weather champion',
-  },
-  {
-    tag: 'Waterproofing',
-    name: 'Waterproofing Sealer',
-    desc: 'Penetrating sealer for terraces, roofs, and damp walls. 10-year membrane durability.',
-    slug: '/product/waterproofing-sealer',
-    accent: 'bg-[#FFF7ED]',
-    badge: 'Top rated',
-  },
-];
-
-const ProductRecommendationSection = () => (
-  <section className="bg-white py-10 sm:py-14 border-b border-[#0F1221]/6">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-        <div>
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">Calyco Products</span>
-          <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
-          <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">
-            Our Painters Use the Best Materials.
-          </h2>
-          <p className="mt-3 text-sm text-[#0F1221]/50 font-light max-w-xl leading-[1.75]">
-            Calyco service projects use Calyco-formulated paints. Same brand. Matched system. Better result.
-          </p>
-        </div>
-        <Link
-          to="/products"
-          className="flex-shrink-0 inline-flex items-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-5 py-2.5 text-sm font-medium hover:border-[#0F1221]/35 hover:text-[#0F1221] transition-colors whitespace-nowrap"
-        >
-          All products <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {productRecs.map((p) => (
-          <Link
-            key={p.name}
-            to={p.slug}
-            className={`group rounded-2xl border border-[#0F1221]/8 ${p.accent} px-5 py-5 hover:border-[#493657]/25 hover:shadow-[0_4px_18px_rgba(73,54,87,0.1)] transition-all`}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#0F1221]/45">{p.tag}</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full bg-[#F0C85A]/20 text-[#7a6020]">{p.badge}</span>
-            </div>
-            <p className="font-semibold text-[#0F1221] text-sm mb-2 group-hover:text-[#493657] transition-colors">{p.name}</p>
-            <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7]">{p.desc}</p>
-            <p className="mt-4 text-xs font-bold text-[#493657] group-hover:text-[#F0C85A] transition-colors">View product →</p>
-          </Link>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// ─────────────────────────────────────────────
-// Section 11 — Warranty (inline, from previous session)
-// ─────────────────────────────────────────────
-const warrantyItems = [
-  { icon: '🛡️', title: '1-Year Workmanship Warranty', desc: 'Any defect within 12 months of completion is fixed at zero cost.' },
-  { icon: '✅', title: 'Verified & Screened Painters', desc: 'Background-checked, rated, and trained on the Calyco process.' },
-  { icon: '📋', title: 'Written Fixed-Price Quote', desc: 'Signed scope + price. No changes after acceptance.' },
-  { icon: '📸', title: 'Daily Progress Photos', desc: 'WhatsApp updates with photos every day — even when you are away.' },
-  { icon: '🏠', title: 'Full Site Protection', desc: 'Floors covered, furniture protected, daily cleanup before handover.' },
-  { icon: '⭐', title: '27-Point Quality Checklist', desc: 'Every project signed off against 27 points. No handover until all pass.' },
-];
-
-const WarrantySection = () => (
-  <section className="bg-white py-10 sm:py-14 border-y border-[#0F1221]/6">
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
-      <div className="mb-8 text-center">
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0C85A]/15 border border-[#F0C85A]/30 text-[11px] font-bold tracking-[0.15em] uppercase text-[#7a6020]">
-          <span className="text-[#F0C85A] text-base leading-none">★★★★★</span>
-          Calyco Guarantee
-        </span>
-        <h2 className="mt-4 text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em]">
-          The Standards Every Project Comes With.
-        </h2>
-        <p className="mt-2 text-sm text-[#0F1221]/50 font-light max-w-xl mx-auto leading-[1.75]">
-          These are not extras. Every Calyco project — regardless of size or city — includes all six of the following.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {warrantyItems.map((item) => (
-          <div key={item.title} className="rounded-2xl border border-[#0F1221]/8 bg-[#FAFAF8] px-5 py-5 flex gap-4 hover:border-[#F0C85A]/40 hover:bg-[#FEFCF5] transition-all">
-            <span className="text-2xl flex-shrink-0 leading-none mt-0.5">{item.icon}</span>
-            <div>
-              <p className="font-semibold text-[#0F1221] text-sm leading-snug">{item.title}</p>
-              <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7] mt-1.5">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-        <Link to="/get-quote" className="inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-7 py-3.5 text-sm font-bold hover:bg-[#493657] transition-colors">
-          Book Free Site Visit →
-        </Link>
-        <Link to="/how-it-works" className="inline-flex items-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/70 px-7 py-3.5 text-sm font-medium hover:border-[#0F1221]/35 hover:text-[#0F1221] transition-colors">
-          How it works
-        </Link>
-      </div>
-    </div>
-  </section>
+  </div>
 );
 
 // ─────────────────────────────────────────────
@@ -567,21 +453,21 @@ const cityRegions = [
 const CityAvailabilitySection = () => {
   const waLink = `${contactData.contact.whatsapp.link}?text=${encodeURIComponent('Hi Calyco, I want to check if you serve my city.')}`;
   return (
-    <section className="bg-[#F7F6F3] py-12 sm:py-16 border-t border-[#0F1221]/6">
+    <section className="bg-[#F7F6F3] py-16 sm:py-20 lg:py-24 border-t border-[#0F1221]/6">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#0F1221] px-4 py-1.5 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#0F1221] px-4 py-2 mb-5">
               <MapPin className="w-3.5 h-3.5 text-[#F0C85A]" />
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">25+ Cities</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">
-              Painting Services<br className="sm:hidden" /> Across India.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08]">
+              Painting Services<br className="hidden sm:block" /> Across India.
             </h2>
-            <p className="mt-3 text-sm text-[#0F1221]/50 font-light leading-[1.75] max-w-lg">
-              Calyco's verified painter network is live across 25+ cities and expanding every month. Click your city to see local pricing and services.
+            <p className="mt-4 text-base text-[#0F1221]/50 font-light leading-[1.8] max-w-lg">
+              Calyco verified painter network live across 25+ cities and expanding every month.
             </p>
           </div>
           <a
@@ -655,12 +541,13 @@ const serviceFaqs = [
 const ServiceFAQ = () => {
   const [open, setOpen] = useState(null);
   return (
-    <section className="bg-[#F7F6F3] py-8 sm:py-10">
+    <section className="bg-[#F7F6F3] py-14 sm:py-18">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="mb-8">
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/45">Common Questions</span>
-          <div className="mt-2 mb-5 h-[1px] w-full bg-[#0F1221]/10" />
-          <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em]">Before You Book a Free Inspection.</h2>
+        <div className="mb-10">
+          <div className="section-eyebrow mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#F0C85A]">Common Questions</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08]">Before You Book<br className="hidden sm:block" /> a Free Inspection.</h2>
         </div>
         <div className="space-y-2">
           {serviceFaqs.map((faq, i) => (
@@ -702,6 +589,13 @@ const Home = () => (
       ogType="website"
     />
 
+    {/* ─────────────────────────────────────────────────────────────────────
+        MOBILE flow: Hero → Trust → Services → Calculator → Reviews → CTA
+        All 6 sections visible on mobile. Sections 5–11 are desktop-only.
+        The sticky bottom bar (Call | WhatsApp | Get Estimate) covers
+        instant contact on every scroll position.
+        ───────────────────────────────────────────────────────────────── */}
+
     {/* 1 — Hero with lead form */}
     <StaticHero />
 
@@ -723,17 +617,24 @@ const Home = () => (
     {/* 7 — How Calyco Works */}
     <HowItWorksSection />
 
-    {/* 8 — Painter verification */}
-    <PainterVerificationSection />
+    {/* 8 — Painter verification strip */}
+    <div className="bg-white border-y border-[#0F1221]/6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <span className="text-2xl flex-shrink-0">✅</span>
+          <div>
+            <p className="font-bold text-[#0F1221] text-sm">Every painter is background-checked, skill-tested, and rated by previous customers.</p>
+            <p className="text-xs text-[#0F1221]/45 font-light mt-0.5">Identity checked · Experience reviewed · Trained on the Calyco process · 6-monthly re-evaluation</p>
+          </div>
+        </div>
+        <Link to="/verified-painters" className="flex-shrink-0 text-sm font-bold text-[#493657] hover:text-[#F0C85A] transition-colors whitespace-nowrap">
+          How we verify →
+        </Link>
+      </div>
+    </div>
 
-    {/* 9 — Transparent pricing */}
-    <TransparentPricingSection />
-
-    {/* 10 — Product recommendation */}
-    <ProductRecommendationSection />
-
-    {/* 11 — Warranty / guarantee */}
-    <WarrantySection />
+    {/* 11 — Warranty bar */}
+    <WarrantyBar />
 
     {/* 12 — Customer reviews */}
     <ReviewsSection />
@@ -744,7 +645,7 @@ const Home = () => (
     {/* 14 — FAQ */}
     <ServiceFAQ />
 
-    {/* 15 — Final CTA */}
+    {/* 15 — Final CTA (visible on all sizes) */}
     <div className="bg-[#F7F6F3] px-5 sm:px-8 md:px-12 lg:px-16 py-8">
       <SiteInspectionCTA />
     </div>

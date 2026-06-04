@@ -52,15 +52,16 @@ const prepSteps = [
 ];
 
 const SurfacePreparationSection = () => (
-  <section className="bg-[#F7F6F3] py-12 sm:py-16">
+  <section className="bg-[#F7F6F3] py-16 sm:py-20 lg:py-24">
     <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
 
       {/* Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 items-start">
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/40">What separates Calyco</span>
-          <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
-          <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em] leading-[1.15]">
+          <div className="section-eyebrow mb-2">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#F0C85A]">What separates Calyco</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08] mt-2">
             The Difference Is in the<br className="hidden sm:block" /> Wall Preparation.
           </h2>
           <p className="mt-4 text-sm text-[#0F1221]/55 font-light leading-[1.85] max-w-sm">

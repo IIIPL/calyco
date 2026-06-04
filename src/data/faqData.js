@@ -159,7 +159,7 @@ export const masterFAQs = [
     id: 'fp3',
     category: 'process',
     q: 'What surface preparation does Calyco do?',
-    a: 'Calyco's standard prep includes: wall inspection, crack filling with appropriate filler, sanding rough surfaces, applying the correct primer system (alkali-resist, damp-resist or bonding primer based on surface), and waiting for full cure before applying topcoats. Premium and Luxury packages also include full-wall putty for a smoother base.',
+    a: 'Calyco standard prep includes: wall inspection, crack filling with appropriate filler, sanding rough surfaces, applying the correct primer system (alkali-resist, damp-resist or bonding primer based on surface), and waiting for full cure before applying topcoats. Premium and Luxury packages also include full-wall putty for a smoother base.',
   },
   {
     id: 'fp4',
@@ -293,7 +293,7 @@ export const getServiceFAQs = (service) => {
   // Surface Preparation
   if (cat === 'Surface Preparation') return [
     { q: 'Is putty required for all surfaces?', a: 'No. Putty is recommended for new or rough plaster surfaces that need levelling before painting. Smooth surfaces in good condition can go directly to primer and topcoat. Your supervisor assesses and recommends.' },
-    { q: 'Why is surface preparation so important?', a: 'A good paint job starts with the wall, not the paint. Skipping crack filling, sanding or primer causes peeling within 6–12 months. Calyco's prep process is what makes the finish last 2–3× longer than a typical local painter job.' },
+    { q: 'Why is surface preparation so important?', a: 'A good paint job starts with the wall, not the paint. Skipping crack filling, sanding or primer causes peeling within 6–12 months. Calyco prep process is what makes the finish last 2–3× longer than a typical local painter job.' },
     { q: 'What is the difference between putty and primer?', a: 'Putty is a white compound applied to level and smooth rough plaster. It is sanded after drying. Primer is a chemical bonding coat applied after putty, which seals the surface and improves paint adhesion. Both are needed for best results.' },
     ...BASE_SERVICE_FAQS,
   ];

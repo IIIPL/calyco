@@ -6,6 +6,7 @@ import {
   ChevronLeft, ChevronRight, Calculator, MessageCircle,
   SlidersHorizontal,
 } from 'lucide-react';
+import { CategoryIcon } from '../components/CalycoIcons';
 import SEO from '../components/SEO';
 import { servicePricing } from '../data/servicePricing';
 import { SERVICE_CATEGORIES, SCENE_IMAGES, RATINGS } from '../data/serviceCategories';
@@ -42,17 +43,17 @@ const GridCard = ({ service }) => {
           {img
             ? <img src={img} alt={service.name}
                 className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-500"
-                loading="lazy" />
+                loading="eager" />
             : <div className="w-full h-full flex items-center justify-center text-3xl sm:text-5xl"
                 style={{ background: cat?.gradient }}>
-                {cat?.emoji}
+                <CategoryIcon categoryId={cat?.id} className="w-4 h-4 text-white" />
               </div>
           }
           {/* Category emoji badge */}
           <div
             className="absolute top-2 left-2 sm:top-3 sm:left-3 w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-sm sm:text-base shadow-md"
             style={{ background: cat?.gradient, border: '2px solid rgba(255,255,255,0.3)' }}>
-            {cat?.emoji}
+            <CategoryIcon categoryId={cat?.id} className="w-4 h-4 text-white" />
           </div>
           {free && (
             <span className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-[#16a34a] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full shadow">
@@ -102,7 +103,7 @@ const ListRow = ({ service }) => {
       <div
         className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-lg sm:text-2xl flex-shrink-0 shadow-sm"
         style={{ background: cat?.gradient }}>
-        {cat?.emoji}
+        <CategoryIcon categoryId={cat?.id} className="w-4 h-4 text-white" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="font-bold text-[#0F1221] text-[13px] sm:text-[15px] leading-tight">{service.name}</p>
@@ -198,7 +199,7 @@ const SidebarBtn = ({ cat, active, onClick }) => (
     className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all duration-200 hover:bg-[#F3EEF8]"
     style={active ? { background: cat.gradient, color: '#fff' } : { color: '#374151' }}>
     <div className="flex items-center gap-2.5">
-      <span className="text-lg leading-none">{cat.emoji}</span>
+      <span className="text-lg leading-none"><CategoryIcon categoryId={cat.id} className="w-4 h-4 text-white" /></span>
       <span className="text-[13px] font-semibold leading-tight">{cat.label}</span>
     </div>
     <span
@@ -385,7 +386,7 @@ export default function AllServicesPage() {
                   style={activeCat === cat.id
                     ? { background: cat.gradient, color: '#fff' }
                     : { background: '#fff', color: '#374151', border: '1px solid #e5e7eb' }}>
-                  {cat.emoji} {cat.label}
+                  <CategoryIcon categoryId={cat.id} className="w-4 h-4 text-white" /> {cat.label}
                 </button>
               ))}
             </div>

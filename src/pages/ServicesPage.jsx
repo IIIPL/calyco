@@ -10,6 +10,7 @@ import {
   MapPin, Shield, Zap, CheckCircle2, ArrowRight, MessageCircle,
   X as XIcon, ArrowUpRight,
 } from 'lucide-react';
+import { CategoryIcon } from '../components/CalycoIcons';
 import SEO from '../components/SEO';
 import { servicePricing } from '../data/servicePricing';
 import { SERVICE_CATEGORIES, SCENE_IMAGES, RATINGS } from '../data/serviceCategories';
@@ -38,12 +39,12 @@ const ModalServiceCard = ({ service, cat, onCardClick }) => {
             <img
               src={img} alt={service.name}
               className="w-full h-full object-cover group-hover:scale-[1.07] transition-transform duration-600"
-              loading="lazy" />
+              loading="eager" />
           ) : (
             <div
               className="w-full h-full flex items-center justify-center text-4xl"
               style={{ background: cat?.gradient }}>
-              {cat?.emoji}
+              <CategoryIcon categoryId={cat?.id} className="w-5 h-5 text-white" />
             </div>
           )}
 
@@ -55,7 +56,7 @@ const ModalServiceCard = ({ service, cat, onCardClick }) => {
           <div
             className="absolute top-2 left-2 flex items-center gap-1 px-2 py-1 rounded-full backdrop-blur-md"
             style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.20)' }}>
-            <span className="text-[13px] leading-none">{cat?.emoji}</span>
+            <span className="text-[13px] leading-none"><CategoryIcon categoryId={cat?.id} className="w-5 h-5 text-white" /></span>
           </div>
 
           {/* Free badge */}
@@ -112,7 +113,7 @@ const CategoryCard = ({ cat, onOpen }) => {
       <img
         src={cat.image} alt=""
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07]"
-        loading="lazy" />
+        loading="eager" />
     ) : (
       /* No photo fallback: gradient + dot texture */
       <>
@@ -154,7 +155,7 @@ const CategoryCard = ({ cat, onOpen }) => {
             border: '1px solid rgba(255,255,255,0.30)',
             backdropFilter: 'blur(12px)',
           }}>
-          {cat.emoji}
+          <CategoryIcon categoryId={cat.id} className="w-5 h-5 text-white" />
         </div>
         <span
           className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm"
@@ -227,7 +228,7 @@ const CategoryModal = ({ cat, onClose }) => {
               <div
                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-2xl sm:text-[26px] flex-shrink-0"
                 style={{ background: `${cat.accent}22`, border: `1px solid ${cat.accent}35` }}>
-                {cat.emoji}
+                <CategoryIcon categoryId={cat.id} className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="text-[16px] sm:text-[19px] font-bold text-white leading-tight">{cat.label}</h3>
@@ -758,7 +759,7 @@ const ServicesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
             <img src="/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp"
-              alt="" className="w-full h-[140px] sm:h-[220px] md:h-[280px] object-cover" loading="lazy" />
+              alt="" className="w-full h-[140px] sm:h-[220px] md:h-[280px] object-cover" loading="eager" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A0D1A]/90 via-[#0A0D1A]/55 to-transparent" />
             <div className="absolute inset-0 flex items-center px-5 sm:px-14">
               <div>

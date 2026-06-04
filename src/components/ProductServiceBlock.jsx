@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { IconInteriorPaint, IconFurnitureMask, IconLaserRuler, IconSparkle, IconWarrantyShield, IconQualityCheck } from './CalycoIcons';
 import contactData from '../data/admin/contact.json';
 import { BRAND_NAME, WA_SITE_VISIT } from '../data/positioning';
 
@@ -158,7 +159,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Best used for */}
               <div className="flex gap-4 px-5 py-4">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">🏠</span>
+                <div className="w-8 h-8 rounded-lg bg-[#0F1221] flex items-center justify-center flex-shrink-0 mt-0.5"><IconInteriorPaint className="w-4 h-4 text-[#F0C85A]" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Best used for</p>
                   <p className="text-sm text-[#0F1221]/70 font-light leading-[1.65]">{cfg.bestFor}</p>
@@ -167,7 +168,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Recommended rooms */}
               <div className="flex gap-4 px-5 py-4">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">🛋️</span>
+                <div className="w-8 h-8 rounded-lg bg-[#493657] flex items-center justify-center flex-shrink-0 mt-0.5"><IconFurnitureMask className="w-4 h-4 text-white" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-2">Recommended rooms</p>
                   <div className="flex flex-wrap gap-1.5">
@@ -182,7 +183,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Coverage */}
               <div className="flex gap-4 px-5 py-4">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">📐</span>
+                <div className="w-8 h-8 rounded-lg bg-[#1a4a8a] flex items-center justify-center flex-shrink-0 mt-0.5"><IconLaserRuler className="w-4 h-4 text-white" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Approx. coverage</p>
                   <p className="text-sm text-[#0F1221]/70 font-medium">{cfg.coverage}</p>
@@ -191,7 +192,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Finish type */}
               <div className="flex gap-4 px-5 py-4">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">✨</span>
+                <div className="w-8 h-8 rounded-lg bg-[#4a1a6a] flex items-center justify-center flex-shrink-0 mt-0.5"><IconSparkle className="w-4 h-4 text-white" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-2">Finish type</p>
                   <div className="flex flex-wrap gap-1.5">
@@ -206,7 +207,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Warranty */}
               <div className="flex gap-4 px-5 py-4">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">🛡️</span>
+                <div className="w-8 h-8 rounded-lg bg-[#998850] flex items-center justify-center flex-shrink-0 mt-0.5"><IconWarrantyShield className="w-4 h-4 text-white" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Warranty</p>
                   <p className="text-sm text-[#0F1221]/70 font-light leading-[1.65]">{cfg.warranty}</p>
@@ -215,7 +216,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
 
               {/* Surface prep note */}
               <div className="flex gap-4 px-5 py-4 bg-[#FFFBEF]">
-                <span className="text-lg flex-shrink-0 leading-none mt-0.5">📋</span>
+                <div className="w-8 h-8 rounded-lg bg-[#F0C85A] flex items-center justify-center flex-shrink-0 mt-0.5"><IconQualityCheck className="w-4 h-4 text-[#0F1221]" /></div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#7a6020] mb-1">Surface preparation note</p>
                   <p className="text-xs text-[#0F1221]/60 font-light leading-[1.7]">{cfg.prepNote}</p>

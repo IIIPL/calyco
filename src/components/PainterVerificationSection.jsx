@@ -1,54 +1,15 @@
 import { Link } from 'react-router-dom';
+import { IconIDCard, IconSkillCheck, IconQualityCheck, IconWallLayers, IconFurnitureMask, IconSupervisor, IconDailyPhoto, Icon27Point } from './CalycoIcons';
 
 const verificationPoints = [
-  {
-    n: '01',
-    icon: '🪪',
-    title: 'Identity Checked',
-    desc: 'Government-issued ID verified before onboarding. Address proof confirmed.',
-  },
-  {
-    n: '02',
-    icon: '📋',
-    title: 'Experience Reviewed',
-    desc: 'Minimum 3 years of relevant painting or surface care experience required.',
-  },
-  {
-    n: '03',
-    icon: '🔍',
-    title: 'Work Quality Screened',
-    desc: 'Previous project samples reviewed. Finish quality, edge work and preparation checked.',
-  },
-  {
-    n: '04',
-    icon: '🧱',
-    title: 'Trained on Surface Preparation',
-    desc: 'Crack filling, sanding, priming, damp treatment and putty application — all covered.',
-  },
-  {
-    n: '05',
-    icon: '🏠',
-    title: 'Trained on Masking & Cleanup',
-    desc: 'Floor protection, furniture cover, tape masking and post-job cleanup process trained.',
-  },
-  {
-    n: '06',
-    icon: '👷',
-    title: 'Supervisor Assigned',
-    desc: 'A Calyco supervisor is assigned to every project for coordination and quality control.',
-  },
-  {
-    n: '07',
-    icon: '📸',
-    title: 'Daily WhatsApp Reporting',
-    desc: 'Teams submit daily site photos to Calyco before they are forwarded to the customer.',
-  },
-  {
-    n: '08',
-    icon: '✅',
-    title: 'Final Quality Check Before Payment',
-    desc: 'Project is reviewed against a 27-point checklist. Payment is closed only after approval.',
-  },
+  { n: '01', Icon: IconIDCard,       bg: 'bg-[#0F1221]', title: 'Identity Checked',                  desc: 'Government-issued ID verified before onboarding. Address proof confirmed.' },
+  { n: '02', Icon: IconSkillCheck,   bg: 'bg-[#493657]', title: 'Experience Reviewed',                desc: 'Minimum 3 years of relevant painting or surface care experience required.' },
+  { n: '03', Icon: IconQualityCheck, bg: 'bg-[#1a4a8a]', title: 'Work Quality Screened',              desc: 'Previous project samples reviewed. Finish quality, edge work and preparation checked.' },
+  { n: '04', Icon: IconWallLayers,   bg: 'bg-[#4a2800]', title: 'Trained on Surface Preparation',    desc: 'Crack filling, sanding, priming, damp treatment and putty application — all covered.' },
+  { n: '05', Icon: IconFurnitureMask,bg: 'bg-[#1a4a2a]', title: 'Trained on Masking & Cleanup',      desc: 'Floor protection, furniture cover, tape masking and post-job cleanup process trained.' },
+  { n: '06', Icon: IconSupervisor,   bg: 'bg-[#493657]', title: 'Supervisor Assigned',               desc: 'A Calyco supervisor is assigned to every project for coordination and quality control.' },
+  { n: '07', Icon: IconDailyPhoto,   bg: 'bg-[#0a2240]', title: 'Daily WhatsApp Reporting',          desc: 'Teams submit daily site photos to Calyco before they are forwarded to the customer.' },
+  { n: '08', Icon: Icon27Point,      bg: 'bg-[#998850]', title: 'Final Quality Check Before Payment', desc: 'Project reviewed against 27-point checklist. Payment closed only after approval.' },
 ];
 
 // Placeholder painter "profile" cards — replace src with real photos when available
@@ -126,22 +87,26 @@ const PainterVerificationSection = ({ compact = false }) => (
 
       {/* ── 8 verification points ────────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {verificationPoints.map((pt) => (
-          <div
-            key={pt.n}
-            className="flex gap-3.5 rounded-2xl border border-[#0F1221]/7 bg-[#FAFAF8] px-4 py-4 hover:border-[#0F1221]/15 hover:bg-white transition-all"
-          >
-            <div className="flex-shrink-0">
-              <div className="w-9 h-9 rounded-xl bg-[#0F1221] flex items-center justify-center text-lg">
-                {pt.icon}
+        {verificationPoints.map((pt) => {
+          const { Icon } = pt;
+          return (
+            <div
+              key={pt.n}
+              className="flex gap-3.5 rounded-2xl border border-[#0F1221]/7 bg-[#FAFAF8] px-4 py-4 hover:border-[#0F1221]/15 hover:bg-white transition-all"
+            >
+              <div className="flex-shrink-0">
+                <div className={`w-9 h-9 rounded-xl ${pt.bg} flex items-center justify-center`}>
+                  <Icon className="w-4.5 h-4.5 text-white" />
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#0F1221]/30 mb-0.5">{pt.n}</p>
+                <p className="text-sm font-semibold text-[#0F1221] leading-snug">{pt.title}</p>
+                <p className="text-xs text-[#0F1221]/50 font-light mt-1 leading-[1.65]">{pt.desc}</p>
               </div>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-[#0F1221] leading-snug">{pt.title}</p>
-              <p className="text-xs text-[#0F1221]/50 font-light mt-1 leading-[1.65]">{pt.desc}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Bottom CTA strip */}

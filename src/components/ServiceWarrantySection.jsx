@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { IconWarrantyShield, IconPriceLock, Icon27Point, IconPaintBrush, IconSanding, IconWaterproof } from './CalycoIcons';
 
 const warrantyCards = [
   {
-    icon: '🏠',
+    Icon: IconWarrantyShield,
+    iconBg: 'bg-[#0F1221]',
     service: 'Interior Painting',
     duration: 'Up to 2 years',
     detail: 'Peeling, flaking or adhesion defects under normal use are inspected and fixed.',
@@ -10,7 +12,8 @@ const warrantyCards = [
     badge: 'bg-blue-100 text-blue-700',
   },
   {
-    icon: '🏗️',
+    Icon: IconWarrantyShield,
+    iconBg: 'bg-[#1a4a8a]',
     service: 'Exterior Painting',
     duration: 'Up to 3 years',
     detail: 'Blistering, fading beyond normal weathering and peeling covered under warranty.',
@@ -18,7 +21,8 @@ const warrantyCards = [
     badge: 'bg-emerald-100 text-emerald-700',
   },
   {
-    icon: '💧',
+    Icon: IconWaterproof,
+    iconBg: 'bg-[#0a3a6a]',
     service: 'Waterproofing',
     duration: 'Project-specific warranty',
     detail: 'Warranty terms set per project scope, material used and site condition at inspection.',
@@ -26,7 +30,8 @@ const warrantyCards = [
     badge: 'bg-sky-100 text-sky-700',
   },
   {
-    icon: '🎨',
+    Icon: IconPaintBrush,
+    iconBg: 'bg-[#493657]',
     service: 'Texture Painting',
     duration: 'Workmanship warranty',
     detail: 'Application-related delamination, cracking or patchiness covered under workmanship terms.',
@@ -34,7 +39,8 @@ const warrantyCards = [
     badge: 'bg-amber-100 text-amber-700',
   },
   {
-    icon: '🪵',
+    Icon: IconSanding,
+    iconBg: 'bg-[#4a2800]',
     service: 'Wood Polish & Coating',
     duration: 'Workmanship warranty',
     detail: 'Peeling, bubbling or finish failure from application covered for the workmanship period.',
@@ -42,7 +48,8 @@ const warrantyCards = [
     badge: 'bg-orange-100 text-orange-700',
   },
   {
-    icon: '🧪',
+    Icon: Icon27Point,
+    iconBg: 'bg-[#998850]',
     service: 'Product Warranty',
     duration: 'As per product selected',
     detail: 'Calyco products carry manufacturer warranties. Ask your supervisor for the product datasheet.',
@@ -52,7 +59,7 @@ const warrantyCards = [
 ];
 
 const ServiceWarrantySection = ({ highlightCategory }) => (
-  <section className="bg-white py-12 sm:py-16 border-y border-[#0F1221]/6">
+  <section className="bg-white py-16 sm:py-20 lg:py-24 border-y border-[#0F1221]/6">
     <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
 
       {/* Header */}
@@ -62,10 +69,10 @@ const ServiceWarrantySection = ({ highlightCategory }) => (
             <span className="text-[#F0C85A] text-sm">★★★★★</span>
             <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#7a6020]">Warranty-Backed Finish</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08]">
             Every Project. Covered.
           </h2>
-          <p className="mt-3 text-sm text-[#0F1221]/55 font-light max-w-xl leading-[1.8]">
+          <p className="mt-4 text-base text-[#0F1221]/55 font-light max-w-xl leading-[1.8]">
             Every Calyco 5-Star Painting project includes a workmanship warranty. If peeling, flaking or application-related defects appear under normal conditions, we inspect and fix the issue as per warranty terms.
           </p>
         </div>
@@ -79,21 +86,26 @@ const ServiceWarrantySection = ({ highlightCategory }) => (
 
       {/* Warranty cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {warrantyCards.map((card) => (
-          <div
-            key={card.service}
-            className={`rounded-2xl border ${card.color} px-5 py-5 ${highlightCategory && card.service.toLowerCase().includes(highlightCategory.toLowerCase()) ? 'ring-2 ring-[#F0C85A]/40' : ''}`}
-          >
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <span className="text-2xl leading-none flex-shrink-0">{card.icon}</span>
-              <span className={`text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-full ${card.badge}`}>
-                {card.duration}
-              </span>
+        {warrantyCards.map((card) => {
+          const { Icon } = card;
+          return (
+            <div
+              key={card.service}
+              className={`rounded-2xl border ${card.color} px-5 py-5 ${highlightCategory && card.service.toLowerCase().includes(highlightCategory.toLowerCase()) ? 'ring-2 ring-[#F0C85A]/40' : ''}`}
+            >
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className={`w-9 h-9 rounded-xl ${card.iconBg} flex items-center justify-center flex-shrink-0`}>
+                  <Icon className="w-4 h-4 text-white" />
+                </div>
+                <span className={`text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-full ${card.badge}`}>
+                  {card.duration}
+                </span>
+              </div>
+              <p className="text-sm font-semibold text-[#0F1221] mb-1.5">{card.service}</p>
+              <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7]">{card.detail}</p>
             </div>
-            <p className="text-sm font-semibold text-[#0F1221] mb-1.5">{card.service}</p>
-            <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7]">{card.detail}</p>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Bottom note */}

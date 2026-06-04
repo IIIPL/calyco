@@ -38,7 +38,6 @@ import ScrollToTop from './components/ScrollToTop'
 import CartProvider from './context/CartContext'
 import Cart from './components/Cart'
 import WhatsAppFloat from './components/WhatsAppFloat'
-import StickyContactBar from './components/StickyContactBar'
 
 // Convert all page components to lazy loading for better performance
 const AboutUs = React.lazy(() => import('./pages/AboutUs'))
@@ -209,8 +208,7 @@ function App() {
             {/* This is your app. */}
             <Navbar bannerVisible={bannerVisible} onMenuToggle={setMenuOpen} />
             <WhatsAppFloat />
-            <StickyContactBar />
-            <div className="transition-all duration-300 pb-14 md:pb-0">
+            <div className="transition-all duration-300">
               <React.Suspense fallback={<div className="pt-24 text-center text-[#0F1221]/40 text-sm">Loading…</div>}>
                 <div key={location.pathname} className="page-enter">
                 <Routes>

@@ -201,19 +201,19 @@ const StaticHero = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-10 sm:py-14 lg:py-20"
+        className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 py-8 sm:py-14 lg:py-20"
         style={{ x: contentX, y: contentY2, translateY: contentScrollY }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-16 items-start">
 
           {/* ── LEFT: copy + CTAs ── */}
           <div>
-            {/* Brand pill */}
+            {/* Brand pill — desktop only (too wide to show cleanly on mobile) */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="mb-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#0F1221]/10 bg-white/80 backdrop-blur-md shadow-sm"
+              className="mb-5 hidden sm:inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#0F1221]/10 bg-white/80 backdrop-blur-md shadow-sm"
             >
               <span className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => <span key={i} className="text-[#F0C85A] text-[10px]">★</span>)}
@@ -224,37 +224,51 @@ const StaticHero = () => {
               <span className="text-[11px] font-medium tracking-[0.1em] uppercase text-[#0F1221]/50">25 Cities</span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Mobile star badge — dark pill so gold stars are visible */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7 }}
+              className="inline-flex sm:hidden items-center gap-2 mb-5 bg-[#0F1221] rounded-full px-4 py-2 shadow-sm"
+            >
+              <span className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => <span key={i} className="text-[#F0C85A] text-sm leading-none">★</span>)}
+              </span>
+              <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-white">Calyco 5-Star Service</span>
+            </motion.div>
+
+            {/* Headline — tighter size on mobile */}
             <motion.h1
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.95, delay: 0.1, ease: 'easeOut' }}
-              className="text-[#0F1221] text-4xl sm:text-5xl lg:text-[58px] xl:text-[68px] leading-[1.06] tracking-[-0.025em] font-light mb-5"
+              className="text-[#0F1221] text-[2.1rem] sm:text-5xl lg:text-[58px] xl:text-[68px] leading-[1.08] tracking-[-0.025em] font-light mb-4"
             >
-              Experience 5-Star<br />
-              <span className="text-[#493657] font-medium">Painting</span> for Your Home.
+              Experience 5-Star Painting<br />
+              <span className="text-[#493657] font-medium">for Your Home.</span>
             </motion.h1>
 
-            {/* Subheadline */}
+            {/* Subheadline — shorter on mobile */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
-              className="text-[#0F1221]/65 text-base sm:text-lg leading-[1.75] font-light mb-8 max-w-xl"
+              className="text-[#0F1221]/65 text-sm sm:text-lg leading-[1.7] font-light mb-6 sm:mb-8 max-w-xl"
             >
-              Verified painters, transparent pricing, proper wall preparation, clean execution, and a warranty-backed finish — managed end-to-end by Calyco.
+              <span className="sm:hidden">Verified painters, transparent pricing, and a warranty-backed finish.</span>
+              <span className="hidden sm:inline">Verified painters, transparent pricing, proper wall preparation, clean execution, and a warranty-backed finish — managed end-to-end by Calyco.</span>
             </motion.p>
 
-            {/* Primary + Secondary CTAs */}
+            {/* Primary + Secondary CTAs — stacked on mobile */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.3, ease: 'easeOut' }}
-              className="flex flex-row flex-wrap gap-3 mb-6"
+              className="flex flex-col sm:flex-row gap-3 mb-5"
             >
               <Link
                 to="/calculators/service-cost-calculator"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#F0C85A] text-[#0F1221] rounded-full text-sm font-bold tracking-[0.03em] hover:bg-[#0F1221] hover:text-white transition-all duration-300 shadow-[0_4px_18px_rgba(240,200,90,0.42)] whitespace-nowrap"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-[#F0C85A] text-[#0F1221] rounded-full text-sm font-bold tracking-[0.03em] hover:bg-[#0F1221] hover:text-white transition-all duration-300 shadow-[0_4px_18px_rgba(240,200,90,0.42)]"
               >
                 Get My Painting Estimate
               </Link>
@@ -262,23 +276,23 @@ const StaticHero = () => {
                 href={waVisit}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/75 border border-[#0F1221]/15 text-[#0F1221] rounded-full text-sm font-medium hover:bg-white hover:border-[#0F1221]/30 transition-all duration-300 backdrop-blur-sm whitespace-nowrap"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-white/75 border border-[#0F1221]/15 text-[#0F1221] rounded-full text-sm font-medium hover:bg-white hover:border-[#0F1221]/30 transition-all duration-300 backdrop-blur-sm"
               >
                 <WaIcon />
                 Book Free Site Visit
               </a>
             </motion.div>
 
-            {/* Trust line */}
+            {/* Trust line — hidden on mobile, sticky bar covers it */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.42, ease: 'easeOut' }}
-              className="flex flex-wrap gap-x-4 gap-y-1"
+              className="hidden sm:flex flex-wrap gap-x-4 gap-y-1"
             >
               {TRUST_LINE.map((item, i) => (
                 <span key={item} className="flex items-center gap-1.5 text-[11px] text-[#0F1221]/55 font-medium">
-                  {i > 0 && <span className="w-1 h-1 rounded-full bg-[#0F1221]/20 hidden sm:inline-block" />}
+                  {i > 0 && <span className="w-1 h-1 rounded-full bg-[#0F1221]/20 inline-block" />}
                   <span className="text-[#25D366]">✓</span>
                   {item}
                 </span>
@@ -296,12 +310,12 @@ const StaticHero = () => {
             </motion.p>
           </div>
 
-          {/* ── RIGHT: lead form card ── */}
+          {/* ── RIGHT: lead form card — hidden on mobile, shows on tablet+ ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.22, ease: 'easeOut' }}
-            className="rounded-2xl bg-white/90 backdrop-blur-xl border border-[#0F1221]/8 shadow-[0_8px_40px_rgba(0,0,0,0.10)] p-6 sm:p-7"
+            className="hidden sm:block rounded-2xl bg-white/90 backdrop-blur-xl border border-[#0F1221]/8 shadow-[0_8px_40px_rgba(0,0,0,0.10)] p-6 sm:p-7"
           >
             <div className="mb-5">
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#998850] mb-1">{BRAND_NAME}</p>
