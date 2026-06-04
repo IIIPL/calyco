@@ -7,6 +7,7 @@ import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
+import ProductServiceBlock from "../components/ProductServiceBlock";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 import premiumInteriorEmulsionDetail from '../data/productDetail.premiumInteriorEmulsion';
 import { calycoColors as colorData } from "../data/calycoColors.js";
@@ -1358,6 +1359,9 @@ const PremiumInteriorEmulsion = () => {
                     </div>
                 )}
             </div>
+
+            {/* Service Lead Block */}
+            <ProductServiceBlock productName="Calyco Premium Interior Emulsion" productType="interior" />
 
             {/* Cart Popup */}
             <CartPopup

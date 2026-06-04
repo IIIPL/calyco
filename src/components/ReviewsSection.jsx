@@ -1,280 +1,159 @@
-import React, { useState } from 'react';
-import { FaStar, FaCheckCircle } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+﻿// ReviewsSection — completely replaced with rich customer review layout
+// Original file was a basic component; this version has social proof bar,
+// filterable review cards, video placeholder, and lead CTA.
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin } from 'lucide-react';
+import { customerReviews, SOCIAL_PROOF } from '../data/reviews';
 
-/**
- * ReviewsSection Component
- * Displays customer reviews with ratings, dates, and verification badges
- *
- * @param {Array} reviews - Array of review objects
- * @param {string} productName - Name of the product being reviewed
- */
-const ReviewsSection = ({ reviews = [], productName = 'Product' }) => {
-  const [sortBy, setSortBy] = useState('newest'); // 'newest', 'highest', 'lowest'
-  const [showForm, setShowForm] = useState(false);
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+const StarRow = ({ rating = 5, size = 'sm' }) => {
+  const sz = size === 'lg' ? 'text-lg' : 'text-sm';
+  return (
+    <div className={`flex items-center gap-0.5 ${sz}`} aria-label={`${rating} out of 5 stars`}>
+      {[...Array(5)].map((_, i) => (
+        <span key={i} className={i < rating ? 'text-[#F0C85A]' : 'text-[#0F1221]/15'}>&#9733;</span>
+      ))}
+    </div>
+  );
+};
 
-  // Normalize ratings:
-  // - Coerce to number
-  // - Clamp between 0 and 5
-  // - Floor to keep the exact star chosen by the reviewer (e.g., 4.7 -> 4)
-  const normalizedRatings = reviews.map((r) => {
-    const n = Number(r.rating);
-    if (Number.isNaN(n)) return 0;
-    return Math.min(5, Math.max(0, Math.floor(n)));
-  });
-
-  // Calculate average rating based on normalized values
-  const averageRatingValue =
-    normalizedRatings.length > 0
-      ? normalizedRatings.reduce((sum, rating) => sum + rating, 0) / normalizedRatings.length
-      : 0;
-  const averageRating = Number.isNaN(averageRatingValue) ? 0 : averageRatingValue.toFixed(1);
-
-  // Calculate rating distribution
-  const ratingDistribution = [5, 4, 3, 2, 1].map((stars) => {
-    const count = normalizedRatings.filter((r) => r === stars).length;
-    const percentage =
-      reviews.length > 0 ? ((count / reviews.length) * 100).toFixed(0) : 0;
-    return { stars, count, percentage };
-  });
-
-  // Sort reviews
-  const sortedReviews = [...reviews].sort((a, b) => {
-    switch (sortBy) {
-      case 'newest':
-        return new Date(b.date) - new Date(a.date);
-      case 'oldest':
-        return new Date(a.date) - new Date(b.date);
-      case 'highest':
-        return b.rating - a.rating;
-      case 'lowest':
-        return a.rating - b.rating;
-      default:
-        return 0;
-    }
-  });
-
-  // Format date
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-IN', options);
-  };
-
-  // Render stars for individual review
-  const renderStars = (rating) => {
-      const value = Math.min(5, Math.max(0, Math.floor(Number(rating) || 0)));
-    return (
-      <div className="flex items-center gap-0.5">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <FaStar
-            key={star}
-            className={`text-sm ${star <= value ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
-          />
-        ))}
+// ─── Social proof bar ─────────────────────────────────────────────────────────
+const SocialProofBar = () => (
+  <div className="rounded-2xl border border-[#0F1221]/8 bg-[#FAFAF8] px-5 sm:px-8 py-5 mb-10">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8">
+      <div className="col-span-2 sm:col-span-1 flex items-center gap-4">
+        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0F1221] flex-shrink-0">
+          <span className="text-[#F0C85A] text-xl font-bold">{SOCIAL_PROOF.rating}</span>
+        </div>
+        <div>
+          <StarRow rating={5} size="lg" />
+          <p className="text-xs text-[#0F1221]/50 font-light mt-1">{SOCIAL_PROOF.totalReviews}+ reviews</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mt-0.5">Average rating</p>
+        </div>
       </div>
-    );
-  };
+      <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
+        <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.completedProjects}+</p>
+        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Projects completed</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">and counting</p>
+      </div>
+      <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
+        <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.cities}+</p>
+        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Cities served</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">across India</p>
+      </div>
+      <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
+        <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.repeatCustomers}</p>
+        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Repeat customers</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">book again</p>
+      </div>
+    </div>
+  </div>
+);
+
+// ─── Single review card ───────────────────────────────────────────────────────
+const ReviewCard = ({ review, featured = false }) => (
+  <article className={`rounded-2xl border overflow-hidden flex flex-col transition-all hover:shadow-[0_6px_24px_rgba(0,0,0,0.1)] ${featured ? 'border-[#F0C85A]/40 bg-[#FFFDF5] shadow-[0_4px_18px_rgba(240,200,90,0.12)]' : 'border-[#0F1221]/8 bg-white'}`}>
+    {review.projectPhoto ? (
+      <div className="h-40 overflow-hidden flex-shrink-0">
+        <img src={review.projectPhoto} alt={`${review.service} project`} className="w-full h-full object-cover" loading="lazy" />
+      </div>
+    ) : (
+      <div className={`h-5 flex-shrink-0 ${featured ? 'bg-[#F0C85A]' : 'bg-[#0F1221]/8'}`} />
+    )}
+    <div className="flex flex-col flex-1 p-4 sm:p-5">
+      <div className="flex items-start gap-3 mb-4">
+        <div className={`w-10 h-10 rounded-full ${review.avatarColor} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>{review.initials}</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center justify-between gap-2">
+            <p className="font-bold text-[#0F1221] text-sm leading-tight truncate">{review.name}</p>
+            <StarRow rating={review.rating} />
+          </div>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <MapPin className="w-3 h-3 text-[#0F1221]/35 flex-shrink-0" />
+            <p className="text-[11px] text-[#0F1221]/45 font-medium truncate">{review.area}, {review.city}</p>
+          </div>
+        </div>
+      </div>
+      <div className="mb-3">
+        <Link to={`/services/${review.serviceSlug}`} className="inline-flex items-center gap-1 rounded-full bg-[#493657]/8 text-[#493657] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-[#493657]/15 transition-colors">{review.service}</Link>
+        {review.projectSize && <span className="text-[10px] text-[#0F1221]/35 font-light ml-2">{review.projectSize}</span>}
+      </div>
+      <blockquote className="text-sm text-[#0F1221]/65 font-light leading-[1.75] flex-1 mb-4">
+        <span className="text-[#F0C85A] text-base leading-none mr-0.5">&ldquo;</span>
+        {review.review}
+        <span className="text-[#F0C85A] text-base leading-none ml-0.5">&rdquo;</span>
+      </blockquote>
+      <div className="flex items-center justify-between gap-2 pt-3 border-t border-[#0F1221]/6">
+        <span className="text-[10px] text-[#0F1221]/30 font-light">{review.date}</span>
+        <Link to={`/calculators/service-cost-calculator?service=${review.serviceSlug}`} className="text-[11px] font-bold text-[#493657] hover:text-[#F0C85A] transition-colors whitespace-nowrap">Get similar estimate &#x2192;</Link>
+      </div>
+    </div>
+  </article>
+);
+
+// ─── Video testimonial placeholder ────────────────────────────────────────────
+const VideoPlaceholderCard = () => (
+  <article className="rounded-2xl border border-dashed border-[#0F1221]/15 bg-[#FAFAF8] flex flex-col items-center justify-center p-8 text-center min-h-[280px]">
+    <div className="w-16 h-16 rounded-full bg-[#0F1221]/8 flex items-center justify-center mb-4">
+      <svg className="w-6 h-6 text-[#0F1221]/40 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+    </div>
+    <p className="text-sm font-semibold text-[#0F1221]/50 mb-1">Video Testimonials</p>
+    <p className="text-xs text-[#0F1221]/35 font-light leading-[1.6] max-w-[180px]">Filming customer stories at project handovers. Coming soon.</p>
+    <Link to="/get-quote" className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-[#0F1221]/12 text-[#0F1221]/50 text-xs font-semibold px-4 py-2 hover:border-[#0F1221]/25 hover:text-[#0F1221]/70 transition-colors">Be the next success story &#x2192;</Link>
+  </article>
+);
+
+// ─── Main export ─────────────────────────────────────────────────────────────
+const FILTERS = ['All', 'Interior', 'Exterior', 'Waterproofing', 'Texture', 'Commercial', 'Rental'];
+
+const ReviewsSection = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filtered = activeFilter === 'All'
+    ? customerReviews
+    : customerReviews.filter((r) => r.service.toLowerCase().includes(activeFilter.toLowerCase()) || r.serviceSlug.includes(activeFilter.toLowerCase()));
+  const displayed = filtered.slice(0, 6);
 
   return (
-    <section id="reviews-section" className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Header */}
+    <section className="bg-white py-12 sm:py-16 border-y border-[#0F1221]/6">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-[#493657] mb-2">Customer Reviews</h2>
-          <p className="text-gray-600">See what our customers are saying about {productName}</p>
+          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/40">Customer Reviews</span>
+          <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">What Customers Say After Handover.</h2>
+            <p className="text-sm text-[#0F1221]/50 font-light max-w-xs leading-[1.75] sm:text-right">Verified reviews from completed Calyco projects across India.</p>
+          </div>
         </div>
-
-        {/* Rating Summary */}
-        {reviews.length > 0 && (
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Left: Average Rating */}
-              <div className="flex flex-col items-center justify-center text-center">
-                <div className="text-6xl font-bold text-[#493657] mb-2">{averageRating}</div>
-                <div className="flex items-center gap-1 mb-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <FaStar
-                      key={star}
-                      className={`text-2xl ${star <= averageRatingValue ? 'text-[#FF9800]' : 'text-[#E0E0E0]'}`}
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600">Based on {reviews.length} {reviews.length === 1 ? 'review' : 'reviews'}</p>
-              </div>
-
-              {/* Right: Rating Distribution */}
-              <div className="space-y-2">
-                {ratingDistribution.map(({ stars, count, percentage }) => (
-                  <div key={stars} className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-gray-700 w-12">{stars} stars</span>
-                    <div className="flex-1 bg-gray-200 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="bg-[#FF9800] h-full rounded-full transition-all duration-300"
-                        style={{ width: `${percentage}%` }}
-                      />
-                    </div>
-                    <span className="text-sm text-gray-600 w-12 text-right">{count}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Sort Controls */}
-        {reviews.length > 0 && (
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-[#493657]">
-              All Reviews ({reviews.length})
-            </h3>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
-            >
-              <option value="newest">Newest First</option>
-              <option value="oldest">Oldest First</option>
-              <option value="highest">Highest Rating</option>
-              <option value="lowest">Lowest Rating</option>
-            </select>
-          </div>
-        )}
-
-        {/* Reviews List or Empty State */}
-        {reviews.length === 0 ? (
-          /* Empty State - No Reviews Yet */
-          <div className="bg-white rounded-lg shadow-md p-12 text-center mb-8">
-            <div className="max-w-md mx-auto">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#493657]/10 mb-4">
-                <FaStar className="text-4xl text-[#F0C85A]" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#493657] mb-2">No Reviews Yet</h3>
-              <p className="text-gray-600 mb-6">
-                Be the first to share your experience with {productName}!
-              </p>
-              <button
-                type="button"
-                onClick={() => setShowForm(true)}
-                className="px-8 py-3 bg-[#493657] text-white font-semibold rounded-lg hover:bg-[#301A44] transition-colors inline-flex items-center gap-2"
-              >
-                <FaStar className="text-lg" />
-                Write the First Review
-              </button>
-            </div>
-          </div>
-        ) : (
-          /* Reviews List */
-          <div className="space-y-4">
-            {sortedReviews.map((review, index) => (
-              <motion.div
-                key={review.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
-              >
-                {/* Review Header */}
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-semibold text-gray-900">{review.author}</h4>
-                      {review.verified && (
-                        <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
-                          <FaCheckCircle className="text-xs" />
-                          Verified Purchase
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-3">
-                      {renderStars(review.rating)}
-                      <span className="text-sm text-gray-500">{formatDate(review.date)}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Review Text */}
-                <p className="text-gray-700 leading-relaxed">{review.review}</p>
-
-                {/* Helpful Actions (Optional - can add later) */}
-                {/* <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-4">
-                  <button className="text-sm text-gray-600 hover:text-gray-900">
-                    Was this helpful?
-                  </button>
-                  <button className="text-sm text-gray-600 hover:text-gray-900">
-                    👍 Yes (0)
-                  </button>
-                  <button className="text-sm text-gray-600 hover:text-gray-900">
-                    👎 No (0)
-                  </button>
-                </div> */}
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Write a Review Button - Only shown if there are existing reviews */}
-        {reviews.length > 0 && (
-          <div className="mt-8 text-center">
-            <button
-              type="button"
-              onClick={() => setShowForm(true)}
-              className="px-6 py-3 bg-[#493657] text-white font-semibold rounded-lg hover:bg-[#301A44] transition-colors"
-            >
-              Write a Review
+        <SocialProofBar />
+        <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1 mb-6">
+          {FILTERS.map((f) => (
+            <button key={f} type="button" onClick={() => setActiveFilter(f)}
+              className={`flex-shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition-all ${activeFilter === f ? 'bg-[#0F1221] text-white shadow-sm' : 'border border-[#0F1221]/12 text-[#0F1221]/55 hover:border-[#0F1221]/25 hover:text-[#0F1221]'}`}>
+              {f}
             </button>
-          </div>
-        )}
-
-          {showForm && (
-            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 text-left border border-gray-100">
-              <h4 className="text-lg font-semibold text-[#493657] mb-4">Share your experience</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
-                />
-                <select
-                  defaultValue="5"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent"
-                >
-                  <option value="5">5 - Excellent</option>
-                  <option value="4">4 - Good</option>
-                  <option value="3">3 - Average</option>
-                  <option value="2">2 - Poor</option>
-                  <option value="1">1 - Very Poor</option>
-                </select>
-              </div>
-              <textarea
-                rows="4"
-                placeholder="Write your review..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F0C85A] focus:border-transparent mb-4"
-              />
-              <div className="flex items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="px-5 py-2 bg-[#F0C85A] text-[#301A44] font-semibold rounded-md hover:opacity-90"
-                >
-                  Submit Review
-                </button>
-              </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {displayed.map((review) => <ReviewCard key={review.id} review={review} featured={review.featured} />)}
+          {activeFilter === 'All' && displayed.length < 7 && <VideoPlaceholderCard />}
+        </div>
+        <div className="mt-10 rounded-2xl bg-[#F7F6F3] border border-[#0F1221]/7 px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <StarRow rating={5} size="lg" />
+              <span className="text-base font-bold text-[#0F1221]">{SOCIAL_PROOF.rating} average</span>
             </div>
-          )}
+            <p className="text-sm text-[#0F1221]/55 font-light">Based on {SOCIAL_PROOF.totalReviews}+ completed project reviews across {SOCIAL_PROOF.cities}+ Indian cities.</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <Link to="/get-quote" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-bold hover:bg-[#493657] transition-colors whitespace-nowrap">Book Free Site Visit &#x2192;</Link>
+            <Link to="/gallery" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/65 px-6 py-3 text-sm font-medium hover:border-[#0F1221]/30 hover:text-[#0F1221] transition-colors whitespace-nowrap">See project gallery &#x2192;</Link>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default ReviewsSection;
-
-
-
-
-

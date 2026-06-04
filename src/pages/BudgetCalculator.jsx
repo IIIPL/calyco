@@ -504,80 +504,81 @@ const BudgetCalculator = () => {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Choose Calculator Type</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* Paint Calculator */}
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('paint')}
-                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'paint'
-                  ? 'border-[#493657] bg-[#493657]/5'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'paint'
+                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
+                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
                   }`}
               >
-                <div className="text-center">
-                  <div className="text-4xl mb-3">🎨</div>
-                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'paint' ? 'text-[#493657]' : 'text-gray-700'}`}>
-                    Paint Calculator
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    For interior & exterior painting
-                  </p>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'paint' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
+                  <svg className={`w-6 h-6 ${calculatorType === 'paint' ? 'text-white' : 'text-[#0F1221]/50'}`} fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                  </svg>
                 </div>
+                <p className={`text-base font-bold mb-1 ${calculatorType === 'paint' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
+                  Paint Calculator
+                </p>
+                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
+                  Interior &amp; exterior painting
+                </p>
                 {calculatorType === 'paint' && (
-                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                   </div>
                 )}
               </button>
 
+              {/* Texture Calculator */}
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('texture')}
-                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'texture'
-                  ? 'border-[#493657] bg-[#493657]/5'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'texture'
+                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
+                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
                   }`}
               >
-                <div className="text-center">
-                  <div className="text-4xl mb-3">🏗️</div>
-                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'texture' ? 'text-[#493657]' : 'text-gray-700'}`}>
-                    Texture Calculator
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    For textured wall finishes
-                  </p>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'texture' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
+                  <svg className={`w-6 h-6 ${calculatorType === 'texture' ? 'text-white' : 'text-[#0F1221]/50'}`} fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
+                  </svg>
                 </div>
+                <p className={`text-base font-bold mb-1 ${calculatorType === 'texture' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
+                  Texture Calculator
+                </p>
+                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
+                  Textured &amp; designer wall finishes
+                </p>
                 {calculatorType === 'texture' && (
-                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                   </div>
                 )}
               </button>
 
+              {/* Service Cost Calculator */}
               <button
                 type="button"
                 onClick={() => handleCalculatorTypeChange('service')}
-                className={`relative p-6 rounded-lg border-2 transition-all ${calculatorType === 'service'
-                  ? 'border-[#493657] bg-[#493657]/5'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'service'
+                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
+                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
                   }`}
               >
-                <div className="text-center">
-                  <Calculator className={`w-10 h-10 mx-auto mb-3 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-gray-500'}`} />
-                  <p className={`text-lg font-bold mb-1 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-gray-700'}`}>
-                    Service Cost Calculator
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Painting, waterproofing, grouting and more
-                  </p>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'service' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
+                  <Calculator className={`w-6 h-6 ${calculatorType === 'service' ? 'text-white' : 'text-[#0F1221]/50'}`} />
                 </div>
+                <p className={`text-base font-bold mb-1 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
+                  Service Cost Calculator
+                </p>
+                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
+                  Painting, waterproofing &amp; grouting
+                </p>
                 {calculatorType === 'service' && (
-                  <div className="absolute top-3 right-3 w-6 h-6 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                   </div>
                 )}
               </button>

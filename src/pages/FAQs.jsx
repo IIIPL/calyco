@@ -1,623 +1,236 @@
-﻿import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "@formspree/react";
-import SEO from "../components/SEO";
-import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
+import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
+import SEO from '../components/SEO';
+import { masterFAQs, FAQ_CATEGORIES } from '../data/faqData';
+import { BRAND_NAME } from '../data/positioning';
+import contactData from '../data/admin/contact.json';
 
-
-
-const categories = [
-  { id: "all", label: "All Topics" },
-  { id: "services", label: "Services & Booking" },
-  { id: "products", label: "Products & Colours" },
-  { id: "application", label: "Application & Tools" },
-  { id: "orders", label: "Orders & Delivery" },
-  { id: "returns", label: "Returns & Warranty" },
-  { id: "payments", label: "Payments & Invoices" },
-  { id: "maintenance", label: "Maintenance & Care" },
-];
-
-
-
-const faqs = [
-  {
-    question: "Is the site inspection really free?",
-    answer: "Yes. There is no charge for the site visit, no charge for laser measurement, and no commitment required. We provide a free written quote after the visit -- you decide whether to proceed.",
-    category: "services",
-  },
-  {
-    question: "How is the final price determined?",
-    answer: "Our calculator gives a transparent min-max estimate based on city, service, tier and area. After a free site inspection and laser measurement, we issue a fixed written quote. That price does not change once you accept it.",
-    category: "services",
-  },
-  {
-    question: "How long does a typical interior paint job take?",
-    answer: "A standard 2BHK interior repaint typically takes 3-5 days. Full home painting including surface prep may take 5-8 days. Your supervisor will give you a day-by-day schedule before work starts.",
-    category: "services",
-  },
-  {
-    question: "Do you work while we are living in the house?",
-    answer: "Yes. Our teams work in sections to minimise disruption. Furniture is masked and floors are protected before work begins. We schedule dusty work (sanding, crack filling) for when it suits you.",
-    category: "services",
-  },
-  {
-    question: "What cities do you currently serve?",
-    answer: "Calyco currently serves 25 cities across India including Gurgaon, Delhi, Noida, Mumbai, Pune, Bengaluru, Hyderabad, Chennai, Ahmedabad, Kolkata, Goa, Udaipur, Jaipur, Lucknow, Chandigarh and more. City-specific rates apply -- the calculator shows your city's rate automatically.",
-    category: "services",
-  },
-  {
-    question: "What if I am not happy with the work quality?",
-    answer: "Every job includes a snag walkthrough with the supervisor before final payment. If you identify any issues, the team rectifies them before leaving. Post-completion concerns can be raised within 7 days for touch-up at no charge.",
-    category: "services",
-  },
-  {
-    question: "What does the ₹99 booking amount cover?",
-    answer: "The ₹99 booking amount is fully adjustable against your final project cost — it is not an extra charge. It confirms your slot and connects you with our team via WhatsApp for a call-back within 30 minutes.",
-    category: "services",
-  },
-  {
-    question: "Can I get a BOQ-based quote for a commercial project?",
-    answer: "Yes. Send us your BOQ, floor plans or area schedule via WhatsApp or the contact form. Our team will return a line-item commercial quote within 48 hours. Site inspection is scheduled after BOQ review.",
-    category: "services",
-  },
-  {
-    question: "How much area does one litre cover?",
-    answer:
-      "Coverage depends on surface porosity and finish. CALYCO interior emulsions average 90-110 sq.ft per litre for a single coat on smooth plaster. Exterior systems average 70-80 sq.ft per litre. Use two coats for optimal opacity.",
-    category: "products",
-  },
-  {
-    question: "What is the difference between matte and satin finishes?",
-    answer:
-      "Matte finishes provide a low-sheen, velvety appearance ideal for concealing surface imperfections. Satin finishes offer a soft lustre that is easier to clean and recommended for high-traffic or moisture-prone rooms such as kitchens and hallways.",
-    category: "products",
-  },
-  {
-    question: "Do CALYCO paints have any odour?",
-    answer:
-      "Our formulations use low/zero-VOC binders and eco-friendly solvents to minimise odour. Any mild paint smell dissipates within hours thanks to fast off-gassing technology.",
-    category: "products",
-  },
-  {
-    question: "Can I change my delivery address after ordering?",
-    answer:
-      "Yes, if the order has not been dispatched. Contact support with your order ID, new address, and PIN code. We will confirm availability and update the delivery schedule.",
-    category: "orders",
-  },
-  {
-    question: "How do I calculate how much paint I need?",
-    answer:
-      "Measure wall length and height to obtain surface area, subtract openings, and divide by product coverage. Our coverage calculator on the website automates this and suggests the right system for your project.",
-    category: "products",
-  },
-  {
-    question: "How do I prepare surfaces before painting?",
-    answer:
-      "Ensure the substrate is dry, dust-free, and structurally sound. Remove efflorescence, fill cracks, sand glossy areas, and prime as recommended. Refer to CALYCO technical data sheets for surface-specific preparation details.",
-    category: "application",
-  },
-  {
-    question: "What tools are recommended for best results?",
-    answer:
-      "Use high-density foam rollers or premium nylon rollers for interior walls, 100% acrylic brushes for trims, and airless spray rigs for large exterior surfaces. Always clean tools immediately after use.",
-    category: "application",
-  },
-  {
-    question: "What are CALYCO drying and recoat times?",
-    answer:
-      "At 25°C and 60% RH, interior emulsions dry to touch in 30 minutes and can be recoated after 4 hours. Exterior emulsions require 5-6 hours. High humidity may extend timings; increase ventilation for faster drying.",
-    category: "application",
-  },
-  {
-    question: "How can I track my order?",
-    answer:
-      "Login to your account and visit the Orders section to view live order status, courier partner details, and estimated delivery date. Email notifications are sent at each milestone for your convenience.",
-    category: "orders",
-  },
-  {
-    question: "What is the return window for CALYCO products?",
-    answer:
-      "Returns are accepted within 30 days of delivery for unopened items in original packaging. Custom-tinted paints qualify only if there is a manufacturing defect or quality issue. Refer to our Returns & Refunds policy for complete details.",
-    category: "returns",
-  },
-  {
-    question: "How do warranty claims work?",
-    answer:
-      "Warranty durations vary by product family (3-10 years). Submit photos, purchase proof, and application details via the warranty form. Our technical team will investigate and recommend corrective action or replacement if the claim is valid.",
-    category: "returns",
-  },
-  {
-    question: "Which payment methods are accepted?",
-    answer:
-      "We support UPI, wallets, credit/debit cards, net banking, and EMI on all orders. For your convenience, we accept all major payment methods without any minimum order value restrictions.",
-    category: "payments",
-  },
-  {
-    question: "Can I receive a GST invoice?",
-    answer:
-      "Yes. Provide your GSTIN at checkout to receive an auto-generated tax invoice via email immediately after order confirmation. Past invoices can be downloaded from your account dashboard anytime.",
-    category: "payments",
-  },
-  {
-    question: "How do I clean interior painted walls?",
-    answer:
-      "Use a soft microfiber cloth or sponge with mild soap solution. Avoid abrasive pads or harsh chemicals. Wipe gently in circular motions and dry immediately to prevent water marks.",
-    category: "maintenance",
-  },
-  {
-    question: "When should I repaint my exterior walls?",
-    answer:
-      "Exterior repaint cycles are typically 5-7 years depending on UV exposure and weather conditions. Inspect annually for chalking, fading, or hairline cracks. Address surface preparation before recoating for best results.",
-    category: "maintenance",
-  },
-  {
-    question: "How can I protect exterior paint during monsoon?",
-    answer:
-      "Ensure gutters are clear, repair cracks with elastomeric fillers, and apply CALYCO waterproofing sealers on vulnerable surfaces. Maintain proper slope on horizontal surfaces to prevent water pooling.",
-    category: "maintenance",
-  },
-];
-
-
-
-const technicalHighlights = [
-  {
-    title: "Technical Data Sheets",
-    description: "Download detailed specs for interior and exterior systems, including coverage, solids content, and recommended primers.",
-    link: "/downloads",
-  },
-  {
-    title: "VOC & Safety Compliance",
-    description: "CALYCO coatings comply with BIS and international norms. VOC levels: interior emulsions < 30 g/L, exterior emulsions < 50 g/L.",
-  },
-  {
-    title: "System Compatibility",
-    description: "Use CALYCO acrylic primer with interior emulsions, water-based exterior primer for facades, and XGuard sealer under waterproofing topcoats.",
-  },
-];
-
-
-
-const maintenanceTips = [
-  {
-    title: "Cleaning & Care",
-    detail: "For routine cleaning, dust walls regularly. Spot clean stains immediately with mild soap solution. Avoid harsh chemicals or high-pressure jets on painted surfaces.",
-  },
-  {
-    title: "Repainting Guidance",
-    detail: "Inspect yearly for sheen loss or colour fading. Lightly sand glossy areas and use CALYCO primers before recoating for proper adhesion and durability.",
-  },
-  {
-    title: "Weather & Climate",
-    detail: "During extreme heat, schedule painting early morning or evening. In monsoon-prone zones, ensure substrates are below 12% moisture prior to application.",
-  },
-];
-
-
-
-const popularQuestions = [
-  "How much area does one litre cover?",
-  "What is the difference between matte and satin finishes?",
-  "Do CALYCO paints have any odour?",
-  "Can I change my delivery address after ordering?",
-  "How do I calculate how much paint I need?",
-];
-
-
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-};
-
-
-
-export const FAQs = () => {
-  const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [openQuestion, setOpenQuestion] = useState(null);
-  const [formState, handleSubmit] = useForm("xnnbaygb");
-
-
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-
-
-  const filteredFaqs = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-    return faqs.filter((faq) => {
-      const matchesCategory = activeCategory === "all" || faq.category === activeCategory;
-      const matchesSearch =
-        term.length === 0 ||
-        faq.question.toLowerCase().includes(term) ||
-        faq.answer.toLowerCase().includes(term);
-      return matchesCategory && matchesSearch;
-    });
-  }, [activeCategory, searchTerm]);
-
-
-
-
-  const highlightedText = (text) => {
-    if (!searchTerm) return text;
-    const regex = new RegExp(`(${searchTerm})`, "ig");
-    return text.replace(regex, "<mark class='bg-[#FFE48A] px-1 rounded'>$1</mark>");
+// ─── Single accordion item ─────────────────────────────────────────────────────
+const FAQItem = ({ faq, isOpen, onToggle, highlight }) => {
+  const highlightText = (text, query) => {
+    if (!query || query.length < 2) return text;
+    const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'));
+    return parts.map((part, i) =>
+      part.toLowerCase() === query.toLowerCase()
+        ? <mark key={i} className="bg-[#F0C85A]/40 rounded px-0.5">{part}</mark>
+        : part
+    );
   };
 
-
-
   return (
-    <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins">
-      <SEO
-        title="Frequently Asked Questions | Calyco Paints & Services"
-        description="Find answers about Calyco painting services, pricing, site inspection, waterproofing, product coverage and more. Services across 25 cities in India."
-        ogType="website"
-      />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-
-
-
-      <main>
-        {/* Hero */}
-        <section className="relative h-[75vh] sm:h-[65vh] md:h-[70vh] lg:h-[70vh] overflow-hidden bg-[#0F1221]">
-          <div className="absolute inset-0">
-        <img
-          src="/Assets/updated hero images/11.webp"
-          alt="Modern interior painted with CALYCO"
-          className="h-full w-full object-cover brightness-75"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-          </div>
-          <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-10 lg:px-12 flex items-center justify-center h-full"><div>
-              <span className="inline-block rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-wide text-white/85 backdrop-blur mb-6">
-                Frequently Asked Questions
-              </span>
-              <h1 className={`${getTypographyClasses('h1')} text-white`}>
-                FAQ
-              </h1>
-              <p className={`${getTypographyClasses('bodyLarge')} mx-auto max-w-3xl text-white/90`}>
-                Quick answers to common questions
-              </p>
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* Categories */}
-        <section className="py-8 bg-white">
-      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-        <h2 className={`${getTypographyClasses('h3')} text-center text-[#0F1221]`}>Browse by Category</h2>
-        <div className="flex flex-nowrap items-center gap-3 overflow-x-auto px-2 md:px-0 justify-start md:justify-center [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {categories.map((category) => {
-            const isActive = category.id === activeCategory;
-            return (
-              <button
-                key={category.id}
-                type="button"
-                onClick={() => setActiveCategory(category.id)}
-                className={`rounded-full px-6 py-2.5 text-sm font-semibold transition whitespace-nowrap w-auto flex-shrink-0 ${
-                  isActive
-                    ? "bg-[#0F1221] text-white shadow-sm"
-                    : "border-2 border-[#0F1221]/30 bg-white text-[#0F1221] hover:border-[#0F1221] hover:bg-[#0F1221]/5"
-                }`}
-              >
-                    {category.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* FAQ Accordions */}
-        <section className="py-10 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <h2 className={`${getTypographyClasses('h2')} text-[#0F1221] text-center`}>
-              {activeCategory === "all" ? "All Questions" : categories.find(c => c.id === activeCategory)?.label}
-            </h2>
-            
-            {filteredFaqs.length === 0 ? (
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-12 text-center shadow-sm">
-                <h3 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>No Results Found</h3>
-                <p className="text-base text-[#31274B]/80 mb-6">
-                  Try adjusting your search keywords or browse different categories.
-                </p>
-                <button
-                  onClick={() => navigate("/contact")}
-                className="rounded-xl bg-[#0F1221] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#0F1221]/90"
-                >
-                  Contact Support Team
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {filteredFaqs.map((faq) => {
-                  const isOpen = openQuestion === faq.question;
-                  return (
-                    <article
-                      key={faq.question}
-                      className="overflow-hidden rounded-2xl border border-[#0F1221]/10 bg-white shadow-sm transition hover:shadow-md"
-                    >
-                      <button
-                        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                        onClick={() => setOpenQuestion(isOpen ? null : faq.question)}
-                        aria-expanded={isOpen}
-                      >
-              <h3
-                className="text-lg font-semibold text-[#0F1221] flex-1"
-                dangerouslySetInnerHTML={{ __html: highlightedText(faq.question) }}
-              />
-                        <span
-                          className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[#0F1221]/10 text-xl font-bold text-[#0F1221] transition ${
-                            isOpen ? "rotate-45" : ""
-                          }`}
-                        >
-                          +
-                        </span>
-                      </button>
-                      <div
-                        className={`transition-all duration-300 ease-in-out ${
-                          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-                        }`}
-                      >
-                        <div className="px-6 pb-6">
-                          <p
-                            className={`${getTypographyClasses('body')} text-[#31274B]/85`}
-                            dangerouslySetInnerHTML={{ __html: highlightedText(faq.answer) }}
-                          />
-                          <div className="mt-4 flex items-center gap-3 text-xs text-[#31274B]/60">
-                            <span>Was this helpful?</span>
-                            <button className="rounded-full border border-[#0F1221]/30 px-4 py-1.5 text-[#0F1221] font-medium transition hover:bg-[#0F1221]/10">
-                              Yes
-                            </button>
-                            <button className="rounded-full border border-[#0F1221]/30 px-4 py-1.5 text-[#0F1221] font-medium transition hover:bg-[#0F1221]/10">
-                              No
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </section>
-
-
-
-        {/* Technical & Maintenance */}
-        <section className="py-10 bg-white">
-          <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-            <div className="grid gap-8 lg:grid-cols-2">
-              {/* Technical Questions */}
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Technical Resources</h2>
-                <p className="text-sm text-[#31274B]/80 mb-6">
-                  Access detailed specifications for compliance documentation and tender submissions.
-                </p>
-                <ul className="space-y-4">
-                  {technicalHighlights.map((item) => (
-                    <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
-                      <p className="text-sm text-[#31274B]/80">{item.description}</p>
-                {/* Removed View Resources button as requested */}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-
-
-              {/* Maintenance Tips */}
-              <div className="rounded-2xl border border-[#0F1221]/10 bg-[#FBF9F6] p-8 shadow-sm">
-                <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Maintenance Tips</h2>
-                <p className="text-sm text-[#31274B]/80 mb-6">
-                  Keep your CALYCO finishes looking fresh with proactive care and climate-aware planning.
-                </p>
-                <ul className="space-y-4">
-                  {maintenanceTips.map((item) => (
-                    <li key={item.title} className="rounded-xl bg-white p-5">
-                      <h3 className={`${getTypographyClasses('h4')} text-[#0F1221]`}>{item.title}</h3>
-                      <p className="text-sm text-[#31274B]/80">{item.detail}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* Contact Form */}
-        <section className="py-10 bg-[#FBF9F6]">
-          <div className="mx-auto max-w-3xl px-6 md:px-10 lg:px-12">
-            <div className="text-center mb-8">
-              <h2 className={`${getTypographyClasses('h2')} text-[#0F1221]`}>Still Need Help?</h2>
-              <p className="text-base text-[#31274B]/85">
-                Submit your question and our support team will reply within 24 business hours.
-              </p>
-            </div>
-
-
-
-        <form className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm space-y-5"
-              onSubmit={handleSubmit}>
-          <div className="grid md:grid-cols-2 gap-5">
-            <label className="flex flex-col gap-2">
-              <span className="text-sm font-semibold text-[#0F1221]">Name</span>
-              <input
-                name="name"
-                type="text"
-                className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
-                placeholder="Your name"
-                required
-              />
-            </label>
-            <label className="flex flex-col gap-2">
-              <span className="text-sm font-semibold text-[#0F1221]">Email</span>
-              <input
-                name="email"
-                type="email"
-                className="rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
-                placeholder="you@example.com"
-                required
-              />
-            </label>
-          </div>
-          <label className="flex flex-col gap-2">
-            <span className="text-sm font-semibold text-[#0F1221]">Your Question</span>
-            <textarea
-              name="message"
-              rows={5}
-              className="resize-none rounded-xl border border-[#0F1221]/15 px-4 py-3 text-sm text-[#0F1221] outline-none focus:border-[#0F1221] focus:ring-2 focus:ring-[#0F1221]/20 w-full max-w-full box-border"
-              placeholder="Share details about your project or query..."
-              required
-            />
-          </label>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <p className="text-xs text-[#31274B]/70">
-                  By submitting, you agree to our{" "}
-                  <button
-                    type="button"
-                    onClick={() => navigate("/policies/privacy")}
-                    className="font-semibold text-[#0F1221] hover:underline"
-                  >
-                    Privacy Policy
-                  </button>
-                </p>
-            <button
-              type="submit"
-              className={getButtonClasses('accent')}
-              disabled={formState.submitting}
-            >
-              {formState.submitting ? "Sending..." : "Send Message"}
-            </button>
-          </div>
-          {formState.succeeded && (
-            <p className="text-sm text-green-600">Thanks! Your message has been sent.</p>
-          )}
-        </form>
-      </div>
-        </section>
-
-
-
-        {/* Popular Questions - Bottom Section */}
-        <section className="py-8 bg-white">
-          <div className="mx-auto max-w-5xl px-6 md:px-10 lg:px-12">
-            <div className="rounded-2xl border border-[#0F1221]/10 bg-white p-8 shadow-sm">
-              <h2 className={`${getTypographyClasses('h3')} text-[#0F1221]`}>Popular Questions</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchTerm("How much area does one litre cover?");
-                      setOpenQuestion("How much area does one litre cover?");
-                      window.scrollTo({ top: 600, behavior: 'smooth' });
-                    }}
-                    className="text-left w-full"
-                  >
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1 text-[#D4AF37]">â€¢</span>
-                      <span className="text-[#0F1221] font-medium hover:underline">
-                        How much area does one litre cover?
-                      </span>
-                    </div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchTerm("Do CALYCO paints have any odour?");
-                      setOpenQuestion("Do CALYCO paints have any odour?");
-                      window.scrollTo({ top: 600, behavior: 'smooth' });
-                    }}
-                    className="text-left w-full"
-                  >
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1 text-[#D4AF37]">â€¢</span>
-                      <span className="text-[#0F1221] font-medium hover:underline">
-                        Do CALYCO paints have any odour?
-                      </span>
-                    </div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchTerm("How do I calculate how much paint I need?");
-                      setOpenQuestion("How do I calculate how much paint I need?");
-                      window.scrollTo({ top: 600, behavior: 'smooth' });
-                    }}
-                    className="text-left w-full"
-                  >
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1 text-[#D4AF37]">â€¢</span>
-                      <span className="text-[#0F1221] font-medium hover:underline">
-                        How do I calculate how much paint I need?
-                      </span>
-                    </div>
-                  </button>
-                </div>
-                <div className="space-y-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchTerm("What is the difference between matte and satin finishes?");
-                      setOpenQuestion("What is the difference between matte and satin finishes?");
-                      window.scrollTo({ top: 600, behavior: 'smooth' });
-                    }}
-                    className="text-left w-full"
-                  >
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1 text-[#D4AF37]">â€¢</span>
-                      <span className="text-[#0F1221] font-medium hover:underline">
-                        What is the difference between matte and satin finishes?
-                      </span>
-                    </div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchTerm("Can I change my delivery address after ordering?");
-                      setOpenQuestion("Can I change my delivery address after ordering?");
-                      window.scrollTo({ top: 600, behavior: 'smooth' });
-                    }}
-                    className="text-left w-full"
-                  >
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1 text-[#D4AF37]">â€¢</span>
-                      <span className="text-[#0F1221] font-medium hover:underline">
-                        Can I change my delivery address after ordering?
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+    <div className={`border rounded-2xl overflow-hidden transition-all ${isOpen ? 'border-[#493657]/25 shadow-sm' : 'border-[#0F1221]/8 hover:border-[#0F1221]/15'}`}>
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left"
+        aria-expanded={isOpen}
+      >
+        <span className={`font-semibold text-sm sm:text-base leading-snug ${isOpen ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
+          {highlightText(faq.q, highlight)}
+        </span>
+        <ChevronDown className={`w-4 h-4 flex-shrink-0 mt-0.5 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#493657]' : 'text-[#0F1221]/35'}`} />
+      </button>
+      {isOpen && (
+        <div className="px-5 pb-5 text-sm text-[#0F1221]/65 font-light leading-[1.8] border-t border-[#0F1221]/6 pt-4">
+          {highlightText(faq.a, highlight)}
+        </div>
+      )}
     </div>
   );
 };
 
+// ─── Main FAQ page ─────────────────────────────────────────────────────────────
+const FAQsPage = () => {
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [openId, setOpenId] = useState(null);
 
+  const filtered = useMemo(() => {
+    let items = activeCategory === 'all'
+      ? masterFAQs
+      : masterFAQs.filter((f) => f.category === activeCategory);
 
-export default FAQs;
+    if (searchQuery.trim().length >= 2) {
+      const q = searchQuery.toLowerCase();
+      items = items.filter((f) =>
+        f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)
+      );
+    }
+    return items;
+  }, [activeCategory, searchQuery]);
 
+  const handleToggle = (id) => setOpenId(openId === id ? null : id);
 
+  const waLink = `${contactData.contact.whatsapp.link}?text=${encodeURIComponent('Hi Calyco — I have a question about your painting service. Can you help?')}`;
+
+  return (
+    <main className="min-h-screen bg-[#FBF9F6]">
+      <SEO
+        title="FAQ — Painting Service, Pricing, Process | Calyco 5-Star Painting"
+        description="Answers to all your questions about Calyco painting services — cost per sq ft, what's included, warranty, GST, payment, timeline, waterproofing and more."
+        url="https://calycopaints.com/faq"
+      />
+
+      {/* Hero */}
+      <section className="bg-[#0F1221] px-5 sm:px-8 py-10 sm:py-14">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#F0C85A]/70 mb-3">{BRAND_NAME}</p>
+          <h1 className="text-3xl sm:text-4xl font-light text-white tracking-[-0.01em] mb-3">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-sm text-white/45 font-light max-w-xl mx-auto leading-[1.75]">
+            Everything about pricing, materials, process, warranty and booking — answered clearly.
+          </p>
+
+          {/* Search bar */}
+          <div className="relative mt-7 max-w-xl mx-auto">
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setOpenId(null); }}
+              placeholder="Search questions — try 'putty', 'warranty', 'cost'…"
+              className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white/10 border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:ring-2 focus:ring-[#F0C85A] focus:bg-white/15 transition-colors"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+                aria-label="Clear search"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
+
+        {/* Category filter */}
+        <div className="flex gap-2 overflow-x-auto scrollbar-none pb-1 mb-8">
+          {FAQ_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => { setActiveCategory(cat.id); setOpenId(null); }}
+              className={`flex-shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+                activeCategory === cat.id
+                  ? 'bg-[#0F1221] text-white shadow-sm'
+                  : 'border border-[#0F1221]/12 text-[#0F1221]/55 hover:border-[#0F1221]/25 hover:text-[#0F1221]'
+              }`}
+            >
+              {cat.label}
+              {activeCategory === cat.id && filtered.length > 0 && (
+                <span className="ml-1.5 text-[11px] opacity-60">({filtered.length})</span>
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Results count / search feedback */}
+        {searchQuery.trim().length >= 2 && (
+          <div className="mb-5 text-sm text-[#0F1221]/50 font-light">
+            {filtered.length === 0
+              ? `No results for "${searchQuery}" — try a different word or browse by category.`
+              : `${filtered.length} result${filtered.length > 1 ? 's' : ''} for "${searchQuery}"`}
+          </div>
+        )}
+
+        {/* FAQ list — grouped by category when showing all */}
+        {filtered.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-[#0F1221]/15 bg-white p-10 text-center">
+            <p className="text-[#0F1221]/40 text-sm font-light mb-4">No matching questions found.</p>
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white px-5 py-2.5 text-sm font-bold hover:bg-[#1fb355] transition-colors"
+            >
+              Ask on WhatsApp →
+            </a>
+          </div>
+        ) : activeCategory === 'all' && !searchQuery ? (
+          // Grouped view
+          FAQ_CATEGORIES.slice(1).map((cat) => {
+            const catFAQs = masterFAQs.filter((f) => f.category === cat.id);
+            if (catFAQs.length === 0) return null;
+            return (
+              <div key={cat.id} className="mb-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <h2 className="text-base font-bold text-[#0F1221]">{cat.label}</h2>
+                  <div className="flex-1 h-px bg-[#0F1221]/8" />
+                  <button
+                    type="button"
+                    onClick={() => setActiveCategory(cat.id)}
+                    className="text-xs font-medium text-[#493657] hover:text-[#F0C85A] transition-colors whitespace-nowrap"
+                  >
+                    See all {catFAQs.length} →
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {catFAQs.slice(0, 4).map((faq) => (
+                    <FAQItem
+                      key={faq.id}
+                      faq={faq}
+                      isOpen={openId === faq.id}
+                      onToggle={() => handleToggle(faq.id)}
+                      highlight=""
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          // Flat list (category filter or search results)
+          <div className="space-y-2">
+            {filtered.map((faq) => (
+              <FAQItem
+                key={faq.id}
+                faq={faq}
+                isOpen={openId === faq.id}
+                onToggle={() => handleToggle(faq.id)}
+                highlight={searchQuery}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Bottom CTA strip */}
+        <div className="mt-12 rounded-2xl bg-[#0F1221] px-6 sm:px-8 py-7 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+          <div>
+            <p className="font-bold text-white text-base mb-1">Still have a question?</p>
+            <p className="text-sm text-white/50 font-light">
+              WhatsApp our team directly — we respond within 2 hours (Mon–Sat, 10am–6pm).
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white px-6 py-3 text-sm font-bold hover:bg-[#1fb355] transition-colors whitespace-nowrap"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+              Ask on WhatsApp
+            </a>
+            <Link
+              to="/get-quote"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-6 py-3 text-sm font-bold hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              Book Free Site Visit →
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  );
+};
+
+export default FAQsPage;

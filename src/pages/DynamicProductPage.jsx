@@ -9,6 +9,7 @@ import { useCart } from "../context/CartContext";
 import CartPopup from "../components/CartPopup";
 import RatingStars from "../components/RatingStars";
 import ReviewsSection from "../components/ReviewsSection";
+import ProductServiceBlock, { detectProductType } from "../components/ProductServiceBlock";
 import { getProductReviews, getAverageRating, getTotalReviews } from "../data/productReviews";
 import SEO from "../components/SEO";
 
@@ -1805,6 +1806,12 @@ export const DynamicProductPage = () => {
             </div>
           </div>
         </motion.section>
+
+        {/* Service Lead Block */}
+        <ProductServiceBlock
+          productName={product.display_name || product.name || 'this product'}
+          productType={detectProductType(product.display_name || product.name || product.category || '')}
+        />
 
         {/* Reviews Section */}
         {productReviews.length > 0 && (

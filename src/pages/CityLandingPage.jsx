@@ -6,6 +6,7 @@ import contactData from '../data/admin/contact.json';
 import SEO from '../components/SEO';
 import { serviceHubCards, cityMultipliers } from '../data/servicePricing';
 import { Calculator, CalendarCheck, MapPin, Shield, Zap, FileText, Check, MessageCircle, ArrowRight } from 'lucide-react';
+import { BRAND_NAME, POSITIONING_TAGLINE, POSITIONING_PILLS, waForCity } from '../data/positioning';
 
 const CityLandingPage = () => {
   const { citySlug } = useParams();
@@ -57,12 +58,9 @@ const CityLandingPage = () => {
   const addressRegion = cityStateMap[city.name] || 'India';
 
   const handleWhatsApp = (type = 'general') => {
-    const messages = {
-      general: `Hi! I'm interested in Calyco painting, waterproofing or surface care services in ${city.name}.`,
-      visit: `Hi Calyco, I want to book a free site visit in ${city.name}.`,
-    };
+    const msg = waForCity(city.name);
     window.open(
-      `${contactData.contact.whatsapp.link}?text=${encodeURIComponent(messages[type])}`,
+      `${contactData.contact.whatsapp.link}?text=${encodeURIComponent(msg)}`,
       '_blank',
       'noopener,noreferrer'
     );
@@ -120,16 +118,20 @@ const CityLandingPage = () => {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#F0C85A]/8 blur-[120px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 lg:py-20">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#F0C85A]/15 border border-[#F0C85A]/30 px-4 py-2 mb-6">
-            <MapPin className="w-4 h-4 text-[#F0C85A]" />
-            <span className="text-sm font-semibold text-[#F0C85A]">Now serving {city.name}</span>
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#F0C85A]/15 border border-[#F0C85A]/30 px-4 py-2">
+              <MapPin className="w-4 h-4 text-[#F0C85A]" />
+              <span className="text-sm font-semibold text-[#F0C85A]">Now serving {city.name}</span>
+            </div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/40">{BRAND_NAME}</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.05] max-w-3xl">
             Professional painting &amp; waterproofing in{' '}
             <span className="text-[#F0C85A]">{city.name}</span>
           </h1>
-          <p className="mt-5 text-lg text-white/65 max-w-2xl leading-relaxed">{city.description}</p>
+          <p className="mt-4 text-sm text-[#F0C85A]/80 font-medium tracking-[0.03em]">{POSITIONING_TAGLINE}</p>
+          <p className="mt-3 text-base text-white/55 max-w-2xl leading-relaxed">{city.description}</p>
 
           {cityMultiplier && (
             <p className="mt-3 text-sm text-white/50">
@@ -154,9 +156,9 @@ const CityLandingPage = () => {
             </Link>
           </div>
 
-          {/* Trust pills */}
+          {/* Trust pills — positioning pillars */}
           <div className="mt-8 flex flex-wrap gap-2">
-            {['Free site inspection', 'Fixed written quote', 'Daily WhatsApp updates', 'Laser measurement'].map((t) => (
+            {POSITIONING_PILLS.map((t) => (
               <span key={t} className="inline-flex items-center gap-1.5 rounded-full bg-white/8 border border-white/15 px-3 py-1.5 text-xs font-semibold text-white">
                 <Check className="w-3 h-3 text-[#F0C85A]" /> {t}
               </span>

@@ -23,6 +23,7 @@ const TestPageCodex = React.lazy(() => import('../content/pages/test-page-codex.
 const ProductFinder = React.lazy(() => import('./pages/ProductFinder.jsx'))
 
 const HowItWorksPage = React.lazy(() => import('./pages/HowItWorksPage.jsx'));
+const PainterVerificationPage = React.lazy(() => import('./pages/PainterVerificationPage.jsx'));
 const TransparentPricingPage = React.lazy(() => import('./pages/TransparentPricingPage.jsx'));
 const GalleryPage = React.lazy(() => import('./pages/GalleryPage.jsx'));
 const GetQuotePage = React.lazy(() => import('./pages/GetQuotePage.jsx'));
@@ -222,6 +223,7 @@ function App() {
                   <Route path='/services/all' element={<AllServicesPage />} />
                   <Route path='/services/:serviceSlug' element={<ServiceDetailPage />} />
                   <Route path='/how-it-works' element={<HowItWorksPage />} />
+                  <Route path='/verified-painters' element={<PainterVerificationPage />} />
                   <Route path='/transparent-pricing' element={<TransparentPricingPage />} />
                   <Route path='/gallery' element={<GalleryPage />} />
                   <Route path='/get-quote' element={<GetQuotePage />} />

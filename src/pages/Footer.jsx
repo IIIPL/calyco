@@ -1,6 +1,7 @@
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import contactData from '../data/admin/contact.json';
+import { BRAND_NAME, POSITIONING_TAGLINE, WA_SITE_VISIT } from '../data/positioning';
 
 const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -51,8 +52,9 @@ export const Footer = () => {
             <Link to="/" onClick={scrollTop}>
               <img src="/Logo.webp" alt="Calyco" className="h-12 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
             </Link>
-            <p className="text-sm text-white/50 leading-relaxed mt-4 max-w-xs">
-              Calyco provides professional painting, waterproofing, and surface protection services for homes, rentals, villas, societies, and commercial spaces across selected Indian cities.
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#F0C85A] mt-4 mb-1">{BRAND_NAME}</p>
+            <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+              {POSITIONING_TAGLINE}
             </p>
             <div className="flex gap-3 mt-5">
               {/* WhatsApp -- always valid */}
@@ -146,7 +148,7 @@ export const Footer = () => {
                 </div>
               </div>
               <a
-                href={`${whatsapp.link}?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit.`}
+                href={`${whatsapp.link}?text=${encodeURIComponent(WA_SITE_VISIT)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 mt-1 rounded-full bg-[#25D366] text-white px-4 py-2 text-xs font-bold hover:bg-[#1fb355] transition-colors"
@@ -163,7 +165,7 @@ export const Footer = () => {
       {/* Policy strip */}
       <div className="border-t border-white/8">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-white/35">© {year} Calyco Products Private Limited. All rights reserved.</p>
+          <p className="text-xs text-white/35">© {year} Calyco Products Private Limited · {BRAND_NAME} · All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             {[
               ['Privacy Policy', '/policies/privacy'],
