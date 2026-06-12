@@ -226,7 +226,7 @@ function App() {
                   <Route path='/verified-painters' element={<PainterVerificationPage />} />
                   <Route path='/transparent-pricing' element={<TransparentPricingPage />} />
                   <Route path='/gallery' element={<GalleryPage />} />
-                  <Route path='/get-quote' element={<GetQuotePage />} />
+                  <Route path='/get-quote' element={<BudgetCalculator />} />
                   <Route path='/products' element={<Products />} />
                   <Route path='/products/:slug' element={<ProductDetailPage />} />
 

@@ -247,11 +247,19 @@ const HeroFinal = () => {
       style={{ opacity: sectionOpacity }}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="min-h-screen bg-[#FAFAF8] flex overflow-hidden relative"
+      className="min-h-screen lg:min-h-screen bg-[#FAFAF8] flex flex-col lg:flex-row overflow-hidden relative"
     >
-      <div aria-hidden="true" className="pointer-events-none select-none absolute inset-0 flex items-center justify-center overflow-hidden gap-[1.5vw]">
-        <span className="text-[30vw] font-black text-[#0F1221]/[0.05] leading-none tracking-tighter">5</span>
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[20vw] h-[20vw] text-[#0F1221]/[0.05] shrink-0">
+      {/* ── Premium Ambient Background ── */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <img src="/Assets/background-texture.webp" className="absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF8]/40 via-transparent to-[#FAFAF8]" />
+        <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
+        <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-[#493657] opacity-[0.04] blur-[140px] rounded-full mix-blend-multiply" />
+      </div>
+
+      <div aria-hidden="true" className="pointer-events-none select-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden gap-[1.5vw] opacity-20 lg:opacity-100">
+        <span className="text-[50vw] lg:text-[30vw] font-black text-[#0F1221]/[0.05] leading-none tracking-tighter">5</span>
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] text-[#0F1221]/[0.05] shrink-0">
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z" />
         </svg>
       </div>
@@ -259,7 +267,7 @@ const HeroFinal = () => {
       {/* ── Left column ────────────────────────────────────────────────── */}
       <motion.div
         style={{ y: scrollTextY }}
-        className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 py-28 lg:py-0 min-h-screen"
+        className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 pt-12 pb-12 lg:py-0 lg:min-h-screen"
       >
         <div className="w-full max-w-lg">
 
@@ -350,7 +358,7 @@ const HeroFinal = () => {
       </motion.div>
 
       {/* ── Right column ──────────────────────────────────────────────── */}
-      <div className="hidden lg:block absolute inset-y-0 right-0 w-[48%] overflow-hidden">
+      <div className="relative lg:absolute lg:inset-y-0 lg:right-0 w-full lg:w-[48%] h-[450px] sm:h-[550px] lg:h-auto overflow-hidden">
         <motion.div style={{ y: scrollImgY }} className="absolute inset-0">
           <motion.div
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -364,8 +372,8 @@ const HeroFinal = () => {
                 alt="Calyco painting service"
                 className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAF8]/30 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#0F1221]/70 via-[#0F1221]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAF8]/30 lg:from-[#FAFAF8]/40 via-transparent to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#0F1221]/80 via-[#0F1221]/30 to-transparent" />
             </motion.div>
           </motion.div>
         </motion.div>
@@ -374,14 +382,14 @@ const HeroFinal = () => {
           initial={{ opacity: 0, scale: 0.75 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.55, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-10 right-8 z-20"
+          className="absolute top-4 right-4 lg:top-10 lg:right-8 z-20"
         >
           <motion.div style={{ x: badgeX, y: badgeY }}>
-            <div className="bg-[#493657] text-white rounded-2xl px-5 py-4 shadow-2xl shadow-[#493657]/30">
-              <div className="text-[1.85rem] font-black leading-none tracking-tight mb-0.5">
+            <div className="bg-[#493657] text-white rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-5 lg:py-4 shadow-2xl shadow-[#493657]/30">
+              <div className="text-[1.25rem] lg:text-[1.85rem] font-black leading-none tracking-tight mb-0.5">
                 15K<span className="text-[#F0C85A]">+</span>
               </div>
-              <div className="text-[10px] font-semibold text-white/55 tracking-wide">Homes Painted</div>
+              <div className="text-[8px] lg:text-[10px] font-semibold text-white/55 tracking-wide">Homes Painted</div>
             </div>
           </motion.div>
         </motion.div>
@@ -390,13 +398,13 @@ const HeroFinal = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.55, delay: 1.55, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-1/2 -translate-y-1/2 left-6 z-20"
+          className="absolute top-[35%] left-4 lg:top-1/2 lg:-translate-y-1/2 lg:left-6 z-20"
         >
           <motion.div style={{ x: ratingX, y: ratingY }}>
-            <div className="bg-white/92 backdrop-blur-md rounded-2xl px-4 py-3.5 shadow-xl border border-white/50">
-              <Stars size="w-3 h-3" />
-              <div className="text-sm font-black text-[#0F1221] mt-2 leading-none">4.8 <span className="font-light text-[#0F1221]/40 text-xs">/ 5.0</span></div>
-              <div className="text-[9px] text-[#0F1221]/40 font-light mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
+            <div className="bg-white/92 backdrop-blur-md rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 shadow-xl border border-white/50">
+              <Stars size="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+              <div className="text-xs lg:text-sm font-black text-[#0F1221] mt-1 lg:mt-2 leading-none">4.8 <span className="font-light text-[#0F1221]/40 text-[10px] lg:text-xs">/ 5.0</span></div>
+              <div className="text-[8px] lg:text-[9px] text-[#0F1221]/40 font-light mt-0.5 lg:mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
             </div>
           </motion.div>
         </motion.div>
@@ -405,22 +413,22 @@ const HeroFinal = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 1.75, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-8 left-8 z-20"
+          className="absolute bottom-6 left-0 right-0 mx-auto px-5 lg:px-0 lg:bottom-8 lg:left-8 lg:right-auto z-20 flex justify-center lg:block"
         >
-          <motion.div style={{ x: testX, y: testY }}>
-            <div className="w-[300px] bg-white/90 backdrop-blur-md rounded-2xl p-[18px] shadow-2xl border border-white/40">
-              <p className="text-[11px] text-[#0F1221]/62 font-light italic leading-relaxed mb-3">
+          <motion.div style={{ x: testX, y: testY }} className="w-full sm:w-[350px] lg:w-[300px]">
+            <div className="w-full bg-white/90 backdrop-blur-md rounded-xl lg:rounded-2xl p-3.5 lg:p-[18px] shadow-2xl border border-white/40">
+              <p className="text-[10px] lg:text-[11px] text-[#0F1221]/62 font-light italic leading-relaxed mb-2 lg:mb-3">
                 "Best painting job we've ever had. Clean work, on time, and the 2-year warranty gave us total peace of mind."
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">R</div>
+                  <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[9px] lg:text-[10px] font-bold flex-shrink-0">R</div>
                   <div>
-                    <div className="text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
-                    <div className="text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
+                    <div className="text-[10px] lg:text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
+                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
                   </div>
                 </div>
-                <Stars size="w-2.5 h-2.5" />
+                <Stars size="w-2 h-2 lg:w-2.5 lg:h-2.5" />
               </div>
             </div>
           </motion.div>

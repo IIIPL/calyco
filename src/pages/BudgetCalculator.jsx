@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, animate, useMotionValue, useInView } from 'framer-motion';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { calculateServiceEstimate, cityMultipliers, servicePricing } from '../data/servicePricing';
 import contactData from '../data/admin/contact.json';
+import LocationPicker from '../components/LocationPicker';
+import DatePicker from '../components/DatePicker';
+import RazorpayPayment from '../components/RazorpayPayment';
 
 /* ── Brand tokens (match HomeFinal / ServicesPage exactly) ───────────────── */
 const DARK   = '#0F1221';
@@ -30,6 +33,8 @@ const SHEET_HEADERS = [
   'Timestamp', 'Name', 'Phone', 'City',
   'Service', 'Paint Type', 'Carpet Area (sq ft)', 'Paintable Area (sq ft)',
   'Preference', 'Estimate', 'Files', 'Drive Folder',
+  'House No', 'Street', 'Area', 'Pincode', 'Visit Date', 'Location Link',
+  'Payment Status'
 ];
 
 async function getGoogleToken() {
@@ -137,9 +142,10 @@ async function sheetsEnsureHeaders(token) {
   }
 }
 
-async function sheetsAppend(token, row) {
+async function sheetsAppend(token, row, sheetName = 'Sheet1') {
+  const range = encodeURIComponent(`${sheetName}!A1`);
   const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
     {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -374,13 +380,13 @@ function CitySelect({ value, onChange }) {
     <div ref={ref} className="relative">
       <button type="button" onClick={() => setOpen(v => !v)}
         className="w-full flex items-center justify-between gap-3 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] font-medium hover:border-[#F0C85A]/50 focus:border-[#F0C85A] focus:outline-none transition-colors">
-        <span className="flex items-center gap-2.5">
+        <span className="flex items-center gap-2.5 min-w-0">
           <svg className="w-4 h-4 text-[#493657] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
           </svg>
-          {value}
+          <span className="truncate">{value}</span>
         </span>
-        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.18 }}>
+        <motion.span className="flex-shrink-0" animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.18 }}>
           <svg className="w-4 h-4 text-[#0F1221]/25" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
@@ -654,10 +660,15 @@ function Step2({ preference, setPreference, onNext, onBack }) {
   );
 }
 
-/* ── Step 3 — Contact + Upload ───────────────────────────────────────────── */
-function Step3({ name, setName, phone, setPhone, city, setCity, files, setFiles, onSubmit, onBack, submitting }) {
+/* ── Step 3 — Contact + Address + Upload ───────────────────────────────────────────── */
+function Step3({ 
+  name, setName, phone, setPhone, city, setCity, 
+  houseNo, setHouseNo, street, setStreet, areaName, setAreaName, pincode, setPincode,
+  setLocationLink,
+  files, setFiles, onSubmit, onBack, submitting 
+}) {
   const fileRef  = useRef(null);
-  const valid    = phone.replace(/\D/g, '').length >= 10;
+  const valid    = phone.replace(/\D/g, '').length >= 10 && name.trim().length > 0;
   const [sizeErr, setSizeErr] = useState('');
 
   const handleFiles = (incoming) => {
@@ -698,7 +709,7 @@ function Step3({ name, setName, phone, setPhone, city, setCity, files, setFiles,
         </div>
 
         <div className="space-y-3 mb-5">
-          <input type="text" placeholder="Your name" value={name}
+          <input type="text" placeholder="Your name *" value={name}
             onChange={e => setName(e.target.value)}
             className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
 
@@ -709,12 +720,45 @@ function Step3({ name, setName, phone, setPhone, city, setCity, files, setFiles,
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </div>
-            <input type="tel" placeholder="Phone number" value={phone}
+            <input type="tel" placeholder="Phone number *" value={phone}
               onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
               className="flex-1 bg-transparent px-4 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none" />
           </div>
 
-          <CitySelect value={city} onChange={setCity} />
+          <div className="mb-4">
+            <p className="text-[11px] font-semibold text-[#0F1221]/50 uppercase tracking-[0.18em] mb-2">
+              Visit Location
+            </p>
+            <LocationPicker onLocationSelect={(details) => {
+              if (details.street) setStreet(details.street);
+              if (details.areaName) setAreaName(details.areaName);
+              if (details.city) setCity(details.city);
+              if (details.pincode) setPincode(details.pincode);
+              if (details.locationLink) setLocationLink(details.locationLink);
+            }} />
+          </div>
+
+          <input type="text" placeholder="House / Flat No." value={houseNo}
+            onChange={e => setHouseNo(e.target.value)}
+            className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
+
+          <div className="flex gap-3">
+            <input type="text" placeholder="Street" value={street}
+              onChange={e => setStreet(e.target.value)}
+              className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
+            <input type="text" placeholder="Area" value={areaName}
+              onChange={e => setAreaName(e.target.value)}
+              className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
+          </div>
+
+          <div className="flex gap-3 mb-2">
+            <div className="w-1/2">
+              <CitySelect value={city} onChange={setCity} />
+            </div>
+            <input type="text" placeholder="Pincode" value={pincode}
+              onChange={e => setPincode(e.target.value)}
+              className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
+          </div>
         </div>
 
         {/* ── File / Video Upload ─────────────────────────────────────────── */}
@@ -841,9 +885,31 @@ function CountPrice({ target }) {
 }
 
 /* ── Results ─────────────────────────────────────────────────────────────── */
-function Results({ result, preference, onRestart, uploadState, filesCount, folderUrl }) {
+function Results({ result, preference, onRestart, uploadState, filesCount, folderUrl, visitDate, setVisitDate, onBook, customerDetails }) {
   const prods = PRODUCTS[preference] ?? PRODUCTS.premium;
-  const pref  = PREFERENCES.find(p => p.key === preference);
+  const [showRazorpay, setShowRazorpay] = useState(false);
+  const [bookingStatus, setBookingStatus] = useState('idle'); // idle, processing, done
+
+  const handlePayOnline = () => {
+    if (!visitDate) return alert("Please select a visit date first.");
+    setShowRazorpay(true);
+  };
+  
+  const handlePayCash = async () => {
+    if (!visitDate) return alert("Please select a visit date first.");
+    setBookingStatus('processing');
+    const success = await onBook('Cash on Visit', null);
+    if (success) setBookingStatus('done');
+    else setBookingStatus('idle');
+  };
+
+  const handleRazorpaySuccess = async (res) => {
+    setShowRazorpay(false);
+    setBookingStatus('processing');
+    const success = await onBook('Razorpay (Paid Online)', res.razorpay_payment_id);
+    if (success) setBookingStatus('done');
+    else setBookingStatus('idle');
+  };
 
   if (!result || !result.avg) {
     return (
@@ -861,7 +927,97 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
 
   const stagger = (i) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { delay: 0.08 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
 
+  const renderCTAContent = () => (
+    <div className="relative z-10 flex flex-col items-center gap-5 w-full text-center">
+      {bookingStatus === 'done' ? (
+        <div className="flex flex-col items-center text-center gap-3">
+          <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-2">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <h3 className="text-[19px] font-semibold text-[#0F1221]">Inspection Booked!</h3>
+          <p className="text-[13px] text-[#0F1221]/60 font-light leading-relaxed">
+            Our expert will visit on <span className="font-semibold text-[#0F1221]">{visitDate}</span>. We've sent the confirmation details.
+          </p>
+        </div>
+      ) : (
+        <>
+          <div className="flex items-center gap-2.5">
+            <span className="w-5 h-px" style={{ background: GOLD }} />
+            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
+            <span className="w-5 h-px" style={{ background: GOLD }} />
+          </div>
+
+          <div>
+            <h3 className="text-[19px] font-semibold text-[#0F1221] leading-snug tracking-tight mb-2">
+              Get Your Complete<br />Painting Quotation
+            </h3>
+            <p className="text-[12px] text-[#0F1221]/45 font-light leading-relaxed">
+              Schedule a free site inspection for a thorough, fixed quote.
+            </p>
+          </div>
+
+          <div className="w-full text-left">
+            <DatePicker value={visitDate} onChange={setVisitDate} />
+          </div>
+
+          <div className="w-full flex flex-col gap-3 mt-2">
+            {bookingStatus === 'processing' ? (
+              <div className="flex items-center justify-center gap-2 py-4 text-[#0F1221]/50 text-[13px] font-semibold">
+                <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                </svg>
+                Confirming Booking...
+              </div>
+            ) : (
+              <>
+                <motion.button onClick={handlePayOnline} className="w-full relative" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#FF3B30] text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full z-20 shadow-sm whitespace-nowrap">
+                    Special Offer: Just ₹99
+                  </div>
+                  <div className="w-full py-3.5 rounded-xl text-[13px] font-bold text-[#0F1221] text-center transition-all relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, #F5C842 0%, ${GOLD} 50%, #E8BA30 100%)`, boxShadow: '0 6px 20px rgba(240,200,90,0.3)' }}>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                      </svg>
+                      Pay ₹99 Securely Online
+                    </span>
+                  </div>
+                </motion.button>
+                
+                <div className="pt-3 text-center">
+                  <p className="text-[11px] text-[#0F1221]/50 font-medium">
+                    You can also pay ₹99 in cash for future payment on site.
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
+
+      {result.waUrl && (
+        <motion.a href={result.waUrl} target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-2 text-[#25D366] text-[13px] font-semibold hover:underline">
+          <WaIcon size={4} /> Chat on WhatsApp
+        </motion.a>
+      )}
+
+      <a href={`tel:${PHONE_RAW}`}
+        className="text-[11px] font-light transition-colors"
+        style={{ color: 'rgba(15,18,33,0.3)' }}
+        onMouseOver={e => e.target.style.color = 'rgba(15,18,33,0.6)'}
+        onMouseOut={e  => e.target.style.color = 'rgba(15,18,33,0.3)'}>
+        or call us directly
+      </a>
+    </div>
+  );
+
   return (
+    <>
     <div className="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-[#0F1221]/6">
 
       {/* ── Left ──────────────────────────────────────────────────────────── */}
@@ -942,6 +1098,14 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
           </svg>
           Recalculate with different inputs
         </motion.button>
+
+        {/* ── Mobile Next Step CTA ─────────────────────────────────────────── */}
+        <motion.div {...stagger(2.5)} className="block lg:hidden mb-8 p-6 sm:p-8 rounded-2xl relative overflow-hidden"
+          style={{ background: 'linear-gradient(160deg, #FFF9EC 0%, #FFFDF6 45%, #FAFAF8 100%)', border: '1px solid rgba(240,200,90,0.3)' }}>
+          <div className="absolute inset-0 pointer-events-none opacity-40"
+            style={{ backgroundImage: `radial-gradient(${GOLD}30 1px, transparent 1px)`, backgroundSize: '20px 20px' }} />
+          {renderCTAContent()}
+        </motion.div>
 
         {/* Breakdown */}
         <motion.div {...stagger(3)}
@@ -1059,9 +1223,9 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
         </AnimatePresence>
       </div>
 
-      {/* ── Right CTA ─────────────────────────────────────────────────────── */}
+      {/* ── Desktop Right CTA ──────────────────────────────────────────────── */}
       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.5 }}
-        className="lg:w-72 flex flex-col items-center justify-center text-center gap-5 relative overflow-hidden"
+        className="hidden lg:flex w-72 flex-col items-center justify-center text-center gap-5 relative overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #FFF9EC 0%, #FFFDF6 45%, #FAFAF8 100%)', padding: '32px' }}>
 
         {/* Subtle dot grid decoration */}
@@ -1072,50 +1236,22 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, rgba(240,200,90,0.12) 0%, transparent 70%)` }} />
 
-        <div className="relative z-10 flex flex-col items-center gap-5 w-full">
-          <div className="flex items-center gap-2.5">
-            <span className="w-5 h-px" style={{ background: GOLD }} />
-            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
-            <span className="w-5 h-px" style={{ background: GOLD }} />
-          </div>
-
-          <div>
-            <h3 className="text-[19px] font-semibold text-[#0F1221] leading-snug tracking-tight mb-2">
-              Get Your Complete<br />Painting Quotation
-            </h3>
-            <p className="text-[12px] text-[#0F1221]/45 font-light leading-relaxed">
-              Schedule a free Calyco site inspection for a thorough, fixed quote.
-            </p>
-          </div>
-
-          <motion.div className="w-full" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Link to="/get-quote"
-              className="w-full py-4 rounded-full text-[14px] font-bold text-[#0F1221] text-center block transition-all relative overflow-hidden"
-              style={{ background: `linear-gradient(135deg, #F5C842 0%, ${GOLD} 50%, #E8BA30 100%)`, boxShadow: '0 6px 24px rgba(240,200,90,0.4), 0 2px 8px rgba(240,200,90,0.2)' }}>
-              {/* Shine sweep */}
-              <span className="absolute inset-0 pointer-events-none"
-                style={{ background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.3) 50%, transparent 65%)' }} />
-              <span className="relative z-10">Book Free Inspection →</span>
-            </Link>
-          </motion.div>
-
-          {result.waUrl && (
-            <motion.a href={result.waUrl} target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 text-[#25D366] text-[13px] font-semibold hover:underline">
-              <WaIcon size={4} /> Chat on WhatsApp
-            </motion.a>
-          )}
-
-          <a href={`tel:${PHONE_RAW}`}
-            className="text-[11px] font-light transition-colors"
-            style={{ color: 'rgba(15,18,33,0.3)' }}
-            onMouseOver={e => e.target.style.color = 'rgba(15,18,33,0.6)'}
-            onMouseOut={e  => e.target.style.color = 'rgba(15,18,33,0.3)'}>
-            or call us directly
-          </a>
-        </div>
+        {renderCTAContent()}
       </motion.div>
     </div>
+    
+    {/* Global Razorpay Overlay */}
+    {showRazorpay && (
+      <RazorpayPayment 
+        amount={99} 
+        orderId={null}
+        customerDetails={customerDetails}
+        onSuccess={handleRazorpaySuccess} 
+        onError={(err) => { console.error(err); setShowRazorpay(false); }} 
+        onClose={() => setShowRazorpay(false)} 
+      />
+    )}
+    </>
   );
 }
 
@@ -1173,8 +1309,18 @@ export default function BudgetCalculator() {
   const [carpetArea,  setCarpetArea]  = useState('850');
   const [paintType,   setPaintType]   = useState('repainting');
   const [preference, setPreference] = useState('premium');
-  const [name,       setName]       = useState('');
-  const [phone,      setPhone]      = useState('');
+  const location     = useLocation();
+  const [name,       setName]       = useState(location.state?.name || '');
+  const [phone,      setPhone]      = useState(location.state?.phone || '');
+  
+  // New site visit fields
+  const [houseNo, setHouseNo] = useState('');
+  const [street, setStreet] = useState('');
+  const [areaName, setAreaName] = useState('');
+  const [pincode, setPincode] = useState('');
+  const [visitDate, setVisitDate] = useState('');
+  const [locationLink, setLocationLink] = useState('');
+
   const [files,      setFiles]      = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [uploadState,setUploadState]= useState('idle'); // idle | uploading | done | error
@@ -1215,6 +1361,9 @@ export default function BudgetCalculator() {
       `Type: ${pt?.label}`,
       `Finish: ${pref?.label}`,
       r ? `Estimate: ${fmt(r.avg)}` : '',
+      ``,
+      `Location: ${locationLink || houseNo + ' ' + street + ' ' + city}`,
+      `Date requested: ${visitDate}`,
       ``,
       `Please schedule a free site inspection.`,
     ].filter(Boolean).join('\n');
@@ -1278,6 +1427,13 @@ export default function BudgetCalculator() {
         r ? fmt(r.avg) : '',
         files.length ? `${files.length} file(s)` : 'None',
         driveFolderUrl,
+        houseNo     || '',
+        street      || '',
+        areaName    || '',
+        pincode     || '',
+        visitDate   || '',
+        locationLink|| '',
+        'Pending'
       ]);
 
       // Email via Web3Forms — sent after Drive so folder link is ready
@@ -1299,6 +1455,14 @@ export default function BudgetCalculator() {
             `Preference: ${pref?.label || '—'}`,
             r ? `Estimate: ${fmt(r.avg)}` : '',
             ``,
+            `─── Site Visit Details ───`,
+            `House No: ${houseNo}`,
+            `Street: ${street}`,
+            `Area: ${areaName}`,
+            `Pincode: ${pincode}`,
+            `Visit Date: ${visitDate}`,
+            `Location Link: ${locationLink}`,
+            ``,
             `─── Links ───`,
             `Google Sheet: ${GSHEET_URL}`,
             driveFolderUrl ? `Customer Drive Folder: ${driveFolderUrl}` : '',
@@ -1313,6 +1477,58 @@ export default function BudgetCalculator() {
     }
   };
 
+  const handleBooking = async (paymentMethod, txnId) => {
+    try {
+      const token = await getGoogleToken();
+      const ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      await sheetsAppend(token, [
+        ts,
+        `${name || 'Customer'} (Booking Update)`,
+        '+91 ' + phone,
+        city,
+        CALC_SERVICES.find(s => s.key === serviceKey)?.label || '',
+        PAINT_TYPES.find(p => p.key === paintType)?.label || '',
+        String(carpetArea),
+        String(toPaintable(carpetArea)),
+        PREFERENCES.find(p => p.key === preference)?.label || '',
+        result ? fmt(result.avg) : '',
+        files.length ? `${files.length} file(s)` : 'None',
+        folderUrl,
+        houseNo     || '',
+        street      || '',
+        areaName    || '',
+        pincode     || '',
+        visitDate   || '',
+        locationLink|| '',
+        paymentMethod + (txnId ? ` (Txn: ${txnId})` : '')
+      ]);
+
+      // Also append to the Site Visits tracker tab!
+      try {
+        await sheetsAppend(token, [
+          ts,
+          name || 'Customer',
+          '+91 ' + phone,
+          city,
+          houseNo || '',
+          street || '',
+          areaName || '',
+          pincode || '',
+          CALC_SERVICES.find(s => s.key === serviceKey)?.label || '',
+          visitDate || '',
+          locationLink || ''
+        ], 'Site Visits');
+      } catch (e) {
+        console.error('[Calyco] Site Visit tab append error:', e);
+      }
+
+      return true;
+    } catch (err) {
+      console.error('[Calyco] Booking error:', err);
+      return false;
+    }
+  };
+
   const handleRestart = () => {
     setResult(null);
     setCarpetArea('850');
@@ -1320,6 +1536,12 @@ export default function BudgetCalculator() {
     setPreference('premium');
     setName('');
     setPhone('');
+    setHouseNo('');
+    setStreet('');
+    setAreaName('');
+    setPincode('');
+    setVisitDate('');
+    setLocationLink('');
     setFiles([]);
     setUploadState('idle');
     setFolderUrl('');
@@ -1407,6 +1629,12 @@ export default function BudgetCalculator() {
                     name={name} setName={setName}
                     phone={phone} setPhone={setPhone}
                     city={city} setCity={setCity}
+                    houseNo={houseNo} setHouseNo={setHouseNo}
+                    street={street} setStreet={setStreet}
+                    areaName={areaName} setAreaName={setAreaName}
+                    pincode={pincode} setPincode={setPincode}
+                    visitDate={visitDate} setVisitDate={setVisitDate}
+                    locationLink={locationLink} setLocationLink={setLocationLink}
                     files={files} setFiles={setFiles}
                     onSubmit={handleSubmit} onBack={goBack}
                     submitting={submitting}
@@ -1416,7 +1644,22 @@ export default function BudgetCalculator() {
 
               {step === 4 && (
                 <motion.div key="s4" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
-                  <Results result={result} preference={preference} onRestart={handleRestart} uploadState={uploadState} filesCount={files.length} folderUrl={folderUrl} />
+                  <Results 
+                    result={result} preference={preference} 
+                    onRestart={handleRestart} uploadState={uploadState} 
+                    filesCount={files.length} folderUrl={folderUrl} 
+                    visitDate={visitDate} setVisitDate={setVisitDate} 
+                    onBook={handleBooking} 
+                    customerDetails={{
+                      firstName: name || 'Customer',
+                      lastName: '',
+                      email: 'guest@calycopaints.com',
+                      phone: phone,
+                      address: `${houseNo} ${street}`,
+                      city: city,
+                      postcode: pincode
+                    }}
+                  />
                 </motion.div>
               )}
 
