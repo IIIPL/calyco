@@ -72,12 +72,12 @@ const HowItWorksPage = () => (
         </h1>
         <p className="mt-5 text-lg text-white/60 max-w-2xl">Five transparent steps. No hidden charges. Fixed written quote before work begins.</p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-medium hover:bg-white transition-colors">
+          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white transition-colors">
             <Calculator className="w-5 h-5" /> Calculate Cost
           </Link>
-          <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit." target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-7 py-3.5 font-medium hover:bg-white/10 transition-colors">
-            <MessageCircle className="w-5 h-5" /> Book Free Site Visit
-          </a>
+          <Link to="/get-quote" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white/10 transition-colors">
+            Book Free Site Visit →
+          </Link>
         </div>
       </div>
     </section>

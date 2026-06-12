@@ -296,8 +296,14 @@ export const IconPicture = ({ className = 'w-5 h-5' }) => (
 // Map category ID → icon component
 const CATEGORY_ICON_MAP = {
   'interior-painting':     IconInteriorPaint,
-  'exterior-full-home':    IconFloorProtect,
+  'exterior-painting':     IconFloorProtect,
+  'ceiling-painting':      IconInteriorPaint,
+  'addons':                IconCrackFill,
+  'dampness-repair':       IconWaterproof,
+  'texture-decorative':    IconWallLayers,
   'waterproofing':         IconWaterproof,
+  // legacy IDs kept for backwards compatibility
+  'exterior-full-home':    IconFloorProtect,
   'texture-painting':      IconWallLayers,
   'feature-walls':         IconSparkle,
   'wallpaper':             IconPicture,

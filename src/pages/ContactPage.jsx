@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "@formspree/react";
+import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import contactData from "../data/admin/contact.json";
 import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
@@ -469,12 +470,12 @@ export default function ContactPage() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
               {[
-                { label: 'Interior Painting', path: '/services/interior-painting', price: '₹18+' },
-                { label: 'Exterior Painting', path: '/services/exterior-painting', price: '₹24+' },
-                { label: 'Waterproofing', path: '/services/terrace-waterproofing', price: '₹45+' },
-                { label: 'Texture Painting', path: '/services/texture-painting', price: '₹55+' },
-                { label: 'Wood Polish', path: '/services/wood-polish', price: '₹70+' },
-                { label: 'Tile Grouting', path: '/services/tile-grouting', price: '₹25+' },
+                { label: 'Interior Repaint',          path: '/services/interior-repaint',            price: '₹18+' },
+                { label: 'Interior Fresh Painting',   path: '/services/interior-fresh-painting',     price: '₹23+' },
+                { label: 'Exterior Repaint',          path: '/services/exterior-repaint',            price: '₹24+' },
+                { label: 'Waterproofing',             path: '/services/waterproofing',               price: '₹45+' },
+                { label: 'Texture / Decorative',      path: '/services/texture-decorative-painting', price: '₹55+' },
+                { label: 'Dampness / Leakage Repair', path: '/services/dampness-leakage-repair',     price: '₹65+' },
               ].map((s) => (
                 <a key={s.path} href={s.path} className="flex flex-col items-center gap-1.5 rounded-2xl bg-white border border-[#e5e0d8] px-3 py-4 text-center hover:border-[#493657]/40 hover:shadow-sm transition-all">
                   <span className="font-bold text-xs text-[#0F1221] leading-tight">{s.label}</span>
@@ -501,17 +502,15 @@ export default function ContactPage() {
               Our team visits your site, measures with laser tools, and returns a written quote. No obligation, no charge.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
-              <a
-                href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
+              <Link
+                to="/get-quote"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
               >
-                Book Free Site Visit on WhatsApp
-              </a>
+                Book Free Site Visit →
+              </Link>
               <a
                 href="/faq"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-7 py-3.5 font-semibold hover:bg-white/8 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-5 py-3 sm:px-7 sm:py-3.5 font-semibold hover:bg-white/8 transition-colors"
               >
                 FAQs →
               </a>

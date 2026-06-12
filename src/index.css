@@ -347,13 +347,6 @@ body {
 img {
   transition: opacity 0.3s ease;
 }
-img[loading="lazy"] {
-  opacity: 0;
-}
-img[loading="lazy"].loaded,
-img:not([loading]) {
-  opacity: 1;
-}
 
 /* Global smooth transitions for interactive elements */
 a, button {

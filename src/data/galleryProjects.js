@@ -1,7 +1,15 @@
 /**
  * Gallery project data.
- * Replace beforeSrc / afterSrc with real photo URLs when available.
- * Omit beforeSrc / afterSrc to use the styled placeholder visuals.
+ * Real project photos from /real project section/
+ * Before/After pairs from /real project section/before and after/
+ *
+ * Naming convention for before/after folder:
+ *   sN,1.png  – "Before" image for project N
+ *   sN,2.png  – "After"  image for project N
+ *
+ * afterSrc   – finished project image shown in the home-page Real Projects section
+ * beforeSrc  – "before" state used in the draggable before/after slider
+ * afterBASrc – "after"  state used in the slider (defaults to afterSrc if not set)
  */
 export const GALLERY_CATEGORIES = [
   'All',
@@ -27,7 +35,9 @@ export const galleryProjects = [
     budgetRange: '₹1,10,000 – ₹1,40,000',
     customerQuote: 'We have repainted four times over the years but this was different — no smell, no streaks, walls look cleaner than new.',
     customerName: 'Priya K.',
-    afterSrc: '/Assets/Rooms/LivingRoom/base.webp',
+    afterSrc: '/real project section/a1.webp',
+    beforeSrc: '/real project section/before and after/s2,1.webp',
+    afterBASrc: '/real project section/before and after/s2,2.webp',
     slug: 'interior-painting',
   },
   {
@@ -42,7 +52,9 @@ export const galleryProjects = [
     budgetRange: '₹2,20,000 – ₹2,80,000',
     customerQuote: 'After two rainy seasons the exterior looked dull. Calyco revived it. The finish is still holding beautifully.',
     customerName: 'Ashok M.',
-    afterSrc: '/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp',
+    afterSrc: '/real project section/a2.webp',
+    beforeSrc: '/real project section/before and after/s1,1.webp',
+    afterBASrc: '/real project section/before and after/s1,2.webp',
     slug: 'exterior-painting',
   },
   {
@@ -57,7 +69,9 @@ export const galleryProjects = [
     budgetRange: '₹60,000 – ₹80,000',
     customerQuote: 'Two monsoons with zero seepage. Exactly what I paid for. The team even identified a secondary leak I did not know about.',
     customerName: 'Sunita R.',
-    afterSrc: '/Assets/Waterproof Sealer/Main.webp',
+    afterSrc: '/real project section/a3.webp',
+    beforeSrc: '/real project section/before and after/s4,1.webp',
+    afterBASrc: '/real project section/before and after/s4,2.webp',
     slug: 'terrace-waterproofing',
   },
   {
@@ -72,7 +86,9 @@ export const galleryProjects = [
     budgetRange: '₹14,000 – ₹20,000',
     customerQuote: 'Everyone who walks in asks about the wall. It feels five times more expensive than it was.',
     customerName: 'Ritu D.',
-    afterSrc: '/Assets/Texture Images/texture-main.webp',
+    afterSrc: '/real project section/a4.webp',
+    beforeSrc: '/real project section/before and after/s7,1.webp',
+    afterBASrc: '/real project section/before and after/s7,2.webp',
     slug: 'texture-painting',
   },
   {
@@ -87,7 +103,9 @@ export const galleryProjects = [
     budgetRange: '₹3,40,000 – ₹4,20,000',
     customerQuote: 'They finished in 6 nights so business was unaffected. The BOQ quote was accurate to the rupee.',
     customerName: 'Vikram S., Facilities Head',
-    afterSrc: '/Assets/u7621868624_Rectangular_directors_office_interior_in_contempora_76b307ad-c102-4425-920f-9aef0beb8a26.webp',
+    afterSrc: '/real project section/a5.webp',
+    beforeSrc: '/real project section/before and after/s6,1.webp',
+    afterBASrc: '/real project section/before and after/s6,2.webp',
     slug: 'commercial-painting',
   },
   {
@@ -102,6 +120,9 @@ export const galleryProjects = [
     budgetRange: '₹18,000 – ₹24,000',
     customerQuote: 'Flat was ready for the new tenant in two days. Clean handover, no mess, reasonable price.',
     customerName: 'Arun G.',
+    afterSrc: '/real project section/a6.webp',
+    beforeSrc: '/real project section/before and after/s2,1.webp',
+    afterBASrc: '/real project section/before and after/s2,2.webp',
     slug: 'rental-painting',
   },
   {
@@ -116,7 +137,9 @@ export const galleryProjects = [
     budgetRange: '₹2,40,000 – ₹3,00,000',
     customerQuote: 'Single point of contact for the whole project. Transparent pricing, daily photos, clean team. This is what professional should mean.',
     customerName: 'Meera & Rajesh N.',
-    afterSrc: '/service/Full House Painting.jpg',
+    afterSrc: '/real project section/a7.webp',
+    beforeSrc: '/real project section/before and after/s3,1.webp',
+    afterBASrc: '/real project section/before and after/s3,2.webp',
     slug: 'full-house-painting',
   },
   {
@@ -131,6 +154,9 @@ export const galleryProjects = [
     budgetRange: '₹8,000 – ₹12,000',
     customerQuote: 'Fixed a seepage problem that three previous contractors failed to resolve. Finally a team that diagnosed it properly.',
     customerName: 'Neha P.',
+    afterSrc: '/real project section/a8.webp',
+    beforeSrc: '/real project section/before and after/s4,1.webp',
+    afterBASrc: '/real project section/before and after/s4,2.webp',
     slug: 'bathroom-waterproofing',
   },
   {
@@ -145,7 +171,9 @@ export const galleryProjects = [
     budgetRange: '₹75,000 – ₹95,000',
     customerQuote: 'New flat, first paint. Supervisor was present on day one and day four. Walls came out smoother than the builder sample.',
     customerName: 'Kavitha L.',
-    afterSrc: '/Assets/InteriorInspiratoin/living-room.webp',
+    afterSrc: '/real project section/a9.webp',
+    beforeSrc: '/real project section/before and after/s6,1.webp',
+    afterBASrc: '/real project section/before and after/s6,2.webp',
     slug: 'fresh-painting',
   },
 ];

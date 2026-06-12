@@ -12,19 +12,47 @@ const WaIcon = ({ cls = 'w-4 h-4' }) => (
 );
 
 // ─── Single project card ───────────────────────────────────────────────────────
-const ProjectCard = ({ project }) => {
+/**
+ * compact = true  → Home page: shows the real project "after" photo (afterSrc) as a
+ *                   static image with a subtle hover zoom, no slider.
+ * compact = false → Gallery page: shows the interactive before/after drag slider.
+ */
+const ProjectCard = ({ project, compact = false }) => {
   const waMsg = `Hi Calyco — I saw your ${project.service} project in ${project.city} and want a similar estimate for my home.`;
   const waLink = `${contactData.contact.whatsapp.link}?text=${encodeURIComponent(waMsg)}`;
 
   return (
     <article className="bg-white rounded-2xl border border-[#0F1221]/8 overflow-hidden hover:border-[#493657]/25 hover:shadow-[0_6px_28px_rgba(73,54,87,0.12)] transition-all duration-300 flex flex-col">
 
-      {/* Before/After slider */}
-      <BeforeAfterSlider
-        afterSrc={project.afterSrc}
-        height="h-52"
-        initialPos={38}
-      />
+      {/* Image area */}
+      {compact ? (
+        /* Home page — real project photo with category badge overlay */
+        <div className="relative h-52 overflow-hidden bg-[#E8E4DF] flex-shrink-0 rounded-t-2xl">
+          {project.afterSrc ? (
+            <img
+              src={project.afterSrc}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-[#F0EDE8] to-[#E8E4DF]" />
+          )}
+          {/* After badge */}
+          <div className="absolute top-3 right-3 rounded px-2 py-1 bg-[#493657]/85 text-white text-[9px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
+            After
+          </div>
+        </div>
+      ) : (
+        /* Gallery page — interactive before/after slider */
+        <BeforeAfterSlider
+          beforeSrc={project.beforeSrc}
+          afterSrc={project.afterBASrc || project.afterSrc}
+          height="h-52"
+          initialPos={38}
+        />
+      )}
 
       {/* Card body */}
       <div className="flex flex-col flex-1 p-4 sm:p-5">
@@ -73,7 +101,7 @@ const ProjectCard = ({ project }) => {
         {/* Customer quote */}
         <blockquote className="mb-4 flex-1">
           <p className="text-xs text-[#0F1221]/60 font-light leading-[1.75] italic border-l-2 border-[#F0C85A] pl-3">
-            "{project.customerQuote}"
+            &quot;{project.customerQuote}&quot;
           </p>
           <p className="text-[11px] font-bold text-[#0F1221]/50 mt-1.5 pl-3">— {project.customerName}</p>
         </blockquote>
@@ -104,7 +132,8 @@ const ProjectCard = ({ project }) => {
 // ─── Full section ─────────────────────────────────────────────────────────────
 /**
  * Props:
- *   compact    – show only 3 cards with "See all" link (for homepage)
+ *   compact    – show only 3 cards with "See all" link (for homepage); also
+ *                switches cards to static image mode vs. before/after slider
  *   showHeader – show the section heading (default true)
  *   showFilter – show category filter tabs (default true)
  */
@@ -136,7 +165,9 @@ const ProjectGallerySection = ({
                 Real Homes.<br className="sm:hidden" /> Real Transformations.
               </h2>
               <p className="mt-3 text-sm text-[#0F1221]/50 font-light max-w-lg leading-[1.75]">
-                Drag the slider on each card to compare before and after. Every project includes city, service, area, time and budget details.
+                {compact
+                  ? 'Real project photos from homes we\'ve transformed. Visit the gallery to drag and compare before & after.'
+                  : 'Drag the slider on each card to compare before and after. Every project includes city, service, area, time and budget details.'}
               </p>
             </div>
             {compact && (
@@ -173,7 +204,7 @@ const ProjectGallerySection = ({
         {/* Project grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {displayed.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} compact={compact} />
           ))}
         </div>
 
@@ -182,7 +213,7 @@ const ProjectGallerySection = ({
           <div className="mt-8 text-center">
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-7 py-3.5 text-sm font-bold hover:bg-[#493657] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-3 sm:px-7 sm:py-3.5 text-sm font-bold hover:bg-[#493657] transition-colors"
             >
               See all {filtered.length} projects <ArrowRight className="w-4 h-4" />
             </Link>
