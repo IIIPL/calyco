@@ -1,173 +1,164 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { getButtonClasses } from "../data/admin/typography";
+import { Link, useNavigate } from "react-router-dom";
+
+/* ── Brand tokens (match HomeFinal / BudgetCalculator exactly) ───────────── */
+const GOLD   = '#F0C85A';
+const PURPLE = '#493657';
 
 const ROOMS = [
-  { title: "Kitchen", category: "Kitchen", designs: 22, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.webp" },
-  { title: "Bedroom", category: "Bedroom", designs: 111, thumbnail: "/Assets/Inspiration/bedroom.webp" },
-  { title: "Living Room", category: "Living Room", designs: 118, thumbnail: "/Assets/Inspiration/living.webp" },
-  { title: "Bathroom", category: "Bathroom", designs: 1, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0041.webp" },
-  { title: "Dining Room", category: "Dining Room", designs: 40, thumbnail: "/Assets/Inspiration/dining.webp" },
-  { title: "Hallway", category: "Hallway", designs: 28, thumbnail: "/Assets/Inspiration/IMG-20250718-WA0042.webp" },
+  {
+    title: "Living Room", slug: "living", designs: 118,
+    desc: "Transform your main living space with stunning design",
+    thumbnail: "/real project section/inspration/i1.webp",
+  },
+  {
+    title: "Bedroom", slug: "bedroom", designs: 111,
+    desc: "Design a peaceful sanctuary for rest and relaxation",
+    thumbnail: "/Assets/Inspiration/bedroom.webp",
+  },
+  {
+    title: "Dining Room", slug: "dining", designs: 40,
+    desc: "Set the perfect mood for memorable meals",
+    thumbnail: "/real project section/inspration/i5.webp",
+  },
+  {
+    title: "Kitchen", slug: "kitchen", designs: 22,
+    desc: "Create a kitchen that inspires cooking and gathering",
+    thumbnail: "/Assets/Inspiration/IMG-20250718-WA0043.webp",
+  },
+  {
+    title: "Hallway", slug: "hallway", designs: 28,
+    desc: "Make a lasting first impression with elegant corridors",
+    thumbnail: "/real project section/inspration/i4.webp",
+  },
+  {
+    title: "Bathroom", slug: "bathroom", designs: 1,
+    desc: "Refresh your bathroom with spa-like tranquility",
+    thumbnail: "/Assets/u7859757176_Modern_luxury_bathroom_with_high_clerestory_windo_4f1ad61e-d8af-4e9c-bb17-4066db021cef_2.webp",
+  },
 ];
 
-const SECTION_ORDER = ["Kitchen", "Bedroom", "Living Room", "Bathroom", "Dining Room", "Hallway"];
+const Eyebrow = ({ text }) => (
+  <div className="flex items-center gap-3 mb-4">
+    <span className="block w-10 h-px" style={{ background: GOLD }} />
+    <span className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
+  </div>
+);
 
 export default function InspirationPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="font-poppins bg-gradient-to-br from-gray-50 to-white min-h-screen pt-6 pb-16">
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 mt-8">
-        <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-            Design Inspiration
+    <div className="min-h-screen bg-[#FAFAF8]">
+
+      {/* ── Header — editorial, matches HomeFinal ─────────────────────────── */}
+      <section className="bg-white border-b border-[#0F1221]/6">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 sm:py-14">
+          <div className="flex items-center gap-2 text-[11px] text-[#0F1221]/30 font-light mb-5">
+            <Link to="/" className="hover:text-[#493657] transition-colors">Home</Link>
+            <span>/</span>
+            <span>Inspirations</span>
+          </div>
+          <Eyebrow text="Design Inspiration" />
+          <h1 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.02em] leading-[1.12] mb-3">
+            Find the perfect look<br />
+            <span style={{ color: PURPLE }}>for every room.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Discover beautiful color combinations and design ideas for every room in your home
+          <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md mb-5">
+            Curated colour combinations and design ideas from real Calyco projects — pick a room to explore.
           </p>
-          <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#F0C85A] rounded-full"></div>
-              Curated Collections
-            </span>
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#493657] rounded-full"></div>
-              Expert Color Palettes
-            </span>
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#F0C85A] rounded-full"></div>
-              Real Room Examples
-            </span>
+          <div className="flex flex-wrap gap-2">
+            {['Curated collections', 'Expert colour palettes', 'Real room examples'].map(b => (
+              <span key={b} className="inline-flex items-center gap-1.5 text-[11px] font-light text-[#0F1221]/55 bg-[#FAFAF8] border border-[#0F1221]/8 px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: GOLD }} />
+                {b}
+              </span>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        {/* Loop through ordered sections */}
-        {SECTION_ORDER.map((section) => {
-          const sectionRooms = ROOMS.filter((room) => room.category === section);
-          if (sectionRooms.length === 0) return null;
+      {/* ── Room grid ─────────────────────────────────────────────────────── */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 sm:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {ROOMS.map((room) => (
+            <button
+              key={room.slug}
+              type="button"
+              onClick={() => navigate(`/inspirations/${room.slug}`)}
+              className="group relative text-left overflow-hidden rounded-2xl sm:rounded-3xl focus:outline-none"
+              style={{ aspectRatio: '4/3.4' }}
+            >
+              <img
+                src={room.thumbnail}
+                alt={room.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                loading="lazy"
+                draggable="false"
+              />
+              {/* Consistent ink gradient — strong only behind text */}
+              <div className="absolute inset-0" style={{
+                background: 'linear-gradient(to top, rgba(15,18,33,0.88) 0%, rgba(15,18,33,0.45) 30%, rgba(15,18,33,0.05) 55%, transparent 100%)',
+              }} />
 
-          return (
-            <div key={section} className="mb-24">
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{section}</h2>
-                  <p className="text-gray-600 text-lg">
-                    {section === "Kitchen" && "Create a kitchen that inspires cooking and gathering"}
-                    {section === "Bedroom" && "Design a peaceful sanctuary for rest and relaxation"}
-                    {section === "Living Room" && "Transform your main living space with stunning design"}
-                    {section === "Bathroom" && "Refresh your bathroom with spa-like tranquility"}
-                    {section === "Dining Room" && "Set the perfect mood for memorable meals"}
-                    {section === "Hallway" && "Make a lasting first impression with elegant corridors"}
-                  </p>
+              {/* Design count pill */}
+              <span className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.16em] rounded-full px-2.5 py-1 backdrop-blur-sm bg-[#0F1221]/40 text-white/75 border border-white/15">
+                {room.designs} {room.designs === 1 ? 'design' : 'designs'}
+              </span>
+
+              {/* Bottom content */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-4 h-[1.5px] rounded-full flex-shrink-0" style={{ background: GOLD }} />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+                    Explore palettes
+                  </span>
                 </div>
-                <button 
-                  onClick={() => navigate(`/inspirations/${section.toLowerCase()}`)}
-                  className="hidden md:flex items-center gap-2 px-6 py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors duration-200 font-medium"
-                >
-                  View All {section}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                <h2 className="text-white font-semibold text-[18px] sm:text-[20px] leading-tight tracking-tight mb-1">
+                  {room.title}
+                </h2>
+                <p className="text-white/55 text-[11px] sm:text-[12px] leading-snug mb-3 max-w-[280px]">
+                  {room.desc}
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-[#F0C85A]">
+                  Explore {room.title.toLowerCase()}
+                  <span className="transition-transform duration-200 group-hover:translate-x-1" style={{ color: GOLD }}>→</span>
+                </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {sectionRooms.map((room) => {
-                  const slug = room.title.toLowerCase().replace(/\s+/g, '-');
-                  return (
-                    <div
-                      key={room.title}
-                      onClick={() => navigate(`/inspirations/${slug}`)}
-                      className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-                    >
-                      {/* Image Container */}
-                      <div className="relative h-64 overflow-hidden">
-                        <img
-                          src={room.thumbnail}
-                          alt={room.title}
-                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                          draggable="false"
-                        />
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <div className="flex items-center justify-between text-white">
-                              <span className="text-sm font-medium">{room.designs} designs</span>
-                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  
-                      {/* Content */}
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#493657] transition-colors">
-                          {room.title}
-                        </h3>
-                        
-                        {/* Color Palette */}
-                        <div className="flex gap-2 mb-4">
-                          <div className="w-8 h-8 rounded-full bg-[#BA2B2B] border-2 border-white shadow-sm"></div>
-                          <div className="w-8 h-8 rounded-full bg-[#D6CBB6] border-2 border-white shadow-sm"></div>
-                          <div className="w-8 h-8 rounded-full bg-[#7E7266] border-2 border-white shadow-sm"></div>
-                          <div className="w-8 h-8 rounded-full bg-[#F0C85A] border-2 border-white shadow-sm"></div>
-                        </div>
-                        
-                        {/* Stats */}
-                        <div className="flex items-center justify-between text-sm text-gray-600">
-                          <span className="font-medium">{room.designs} design variations</span>
-                          <span className="text-[#493657] font-semibold">Explore →</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              {/* Hover ring */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ boxShadow: `inset 0 0 0 1.5px ${GOLD}66, 0 24px 64px 0 rgba(15,18,33,0.35)` }} />
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Bottom CTA — brand editorial band ─────────────────────────────── */}
+      <section className="bg-[#0F1221]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-12 sm:py-16">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-8">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="w-7 h-px" style={{ background: GOLD }} />
+                <p className="text-[10px] font-black uppercase tracking-[0.28em]" style={{ color: GOLD }}>Ready to transform?</p>
               </div>
-              
-              {/* Mobile View All Button */}
-              <div className="md:hidden mt-6">
-                <button 
-                  onClick={() => navigate(`/inspirations/${section.toLowerCase()}`)}
-                  className="w-full py-3 bg-[#493657] text-white rounded-lg hover:bg-[#5a4067] transition-colors duration-200 font-medium"
-                >
-                  View All {section}
-                </button>
-              </div>
+              <p className="text-white text-xl sm:text-3xl font-light tracking-[-0.015em] max-w-md leading-snug">
+                Found a look you love?<br />Let&apos;s bring it to your walls.
+              </p>
             </div>
-          );
-        })}
-        
-        {/* Call to Action Section */}
-        <div className="mt-20">
-          <div className="bg-[#1A1C24] rounded-3xl p-8 md:p-12 text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Space?</h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Explore our complete collection of colors and get expert advice on creating the perfect atmosphere for your home.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => navigate('/colors')}
-                className={getButtonClasses('accent')}
-              >
-                Browse Color Collection
-              </button>
-              <button 
-                onClick={() => navigate('/contact')}
-                className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-[#493657] transition-colors duration-200"
-              >
+            <div className="flex gap-2.5 sm:gap-3 flex-wrap w-full sm:w-auto">
+              <Link to="/colors"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-white transition-colors shadow-lg">
+                Browse Colours →
+              </Link>
+              <Link to="/get-quote"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white/85 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold hover:bg-white/10 transition-colors">
                 Get Expert Advice
-              </button>
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

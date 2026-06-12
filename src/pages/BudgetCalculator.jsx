@@ -1,1646 +1,1497 @@
-import { useState, useMemo, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calculator, Info, Phone, Mail, User, X, ShoppingCart, ArrowRight, ChevronDown, Check } from 'lucide-react';
-import { useCart } from '../context/CartContext';
-import ColorSelectorModal from '../components/ColorSelectorModal';
-import CartPopup from '../components/CartPopup';
-import { products as catalogProducts } from '../data/products.js';
-import texturesData from '../data/textures';
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, animate, useMotionValue, useInView } from 'framer-motion';
+import { Link, useSearchParams } from 'react-router-dom';
 import SEO from '../components/SEO';
-import UniversalServiceCalculator from '../components/UniversalServiceCalculator';
+import { calculateServiceEstimate, cityMultipliers, servicePricing } from '../data/servicePricing';
+import contactData from '../data/admin/contact.json';
 
-const BudgetCalculator = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { addToCart, goToCheckout } = useCart();
+/* ── Brand tokens (match HomeFinal / ServicesPage exactly) ───────────────── */
+const DARK   = '#0F1221';
+const GOLD   = '#F0C85A';
+const PURPLE = '#493657';
 
-  const textureOptions = useMemo(
-    () =>
-      texturesData.map((texture) => ({
-        slug: texture.slug,
-        name: texture.name,
-        description: texture.description,
-        image: texture.image,
-        category: texture.category,
-        application: texture.application
-      })),
-    []
+const WA_BASE   = contactData?.contact?.whatsapp?.link ?? 'https://wa.me/918796777399';
+const PHONE_RAW = contactData?.contact?.phone?.rawNumber ?? '+918796777399';
+const CITIES    = Object.keys(cityMultipliers);
+
+/* ── Integration ─────────────────────────────────────────────────────────── */
+const WEB3FORMS_KEY   = '52da37be-e058-4a07-92c1-a07f95c25f6b';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymvT57AjE5zrrHSKycG7cT6sxMXHfi2kzKKHARMgFMmpiqJPU1KFPJaksACK2v5VD0/exec';
+const MAX_FILE_MB     = 8;
+const MAX_FILES       = 5;
+
+/* Google service account — direct API from browser */
+const SA_EMAIL  = 'painting-website-bot@painting-website-499005.iam.gserviceaccount.com';
+const SA_KEY    = '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5Sy7tJOFW1Sji\nCFUYYgGOZzhCAFNKuHCB2BkYudknozuqVhxhRA7vrY8rFQzrnIP1RaPVkYn/rkc8\nx2qb+jaazbFTqTzyrRWDbv44896tup2QNR1AtiTofh8+3ctUpuyLYGCWTLM53aAB\n5BOpA/QLDv98G1ruzsbi9paKjDPOSESt2xSiid/JZGKy0SQ3JQhL+WySeHMyP/0Q\nl7FcEHNTOCjUQG9jAWf2mxP4tabjEOUq+2wC7NQ0iKJ3GNR89FD4WtxyHoYxMFc5\nHwIpM+WUaSTCplYQAVRiGDf4ZQ8hFOwG55sr07BqwnAnVojN/6zWgCAJ6PlPicxH\nHBWHtYKtAgMBAAECggEABx+YUL6buSJdvX7Tgqn15FscgxEPIq6/iIZdxKEUc50n\nZI+F7MlYh6dU+zOGeSJdwlaoi0Pamc1B6NjDxPZUFhR1TkGR2cSEsLZaKKdbdrNX\nbl1UYBIAjj2XBuww7nKyYlNUs0KEm2NlTN1PUi6YObqcYNGOZ+LkK4KOXAoyzanR\ntQOWw7TqD2or7zZJrpckBdDfBBB+YWsh1IO1OWKBJUxzAkvizoYHmQJsh8Jfs3M6\nM4/2qB/m0tcGw0quBZnroMtH0Hck2UC6MVJWjRE9X/OZpIy7XkV1Xtn6rf3zcjYn\nHOn0V0AUp8vTgAWXkS4zI+CO3tl01zmOYuEP0GZAwwKBgQD3C35SOFpH6zWAJhi5\nOTNv8N4rHp8rQXTDkXNiyQBD4vHzgfo11yeuoqK5lWR/FXAbLxY3XIL6EyWQCl5w\naW7jIWdHzhxQYEgwAk/8G7Z9+0GEQNPVx+bmxrZIYdqEhJKOW8ozw+WqBok9KySf\nudK/Yl6ZHL28lF363aUgqVOPmwKBgQDAAqf4saYKWJi5dhcTeDINt4d8FiprkBzx\nSiZQmOHmZx6z2Tg+R71C84rd83T55QFM+jO52TYWnPT4R36qKCdENaivVqOH7ORZ\nMzLQquatBwu55Mz4yaucXZ7YrbHEqdxOa6d2bE6PxvzdcnTpWx8Givj15CS3DFCw\ns3CwIprvVwKBgDONZnLp540SfDudt5MPaLh3XyVIYpa4NhGJjLaUk0WXWj4iZYBO\nwa0jqylnD22ln5tMnCo5V+uviysfvs1ecxFaqx7E2Au9y9KY6PAHKHHpuKZMkOgP\nqxOFbAx2vw7gS2UBqpRa0NZGPuVQ13etY1kkwfDZmo57t5DeJ9NFAnb5AoGAVYYZ\nWT2PjpYt2JXP630jFlcEAvJAjM6RBayYalfebujJlSQQ2DTOCS8/UGMrXE9zh9z+\nAy7L18CroJb/xTzDWK9p5kd56YZLo6uZW7Zzrugvgep2ne3+AVT19t9PCiD6nvd2\njNnrGEFyyhQ8HODYbeqiv6uR6vKSUlJqxBl111sCgYEA1AFgT2YgQK5LrKKYXarn\ncISJZJ6u3CFU9PVfQnK2vn4SCciIMXs8HtDYniSffu/IhY7mHjI3YBpJUwFgS/vK\nnfslmsvpsfzvKe/LwQGiXH0YrJDp598FOgLmiUDEbW0xxTtBc4W0SIimpVi1/9D0\nAzYKTrJWNNMZX8e+ubn9xS8=\n-----END PRIVATE KEY-----\n';
+const SHEET_ID  = '13OGMg0NnPYOUxB0anPbPG2WHqu-D79kJfHj2C96xUcg';
+const DRIVE_ROOT= '1MsjsWU9LhKvVoGxg-FwmsKrSU5HkEKqo';
+
+const SHEET_HEADERS = [
+  'Timestamp', 'Name', 'Phone', 'City',
+  'Service', 'Paint Type', 'Carpet Area (sq ft)', 'Paintable Area (sq ft)',
+  'Preference', 'Estimate', 'Files', 'Drive Folder',
+];
+
+async function getGoogleToken() {
+  const b64url = obj =>
+    btoa(JSON.stringify(obj)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+  const now = Math.floor(Date.now() / 1000);
+  const sigInput = `${b64url({ alg: 'RS256', typ: 'JWT' })}.${b64url({
+    iss:   SA_EMAIL,
+    scope: 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive',
+    aud:   'https://oauth2.googleapis.com/token',
+    iat:   now,
+    exp:   now + 3600,
+  })}`;
+
+  const pemBody  = SA_KEY.replace(/-----[^-]+-----/g, '').replace(/\s/g, '');
+  const keyBytes = Uint8Array.from(atob(pemBody), c => c.charCodeAt(0));
+  const cryptoKey = await crypto.subtle.importKey(
+    'pkcs8', keyBytes.buffer,
+    { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
+    false, ['sign']
   );
+  const sig = await crypto.subtle.sign(
+    'RSASSA-PKCS1-v1_5', cryptoKey, new TextEncoder().encode(sigInput)
+  );
+  const sigB64 = btoa(String.fromCharCode(...new Uint8Array(sig)))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
-  const textureMap = useMemo(() => {
-    const map = {};
-    textureOptions.forEach((texture) => {
-      map[texture.slug] = texture;
-    });
-    return map;
-  }, [textureOptions]);
-
-  // Calculator type state
-  const [calculatorType, setCalculatorType] = useState(
-    location.pathname.includes('/calculators/service-cost-calculator') ? 'service' : 'paint'
-  ); // 'paint', 'texture', or 'service'
-
-  // Paint calculator state
-  const [carpetArea, setCarpetArea] = useState('');
-  const [paintCategory, setPaintCategory] = useState('interior');
-  const [paintProductType, setPaintProductType] = useState('premium');
-
-  // Texture calculator state
-  const [paintableArea, setPaintableArea] = useState('');
-  const [selectedTexture, setSelectedTexture] = useState(textureOptions[0]?.slug || '');
-  const [isTextureDropdownOpen, setIsTextureDropdownOpen] = useState(false);
-
-  // Common state
-  const [results, setResults] = useState(null);
-  const [isCalculating, setIsCalculating] = useState(false);
-  const [showBookingModal, setShowBookingModal] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [showColorModal, setShowColorModal] = useState(false);
-  const [cartPopup, setCartPopup] = useState({ isVisible: false, item: null });
-
-  // Booking form state
-  const [bookingData, setBookingData] = useState({
-    name: '',
-    phone: '',
-    email: ''
+  const jwt = `${sigInput}.${sigB64}`;
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      assertion: jwt,
+    }),
   });
+  const data = await res.json();
+  if (!data.access_token) throw new Error(JSON.stringify(data));
+  return data.access_token;
+}
 
-  const textureDropdownRef = useRef(null);
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload  = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
+// Hidden form + iframe upload — bypasses CORS entirely (forms are always cross-origin safe)
+function uploadViaForm(url, data) {
+  return new Promise((resolve) => {
+    const uid    = 'cif_' + Date.now();
+    const iframe = document.createElement('iframe');
+    iframe.name  = uid;
+    iframe.style.cssText = 'display:none;position:absolute;width:0;height:0';
+    document.body.appendChild(iframe);
+
+    const form   = document.createElement('form');
+    form.method  = 'POST';
+    form.action  = url;
+    form.target  = uid;
+    form.style.display = 'none';
+
+    const input  = document.createElement('input');
+    input.type   = 'hidden';
+    input.name   = 'payload';
+    input.value  = JSON.stringify(data);
+    form.appendChild(input);
+    document.body.appendChild(form);
+
+    const cleanup = () => {
+      try { document.body.removeChild(iframe); } catch {}
+      try { document.body.removeChild(form);   } catch {}
+      resolve();
+    };
+    iframe.addEventListener('load', cleanup, { once: true });
+    setTimeout(cleanup, 20000); // 20 s safety fallback
+    form.submit();
+  });
+}
+
+async function sheetsEnsureHeaders(token) {
+  try {
+    const res  = await fetch(
+      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:L1`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    if (!res.ok) return; // sheet call failed — skip header check, proceed to append
+    const data = await res.json();
+    if (!data.values?.length) {
+      await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:append?valueInputOption=RAW`,
+        {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ values: [SHEET_HEADERS] }),
+        }
+      );
+    }
+  } catch {
+    // non-critical — sheet headers check failed, proceed to data append anyway
+  }
+}
+
+async function sheetsAppend(token, row) {
+  const res = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+    {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ values: [row] }),
+    }
+  );
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Sheets append ${res.status}: ${text}`);
+  }
+}
+
+async function driveCreateFolder(token, name) {
+  const res = await fetch('https://www.googleapis.com/drive/v3/files', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      mimeType: 'application/vnd.google-apps.folder',
+      parents: [DRIVE_ROOT],
+    }),
+  });
+  const data = await res.json();
+  return data.id;
+}
+
+async function driveUploadFile(token, folderId, file) {
+  const boundary = 'calyco_' + Date.now().toString(36);
+  const meta     = JSON.stringify({
+    name:     file.name,
+    mimeType: file.type || 'application/octet-stream',
+    parents:  [folderId],
+  });
+  const mime = file.type || 'application/octet-stream';
+
+  // multipart/related — metadata part then file part, single CRLF before each boundary
+  const body = new Blob([
+    `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${meta}`,
+    `\r\n--${boundary}\r\nContent-Type: ${mime}\r\n\r\n`,
+    file,
+    `\r\n--${boundary}--`,
+  ]);
+
+  const res = await fetch(
+    'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name',
+    {
+      method:  'POST',
+      headers: {
+        Authorization:  `Bearer ${token}`,
+        'Content-Type': `multipart/related; boundary=${boundary}`,
+      },
+      body,
+    }
+  );
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Drive upload ${res.status}: ${text}`);
+  }
+  const data = await res.json();
+  console.log('[Drive] uploaded:', data.name, data.id);
+  return data;
+}
+
+const PAINTABLE_MULT = 3.3;
+const toPaintable = (carpet) => Math.round(parseFloat(carpet) * PAINTABLE_MULT);
+const fmt  = (v) => `₹${Math.round(Number(v)).toLocaleString('en-IN')}`;
+
+/* ── Service categories (3 — matching services page) ─────────────────────── */
+const CALC_SERVICES = [
+  {
+    key: 'interior',
+    label: 'Interior Painting',
+    desc: 'Walls & ceilings inside your home',
+    image: '/service/Interior Painting.jpg',
+    fromPrice: '₹18/sq ft',
+    showPaintType: true,
+    slugs: { fresh: 'interior-fresh-painting', repainting: 'interior-repaint' },
+    tierKey: 'default',
+  },
+  {
+    key: 'exterior',
+    label: 'Exterior Painting',
+    desc: 'Outside walls & facade',
+    image: '/service/Exterior Painting.jpg',
+    fromPrice: '₹24/sq ft',
+    showPaintType: true,
+    slugs: { fresh: 'exterior-fresh-painting', repainting: 'exterior-repaint' },
+    tierKey: 'default',
+  },
+  {
+    key: 'texture',
+    label: 'Texture & Decorative',
+    desc: 'Feature walls & designer finishes',
+    image: '/service/Texture Painting.jpg',
+    fromPrice: '₹55/sq ft',
+    showPaintType: false,
+    slugs: { fresh: 'texture-decorative-painting', repainting: 'texture-decorative-painting' },
+    tierKey: 'texture',
+  },
+];
+
+const BHK_SIZES = [
+  { key: '1bhk', label: '1 BHK',  carpet: 600,  hint: '500–650 sq ft'     },
+  { key: '2bhk', label: '2 BHK',  carpet: 850,  hint: '700–1,000 sq ft'   },
+  { key: '3bhk', label: '3 BHK',  carpet: 1200, hint: '1,100–1,500 sq ft' },
+  { key: '4bhk', label: '4 BHK+', carpet: 1800, hint: '1,600+ sq ft'      },
+];
+
+const PAINT_TYPES = [
+  { key: 'fresh',      label: 'Fresh Painting', desc: 'New construction or bare / unpainted walls' },
+  { key: 'repainting', label: 'Re-Painting',    desc: 'Change colours or refresh existing walls'   },
+];
+
+const PREFERENCES = [
+  {
+    key: 'economy',
+    label: 'Economy',
+    tag: 'Budget-friendly',
+    gradient: 'linear-gradient(145deg, #3a8060 0%, #2D6A4F 55%, #1f5240 100%)',
+    glowColor: 'rgba(45,106,79,0.38)',
+    tagline: "Solid finish that doesn't compromise on quality.",
+    features: ['Matt Finish', 'Non-Washable', 'Durability up to 2 years'],
+  },
+  {
+    key: 'premium',
+    label: 'Premium',
+    tag: 'Most Popular',
+    gradient: 'linear-gradient(145deg, #2286E0 0%, #1565C0 55%, #0D47A1 100%)',
+    glowColor: 'rgba(21,101,192,0.38)',
+    tagline: 'Classy, elegant finish with lasting colour.',
+    features: ['Matt & Sheen Finish', 'Semi-Washable', 'Durability up to 5 years'],
+    popular: true,
+  },
+  {
+    key: 'luxury',
+    label: 'Luxury',
+    tag: 'Finest finish',
+    gradient: 'linear-gradient(145deg, #C4601E 0%, #92400E 55%, #6B2D0A 100%)',
+    glowColor: 'rgba(146,64,14,0.38)',
+    tagline: 'Exquisite, royal walls with the best materials.',
+    features: ['Matt & Sheen Finish', 'Fully-Washable', 'Durability up to 7 years'],
+  },
+];
+
+/* economy/premium/luxury → service tier name, by service key */
+const TIER_MAPS = {
+  default: { economy: 'Economy',  premium: 'Premium',  luxury: 'Luxury'   },
+  texture: { economy: 'Basic',    premium: 'Designer', luxury: 'Premium'  },
+};
+
+const PRODUCTS = {
+  economy: [
+    { name: 'Apcolite Advance',  brand: 'AP', color: '#1565C0' },
+    { name: 'Beauty Gold',       brand: 'NL', color: '#7B1FA2' },
+    { name: 'SuperCover',        brand: 'DX', color: '#C0392B' },
+    { name: 'Haisha Select',     brand: 'HS', color: '#37474F' },
+  ],
+  premium: [
+    { name: 'Royale Aspira',     brand: 'AP', color: '#1565C0' },
+    { name: 'Silk Glamour',      brand: 'BG', color: '#276749' },
+    { name: 'Dulux Promise',     brand: 'DX', color: '#C0392B' },
+    { name: 'Impressions HD',    brand: 'NL', color: '#7B1FA2' },
+  ],
+  luxury: [
+    { name: 'Royale Health Shield', brand: 'AP', color: '#1565C0' },
+    { name: 'Silk Luxury Emulsion', brand: 'BG', color: '#276749' },
+    { name: 'Velvet Touch',         brand: 'DX', color: '#C0392B' },
+    { name: 'Excel Mica Marble',    brand: 'NL', color: '#7B1FA2' },
+  ],
+};
+
+/* ── Estimate computation ─────────────────────────────────────────────────── */
+function computeRange({ serviceKey, paintType, carpetArea, city, preference }) {
+  const svc    = CALC_SERVICES.find(s => s.key === serviceKey);
+  const carpet = parseFloat(carpetArea);
+  if (!svc || !carpet || carpet <= 0) return null;
+
+  const slug    = svc.slugs[paintType] || svc.slugs.repainting;
+  const service = servicePricing.find(s => s.slug === slug);
+  if (!service) return null;
+
+  const tierMap    = TIER_MAPS[svc.tierKey] ?? TIER_MAPS.default;
+  const wantedTier = tierMap[preference];
+  const availTiers = Object.keys(service.tiers || {});
+  const tier       = availTiers.includes(wantedTier) ? wantedTier : availTiers[0];
+
+  const paintable = toPaintable(carpet);
+  const r         = calculateServiceEstimate({ service, city, quantity: paintable, tier });
+
+  const avg = Math.round((r.subtotalMin + r.subtotalMax) / 2);
+
+  return {
+    svcLabel:  svc.label,
+    svcImage:  svc.image,
+    paintType: PAINT_TYPES.find(p => p.key === paintType)?.label ?? paintType,
+    tier, city,
+    paintable,
+    carpetArea: carpet,
+    min: r.subtotalMin,
+    max: r.subtotalMax,
+    avg,
+  };
+}
+
+/* ── Primitives ──────────────────────────────────────────────────────────── */
+const Eyebrow = ({ text }) => (
+  <div className="flex items-center gap-3 mb-4">
+    <span className="w-6 h-px flex-shrink-0" style={{ background: GOLD }} />
+    <span className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
+  </div>
+);
+
+function WaIcon({ size = 4 }) {
+  return (
+    <svg className={`w-${size} h-${size} fill-current flex-shrink-0`} viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  );
+}
+
+/* ── City dropdown — Calyco style ────────────────────────────────────────── */
+function CitySelect({ value, onChange }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (textureDropdownRef.current && !textureDropdownRef.current.contains(event.target)) {
-        setIsTextureDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    const h = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
   }, []);
 
-  const selectedTextureDetails = textureMap[selectedTexture] || textureOptions[0];
+  return (
+    <div ref={ref} className="relative">
+      <button type="button" onClick={() => setOpen(v => !v)}
+        className="w-full flex items-center justify-between gap-3 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] font-medium hover:border-[#F0C85A]/50 focus:border-[#F0C85A] focus:outline-none transition-colors">
+        <span className="flex items-center gap-2.5">
+          <svg className="w-4 h-4 text-[#493657] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          {value}
+        </span>
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.18 }}>
+          <svg className="w-4 h-4 text-[#0F1221]/25" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </motion.span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0, y: -6, scaleY: 0.96 }} animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -6, scaleY: 0.96 }} transition={{ duration: 0.14 }}
+            style={{ transformOrigin: 'top' }}
+            className="absolute top-full left-0 right-0 mt-1.5 bg-white rounded-2xl shadow-[0_16px_48px_rgba(15,18,33,0.12)] border border-[#0F1221]/6 z-30 max-h-52 overflow-y-auto">
+            {CITIES.map(c => (
+              <button key={c} type="button" onClick={() => { onChange(c); setOpen(false); }}
+                className={`w-full text-left px-5 py-2.5 text-[13px] transition-colors ${
+                  c === value
+                    ? 'bg-[#F0C85A]/12 text-[#0F1221] font-bold'
+                    : 'text-[#0F1221]/60 hover:bg-[#FAFAF8] font-medium'
+                }`}>
+                {c}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
-  // Paint products data
-  const paintProducts = {
-    interior: {
-      premium: {
-        name: 'Premium Interior Emulsion',
-        tagline: 'Low Sheen Finish',
-        pricePerLitre: 600,
-        coverage: 160,
-        image: '/Assets/Product Images/Premium Interior Emulsion/premium-interior-bucket-transparent.webp',
-        packs: [
-          { size: 1, price: 600 },
-          { size: 4, price: 1700 },
-          { size: 10, price: 4100 },
-          { size: 20, price: 8000 }
-        ]
-      },
-      luxury: {
-        name: 'Luxury Interior Emulsion',
-        tagline: 'Pearl Finish',
-        pricePerLitre: 800,
-        coverage: 160,
-        image: '/Assets/Product Images/Luxury Interior Emulsion/luxury-interior-bucket-transparent.webp',
-        packs: [
-          { size: 1, price: 800 },
-          { size: 4, price: 2200 },
-          { size: 10, price: 5200 },
-          { size: 20, price: 9700 }
-        ]
-      }
-    },
-    exterior: {
-      premium: {
-        name: 'Premium Exterior Emulsion',
-        tagline: 'Matte Finish',
-        pricePerLitre: 600,
-        coverage: 140,
-        image: '/Assets/Product Images/Premium Exterior Emulsion/premium-exterior-bucket-transparent.webp',
-        packs: [
-          { size: 1, price: 600 },
-          { size: 4, price: 1700 },
-          { size: 10, price: 4100 },
-          { size: 20, price: 8000 }
-        ]
-      },
-      luxury: {
-        name: 'Luxury Exterior Emulsion',
-        tagline: 'High Sheen Finish',
-        pricePerLitre: 800,
-        coverage: 140,
-        image: '/Assets/Product Images/Luxury Exterior Emulsion/luxury-exterior-bucket-transparent.webp',
-        packs: [
-          { size: 1, price: 800 },
-          { size: 4, price: 2200 },
-          { size: 10, price: 5200 },
-          { size: 20, price: 9700 }
-        ]
-      }
-    }
+/* ── Step 1 — Service + Carpet area + Paint type ────────────────────────── */
+function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpetArea, paintType, setPaintType, onNext }) {
+  const currentSvc    = CALC_SERVICES.find(s => s.key === serviceKey);
+  const showPaintType = currentSvc?.showPaintType ?? false;
+  const paintable     = carpetArea && parseFloat(carpetArea) > 0
+    ? toPaintable(parseFloat(carpetArea)).toLocaleString()
+    : null;
+
+  return (
+    <div className="p-6 sm:p-8 space-y-7">
+
+      {/* City */}
+      <div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-2">Your city</p>
+        <CitySelect value={city} onChange={setCity} />
+      </div>
+
+      {/* Service category cards */}
+      <div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">What do you want to paint?</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+          {CALC_SERVICES.map(svc => {
+            const active = serviceKey === svc.key;
+            return (
+              <button key={svc.key} onClick={() => setServiceKey(svc.key)}
+                className={`group flex flex-row sm:flex-col overflow-hidden rounded-2xl transition-all duration-200 text-left focus:outline-none ${
+                  active
+                    ? 'ring-[3px] ring-[#F0C85A] shadow-[0_8px_28px_rgba(240,200,90,0.3)]'
+                    : 'ring-1 ring-[#0F1221]/8 hover:ring-[#0F1221]/20 hover:shadow-sm'
+                }`}>
+                <div className="relative overflow-hidden flex-shrink-0 w-28 self-stretch sm:w-auto sm:self-auto sm:aspect-[4/3]">
+                  <img src={svc.image} alt={svc.label}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className={`absolute inset-0 transition-all duration-200 ${active ? 'bg-[#F0C85A]/10' : 'bg-gradient-to-t from-[#0F1221]/55 to-transparent'}`} />
+                  {active
+                    ? <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/55 to-transparent" />
+                    : null}
+                  {/* Checkmark */}
+                  <AnimatePresence>
+                    {active && (
+                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 22 }}
+                        className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full flex items-center justify-center shadow-md"
+                        style={{ background: GOLD }}>
+                        <svg className="w-3 h-3 text-[#0F1221]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <span className="absolute bottom-2 left-2.5 text-[9px] font-bold text-white/80 drop-shadow">
+                    From {svc.fromPrice}
+                  </span>
+                </div>
+                {/* Text row */}
+                <div className={`flex-1 flex flex-col justify-center px-3.5 py-3 sm:px-3 sm:pt-2.5 sm:pb-3 transition-colors duration-200 ${active ? 'bg-[#FFF8DC]' : 'bg-white'}`}>
+                  <p className="text-[13px] sm:text-[12px] font-bold leading-tight text-[#0F1221]">{svc.label}</p>
+                  <p className="text-[11px] sm:text-[10px] font-light text-[#0F1221]/45 mt-0.5 leading-snug">{svc.desc}</p>
+                </div>
+                {/* Gold bottom accent bar */}
+                <div className={`hidden sm:block h-[3px] transition-all duration-200 ${active ? 'opacity-100' : 'opacity-0'}`} style={{ background: GOLD }} />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Carpet area input */}
+      <div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">Carpet area of your house</p>
+        <div className="relative mb-2">
+          <input
+            type="number" min="1" value={carpetArea}
+            onChange={e => setCarpetArea(e.target.value)}
+            placeholder="e.g. 850"
+            className="w-full bg-[#FAFAF8] border-2 border-[#0F1221]/10 focus:border-[#F0C85A] rounded-2xl px-5 py-4 text-[1.6rem] font-light text-[#0F1221] pr-24 focus:outline-none transition-colors placeholder:text-[#0F1221]/18 leading-none"
+          />
+          <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-[#0F1221]/30 uppercase tracking-wider">sq ft</span>
+        </div>
+        {/* Live paintable preview */}
+        <AnimatePresence>
+          {paintable && (
+            <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              className="text-[12px] text-[#0F1221]/40 font-light mb-3">
+              Paintable wall area for estimate:&nbsp;
+              <span className="font-semibold text-[#0F1221]/65">~{paintable} sq ft</span>
+              <span className="text-[#0F1221]/25"> (carpet × 3.3)</span>
+            </motion.p>
+          )}
+        </AnimatePresence>
+        {/* Quick-fill shortcuts */}
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0F1221]/25 mb-2">Quick fill</p>
+        <div className="flex gap-2 flex-wrap">
+          {BHK_SIZES.map(b => (
+            <button key={b.key} type="button" onClick={() => setCarpetArea(String(b.carpet))}
+              className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold border transition-all duration-150 ${
+                carpetArea === String(b.carpet)
+                  ? 'border-[#F0C85A] bg-[#F0C85A]/10 text-[#0F1221]'
+                  : 'border-[#0F1221]/8 bg-[#F7F6F4] text-[#0F1221]/50 hover:border-[#0F1221]/18'
+              }`}>
+              {b.label} <span className="font-light opacity-60">~{b.carpet}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Paint type — only for services that have this distinction */}
+      <AnimatePresence>
+        {showPaintType && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.22 }} className="overflow-hidden">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">Type of painting</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {PAINT_TYPES.map(pt => {
+                const active = paintType === pt.key;
+                return (
+                  <button key={pt.key} onClick={() => setPaintType(pt.key)}
+                    className={`relative flex items-start gap-3 px-4 py-4 rounded-2xl border-2 text-left transition-all duration-200 overflow-hidden ${
+                      active
+                        ? 'border-[#F0C85A] bg-[#0F1221] shadow-[0_4px_18px_rgba(240,200,90,0.22)]'
+                        : 'border-[#0F1221]/8 bg-white hover:border-[#0F1221]/20 hover:shadow-sm'
+                    }`}>
+                    {/* Left accent stripe */}
+                    <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-xl transition-all ${active ? 'opacity-100' : 'opacity-0'}`}
+                      style={{ background: GOLD }} />
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${active ? '' : 'bg-[#0F1221]/6'}`}
+                      style={active ? { background: 'rgba(240,200,90,0.15)' } : {}}>
+                      <div className={`w-2.5 h-2.5 rounded-full transition-all ${active ? '' : 'bg-[#0F1221]/20'}`}
+                        style={active ? { background: GOLD } : {}} />
+                    </div>
+                    <div className="min-w-0">
+                      <p className={`text-[13px] font-semibold leading-tight ${active ? 'text-white' : 'text-[#0F1221]'}`}>{pt.label}</p>
+                      <p className={`text-[11px] font-light mt-0.5 leading-snug ${active ? 'text-white/50' : 'text-[#0F1221]/40'}`}>{pt.desc}</p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Next */}
+      <div className="flex justify-end pt-1">
+        <button onClick={onNext}
+          className="flex items-center gap-2 px-7 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 shadow-lg"
+          style={{ background: DARK }}>
+          Continue
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Step 2 — Preference ─────────────────────────────────────────────────── */
+function Step2({ preference, setPreference, onNext, onBack }) {
+  return (
+    <div className="p-6 sm:p-8">
+      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-1.5">Finish quality</p>
+      <p className="text-[22px] font-light text-[#0F1221] tracking-tight mb-6">How would you describe your preference?</p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        {PREFERENCES.map(pref => {
+          const active = preference === pref.key;
+          return (
+            <button key={pref.key} onClick={() => setPreference(pref.key)}
+              className={`text-left rounded-2xl border-2 transition-all duration-300 focus:outline-none flex flex-col ${
+                active
+                  ? 'border-[#F0C85A]'
+                  : 'border-[#0F1221]/8 hover:border-[#0F1221]/20'
+              }`}
+              style={active ? { boxShadow: `0 8px 32px ${pref.glowColor}, 0 2px 8px rgba(240,200,90,0.18)` } : {}}>
+
+              {/* Gradient header — own overflow-hidden prevents sub-pixel gap */}
+              <div className="relative px-5 pt-5 pb-8 rounded-t-[14px] overflow-hidden flex-shrink-0"
+                style={{ background: pref.gradient }}>
+
+                {/* Diagonal shine overlay */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 45%, transparent 100%)' }} />
+
+                {/* Top-right radial glow */}
+                <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full pointer-events-none opacity-30"
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%)' }} />
+
+                {/* Wave at bottom */}
+                <svg className="absolute bottom-0 left-0 w-full pointer-events-none" viewBox="0 0 300 22"
+                  preserveAspectRatio="none" style={{ height: 22 }}>
+                  <path d="M0,11 C80,22 220,0 300,11 L300,22 L0,22 Z" fill="white" />
+                </svg>
+
+                <div className="flex items-start justify-between gap-2 relative z-10 mb-1.5">
+                  <p className="text-white text-[17px] font-semibold tracking-tight drop-shadow-sm">{pref.label}</p>
+                  {pref.popular
+                    ? <span className="text-[7px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex-shrink-0 shadow-sm"
+                        style={{ background: GOLD, color: DARK }}>Popular</span>
+                    : <span className="text-[9px] font-light text-white/50">{pref.tag}</span>
+                  }
+                </div>
+                <p className="text-white/65 text-[11px] leading-snug relative z-10">{pref.tagline}</p>
+              </div>
+
+              {/* Feature list */}
+              <div className="bg-white px-4 py-4 space-y-2.5 rounded-b-[14px] flex-1">
+                {pref.features.map(f => (
+                  <div key={f} className="flex items-center gap-2.5">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: DARK }}>
+                      <svg className="w-3 h-3" fill="none" stroke={GOLD} strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-[12px] text-[#0F1221]/70 font-light">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="flex items-center justify-between border-t border-[#0F1221]/6 pt-5">
+        <button onClick={onBack}
+          className="flex items-center gap-1.5 text-[13px] font-light text-[#0F1221]/35 hover:text-[#0F1221]/65 transition-colors">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          Back
+        </button>
+        <button onClick={onNext}
+          className="flex items-center gap-2 px-7 py-3 rounded-full text-[13px] font-bold text-white transition-all hover:opacity-90 shadow-lg"
+          style={{ background: DARK }}>
+          Continue
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Step 3 — Contact + Upload ───────────────────────────────────────────── */
+function Step3({ name, setName, phone, setPhone, city, setCity, files, setFiles, onSubmit, onBack, submitting }) {
+  const fileRef  = useRef(null);
+  const valid    = phone.replace(/\D/g, '').length >= 10;
+  const [sizeErr, setSizeErr] = useState('');
+
+  const handleFiles = (incoming) => {
+    setSizeErr('');
+    const arr   = Array.from(incoming);
+    const tooBig = arr.filter(f => f.size > MAX_FILE_MB * 1024 * 1024);
+    if (tooBig.length) setSizeErr(`${tooBig.map(f => f.name).join(', ')} exceed ${MAX_FILE_MB} MB and were skipped.`);
+    const ok = arr.filter(f => f.size <= MAX_FILE_MB * 1024 * 1024);
+    setFiles(prev => [...prev, ...ok].slice(0, MAX_FILES));
   };
 
-  const TEXTURE_PRICE_PER_SQFT = 60;
-  const BOOKING_AMOUNT = 99;
+  const removeFile = (i) => setFiles(prev => prev.filter((_, idx) => idx !== i));
 
-  // Helper function to find Shopify variant ID from catalog
-  const findVariantId = (productSlug, size, finish) => {
-    try {
-      // Map budget calculator product types to catalog product slugs
-      // Budget Calculator Logic:
-      // - interior.premium = "Premium Interior Emulsion" (Low Sheen) → Premium-Interior-Emulsion
-      // - interior.luxury = "Luxury Interior Emulsion" (Pearl) → Interior-Latex-Paint (Pearl)
-      // - exterior.premium = "Premium Exterior Emulsion" (Matte) → Premium-Exterior-Emulsion
-      // - exterior.luxury = "Luxury Exterior Emulsion" (High Sheen) → Exterior-Latex-Paint (High Sheen)
-      const productMap = {
-        'interior-premium': 'Premium-Interior-Emulsion',
-        'interior-luxury': 'Interior-Latex-Paint',
-        'exterior-premium': 'Premium-Exterior-Emulsion',
-        'exterior-luxury': 'Exterior-Latex-Paint'
-      };
-
-      const catalogSlug = productMap[productSlug];
-      if (!catalogSlug) {
-        console.warn('[BudgetCalculator] No catalog mapping for:', productSlug);
-        return null;
-      }
-
-      const product = catalogProducts.find(p => p.slug === catalogSlug || p.id === catalogSlug);
-      if (!product) {
-        console.warn('[BudgetCalculator] Product not found in catalog:', catalogSlug);
-        return null;
-      }
-
-      // Normalize size (remove 'L' suffix if present)
-      const normalizedSize = size.toString().replace('L', '').trim() + 'L';
-
-      // Normalize finish - handle different finish name formats
-      let normalizedFinish = finish;
-      if (finish === 'Low Sheen') {
-        normalizedFinish = 'Low Sheen';
-      } else if (finish === 'Pearl' || finish.includes('Pearl')) {
-        normalizedFinish = 'Pearl';
-      } else if (finish === 'Matte' || finish.includes('Matte')) {
-        normalizedFinish = 'Matte Finish';
-      } else if (finish === 'High Sheen' || finish.includes('High Sheen')) {
-        normalizedFinish = 'High Sheen Finish';
-      }
-
-      // Look up variant ID in priceByFinish structure
-      const variantData = product.priceByFinish?.[normalizedFinish]?.[normalizedSize];
-      const variantId = variantData?.variantId || variantData?.variantID;
-
-      if (!variantId) {
-        console.warn('[BudgetCalculator] Variant ID not found for:', {
-          productSlug: productSlug,
-          catalogSlug: catalogSlug,
-          size: normalizedSize,
-          finish: normalizedFinish,
-          availableFinishes: Object.keys(product.priceByFinish || {}),
-          availableSizes: product.priceByFinish?.[normalizedFinish] ? Object.keys(product.priceByFinish[normalizedFinish]) : []
-        });
-      }
-
-      return variantId || null;
-    } catch (error) {
-      console.error('[BudgetCalculator] Error finding variant ID:', error);
-      return null;
-    }
-  };
-
-  // Optimize pack selection for paint
-  const optimizePacks = (litresNeeded, packs) => {
-    const sortedPacks = [...packs].sort((a, b) => b.size - a.size);
-    let remaining = litresNeeded;
-    const selection = [];
-
-    for (const pack of sortedPacks) {
-      const qty = Math.floor(remaining / pack.size);
-      if (qty > 0) {
-        selection.push({ ...pack, qty });
-        remaining -= qty * pack.size;
-      }
-    }
-
-    if (remaining > 0) {
-      const smallestPack = sortedPacks[sortedPacks.length - 1];
-      const existing = selection.find(s => s.size === smallestPack.size);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        selection.push({ ...smallestPack, qty: 1 });
-      }
-    }
-
-    const totalLitres = selection.reduce((sum, pack) => sum + pack.size * pack.qty, 0);
-    const totalCost = selection.reduce((sum, pack) => sum + pack.price * pack.qty, 0);
-
-    return { selection, totalLitres, totalCost };
-  };
-
-  // Calculate paint budget
-  const calculatePaintBudget = () => {
-    if (!carpetArea || parseFloat(carpetArea) <= 0) {
-      alert('Please enter a valid carpet area');
-      return;
-    }
-
-    setIsCalculating(true);
-
-    setTimeout(() => {
-      const carpetAreaNum = parseFloat(carpetArea);
-      const paintableArea = carpetAreaNum * 3.5;
-      const selectedProduct = paintProducts[paintCategory][paintProductType];
-
-      const coats = 2;
-      const totalCoverage = paintableArea * coats;
-      const litresNeeded = totalCoverage / selectedProduct.coverage;
-      const litresWithWastage = litresNeeded * 1.1;
-      const packSelection = optimizePacks(litresWithWastage, selectedProduct.packs);
-
-      setResults({
-        type: 'paint',
-        carpetArea: carpetAreaNum,
-        paintableArea: paintableArea,
-        litresNeeded: litresWithWastage,
-        packSelection: packSelection,
-        totalCost: packSelection.totalCost,
-        totalLitres: packSelection.totalLitres,
-        product: selectedProduct
-      });
-
-      setIsCalculating(false);
-    }, 300);
-  };
-
-  // Calculate texture budget
-  const calculateTextureBudget = () => {
-    if (!paintableArea || parseFloat(paintableArea) <= 0) {
-      alert('Please enter a valid paintable area');
-      return;
-    }
-
-    setIsCalculating(true);
-
-    setTimeout(() => {
-      const areaNum = parseFloat(paintableArea);
-      const totalCost = areaNum * TEXTURE_PRICE_PER_SQFT;
-      const selectedProduct = textureMap[selectedTexture] || textureOptions[0];
-
-      if (!selectedProduct) {
-        setIsCalculating(false);
-        return;
-      }
-
-      setResults({
-        type: 'texture',
-        paintableArea: areaNum,
-        totalCost: totalCost,
-        pricePerSqft: TEXTURE_PRICE_PER_SQFT,
-        texture: selectedProduct
-      });
-
-      setIsCalculating(false);
-    }, 300);
-  };
-
-  const handleCalculate = () => {
-    if (calculatorType === 'paint') {
-      calculatePaintBudget();
-    } else {
-      calculateTextureBudget();
-    }
-  };
-
-  // Reset when switching calculator type
-  const handleCalculatorTypeChange = (type) => {
-    setCalculatorType(type);
-    setResults(null);
-    setCarpetArea('');
-    setPaintableArea('');
-  };
-
-  // Handle booking modal
-  const handleBookNow = () => {
-    setShowBookingModal(true);
-  };
-
-  const handleBookingSubmit = (e) => {
+  const onDrop = (e) => {
     e.preventDefault();
-
-    if (!bookingData.name || !bookingData.phone || !bookingData.email) {
-      alert('Please fill all fields');
-      return;
-    }
-
-    /* Build WhatsApp message with booking details */
-    const msg = encodeURIComponent(
-      `Hi Calyco! I'd like to book a site visit.\n\n` +
-      `Name: ${bookingData.name}\n` +
-      `Phone: ${bookingData.phone}\n` +
-      `Email: ${bookingData.email}\n\n` +
-      `Booking amount: ₹${BOOKING_AMOUNT}\n` +
-      `Please arrange a call-back at your earliest.`
-    );
-
-    setShowBookingModal(false);
-    setShowConfirmation(true);
-    setBookingData({ name: '', phone: '', email: '' });
-
-    /* Open WhatsApp with pre-filled message */
-    window.open(`https://wa.me/918796777399?text=${msg}`, '_blank');
-
-    setTimeout(() => setShowConfirmation(false), 5000);
-  };
-
-  // Handle Buy Now button click for paint
-  const handleBuyNow = () => {
-    setShowColorModal(true);
-  };
-
-  // Cart popup handlers
-  const closeCartPopup = () => {
-    setCartPopup({ isVisible: false, item: null });
-  };
-
-  const handleContinueShopping = () => {
-    setCartPopup({ isVisible: false, item: null });
-    // Stay on current page
-  };
-
-  const handleCheckout = async () => {
-    setCartPopup({ isVisible: false, item: null });
-    await goToCheckout();
-  };
-
-  // Handle color selection and add to cart
-  const handleColorSelect = async (selectedColor) => {
-    if (!results || !results.packSelection) {
-      alert('Error: No pack selection found');
-      return;
-    }
-
-    try {
-      // Add each pack to cart with selected color
-      for (const pack of results.packSelection.selection) {
-        const product = results.product;
-
-        // Create product object for cart
-        const cartProduct = {
-          id: `${paintCategory}-${paintProductType}`,
-          name: product.name,
-          display_name: product.name,
-          slug: `${paintCategory}-${paintProductType}`,
-          image: product.image,
-          bucketImage: product.image,
-          price: pack.price
-        };
-
-        // Determine sheen/finish based on product
-        let sheen = product.tagline || '';
-        if (product.tagline.includes('Low Sheen')) {
-          sheen = 'Low Sheen';
-        } else if (product.tagline.includes('Pearl')) {
-          sheen = 'Pearl';
-        } else if (product.tagline.includes('Matte')) {
-          sheen = 'Matte';
-        } else if (product.tagline.includes('High Sheen')) {
-          sheen = 'High Sheen';
-        }
-
-        // Find Shopify variant ID for this specific size and finish
-        const variantId = findVariantId(
-          `${paintCategory}-${paintProductType}`,
-          `${pack.size}L`,
-          sheen
-        );
-
-        if (!variantId) {
-          alert(`Unable to add ${pack.size}L pack to cart. Missing product variant. Please contact support.`);
-          continue; // Skip this pack but continue with others
-        }
-
-        // Add to cart with proper color data and variant ID
-        await addToCart(
-          cartProduct,
-          sheen,
-          `${pack.size}L`,
-          pack.qty,
-          pack.price,
-          {
-            name: selectedColor.name,
-            hex: selectedColor.hex,
-            code: selectedColor.code, // Fixed: use actual color code, not hex
-            family: selectedColor.family
-          },
-          'paint',
-          {
-            variantId: variantId
-          }
-        );
-      }
-
-      // Close color selector modal
-      setShowColorModal(false);
-
-      // Show cart popup with the first added item
-      const firstPack = results.packSelection.selection[0];
-      setCartPopup({
-        isVisible: true,
-        item: {
-          name: results.product?.name,
-          hex: selectedColor.hex,
-          colorName: selectedColor.name,
-          price: `₹${firstPack.price}`
-        }
-      });
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-      alert('Error adding items to cart. Please try again.');
-    }
+    handleFiles(e.dataTransfer.files);
   };
 
   return (
-    <div className="min-h-screen">
-      <SEO
-        title="Paint Budget Calculator - Calyco Paints"
-        description="Estimate your painting costs accurately with the Calyco Budget Calculator. Get quotes for interior, exterior, and textured finishes."
-        url="https://calycopaints.com/budget-calculator"
-      />
-      {/* Header Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F5FF] via-[#EFE9FC] to-[#F5F0FB]" />
-        <div className="absolute -top-16 -left-20 w-64 h-64 rounded-full bg-[#432452]/10 blur-3xl" />
-        <div className="absolute top-24 right-10 w-48 h-48 rounded-full bg-[#998850]/15 blur-[140px]" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#0F1221]/40">Calyco Tools</span>
-            <div className="mt-2 mb-5 h-[1px] w-12 bg-[#0F1221]/10 mx-auto" />
-            <h1 className="text-3xl md:text-4xl font-light tracking-[-0.01em] mb-4 text-[#0F1221]">
-              <span className="text-[#998850]">Budget</span> Calculator
-            </h1>
-            <p className="text-base sm:text-lg text-[#0F1221]/55 font-light max-w-3xl mx-auto leading-[1.75]">
-              Get instant, accurate estimates for paint or texture services with Calyco&apos;s planning toolkit.
-              Tailored to your space. Transparent by design.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+    <div className="p-6 sm:p-8">
+      <button onClick={onBack}
+        className="flex items-center gap-1.5 text-[13px] font-light text-[#0F1221]/35 hover:text-[#0F1221]/65 transition-colors mb-8">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Back
+      </button>
 
-      <div className="bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Calculator Type Selector */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6"
-        >
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Choose Calculator Type</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Paint Calculator */}
-              <button
-                type="button"
-                onClick={() => handleCalculatorTypeChange('paint')}
-                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'paint'
-                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
-                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
-                  }`}
-              >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'paint' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
-                  <svg className={`w-6 h-6 ${calculatorType === 'paint' ? 'text-white' : 'text-[#0F1221]/50'}`} fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-                  </svg>
-                </div>
-                <p className={`text-base font-bold mb-1 ${calculatorType === 'paint' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
-                  Paint Calculator
-                </p>
-                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
-                  Interior &amp; exterior painting
-                </p>
-                {calculatorType === 'paint' && (
-                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                  </div>
-                )}
-              </button>
-
-              {/* Texture Calculator */}
-              <button
-                type="button"
-                onClick={() => handleCalculatorTypeChange('texture')}
-                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'texture'
-                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
-                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
-                  }`}
-              >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'texture' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
-                  <svg className={`w-6 h-6 ${calculatorType === 'texture' ? 'text-white' : 'text-[#0F1221]/50'}`} fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
-                  </svg>
-                </div>
-                <p className={`text-base font-bold mb-1 ${calculatorType === 'texture' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
-                  Texture Calculator
-                </p>
-                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
-                  Textured &amp; designer wall finishes
-                </p>
-                {calculatorType === 'texture' && (
-                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                  </div>
-                )}
-              </button>
-
-              {/* Service Cost Calculator */}
-              <button
-                type="button"
-                onClick={() => handleCalculatorTypeChange('service')}
-                className={`relative p-6 rounded-2xl border-2 transition-all text-left ${calculatorType === 'service'
-                  ? 'border-[#493657] bg-[#493657]/5 shadow-sm'
-                  : 'border-[#0F1221]/10 bg-white hover:border-[#493657]/30 hover:bg-[#493657]/3'
-                  }`}
-              >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${calculatorType === 'service' ? 'bg-[#493657]' : 'bg-[#0F1221]/8'}`}>
-                  <Calculator className={`w-6 h-6 ${calculatorType === 'service' ? 'text-white' : 'text-[#0F1221]/50'}`} />
-                </div>
-                <p className={`text-base font-bold mb-1 ${calculatorType === 'service' ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
-                  Service Cost Calculator
-                </p>
-                <p className="text-xs text-[#0F1221]/50 font-light leading-[1.5]">
-                  Painting, waterproofing &amp; grouting
-                </p>
-                {calculatorType === 'service' && (
-                  <div className="absolute top-3 right-3 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                  </div>
-                )}
-              </button>
-            </div>
+      <div className="max-w-sm mx-auto">
+        <div className="text-center mb-8">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-[#25D366]"
+            style={{ background: 'rgba(37,211,102,0.1)' }}>
+            <WaIcon size={7} />
           </div>
-        </motion.div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.25em] mb-2" style={{ color: PURPLE }}>Almost there</p>
+          <h2 className="text-[22px] font-light text-[#0F1221] tracking-tight mb-1">Get your estimate<br />on WhatsApp</h2>
+          <p className="text-[13px] text-[#0F1221]/40 font-light">We'll send you a detailed quote instantly.</p>
+        </div>
 
-        {/* Calculator Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Calculator Form */}
-          <div className="lg:col-span-2 space-y-6">
-            {calculatorType === 'paint' ? (
-              // PAINT CALCULATOR
-              <motion.div
-                key="paint-calculator"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
-              >
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Paint Calculator</h2>
+        <div className="space-y-3 mb-5">
+          <input type="text" placeholder="Your name" value={name}
+            onChange={e => setName(e.target.value)}
+            className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
 
-                <div className="space-y-6">
-                  {/* Carpet Area */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Carpet Area (Sq.Ft) *
-                    </label>
-                    <input
-                      type="number"
-                      step="0.1"
-                      value={carpetArea}
-                      onChange={(e) => setCarpetArea(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent text-gray-900"
-                      placeholder="Enter carpet area"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">
-                      The floor area of your space (excluding walls)
-                    </p>
-                  </div>
+          <div className="flex bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl overflow-hidden focus-within:border-[#F0C85A] transition-colors">
+            <div className="flex items-center gap-1 px-4 bg-[#0F1221]/4 border-r border-[#0F1221]/8 text-[13px] font-semibold text-[#0F1221]/60 flex-shrink-0">
+              +91
+              <svg className="w-3 h-3 text-[#0F1221]/25" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <input type="tel" placeholder="Phone number" value={phone}
+              onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+              className="flex-1 bg-transparent px-4 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none" />
+          </div>
 
-                  {/* Category Selection */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      Select Category
-                    </label>
-                    <div className="grid grid-cols-2 gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setPaintCategory('interior')}
-                        className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'interior'
-                          ? 'border-[#493657] bg-[#493657]/5'
-                          : 'border-gray-200 bg-white hover:border-gray-300'
-                          }`}
-                      >
-                        <div className="text-center">
-                          <div className="text-3xl mb-2">🏠</div>
-                          <p className={`font-semibold ${paintCategory === 'interior' ? 'text-[#493657]' : 'text-gray-700'}`}>
-                            Interior
-                          </p>
-                        </div>
-                        {paintCategory === 'interior' && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                        )}
-                      </button>
+          <CitySelect value={city} onChange={setCity} />
+        </div>
 
-                      <button
-                        type="button"
-                        onClick={() => setPaintCategory('exterior')}
-                        className={`relative p-4 rounded-lg border-2 transition-all ${paintCategory === 'exterior'
-                          ? 'border-[#493657] bg-[#493657]/5'
-                          : 'border-gray-200 bg-white hover:border-gray-300'
-                          }`}
-                      >
-                        <div className="text-center">
-                          <div className="text-3xl mb-2">🌆</div>
-                          <p className={`font-semibold ${paintCategory === 'exterior' ? 'text-[#493657]' : 'text-gray-700'}`}>
-                            Exterior
-                          </p>
-                        </div>
-                        {paintCategory === 'exterior' && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                        )}
-                      </button>
-                    </div>
-                  </div>
+        {/* ── File / Video Upload ─────────────────────────────────────────── */}
+        <div className="mb-6">
+          <p className="text-[11px] font-semibold text-[#0F1221]/50 uppercase tracking-[0.18em] mb-2">
+            Photos / Videos <span className="normal-case font-normal tracking-normal text-[#0F1221]/30">(optional, up to {MAX_FILES} files · {MAX_FILE_MB} MB each)</span>
+          </p>
 
-                  {/* Product Type Selection */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      Choose Product
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {Object.entries(paintProducts[paintCategory]).map(([key, product]) => (
-                        <button
-                          key={key}
-                          type="button"
-                          onClick={() => setPaintProductType(key)}
-                          className={`relative p-4 rounded-lg border-2 transition-all ${paintProductType === key
-                            ? 'border-[#493657] bg-[#493657]/5'
-                            : 'border-gray-200 bg-white hover:border-gray-300'
-                            }`}
-                        >
-                          <div className="flex flex-col items-center">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="w-20 h-20 object-contain mb-2"
-                            />
-                            <p className={`font-semibold text-sm ${paintProductType === key ? 'text-[#493657]' : 'text-gray-700'}`}>
-                              {key === 'premium' ? 'Premium' : 'Luxury'}
-                            </p>
-                            <p className="text-xs text-gray-500 mt-1">{product.tagline}</p>
-                            <p className="text-sm font-bold text-gray-900 mt-2">₹{product.pricePerLitre}/L</p>
-                          </div>
-                          {paintProductType === key && (
-                            <div className="absolute top-2 right-2 w-5 h-5 bg-[#493657] rounded-full flex items-center justify-center">
-                              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                            </div>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          {/* Drop zone */}
+          <div
+            onDrop={onDrop}
+            onDragOver={e => e.preventDefault()}
+            onClick={() => fileRef.current.click()}
+            className="relative border-2 border-dashed rounded-2xl p-5 text-center cursor-pointer transition-all hover:border-[#F0C85A]/60 hover:bg-[#FFF9EC]/60 group"
+            style={{ borderColor: 'rgba(15,18,33,0.12)', background: '#FAFAF8' }}>
+            <input
+              ref={fileRef}
+              type="file"
+              multiple
+              accept="image/*,video/*"
+              className="hidden"
+              onChange={e => handleFiles(e.target.files)}
+            />
+            {/* Icon */}
+            <div className="w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center transition-colors group-hover:bg-[#F0C85A]/15"
+              style={{ background: 'rgba(15,18,33,0.05)' }}>
+              <svg className="w-5 h-5 text-[#0F1221]/35 group-hover:text-[#0F1221]/60 transition-colors"
+                fill="none" stroke="currentColor" strokeWidth="1.75" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+              </svg>
+            </div>
+            <p className="text-[13px] font-medium text-[#0F1221]/55">
+              Click to upload <span className="text-[#0F1221]/30 font-normal">or drag & drop</span>
+            </p>
+            <p className="text-[11px] text-[#0F1221]/30 mt-0.5">Photos or videos of your home</p>
+          </div>
 
-                  {/* Calculate Button */}
-                  <button
-                    onClick={handleCalculate}
-                    disabled={!carpetArea || isCalculating}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#493657] text-white text-base font-semibold rounded-lg hover:bg-[#362040] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
-                  >
-                    <Calculator size={20} />
-                    {isCalculating ? 'Calculating...' : 'Calculate Budget'}
-                  </button>
-                </div>
-              </motion.div>
-            ) : calculatorType === 'service' ? (
-              <motion.div
-                key="service-calculator"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <UniversalServiceCalculator />
-              </motion.div>
-            ) : (
-              // TEXTURE CALCULATOR
-              <motion.div
-                key="texture-calculator"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
-              >
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Texture Calculator</h2>
+          {/* Size error */}
+          {sizeErr && (
+            <p className="text-[11px] text-red-500 mt-1.5">{sizeErr}</p>
+          )}
 
-                <div className="space-y-6">
-                  {/* Paintable Area */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Area to be Painted with Texture (Sq.Ft) *
-                    </label>
-                    <input
-                      type="number"
-                      step="0.1"
-                      value={paintableArea}
-                      onChange={(e) => setPaintableArea(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent text-gray-900"
-                      placeholder="Enter area to be textured"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">
-                      Enter the exact wall/ceiling area you want textured
-                    </p>
-                  </div>
-
-                  {/* Texture Selection */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Choose Your Texture Finish
-                    </label>
-                    <p className="text-xs text-gray-500 mb-3">
-                      Browse our premium catalog and pick the finish you love. Every option uses the same all-inclusive ₹60/sqft rate.
-                    </p>
-                    <div className="relative" ref={textureDropdownRef}>
-                      <button
-                        type="button"
-                        onClick={() => setIsTextureDropdownOpen((prev) => !prev)}
-                        className="w-full text-left rounded-2xl border border-gray-200 bg-white shadow-sm px-4 py-3 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#493657] transition"
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="h-14 w-14 rounded-xl border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-50">
-                            {selectedTextureDetails ? (
-                              <img
-                                src={selectedTextureDetails.image}
-                                alt={selectedTextureDetails.name}
-                                className="h-full w-full object-cover"
-                              />
-                            ) : (
-                              <div className="h-full w-full bg-gray-100" />
-                            )}
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-xs uppercase tracking-[0.25em] text-gray-500 mb-1">Selected Texture</p>
-                            <p className="text-lg font-semibold text-gray-900">
-                              {selectedTextureDetails ? selectedTextureDetails.name : 'Choose a texture'}
-                            </p>
-                            <p className="text-sm text-gray-500">
-                              {selectedTextureDetails
-                                ? `${selectedTextureDetails.category} | ${selectedTextureDetails.application}`
-                                : 'Select a finish to continue'}
-                            </p>
-                          </div>
-                          <ChevronDown
-                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isTextureDropdownOpen ? 'rotate-180' : ''
-                              }`}
-                          />
-                        </div>
-                      </button>
-                      <div
-                        className={`absolute left-0 right-0 mt-3 rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 origin-top z-20 ${isTextureDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
-                          }`}
-                      >
-                        <div className="max-h-72 overflow-y-auto bg-white rounded-2xl">
-                          {textureOptions.map((texture) => {
-                            const isSelected = selectedTexture === texture.slug;
-                            return (
-                              <button
-                                type="button"
-                                key={texture.slug}
-                                onClick={() => {
-                                  setSelectedTexture(texture.slug);
-                                  setIsTextureDropdownOpen(false);
-                                }}
-                                className={`w-full flex items-center justify-between gap-3 px-4 py-3 text-left transition border-b last:border-b-0 ${isSelected ? 'bg-white ring-1 ring-[#493657]/20' : 'hover:bg-gray-50'
-                                  }`}
-                              >
-                                <div className="flex items-center gap-3">
-                                  <div className="h-12 w-12 rounded-lg overflow-hidden border border-gray-200 flex-shrink-0 bg-gray-50">
-                                    <img
-                                      src={texture.image}
-                                      alt={texture.name}
-                                      className="h-full w-full object-cover"
-                                      loading="lazy"
-                                    />
-                                  </div>
-                                  <p className="text-sm font-semibold text-gray-900">{texture.name}</p>
-                                </div>
-                                {isSelected && (
-                                  <span className="text-[#493657]">
-                                    <Check className="w-4 h-4" />
-                                  </span>
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
+          {/* File previews */}
+          {files.length > 0 && (
+            <div className="grid grid-cols-3 gap-2 mt-3">
+              {files.map((f, i) => {
+                const isImg = f.type.startsWith('image/');
+                const objUrl = isImg ? URL.createObjectURL(f) : null;
+                return (
+                  <div key={i} className="relative rounded-xl overflow-hidden border border-[#0F1221]/8 bg-[#FAFAF8] aspect-square flex items-center justify-center group">
+                    {isImg ? (
+                      <img src={objUrl} alt={f.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="flex flex-col items-center gap-1 p-2">
+                        <svg className="w-7 h-7 text-[#0F1221]/30" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round"
+                            d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+                        <p className="text-[9px] text-[#0F1221]/40 text-center leading-tight line-clamp-2">{f.name}</p>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Selected Texture Info */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5">
-                    <div className="flex items-start gap-3">
-                      <Info className="text-blue-600 flex-shrink-0 mt-1" size={22} />
-                      <div className="flex-1">
-                        <p className="text-sm text-blue-900 leading-relaxed">
-                          {selectedTextureDetails?.description ||
-                            'Once you pick a texture, we will hold your place in the schedule and a consultant will confirm the exact finish.'}
-                        </p>
-                        <p className="text-sm font-bold text-blue-900 mt-3">
-                          ₹{TEXTURE_PRICE_PER_SQFT}/sqft (complete solution)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Calculate Button */}
-                  <button
-                    onClick={handleCalculate}
-                    disabled={!paintableArea || isCalculating}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#493657] text-white text-base font-semibold rounded-lg hover:bg-[#362040] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
-                  >
-                    <Calculator size={20} />
-                    {isCalculating ? 'Calculating...' : 'Calculate Budget'}
-                  </button>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Results Section */}
-            {results && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
-              >
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Your Estimate</h2>
-
-                {results.type === 'paint' ? (
-                  // PAINT RESULTS
-                  <>
-                    {/* Summary Cards */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="bg-gray-50 rounded-lg p-4">
-                        <p className="text-xs text-gray-600 mb-1">Carpet Area</p>
-                        <p className="text-2xl font-bold text-gray-900">{results.carpetArea.toFixed(0)}</p>
-                        <p className="text-xs text-gray-500">Sq.Ft</p>
-                      </div>
-                      <div className="bg-purple-50 rounded-lg p-4">
-                        <p className="text-xs text-purple-700 mb-1">Paintable Area</p>
-                        <p className="text-2xl font-bold text-purple-900">{results.paintableArea.toFixed(0)}</p>
-                        <p className="text-xs text-[#493657]">Sq.Ft (walls & ceiling)</p>
-                      </div>
-                    </div>
-
-                    {/* Selected Product */}
-                    <div className="bg-gray-50 rounded-lg p-4 mb-6 flex items-center gap-4">
-                      <img src={results.product.image} alt={results.product.name} className="w-16 h-16 object-contain" />
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900">{results.product.name}</p>
-                        <p className="text-sm text-gray-600">{results.product.tagline}</p>
-                      </div>
-                    </div>
-
-                    {/* Pack Breakdown */}
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <h3 className="text-sm font-semibold text-gray-900 mb-3">Recommended Packs</h3>
-                      <div className="space-y-3">
-                        {results.packSelection.selection.map((pack, index) => (
-                          <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
-                            <div className="flex items-center gap-3">
-                              <img src={results.product.image} alt={results.product.name} className="w-12 h-12 object-contain" />
-                              <div>
-                                <p className="font-medium text-gray-900">{pack.size}L Pack</p>
-                                <p className="text-sm text-gray-600">Quantity: {pack.qty}</p>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="font-semibold text-gray-900">₹{(pack.price * pack.qty).toFixed(0)}</p>
-                              <p className="text-xs text-gray-500">₹{pack.price}/unit</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Total */}
-                    <div className="bg-gradient-to-r from-[#1A0B21] via-[#493657] to-[#432553] rounded-lg p-6 text-white">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-lg font-semibold">Total Estimate</span>
-                        <span className="text-3xl font-bold">₹{results.totalCost.toFixed(0)}</span>
-                      </div>
-                      <p className="text-xs text-white/80">Total Paint: {results.totalLitres}L (includes 10% wastage)</p>
-                      <button
-                        onClick={handleBuyNow}
-                        className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-white text-[#493657] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <ShoppingCart size={18} />
-                        Buy Now
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  // TEXTURE RESULTS
-                  <>
-                    {/* Summary Card */}
-                    <div className="bg-purple-50 rounded-lg p-4 mb-6">
-                      <p className="text-xs text-purple-700 mb-1">Area to be Textured</p>
-                      <p className="text-3xl font-bold text-purple-900">{results.paintableArea.toFixed(0)}</p>
-                      <p className="text-xs text-[#493657]">Sq.Ft</p>
-                    </div>
-
-                    {/* Selected Texture */}
-                    <div className="bg-gray-50 rounded-lg p-4 mb-6 flex items-center gap-4">
-                      <img src={results.texture.image} alt={results.texture.name} className="w-16 h-16 object-cover rounded" />
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900">{results.texture.name}</p>
-                        <p className="text-sm text-gray-600">{results.texture.description}</p>
-                        <p className="text-sm text-gray-700 mt-1">₹{TEXTURE_PRICE_PER_SQFT}/sqft</p>
-                      </div>
-                    </div>
-
-                    {/* Cost Breakdown */}
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Texture Area</span>
-                          <span className="font-medium text-gray-900">{results.paintableArea.toFixed(0)} sqft</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Rate per sqft</span>
-                          <span className="font-medium text-gray-900">₹{TEXTURE_PRICE_PER_SQFT}</span>
-                        </div>
-                        <div className="flex justify-between text-xs text-gray-500">
-                          <span>Includes material + labor + application</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Total Cost */}
-                    <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg p-6 text-white mb-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-lg font-semibold">Total Estimate</span>
-                        <span className="text-3xl font-bold">₹{results.totalCost.toFixed(0)}</span>
-                      </div>
-                      <p className="text-xs text-white/80">Complete texture painting solution</p>
-                    </div>
-
-                    {/* Book Now Button */}
+                    )}
+                    {/* Remove */}
                     <button
-                      onClick={handleBookNow}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-500 text-white text-lg font-bold rounded-lg hover:bg-amber-600 transition-colors shadow-lg"
-                    >
-                      <Phone size={20} />
-                      Book Now for ₹{BOOKING_AMOUNT}
+                      onClick={e => { e.stopPropagation(); removeFile(i); }}
+                      className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white text-[10px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity leading-none">
+                      ×
                     </button>
-                    <p className="text-xs text-center text-gray-500 mt-2">
-                      Pay ₹{BOOKING_AMOUNT} to confirm your slot -- fully adjustable against your final project cost.
-                    </p>
-                  </>
-                )}
-              </motion.div>
-            )}
-          </div>
-
-          {/* Right Sidebar - Info */}
-          <div className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-24"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Info className="text-blue-600" size={20} />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">How It Works</h3>
-              </div>
-
-              {calculatorType === 'paint' ? (
-                // Paint Calculator Info
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-700 font-medium mb-2">Simple Formula:</p>
-                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
-                      <p className="font-mono text-sm text-blue-900 font-semibold">
-                        Paintable Area = Carpet Area × 3.5
-                      </p>
-                    </div>
+                    {/* Size badge */}
+                    <span className="absolute bottom-1 left-1 text-[9px] bg-black/50 text-white rounded px-1 leading-4">
+                      {(f.size / (1024 * 1024)).toFixed(1)}MB
+                    </span>
                   </div>
-
-                  <div className="text-sm text-gray-600 space-y-2">
-                    <p className="font-medium text-gray-900">Why 3.5x?</p>
-                    <p className="leading-relaxed">
-                      The total paintable surface--including all walls and ceilings--is approximately 3.5 times your carpet area.
-                    </p>
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="text-sm font-medium text-gray-900 mb-2">What's Included:</p>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>2 coats recommended</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>10% wastage allowance</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Optimized pack selection</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              ) : calculatorType === 'service' ? (
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-700 font-medium mb-2">Universal Formula:</p>
-                    <div className="bg-[#FBF9F6] rounded-lg p-3 border border-[#e5e0d8]">
-                      <p className="font-mono text-sm text-[#493657] font-semibold">
-                        Quantity x city rate x multipliers + 18% GST
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-sm text-gray-600 space-y-2">
-                    <p className="font-medium text-gray-900">Built for all services</p>
-                    <p className="leading-relaxed">
-                      Select city, service category, exact service, tier and quantity to see transparent min-max pricing.
-                    </p>
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="text-sm font-medium text-gray-900 mb-2">Included in the flow:</p>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>25 cities across India -- city multipliers applied automatically</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>GST breakdown shown separately</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>BHK helper for paintable area</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Free site inspection CTA</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              ) : (
-                // Texture Calculator Info
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-700 font-medium mb-2">Simple Calculation:</p>
-                    <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
-                      <p className="font-mono text-sm text-blue-900 font-semibold">
-                        Total Cost = Area × ₹60/sqft
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="text-sm text-gray-600 space-y-2">
-                    <p className="font-medium text-gray-900">How to measure?</p>
-                    <p className="leading-relaxed">
-                      Measure the exact wall or ceiling area you want to texture. Include only the surfaces to be textured, not the entire room.
-                    </p>
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="text-sm font-medium text-gray-900 mb-2">What's Included:</p>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Premium texture material</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Professional application</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Complete labor charges</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">✓</span>
-                        <span>Surface preparation</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-4">
-                    <p className="text-xs font-semibold text-amber-900 mb-1">Booking Process:</p>
-                    <ol className="text-xs text-amber-800 space-y-1 list-decimal list-inside">
-                      <li>Pay ₹{BOOKING_AMOUNT} booking amount</li>
-                      <li>Our team will contact you</li>
-                      <li>Site visit & confirmation</li>
-                      <li>Professional application</li>
-                    </ol>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
-        {/* Site Inspection Service - Delhi NCR */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mt-8 rounded-2xl px-5 py-6 text-white"
-          style={{
-            background: 'linear-gradient(135deg, #1A0B21 0%, #432553 55%, #5B2F7A 100%)'
-          }}
-        >
-          <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-6 text-center md:text-left">
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 flex-1">
-              <div className="w-14 h-14 bg-white/15 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <p className="text-lg md:text-xl font-semibold leading-tight text-white/95">
-                Book a site visit for ₹{BOOKING_AMOUNT} and get precise estimates for your painting project.
-              </p>
-            </div>
-            <button
-              onClick={handleBookNow}
-              className="w-full md:w-auto bg-white text-[#432553] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Book Site Visit
-            </button>
-          </div>
-        </motion.div>
+        <button onClick={onSubmit} disabled={!valid || submitting}
+          className={`w-full py-4 rounded-full text-[14px] font-bold transition-all flex items-center justify-center gap-2 ${
+            valid && !submitting
+              ? 'text-[#0F1221] shadow-lg shadow-[#F0C85A]/25 hover:opacity-90'
+              : 'bg-[#0F1221]/8 text-[#0F1221]/20 cursor-not-allowed'
+          }`}
+          style={valid && !submitting ? { background: GOLD } : {}}>
+          {submitting ? (
+            <>
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+              </svg>
+              Processing…
+            </>
+          ) : 'See My Estimate →'}
+        </button>
 
-        {/* Understanding Painting Costs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-8"
-        >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Understanding Your Painting Investment</h2>
+        <p className="text-center text-[11px] text-[#0F1221]/20 mt-4 font-light">
+          No spam, ever. We respect your privacy.
+        </p>
+      </div>
+    </div>
+  );
+}
 
-          <div className="prose prose-sm max-w-none">
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Planning to transform your home with fresh paint or protective wall finishes? Understanding the cost structure is essential for smart budgeting. Our transparent calculator helps you estimate expenses accurately, ensuring no surprises during your painting project.
-            </p>
+/* ── Animated price counter ──────────────────────────────────────────────── */
+function CountPrice({ target }) {
+  const ref    = useRef(null);
+  const mv     = useMotionValue(0);
+  const [disp, setDisp] = useState('₹0');
+  const inView = useInView(ref, { once: true });
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-purple-50 rounded-lg p-6 border border-purple-100">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-[#493657] rounded-lg flex items-center justify-center">
-                    <span className="text-xl">🎨</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900">Paint Calculator</h3>
-                </div>
-                <p className="text-sm text-gray-700 mb-3">
-                  Perfect for interior and exterior painting projects. Get instant estimates based on your carpet area, paint quality, and coverage requirements.
-                </p>
-                <div className="text-xs text-gray-600 space-y-1">
-                  <p>✓ Premium & Luxury options</p>
-                  <p>✓ Optimized pack selection</p>
-                  <p>✓ Direct shop & order</p>
-                </div>
-              </div>
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(mv, target, {
+      duration: 1.4,
+      ease: 'easeOut',
+      onUpdate: v => setDisp(fmt(v)),
+    });
+    return controls.stop;
+  }, [inView, target, mv]);
 
-              <div className="bg-green-50 rounded-lg p-6 border border-green-100">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                    <span className="text-xl">🏗️</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900">Texture Calculator</h3>
-                </div>
-                <p className="text-sm text-gray-700 mb-3">
-                  Complete solution for textured wall finishes. All-inclusive pricing covers material, labor, and professional application.
-                </p>
-                <div className="text-xs text-gray-600 space-y-1">
-                  <p>✓ ₹60/sqft all-inclusive</p>
-                  <p>✓ Multiple texture options</p>
-                  <p>✓ Book with ₹{BOOKING_AMOUNT}</p>
-                </div>
-              </div>
-            </div>
+  return <span ref={ref}>{disp}</span>;
+}
 
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Key Factors Affecting Painting Costs</h3>
+/* ── Results ─────────────────────────────────────────────────────────────── */
+function Results({ result, preference, onRestart, uploadState, filesCount, folderUrl }) {
+  const prods = PRODUCTS[preference] ?? PRODUCTS.premium;
+  const pref  = PREFERENCES.find(p => p.key === preference);
 
-            <div className="space-y-4 mb-8">
-              <div className="border-l-4 border-purple-600 pl-4">
-                <h4 className="font-bold text-gray-900 mb-1">Paint Quality & Type</h4>
-                <p className="text-sm text-gray-700">
-                  Premium paints (₹600/L) offer excellent coverage and durability, while luxury options (₹800/L) provide superior finish and longer life. Choose based on your requirements and budget.
-                </p>
-              </div>
+  if (!result || !result.avg) {
+    return (
+      <div className="p-8 text-center">
+        <p className="text-[14px] text-[#0F1221]/50 font-light mb-5">
+          Couldn't compute an estimate. Try different selections.
+        </p>
+        <button onClick={onRestart}
+          className="px-6 py-3 rounded-full text-[13px] font-bold text-[#0F1221]" style={{ background: GOLD }}>
+          Try Again
+        </button>
+      </div>
+    );
+  }
 
-              <div className="border-l-4 border-purple-600 pl-4">
-                <h4 className="font-bold text-gray-900 mb-1">Surface Area</h4>
-                <p className="text-sm text-gray-700">
-                  For paint: We use the standard 3.5x formula (Paintable Area = Carpet Area × 3.5) to calculate total wall and ceiling area. For textures: Direct measurement of areas to be textured.
-                </p>
-              </div>
+  const stagger = (i) => ({ initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, transition: { delay: 0.08 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
 
-              <div className="border-l-4 border-purple-600 pl-4">
-                <h4 className="font-bold text-gray-900 mb-1">Application Type</h4>
-                <p className="text-sm text-gray-700">
-                  Interior paints cover 160 sqft/L while exterior paints cover 140 sqft/L due to rougher surfaces. Texture applications are priced at ₹60/sqft including all material and labor.
-                </p>
-              </div>
+  return (
+    <div className="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-[#0F1221]/6">
 
-              <div className="border-l-4 border-purple-600 pl-4">
-                <h4 className="font-bold text-gray-900 mb-1">Additional Services</h4>
-                <p className="text-sm text-gray-700">
-                  Surface preparation, primer application, waterproofing, and special finishes may add to the base cost but ensure professional, long-lasting results.
-                </p>
-              </div>
-            </div>
+      {/* ── Left ──────────────────────────────────────────────────────────── */}
+      <div className="flex-1 p-6 sm:p-8">
 
-            <h3 className="text-xl font-bold text-gray-900 mb-4">What's Included in Our Estimates</h3>
+        {/* Price hero */}
+        <motion.div {...stagger(0)}
+          className="relative rounded-2xl overflow-hidden mb-5 p-6"
+          style={{ background: 'linear-gradient(145deg, #FFFBF0 0%, #FFF9E8 40%, #FAFAF8 100%)' }}>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Premium Quality Paint</p>
-                  <p className="text-xs text-gray-600">Durable, eco-friendly formulations</p>
-                </div>
-              </div>
+          {/* Gold top bar */}
+          <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl"
+            style={{ background: `linear-gradient(90deg, ${GOLD} 0%, rgba(240,200,90,0.3) 70%, transparent 100%)` }} />
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Wastage Allowance</p>
-                  <p className="text-xs text-gray-600">10% buffer for optimal coverage</p>
-                </div>
-              </div>
+          {/* Decorative radial glow — bottom right */}
+          <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full pointer-events-none"
+            style={{ background: `radial-gradient(circle, rgba(240,200,90,0.18) 0%, transparent 70%)` }} />
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Multiple Coats</p>
-                  <p className="text-xs text-gray-600">2 coats recommended for best finish</p>
-                </div>
-              </div>
+          {/* Sparkle dots */}
+          {[
+            { top: '12%', right: '18%', size: 4, delay: 0.6 },
+            { top: '60%', right: '8%',  size: 3, delay: 0.9 },
+            { top: '30%', right: '32%', size: 2, delay: 1.1 },
+          ].map((s, i) => (
+            <motion.div key={i}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: [0, 1, 0.5, 1], scale: 1 }}
+              transition={{ delay: s.delay, duration: 0.5, repeat: Infinity, repeatDelay: 2.5 }}
+              className="absolute rounded-full pointer-events-none"
+              style={{ top: s.top, right: s.right, width: s.size, height: s.size, background: GOLD }} />
+          ))}
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Cost Optimization</p>
-                  <p className="text-xs text-gray-600">Smart pack selection for savings</p>
-                </div>
-              </div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#0F1221]/35 mb-3 relative z-10">
+            Your Estimated Cost
+          </p>
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Professional Guidance</p>
-                  <p className="text-xs text-gray-600">Expert recommendations included</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900 text-sm">Transparent Pricing</p>
-                  <p className="text-xs text-gray-600">No hidden charges or surprises</p>
-                </div>
-              </div>
+          <div className="flex items-end gap-2.5 mb-2 relative z-10">
+            <h2 className="text-[2.6rem] sm:text-[3rem] font-bold text-[#0F1221] leading-none tracking-tight">
+              <CountPrice target={result.avg} />
+            </h2>
+            <div className="w-5 h-5 rounded-full border border-[#0F1221]/20 flex items-center justify-center mb-1.5 flex-shrink-0 cursor-help"
+              title="Calculated from your carpet area, service type and finish. Final price confirmed after free on-site inspection.">
+              <span className="text-[10px] text-[#0F1221]/40 font-medium select-none">i</span>
             </div>
           </div>
+
+          <p className="text-[12px] text-[#0F1221]/35 font-light relative z-10">
+            Final price locked after free on-site inspection
+          </p>
         </motion.div>
 
-        {/* FAQ Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-8"
-        >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-
-          <div className="space-y-6">
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">How accurate is the paint calculator?</h3>
-              <p className="text-gray-700">
-                Our calculator uses the industry-standard 3.5x formula and accounts for 2 coats plus 10% wastage. While highly accurate, actual requirements may vary slightly based on surface texture, paint absorption, and application method. For precise estimates, book a site inspection.
-              </p>
-            </div>
-
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">What is the difference between Premium and Luxury paints?</h3>
-              <p className="text-gray-700">
-                Premium paints (₹600/L) offer excellent coverage, durability, and value for money. Luxury paints (₹800/L) provide superior finish quality, enhanced washability, better color retention, and longer life. Both options are eco-friendly and safe for your home.
-              </p>
-            </div>
-
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">How does the texture service work?</h3>
-              <p className="text-gray-700">
-                Our texture service is all-inclusive at ₹60/sqft. This covers premium texture material, professional application, complete labor charges, and surface preparation. Book with ₹{BOOKING_AMOUNT} to confirm your project, and our team will handle everything from consultation to completion.
-              </p>
-            </div>
-
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">What does the ₹{BOOKING_AMOUNT} site inspection include?</h3>
-              <p className="text-gray-700">
-                Available in Delhi NCR, our site inspection includes professional area measurement, surface condition assessment, detailed quotation, color consultation, and expert recommendations. The booking amount is adjustable against your final project cost.
-              </p>
-            </div>
-
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Why use the carpet area formula for paint calculation?</h3>
-              <p className="text-gray-700">
-                The paintable area (walls + ceiling) is typically 3.5 times your carpet area. This standard formula accounts for wall height and ceiling space, providing an accurate estimate without complex measurements. For textures, we use direct area measurement since it's only applied to specific surfaces.
-              </p>
-            </div>
-
-            <div className="pb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Are there any additional costs I should know about?</h3>
-              <p className="text-gray-700">
-                The calculator provides estimates for paint/texture costs. Additional services like extensive surface repair, primer for unpainted walls, waterproofing, furniture moving, or special decorative finishes may incur extra charges. Our site inspection will identify all requirements for a complete quotation.
-              </p>
-            </div>
-          </div>
+        {/* Tags */}
+        <motion.div {...stagger(1)} className="flex flex-wrap gap-2 mb-4">
+          {[
+            { label: result.svcLabel,                              bg: `${PURPLE}12`, color: PURPLE       },
+            { label: result.tier,                                  bg: `${GOLD}22`,   color: '#7A5C10'    },
+            { label: `${result.carpetArea?.toLocaleString()} sq ft`, bg: '#0F122108', color: '#0F1221'    },
+            { label: result.city,                                  bg: '#0F122106',   color: '#0F1221'    },
+          ].map((t, i) => (
+            <motion.span key={t.label}
+              initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 + i * 0.07, type: 'spring', stiffness: 300 }}
+              className="inline-flex items-center text-[11px] font-semibold px-3 py-1.5 rounded-full"
+              style={{ background: t.bg, color: t.color }}>
+              {t.label}
+            </motion.span>
+          ))}
         </motion.div>
 
-        {/* Benefits Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-8 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg border border-purple-100 p-8"
-        >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose Calyco's Budget Calculator?</h2>
+        {/* Recalculate */}
+        <motion.button {...stagger(2)} onClick={onRestart}
+          className="flex items-center gap-1.5 text-[12px] font-semibold mb-6 transition-colors group"
+          style={{ color: PURPLE }}
+          whileHover={{ scale: 1.02 }}>
+          <svg className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-500"
+            fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+          Recalculate with different inputs
+        </motion.button>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
+        {/* Breakdown */}
+        <motion.div {...stagger(3)}
+          className="relative rounded-2xl p-5 mb-6 overflow-hidden"
+          style={{ background: '#FAFAF8', border: '1px solid rgba(15,18,33,0.07)' }}>
+          {/* Gold left accent */}
+          <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full" style={{ background: GOLD }} />
+
+          <p className="text-[13px] font-semibold text-[#0F1221] mb-2 pl-3">How we arrived at this estimate</p>
+          <p className="text-[12px] text-[#0F1221]/40 font-light mb-3 leading-relaxed pl-3">
+            Calyco's cost estimator considered your
+          </p>
+          <ul className="space-y-2.5 pl-3">
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: GOLD }} />
+              <div className="text-[12px]">
+                <span className="font-semibold text-[#0F1221]">{result.paintType}</span>
+                <span className="text-[#0F1221]/45 font-light"> — includes primer, undercoat &amp; finishing coat.</span>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Instant Estimates</h3>
-              <p className="text-sm text-gray-700">
-                Get accurate cost calculations in seconds. No waiting, no guesswork - just clear, transparent pricing for your painting project.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Budget Control</h3>
-              <p className="text-sm text-gray-700">
-                Plan your expenses effectively with detailed breakdowns. Compare options and make informed decisions that fit your budget.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="w-12 h-12 bg-[#493657] rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Quality Assurance</h3>
-              <p className="text-sm text-gray-700">
-                Premium products, professional service, and transparent pricing. We stand behind every estimate with our commitment to quality.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Important Notes */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8 bg-amber-50 border border-amber-200 rounded-lg p-6"
-        >
-          <h3 className="text-base font-bold text-gray-900 mb-3">Important Notes</h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-700">
-            <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>Estimates are indicative; final costs may vary based on site conditions</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>Paint prices include material costs; labor charges separate</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>Texture pricing is all-inclusive (material + labor + application)</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>Booking amount adjustable in final payment for service bookings</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>Site inspection service currently available only in Delhi NCR</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-600 mt-0.5">•</span>
-              <span>All products are eco-friendly and safe for residential use</span>
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: GOLD }} />
+              <span className="text-[12px] text-[#0F1221]/45 font-light">
+                {result.carpetArea?.toLocaleString()} sq ft carpet → ~{result.paintable?.toLocaleString()} sq ft paintable area, excluding ceiling.
+              </span>
             </li>
           </ul>
         </motion.div>
-      </div>
 
-      {/* Booking Modal (for texture only) */}
-      <AnimatePresence>
-        {showBookingModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-            onClick={() => setShowBookingModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-gray-900">Almost there!</h2>
-                <button
-                  onClick={() => setShowBookingModal(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
-                >
-                  <X size={20} className="text-gray-500" />
-                </button>
-              </div>
-
-              <p className="text-gray-600 mb-6">How would you like to proceed?</p>
-
-              <div className="bg-amber-50 border-2 border-amber-400 rounded-lg p-4 mb-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-3xl">🤝</div>
-                  <div>
-                    <p className="font-bold text-gray-900">Fix this price &amp; book via WhatsApp</p>
-                    <p className="text-sm text-gray-600">Our team will call you back within 30 minutes</p>
+        {/* Recommended products */}
+        <motion.div {...stagger(4)}>
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/30 mb-3">Recommended Products</p>
+          <div className="flex gap-3 flex-wrap">
+            {prods.map((p, i) => (
+              <motion.div key={p.name}
+                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 + i * 0.08, duration: 0.4 }}
+                className="flex flex-col items-center gap-1.5" style={{ width: 68 }}>
+                <div className="rounded-2xl border border-[#0F1221]/6 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.07)] overflow-hidden relative"
+                  style={{ width: 56, height: 64 }}>
+                  {/* Gradient fill */}
+                  <div className="absolute inset-0 flex items-center justify-center text-white text-[13px] font-black"
+                    style={{ background: `linear-gradient(145deg, ${p.color}ee, ${p.color}cc)` }}>
+                    {/* Shine */}
+                    <div className="absolute inset-0 pointer-events-none"
+                      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 55%)' }} />
+                    <span className="relative z-10 drop-shadow-sm">{p.brand}</span>
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-3xl font-bold text-gray-900">₹{BOOKING_AMOUNT}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Adjustable against final project cost</p>
-                  <p className="text-xs text-gray-500">(Inc. All taxes)</p>
-                </div>
-              </div>
+                <p className="text-[10px] text-center text-[#0F1221]/45 leading-tight line-clamp-2">{p.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-              <form onSubmit={handleBookingSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <User size={16} className="inline mr-1" />
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    value={bookingData.name}
-                    onChange={(e) => setBookingData({ ...bookingData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
-                    placeholder="Enter your name"
-                    required
-                  />
-                </div>
+        {/* ── Drive folder link ──────────────────────────────────────────── */}
+        <AnimatePresence>
+          {(folderUrl || uploadState === 'uploading') && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
+              className="mt-5 rounded-2xl overflow-hidden border"
+              style={{ borderColor: 'rgba(15,18,33,0.08)', background: '#FAFAF8' }}>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Phone size={16} className="inline mr-1" />
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    value={bookingData.phone}
-                    onChange={(e) => setBookingData({ ...bookingData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
-                    placeholder="Enter your phone"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Mail size={16} className="inline mr-1" />
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    value={bookingData.email}
-                    onChange={(e) => setBookingData({ ...bookingData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#493657] focus:border-transparent"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#25D366] text-white font-bold py-4 rounded-lg hover:bg-[#1ebe5d] transition-colors text-lg shadow-lg flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                  </svg>
-                  Book via WhatsApp — ₹{BOOKING_AMOUNT}
-                </button>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Confirmation Toast */}
-      <AnimatePresence>
-        {showConfirmation && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-8 right-8 bg-green-500 text-white rounded-lg shadow-2xl p-6 max-w-md z-50"
-          >
-            <div className="flex items-start gap-3">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              {/* Header bar */}
+              <div className="flex items-center gap-2.5 px-4 py-3 border-b" style={{ borderColor: 'rgba(15,18,33,0.06)', background: '#F5F3EE' }}>
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                 </svg>
+                <p className="text-[12px] font-semibold text-[#0F1221]">Your uploaded files</p>
+                {uploadState === 'uploading' && (
+                  <svg className="w-3.5 h-3.5 animate-spin ml-auto text-[#0F1221]/30" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                  </svg>
+                )}
+                {uploadState === 'done' && folderUrl && (
+                  <svg className="w-3.5 h-3.5 ml-auto flex-shrink-0" style={{ color: '#15803D' }} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
               </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-lg mb-1">Booking Confirmed!</h3>
-                <p className="text-sm text-white/90">
-                  Booking confirmed! We've opened WhatsApp — our team will call you back within 30 minutes to confirm your site visit.
-                </p>
+
+              <div className="px-4 py-3.5">
+                {uploadState === 'uploading' && (
+                  <p className="text-[12px] text-[#0F1221]/40 font-light">Uploading to Google Drive…</p>
+                )}
+                {folderUrl && (
+                  <>
+                    <p className="text-[11px] text-[#0F1221]/40 font-light mb-2.5">
+                      {filesCount} file{filesCount > 1 ? 's' : ''} saved to Drive. Calyco will review them before your inspection.
+                    </p>
+                    {folderUrl !== 'saved' ? (
+                      <a
+                        href={folderUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-[12px] font-semibold rounded-xl px-4 py-2.5 transition-all hover:opacity-90"
+                        style={{ background: `${GOLD}22`, color: '#7A5C10' }}>
+                        <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M7.71 3.5L1.15 15l3.43 5.5h13.84L21.85 15 15.29 3.5H7.71zm1.44 1.5h5.7l2.85 5H6.3l2.85-5zm-4.27 6h13.24l-2.85 4.5H4.93L4.88 11zM5.71 16h12.58l-1.72 3H7.43L5.71 16z" />
+                        </svg>
+                        View your photos in Drive →
+                      </a>
+                    ) : (
+                      <p className="text-[12px] font-semibold" style={{ color: '#15803D' }}>
+                        ✓ Photos received — our team will be in touch.
+                      </p>
+                    )}
+                  </>
+                )}
               </div>
-            </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* ── Right CTA ─────────────────────────────────────────────────────── */}
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.5 }}
+        className="lg:w-72 flex flex-col items-center justify-center text-center gap-5 relative overflow-hidden"
+        style={{ background: 'linear-gradient(160deg, #FFF9EC 0%, #FFFDF6 45%, #FAFAF8 100%)', padding: '32px' }}>
+
+        {/* Subtle dot grid decoration */}
+        <div className="absolute inset-0 pointer-events-none opacity-40"
+          style={{ backgroundImage: `radial-gradient(${GOLD}30 1px, transparent 1px)`, backgroundSize: '20px 20px' }} />
+
+        {/* Radial glow center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full pointer-events-none"
+          style={{ background: `radial-gradient(circle, rgba(240,200,90,0.12) 0%, transparent 70%)` }} />
+
+        <div className="relative z-10 flex flex-col items-center gap-5 w-full">
+          <div className="flex items-center gap-2.5">
+            <span className="w-5 h-px" style={{ background: GOLD }} />
+            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
+            <span className="w-5 h-px" style={{ background: GOLD }} />
+          </div>
+
+          <div>
+            <h3 className="text-[19px] font-semibold text-[#0F1221] leading-snug tracking-tight mb-2">
+              Get Your Complete<br />Painting Quotation
+            </h3>
+            <p className="text-[12px] text-[#0F1221]/45 font-light leading-relaxed">
+              Schedule a free Calyco site inspection for a thorough, fixed quote.
+            </p>
+          </div>
+
+          <motion.div className="w-full" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link to="/get-quote"
+              className="w-full py-4 rounded-full text-[14px] font-bold text-[#0F1221] text-center block transition-all relative overflow-hidden"
+              style={{ background: `linear-gradient(135deg, #F5C842 0%, ${GOLD} 50%, #E8BA30 100%)`, boxShadow: '0 6px 24px rgba(240,200,90,0.4), 0 2px 8px rgba(240,200,90,0.2)' }}>
+              {/* Shine sweep */}
+              <span className="absolute inset-0 pointer-events-none"
+                style={{ background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.3) 50%, transparent 65%)' }} />
+              <span className="relative z-10">Book Free Inspection →</span>
+            </Link>
           </motion.div>
-        )}
-      </AnimatePresence>
 
-      {/* Color Selector Modal */}
-      <ColorSelectorModal
-        isOpen={showColorModal}
-        onClose={() => setShowColorModal(false)}
-        onColorSelect={handleColorSelect}
-        productInfo={results ? {
-          name: results.product?.name,
-          totalCost: results.totalCost
-        } : null}
-      />
+          {result.waUrl && (
+            <motion.a href={result.waUrl} target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 text-[#25D366] text-[13px] font-semibold hover:underline">
+              <WaIcon size={4} /> Chat on WhatsApp
+            </motion.a>
+          )}
 
-      {/* Cart Popup */}
-      <CartPopup
-        isVisible={cartPopup.isVisible}
-        onClose={closeCartPopup}
-        item={cartPopup.item}
-        onContinueShopping={handleContinueShopping}
-        onCheckout={handleCheckout}
-      />
-    </div>
+          <a href={`tel:${PHONE_RAW}`}
+            className="text-[11px] font-light transition-colors"
+            style={{ color: 'rgba(15,18,33,0.3)' }}
+            onMouseOver={e => e.target.style.color = 'rgba(15,18,33,0.6)'}
+            onMouseOut={e  => e.target.style.color = 'rgba(15,18,33,0.3)'}>
+            or call us directly
+          </a>
+        </div>
+      </motion.div>
     </div>
   );
-};
+}
 
-export default BudgetCalculator;
+/* ── Progress steps ──────────────────────────────────────────────────────── */
+function StepProgress({ step }) {
+  const labels = ['Service', 'Finish', 'Estimate'];
+  return (
+    <div className="flex items-center justify-center gap-0 mb-8 select-none">
+      {labels.map((label, i) => {
+        const s       = i + 1;
+        const done    = step > s;
+        const current = step === s;
+        return (
+          <div key={label} className="flex items-center">
+            <div className="flex flex-col items-center gap-1.5">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-black transition-all duration-300 ${
+                done    ? 'text-[#0F1221]' :
+                current ? 'text-[#0F1221] shadow-[0_4px_14px_rgba(240,200,90,0.4)]' :
+                          'bg-[#0F1221]/6 text-[#0F1221]/20'
+              }`}
+              style={done || current ? { background: GOLD } : {}}>
+                {done
+                  ? <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                  : s}
+              </div>
+              <span className={`text-[9px] font-bold uppercase tracking-[0.18em] hidden sm:block transition-all ${
+                current ? 'text-[#0F1221]' : done ? 'text-[#0F1221]/50' : 'text-[#0F1221]/20'
+              }`}>
+                {label}
+              </span>
+            </div>
+            {s < labels.length && (
+              <div className="w-12 sm:w-20 h-[2px] mx-2 mb-5 rounded-full bg-[#0F1221]/8 overflow-hidden">
+                <motion.div className="h-full rounded-full" style={{ background: GOLD }}
+                  animate={{ width: step > s ? '100%' : '0%' }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── Page ────────────────────────────────────────────────────────────────── */
+export default function BudgetCalculator() {
+  const [step,       setStep]       = useState(1);
+  const [dir,        setDir]        = useState(1);
+  const [result,     setResult]     = useState(null);
+  const showResult = step === 4;
+
+  const [city,        setCity]        = useState('Bengaluru');
+  const [serviceKey,  setServiceKey]  = useState('interior');
+  const [carpetArea,  setCarpetArea]  = useState('850');
+  const [paintType,   setPaintType]   = useState('repainting');
+  const [preference, setPreference] = useState('premium');
+  const [name,       setName]       = useState('');
+  const [phone,      setPhone]      = useState('');
+  const [files,      setFiles]      = useState([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [uploadState,setUploadState]= useState('idle'); // idle | uploading | done | error
+  const [folderUrl,  setFolderUrl]  = useState('');
+
+  const topRef         = useRef(null);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const c = searchParams.get('city');
+    if (c && CITIES.includes(c)) setCity(c);
+    const s = searchParams.get('service');
+    if (s && CALC_SERVICES.find(sv => sv.key === s)) setServiceKey(s);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const scroll  = () => setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  const goNext  = () => { setDir(1);  setStep(s => s + 1); scroll(); };
+  const goBack  = () => { setDir(-1); setStep(s => s - 1); scroll(); };
+
+  const handleSubmit = async () => {
+    if (submitting) return;
+    setSubmitting(true);
+
+    const svc  = CALC_SERVICES.find(s => s.key === serviceKey);
+    const pt   = PAINT_TYPES.find(p => p.key === paintType);
+    const pref = PREFERENCES.find(p => p.key === preference);
+    const r    = computeRange({ serviceKey, paintType, carpetArea, city, preference });
+
+    const waMsg = [
+      `Hi Calyco! I used your painting cost calculator.`,
+      ``,
+      `Name: ${name || 'Not provided'}`,
+      `Phone: +91 ${phone}`,
+      `City: ${city}`,
+      `Service: ${svc?.label}`,
+      `Carpet area: ${carpetArea} sq ft`,
+      `Type: ${pt?.label}`,
+      `Finish: ${pref?.label}`,
+      r ? `Estimate: ${fmt(r.avg)}` : '',
+      ``,
+      `Please schedule a free site inspection.`,
+    ].filter(Boolean).join('\n');
+
+    const waUrl = `${WA_BASE}?text=${encodeURIComponent(waMsg)}`;
+    setResult(r ? { ...r, waUrl } : { waUrl });
+    setDir(1);
+    setStep(4);
+    scroll();
+    setSubmitting(false);
+
+    const GSHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`;
+
+    // ── Google Drive + Sheets + Email (all in background) ────────────────
+    setUploadState('uploading');
+    try {
+      const token = await getGoogleToken();
+
+      // Service account creates the folder (metadata only — no quota issue)
+      // then Apps Script uploads files into it (runs as your account)
+      let driveFolderUrl = '';
+      if (files.length > 0 && APPS_SCRIPT_URL) {
+        try {
+          const folderTs   = new Date().toLocaleString('en-IN', {
+            day: '2-digit', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit', hour12: false,
+            timeZone: 'Asia/Kolkata',
+          });
+          const folderName = `${name || 'Customer'} — ${folderTs}`;
+          const folderId   = await driveCreateFolder(token, folderName);
+          driveFolderUrl   = `https://drive.google.com/drive/folders/${folderId}`;
+          setFolderUrl(driveFolderUrl);
+
+          // folderId goes in the URL so it arrives as a clean query param — never lost in JSON
+          const scriptUrl = APPS_SCRIPT_URL + '?fid=' + encodeURIComponent(folderId);
+          Promise.all(files.map(async f => ({
+            name:     f.name,
+            mimeType: f.type || 'application/octet-stream',
+            base64:   await fileToBase64(f),
+          }))).then(b64Files =>
+            uploadViaForm(scriptUrl, { files: b64Files })
+          ).catch(err => console.error('[Drive] file upload error:', err));
+        } catch (driveErr) {
+          console.error('[Drive] folder creation error:', driveErr);
+        }
+      }
+
+      // Append row to Sheet (always runs)
+      await sheetsEnsureHeaders(token);
+      const ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      await sheetsAppend(token, [
+        ts,
+        name        || '',
+        '+91 ' + phone,
+        city,
+        svc?.label  || '',
+        pt?.label   || '',
+        String(carpetArea),
+        String(toPaintable(carpetArea)),
+        pref?.label || '',
+        r ? fmt(r.avg) : '',
+        files.length ? `${files.length} file(s)` : 'None',
+        driveFolderUrl,
+      ]);
+
+      // Email via Web3Forms — sent after Drive so folder link is ready
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          to:         'calycopaints@gmail.com',
+          subject:    `New Estimate — ${name || 'Customer'} (${city})`,
+          from_name:  'Calyco Calculator',
+          message: [
+            `Name: ${name || '—'}`,
+            `Phone: +91 ${phone}`,
+            `City: ${city}`,
+            `Service: ${svc?.label || '—'}`,
+            `Paint Type: ${pt?.label || '—'}`,
+            `Carpet Area: ${carpetArea} sq ft`,
+            `Preference: ${pref?.label || '—'}`,
+            r ? `Estimate: ${fmt(r.avg)}` : '',
+            ``,
+            `─── Links ───`,
+            `Google Sheet: ${GSHEET_URL}`,
+            driveFolderUrl ? `Customer Drive Folder: ${driveFolderUrl}` : '',
+          ].filter(Boolean).join('\n'),
+        }),
+      }).catch(() => {});
+
+      setUploadState('done');
+    } catch (err) {
+      console.error('[Calyco] Integration error:', err?.message || err);
+      setUploadState('error');
+    }
+  };
+
+  const handleRestart = () => {
+    setResult(null);
+    setCarpetArea('850');
+    setPaintType('repainting');
+    setPreference('premium');
+    setName('');
+    setPhone('');
+    setFiles([]);
+    setUploadState('idle');
+    setFolderUrl('');
+    setDir(-1);
+    setStep(1);
+    scroll();
+  };
+
+  const slide = {
+    enter:  d => ({ x: d > 0 ? 48 : -48, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit:   d => ({ x: d > 0 ? -48 : 48, opacity: 0 }),
+  };
+  const trans = { duration: 0.24, ease: [0.32, 0.72, 0, 1] };
+
+  return (
+    <div className="min-h-screen bg-[#FAFAF8]">
+      <SEO
+        title="Painting Cost Calculator — Calyco"
+        description="Instant painting estimate in 3 steps — pick your service, house size and finish. No hidden charges."
+        url="https://calycopaints.com/calculators/service-cost-calculator"
+      />
+
+      {/* ── Header ────────────────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-[#0F1221]/6">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-14 py-10 sm:py-12">
+          <div className="flex items-center gap-2 text-[11px] text-[#0F1221]/30 font-light mb-5">
+            <Link to="/" className="hover:text-[#493657] transition-colors">Home</Link>
+            <span>/</span>
+            <span>Cost Calculator</span>
+          </div>
+          <Eyebrow text="Painting Cost Calculator" />
+          <h1 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.02em] leading-[1.12] mb-3">
+            Know your painting cost<br />
+            <span style={{ color: PURPLE }}>before you commit.</span>
+          </h1>
+          <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md mb-5">
+            Enter your house size, pick a service and finish — get a real cost breakdown in under a minute.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {['Free estimate', '25+ cities', 'Zero hidden charges', '4.8 ★ rating'].map(b => (
+              <span key={b} className="inline-flex items-center gap-1.5 text-[11px] font-light text-[#0F1221]/55 bg-[#FAFAF8] border border-[#0F1221]/8 px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: GOLD }} />
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Wizard ────────────────────────────────────────────────────────── */}
+      <section ref={topRef} className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-14 py-10 sm:py-12">
+
+        {!showResult && <StepProgress step={step} />}
+
+        {/* Card */}
+        <div className="bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(15,18,33,0.08)] border border-[#0F1221]/5 overflow-hidden">
+          <div className="overflow-hidden">
+            <AnimatePresence mode="popLayout" custom={dir} initial={false}>
+
+              {step === 1 && (
+                <motion.div key="s1" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
+                  <Step1
+                    city={city} setCity={setCity}
+                    serviceKey={serviceKey} setServiceKey={setServiceKey}
+                    carpetArea={carpetArea} setCarpetArea={setCarpetArea}
+                    paintType={paintType} setPaintType={setPaintType}
+                    onNext={goNext}
+                  />
+                </motion.div>
+              )}
+
+              {step === 2 && (
+                <motion.div key="s2" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
+                  <Step2
+                    preference={preference} setPreference={setPreference}
+                    onNext={goNext} onBack={goBack}
+                  />
+                </motion.div>
+              )}
+
+              {step === 3 && (
+                <motion.div key="s3" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
+                  <Step3
+                    name={name} setName={setName}
+                    phone={phone} setPhone={setPhone}
+                    city={city} setCity={setCity}
+                    files={files} setFiles={setFiles}
+                    onSubmit={handleSubmit} onBack={goBack}
+                    submitting={submitting}
+                  />
+                </motion.div>
+              )}
+
+              {step === 4 && (
+                <motion.div key="s4" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
+                  <Results result={result} preference={preference} onRestart={handleRestart} uploadState={uploadState} filesCount={files.length} folderUrl={folderUrl} />
+                </motion.div>
+              )}
+
+            </AnimatePresence>
+          </div>
+        </div>
+
+        <p className="text-center text-[11px] text-[#0F1221]/20 mt-5 font-light">
+          Estimates are indicative. Final price locked after free on-site inspection.
+        </p>
+      </section>
+
+      {/* ── Why section ───────────────────────────────────────────────────── */}
+      <section className="bg-white border-t border-[#0F1221]/5">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-18">
+          <Eyebrow text="Transparent Pricing" />
+          <h2 className="text-[1.7rem] sm:text-[2.3rem] font-light text-[#0F1221] tracking-tight leading-snug mb-10">
+            Why our estimates<br />
+            <span style={{ color: PURPLE }}>are different.</span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { n: '01', label: 'Real city rates',    desc: 'Rates for 25+ Indian cities using actual market data, not generic figures.' },
+              { n: '02', label: 'Tier-based pricing', desc: 'Economy, Premium and Luxury tiers so you know exactly what you pay for.'    },
+              { n: '03', label: 'GST shown clearly',  desc: 'Every estimate shows pre-GST and GST-inclusive costs side by side.'         },
+              { n: '04', label: 'Fixed after visit',  desc: 'Our team locks in the final written quote on a free site visit — no surprises.' },
+            ].map(p => (
+              <div key={p.label} className="flex gap-4 p-5 rounded-2xl bg-[#FAFAF8] border border-[#0F1221]/5 hover:border-[#0F1221]/10 transition-colors">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-[11px] font-black leading-none"
+                  style={{ background: DARK, color: GOLD }}>
+                  {p.n}
+                </div>
+                <div>
+                  <p className="text-[13px] font-semibold text-[#0F1221] mb-1">{p.label}</p>
+                  <p className="text-[12px] font-light text-[#0F1221]/45 leading-relaxed">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Next step — estimate → fixed quote ─────────────────────────────── */}
+      <section className="bg-white border-t border-[#0F1221]/6">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-16">
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-6 h-px" style={{ background: GOLD }} />
+            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-9">
+            <h2 className="text-[1.6rem] sm:text-[2rem] font-light text-[#0F1221] leading-snug tracking-tight">
+              From estimate to<br />
+              <span style={{ color: PURPLE }}>fixed written quote.</span>
+            </h2>
+            <Link to="/get-quote"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-[13px] font-bold text-white bg-[#0F1221] hover:bg-[#493657] transition-colors whitespace-nowrap shadow-lg flex-shrink-0">
+              Book Free Site Visit →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { n: '01', t: 'Free site visit', d: 'A Calyco supervisor inspects your walls and confirms the exact area with laser measurement.' },
+              { n: '02', t: 'Price locked in writing', d: 'You get a fixed written quote — scope, material, timeline and price. It does not change.' },
+              { n: '03', t: 'Work begins', d: 'A verified painting team is assigned, with daily photo updates on WhatsApp until handover.' },
+            ].map((step) => (
+              <div key={step.n} className="rounded-2xl bg-[#FAFAF8] border border-[#0F1221]/6 p-5">
+                <span className="text-[10px] font-bold tracking-[0.12em] block mb-3" style={{ color: GOLD }}>{step.n}</span>
+                <h3 className="text-sm font-semibold text-[#0F1221] mb-1.5">{step.t}</h3>
+                <p className="text-xs text-[#0F1221]/45 font-light leading-[1.7]">{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -140,16 +140,16 @@ const CityLandingPage = () => {
           )}
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <button
-              onClick={() => handleWhatsApp('visit')}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
+            <Link
+              to="/get-quote"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
             >
               <CalendarCheck className="w-5 h-5" />
               Book Free Site Visit in {city.name}
-            </button>
+            </Link>
             <Link
               to="/calculators/service-cost-calculator"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-7 py-3.5 font-semibold hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-5 py-3 sm:px-7 sm:py-3.5 font-semibold hover:bg-white/10 transition-colors"
             >
               <Calculator className="w-5 h-5" />
               Calculate Cost
@@ -320,16 +320,16 @@ const CityLandingPage = () => {
               Book a free site visit today. Our team confirms the quote after measurement -- no surprises.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button
-                onClick={() => handleWhatsApp('visit')}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-8 py-4 font-bold hover:bg-white transition-colors shadow-xl text-lg"
+              <Link
+                to="/get-quote"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 py-3 sm:px-8 sm:py-4 font-bold hover:bg-white transition-colors shadow-xl text-sm sm:text-lg"
               >
                 <CalendarCheck className="w-5 h-5" />
                 Book Free Site Visit
-              </button>
+              </Link>
               <Link
                 to="/calculators/service-cost-calculator"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-8 py-4 font-semibold hover:bg-white/10 transition-colors text-lg"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-6 py-3 sm:px-8 sm:py-4 font-semibold hover:bg-white/10 transition-colors text-sm sm:text-lg"
               >
                 <Calculator className="w-5 h-5" />
                 Calculate Cost

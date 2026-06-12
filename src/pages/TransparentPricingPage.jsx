@@ -42,7 +42,7 @@ const TransparentPricingPage = () => (
         </h1>
         <p className="mt-5 text-lg text-white/60 max-w-2xl">Base rate, city multiplier, tier, GST -- all visible in the calculator. No hidden charges. Fixed written quote before work starts.</p>
         <div className="mt-8">
-          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-bold hover:bg-white transition-colors shadow-lg">
+          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-bold hover:bg-white transition-colors shadow-lg">
             <Calculator className="w-5 h-5" /> Open Calculator
           </Link>
         </div>

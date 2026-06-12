@@ -1,9 +1,9 @@
-﻿// ReviewsSection — completely replaced with rich customer review layout
+// ReviewsSection — completely replaced with rich customer review layout
 // Original file was a basic component; this version has social proof bar,
 // filterable review cards, video placeholder, and lead CTA.
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin } from 'lucide-react';
+import { MapPin, Volume2, VolumeX } from 'lucide-react';
 import { customerReviews, SOCIAL_PROOF } from '../data/reviews';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -92,17 +92,95 @@ const ReviewCard = ({ review, featured = false }) => (
   </article>
 );
 
-// ─── Video testimonial placeholder ────────────────────────────────────────────
-const VideoPlaceholderCard = () => (
-  <article className="rounded-2xl border border-dashed border-[#0F1221]/15 bg-[#FAFAF8] flex flex-col items-center justify-center p-8 text-center min-h-[280px]">
-    <div className="w-16 h-16 rounded-full bg-[#0F1221]/8 flex items-center justify-center mb-4">
-      <svg className="w-6 h-6 text-[#0F1221]/40 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-    </div>
-    <p className="text-sm font-semibold text-[#0F1221]/50 mb-1">Video Testimonials</p>
-    <p className="text-xs text-[#0F1221]/35 font-light leading-[1.6] max-w-[180px]">Filming customer stories at project handovers. Coming soon.</p>
-    <Link to="/get-quote" className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-[#0F1221]/12 text-[#0F1221]/50 text-xs font-semibold px-4 py-2 hover:border-[#0F1221]/25 hover:text-[#0F1221]/70 transition-colors">Be the next success story &#x2192;</Link>
-  </article>
-);
+// ─── Video testimonial card ────────────────────────────────────────────
+// Plays with sound when scrolled into view, mutes + pauses when scrolled away.
+// Browsers block sound before the first user interaction with the page —
+// until then it falls back to muted playback ("Tap for sound" stays visible).
+const VideoTestimonialCard = () => {
+  const videoRef = useRef(null);
+  const cardRef  = useRef(null);
+  const [muted, setMuted] = useState(true);
+  const userMutedRef = useRef(false); // visitor explicitly muted — don't auto-unmute again
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    userMutedRef.current = v.muted;
+    setMuted(v.muted);
+    if (!v.muted) v.play().catch(() => {});
+  };
+
+  useEffect(() => {
+    const v  = videoRef.current;
+    const el = cardRef.current;
+    if (!v || !el) return;
+
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+        // In view — play, with sound unless the visitor muted manually
+        if (!userMutedRef.current) {
+          v.muted = false;
+          v.play().then(() => setMuted(false)).catch(() => {
+            // Sound blocked (no user interaction yet) — play muted instead
+            v.muted = true;
+            setMuted(true);
+            v.play().catch(() => {});
+          });
+        } else {
+          v.play().catch(() => {});
+        }
+      } else {
+        // Out of view — mute and pause
+        v.muted = true;
+        setMuted(true);
+        v.pause();
+      }
+    }, { threshold: [0, 0.6] });
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <article
+      ref={cardRef}
+      onClick={toggleSound}
+      className="rounded-2xl border border-[#0F1221]/8 overflow-hidden relative min-h-[280px] bg-black group cursor-pointer">
+      <video
+        ref={videoRef}
+        src="/real%20project%20section/Customer%20Reviews/Man_speaking_in_apartment_202606111720.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+
+      {/* Sound toggle — top right */}
+      <button
+        type="button"
+        onClick={(e) => { e.stopPropagation(); toggleSound(); }}
+        aria-label={muted ? 'Unmute video' : 'Mute video'}
+        className="absolute top-3 right-3 z-20 inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-sm text-white px-3 py-1.5 text-[11px] font-semibold hover:bg-black/75 transition-colors">
+        {muted
+          ? <><VolumeX className="w-3.5 h-3.5 text-[#F0C85A]" /> Tap for sound</>
+          : <><Volume2 className="w-3.5 h-3.5 text-[#F0C85A]" /> Sound on</>}
+      </button>
+
+      <div className="absolute bottom-5 left-5 right-5 z-10 flex flex-col gap-1">
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-8 h-8 rounded-full bg-[#F0C85A] flex items-center justify-center text-black">
+            <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          </div>
+          <p className="font-bold text-white text-sm">Arjun's Experience</p>
+        </div>
+        <p className="text-xs text-white/80 line-clamp-2">"The daily updates and clean process completely changed my view on home painting."</p>
+      </div>
+    </article>
+  );
+};
 
 // ─── Main export ─────────────────────────────────────────────────────────────
 const FILTERS = ['All', 'Interior', 'Exterior', 'Waterproofing', 'Texture', 'Commercial', 'Rental'];
@@ -136,7 +214,7 @@ const ReviewsSection = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {displayed.map((review) => <ReviewCard key={review.id} review={review} featured={review.featured} />)}
-          {activeFilter === 'All' && displayed.length < 7 && <VideoPlaceholderCard />}
+          {activeFilter === 'All' && displayed.length < 7 && <VideoTestimonialCard />}
         </div>
         <div className="mt-10 rounded-2xl bg-[#F7F6F3] border border-[#0F1221]/7 px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>

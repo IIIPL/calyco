@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ArrowLeft, Calculator, Check, ChevronRight, ChevronDown, Star } from 'lucide-react';
 import SEO from '../../components/SEO';
@@ -9,20 +9,22 @@ import { getServiceFAQs } from '../../data/faqData';
 import SurfacePreparationSection from '../../components/SurfacePreparationSection';
 import CustomSelect from '../../components/CustomSelect';
 import ServiceWarrantySection from '../../components/ServiceWarrantySection';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider';
 
 // ─── Category colour themes ───────────────────────────────────────────────────
 const categoryColors = {
-  'Core Painting Services': { from: '#1A0B21', to: '#432553' },
-  'Paint Packages':         { from: '#1A0B21', to: '#432553' },
-  'Waterproofing Services': { from: '#0a2240', to: '#1a4a8a' },
-  'Wall Design Services':   { from: '#1a1200', to: '#4a3800' },
-  'Wallpaper Services':     { from: '#0f1a0a', to: '#2a4a1a' },
-  'Wood Finishing Services':{ from: '#1a0c00', to: '#4a2800' },
-  'Metal Painting Services':{ from: '#0a0a1a', to: '#1a1a3a' },
-  'Grouting & Tile Repair': { from: '#1a0a00', to: '#4a2000' },
-  'Surface Preparation':    { from: '#0a0a0a', to: '#2a2a2a' },
-  'Cleaning Services':      { from: '#001a1a', to: '#004a4a' },
-  'Consultation Services':  { from: '#1a1200', to: '#4a3800' },
+  // New 7 categories (matched by service.category string from servicePricing)
+  'Interior Painting':             { from: '#1A0B21', to: '#432553' },
+  'Exterior Painting':             { from: '#0a1e3a', to: '#1a3f6e' },
+  'Ceiling Painting':              { from: '#1a2e4a', to: '#2e4f7a' },
+  'Add-ons':                       { from: '#2e1e04', to: '#6a4618' },
+  'Dampness / Leakage Repair':     { from: '#062030', to: '#0e4060' },
+  'Texture / Decorative Painting': { from: '#4a2e00', to: '#8a5a00' },
+  'Waterproofing':                 { from: '#062818', to: '#104820' },
+  // Legacy fallbacks (in case any old slug sneaks through)
+  'Core Painting Services':        { from: '#1A0B21', to: '#432553' },
+  'Waterproofing Services':        { from: '#062818', to: '#104820' },
+  'Wall Design Services':          { from: '#4a2e00', to: '#8a5a00' },
 };
 
 // ─── Package config keyed by tier name ───────────────────────────────────────
@@ -113,21 +115,27 @@ const TIER_CONFIG = {
 // getFAQs now delegates to the shared faqData module for consistent, rich content
 
 // ─── Before/After cards per category ─────────────────────────────────────────
+const BA_DIR = '/real project section/before and after';
+const baPair = (n) => ({
+  beforeSrc: `${BA_DIR}/${n},1.webp`,
+  afterSrc:  `${BA_DIR}/${n},2.webp`,
+});
+
 const getBeforeAfterCards = (service) => {
   const paintingCards = [
-    { before: 'Yellowed, stained walls with flaking paint and visible patches', after: 'Smooth washable finish, uniform colour, clean edges and corners', location: 'Delhi' },
-    { before: 'Dull, chalky walls from previous low-quality paint that attracts dust', after: 'Vibrant, anti-dust finish that wipes clean without damage', location: 'Gurgaon' },
-    { before: 'Cracked skirting and uneven surface with rough texture', after: 'Filled, sanded smooth and painted to a polished finish', location: 'Mumbai' },
+    { ...baPair('s2'), before: 'Yellowed, stained walls with flaking paint and visible patches', after: 'Smooth washable finish, uniform colour, clean edges and corners', location: 'Delhi' },
+    { ...baPair('s3'), before: 'Dull, chalky walls from previous low-quality paint that attracts dust', after: 'Vibrant, anti-dust finish that wipes clean without damage', location: 'Gurgaon' },
+    { ...baPair('s1'), before: 'Cracked skirting and uneven surface with rough texture', after: 'Filled, sanded smooth and painted to a polished finish', location: 'Mumbai' },
   ];
   const waterCards = [
-    { before: 'Green seepage marks and damp patches on ceiling after rain', after: 'Dry, protected surface sealed against water ingress for years', location: 'Mumbai' },
-    { before: 'Active leakage from terrace slab causing interior wall damage', after: 'Terrace sealed with multi-layer system, interior dry and clean', location: 'Bengaluru' },
-    { before: 'Bathroom wall seepage staining tiles and weakening plaster', after: 'Wet-area waterproofed before tiling — no seepage signs after 6 months', location: 'Delhi' },
+    { ...baPair('s4'), before: 'Green seepage marks and damp patches on ceiling after rain', after: 'Dry, protected surface sealed against water ingress for years', location: 'Mumbai' },
+    { ...baPair('s6'), before: 'Active leakage from terrace slab causing interior wall damage', after: 'Terrace sealed with multi-layer system, interior dry and clean', location: 'Bengaluru' },
+    { ...baPair('s5'), before: 'Bathroom wall seepage staining tiles and weakening plaster', after: 'Wet-area waterproofed before tiling — no seepage signs after 6 months', location: 'Delhi' },
   ];
   const textureCards = [
-    { before: 'Plain flat wall in living room, scuffed and worn from years of use', after: 'Designer sand texture in warm beige — premium finish, no scuffs visible', location: 'Pune' },
-    { before: 'Bare bedroom wall with faded paint and nail-hole patches', after: 'Geometric stencil accent wall in charcoal and white — focal point of the room', location: 'Hyderabad' },
-    { before: 'Office reception wall with scratched emulsion from years of traffic', after: 'Metallic texture feature wall — professional look, easy to maintain', location: 'Bengaluru' },
+    { ...baPair('s7'), before: 'Plain flat wall in living room, scuffed and worn from years of use', after: 'Designer sand texture in warm beige — premium finish, no scuffs visible', location: 'Pune' },
+    { ...baPair('s5'), before: 'Bare bedroom wall with faded paint and nail-hole patches', after: 'Geometric stencil accent wall in charcoal and white — focal point of the room', location: 'Hyderabad' },
+    { ...baPair('s6'), before: 'Office reception wall with scratched emulsion from years of traffic', after: 'Metallic texture feature wall — professional look, easy to maintain', location: 'Bengaluru' },
   ];
   if (service.category === 'Waterproofing') return waterCards;
   if (service.category === 'Wall Design') return textureCards;
@@ -141,29 +149,18 @@ const WaIcon = ({ cls = 'w-4 h-4' }) => (
   </svg>
 );
 
-// ─── Hero quick-quote form ────────────────────────────────────────────────────
-const HeroQuoteForm = ({ service }) => {
+// ─── Hero quick-quote form — continues into /get-quote with city + phone ─────
+const HeroQuoteForm = () => {
   const CITIES = Object.keys(cityMultipliers).sort();
+  const navigate = useNavigate();
   const [city, setCity] = useState('Delhi');
   const [phone, setPhone] = useState('');
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (phone.trim().length < 10) return;
-    const msg = `${waForService(service.name)}\nCity: ${city}\nPhone: ${phone}`;
-    window.open(`${contactData.contact.whatsapp.link}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
-    setSent(true);
+    navigate('/get-quote', { state: { phone: phone.trim(), city } });
   };
-
-  if (sent) {
-    return (
-      <div className="flex items-center gap-3 rounded-2xl bg-[#25D366]/12 border border-[#25D366]/25 px-4 py-3.5">
-        <WaIcon cls="w-5 h-5 text-[#25D366] flex-shrink-0" />
-        <p className="text-sm font-medium text-white/90">Opening WhatsApp for {city} — team responds in 2 hrs.</p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-2.5">
@@ -176,8 +173,9 @@ const HeroQuoteForm = ({ service }) => {
       />
       <input
         type="tel"
+        inputMode="numeric"
         value={phone}
-        onChange={(e) => setPhone(e.target.value)}
+        onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
         placeholder="Mobile number"
         maxLength={10}
         required
@@ -186,10 +184,9 @@ const HeroQuoteForm = ({ service }) => {
       />
       <button
         type="submit"
-        className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white py-3 text-sm font-bold hover:bg-[#1fb355] transition-colors shadow-[0_3px_14px_rgba(37,211,102,0.4)]"
+        className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#F0C85A] text-[#0F1221] py-3 text-sm font-bold hover:bg-white transition-colors shadow-[0_3px_14px_rgba(240,200,90,0.4)]"
       >
-        <WaIcon />
-        Book Free Site Visit
+        Book Free Site Visit →
       </button>
       <p className="text-center text-[10px] text-white/35">No spam · Team calls or WhatsApps you</p>
     </form>
@@ -311,19 +308,17 @@ const ServiceDetailPage = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   to={`/calculators/service-cost-calculator?service=${service.slug}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-6 sm:py-3.5 font-bold hover:bg-white transition-colors shadow-lg"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                   Calculate Cost
                 </Link>
-                <button
-                  type="button"
-                  onClick={() => openWhatsApp(waForService(service.name))}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/8 px-6 py-3.5 text-white font-semibold hover:bg-white/15 transition-colors"
+                <Link
+                  to="/get-quote"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/8 px-5 py-3 sm:px-6 sm:py-3.5 text-white font-semibold hover:bg-white/15 transition-colors"
                 >
-                  <WaIcon />
-                  Book Free Site Visit
-                </button>
+                  Book Free Site Visit →
+                </Link>
               </div>
               <p className="text-xs text-white/30 mt-3">Free inspection · Fixed written quote · No commitment required</p>
             </div>
@@ -333,7 +328,7 @@ const ServiceDetailPage = () => {
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#F0C85A]/70 mb-1">{service.name}</p>
               <h2 className="text-lg font-semibold text-white mb-1">Get a quick site visit</h2>
               <p className="text-xs text-white/40 font-light mb-5">Enter your city and number — team confirms in 2 hrs.</p>
-              <HeroQuoteForm service={service} />
+              <HeroQuoteForm />
             </div>
           </div>
         </div>
@@ -391,14 +386,12 @@ const ServiceDetailPage = () => {
               <div className="mt-4 rounded-xl bg-[#FBF9F6] border border-[#e5e0d8] px-4 py-3 text-xs text-gray-500">
                 Final price confirmed after free site inspection and laser measurement.
               </div>
-              <button
-                type="button"
-                onClick={() => openWhatsApp(waForService(service.name))}
-                className="mt-4 w-full flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white py-3 text-sm font-bold hover:bg-[#1fb355] transition-colors shadow-[0_3px_14px_rgba(37,211,102,0.38)]"
+              <Link
+                to="/get-quote"
+                className="mt-4 w-full flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white py-3 text-sm font-bold hover:bg-[#493657] transition-colors"
               >
-                <WaIcon />
-                Book Free Site Visit
-              </button>
+                Book Free Site Visit →
+              </Link>
             </div>
           </div>
         </section>
@@ -495,27 +488,16 @@ const ServiceDetailPage = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {beforeAfter.map((card, i) => (
-              <div key={i} className="rounded-2xl border border-[#0F1221]/8 bg-white overflow-hidden">
-                {/* Visual split */}
-                <div className="relative h-36 bg-[#EAE7E0]">
-                  <div className="absolute inset-y-0 left-0 w-1/2 bg-[#C8BFB0] flex items-end p-3">
-                    <div className="space-y-1 w-full">
-                      <div className="h-1.5 rounded bg-[#A09080]/70 w-3/4" />
-                      <div className="h-1 rounded bg-[#BFB0A0]/50 w-full" />
-                      <div className="h-2 rounded bg-[#908070]/60 w-1/2" />
-                    </div>
-                  </div>
-                  <div className="absolute inset-y-0 right-0 w-1/2 bg-[#F0EDE8] flex items-end p-3">
-                    <div className="space-y-1 w-full">
-                      <div className="h-1.5 rounded bg-[#E0DBD4] w-3/4" />
-                      <div className="h-1 rounded bg-[#D8D2CC] w-full" />
-                      <div className="h-2 rounded bg-[#E8E4DF] w-1/2" />
-                    </div>
-                  </div>
-                  <div className="absolute inset-y-0 left-1/2 -translate-x-px w-px bg-white/70 z-10" />
-                  <span className="absolute top-2 left-2 text-[9px] font-bold uppercase tracking-wider text-white px-1.5 py-0.5 rounded bg-black/40">Before</span>
-                  <span className="absolute top-2 right-2 text-[9px] font-bold uppercase tracking-wider text-white px-1.5 py-0.5 rounded bg-[#493657]/80">After</span>
-                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[9px] font-bold text-[#0F1221] bg-white px-2 py-0.5 rounded-full shadow-sm z-10">{card.location}</span>
+              <div key={i} className="rounded-2xl border border-[#0F1221]/8 bg-white overflow-hidden hover:shadow-[0_12px_36px_rgba(15,18,33,0.10)] transition-shadow">
+                {/* Real before/after — drag to compare */}
+                <div className="relative">
+                  <BeforeAfterSlider
+                    beforeSrc={card.beforeSrc}
+                    afterSrc={card.afterSrc}
+                    height="h-44"
+                    initialPos={42}
+                  />
+                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[9px] font-bold text-[#0F1221] bg-white px-2 py-0.5 rounded-full shadow-sm z-10 pointer-events-none">{card.location}</span>
                 </div>
                 <div className="p-4 space-y-2 text-xs">
                   <div className="flex gap-2">
@@ -526,6 +508,9 @@ const ServiceDetailPage = () => {
                     <span className="font-semibold text-[#493657] flex-shrink-0 w-10 uppercase tracking-wide text-[10px]">After</span>
                     <span className="text-[#0F1221]/75">{card.after}</span>
                   </div>
+                  <Link to="/gallery" className="inline-flex items-center gap-1 pt-1 text-[11px] font-bold text-[#493657] hover:text-[#F0C85A] transition-colors">
+                    See similar projects →
+                  </Link>
                 </div>
               </div>
             ))}
@@ -611,14 +596,14 @@ const ServiceDetailPage = () => {
             <div className="flex flex-col gap-3 flex-shrink-0 w-full lg:w-auto min-w-[200px]">
               <Link
                 to="/get-quote"
-                className="flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-7 py-3.5 font-bold hover:bg-white transition-colors shadow-lg whitespace-nowrap"
+                className="flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-bold hover:bg-white transition-colors shadow-lg whitespace-nowrap"
               >
                 Book Free Inspection →
               </Link>
               <button
                 type="button"
                 onClick={() => openWhatsApp(waForService(service.name))}
-                className="flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-7 py-3 font-semibold hover:bg-white/10 transition-colors whitespace-nowrap"
+                className="flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-5 py-2.5 sm:px-7 sm:py-3 font-semibold hover:bg-white/10 transition-colors whitespace-nowrap"
               >
                 <WaIcon />
                 WhatsApp Us

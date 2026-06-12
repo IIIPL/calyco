@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"public\\\\service\\\\\" 2>&1 | head -20)",
+      "Bash(dir \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\\\\public\\\\service\")",
+      "Bash(Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue)",
+      "Bash(npx eslint *)",
+      "Bash(npx kill-port *)",
+      "Bash(sed -n '195,205p;320,340p;398,412p' src/pages/services/ServiceDetailPage.jsx)",
+      "Bash(sed -n '130,145p;400,418p' src/pages/TextureDetailPage.jsx)",
+      "Bash(sed -n '138,152p;318,332p' src/pages/CityLandingPage.jsx)",
+      "Bash(sed -n '34,50p' src/pages/GalleryPage.jsx)",
+      "Bash(sed -n '230,248p' src/components/StaticHero.jsx)",
+      "Bash(python -)",
+      "Bash(git rm *)",
+      "Bash(rm src/pages/Home.jsx src/pages/HomeV2.jsx src/pages/HomeV3.jsx src/pages/HomeV4.jsx src/pages/HomeV5.jsx)"
+    ]
+  }
+}

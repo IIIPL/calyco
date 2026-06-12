@@ -3,16 +3,17 @@ import { useState } from 'react';
 import MobileChevron from './MobileChevron';
 
 const services = [
-  { name: 'Interior Painting', path: '/services/interior-painting', price: '₹18+', icon: '🏠' },
-  { name: 'Exterior Painting', path: '/services/exterior-painting', price: '₹24+', icon: '🏗️' },
-  { name: 'Full Home Painting', path: '/services/full-house-painting', price: '₹18+', icon: '🏡' },
-  { name: 'Waterproofing', path: '/services/terrace-waterproofing', price: '₹45+', icon: '💧' },
-  { name: 'Texture & Stencil', path: '/services/texture-painting', price: '₹55+', icon: '✦' },
-  { name: 'Wallpaper', path: '/services/wallpaper-installation', price: '₹35+', icon: '🖼️' },
-  { name: 'Wood Polish', path: '/services/wood-polish', price: '₹70+', icon: '🪵' },
-  { name: 'Metal Painting', path: '/services/gate-painting', price: '₹35+', icon: '⚙️' },
-  { name: 'Tile Grouting', path: '/services/tile-grouting', price: '₹25+', icon: '🔲' },
-  { name: 'Calculate Cost', path: '/calculators/service-cost-calculator', price: null, icon: '🧮' },
+  { name: 'Interior Repaint',           path: '/services/interior-repaint',            price: '₹18+', icon: '🏠' },
+  { name: 'Interior Fresh Painting',    path: '/services/interior-fresh-painting',     price: '₹23+', icon: '🏠' },
+  { name: 'Exterior Repaint',           path: '/services/exterior-repaint',            price: '₹24+', icon: '🏗️' },
+  { name: 'Exterior Fresh Painting',    path: '/services/exterior-fresh-painting',     price: '₹28+', icon: '🏗️' },
+  { name: 'Ceiling Painting',           path: '/services/ceiling-painting',            price: '₹20+', icon: '🔼' },
+  { name: 'Wall Putty Add-on',          path: '/services/wall-putty-addon',            price: '₹12+', icon: '🧱' },
+  { name: 'Primer Add-on',              path: '/services/primer-addon',                price: '₹6+',  icon: '🎨' },
+  { name: 'Dampness / Leakage Repair',  path: '/services/dampness-leakage-repair',     price: '₹65+', icon: '💧' },
+  { name: 'Texture / Decorative',       path: '/services/texture-decorative-painting', price: '₹55+', icon: '✨' },
+  { name: 'Waterproofing',              path: '/services/waterproofing',               price: '₹45+', icon: '🛡️' },
+  { name: 'Calculate Cost',             path: '/calculators/service-cost-calculator',  price: null,   icon: '🧮' },
 ];
 
 const ServicesDropdown = ({ onSelect, isMobile = false }) => {

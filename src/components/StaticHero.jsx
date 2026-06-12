@@ -234,15 +234,12 @@ const StaticHero = () => {
               >
                 Get My Painting Estimate
               </Link>
-              <a
-                href={waVisit}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/get-quote"
                 className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 bg-white border border-[#0F1221]/12 text-[#0F1221] rounded-2xl text-sm font-medium tracking-[0.06em] uppercase hover:border-[#0F1221]/30 hover:shadow-md transition-all duration-300"
               >
-                <WaIcon />
-                Book Free Site Visit
-              </a>
+                Book Free Site Visit →
+              </Link>
             </motion.div>
 
           </div>

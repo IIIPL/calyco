@@ -176,17 +176,20 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
   }
 
   return (
-    <div className="fixed left-0 top-[6.5rem] w-full bg-white/95 backdrop-blur-md border-t border-b border-[#e5e0d8] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] z-50 font-poppins transition-all duration-300">
-      <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-16 flex gap-12">
+    <div className="absolute left-0 top-full w-full bg-white border-b border-[#0F1221]/8 shadow-[0_16px_56px_rgba(0,0,0,0.12)] z-[200]">
+      <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-10 flex gap-10">
         {/* LEFT rail */}
-        <div className="flex flex-col w-72 pr-8 border-r border-[#e5e0d8]/50">
-          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.25em] mb-6 pl-4">Categories</h3>
+        <div className="flex flex-col w-72 pr-8 border-r border-[#0F1221]/6">
+          <div className="flex items-center gap-2.5 mb-5 pl-4">
+            <span className="w-5 h-px bg-[#F0C85A]" />
+            <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Categories</span>
+          </div>
           {leftMenu.map((item) => (
             <button
               key={item.key}
-              className={`text-left text-base lg:text-lg py-3 px-4 rounded-lg transition-all duration-300 ${selectedMenu === item.key
-                  ? "bg-[#F9F6FF] text-[#493657] font-bold shadow-sm translate-x-1"
-                  : "text-gray-500 hover:bg-gray-50 hover:text-[#493657]"
+              className={`text-left text-[13px] py-2.5 px-4 rounded-xl transition-all duration-300 ${selectedMenu === item.key
+                  ? "bg-[#FAFAF8] text-[#493657] font-bold"
+                  : "text-[#0F1221]/55 font-medium hover:bg-[#FAFAF8] hover:text-[#0F1221]"
                 }`}
               onClick={() => handleMenuClick(item)}
             >
@@ -196,9 +199,12 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         </div>
 
         {/* MIDDLE list */}
-        <div className="flex-1 px-8 max-h-[500px] overflow-y-auto custom-scrollbar">
-          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-[0.25em] mb-6">Values</h3>
-          <ul className="space-y-4">
+        <div className="flex-1 px-6 max-h-[420px] overflow-y-auto custom-scrollbar">
+          <div className="flex items-center gap-2.5 mb-5">
+            <span className="w-5 h-px bg-[#F0C85A]" />
+            <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Products</span>
+          </div>
+          <ul className="space-y-0.5">
             {(() => {
               const menuProducts = getProductsForMenu(selectedMenu);
               if (!menuProducts.length) return null;
@@ -211,19 +217,20 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
                       if (onSelect) onSelect();
                     }}
                     onMouseEnter={() => handleHover(product)}
-                    className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${hovered?.name === product.name
-                        ? "bg-gray-50"
-                        : "hover:bg-gray-50"
+                    className={`group flex items-center justify-between rounded-xl px-3 py-2.5 transition-colors duration-200 ${hovered?.name === product.name ? "bg-[#FAFAF8]" : "hover:bg-[#FAFAF8]"
                       }`}
                   >
-                    <span className={`text-xl transition-colors duration-300 ${hovered?.name === product.name
-                        ? "text-[#493657] font-bold"
-                        : "text-[#493657] font-medium"
-                      }`}>
-                      {product.display_name || product.name}
+                    <span className="flex items-start gap-2.5">
+                      <span className="w-1 h-1 rounded-full bg-[#F0C85A] flex-shrink-0 mt-2" />
+                      <span className={`text-[14px] leading-snug transition-colors duration-200 ${hovered?.name === product.name
+                          ? "text-[#493657] font-semibold"
+                          : "text-[#0F1221] font-medium group-hover:text-[#493657]"
+                        }`}>
+                        {product.display_name || product.name}
+                      </span>
                     </span>
 
-                    <span className={`transition-all duration-300 text-[#F0C85A] ${hovered?.name === product.name ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                    <span className={`text-[#F0C85A] transition-all duration-200 ${hovered?.name === product.name ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
                       }`}>
                       →
                     </span>
@@ -238,29 +245,50 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         <div className="w-80 flex flex-col items-center justify-center">
           {hovered && (
             <div className="relative group w-full">
-              <div className="w-full h-64 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 flex items-center justify-center transition-transform duration-500 group-hover:-translate-y-2">
+              <div className="w-full h-60 bg-[#FAFAF8] border border-[#0F1221]/5 rounded-2xl p-6 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:-translate-y-1.5">
                 <LazyLoadImage
                   src={hovered.images?.[0] || hovered.image}
                   alt={hovered.name}
                   effect="blur"
-                  className="object-contain max-h-full max-w-full drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
+                  wrapperClassName="h-full flex items-center justify-center"
+                  className="object-contain h-48 w-auto drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
-              <div className="mt-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <div className="mt-5 text-center">
                 <Link
                   to={buildProductPath(hovered)}
                   onClick={() => {
                     window.scrollTo({ top: 0 });
                     if (onSelect) onSelect();
                   }}
-                  className="inline-flex items-center gap-2 text-[#493657] font-bold uppercase tracking-wider text-sm border-b-2 border-[#F0C85A] pb-1 hover:text-[#F0C85A] transition-colors"
+                  className="inline-flex items-center gap-2 text-[13px] font-bold text-[#493657] hover:text-[#F0C85A] transition-colors"
                 >
-                  Explore Product <span className="text-lg">→</span>
+                  Explore Product →
                 </Link>
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Footer strip */}
+      <div className="border-t border-[#0F1221]/6 bg-[#FAFAF8]">
+        <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-3 flex items-center justify-between">
+          <Link
+            to="/products"
+            onClick={() => { window.scrollTo({ top: 0 }); if (onSelect) onSelect(); }}
+            className="text-[13px] font-bold text-[#493657] hover:text-[#F0C85A] transition-colors"
+          >
+            Show all products →
+          </Link>
+          <Link
+            to="/colors"
+            onClick={() => { window.scrollTo({ top: 0 }); if (onSelect) onSelect(); }}
+            className="inline-flex items-center gap-1.5 rounded-full bg-[#0F1221] text-white px-4 py-1.5 text-[11px] font-bold hover:bg-[#493657] transition-colors"
+          >
+            Explore Colours
+          </Link>
         </div>
       </div>
     </div>
