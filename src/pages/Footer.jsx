@@ -67,32 +67,7 @@ export const Footer = () => {
   return (
     <footer className="bg-[#0F1221] text-white font-poppins">
 
-      {/* ── Pre-footer CTA ───────────────────────────────────────────────── */}
-      <div className="border-b border-white/6">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 sm:py-12">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className="w-7 h-px bg-[#F0C85A]" />
-                <span className="text-[10px] font-black uppercase tracking-[0.26em] text-[#F0C85A]/60">Start Your Project</span>
-              </div>
-              <h2 className="text-[22px] sm:text-[28px] font-light text-white leading-tight">
-                Ready to transform<br className="hidden sm:block" /> your home?
-              </h2>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/get-quote" onClick={scrollTop}
-                className="inline-flex items-center gap-2 bg-[#F0C85A] text-[#0F1221] px-6 py-3 rounded-full text-[13px] font-bold hover:bg-white transition-colors whitespace-nowrap">
-                Get Free Quote →
-              </Link>
-              <a href={waLink} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366]/15 border border-[#25D366]/25 text-[#4ce87a] px-6 py-3 rounded-full text-[13px] font-bold hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-colors whitespace-nowrap">
-                <WaIconSm /> WhatsApp Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* ── Main grid ────────────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-12 pb-10">

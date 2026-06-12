@@ -4,6 +4,14 @@ import { Navbar } from './components/Navbar'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 const HomeFinal = React.lazy(() => import('./pages/HomeFinal.jsx'))
+// Hidden design archive — reachable only via /dev/versions
+const VersionsIndex = React.lazy(() => import('./pages/dev/VersionsIndex.jsx'))
+const HomeClassic = React.lazy(() => import('./pages/Home.jsx'))
+const HomeOriginal = React.lazy(() => import('./pages/HomePage.jsx'))
+const HomeV2 = React.lazy(() => import('./pages/HomeV2.jsx'))
+const HomeV3 = React.lazy(() => import('./pages/HomeV3.jsx'))
+const HomeV4 = React.lazy(() => import('./pages/HomeV4.jsx'))
+const HomeV5 = React.lazy(() => import('./pages/HomeV5.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
 const BudgetCalculator = React.lazy(() => import('./pages/BudgetCalculator.jsx'))
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage.jsx'))
@@ -213,6 +221,14 @@ function App() {
                 <div key={location.pathname} className="page-enter">
                 <Routes>
                   <Route path='/' element={<HomeFinal />} />
+                  {/* Hidden design archive — not linked anywhere */}
+                  <Route path='/dev/versions' element={<VersionsIndex />} />
+                  <Route path='/dev/versions/classic' element={<HomeClassic />} />
+                  <Route path='/dev/versions/original' element={<HomeOriginal />} />
+                  <Route path='/dev/versions/v2' element={<HomeV2 />} />
+                  <Route path='/dev/versions/v3' element={<HomeV3 />} />
+                  <Route path='/dev/versions/v4' element={<HomeV4 />} />
+                  <Route path='/dev/versions/v5' element={<HomeV5 />} />
 
                   {/* New premium visual-first routes */}
                   <Route path='/colors' element={<ColorsPage />} />
