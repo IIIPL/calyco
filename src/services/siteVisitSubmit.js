@@ -15,7 +15,7 @@ const GSHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}`;
 const HEADERS = [
   'Timestamp', 'Name', 'Phone', 'City',
   'House No', 'Apartment / Street', 'Area', 'Pincode',
-  'Property Type', 'Visit Date',
+  'Property Type', 'Visit Date', 'Location Link'
 ];
 
 /* ── Google auth (service account JWT, signed in-browser) ─────────────────── */
@@ -133,6 +133,9 @@ export async function submitSiteVisit(d) {
         ``,
         `Property Type: ${d.property || '—'}`,
         `Visit Date: ${d.visitDate || '—'}`,
+        `Location Link: ${d.locationLink || '—'}`,
+        ``,
+        `Estimate Total: ${d.estimateTotal || '—'}`,
         ``,
         `Google Sheet: ${GSHEET_URL}`,
       ].join('\n'),
@@ -154,6 +157,7 @@ export async function submitSiteVisit(d) {
       d.pincode   || '',
       d.property  || '',
       d.visitDate || '',
+      d.locationLink || '',
     ]);
   } catch (err) {
     console.error('[SiteVisit] Sheets error:', err?.message || err);
