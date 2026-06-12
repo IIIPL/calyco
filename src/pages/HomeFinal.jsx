@@ -251,7 +251,10 @@ const HeroFinal = () => {
     >
       {/* ── Premium Ambient Background ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <img src="/Assets/background-texture.webp" className="absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
+        {/* Desktop background */}
+        <img src="/Assets/background-texture.webp" className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
+        {/* Mobile background */}
+        <img src="/mobile bg.png" className="block lg:hidden absolute inset-0 w-full h-full object-cover object-right-top opacity-100" alt="" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF8]/40 via-transparent to-[#FAFAF8]" />
         <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
         <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-[#493657] opacity-[0.04] blur-[140px] rounded-full mix-blend-multiply" />
@@ -372,8 +375,6 @@ const HeroFinal = () => {
                 alt="Calyco painting service"
                 className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAF8]/30 lg:from-[#FAFAF8]/40 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#0F1221]/80 via-[#0F1221]/30 to-transparent" />
             </motion.div>
           </motion.div>
         </motion.div>
