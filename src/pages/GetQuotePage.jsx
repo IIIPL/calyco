@@ -307,7 +307,7 @@ const GetQuotePage = () => {
               href={waMessage()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-[#25D366] text-white px-6 py-3.5 text-sm font-bold hover:bg-[#1fb355] shadow-[0_3px_14px_rgba(37,211,102,0.38)] transition-colors mb-4"
+              className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-[#25D366] text-white px-6 py-3.5 text-sm font-bold hover:bg-[#1fb355] shadow-[0_3px_14px_rgba(37,211,102,0.38)] transition-colors mb-4 whitespace-nowrap"
             >
               <WaIcon /> Chat with us on WhatsApp
             </a>
@@ -315,13 +315,13 @@ const GetQuotePage = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 to="/calculators/service-cost-calculator"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/12 text-[#0F1221]/70 px-6 py-3 text-sm font-medium hover:border-[#0F1221]/30 transition-colors"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/12 text-[#0F1221]/70 px-6 py-3 text-sm font-medium hover:border-[#0F1221]/30 transition-colors whitespace-nowrap"
               >
                 See cost calculator
               </Link>
               <Link
                 to="/services"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-bold hover:bg-[#493657] transition-colors"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-bold hover:bg-[#493657] transition-colors whitespace-nowrap"
               >
                 Browse services →
               </Link>
@@ -336,7 +336,7 @@ const GetQuotePage = () => {
   return (
     <main className="min-h-screen bg-[#FAFAF8] pb-20">
       <SEO
-        title="Book a Free Site Visit | Calyco 5-Star Painting Service"
+        title="Book a Free Site Visit | Calyco 5-Star Painting Services"
         description="Book a free site inspection and colour consultation in under a minute. Verified painters, fixed written quote. Serving 25+ cities across India."
         url="https://calycopaints.com/get-quote"
       />

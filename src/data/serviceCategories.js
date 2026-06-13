@@ -10,7 +10,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#b48fd4',
     glow: 'rgba(92,62,121,0.5)',
     fromPrice: '₹18/sq ft',
-    image: '/service/Interior Painting.jpg',
+    image: '/service/Interior Painting.webp',
     slugs: ['interior-repaint', 'interior-fresh-painting'],
   },
   {
@@ -22,7 +22,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#6ab4e8',
     glow: 'rgba(26,63,110,0.5)',
     fromPrice: '₹24/sq ft',
-    image: '/service/Exterior Painting.jpg',
+    image: '/service/Exterior Painting.webp',
     slugs: ['exterior-repaint', 'exterior-fresh-painting'],
   },
   {
@@ -34,7 +34,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#88c8f0',
     glow: 'rgba(46,79,122,0.5)',
     fromPrice: '₹20/sq ft',
-    image: '/service/Luxury Painting.jpg',
+    image: '/service/Luxury Painting.webp',
     slugs: ['ceiling-painting'],
   },
   {
@@ -46,7 +46,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#d4b060',
     glow: 'rgba(106,70,24,0.5)',
     fromPrice: '₹6/sq ft',
-    image: '/service/Wall Putty.jpg',
+    image: '/service/Wall Putty.webp',
     slugs: ['wall-putty-addon', 'primer-addon'],
   },
   {
@@ -58,7 +58,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#60C8F0',
     glow: 'rgba(14,64,96,0.5)',
     fromPrice: '₹65/sq ft',
-    image: '/service/Internal Damp Wall Treatment.jpg',
+    image: '/service/Internal Damp Wall Treatment.webp',
     slugs: ['dampness-leakage-repair'],
   },
   {
@@ -70,7 +70,7 @@ export const SERVICE_CATEGORIES = [
     accent: '#F0C85A',
     glow: 'rgba(138,90,0,0.5)',
     fromPrice: '₹55/sq ft',
-    image: '/service/Texture Painting.jpg',
+    image: '/service/Texture Painting.webp',
     slugs: ['texture-decorative-painting'],
   },
   {
@@ -82,22 +82,22 @@ export const SERVICE_CATEGORIES = [
     accent: '#50e090',
     glow: 'rgba(16,72,32,0.5)',
     fromPrice: '₹45/sq ft',
-    image: '/service/Terrace Waterproofing.jpg',
+    image: '/service/Terrace Waterproofing.webp',
     slugs: ['waterproofing'],
   },
 ];
 
 export const SCENE_IMAGES = {
-  'interior-repaint':           '/service/Repainting.jpg',
-  'interior-fresh-painting':    '/service/fresh painting.jpg',
-  'exterior-repaint':           '/service/Exterior Painting.jpg',
-  'exterior-fresh-painting':    '/service/High-Rise Apartment Painting.jpg',
-  'ceiling-painting':           '/service/Luxury Painting.jpg',
-  'wall-putty-addon':           '/service/Wall Putty.jpg',
-  'primer-addon':               '/service/Primer Application.jpg',
-  'dampness-leakage-repair':    '/service/Internal Damp Wall Treatment.jpg',
-  'texture-decorative-painting':'/service/Texture Painting.jpg',
-  'waterproofing':              '/service/Terrace Waterproofing.jpg',
+  'interior-repaint':           '/service/Repainting.webp',
+  'interior-fresh-painting':    '/service/fresh painting.webp',
+  'exterior-repaint':           '/service/Exterior Painting.webp',
+  'exterior-fresh-painting':    '/service/High-Rise Apartment Painting.webp',
+  'ceiling-painting':           '/service/Luxury Painting.webp',
+  'wall-putty-addon':           '/service/Wall Putty.webp',
+  'primer-addon':               '/service/Primer Application.webp',
+  'dampness-leakage-repair':    '/service/Internal Damp Wall Treatment.webp',
+  'texture-decorative-painting':'/service/Texture Painting.webp',
+  'waterproofing':              '/service/Terrace Waterproofing.webp',
 };
 
 export const RATINGS = {

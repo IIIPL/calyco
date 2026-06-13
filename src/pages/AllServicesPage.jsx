@@ -293,7 +293,7 @@ export default function AllServicesPage() {
               ))}
               <Link
                 to="/calculators/service-cost-calculator"
-                className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-3 text-sm font-bold hover:bg-[#493657] transition-all">
+                className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#0F1221] text-white px-5 py-3 text-sm font-bold hover:bg-[#493657] transition-all whitespace-nowrap">
                 Get Estimate →
               </Link>
             </div>
@@ -496,12 +496,12 @@ export default function AllServicesPage() {
             </div>
             <div className="flex gap-2.5 sm:gap-3 flex-wrap w-full sm:w-auto">
               <Link to="/get-quote"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-white transition-colors shadow-lg">
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-white transition-colors shadow-lg whitespace-nowrap">
                 Book Free Site Visit →
               </Link>
               <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
                 target="_blank" rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white/85 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold hover:bg-white/10 transition-colors">
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white/85 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold hover:bg-white/10 transition-colors whitespace-nowrap">
                 WhatsApp Us
               </a>
             </div>

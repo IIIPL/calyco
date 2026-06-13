@@ -133,12 +133,12 @@ const TESTIMONIALS = [
   },
 ];
 const FAQS = [
-  { q: 'What is Calyco 5-Star Homes Painting Service?',          a: 'Calyco is a premium painting service providing trained, background-verified painters with fixed pricing, expert colour consultation, and a 2-year workmanship warranty across 25+ Indian cities.' },
+  { q: 'What is Calyco 5-Star Homes Painting Services?',          a: 'Calyco is a premium painting service providing trained, background-verified painters with fixed pricing, expert colour consultation, and a 2-year workmanship warranty across 25+ Indian cities.' },
   { q: 'How will Calyco go about painting my home?',             a: 'We follow a 5-step process: site consultation → colour selection → fixed quote → expert painting → final handover with warranty sign-off.' },
   { q: 'Why are the payment terms as stated?',                   a: 'We collect 30% advance to procure materials and the balance on completion — so you only pay in full once you are completely satisfied.' },
   { q: 'Who will paint my house?',                               a: 'All Calyco painters are background-verified, skill-assessed professionals who undergo regular quality audits.' },
   { q: 'What tools are used during painting?',                   a: 'Professional-grade brushes, rollers, spray equipment, and protective gear — maintained to ensure a flawless finish without damaging your property.' },
-  { q: 'What are the features of the Calyco Painting Service?',  a: 'Fixed price, free site visit, expert colour guidance, premium materials, background-verified painters, clean working environment, and a 2-year warranty.' },
+  { q: 'What are the features of the Calyco Painting Services?',  a: 'Fixed price, free site visit, expert colour guidance, premium materials, background-verified painters, clean working environment, and a 2-year warranty.' },
   { q: 'What safety protocols are followed on-site?',            a: 'We cover all furniture, tape edges, use non-toxic low-VOC paints, and follow strict safety protocols for ladders, heights, and chemical handling.' },
   { q: 'Does Calyco assist in shifting and covering furniture?', a: 'Yes. Our team covers all furniture and flooring with protective sheets before painting and removes them after full cleanup.' },
 ];
@@ -220,7 +220,7 @@ const HeroV5 = () => {
           >
             <span className="w-9 h-[2px] bg-[#F0C85A] rounded-full" />
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#493657]">
-              Calyco 5-Star Painting Service
+              Calyco 5-Star Painting Services
             </span>
           </motion.div>
 

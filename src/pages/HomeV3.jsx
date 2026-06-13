@@ -74,7 +74,7 @@ const HeroV3 = () => {
           className="flex items-center gap-2 mb-5"
         >
           <Stars cls="w-3.5 h-3.5" />
-          <span className="text-[11px] font-semibold text-[#0F1221]/45 uppercase tracking-[0.18em]">Calyco 5-Star Painting Service</span>
+          <span className="text-[11px] font-semibold text-[#0F1221]/45 uppercase tracking-[0.18em]">Calyco 5-Star Painting Services</span>
         </motion.div>
 
         {/* Headline */}
@@ -636,7 +636,7 @@ const CtaV3 = () => {
 const HomeV3 = () => (
   <div className="font-poppins bg-white min-h-screen">
     <SEO
-      title={`${BRAND_NAME} | 5-Star Painting Service — Professional House Painters`}
+      title={`${BRAND_NAME} | 5-Star Painting Services — Professional House Painters`}
       description="Beautiful homes start with a perfect finish. Calyco provides verified painters, fixed quotes, and warranty-backed painting services across 25+ cities."
       ogType="website"
     />

@@ -1,4 +1,4 @@
-export const BRAND_NAME = 'Calyco 5-Star Painting Service';
+export const BRAND_NAME = 'Calyco 5-Star Painting Services';
 
 export const POSITIONING_TAGLINE =
   'Verified painters. Transparent pricing. Proper wall preparation. Clean execution. Final quality check. Warranty-backed finish.';
@@ -15,20 +15,20 @@ export const POSITIONING_PILLS = [
 
 // Pre-built WhatsApp message strings
 export const WA_GENERAL =
-  'Hi Calyco — I am interested in the Calyco 5-Star Painting Service. Please share details for a free site visit.';
+  'Hi Calyco — I am interested in the Calyco 5-Star Painting Services. Please share details for a free site visit.';
 
 export const WA_SITE_VISIT =
-  'Hi Calyco, I want to book a free site visit for the Calyco 5-Star Painting Service.';
+  'Hi Calyco, I want to book a free site visit for the Calyco 5-Star Painting Services.';
 
 export const waForCity = (cityName) =>
-  `Hi Calyco, I want to book a free site visit in ${cityName} for the Calyco 5-Star Painting Service.`;
+  `Hi Calyco, I want to book a free site visit in ${cityName} for the Calyco 5-Star Painting Services.`;
 
 export const waForService = (serviceName) =>
-  `Hi Calyco, I want a free site visit for ${serviceName} — Calyco 5-Star Painting Service.`;
+  `Hi Calyco, I want a free site visit for ${serviceName} — Calyco 5-Star Painting Services.`;
 
 export const waForQuote = ({ city, category, area, propertyType, condition, name, phone }) => {
   const lines = [
-    'Hi Calyco — I would like a quote from the Calyco 5-Star Painting Service.',
+    'Hi Calyco — I would like a quote from the Calyco 5-Star Painting Services.',
     '',
     `City: ${city}`,
     `Service: ${category}`,

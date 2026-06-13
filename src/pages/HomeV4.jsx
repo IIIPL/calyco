@@ -137,7 +137,7 @@ const HeroV4 = () => {
           >
             <span className="w-9 h-px bg-[#F0C85A]" />
             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">
-              Calyco 5-Star Painting Service
+              Calyco 5-Star Painting Services
             </span>
           </motion.div>
 
@@ -967,7 +967,7 @@ const CtaV4 = () => {
               className="flex items-center gap-3 mb-6"
             >
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Calyco 5-Star Painting Service</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Calyco 5-Star Painting Services</span>
             </motion.div>
 
             {'Looking for Painting Services?'.split(' ').map((word, i) => (

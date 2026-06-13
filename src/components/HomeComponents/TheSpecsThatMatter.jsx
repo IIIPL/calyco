@@ -8,13 +8,13 @@ const TheSpecsThatMatter = () => {
         {
             value: "15-20%",
             label: "Below national brand pricing",
-            desc: "Same acrylic copolymer chemistry, direct-from-manufacturer.",
+            desc: "Premium paint, no middlemen. Lower cost, same quality.",
             color: "#059669" // Emerald
         },
         {
-            value: "< 50 g/L",
-            label: "VOC content",
-            desc: "Green Building compliant. Low odour for occupied spaces.",
+            value: "Free",
+            label: "Site visit & quote",
+            desc: "Our consultant visits, assesses, and quotes. No obligation.",
             color: "#0891B2" // Cyan
         },
         {
@@ -123,7 +123,7 @@ const TheSpecsThatMatter = () => {
                     className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 border-t border-[#1a1a1a]/10 pt-12"
                 >
                     <p className="max-w-3xl text-[#1a1a1a]/60 text-sm leading-relaxed font-light italic">
-                        100% acrylic copolymer binder. UV-resistant pigments. Advanced cross-linking technology. Anti-fungal and anti-microbial as standard. Recyclable HDPE packaging.
+                        Every project is backed by a full warranty, applied by verified painters, and quoted transparently — no surprises.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-3">

@@ -142,7 +142,7 @@ const OfferBanner = ({ onClose, isVisible, menuOpen }) => {
           {/* Centered Text */}
           <div className="flex-1"></div>
           <div className="text-center text-white text-sm font-medium">
-            Now launching Calyco 5-Star Painting Service across selected Indian cities.{' '}
+            Now launching Calyco 5-Star Painting Services across selected Indian cities.{' '}
             <button onClick={() => navigate('/services')} className="underline underline-offset-2 hover:text-[#F0C85A] transition-colors">Book a free inspection today →</button>
           </div>
           <div className="flex-1 flex justify-end">
