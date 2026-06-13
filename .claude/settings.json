@@ -34,7 +34,12 @@
       "Bash(awk '{print $5, $9}')",
       "Bash(cat vite.config.js)",
       "Bash(cat vite.config.ts)",
-      "Bash(awk '{sum += $5} END {print \"Total size: \" sum/1024/1024 \" MB\"}')"
+      "Bash(awk '{sum += $5} END {print \"Total size: \" sum/1024/1024 \" MB\"}')",
+      "Skill(run)",
+      "Skill(run:*)",
+      "PowerShell(Get-Command npx)",
+      "PowerShell(npx --prefix \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\" playwright --version)",
+      "PowerShell($global = npm root -g; Get-ChildItem \"$global\" -Filter \"playwright\" -Directory -ErrorAction SilentlyContinue | Select-Object FullName)"
     ]
   }
 }
