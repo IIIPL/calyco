@@ -392,6 +392,8 @@ const GetQuotePage = () => {
                 <Field label="Full name">
                   <input
                     type="text"
+                    name="name"
+                    autoComplete="name"
                     value={form.name}
                     onChange={(e) => set('name', e.target.value)}
                     placeholder="Your name"
@@ -404,6 +406,8 @@ const GetQuotePage = () => {
                     <span className="pl-4 pr-3 text-sm text-[#0F1221]/45 font-medium border-r border-[#e5e0d8] py-3.5">+91</span>
                     <input
                       type="tel"
+                      name="tel"
+                      autoComplete="tel-national"
                       inputMode="numeric"
                       value={form.phone}
                       onChange={(e) => set('phone', e.target.value.replace(/\D/g, '').slice(0, 10))}
@@ -451,6 +455,8 @@ const GetQuotePage = () => {
                   <Field label="House No">
                     <input
                       type="text"
+                      name="address-line2"
+                      autoComplete="address-line2"
                       value={form.houseNo}
                       onChange={(e) => set('houseNo', e.target.value)}
                       placeholder="e.g. B-204"
@@ -460,6 +466,8 @@ const GetQuotePage = () => {
                   <Field label="Apartment / Street name">
                     <input
                       type="text"
+                      name="address-line1"
+                      autoComplete="address-line1"
                       value={form.street}
                       onChange={(e) => set('street', e.target.value)}
                       placeholder="Apartment, society or street"
@@ -471,6 +479,8 @@ const GetQuotePage = () => {
                 <Field label="Area name">
                   <input
                     type="text"
+                    name="address-level2"
+                    autoComplete="address-level2"
                     value={form.areaName}
                     onChange={(e) => set('areaName', e.target.value)}
                     placeholder="Locality / area"
@@ -482,6 +492,8 @@ const GetQuotePage = () => {
                   <Field label="Pincode">
                     <input
                       type="text"
+                      name="postal-code"
+                      autoComplete="postal-code"
                       inputMode="numeric"
                       value={form.pincode}
                       onChange={(e) => set('pincode', e.target.value.replace(/\D/g, '').slice(0, 6))}

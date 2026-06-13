@@ -294,7 +294,8 @@ const HeroMascot = ({ containerRef }) => {
 
         const stand = (t) => t.top - mH() + 4;
 
-        controls.set({ x: -90, y: stand(eyebrow), opacity: 1 });
+        const eyebrowY = stand(eyebrow) - 14;
+        controls.set({ x: -90, y: eyebrowY, opacity: 1 });
         setPhase('walk');
         await controls.start({ x: eyebrow.left - 4, transition: { duration: 1.2, ease: 'linear' } });
         if (cancelled) return;
@@ -313,7 +314,7 @@ const HeroMascot = ({ containerRef }) => {
         const starMidX = star.left + (star.right - star.left) / 2 - mW() / 2;
         await controls.start({
           x: starMidX,
-          y: [stand(eyebrow), stand(eyebrow) - 115, stand(star) + 6],
+          y: [eyebrowY, eyebrowY - 115, stand(star) + 6],
           transition: {
             x: { duration: 1.0, ease: 'easeInOut' },
             y: { duration: 1.0, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
@@ -789,7 +790,7 @@ const HeroFinal = () => {
             className="flex items-center gap-3 mb-8"
           >
             <span className="w-9 h-[2px] rounded-full bg-gradient-to-r from-[#F0C85A] to-[#E76F51]" />
-            <span data-mascot="eyebrow" className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">
+            <span data-mascot="eyebrow" className="text-[9px] font-black uppercase tracking-[0.3em] text-[#0F1221] lg:text-[#493657]">
               India&apos;s Trusted Painting Experts
             </span>
           </motion.div>
@@ -801,7 +802,7 @@ const HeroFinal = () => {
                   initial={{ y: '108%' }}
                   animate={inView ? { y: 0 } : {}}
                   transition={{ duration: 0.9, delay: 0.22 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                  className="block font-light tracking-[-0.025em] text-[1.95rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] text-[#0F1221] whitespace-nowrap"
+                  className="block font-light tracking-[-0.025em] text-[2.2rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] text-[#0F1221] whitespace-nowrap"
                 >
                   {segments.map((seg) =>
                     seg.gradient ? (
@@ -816,9 +817,15 @@ const HeroFinal = () => {
                             preserveAspectRatio="none"
                             className="absolute left-0 bottom-[-0.04em] w-full h-[0.2em] pointer-events-none"
                           >
+                            <defs>
+                              <linearGradient id="ulGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#7A4E9E" />
+                                <stop offset="100%" stopColor="#C2588B" />
+                              </linearGradient>
+                            </defs>
                             <motion.path
                               d="M4 14 C 35 5, 65 19, 100 11 C 135 3, 165 17, 196 9"
-                              stroke="#F0C85A"
+                              stroke="url(#ulGrad)"
                               strokeWidth="6"
                               strokeLinecap="round"
                               initial={{ pathLength: 0 }}
@@ -859,12 +866,12 @@ const HeroFinal = () => {
               <p className="text-[#0F1221] font-bold text-xs sm:text-sm mb-3 sm:mb-4">Get a Free Site Inspection</p>
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
                 <input
-                  type="text" placeholder="Your name" required value={form.name}
+                  type="text" name="name" autoComplete="name" placeholder="Your name" required value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
                 />
                 <input
-                  type="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
+                  type="tel" name="tel" autoComplete="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
                   onChange={e => setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
                   className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
                 />
@@ -905,7 +912,13 @@ const HeroFinal = () => {
             transition={{ duration: 1.15, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
-            <motion.div style={{ x: imgX, y: imgY }} className="absolute -inset-[5%]">
+            <motion.div
+              style={{ x: imgX, y: imgY }}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.06 }}
+              transition={{ duration: 8, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
+              className="absolute -inset-[5%]"
+            >
               <img
                 src={IMG_HERO}
                 alt="Calyco painting service"
@@ -974,6 +987,11 @@ const HeroFinal = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Mobile-only bottom edge — separates hero from marquee */}
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 h-10 pointer-events-none z-20"
+        style={{ background: 'linear-gradient(to bottom, transparent, rgba(15,18,33,0.07))' }} />
+
     </motion.section>
   );
 };
@@ -1045,10 +1063,10 @@ const HOME_CATS = [
 ];
 
 const ServicesFinal = () => (
-  <section className="bg-[#F7F6F3] py-24 sm:py-32">
+  <section className="bg-[#F7F6F3] py-12 sm:py-32">
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-16">
         <Reveal>
           <Eyebrow text="What We Do" />
           <h2 className="text-4xl sm:text-5xl font-light text-[#0F1221] leading-[1.08] tracking-[-0.025em]">
@@ -1229,7 +1247,7 @@ const ProcessFinal = () => {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-12 sm:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
         <motion.div
           ref={ref}
@@ -1381,7 +1399,7 @@ const InspirationFinal = () => {
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section ref={ref} className="bg-white py-20 sm:py-28">
+    <section ref={ref} className="bg-white py-12 sm:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
 
         <motion.div
@@ -1467,7 +1485,7 @@ const galleryImages = [
 ];
 
 const GalleryFinal = () => (
-  <section className="bg-[#F7F6F3] py-24 sm:py-32">
+  <section className="bg-[#F7F6F3] py-12 sm:py-32">
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
@@ -1540,7 +1558,7 @@ const FaqFinal = () => {
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section ref={ref} className="bg-[#F7F6F3] py-16 sm:py-24">
+    <section ref={ref} className="bg-[#F7F6F3] py-10 sm:py-24">
       <div className="max-w-3xl mx-auto px-6 sm:px-10">
 
         <motion.div
@@ -1616,7 +1634,7 @@ const CtaFinal = () => {
       {/* Light frosted overlay on the left so dark text stays readable */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/50 to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-28 sm:py-36">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-36">
         <div className="max-w-2xl">
           <Reveal>
             <div className="flex gap-0.5 mb-6">
