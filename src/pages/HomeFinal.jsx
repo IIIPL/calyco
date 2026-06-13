@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   motion, useInView, useScroll, useTransform,
-  useMotionValue, useSpring, AnimatePresence
+  useMotionValue, useSpring, AnimatePresence,
+  useAnimationControls, useReducedMotion
 } from 'framer-motion';
 import SEO from '../components/SEO';
 import ReviewsSection from '../components/ReviewsSection';
@@ -71,9 +72,9 @@ const ServiceCardImage = ({ images = [], title, offset = 0 }) => {
 };
 
 // ── Image paths (shared across sections) ───────────────────────────────────────
-const IMG_HERO    = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_18_13 PM.png');
-const IMG_PAINTER = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_00_24 PM.png');
-const IMG_CONSULT = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_11_55 PM.png');
+const IMG_HERO    = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_18_13 PM.webp');
+const IMG_PAINTER = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_00_24 PM.webp');
+const IMG_CONSULT = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_11_55 PM.webp');
 
 const WA_BASE = contactData?.contact?.whatsapp?.link ?? 'https://wa.me/918796777399';
 
@@ -198,7 +199,512 @@ const LineReveal = ({ inView, delay = 0, className = '' }) => (
 // ══════════════════════════════════════════════════════════════════
 //  1 — HERO  (V4 split layout + V2 inline lead-capture form, V4 CTAs)
 // ══════════════════════════════════════════════════════════════════
-const LINES = ['Calyco', '5-Star', 'Painting', 'Service'];
+const LINES = [
+  [{ text: 'Calyco ' }, { text: '5-Star', gradient: 'from-[#C77B2B] via-[#E8A33D] to-[#E76F51]' }],
+  [{ text: 'Painting ' }, { text: 'Services', gradient: 'from-[#493657] via-[#7A4E9E] to-[#C2588B]', underline: true }],
+];
+
+/* ── "Starry" — kawaii shooting-star mascot ─────────────────────────
+   Walks in from the left, waves hi, strolls across the eyebrow text,
+   then launches off the right edge of "Experts" in a big high arc
+   onto the middle of "5-Star", landing with a rubbery squash-and-
+   stretch bounce (Gear 5 style), and finally arcs again onto the
+   right end of "Services" with another bouncy landing.
+   Target positions are measured from the live DOM via data-mascot
+   attributes, so everything lands correctly at any viewport size. */
+const MASCOT_W = 78;
+const MASCOT_H = 70;
+
+/* Little things Starry says when the visitor stops scrolling */
+const MASCOT_LINES = [
+  { text: 'Hey! Want to know this service price? 💰', face: 'happy' },
+  { text: 'Free site visit — did you know? 😉', face: 'joke' },
+  { text: 'Confused about colours? I can help! 🎨', face: 'think' },
+  { text: '2-year warranty… not bad, right? 😎', face: 'happy' },
+  { text: 'Which room are we painting first? 🤔', face: 'think' },
+  { text: 'Hey, stop bouncing me around! 😤', face: 'angry' },
+  { text: 'Hmm… walls feeling a bit dull? 🤔', face: 'think' },
+  { text: 'Tap "Book" — I dare you! 😜', face: 'joke' },
+  { text: 'Whoa, you scroll fast! 😲', face: 'surprised' },
+  { text: 'Fixed quotes. No surprises. Promise! 🌟', face: 'happy' },
+];
+
+const HeroMascot = ({ containerRef }) => {
+  const controls = useAnimationControls();
+  const [phase, setPhase] = useState('hidden');
+  const [face, setFace] = useState('happy');
+  const [bubble, setBubble] = useState(null);
+  const [dir, setDir] = useState(1);
+  const [posX, setPosX] = useState(0);
+  const reduceMotion = useReducedMotion();
+
+  // Small talk when the user stops scrolling — at most one line per stop,
+  // with a long cooldown so he doesn't pester on every pause.
+  useEffect(() => {
+    if (reduceMotion) return;
+    let t;
+    let lastChat = 0;
+    const onScroll = () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (Date.now() - lastChat < 14000) return;
+        lastChat = Date.now();
+        const line = MASCOT_LINES[Math.floor(Math.random() * MASCOT_LINES.length)];
+        setFace(line.face);
+        setBubble(line.text);
+        setTimeout(() => { setBubble(null); setFace('happy'); }, 4200);
+      }, 700);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => { window.removeEventListener('scroll', onScroll); clearTimeout(t); };
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    let cancelled = false;
+    let resized = false; // set on viewport changes → forces a re-anchoring jump
+    const onResize = () => { resized = true; };
+    window.addEventListener('resize', onResize);
+    window.visualViewport?.addEventListener('resize', onResize);
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const mW = () => MASCOT_W;
+    const mH = () => MASCOT_H;
+
+    const run = async () => {
+      await sleep(1900); // let the headline reveal finish first
+      const c = containerRef.current;
+      if (!c || cancelled) return;
+      const box = c.getBoundingClientRect();
+      const spot = (name, capOffset = 0) => {
+        const el = c.querySelector(`[data-mascot="${name}"]`);
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top + capOffset };
+      };
+
+      let pos, surface;
+      const isMobile = window.innerWidth < 640;
+
+      if (!isMobile) {
+        // ── Desktop: full hero walk ───────────────────────────────
+        const eyebrow = spot('eyebrow');
+        const star = spot('5-Star', 14);
+        const service = spot('Services', 14);
+        if (!eyebrow || !star || !service) return;
+
+        const stand = (t) => t.top - mH() + 4;
+
+        controls.set({ x: -90, y: stand(eyebrow), opacity: 1 });
+        setPhase('walk');
+        await controls.start({ x: eyebrow.left - 4, transition: { duration: 1.2, ease: 'linear' } });
+        if (cancelled) return;
+
+        setPhase('wave');
+        setBubble('Hi! 👋');
+        await sleep(1500);
+        setBubble(null);
+        if (cancelled) return;
+
+        setPhase('walk');
+        await controls.start({ x: eyebrow.right - mW() + 14, transition: { duration: 1.8, ease: 'linear' } });
+        if (cancelled) return;
+
+        setPhase('jump');
+        const starMidX = star.left + (star.right - star.left) / 2 - mW() / 2;
+        await controls.start({
+          x: starMidX,
+          y: [stand(eyebrow), stand(eyebrow) - 115, stand(star) + 6],
+          transition: {
+            x: { duration: 1.0, ease: 'easeInOut' },
+            y: { duration: 1.0, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
+          },
+        });
+        if (cancelled) return;
+
+        setPhase('bounce');
+        await controls.start({
+          y: [stand(star) + 6, stand(star) - 32, stand(star) + 3, stand(star) - 14, stand(star)],
+          transition: { duration: 1.05, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
+        });
+        if (cancelled) return;
+        setPhase('idle');
+        await sleep(600);
+        if (cancelled) return;
+
+        setPhase('jump');
+        await controls.start({
+          x: service.right - mW() + 6,
+          y: [stand(star), stand(star) - 95, stand(service) + 6],
+          transition: {
+            x: { duration: 0.95, ease: 'easeInOut' },
+            y: { duration: 0.95, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
+          },
+        });
+        if (cancelled) return;
+
+        setPhase('bounce');
+        await controls.start({
+          y: [stand(service) + 6, stand(service) - 26, stand(service) + 2, stand(service) - 11, stand(service)],
+          transition: { duration: 0.95, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
+        });
+        if (cancelled) return;
+        setPhase('idle');
+
+        pos = { x: service.right - mW() + 6, y: (service.top - mH() + 4) };
+        surface = service;
+      } else {
+        // ── Mobile: skip hero, pop in after first scroll ──────────
+        controls.set({ opacity: 0 });
+        await new Promise((r) => {
+          const onScroll = () => { if (window.scrollY > 80 || cancelled) { window.removeEventListener('scroll', onScroll); r(); } };
+          window.addEventListener('scroll', onScroll, { passive: true });
+        });
+        if (cancelled) return;
+        const vh = window.visualViewport?.height ?? window.innerHeight;
+        const startY = c.getBoundingClientRect().top * -1 + vh * 0.55;
+        pos = { x: 24, y: startY };
+        surface = { left: 0, right: window.innerWidth * 0.85, top: startY + mH() - 4 };
+        controls.set({ x: pos.x, y: pos.y, opacity: 1 });
+        setBubble('Hi! 👋');
+        setPhase('wave');
+        await sleep(1500);
+        setBubble(null);
+        setPhase('idle');
+      }
+
+      /* ── free-roam mode ─────────────────────────────────────────
+         Wanders the whole page forever: strolls along surfaces,
+         leaps to random on-screen elements, arcs back when scrolled. */
+
+      const visibleTargets = () => {
+        const rb = c.getBoundingClientRect();
+        const list = [];
+        const vh = window.visualViewport?.height ?? window.innerHeight;
+        c.querySelectorAll('h2, h3, [data-mascot], [data-mascot-surface], button, input, img, a').forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.width < 40 || r.height < 8) return;
+          if (r.top < vh * 0.12 || r.top > vh * 0.82) return;
+          const tag = el.tagName.toLowerCase();
+          const txt = (el.textContent || el.placeholder || el.alt || '').trim().toLowerCase();
+          list.push({ left: r.left - rb.left, right: r.right - rb.left, top: r.top - rb.top, tag, txt, inputType: el.type || '' });
+        });
+        return list;
+      };
+
+      // pick a short contextual line based on the element the mascot just landed on
+      const contextMsg = (t) => {
+        if (t.tag === 'input' || t.tag === 'textarea') {
+          if (t.inputType === 'tel' || t.txt.includes('phone')) return ['Drop your number here! 📞', 'joke'];
+          if (t.txt.includes('name')) return ['Hey, what\'s your name? 👋', 'happy'];
+          if (t.txt.includes('city') || t.txt.includes('location')) return ['Which city? I\'ll find the best team! 📍', 'think'];
+          if (t.txt.includes('email')) return ['Your email — I promise, no spam! 😇', 'joke'];
+          return ['Fill this in — takes 10 seconds! ✍️', 'happy'];
+        }
+        if (t.tag === 'button' || (t.tag === 'a' && t.txt.length > 2)) {
+          if (t.txt.includes('book') || t.txt.includes('inspection') || t.txt.includes('visit')) return ['Tap this — it\'s FREE! 🎉', 'surprised'];
+          if (t.txt.includes('whatsapp') || t.txt.includes('chat')) return ['We reply in 2 hours! 💬', 'happy'];
+          if (t.txt.includes('calculat') || t.txt.includes('cost') || t.txt.includes('price')) return ['Check your exact price here! 💰', 'think'];
+          if (t.txt.includes('quote')) return ['Fixed price — no surprises! 📋', 'happy'];
+          if (t.txt.includes('service') || t.txt.includes('explore')) return ['See all our services! 🎨', 'happy'];
+          return ['Go on, tap it! 😄', 'joke'];
+        }
+        if (t.tag === 'img') return ['Nice room, right? 😍', 'surprised'];
+        if (t.tag === 'h2' || t.tag === 'h3') return null;
+        return null;
+      };
+      const viewportY = () => pos.y + c.getBoundingClientRect().top;
+      const FACES = ['happy', 'think', 'joke', 'angry', 'surprised'];
+
+      while (!cancelled) {
+        await sleep(300 + Math.random() * 700);
+        if (cancelled) return;
+
+        // random little mood while wandering
+        if (Math.random() < 0.22) {
+          setFace(FACES[Math.floor(Math.random() * FACES.length)]);
+          setTimeout(() => setFace('happy'), 2200);
+        }
+
+        const vh = window.visualViewport?.height ?? window.innerHeight;
+        const onScreen = viewportY() > 40 && viewportY() < vh - 60;
+        const targets = visibleTargets();
+
+        // walk or run along the imaginary road on the current surface — forwards or back
+        if (onScreen && !resized && (Math.random() < 0.45 || !targets.length)) {
+          const min = surface.left;
+          const max = Math.max(surface.left, surface.right - mW());
+          if (max - min < 50) continue;
+          const destX = min + Math.random() * (max - min);
+          const running = Math.random() < 0.5;
+          setDir(destX < pos.x ? -1 : 1);
+          setPhase(running ? 'run' : 'walk');
+          await controls.start({
+            x: destX,
+            transition: { duration: Math.max(0.4, Math.abs(destX - pos.x) / (running ? 290 : 130)), ease: 'linear' },
+          });
+          if (cancelled) return;
+          pos.x = destX;
+          setPosX(destX);
+          setPhase('idle');
+          continue;
+        }
+        if (!targets.length) continue;
+
+        // leap to a random element on screen (always, if scrolled offscreen)
+        const t = targets[Math.floor(Math.random() * targets.length)];
+        const destX = t.left + Math.random() * Math.max(12, t.right - t.left - mW());
+        const destY = t.top - mH() + 4;
+        const dist = Math.hypot(destX - pos.x, destY - pos.y);
+        const dur = Math.min(1.4, Math.max(0.65, dist / 550));
+        setDir(destX < pos.x ? -1 : 1);
+        setPhase('jump');
+        await controls.start({
+          x: destX,
+          y: [pos.y, Math.min(pos.y, destY) - (60 + Math.random() * 70), destY + 6],
+          transition: {
+            x: { duration: dur, ease: 'easeInOut' },
+            y: { duration: dur, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
+          },
+        });
+        if (cancelled) return;
+
+        // fire contextual bubble immediately on touchdown — before bounce finishes
+        const ctx = contextMsg(t);
+        if (ctx) {
+          const [msg, mood] = ctx;
+          const chance = (t.tag === 'input' || t.tag === 'button') ? 0.55 : 0.28;
+          if (Math.random() < chance) {
+            setFace(mood);
+            setBubble(msg);
+            setTimeout(() => { setBubble(null); setFace('happy'); }, 3800);
+          }
+        }
+
+        setPhase('bounce');
+        await controls.start({
+          y: [destY + 6, destY - 24, destY + 2, destY - 10, destY],
+          transition: { duration: 0.9, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
+        });
+        if (cancelled) return;
+        pos = { x: destX, y: destY };
+        setPosX(destX);
+        surface = t;
+        resized = false;
+        setPhase('idle');
+      }
+    };
+
+    run();
+    return () => {
+      cancelled = true;
+      controls.stop();
+      window.removeEventListener('resize', onResize);
+      window.visualViewport?.removeEventListener('resize', onResize);
+    };
+  }, [reduceMotion, containerRef, controls]);
+
+  if (reduceMotion) return null;
+
+  const walkSwing = (from, to, dur = 0.34) => ({
+    rotate: [from, to, from],
+    transition: { repeat: Infinity, duration: dur, ease: 'easeInOut' },
+  });
+
+  return (
+    <motion.div
+      animate={controls}
+      initial={{ opacity: 0 }}
+      className="block absolute left-0 top-0 z-50 pointer-events-none"
+      style={{ width: MASCOT_W, height: MASCOT_H }}
+      aria-hidden="true"
+    >
+      <AnimatePresence>
+        {bubble && (
+          <motion.div
+            key={bubble}
+            initial={{ opacity: 0, scale: 0.6, y: 6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            className={`absolute -top-8 bg-white border border-[#0F1221]/10 shadow-md rounded-2xl px-3 py-1.5 text-[10px] font-bold text-[#493657] whitespace-nowrap ${posX > (window.innerWidth - 200) ? 'right-9 rounded-br-sm' : 'left-9 rounded-bl-sm'}`}
+          >
+            {bubble}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.div
+        animate={{ scaleX: dir }}
+        transition={{ duration: 0.18 }}
+        style={{ transformOrigin: '50% 100%' }}
+        className="w-full h-full"
+      >
+      <motion.svg
+        viewBox="0 0 64 58" width={MASCOT_W} height={MASCOT_H} fill="none"
+        animate={phase === 'hidden' ? undefined : phase}
+        style={{ transformOrigin: '50% 100%' }}
+        variants={{
+          walk: { y: [0, -2.5, 0], rotate: 0, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 0.34, ease: 'easeInOut' } },
+          run: { y: [0, -4, 0], rotate: 6, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 0.22, ease: 'easeInOut' } },
+          wave: { y: 0, rotate: 0, scaleX: 1, scaleY: 1 },
+          jump: { y: 0, rotate: 0, scaleX: 1, scaleY: 1 },
+          hang: { y: 0, scaleX: 1, scaleY: 1, rotate: [6, -6, 6], transition: { repeat: Infinity, duration: 1.1, ease: 'easeInOut' } },
+          fall: { y: 0, rotate: 0, scaleY: 1.2, scaleX: 0.85 },
+          bounce: {
+            y: 0, rotate: 0,
+            scaleY: [0.45, 1.35, 0.65, 1.18, 1],
+            scaleX: [1.5, 0.78, 1.3, 0.9, 1],
+            transition: { duration: 1.05, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
+          },
+          idle: { y: [0, -3, 0], rotate: 0, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 1.6, ease: 'easeInOut' } },
+        }}
+      >
+        <defs>
+          <linearGradient id="mascotBody" x1="0" y1="0" x2="0.7" y2="1">
+            <stop offset="0%" stopColor="#FFF3A0" />
+            <stop offset="55%" stopColor="#FFD84D" />
+            <stop offset="100%" stopColor="#F7B62B" />
+          </linearGradient>
+        </defs>
+
+        {/* rainbow trail fanning out of the upper-right point (drawn behind the star) */}
+        <g strokeLinecap="round" fill="none">
+          <path d="M40 20 Q46 8 54 4"   stroke="#9B6CF0" strokeWidth="6" />
+          <path d="M41 22 Q49 12 58 9"  stroke="#6FC2F5" strokeWidth="6" />
+          <path d="M42 24 Q52 17 61 15" stroke="#7CE07C" strokeWidth="6" />
+          <path d="M42.5 26 Q54 22 62 21" stroke="#FFB573" strokeWidth="6" />
+          <path d="M43 28 Q55 27 63 27" stroke="#F2675F" strokeWidth="6" />
+          <ellipse cx="46.5" cy="11.5" rx="1" ry="2.4" transform="rotate(35 46.5 11.5)" fill="white" opacity="0.85" stroke="none" />
+        </g>
+
+        {/* legs (drawn first so the body overlaps their tops) */}
+        <motion.rect
+          x="20" y="46" width="5" height="10" rx="2.5" fill="#3B2412"
+          style={{ transformBox: 'fill-box', transformOrigin: 'top center' }}
+          variants={{
+            walk: walkSwing(22, -22), run: walkSwing(34, -34, 0.2), wave: { rotate: 0 }, jump: { rotate: -18 }, idle: { rotate: 0 },
+            hang: { rotate: [16, -10, 16], transition: { repeat: Infinity, duration: 0.9, ease: 'easeInOut' } },
+            fall: { rotate: -22 }, bounce: { rotate: 0 },
+          }}
+        />
+        <motion.rect
+          x="29" y="46" width="5" height="10" rx="2.5" fill="#3B2412"
+          style={{ transformBox: 'fill-box', transformOrigin: 'top center' }}
+          variants={{
+            walk: walkSwing(-22, 22), run: walkSwing(-34, 34, 0.2), wave: { rotate: 0 }, jump: { rotate: 18 }, idle: { rotate: 0 },
+            hang: { rotate: [-10, 16, -10], transition: { repeat: Infinity, duration: 0.9, ease: 'easeInOut' } },
+            fall: { rotate: 22 }, bounce: { rotate: 0 },
+          }}
+        />
+
+        {/* left arm */}
+        <motion.g
+          style={{ transformBox: 'fill-box', transformOrigin: 'right center' }}
+          variants={{
+            walk: walkSwing(-18, 18), run: walkSwing(-32, 32, 0.2), wave: { rotate: 0 }, jump: { rotate: 30 }, idle: { rotate: 0 },
+            hang: { rotate: 115 }, fall: { rotate: 130 }, bounce: { rotate: 25 },
+          }}
+        >
+          <path d="M12 35 L4.5 38.5" stroke="#3B2412" strokeWidth="3.5" strokeLinecap="round" />
+        </motion.g>
+
+        {/* right arm — this one waves hello */}
+        <motion.g
+          style={{ transformBox: 'fill-box', transformOrigin: 'left center' }}
+          variants={{
+            walk: walkSwing(18, -18),
+            run: walkSwing(32, -32, 0.2),
+            wave: { rotate: [0, -140, -110, -140, -110, -140, 0], transition: { duration: 1.4, ease: 'easeInOut' } },
+            jump: { rotate: -150 },
+            idle: { rotate: 0 },
+            hang: { rotate: -115 }, fall: { rotate: -130 }, bounce: { rotate: -25 },
+          }}
+        >
+          <path d="M40 35 L47.5 38.5" stroke="#3B2412" strokeWidth="3.5" strokeLinecap="round" />
+        </motion.g>
+
+        {/* plump golden star body with orange cartoon outline */}
+        <g transform="rotate(-6 26 31)">
+          <path
+            d="M26 10 L31.6 23.3 L46 24.5 L35 33.9 L38.3 48 L26 40.5 L13.7 48 L17 33.9 L6 24.5 L20.4 23.3 Z"
+            fill="url(#mascotBody)"
+            stroke="#F2A30F"
+            strokeWidth="3"
+            strokeLinejoin="round"
+          />
+          {/* white teardrop shine on the top point */}
+          <ellipse cx="24.5" cy="16.5" rx="1.8" ry="4.2" transform="rotate(-12 24.5 16.5)" fill="white" opacity="0.9" />
+          <circle cx="23.2" cy="22" r="1.1" fill="white" opacity="0.9" />
+        </g>
+
+        {/* kawaii face — expression follows his mood */}
+        {face === 'angry' ? (
+          <>
+            <path d="M14.5 21.5 L23.5 25.5" stroke="#2F2440" strokeWidth="2" strokeLinecap="round" />
+            <path d="M37.5 21.5 L28.5 25.5" stroke="#2F2440" strokeWidth="2" strokeLinecap="round" />
+          </>
+        ) : face === 'think' ? (
+          <>
+            <path d="M14 22 Q19 19 24 22" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M28 25.5 Q33 23.5 38 25.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </>
+        ) : (
+          <>
+            <path d="M14 24.5 Q19 21 24 24.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M28 24.5 Q33 21 38 24.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </>
+        )}
+
+        {face === 'joke' ? (
+          <>
+            <circle cx="19" cy="30" r="4.5" fill="#3B2412" />
+            <circle cx="20.6" cy="28.4" r="1.7" fill="white" />
+            <path d="M29.5 30 Q33 26.8 36.5 30" stroke="#3B2412" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          </>
+        ) : face === 'think' ? (
+          <>
+            <circle cx="19" cy="29" r="4" fill="#3B2412" />
+            <circle cx="33" cy="29" r="4" fill="#3B2412" />
+            <circle cx="21" cy="27.2" r="1.6" fill="white" />
+            <circle cx="35" cy="27.2" r="1.6" fill="white" />
+          </>
+        ) : (
+          <>
+            <circle cx="19" cy="30" r="4.5" fill="#3B2412" />
+            <circle cx="33" cy="30" r="4.5" fill="#3B2412" />
+            <circle cx="20.6" cy="28.4" r="1.7" fill="white" />
+            <circle cx="34.6" cy="28.4" r="1.7" fill="white" />
+            <circle cx="17.7" cy="31.4" r="0.9" fill="white" />
+            <circle cx="31.7" cy="31.4" r="0.9" fill="white" />
+            <circle cx="21.3" cy="31.6" r="0.5" fill="white" />
+            <circle cx="35.3" cy="31.6" r="0.5" fill="white" />
+          </>
+        )}
+
+        {face === 'angry' ? (
+          <path d="M22.5 39.5 Q26 36.5 29.5 39.5" stroke="#4A1B12" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+        ) : face === 'think' ? (
+          <path d="M23 38.5 Q26 39.8 29 38.5" stroke="#4A1B12" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+        ) : face === 'surprised' ? (
+          <ellipse cx="26" cy="38.5" rx="2.6" ry="3.4" fill="#4A1B12" />
+        ) : face === 'joke' ? (
+          <>
+            <path d="M21.5 36.5 Q26 42.5 30.5 36.5 Q26 38.5 21.5 36.5 Z" fill="#4A1B12" />
+            <path d="M23.5 38.8 Q26 42.4 28.5 38.8 Q26 37.6 23.5 38.8 Z" fill="#F0506A" />
+          </>
+        ) : (
+          <>
+            <path d="M22.5 36.5 Q26 41.8 29.5 36.5 Q26 38.2 22.5 36.5 Z" fill="#4A1B12" />
+            <path d="M24.3 38.6 Q26 40.4 27.7 38.6 Q26 37.8 24.3 38.6 Z" fill="#F0506A" />
+          </>
+        )}
+
+        <ellipse cx="12" cy="36.5" rx="2.8" ry="1.8" fill="#FB91A5" opacity="0.9" />
+        <ellipse cx="40" cy="36.5" rx="2.8" ry="1.8" fill="#FB91A5" opacity="0.9" />
+      </motion.svg>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const HeroFinal = () => {
   const ref = useRef(null);
@@ -254,15 +760,17 @@ const HeroFinal = () => {
         {/* Desktop background */}
         <img src="/Assets/background-texture.webp" className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
         {/* Mobile background */}
-        <img src="/mobile bg.png" className="block lg:hidden absolute inset-0 w-full h-full object-cover object-right-top opacity-100" alt="" />
+        <img src="/mobile bg.webp" className="block lg:hidden absolute inset-0 w-full h-full object-cover object-right-top opacity-100" alt="" loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF8]/40 via-transparent to-[#FAFAF8]" />
-        <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
-        <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-[#493657] opacity-[0.04] blur-[140px] rounded-full mix-blend-multiply" />
+        <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.15] blur-[120px] rounded-full mix-blend-multiply" />
+        <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-[#7A4E9E] opacity-[0.11] blur-[140px] rounded-full mix-blend-multiply" />
+        <div className="absolute bottom-[5%] left-[5%] w-[35%] h-[35%] bg-[#E76F51] opacity-[0.10] blur-[130px] rounded-full mix-blend-multiply" />
+        <div className="absolute top-[45%] -left-[8%] w-[30%] h-[30%] bg-[#2A9D8F] opacity-[0.08] blur-[120px] rounded-full mix-blend-multiply" />
       </div>
 
       <div aria-hidden="true" className="pointer-events-none select-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden gap-[1.5vw] opacity-20 lg:opacity-100">
-        <span className="text-[50vw] lg:text-[30vw] font-black text-[#0F1221]/[0.05] leading-none tracking-tighter">5</span>
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] text-[#0F1221]/[0.05] shrink-0">
+        <span className="text-[50vw] lg:text-[30vw] font-black text-[#7A4E9E]/[0.07] leading-none tracking-tighter">5</span>
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] text-[#E8A33D]/[0.13] shrink-0">
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z" />
         </svg>
       </div>
@@ -272,7 +780,7 @@ const HeroFinal = () => {
         style={{ y: scrollTextY }}
         className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 pt-12 pb-12 lg:py-0 lg:min-h-screen"
       >
-        <div className="w-full max-w-lg">
+        <div className="relative w-full max-w-2xl">
 
           <motion.div
             initial={{ opacity: 0, x: -18 }}
@@ -280,24 +788,50 @@ const HeroFinal = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center gap-3 mb-8"
           >
-            <span className="w-9 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">
+            <span className="w-9 h-[2px] rounded-full bg-gradient-to-r from-[#F0C85A] to-[#E76F51]" />
+            <span data-mascot="eyebrow" className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">
               India&apos;s Trusted Painting Experts
             </span>
           </motion.div>
 
           <h1 className="mb-7">
-            {LINES.map((line, i) => (
+            {LINES.map((segments, i) => (
               <span key={i} className="block overflow-hidden leading-[1.07]">
                 <motion.span
                   initial={{ y: '108%' }}
                   animate={inView ? { y: 0 } : {}}
                   transition={{ duration: 0.9, delay: 0.22 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                  className={`block font-light tracking-[-0.025em] text-[2.6rem] sm:text-[3.3rem] lg:text-[3.8rem] xl:text-[4.3rem] ${
-                    i === LINES.length - 1 ? 'text-[#493657]' : 'text-[#0F1221]'
-                  }`}
+                  className="block font-light tracking-[-0.025em] text-[1.95rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] text-[#0F1221] whitespace-nowrap"
                 >
-                  {line}
+                  {segments.map((seg) =>
+                    seg.gradient ? (
+                      <span key={seg.text} data-mascot={seg.text} className="relative inline-block">
+                        <span className={`text-transparent bg-clip-text bg-gradient-to-r ${seg.gradient}`}>
+                          {seg.text}
+                        </span>
+                        {seg.underline && (
+                          <svg
+                            viewBox="0 0 200 20"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            className="absolute left-0 bottom-[-0.04em] w-full h-[0.2em] pointer-events-none"
+                          >
+                            <motion.path
+                              d="M4 14 C 35 5, 65 19, 100 11 C 135 3, 165 17, 196 9"
+                              stroke="#F0C85A"
+                              strokeWidth="6"
+                              strokeLinecap="round"
+                              initial={{ pathLength: 0 }}
+                              animate={inView ? { pathLength: 1 } : {}}
+                              transition={{ duration: 0.9, delay: 1.05, ease: 'easeOut' }}
+                            />
+                          </svg>
+                        )}
+                      </span>
+                    ) : (
+                      <span key={seg.text}>{seg.text}</span>
+                    )
+                  )}
                 </motion.span>
               </span>
             ))}
@@ -309,7 +843,7 @@ const HeroFinal = () => {
             transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="text-[#0F1221]/48 text-base sm:text-[1.05rem] font-light leading-relaxed mb-10 max-w-[420px]"
           >
-            Professional house painters you can count on —<br className="hidden sm:block" />
+            Professional house painters you can count on<br className="hidden sm:block" />
             verified teams, fixed quotes, and a warranty-backed finish.
           </motion.p>
 
@@ -318,26 +852,27 @@ const HeroFinal = () => {
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-2 mb-9 max-w-[460px]"
+            className="mt-2 mb-9 max-w-[520px]"
           >
-            <div className="rounded-2xl border border-[#0F1221]/8 bg-white shadow-[0_10px_40px_rgba(15,18,33,0.07)] p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#0F1221]/8 bg-white shadow-[0_10px_40px_rgba(15,18,33,0.07)] p-4 sm:p-5 overflow-hidden">
+              <div className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4 bg-[linear-gradient(90deg,#F0C85A,#E76F51,#C2588B,#7A4E9E,#2A9D8F)]" />
               <p className="text-[#0F1221] font-bold text-xs sm:text-sm mb-3 sm:mb-4">Get a Free Site Inspection</p>
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
                 <input
                   type="text" placeholder="Your name" required value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="flex-1 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
+                  className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
                 />
                 <input
                   type="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
                   onChange={e => setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
-                  className="flex-1 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
+                  className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
                 />
                 <motion.button
                   type="submit"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-shrink-0 flex items-center justify-center gap-1.5 bg-[#0F1221] text-white px-5 py-3 rounded-xl text-sm font-bold hover:bg-[#493657] transition-colors"
+                  className="flex-shrink-0 flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#493657] to-[#7A4E9E] text-white px-5 py-3 rounded-xl text-sm font-bold hover:from-[#0F1221] hover:to-[#493657] transition-colors"
                 >
                   Book <ArrowRight className="w-3.5 h-3.5" />
                 </motion.button>
@@ -351,8 +886,9 @@ const HeroFinal = () => {
             transition={{ duration: 0.8, delay: 1.1 }}
             className="flex flex-wrap gap-2"
           >
-            {['4.8★ Rated', '2-Year Warranty', 'Fixed Quote', '15K+ Homes'].map((t) => (
-              <span key={t} className="text-[9px] font-semibold text-[#0F1221]/38 border border-[#0F1221]/10 rounded-full px-3 py-1 tracking-wide">
+            {[['4.8★ Rated', '#F0C85A'], ['2-Year Warranty', '#7A4E9E'], ['Fixed Quote', '#2A9D8F'], ['15K+ Homes', '#E76F51']].map(([t, c]) => (
+              <span key={t} className="flex items-center gap-1.5 text-[9px] font-bold text-[#0F1221]/75 border border-[#0F1221]/10 rounded-full px-3 py-1 tracking-wide bg-white/90 backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]">
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c }} />
                 {t}
               </span>
             ))}
@@ -374,6 +910,9 @@ const HeroFinal = () => {
                 src={IMG_HERO}
                 alt="Calyco painting service"
                 className="w-full h-full object-cover object-center"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
               />
             </motion.div>
           </motion.div>
@@ -449,7 +988,7 @@ const MARQUEE_ITEMS = [
 ];
 
 const MarqueeFinal = () => (
-  <section className="bg-[#0F1221] py-3.5 overflow-hidden border-y border-white/5">
+  <section data-mascot-surface className="bg-[#0F1221] py-3.5 overflow-hidden border-y border-white/5">
     <style>{`
       @keyframes finalMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       .final-marquee { animation: finalMarquee 28s linear infinite; }
@@ -469,6 +1008,42 @@ const MarqueeFinal = () => (
 // ══════════════════════════════════════════════════════════════════
 //  3 — SERVICES  (V2 — 6-card grid with live pricing)
 // ══════════════════════════════════════════════════════════════════
+const HOME_CATS = [
+  {
+    title: 'Interior Painting',
+    slug: 'interior-painting',
+    to: '/services/all?cat=interior-painting',
+    startingPrice: 18,
+    images: [
+      '/Assets/Rooms/LivingRoom/base.webp',
+      '/Assets/Rooms/Bedroom/base.webp',
+      '/service/fresh painting.webp',
+    ],
+  },
+  {
+    title: 'Exterior Painting',
+    slug: 'exterior-painting',
+    to: '/services/all?cat=exterior-painting',
+    startingPrice: 24,
+    images: [
+      '/service/Exterior Painting.webp',
+      '/service/High-Rise Apartment Painting.webp',
+      '/service/Commercial Painting.webp',
+    ],
+  },
+  {
+    title: 'Waterproofing',
+    slug: 'waterproofing',
+    to: '/services/all?cat=waterproofing',
+    startingPrice: 45,
+    images: [
+      '/service/Terrace Waterproofing.webp',
+      '/service/Roof Waterproofing.webp',
+      '/service/Basement Waterproofing.webp',
+    ],
+  },
+];
+
 const ServicesFinal = () => (
   <section className="bg-[#F7F6F3] py-24 sm:py-32">
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -477,7 +1052,7 @@ const ServicesFinal = () => (
         <Reveal>
           <Eyebrow text="What We Do" />
           <h2 className="text-4xl sm:text-5xl font-light text-[#0F1221] leading-[1.08] tracking-[-0.025em]">
-            Our Painting<br /><span className="font-semibold text-[#493657]">Services.</span>
+            Our Painting<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#493657] via-[#7A4E9E] to-[#C2588B]">Services.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -488,11 +1063,11 @@ const ServicesFinal = () => (
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {serviceHubCards.slice(0, 6).map((s, i) => (
+        {HOME_CATS.map((s, i) => (
           <Reveal key={s.slug} delay={i * 0.07}>
             <TiltCard className="h-full">
               <Link
-                to={`/services/${s.slug}`}
+                to={s.to}
                 className="group block relative overflow-hidden rounded-2xl border border-[#0F1221]/8 bg-white h-full hover:shadow-[0_8px_32px_rgba(0,0,0,0.10)] transition-all duration-500"
               >
                 <div className="relative h-60 sm:h-64 overflow-hidden">
@@ -531,12 +1106,12 @@ const ServicesFinal = () => (
 
       <Reveal delay={0.2} className="mt-10 flex gap-3">
         <Link to="/get-quote"
-          className="inline-flex items-center gap-2 bg-[#0F1221] text-white px-5 py-3 sm:px-7 sm:py-3.5 rounded-full text-sm font-bold hover:bg-[#493657] transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0F1221] text-white px-5 py-3 sm:px-7 sm:py-3.5 rounded-full text-sm font-bold hover:bg-[#493657] transition-colors whitespace-nowrap"
         >
           Get Free Estimate
         </Link>
         <Link to="/services"
-          className="inline-flex items-center gap-2 border border-[#0F1221]/15 text-[#0F1221]/55 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full text-sm font-medium hover:border-[#0F1221]/30 hover:text-[#0F1221] transition-all"
+          className="inline-flex items-center gap-2 border border-[#0F1221]/15 text-[#0F1221]/55 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full text-sm font-medium hover:border-[#0F1221]/30 hover:text-[#0F1221] transition-all whitespace-nowrap"
         >
           All Services →
         </Link>
@@ -550,10 +1125,10 @@ const ServicesFinal = () => (
 //  4 — STATS  (V4 — oversized typography, 2-Year Warranty)
 // ══════════════════════════════════════════════════════════════════
 const STATS = [
-  { to: 15, label: 'K+', sub: 'Homes Painted',  desc: 'Happy families across India' },
-  { to: 25, label: '+',  sub: 'Cities Covered', desc: 'Pan-India service network' },
-  { to: 3,  label: 'K+', sub: 'Colour Options', desc: 'To suit every taste' },
-  { to: 2,  label: '-Yr', sub: 'Warranty',      desc: 'On all painting work' },
+  { to: 15, label: 'K+', sub: 'Homes Painted',  desc: 'Happy families across India', gradient: 'from-[#C77B2B] via-[#E8A33D] to-[#E76F51]', bar: '#E8A33D' },
+  { to: 25, label: '+',  sub: 'Cities Covered', desc: 'Pan-India service network',   gradient: 'from-[#493657] via-[#7A4E9E] to-[#C2588B]', bar: '#7A4E9E' },
+  { to: 3,  label: 'K+', sub: 'Colour Options', desc: 'To suit every taste',         gradient: 'from-[#1F7A70] via-[#2A9D8F] to-[#5FB49C]', bar: '#2A9D8F' },
+  { to: 2,  label: '-Yr', sub: 'Warranty',      desc: 'On all painting work',        gradient: 'from-[#C2484D] via-[#E76F51] to-[#F0A06A]', bar: '#E76F51' },
 ];
 
 const StatsFinal = () => {
@@ -572,10 +1147,10 @@ const StatsFinal = () => {
               transition={{ duration: 0.7, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="px-5 sm:px-8 lg:px-12 py-8 sm:py-11 group hover:bg-[#F0EDE8]/50 transition-colors duration-300"
             >
-              <div className="text-[2.5rem] sm:text-[3.6rem] lg:text-[4.2rem] xl:text-[4.6rem] font-black text-[#0F1221] leading-none tracking-tight mb-3 group-hover:text-[#493657] transition-colors duration-300">
+              <div className={`text-[2.5rem] sm:text-[3.6rem] lg:text-[4.2rem] xl:text-[4.6rem] font-black leading-none tracking-tight mb-3 text-transparent bg-clip-text bg-gradient-to-r ${s.gradient}`}>
                 <CounterK to={s.to} label={s.label} />
               </div>
-              <div className="w-9 h-[2px] bg-[#F0C85A] mb-3 group-hover:w-16 transition-all duration-500" />
+              <div className="w-9 h-[2px] mb-3 group-hover:w-16 transition-all duration-500" style={{ background: s.bar }} />
               <div className="text-sm font-bold text-[#0F1221]/70 mb-1">{s.sub}</div>
               <div className="text-xs text-[#0F1221]/35 font-light">{s.desc}</div>
             </motion.div>
@@ -669,7 +1244,7 @@ const ProcessFinal = () => {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.015em] max-w-md leading-tight">
-              From Planning to<br />Perfect Finish.
+              From Planning to<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#C77B2B] via-[#E8A33D] to-[#E76F51]">Perfect Finish.</span>
             </h2>
             <p className="text-sm text-[#0F1221]/40 font-light max-w-xs">
               A transparent 4-step process — we keep you informed at every stage.
@@ -719,6 +1294,8 @@ const ConsultationFinal = () => {
             src={IMG_CONSULT}
             alt="Expert consultation"
             className="absolute inset-0 w-full h-full object-cover object-right scale-110"
+            loading="lazy"
+            decoding="async"
           />
 
           <motion.div
@@ -747,7 +1324,7 @@ const ConsultationFinal = () => {
               <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Expert Consultation</span>
             </div>
             <h2 className="text-[1.9rem] sm:text-[2.5rem] font-light text-[#0F1221] tracking-[-0.015em] leading-tight mb-4">
-              Looking for Expert<br />Consultation?
+              Looking for Expert<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#493657] via-[#7A4E9E] to-[#C2588B]">Consultation?</span>
             </h2>
             <p className="text-[#0F1221]/48 font-light text-base leading-relaxed mb-8">
               Our experts help you choose the perfect shade and finish. Free home visit, transparent quote, and 2-year workmanship warranty — at zero compromise.
@@ -774,7 +1351,7 @@ const ConsultationFinal = () => {
 
             <Link
               to="/get-quote"
-              className="group inline-flex items-center gap-3 bg-[#0F1221] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm font-bold hover:bg-[#493657] transition-colors duration-300"
+              className="group inline-flex items-center gap-3 bg-[#0F1221] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-sm font-bold hover:bg-[#493657] transition-colors duration-300 whitespace-nowrap"
             >
               Book a Free Consultation Now
               <span className="w-6 h-6 rounded-full bg-white/12 flex items-center justify-center group-hover:translate-x-1 transition-transform">
@@ -819,7 +1396,7 @@ const InspirationFinal = () => {
               <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Inspirations</span>
             </div>
             <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
-              Featured Ideas
+              Featured <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#1F7A70] via-[#2A9D8F] to-[#5FB49C]">Ideas</span>
             </h2>
           </div>
           <Link to="/inspirations" className="hidden sm:inline-flex items-center gap-1.5 text-sm font-bold text-[#493657] hover:text-[#F0C85A] transition-colors">
@@ -897,7 +1474,7 @@ const GalleryFinal = () => (
         <Reveal>
           <Eyebrow text="Real Projects" />
           <h2 className="text-4xl sm:text-5xl font-light text-[#0F1221] leading-[1.08] tracking-[-0.025em]">
-            Real Homes.<br /><span className="font-semibold text-[#493657]">Real Transformations.</span>
+            Real Homes.<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#493657] via-[#7A4E9E] to-[#C2588B]">Real Transformations.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
@@ -953,7 +1530,7 @@ const FAQS = [
   { q: 'How does the 2-Year Warranty work?', a: 'Any defect in workmanship — peeling, cracking, uneven finish — within 2 years is fixed at zero cost, no questions asked.' },
   { q: 'Can I see colour samples before deciding?', a: 'Yes. Painters bring physical swatch samples. Our online Colour Visualizer also lets you preview shades on a virtual room.' },
   { q: 'Are your painters background-verified?', a: 'Every Calyco painter undergoes background checks, skill assessment, and on-site training before joining our network.' },
-  { q: 'What eco-friendly options do you offer?', a: 'We source low-VOC, water-based paints that improve indoor air quality. Ask our consultant during your free site visit.' },
+  { q: 'What eco-friendly options do you offer?', a: 'We use water-based paints that are safe for families, low odour, and quick to dry. Ask our consultant during your free site visit.' },
   { q: 'How long does a typical project take?', a: 'A 2BHK interior typically takes 3–5 days. Timelines depend on scope and surface prep. We provide an exact timeline in your quote.' },
 ];
 
@@ -978,7 +1555,7 @@ const FaqFinal = () => {
             <span className="w-7 h-px bg-[#F0C85A]" />
           </div>
           <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
-            Frequently Asked Questions
+            Frequently Asked <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#C77B2B] via-[#E8A33D] to-[#E76F51]">Questions</span>
           </h2>
         </motion.div>
 
@@ -1035,7 +1612,7 @@ const CtaFinal = () => {
   const wa = `${WA_BASE}?text=${encodeURIComponent('Hi Calyco, I want to book a free site inspection.')}`;
   return (
     <section className="relative overflow-hidden">
-      <img src={IMG_PAINTER} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+      <img src={IMG_PAINTER} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
       {/* Light frosted overlay on the left so dark text stays readable */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/50 to-transparent" />
 
@@ -1046,7 +1623,7 @@ const CtaFinal = () => {
               {[...Array(5)].map((_, i) => <Star key={i} cls="w-5 h-5 text-[#F0C85A]" />)}
             </div>
             <h2 className="text-4xl sm:text-6xl font-light text-[#0F1221] leading-[1.06] tracking-[-0.025em] mb-5">
-              Ready to Transform<br /><span className="font-semibold text-[#d4a017]">Your Home?</span>
+              Ready to Transform<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#C77B2B] via-[#E8A33D] to-[#E76F51]">Your Home?</span>
             </h2>
             <p className="text-[#0F1221]/65 text-base sm:text-lg font-light leading-[1.8] mb-10">
               Free inspection. Fixed written quote. 2-year warranty-backed finish.
@@ -1054,14 +1631,14 @@ const CtaFinal = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link to="/get-quote"
-                  className="inline-flex items-center justify-center gap-2 bg-[#F0C85A] text-[#07090f] px-6 py-3 sm:px-10 sm:py-4 rounded-full text-sm font-bold hover:bg-[#0F1221] hover:text-white transition-colors shadow-[0_6px_32px_rgba(240,200,90,0.40)]"
+                  className="inline-flex items-center justify-center gap-2 bg-[#F0C85A] text-[#07090f] px-6 py-3 sm:px-10 sm:py-4 rounded-full text-sm font-bold hover:bg-[#0F1221] hover:text-white transition-colors shadow-[0_6px_32px_rgba(240,200,90,0.40)] whitespace-nowrap"
                 >
                   Book Free Inspection
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <a href={wa} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 border border-[#0F1221]/25 text-[#0F1221] px-6 py-3 sm:px-10 sm:py-4 rounded-full text-sm font-medium hover:bg-[#0F1221]/8 transition-all"
+                  className="inline-flex items-center justify-center gap-2 border border-[#0F1221]/25 text-[#0F1221] px-6 py-3 sm:px-10 sm:py-4 rounded-full text-sm font-medium hover:bg-[#0F1221]/8 transition-all whitespace-nowrap"
                 >
                   <WaIcon /> WhatsApp Us
                 </a>
@@ -1077,25 +1654,29 @@ const CtaFinal = () => {
 // ══════════════════════════════════════════════════════════════════
 //  PAGE — Final merged homepage (V2 + V4, boss-approved sections)
 // ══════════════════════════════════════════════════════════════════
-const HomeFinal = () => (
-  <div className="font-poppins bg-white min-h-screen">
-    <SEO
-      title={`${BRAND_NAME} | 5-Star Painting Service — Professional House Painters`}
-      description="Professional house painters you can count on. Verified teams, fixed written quotes, and a 2-year warranty-backed finish managed end-to-end by Calyco."
-      ogType="website"
-    />
-    <HeroFinal />
-    <MarqueeFinal />
-    <ServicesFinal />
-    <StatsFinal />
-    <ProcessFinal />
-    <ConsultationFinal />
-    <InspirationFinal />
-    <GalleryFinal />
-    <ReviewsSection />
-    <FaqFinal />
-    <CtaFinal />
-  </div>
-);
+const HomeFinal = () => {
+  const pageRef = useRef(null);
+  return (
+    <div ref={pageRef} className="relative font-poppins bg-white min-h-screen">
+      <SEO
+        title={`${BRAND_NAME} | 5-Star Painting Services — Professional House Painters`}
+        description="Professional house painters you can count on. Verified teams, fixed written quotes, and a 2-year warranty-backed finish managed end-to-end by Calyco."
+        ogType="website"
+      />
+      <HeroFinal />
+      <MarqueeFinal />
+      <ServicesFinal />
+      <StatsFinal />
+      <ProcessFinal />
+      <ConsultationFinal />
+      <InspirationFinal />
+      <GalleryFinal />
+      <ReviewsSection />
+      <FaqFinal />
+      <CtaFinal />
+      <HeroMascot containerRef={pageRef} />
+    </div>
+  );
+};
 
 export default HomeFinal;

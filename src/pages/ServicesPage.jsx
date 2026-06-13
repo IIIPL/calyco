@@ -284,9 +284,6 @@ const CategoryCardsSection = ({ onOpenCat }) => (
             <h2 className="text-[2rem] sm:text-[2.8rem] lg:text-[3.5rem] font-light text-[#0F1221] tracking-[-0.025em] leading-[1.07] mb-3">
               All Services,<br className="hidden sm:block" /> <span className="text-[#493657] font-semibold">7 Categories</span>
             </h2>
-            <p className="text-[#0F1221]/50 text-sm sm:text-base font-light leading-relaxed max-w-lg">
-              Tap any category to see all services, pricing and details.
-            </p>
           </Reveal>
         </div>
 
@@ -316,11 +313,11 @@ const CategoryCardsSection = ({ onOpenCat }) => (
       <Reveal delay={0.2}>
         <div className="flex flex-col sm:flex-row gap-3 mt-10 sm:mt-12">
           <Link to="/calculators/service-cost-calculator"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 sm:px-8 sm:py-4 text-sm font-bold hover:bg-[#493657] transition-colors shadow-[0_4px_24px_rgba(15,18,33,0.18)]">
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 sm:px-8 sm:py-4 text-sm font-bold hover:bg-[#493657] transition-colors shadow-[0_4px_24px_rgba(15,18,33,0.18)] whitespace-nowrap">
             Get Free Estimate →
           </Link>
           <Link to="/get-quote"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/65 px-6 py-3 sm:px-8 sm:py-4 text-sm font-semibold hover:border-[#493657]/50 hover:text-[#493657] transition-all">
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0F1221]/15 text-[#0F1221]/65 px-6 py-3 sm:px-8 sm:py-4 text-sm font-semibold hover:border-[#493657]/50 hover:text-[#493657] transition-all whitespace-nowrap">
             Book Free Visit →
           </Link>
         </div>
@@ -359,7 +356,7 @@ const OFFERS = [
   {
     tag: 'Wall Design', tagDot: '#d4960a',
     headline: 'Texture & decorative\nfrom ₹55/sq ft',
-    sub: 'Sand, stucco, Italian & designer feature walls.',
+    sub: 'Sand, stucco, Italian & designer.',
     cta: { label: 'Explore textures', to: '/services/texture-decorative-painting' },
     bg: 'linear-gradient(135deg,#2a1800 0%,#6b3d00 50%,#9a6400 100%)',
     accent: GOLD,
@@ -368,7 +365,7 @@ const OFFERS = [
   {
     tag: 'Protect Home', tagDot: '#60C8F0',
     headline: 'Waterproofing\nfrom ₹45/sq ft',
-    sub: 'Terrace, roof, bathroom, basement — all sealed.',
+    sub: 'Terrace, roof, bathroom & basement.',
     cta: { label: 'Get waterproofing', to: '/services/waterproofing' },
     bg: 'linear-gradient(135deg,#041520 0%,#0a2d45 50%,#0e4060 100%)',
     accent: '#60C8F0',
@@ -390,12 +387,12 @@ const OFFERS = [
     cta: { label: 'Get quote', to: '/services/interior-repaint' },
     bg: 'linear-gradient(135deg,#120820 0%,#2e1545 50%,#4a2070 100%)',
     accent: '#c08aff',
-    image: '/service/Repainting.jpg',
+    image: '/service/Repainting.webp',
   },
   {
     tag: 'Free', tagDot: '#40e888',
     headline: 'Free site visit\n& written quote',
-    sub: 'Expert inspection, laser measurement & fixed price at zero cost.',
+    sub: 'No charges. No commitment.',
     cta: { label: 'Book free visit', to: '/get-quote' },
     bg: 'linear-gradient(135deg,#041810 0%,#0a3020 50%,#105038 100%)',
     accent: '#40e888',
@@ -467,7 +464,7 @@ const OffersCarousel = () => {
                 </p>
 
                 <Link to={o.cta.to}
-                  className="inline-flex items-center gap-2 rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm font-bold transition-all hover:brightness-110 hover:scale-[1.03] active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm font-bold transition-all hover:brightness-110 hover:scale-[1.03] active:scale-95 whitespace-nowrap"
                   style={{ background: o.accent, color: '#0A0A12', boxShadow: `0 6px 24px ${o.accent}55` }}>
                   {o.cta.label} →
                 </Link>
@@ -646,13 +643,13 @@ const ParallaxHero = () => {
             <motion.div className="flex flex-wrap gap-3"
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.28 }}>
               <Link to="/calculators/service-cost-calculator"
-                className="inline-flex items-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold hover:scale-[1.03] transition-all"
+                className="inline-flex items-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold hover:scale-[1.03] transition-all whitespace-nowrap"
                 style={{ background: GOLD, boxShadow: `0 4px_20px ${GOLD}40` }}>
                 Get Fixed Quote →
               </Link>
               <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
                 target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 text-white px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm">
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 text-white px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-semibold hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm whitespace-nowrap">
                 Free Site Visit
               </a>
             </motion.div>
@@ -802,11 +799,11 @@ const ServicesPage = () => {
                   <span className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}80` }}>Calyco Exterior</span>
                 </div>
                 <p className="text-base sm:text-3xl font-light text-white mb-4 max-w-xs sm:max-w-sm leading-snug tracking-tight">
-                  Homes that deserve better — inside and out.
+                  Better walls. Inside and out.
                 </p>
                 <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit."
                   target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-sm font-bold hover:opacity-90 transition-opacity whitespace-nowrap"
                   style={{ background: GOLD }}>
                   Book on WhatsApp →
                 </a>
@@ -830,18 +827,18 @@ const ServicesPage = () => {
                 <span className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}70` }}>Ready to start?</span>
               </div>
               <p className="text-white text-xl sm:text-3xl font-light leading-snug tracking-tight max-w-sm sm:max-w-md">
-                Get a fixed written quote after our free site inspection.
+                Fixed quote. Free site inspection.
               </p>
             </div>
             <div className="flex flex-row sm:flex-col md:flex-row gap-2.5 sm:gap-3 flex-shrink-0 relative z-10 w-full sm:w-auto">
               <Link to="/calculators/service-cost-calculator"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-8 py-3 sm:py-3.5 font-bold text-sm hover:opacity-90 transition-opacity"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full text-[#0F1221] px-5 sm:px-8 py-3 sm:py-3.5 font-bold text-sm hover:opacity-90 transition-opacity whitespace-nowrap"
                 style={{ background: GOLD }}>
                 Calculate Cost →
               </Link>
               <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20to%20book%20a%20free%20site%20visit."
                 target="_blank" rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-3.5 font-semibold text-sm hover:bg-white/8 transition-colors">
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-3.5 font-semibold text-sm hover:bg-white/8 transition-colors whitespace-nowrap">
                 Free Visit
               </a>
             </div>

@@ -341,12 +341,9 @@ export default function AboutPage() {
               <h2 className={`${getTypographyClasses('h2')} text-[var(--calyco-ink)]`}>
                 EcoMax™ <span className="text-gradient">Technology</span>
               </h2>
-              <div className="mx-auto mt-6 max-w-4xl space-y-5 text-[#31274B]/85">
+              <div className="mx-auto mt-6 max-w-4xl text-[#31274B]/85">
                 <p className={`${getTypographyClasses('body')} font-medium`}>
-                  Most traditional paint colorants require harsh chemicals that can weaken paint performance and indoor air quality. We realized that by developing our own eco-friendly colorants, designed specifically for our sustainable formulations, we could eliminate unnecessary chemicals that compromise both durability and health.
-                </p>
-                <p className={`${getTypographyClasses('body')}`}>
-                  What we created is a formula that's better, stronger, and cleaner--delivering exceptional color vibrancy while maintaining our commitment to zero-VOC, low-odor performance.
+                  Our own eco-friendly colorants — built for durability, vibrant colour, and safer indoor air.
                 </p>
               </div>
             </div>
@@ -374,9 +371,6 @@ export default function AboutPage() {
             </div>
             <div className="mt-16 rounded-[32px] bg-gradient-to-r from-[var(--calyco-plum)] to-[var(--calyco-gold)] px-8 py-10 text-center text-white md:px-10 md:py-14">
               <h3 className={`${getTypographyClasses('h3')} text-white`}>Experience the EcoMax™ Difference</h3>
-              <p className={`${getTypographyClasses('body')} mx-auto max-w-2xl text-white/90`}>
-                Discover how our revolutionary colorant technology delivers superior performance while protecting your family and the environment.
-              </p>
               <button
                 type="button"
                 onClick={handleNavigate("/products")}
@@ -393,7 +387,7 @@ export default function AboutPage() {
           className="relative overflow-hidden py-20 md:py-24"
           style={{
             backgroundImage:
-              "url(/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.png)",
+              "url(/Assets/u1147136281_imagine_realistic_photo_taken_of_an_empty_horizonta_129fd89e-9956-4324-bb58-f5814ef8737c.webp)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -439,7 +433,7 @@ export default function AboutPage() {
                 Ready to bring Calyco into your next project?
               </h2>
               <p className={`${getTypographyClasses('body')} max-w-3xl text-[#31274B]/85`}>
-                Share specifications, request colour support, or plan large-format rollouts with our technical consultants and designer network.
+                Talk to our technical team.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <button

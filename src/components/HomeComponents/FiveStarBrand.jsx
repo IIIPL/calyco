@@ -68,7 +68,7 @@ const FiveStarBrand = () => (
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-[1.08] tracking-[-0.02em] mb-4">
             Calyco 5-Star<br />
-            <span className="text-[#F0C85A]">Painting Service.</span>
+            <span className="text-[#F0C85A]">Painting Services.</span>
           </h2>
 
           <p className="text-sm sm:text-base text-white/45 font-light leading-[1.75] mb-3">
@@ -122,7 +122,7 @@ const FiveStarBrand = () => (
         className="mt-8 pt-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3"
       >
         <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-medium">
-          Calyco 5-Star Painting Service · Verified Teams · Fixed Quotes · Daily Updates · Final Inspection
+          Calyco 5-Star Painting Services · Verified Teams · Fixed Quotes · Daily Updates · Final Inspection
         </p>
         <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => <span key={i} className="text-[#F0C85A]/40 text-xs">★</span>)}

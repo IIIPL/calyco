@@ -135,7 +135,7 @@ const ColorActionPanel = ({ color, room, canvasRef, onAddToQuote }) => {
             to={`/get-quote?color=${encodeURIComponent(color.name || color.hex)}&room=${encodeURIComponent(room.label)}`}
             className="block w-full text-center rounded-xl border border-[#0F1221]/15 text-[#0F1221]/70 py-3 text-sm font-semibold hover:border-[#0F1221]/30 hover:text-[#0F1221] transition-colors"
           >
-            Book Painting Service →
+            Book Painting Services →
           </Link>
 
           <button
@@ -277,7 +277,7 @@ const VisualizerPage = () => {
   return (
     <div className="min-h-screen bg-[#FBF9F6]">
       <SEO
-        title="Room Colour Visualizer | Calyco 5-Star Painting Service"
+        title="Room Colour Visualizer | Calyco 5-Star Painting Services"
         description="Try Calyco colours on sample rooms or your own photo. When you find your colour, book professional painting with verified painters."
         url="https://calycopaints.com/visualizer"
       />
@@ -430,7 +430,7 @@ const VisualizerPage = () => {
               to="/get-quote"
               className="flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-6 py-3 text-sm font-bold hover:bg-white transition-colors shadow-lg whitespace-nowrap"
             >
-              Book Painting Service →
+              Book Painting Services →
             </Link>
             <a
               href={waLink}

@@ -67,7 +67,7 @@ const FAQsPage = () => {
   return (
     <main className="min-h-screen bg-[#FBF9F6]">
       <SEO
-        title="FAQ — Painting Service, Pricing, Process | Calyco 5-Star Painting"
+        title="FAQ — Painting Services, Pricing, Process | Calyco 5-Star Painting"
         description="Answers to all your questions about Calyco painting services — cost per sq ft, what's included, warranty, GST, payment, timeline, waterproofing and more."
         url="https://calycopaints.com/faq"
       />
@@ -80,7 +80,7 @@ const FAQsPage = () => {
             Frequently Asked Questions
           </h1>
           <p className="text-sm text-white/45 font-light max-w-xl mx-auto leading-[1.75]">
-            Everything about pricing, materials, process, warranty and booking — answered clearly.
+            Pricing, process, warranty and booking.
           </p>
 
           {/* Search bar */}
@@ -149,7 +149,7 @@ const FAQsPage = () => {
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white px-5 py-2.5 text-sm font-bold hover:bg-[#1fb355] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white px-5 py-2.5 text-sm font-bold hover:bg-[#1fb355] transition-colors whitespace-nowrap"
             >
               Ask on WhatsApp →
             </a>
@@ -206,7 +206,7 @@ const FAQsPage = () => {
           <div>
             <p className="font-bold text-white text-base mb-1">Still have a question?</p>
             <p className="text-sm text-white/50 font-light">
-              WhatsApp our team directly — we respond within 2 hours (Mon–Sat, 10am–6pm).
+              We respond within 2 hours.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">

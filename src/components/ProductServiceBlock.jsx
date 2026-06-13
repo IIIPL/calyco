@@ -246,7 +246,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
                 to="/get-quote"
                 className="block w-full text-center rounded-xl bg-[#0F1221] text-white py-3 text-sm font-bold hover:bg-[#493657] transition-colors"
               >
-                Book Painting Service →
+                Book Painting Services →
               </Link>
               <Link
                 to="/calculators/service-cost-calculator"

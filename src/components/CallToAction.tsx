@@ -25,7 +25,7 @@ const CallToAction: React.FC = () => {
           <div className="inline-block">
             <span className="inline-flex items-center gap-2 px-5 py-2 bg-[#F0C85A]/10 border border-[#F0C85A]/25 rounded-full text-[10px] font-medium uppercase tracking-[0.2em] text-[#F0C85A]/80">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F0C85A] animate-pulse" />
-              Calyco 5-Star Painting Service
+              Calyco 5-Star Painting Services
             </span>
           </div>
 

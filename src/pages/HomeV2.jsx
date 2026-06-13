@@ -129,7 +129,7 @@ const HeroV2 = () => {
     setSent(true);
   };
 
-  const headline = ['Calyco', '5-Star', 'Painting', 'Service.'];
+  const headline = ['Calyco', '5-Star', 'Painting', 'Services.'];
 
   return (
     <section ref={ref} className="relative w-full min-h-screen flex items-center overflow-hidden bg-[#0F1221]">
@@ -164,7 +164,7 @@ const HeroV2 = () => {
               {[...Array(5)].map((_, i) => <Star key={i} cls="w-4 h-4 text-[#F0C85A]" />)}
             </div>
             <div className="w-px h-3.5 bg-white/15" />
-            <span className="text-white/45 text-[11px] font-semibold uppercase tracking-[0.22em]">Calyco 5-Star Painting Service</span>
+            <span className="text-white/45 text-[11px] font-semibold uppercase tracking-[0.22em]">Calyco 5-Star Painting Services</span>
           </motion.div>
 
           {/* Word-by-word headline */}
@@ -176,7 +176,7 @@ const HeroV2 = () => {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.75, delay: 0.15 + wi * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className={`inline-block mr-[0.22em] text-[3rem] sm:text-[4rem] lg:text-[5.5rem] xl:text-[6.2rem] font-light
-                  ${word === 'Service.' ? 'text-[#F0C85A] font-semibold' : 'text-white'}`}
+                  ${word === 'Services.' ? 'text-[#F0C85A] font-semibold' : 'text-white'}`}
               >
                 {word}
               </motion.span>
@@ -742,7 +742,7 @@ const CtaV2 = () => {
 const HomeV2 = () => (
   <div className="font-poppins bg-white min-h-screen">
     <SEO
-      title={`${BRAND_NAME} | 5-Star Painting Service — Professional House Painters`}
+      title={`${BRAND_NAME} | 5-Star Painting Services — Professional House Painters`}
       description="Professional house painters you can count on. Verified teams, fixed written quotes, and a warranty-backed finish managed end-to-end by Calyco."
       ogType="website"
     />

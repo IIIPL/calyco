@@ -205,7 +205,7 @@ const StaticHero = () => {
                   Calyco 5-Star
                 </span>
                 <span className="block text-[2.8rem] sm:text-[3.6rem] lg:text-[4.6rem] xl:text-[5.2rem] font-light text-[#493657]">
-                  Painting Service.
+                  Painting Services.
                 </span>
               </h1>
             </motion.div>

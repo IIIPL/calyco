@@ -8,7 +8,7 @@ const steps = [
     number: '01',
     icon: Calculator,
     title: 'Get an instant estimate',
-    description: 'Use our Universal Service Calculator to get a transparent min-max price range for any service -- painting, waterproofing, texture, wood, metal, grouting and more. Select your city, service, tier and area. GST is shown separately.',
+    description: 'Get an instant min-max price range. Select your city, service and area. GST shown separately.',
     cta: { label: 'Open Calculator', to: '/calculators/service-cost-calculator' },
     detail: 'Takes under 2 minutes. No registration required.',
   },
@@ -18,20 +18,20 @@ const steps = [
     title: 'Book a free site visit',
     description: 'Send us a WhatsApp message and our team will schedule a free site inspection at your convenience. No charges, no commitment at this stage.',
     cta: { label: 'Book on WhatsApp', href: 'https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20want%20a%20free%20site%20visit.' },
-    detail: 'Available across 25 cities in India -- Delhi, Gurgaon, Mumbai, Bengaluru, Hyderabad, Pune, Chennai and more.',
+    detail: 'No charges, no commitment at this stage.',
   },
   {
     number: '03',
     icon: Ruler,
     title: 'Laser measurement + scope confirmation',
-    description: 'Our team arrives at your site, measures paintable area with laser tools, assesses surface condition and confirms the exact scope of work -- number of rooms, surface repair needs, and product recommendations.',
+    description: 'Our team measures with laser tools and confirms the exact scope of work.',
     detail: 'This confirms the estimate produced by the calculator.',
   },
   {
     number: '04',
     icon: FileText,
     title: 'Receive a fixed written quote',
-    description: 'After the site visit, we provide a fixed written quotation with a clear line-item breakdown -- labour, material, GST and timeline. No hidden charges. You approve the quote before work begins.',
+    description: 'Fixed written quotation — labour, material, GST and timeline. No hidden charges. You approve before work begins.',
     detail: 'Valid for 15 days. No surprises after acceptance.',
   },
   {
@@ -70,12 +70,12 @@ const HowItWorksPage = () => (
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white leading-[1.08] tracking-[-0.01em] max-w-3xl">
           How Calyco works -- from estimate to finished walls.
         </h1>
-        <p className="mt-5 text-lg text-white/60 max-w-2xl">Five transparent steps. No hidden charges. Fixed written quote before work begins.</p>
+        <p className="mt-5 text-lg text-white/60 max-w-2xl">Fixed price. No surprises.</p>
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white transition-colors">
+          <Link to="/calculators/service-cost-calculator" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F0C85A] text-[#0F1221] px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white transition-colors whitespace-nowrap">
             <Calculator className="w-5 h-5" /> Calculate Cost
           </Link>
-          <Link to="/get-quote" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white/10 transition-colors">
+          <Link to="/get-quote" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-5 py-3 sm:px-7 sm:py-3.5 font-medium hover:bg-white/10 transition-colors whitespace-nowrap">
             Book Free Site Visit →
           </Link>
         </div>
@@ -113,11 +113,11 @@ const HowItWorksPage = () => (
                 {step.cta && (
                   <div className="mt-4">
                     {step.cta.to ? (
-                      <Link to={step.cta.to} className="inline-flex items-center gap-2 rounded-full bg-[#493657] text-white px-5 py-2.5 text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors">
+                      <Link to={step.cta.to} className="inline-flex items-center gap-2 rounded-full bg-[#493657] text-white px-5 py-2.5 text-sm font-semibold hover:bg-[#F0C85A] hover:text-[#0F1221] transition-colors whitespace-nowrap">
                         {step.cta.label} <ChevronRight className="w-4 h-4" />
                       </Link>
                     ) : (
-                      <a href={step.cta.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white px-5 py-2.5 text-sm font-semibold hover:bg-[#1fb355] transition-colors">
+                      <a href={step.cta.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white px-5 py-2.5 text-sm font-semibold hover:bg-[#1fb355] transition-colors whitespace-nowrap">
                         {step.cta.label}
                       </a>
                     )}
