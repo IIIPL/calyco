@@ -120,7 +120,7 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             <ColHeader>Cities We Serve</ColHeader>
             <ul className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-2">
-              {cities.map((city) => (
+              {cities.slice(0, 12).map((city) => (
                 <li key={city.slug}>
                   <Link to={`/${city.slug}`} onClick={scrollTop}
                     className="text-[13px] font-light text-white/45 hover:text-white transition-colors duration-200">

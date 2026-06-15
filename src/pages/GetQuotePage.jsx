@@ -455,8 +455,8 @@ const GetQuotePage = () => {
                   <Field label="House No">
                     <input
                       type="text"
-                      name="address-line2"
-                      autoComplete="address-line2"
+                      name="address-line1"
+                      autoComplete="address-line1"
                       value={form.houseNo}
                       onChange={(e) => set('houseNo', e.target.value)}
                       placeholder="e.g. B-204"

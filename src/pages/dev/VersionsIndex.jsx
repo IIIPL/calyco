@@ -16,6 +16,7 @@ const VERSIONS = [
   { label: 'V3',           to: '/dev/versions/v3',       desc: 'Process-focused variant.' },
   { label: 'V4',           to: '/dev/versions/v4',       desc: '"The Art of Perfect Painting" editorial variant.' },
   { label: 'V5',           to: '/dev/versions/v5',       desc: 'Split-panel parallax variant.' },
+  { label: 'V6',           to: '/dev/versions/v6',       desc: 'Split hero with 10-theme colour slideshow + animated wall texture.' },
 ];
 
 export default function VersionsIndex() {

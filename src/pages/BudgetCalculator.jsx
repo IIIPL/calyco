@@ -738,15 +738,15 @@ function Step3({
             }} />
           </div>
 
-          <input type="text" placeholder="House / Flat No." value={houseNo}
+          <input type="text" name="address-line1" autoComplete="address-line1" placeholder="House / Flat No." value={houseNo}
             onChange={e => setHouseNo(e.target.value)}
             className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
 
           <div className="flex gap-3">
-            <input type="text" placeholder="Street" value={street}
+            <input type="text" name="address-line2" autoComplete="address-line2" placeholder="Street" value={street}
               onChange={e => setStreet(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
-            <input type="text" placeholder="Area" value={areaName}
+            <input type="text" name="address-level3" autoComplete="address-level3" placeholder="Area" value={areaName}
               onChange={e => setAreaName(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
           </div>
@@ -755,7 +755,7 @@ function Step3({
             <div className="w-1/2">
               <CitySelect value={city} onChange={setCity} />
             </div>
-            <input type="text" placeholder="Pincode" value={pincode}
+            <input type="text" name="postal-code" autoComplete="postal-code" placeholder="Pincode" value={pincode}
               onChange={e => setPincode(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
           </div>

@@ -39,7 +39,9 @@
       "Skill(run:*)",
       "PowerShell(Get-Command npx)",
       "PowerShell(npx --prefix \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\" playwright --version)",
-      "PowerShell($global = npm root -g; Get-ChildItem \"$global\" -Filter \"playwright\" -Directory -ErrorAction SilentlyContinue | Select-Object FullName)"
+      "PowerShell($global = npm root -g; Get-ChildItem \"$global\" -Filter \"playwright\" -Directory -ErrorAction SilentlyContinue | Select-Object FullName)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)"
     ]
   }
 }
