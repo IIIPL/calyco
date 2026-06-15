@@ -257,10 +257,23 @@ const ServiceDetailPage = () => {
         title={`${service.name} Services | ${BRAND_NAME}`}
         description={`${service.description} ${POSITIONING_TAGLINE}`}
         url={`https://calycopaints.com/services/${service.slug}`}
+        schemaMarkup={faqs.length > 0 ? {
+          '@context': 'https://schema.org',
+          '@graph': [
+            serviceSchema(service),
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            },
+          ],
+        } : serviceSchema(service)}
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema(service)) }} />
 
-      {/* ── Section 1: Hero ─────────────────────────────────────────────── */}
+      {/* ── Section 1: Hero ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${colors.from} 0%, ${colors.to} 100%)` }}>
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#F0C85A]/8 blur-[120px] pointer-events-none" />
@@ -529,22 +542,26 @@ const ServiceDetailPage = () => {
             </Link>
           </div>
           <div className="space-y-2">
-            {faqs.map((item, i) => (
+            {faqs.map((item, i) => {
+              const panelId = `svc-faq-panel-${i}`;
+              return (
               <div key={i} className="rounded-2xl border border-[#e5e0d8] bg-white overflow-hidden">
                 <button
                   type="button"
                   onClick={() => setFaqOpen(faqOpen === i ? null : i)}
                   className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={faqOpen === i}
+                  aria-controls={panelId}
                 >
                   <span className="text-sm font-semibold text-[#0F1221]">{item.q}</span>
-                  <ChevronDown className={`w-4 h-4 text-[#0F1221]/35 flex-shrink-0 transition-transform duration-200 ${faqOpen === i ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#0F1221]/35 flex-shrink-0 transition-transform duration-200 ${faqOpen === i ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                <div className={`transition-all duration-300 ${faqOpen === i ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                <div id={panelId} className={`transition-all duration-300 ${faqOpen === i ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                   <p className="px-5 pb-5 text-sm text-[#0F1221]/60 font-light leading-[1.75]">{item.a}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
           <div className="mt-5">
             <Link to="/faq" className="inline-flex items-center gap-2 text-sm font-medium text-[#0F1221]/45 hover:text-[#493657] transition-colors">

@@ -5,6 +5,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS custom properties (design tokens) ────────────────────────────────── */
+:root {
+  --calyco-purple: #493657;
+  --calyco-gold:   #F0C85A;
+  --ink:           #0F1221;
+  --cream:         #F6F3EE;
+  --warm:          #FBF9F6;
+  --grey-mist:     #EDEDED;
+  --grey-thunder:  #4A5568;
+  --linen-white:   #FAFAF7;
+  --charcoal-black:#1A1A1A;
+  --sage-green:    #68D391;
+  --barn-red:      #C53030;
+  --lavender:      #B794F4;
+  --lilac:         #D6BCFA;
+
+  /* Spacing rhythm */
+  --sec-y: 5.5rem;
+  --sec-y-sm: 3rem;
+  --cont-x: 1.25rem;
+  --cont-x-lg: 2rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Focus */
+  --focus-ring: 2px solid #493657;
+  --focus-offset: 2px;
+}
+
+/* ── Body scroll lock (used by modals) ───────────────────────────────────── */
+body.modal-open {
+  overflow: hidden;
+}
+
 /* Prevent horizontal scrolling globally */
 html {
   overflow-x: hidden;

@@ -84,13 +84,13 @@ export const Footer = () => {
               {POSITIONING_TAGLINE}
             </p>
             <div className="flex gap-2.5 mt-5">
-              <a href={whatsapp.link} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+              <a href={whatsapp.link} target="_blank" rel="noreferrer" aria-label="Chat with Calyco on WhatsApp"
                 className="w-8 h-8 rounded-full bg-[#25D366]/12 border border-[#25D366]/20 flex items-center justify-center text-[#25D366] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all">
-                <FaWhatsapp className="w-3.5 h-3.5" />
+                <FaWhatsapp className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
-              <a href="https://www.instagram.com/calycopaints" target="_blank" rel="noreferrer" aria-label="Instagram"
+              <a href="https://www.instagram.com/calycopaints" target="_blank" rel="noreferrer" aria-label="Follow Calyco on Instagram"
                 className="w-8 h-8 rounded-full bg-white/5 border border-white/8 flex items-center justify-center text-white/40 hover:bg-[#F0C85A] hover:text-[#0F1221] hover:border-[#F0C85A] transition-all">
-                <FaInstagram className="w-3.5 h-3.5" />
+                <FaInstagram className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -155,8 +155,9 @@ export const Footer = () => {
             <div className="space-y-4 text-[13px]">
 
               <a href={`mailto:${email.support}`}
+                aria-label={`Email us at ${email.support}`}
                 className="flex items-start gap-2.5 text-white/45 hover:text-white transition-colors">
-                <MailIcon />
+                <MailIcon aria-hidden="true" />
                 <span className="font-light">{email.support}</span>
               </a>
 
@@ -187,7 +188,7 @@ export const Footer = () => {
       {/* ── Policy strip ─────────────────────────────────────────────────── */}
       <div className="border-t border-white/6">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] font-light text-white/25">
+          <p className="text-[11px] font-light text-white/50">
             © {year} Calyco Products Private Limited · {BRAND_NAME} · All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
@@ -199,7 +200,7 @@ export const Footer = () => {
               ['Returns',        '/policies/returns'],
             ].map(([label, path]) => (
               <Link key={path} to={path} onClick={scrollTop}
-                className="text-[11px] font-light text-white/25 hover:text-white/60 transition-colors">
+                className="text-[11px] font-light text-white/50 hover:text-white/80 transition-colors">
                 {label}
               </Link>
             ))}
