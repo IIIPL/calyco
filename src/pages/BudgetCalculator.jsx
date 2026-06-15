@@ -490,6 +490,7 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
             type="number" min="1" value={carpetArea}
             onChange={e => setCarpetArea(e.target.value)}
             placeholder="e.g. 850"
+            aria-label="Carpet area of your house in square feet"
             className="w-full bg-[#FAFAF8] border-2 border-[#0F1221]/10 focus:border-[#F0C85A] rounded-2xl px-5 py-4 text-[1.6rem] font-light text-[#0F1221] pr-24 focus:outline-none transition-colors placeholder:text-[#0F1221]/18 leading-none"
           />
           <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-[#0F1221]/30 uppercase tracking-wider">sq ft</span>
@@ -710,6 +711,8 @@ function Step3({
 
         <div className="space-y-3 mb-5">
           <input type="text" placeholder="Your name *" value={name}
+            aria-label="Your name (required)"
+            autoComplete="name"
             onChange={e => setName(e.target.value)}
             className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
 
@@ -721,6 +724,8 @@ function Step3({
               </svg>
             </div>
             <input type="tel" placeholder="Phone number *" value={phone}
+              aria-label="Mobile number (required)"
+              autoComplete="tel"
               onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
               className="flex-1 bg-transparent px-4 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none" />
           </div>
@@ -739,14 +744,17 @@ function Step3({
           </div>
 
           <input type="text" name="address-line1" autoComplete="address-line1" placeholder="House / Flat No." value={houseNo}
+            aria-label="House or flat number"
             onChange={e => setHouseNo(e.target.value)}
             className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
 
           <div className="flex gap-3">
             <input type="text" name="address-line2" autoComplete="address-line2" placeholder="Street" value={street}
+              aria-label="Street name"
               onChange={e => setStreet(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
             <input type="text" name="address-level3" autoComplete="address-level3" placeholder="Area" value={areaName}
+              aria-label="Area or locality"
               onChange={e => setAreaName(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
           </div>
@@ -756,6 +764,7 @@ function Step3({
               <CitySelect value={city} onChange={setCity} />
             </div>
             <input type="text" name="postal-code" autoComplete="postal-code" placeholder="Pincode" value={pincode}
+              aria-label="Pincode"
               onChange={e => setPincode(e.target.value)}
               className="w-1/2 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
           </div>

@@ -50,8 +50,8 @@ const RESOURCE_LINKS = [
 ];
 
 /* ── Dropdown panels — full-width mega style (matches ProductsDropdown) ──── */
-const PanelShell = ({ eyebrow, children, footerLeft, footerRight }) => (
-  <div className="absolute left-0 top-full w-full bg-white border-b border-[#0F1221]/8 shadow-[0_16px_56px_rgba(0,0,0,0.12)] z-[200]">
+const PanelShell = ({ id, eyebrow, children, footerLeft, footerRight }) => (
+  <div id={id} className="absolute left-0 top-full w-full bg-white border-b border-[#0F1221]/8 shadow-[0_16px_56px_rgba(0,0,0,0.12)] z-[200]">
     <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-10">
       <div className="flex items-center gap-2.5 mb-6">
         <span className="w-5 h-px bg-[#F0C85A]" />
@@ -81,6 +81,7 @@ const PanelLink = ({ to, label, sub, onSelect }) => (
 
 const ServicesPanel = ({ onSelect }) => (
   <PanelShell
+    id="nav-panel-services"
     eyebrow="All Services"
     footerLeft={
       <Link to="/services" onClick={onSelect}
@@ -105,6 +106,7 @@ const ServicesPanel = ({ onSelect }) => (
 
 const ResourcesPanel = ({ onSelect }) => (
   <PanelShell
+    id="nav-panel-resources"
     eyebrow="Resources"
     footerLeft={
       <Link to="/faqs" onClick={onSelect}
@@ -128,9 +130,12 @@ const ResourcesPanel = ({ onSelect }) => (
 );
 
 /* ── Nav button ──────────────────────────────────────────────────────────── */
-const NavBtn = ({ label, isOpen, onClick }) => (
+const NavBtn = ({ label, isOpen, onClick, controls }) => (
   <button type="button" onClick={onClick}
-    className={`inline-flex items-center gap-0.5 text-[13px] font-medium transition-colors whitespace-nowrap focus:outline-none ${
+    aria-expanded={isOpen}
+    aria-haspopup="true"
+    aria-controls={controls}
+    className={`inline-flex items-center gap-0.5 text-[13px] font-medium transition-colors whitespace-nowrap rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#493657] focus-visible:outline-offset-2 ${
       isOpen ? 'text-[#493657]' : 'text-[#0F1221]/60 hover:text-[#0F1221]'
     }`}>
     {label}
@@ -141,15 +146,18 @@ const NavBtn = ({ label, isOpen, onClick }) => (
 /* ── Mobile accordion ────────────────────────────────────────────────────── */
 const MobileAccordion = ({ label, links, onSelect }) => {
   const [open, setOpen] = useState(false);
+  const panelId = `mobile-acc-${label.toLowerCase().replace(/\s+/g, '-')}`;
   return (
     <div className="border-b border-[#0F1221]/8">
       <button type="button" onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between py-4 text-[14px] font-semibold text-[#0F1221]">
         {label}
         <ChevronDown open={open} />
       </button>
       {open && (
-        <div className="pb-3 space-y-0.5 pl-3">
+        <div id={panelId} className="pb-3 space-y-0.5 pl-3">
           {links.map((l) => (
             <Link key={l.to} to={l.to} onClick={onSelect}
               className="flex items-center gap-2.5 py-2 text-[13px] text-[#0F1221]/55 hover:text-[#0F1221] transition-colors">
@@ -196,6 +204,12 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
   }, [dropdownOpen]);
 
   useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') setDropdownOpen(null); };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, []);
+
+  useEffect(() => {
     if (!menuOpen) return;
     const h = (e) => { if (drawerRef.current && !drawerRef.current.contains(e.target)) handleMenuToggle(false); };
     document.addEventListener('mousedown', h);
@@ -236,6 +250,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
           <div>
             <NavBtn label="Services" isOpen={dropdownOpen === 'services'}
+              controls="nav-panel-services"
               onClick={() => setDropdownOpen(dropdownOpen === 'services' ? null : 'services')} />
           </div>
 
@@ -251,6 +266,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
           <div>
             <NavBtn label="Products" isOpen={dropdownOpen === 'products'}
+              controls="nav-panel-products"
               onClick={() => setDropdownOpen(dropdownOpen === 'products' ? null : 'products')} />
           </div>
 
@@ -261,6 +277,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
           <div>
             <NavBtn label="Resources" isOpen={dropdownOpen === 'resources'}
+              controls="nav-panel-resources"
               onClick={() => setDropdownOpen(dropdownOpen === 'resources' ? null : 'resources')} />
           </div>
 
@@ -292,7 +309,7 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
       {!isMobileView && (
         <div className="hidden lg:block">
           {dropdownOpen === 'services'  && <ServicesPanel onSelect={close} />}
-          {dropdownOpen === 'products'  && <ProductsDropdown onSelect={close} isMobile={false} />}
+          {dropdownOpen === 'products'  && <div id="nav-panel-products"><ProductsDropdown onSelect={close} isMobile={false} /></div>}
           {dropdownOpen === 'resources' && <ResourcesPanel onSelect={close} />}
         </div>
       )}
@@ -310,7 +327,10 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
           </a>
           <button
             className="w-9 h-9 rounded-full border border-[#0F1221]/10 flex items-center justify-center text-[#0F1221]"
-            onClick={() => handleMenuToggle(!menuOpen)} aria-label="Toggle menu">
+            onClick={() => handleMenuToggle(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-drawer">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               {menuOpen
                 ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -328,7 +348,11 @@ export const Navbar = ({ bannerVisible = true, onMenuToggle }) => {
 
       {/* ── Mobile drawer ────────────────────────────────────────────────── */}
       <div
+        id="mobile-drawer"
         ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
         className={`fixed top-0 right-0 h-full w-full max-w-[320px] bg-white z-[70] flex flex-col transform transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] shadow-[−24px_0_80px_rgba(0,0,0,0.18)] ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         {/* Header */}

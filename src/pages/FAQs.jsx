@@ -18,6 +18,7 @@ const FAQItem = ({ faq, isOpen, onToggle, highlight }) => {
     );
   };
 
+  const panelId = `faq-panel-${faq.id}`;
   return (
     <div className={`border rounded-2xl overflow-hidden transition-all ${isOpen ? 'border-[#493657]/25 shadow-sm' : 'border-[#0F1221]/8 hover:border-[#0F1221]/15'}`}>
       <button
@@ -25,14 +26,15 @@ const FAQItem = ({ faq, isOpen, onToggle, highlight }) => {
         onClick={onToggle}
         className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left"
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <span className={`font-semibold text-sm sm:text-base leading-snug ${isOpen ? 'text-[#493657]' : 'text-[#0F1221]'}`}>
           {highlightText(faq.q, highlight)}
         </span>
-        <ChevronDown className={`w-4 h-4 flex-shrink-0 mt-0.5 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#493657]' : 'text-[#0F1221]/35'}`} />
+        <ChevronDown className={`w-4 h-4 flex-shrink-0 mt-0.5 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#493657]' : 'text-[#0F1221]/35'}`} aria-hidden="true" />
       </button>
       {isOpen && (
-        <div className="px-5 pb-5 text-sm text-[#0F1221]/65 font-light leading-[1.8] border-t border-[#0F1221]/6 pt-4">
+        <div id={panelId} className="px-5 pb-5 text-sm text-[#0F1221]/65 font-light leading-[1.8] border-t border-[#0F1221]/6 pt-4">
           {highlightText(faq.a, highlight)}
         </div>
       )}
@@ -64,12 +66,23 @@ const FAQsPage = () => {
 
   const waLink = `${contactData.contact.whatsapp.link}?text=${encodeURIComponent('Hi Calyco — I have a question about your painting service. Can you help?')}`;
 
+  const faqSchema = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: masterFAQs.slice(0, 20).map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }), []);
+
   return (
     <main className="min-h-screen bg-[#FBF9F6]">
       <SEO
         title="FAQ — Painting Services, Pricing, Process | Calyco 5-Star Painting"
         description="Answers to all your questions about Calyco painting services — cost per sq ft, what's included, warranty, GST, payment, timeline, waterproofing and more."
         url="https://calycopaints.com/faq"
+        schemaMarkup={faqSchema}
       />
 
       {/* Hero */}
@@ -89,7 +102,9 @@ const FAQsPage = () => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
-              type="text"
+              type="search"
+              id="faq-search"
+              aria-label="Search frequently asked questions"
               value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setOpenId(null); }}
               placeholder="Search questions — try 'putty', 'warranty', 'cost'…"

@@ -721,6 +721,59 @@ const HeroMascot = ({ containerRef }) => {
   );
 };
 
+// ── V6 hero themes — 10 premium palettes cycling every 3s ─────────────────────
+const HERO_THEMES = [
+  { bg: '#EAEAEF', eyebrow: '#493657', text: '#0F1221', para: 'rgba(15,18,33,0.50)',    dark: false, underline: '#493657', watermark: '#493657', btnBg: '#493657', btnText: '#FFFFFF' },
+  { bg: '#2D1060', eyebrow: '#FB923C', text: '#FDBA74', para: 'rgba(253,186,116,0.80)', dark: true,  underline: '#FB923C', watermark: '#FB923C', btnBg: '#FB923C', btnText: '#1A0530' },
+  { bg: '#F2E8D4', eyebrow: '#7A4F2A', text: '#1E0E00', para: 'rgba(30,14,0,0.52)',     dark: false, underline: '#7A4F2A', watermark: '#7A4F2A', btnBg: '#7A4F2A', btnText: '#F2E8D4' },
+  { bg: '#3A0D1C', eyebrow: '#F2C4D0', text: '#FFE8EE', para: 'rgba(255,232,238,0.72)', dark: true,  underline: '#F2C4D0', watermark: '#F2C4D0', btnBg: '#C2556C', btnText: '#FFFFFF' },
+  { bg: '#FCD34D', eyebrow: '#1E3A8A', text: '#1E3A8A', para: 'rgba(30,58,138,0.72)',   dark: false, underline: '#1E3A8A', watermark: '#1E3A8A', btnBg: '#1E3A8A', btnText: '#FFFFFF' },
+  { bg: '#0D1829', eyebrow: '#7BBFDA', text: '#E4F0F8', para: 'rgba(228,240,248,0.68)', dark: true,  underline: '#7BBFDA', watermark: '#7BBFDA', btnBg: '#7BBFDA', btnText: '#0D1829' },
+  { bg: '#DCE5D8', eyebrow: '#2C4F28', text: '#152210', para: 'rgba(21,34,16,0.55)',    dark: false, underline: '#2C4F28', watermark: '#2C4F28', btnBg: '#2C4F28', btnText: '#FFFFFF' },
+  { bg: '#5E2415', eyebrow: '#FFB88A', text: '#FFF0E8', para: 'rgba(255,240,232,0.72)', dark: true,  underline: '#FFB88A', watermark: '#FFB88A', btnBg: '#FFB88A', btnText: '#3A1409' },
+  { bg: '#0A1E14', eyebrow: '#4ADE80', text: '#FFFFFF', para: 'rgba(255,255,255,0.60)', dark: true,  underline: '#4ADE80', watermark: '#4ADE80', btnBg: '#4ADE80', btnText: '#071209' },
+  { bg: '#0C0F1E', eyebrow: '#F0C85A', text: '#FFFFFF', para: 'rgba(255,255,255,0.58)', dark: true,  underline: '#F0C85A', watermark: '#F0C85A', btnBg: '#F0C85A', btnText: '#0C0F1E' },
+];
+
+const CountUp = ({ to, from = 0, suffix = '', decimals = 0, active }) => {
+  const [val, setVal] = useState(from);
+  useEffect(() => {
+    if (!active) return;
+    let raf; let t0 = null; const dur = 1400;
+    const tick = (now) => {
+      if (!t0) t0 = now;
+      const p = Math.min((now - t0) / dur, 1);
+      setVal(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, to, from]);
+  return <>{decimals ? val.toFixed(decimals) : Math.floor(val)}{suffix}</>;
+};
+
+const SPECK_DEFS = [
+  { id: 0, size: 4, x: '14%', dy: -680, dx: 15,  delay: 0.0, dur: 6.0 },
+  { id: 1, size: 3, x: '31%', dy: -720, dx: -18, delay: 1.4, dur: 5.4 },
+  { id: 2, size: 5, x: '53%', dy: -650, dx: 12,  delay: 2.8, dur: 6.8 },
+  { id: 3, size: 3, x: '68%', dy: -700, dx: -10, delay: 0.7, dur: 5.2 },
+  { id: 4, size: 4, x: '82%', dy: -660, dx: 20,  delay: 3.3, dur: 5.8 },
+  { id: 5, size: 3, x: '93%', dy: -710, dx: -14, delay: 1.9, dur: 6.4 },
+];
+const PaintSpecks = ({ color }) => (
+  <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none z-[4]">
+    {SPECK_DEFS.map(s => (
+      <motion.div
+        key={s.id}
+        className="absolute rounded-full"
+        style={{ width: s.size, height: s.size, left: s.x, bottom: 0 }}
+        animate={{ y: [0, s.dy], x: [0, s.dx], opacity: [0, 0.45, 0.45, 0], backgroundColor: color }}
+        transition={{ duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'linear', times: [0, 0.07, 0.82, 1] }}
+      />
+    ))}
+  </div>
+);
+
 const HeroFinal = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -745,6 +798,32 @@ const HeroFinal = () => {
   const badgeX  = useTransform(smX, [-1, 1], [-34, 34]);
   const badgeY  = useTransform(smY, [-1, 1], [-24, 24]);
 
+  // Left-panel parallax — each content layer moves at a different depth
+  const lEyeX  = useTransform(smX, [-1, 1], [-5,  5]);
+  const lEyeY  = useTransform(smY, [-1, 1], [-3,  3]);
+  const lHeadX = useTransform(smX, [-1, 1], [-9,  9]);
+  const lHeadY = useTransform(smY, [-1, 1], [-6,  6]);
+  const lParaX = useTransform(smX, [-1, 1], [-13, 13]);
+  const lParaY = useTransform(smY, [-1, 1], [-9,  9]);
+  const lFormX = useTransform(smX, [-1, 1], [-17, 17]);
+  const lFormY = useTransform(smY, [-1, 1], [-12, 12]);
+  const lBadgX = useTransform(smX, [-1, 1], [-21, 21]);
+  const lBadgY = useTransform(smY, [-1, 1], [-15, 15]);
+
+  // Form card 3D tilt
+  const cardRef   = useRef(null);
+  const cardRotX  = useMotionValue(0);
+  const cardRotY  = useMotionValue(0);
+  const cardSRotX = useSpring(cardRotX, { damping: 22, stiffness: 220 });
+  const cardSRotY = useSpring(cardRotY, { damping: 22, stiffness: 220 });
+  const onCardMove = (e) => {
+    const r = cardRef.current?.getBoundingClientRect();
+    if (!r) return;
+    cardRotY.set(((e.clientX - r.left) / r.width  * 2 - 1) *  6);
+    cardRotX.set(((e.clientY - r.top)  / r.height * 2 - 1) * -4);
+  };
+  const onCardLeave = () => { cardRotX.set(0); cardRotY.set(0); };
+
   const onMouseMove = (e) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
@@ -753,7 +832,6 @@ const HeroFinal = () => {
   };
   const onMouseLeave = () => { rawX.set(0); rawY.set(0); };
 
-  // ── Inline lead-capture form — continues into /get-quote with name + phone prefilled
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 1024);
   useEffect(() => {
@@ -762,7 +840,6 @@ const HeroFinal = () => {
     return () => window.removeEventListener('resize', fn);
   }, []);
 
-  // h1 crops badly on mobile — skip it; desktop shows all 5
   const activeImages    = isMobile ? HERO_IMAGES.slice(1)    : HERO_IMAGES;
   const activePositions = isMobile ? HERO_POSITIONS.slice(1) : HERO_POSITIONS;
 
@@ -772,6 +849,9 @@ const HeroFinal = () => {
     const t = setInterval(() => setHeroIdx(i => (i + 1) % activeImages.length), 3000);
     return () => clearInterval(t);
   }, [isMobile, activeImages.length]);
+
+  const themeIdx = isMobile ? (heroIdx + 1) % HERO_THEMES.length : heroIdx;
+  const theme = HERO_THEMES[themeIdx];
 
   const [form, setForm] = useState({ name: '', phone: '' });
   const handleSubmit = (e) => {
@@ -790,10 +870,8 @@ const HeroFinal = () => {
     >
       {/* ── Premium Ambient Background ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Desktop background */}
         <img src="/Assets/background-texture.webp" className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
-        {/* Mobile background */}
-        <img src="/mobile bg.webp" className="block lg:hidden absolute inset-0 w-full h-full object-cover object-right-top opacity-100" alt="" loading="lazy" decoding="async" />
+
         <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF8]/40 via-transparent to-[#FAFAF8]" />
         <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.15] blur-[120px] rounded-full mix-blend-multiply" />
         <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-[#7A4E9E] opacity-[0.11] blur-[140px] rounded-full mix-blend-multiply" />
@@ -801,143 +879,302 @@ const HeroFinal = () => {
         <div className="absolute top-[45%] -left-[8%] w-[30%] h-[30%] bg-[#2A9D8F] opacity-[0.08] blur-[120px] rounded-full mix-blend-multiply" />
       </div>
 
+      {/* Watermark */}
       <div aria-hidden="true" className="pointer-events-none select-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden gap-[1.5vw] opacity-20 lg:opacity-100">
-        <span className="text-[50vw] lg:text-[30vw] font-black text-[#7A4E9E]/[0.07] leading-none tracking-tighter">5</span>
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] text-[#E8A33D]/[0.13] shrink-0">
+        <motion.span
+          className="text-[50vw] lg:text-[30vw] font-black leading-none tracking-tighter"
+          animate={{ color: theme.watermark + '12' }}
+          transition={{ duration: 1.4, ease: 'easeInOut' }}
+        >5</motion.span>
+        <motion.svg
+          viewBox="0 0 24 24" fill="currentColor"
+          className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] shrink-0"
+          animate={{ color: theme.watermark + '20' }}
+          transition={{ duration: 1.4, ease: 'easeInOut' }}
+        >
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z" />
-        </svg>
+        </motion.svg>
       </div>
 
       {/* ── Left column ────────────────────────────────────────────────── */}
       <motion.div
         style={{ y: scrollTextY }}
-        className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 pt-12 pb-12 lg:py-0 lg:min-h-screen"
+        className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 pt-24 pb-4 lg:pt-20 lg:pb-0 lg:min-h-screen"
       >
-        <div className="relative w-full max-w-2xl">
+        {/* SVG plaster filter */}
+        <svg className="absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+          <defs>
+            <filter id="hero-plaster" x="-5%" y="-5%" width="110%" height="110%" colorInterpolationFilters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.38 0.22" numOctaves="5" seed="14" result="coarse"/>
+              <feTurbulence type="fractalNoise" baseFrequency="1.9 1.5" numOctaves="3" seed="7" result="fine"/>
+              <feDiffuseLighting in="coarse" surfaceScale="2.5" diffuseConstant="0.9" lightingColor="white" result="diffuse">
+                <fePointLight x="280" y="90" z="600"/>
+              </feDiffuseLighting>
+              <feSpecularLighting in="fine" surfaceScale="1" specularConstant="0.12" specularExponent="30" lightingColor="white" result="specular">
+                <fePointLight x="280" y="90" z="600"/>
+              </feSpecularLighting>
+              <feBlend in="diffuse" in2="specular" mode="screen" result="lit"/>
+            </filter>
+          </defs>
+        </svg>
 
+        {/* Background layers — clipped to the panel so they don't bleed */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* 1. Smooth colour morph */}
           <motion.div
-            initial={{ opacity: 0, x: -18 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-3 mb-8"
-          >
-            <span className="w-9 h-[2px] rounded-full bg-gradient-to-r from-[#F0C85A] to-[#E76F51]" />
-            <span data-mascot="eyebrow" className="text-[9px] font-black uppercase tracking-[0.3em] text-[#0F1221] lg:text-[#493657]">
-              India&apos;s Trusted Painting Experts
-            </span>
+            className="absolute inset-0 z-0"
+            animate={{ backgroundColor: theme.bg }}
+            transition={{ duration: 1.8, ease: 'easeInOut' }}
+          />
+          {/* 2. Plaster surface */}
+          <div className="absolute inset-0 z-[1] pointer-events-none"
+            style={{ filter: 'url(#hero-plaster)', mixBlendMode: 'soft-light', opacity: 0.38, backgroundColor: '#909090' }} />
+          {/* 3. Micro grain */}
+          <div className="absolute inset-0 z-[2] pointer-events-none opacity-[0.06]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E")`,
+              backgroundSize: '160px 160px', mixBlendMode: 'overlay',
+            }} />
+          {/* 4. Window highlight */}
+          <div className="absolute inset-0 z-[3] pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 68% 52% at 18% 8%, rgba(255,255,255,0.14) 0%, transparent 65%)' }} />
+          {/* 5. Ambient occlusion */}
+          <div className="absolute inset-0 z-[3] pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 80% 65% at 92% 102%, rgba(0,0,0,0.10) 0%, transparent 62%)' }} />
+          {/* 6. Edge shadow */}
+          <div className="absolute inset-0 z-[3] pointer-events-none"
+            style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.05) 0%, transparent 8%)' }} />
+          {/* 7. Mobile bottom fade — dissolves into white before image section */}
+          <div className="lg:hidden absolute bottom-0 left-0 right-0 h-20 z-[4] pointer-events-none"
+            style={{ background: 'linear-gradient(to bottom, transparent, rgba(250,250,248,1))' }} />
+          {/* Floating paint specks */}
+          <PaintSpecks color={theme.eyebrow} />
+        </div>
+
+        <div className="relative z-10 w-full max-w-2xl">
+
+          {/* Parallax — eyebrow */}
+          <motion.div style={{ x: lEyeX, y: lEyeY }}>
+            <motion.div
+              initial={{ opacity: 0, x: -18 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <motion.span
+                className="w-9 h-[2px] rounded-full"
+                animate={{ backgroundColor: theme.eyebrow }}
+                transition={{ duration: 1.4, ease: 'easeInOut' }}
+              />
+              <motion.span
+                data-mascot="eyebrow"
+                animate={{ color: theme.eyebrow }}
+                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                className="text-[9px] font-black uppercase tracking-[0.3em]"
+              >India&apos;s Trusted Painting Experts</motion.span>
+            </motion.div>
           </motion.div>
 
-          <h1 className="mb-7">
-            {LINES.map((segments, i) => (
-              <span key={i} className="block overflow-hidden leading-[1.07]">
-                <motion.span
-                  initial={{ y: '108%' }}
-                  animate={inView ? { y: 0 } : {}}
-                  transition={{ duration: 0.9, delay: 0.22 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
-                  className="block font-light tracking-[-0.025em] text-[2.2rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] text-[#0F1221] whitespace-nowrap"
-                >
-                  {segments.map((seg) =>
+          {/* Parallax — headline with char-by-char reveal */}
+          <motion.div style={{ x: lHeadX, y: lHeadY }}>
+            <h1 className="mb-7 font-light tracking-[-0.025em] text-[2.2rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] lg:whitespace-nowrap">
+              {LINES.map((segments, lineIdx) => (
+                <div key={lineIdx} className="block leading-[1.07]">
+                  {segments.map((seg, si) =>
                     seg.gradient ? (
-                      <span key={seg.text} data-mascot={seg.text} className="relative inline-block">
-                        <span className={`text-transparent bg-clip-text bg-gradient-to-r ${seg.gradient}`}>
+                      <span key={seg.text} data-mascot={seg.text} className="relative inline-block overflow-hidden">
+                        <motion.span
+                          className={`block text-transparent bg-clip-text bg-gradient-to-r ${seg.gradient}`}
+                          initial={{ y: '108%' }}
+                          animate={inView ? { y: 0 } : {}}
+                          transition={{ duration: 0.85, delay: 0.3 + lineIdx * 0.1 + si * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                        >
                           {seg.text}
-                        </span>
+                        </motion.span>
                         {seg.underline && (
-                          <svg
-                            viewBox="0 0 200 20"
-                            fill="none"
-                            preserveAspectRatio="none"
-                            className="absolute left-0 bottom-[-0.04em] w-full h-[0.2em] pointer-events-none"
-                          >
-                            <defs>
-                              <linearGradient id="ulGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#7A4E9E" />
-                                <stop offset="100%" stopColor="#C2588B" />
-                              </linearGradient>
-                            </defs>
+                          <svg viewBox="0 0 200 20" fill="none" preserveAspectRatio="none" className="absolute left-0 bottom-[-0.04em] w-full h-[0.2em] pointer-events-none">
                             <motion.path
                               d="M4 14 C 35 5, 65 19, 100 11 C 135 3, 165 17, 196 9"
-                              stroke="url(#ulGrad)"
-                              strokeWidth="6"
-                              strokeLinecap="round"
-                              initial={{ pathLength: 0 }}
-                              animate={inView ? { pathLength: 1 } : {}}
-                              transition={{ duration: 0.9, delay: 1.05, ease: 'easeOut' }}
+                              strokeWidth="6" strokeLinecap="round"
+                              initial={{ pathLength: 0, stroke: HERO_THEMES[0].underline }}
+                              animate={{ ...(inView ? { pathLength: 1 } : {}), stroke: theme.underline }}
+                              transition={{
+                                pathLength: { duration: 0.9, delay: 1.1, ease: 'easeOut' },
+                                stroke: { duration: 1.4, ease: 'easeInOut' },
+                              }}
                             />
                           </svg>
                         )}
                       </span>
                     ) : (
-                      <span key={seg.text}>{seg.text}</span>
+                      [...seg.text].map((char, ci) => (
+                        <span key={ci} className="inline-block overflow-hidden" style={{ lineHeight: 'inherit' }}>
+                          <motion.span
+                            className="inline-block"
+                            initial={{ y: '108%', color: HERO_THEMES[0].text }}
+                            animate={{ ...(inView ? { y: 0 } : {}), color: theme.text }}
+                            transition={{
+                              y:     { duration: 0.6, delay: 0.1 + lineIdx * 0.07 + ci * 0.028, ease: [0.22, 1, 0.36, 1] },
+                              color: { duration: 1.4, ease: 'easeInOut' },
+                            }}
+                          >
+                            {char === ' ' ? ' ' : char}
+                          </motion.span>
+                        </span>
+                      ))
                     )
                   )}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
+                </div>
+              ))}
+            </h1>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[#0F1221]/48 text-base sm:text-[1.05rem] font-light leading-relaxed mb-10 max-w-[420px]"
-          >
-            Professional house painters you can count on<br className="hidden sm:block" />
-            verified teams, fixed quotes, and a warranty-backed finish.
-          </motion.p>
+          {/* Parallax — paragraph */}
+          <motion.div style={{ x: lParaX, y: lParaY }}>
+            <motion.p
+              initial={{ opacity: 0, y: 14, color: HERO_THEMES[0].para }}
+              animate={{ ...(inView ? { opacity: 1, y: 0 } : {}), color: theme.para }}
+              transition={{
+                opacity: { duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] },
+                y:       { duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] },
+                color:   { duration: 1.4, ease: 'easeInOut' },
+              }}
+              className="text-base sm:text-[1.05rem] font-light leading-relaxed mb-10 max-w-[420px]"
+            >
+              Professional house painters you can count on<br className="hidden sm:block" />
+              verified teams, fixed quotes, and a warranty-backed finish.
+            </motion.p>
+          </motion.div>
 
-          {/* Inline lead-capture form — restyled for the light hero theme */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-2 mb-9 max-w-[520px]"
-          >
-            <div className="rounded-2xl border border-[#0F1221]/8 bg-white shadow-[0_10px_40px_rgba(15,18,33,0.07)] p-4 sm:p-5 overflow-hidden">
-              <div className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4 bg-[linear-gradient(90deg,#F0C85A,#E76F51,#C2588B,#7A4E9E,#2A9D8F)]" />
-              <p className="text-[#0F1221] font-bold text-xs sm:text-sm mb-3 sm:mb-4">Get a Free Site Inspection</p>
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
-                <input
-                  type="text" name="name" autoComplete="name" placeholder="Your name" required value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
-                />
-                <input
-                  type="tel" name="tel" autoComplete="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
-                  onChange={e => setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
-                  className="flex-1 min-w-0 bg-[#FAFAF8] border border-[#0F1221]/10 rounded-xl px-4 py-3 text-sm text-[#0F1221] placeholder-[#0F1221]/30 focus:outline-none focus:border-[#F0C85A] transition-colors"
-                />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="flex-shrink-0 flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#493657] to-[#7A4E9E] text-white px-5 py-3 rounded-xl text-sm font-bold hover:from-[#0F1221] hover:to-[#493657] transition-colors"
+          {/* Parallax — form with 3D tilt */}
+          <motion.div style={{ x: lFormX, y: lFormY }}>
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-2 mb-9 max-w-[520px]"
+            >
+              <motion.div
+                ref={cardRef}
+                onMouseMove={onCardMove}
+                onMouseLeave={onCardLeave}
+                animate={{
+                  backgroundColor: theme.dark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,1)',
+                  borderColor: theme.dark ? 'rgba(255,255,255,0.14)' : 'rgba(15,18,33,0.08)',
+                }}
+                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                style={{
+                  borderWidth: '1px', borderStyle: 'solid',
+                  rotateX: cardSRotX, rotateY: cardSRotY,
+                  transformPerspective: 700,
+                }}
+                className="rounded-2xl p-4 sm:p-5 overflow-hidden shadow-[0_10px_40px_rgba(15,18,33,0.07)] backdrop-blur-sm"
+              >
+                <div className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4 bg-[linear-gradient(90deg,#F0C85A,#E76F51,#C2588B,#7A4E9E,#2A9D8F)]" />
+                <motion.p
+                  animate={{ color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221' }}
+                  transition={{ duration: 1.4, ease: 'easeInOut' }}
+                  className="font-bold text-xs sm:text-sm mb-3 sm:mb-4"
+                >Get a Free Site Inspection</motion.p>
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
+                  <motion.input
+                    type="text" name="name" autoComplete="name" placeholder="Your name" required value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    animate={{
+                      backgroundColor: theme.dark ? 'rgba(255,255,255,0.08)' : '#FAFAF8',
+                      borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
+                      color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221',
+                    }}
+                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    style={{ borderWidth: '1px', borderStyle: 'solid' }}
+                    className="flex-1 min-w-0 rounded-xl px-4 py-3 text-sm focus:outline-none"
+                  />
+                  <motion.input
+                    type="tel" name="tel" autoComplete="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
+                    onChange={e => setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
+                    animate={{
+                      backgroundColor: theme.dark ? 'rgba(255,255,255,0.08)' : '#FAFAF8',
+                      borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
+                      color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221',
+                    }}
+                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    style={{ borderWidth: '1px', borderStyle: 'solid' }}
+                    className="flex-1 min-w-0 rounded-xl px-4 py-3 text-sm focus:outline-none"
+                  />
+                  {/* Shimmer sweep button */}
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    animate={{ backgroundColor: theme.btnBg, color: theme.btnText }}
+                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    className="relative flex-shrink-0 flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl text-sm font-bold overflow-hidden"
+                  >
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-0 pointer-events-none"
+                      style={{ background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.28) 50%, transparent 70%)' }}
+                      animate={{ x: ['-120%', '220%'] }}
+                      transition={{ duration: 1.3, ease: 'easeInOut', repeat: Infinity, repeatDelay: 2.5 }}
+                    />
+                    Book <ArrowRight className="w-3.5 h-3.5" />
+                  </motion.button>
+                </form>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Parallax — trust badges with count-up */}
+          <motion.div style={{ x: lBadgX, y: lBadgY }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="flex flex-wrap gap-2"
+            >
+              {[
+                { dot: '#F0C85A', to: 4.8, from: 4.0, suffix: '★ Rated',    decimals: 1 },
+                { dot: '#7A4E9E', label: '2-Year Warranty' },
+                { dot: '#2A9D8F', label: 'Fixed Quote' },
+                { dot: '#E76F51', to: 15,  from: 0,   suffix: 'K+ Homes',   decimals: 0 },
+              ].map((b) => (
+                <motion.span
+                  key={b.dot}
+                  animate={{
+                    backgroundColor: theme.dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.90)',
+                    borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
+                    color: theme.dark ? 'rgba(255,255,255,0.80)' : 'rgba(15,18,33,0.75)',
+                  }}
+                  transition={{ duration: 1.4, ease: 'easeInOut' }}
+                  style={{ borderWidth: '1px', borderStyle: 'solid' }}
+                  className="flex items-center gap-1.5 text-[9px] font-bold rounded-full px-3 py-1 tracking-wide backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]"
                 >
-                  Book <ArrowRight className="w-3.5 h-3.5" />
-                </motion.button>
-              </form>
-            </div>
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: b.dot }} />
+                  {b.label ?? <CountUp to={b.to} from={b.from} suffix={b.suffix} decimals={b.decimals} active={inView} />}
+                </motion.span>
+              ))}
+            </motion.div>
           </motion.div>
+        </div>
 
+        {/* Scroll indicator */}
+        <div className="hidden lg:flex absolute bottom-7 left-20 xl:left-28 items-center gap-3 z-10 w-52">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="flex flex-wrap gap-2"
-          >
-            {[['4.8★ Rated', '#F0C85A'], ['2-Year Warranty', '#7A4E9E'], ['Fixed Quote', '#2A9D8F'], ['15K+ Homes', '#E76F51']].map(([t, c]) => (
-              <span key={t} className="flex items-center gap-1.5 text-[9px] font-bold text-[#0F1221]/75 border border-[#0F1221]/10 rounded-full px-3 py-1 tracking-wide bg-white/90 backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]">
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c }} />
-                {t}
-              </span>
-            ))}
-          </motion.div>
+            className="h-px flex-1 rounded-full"
+            animate={{ backgroundColor: theme.eyebrow }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            style={{ scaleX: scrollYProgress, transformOrigin: 'left center', opacity: 0.55 }}
+          />
+          <motion.span
+            animate={{ color: theme.eyebrow }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            className="text-[8px] font-bold tracking-[0.22em] uppercase opacity-50"
+          >Scroll</motion.span>
         </div>
       </motion.div>
 
       {/* ── Right column ──────────────────────────────────────────────── */}
       <div className="relative lg:absolute lg:inset-y-0 lg:right-0 w-full lg:w-[48%] h-[450px] sm:h-[550px] lg:h-auto">
-        {/* Image only — overflow-hidden scoped here so overlay cards aren't clipped */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div style={{ y: scrollImgY }} className="absolute inset-0">
             <motion.div
@@ -962,6 +1199,13 @@ const HeroFinal = () => {
                     decoding="async"
                   />
                 </AnimatePresence>
+                {/* Theme colour wash */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  animate={{ backgroundColor: theme.eyebrow }}
+                  transition={{ duration: 1.8, ease: 'easeInOut' }}
+                  style={{ mixBlendMode: 'color', opacity: 0.10 }}
+                />
               </div>
             </motion.div>
           </motion.div>
@@ -1024,7 +1268,7 @@ const HeroFinal = () => {
         </motion.div>
       </div>
 
-      {/* Mobile-only bottom edge — separates hero from marquee */}
+      {/* Mobile-only bottom edge */}
       <div className="lg:hidden absolute bottom-0 left-0 right-0 h-10 pointer-events-none z-20"
         style={{ background: 'linear-gradient(to bottom, transparent, rgba(15,18,33,0.07))' }} />
 
@@ -1834,6 +2078,37 @@ const HomeFinal = () => {
         title={`${BRAND_NAME} | 5-Star Painting Services — Professional House Painters`}
         description="Professional house painters you can count on. Verified teams, fixed written quotes, and a 2-year warranty-backed finish managed end-to-end by Calyco."
         ogType="website"
+        schemaMarkup={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Organization',
+              '@id': 'https://calycopaints.com/#organization',
+              name: 'Calyco',
+              url: 'https://calycopaints.com',
+              logo: { '@type': 'ImageObject', url: 'https://calycopaints.com/Logo.webp' },
+              sameAs: [],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer service',
+                availableLanguage: ['English', 'Hindi'],
+              },
+            },
+            {
+              '@type': 'LocalBusiness',
+              '@id': 'https://calycopaints.com/#localbusiness',
+              name: 'Calyco Painting Services',
+              url: 'https://calycopaints.com',
+              image: 'https://calycopaints.com/Logo.webp',
+              description: 'Professional house painting services with verified painters, fixed written quotes, and a 2-year warranty across Delhi NCR and 25+ cities.',
+              address: { '@type': 'PostalAddress', addressCountry: 'IN', addressRegion: 'Delhi NCR' },
+              geo: { '@type': 'GeoCoordinates', latitude: '28.6139', longitude: '77.2090' },
+              areaServed: 'Delhi NCR',
+              priceRange: '₹₹',
+              serviceType: ['Interior Painting', 'Exterior Painting', 'Waterproofing', 'Texture Painting'],
+            },
+          ],
+        }}
       />
       <HeroFinal />
       <MarqueeFinal />
