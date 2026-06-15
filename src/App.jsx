@@ -12,6 +12,7 @@ const HomeV2 = React.lazy(() => import('./pages/HomeV2.jsx'))
 const HomeV3 = React.lazy(() => import('./pages/HomeV3.jsx'))
 const HomeV4 = React.lazy(() => import('./pages/HomeV4.jsx'))
 const HomeV5 = React.lazy(() => import('./pages/HomeV5.jsx'))
+const HomeV6 = React.lazy(() => import('./pages/HomeV6.jsx'))
 const VisualizerPage = React.lazy(() => import('./pages/VisualizerPage.jsx'))
 const BudgetCalculator = React.lazy(() => import('./pages/BudgetCalculator.jsx'))
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage.jsx'))
@@ -229,6 +230,7 @@ function App() {
                   <Route path='/dev/versions/v3' element={<HomeV3 />} />
                   <Route path='/dev/versions/v4' element={<HomeV4 />} />
                   <Route path='/dev/versions/v5' element={<HomeV5 />} />
+                  <Route path='/dev/versions/v6' element={<HomeV6 />} />
 
                   {/* New premium visual-first routes */}
                   <Route path='/colors' element={<ColorsPage />} />
