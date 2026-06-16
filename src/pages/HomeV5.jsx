@@ -164,7 +164,7 @@ const FadeUp = ({ children, delay = 0, className = '' }) => {
 const SectionTag = ({ text }) => (
   <div className="flex items-center justify-center gap-3 mb-4">
     <span className="w-8 h-px bg-[#F0C85A]" />
-    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">{text}</span>
+    <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">{text}</span>
     <span className="w-8 h-px bg-[#F0C85A]" />
   </div>
 );
@@ -219,7 +219,7 @@ const HeroV5 = () => {
             className="flex items-center gap-3 mb-8"
           >
             <span className="w-9 h-[2px] bg-[#F0C85A] rounded-full" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#493657]">
+            <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">
               Calyco 5-Star Painting Services
             </span>
           </motion.div>
@@ -766,7 +766,7 @@ const CtaV5 = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="w-8 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Start Today</span>
+            <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Start Today</span>
             <span className="w-8 h-px bg-[#F0C85A]" />
           </div>
           <h2 className="text-[2rem] sm:text-[2.8rem] font-black text-white tracking-[-0.025em] leading-[1.1] mb-5">

@@ -495,7 +495,7 @@ export default function ContactPage() {
         {/* Footer CTA */}
         <section className="bg-[#0F1221] py-16">
           <div className="mx-auto max-w-4xl px-6 md:px-10 text-center">
-            <p className="text-xs uppercase tracking-[0.28em] text-[#998850] font-semibold mb-4">Free site visit</p>
+            <p className="text-[13px] uppercase tracking-[0.28em] text-[#998850] font-semibold mb-4">Free site visit</p>
             <h2 className={`${getTypographyClasses('h2')} text-white`}>
               Book a free inspection. Get a fixed quote.
             </h2>

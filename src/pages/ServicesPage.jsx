@@ -20,7 +20,7 @@ const Eyebrow = ({ text, light = false }) => (
   <div className="flex items-center gap-3 mb-5">
     <span className="w-7 h-px flex-shrink-0" style={{ background: GOLD }} />
     <span
-      className="text-[10px] font-black uppercase tracking-[0.28em]"
+      className="text-[13px] font-black uppercase tracking-[0.28em]"
       style={{ color: light ? 'rgba(255,255,255,0.5)' : PURPLE }}>
       {text}
     </span>
@@ -614,7 +614,7 @@ const ParallaxHero = () => {
             <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
               <div className="flex items-center gap-3 mb-5 sm:mb-7">
                 <span className="w-7 h-px" style={{ background: GOLD }} />
-                <span className="text-[10px] font-black uppercase tracking-[0.28em]" style={{ color: `${GOLD}cc` }}>
+                <span className="text-[13px] font-black uppercase tracking-[0.28em]" style={{ color: `${GOLD}cc` }}>
                   Calyco 5-Star Service
                 </span>
               </div>
