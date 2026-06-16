@@ -416,7 +416,7 @@ function CitySelect({ value, onChange }) {
 }
 
 /* ── Step 1 — Service + Carpet area + Paint type ────────────────────────── */
-function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpetArea, paintType, setPaintType, onNext }) {
+function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpetArea, paintType, setPaintType, onNext, areaError }) {
   const currentSvc    = CALC_SERVICES.find(s => s.key === serviceKey);
   const showPaintType = currentSvc?.showPaintType ?? false;
   const paintable     = carpetArea && parseFloat(carpetArea) > 0
@@ -491,10 +491,21 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
             onChange={e => setCarpetArea(e.target.value)}
             placeholder="e.g. 850"
             aria-label="Carpet area of your house in square feet"
-            className="w-full bg-[#FAFAF8] border-2 border-[#0F1221]/10 focus:border-[#F0C85A] rounded-2xl px-5 py-4 text-[1.6rem] font-light text-[#0F1221] pr-24 focus:outline-none transition-colors placeholder:text-[#0F1221]/18 leading-none"
+            className={`w-full bg-[#FAFAF8] border-2 rounded-2xl px-5 py-4 text-[1.6rem] font-light text-[#0F1221] pr-24 focus:outline-none transition-colors placeholder:text-[#0F1221]/18 leading-none ${areaError ? 'border-red-400 focus:border-red-400' : 'border-[#0F1221]/10 focus:border-[#F0C85A]'}`}
+          aria-invalid={!!areaError}
+          aria-describedby={areaError ? 'area-error' : undefined}
           />
           <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[11px] font-bold text-[#0F1221]/30 uppercase tracking-wider">sq ft</span>
         </div>
+        {/* Inline validation error */}
+        <AnimatePresence>
+          {areaError && (
+            <motion.p id="area-error" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+              className="text-[12px] text-red-500 font-medium mt-1.5">
+              {areaError}
+            </motion.p>
+          )}
+        </AnimatePresence>
         {/* Live paintable preview */}
         <AnimatePresence>
           {paintable && (
@@ -669,7 +680,11 @@ function Step3({
   files, setFiles, onSubmit, onBack, submitting 
 }) {
   const fileRef  = useRef(null);
-  const valid    = phone.replace(/\D/g, '').length >= 10 && name.trim().length > 0;
+  const [nameTouched, setNameTouched] = useState(false);
+  const [phoneTouched, setPhoneTouched] = useState(false);
+  const nameValid  = name.trim().length > 0;
+  const phoneValid = phone.replace(/\D/g, '').length === 10;
+  const valid      = nameValid && phoneValid;
   const [sizeErr, setSizeErr] = useState('');
 
   const handleFiles = (incoming) => {
@@ -710,24 +725,40 @@ function Step3({
         </div>
 
         <div className="space-y-3 mb-5">
-          <input type="text" placeholder="Your name *" value={name}
-            aria-label="Your name (required)"
-            autoComplete="name"
-            onChange={e => setName(e.target.value)}
-            className="w-full bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none focus:border-[#F0C85A] transition-colors" />
+          <div>
+            <input type="text" placeholder="Your name *" value={name}
+              aria-label="Your name (required)"
+              aria-invalid={nameTouched && !nameValid}
+              aria-describedby={nameTouched && !nameValid ? 'name-error' : undefined}
+              autoComplete="name"
+              onChange={e => setName(e.target.value)}
+              onBlur={() => setNameTouched(true)}
+              className={`w-full bg-[#FAFAF8] border rounded-2xl px-5 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none transition-colors ${nameTouched && !nameValid ? 'border-red-400 focus:border-red-400' : 'border-[#0F1221]/10 focus:border-[#F0C85A]'}`} />
+            {nameTouched && !nameValid && (
+              <p id="name-error" role="alert" className="text-[11px] text-red-500 mt-1 ml-1">Please enter your name.</p>
+            )}
+          </div>
 
-          <div className="flex bg-[#FAFAF8] border border-[#0F1221]/10 rounded-2xl overflow-hidden focus-within:border-[#F0C85A] transition-colors">
-            <div className="flex items-center gap-1 px-4 bg-[#0F1221]/4 border-r border-[#0F1221]/8 text-[13px] font-semibold text-[#0F1221]/60 flex-shrink-0">
-              +91
-              <svg className="w-3 h-3 text-[#0F1221]/25" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+          <div>
+            <div className={`flex bg-[#FAFAF8] border rounded-2xl overflow-hidden transition-colors ${phoneTouched && !phoneValid ? 'border-red-400 focus-within:border-red-400' : 'border-[#0F1221]/10 focus-within:border-[#F0C85A]'}`}>
+              <div className="flex items-center gap-1 px-4 bg-[#0F1221]/4 border-r border-[#0F1221]/8 text-[13px] font-semibold text-[#0F1221]/60 flex-shrink-0">
+                +91
+                <svg className="w-3 h-3 text-[#0F1221]/25" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <input type="tel" placeholder="Phone number *" value={phone}
+                aria-label="Mobile number (required)"
+                aria-invalid={phoneTouched && !phoneValid}
+                aria-describedby={phoneTouched && !phoneValid ? 'phone-error' : undefined}
+                autoComplete="tel"
+                onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                onBlur={() => setPhoneTouched(true)}
+                className="flex-1 bg-transparent px-4 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none" />
             </div>
-            <input type="tel" placeholder="Phone number *" value={phone}
-              aria-label="Mobile number (required)"
-              autoComplete="tel"
-              onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-              className="flex-1 bg-transparent px-4 py-3.5 text-[14px] text-[#0F1221] placeholder:text-[#0F1221]/25 focus:outline-none" />
+            {phoneTouched && !phoneValid && (
+              <p id="phone-error" role="alert" className="text-[11px] text-red-500 mt-1 ml-1">Please enter a valid 10-digit mobile number.</p>
+            )}
           </div>
 
           <div className="mb-4">
@@ -847,13 +878,13 @@ function Step3({
           )}
         </div>
 
-        <button onClick={onSubmit} disabled={!valid || submitting}
+        <button onClick={() => { setNameTouched(true); setPhoneTouched(true); if (valid) onSubmit(); }} disabled={submitting}
           className={`w-full py-4 rounded-full text-[14px] font-bold transition-all flex items-center justify-center gap-2 ${
-            valid && !submitting
+            !submitting
               ? 'text-[#0F1221] shadow-lg shadow-[#F0C85A]/25 hover:opacity-90'
               : 'bg-[#0F1221]/8 text-[#0F1221]/20 cursor-not-allowed'
           }`}
-          style={valid && !submitting ? { background: GOLD } : {}}>
+          style={!submitting ? { background: GOLD } : {}}>
           {submitting ? (
             <>
               <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -1346,8 +1377,20 @@ export default function BudgetCalculator() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [step1AreaError, setStep1AreaError] = useState('');
+
   const scroll  = () => setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-  const goNext  = () => { setDir(1);  setStep(s => s + 1); scroll(); };
+  const goNext  = () => {
+    if (step === 1) {
+      const area = parseFloat(carpetArea);
+      if (!area || area <= 0) {
+        setStep1AreaError('Please enter your carpet area to continue.');
+        return;
+      }
+      setStep1AreaError('');
+    }
+    setDir(1); setStep(s => s + 1); scroll();
+  };
   const goBack  = () => { setDir(-1); setStep(s => s - 1); scroll(); };
 
   const handleSubmit = async () => {
@@ -1619,6 +1662,7 @@ export default function BudgetCalculator() {
                     carpetArea={carpetArea} setCarpetArea={setCarpetArea}
                     paintType={paintType} setPaintType={setPaintType}
                     onNext={goNext}
+                    areaError={step1AreaError}
                   />
                 </motion.div>
               )}

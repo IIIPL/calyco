@@ -5,11 +5,11 @@ import { cityMultipliers, serviceHubCards } from '../data/servicePricing';
 
 const formula = [
   { label: 'Base rate', desc: 'Starting rate per sq ft / running ft for the selected service' },
-  { label: 'Ã-- City multiplier', desc: 'Udaipur 1.00 · Jaipur 1.05 · Noida 1.12 · Delhi 1.15 · Gurgaon 1.20 · Mumbai 1.25 · and more' },
-  { label: 'Ã-- Tier multiplier', desc: 'Economy, Premium or Luxury finish level selected by you' },
-  { label: 'Ã-- Property / condition / complexity', desc: 'Apartment vs villa, good vs heavy repair, standard vs high-access' },
-  { label: 'Ã-- Quantity', desc: 'Paintable area, affected sq ft, or running ft entered by you' },
-  { label: '+ 18% GST', desc: 'Shown as a separate line item -- never hidden inside the rate' },
+  { label: '× City multiplier', desc: 'Udaipur 1.00 · Jaipur 1.05 · Noida 1.12 · Delhi 1.15 · Gurgaon 1.20 · Mumbai 1.25 · and more' },
+  { label: '× Tier multiplier', desc: 'Economy, Premium or Luxury finish level selected by you' },
+  { label: '× Property / condition / complexity', desc: 'Apartment vs villa, good vs heavy repair, standard vs high-access' },
+  { label: '× Quantity', desc: 'Paintable area, affected sq ft, or running ft entered by you' },
+  { label: '+ 18% GST', desc: 'Shown as a separate line item — never hidden inside the rate' },
   { label: '= Estimate range', desc: 'Min-max cost displayed transparently before you commit to anything' },
 ];
 
@@ -28,7 +28,7 @@ const TransparentPricingPage = () => (
   <main className="min-h-screen bg-[#FBF9F6]">
     <SEO
       title="Transparent Pricing | How Calyco Calculates Service Costs"
-      description="Calyco shows you the full rate logic -- base rate, city multiplier, tier, GST -- before you book anything. No hidden charges, no price changes after quote acceptance."
+      description="Calyco shows you the full rate logic — base rate, city multiplier, tier, GST — before you book anything. No hidden charges, no price changes after quote acceptance."
       url="https://calycopaints.com/transparent-pricing"
     />
 
@@ -122,7 +122,7 @@ const TransparentPricingPage = () => (
             <Calculator className="w-4 h-4" /> Calculate Your Cost
           </Link>
           <Link to="/how-it-works" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white px-6 py-3 font-semibold hover:bg-white/10 transition-colors">
-            How It Works â†'
+            How It Works →
           </Link>
         </div>
       </div>

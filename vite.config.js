@@ -28,6 +28,8 @@ export default defineConfig(({ mode }) => {
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
             'framer-motion': ['framer-motion'],
             'icons': ['lucide-react', 'react-icons'],
+            'tensorflow': ['@tensorflow/tfjs-core', '@tensorflow/tfjs-backend-webgl', '@tensorflow-models/deeplab'],
+            'pdf-utils': ['html2pdf.js'],
           },
         },
       },

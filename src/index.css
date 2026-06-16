@@ -568,26 +568,3 @@ a, button {
   }
 }
 
-/* Premium Star Cursor — desktop only (touch devices have no cursor) */
-@media (hover: hover) and (pointer: fine) {
-  body, html {
-    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjRjBDODVBIiBzdHJva2U9IiM0QTNCMTgiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8ZmlsdGVyIGlkPSJzaGFkb3ciPgogICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjIiIHN0ZERldmlhdGlvbj0iMiIgZmxvb2Qtb3BhY2l0eT0iMC4zIi8+CiAgPC9maWx0ZXI+CiAgPHBhdGggZD0iTTEyIDJsMi40IDcuNGg3LjZsLTYuMSA0LjUgMi4zIDcuMi02LjItNC42LTYuMiA0LjYgMi4zLTcuMi02LjEtNC41aDcuNnoiIGZpbHRlcj0idXJsKCNzaGFkb3cpIi8+Cjwvc3ZnPg==') 16 16, auto;
-  }
-
-  a, button, [role="button"], input[type="submit"], input[type="button"], input[type="checkbox"], input[type="radio"], select, .cursor-pointer {
-    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjNDkzNjU3IiBzdHJva2U9IiNGMEM4NUEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8ZmlsdGVyIGlkPSJzaGFkb3ctZ2xvdyI+CiAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMiIgc3RkRGV2aWF0aW9uPSIzIiBmbG9vZC1jb2xvcj0iI0YwQzg1QSIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgPC9maWx0ZXI+CiAgPHBhdGggZD0iTTEyIDJsMi40IDcuNGg3LjZsLTYuMSA0LjUgMi4zIDcuMi02LjItNC42LTYuMiA0LjYgMi4zLTcuMi02LjEtNC41aDcuNnoiIGZpbHRlcj0idXJsKCNzaGFkb3ctZ2xvdykiLz4KPC9zdmc+') 16 16, pointer;
-  }
-
-  /* Always restore correct cursor on text inputs even on desktop */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="search"],
-  input[type="password"],
-  input[type="url"],
-  textarea,
-  [contenteditable="true"] {
-    cursor: text;
-  }
-}

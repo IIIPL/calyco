@@ -244,6 +244,9 @@ const GetQuotePage = () => {
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
+  const [step1Attempted, setStep1Attempted] = useState(false);
+  const [step2Attempted, setStep2Attempted] = useState(false);
+
   const step1Valid =
     form.name.trim() && form.phone.trim().length === 10 && form.city;
 
@@ -421,11 +424,15 @@ const GetQuotePage = () => {
                   <CitySelect value={form.city} onChange={(c) => set('city', c)} />
                 </Field>
 
+                {step1Attempted && !step1Valid && (
+                  <p role="alert" className="text-[12px] text-red-500 font-medium">
+                    {!form.name.trim() ? 'Please enter your name.' : form.phone.trim().length !== 10 ? 'Please enter a valid 10-digit mobile number.' : 'Please select your city.'}
+                  </p>
+                )}
                 <button
                   type="button"
-                  onClick={() => step1Valid && setStep(2)}
-                  disabled={!step1Valid}
-                  className={`w-full mt-2 py-4 rounded-full text-sm font-bold tracking-wide transition-all ${step1Valid ? 'bg-[#0F1221] text-white hover:bg-[#493657] shadow-[0_3px_14px_rgba(15,18,33,0.22)]' : 'bg-[#0F1221]/8 text-[#0F1221]/25 cursor-not-allowed'}`}
+                  onClick={() => { setStep1Attempted(true); if (step1Valid) setStep(2); }}
+                  className={`w-full mt-2 py-4 rounded-full text-sm font-bold tracking-wide transition-all ${step1Valid ? 'bg-[#0F1221] text-white hover:bg-[#493657] shadow-[0_3px_14px_rgba(15,18,33,0.22)]' : 'bg-[#0F1221]/8 text-[#0F1221]/55 hover:bg-[#0F1221]/12'}`}
                 >
                   Book Site Inspection →
                 </button>
@@ -532,10 +539,16 @@ const GetQuotePage = () => {
                   <DatePicker value={form.visitDate} onChange={(iso) => set('visitDate', iso)} />
                 </Field>
 
+                {step2Attempted && !step2Valid && (
+                  <p role="alert" className="text-[12px] text-red-500 font-medium">
+                    Please fill in all required fields — house number, street, area, pincode, city, property type, and visit date.
+                  </p>
+                )}
                 <button
                   type="submit"
-                  disabled={!step2Valid || submitting}
-                  className={`w-full mt-2 py-4 rounded-full text-sm font-bold tracking-wide transition-all flex items-center justify-center gap-2 ${(!step2Valid || submitting) ? 'bg-[#0F1221]/8 text-[#0F1221]/25 cursor-not-allowed' : 'bg-[#0F1221] text-white hover:bg-[#493657] shadow-[0_3px_14px_rgba(15,18,33,0.22)]'}`}
+                  disabled={submitting}
+                  onClick={() => setStep2Attempted(true)}
+                  className={`w-full mt-2 py-4 rounded-full text-sm font-bold tracking-wide transition-all flex items-center justify-center gap-2 ${submitting ? 'bg-[#0F1221]/8 text-[#0F1221]/25 cursor-not-allowed' : 'bg-[#0F1221] text-white hover:bg-[#493657] shadow-[0_3px_14px_rgba(15,18,33,0.22)]'}`}
                 >
                   {submitting && (
                     <span className="w-4 h-4 rounded-full border-2 border-[#0F1221]/20 border-t-[#0F1221]/60 animate-spin" />

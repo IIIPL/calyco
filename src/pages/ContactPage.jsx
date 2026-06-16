@@ -203,7 +203,8 @@ export default function ContactPage() {
     <div className="min-h-screen bg-[var(--calyco-cream)] text-[var(--calyco-ink)] font-poppins">
       <SEO
         title="Contact Calyco | Expert Paint Support Across India"
-        description="Speak with CALYCO's team for product advice, bulk orders, or technical support. Call, email, live chat, or submit our enquiry form."
+        description="Speak with Calyco's team for product advice, bulk orders, or technical support. Call, email, live chat, or submit our enquiry form."
+        canonicalUrl="https://calycopaints.com/contact"
         ogType="website"
       />
       <script

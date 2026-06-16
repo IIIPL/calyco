@@ -73,7 +73,7 @@ const ModalServiceCard = ({ service, cat, onCardClick }) => {
         {/* Image */}
         <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
           {img ? (
-            <img src={img} alt={service.name}
+            <img src={img} alt={service.name} loading="lazy" decoding="async"
               className="w-full h-full object-cover group-hover:scale-[1.07] transition-transform duration-500" />
           ) : (
             <div className="w-full h-full" style={{ background: cat?.gradient }} />
@@ -126,7 +126,7 @@ const CategoryCard = ({ cat, idx, onOpen }) => {
 
       {/* Background */}
       {cat.image
-        ? <img src={cat.image} alt={cat.label}
+        ? <img src={cat.image} alt={cat.label} loading="lazy" decoding="async"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07]" />
         : <div className="absolute inset-0 bg-[#0F1221]" />
       }
@@ -790,7 +790,7 @@ const ServicesPage = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="relative rounded-xl sm:rounded-2xl overflow-hidden">
             <img src="/Assets/HERO/hero5-Metallic_parapet_interrupted_by_small_columns_in_a__4ebb7ad1-fde5-4e3d-a238-3c3de0f940e7.webp"
-              alt="" className="w-full h-[140px] sm:h-[220px] md:h-[280px] object-cover" />
+              alt="" loading="lazy" decoding="async" className="w-full h-[140px] sm:h-[220px] md:h-[280px] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A0D1A]/90 via-[#0A0D1A]/55 to-transparent" />
             <div className="absolute inset-0 flex items-center px-6 sm:px-14">
               <div>

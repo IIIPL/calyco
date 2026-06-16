@@ -82,6 +82,7 @@ const WhatsAppFloat = () => {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Close contact options' : 'Contact Calyco'}
+        aria-expanded={open}
         className={`w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_24px_rgba(37,211,102,0.5)] transition-all duration-300 active:scale-95 ${
           open ? 'bg-[#0F1221] rotate-45' : 'bg-[#25D366]'
         }`}

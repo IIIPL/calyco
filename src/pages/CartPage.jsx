@@ -8,8 +8,9 @@ const CartPage = () => {
   return (
     <div className="pt-20 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO
-        title="Cart - Calyco"
-        description="Your shopping cart with Calyco paints."
+        title="Shopping Cart | Calyco"
+        description="Review your selected Calyco paints and proceed to secure checkout."
+        url="https://calycopaints.com/cart"
         ogType="website"
       />
       <h1 className="text-3xl md:text-4xl font-bold text-[#342347]">Cart</h1>

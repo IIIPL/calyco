@@ -152,7 +152,7 @@ const MobileAccordion = ({ label, links, onSelect }) => {
       <button type="button" onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between py-4 text-[14px] font-semibold text-[#0F1221]">
+        className="w-full flex items-center justify-between py-4 text-[14px] font-semibold text-[#0F1221] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#493657] focus-visible:outline-offset-2 rounded">
         {label}
         <ChevronDown open={open} />
       </button>
@@ -160,7 +160,7 @@ const MobileAccordion = ({ label, links, onSelect }) => {
         <div id={panelId} className="pb-3 space-y-0.5 pl-3">
           {links.map((l) => (
             <Link key={l.to} to={l.to} onClick={onSelect}
-              className="flex items-center gap-2.5 py-2 text-[13px] text-[#0F1221]/55 hover:text-[#0F1221] transition-colors">
+              className="flex items-center gap-2.5 py-2 text-[13px] text-[#0F1221]/55 hover:text-[#0F1221] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#493657] focus-visible:outline-offset-1 rounded">
               <span className="w-1 h-1 rounded-full bg-[#F0C85A] flex-shrink-0" />
               {l.label}
             </Link>
