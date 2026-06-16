@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect, Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   motion, useInView, useScroll, useTransform,
   useMotionValue, useSpring, AnimatePresence,
-  useAnimationControls, useReducedMotion
+  useReducedMotion
 } from 'framer-motion';
 import SEO from '../components/SEO';
 import ReviewsSection from '../components/ReviewsSection';
@@ -11,10 +11,10 @@ import { serviceHubCards } from '../data/servicePricing';
 import { BRAND_NAME } from '../data/positioning';
 import contactData from '../data/admin/contact.json';
 
-/* ── Service card image slideshow ──────────────────────────────────────────────
+/* â”€â”€ Service card image slideshow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Cycles through images[] every 2 s with a smooth crossfade.
    Staggered start via `offset` so all 6 cards don't flip in sync.
-────────────────────────────────────────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const ServiceCardImage = ({ images = [], title, offset = 0 }) => {
   const [idx, setIdx] = useState(0);
   const [ready, setReady] = useState(false);
@@ -71,7 +71,7 @@ const ServiceCardImage = ({ images = [], title, offset = 0 }) => {
   );
 };
 
-// ── Image paths (shared across sections) ───────────────────────────────────────
+// â”€â”€ Image paths (shared across sections) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const IMG_HERO    = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_18_13 PM.webp');
 const HERO_IMAGES = [
   encodeURI('/home page/h1.png'),
@@ -92,7 +92,7 @@ const IMG_CONSULT = encodeURI('/v/ChatGPT Image Jun 4, 2026, 01_11_55 PM.webp');
 
 const WA_BASE = contactData?.contact?.whatsapp?.link ?? 'https://wa.me/918796777399';
 
-// ── Shared SVG icons ───────────────────────────────────────────────────────────
+// â”€â”€ Shared SVG icons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const STAR_PATH = 'M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z';
 
 const WaIcon = ({ className = 'w-4 h-4' }) => (
@@ -115,7 +115,7 @@ const Stars = ({ size = 'w-3 h-3' }) => (
   <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} cls={`${size} text-[#F0C85A]`} />)}</div>
 );
 
-// ── Animated counters ──────────────────────────────────────────────────────────
+// â”€â”€ Animated counters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const CounterFull = ({ to, suffix = '', duration = 1800 }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -152,7 +152,7 @@ const CounterK = ({ to, label }) => {
   return <span ref={ref}>{n >= 1000 ? Math.floor(n / 1000) + 'K' : n}{label}</span>;
 };
 
-// ── Shared layout primitives ───────────────────────────────────────────────────
+// â”€â”€ Shared layout primitives â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TiltCard = ({ children, className = '' }) => {
   const ref = useRef(null);
   const x = useMotionValue(0);
@@ -210,529 +210,35 @@ const LineReveal = ({ inView, delay = 0, className = '' }) => (
   />
 );
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  1 — HERO  (V4 split layout + V2 inline lead-capture form, V4 CTAs)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const LINES = [
-  [{ text: 'Calyco ' }, { text: '5-Star', gradient: 'from-[#C77B2B] via-[#E8A33D] to-[#E76F51]' }],
-  [{ text: 'Painting ' }, { text: 'Services', gradient: 'from-[#493657] via-[#7A4E9E] to-[#C2588B]', underline: true }],
+  [{ text: 'Calyco ' }, { text: '5-Star' }],
+  [{ text: 'Painting ' }, { text: 'Services', underline: true }],
 ];
-
-/* ── "Starry" — kawaii shooting-star mascot ─────────────────────────
-   Walks in from the left, waves hi, strolls across the eyebrow text,
-   then launches off the right edge of "Experts" in a big high arc
-   onto the middle of "5-Star", landing with a rubbery squash-and-
-   stretch bounce (Gear 5 style), and finally arcs again onto the
-   right end of "Services" with another bouncy landing.
-   Target positions are measured from the live DOM via data-mascot
-   attributes, so everything lands correctly at any viewport size. */
-const MASCOT_W = 78;
-const MASCOT_H = 70;
-
-/* Little things Starry says when the visitor stops scrolling */
-const MASCOT_LINES = [
-  { text: 'Hey! Want to know this service price? 💰', face: 'happy' },
-  { text: 'Free site visit — did you know? 😉', face: 'joke' },
-  { text: 'Confused about colours? I can help! 🎨', face: 'think' },
-  { text: '2-year warranty… not bad, right? 😎', face: 'happy' },
-  { text: 'Which room are we painting first? 🤔', face: 'think' },
-  { text: 'Hey, stop bouncing me around! 😤', face: 'angry' },
-  { text: 'Hmm… walls feeling a bit dull? 🤔', face: 'think' },
-  { text: 'Tap "Book" — I dare you! 😜', face: 'joke' },
-  { text: 'Whoa, you scroll fast! 😲', face: 'surprised' },
-  { text: 'Fixed quotes. No surprises. Promise! 🌟', face: 'happy' },
-];
-
-const HeroMascot = ({ containerRef }) => {
-  const controls = useAnimationControls();
-  const [phase, setPhase] = useState('hidden');
-  const [face, setFace] = useState('happy');
-  const [bubble, setBubble] = useState(null);
-  const [dir, setDir] = useState(1);
-  const [posX, setPosX] = useState(0);
-  const reduceMotion = useReducedMotion();
-
-  // Small talk when the user stops scrolling — at most one line per stop,
-  // with a long cooldown so he doesn't pester on every pause.
-  useEffect(() => {
-    if (reduceMotion) return;
-    let t;
-    let lastChat = 0;
-    const onScroll = () => {
-      clearTimeout(t);
-      t = setTimeout(() => {
-        if (Date.now() - lastChat < 14000) return;
-        lastChat = Date.now();
-        const line = MASCOT_LINES[Math.floor(Math.random() * MASCOT_LINES.length)];
-        setFace(line.face);
-        setBubble(line.text);
-        setTimeout(() => { setBubble(null); setFace('happy'); }, 4200);
-      }, 700);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => { window.removeEventListener('scroll', onScroll); clearTimeout(t); };
-  }, [reduceMotion]);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    let cancelled = false;
-    let resized = false; // set on viewport changes → forces a re-anchoring jump
-    const onResize = () => { resized = true; };
-    window.addEventListener('resize', onResize);
-    window.visualViewport?.addEventListener('resize', onResize);
-    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-    const mW = () => MASCOT_W;
-    const mH = () => MASCOT_H;
-
-    const run = async () => {
-      await sleep(1900); // let the headline reveal finish first
-      const c = containerRef.current;
-      if (!c || cancelled) return;
-      const box = c.getBoundingClientRect();
-      const spot = (name, capOffset = 0) => {
-        const el = c.querySelector(`[data-mascot="${name}"]`);
-        if (!el) return null;
-        const r = el.getBoundingClientRect();
-        return { left: r.left - box.left, right: r.right - box.left, top: r.top - box.top + capOffset };
-      };
-
-      let pos, surface;
-      const isMobile = window.innerWidth < 640;
-
-      if (!isMobile) {
-        // ── Desktop: full hero walk ───────────────────────────────
-        const eyebrow = spot('eyebrow');
-        const star = spot('5-Star', 14);
-        const service = spot('Services', 14);
-        if (!eyebrow || !star || !service) return;
-
-        const stand = (t) => t.top - mH() + 4;
-
-        const eyebrowY = stand(eyebrow) - 14;
-        controls.set({ x: -90, y: eyebrowY, opacity: 1 });
-        setPhase('walk');
-        await controls.start({ x: eyebrow.left - 4, transition: { duration: 1.2, ease: 'linear' } });
-        if (cancelled) return;
-
-        setPhase('wave');
-        setBubble('Hi! 👋');
-        await sleep(1500);
-        setBubble(null);
-        if (cancelled) return;
-
-        setPhase('walk');
-        await controls.start({ x: eyebrow.right - mW() + 14, transition: { duration: 1.8, ease: 'linear' } });
-        if (cancelled) return;
-
-        setPhase('jump');
-        const starMidX = star.left + (star.right - star.left) / 2 - mW() / 2;
-        await controls.start({
-          x: starMidX,
-          y: [eyebrowY, eyebrowY - 115, stand(star) + 6],
-          transition: {
-            x: { duration: 1.0, ease: 'easeInOut' },
-            y: { duration: 1.0, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
-          },
-        });
-        if (cancelled) return;
-
-        setPhase('bounce');
-        await controls.start({
-          y: [stand(star) + 6, stand(star) - 32, stand(star) + 3, stand(star) - 14, stand(star)],
-          transition: { duration: 1.05, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
-        });
-        if (cancelled) return;
-        setPhase('idle');
-        await sleep(600);
-        if (cancelled) return;
-
-        setPhase('jump');
-        await controls.start({
-          x: service.right - mW() + 6,
-          y: [stand(star), stand(star) - 95, stand(service) + 6],
-          transition: {
-            x: { duration: 0.95, ease: 'easeInOut' },
-            y: { duration: 0.95, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
-          },
-        });
-        if (cancelled) return;
-
-        setPhase('bounce');
-        await controls.start({
-          y: [stand(service) + 6, stand(service) - 26, stand(service) + 2, stand(service) - 11, stand(service)],
-          transition: { duration: 0.95, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
-        });
-        if (cancelled) return;
-        setPhase('idle');
-
-        pos = { x: service.right - mW() + 6, y: (service.top - mH() + 4) };
-        surface = service;
-      } else {
-        // ── Mobile: skip hero, pop in after first scroll ──────────
-        controls.set({ opacity: 0 });
-        await new Promise((r) => {
-          const onScroll = () => { if (window.scrollY > 80 || cancelled) { window.removeEventListener('scroll', onScroll); r(); } };
-          window.addEventListener('scroll', onScroll, { passive: true });
-        });
-        if (cancelled) return;
-        const vh = window.visualViewport?.height ?? window.innerHeight;
-        const startY = c.getBoundingClientRect().top * -1 + vh * 0.55;
-        pos = { x: 24, y: startY };
-        surface = { left: 0, right: window.innerWidth * 0.85, top: startY + mH() - 4 };
-        controls.set({ x: pos.x, y: pos.y, opacity: 1 });
-        setBubble('Hi! 👋');
-        setPhase('wave');
-        await sleep(1500);
-        setBubble(null);
-        setPhase('idle');
-      }
-
-      /* ── free-roam mode ─────────────────────────────────────────
-         Wanders the whole page forever: strolls along surfaces,
-         leaps to random on-screen elements, arcs back when scrolled. */
-
-      const visibleTargets = () => {
-        const rb = c.getBoundingClientRect();
-        const list = [];
-        const vh = window.visualViewport?.height ?? window.innerHeight;
-        c.querySelectorAll('h2, h3, [data-mascot], [data-mascot-surface], button, input, img, a').forEach((el) => {
-          const r = el.getBoundingClientRect();
-          if (r.width < 40 || r.height < 8) return;
-          if (r.top < vh * 0.12 || r.top > vh * 0.82) return;
-          const tag = el.tagName.toLowerCase();
-          const txt = (el.textContent || el.placeholder || el.alt || '').trim().toLowerCase();
-          list.push({ left: r.left - rb.left, right: r.right - rb.left, top: r.top - rb.top, tag, txt, inputType: el.type || '' });
-        });
-        return list;
-      };
-
-      // pick a short contextual line based on the element the mascot just landed on
-      const contextMsg = (t) => {
-        if (t.tag === 'input' || t.tag === 'textarea') {
-          if (t.inputType === 'tel' || t.txt.includes('phone')) return ['Drop your number here! 📞', 'joke'];
-          if (t.txt.includes('name')) return ['Hey, what\'s your name? 👋', 'happy'];
-          if (t.txt.includes('city') || t.txt.includes('location')) return ['Which city? I\'ll find the best team! 📍', 'think'];
-          if (t.txt.includes('email')) return ['Your email — I promise, no spam! 😇', 'joke'];
-          return ['Fill this in — takes 10 seconds! ✍️', 'happy'];
-        }
-        if (t.tag === 'button' || (t.tag === 'a' && t.txt.length > 2)) {
-          if (t.txt.includes('book') || t.txt.includes('inspection') || t.txt.includes('visit')) return ['Tap this — it\'s FREE! 🎉', 'surprised'];
-          if (t.txt.includes('whatsapp') || t.txt.includes('chat')) return ['We reply in 2 hours! 💬', 'happy'];
-          if (t.txt.includes('calculat') || t.txt.includes('cost') || t.txt.includes('price')) return ['Check your exact price here! 💰', 'think'];
-          if (t.txt.includes('quote')) return ['Fixed price — no surprises! 📋', 'happy'];
-          if (t.txt.includes('service') || t.txt.includes('explore')) return ['See all our services! 🎨', 'happy'];
-          return ['Go on, tap it! 😄', 'joke'];
-        }
-        if (t.tag === 'img') return ['Nice room, right? 😍', 'surprised'];
-        if (t.tag === 'h2' || t.tag === 'h3') return null;
-        return null;
-      };
-      const viewportY = () => pos.y + c.getBoundingClientRect().top;
-      const FACES = ['happy', 'think', 'joke', 'angry', 'surprised'];
-
-      while (!cancelled) {
-        await sleep(300 + Math.random() * 700);
-        if (cancelled) return;
-
-        // random little mood while wandering
-        if (Math.random() < 0.22) {
-          setFace(FACES[Math.floor(Math.random() * FACES.length)]);
-          setTimeout(() => setFace('happy'), 2200);
-        }
-
-        const vh = window.visualViewport?.height ?? window.innerHeight;
-        const onScreen = viewportY() > 40 && viewportY() < vh - 60;
-        const targets = visibleTargets();
-
-        // walk or run along the imaginary road on the current surface — forwards or back
-        if (onScreen && !resized && (Math.random() < 0.45 || !targets.length)) {
-          const min = surface.left;
-          const max = Math.max(surface.left, surface.right - mW());
-          if (max - min < 50) continue;
-          const destX = min + Math.random() * (max - min);
-          const running = Math.random() < 0.5;
-          setDir(destX < pos.x ? -1 : 1);
-          setPhase(running ? 'run' : 'walk');
-          await controls.start({
-            x: destX,
-            transition: { duration: Math.max(0.4, Math.abs(destX - pos.x) / (running ? 290 : 130)), ease: 'linear' },
-          });
-          if (cancelled) return;
-          pos.x = destX;
-          setPosX(destX);
-          setPhase('idle');
-          continue;
-        }
-        if (!targets.length) continue;
-
-        // leap to a random element on screen (always, if scrolled offscreen)
-        const t = targets[Math.floor(Math.random() * targets.length)];
-        const destX = t.left + Math.random() * Math.max(12, t.right - t.left - mW());
-        const destY = t.top - mH() + 4;
-        const dist = Math.hypot(destX - pos.x, destY - pos.y);
-        const dur = Math.min(1.4, Math.max(0.65, dist / 550));
-        setDir(destX < pos.x ? -1 : 1);
-        setPhase('jump');
-        await controls.start({
-          x: destX,
-          y: [pos.y, Math.min(pos.y, destY) - (60 + Math.random() * 70), destY + 6],
-          transition: {
-            x: { duration: dur, ease: 'easeInOut' },
-            y: { duration: dur, times: [0, 0.42, 1], ease: ['easeOut', 'easeIn'] },
-          },
-        });
-        if (cancelled) return;
-
-        // fire contextual bubble immediately on touchdown — before bounce finishes
-        const ctx = contextMsg(t);
-        if (ctx) {
-          const [msg, mood] = ctx;
-          const chance = (t.tag === 'input' || t.tag === 'button') ? 0.55 : 0.28;
-          if (Math.random() < chance) {
-            setFace(mood);
-            setBubble(msg);
-            setTimeout(() => { setBubble(null); setFace('happy'); }, 3800);
-          }
-        }
-
-        setPhase('bounce');
-        await controls.start({
-          y: [destY + 6, destY - 24, destY + 2, destY - 10, destY],
-          transition: { duration: 0.9, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
-        });
-        if (cancelled) return;
-        pos = { x: destX, y: destY };
-        setPosX(destX);
-        surface = t;
-        resized = false;
-        setPhase('idle');
-      }
-    };
-
-    run();
-    return () => {
-      cancelled = true;
-      controls.stop();
-      window.removeEventListener('resize', onResize);
-      window.visualViewport?.removeEventListener('resize', onResize);
-    };
-  }, [reduceMotion, containerRef, controls]);
-
-  if (reduceMotion) return null;
-
-  const walkSwing = (from, to, dur = 0.34) => ({
-    rotate: [from, to, from],
-    transition: { repeat: Infinity, duration: dur, ease: 'easeInOut' },
-  });
-
-  return (
-    <motion.div
-      animate={controls}
-      initial={{ opacity: 0 }}
-      className="block absolute left-0 top-0 z-50 pointer-events-none"
-      style={{ width: MASCOT_W, height: MASCOT_H }}
-      aria-hidden="true"
-    >
-      <AnimatePresence>
-        {bubble && (
-          <motion.div
-            key={bubble}
-            initial={{ opacity: 0, scale: 0.6, y: 6 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.6 }}
-            className={`absolute -top-8 bg-white border border-[#0F1221]/10 shadow-md rounded-2xl px-3 py-1.5 text-[10px] font-bold text-[#493657] whitespace-nowrap ${posX > (window.innerWidth - 200) ? 'right-9 rounded-br-sm' : 'left-9 rounded-bl-sm'}`}
-          >
-            {bubble}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.div
-        animate={{ scaleX: dir }}
-        transition={{ duration: 0.18 }}
-        style={{ transformOrigin: '50% 100%' }}
-        className="w-full h-full"
-      >
-      <motion.svg
-        viewBox="0 0 64 58" width={MASCOT_W} height={MASCOT_H} fill="none"
-        animate={phase === 'hidden' ? undefined : phase}
-        style={{ transformOrigin: '50% 100%' }}
-        variants={{
-          walk: { y: [0, -2.5, 0], rotate: 0, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 0.34, ease: 'easeInOut' } },
-          run: { y: [0, -4, 0], rotate: 6, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 0.22, ease: 'easeInOut' } },
-          wave: { y: 0, rotate: 0, scaleX: 1, scaleY: 1 },
-          jump: { y: 0, rotate: 0, scaleX: 1, scaleY: 1 },
-          hang: { y: 0, scaleX: 1, scaleY: 1, rotate: [6, -6, 6], transition: { repeat: Infinity, duration: 1.1, ease: 'easeInOut' } },
-          fall: { y: 0, rotate: 0, scaleY: 1.2, scaleX: 0.85 },
-          bounce: {
-            y: 0, rotate: 0,
-            scaleY: [0.45, 1.35, 0.65, 1.18, 1],
-            scaleX: [1.5, 0.78, 1.3, 0.9, 1],
-            transition: { duration: 1.05, times: [0, 0.3, 0.55, 0.78, 1], ease: 'easeOut' },
-          },
-          idle: { y: [0, -3, 0], rotate: 0, scaleX: 1, scaleY: 1, transition: { repeat: Infinity, duration: 1.6, ease: 'easeInOut' } },
-        }}
-      >
-        <defs>
-          <linearGradient id="mascotBody" x1="0" y1="0" x2="0.7" y2="1">
-            <stop offset="0%" stopColor="#FFF3A0" />
-            <stop offset="55%" stopColor="#FFD84D" />
-            <stop offset="100%" stopColor="#F7B62B" />
-          </linearGradient>
-        </defs>
-
-        {/* rainbow trail fanning out of the upper-right point (drawn behind the star) */}
-        <g strokeLinecap="round" fill="none">
-          <path d="M40 20 Q46 8 54 4"   stroke="#9B6CF0" strokeWidth="6" />
-          <path d="M41 22 Q49 12 58 9"  stroke="#6FC2F5" strokeWidth="6" />
-          <path d="M42 24 Q52 17 61 15" stroke="#7CE07C" strokeWidth="6" />
-          <path d="M42.5 26 Q54 22 62 21" stroke="#FFB573" strokeWidth="6" />
-          <path d="M43 28 Q55 27 63 27" stroke="#F2675F" strokeWidth="6" />
-          <ellipse cx="46.5" cy="11.5" rx="1" ry="2.4" transform="rotate(35 46.5 11.5)" fill="white" opacity="0.85" stroke="none" />
-        </g>
-
-        {/* legs (drawn first so the body overlaps their tops) */}
-        <motion.rect
-          x="20" y="46" width="5" height="10" rx="2.5" fill="#3B2412"
-          style={{ transformBox: 'fill-box', transformOrigin: 'top center' }}
-          variants={{
-            walk: walkSwing(22, -22), run: walkSwing(34, -34, 0.2), wave: { rotate: 0 }, jump: { rotate: -18 }, idle: { rotate: 0 },
-            hang: { rotate: [16, -10, 16], transition: { repeat: Infinity, duration: 0.9, ease: 'easeInOut' } },
-            fall: { rotate: -22 }, bounce: { rotate: 0 },
-          }}
-        />
-        <motion.rect
-          x="29" y="46" width="5" height="10" rx="2.5" fill="#3B2412"
-          style={{ transformBox: 'fill-box', transformOrigin: 'top center' }}
-          variants={{
-            walk: walkSwing(-22, 22), run: walkSwing(-34, 34, 0.2), wave: { rotate: 0 }, jump: { rotate: 18 }, idle: { rotate: 0 },
-            hang: { rotate: [-10, 16, -10], transition: { repeat: Infinity, duration: 0.9, ease: 'easeInOut' } },
-            fall: { rotate: 22 }, bounce: { rotate: 0 },
-          }}
-        />
-
-        {/* left arm */}
-        <motion.g
-          style={{ transformBox: 'fill-box', transformOrigin: 'right center' }}
-          variants={{
-            walk: walkSwing(-18, 18), run: walkSwing(-32, 32, 0.2), wave: { rotate: 0 }, jump: { rotate: 30 }, idle: { rotate: 0 },
-            hang: { rotate: 115 }, fall: { rotate: 130 }, bounce: { rotate: 25 },
-          }}
-        >
-          <path d="M12 35 L4.5 38.5" stroke="#3B2412" strokeWidth="3.5" strokeLinecap="round" />
-        </motion.g>
-
-        {/* right arm — this one waves hello */}
-        <motion.g
-          style={{ transformBox: 'fill-box', transformOrigin: 'left center' }}
-          variants={{
-            walk: walkSwing(18, -18),
-            run: walkSwing(32, -32, 0.2),
-            wave: { rotate: [0, -140, -110, -140, -110, -140, 0], transition: { duration: 1.4, ease: 'easeInOut' } },
-            jump: { rotate: -150 },
-            idle: { rotate: 0 },
-            hang: { rotate: -115 }, fall: { rotate: -130 }, bounce: { rotate: -25 },
-          }}
-        >
-          <path d="M40 35 L47.5 38.5" stroke="#3B2412" strokeWidth="3.5" strokeLinecap="round" />
-        </motion.g>
-
-        {/* plump golden star body with orange cartoon outline */}
-        <g transform="rotate(-6 26 31)">
-          <path
-            d="M26 10 L31.6 23.3 L46 24.5 L35 33.9 L38.3 48 L26 40.5 L13.7 48 L17 33.9 L6 24.5 L20.4 23.3 Z"
-            fill="url(#mascotBody)"
-            stroke="#F2A30F"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* white teardrop shine on the top point */}
-          <ellipse cx="24.5" cy="16.5" rx="1.8" ry="4.2" transform="rotate(-12 24.5 16.5)" fill="white" opacity="0.9" />
-          <circle cx="23.2" cy="22" r="1.1" fill="white" opacity="0.9" />
-        </g>
-
-        {/* kawaii face — expression follows his mood */}
-        {face === 'angry' ? (
-          <>
-            <path d="M14.5 21.5 L23.5 25.5" stroke="#2F2440" strokeWidth="2" strokeLinecap="round" />
-            <path d="M37.5 21.5 L28.5 25.5" stroke="#2F2440" strokeWidth="2" strokeLinecap="round" />
-          </>
-        ) : face === 'think' ? (
-          <>
-            <path d="M14 22 Q19 19 24 22" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-            <path d="M28 25.5 Q33 23.5 38 25.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-          </>
-        ) : (
-          <>
-            <path d="M14 24.5 Q19 21 24 24.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-            <path d="M28 24.5 Q33 21 38 24.5" stroke="#2F2440" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-          </>
-        )}
-
-        {face === 'joke' ? (
-          <>
-            <circle cx="19" cy="30" r="4.5" fill="#3B2412" />
-            <circle cx="20.6" cy="28.4" r="1.7" fill="white" />
-            <path d="M29.5 30 Q33 26.8 36.5 30" stroke="#3B2412" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          </>
-        ) : face === 'think' ? (
-          <>
-            <circle cx="19" cy="29" r="4" fill="#3B2412" />
-            <circle cx="33" cy="29" r="4" fill="#3B2412" />
-            <circle cx="21" cy="27.2" r="1.6" fill="white" />
-            <circle cx="35" cy="27.2" r="1.6" fill="white" />
-          </>
-        ) : (
-          <>
-            <circle cx="19" cy="30" r="4.5" fill="#3B2412" />
-            <circle cx="33" cy="30" r="4.5" fill="#3B2412" />
-            <circle cx="20.6" cy="28.4" r="1.7" fill="white" />
-            <circle cx="34.6" cy="28.4" r="1.7" fill="white" />
-            <circle cx="17.7" cy="31.4" r="0.9" fill="white" />
-            <circle cx="31.7" cy="31.4" r="0.9" fill="white" />
-            <circle cx="21.3" cy="31.6" r="0.5" fill="white" />
-            <circle cx="35.3" cy="31.6" r="0.5" fill="white" />
-          </>
-        )}
-
-        {face === 'angry' ? (
-          <path d="M22.5 39.5 Q26 36.5 29.5 39.5" stroke="#4A1B12" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-        ) : face === 'think' ? (
-          <path d="M23 38.5 Q26 39.8 29 38.5" stroke="#4A1B12" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-        ) : face === 'surprised' ? (
-          <ellipse cx="26" cy="38.5" rx="2.6" ry="3.4" fill="#4A1B12" />
-        ) : face === 'joke' ? (
-          <>
-            <path d="M21.5 36.5 Q26 42.5 30.5 36.5 Q26 38.5 21.5 36.5 Z" fill="#4A1B12" />
-            <path d="M23.5 38.8 Q26 42.4 28.5 38.8 Q26 37.6 23.5 38.8 Z" fill="#F0506A" />
-          </>
-        ) : (
-          <>
-            <path d="M22.5 36.5 Q26 41.8 29.5 36.5 Q26 38.2 22.5 36.5 Z" fill="#4A1B12" />
-            <path d="M24.3 38.6 Q26 40.4 27.7 38.6 Q26 37.8 24.3 38.6 Z" fill="#F0506A" />
-          </>
-        )}
-
-        <ellipse cx="12" cy="36.5" rx="2.8" ry="1.8" fill="#FB91A5" opacity="0.9" />
-        <ellipse cx="40" cy="36.5" rx="2.8" ry="1.8" fill="#FB91A5" opacity="0.9" />
-      </motion.svg>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-// ── V6 hero themes — 10 premium palettes cycling every 3s ─────────────────────
+// â”€â”€ V6 hero themes — 10 premium palettes cycling every 3s â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const HERO_THEMES = [
-  { bg: '#EAEAEF', eyebrow: '#493657', text: '#0F1221', para: 'rgba(15,18,33,0.50)',    dark: false, underline: '#493657', watermark: '#493657', btnBg: '#493657', btnText: '#FFFFFF' },
-  { bg: '#2D1060', eyebrow: '#FB923C', text: '#FDBA74', para: 'rgba(253,186,116,0.80)', dark: true,  underline: '#FB923C', watermark: '#FB923C', btnBg: '#FB923C', btnText: '#1A0530' },
-  { bg: '#F2E8D4', eyebrow: '#7A4F2A', text: '#1E0E00', para: 'rgba(30,14,0,0.52)',     dark: false, underline: '#7A4F2A', watermark: '#7A4F2A', btnBg: '#7A4F2A', btnText: '#F2E8D4' },
-  { bg: '#3A0D1C', eyebrow: '#F2C4D0', text: '#FFE8EE', para: 'rgba(255,232,238,0.72)', dark: true,  underline: '#F2C4D0', watermark: '#F2C4D0', btnBg: '#C2556C', btnText: '#FFFFFF' },
-  { bg: '#FCD34D', eyebrow: '#1E3A8A', text: '#1E3A8A', para: 'rgba(30,58,138,0.72)',   dark: false, underline: '#1E3A8A', watermark: '#1E3A8A', btnBg: '#1E3A8A', btnText: '#FFFFFF' },
-  { bg: '#0D1829', eyebrow: '#7BBFDA', text: '#E4F0F8', para: 'rgba(228,240,248,0.68)', dark: true,  underline: '#7BBFDA', watermark: '#7BBFDA', btnBg: '#7BBFDA', btnText: '#0D1829' },
-  { bg: '#DCE5D8', eyebrow: '#2C4F28', text: '#152210', para: 'rgba(21,34,16,0.55)',    dark: false, underline: '#2C4F28', watermark: '#2C4F28', btnBg: '#2C4F28', btnText: '#FFFFFF' },
-  { bg: '#5E2415', eyebrow: '#FFB88A', text: '#FFF0E8', para: 'rgba(255,240,232,0.72)', dark: true,  underline: '#FFB88A', watermark: '#FFB88A', btnBg: '#FFB88A', btnText: '#3A1409' },
-  { bg: '#0A1E14', eyebrow: '#4ADE80', text: '#FFFFFF', para: 'rgba(255,255,255,0.60)', dark: true,  underline: '#4ADE80', watermark: '#4ADE80', btnBg: '#4ADE80', btnText: '#071209' },
-  { bg: '#0C0F1E', eyebrow: '#F0C85A', text: '#FFFFFF', para: 'rgba(255,255,255,0.58)', dark: true,  underline: '#F0C85A', watermark: '#F0C85A', btnBg: '#F0C85A', btnText: '#0C0F1E' },
+  // Dusty pink and navy
+  { bg: '#EDCDC8', eyebrow: '#162040', text: '#0D1830', para: 'rgba(13,24,48,0.55)',    dark: false, underline: '#162040', watermark: '#162040', btnBg: '#162040', btnText: '#EDCDC8' },
+  // Burnt orange and teal
+  { bg: '#0D6068', eyebrow: '#E8622A', text: '#FFF5F0', para: 'rgba(255,245,240,0.72)', dark: true,  underline: '#E8622A', watermark: '#E8622A', btnBg: '#E8622A', btnText: '#FFFFFF' },
+  // Rust and off-white
+  { bg: '#F4EDE3', eyebrow: '#9B3A24', text: '#2E0E06', para: 'rgba(46,14,6,0.55)',     dark: false, underline: '#9B3A24', watermark: '#9B3A24', btnBg: '#9B3A24', btnText: '#F4EDE3' },
+  // Rose gold and charcoal
+  { bg: '#2C2C30', eyebrow: '#C9938A', text: '#F5ECE8', para: 'rgba(245,236,232,0.72)', dark: true,  underline: '#C9938A', watermark: '#C9938A', btnBg: '#C9938A', btnText: '#1A1A1E' },
+  // Copper and white
+  { bg: '#FBF8F4', eyebrow: '#A86828', text: '#1A0E00', para: 'rgba(26,14,0,0.52)',     dark: false, underline: '#A86828', watermark: '#A86828', btnBg: '#A86828', btnText: '#FFFFFF' },
+  // Plum and cream
+  { bg: '#4A1030', eyebrow: '#EFE0D0', text: '#FFF5EE', para: 'rgba(255,245,238,0.72)', dark: true,  underline: '#EFE0D0', watermark: '#EFE0D0', btnBg: '#C2556C', btnText: '#FFFFFF' },
+  // Burgundy and gold
+  { bg: '#540A1A', eyebrow: '#D4AF37', text: '#FFF0D8', para: 'rgba(255,240,216,0.72)', dark: true,  underline: '#D4AF37', watermark: '#D4AF37', btnBg: '#D4AF37', btnText: '#2A0508' },
+  // Denim blue and taupe
+  { bg: '#DDD5CC', eyebrow: '#2D4A7A', text: '#141E30', para: 'rgba(20,30,48,0.55)',    dark: false, underline: '#2D4A7A', watermark: '#2D4A7A', btnBg: '#2D4A7A', btnText: '#FFFFFF' },
+  // Forest green and sand
+  { bg: '#EAE2D3', eyebrow: '#1F4A2A', text: '#0D2411', para: 'rgba(13,36,17,0.55)',    dark: false, underline: '#1F4A2A', watermark: '#1F4A2A', btnBg: '#1F4A2A', btnText: '#EAE2D3' },
+  // Lavender and slate
+  { bg: '#3E3E52', eyebrow: '#C4B5D8', text: '#EDE8F5', para: 'rgba(237,232,245,0.68)', dark: true,  underline: '#C4B5D8', watermark: '#C4B5D8', btnBg: '#C4B5D8', btnText: '#1E1E2A' },
 ];
 
 const CountUp = ({ to, from = 0, suffix = '', decimals = 0, active }) => {
@@ -868,9 +374,9 @@ const HeroFinal = () => {
       onMouseLeave={onMouseLeave}
       className="min-h-screen lg:min-h-screen bg-[#FAFAF8] flex flex-col lg:flex-row overflow-hidden relative"
     >
-      {/* ── Premium Ambient Background ── */}
+      {/* â”€â”€ Premium Ambient Background â”€â”€ */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <img src="/Assets/background-texture.webp" className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" />
+        <img src="/Assets/background-texture.webp" className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-[0.18]" alt="" loading="eager" fetchpriority="low" />
 
         <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF8]/40 via-transparent to-[#FAFAF8]" />
         <div className="absolute -top-[15%] -left-[10%] w-[60%] h-[50%] bg-[#F0C85A] opacity-[0.15] blur-[120px] rounded-full mix-blend-multiply" />
@@ -884,19 +390,19 @@ const HeroFinal = () => {
         <motion.span
           className="text-[50vw] lg:text-[30vw] font-black leading-none tracking-tighter"
           animate={{ color: theme.watermark + '12' }}
-          transition={{ duration: 1.4, ease: 'easeInOut' }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         >5</motion.span>
         <motion.svg
           viewBox="0 0 24 24" fill="currentColor"
           className="w-[30vw] h-[30vw] lg:w-[20vw] lg:h-[20vw] shrink-0"
           animate={{ color: theme.watermark + '20' }}
-          transition={{ duration: 1.4, ease: 'easeInOut' }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         >
           <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z" />
         </motion.svg>
       </div>
 
-      {/* ── Left column ────────────────────────────────────────────────── */}
+      {/* â”€â”€ Left column â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <motion.div
         style={{ y: scrollTextY }}
         className="relative z-10 w-full lg:w-[54%] flex items-center px-6 sm:px-10 lg:px-20 xl:px-28 pt-24 pb-4 lg:pt-20 lg:pb-0 lg:min-h-screen"
@@ -924,7 +430,7 @@ const HeroFinal = () => {
           <motion.div
             className="absolute inset-0 z-0"
             animate={{ backgroundColor: theme.bg }}
-            transition={{ duration: 1.8, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
           />
           {/* 2. Plaster surface */}
           <div className="absolute inset-0 z-[1] pointer-events-none"
@@ -963,13 +469,12 @@ const HeroFinal = () => {
             >
               <motion.span
                 className="w-9 h-[2px] rounded-full"
-                animate={{ backgroundColor: theme.eyebrow }}
-                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                animate={{ backgroundColor: theme.text }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
               />
               <motion.span
-                data-mascot="eyebrow"
-                animate={{ color: theme.eyebrow }}
-                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                animate={{ color: theme.text }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
                 className="text-[9px] font-black uppercase tracking-[0.3em]"
               >India&apos;s Trusted Painting Experts</motion.span>
             </motion.div>
@@ -977,12 +482,12 @@ const HeroFinal = () => {
 
           {/* Parallax — headline with char-by-char reveal */}
           <motion.div style={{ x: lHeadX, y: lHeadY }}>
-            <h1 className="mb-7 font-light tracking-[-0.025em] text-[2.2rem] sm:text-[3.4rem] lg:text-[clamp(2.8rem,4.4vw,4.8rem)] lg:whitespace-nowrap">
+            <h1 className="mb-7 font-light tracking-[-0.025em] text-[2.1rem] sm:text-[4.2rem] lg:text-[clamp(3.5rem,5.2vw,5.8rem)] lg:whitespace-nowrap">
               {LINES.map((segments, lineIdx) => (
-                <div key={lineIdx} className="block leading-[1.07]">
+                <div key={lineIdx} className="block leading-[1.15]">
                   {segments.map((seg, si) =>
                     seg.gradient ? (
-                      <span key={seg.text} data-mascot={seg.text} className="relative inline-block overflow-hidden">
+                      <span key={seg.text} className="relative inline-block overflow-hidden pb-[0.2em] mb-[-0.2em]">
                         <motion.span
                           className={`block text-transparent bg-clip-text bg-gradient-to-r ${seg.gradient}`}
                           initial={{ y: '108%' }}
@@ -992,36 +497,68 @@ const HeroFinal = () => {
                           {seg.text}
                         </motion.span>
                         {seg.underline && (
-                          <svg viewBox="0 0 200 20" fill="none" preserveAspectRatio="none" className="absolute left-0 bottom-[-0.04em] w-full h-[0.2em] pointer-events-none">
-                            <motion.path
-                              d="M4 14 C 35 5, 65 19, 100 11 C 135 3, 165 17, 196 9"
-                              strokeWidth="6" strokeLinecap="round"
-                              initial={{ pathLength: 0, stroke: HERO_THEMES[0].underline }}
-                              animate={{ ...(inView ? { pathLength: 1 } : {}), stroke: theme.underline }}
+                          <svg viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" className="absolute left-0 bottom-[0.12em] w-full h-[0.12em] pointer-events-none">
+                            <motion.line
+                              x1="2" y1="4" x2="198" y2="4"
+                              strokeWidth="4" strokeLinecap="round"
+                              initial={{ pathLength: 0, stroke: HERO_THEMES[0].text }}
+                              animate={{ ...(inView ? { pathLength: 1 } : {}), stroke: theme.text }}
                               transition={{
                                 pathLength: { duration: 0.9, delay: 1.1, ease: 'easeOut' },
-                                stroke: { duration: 1.4, ease: 'easeInOut' },
+                                stroke: { duration: 1.2, ease: 'easeInOut' },
                               }}
                             />
                           </svg>
                         )}
                       </span>
-                    ) : (
-                      [...seg.text].map((char, ci) => (
-                        <span key={ci} className="inline-block overflow-hidden" style={{ lineHeight: 'inherit' }}>
-                          <motion.span
-                            className="inline-block"
-                            initial={{ y: '108%', color: HERO_THEMES[0].text }}
-                            animate={{ ...(inView ? { y: 0 } : {}), color: theme.text }}
+                    ) : seg.underline ? (
+                      <span key={si} className="relative inline-block">
+                        {[...seg.text].map((char, ci) => (
+                          <span key={ci} className="inline-block overflow-hidden pb-[0.2em] mb-[-0.2em]" style={{ lineHeight: 'inherit' }}>
+                            <motion.span
+                              className="inline-block"
+                              initial={{ y: '108%', color: HERO_THEMES[0].text }}
+                              animate={{ ...(inView ? { y: 0 } : {}), color: theme.text }}
+                              transition={{
+                                y:     { duration: 0.6, delay: 0.1 + lineIdx * 0.07 + ci * 0.028, ease: [0.22, 1, 0.36, 1] },
+                                color: { duration: 1.2, ease: 'easeInOut' },
+                              }}
+                            >
+                              {char === ' ' ? '\u00a0' : char}
+                            </motion.span>
+                          </span>
+                        ))}
+                        <svg viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" className="absolute left-0 bottom-[0.12em] w-full h-[0.12em] pointer-events-none">
+                          <motion.line
+                            x1="2" y1="4" x2="198" y2="4"
+                            strokeWidth="4" strokeLinecap="round"
+                            initial={{ pathLength: 0, stroke: HERO_THEMES[0].text }}
+                            animate={{ ...(inView ? { pathLength: 1 } : {}), stroke: theme.text }}
                             transition={{
-                              y:     { duration: 0.6, delay: 0.1 + lineIdx * 0.07 + ci * 0.028, ease: [0.22, 1, 0.36, 1] },
-                              color: { duration: 1.4, ease: 'easeInOut' },
+                              pathLength: { duration: 0.9, delay: 1.1, ease: 'easeOut' },
+                              stroke: { duration: 1.2, ease: 'easeInOut' },
                             }}
-                          >
-                            {char === ' ' ? ' ' : char}
-                          </motion.span>
-                        </span>
-                      ))
+                          />
+                        </svg>
+                      </span>
+                    ) : (
+                      <Fragment key={si}>
+                        {[...seg.text].map((char, ci) => (
+                          <span key={ci} className="inline-block overflow-hidden pb-[0.2em] mb-[-0.2em]" style={{ lineHeight: 'inherit' }}>
+                            <motion.span
+                              className="inline-block"
+                              initial={{ y: '108%', color: HERO_THEMES[0].text }}
+                              animate={{ ...(inView ? { y: 0 } : {}), color: theme.text }}
+                              transition={{
+                                y:     { duration: 0.6, delay: 0.1 + lineIdx * 0.07 + ci * 0.028, ease: [0.22, 1, 0.36, 1] },
+                                color: { duration: 1.2, ease: 'easeInOut' },
+                              }}
+                            >
+                              {char === ' ' ? '\u00a0' : char}
+                            </motion.span>
+                          </span>
+                        ))}
+                      </Fragment>
                     )
                   )}
                 </div>
@@ -1062,7 +599,7 @@ const HeroFinal = () => {
                   backgroundColor: theme.dark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,1)',
                   borderColor: theme.dark ? 'rgba(255,255,255,0.14)' : 'rgba(15,18,33,0.08)',
                 }}
-                transition={{ duration: 1.4, ease: 'easeInOut' }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
                 style={{
                   borderWidth: '1px', borderStyle: 'solid',
                   rotateX: cardSRotX, rotateY: cardSRotY,
@@ -1073,31 +610,33 @@ const HeroFinal = () => {
                 <div className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4 bg-[linear-gradient(90deg,#F0C85A,#E76F51,#C2588B,#7A4E9E,#2A9D8F)]" />
                 <motion.p
                   animate={{ color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221' }}
-                  transition={{ duration: 1.4, ease: 'easeInOut' }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
                   className="font-bold text-xs sm:text-sm mb-3 sm:mb-4"
                 >Get a Free Site Inspection</motion.p>
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5">
                   <motion.input
                     type="text" name="name" autoComplete="name" placeholder="Your name" required value={form.name}
+                    aria-label="Your name"
                     onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                     animate={{
                       backgroundColor: theme.dark ? 'rgba(255,255,255,0.08)' : '#FAFAF8',
                       borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
                       color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221',
                     }}
-                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    transition={{ duration: 1.2, ease: 'easeInOut' }}
                     style={{ borderWidth: '1px', borderStyle: 'solid' }}
                     className="flex-1 min-w-0 rounded-xl px-4 py-3 text-sm focus:outline-none"
                   />
                   <motion.input
                     type="tel" name="tel" autoComplete="tel" inputMode="numeric" placeholder="Phone number" maxLength={10} required value={form.phone}
+                    aria-label="Mobile phone number"
                     onChange={e => setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
                     animate={{
                       backgroundColor: theme.dark ? 'rgba(255,255,255,0.08)' : '#FAFAF8',
                       borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
                       color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221',
                     }}
-                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    transition={{ duration: 1.2, ease: 'easeInOut' }}
                     style={{ borderWidth: '1px', borderStyle: 'solid' }}
                     className="flex-1 min-w-0 rounded-xl px-4 py-3 text-sm focus:outline-none"
                   />
@@ -1107,7 +646,7 @@ const HeroFinal = () => {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     animate={{ backgroundColor: theme.btnBg, color: theme.btnText }}
-                    transition={{ duration: 1.4, ease: 'easeInOut' }}
+                    transition={{ duration: 1.2, ease: 'easeInOut' }}
                     className="relative flex-shrink-0 flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl text-sm font-bold overflow-hidden"
                   >
                     <motion.span
@@ -1133,7 +672,7 @@ const HeroFinal = () => {
               className="flex flex-wrap gap-2"
             >
               {[
-                { dot: '#F0C85A', to: 4.8, from: 4.0, suffix: '★ Rated',    decimals: 1 },
+                { dot: '#F0C85A', to: 4.8, from: 4.0, suffix: ' Rated',    decimals: 1 },
                 { dot: '#7A4E9E', label: '2-Year Warranty' },
                 { dot: '#2A9D8F', label: 'Fixed Quote' },
                 { dot: '#E76F51', to: 15,  from: 0,   suffix: 'K+ Homes',   decimals: 0 },
@@ -1145,7 +684,7 @@ const HeroFinal = () => {
                     borderColor: theme.dark ? 'rgba(255,255,255,0.15)' : 'rgba(15,18,33,0.10)',
                     color: theme.dark ? 'rgba(255,255,255,0.80)' : 'rgba(15,18,33,0.75)',
                   }}
-                  transition={{ duration: 1.4, ease: 'easeInOut' }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
                   style={{ borderWidth: '1px', borderStyle: 'solid' }}
                   className="flex items-center gap-1.5 text-[9px] font-bold rounded-full px-3 py-1 tracking-wide backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]"
                 >
@@ -1162,18 +701,18 @@ const HeroFinal = () => {
           <motion.div
             className="h-px flex-1 rounded-full"
             animate={{ backgroundColor: theme.eyebrow }}
-            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
             style={{ scaleX: scrollYProgress, transformOrigin: 'left center', opacity: 0.55 }}
           />
           <motion.span
             animate={{ color: theme.eyebrow }}
-            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
             className="text-[8px] font-bold tracking-[0.22em] uppercase opacity-50"
           >Scroll</motion.span>
         </div>
       </motion.div>
 
-      {/* ── Right column ──────────────────────────────────────────────── */}
+      {/* â”€â”€ Right column â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="relative lg:absolute lg:inset-y-0 lg:right-0 w-full lg:w-[48%] h-[450px] sm:h-[550px] lg:h-auto">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div style={{ y: scrollImgY }} className="absolute inset-0">
@@ -1193,7 +732,7 @@ const HeroFinal = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1.0, ease: 'easeInOut' }}
+                    transition={{ duration: 1.2, ease: 'easeInOut' }}
                     loading="eager"
                     fetchpriority="high"
                     decoding="async"
@@ -1258,7 +797,7 @@ const HeroFinal = () => {
                   <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[9px] lg:text-[10px] font-bold flex-shrink-0">R</div>
                   <div>
                     <div className="text-[10px] lg:text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
-                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
+                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai Â· Interior Painting</div>
                   </div>
                 </div>
                 <Stars size="w-2 h-2 lg:w-2.5 lg:h-2.5" />
@@ -1276,17 +815,17 @@ const HeroFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  2 — MARQUEE  (V4)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const MARQUEE_ITEMS = [
   'Verified Painters', '2-Year Warranty', 'Fixed Price Quote',
-  '25+ Cities', '15,000+ Homes', '4.8★ Customer Rating',
+  '25+ Cities', '15,000+ Homes', '4.8 Customer Rating',
   'Free Site Visit', 'No Hidden Charges', 'Premium Paint Brands',
 ];
 
 const MarqueeFinal = () => (
-  <section data-mascot-surface className="bg-[#0F1221] py-3.5 overflow-hidden border-y border-white/5">
+  <section className="bg-[#0F1221] py-3.5 overflow-hidden border-y border-white/5">
     <style>{`
       @keyframes finalMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       .final-marquee { animation: finalMarquee 28s linear infinite; }
@@ -1303,9 +842,9 @@ const MarqueeFinal = () => (
   </section>
 );
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  3 — SERVICES  (V2 — 6-card grid with live pricing)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const HOME_CATS = [
   {
     title: 'Interior Painting',
@@ -1419,9 +958,9 @@ const ServicesFinal = () => (
   </section>
 );
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  4 — STATS  (V4 — oversized typography, 2-Year Warranty)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const STATS = [
   { to: 15, label: 'K+', sub: 'Homes Painted',  desc: 'Happy families across India', gradient: 'from-[#C77B2B] via-[#E8A33D] to-[#E76F51]', bar: '#E8A33D' },
   { to: 25, label: '+',  sub: 'Cities Covered', desc: 'Pan-India service network',   gradient: 'from-[#493657] via-[#7A4E9E] to-[#C2588B]', bar: '#7A4E9E' },
@@ -1459,9 +998,9 @@ const StatsFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  5 — PROCESS  (V4 — 4-step zigzag timeline, scroll-linked line)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const PROCESS_STEPS = [
   { num: '01', title: 'Initial Assessment',  desc: 'Our expert visits your home, assesses surface conditions, understands your style preferences, and takes measurements — all at zero cost.', time: '30–45 min' },
   { num: '02', title: 'Colour Suggestion',   desc: 'We recommend the perfect shades, finishes, and paint brands based on your space, lighting, and lifestyle. Physical swatch samples included.', time: '1–2 hours' },
@@ -1566,9 +1105,9 @@ const ProcessFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  6 — CONSULTATION SPLIT  (V4)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const ConsultationFinal = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
@@ -1663,9 +1202,9 @@ const ConsultationFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  7 — INSPIRATION GRID  (V4 — asymmetric layout)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const INSPO = [
   { title: 'Interior Colour Trends 2026', tag: 'Interior', tall: true, image: '/real project section/inspration/i1.webp' },
   { title: 'Choosing the Right Finish', tag: 'Tips', image: '/real project section/inspration/i3.webp' },
@@ -1711,7 +1250,7 @@ const InspirationFinal = () => {
             className="row-span-2 col-span-1"
           >
             <Link to="/inspirations" className="group block h-full relative overflow-hidden rounded-2xl min-h-[320px] sm:min-h-[420px]">
-              <img src={INSPO[0].image} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={INSPO[0].image} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/80 via-[#0F1221]/10 to-transparent" />
               <div className="absolute top-4 left-4">
                 <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#F0C85A] bg-[#0F1221]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">{INSPO[0].tag}</span>
@@ -1733,7 +1272,7 @@ const InspirationFinal = () => {
               transition={{ duration: 0.65, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link to="/inspirations" className="group block relative overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src={item.image} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={item.image} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/75 via-transparent to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span className="text-[9px] font-black uppercase tracking-[0.18em] text-[#F0C85A] bg-[#0F1221]/55 backdrop-blur-sm px-2.5 py-1 rounded-full">{item.tag}</span>
@@ -1751,9 +1290,9 @@ const InspirationFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  8 — GALLERY  (V2 — masonry "Real Homes" grid)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const galleryImages = [
   '/real project section/a1.webp',
   '/real project section/a5.webp',
@@ -1802,6 +1341,7 @@ const GalleryFinal = () => (
           >
             <img
               src={src} alt={`Project ${i + 1}`}
+              loading="lazy" decoding="async"
               className="w-full h-full object-cover brightness-90 hover:brightness-100 transition-all duration-700"
             />
             <motion.div
@@ -1819,9 +1359,9 @@ const GalleryFinal = () => (
   </section>
 );
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  10 — FAQ  (V4)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const FAQS = [
   { q: 'What types of painting services does Calyco offer?', a: 'Interior & exterior painting, waterproofing, texture painting, wood polish, rental repainting, and commercial painting — across 25+ Indian cities.' },
   { q: 'How do I get a free consultation?', a: 'Fill the booking form or WhatsApp us. Our local team contacts you within 2 hours to schedule a free site visit.' },
@@ -1957,9 +1497,9 @@ const FaqFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  11 — FINAL CTA  (V2 — dark closing section, image bg)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const CtaFinal = () => {
   const wa = `${WA_BASE}?text=${encodeURIComponent('Hi Calyco, I want to book a free site inspection.')}`;
   const ref = useRef(null);
@@ -2003,7 +1543,7 @@ const CtaFinal = () => {
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => <Star key={i} cls="w-4 h-4 lg:w-5 lg:h-5 text-[#F0C85A]" />)}
             </div>
-            <span className="text-white/50 text-xs font-light">4.8 · 15,000+ homes</span>
+            <span className="text-white/50 text-xs font-light">4.8 Â· 15,000+ homes</span>
           </motion.div>
 
           {/* Heading */}
@@ -2053,7 +1593,7 @@ const CtaFinal = () => {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="hidden lg:flex items-center gap-6 border-t border-white/10 pt-8"
           >
-            {[['15K+', 'Homes Painted'], ['25+', 'Cities'], ['2 Yr', 'Warranty'], ['4.8★', 'Rating']].map(([val, lbl]) => (
+            {[['15K+', 'Homes Painted'], ['25+', 'Cities'], ['2 Yr', 'Warranty'], ['4.8', 'Rating']].map(([val, lbl]) => (
               <div key={lbl} className="text-center">
                 <div className="text-lg font-black text-white leading-none">{val}</div>
                 <div className="text-[10px] text-white/40 font-light uppercase tracking-widest mt-1">{lbl}</div>
@@ -2067,15 +1607,15 @@ const CtaFinal = () => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  PAGE — Final merged homepage (V2 + V4, boss-approved sections)
-// ══════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const HomeFinal = () => {
-  const pageRef = useRef(null);
   return (
-    <div ref={pageRef} className="relative font-poppins bg-white min-h-screen">
+    <div className="relative font-poppins bg-white min-h-screen">
       <SEO
-        title={`${BRAND_NAME} | 5-Star Painting Services — Professional House Painters`}
+        title={BRAND_NAME + ' | 5-Star Painting Services — Professional House Painters'}
+        url="https://calycopaints.com"
         description="Professional house painters you can count on. Verified teams, fixed written quotes, and a 2-year warranty-backed finish managed end-to-end by Calyco."
         ogType="website"
         schemaMarkup={{
@@ -2121,7 +1661,6 @@ const HomeFinal = () => {
       <ReviewsSection />
       <FaqFinal />
       <CtaFinal />
-      <HeroMascot containerRef={pageRef} />
     </div>
   );
 };

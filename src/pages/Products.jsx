@@ -185,8 +185,10 @@ export const Products = () => {
   return (
     <>
       <SEO
-        title="Calyco Products"
-        description="Discover Calyco's professional-grade paint systems curated for long-lasting colour and protection."
+        title="Paint Products | Calyco Professional Grade Paints"
+        description="Discover Calyco's professional-grade interior and exterior paint systems — emulsions, primers, texture paints, and specialty coatings for long-lasting colour and protection."
+        url="https://calycopaints.com/products"
+        ogType="website"
       />
 
       <section className="min-h-screen bg-[#f9f6f2]">

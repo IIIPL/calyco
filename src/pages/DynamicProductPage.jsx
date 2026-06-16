@@ -933,6 +933,9 @@ export const DynamicProductPage = () => {
                     <img
                       src={selectedImage || product.image}
                       alt={`${product.name} - Image ${selectedImageIndex + 1}`}
+                      loading="eager"
+                      fetchpriority="high"
+                      decoding="async"
                       onError={(e) => {
                         console.error('Image failed to load:', e.target.src);
                         if (product.image && e.target.src !== product.image) {

@@ -7,6 +7,7 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /cart
 Disallow: /temp
+Disallow: /dev/
 
 # Allow search engines to access important resources
 Allow: /Assets/

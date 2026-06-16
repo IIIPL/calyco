@@ -1,7 +1,39 @@
 import React, { useState, useEffect } from 'react'
+import { useMotionValue, useSpring, motion } from 'framer-motion'
 
 import { Navbar } from './components/Navbar'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+
+/* ── Global cursor follower — desktop only ─────────────────────────────── */
+const CursorFollower = () => {
+  const x = useMotionValue(-200);
+  const y = useMotionValue(-200);
+  const sx = useSpring(x, { damping: 28, stiffness: 90, mass: 1.2 });
+  const sy = useSpring(y, { damping: 28, stiffness: 90, mass: 1.2 });
+
+  useEffect(() => {
+    const move = (e) => { x.set(e.clientX); y.set(e.clientY); };
+    const leave = () => { x.set(-200); y.set(-200); };
+    window.addEventListener('mousemove', move);
+    document.documentElement.addEventListener('mouseleave', leave);
+    return () => {
+      window.removeEventListener('mousemove', move);
+      document.documentElement.removeEventListener('mouseleave', leave);
+    };
+  }, [x, y]);
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="hidden lg:block fixed pointer-events-none z-[9999]"
+      style={{ x: sx, y: sy, translateX: '-50%', translateY: '-50%' }}
+    >
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.5)" strokeWidth="1.2" strokeLinejoin="round">
+        <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+      </svg>
+    </motion.div>
+  );
+};
 
 const HomeFinal = React.lazy(() => import('./pages/HomeFinal.jsx'))
 // Hidden design archive — reachable only via /dev/versions
@@ -35,7 +67,6 @@ const HowItWorksPage = React.lazy(() => import('./pages/HowItWorksPage.jsx'));
 const PainterVerificationPage = React.lazy(() => import('./pages/PainterVerificationPage.jsx'));
 const TransparentPricingPage = React.lazy(() => import('./pages/TransparentPricingPage.jsx'));
 const GalleryPage = React.lazy(() => import('./pages/GalleryPage.jsx'));
-const GetQuotePage = React.lazy(() => import('./pages/GetQuotePage.jsx'));
 
 const BlogIndex = React.lazy(() => import('../blog/pages/BlogIndex.jsx'));
 const BlogPost = React.lazy(() => import('../blog/pages/BlogPost.jsx'));
@@ -45,7 +76,6 @@ const MagicUpload = React.lazy(() => import('../blog/admin/MagicUpload.jsx'));
 import { Footer } from './pages/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import CartProvider from './context/CartContext'
-import Cart from './components/Cart'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
 // Convert all page components to lazy loading for better performance
@@ -210,6 +240,7 @@ function App() {
       <ColorProvider>
         <ColorVisualizationProvider>
           <div className='font-poppins overflow-x-hidden'>
+            <CursorFollower />
             <AutoSEO />
             {/* Offer Banner - Above Header */}
             <OfferBanner onClose={() => setBannerVisible(false)} isVisible={bannerVisible} menuOpen={menuOpen} />

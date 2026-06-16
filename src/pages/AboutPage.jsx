@@ -204,8 +204,9 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#F6F3EE] text-[#0F1221] font-poppins overflow-x-hidden">
       <SEO
-        title="About CALYCO | Professional-Grade Paint Systems for India"
-        description="CALYCO delivers premium, low-/zero-VOC paint systems engineered for Indian conditions--combining durability, innovation, and sustainability."
+        title="About Calyco | Premium Painting Services Across India"
+        description="Calyco delivers 5-star painting services with verified painters, fixed written quotes, and 2-year warranty — serving 25+ cities across India."
+        url="https://calycopaints.com/about"
         ogType="website"
       />
 

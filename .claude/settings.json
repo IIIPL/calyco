@@ -41,7 +41,11 @@
       "PowerShell(npx --prefix \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\" playwright --version)",
       "PowerShell($global = npm root -g; Get-ChildItem \"$global\" -Filter \"playwright\" -Directory -ErrorAction SilentlyContinue | Select-Object FullName)",
       "Bash(python3 -c ' *)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(robots\" || echo \"Checking for these files\")",
+      "Bash(xargs -I{} grep -l \"pb-\" {})",
+      "Bash(python fix_mojibake.py)",
+      "Bash(del \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\\\\fix_mojibake.py\")"
     ]
   }
 }

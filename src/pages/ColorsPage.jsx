@@ -357,15 +357,16 @@ const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index
   const textColorClass = getTextColor(color.hex);
 
   return (
-    <motion.div
+    <motion.button
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.02 }}
-      className="group cursor-pointer"
+      className="group cursor-pointer text-left w-full"
       onClick={() => onColorClick(color)}
+      aria-label={`View ${color.name} colour, ${actualHexColor}`}
     >
       {/* Unified Card Layout - Same for mobile and desktop */}
-      <div className="bg-white rounded-2xl shadow-sm border border-[#e5e0d8] overflow-hidden group-hover:shadow-[0_4px_18px_rgba(73,54,87,0.10)] transition-all duration-200">
+      <div className="bg-white rounded-2xl shadow-sm border border-[#e5e0d8] overflow-hidden group-hover:shadow-[0_4px_18px_rgba(73,54,87,0.10)] transition-all duration-200 focus-within:ring-2 focus-within:ring-[#493657]">
         {/* Color Swatch */}
         <div
           className="w-full aspect-square relative rounded-t-2xl"
@@ -382,7 +383,7 @@ const ColorCard = ({ color, getActualHexColor, getTextColor, onColorClick, index
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.button>
   );
 };
 
@@ -391,12 +392,13 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
   const actualHexColor = getActualHexColor(color.hex);
 
   return (
-    <motion.div
+    <motion.button
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow"
+      className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow text-left w-full focus-visible:ring-2 focus-visible:ring-[#493657] focus-visible:outline-none"
       onClick={() => onColorClick(color)}
+      aria-label={`View ${color.name} colour`}
     >
       {/* Mock Lifestyle Image */}
       <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 relative">
@@ -422,12 +424,9 @@ const LifestyleCard = ({ color, getActualHexColor, getTextColor, onColorClick, i
           <Sparkles className="w-4 h-4 text-[#998850]" />
         </div>
       </div>
-    </motion.div>
+    </motion.button>
   );
 };
-
-
-
 
 
 // Color Detail Modal Component
@@ -445,16 +444,23 @@ const ColorDetailModal = ({ color, onClose, getActualHexColor, getTextColor, com
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="color-modal-title"
+      onKeyDown={(e) => e.key === 'Escape' && onClose()}
+    >
       <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">{color.name}</h2>
+            <h2 id="color-modal-title" className="text-2xl font-bold text-gray-900">{color.name}</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600"
+              aria-label="Close colour details"
+              className="text-gray-400 hover:text-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#493657] rounded"
             >
-              Ô£ò
+              ✕
             </button>
           </div>
 

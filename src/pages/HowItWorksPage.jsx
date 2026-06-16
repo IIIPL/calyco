@@ -56,7 +56,7 @@ const HowItWorksPage = () => (
   <main className="min-h-screen bg-[#FBF9F6]">
     <SEO
       title="How It Works | Calyco Painting & Waterproofing Services"
-      description="See exactly how Calyco delivers painting, waterproofing and surface care -- from instant estimate to fixed written quote and daily project updates."
+      description="See exactly how Calyco delivers painting, waterproofing and surface care — from instant estimate to fixed written quote and daily project updates."
       url="https://calycopaints.com/how-it-works"
     />
 
