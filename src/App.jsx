@@ -8,8 +8,8 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 const CursorFollower = () => {
   const x = useMotionValue(-200);
   const y = useMotionValue(-200);
-  const sx = useSpring(x, { damping: 28, stiffness: 90, mass: 1.2 });
-  const sy = useSpring(y, { damping: 28, stiffness: 90, mass: 1.2 });
+  const sx = useSpring(x, { damping: 30, stiffness: 500, mass: 0.3 });
+  const sy = useSpring(y, { damping: 30, stiffness: 500, mass: 0.3 });
 
   useEffect(() => {
     const move = (e) => { x.set(e.clientX); y.set(e.clientY); };

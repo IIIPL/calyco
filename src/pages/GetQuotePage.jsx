@@ -27,7 +27,7 @@ const PROPERTY_TYPES = [
 const Eyebrow = ({ text }) => (
   <div className="flex items-center gap-3 mb-4">
     <span className="block w-10 h-px" style={{ background: GOLD }} />
-    <span className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
+    <span className="text-[13px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
   </div>
 );
 

@@ -354,7 +354,7 @@ function computeRange({ serviceKey, paintType, carpetArea, city, preference }) {
 const Eyebrow = ({ text }) => (
   <div className="flex items-center gap-3 mb-4">
     <span className="w-6 h-px flex-shrink-0" style={{ background: GOLD }} />
-    <span className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
+    <span className="text-[13px] font-bold uppercase tracking-[0.25em]" style={{ color: PURPLE }}>{text}</span>
   </div>
 );
 
@@ -517,20 +517,6 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
             </motion.p>
           )}
         </AnimatePresence>
-        {/* Quick-fill shortcuts */}
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0F1221]/25 mb-2">Quick fill</p>
-        <div className="flex gap-2 flex-wrap">
-          {BHK_SIZES.map(b => (
-            <button key={b.key} type="button" onClick={() => setCarpetArea(String(b.carpet))}
-              className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold border transition-all duration-150 ${
-                carpetArea === String(b.carpet)
-                  ? 'border-[#F0C85A] bg-[#F0C85A]/10 text-[#0F1221]'
-                  : 'border-[#0F1221]/8 bg-[#F7F6F4] text-[#0F1221]/50 hover:border-[#0F1221]/18'
-              }`}>
-              {b.label} <span className="font-light opacity-60">~{b.carpet}</span>
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Paint type — only for services that have this distinction */}
@@ -1346,7 +1332,7 @@ export default function BudgetCalculator() {
 
   const [city,        setCity]        = useState('Bengaluru');
   const [serviceKey,  setServiceKey]  = useState('interior');
-  const [carpetArea,  setCarpetArea]  = useState('850');
+  const [carpetArea,  setCarpetArea]  = useState('1000');
   const [paintType,   setPaintType]   = useState('repainting');
   const [preference, setPreference] = useState('premium');
   const location     = useLocation();

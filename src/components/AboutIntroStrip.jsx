@@ -31,7 +31,7 @@ const AboutIntroStrip = ({ badges = [] }) => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block text-xs font-semibold text-[#F0C85A] uppercase tracking-widest bg-[#F0C85A]/10 px-4 py-2 rounded-full">
+              <span className="inline-block text-[13px] font-semibold text-[#F0C85A] uppercase tracking-widest bg-[#F0C85A]/10 px-4 py-2 rounded-full">
                 Our Story
               </span>
             </motion.div>

@@ -27,7 +27,7 @@ const PainterVerificationSection = ({ compact = false }) => (
       {/* ── Header ──────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 items-start mb-10">
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/40">Calyco Verified</span>
+          <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#0F1221]/40">Calyco Verified</span>
           <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
           <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em] leading-[1.15]">
             Verified Painters,<br />Managed by Calyco.

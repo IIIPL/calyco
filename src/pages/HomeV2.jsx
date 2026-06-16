@@ -105,7 +105,7 @@ const Reveal = ({ children, delay = 0, y = 32, className = '' }) => (
 const Eyebrow = ({ text }) => (
   <div className="flex items-center gap-3 mb-4">
     <span className="w-6 h-px bg-[#F0C85A]" />
-    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#F0C85A]">{text}</span>
+    <span className="text-[13px] font-bold uppercase tracking-[0.25em] text-[#F0C85A]">{text}</span>
   </div>
 );
 

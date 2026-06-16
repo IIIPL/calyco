@@ -196,7 +196,7 @@ const Reveal = ({ children, delay = 0, y = 32, className = '' }) => (
 const Eyebrow = ({ text, dark = false }) => (
   <div className="flex items-center gap-3 mb-4">
     <span className="w-6 h-px bg-[#F0C85A]" />
-    <span className={`text-[10px] font-bold uppercase tracking-[0.25em] ${dark ? 'text-[#F0C85A]' : 'text-[#493657]'}`}>{text}</span>
+    <span className={`text-[13px] font-bold uppercase tracking-[0.25em] ${dark ? 'text-[#F0C85A]' : 'text-[#493657]'}`}>{text}</span>
   </div>
 );
 
@@ -227,8 +227,8 @@ const HERO_THEMES = [
   { bg: '#F4EDE3', eyebrow: '#9B3A24', text: '#2E0E06', para: 'rgba(46,14,6,0.55)',     dark: false, underline: '#9B3A24', watermark: '#9B3A24', btnBg: '#9B3A24', btnText: '#F4EDE3' },
   // Rose gold and charcoal
   { bg: '#2C2C30', eyebrow: '#C9938A', text: '#F5ECE8', para: 'rgba(245,236,232,0.72)', dark: true,  underline: '#C9938A', watermark: '#C9938A', btnBg: '#C9938A', btnText: '#1A1A1E' },
-  // Copper and white
-  { bg: '#FBF8F4', eyebrow: '#A86828', text: '#1A0E00', para: 'rgba(26,14,0,0.52)',     dark: false, underline: '#A86828', watermark: '#A86828', btnBg: '#A86828', btnText: '#FFFFFF' },
+  // Copper and white — rose red headline
+  { bg: '#FBF8F4', eyebrow: '#C8102E', text: '#C8102E', para: 'rgba(200,16,46,0.58)',   dark: false, underline: '#C8102E', watermark: '#C8102E', btnBg: '#C8102E', btnText: '#FFFFFF' },
   // Plum and cream
   { bg: '#4A1030', eyebrow: '#EFE0D0', text: '#FFF5EE', para: 'rgba(255,245,238,0.72)', dark: true,  underline: '#EFE0D0', watermark: '#EFE0D0', btnBg: '#C2556C', btnText: '#FFFFFF' },
   // Burgundy and gold
@@ -475,7 +475,7 @@ const HeroFinal = () => {
               <motion.span
                 animate={{ color: theme.text }}
                 transition={{ duration: 1.2, ease: 'easeInOut' }}
-                className="text-[9px] font-black uppercase tracking-[0.3em]"
+                className="text-[13px] font-black uppercase tracking-[0.3em]"
               >India&apos;s Trusted Painting Experts</motion.span>
             </motion.div>
           </motion.div>
@@ -607,7 +607,14 @@ const HeroFinal = () => {
                 }}
                 className="rounded-2xl p-4 sm:p-5 overflow-hidden shadow-[0_10px_40px_rgba(15,18,33,0.07)] backdrop-blur-sm"
               >
-                <div className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4 bg-[linear-gradient(90deg,#F0C85A,#E76F51,#C2588B,#7A4E9E,#2A9D8F)]" />
+                <motion.div
+                  key={themeIdx}
+                  className="h-1.5 -mx-4 sm:-mx-5 -mt-4 sm:-mt-5 mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
+                  style={{ background: `linear-gradient(90deg, ${theme.eyebrow}, ${theme.btnBg}, ${theme.underline}cc, ${theme.eyebrow}99)` }}
+                />
                 <motion.p
                   animate={{ color: theme.dark ? 'rgba(255,255,255,0.90)' : '#0F1221' }}
                   transition={{ duration: 1.2, ease: 'easeInOut' }}
@@ -797,7 +804,7 @@ const HeroFinal = () => {
                   <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[9px] lg:text-[10px] font-bold flex-shrink-0">R</div>
                   <div>
                     <div className="text-[10px] lg:text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
-                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai Â· Interior Painting</div>
+                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
                   </div>
                 </div>
                 <Stars size="w-2 h-2 lg:w-2.5 lg:h-2.5" />
@@ -1077,7 +1084,7 @@ const ProcessFinal = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="w-7 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Your Journey</span>
+            <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">Your Journey</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.015em] max-w-md leading-tight">
@@ -1158,7 +1165,7 @@ const ConsultationFinal = () => {
           <div className="max-w-lg">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Expert Consultation</span>
+              <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">Expert Consultation</span>
             </div>
             <h2 className="text-[1.9rem] sm:text-[2.5rem] font-light text-[#0F1221] tracking-[-0.015em] leading-tight mb-4">
               Looking for Expert<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#493657] via-[#7A4E9E] to-[#C2588B]">Consultation?</span>
@@ -1230,7 +1237,7 @@ const InspirationFinal = () => {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Inspirations</span>
+              <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">Inspirations</span>
             </div>
             <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
               Featured <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#1F7A70] via-[#2A9D8F] to-[#5FB49C]">Ideas</span>
@@ -1434,7 +1441,7 @@ const FaqFinal = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-3">
             <span className="w-7 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">FAQs</span>
+            <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#493657]">FAQs</span>
             <span className="w-7 h-px bg-[#F0C85A]" />
           </div>
           <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
@@ -1478,7 +1485,7 @@ const FaqFinal = () => {
             className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-[#493657]/20 bg-white hover:border-[#493657] hover:bg-[#493657] transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[#493657]/15"
           >
             <span className="text-[13px] font-semibold text-[#493657] group-hover:text-white transition-colors tracking-wide">
-              {expanded ? 'Show less' : `Show ${hiddenFaqs.length} more questions`}
+              {expanded ? 'Show less' : 'Show more'}
             </span>
             <motion.div
               animate={{ rotate: expanded ? 180 : 0 }}
@@ -1531,7 +1538,7 @@ const CtaFinal = () => {
             className="flex items-center gap-3 mb-6"
           >
             <span className="w-8 h-px bg-[#F0C85A]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Start Your Transformation</span>
+            <span className="text-[13px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Start Your Transformation</span>
           </motion.div>
 
           {/* Stars */}
@@ -1543,7 +1550,7 @@ const CtaFinal = () => {
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => <Star key={i} cls="w-4 h-4 lg:w-5 lg:h-5 text-[#F0C85A]" />)}
             </div>
-            <span className="text-white/50 text-xs font-light">4.8 Â· 15,000+ homes</span>
+            <span className="text-white/50 text-xs font-light">4.8 · 15,000+ homes</span>
           </motion.div>
 
           {/* Heading */}
