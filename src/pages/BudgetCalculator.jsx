@@ -1014,11 +1014,6 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
                   </div>
                 </motion.button>
                 
-                <div className="pt-3 text-center">
-                  <p className="text-[11px] text-[#0F1221]/50 font-medium">
-                    You can also pay ₹99 in cash for future payment on site.
-                  </p>
-                </div>
               </>
             )}
           </div>
@@ -1076,22 +1071,16 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
               style={{ top: s.top, right: s.right, width: s.size, height: s.size, background: GOLD }} />
           ))}
 
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#0F1221]/35 mb-3 relative z-10">
+          <p className="text-[13px] font-bold uppercase tracking-[0.24em] text-[#0F1221]/40 mb-3 relative z-10">
             Your Estimated Cost
           </p>
 
-          <div className="flex items-end gap-2.5 mb-2 relative z-10">
-            <h2 className="text-[2.6rem] sm:text-[3rem] font-bold text-[#0F1221] leading-none tracking-tight">
-              <CountPrice target={result.avg} />
-            </h2>
-            <div className="w-5 h-5 rounded-full border border-[#0F1221]/20 flex items-center justify-center mb-1.5 flex-shrink-0 cursor-help"
-              title="Calculated from your carpet area, service type and finish. Final price confirmed after free on-site inspection.">
-              <span className="text-[10px] text-[#0F1221]/40 font-medium select-none">i</span>
-            </div>
-          </div>
+          <h2 className="text-[3.2rem] sm:text-[3.8rem] font-bold text-[#0F1221] leading-none tracking-tight mb-3 relative z-10">
+            <CountPrice target={result.avg} />
+          </h2>
 
-          <p className="text-[12px] text-[#0F1221]/35 font-light relative z-10">
-            Final price locked after free on-site inspection
+          <p className="text-[13px] text-[#0F1221]/40 font-light relative z-10">
+            Final price confirmed after free site inspection
           </p>
         </motion.div>
 
@@ -1106,7 +1095,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
             <motion.span key={t.label}
               initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 + i * 0.07, type: 'spring', stiffness: 300 }}
-              className="inline-flex items-center text-[11px] font-semibold px-3 py-1.5 rounded-full"
+              className="inline-flex items-center text-[13px] font-semibold px-3.5 py-1.5 rounded-full"
               style={{ background: t.bg, color: t.color }}>
               {t.label}
             </motion.span>
@@ -1122,7 +1111,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
             fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
           </svg>
-          Recalculate with different inputs
+          Edit inputs
         </motion.button>
 
         {/* ── Mobile Next Step CTA ─────────────────────────────────────────── */}
@@ -1133,37 +1122,10 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
           {renderCTAContent()}
         </motion.div>
 
-        {/* Breakdown */}
-        <motion.div {...stagger(3)}
-          className="relative rounded-2xl p-5 mb-6 overflow-hidden"
-          style={{ background: '#FAFAF8', border: '1px solid rgba(15,18,33,0.07)' }}>
-          {/* Gold left accent */}
-          <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-full" style={{ background: GOLD }} />
-
-          <p className="text-[13px] font-semibold text-[#0F1221] mb-2 pl-3">How we arrived at this estimate</p>
-          <p className="text-[12px] text-[#0F1221]/40 font-light mb-3 leading-relaxed pl-3">
-            Calyco's cost estimator considered your
-          </p>
-          <ul className="space-y-2.5 pl-3">
-            <li className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: GOLD }} />
-              <div className="text-[12px]">
-                <span className="font-semibold text-[#0F1221]">{result.paintType}</span>
-                <span className="text-[#0F1221]/45 font-light"> — includes primer, undercoat &amp; finishing coat.</span>
-              </div>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5" style={{ background: GOLD }} />
-              <span className="text-[12px] text-[#0F1221]/45 font-light">
-                {result.carpetArea?.toLocaleString()} sq ft carpet → ~{result.paintable?.toLocaleString()} sq ft paintable area, excluding ceiling.
-              </span>
-            </li>
-          </ul>
-        </motion.div>
 
         {/* Recommended products */}
         <motion.div {...stagger(4)}>
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/30 mb-3">Recommended Products</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/30 mb-3">Recommended Products</p>
           <div className="flex gap-3 flex-wrap">
             {prods.map((p, i) => (
               <motion.div key={p.name}
@@ -1181,7 +1143,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
                     <span className="relative z-10 drop-shadow-sm">{p.brand}</span>
                   </div>
                 </div>
-                <p className="text-[10px] text-center text-[#0F1221]/45 leading-tight line-clamp-2">{p.name}</p>
+                <p className="text-[12px] text-center text-[#0F1221]/45 leading-tight line-clamp-2">{p.name}</p>
               </motion.div>
             ))}
           </div>

@@ -223,8 +223,8 @@ const HERO_THEMES = [
   { bg: '#EDCDC8', eyebrow: '#162040', text: '#0D1830', para: 'rgba(13,24,48,0.55)',    dark: false, underline: '#162040', watermark: '#162040', btnBg: '#162040', btnText: '#EDCDC8' },
   // Burnt orange and teal
   { bg: '#0D6068', eyebrow: '#E8622A', text: '#FFF5F0', para: 'rgba(255,245,240,0.72)', dark: true,  underline: '#E8622A', watermark: '#E8622A', btnBg: '#E8622A', btnText: '#FFFFFF' },
-  // Rust and off-white
-  { bg: '#F4EDE3', eyebrow: '#9B3A24', text: '#2E0E06', para: 'rgba(46,14,6,0.55)',     dark: false, underline: '#9B3A24', watermark: '#9B3A24', btnBg: '#9B3A24', btnText: '#F4EDE3' },
+  // Terracotta and off-white
+  { bg: '#F4EDE3', eyebrow: '#B84A2A', text: '#B84A2A', para: 'rgba(184,74,42,0.58)',   dark: false, underline: '#B84A2A', watermark: '#B84A2A', btnBg: '#B84A2A', btnText: '#FFFFFF' },
   // Rose gold and charcoal
   { bg: '#2C2C30', eyebrow: '#C9938A', text: '#F5ECE8', para: 'rgba(245,236,232,0.72)', dark: true,  underline: '#C9938A', watermark: '#C9938A', btnBg: '#C9938A', btnText: '#1A1A1E' },
   // Copper and white — rose red headline
