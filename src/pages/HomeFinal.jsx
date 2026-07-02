@@ -693,7 +693,7 @@ const HeroFinal = () => {
                   }}
                   transition={{ duration: 1.2, ease: 'easeInOut' }}
                   style={{ borderWidth: '1px', borderStyle: 'solid' }}
-                  className="flex items-center gap-1.5 text-[9px] font-bold rounded-full px-3 py-1 tracking-wide backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]"
+                  className="flex items-center gap-1.5 text-[11px] font-bold rounded-full px-3 py-1 tracking-wide backdrop-blur-sm shadow-[0_2px_10px_rgba(15,18,33,0.08)]"
                 >
                   <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: b.dot }} />
                   {b.label ?? <CountUp to={b.to} from={b.from} suffix={b.suffix} decimals={b.decimals} active={inView} />}
@@ -714,7 +714,7 @@ const HeroFinal = () => {
           <motion.span
             animate={{ color: theme.eyebrow }}
             transition={{ duration: 1.2, ease: 'easeInOut' }}
-            className="text-[8px] font-bold tracking-[0.22em] uppercase opacity-50"
+            className="text-[11px] font-bold tracking-[0.22em] uppercase opacity-50"
           >Scroll</motion.span>
         </div>
       </motion.div>
@@ -768,7 +768,7 @@ const HeroFinal = () => {
               <div className="text-[1.25rem] lg:text-[1.85rem] font-black leading-none tracking-tight mb-0.5">
                 15K<span className="text-[#F0C85A]">+</span>
               </div>
-              <div className="text-[8px] lg:text-[10px] font-semibold text-white/55 tracking-wide">Homes Painted</div>
+              <div className="text-[11px] lg:text-[10px] font-semibold text-white/55 tracking-wide">Homes Painted</div>
             </div>
           </motion.div>
         </motion.div>
@@ -783,7 +783,7 @@ const HeroFinal = () => {
             <div className="bg-white rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 shadow-xl border border-gray-100">
               <Stars size="w-2.5 h-2.5 lg:w-3 lg:h-3" />
               <div className="text-xs lg:text-sm font-black text-[#0F1221] mt-1 lg:mt-2 leading-none">4.8 <span className="font-light text-[#0F1221]/40 text-[10px] lg:text-xs">/ 5.0</span></div>
-              <div className="text-[8px] lg:text-[9px] text-[#0F1221]/40 font-light mt-0.5 lg:mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
+              <div className="text-[11px] lg:text-[11px] text-[#0F1221]/40 font-light mt-0.5 lg:mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
             </div>
           </motion.div>
         </motion.div>
@@ -801,10 +801,10 @@ const HeroFinal = () => {
               </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[9px] lg:text-[10px] font-bold flex-shrink-0">R</div>
+                  <div className="w-6 h-6 lg:w-7 lg:h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[11px] lg:text-[10px] font-bold flex-shrink-0">R</div>
                   <div>
                     <div className="text-[10px] lg:text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
-                    <div className="text-[8px] lg:text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
+                    <div className="text-[11px] lg:text-[11px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
                   </div>
                 </div>
                 <Stars size="w-2 h-2 lg:w-2.5 lg:h-2.5" />
@@ -1039,7 +1039,7 @@ const ProcessStepFinal = ({ step, i }) => {
           <span className="text-[2.2rem] sm:text-[2.8rem] font-black text-[#0F1221]/7 leading-none shrink-0 mt-1">{step.num}</span>
           <div>
             <h3 className="text-lg font-bold text-[#0F1221] mb-2 leading-snug">{step.title}</h3>
-            <p className="text-sm text-[#0F1221]/50 font-light leading-relaxed mb-3">{step.desc}</p>
+            <p className="text-sm text-[#0F1221]/70 font-light leading-relaxed mb-3">{step.desc}</p>
             <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#493657]">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -1090,7 +1090,7 @@ const ProcessFinal = () => {
             <h2 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.015em] max-w-md leading-tight">
               From Planning to<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#C77B2B] via-[#E8A33D] to-[#E76F51]">Perfect Finish.</span>
             </h2>
-            <p className="text-sm text-[#0F1221]/40 font-light max-w-xs">
+            <p className="text-sm text-[#0F1221]/70 font-light max-w-xs">
               A transparent 4-step process — we keep you informed at every stage.
             </p>
           </div>
@@ -1170,7 +1170,7 @@ const ConsultationFinal = () => {
             <h2 className="text-[1.9rem] sm:text-[2.5rem] font-light text-[#0F1221] tracking-[-0.015em] leading-tight mb-4">
               Looking for Expert<br /><span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#493657] via-[#7A4E9E] to-[#C2588B]">Consultation?</span>
             </h2>
-            <p className="text-[#0F1221]/48 font-light text-base leading-relaxed mb-8">
+            <p className="text-[#0F1221]/70 font-light text-base leading-relaxed mb-8">
               Our experts help you choose the perfect shade and finish. Free home visit, transparent quote, and 2-year workmanship warranty — at zero compromise.
             </p>
 
@@ -1260,7 +1260,7 @@ const InspirationFinal = () => {
               <img src={INSPO[0].image} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/80 via-[#0F1221]/10 to-transparent" />
               <div className="absolute top-4 left-4">
-                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#F0C85A] bg-[#0F1221]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">{INSPO[0].tag}</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#F0C85A] bg-[#0F1221]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">{INSPO[0].tag}</span>
               </div>
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-2">
                 <h3 className="text-base font-semibold text-white leading-snug">{INSPO[0].title}</h3>
@@ -1282,7 +1282,7 @@ const InspirationFinal = () => {
                 <img src={item.image} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/75 via-transparent to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <span className="text-[9px] font-black uppercase tracking-[0.18em] text-[#F0C85A] bg-[#0F1221]/55 backdrop-blur-sm px-2.5 py-1 rounded-full">{item.tag}</span>
+                  <span className="text-[11px] font-black uppercase tracking-[0.18em] text-[#F0C85A] bg-[#0F1221]/55 backdrop-blur-sm px-2.5 py-1 rounded-full">{item.tag}</span>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2">
                   <h3 className="text-xs sm:text-sm font-semibold text-white leading-snug">{item.title}</h3>
@@ -1413,7 +1413,7 @@ const FaqItem = ({ item, i, open, setOpen, inView }) => (
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           className="overflow-hidden"
         >
-          <p className="pb-5 text-sm text-[#0F1221]/52 font-light leading-relaxed">{item.a}</p>
+          <p className="pb-5 text-sm text-[#0F1221]/70 font-light leading-relaxed">{item.a}</p>
         </motion.div>
       )}
     </AnimatePresence>

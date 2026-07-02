@@ -109,7 +109,7 @@ const HowItWorksPage = () => (
               <div className="flex-1">
                 <h2 className="text-xl sm:text-2xl font-light text-[#0F1221] tracking-[-0.01em] mb-3">{step.title}</h2>
                 <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                <p className="text-sm text-[#0F1221]/40 font-medium mt-3">{step.detail}</p>
+                <p className="text-sm text-[#0F1221]/70 font-medium mt-3">{step.detail}</p>
                 {step.cta && (
                   <div className="mt-4">
                     {step.cta.to ? (

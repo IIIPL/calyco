@@ -59,7 +59,7 @@ const HeroLeadForm = () => {
         </div>
         <div>
           <p className="font-bold text-[#0F1221] text-lg">Opening WhatsApp…</p>
-          <p className="text-sm text-[#0F1221]/55 mt-1 max-w-xs mx-auto">
+          <p className="text-sm text-[#0F1221]/70 mt-1 max-w-xs mx-auto">
             Our team responds within 2 hours (Mon–Sat, 10am–6pm).
           </p>
         </div>
@@ -135,7 +135,7 @@ const HeroLeadForm = () => {
         Get Estimate on WhatsApp
       </button>
 
-      <p className="text-center text-[11px] text-[#0F1221]/40 leading-[1.6]">
+      <p className="text-center text-[11px] text-[#0F1221]/70 leading-[1.6]">
         No spam. Our team will call or WhatsApp you to confirm the site visit.
       </p>
     </form>
@@ -254,7 +254,7 @@ const StaticHero = () => {
             <div className="mb-5">
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#998850] mb-1">{BRAND_NAME}</p>
               <h2 className="text-lg font-semibold text-[#0F1221] tracking-[-0.01em]">Get Your Estimate on WhatsApp</h2>
-              <p className="text-xs text-[#0F1221]/45 font-light mt-1">Takes 60 seconds. No commitment required.</p>
+              <p className="text-xs text-[#0F1221]/70 font-light mt-1">Takes 60 seconds. No commitment required.</p>
             </div>
 
             <HeroLeadForm />

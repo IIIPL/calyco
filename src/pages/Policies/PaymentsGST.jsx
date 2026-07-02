@@ -203,7 +203,7 @@ export default function PaymentsGST() {
             <ul className="space-y-2 text-base text-[#23263a]">
               {securityPractices.map((measure) => (
                 <li key={measure} className="flex items-start">
-                  <span className="text-[#D4AF37] mr-3 mt-1">🔒</span>
+                  <span className="h-1.5 w-1.5 mr-3 mt-2 flex-shrink-0 rounded-full bg-[#D4AF37]" />
                   <span>{measure}</span>
                 </li>
               ))}

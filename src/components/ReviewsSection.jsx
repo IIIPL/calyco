@@ -28,24 +28,24 @@ const SocialProofBar = () => (
         </div>
         <div>
           <StarRow rating={5} size="lg" />
-          <p className="text-xs text-[#0F1221]/50 font-light mt-1">{SOCIAL_PROOF.totalReviews}+ reviews</p>
-          <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mt-0.5">Average rating</p>
+          <p className="text-xs text-[#0F1221]/70 font-light mt-1">{SOCIAL_PROOF.totalReviews}+ reviews</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mt-0.5">Average rating</p>
         </div>
       </div>
       <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
         <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.completedProjects}+</p>
-        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Projects completed</p>
-        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">and counting</p>
+        <p className="text-sm text-[#0F1221]/70 font-medium mt-0.5">Projects completed</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/70 font-bold mt-0.5">and counting</p>
       </div>
       <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
         <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.cities}+</p>
-        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Cities served</p>
-        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">across India</p>
+        <p className="text-sm text-[#0F1221]/70 font-medium mt-0.5">Cities served</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/70 font-bold mt-0.5">across India</p>
       </div>
       <div className="text-center sm:text-left sm:border-l sm:border-[#0F1221]/8 sm:pl-8">
         <p className="text-3xl font-light text-[#0F1221] tracking-[-0.01em]">{SOCIAL_PROOF.repeatCustomers}</p>
-        <p className="text-sm text-[#0F1221]/55 font-medium mt-0.5">Repeat customers</p>
-        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/30 font-bold mt-0.5">book again</p>
+        <p className="text-sm text-[#0F1221]/70 font-medium mt-0.5">Repeat customers</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#0F1221]/70 font-bold mt-0.5">book again</p>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@ const ReviewCard = ({ review, featured = false }) => (
           </div>
           <div className="flex items-center gap-1.5 mt-0.5">
             <MapPin className="w-3 h-3 text-[#0F1221]/35 flex-shrink-0" />
-            <p className="text-[11px] text-[#0F1221]/45 font-medium truncate">{review.area}, {review.city}</p>
+            <p className="text-[11px] text-[#0F1221]/70 font-medium truncate">{review.area}, {review.city}</p>
           </div>
         </div>
       </div>
@@ -200,7 +200,7 @@ const ReviewsSection = () => {
           <div className="mt-2 mb-4 h-[1px] w-10 bg-[#0F1221]/10" />
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">What Customers Say After Handover.</h2>
-            <p className="text-sm text-[#0F1221]/50 font-light max-w-xs leading-[1.75] sm:text-right">Verified reviews from completed Calyco projects across India.</p>
+            <p className="text-sm text-[#0F1221]/70 font-light max-w-xs leading-[1.75] sm:text-right">Verified reviews from completed Calyco projects across India.</p>
           </div>
         </div>
         <SocialProofBar />
@@ -222,7 +222,7 @@ const ReviewsSection = () => {
               <StarRow rating={5} size="lg" />
               <span className="text-base font-bold text-[#0F1221]">{SOCIAL_PROOF.rating} average</span>
             </div>
-            <p className="text-sm text-[#0F1221]/55 font-light">Based on {SOCIAL_PROOF.totalReviews}+ completed project reviews across {SOCIAL_PROOF.cities}+ Indian cities.</p>
+            <p className="text-sm text-[#0F1221]/70 font-light">Based on {SOCIAL_PROOF.totalReviews}+ completed project reviews across {SOCIAL_PROOF.cities}+ Indian cities.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <Link to="/get-quote" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F1221] text-white px-6 py-3 text-sm font-bold hover:bg-[#493657] transition-colors whitespace-nowrap">Book Free Site Visit &#x2192;</Link>

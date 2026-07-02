@@ -140,7 +140,7 @@ const ServiceCards = () => (
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] leading-[1.08] tracking-[-0.02em] mt-2">
             Everything Your<br className="hidden sm:block" /> Property Needs.
           </h2>
-          <p className="mt-4 text-base text-[#0F1221]/50 font-light leading-[1.8] max-w-lg">
+          <p className="mt-4 text-base text-[#0F1221]/70 font-light leading-[1.8] max-w-lg">
             Interior, exterior, waterproofing, texture and wood — managed end-to-end with transparent pricing.
           </p>
         </div>
@@ -284,7 +284,7 @@ const CalculatorTeaser = () => (
               </div>
               <div>
                 <p className="text-sm font-semibold text-[#0F1221] leading-snug">{f.label}</p>
-                <p className="text-[11px] text-[#0F1221]/45 font-light mt-0.5">{f.sub}</p>
+                <p className="text-[11px] text-[#0F1221]/70 font-light mt-0.5">{f.sub}</p>
               </div>
             </div>
           );
@@ -369,7 +369,7 @@ const WarrantyBar = () => (
         <div className="w-9 h-9 rounded-xl bg-[#F0C85A] flex items-center justify-center flex-shrink-0"><IconWarrantyShield className="w-4.5 h-4.5 text-[#0F1221]" /></div>
         <div>
           <p className="font-bold text-[#0F1221] text-sm leading-snug">1-Year Workmanship Warranty on every project.</p>
-          <p className="text-xs text-[#0F1221]/50 font-light mt-0.5">Any defect within 12 months is fixed at zero cost. Premium: 2 yrs · Luxury: 3 yrs.</p>
+          <p className="text-xs text-[#0F1221]/70 font-light mt-0.5">Any defect within 12 months is fixed at zero cost. Premium: 2 yrs · Luxury: 3 yrs.</p>
         </div>
       </div>
       <Link
@@ -451,7 +451,7 @@ const CityAvailabilitySection = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08]">
               Painting Services<br className="hidden sm:block" /> Across India.
             </h2>
-            <p className="mt-4 text-base text-[#0F1221]/50 font-light leading-[1.8] max-w-lg">
+            <p className="mt-4 text-base text-[#0F1221]/70 font-light leading-[1.8] max-w-lg">
               Calyco verified painter network live across 25+ cities and expanding every month.
             </p>
           </div>

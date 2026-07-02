@@ -182,7 +182,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         <div className="flex flex-col w-72 pr-8 border-r border-[#0F1221]/6">
           <div className="flex items-center gap-2.5 mb-5 pl-4">
             <span className="w-5 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Categories</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Categories</span>
           </div>
           {leftMenu.map((item) => (
             <button
@@ -202,7 +202,7 @@ export const ProductsDropdown = ({ onSelect, isMobile = false }) => {
         <div className="flex-1 px-6 max-h-[420px] overflow-y-auto custom-scrollbar">
           <div className="flex items-center gap-2.5 mb-5">
             <span className="w-5 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Products</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">Products</span>
           </div>
           <ul className="space-y-0.5">
             {(() => {

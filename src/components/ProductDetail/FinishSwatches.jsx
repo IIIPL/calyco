@@ -217,7 +217,7 @@ const FinishSwatches = ({ finishes, selectedFinish, onChange }) => {
 
       {/* Pro Tips */}
       <div className="mt-8 p-4 bg-blue-50 rounded-xl max-w-2xl mx-auto">
-        <h4 className="font-semibold text-blue-800 mb-2">💡 Finish Selection Tips</h4>
+        <h4 className="font-semibold text-blue-800 mb-2">Finish Selection Tips</h4>
         <ul className="text-sm text-blue-700 space-y-1 text-left">
           <li>• <strong>Matte:</strong> Hides imperfections, great for ceilings and low-traffic areas</li>
           <li>• <strong>Satin:</strong> Balanced durability and washability, perfect for living spaces</li>

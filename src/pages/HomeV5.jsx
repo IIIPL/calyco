@@ -109,11 +109,11 @@ const SERVICES = [
   { title: 'Floor Finishes',    desc: 'Durable, aesthetically rich coatings — epoxy, PU, and decorative options.',    to: '/services/interior-painting',      img: IMG_PAINTER },
 ];
 const STEPS = [
-  { num: '01', title: 'Schedule',          desc: 'Book a free slot — our expert reaches you within 24 hours.',           icon: '📅' },
-  { num: '02', title: 'Site Visit',        desc: 'We measure, assess walls, and understand your exact requirements.',     icon: '🏠' },
-  { num: '03', title: 'Colour Selection',  desc: 'Choose from 3,000+ shades with expert guidance and on-wall samples.',   icon: '🎨' },
-  { num: '04', title: 'Expert Painting',   desc: 'Verified painters deliver flawless results — with daily updates to you.', icon: '🖌️' },
-  { num: '05', title: 'Handover',          desc: 'Final inspection, touch-ups, and your 2-year warranty sign-off.',       icon: '✅' },
+  { num: '01', title: 'Schedule',          desc: 'Book a free slot — our expert reaches you within 24 hours.' },
+  { num: '02', title: 'Site Visit',        desc: 'We measure, assess walls, and understand your exact requirements.' },
+  { num: '03', title: 'Colour Selection',  desc: 'Choose from 3,000+ shades with expert guidance and on-wall samples.' },
+  { num: '04', title: 'Expert Painting',   desc: 'Verified painters deliver flawless results — with daily updates to you.' },
+  { num: '05', title: 'Handover',          desc: 'Final inspection, touch-ups, and your 2-year warranty sign-off.' },
 ];
 const TESTIMONIALS = [
   {
@@ -357,7 +357,7 @@ const HeroV5 = () => {
                     <Stars n={5} size="w-3 h-3" />
                   </div>
                   <p className="text-white text-xs font-bold leading-none">4.8 Rating</p>
-                  <p className="text-white/45 text-[9px] mt-0.5">15,000+ Reviews</p>
+                  <p className="text-white/45 text-[11px] mt-0.5">15,000+ Reviews</p>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -374,7 +374,7 @@ const HeroV5 = () => {
                   className="bg-[#F0C85A] rounded-2xl px-4 py-3 shadow-xl shadow-[#F0C85A]/30"
                 >
                   <p className="text-[#0F1221] text-xl font-black leading-none">15K+</p>
-                  <p className="text-[#0F1221]/70 text-[9px] font-semibold uppercase tracking-wider mt-0.5">Homes Painted</p>
+                  <p className="text-[#0F1221]/70 text-[11px] font-semibold uppercase tracking-wider mt-0.5">Homes Painted</p>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -461,7 +461,7 @@ const WhyCard = ({ item, i }) => {
         {item.icon}
       </div>
       <h3 className="text-base font-bold text-[#0F1221] mb-2">{item.label}</h3>
-      <p className="text-sm text-[#0F1221]/50 font-light leading-relaxed">{item.desc}</p>
+      <p className="text-sm text-[#0F1221]/70 font-light leading-relaxed">{item.desc}</p>
     </motion.div>
   );
 };
@@ -553,10 +553,8 @@ const ProcessStep = ({ step, i }) => {
       <div className="w-14 h-14 rounded-full bg-[#F0C85A] flex items-center justify-center mb-4 shadow-md shadow-[#F0C85A]/25 relative z-10">
         <span className="text-[#0F1221] text-lg font-black">{step.num}</span>
       </div>
-      {/* Icon */}
-      <div className="text-2xl mb-3">{step.icon}</div>
-      <h3 className="text-sm font-bold text-[#0F1221] mb-2">{step.title}</h3>
-      <p className="text-xs text-[#0F1221]/50 font-light leading-relaxed max-w-[140px]">{step.desc}</p>
+      <h3 className="text-sm font-bold text-[#0F1221] mb-2 mt-1">{step.title}</h3>
+      <p className="text-xs text-[#0F1221]/70 font-light leading-relaxed max-w-[140px]">{step.desc}</p>
     </motion.div>
   );
 };
@@ -607,7 +605,7 @@ const InspirationV5 = () => {
           <h2 className="text-[2rem] sm:text-[2.6rem] font-black text-[#0F1221] tracking-[-0.025em]">
             Ideas for Your Home
           </h2>
-          <p className="text-[#0F1221]/50 text-base font-light mt-3 max-w-md mx-auto">
+          <p className="text-[#0F1221]/70 text-base font-light mt-3 max-w-md mx-auto">
             Browse real transformations by our expert teams across India.
           </p>
         </FadeUp>
@@ -656,7 +654,7 @@ const TestiCard = ({ t, i }) => {
             <div className="text-[10px] text-[#0F1221]/40">{t.city}</div>
           </div>
         </div>
-        <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#493657] bg-[#493657]/8 px-2.5 py-1 rounded-full">
+        <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#493657] bg-[#493657]/8 px-2.5 py-1 rounded-full">
           {t.service}
         </span>
       </div>
@@ -721,7 +719,7 @@ const FaqItem = ({ item, i, open, setOpen }) => {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-[#0F1221]/55 font-light leading-relaxed">{item.a}</p>
+            <p className="pb-5 text-sm text-[#0F1221]/70 font-light leading-relaxed">{item.a}</p>
           </motion.div>
         )}
       </AnimatePresence>

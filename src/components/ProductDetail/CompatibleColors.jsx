@@ -93,7 +93,7 @@ const CompatibleColors = ({ colors }) => {
 
       {/* Color Tips */}
       <div className="mt-8 p-4 bg-gray-50 rounded-xl max-w-2xl mx-auto">
-        <h4 className="font-semibold text-gray-800 mb-2">🎨 Color Coordination Tips</h4>
+        <h4 className="font-semibold text-gray-800 mb-2">Color Coordination Tips</h4>
         <ul className="text-sm text-gray-700 space-y-1 text-left">
           <li>• Use the 60-30-10 rule: 60% dominant, 30% secondary, 10% accent</li>
           <li>• Consider the room's natural light when selecting colors</li>

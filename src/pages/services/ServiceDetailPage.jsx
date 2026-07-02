@@ -428,7 +428,7 @@ const ServiceDetailPage = () => {
                       {pkg.warranty} warranty
                     </span>
                   </div>
-                  <p className="text-xs text-[#0F1221]/50 font-medium mb-1">Best for: <span className="text-[#0F1221]/70">{pkg.bestFor}</span></p>
+                  <p className="text-xs text-[#0F1221]/70 font-medium mb-1">Best for: <span className="text-[#0F1221]/70">{pkg.bestFor}</span></p>
                   {!isFree && (
                     <p className="text-xs font-bold text-[#493657] mb-3">
                       ~{fmt(service.baseMin * pkg.multiplier)} – {fmt(service.baseMax * pkg.multiplier)}/{service.unit}
@@ -451,7 +451,7 @@ const ServiceDetailPage = () => {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-[#0F1221]/35 font-light">
+            <p className="text-xs text-[#0F1221]/70 font-light">
               Package inclusions and pricing confirmed after free site inspection and laser measurement. Rates shown are base rates before city factor.
             </p>
           </section>
@@ -510,7 +510,7 @@ const ServiceDetailPage = () => {
                     height="h-44"
                     initialPos={42}
                   />
-                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[9px] font-bold text-[#0F1221] bg-white px-2 py-0.5 rounded-full shadow-sm z-10 pointer-events-none">{card.location}</span>
+                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[11px] font-bold text-[#0F1221] bg-white px-2 py-0.5 rounded-full shadow-sm z-10 pointer-events-none">{card.location}</span>
                 </div>
                 <div className="p-4 space-y-2 text-xs">
                   <div className="flex gap-2">

@@ -185,7 +185,7 @@ const TechDownloads = ({ documents, specs }) => {
 
           {/* Additional Info */}
           <div className="bg-blue-50 rounded-xl p-4">
-            <h4 className="font-semibold text-blue-800 mb-2">📋 Document Information</h4>
+            <h4 className="font-semibold text-blue-800 mb-2">Document Information</h4>
             <ul className="text-sm text-blue-700 space-y-1 text-left">
               <li>• TDS contains detailed technical specifications</li>
               <li>• SDS includes safety and handling information</li>

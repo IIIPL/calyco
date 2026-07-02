@@ -147,7 +147,7 @@ const FeatureBadges = ({ features }) => {
 
       {/* Feature Benefits */}
       <div className="mt-8 p-4 bg-blue-50 rounded-xl max-w-3xl mx-auto">
-        <h4 className="font-semibold text-blue-800 mb-2">✨ What These Features Mean for You</h4>
+        <h4 className="font-semibold text-blue-800 mb-2">What These Features Mean for You</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-700 text-left">
           <div>
             <p className="font-medium">Health & Safety</p>

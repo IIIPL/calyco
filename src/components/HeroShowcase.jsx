@@ -14,7 +14,7 @@ const HeroShowcase = () => {
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-24 flex flex-col lg:flex-row items-center gap-12">
         <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.6}} className="flex-1">
           <p className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm mb-6">
-            <span aria-hidden>🌿</span>
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#F0C85A]" />
             <span className="sr-only">Eco badges</span>
             Eco-premium paints
           </p>

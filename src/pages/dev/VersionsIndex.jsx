@@ -39,7 +39,7 @@ export default function VersionsIndex() {
         <h1 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.02em] leading-[1.12] mb-3">
           Homepage versions.
         </h1>
-        <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md mb-10">
+        <p className="text-[#0F1221]/70 text-[14px] font-light leading-relaxed max-w-md mb-10">
           Every homepage design we&apos;ve built, preserved for reference. This page is unlisted — only people with the link can see it.
         </p>
 
@@ -55,9 +55,9 @@ export default function VersionsIndex() {
                 <div>
                   <p className="text-[15px] font-semibold text-[#0F1221] group-hover:text-[#493657] transition-colors">
                     {v.label}
-                    {v.live && <span className="ml-2 text-[9px] font-black uppercase tracking-[0.14em] text-[#25D366]">Live</span>}
+                    {v.live && <span className="ml-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#25D366]">Live</span>}
                   </p>
-                  <p className="text-[12px] text-[#0F1221]/40 font-light mt-0.5">{v.desc}</p>
+                  <p className="text-[12px] text-[#0F1221]/70 font-light mt-0.5">{v.desc}</p>
                 </div>
               </div>
               <span className="text-[#0F1221]/25 group-hover:text-[#F0C85A] group-hover:translate-x-1 transition-all">→</span>
@@ -65,7 +65,7 @@ export default function VersionsIndex() {
           ))}
         </div>
 
-        <p className="mt-10 text-[11px] text-[#0F1221]/30 font-light">
+        <p className="mt-10 text-[11px] text-[#0F1221]/70 font-light">
           These pages are kept out of the navbar, sitemap and search engines.
         </p>
       </div>

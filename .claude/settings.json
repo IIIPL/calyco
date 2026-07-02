@@ -45,7 +45,9 @@
       "Bash(robots\" || echo \"Checking for these files\")",
       "Bash(xargs -I{} grep -l \"pb-\" {})",
       "Bash(python fix_mojibake.py)",
-      "Bash(del \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\\\\fix_mojibake.py\")"
+      "Bash(del \"c:\\\\Users\\\\av074\\\\Downloads\\\\repo calyco\\\\calyco\\\\fix_mojibake.py\")",
+      "Bash(node -e \"const icons = require\\('lucide-react'\\); console.log\\(['Bricks','ChevronUp','Building2','Droplet','Sparkles','Shield','Calculator','Home','Palette','Radio','Ruler','CheckCircle2','Search','ClipboardList'].map\\(n => n + ': ' + \\(typeof icons[n]\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const icons = require\\('lucide-react'\\); console.log\\(['LayoutGrid','Layers','Grid2x2','Grid3x3','Blocks','Square'].map\\(n => n + ': ' + \\(typeof icons[n]\\)\\).join\\('\\\\n'\\)\\)\")"
     ]
   }
 }

@@ -167,7 +167,7 @@ const RelatedProducts = ({ products }) => {
 
       {/* Bundle Savings */}
       <div className="mt-8 p-6 bg-purple-50 rounded-2xl max-w-3xl mx-auto">
-        <h4 className="font-semibold text-purple-800 mb-2">💡 Bundle & Save</h4>
+        <h4 className="font-semibold text-purple-800 mb-2">Bundle & Save</h4>
         <p className="text-sm text-purple-700 mb-3">
           Purchase multiple products together and save up to 15% on your order. 
           Perfect for complete room makeovers and large projects.
@@ -182,7 +182,7 @@ const RelatedProducts = ({ products }) => {
 
       {/* Professional Services */}
       <div className="mt-8 p-4 bg-blue-50 rounded-xl max-w-2xl mx-auto">
-        <h4 className="font-semibold text-blue-800 mb-2">🛠️ Need Professional Help?</h4>
+        <h4 className="font-semibold text-blue-800 mb-2">Need Professional Help?</h4>
         <p className="text-sm text-blue-700 mb-3">
           Our team of professional painters can help with surface preparation, 
           application, and project completion.

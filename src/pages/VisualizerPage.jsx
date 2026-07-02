@@ -169,12 +169,12 @@ const ColorActionPanel = ({ color, room, canvasRef, onAddToQuote }) => {
 
       {/* ── Recommended product ── */}
       <div className="rounded-2xl border border-[#0F1221]/8 bg-white p-4">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#0F1221]/35 mb-3">Recommended product</p>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#0F1221]/70 mb-3">Recommended product</p>
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-lg flex-shrink-0 border border-[#0F1221]/8" style={{ backgroundColor: color.hex }} />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-[#0F1221] leading-snug">{product.name}</p>
-            <p className="text-[11px] text-[#0F1221]/45 font-light mt-0.5 leading-[1.5]">{product.reason}</p>
+            <p className="text-[11px] text-[#0F1221]/70 font-light mt-0.5 leading-[1.5]">{product.reason}</p>
             <span className="inline-block mt-1.5 text-[10px] font-bold uppercase tracking-[0.1em] rounded-full bg-[#493657]/8 text-[#493657] px-2 py-0.5">{product.tier} tier</span>
           </div>
         </div>
@@ -188,7 +188,7 @@ const ColorActionPanel = ({ color, room, canvasRef, onAddToQuote }) => {
 
       {/* ── Recommended package ── */}
       <div className="rounded-2xl border border-[#0F1221]/8 bg-[#FAFAF8] p-4">
-        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#0F1221]/35 mb-2">Recommended service package</p>
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#0F1221]/70 mb-2">Recommended service package</p>
         <div className="flex items-center justify-between gap-2 mb-2">
           <div className="flex items-center gap-2">
             <span className="text-lg">⭐</span>
@@ -196,7 +196,7 @@ const ColorActionPanel = ({ color, room, canvasRef, onAddToQuote }) => {
           </div>
           <span className="text-[10px] font-bold uppercase tracking-[0.08em] rounded-full bg-[#F0C85A]/20 text-[#7a6020] px-2.5 py-1">for {room.label}</span>
         </div>
-        <p className="text-xs text-[#0F1221]/50 font-light leading-[1.65] mb-3">
+        <p className="text-xs text-[#0F1221]/70 font-light leading-[1.65] mb-3">
           {room.package === 'Premium'
             ? 'Surface repair, damp-resist primer, 2-coat washable emulsion, supervisor check. 2-year warranty.'
             : 'Surface prep, primer, 2-coat emulsion, masking, cleanup. Workmanship warranty included.'}
@@ -382,8 +382,8 @@ const VisualizerPage = () => {
             ) : (
               <div className="rounded-2xl border border-dashed border-[#0F1221]/15 bg-[#FAFAF8] flex flex-col items-center justify-center p-8 text-center min-h-[200px]">
                 <div className="w-10 h-10 rounded-xl bg-[#0F1221]/8 mb-3" />
-                <p className="text-sm font-semibold text-[#0F1221]/50">Pick a colour to see options</p>
-                <p className="text-xs text-[#0F1221]/35 font-light mt-1">Booking, WhatsApp share and product recommendations appear here.</p>
+                <p className="text-sm font-semibold text-[#0F1221]/70">Pick a colour to see options</p>
+                <p className="text-xs text-[#0F1221]/70 font-light mt-1">Booking, WhatsApp share and product recommendations appear here.</p>
               </div>
             )}
           </div>

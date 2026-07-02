@@ -428,13 +428,13 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
 
       {/* City */}
       <div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-2">Your city</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-2">Your city</p>
         <CitySelect value={city} onChange={setCity} />
       </div>
 
       {/* Service category cards */}
       <div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">What do you want to paint?</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-3">What do you want to paint?</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
           {CALC_SERVICES.map(svc => {
             const active = serviceKey === svc.key;
@@ -465,14 +465,14 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
                       </motion.div>
                     )}
                   </AnimatePresence>
-                  <span className="absolute bottom-2 left-2.5 text-[9px] font-bold text-white/80 drop-shadow">
+                  <span className="absolute bottom-2 left-2.5 text-[11px] font-bold text-white/80 drop-shadow">
                     From {svc.fromPrice}
                   </span>
                 </div>
                 {/* Text row */}
                 <div className={`flex-1 flex flex-col justify-center px-3.5 py-3 sm:px-3 sm:pt-2.5 sm:pb-3 transition-colors duration-200 ${active ? 'bg-[#FFF8DC]' : 'bg-white'}`}>
                   <p className="text-[13px] sm:text-[12px] font-bold leading-tight text-[#0F1221]">{svc.label}</p>
-                  <p className="text-[11px] sm:text-[10px] font-light text-[#0F1221]/45 mt-0.5 leading-snug">{svc.desc}</p>
+                  <p className="text-[11px] sm:text-[10px] font-light text-[#0F1221]/70 mt-0.5 leading-snug">{svc.desc}</p>
                 </div>
                 {/* Gold bottom accent bar */}
                 <div className={`hidden sm:block h-[3px] transition-all duration-200 ${active ? 'opacity-100' : 'opacity-0'}`} style={{ background: GOLD }} />
@@ -484,7 +484,7 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
 
       {/* Carpet area input */}
       <div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">Carpet area of your house</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-3">Carpet area of your house</p>
         <div className="relative mb-2">
           <input
             type="number" min="1" value={carpetArea}
@@ -524,7 +524,7 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
         {showPaintType && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.22 }} className="overflow-hidden">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-3">Type of painting</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-3">Type of painting</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {PAINT_TYPES.map(pt => {
                 const active = paintType === pt.key;
@@ -545,7 +545,7 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
                     </div>
                     <div className="min-w-0">
                       <p className={`text-[13px] font-semibold leading-tight ${active ? 'text-white' : 'text-[#0F1221]'}`}>{pt.label}</p>
-                      <p className={`text-[11px] font-light mt-0.5 leading-snug ${active ? 'text-white/50' : 'text-[#0F1221]/40'}`}>{pt.desc}</p>
+                      <p className={`text-[11px] font-light mt-0.5 leading-snug ${active ? 'text-white/50' : 'text-[#0F1221]/70'}`}>{pt.desc}</p>
                     </div>
                   </button>
                 );
@@ -574,7 +574,7 @@ function Step1({ city, setCity, serviceKey, setServiceKey, carpetArea, setCarpet
 function Step2({ preference, setPreference, onNext, onBack }) {
   return (
     <div className="p-6 sm:p-8">
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/30 mb-1.5">Finish quality</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-1.5">Finish quality</p>
       <p className="text-[22px] font-light text-[#0F1221] tracking-tight mb-6">How would you describe your preference?</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
@@ -612,7 +612,7 @@ function Step2({ preference, setPreference, onNext, onBack }) {
                   {pref.popular
                     ? <span className="text-[7px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full flex-shrink-0 shadow-sm"
                         style={{ background: GOLD, color: DARK }}>Popular</span>
-                    : <span className="text-[9px] font-light text-white/50">{pref.tag}</span>
+                    : <span className="text-[11px] font-light text-white/50">{pref.tag}</span>
                   }
                 </div>
                 <p className="text-white/65 text-[11px] leading-snug relative z-10">{pref.tagline}</p>
@@ -707,7 +707,7 @@ function Step3({
           </div>
           <p className="text-[10px] font-bold uppercase tracking-[0.25em] mb-2" style={{ color: PURPLE }}>Almost there</p>
           <h2 className="text-[22px] font-light text-[#0F1221] tracking-tight mb-1">Get your estimate<br />on WhatsApp</h2>
-          <p className="text-[13px] text-[#0F1221]/40 font-light">We'll send you a detailed quote instantly.</p>
+          <p className="text-[13px] text-[#0F1221]/70 font-light">We'll send you a detailed quote instantly.</p>
         </div>
 
         <div className="space-y-3 mb-5">
@@ -748,7 +748,7 @@ function Step3({
           </div>
 
           <div className="mb-4">
-            <p className="text-[11px] font-semibold text-[#0F1221]/50 uppercase tracking-[0.18em] mb-2">
+            <p className="text-[11px] font-semibold text-[#0F1221]/70 uppercase tracking-[0.18em] mb-2">
               Visit Location
             </p>
             <LocationPicker onLocationSelect={(details) => {
@@ -789,7 +789,7 @@ function Step3({
 
         {/* ── File / Video Upload ─────────────────────────────────────────── */}
         <div className="mb-6">
-          <p className="text-[11px] font-semibold text-[#0F1221]/50 uppercase tracking-[0.18em] mb-2">
+          <p className="text-[11px] font-semibold text-[#0F1221]/70 uppercase tracking-[0.18em] mb-2">
             Photos / Videos <span className="normal-case font-normal tracking-normal text-[#0F1221]/30">(optional, up to {MAX_FILES} files · {MAX_FILE_MB} MB each)</span>
           </p>
 
@@ -817,10 +817,10 @@ function Step3({
                   d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
               </svg>
             </div>
-            <p className="text-[13px] font-medium text-[#0F1221]/55">
+            <p className="text-[13px] font-medium text-[#0F1221]/70">
               Click to upload <span className="text-[#0F1221]/30 font-normal">or drag & drop</span>
             </p>
-            <p className="text-[11px] text-[#0F1221]/30 mt-0.5">Photos or videos of your home</p>
+            <p className="text-[11px] text-[#0F1221]/70 mt-0.5">Photos or videos of your home</p>
           </div>
 
           {/* Size error */}
@@ -844,7 +844,7 @@ function Step3({
                           <path strokeLinecap="round" strokeLinejoin="round"
                             d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
                         </svg>
-                        <p className="text-[9px] text-[#0F1221]/40 text-center leading-tight line-clamp-2">{f.name}</p>
+                        <p className="text-[11px] text-[#0F1221]/70 text-center leading-tight line-clamp-2">{f.name}</p>
                       </div>
                     )}
                     {/* Remove */}
@@ -854,7 +854,7 @@ function Step3({
                       ×
                     </button>
                     {/* Size badge */}
-                    <span className="absolute bottom-1 left-1 text-[9px] bg-black/50 text-white rounded px-1 leading-4">
+                    <span className="absolute bottom-1 left-1 text-[11px] bg-black/50 text-white rounded px-1 leading-4">
                       {(f.size / (1024 * 1024)).toFixed(1)}MB
                     </span>
                   </div>
@@ -882,7 +882,7 @@ function Step3({
           ) : 'See My Estimate →'}
         </button>
 
-        <p className="text-center text-[11px] text-[#0F1221]/20 mt-4 font-light">
+        <p className="text-center text-[11px] text-[#0F1221]/70 mt-4 font-light">
           No spam, ever. We respect your privacy.
         </p>
       </div>
@@ -940,7 +940,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
   if (!result || !result.avg) {
     return (
       <div className="p-8 text-center">
-        <p className="text-[14px] text-[#0F1221]/50 font-light mb-5">
+        <p className="text-[14px] text-[#0F1221]/70 font-light mb-5">
           Couldn't compute an estimate. Try different selections.
         </p>
         <button onClick={onRestart}
@@ -971,7 +971,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
         <>
           <div className="flex items-center gap-2.5">
             <span className="w-5 h-px" style={{ background: GOLD }} />
-            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
             <span className="w-5 h-px" style={{ background: GOLD }} />
           </div>
 
@@ -979,7 +979,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
             <h3 className="text-[19px] font-semibold text-[#0F1221] leading-snug tracking-tight mb-2">
               Get Your Complete<br />Painting Quotation
             </h3>
-            <p className="text-[12px] text-[#0F1221]/45 font-light leading-relaxed">
+            <p className="text-[12px] text-[#0F1221]/70 font-light leading-relaxed">
               Schedule a free site inspection for a thorough, fixed quote.
             </p>
           </div>
@@ -1000,7 +1000,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
             ) : (
               <>
                 <motion.button onClick={handlePayOnline} className="w-full relative" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#FF3B30] text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full z-20 shadow-sm whitespace-nowrap">
+                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-[#FF3B30] text-white text-[11px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full z-20 shadow-sm whitespace-nowrap">
                     Special Offer: Just ₹99
                   </div>
                   <div className="w-full py-3.5 rounded-xl text-[13px] font-bold text-[#0F1221] text-center transition-all relative overflow-hidden"
@@ -1071,7 +1071,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
               style={{ top: s.top, right: s.right, width: s.size, height: s.size, background: GOLD }} />
           ))}
 
-          <p className="text-[13px] font-bold uppercase tracking-[0.24em] text-[#0F1221]/40 mb-3 relative z-10">
+          <p className="text-[13px] font-bold uppercase tracking-[0.24em] text-[#0F1221]/70 mb-3 relative z-10">
             Your Estimated Cost
           </p>
 
@@ -1079,7 +1079,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
             <CountPrice target={result.avg} />
           </h2>
 
-          <p className="text-[13px] text-[#0F1221]/40 font-light relative z-10">
+          <p className="text-[13px] text-[#0F1221]/70 font-light relative z-10">
             Final price confirmed after free site inspection
           </p>
         </motion.div>
@@ -1125,7 +1125,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
 
         {/* Recommended products */}
         <motion.div {...stagger(4)}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/30 mb-3">Recommended Products</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/70 mb-3">Recommended Products</p>
           <div className="flex gap-3 flex-wrap">
             {prods.map((p, i) => (
               <motion.div key={p.name}
@@ -1143,7 +1143,7 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
                     <span className="relative z-10 drop-shadow-sm">{p.brand}</span>
                   </div>
                 </div>
-                <p className="text-[12px] text-center text-[#0F1221]/45 leading-tight line-clamp-2">{p.name}</p>
+                <p className="text-[12px] text-center text-[#0F1221]/70 leading-tight line-clamp-2">{p.name}</p>
               </motion.div>
             ))}
           </div>
@@ -1179,11 +1179,11 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
 
               <div className="px-4 py-3.5">
                 {uploadState === 'uploading' && (
-                  <p className="text-[12px] text-[#0F1221]/40 font-light">Uploading to Google Drive…</p>
+                  <p className="text-[12px] text-[#0F1221]/70 font-light">Uploading to Google Drive…</p>
                 )}
                 {folderUrl && (
                   <>
-                    <p className="text-[11px] text-[#0F1221]/40 font-light mb-2.5">
+                    <p className="text-[11px] text-[#0F1221]/70 font-light mb-2.5">
                       {filesCount} file{filesCount > 1 ? 's' : ''} saved to Drive. Calyco will review them before your inspection.
                     </p>
                     {folderUrl !== 'saved' ? (
@@ -1265,7 +1265,7 @@ function StepProgress({ step }) {
                   ? <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                   : s}
               </div>
-              <span className={`text-[9px] font-bold uppercase tracking-[0.18em] hidden sm:block transition-all ${
+              <span className={`text-[11px] font-bold uppercase tracking-[0.18em] hidden sm:block transition-all ${
                 current ? 'text-[#0F1221]' : done ? 'text-[#0F1221]/50' : 'text-[#0F1221]/20'
               }`}>
                 {label}
@@ -1578,7 +1578,7 @@ export default function BudgetCalculator() {
             Know your painting cost<br />
             <span style={{ color: PURPLE }}>before you commit.</span>
           </h1>
-          <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md mb-5">
+          <p className="text-[#0F1221]/70 text-[14px] font-light leading-relaxed max-w-md mb-5">
             Enter your house size, pick a service and finish — get a real cost breakdown in under a minute.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -1668,7 +1668,7 @@ export default function BudgetCalculator() {
           </div>
         </div>
 
-        <p className="text-center text-[11px] text-[#0F1221]/20 mt-5 font-light">
+        <p className="text-center text-[11px] text-[#0F1221]/70 mt-5 font-light">
           Estimates are indicative. Final price locked after free on-site inspection.
         </p>
       </section>
@@ -1695,7 +1695,7 @@ export default function BudgetCalculator() {
                 </div>
                 <div>
                   <p className="text-[13px] font-semibold text-[#0F1221] mb-1">{p.label}</p>
-                  <p className="text-[12px] font-light text-[#0F1221]/45 leading-relaxed">{p.desc}</p>
+                  <p className="text-[12px] font-light text-[#0F1221]/70 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -1708,7 +1708,7 @@ export default function BudgetCalculator() {
         <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-14 py-14 sm:py-16">
           <div className="flex items-center gap-2.5 mb-3">
             <span className="w-6 h-px" style={{ background: GOLD }} />
-            <span className="text-[9px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.26em]" style={{ color: PURPLE }}>Next Step</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-9">
             <h2 className="text-[1.6rem] sm:text-[2rem] font-light text-[#0F1221] leading-snug tracking-tight">
@@ -1730,7 +1730,7 @@ export default function BudgetCalculator() {
               <div key={step.n} className="rounded-2xl bg-[#FAFAF8] border border-[#0F1221]/6 p-5">
                 <span className="text-[10px] font-bold tracking-[0.12em] block mb-3" style={{ color: GOLD }}>{step.n}</span>
                 <h3 className="text-sm font-semibold text-[#0F1221] mb-1.5">{step.t}</h3>
-                <p className="text-xs text-[#0F1221]/45 font-light leading-[1.7]">{step.d}</p>
+                <p className="text-xs text-[#0F1221]/70 font-light leading-[1.7]">{step.d}</p>
               </div>
             ))}
           </div>

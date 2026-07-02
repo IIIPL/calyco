@@ -40,7 +40,7 @@ const ProjectCard = ({ project, compact = false }) => {
             <div className="w-full h-full bg-gradient-to-br from-[#F0EDE8] to-[#E8E4DF]" />
           )}
           {/* After badge */}
-          <div className="absolute top-3 right-3 rounded px-2 py-1 bg-[#493657]/85 text-white text-[9px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
+          <div className="absolute top-3 right-3 rounded px-2 py-1 bg-[#493657]/85 text-white text-[11px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
             After
           </div>
         </div>
@@ -103,7 +103,7 @@ const ProjectCard = ({ project, compact = false }) => {
           <p className="text-xs text-[#0F1221]/60 font-light leading-[1.75] italic border-l-2 border-[#F0C85A] pl-3">
             &quot;{project.customerQuote}&quot;
           </p>
-          <p className="text-[11px] font-bold text-[#0F1221]/50 mt-1.5 pl-3">— {project.customerName}</p>
+          <p className="text-[11px] font-bold text-[#0F1221]/70 mt-1.5 pl-3">— {project.customerName}</p>
         </blockquote>
 
         {/* CTAs */}
@@ -164,7 +164,7 @@ const ProjectGallerySection = ({
               <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] tracking-[-0.01em]">
                 Real Homes.<br className="sm:hidden" /> Real Transformations.
               </h2>
-              <p className="mt-3 text-sm text-[#0F1221]/50 font-light max-w-lg leading-[1.75]">
+              <p className="mt-3 text-sm text-[#0F1221]/70 font-light max-w-lg leading-[1.75]">
                 {compact
                   ? 'Real project photos from homes we\'ve transformed. Visit the gallery to drag and compare before & after.'
                   : 'Drag the slider on each card to compare before and after. Every project includes city, service, area, time and budget details.'}

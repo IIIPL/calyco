@@ -56,17 +56,17 @@ export default function ShippingDelivery() {
             </p>
             <div className="grid gap-4 md:grid-cols-3 mt-8">
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
-                <div className="text-2xl mb-2">🇮🇳</div>
+                <span className="block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-3" />
                 <h3 className="font-semibold text-[#0F1221] mb-1">Pan-India Coverage</h3>
                 <p className="text-sm text-[#31274B]/80">Delivering to 29 states and 8 union territories</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
-                <div className="text-2xl mb-2">📦</div>
+                <span className="block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-3" />
                 <h3 className="font-semibold text-[#0F1221] mb-1">Secure Packaging</h3>
                 <p className="text-sm text-[#31274B]/80">Eco-friendly materials with spill-proof protection</p>
               </div>
               <div className="rounded-xl bg-[#FBF9F6] p-5 border border-[#0F1221]/10">
-                <div className="text-2xl mb-2">🚚</div>
+                <span className="block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-3" />
                 <h3 className="font-semibold text-[#0F1221] mb-1">Trusted Partners</h3>
                 <p className="text-sm text-[#31274B]/80">Working with India's leading courier services</p>
               </div>
@@ -170,7 +170,7 @@ export default function ShippingDelivery() {
               {/* Free Delivery */}
               <div className="rounded-2xl bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/5 p-6 shadow-sm border-l-4 border-[#D4AF37]">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-[#0F1221]">🎉 Free Standard Delivery</h3>
+                  <h3 className="text-xl font-bold text-[#0F1221]">Free Standard Delivery</h3>
                   <span className="rounded-full bg-[#D4AF37] px-3 py-1 text-xs font-bold text-white">MOST POPULAR</span>
                 </div>
                 <p className="text-[#31274B]/85 mb-3 text-lg">
@@ -199,7 +199,7 @@ export default function ShippingDelivery() {
 
               {/* Standard Delivery */}
               <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#0F1221]">
-                <h3 className="text-xl font-bold text-[#0F1221] mb-3">📦 Standard Delivery (Paid)</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">Standard Delivery (Paid)</h3>
                 <p className="text-[#31274B]/85 mb-3">
                   <span className="font-bold text-[#0F1221]">Flat ₹150 delivery charge</span> for orders below ₹2,500 to all standard serviceable locations.
                 </p>
@@ -215,7 +215,7 @@ export default function ShippingDelivery() {
               {/* Express Delivery */}
               <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#0F1221]">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-[#0F1221]">⚡ Express Delivery</h3>
+                  <h3 className="text-xl font-bold text-[#0F1221]">Express Delivery</h3>
                   <span className="rounded-full bg-[#0F1221] px-3 py-1 text-xs font-bold text-white">METRO ONLY</span>
                 </div>
                 <p className="text-[#31274B]/85 mb-3">
@@ -232,7 +232,7 @@ export default function ShippingDelivery() {
 
               {/* Remote Areas */}
               <div className="rounded-2xl bg-white p-6 shadow-sm border-l-4 border-[#D4AF37]">
-                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🏔️ Remote Area Delivery</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">Remote Area Delivery</h3>
                 <p className="text-[#31274B]/85 mb-3">
                   <span className="font-bold text-[#D4AF37]">Additional ₹300 surcharge</span> for deliveries to remote, hilly, island, or hard-to-reach locations.
                 </p>
@@ -247,7 +247,7 @@ export default function ShippingDelivery() {
 
               {/* Bulk Orders */}
               <div className="rounded-2xl bg-[#FBF9F6] p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-[#0F1221] mb-3">🏗️ Bulk & Commercial Orders</h3>
+                <h3 className="text-xl font-bold text-[#0F1221] mb-3">Bulk & Commercial Orders</h3>
                 <p className="text-[#31274B]/85 mb-3">
                   For large-scale projects, commercial orders, or dealer shipments, we offer customized freight solutions with negotiated rates.
                 </p>
@@ -325,7 +325,7 @@ export default function ShippingDelivery() {
 
             <div className="space-y-4">
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#D4AF37]">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🌧️ Weather & Natural Disasters</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Weather & Natural Disasters</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Extreme weather conditions (heavy rains, floods, cyclones, snowfall) or natural disasters may cause temporary suspension or delay in courier services.
                 </p>
@@ -335,7 +335,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🏠 Address & Contact Issues</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Address & Contact Issues</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Incorrect or incomplete address, unreachable phone number, or unavailability at delivery time can cause delivery failures.
                 </p>
@@ -345,7 +345,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🎄 Festive & Peak Season Delays</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Festive & Peak Season Delays</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   During major festivals (Diwali, Holi, Eid), courier services experience high volumes that may add 1-3 business days to delivery timelines.
                 </p>
@@ -355,7 +355,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-2xl bg-[#FBF9F6] p-6 border-l-4 border-[#0F1221]">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">🚧 Regional Disruptions</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Regional Disruptions</h3>
                 <p className="text-[#31274B]/85 text-sm mb-2">
                   Local strikes, political unrest, road blockages, or restricted zones can temporarily affect delivery operations in specific areas.
                 </p>
@@ -366,7 +366,7 @@ export default function ShippingDelivery() {
             </div>
 
             <div className="mt-8 rounded-xl bg-[#0F1221] p-6 text-white">
-              <h3 className="text-lg font-semibold mb-2">🤝 Our Commitment to You</h3>
+              <h3 className="text-lg font-semibold mb-2">Our Commitment to You</h3>
               <p className="text-white/90 text-sm mb-2">
                 If your order is significantly delayed beyond the estimated delivery date (7+ business days), please contact our support team via <a href="https://wa.me/918796777399" className="underline font-semibold" target="_blank" rel="noopener noreferrer">WhatsApp Message</a> or <a href="mailto:support@calycopaints.com" className="underline">support@calycopaints.com</a>. We'll investigate and provide a resolution.
               </p>
@@ -387,7 +387,7 @@ export default function ShippingDelivery() {
 
             <div className="grid md:grid-cols-3 gap-6">
               <div className="rounded-xl bg-white p-6 shadow-sm">
-                <div className="text-3xl mb-3">📦</div>
+                <span className="block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Multi-Layer Protection</h3>
                 <p className="text-sm text-[#31274B]/85">
                   Every paint container is individually sealed with tamper-proof lids, wrapped in bubble wrap or foam inserts, and placed in sturdy corrugated cartons.
@@ -395,7 +395,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
-                <div className="text-3xl mb-3">♻️</div>
+                <span className="block h-[3px] w-10 rounded-full bg-emerald-600 mb-4" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Eco-Friendly Materials</h3>
                 <p className="text-sm text-[#31274B]/85">
                   We use recyclable corrugated boxes, biodegradable fillers, and minimal plastic packaging. Our materials are FSC-certified and sustainably sourced.
@@ -403,7 +403,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-xl bg-white p-6 shadow-sm">
-                <div className="text-3xl mb-3">✅</div>
+                <span className="block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Safety Compliance</h3>
                 <p className="text-sm text-[#31274B]/85">
                   All shipments comply with hazardous material transport regulations. Water-based and low-VOC products are packed according to safety guidelines.
@@ -423,23 +423,17 @@ export default function ShippingDelivery() {
 
             <div className="grid gap-6 md:grid-cols-3 mb-10">
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0F1221] text-white text-2xl">
-                  📦
-                </div>
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-[#0F1221]" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Safe Handling</h3>
                 <p className="text-sm text-[#31274B]/85">Specialized packaging designed for liquid paint products to prevent leaks, spills, and breakage during transit.</p>
               </div>
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#D4AF37] text-white text-2xl">
-                  ⏱️
-                </div>
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-[#D4AF37]" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">On-Time Delivery</h3>
                 <p className="text-sm text-[#31274B]/85">Trusted logistics partners ensure reliable delivery within promised timelines--98% on-time delivery rate.</p>
               </div>
               <div className="rounded-2xl bg-[#FBF9F6] p-6 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#0F1221] text-white text-2xl">
-                  💬
-                </div>
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-[#0F1221]" />
                 <h3 className="text-lg font-bold text-[#0F1221] mb-2">Dedicated Support</h3>
                 <p className="text-sm text-[#31274B]/85">Responsive customer service team available for any order or delivery questions--reach us 7 days a week.</p>
               </div>
@@ -447,7 +441,7 @@ export default function ShippingDelivery() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="rounded-xl bg-[#FBF9F6] p-6">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">🛡️ Insurance & Protection</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">Insurance & Protection</h3>
                 <p className="text-sm text-[#31274B]/85 mb-2">
                   All shipments are insured against loss or damage during transit up to the full order value. In the rare event of damage, we process replacements or refunds within 48 hours.
                 </p>
@@ -457,7 +451,7 @@ export default function ShippingDelivery() {
               </div>
 
               <div className="rounded-xl bg-[#FBF9F6] p-6">
-                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">📝 Proof of Delivery</h3>
+                <h3 className="text-lg font-semibold text-[#0F1221] mb-3">Proof of Delivery</h3>
                 <p className="text-sm text-[#31274B]/85 mb-2">
                   Signed proof of delivery (POD) is captured digitally by our courier partners. For contactless deliveries, a photo of the delivered package is taken.
                 </p>
@@ -484,13 +478,13 @@ export default function ShippingDelivery() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                📱 WhatsApp Message
+                WhatsApp Message
               </a>
               <a
                 href="mailto:support@calycopaints.com"
-                className="inline-block rounded-xl border-2 border-white/30 px-8 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center rounded-xl border-2 border-white/30 px-8 py-3 text-base font-semibold text-white transition hover:bg-white/10"
               >
-                ✉️ Email: support@calycopaints.com
+                Email: support@calycopaints.com
               </a>
             </div>
             <p className="text-sm text-white/80 text-center mb-4">

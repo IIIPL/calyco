@@ -103,7 +103,7 @@ export const CartModal = ({ isOpen, onClose }) => {
             <div className="flex-1 overflow-y-auto">
               {(!items || items.length === 0) ? (
                 <div className="p-6 sm:p-8 text-center">
-                  <div className="text-6xl mb-4" aria-hidden="true">🛒</div>
+                  <span className="mx-auto mb-4 block h-[3px] w-12 rounded-full bg-gray-300" aria-hidden="true" />
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">Your cart is empty</h3>
                   <p className="text-gray-500">Add some products to get started!</p>
                   <button

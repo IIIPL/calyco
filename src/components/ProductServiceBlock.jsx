@@ -153,7 +153,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
           <div className="rounded-2xl border border-[#0F1221]/8 bg-[#FAFAF8] overflow-hidden">
             <div className="px-5 py-4 border-b border-[#0F1221]/8 bg-white">
               <h2 className="text-lg font-semibold text-[#0F1221] tracking-[-0.01em]">Product Guide</h2>
-              <p className="text-xs text-[#0F1221]/45 font-light mt-0.5">Specifications, compatibility and usage guide</p>
+              <p className="text-xs text-[#0F1221]/70 font-light mt-0.5">Specifications, compatibility and usage guide</p>
             </div>
             <div className="divide-y divide-[#0F1221]/6">
 
@@ -161,7 +161,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
               <div className="flex gap-4 px-5 py-4">
                 <div className="w-8 h-8 rounded-lg bg-[#0F1221] flex items-center justify-center flex-shrink-0 mt-0.5"><IconInteriorPaint className="w-4 h-4 text-[#F0C85A]" /></div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Best used for</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mb-1">Best used for</p>
                   <p className="text-sm text-[#0F1221]/70 font-light leading-[1.65]">{cfg.bestFor}</p>
                 </div>
               </div>
@@ -170,7 +170,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
               <div className="flex gap-4 px-5 py-4">
                 <div className="w-8 h-8 rounded-lg bg-[#493657] flex items-center justify-center flex-shrink-0 mt-0.5"><IconFurnitureMask className="w-4 h-4 text-white" /></div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-2">Recommended rooms</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mb-2">Recommended rooms</p>
                   <div className="flex flex-wrap gap-1.5">
                     {cfg.recommendedRooms.map((r) => (
                       <span key={r} className="rounded-full border border-[#0F1221]/10 bg-white px-2.5 py-1 text-xs font-medium text-[#0F1221]/60">
@@ -185,7 +185,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
               <div className="flex gap-4 px-5 py-4">
                 <div className="w-8 h-8 rounded-lg bg-[#1a4a8a] flex items-center justify-center flex-shrink-0 mt-0.5"><IconLaserRuler className="w-4 h-4 text-white" /></div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Approx. coverage</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mb-1">Approx. coverage</p>
                   <p className="text-sm text-[#0F1221]/70 font-medium">{cfg.coverage}</p>
                 </div>
               </div>
@@ -194,7 +194,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
               <div className="flex gap-4 px-5 py-4">
                 <div className="w-8 h-8 rounded-lg bg-[#4a1a6a] flex items-center justify-center flex-shrink-0 mt-0.5"><IconSparkle className="w-4 h-4 text-white" /></div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-2">Finish type</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mb-2">Finish type</p>
                   <div className="flex flex-wrap gap-1.5">
                     {cfg.finishTypes.map((f) => (
                       <span key={f} className="rounded-full bg-[#493657]/8 text-[#493657] px-2.5 py-1 text-xs font-semibold">
@@ -209,7 +209,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
               <div className="flex gap-4 px-5 py-4">
                 <div className="w-8 h-8 rounded-lg bg-[#998850] flex items-center justify-center flex-shrink-0 mt-0.5"><IconWarrantyShield className="w-4 h-4 text-white" /></div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/35 mb-1">Warranty</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0F1221]/70 mb-1">Warranty</p>
                   <p className="text-sm text-[#0F1221]/70 font-light leading-[1.65]">{cfg.warranty}</p>
                 </div>
               </div>
@@ -233,7 +233,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
           {/* Professional application block */}
           <div className="rounded-2xl border border-[#F0C85A]/35 bg-gradient-to-br from-[#FFFBEF] to-[#FFF8E2] p-6">
             <div className="flex items-start gap-3 mb-4">
-              <span className="text-2xl flex-shrink-0">🎨</span>
+              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#D4AF37]" />
               <div>
                 <h3 className="font-bold text-[#0F1221] text-base leading-snug">Want this finish applied professionally?</h3>
                 <p className="text-sm text-[#0F1221]/60 font-light mt-1.5 leading-[1.7]">
@@ -266,7 +266,7 @@ const ProductServiceBlock = ({ productName = 'this product', productType }) => {
                 Ask on WhatsApp
               </a>
             </div>
-            <p className="text-[10px] text-[#0F1221]/35 font-light mt-3 text-center">
+            <p className="text-[10px] text-[#0F1221]/70 font-light mt-3 text-center">
               Free site inspection · Fixed written quote · Verified painters
             </p>
           </div>

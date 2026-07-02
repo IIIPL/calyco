@@ -354,7 +354,7 @@ const CoverageCalc = ({
 
       {/* Tips */}
       <div className="mt-8 p-4 bg-blue-50 rounded-xl">
-        <h4 className="font-semibold text-blue-800 mb-2">💡 Pro Tips</h4>
+        <h4 className="font-semibold text-blue-800 mb-2">Pro Tips</h4>
         <ul className="text-sm text-blue-700 space-y-1">
           <li>• Measure the actual wall area, not floor area</li>
           <li>• Add 10-15% extra for cutting in and touch-ups</li>

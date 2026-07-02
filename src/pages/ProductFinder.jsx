@@ -20,7 +20,6 @@ const ProductFinder = () => {
   const products = {
     latexPaint: {
       name: 'Calyco Latex Paint',
-      icon: '🎨',
       tagline: 'Premium Interior Paint for Modern Living Spaces',
       benefits: [
         'One-coat coverage for faster project completion',
@@ -42,7 +41,6 @@ const ProductFinder = () => {
     },
     stainSealer: {
       name: 'Calyco Waterproofing Sealer',
-      icon: '🛡️',
       tagline: 'Heavy-Duty Multi-Surface Protection for Demanding Environments',
       benefits: [
         'Multi-surface adhesion: concrete, metal, wood, plaster, asphalt, tile',
@@ -65,7 +63,6 @@ const ProductFinder = () => {
     },
     waterproofSealer: {
       name: 'Calyco Waterproof Sealer',
-      icon: '💧',
       tagline: 'Maximum Moisture Protection & Waterproofing Technology',
       benefits: [
         '100% waterproof barrier prevents water infiltration',
@@ -293,8 +290,8 @@ const ProductFinder = () => {
               RECOMMENDED
             </div>
 
-            <div className="flex items-center justify-center w-full max-w-md h-64 mx-auto mb-8 bg-gradient-to-br from-[#F9F9F7] to-[#e8f5e9] rounded-2xl text-8xl">
-              {product.icon}
+            <div className="flex items-center justify-center w-full max-w-md h-64 mx-auto mb-8 bg-gradient-to-br from-[#F9F9F7] to-[#e8f5e9] rounded-2xl">
+              <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-[#493657] to-[#D4AF37] shadow-lg" />
             </div>
 
             <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 text-center">
@@ -356,15 +353,15 @@ const ProductFinder = () => {
           {/* Trust Badges */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white rounded-2xl p-8 shadow-lg mb-12">
             <div className="text-center">
-              <div className="text-5xl mb-3">🌱</div>
+              <span className="mx-auto mb-3 block h-[3px] w-10 rounded-full bg-emerald-600" />
               <div className="font-bold text-gray-900">Low-VOC Certified</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-3">🛡️</div>
+              <span className="mx-auto mb-3 block h-[3px] w-10 rounded-full bg-[#493657]" />
               <div className="font-bold text-gray-900">10-Year Warranty</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-3">♻️</div>
+              <span className="mx-auto mb-3 block h-[3px] w-10 rounded-full bg-emerald-600" />
               <div className="font-bold text-gray-900">Eco-Friendly Formula</div>
             </div>
           </div>

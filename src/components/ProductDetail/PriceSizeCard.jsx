@@ -213,10 +213,6 @@ const PriceSizeCard = ({
           Add to Cart
         </motion.button>
 
-        {/* Mobile Sticky Note */}
-        <div className="lg:hidden text-center text-sm text-gray-500">
-          <p>💡 This CTA will be sticky on mobile devices</p>
-        </div>
       </div>
     </div>
   );

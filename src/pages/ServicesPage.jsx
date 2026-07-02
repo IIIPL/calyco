@@ -102,7 +102,7 @@ const ModalServiceCard = ({ service, cat, onCardClick }) => {
           <div className="flex items-center gap-1">
             <span className="text-[#F0C85A] text-[10px] leading-none">★</span>
             <span className="text-[9.5px] font-semibold text-gray-500">{r.r}</span>
-            <span className="text-[9px] text-gray-400">({r.n})</span>
+            <span className="text-[11px] text-gray-400">({r.n})</span>
           </div>
         </div>
       </Link>
@@ -141,7 +141,7 @@ const CategoryCard = ({ cat, idx, onOpen }) => {
         <span className="text-[28px] sm:text-[34px] font-black leading-none select-none pointer-events-none text-white/15">
           {num}
         </span>
-        <span className="text-[9px] font-black uppercase tracking-[0.18em] rounded-full px-2.5 py-1 backdrop-blur-sm bg-[#0F1221]/40 text-white/75 border border-white/15">
+        <span className="text-[11px] font-black uppercase tracking-[0.18em] rounded-full px-2.5 py-1 backdrop-blur-sm bg-[#0F1221]/40 text-white/75 border border-white/15">
           {cat.slugs.length} {cat.slugs.length === 1 ? 'service' : 'services'}
         </span>
       </div>
@@ -152,7 +152,7 @@ const CategoryCard = ({ cat, idx, onOpen }) => {
         {/* Gold line + price eyebrow */}
         <div className="flex items-center gap-2 mb-2.5">
           <span className="w-4 h-[1.5px] rounded-full flex-shrink-0" style={{ background: GOLD }} />
-          <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
             from {cat.fromPrice}
           </span>
         </div>
@@ -213,7 +213,7 @@ const CategoryModal = ({ cat, onClose }) => {
             <div>
               <div className="flex items-center gap-2.5 mb-1.5">
                 <span className="w-5 h-px" style={{ background: GOLD }} />
-                <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">
+                <span className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">
                   {services.length} {services.length === 1 ? 'service' : 'services'} available
                 </span>
               </div>
@@ -523,7 +523,7 @@ const PromoBanner = ({ dark, eyebrow, title, cta, to, href, image, accent = GOLD
             </div>
           )}
           <div className="relative z-10 max-w-[60%] sm:max-w-lg">
-            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] font-bold mb-1.5 sm:mb-2"
+            <p className="text-[11px] sm:text-[10px] uppercase tracking-[0.22em] font-bold mb-1.5 sm:mb-2"
               style={{ color: dark ? `${accent}70` : '#49365766' }}>{eyebrow}</p>
             <p className={`text-base sm:text-2xl md:text-3xl font-light leading-snug tracking-tight ${dark ? 'text-white' : 'text-[#0F1221]'}`}>{title}</p>
           </div>
@@ -723,7 +723,7 @@ const ServicesPage = () => {
                   {prefix}<CountUp from={from} to={to} decimals={decimals} />{suffix}
                 </p>
                 <p className="text-[12px] sm:text-sm font-semibold text-[#0F1221] mt-1.5">{label}</p>
-                <p className="text-[10px] sm:text-xs text-[#0F1221]/40 mt-0.5 font-light">{sub}</p>
+                <p className="text-[10px] sm:text-xs text-[#0F1221]/70 mt-0.5 font-light">{sub}</p>
               </motion.div>
             ))}
           </div>
@@ -756,7 +756,7 @@ const ServicesPage = () => {
                   style={{ color: `${GOLD}55` }}>{n}</span>
                 <div>
                   <p className="text-[11px] sm:text-[13px] font-bold text-[#0F1221] leading-tight">{label}</p>
-                  <p className="text-[9px] sm:text-[11px] text-[#0F1221]/40 mt-0.5 leading-snug font-light">{sub}</p>
+                  <p className="text-[11px] sm:text-[11px] text-[#0F1221]/70 mt-0.5 leading-snug font-light">{sub}</p>
                 </div>
               </motion.div>
             ))}
@@ -796,7 +796,7 @@ const ServicesPage = () => {
               <div>
                 <div className="flex items-center gap-2.5 mb-2">
                   <span className="w-5 h-px" style={{ background: GOLD }} />
-                  <span className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}80` }}>Calyco Exterior</span>
+                  <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}80` }}>Calyco Exterior</span>
                 </div>
                 <p className="text-base sm:text-3xl font-light text-white mb-4 max-w-xs sm:max-w-sm leading-snug tracking-tight">
                   Better walls. Inside and out.
@@ -824,7 +824,7 @@ const ServicesPage = () => {
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-6 h-px" style={{ background: GOLD }} />
-                <span className="text-[9px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}70` }}>Ready to start?</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: `${GOLD}70` }}>Ready to start?</span>
               </div>
               <p className="text-white text-xl sm:text-3xl font-light leading-snug tracking-tight max-w-sm sm:max-w-md">
                 Fixed quote. Free site inspection.

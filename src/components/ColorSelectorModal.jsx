@@ -179,7 +179,7 @@ const ColorSelectorModal = ({ isOpen, onClose, onColorSelect, productInfo }) => 
                       }}
                     >
                       <div className="truncate leading-tight">{family.display}</div>
-                      <div className="text-[9px] opacity-75 mt-0.5">({colors.length})</div>
+                      <div className="text-[11px] opacity-75 mt-0.5">({colors.length})</div>
                     </button>
                   );
                 })}
@@ -237,14 +237,14 @@ const ColorSelectorModal = ({ isOpen, onClose, onColorSelect, productInfo }) => 
                               />
 
                               {/* Color Name */}
-                              <p className={`text-[9px] sm:text-[10px] font-medium text-center line-clamp-2 leading-tight ${
+                              <p className={`text-[11px] sm:text-[10px] font-medium text-center line-clamp-2 leading-tight ${
                                 isSelected ? 'text-[#D4AF37]' : 'text-gray-700'
                               }`}>
                                 {colorName}
                               </p>
 
                               {/* Color Code */}
-                              <p className="text-[8px] sm:text-[9px] text-gray-500 mt-0.5">{colorCode}</p>
+                              <p className="text-[11px] sm:text-[11px] text-gray-500 mt-0.5">{colorCode}</p>
 
                               {/* Selected Checkmark */}
                               {isSelected && (

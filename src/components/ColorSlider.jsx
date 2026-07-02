@@ -191,7 +191,7 @@ const ColorSlider = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="inline-block mb-3 sm:mb-4 md:mb-6"
             >
-              <span className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-[8px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider shadow-lg">
+              <span className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-[11px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider shadow-lg">
                 {slides[currentSlide].badge}
               </span>
             </motion.div>

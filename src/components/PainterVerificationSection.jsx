@@ -32,7 +32,7 @@ const PainterVerificationSection = ({ compact = false }) => (
           <h2 className="text-2xl sm:text-3xl font-light text-[#0F1221] tracking-[-0.01em] leading-[1.15]">
             Verified Painters,<br />Managed by Calyco.
           </h2>
-          <p className="mt-4 text-sm text-[#0F1221]/55 font-light leading-[1.85] max-w-sm">
+          <p className="mt-4 text-sm text-[#0F1221]/70 font-light leading-[1.85] max-w-sm">
             We do not simply send a local painter. Calyco assigns trained painting teams who follow our service checklist, safety process and daily reporting system.
           </p>
 
@@ -41,7 +41,7 @@ const PainterVerificationSection = ({ compact = false }) => (
             <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-[#F0C85A] text-[#0F1221] flex-shrink-0 font-bold text-sm">✓</span>
             <div>
               <p className="text-sm font-bold text-[#0F1221]">Calyco Verified Badge</p>
-              <p className="text-[11px] text-[#0F1221]/50 font-light mt-0.5">Every assigned painter team carries this status</p>
+              <p className="text-[11px] text-[#0F1221]/70 font-light mt-0.5">Every assigned painter team carries this status</p>
             </div>
           </div>
 
@@ -59,7 +59,7 @@ const PainterVerificationSection = ({ compact = false }) => (
 
         {/* Painter profile placeholders */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#0F1221]/35 mb-4">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#0F1221]/70 mb-4">
             Sample verified team members · Real photos being added
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -70,7 +70,7 @@ const PainterVerificationSection = ({ compact = false }) => (
                   {p.initials}
                 </div>
                 <p className="text-sm font-semibold text-[#0F1221]">{p.name}</p>
-                <p className="text-[11px] text-[#0F1221]/45 font-light mt-0.5">{p.city}</p>
+                <p className="text-[11px] text-[#0F1221]/70 font-light mt-0.5">{p.city}</p>
                 <div className="mt-2 flex items-center justify-center gap-2">
                   <span className="text-[11px] font-bold text-[#998850]">★ {p.rating}</span>
                   <span className="text-[#0F1221]/20">·</span>
@@ -100,9 +100,9 @@ const PainterVerificationSection = ({ compact = false }) => (
                 </div>
               </div>
               <div>
-                <p className="text-xs font-bold text-[#0F1221]/30 mb-0.5">{pt.n}</p>
+                <p className="text-xs font-bold text-[#0F1221]/70 mb-0.5">{pt.n}</p>
                 <p className="text-sm font-semibold text-[#0F1221] leading-snug">{pt.title}</p>
-                <p className="text-xs text-[#0F1221]/50 font-light mt-1 leading-[1.65]">{pt.desc}</p>
+                <p className="text-xs text-[#0F1221]/70 font-light mt-1 leading-[1.65]">{pt.desc}</p>
               </div>
             </div>
           );

@@ -55,7 +55,7 @@ const PanelShell = ({ id, eyebrow, children, footerLeft, footerRight }) => (
     <div className="max-w-screen-xl mx-auto px-10 lg:px-24 py-10">
       <div className="flex items-center gap-2.5 mb-6">
         <span className="w-5 h-px bg-[#F0C85A]" />
-        <span className="text-[9px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">{eyebrow}</span>
+        <span className="text-[11px] font-black uppercase tracking-[0.26em] text-[#0F1221]/35">{eyebrow}</span>
       </div>
       {children}
     </div>
