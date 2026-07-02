@@ -124,7 +124,7 @@ const DatePicker = ({ value, onChange }) => {
             })}
           </div>
 
-          <p className="mt-3 pt-3 border-t border-[#0F1221]/6 text-[11px] text-[#0F1221]/35 font-light">
+          <p className="mt-3 pt-3 border-t border-[#0F1221]/6 text-[11px] text-[#0F1221]/70 font-light">
             Visits available all days, 9 AM – 7 PM
           </p>
         </div>,

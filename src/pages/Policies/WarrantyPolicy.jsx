@@ -6,12 +6,12 @@ import { getTypographyClasses, getButtonClasses } from "../../data/admin/typogra
 
 const documentLinks = [
   // Wall paints grouped like the menu
-  { name: "Interior Wall Paints", desc: "Premium & Luxury Interior Emulsion, Acrylic Washable Distemper.", href: "/Assets/docs/warranty_Interior-Wall-Paints.html", icon: "🎨" },
-  { name: "Exterior Wall Paints", desc: "Premium & Luxury Exterior Emulsion, All Surface Coating.", href: "/Assets/docs/warranty_Exterior-Wall-Paints.html", icon: "🏡" },
-  { name: "Wood & Metal (Enamels/Coatings)", desc: "Dura-Shield Enamel, PU Wood Coating, Melamine Polish, Epoxy Paint, Anticorrosive & Fire-Retardant coatings.", href: "/Assets/docs/warranty_Wood-Metal.html", icon: "🪵" },
-  { name: "Primers & Sealers", desc: "Interior/Exterior primers, solvent, universal, wall putty, wood & metal primers.", href: "/Assets/docs/warranty_Primers-Sealers.html", icon: "🛡️" },
-  { name: "Waterproofing", desc: "Waterproofing Sealer, Damp Guard Primer.", href: "/Assets/docs/warranty_Waterproofing.html", icon: "💧" },
-  { name: "Texture Paints", desc: "Calyco Texture Paint.", href: "/Assets/docs/warranty_calyco-texture-paint.html", icon: "🧩" },
+  { name: "Interior Wall Paints", desc: "Premium & Luxury Interior Emulsion, Acrylic Washable Distemper.", href: "/Assets/docs/warranty_Interior-Wall-Paints.html" },
+  { name: "Exterior Wall Paints", desc: "Premium & Luxury Exterior Emulsion, All Surface Coating.", href: "/Assets/docs/warranty_Exterior-Wall-Paints.html" },
+  { name: "Wood & Metal (Enamels/Coatings)", desc: "Dura-Shield Enamel, PU Wood Coating, Melamine Polish, Epoxy Paint, Anticorrosive & Fire-Retardant coatings.", href: "/Assets/docs/warranty_Wood-Metal.html" },
+  { name: "Primers & Sealers", desc: "Interior/Exterior primers, solvent, universal, wall putty, wood & metal primers.", href: "/Assets/docs/warranty_Primers-Sealers.html" },
+  { name: "Waterproofing", desc: "Waterproofing Sealer, Damp Guard Primer.", href: "/Assets/docs/warranty_Waterproofing.html" },
+  { name: "Texture Paints", desc: "Calyco Texture Paint.", href: "/Assets/docs/warranty_calyco-texture-paint.html" },
 ];
 
 export default function WarrantyPolicy() {
@@ -132,9 +132,7 @@ export default function WarrantyPolicy() {
             <div className="grid gap-6 md:grid-cols-3">
               {/* Card 1 */}
               <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
-                  🎨
-                </div>
+                <span className="block h-[3px] w-10 rounded-full bg-[var(--calyco-gold)]" />
                 <div>
                   <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>Manufacturing Defects</h3>
                   <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
@@ -145,9 +143,7 @@ export default function WarrantyPolicy() {
 
               {/* Card 2 */}
               <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
-                  🛡️
-                </div>
+                <span className="block h-[3px] w-10 rounded-full bg-[var(--calyco-gold)]" />
                 <div>
                   <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>What is Included</h3>
                   <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
@@ -158,9 +154,7 @@ export default function WarrantyPolicy() {
 
               {/* Card 3 */}
               <div className="animate-on-scroll group relative flex flex-col gap-5 overflow-hidden rounded-[32px] border border-black/5 bg-white/90 p-8 shadow-[0_28px_60px_-45px_rgba(13,15,28,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_45px_65px_-40px_rgba(15,18,33,0.35)]">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-3xl shadow-sm">
-                  ⚠️
-                </div>
+                <span className="block h-[3px] w-10 rounded-full bg-[var(--calyco-gold)]" />
                 <div>
                   <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>What is Excluded</h3>
                   <p className={`${getTypographyClasses('body')} mt-3 text-[#31274B]/80`}>
@@ -193,8 +187,8 @@ export default function WarrantyPolicy() {
                   download
                   className="animate-on-scroll group flex items-start gap-4 rounded-[28px] border border-black/6 bg-[var(--calyco-cream)]/50 px-6 py-6 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_50px_-20px_rgba(15,18,33,0.2)]"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-2xl shadow-sm group-hover:scale-110 transition-transform">
-                    {doc.icon}
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+                    <span className="h-2 w-2 rounded-full bg-[var(--calyco-gold)]" />
                   </div>
                   <div>
                     <h3 className={`${getTypographyClasses('h4')} text-base text-[var(--calyco-ink)] group-hover:text-[var(--calyco-plum)]`}>

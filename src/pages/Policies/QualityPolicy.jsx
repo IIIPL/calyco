@@ -227,21 +227,21 @@ export default function QualityPolicy() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">🔬</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Research & Development</h3>
               <p className="text-sm text-[#23263a]">
                 Ongoing R&D to develop innovative formulations, improve durability, and reduce environmental impact.
               </p>
             </div>
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">👥</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Team Training</h3>
               <p className="text-sm text-[#23263a]">
                 Regular training programs for production, QC, and support teams on quality standards and best practices.
               </p>
             </div>
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">📊</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Performance Monitoring</h3>
               <p className="text-sm text-[#23263a]">
                 Real-time tracking of quality metrics, defect rates, and customer satisfaction to drive improvement.

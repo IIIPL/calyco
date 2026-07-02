@@ -72,7 +72,7 @@ const FeatureCards = () => {
                   onClick={() => navigate('/room-visualization')}
                   className={getButtonClasses('outline')}
                 >
-                  Visualise 👁
+                  Visualise
                 </button>
               </div>
             </div>

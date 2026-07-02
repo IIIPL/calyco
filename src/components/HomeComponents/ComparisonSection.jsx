@@ -83,7 +83,7 @@ const ComparisonSection = () => (
           {/* 5-Star badge */}
           <div className="absolute top-5 right-5">
             <div className="inline-flex items-center gap-1.5 bg-[#F0C85A] rounded-full px-3 py-1">
-              <span className="text-[#0F1221] text-[9px] font-black uppercase tracking-[0.1em]">★ 5-Star</span>
+              <span className="text-[#0F1221] text-[11px] font-black uppercase tracking-[0.1em]">★ 5-Star</span>
             </div>
           </div>
 
@@ -127,7 +127,7 @@ const ComparisonSection = () => (
         transition={{ duration: 0.5, delay: 0.35 }}
         className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5"
       >
-        <p className="text-sm text-[#0F1221]/50 font-light leading-relaxed max-w-md">
+        <p className="text-sm text-[#0F1221]/70 font-light leading-relaxed max-w-md">
           Calyco brings structure, accountability, and service discipline to a job that is usually handled casually.
         </p>
         <Link

@@ -217,7 +217,7 @@ const ProductsPage = () => {
                 animate={{ opacity: 1 }}
                 className="text-center py-20 bg-white/50 rounded-3xl border border-[#493657]/10"
               >
-                <div className="text-6xl mb-4">🎨</div>
+                <span className="mx-auto mb-4 block h-[3px] w-12 rounded-full bg-[#493657]/30" />
                 <h3 className="text-2xl font-bold text-[#493657] mb-2">
                   No matching products found
                 </h3>

@@ -107,14 +107,14 @@ const HeroV3 = () => {
           className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-sm sm:max-w-none"
         >
           {[
-            { icon: '🛡', label: 'Verified Teams' },
-            { icon: '📋', label: 'Fixed Quote' },
-            { icon: '🕐', label: 'On-Time Work' },
-            { icon: '✨', label: 'Clean Finish' },
-          ].map(({ icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-1.5 bg-[#F7F6F3] rounded-2xl py-3 px-2 border border-[#0F1221]/5">
-              <span className="text-xl leading-none">{icon}</span>
-              <span className="text-[10px] font-semibold text-[#0F1221]/60 text-center leading-snug">{label}</span>
+            { label: 'Verified Teams' },
+            { label: 'Fixed Quote' },
+            { label: 'On-Time Work' },
+            { label: 'Clean Finish' },
+          ].map((item) => (
+            <div key={item.label} className="flex flex-col items-center gap-1.5 bg-[#F7F6F3] rounded-2xl py-3 px-2 border border-[#0F1221]/5">
+              <span className="block h-[3px] w-6 rounded-full bg-[#D4AF37]" />
+              <span className="text-[10px] font-semibold text-[#0F1221]/60 text-center leading-snug">{item.label}</span>
             </div>
           ))}
         </motion.div>
@@ -127,7 +127,7 @@ const HeroV3 = () => {
           className="bg-[#F7F6F3] rounded-2xl p-5 border border-[#0F1221]/6 max-w-md"
         >
           <p className="font-bold text-[#493657] text-base mb-0.5">Book a Free Site Visit</p>
-          <p className="text-xs text-[#0F1221]/40 mb-4">Free inspection &amp; written quote. No commitment.</p>
+          <p className="text-xs text-[#0F1221]/70 mb-4">Free inspection &amp; written quote. No commitment.</p>
 
           {sent ? (
             <div className="py-3 text-center">
@@ -168,7 +168,7 @@ const HeroV3 = () => {
               >
                 <WaIcon /> Book Free Inspection
               </motion.button>
-              <p className="text-center text-[10px] text-[#0F1221]/35">
+              <p className="text-center text-[10px] text-[#0F1221]/70">
                 Free Site Visit &nbsp;·&nbsp; No Hidden Charges &nbsp;·&nbsp; 100% Satisfaction
               </p>
             </form>
@@ -272,7 +272,7 @@ const brands = [
 const BrandsV3 = () => (
   <div className="bg-[#F7F6F3] border-y border-[#0F1221]/6 py-8">
     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-      <p className="text-center text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/35 mb-6">We Use Only Trusted Paint Brands</p>
+      <p className="text-center text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F1221]/70 mb-6">We Use Only Trusted Paint Brands</p>
       <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
         {brands.map(({ name, logo }) => (
           <div key={name} className="flex items-center justify-center h-8 opacity-50 hover:opacity-90 transition-opacity">
@@ -328,7 +328,7 @@ const HowV3 = () => {
                   {s.n}
                 </motion.div>
                 <p className="font-semibold text-[#0F1221] text-xs sm:text-sm mb-1 leading-snug group-hover:text-[#493657] transition-colors">{s.t}</p>
-                <p className="text-[#0F1221]/40 text-[11px] leading-[1.6]">{s.d}</p>
+                <p className="text-[#0F1221]/70 text-[11px] leading-[1.6]">{s.d}</p>
               </div>
             </Reveal>
           ))}
@@ -368,7 +368,7 @@ const WhyV3 = () => {
                 <Stars cls="w-4 h-4" />
                 <div>
                   <p className="font-bold text-[#0F1221] text-sm leading-none">4.8 / 5 Rating</p>
-                  <p className="text-[#0F1221]/45 text-[11px] mt-0.5">Based on 2,400+ reviews</p>
+                  <p className="text-[#0F1221]/70 text-[11px] mt-0.5">Based on 2,400+ reviews</p>
                 </div>
               </div>
             </div>
@@ -381,7 +381,7 @@ const WhyV3 = () => {
               <h2 className="text-3xl sm:text-4xl font-bold text-[#0F1221] tracking-[-0.02em] mb-2">
                 Painting &amp; Waterproofing<br />Done Right.
               </h2>
-              <p className="text-[#0F1221]/50 text-base font-normal leading-[1.75] mb-7">
+              <p className="text-[#0F1221]/70 text-base font-normal leading-[1.75] mb-7">
                 Every Calyco project follows a standard that ensures quality, transparency, and peace of mind.
               </p>
             </Reveal>
@@ -558,7 +558,7 @@ const FaqV3 = () => {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-sm text-[#0F1221]/55 leading-[1.8] font-normal">{faq.a}</p>
+                      <p className="px-5 pb-5 text-sm text-[#0F1221]/70 leading-[1.8] font-normal">{faq.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

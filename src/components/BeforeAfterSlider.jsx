@@ -45,7 +45,7 @@ const BeforeAfterSlider = ({
           </div>
         )}
         {/* After label */}
-        <div className="absolute top-3 right-3 rounded px-2 py-1 bg-[#493657]/85 text-white text-[9px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
+        <div className="absolute top-3 right-3 rounded px-2 py-1 bg-[#493657]/85 text-white text-[11px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
           {afterLabel}
         </div>
       </div>
@@ -86,7 +86,7 @@ const BeforeAfterSlider = ({
           )}
         </div>
         {/* Before label */}
-        <div className="absolute top-3 left-3 rounded px-2 py-1 bg-black/55 text-white text-[9px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
+        <div className="absolute top-3 left-3 rounded px-2 py-1 bg-black/55 text-white text-[11px] font-bold uppercase tracking-[0.1em] backdrop-blur-sm">
           {beforeLabel}
         </div>
       </div>

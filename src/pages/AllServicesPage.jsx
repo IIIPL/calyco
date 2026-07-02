@@ -48,11 +48,11 @@ const GridCard = ({ service }) => {
               </div>
           }
           {/* Category label pill — consistent ink + gold */}
-          <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 rounded-full px-2.5 py-1 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.16em] leading-none backdrop-blur-sm bg-[#0F1221]/60 text-[#F0C85A]">
+          <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 rounded-full px-2.5 py-1 text-[11px] sm:text-[11px] font-black uppercase tracking-[0.16em] leading-none backdrop-blur-sm bg-[#0F1221]/60 text-[#F0C85A]">
             {(cat?.label ?? 'Service').split(' ')[0]}
           </div>
           {free && (
-            <span className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 bg-[#16a34a] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow">
+            <span className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 bg-[#16a34a] text-white text-[11px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow">
               Free
             </span>
           )}
@@ -65,7 +65,7 @@ const GridCard = ({ service }) => {
             {service.name}
           </h3>
           {/* Description — hidden on mobile to save space */}
-          <p className="hidden sm:block text-[13px] text-[#0F1221]/45 font-light line-clamp-2 leading-relaxed mb-4">
+          <p className="hidden sm:block text-[13px] text-[#0F1221]/70 font-light line-clamp-2 leading-relaxed mb-4">
             {service.description}
           </p>
           <div className="flex items-center justify-between pt-2.5 sm:pt-3 border-t border-[#0F1221]/6">
@@ -106,7 +106,7 @@ const ListRow = ({ service }) => {
       }
       <div className="flex-1 min-w-0">
         <p className="font-semibold text-[#0F1221] text-[14px] sm:text-[16px] tracking-[-0.01em] leading-tight group-hover:text-[#493657] transition-colors">{service.name}</p>
-        <p className="text-[12px] sm:text-[13px] text-[#0F1221]/45 font-light line-clamp-1 mt-1 hidden sm:block">{service.description}</p>
+        <p className="text-[12px] sm:text-[13px] text-[#0F1221]/70 font-light line-clamp-1 mt-1 hidden sm:block">{service.description}</p>
         <div className="flex items-center gap-1 mt-1 sm:mt-1.5">
           <Star className="w-3 h-3 text-[#F0C85A] fill-[#F0C85A]" />
           <span className="text-[11px] sm:text-[12px] font-semibold text-[#0F1221]/70">{r.r}</span>
@@ -116,7 +116,7 @@ const ListRow = ({ service }) => {
         </div>
       </div>
       <div className="text-right flex-shrink-0">
-        <p className="text-[9px] sm:text-[10px] text-[#0F1221]/35 font-bold uppercase tracking-[0.14em] hidden sm:block mb-0.5">Starting</p>
+        <p className="text-[11px] sm:text-[10px] text-[#0F1221]/70 font-bold uppercase tracking-[0.14em] hidden sm:block mb-0.5">Starting</p>
         <p className="font-bold text-[13px] sm:text-[16px] text-[#0F1221]">
           {free ? 'Free' : <>₹{service.baseMin}<span className="text-[10px] sm:text-[11px] font-medium text-[#0F1221]/40">/{service.unit}</span></>}
         </p>
@@ -274,7 +274,7 @@ export default function AllServicesPage() {
               <h1 className="text-[1.9rem] sm:text-[2.8rem] lg:text-[3.5rem] font-light text-[#0F1221] leading-[1.07] tracking-[-0.025em] mb-2">
                 All Services
               </h1>
-              <p className="text-[12px] sm:text-sm text-[#0F1221]/45 font-light max-w-md leading-relaxed">
+              <p className="text-[12px] sm:text-sm text-[#0F1221]/70 font-light max-w-md leading-relaxed">
                 Verified painters · Fixed pricing · 1-year warranty
               </p>
             </div>
@@ -288,7 +288,7 @@ export default function AllServicesPage() {
               ].map(({ value, label }) => (
                 <div key={label} className="rounded-xl border border-[#0F1221]/8 bg-[#FAFAF8] px-3 py-2 sm:px-4 sm:py-2.5 text-center">
                   <p className="text-[14px] sm:text-[16px] font-black text-[#493657] leading-none">{value}</p>
-                  <p className="text-[10px] sm:text-[11px] text-[#0F1221]/40 font-medium mt-0.5">{label}</p>
+                  <p className="text-[10px] sm:text-[11px] text-[#0F1221]/70 font-medium mt-0.5">{label}</p>
                 </div>
               ))}
               <Link
@@ -310,7 +310,7 @@ export default function AllServicesPage() {
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden sticky top-24">
               <div className="px-4 py-4 border-b border-[#0F1221]/6 flex items-center gap-2.5">
                 <span className="w-5 h-px bg-[#F0C85A]" />
-                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#0F1221]/35">Categories</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#0F1221]/70">Categories</p>
               </div>
               <div className="p-2">
                 <button onClick={() => go('all')}
@@ -330,7 +330,7 @@ export default function AllServicesPage() {
               <div className="mx-3 mb-3 mt-1 rounded-xl overflow-hidden border border-[#0F1221]/6">
                 <div className="bg-[#FAFAF8] px-3.5 py-3.5">
                   <p className="text-[13px] font-semibold text-[#0F1221] leading-snug">Can't find what<br />you're looking for?</p>
-                  <p className="text-xs text-[#0F1221]/45 font-light mt-1 mb-3">Contact us for custom solutions.</p>
+                  <p className="text-xs text-[#0F1221]/70 font-light mt-1 mb-3">Contact us for custom solutions.</p>
                   <a href="https://wa.me/918796777399?text=Hi%20Calyco%2C%20I%20have%20a%20custom%20painting%20requirement."
                     target="_blank" rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full rounded-full bg-[#0F1221] text-white py-2.5 text-xs font-bold hover:bg-[#493657] transition-colors">
@@ -443,7 +443,7 @@ export default function AllServicesPage() {
             {/* Cards */}
             {filtered.length === 0 ? (
               <div className="text-center py-16 sm:py-24 bg-white rounded-2xl border border-gray-100">
-                <p className="text-4xl sm:text-5xl mb-4">🔍</p>
+                <span className="mx-auto mb-4 block h-[3px] w-12 rounded-full bg-gray-300" />
                 <p className="text-[#0F1221] font-semibold text-sm sm:text-base mb-1">No services match your search.</p>
                 <p className="text-xs sm:text-sm text-gray-400 mb-4">Try a different keyword or category.</p>
                 <button onClick={() => { onSearch(''); go('all'); }}

@@ -3,32 +3,26 @@ import { motion } from 'framer-motion';
 
 const pillars = [
   {
-    icon: '🔍',
     label: 'Free Inspection',
     sub: 'Know exactly what your walls need before spending a rupee.',
   },
   {
-    icon: '📋',
     label: 'Fixed Written Quote',
     sub: 'Clear scope, clear pricing, and no surprise charges midway.',
   },
   {
-    icon: '📡',
     label: 'Daily Updates',
     sub: 'Get progress photos and updates even when you are not on site.',
   },
   {
-    icon: '📏',
     label: 'Laser Measurement',
     sub: 'Accurate area calculation for fair pricing and better material planning.',
   },
   {
-    icon: '✅',
     label: 'Verified Teams',
     sub: 'Painters are interviewed, screened, and checked before joining Calyco.',
   },
   {
-    icon: '🏙️',
     label: '25 Cities',
     sub: 'A growing network of local painting partners across India.',
   },
@@ -106,7 +100,7 @@ const FiveStarBrand = () => (
             transition={{ duration: 0.45, delay: i * 0.07 }}
             className="rounded-xl bg-white/5 border border-white/8 px-4 py-4 hover:bg-white/8 hover:border-white/15 transition-all"
           >
-            <span className="text-xl mb-3 block">{p.icon}</span>
+            <span className="block h-[3px] w-8 rounded-full bg-[#F0C85A] mb-3" />
             <p className="text-white/85 text-xs sm:text-sm font-medium leading-snug mb-1">{p.label}</p>
             <p className="text-white/35 text-[10px] font-light leading-snug">{p.sub}</p>
           </motion.div>

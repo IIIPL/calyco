@@ -5,17 +5,14 @@ import ValueCard from './ValueCard';
 const MissionValues = ({ values = [] }) => {
   const defaultValues = [
     {
-      icon: "🎨",
       title: "Color Excellence",
       body: "A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting vibrancy in both interior and exterior applications."
     },
     {
-      icon: "💪",
       title: "Uncompromising Quality",
       body: "Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish every time, backed by our EcoMax Technology."
     },
     {
-      icon: "🌱",
       title: "Planet-First Approach",
       body: "We put people and planet at the heart of every decision we make, from our innovative production process to our commitment to zero-VOC formulations."
     }

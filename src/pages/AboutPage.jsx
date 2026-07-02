@@ -6,17 +6,17 @@ import WhyCalycoShowcase from "../components/HomeComponents/WhyCalycoShowcase";
 import { getTypographyClasses, getButtonClasses } from "../data/admin/typography";
 
 const storyMilestones = [
-  { icon: "🎯", text: "Closing the gap between performance & responsibility" },
-  { icon: "🚀", text: "150+ shades, world-class facilities, 10 states served" },
-  { icon: "👑", text: "Serving homes & projects nationwide, sustainable growth" },
+  { text: "Closing the gap between performance & responsibility" },
+  { text: "150+ shades, world-class facilities, 10 states served" },
+  { text: "Serving homes & projects nationwide, sustainable growth" },
 ];
 
 const valuePillars = [
-  { text: "Quality without compromise", icon: "⭐" },
-  { text: "Relentless innovation", icon: "🔬" },
-  { text: "Environmental stewardship", icon: "🌱" },
-  { text: "Customer-first approach", icon: "🤝" },
-  { text: "Integrity", icon: "🛡️" },
+  { text: "Quality without compromise" },
+  { text: "Relentless innovation" },
+  { text: "Environmental stewardship" },
+  { text: "Customer-first approach" },
+  { text: "Integrity" },
 ];
 
 const leadershipPillars = [
@@ -25,7 +25,6 @@ const leadershipPillars = [
     title: "R&D Excellence",
     description:
       "Coatings technologists and material scientists advance resin chemistry, pigments, and additives tuned for India's humidity, dust, and monsoon cycles.",
-    icon: "🧪",
     gradient: "from-[#493657] to-[#6B4C80]",
   },
   {
@@ -33,7 +32,6 @@ const leadershipPillars = [
     title: "Manufacturing Mastery",
     description:
       "Manufacturing, supply chain, and quality leaders orchestrate end-to-end efficiency with rigorous batch-to-bucket validation.",
-    icon: "⚙️",
     gradient: "from-[#D4AF37] to-[#F59E0B]",
   },
   {
@@ -41,7 +39,6 @@ const leadershipPillars = [
     title: "Customer Excellence",
     description:
       "Design strategists and service teams translate field feedback into intuitive product systems and support for homeowners and specifiers.",
-    icon: "💎",
     gradient: "from-[#493657] to-[#7B5E9A]",
   },
   {
@@ -49,7 +46,6 @@ const leadershipPillars = [
     title: "Trade Enablement",
     description:
       "Applicator trainers and technical advisors equip dealers, contractors, and architects with real-world application guidance.",
-    icon: "🏗️",
     gradient: "from-[#D4AF37] to-[#EAB308]",
   },
 ];
@@ -59,21 +55,18 @@ const manufacturingHighlights = [
     title: "State-of-the-Art Facilities",
     description:
       "50,000 sq. ft. factory in Maharashtra featuring automated mixing, tinting, and packaging lines for consistent, scalable output.",
-    icon: "🏭",
     metric: "50,000 sq. ft.",
   },
   {
     title: "Quality Assurance",
     description:
       "Every batch tested for color accuracy, coverage, film build, adhesion, scrub resistance, and weather durability before release.",
-    icon: "🔍",
     metric: "100% Tested",
   },
   {
     title: "Sustainable Operations",
     description:
       "Water-based systems, low-/zero-VOC formulations, and waste reduction practices minimize impact across the product lifecycle.",
-    icon: "🌿",
     metric: "Zero-VOC",
   },
 ];
@@ -82,19 +75,16 @@ const ecoMaxFeatures = [
   {
     title: "Zero-VOC Colorants",
     description: "Proprietary eco-friendly colorants eliminate harsh chemicals while delivering exceptional color vibrancy and depth.",
-    icon: "🎨",
     stat: "0% VOC"
   },
   {
     title: "Enhanced Durability",
     description: "Advanced formulation strengthens paint performance, extending lifespan and reducing maintenance requirements.",
-    icon: "🛡️",
     stat: "25% Stronger"
   },
   {
     title: "Superior Air Quality",
     description: "Low-odor technology ensures healthier indoor environments during and after application.",
-    icon: "💨",
     stat: "Low Odor"
   }
 ];
@@ -104,19 +94,16 @@ const sustainabilityPoints = [
     title: "Safer Indoors",
     description:
       "Low-/zero-VOC technologies help reduce indoor air pollutants during and after application.",
-    icon: "🏠",
   },
   {
     title: "Responsible Supply",
     description:
       "Ethically sourced raw materials and packaging optimized for recyclability support responsible consumption.",
-    icon: "♻️",
   },
   {
     title: "Full Transparency",
     description:
       "Product and safety data sheets, plus third-party certifications, empower informed decision-making.",
-    icon: "📜",
   },
 ];
 
@@ -256,7 +243,7 @@ export default function AboutPage() {
                       key={item.text}
                       className="animate-on-scroll flex flex-col gap-3 rounded-2xl border border-black/5 bg-[var(--calyco-cream)]/75 px-4 py-5 text-left shadow-[0_18px_35px_-28px_rgba(13,15,28,0.45)]"
                     >
-                      <span className="text-2xl">{item.icon}</span>
+                      <span className="block h-[3px] w-8 rounded-full bg-[var(--calyco-gold)]" />
                       <span className="text-sm font-medium text-[var(--calyco-ink)]/90">
                         {item.text}
                       </span>
@@ -282,7 +269,7 @@ export default function AboutPage() {
                     key={value.text}
                     className="animate-on-scroll inline-flex items-center gap-2 rounded-full border border-black/8 bg-[var(--calyco-cream)]/80 px-5 py-2 text-sm font-semibold text-[var(--calyco-plum)] transition hover:border-[var(--calyco-gold)] hover:bg-[var(--calyco-gold)]/10"
                   >
-                    <span className="text-base">{value.icon}</span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--calyco-gold)]" />
                     {value.text}
                   </span>
                 ))}
@@ -304,13 +291,13 @@ export default function AboutPage() {
             </div>
             <div className="relative grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {[
-                { icon: '🔍', title: 'Background-verified painters', desc: 'Every applicator goes through identity and skill verification before joining a Calyco project team.' },
-                { icon: '📐', title: 'Laser measurement on-site', desc: 'Area is confirmed by laser measurement, not estimate. What you pay for matches what we paint.' },
-                { icon: '👷', title: 'Dedicated supervisor per job', desc: 'A named supervisor manages each project. You have their number from Day 1.' },
-                { icon: '📱', title: 'Daily WhatsApp photo updates', desc: 'One update per day with progress photos -- no need to be present to know what\'s happening.' },
+                { title: 'Background-verified painters', desc: 'Every applicator goes through identity and skill verification before joining a Calyco project team.' },
+                { title: 'Laser measurement on-site', desc: 'Area is confirmed by laser measurement, not estimate. What you pay for matches what we paint.' },
+                { title: 'Dedicated supervisor per job', desc: 'A named supervisor manages each project. You have their number from Day 1.' },
+                { title: 'Daily WhatsApp photo updates', desc: 'One update per day with progress photos -- no need to be present to know what\'s happening.' },
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/8 transition-colors">
-                  <span className="text-3xl block mb-4">{item.icon}</span>
+                  <span className="block h-[3px] w-10 rounded-full bg-[#F0C85A] mb-4" />
                   <h3 className="font-bold text-white text-base mb-2">{item.title}</h3>
                   <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -318,11 +305,11 @@ export default function AboutPage() {
             </div>
             <div className="relative mt-10 grid gap-4 md:grid-cols-2">
               {[
-                { icon: '📋', title: 'Fixed written quote before work starts', desc: 'After site inspection, we issue a written quote with line-item breakdown. Price does not change once accepted.' },
-                { icon: '🧹', title: 'Post-work cleanup included', desc: 'Furniture masking, floor protection and final cleanup are part of the job -- not an add-on.' },
+                { title: 'Fixed written quote before work starts', desc: 'After site inspection, we issue a written quote with line-item breakdown. Price does not change once accepted.' },
+                { title: 'Post-work cleanup included', desc: 'Furniture masking, floor protection and final cleanup are part of the job -- not an add-on.' },
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl border border-[#F0C85A]/20 bg-[#F0C85A]/5 p-6">
-                  <span className="text-3xl block mb-4">{item.icon}</span>
+                  <span className="block h-[3px] w-10 rounded-full bg-[#F0C85A] mb-4" />
                   <h3 className="font-bold text-[#F0C85A] text-base mb-2">{item.title}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -356,9 +343,7 @@ export default function AboutPage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--calyco-plum)]/8 to-[var(--calyco-gold)]/8 opacity-0 transition duration-300 group-hover:opacity-100" />
                   <div className="relative flex items-center justify-between">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--calyco-plum)] to-[var(--calyco-gold)] text-2xl text-white shadow-lg shadow-black/20">
-                      {feature.icon}
-                    </div>
+                    <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[var(--calyco-plum)] to-[var(--calyco-gold)] shadow-lg shadow-black/20" />
                     <span className="rounded-full bg-[var(--calyco-gold)]/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--calyco-plum)]">
                       {feature.stat}
                     </span>
@@ -407,9 +392,7 @@ export default function AboutPage() {
                   key={item.title}
                   className="animate-on-scroll flex flex-col items-center gap-3 rounded-[28px] border border-black/6 bg-white/95 p-8 text-center shadow-[0_24px_45px_-40px_rgba(15,18,33,0.6)]"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-2xl text-white shadow-lg shadow-black/20">
-                    {item.icon}
-                  </span>
+                  <span className="block h-12 w-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 shadow-lg shadow-black/20" />
                   <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>{item.title}</h3>
                   <p className={`${getTypographyClasses('body')} text-[#31274B]/80`}>{item.description}</p>
                 </div>

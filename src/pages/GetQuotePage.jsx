@@ -211,7 +211,7 @@ const DatePicker = ({ value, onChange }) => {
             })}
           </div>
 
-          <p className="mt-3 pt-3 border-t border-[#0F1221]/6 text-[11px] text-[#0F1221]/35 font-light">
+          <p className="mt-3 pt-3 border-t border-[#0F1221]/6 text-[11px] text-[#0F1221]/70 font-light">
             Visits available all days, 9 AM – 7 PM
           </p>
         </div>
@@ -357,7 +357,7 @@ const GetQuotePage = () => {
             Book your site visit<br />
             <span style={{ color: PURPLE }}>&amp; colour consultation.</span>
           </h1>
-          <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md">
+          <p className="text-[#0F1221]/70 text-[14px] font-light leading-relaxed max-w-md">
             A thorough site inspection and colour consultation from our experts — free, no commitment.
           </p>
         </div>
@@ -389,7 +389,7 @@ const GetQuotePage = () => {
               <div className="space-y-4">
                 <div className="mb-6">
                   <h2 className="text-xl sm:text-2xl font-light text-[#0F1221] tracking-[-0.01em]">Tell us about yourself</h2>
-                  <p className="text-sm text-[#0F1221]/45 font-light mt-1">We&apos;ll use this to confirm your visit.</p>
+                  <p className="text-sm text-[#0F1221]/70 font-light mt-1">We&apos;ll use this to confirm your visit.</p>
                 </div>
 
                 <Field label="Full name">
@@ -454,7 +454,7 @@ const GetQuotePage = () => {
                   </button>
                   <div>
                     <h2 className="text-xl sm:text-2xl font-light text-[#0F1221] tracking-[-0.01em]">Where should we visit?</h2>
-                    <p className="text-sm text-[#0F1221]/45 font-light mt-1">Your address and a preferred visit date.</p>
+                    <p className="text-sm text-[#0F1221]/70 font-light mt-1">Your address and a preferred visit date.</p>
                   </div>
                 </div>
 
@@ -558,7 +558,7 @@ const GetQuotePage = () => {
 
                 <div className="flex items-start gap-2.5 rounded-xl bg-[#F7F6F3] border border-[#0F1221]/6 px-4 py-3">
                   <Shield className="w-4 h-4 text-[#0F1221]/30 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs text-[#0F1221]/45 font-light leading-[1.6]">
+                  <p className="text-xs text-[#0F1221]/70 font-light leading-[1.6]">
                     Your details go straight to Calyco&apos;s team — no third-party sharing, no spam.
                   </p>
                 </div>
@@ -578,7 +578,7 @@ const GetQuotePage = () => {
             <div key={b.label} className="rounded-2xl bg-white border border-[#0F1221]/6 px-3 py-3.5 text-center">
               <span className="block mb-1.5">{b.icon}</span>
               <p className="text-xs font-semibold text-[#0F1221] leading-tight">{b.label}</p>
-              <p className="text-[10px] text-[#0F1221]/40 font-light mt-0.5 leading-tight">{b.sub}</p>
+              <p className="text-[10px] text-[#0F1221]/70 font-light mt-0.5 leading-tight">{b.sub}</p>
             </div>
           ))}
         </div>

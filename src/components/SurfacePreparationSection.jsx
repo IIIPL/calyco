@@ -64,7 +64,7 @@ const SurfacePreparationSection = () => (
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08] mt-2">
             The Difference Is in the<br className="hidden sm:block" /> Wall Preparation.
           </h2>
-          <p className="mt-4 text-sm text-[#0F1221]/55 font-light leading-[1.85] max-w-sm">
+          <p className="mt-4 text-sm text-[#0F1221]/70 font-light leading-[1.85] max-w-sm">
             A good paint job starts before the first coat. Calyco checks for cracks, dampness, loose paint, uneven patches and surface dust before painting begins. Our team prepares the surface properly so the final finish looks smoother and lasts longer.
           </p>
 
@@ -73,7 +73,7 @@ const SurfacePreparationSection = () => (
             <span className="text-2xl leading-none flex-shrink-0">⭐</span>
             <div>
               <p className="text-sm font-bold text-[#0F1221]">27-Point Quality Checklist</p>
-              <p className="text-xs text-[#0F1221]/50 font-light mt-0.5">Signed off by supervisor before handover on every project.</p>
+              <p className="text-xs text-[#0F1221]/70 font-light mt-0.5">Signed off by supervisor before handover on every project.</p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const SurfacePreparationSection = () => (
               <span className="text-[11px] font-bold text-[#F0C85A] tracking-[0.08em] flex-shrink-0 mt-0.5 w-6">{step.n}</span>
               <div>
                 <p className="text-sm font-semibold text-[#0F1221] leading-snug">{step.title}</p>
-                <p className="text-xs text-[#0F1221]/50 font-light mt-1 leading-[1.65]">{step.desc}</p>
+                <p className="text-xs text-[#0F1221]/70 font-light mt-1 leading-[1.65]">{step.desc}</p>
               </div>
             </div>
           ))}

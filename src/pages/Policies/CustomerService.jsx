@@ -6,31 +6,26 @@ const supportCategories = [
   {
     title: "Products & Colours",
     description: "Finishes, coverage, colour matching, sustainability specs.",
-    icon: "🎨",
     link: "/products",
   },
   {
     title: "Application & Tools",
     description: "Surface prep, applicator tips, troubleshooting advice.",
-    icon: "🛠️",
     link: "/faq#application",
   },
   {
     title: "Orders & Delivery",
     description: "Shipping timelines, tracking, delivery exceptions.",
-    icon: "📦",
     link: "/policies/shipping",
   },
   {
     title: "Account & Payments",
     description: "Billing, invoices, GST, payment methods, security.",
-    icon: "💳",
     link: "/policies/payments-gst",
   },
   {
     title: "Professional Services",
     description: "Dealer onboarding, contractor programs, project support.",
-    icon: "🏗️",
     link: "/contractors",
   },
 ];
@@ -262,8 +257,8 @@ export default function CustomerService() {
                   className="group flex h-full flex-col gap-4 rounded-3xl border border-[#0F1221]/12 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-lg"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#D4AF37]/20 text-xl">
-                      {category.icon}
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#D4AF37]/20">
+                      <span className="h-2 w-2 rounded-full bg-[#4B007D]" />
                     </span>
                     <h3 className="text-xl font-semibold text-[#4B007D]">{category.title}</h3>
                   </div>
@@ -318,8 +313,8 @@ export default function CustomerService() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="flex h-full flex-col gap-4 rounded-3xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D4AF37]/20 text-xl text-[#4B007D]">
-                      💬
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#D4AF37]/20 text-[#4B007D]">
+                      <span className="h-2 w-2 rounded-full bg-[#4B007D]" />
                     </span>
                     <h3 className="text-xl font-semibold text-[#4B007D]">Start Live Chat</h3>
                   </div>
@@ -335,8 +330,8 @@ export default function CustomerService() {
                 </div>
                 <div className="flex h-full flex-col gap-4 rounded-3xl border border-[#0F1221]/10 bg-white p-6 shadow-sm">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4B007D]/15 text-xl text-[#4B007D]">
-                      🎥
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4B007D]/15 text-[#4B007D]">
+                      <span className="h-2 w-2 rounded-full bg-[#4B007D]" />
                     </span>
                     <h3 className="text-xl font-semibold text-[#4B007D]">Consult an Expert</h3>
                   </div>

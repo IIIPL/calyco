@@ -11,7 +11,6 @@ const contactChannels = [
     detail: contactData.contact.whatsapp.displayText,
     description: "Message our team instantly.",
     subDetail: contactData.contact.workingHours.days + " - " + contactData.contact.workingHours.time,
-    icon: "📱",
     href: contactData.contact.whatsapp.link,
     newTab: true,
   },
@@ -20,7 +19,6 @@ const contactChannels = [
     detail: contactData.contact.email.support,
     description: "Send us a note and we'll reply within a day.",
     subDetail: "Replies within 24 hours",
-    icon: "✉️",
     href: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactData.contact.email.support)}`,
     newTab: true,
   },
@@ -29,7 +27,6 @@ const contactChannels = [
     detail: contactData.contact.address.full,
     description: "Meet us at our headquarters.",
     subDetail: "By appointment only",
-    icon: "🏢",
   },
 ];
 
@@ -37,17 +34,14 @@ const businessSupport = [
   {
     title: "24h Response Time",
     description: "Our team will get back to you within 24 hours with personalized solutions.",
-    icon: "⏰",
   },
   {
     title: "Expert Support",
     description: "Connect with our technical specialists for detailed product guidance.",
-    icon: "🎯",
   },
   {
     title: "Global Presence",
     description: "Local support and expertise across multiple countries and regions.",
-    icon: "🌍",
   },
 ];
 
@@ -271,10 +265,8 @@ export default function ContactPage() {
                     {...wrapperProps}
                     className={`animate-on-scroll flex h-full flex-col items-center gap-4 rounded-[28px] border border-black/6 bg-white/95 p-6 text-center shadow-[0_24px_45px_-40px_rgba(15,18,33,0.6)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_40px_60px_-38px_rgba(15,18,33,0.55)] ${isLink ? 'cursor-pointer' : ''}`}
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)] text-2xl text-[var(--calyco-ink)]">
-                      <span role="img" aria-label={`${channel.title} icon`}>
-                        {channel.icon}
-                      </span>
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--calyco-cream)]">
+                      <span className="h-2 w-2 rounded-full bg-[var(--calyco-gold)]" />
                     </div>
                     <div className="space-y-2">
                       <h3 className={`${getTypographyClasses('h4')} text-[var(--calyco-ink)]`}>

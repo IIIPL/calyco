@@ -32,7 +32,7 @@ const MarqueeStrip = () => {
           className="inline-flex items-center gap-1 sm:gap-1.5 rounded-full bg-[#F0C85A] text-[#0F1221] px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-xs font-bold hover:bg-white transition-colors flex-shrink-0"
         >
           CALYCO20
-          <span className="text-[9px] sm:text-[10px] font-normal opacity-70">{copied ? '✓' : 'Copy'}</span>
+          <span className="text-[11px] sm:text-[10px] font-normal opacity-70">{copied ? '✓' : 'Copy'}</span>
         </button>
 
         <span className="text-[11px] sm:text-sm font-medium text-white/85 whitespace-nowrap">

@@ -111,7 +111,7 @@ export default function ColorDisclaimer() {
             ))}
           </div>
           <div className="mt-8 rounded-2xl border-2 border-[#D4AF37]/30 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-[#0F1221] mb-2">💡 Recommendation</h3>
+            <h3 className="text-lg font-semibold text-[#0F1221] mb-2">Recommendation</h3>
             <p className="text-sm text-[#23263a]">
               Never rely solely on digital color previews when making final color decisions. Always order and evaluate physical samples in your actual space before purchasing full quantities.
             </p>
@@ -192,7 +192,7 @@ export default function ColorDisclaimer() {
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">🎨</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Physical Color Cards</h3>
               <p className="text-sm text-[#23263a] mb-3">
                 Request free color fan decks and single shade cards delivered to your address.
@@ -205,7 +205,7 @@ export default function ColorDisclaimer() {
               </button>
             </div>
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">🖌️</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Sample Pots (100ml)</h3>
               <p className="text-sm text-[#23263a] mb-3">
                 Purchase small tester pots to paint actual swatches on your walls.
@@ -218,7 +218,7 @@ export default function ColorDisclaimer() {
               </button>
             </div>
             <div className="rounded-xl bg-[#FBF9F6] p-6 text-center">
-              <div className="text-3xl mb-3">💬</div>
+              <span className="mx-auto block h-[3px] w-10 rounded-full bg-[#D4AF37] mb-4" />
               <h3 className="text-lg font-bold text-[#0F1221] mb-1">Color Consultation</h3>
               <p className="text-sm text-[#23263a] mb-3">
                 Book a free consultation with our color experts for personalized recommendations.

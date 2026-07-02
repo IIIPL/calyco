@@ -88,9 +88,7 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-emerald-100">
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-white text-2xl">🧪</span>
-                </div>
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-full mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-gray-800 mb-3">EcoMax™ Technology</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">
                   "EcoMax makes our paint cleaner on the inside and truer on the outside, delivering sustainable performance that lasts for years."
@@ -175,9 +173,7 @@ export default function AboutPage() {
           <div className="bg-gradient-to-br from-gray-50 to-emerald-50 rounded-3xl p-8 md:p-12">
             <div className="grid lg:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="w-16 h-16 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-emerald-600 text-2xl">🎨</span>
-                </div>
+                <div className="w-16 h-16 bg-emerald-100 rounded-full mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-gray-800 mb-3">True Color Consistency</h4>
                 <p className="text-gray-600">
                   Our proprietary EcoMax™ colorants ensure the exact color you choose stays vibrant and true for years, maintaining consistency across our entire spectrum.
@@ -185,9 +181,7 @@ export default function AboutPage() {
               </div>
               
               <div>
-                <div className="w-16 h-16 bg-cyan-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-cyan-600 text-2xl">🛡️</span>
-                </div>
+                <div className="w-16 h-16 bg-cyan-100 rounded-full mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-gray-800 mb-3">Ultra Durable Protection</h4>
                 <p className="text-gray-600">
                   Engineered to resist fading, peeling, and cracking, our paints stand up to daily wear and harsh conditions so you repaint when you want to, not out of necessity.
@@ -195,9 +189,7 @@ export default function AboutPage() {
               </div>
               
               <div>
-                <div className="w-16 h-16 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-emerald-600 text-2xl">🌱</span>
-                </div>
+                <div className="w-16 h-16 bg-emerald-100 rounded-full mx-auto mb-4" />
                 <h4 className="text-xl font-bold text-gray-800 mb-3">Environmentally Responsible</h4>
                 <p className="text-gray-600">
                   Zero-VOC waterborne tinting system ensures our low-VOC paints remain environmentally safe even after tinting--an innovation others can't replicate.
@@ -233,9 +225,7 @@ export default function AboutPage() {
           {/* Research & Innovation */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-xl mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">🔬</span>
-              </div>
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-cyan-600 rounded-xl mb-6" />
               <h4 className="text-2xl font-bold text-gray-800 mb-4">Pioneering Innovation</h4>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Our commitment to research and development has positioned us as leaders in sustainable paint technology. We continuously innovate to create products that are effective, safe, and minimize environmental impact.
@@ -249,28 +239,28 @@ export default function AboutPage() {
               <h4 className="text-2xl font-bold text-gray-800 mb-6">What We're All About</h4>
               <div className="space-y-6">
                 <div className="bg-white rounded-xl p-6 shadow-md border border-emerald-100">
-                  <h5 className="text-lg font-semibold text-emerald-700 mb-3">🎨 Color Excellence</h5>
+                  <h5 className="text-lg font-semibold text-emerald-700 mb-3">Color Excellence</h5>
                   <p className="text-gray-600">
                     A carefully curated range of pigment-rich paint colors engineered for superior coverage and lasting vibrancy in both interior and exterior applications.
                   </p>
                 </div>
                 
                 <div className="bg-white rounded-xl p-6 shadow-md border border-cyan-100">
-                  <h5 className="text-lg font-semibold text-cyan-700 mb-3">💪 Uncompromising Quality</h5>
+                  <h5 className="text-lg font-semibold text-cyan-700 mb-3">Uncompromising Quality</h5>
                   <p className="text-gray-600">
                     Our high-performance, scrubbable formula delivers perfectly even coverage and a long-lasting flawless finish every time, backed by our EcoMax™ Technology.
                   </p>
                 </div>
                 
                 <div className="bg-white rounded-xl p-6 shadow-md border border-emerald-100">
-                  <h5 className="text-lg font-semibold text-emerald-700 mb-3">🌱 Planet-First Approach</h5>
+                  <h5 className="text-lg font-semibold text-emerald-700 mb-3">Planet-First Approach</h5>
                   <p className="text-gray-600">
                     We put people and planet at the heart of every decision we make, from our innovative production process to our commitment to zero-VOC formulations.
                   </p>
                 </div>
                 
                 <div className="bg-white rounded-xl p-6 shadow-md border border-cyan-100">
-                  <h5 className="text-lg font-semibold text-cyan-700 mb-3">🤝 Building Better Homes</h5>
+                  <h5 className="text-lg font-semibold text-cyan-700 mb-3">Building Better Homes</h5>
                   <p className="text-gray-600">
                     We're here to help transform Indian homes with sustainable solutions, providing expert guidance and premium products for every painting project.
                   </p>
@@ -292,9 +282,7 @@ export default function AboutPage() {
           
           <div className="grid md:grid-cols-3 gap-6 text-center mb-8">
             <div className="bg-white rounded-xl p-6 shadow-md">
-              <div className="w-12 h-12 bg-cyan-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-cyan-600 text-xl">✉️</span>
-              </div>
+              <div className="w-12 h-12 bg-cyan-100 rounded-full mx-auto mb-4" />
               <h4 className="font-semibold text-gray-800 mb-2">Email</h4>
               <a href="mailto:info@calycopaints.com" className="text-sm text-emerald-600 hover:text-emerald-700 transition-colors">
                 info@calycopaints.com
@@ -302,9 +290,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-md">
-              <div className="w-12 h-12 bg-emerald-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-emerald-600 text-xl">📞</span>
-              </div>
+              <div className="w-12 h-12 bg-emerald-100 rounded-full mx-auto mb-4" />
               <h4 className="font-semibold text-gray-800 mb-2">Contact Us</h4>
               <a href="https://wa.me/918796777399" className="text-sm text-cyan-600 hover:text-cyan-700 transition-colors font-semibold underline block mb-2" target="_blank" rel="noopener noreferrer">
                 WhatsApp Message
@@ -313,9 +299,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-md">
-              <div className="w-12 h-12 bg-cyan-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-cyan-600 text-xl">🌐</span>
-              </div>
+              <div className="w-12 h-12 bg-cyan-100 rounded-full mx-auto mb-4" />
               <h4 className="font-semibold text-gray-800 mb-2">Website</h4>
               <a href="https://www.calycopaints.com" className="text-sm text-emerald-600 hover:text-emerald-700 transition-colors">
                 www.calycopaints.com

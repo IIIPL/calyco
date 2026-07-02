@@ -69,7 +69,7 @@ const Toggle = ({ checked, onChange, label, sub }) => (
   <label className="flex items-center justify-between gap-3 cursor-pointer rounded-xl border border-[#0F1221]/8 bg-[#FAFAF8] px-4 py-3 hover:bg-white transition-colors">
     <div>
       <p className="text-sm font-semibold text-[#0F1221]">{label}</p>
-      {sub && <p className="text-xs text-[#0F1221]/45 font-light mt-0.5">{sub}</p>}
+      {sub && <p className="text-xs text-[#0F1221]/70 font-light mt-0.5">{sub}</p>}
     </div>
     <div
       className={`relative w-10 h-5.5 rounded-full transition-colors flex-shrink-0 ${checked ? 'bg-[#25D366]' : 'bg-[#0F1221]/15'}`}
@@ -85,7 +85,7 @@ const Toggle = ({ checked, onChange, label, sub }) => (
 const Counter = ({ value, onChange, label, sub, min = 0, max = 20 }) => (
   <div className="rounded-xl border border-[#0F1221]/8 bg-[#FAFAF8] px-4 py-3">
     <p className="text-sm font-semibold text-[#0F1221]">{label}</p>
-    {sub && <p className="text-xs text-[#0F1221]/45 font-light mt-0.5 mb-2">{sub}</p>}
+    {sub && <p className="text-xs text-[#0F1221]/70 font-light mt-0.5 mb-2">{sub}</p>}
     <div className="flex items-center gap-3 mt-1">
       <button type="button" onClick={() => onChange(Math.max(min, value - 1))} className="w-7 h-7 rounded-lg border border-[#0F1221]/12 flex items-center justify-center hover:bg-white transition-colors">
         <Minus className="w-3.5 h-3.5 text-[#0F1221]/60" />
@@ -374,7 +374,7 @@ const UniversalServiceCalculator = () => {
             placeholder="Enter area or quantity"
           />
           {isPainting && quantityValue > 0 && (
-            <p className="text-xs text-[#0F1221]/40 mt-1.5 font-light">
+            <p className="text-xs text-[#0F1221]/70 mt-1.5 font-light">
               Paintable wall area (ceiling, doors and windows can be added below)
             </p>
           )}
@@ -407,7 +407,7 @@ const UniversalServiceCalculator = () => {
                 </button>
               ))}
             </div>
-            <p className="text-[11px] text-[#0F1221]/35 mt-3 font-light">
+            <p className="text-[11px] text-[#0F1221]/70 mt-3 font-light">
               Auto-fills paintable area with mid-range estimate. Final area confirmed by laser on site.
             </p>
           </div>
@@ -416,7 +416,7 @@ const UniversalServiceCalculator = () => {
         {/* ── E: Add-ons (painting only) ────────────────────────────────────── */}
         {isPainting && (
           <div>
-            <p className="text-xs font-bold text-[#0F1221]/45 uppercase tracking-wider mb-3">What else should be included?</p>
+            <p className="text-xs font-bold text-[#0F1221]/70 uppercase tracking-wider mb-3">What else should be included?</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
               <Toggle
                 checked={includeCeiling}
@@ -446,7 +446,7 @@ const UniversalServiceCalculator = () => {
 
         {/* ── F: Surface factors ────────────────────────────────────────────── */}
         <div>
-          <p className="text-xs font-bold text-[#0F1221]/45 uppercase tracking-wider mb-3">Surface & access factors</p>
+          <p className="text-xs font-bold text-[#0F1221]/70 uppercase tracking-wider mb-3">Surface & access factors</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <span className="block text-xs font-semibold text-[#0F1221]/60 mb-1.5">Property type</span>
@@ -572,7 +572,7 @@ const UniversalServiceCalculator = () => {
                   <h3 className="text-sm font-bold text-[#0F1221] mb-3">What is not included</h3>
                   <ul className="space-y-1.5">
                     {notIncluded.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-xs text-[#0F1221]/55">
+                      <li key={item} className="flex items-start gap-2 text-xs text-[#0F1221]/70">
                         <X className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" />
                         {item}
                       </li>
@@ -584,12 +584,12 @@ const UniversalServiceCalculator = () => {
               {/* Recommended package */}
               <div className="p-5 flex items-start gap-4">
                 <div className="flex-1">
-                  <p className="text-xs font-bold text-[#0F1221]/40 uppercase tracking-wider mb-1">Recommended package for your project</p>
+                  <p className="text-xs font-bold text-[#0F1221]/70 uppercase tracking-wider mb-1">Recommended package for your project</p>
                   <div className="flex items-center gap-2 mb-1">
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${rec.color}`}>{rec.name}</span>
                     <span className="text-sm font-semibold text-[#0F1221]">package</span>
                   </div>
-                  <p className="text-xs text-[#0F1221]/50 font-light leading-[1.6]">{rec.reason}</p>
+                  <p className="text-xs text-[#0F1221]/70 font-light leading-[1.6]">{rec.reason}</p>
                 </div>
                 <Link
                   to="/get-quote"
@@ -612,7 +612,7 @@ const UniversalServiceCalculator = () => {
                   <WaIcon cls="w-6 h-6 text-[#25D366]" />
                 </div>
                 <p className="font-bold text-[#0F1221] text-sm mb-1">Estimate sent to Calyco!</p>
-                <p className="text-xs text-[#0F1221]/50 font-light">Our team will contact you within 2 hours to arrange a free site visit.</p>
+                <p className="text-xs text-[#0F1221]/70 font-light">Our team will contact you within 2 hours to arrange a free site visit.</p>
               </div>
             ) : (
               <>
@@ -620,7 +620,7 @@ const UniversalServiceCalculator = () => {
                   <WaIcon cls="w-5 h-5 text-[#25D366] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-[#0F1221] text-sm">Send this estimate to Calyco</p>
-                    <p className="text-xs text-[#0F1221]/55 font-light mt-0.5">Enter your name and number — your full breakdown is sent on WhatsApp. Team responds within 2 hours.</p>
+                    <p className="text-xs text-[#0F1221]/70 font-light mt-0.5">Enter your name and number — your full breakdown is sent on WhatsApp. Team responds within 2 hours.</p>
                   </div>
                 </div>
                 <form onSubmit={handleLeadSubmit} className="space-y-3">
@@ -651,7 +651,7 @@ const UniversalServiceCalculator = () => {
                     <WaIcon cls="w-4 h-4" />
                     Send Estimate on WhatsApp
                   </button>
-                  <p className="text-center text-[11px] text-[#0F1221]/35">No spam · Your estimate breakdown + contact details sent to Calyco</p>
+                  <p className="text-center text-[11px] text-[#0F1221]/70">No spam · Your estimate breakdown + contact details sent to Calyco</p>
                 </form>
               </>
             )}
@@ -679,7 +679,7 @@ const UniversalServiceCalculator = () => {
         {/* Disclaimer */}
         <div className="rounded-xl bg-[#FBF9F6] border border-[#0F1221]/6 px-4 py-3 text-center">
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#998850] mb-0.5">{BRAND_NAME}</p>
-          <p className="text-xs text-[#0F1221]/40 font-light">This is a transparent rate-logic estimate. Final price is confirmed after free site inspection and laser measurement.</p>
+          <p className="text-xs text-[#0F1221]/70 font-light">This is a transparent rate-logic estimate. Final price is confirmed after free site inspection and laser measurement.</p>
         </div>
 
       </div>

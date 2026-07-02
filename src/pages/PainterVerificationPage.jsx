@@ -48,11 +48,11 @@ const screeningProcess = [
 ];
 
 const promises = [
-  { icon: '🛡️', text: 'You will never meet an unverified painter on a Calyco project.' },
-  { icon: '📋', text: 'Every painter works with a supervisor assigned to your project.' },
-  { icon: '📸', text: 'Daily progress photos come from the team — not from the customer.' },
-  { icon: '✅', text: 'Work is not signed off until the supervisor approves the 27-point checklist.' },
-  { icon: '💸', text: 'Painter payment is released only after your approval of the final handover.' },
+  { text: 'You will never meet an unverified painter on a Calyco project.' },
+  { text: 'Every painter works with a supervisor assigned to your project.' },
+  { text: 'Daily progress photos come from the team — not from the customer.' },
+  { text: 'Work is not signed off until the supervisor approves the 27-point checklist.' },
+  { text: 'Painter payment is released only after your approval of the final handover.' },
 ];
 
 const PainterVerificationPage = () => {
@@ -144,7 +144,7 @@ const PainterVerificationPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {promises.map((p) => (
               <div key={p.text} className="flex gap-3.5 rounded-2xl border border-[#0F1221]/8 bg-white px-4 py-4">
-                <span className="text-xl flex-shrink-0 leading-none mt-0.5">{p.icon}</span>
+                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#D4AF37]" />
                 <p className="text-sm text-[#0F1221]/70 font-light leading-[1.7]">{p.text}</p>
               </div>
             ))}

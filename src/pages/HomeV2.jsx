@@ -293,7 +293,7 @@ const HeroV2 = () => {
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
           className="w-[1px] h-14 bg-gradient-to-b from-[#F0C85A]/60 to-transparent"
         />
-        <span className="text-white/25 text-[9px] uppercase tracking-[0.28em]" style={{ writingMode: 'vertical-rl' }}>scroll</span>
+        <span className="text-white/25 text-[11px] uppercase tracking-[0.28em]" style={{ writingMode: 'vertical-rl' }}>scroll</span>
       </motion.div>
 
     </section>
@@ -472,7 +472,7 @@ const WhyV2 = () => {
                   <span className="text-[11px] font-black text-[#0F1221]/15 tracking-[0.08em] flex-shrink-0 pt-1">{p.n}</span>
                   <div>
                     <p className="font-semibold text-[#0F1221] text-base mb-1.5 group-hover:text-[#493657] transition-colors duration-300">{p.t}</p>
-                    <p className="text-[#0F1221]/45 text-sm font-light leading-[1.8]">{p.d}</p>
+                    <p className="text-[#0F1221]/70 text-sm font-light leading-[1.8]">{p.d}</p>
                   </div>
                 </motion.div>
               ))}
@@ -557,7 +557,7 @@ const ProcessV2 = () => {
               <h2 className="text-3xl sm:text-4xl font-light text-[#0F1221] leading-[1.1] tracking-[-0.02em] mb-5">
                 How Calyco<br /><span className="font-semibold text-[#493657]">Delivers.</span>
               </h2>
-              <p className="text-[#0F1221]/45 text-sm font-light leading-[1.85] mb-6">
+              <p className="text-[#0F1221]/70 text-sm font-light leading-[1.85] mb-6">
                 Six structured steps from first call to final handover.
               </p>
               <Link to="/how-it-works" className="inline-flex items-center gap-1.5 text-sm text-[#493657] hover:text-[#0F1221] transition-colors font-semibold">
@@ -596,7 +596,7 @@ const ProcessV2 = () => {
                   <div className="flex-1 pb-10 last:pb-0 border-b border-[#0F1221]/6 last:border-b-0">
                     <span className="text-[10px] font-black text-[#0F1221]/20 sm:hidden mb-1 block">{s.n}</span>
                     <h3 className="font-semibold text-[#0F1221] text-base mb-2 group-hover:text-[#493657] transition-colors">{s.t}</h3>
-                    <p className="text-[#0F1221]/45 text-sm font-light leading-[1.85]">{s.d}</p>
+                    <p className="text-[#0F1221]/70 text-sm font-light leading-[1.85]">{s.d}</p>
                   </div>
                 </motion.div>
               ))}

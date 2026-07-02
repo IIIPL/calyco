@@ -136,7 +136,7 @@ const HeroV4 = () => {
             className="flex items-center gap-3 mb-8"
           >
             <span className="w-9 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#493657]">
               Calyco 5-Star Painting Services
             </span>
           </motion.div>
@@ -264,7 +264,7 @@ const HeroV4 = () => {
             <div className="bg-white/92 backdrop-blur-md rounded-2xl px-4 py-3.5 shadow-xl border border-white/50">
               <Stars size="w-3 h-3" />
               <div className="text-sm font-black text-[#0F1221] mt-2 leading-none">4.8 <span className="font-light text-[#0F1221]/40 text-xs">/ 5.0</span></div>
-              <div className="text-[9px] text-[#0F1221]/40 font-light mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
+              <div className="text-[11px] text-[#0F1221]/40 font-light mt-1 uppercase tracking-[0.12em]">Customer Rating</div>
             </div>
           </motion.div>
         </motion.div>
@@ -286,7 +286,7 @@ const HeroV4 = () => {
                   <div className="w-7 h-7 rounded-full bg-[#493657] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">R</div>
                   <div>
                     <div className="text-[11px] font-bold text-[#0F1221] leading-none mb-0.5">Rakesh M.</div>
-                    <div className="text-[9px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
+                    <div className="text-[11px] text-[#0F1221]/35">Mumbai · Interior Painting</div>
                   </div>
                 </div>
                 <Stars size="w-2.5 h-2.5" />
@@ -369,7 +369,7 @@ const ServicesV4 = () => {
         <div>
           <div className="flex items-center gap-3 mb-3">
             <span className="w-7 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Our Services</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Our Services</span>
           </div>
           <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-white tracking-[-0.015em]">
             What We Do Best
@@ -411,7 +411,7 @@ const ServicesV4 = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3 }}
-                    className="inline-block mb-3 text-[9px] font-black uppercase tracking-[0.25em] text-[#F0C85A] border border-[#F0C85A]/40 rounded-full px-3.5 py-1.5 w-fit"
+                    className="inline-block mb-3 text-[11px] font-black uppercase tracking-[0.25em] text-[#F0C85A] border border-[#F0C85A]/40 rounded-full px-3.5 py-1.5 w-fit"
                   >
                     {s.short}
                   </motion.span>
@@ -473,7 +473,7 @@ const ServicesV4 = () => {
               <img src={s.img} alt={s.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221] via-[#0F1221]/30 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="text-[9px] font-black text-[#F0C85A] uppercase tracking-[0.22em] mb-1.5 block">{s.short}</span>
+                <span className="text-[11px] font-black text-[#F0C85A] uppercase tracking-[0.22em] mb-1.5 block">{s.short}</span>
                 <h3 className="text-lg font-semibold text-white mb-1.5">{s.title}</h3>
                 <p className="text-sm text-white/50 font-light mb-4 leading-relaxed">{s.desc}</p>
                 <Link to={s.to} className="inline-flex items-center gap-2 text-sm font-bold text-[#F0C85A]">
@@ -589,7 +589,7 @@ const ProcessStep = ({ step, i }) => {
           <span className="text-[2.8rem] font-black text-[#0F1221]/7 leading-none shrink-0 mt-1">{step.num}</span>
           <div>
             <h3 className="text-lg font-bold text-[#0F1221] mb-2 leading-snug">{step.title}</h3>
-            <p className="text-sm text-[#0F1221]/50 font-light leading-relaxed mb-3">{step.desc}</p>
+            <p className="text-sm text-[#0F1221]/70 font-light leading-relaxed mb-3">{step.desc}</p>
             <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#493657]">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -632,13 +632,13 @@ const ProcessV4 = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <span className="w-7 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Your Journey</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#493657]">Your Journey</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2 className="text-[2rem] sm:text-[2.8rem] font-light text-[#0F1221] tracking-[-0.015em] max-w-md leading-tight">
               From Planning to<br />Perfect Finish.
             </h2>
-            <p className="text-sm text-[#0F1221]/40 font-light max-w-xs">
+            <p className="text-sm text-[#0F1221]/70 font-light max-w-xs">
               A transparent 4-step process — we keep you informed at every stage.
             </p>
           </div>
@@ -722,12 +722,12 @@ const ConsultationV4 = () => {
           <div className="max-w-lg">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Expert Consultation</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#493657]">Expert Consultation</span>
             </div>
             <h2 className="text-[1.9rem] sm:text-[2.5rem] font-light text-[#0F1221] tracking-[-0.015em] leading-tight mb-4">
               Looking for Expert<br />Consultation?
             </h2>
-            <p className="text-[#0F1221]/48 font-light text-base leading-relaxed mb-8">
+            <p className="text-[#0F1221]/70 font-light text-base leading-relaxed mb-8">
               Our experts help you choose the perfect shade and finish. Free home visit, transparent quote, and 2-year workmanship warranty — at zero compromise.
             </p>
 
@@ -793,7 +793,7 @@ const InspirationV4 = () => {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">Inspirations</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#493657]">Inspirations</span>
             </div>
             <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
               Featured Ideas
@@ -818,7 +818,7 @@ const InspirationV4 = () => {
               <img src={IMG_PAINTER} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/80 via-[#0F1221]/10 to-transparent" />
               <div className="absolute top-4 left-4">
-                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#F0C85A] bg-[#0F1221]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">{INSPO[0].tag}</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#F0C85A] bg-[#0F1221]/60 backdrop-blur-sm px-3 py-1.5 rounded-full">{INSPO[0].tag}</span>
               </div>
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-2">
                 <h3 className="text-base font-semibold text-white leading-snug">{INSPO[0].title}</h3>
@@ -841,7 +841,7 @@ const InspirationV4 = () => {
                 <img src={i % 2 === 0 ? IMG_CONSULT : IMG_HERO} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1221]/75 via-transparent to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <span className="text-[9px] font-black uppercase tracking-[0.18em] text-[#F0C85A] bg-[#0F1221]/55 backdrop-blur-sm px-2.5 py-1 rounded-full">{item.tag}</span>
+                  <span className="text-[11px] font-black uppercase tracking-[0.18em] text-[#F0C85A] bg-[#0F1221]/55 backdrop-blur-sm px-2.5 py-1 rounded-full">{item.tag}</span>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2">
                   <h3 className="text-xs sm:text-sm font-semibold text-white leading-snug">{item.title}</h3>
@@ -886,7 +886,7 @@ const FaqV4 = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-3">
             <span className="w-7 h-px bg-[#F0C85A]" />
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#493657]">FAQs</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#493657]">FAQs</span>
             <span className="w-7 h-px bg-[#F0C85A]" />
           </div>
           <h2 className="text-[2rem] sm:text-[2.6rem] font-light text-[#0F1221] tracking-[-0.015em]">
@@ -928,7 +928,7 @@ const FaqV4 = () => {
                     transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-5 text-sm text-[#0F1221]/52 font-light leading-relaxed">{item.a}</p>
+                    <p className="pb-5 text-sm text-[#0F1221]/70 font-light leading-relaxed">{item.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -967,7 +967,7 @@ const CtaV4 = () => {
               className="flex items-center gap-3 mb-6"
             >
               <span className="w-7 h-px bg-[#F0C85A]" />
-              <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Calyco 5-Star Painting Services</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#F0C85A]">Calyco 5-Star Painting Services</span>
             </motion.div>
 
             {'Looking for Painting Services?'.split(' ').map((word, i) => (

@@ -157,7 +157,7 @@ const TestimonialsCarousel = () => {
                                         <h4 className="text-lg font-bold text-[#0F1221]">
                                             {testimonials[currentIndex].title}
                                         </h4>
-                                        <p className="text-[#0F1221]/40 text-sm md:text-base font-light">
+                                        <p className="text-[#0F1221]/70 text-sm md:text-base font-light">
                                             {testimonials[currentIndex].role}
                                         </p>
                                     </div>

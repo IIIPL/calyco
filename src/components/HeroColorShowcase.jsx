@@ -28,7 +28,7 @@ export default function HeroColorShowcase() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#493657]">Trending Palettes</h2>
-          <p className="text-[#493657]/70">Seasonal picks, curated with real color harmony. (use your brain combos, not random 😄)</p>
+          <p className="text-[#493657]/70">Seasonal picks, curated with real color harmony.</p>
         </div>
         <Link to="/colors" className="hidden md:inline-block px-5 py-2 rounded-xl bg-[#493657] text-white font-semibold hover:bg-[#301A44]">Explore Colors</Link>
       </div>

@@ -55,7 +55,7 @@ export default function IndividualRoomPage() {
         variants={fadeIn}
       >
         <div className="text-center px-4">
-          <div className="text-8xl mb-4">🛋️</div>
+          <span className="mx-auto mb-4 block h-[3px] w-12 rounded-full bg-[#393939]/30" />
           <h1 className="text-4xl md:text-5xl font-bold text-[#393939] mb-4">
             Room Not Found
           </h1>

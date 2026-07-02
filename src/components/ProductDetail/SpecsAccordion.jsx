@@ -145,7 +145,7 @@ const SpecsAccordion = ({ specs }) => {
 
       {/* Quick Reference */}
       <div className="mt-12 p-6 bg-gray-50 rounded-2xl max-w-2xl mx-auto">
-        <h4 className="font-semibold text-gray-800 mb-3">📋 Quick Reference Guide</h4>
+        <h4 className="font-semibold text-gray-800 mb-3">Quick Reference Guide</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700 text-left">
           <div>
             <p className="font-medium">Application</p>
@@ -168,7 +168,7 @@ const SpecsAccordion = ({ specs }) => {
 
       {/* Professional Support */}
       <div className="mt-8 p-4 bg-purple-50 rounded-xl max-w-3xl mx-auto">
-        <h4 className="font-semibold text-purple-800 mb-2">🛠️ Need Professional Help?</h4>
+        <h4 className="font-semibold text-purple-800 mb-2">Need Professional Help?</h4>
         <p className="text-sm text-purple-700 mb-3">
           Our technical support team is available to help with application questions, 
           surface preparation, and project planning.

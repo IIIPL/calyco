@@ -63,7 +63,7 @@ export default function InspirationPage() {
             Find the perfect look<br />
             <span style={{ color: PURPLE }}>for every room.</span>
           </h1>
-          <p className="text-[#0F1221]/45 text-[14px] font-light leading-relaxed max-w-md mb-5">
+          <p className="text-[#0F1221]/70 text-[14px] font-light leading-relaxed max-w-md mb-5">
             Curated colour combinations and design ideas from real Calyco projects — pick a room to explore.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@ export default function InspirationPage() {
               }} />
 
               {/* Design count pill */}
-              <span className="absolute top-4 right-4 text-[9px] font-black uppercase tracking-[0.16em] rounded-full px-2.5 py-1 backdrop-blur-sm bg-[#0F1221]/40 text-white/75 border border-white/15">
+              <span className="absolute top-4 right-4 text-[11px] font-black uppercase tracking-[0.16em] rounded-full px-2.5 py-1 backdrop-blur-sm bg-[#0F1221]/40 text-white/75 border border-white/15">
                 {room.designs} {room.designs === 1 ? 'design' : 'designs'}
               </span>
 
@@ -109,7 +109,7 @@ export default function InspirationPage() {
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-4 h-[1.5px] rounded-full flex-shrink-0" style={{ background: GOLD }} />
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
                     Explore palettes
                   </span>
                 </div>

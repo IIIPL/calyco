@@ -72,7 +72,7 @@ const ServiceWarrantySection = ({ highlightCategory }) => (
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#0F1221] tracking-[-0.02em] leading-[1.08]">
             Every Project. Covered.
           </h2>
-          <p className="mt-4 text-base text-[#0F1221]/55 font-light max-w-xl leading-[1.8]">
+          <p className="mt-4 text-base text-[#0F1221]/70 font-light max-w-xl leading-[1.8]">
             Every Calyco 5-Star Painting project includes a workmanship warranty. If peeling, flaking or application-related defects appear under normal conditions, we inspect and fix the issue as per warranty terms.
           </p>
         </div>
@@ -102,7 +102,7 @@ const ServiceWarrantySection = ({ highlightCategory }) => (
                 </span>
               </div>
               <p className="text-sm font-semibold text-[#0F1221] mb-1.5">{card.service}</p>
-              <p className="text-xs text-[#0F1221]/55 font-light leading-[1.7]">{card.detail}</p>
+              <p className="text-xs text-[#0F1221]/70 font-light leading-[1.7]">{card.detail}</p>
             </div>
           );
         })}

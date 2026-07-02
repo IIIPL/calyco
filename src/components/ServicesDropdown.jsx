@@ -3,17 +3,17 @@ import { useState } from 'react';
 import MobileChevron from './MobileChevron';
 
 const services = [
-  { name: 'Interior Repaint',           path: '/services/interior-repaint',            price: '₹18+', icon: '🏠' },
-  { name: 'Interior Fresh Painting',    path: '/services/interior-fresh-painting',     price: '₹23+', icon: '🏠' },
-  { name: 'Exterior Repaint',           path: '/services/exterior-repaint',            price: '₹24+', icon: '🏗️' },
-  { name: 'Exterior Fresh Painting',    path: '/services/exterior-fresh-painting',     price: '₹28+', icon: '🏗️' },
-  { name: 'Ceiling Painting',           path: '/services/ceiling-painting',            price: '₹20+', icon: '🔼' },
-  { name: 'Wall Putty Add-on',          path: '/services/wall-putty-addon',            price: '₹12+', icon: '🧱' },
-  { name: 'Primer Add-on',              path: '/services/primer-addon',                price: '₹6+',  icon: '🎨' },
-  { name: 'Dampness / Leakage Repair',  path: '/services/dampness-leakage-repair',     price: '₹65+', icon: '💧' },
-  { name: 'Texture / Decorative',       path: '/services/texture-decorative-painting', price: '₹55+', icon: '✨' },
-  { name: 'Waterproofing',              path: '/services/waterproofing',               price: '₹45+', icon: '🛡️' },
-  { name: 'Calculate Cost',             path: '/calculators/service-cost-calculator',  price: null,   icon: '🧮' },
+  { name: 'Interior Repaint',           path: '/services/interior-repaint',            price: '₹18+' },
+  { name: 'Interior Fresh Painting',    path: '/services/interior-fresh-painting',     price: '₹23+' },
+  { name: 'Exterior Repaint',           path: '/services/exterior-repaint',            price: '₹24+' },
+  { name: 'Exterior Fresh Painting',    path: '/services/exterior-fresh-painting',     price: '₹28+' },
+  { name: 'Ceiling Painting',           path: '/services/ceiling-painting',            price: '₹20+' },
+  { name: 'Wall Putty Add-on',          path: '/services/wall-putty-addon',            price: '₹12+' },
+  { name: 'Primer Add-on',              path: '/services/primer-addon',                price: '₹6+' },
+  { name: 'Dampness / Leakage Repair',  path: '/services/dampness-leakage-repair',     price: '₹65+' },
+  { name: 'Texture / Decorative',       path: '/services/texture-decorative-painting', price: '₹55+' },
+  { name: 'Waterproofing',              path: '/services/waterproofing',               price: '₹45+' },
+  { name: 'Calculate Cost',             path: '/calculators/service-cost-calculator',  price: null },
 ];
 
 const ServicesDropdown = ({ onSelect, isMobile = false }) => {
@@ -43,7 +43,7 @@ const ServicesDropdown = ({ onSelect, isMobile = false }) => {
                 className="flex items-center justify-between py-2 pr-2 text-sm text-gray-600 hover:text-[#493657] transition-colors"
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-base">{service.icon}</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#F0C85A]" />
                   {service.name}
                 </span>
                 {service.price && (
@@ -98,7 +98,7 @@ const ServicesDropdown = ({ onSelect, isMobile = false }) => {
               }}
               className="group rounded-xl border border-transparent p-3.5 text-[#493657] hover:border-[#e5e0d8] hover:bg-[#FBF9F6] transition-all"
             >
-              <span className="block text-2xl mb-2">{service.icon}</span>
+              <span className="block h-[3px] w-8 rounded-full bg-[#F0C85A] mb-3" />
               <span className="block font-semibold text-sm text-gray-900 group-hover:text-[#493657]">{service.name}</span>
               {service.price ? (
                 <span className="block text-xs text-[#998850] mt-1 font-semibold">{service.price}/sq ft</span>
