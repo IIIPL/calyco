@@ -215,16 +215,19 @@ export default function AboutPage() {
             className="absolute bottom-24 right-14 h-44 w-44 rounded-full bg-white/10 blur-3xl float-animation"
             style={{ animationDelay: "1.25s" }}
           />
-          <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
-            <span className="glass-effect animate-on-scroll inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 md:text-xs">
+          <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-4 text-center">
+            <span className="glass-effect animate-on-scroll mb-6 inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85 md:mb-8 md:text-xs">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--calyco-gold)]" />
-              CALYCO Paints | Est. 2023
+              CALYCO Paints
             </span>
             <h1 className={`${getTypographyClasses('h1')} animate-on-scroll text-white`}>
               Colour systems for modern India
             </h1>
-            <p className={`${getTypographyClasses('bodyLarge')} animate-on-scroll mx-auto max-w-2xl text-white/90`}>
+            <p className={`${getTypographyClasses('bodyLarge')} animate-on-scroll mx-auto mt-2 max-w-2xl text-white/90`}>
               Purpose-built finishes with sustainable chemistries
+            </p>
+            <p className="animate-on-scroll mx-auto mt-2 max-w-xl text-sm text-white/60 md:text-base">
+              Trusted by homeowners in 25+ cities, backed by verified painters and a 2-year workmanship warranty.
             </p>
           </div>
         </section>
