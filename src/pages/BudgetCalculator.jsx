@@ -17,6 +17,59 @@ const WA_BASE   = contactData?.contact?.whatsapp?.link ?? 'https://wa.me/9187967
 const PHONE_RAW = contactData?.contact?.phone?.rawNumber ?? '+918796777399';
 const CITIES    = Object.keys(cityMultipliers);
 
+/* ── Approx coordinates for each serviceable city — used to auto-select the
+   nearest one when a customer's actual location isn't on our list (e.g. a
+   Noida user gets mapped to Delhi, a Thane user gets mapped to Mumbai) ───── */
+const CITY_COORDS = {
+  Udaipur: [24.5854, 73.7125],
+  Jaipur: [26.9124, 75.7873],
+  Lucknow: [26.8467, 80.9462],
+  Indore: [22.7196, 75.8577],
+  Nagpur: [21.1458, 79.0882],
+  Bhubaneswar: [20.2961, 85.8245],
+  Ahmedabad: [23.0225, 72.5714],
+  Surat: [21.1702, 72.8311],
+  Vadodara: [22.3072, 73.1812],
+  Nashik: [19.9975, 73.7898],
+  Visakhapatnam: [17.6868, 83.2185],
+  Coimbatore: [11.0168, 76.9558],
+  Kolkata: [22.5726, 88.3639],
+  Noida: [28.5355, 77.3910],
+  Delhi: [28.7041, 77.1025],
+  Chandigarh: [30.7333, 76.7794],
+  Kochi: [9.9312, 76.2673],
+  Chennai: [13.0827, 80.2707],
+  Hyderabad: [17.3850, 78.4867],
+  Pune: [18.5204, 73.8567],
+  Gurgaon: [28.4595, 77.0266],
+  Bengaluru: [12.9716, 77.5946],
+  Goa: [15.2993, 74.1240],
+  'Alibaug & Lonavala': [18.6414, 72.8722],
+  Mumbai: [19.0760, 72.8777],
+};
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const toRad = (d) => (d * Math.PI) / 180;
+  const R = 6371;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+/* Given a customer's coordinates, find the closest city we actually service */
+function nearestServiceableCity(lat, lng) {
+  let best = null;
+  let bestDist = Infinity;
+  for (const city of CITIES) {
+    const coords = CITY_COORDS[city];
+    if (!coords) continue;
+    const dist = haversineKm(lat, lng, coords[0], coords[1]);
+    if (dist < bestDist) { bestDist = dist; best = city; }
+  }
+  return best;
+}
+
 /* ── Integration ─────────────────────────────────────────────────────────── */
 const WEB3FORMS_KEY   = '52da37be-e058-4a07-92c1-a07f95c25f6b';
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymvT57AjE5zrrHSKycG7cT6sxMXHfi2kzKKHARMgFMmpiqJPU1KFPJaksACK2v5VD0/exec';
@@ -294,27 +347,6 @@ const PREFERENCES = [
 const TIER_MAPS = {
   default: { economy: 'Economy',  premium: 'Premium',  luxury: 'Luxury'   },
   texture: { economy: 'Basic',    premium: 'Designer', luxury: 'Premium'  },
-};
-
-const PRODUCTS = {
-  economy: [
-    { name: 'Apcolite Advance',  brand: 'AP', color: '#1565C0' },
-    { name: 'Beauty Gold',       brand: 'NL', color: '#7B1FA2' },
-    { name: 'SuperCover',        brand: 'DX', color: '#C0392B' },
-    { name: 'Haisha Select',     brand: 'HS', color: '#37474F' },
-  ],
-  premium: [
-    { name: 'Royale Aspira',     brand: 'AP', color: '#1565C0' },
-    { name: 'Silk Glamour',      brand: 'BG', color: '#276749' },
-    { name: 'Dulux Promise',     brand: 'DX', color: '#C0392B' },
-    { name: 'Impressions HD',    brand: 'NL', color: '#7B1FA2' },
-  ],
-  luxury: [
-    { name: 'Royale Health Shield', brand: 'AP', color: '#1565C0' },
-    { name: 'Silk Luxury Emulsion', brand: 'BG', color: '#276749' },
-    { name: 'Velvet Touch',         brand: 'DX', color: '#C0392B' },
-    { name: 'Excel Mica Marble',    brand: 'NL', color: '#7B1FA2' },
-  ],
 };
 
 /* ── Estimate computation ─────────────────────────────────────────────────── */
@@ -911,8 +943,11 @@ function CountPrice({ target }) {
 }
 
 /* ── Results ─────────────────────────────────────────────────────────────── */
-function Results({ result, preference, onRestart, uploadState, filesCount, folderUrl, visitDate, setVisitDate, onBook, customerDetails }) {
-  const prods = PRODUCTS[preference] ?? PRODUCTS.premium;
+function Results({ result, preference, serviceKey, paintType, carpetArea, city, onRestart, uploadState, filesCount, folderUrl, visitDate, setVisitDate, onBook, customerDetails }) {
+  const tierComparison = PREFERENCES.map((p) => ({
+    ...p,
+    estimate: computeRange({ serviceKey, paintType, carpetArea, city, preference: p.key }),
+  }));
   const [showRazorpay, setShowRazorpay] = useState(false);
   const [bookingStatus, setBookingStatus] = useState('idle'); // idle, processing, done
 
@@ -1123,29 +1158,32 @@ function Results({ result, preference, onRestart, uploadState, filesCount, folde
         </motion.div>
 
 
-        {/* Recommended products */}
+        {/* Cost by finish tier */}
         <motion.div {...stagger(4)}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/70 mb-3">Recommended Products</p>
-          <div className="flex gap-3 flex-wrap">
-            {prods.map((p, i) => (
-              <motion.div key={p.name}
-                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55 + i * 0.08, duration: 0.4 }}
-                className="flex flex-col items-center gap-1.5" style={{ width: 68 }}>
-                <div className="rounded-2xl border border-[#0F1221]/6 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.07)] overflow-hidden relative"
-                  style={{ width: 56, height: 64 }}>
-                  {/* Gradient fill */}
-                  <div className="absolute inset-0 flex items-center justify-center text-white text-[13px] font-black"
-                    style={{ background: `linear-gradient(145deg, ${p.color}ee, ${p.color}cc)` }}>
-                    {/* Shine */}
-                    <div className="absolute inset-0 pointer-events-none"
-                      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 55%)' }} />
-                    <span className="relative z-10 drop-shadow-sm">{p.brand}</span>
-                  </div>
-                </div>
-                <p className="text-[12px] text-center text-[#0F1221]/70 leading-tight line-clamp-2">{p.name}</p>
-              </motion.div>
-            ))}
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#0F1221]/70 mb-3">Cost by Finish Tier</p>
+          <div className="grid grid-cols-3 gap-3">
+            {tierComparison.map((t, i) => {
+              const selected = t.key === preference;
+              return (
+                <motion.div key={t.key}
+                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55 + i * 0.08, duration: 0.4 }}
+                  className="rounded-2xl border p-4"
+                  style={selected
+                    ? { borderColor: GOLD, background: `${GOLD}0F` }
+                    : { borderColor: 'rgba(15,18,33,0.08)', background: '#fff' }}>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#0F1221]/60 mb-1.5">{t.label}</p>
+                  <p className="text-[16px] font-bold text-[#0F1221] leading-tight">
+                    {t.estimate ? fmt(t.estimate.avg) : '—'}
+                  </p>
+                  {selected && (
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-wide" style={{ color: '#7A5C10' }}>
+                      Your selection
+                    </p>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -1316,13 +1354,30 @@ export default function BudgetCalculator() {
 
   const topRef         = useRef(null);
   const [searchParams] = useSearchParams();
+  const cityTouchedRef = useRef(false); // true once the URL, geolocation, or the user has set a city
+  const handleCityChange = (c) => { cityTouchedRef.current = true; setCity(c); };
 
   useEffect(() => {
     const c = searchParams.get('city');
-    if (c && CITIES.includes(c)) setCity(c);
+    if (c && CITIES.includes(c)) { cityTouchedRef.current = true; setCity(c); }
     const s = searchParams.get('service');
     if (s && CALC_SERVICES.find(sv => sv.key === s)) setServiceKey(s);
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Auto-detect the customer's nearest serviceable city via geolocation.
+  // Only applies if nothing else (URL param or manual pick) has set the city yet.
+  useEffect(() => {
+    if (!('geolocation' in navigator)) return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        if (cityTouchedRef.current) return; // user or URL already chose one
+        const nearest = nearestServiceableCity(pos.coords.latitude, pos.coords.longitude);
+        if (nearest) { cityTouchedRef.current = true; setCity(nearest); }
+      },
+      () => { /* permission denied or unavailable — keep the default city */ },
+      { enableHighAccuracy: false, timeout: 6000, maximumAge: 600000 }
+    );
   }, []);
 
   const [step1AreaError, setStep1AreaError] = useState('');
@@ -1605,7 +1660,7 @@ export default function BudgetCalculator() {
               {step === 1 && (
                 <motion.div key="s1" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
                   <Step1
-                    city={city} setCity={setCity}
+                    city={city} setCity={handleCityChange}
                     serviceKey={serviceKey} setServiceKey={setServiceKey}
                     carpetArea={carpetArea} setCarpetArea={setCarpetArea}
                     paintType={paintType} setPaintType={setPaintType}
@@ -1629,7 +1684,7 @@ export default function BudgetCalculator() {
                   <Step3
                     name={name} setName={setName}
                     phone={phone} setPhone={setPhone}
-                    city={city} setCity={setCity}
+                    city={city} setCity={handleCityChange}
                     houseNo={houseNo} setHouseNo={setHouseNo}
                     street={street} setStreet={setStreet}
                     areaName={areaName} setAreaName={setAreaName}
@@ -1645,9 +1700,10 @@ export default function BudgetCalculator() {
 
               {step === 4 && (
                 <motion.div key="s4" custom={dir} variants={slide} initial="enter" animate="center" exit="exit" transition={trans}>
-                  <Results 
-                    result={result} preference={preference} 
-                    onRestart={handleRestart} uploadState={uploadState} 
+                  <Results
+                    result={result} preference={preference}
+                    serviceKey={serviceKey} paintType={paintType} carpetArea={carpetArea} city={city}
+                    onRestart={handleRestart} uploadState={uploadState}
                     filesCount={files.length} folderUrl={folderUrl} 
                     visitDate={visitDate} setVisitDate={setVisitDate} 
                     onBook={handleBooking} 
